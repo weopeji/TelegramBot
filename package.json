@@ -1,0 +1,17 @@
+{
+  "name": "telegrammbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app"
+  },
+  "author": "Kirill Maximov (opeji)",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.9",
+    "node-telegram-bot-api": "^0.53.0"
+  }
+}
