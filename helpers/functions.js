@@ -14,10 +14,17 @@ function privateInit(initPlagins) {
 
 function send_html(id, html, data)
 {
-    if(!data) data = {};
-    return bot.sendMessage(id, html, 
-        {
-            parse_mode: "HTML",
-            reply_markup: data,
-        });
+    if(!data) {
+        return bot.sendMessage(id, html, 
+            {
+                parse_mode: "HTML",
+            });
+    } else {
+        return bot.sendMessage(id, html, 
+            {
+                parse_mode: "HTML",
+                reply_markup: data,
+            });
+    }
+    
 }

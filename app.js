@@ -55,6 +55,14 @@ var load_pages = () =>
             helper_functions: helper_functions,
         });
     }
+    if(business_page == null) 
+    {
+        business_page = require('./types/investor');
+        business_page.init({
+            bot: bot,
+            helper_functions: helper_functions,
+        });
+    }
 }
 
 bot.on("polling_error", console.log);
@@ -73,15 +81,15 @@ bot.on('message', (msg) =>
         "НАЗАД": main_page.close,
         // ИНВЕСТОР ===========================================
         "МОИ ИНВЕСТИЦИИ": investor_page.my_investment,
-        "АКТИВНЫЕ ПРОЕКТЫ": investor_page.active_projects
+        "АКТИВНЫЕ ПРОЕКТЫ": investor_page.active_projects,
         // БИЗНЕС =============================================
+        "КАК ДОБАВИТЬ ПРОЕКТ": business_page.how_add
     }
 
     if(typeof action_linker[msg.text] != "undefined") {
         action_linker[msg.text](msg);   
     }
 
-    //console.log(msg);
     for(var i = 0; i < 3; i++) { bot.deleteMessage(msg.chat.id, msg.message_id - i); };
     
 });
