@@ -6,6 +6,7 @@ module.exports = {
         privateInit(initPlagins);
     },
     send_html,
+    _GET,
 }
 
 function privateInit(initPlagins) {
@@ -26,5 +27,10 @@ function send_html(id, html, data)
                 reply_markup: data,
             });
     }
-    
+}
+
+function _GET(line, key) {
+    var s = line;
+    s = s.match(new RegExp(key + '=([^&=]+)'));
+    return s ? s[1] : false;
 }

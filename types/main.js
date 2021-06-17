@@ -24,7 +24,8 @@ const MF =
     find_user: function(msg) {
         return User.findOne({user: msg.from.id});
     },
-    create_user: function(msg) {
+    create_user: function(msg) 
+    {
         return User.create({
             user: msg.from.id, 
             first_name: msg.from.first_name, 
@@ -33,6 +34,18 @@ const MF =
             language_code: msg.from.language_code,
             is_bot: msg.from.is_bot,
             type: null,
+            where: null,
+            new_project: {
+                name: null,
+                target: null,
+                attraction_amount: null,
+                date: null,
+                minimal_amount: null,
+                rate: null,
+                date_payments: null,
+                collection_period: null,
+                organization: "1",
+            },
         });
     },
     Update_Type: function(msg, data) {
@@ -57,10 +70,11 @@ async function notType(msg)
 {
     var html =`Приветствуем <strong>${msg.from.first_name} ${msg.from.last_name}</strong> на инвестиционной платфоме <strong>investER</strong>. Выбери свой профиль:\n\n<strong>ИНВЕСТОР</strong> - Инвестирую в компании/проекты\n\n<strong>БИЗНЕС</strong> - Привлекая инвестиции в свой бизнес/проект\n\n<strong>ПРИВЛЕЧЕНИЕ</strong> - Хочу стать партнером по привличению инвесторов\n\n`;
     h.send_html(msg.chat.id, html, {
-        "keyboard": [["ИНВЕСТОР"], ["БИЗНЕС"], ["ПРИВЛЕЧЕНИЕ"]],
+        "resize_keyboard": true,
+        "keyboard": [["💰 Инвестор", "🏭 Бизнес", "🤝 Привлечение"]],
         "one_time_keyboard": true,
     });
-}
+} 
 
 async function _MainMenu(msg)
 {
@@ -84,7 +98,7 @@ async function _MainMenu(msg)
             bot.sendMessage(msg.chat.id, html, {
                 parse_mode: "HTML",
                 reply_markup: {
-                    "keyboard": [["МОИ ИНВЕСТИЦИИ", "ИНВЕСТИРОВАТЬ", "РЕКВЕЗИТЫ"], ["РЕКОМЕНДОВАТЬ","СМЕНИТЬ РОЛЬ"]],
+                    "keyboard": [["МОИ ИНВЕСТИЦИИ", "ИНВЕСТИРОВАТЬ", "РЕКВЕЗИТЫ"], ["РЕКОМЕНДОВАТЬ","🔁 Сменить роль"]],
                     "one_time_keyboard": true,
                 }
             });
@@ -98,7 +112,7 @@ async function _MainMenu(msg)
             bot.sendMessage(msg.chat.id, html, {
                 parse_mode: "HTML",
                 reply_markup: {
-                    "keyboard": [["КАК ДОБАВИТЬ ПРОЕКТ", "ДОБАВИТЬ ПРОЕКТ"], ["АКТИВНЫЕ ПРОЕКТЫ","НЕАКТИВНЫЕ ПРОЕКТЫ"], ['СМЕНИТЬ РОЛЬ']],
+                    "keyboard": [["❓ Как добавить проект", "✍ Добавить проект"], ["✔️ Активные проекты","❌ Неактивные проекты"], ['🔁 Сменить роль']],
                     "one_time_keyboard": true,
                 }
             });
@@ -123,15 +137,16 @@ async function change_type(msg)
 {
     const MF_DATA = 
     {
-        "инвестор": "investor",
-        "бизнес": "business",
-        "привлечение": "attraction",
+        "💰 инвестор": "investor",
+        "🏭 бизнес": "business",
+        "🤝 привлечение": "attraction",
     }
     await MF.Update_Type(msg, MF_DATA[msg.text.toLowerCase()]);
     _MainMenu(msg);
 }
 
-function close(msg)
+async function close(msg)
 {
     _MainMenu(msg);
+    await User.findOneAndUpdate({user: msg.from.id}, {where: null});
 }

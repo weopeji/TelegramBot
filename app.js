@@ -57,39 +57,66 @@ var load_pages = () =>
     }
     if(business_page == null) 
     {
-        business_page = require('./types/investor');
+        business_page = require('./types/business');
         business_page.init({
             bot: bot,
+            User: User,
             helper_functions: helper_functions,
         });
     }
 }
 
-bot.on("polling_error", console.log);
-
-bot.on('message', (msg) => 
+bot.on("callback_query", function(callbackQuery) 
 {
+    const action_linker =
+    {
+        "new_project": business_page.project
+    }
+
+    if(typeof action_linker[helper_functions._GET(callbackQuery.data, "place")] != "undefined") {
+        action_linker[helper_functions._GET(callbackQuery.data, "place")](callbackQuery);   
+    }
+});
+
+bot.on('message', async (msg) => 
+{
+    await User.findOneAndUpdate({user: msg.from.id}, {where: null});
 
     const action_linker =
     {
         // ГЛАВНЫЕ ФУНКЦИИ =====================================
         "/start": main_page._CreatorFUN,
-        "ИНВЕСТОР": main_page.change_type,
-        "БИЗНЕС": main_page.change_type,
-        "ПРИВЛЕЧЕНИЕ": main_page.change_type,
-        "СМЕНИТЬ РОЛЬ": main_page.notType,
+        "💰 Инвестор": main_page.change_type,
+        "🏭 Бизнес": main_page.change_type,
+        "🤝 Привлечение": main_page.change_type,
+        "🔁 Сменить роль": main_page.notType,
         "НАЗАД": main_page.close,
         // ИНВЕСТОР ===========================================
         "МОИ ИНВЕСТИЦИИ": investor_page.my_investment,
-        "АКТИВНЫЕ ПРОЕКТЫ": investor_page.active_projects,
+        "✔️ Активные проекты": investor_page.active_projects,
         // БИЗНЕС =============================================
-        "КАК ДОБАВИТЬ ПРОЕКТ": business_page.how_add
+        "❓ Как добавить проект": business_page.how_add,
+        "✍ Добавить проект": business_page.project,
+        "❌ Неактивные проекты": business_page.not_active,
     }
 
-    if(typeof action_linker[msg.text] != "undefined") {
-        action_linker[msg.text](msg);   
-    }
-
-    for(var i = 0; i < 3; i++) { bot.deleteMessage(msg.chat.id, msg.message_id - i); };
-    
+    if(typeof action_linker[msg.text] != "undefined") 
+    {
+        action_linker[msg.text](msg);  
+        for(var i = 0; i < 3; i++) { bot.deleteMessage(msg.chat.id, msg.message_id - i); }; 
+    } else 
+    {
+        var _User = await User.findOne({user: msg.from.id});
+        if(_User.where != null) {
+            var _Funs = {
+                "add_new_project": function(msg) {
+                    for(var i = 0; i < 1; i++) { bot.deleteMessage(msg.chat.id, msg.message_id - i); };
+                    business_page.add_new_project_data(msg);
+                },
+            }
+            if(typeof _Funs[_User.where.name] != "undefined") {
+                _Funs[_User.where.name](msg);
+            }
+        }
+    } 
 });
