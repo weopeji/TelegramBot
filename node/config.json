@@ -1,0 +1,8 @@
+{
+    "mongoUri": "mongodb://127.0.0.1:27017/bot",
+    "host_url": "http://localhost.ru/tbot/",
+    "token":"1821622868:AAF8nX_noB8h930DnueBKsd60dVLSSQHR30",
+    "secure": false,
+    "appPort": 3000,
+    "_idChannel": -1001563744679
+}
