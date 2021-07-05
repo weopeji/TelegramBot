@@ -6,6 +6,7 @@ const ProjectShema = new mongoose.Schema({
     user: String,
     type: String,
     data: JSON,
+    parce: JSON,
 });
 
 autoIncrement.initialize(mongoose.connection);

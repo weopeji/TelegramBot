@@ -5,6 +5,11 @@ const mongoose                      = require('mongoose');
 const TelegramBot                   = require('node-telegram-bot-api');
 const fs                            = require("fs");
 const https                         = require('https');
+const multiparty                    = require('multiparty');
+const fileUpload                    = require('express-fileupload');
+const wrench                        = require('wrench');
+const util                          = require('util');
+const path                          = require('path');
 
 const models                        = require('./models');
 const config                        = require('./config.json');
@@ -25,6 +30,8 @@ const Project                       = mongoose.model('Project');
 
 var server                          = null;
 var io                              = null;
+
+app.use(fileUpload({}));
 
 // cheach OS ==============================================================================
 if(process.platform == 'win32') {config.secure = false} else {config.secure = true};
@@ -131,6 +138,11 @@ var load_pages = () =>
         components_html = require('./pages/components');
         components_html.init({
             Project: Project,
+            User: User,
+            fs: fs,
+            wrench: wrench,
+            path: path,
+            bot: bot,
         });
     };
 }
@@ -155,34 +167,38 @@ bot.onText(/\/start (.+)/, async (msg, match) =>
     const chatId = msg.chat.id;
     const resp = match[1];
     var _idProject = resp.split('_')[1];
-    console.log(_idProject);
     var html = `Открыт проект под номером: ${_idProject}`;
-    await helper_functions.send_html(msg.chat.id, html, {
-        "resize_keyboard": true,
-        "keyboard": [["⬅️ Назад"]],
-    });
-    var html = `Вам нужно выполнить действия:`;
-    helper_functions.send_html(msg.chat.id, html, {
-        "inline_keyboard": [
-            [
-                {
-                    text: "Внести данные",
-                    url: 'google.ru',
-                }
+    const stream = fs.createReadStream(`../projects/${_idProject}/logo.png`);
+    await bot.sendPhoto(msg.chat.id, stream, {
+        "caption": html,
+        "reply_markup": {
+            "inline_keyboard": [
+                [
+                    {
+                        text: "Внести данные",
+                        url: 'google.ru',
+                    }
+                ],
+                [
+                    {
+                        text: "Оплатить",
+                        url: 'google.ru',
+                    }
+                ],
+                [
+                    {
+                        text: "Прикрепить чек об оплате",
+                        url: 'google.ru',
+                    }
+                ],
+                [
+                    {
+                        text: "⬅️ Назад",
+                        url: 'google.ru',
+                    }
+                ]
             ],
-            [
-                {
-                    text: "Оплатить",
-                    url: 'google.ru',
-                }
-            ],
-            [
-                {
-                    text: "Прикрепить чек об оплате",
-                    url: 'google.ru',
-                }
-            ]
-        ],
+        }
     });
 });
 
@@ -220,21 +236,22 @@ bot.on('message', async (msg) =>
         action_linker[msg.text](msg);  
         for(var i = 0; i < 3; i++) { bot.deleteMessage(msg.chat.id, msg.message_id - i); }; 
         await User.findOneAndUpdate({user: msg.from.id}, {where: null});
-    } else 
-    {
-        var _User = await User.findOne({user: msg.from.id});
-        if(_User.where != null) {
-            var _Funs = {
-                "add_new_project": function(msg) {
-                    for(var i = 0; i < 1; i++) { bot.deleteMessage(msg.chat.id, msg.message_id - i); };
-                    business_page.add_new_project_data(msg);
-                },
-            }
-            if(typeof _Funs[_User.where.name] != "undefined") {
-                _Funs[_User.where.name](msg);
-            }
-        }
     } 
+    // else 
+    // {
+    //     var _User = await User.findOne({user: msg.from.id});
+    //     if(_User.where != null) {
+    //         var _Funs = {
+    //             "add_new_project": function(msg) {
+    //                 for(var i = 0; i < 1; i++) { bot.deleteMessage(msg.chat.id, msg.message_id - i); };
+    //                 business_page.add_new_project_data(msg);
+    //             },
+    //         }
+    //         if(typeof _Funs[_User.where.name] != "undefined") {
+    //             _Funs[_User.where.name](msg);
+    //         }
+    //     }
+    // } 
 });
 
 
@@ -255,4 +272,22 @@ io.on('connection', function(socket) {
         components_page(this, data, callback);
     });
 
+});
+
+
+app.post('/upload_project', function(req, res) {
+
+    var _pts        = req.files.files.mimetype.split('/')[1];
+    var _user_id    = req.body._id;
+    var file_id     = req.body.file_id;
+
+    fs.writeFile(`../users/${_user_id}/${file_id}.${_pts}`, req.files.files.data, (err) => {
+        if(err) throw err;
+        res.set({
+            'Access-Control-Allow-Origin': "*"
+        });
+        res.status(200).send({ file_name: file_id+"."+_pts});
+    });
+
+    
 });

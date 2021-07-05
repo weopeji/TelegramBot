@@ -21,10 +21,27 @@ const new_project = {
             syte: null,
         },
         2: {
-
+            registration: null,
+            region: null,
+            activity: null,
         }
     },
     4: {
+        file_url: null,
+    },
+    5: {
+        file_url: null,
+    },
+    6: {
+        file_url: null,
+    },
+    7: {
+        file_url: null,
+    },
+    8: {
+        file_url: null,
+    },
+    9: {
         file_url: null,
     }
 };

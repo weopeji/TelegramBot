@@ -110,9 +110,19 @@ html, body {
 
 .liner_center {
   position: absolute;
-  width: 20%;
+  width: 1%;
   height: 100%;
   background-color: blue;
   border-radius: 8px;
+}
+
+.cover_block_logo {
+  width: 70px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.cover_block_logo img {
+  width: 100%;
 }
 /*# sourceMappingURL=cover.css.map */
