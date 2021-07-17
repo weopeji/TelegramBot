@@ -7,6 +7,9 @@ var request     = null;
 var cheerio     = null;
 var puppeteer   = null;
 var bot         = null;
+var fetch       = null;;
+var { google }  = require('googleapis');
+const Instagram = require('instagram-web-api');
 
 
 module.exports = {
@@ -31,6 +34,16 @@ function privateInit(initPlagins) {
     cheerio     = require("cheerio");
     needle      = require('needle');
     puppeteer   = require('puppeteer');
+    fetch       = require("node-fetch");
+    readline    = require('readline');
+    multer      = require("multer");
+    OAuth2      = google.auth.OAuth2;
+    Jimp = require("jimp")
+    
+    SCOPES = ['https://www.googleapis.com/auth/youtube.readonly'];
+    TOKEN_DIR = (process.env.HOME || process.env.HOMEPATH ||
+    process.env.USERPROFILE) + '/.credentials/';
+    TOKEN_PATH = TOKEN_DIR + 'youtube-nodejs-quickstart.json';
 }
 
 
@@ -53,8 +66,74 @@ var action_linker = {
     "getProject": getProject,
     "getUser": getUser,
     "setProject": setProject,
+    "getСorrection": getСorrection,
     "acceptProject": acceptProject,
     "setActive": setActive,
+    "setSignature": setSignature,
+    "getNewDataProjects": getNewDataProjects,
+    "getProject_id": getProject_id,
+    "not_acceptProject": not_acceptProject,
+    "putRedacting": putRedacting,
+    "getID": getID,
+    "correct_signature": correct_signature,
+}
+
+async function correct_signature(socket,data,callback) {
+    var _project = await Project.findOne({_id: data});
+    var _array = _project.signature;
+    _array.end = true;
+    await Project.findOneAndUpdate({_id: data}, {signature: _array});
+}
+
+async function getID(socket,data,callback) {
+    var _project = await Project.findOne({_id: data});
+    callback(_project.user);
+}
+
+async function putRedacting(socket,data,callback) {
+    var _project = await Project.findOne({_id: data._id});
+    var _data = _project.data;
+    data.array.forEach(element => {
+        for (var key in _data) {
+            if(key == element.name) {
+                _data[key] = element.val;
+            }
+        }
+    });
+    await Project.findOneAndUpdate({_id: data._id}, {data: _data, type: "moderation", redacting: null});
+    callback('ok');
+}
+
+async function not_acceptProject(socket,data,callback) 
+{
+    var _project = await Project.findOneAndUpdate({_id: data._id}, {type: "correction", redacting: data.data});
+    callback(_project);
+}
+
+async function getProject_id(socket,data,callback) {
+    var _project = await Project.findOne({_id: data});
+    callback(_project);
+}
+
+async function getNewDataProjects(socket,data,callback) {
+    var _project = await Project.findOneAndUpdate({_id: data._id}, {
+        type_more: data.data,
+        signature: {
+            type: data.data,
+        }
+    });
+    callback('ok');
+}
+
+async function setSignature(socket,data,callback) 
+{
+    var base64Data = data.data.replace(/^data:image\/png;base64,/, "");
+    const dataBuffer = new Buffer(base64Data,'base64'); 
+    var _patch = `../projects/${data._id}/signature.png`;
+    fs.writeFile(_patch, dataBuffer, (err) => {
+        if(err) throw err;
+        callback('ok');
+    });
 }
 
 async function setActive(socket,data,callback) {
@@ -64,6 +143,7 @@ async function setActive(socket,data,callback) {
 
 async function acceptProject(socket,data,callback) 
 {
+
     var _urlImgProject = `http://localhost/tbot/html/project/cover/?id=${data}`;
     const browser = await puppeteer.launch({
         args: ["--no-sandbox",
@@ -91,49 +171,92 @@ async function acceptProject(socket,data,callback)
                 ]
             ],
         }
-    })
+    });
+
+    const client = new Instagram({ username: "_opeji", password: "3107Ab3107" });
+ 
+    ;(async () => {
+        Jimp.read(`../projects/${data}/logo.png`, async function (err, image) {
+            if (err) {
+                console.log(err)
+            } else {
+                await image.write(`../projects/${data}/logo.jpg`);
+                // URL or path of photo
+                const photo = `http://localhost/tbot/projects/${data}/logo.jpg`;
+                //const photo = `https://www.rosphoto.com/images/u/articles/1510/3_13.jpg`;
+                console.log(photo);
+            
+                await client.login()
+            
+                // Upload Photo to feed or story, just configure 'post' to 'feed' or 'story'
+                const { media } = await client.uploadPhoto({ photo: photo, caption: 'http://google.ru', post: 'feed' })
+                console.log(`https://www.instagram.com/p/${media.code}/`)
+            }
+        })
+        
+    })()
 }
 
 async function parceProject(type, data, callback) 
 {
-    if(type == "1")
-    {   
-        var url =  `https://www.rusprofile.ru/id/${data.inn}`;
-        
-        await needle.get(url, async function(err, res){
-            if (err) throw err;
 
-            var $ = await cheerio.load(res.body);
+    var url = "https://suggestions.dadata.ru/suggestions/api/4_1/rs/findById/party";
+    var token = "cd3a829357362fec55fc201c3f761002def9906f";
+    var query = "7811177643";
+    
+    var options = {
+        method: "POST",
+        mode: "cors",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            "Authorization": "Token " + token
+        },
+        body: JSON.stringify({query: query})
+    }
+    
+    fetch(url, options)
+    .then(response => response.text())
+    .then(result => 
+    {
+        var _dataFirst = JSON.parse(result.toString());
+        var _data = _dataFirst.suggestions[0].data;
 
+        if(type == "1")
+        {   
             var _conf = 
             {
-                name: await $('.company-name').html(),
-                info: url,
-                inn: await $('#clip_inn').html(),
-                kpp: await $('#clip_kpp').html(),
-                ogrn: await $('#clip_ogrn').html(),
-                addr: null,
+                name: _data.name.full_with_opf,
+                info: `https://www.rusprofile.ru/id/${query}`,
+                inn: _data.inn,
+                kpp: _data.kpp,
+                ogrn: _data.ogrn,
+                addr: _data.address.value,
                 do: null,
-                founder: await $('.company-info__text .link-arrow gtm_main_fl span').html(),
+                founder: _data.management.name,
                 credit_story: null,
                 practic: null,
                 production: null,
             };
 
             callback(_conf);
-        });
-    }
+        }
+    });
 }
 
 async function setProject(socket,data,callback) 
 {
     var _User       = await User.findOne({user: data.user});
-    parceProject(data.data.organization, data.data, async function(_parce) {
+    parceProject(data.data.organization, data.data, async function(_parce) 
+    {
         var _project    = await Project.create({
             user: data.user,
             type: "moderation",
             data: data.data,
             parce: _parce,
+            type_more: null,
+            redacting: null,
+            signature: null,
         });
     
         console.log(_project);
@@ -174,5 +297,10 @@ async function getActive(socket,data,callback) {
 
 async function getModerations(socket,data,callback) {
     var _projects   = await Project.find({type: "moderation"});
+    callback(_projects);
+}
+
+async function getСorrection(socket,data,callback) {
+    var _projects   = await Project.find({type: "correction"});
     callback(_projects);
 }

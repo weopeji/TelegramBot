@@ -111,7 +111,7 @@
                             </div>
                         </div>
                         <div class="index_page_body_hrefs">
-                            <a target="_blank" href="http://localhost/tbot/projects/${element._id}">Профиль компании</a>
+                            <a target="_blank" href="http://localhost/tbot/html/project/profil/#${element._id}">Профиль компании</a>
                             <a target="_blank" href="http://localhost/tbot/projects/${element._id}/${element.data["file+7"]}">Презентация</a>
                             <a target="_blank" href="http://localhost/tbot/projects/${element._id}/${element.data["file+8"]}">Видео-презентация</a>
                         </div>
@@ -210,7 +210,105 @@
                             </div>
                         </div>
                         <div class="index_page_body_hrefs">
-                            <a target="_blank" href="http://localhost/tbot/projects/${element._id}">Профиль компании</a>
+                            <a target="_blank" href="http://localhost/tbot/html/project/profil/#${element._id}">Профиль компании</a>
+                            <a target="_blank" href="http://localhost/tbot/projects/${element._id}/${element.data["file+7"]}">Презентация</a>
+                            <a target="_blank" href="http://localhost/tbot/projects/${element._id}/${element.data["file+8"]}">Видео-презентация</a>
+                        </div>
+                    </div>
+                `;
+                this.$component.append(templateText);
+            });
+
+            return this.$component;
+        }
+
+    }
+
+    class correction {
+
+        constructor() {
+
+            this.$component = $(`
+                <div class="index_page_body_moderation">
+
+                </div>
+            `);
+
+            this.header = $(`
+                <div class="index_page_body_moderation_search">
+                    <h1>Проекты ожидающие исправления</h1>
+                    <div class="moderation_search_block">
+                        <input type="text" placeholder="Поиск">
+                        <div class="moderation_search_block_buttons">
+                            <div class="moderation_search_block_buttons_search">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <div class="moderation_search_block_buttons_type">
+                                <div class="moderation_search_block_buttons_type_full selected">
+                                    <i class="fas fa-th"></i>
+                                </div>
+                                <div class="moderation_search_block_buttons_type_mini">
+                                    <i class="fas fa-th-large"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `);
+
+        };
+
+        getСorrectionBlocks() {
+            return callApi({
+                methodName: 'getСorrection',
+            }).then((data) => {
+                return data; 
+            });
+        }
+
+        async render() 
+        {
+            this.$component.empty();
+            this.$component.append(this.header);
+            var _moderations = await this.getСorrectionBlocks();
+            _moderations.forEach(element => {
+                var templateText = `
+                    <div class="index_page_body_moderation_block">
+
+                        <h1>${element.data.name}</h1>
+                        <p>${element.data.target}</p>
+                        <div class="index_page_body_moderation_block_info_line">
+                            <div class="index_page_body_moderation_block_info_line_row">
+                                <span>№ ${element._id}</span><a>Активный</a>
+                            </div>
+                        </div>
+                        <div class="index_page_body_body_line">
+                            <div class="index_page_body_body_line_left">
+                                <div class="row">
+                                    <span>СУММА</span>
+                                    <p> ${element.data.attraction_amount} руб.</p>
+                                </div>
+                            </div>
+                            <div class="index_page_body_body_line_right">
+                                <div class="row">
+                                    <span>СБОР МЕСЯЦЕВ</span>
+                                    <p>${element.data.date}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="index_page_body_info">
+                            <div class="index_page_body_info_line">
+                                <span>Ставка % в год</span><p>${element.data.rate}%</p>
+                            </div>
+                            <div class="index_page_body_info_line">
+                                <span>Выплаты</span><p>${element.data.date_payments}</p>
+                            </div>
+                            <div class="index_page_body_info_line">
+                                <span>Вход от</span><p>${element.data.minimal_amount} руб.</p>
+                            </div>
+                        </div>
+                        <div class="index_page_body_hrefs">
+                            <a target="_blank" href="http://localhost/tbot/html/project/profil/#${element._id}">Профиль компании</a>
                             <a target="_blank" href="http://localhost/tbot/projects/${element._id}/${element.data["file+7"]}">Презентация</a>
                             <a target="_blank" href="http://localhost/tbot/projects/${element._id}/${element.data["file+8"]}">Видео-презентация</a>
                         </div>
@@ -486,6 +584,18 @@
             });
         }
 
+        getNewDataProjects(_eq, _id) {
+            return callApi({
+                methodName: 'getNewDataProjects',
+                data: {
+                    data: _eq,
+                    _id: _id,
+                },
+            }).then((data) => {
+                return data; 
+            });
+        }
+
         string(data, _project) 
         {
             var need_block = _project.data[data._id];
@@ -493,7 +603,7 @@
                 <div class="body_point_line">
                     <div class="body_point_line_header">
                         <div class="body_point_line_header_text">
-                            <span><strong>${data.name}:</strong></span>
+                            <span>${data.name}:</span>
                             <p>${need_block}</p>
                         </div>
                     </div>
@@ -504,16 +614,17 @@
         }
 
         file(data, _project) {
+            console.log(data);
             var _file = `
                 <div class="download_buttons">
-                    <a>Посмотреть <i class='fas fa-download'></i></a>
+                    <a target="_blank" href="http://localhost/tbot/projects/${_project._id}/${_project.data[data._id]}">Посмотреть <i class='fas fa-download'></i></a>
                 </div>  
             `;
             var _line = $(`
                 <div class="body_point_line _file">
                     <div class="body_point_line_header">
                         <div class="body_point_line_header_text">
-                            <span><strong>${data.name}</strong></span>
+                            <span>${data.name}</span>
                             ${_file}
                         </div>
                         <div class="body_point_line_header_info">
@@ -526,182 +637,229 @@
             return _line;
         }
 
-        showProjectData(_project, _data) 
+        showProjectData(_project) 
         {
             var param = _project.data.organization;
 
-            if(_data == "1") 
+            $('.index_page_body_row').append('<div class="index_page_body_project_data"></div>');
+
+            for (var key in this.struct) 
             {
-                for (var key in this.struct) 
-                {
-                    if(param != "1") {
-                        if(key == "+3.1" || key == "+3.2" || key == "+3.3") {
-                            continue;
-                        }
+                if(param != "1") {
+                    if(key == "+3.1" || key == "+3.2" || key == "+3.3") {
+                        continue;
                     }
-    
-                    var data = this.struct[key];
-    
-                    var _body = $(`<div class="body_point"></div>`);
-    
-                    _body.append(`
-                        <div class="body_point_header">
-                            <span>${data.header}</span>
-                        </div>
-                    `);
-    
-                    if(key == "+2") {
-                        if(param == 1 || param == 2) {
-                            data.body[1].forEach(element => 
+                }
+
+                var data = this.struct[key];
+
+                var _body = $(`<div class="body_point"></div>`);
+
+                _body.append(`
+                    <div class="body_point_header">
+                        <span>${data.header}</span>
+                    </div>
+                `);
+
+                if(key == "+2") {
+                    if(param == 1 || param == 2) {
+                        data.body[1].forEach(element => 
+                            {
+                                if(element.type == "string")
                                 {
-                                    if(element.type == "string")
-                                    {
-                                        var _string = this.string(element, _project);
-                                        _body.append(_string);
-                                    }
-                                    if(element.type == "file")
-                                    {
-                                        var _string = this.file(element, _project);
-                                        _body.append(_string);
-                                    }
-                                });
-                        } else {
-                            data.body[2].forEach(element => 
+                                    var _string = this.string(element, _project);
+                                    _body.append(_string);
+                                }
+                                if(element.type == "file")
                                 {
-                                    if(element.type == "string")
-                                    {
-                                        var _string = this.string(element, _project);
-                                        _body.append(_string);
-                                    }
-                                    if(element.type == "file")
-                                    {
-                                        var _string = this.file(element, _project);
-                                        _body.append(_string);
-                                    }
-                                });
-                        }
+                                    var _string = this.file(element, _project);
+                                    _body.append(_string);
+                                }
+                            });
                     } else {
-                        data.body.forEach(element => 
-                        {
-                            if(element.type == "string")
+                        data.body[2].forEach(element => 
                             {
-                                var _string = this.string(element, _project);
-                                _body.append(_string);
-                            }
-                            if(element.type == "file")
-                            {
-                                var _string = this.file(element, _project);
-                                _body.append(_string);
-                            }
-                        });
+                                if(element.type == "string")
+                                {
+                                    var _string = this.string(element, _project);
+                                    _body.append(_string);
+                                }
+                                if(element.type == "file")
+                                {
+                                    var _string = this.file(element, _project);
+                                    _body.append(_string);
+                                }
+                            });
                     }
-    
-                    _body.append('<textarea id="${data._id}" class="text_area" rows="1"></textarea>');
-                    
-                    $('.index_page_body_row').append(_body);
-                } 
-            }
-            if(_data == "2")
-            {
-                var templateText = `
-                    <div class="info_block">
-                        <div class="info_block_line">
-                            <h1>Заемщик - ЮРИДИЧЕСКОЕ ЛИЦО</h1>
-                            <div class="info_block_line_text">
-                                <span>Название компании</span>
-                                <p>ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ "ЛЕРУА МЕРЛЕН ВОСТОК"</p>
-                            </div>
-                            <div class="info_block_line_text">
-                                <span>Дата регистрации</span>
-                                <p>18.06.2003</p>
-                            </div>
-                            <div class="info_block_line_text">
-                                <span>Подробная информация</span>
-                                <p>https://www.rusprofile.ru/id/1725155</p>
-                            </div>
-                            <div class="info_block_line_text">
-                                <span>ИНН/ОГРН</span>
-                                <p>5029069967/1035005516105</p>
-                            </div>
-                            <div class="info_block_line_text">
-                                <span>Фактический адрес:</span>
-                                <p>адрес ф</p>
-                            </div>
-                            <div class="info_block_line_text">
-                                <span>Основная деятельность</span>
-                                <p>Торговля розничная мебелью, осветительными приборами и прочими бытовыми изделиями в специализированных магазинах (47.59)</p>
-                            </div>
-                            <div class="info_block_line_text">
-                                <span>Учредитель</span>
-                                <p>Дефассье Лоран Луи Клод</p>
-                            </div>
-                        </div>
-                        <div class="info_block_line">
-                            <h1>Кредитная история в «<strong>investER</strong>»</h1>
-                            <div class="info_block_line_text">
-                                <span>Сумма закрытых займов</span>
-                                <p>0 ₽</p>
-                            </div>
-                            <div class="info_block_line_text">
-                                <span>Сумма займов за текущий календарный год</span>
-                                <p>0 ₽</p>
-                            </div>
-                            <div class="info_block_line_text">
-                                <span>Максимальная сумма займа</span>
-                                <p>0 ₽</p>
-                            </div>
-                            <div class="info_block_line_text">
-                                <span>Дата закрытия последнего договора займа</span>
-                                <p></p>
-                            </div>
-                            <div class="info_block_line_text">
-                                <span>Обеспечение</span>
-                                <p>недоступно</p>
-                            </div>
-                        </div>
-                        <div class="info_block_line">
-                            <h1>Арбитражная практика</h1>
-                            <div class="info_block_line_text">
-                                <span>Рассматриваемые судебные дела</span>
-                                <p>44</p>
-                            </div>
-                            <div class="info_block_line_text">
-                                <span>Из них в качестве ответчика: 16, В качестве истца: 19, В качестве третьего/иного лица: 10</span>
-                                <p></p>
-                            </div>
-                            <div class="info_block_line_text">
-                                <span>Сумма исковых требований</span>
-                                <p>311 681 491 руб.</p>
-                            </div>
-                            <div class="info_block_line_text">
-                                <span>Завершенные судебные дела</span>
-                                <p>390</p>
-                            </div>
-                            <div class="info_block_line_text">
-                                <span>Из них в качестве ответчика: 134, В качестве истца: 162, В качестве третьего/иного лица: 97</span>
-                                <p></p>
-                            </div>
+                } else {
+                    data.body.forEach(element => 
+                    {
+                        if(element.type == "string")
+                        {
+                            var _string = this.string(element, _project);
+                            _body.append(_string);
+                        }
+                        if(element.type == "file")
+                        {
+                            var _string = this.file(element, _project);
+                            _body.append(_string);
+                        }
+                    });
+                }
+
+                _body.append(`
+                    <div class="wrapper_block">
+                        <div class="wrapper">
+                            <input type="checkbox" class="checkbox_true" id="${key}_checkbox" />
+                            <label for="${key}_checkbox"></label>
                         </div>
                     </div>
-                `;
+                `);
 
+                _body.append(`<textarea id="${key}_textarea" class="text_area" rows="1"></textarea>`);
+                
+                $('.index_page_body_project_data').append(_body);
+            } 
+            
+            var templateText = `
+                <div class="info_block">
+                    <div class="info_block_line">
+                        <h1>Заемщик - ЮРИДИЧЕСКОЕ ЛИЦО</h1>
+                        <div class="info_block_line_text">
+                            <span>Название компании</span>
+                            <p>${_project.parce.name}</p>
+                        </div>
+                        <div class="info_block_line_text">
+                            <span>Подробная информация</span>
+                            <p>${_project.parce.info}</p>
+                        </div>
+                        <div class="info_block_line_text">
+                            <span>ИНН/ОГРН</span>
+                            <p>${_project.parce.inn}/${_project.parce.ogrn}</p>
+                        </div>
+                        <div class="info_block_line_text">
+                            <span>Фактический адрес:</span>
+                            <p>${_project.parce.addr}</p>
+                        </div>
+                        <div class="info_block_line_text">
+                            <span>Учредитель</span>
+                            <p>${_project.parce.founder}</p>
+                        </div>
+                    </div>
+                    <div class="info_block_line">
+                        <h1>Кредитная история в «<strong>investER</strong>»</h1>
+                        <div class="info_block_line_text">
+                            <span>Сумма закрытых займов</span>
+                            <p>0 ₽</p>
+                        </div>
+                        <div class="info_block_line_text">
+                            <span>Сумма займов за текущий календарный год</span>
+                            <p>0 ₽</p>
+                        </div>
+                        <div class="info_block_line_text">
+                            <span>Максимальная сумма займа</span>
+                            <p>0 ₽</p>
+                        </div>
+                        <div class="info_block_line_text">
+                            <span>Дата закрытия последнего договора займа</span>
+                            <p></p>
+                        </div>
+                        <div class="info_block_line_text">
+                            <span>Обеспечение</span>
+                            <p>недоступно</p>
+                        </div>
+                    </div>
+                    <div class="info_block_line">
+                        <h1>Арбитражная практика</h1>
+                        <div class="info_block_line_text">
+                            <span>Статус</span>
+                            <p>Недоступно</p>
+                        </div>
+                        <div class="info_block_line_text">
+                            <span></span>
+                            <p>Недоступно</p>
+                        </div>
+                        <div class="info_block_line_text">
+                            <span>Сумма исковых требований</span>
+                            <p>Недоступно</p>
+                        </div>
+                        <div class="info_block_line_text">
+                            <span>Завершенные судебные дела</span>
+                            <p>Недоступно</p>
+                        </div>
+                        <div class="info_block_line_text">
+                            <span></span>
+                            <p>Недоступно</p>
+                        </div>
+                    </div>
+                </div>
+            `;
 
-                $('.index_page_body_row').append(templateText);
-            }
+            $('.index_page_body_row').append(templateText);
 
+            var templateText = `
+                <div class="index_page_more_menu">
+                    <div class="index_page_body_project_body_type">
+                        <span class="selected" data="1">Займ</span>
+                        <span data="2">Займ с залогом</span>
+                        <span data="3">Доля в ООО</span>
+                        <span data="4">Займ с залогом доли в ООО</span>
+                        <span data="5">Доля в объекте недвижимости</span>
+                    </div>
+                    <div class="index_page_more_menu_buttons">
+                        <span class="get_new_data">Получить данные</span>
+                    </div>
+                </div>
+            `;
+
+            $('.index_page_body_row').append(templateText);
+
+            var _this = this;
+            $('.get_new_data').click( function() {
+                var _eq = $('.index_page_body_project_body_type').find('span.selected').attr('data');
+                _this.getNewDataProjects(_eq, _project._id);
+                $('.index_page_body_row').children().fadeOut('fast');
+            })
         }
 
         redactingInfoProject(_projectBlock, _project) 
         {
             var _this = this;
-            _this.showProjectData(_project, 1);
+            $('.index_page_body_project_data').remove();
+            $('.info_block').remove();
+            _this.showProjectData(_project);
             _projectBlock.find('.index_page_body_project_body_header span').click( function() {
                 $('.index_page_body_project_body_header span').removeClass('selected');
                 $(this).addClass('selected');
                 var _data = $(this).attr('data');
-                $('.body_point').remove();
-                $('.info_block').remove();
-                _this.showProjectData(_project, _data);
+                if(_data == "2") {
+                    $('.index_page_body_project_data').css('display', 'none');
+                    $('.info_block').css('display', "block");
+                    $('.index_page_more_menu').css('display', 'none');
+                } 
+                if(_data == "1") {
+                    $('.index_page_body_project_data').css('display', 'block');
+                    $('.info_block').css('display', "none");
+                    $('.index_page_more_menu').css('display', 'none');
+                }
+                if(_data == "3") {
+                    $('.index_page_body_project_data').css('display', 'none');
+                    $('.info_block').css('display', "none");
+                    $('.index_page_more_menu').css('display', 'block');
+                }
+            });
+
+            
+
+            if(_project.signature) {
+                if(_project.signature.type == "wait") {
+                    _projectBlock.find('.index_page_body_project_body_header d_t').html('Ожидает подписания')
+                }
+            }
+
+            $('.index_page_body_project_body_type span').click( function() {
+                $('.index_page_body_project_body_type span').removeClass('selected');
+                $(this).addClass('selected');
             })
         }
 
@@ -716,12 +874,14 @@
                             <p>Развитие бизнеса</p>
                             <div class="index_page_body_project_header_buttons">
                                 <span class="not_accept">Отправить на доработку</span>
-                                <span class="accept">Принять проект</span>
+                                <span class="accept">Принять проект<i class="fas fa-arrow-right"></i></span>
                             </div>
                             <div class="index_page_body_project_body">
                                 <div class="index_page_body_project_body_header">
                                     <span class="selected" data="1">Поданные данные</span>
                                     <span data="2">Компания</span>
+                                    <span data="3">Дополнительно</span>
+                                    <a><d_t>Подпись не получена</d_t><i class="fas fa-times-circle"></i></a>
                                 </div>
                                 <div class="index_page_body_project_body_content">
                                     
@@ -747,14 +907,25 @@
             });
         }
 
+        not_accept(data) {
+            callApi({
+                methodName: 'not_acceptProject',
+                data: data,
+            }).then((data) => {
+                return data; 
+            });
+        }
+
     }
 
     if(!global.Components)
     {
         global.Components = {
+            correction,
             moderation,
             active,
             project,
+            
         }
     }
     

@@ -1,6 +1,10 @@
 $primary: #4F2EDC
 $primary-light: #947ADA
 $gray: #9A9999
+
+@font-face
+    font-family: Liner
+    src: url("../../../assets/fonts/ofont.ru_PT Root UI.ttf")
     
     
 html, body
@@ -14,40 +18,41 @@ html, body
     height: 100vh
     overflow: hidden
     display: flex
+    background-color: #ECF0F3
 
 .index_page_menu
     flex: 1
     height: 100%
-    border-right: 1px solid #e3ebf6
-    display: flex
-    justify-content: center
-    align-items: center
+    background-color: #414650
 
 .index_page_body
-    flex: 4
+    flex: 4.5
     height: 100vh
-    background-color: #F9FBFD
     overflow-y: scroll
 
 .index_page_menu_row
     width: 100%
+    padding-top: 30px
 
 .index_page_menu_line
-    width: calc(100% - 3rem)
-    padding: 8px 24px
-    color: #6e84a3
-    font-size: 17px
+    width: calc(100% - 35px)
+    padding: 8px 10px
+    color: #A0A4A7
+    font-size: 16px
     display: flex
     align-items: center
     cursor: pointer
+    margin: 0 auto
+    border-radius: 5px
     margin-bottom: 10px
+    font-family: Liner
 
     span
         margin-left: 15px
 
 .index_page_menu_line.selected
-    border-left: 3px solid blue
-    color: #12263f
+    color: #FDFDFD
+    background-color: #50565D
 
 
 .index_page_body_row
@@ -75,6 +80,7 @@ html, body
     padding: 15px
     border: 0.5px solid #e3ebf6
     position: relative
+    margin-bottom: 20px
 
     h1
         font-size: 20px
@@ -102,20 +108,20 @@ html, body
 
     span
         display: flex
-        background-color: #CCF7E5
-        color: #00d97e
+        background-color: #9A73E4
+        color: white
         width: fit-content
         border-radius: 6px
-        padding: 2px 5px
+        padding: 2px 10px
         align-items: center
 
     a
-        color: #f6c343
-        background-color: #fdf3d9
+        color: white
+        background-color: #3A9FFF
         display: flex
         width: fit-content
         border-radius: 6px
-        padding: 5px
+        padding: 5px 10px
         margin-left: 10px
 
 
@@ -182,11 +188,11 @@ html, body
     i
         font-size: 25px
         cursor: pointer
-        color: #95aac9
+        color: #414650
 
 .index_page_body_moderation_search
     position: absolute
-    top: 0
+    top: 10px
     left: 0
     width: 100%
     z-index: 1000
@@ -197,10 +203,12 @@ html, body
         border-bottom: 1px solid #e3ebf6
         margin: 0
         letter-spacing: -.02em
-        font-size: 1.625rem
+        font-size: 22px
         font-weight: 500
         line-height: 1.1
         padding-bottom: 20px
+        font-family: Liner
+        font-weight: 600
 
 
 .moderation_search_block
@@ -208,26 +216,33 @@ html, body
     display: flex
     align-items: center
     height: 80px
+    position: relative
+
+    .search_i
+        position: absolute
+        left: 15px
+        margin-top: 2px
+        color: #5C6166
 
     input
         padding: 12px
         width: 100%
         border-radius: 8px
         border: 1px solid #e3ebf6
-        padding-left: 30px
-        padding-top: 17px
-        padding-bottom: 14px
+        padding-left: 40px
         margin-right: 10px
 
     input::placeholder
-        color: #95aac9
-        font-weight: 400
+        color: #5C6166
+        font-weight: 900
+        font-family: Liner
+        line-height: -1
 
 .moderation_search_block_buttons_search
-    width: 47px
-    height: 47px
+    width: 40px
+    height: 40px
     border-radius: 8px
-    background-color: #2C7BE5
+    background-color: #3A9FFF
     display: flex
     justify-content: center
     align-items: center
@@ -241,8 +256,8 @@ html, body
 
 .moderation_search_block_buttons_type_full,
 .moderation_search_block_buttons_type_mini
-    width: 47px
-    height: 47px
+    width: 40px
+    height: 40px
     border-radius: 8px
     background-color: white
     display: flex
@@ -256,7 +271,7 @@ html, body
 
 .moderation_search_block_buttons_type_full.selected,
 .moderation_search_block_buttons_type_mini.selected
-    background-color: #2C7BE5
+    background-color: #414650
     color: white
 
 .moderation_search_block_buttons
@@ -270,7 +285,7 @@ html, body
     border-radius: 7px 0 0 7px
 
 .index_page_body_project
-    width: 85%
+    width: 95%
     margin: 0 auto
 
 .index_page_body_project_header
@@ -291,6 +306,8 @@ html, body
     width: 100%
     display: flex
     border-bottom: 1px solid #e3ebf6
+    position: relative
+    align-items: center
 
     span
         height: 60px
@@ -306,19 +323,31 @@ html, body
         color: #12263f
         border-bottom: 1px solid #2c7be5
 
+    a
+        position: absolute
+        right: 20px
+        top: 25px
+        display: flex
+        align-items: center
+
+        i
+            color: #414650
+            font-size: 20px
+            margin-left: 10px
+
 .index_page_body_project_body_content
     width: 100%
 
 .body_point
-    width: 85%
+    width: 95%
     margin: 0 auto
     background-color: white
     border: 2px solid #edf2f9
-    border-radius: 10px
+    border-radius: 5px
     margin-top: 20px
 
     textarea
-        width: calc(100% - 60px)
+        width: calc(100% - 100px)
         color: #12263f
         font-size: .9375rem
         font-weight: 400
@@ -334,18 +363,19 @@ html, body
     height: 60px
     display: flex
     align-items: center
-    border-bottom: 1px solid #edf2f9
+    justify-content: center
     margin-bottom: 20px
-
-
+    
     span
         font-weight: 400
         font-size: 1.25rem
         margin-left: 1.5rem
+        margin-top: 20px
 
 .body_point_line
-    width: calc(100% - 3rem)
-    margin: 0 1.5rem
+    width: calc(100% - 5rem)
+    margin: 0 auto
+    border-bottom: 1px solid #edf2f9
 
     span
         font-weight: 600
@@ -355,11 +385,13 @@ html, body
     display: flex
     justify-content: space-between
     align-items: center
-    margin-bottom: 30px
+    margin: 20px 0
 
 .body_point_line_header_text
     display: flex
     align-items: center
+    justify-content: space-between
+    width: 100%
 
     span
         margin-right: 20px
@@ -402,10 +434,11 @@ html, body
     a
         display: block
         padding: 10px 15px
-        background-color: #576FFF
+        background-color: #3A9FFF
         color: white
-        border-radius: 10px
+        border-radius: 5px
         cursor: pointer
+        font-size: 14px
 
 .index_page_body_button
     width: 100%
@@ -419,15 +452,16 @@ html, body
 
 
 .info_block
-    width: 85%
+    width: 95%
     margin: 0 auto
     margin-top: 20px
+    display: none
 
 .info_block_line
     width: 100%
     background-color: white
     border: 1px solid #edf2f9
-    border-radius: 15px
+    border-radius: 5px
     padding-bottom: 10px
     margin-bottom: 20px
 
@@ -464,18 +498,24 @@ html, body
     top: 60px
 
     span
-        padding: 5px 10px
+        padding: 15px 30px
         border-radius: 5px
         font-size: 13px
         cursor: pointer
+        color: white
 
     .not_accept
-        background-color: #F6C343
+        background-color: #3A9FFF
         margin-right: 10px
 
     .accept
         background-color: #00D97E
-        color: white
+        display: flex
+        align-items: center
+
+        i
+            margin-left: 10px
+        
 
 
 .index_page_menu_logo
@@ -485,3 +525,131 @@ html, body
 
     img
         width: 100%
+
+.user_block
+    width: 88%
+    margin: 0 auto
+    display: flex
+    align-items: center
+    font-family: Liner
+    font-weight: 500
+    margin-bottom: 38px
+
+    span
+        margin-left: 15px
+        color: white
+
+.user_block_img
+    width: 38px
+    height: 38px
+    border-radius: 9px
+    overflow: hidden
+
+    img
+        width: 100%
+
+.index_page_more_menu
+    width: 94%
+    margin: 0 auto
+    display: none
+
+.index_page_body_project_body_type
+    width: 100%
+    padding-top: 4px
+    padding-bottom: 4px
+    background-color: white
+    border-radius: 5px
+    display: flex
+    justify-content: space-around
+    margin-top: 20px
+    flex-wrap: wrap
+
+    span
+        padding: 15px 20px
+        color: #95aac9
+        cursor: pointer
+        border-radius: 5px
+
+    span.selected
+        border: 1px solid #3A9FFF
+        color: black
+
+.wrapper_block
+    width: 92%
+    display: flex
+    margin: 0 auto
+
+
+    .wrapper
+        margin-top: 20px
+        margin-bottom: 20px
+        border-radius: 5px
+        overflow: hidden
+        color: white
+
+        label
+            display: block
+            left: 0px
+            top: 0
+            position: relative
+            width: 200px
+            height: 30px
+            z-index: 10
+            line-height: 40px
+            font-weight: 400
+            background: #414650
+            -webkit-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55)
+            -moz-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55)
+            -ms-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55)
+            -o-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55)
+            transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55)
+            cursor: pointer
+
+            &:after
+                line-height: 0
+                content: "Принять"
+                font-size: 13px
+                width: 100px
+                text-align: center
+                height: 30px
+                position: absolute
+                left: 0px
+                top: 0px
+                display: flex
+                justify-content: center
+                align-items: center
+                background: #3A9FFF
+                -webkit-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55)
+                -moz-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55)
+                -ms-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55)
+                -o-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55)
+                transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55)
+                cursor: pointer
+
+        .checkbox_true
+            display: none
+
+        \:checked + label
+            left: 0px
+
+            &:after
+                left: 100px
+                background: #9A73E4
+                content: "Отказать"
+
+
+
+.index_page_more_menu_buttons
+    width: 100%
+    display: flex
+    margin-top: 20px
+    justify-content: flex-end
+    
+    span
+        background-color: #3A9FFF
+        color: white
+        padding: 15px 35px
+        border-radius: 5px
+        font-size: 13px
+        cursor: pointer
+        

@@ -20,6 +20,8 @@ function privateInit(initPlagins) {
     h       = initPlagins.helper_functions;
     fs      = initPlagins.fs;
     _data   = initPlagins._data;
+    config  = initPlagins.config;
+    https   = initPlagins.https;
 }
 
 const MF =
@@ -27,25 +29,46 @@ const MF =
     find_user: function(msg) {
         return User.findOne({user: msg.from.id});
     },
-    create_user: function(msg) 
+    create_user: async function(msg) 
     {
         var _patch = `../users/${msg.from.id}`;
-        fs.stat(_patch, function(err) {
+        fs.stat(_patch, async function(err) {
             if (!err) {}
             else if (err.code === 'ENOENT') {
-                fs.mkdir(_patch);
+                await fs.mkdir(_patch);
             }
-            return User.create({
-                user: msg.from.id, 
-                first_name: msg.from.first_name, 
-                last_name: msg.from.last_name,
-                username: msg.from.username,
-                language_code: msg.from.language_code,
-                is_bot: msg.from.is_bot,
-                type: null,
-                where: null,
-                new_project: _data.new_project, 
-            });
+
+            var _path_profile = `../users_profile/${msg.from.id}`;
+
+            fs.stat(_path_profile, async function(err) {
+                if (!err) {}
+                else if (err.code === 'ENOENT') {
+                    await fs.mkdir(_path_profile);
+                }
+
+                var user_profile    = await bot.getUserProfilePhotos(msg.from.id);
+                var file_id         = user_profile.photos[0][0].file_id;
+                var file            = await bot.getFile(file_id);
+                var file_path       = file.file_path;
+                var photo_url       = `https://api.telegram.org/file/bot${config.token}/${file_path}`;
+                var name_photo      = `avatar-${file_path.split('/')[1]}`;
+    
+                const _file      = fs.createWriteStream(`../users_profile/${msg.from.id}/${name_photo}`);
+                const request   = https.get(photo_url, async function(response) {
+                    response.pipe(_file);
+    
+                    return User.create({
+                        user: msg.from.id, 
+                        first_name: msg.from.first_name, 
+                        last_name: msg.from.last_name,
+                        username: msg.from.username,
+                        language_code: msg.from.language_code,
+                        is_bot: msg.from.is_bot,
+                        type: null,
+                        img: name_photo,
+                    });
+                });
+            })
         });
     },
     Update_Type: function(msg, data) {

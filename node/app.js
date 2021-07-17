@@ -101,6 +101,8 @@ var load_pages = () =>
             User: User,
             fs: fs,
             _data : _data,
+            config: config,
+            https: https,
         });
     }
     if(investor_page == null) 
@@ -172,14 +174,12 @@ bot.onText(/\/start (.+)/, async (msg, match) =>
     await bot.sendPhoto(msg.chat.id, stream, {
         "caption": html,
         "reply_markup": {
-            "inline_keyboard": [
+            "keyboard": [
                 [
                     {
                         text: "Внести данные",
                         url: 'google.ru',
-                    }
-                ],
-                [
+                    },
                     {
                         text: "Оплатить",
                         url: 'google.ru',
@@ -189,14 +189,12 @@ bot.onText(/\/start (.+)/, async (msg, match) =>
                     {
                         text: "Прикрепить чек об оплате",
                         url: 'google.ru',
-                    }
-                ],
-                [
+                    },
                     {
                         text: "⬅️ Назад",
                         url: 'google.ru',
                     }
-                ]
+                ],
             ],
         }
     });

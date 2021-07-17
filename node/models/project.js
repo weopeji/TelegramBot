@@ -7,6 +7,8 @@ const ProjectShema = new mongoose.Schema({
     type: String,
     data: JSON,
     parce: JSON,
+    redacting: JSON,
+    signature: JSON,
 });
 
 autoIncrement.initialize(mongoose.connection);

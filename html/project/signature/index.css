@@ -1,0 +1,65 @@
+html, body {
+  padding: 0;
+  margin: 0;
+  background-color: #ECF0F3;
+  font-family: sans-serif;
+}
+
+.index_page {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.index_page canvas {
+  background-color: white;
+  border-bottom: 8px solid #414650;
+}
+
+.index_page_buttons {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.index_page_buttons span {
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: white;
+  font-size: 13px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+}
+
+.index_page_buttons .clean {
+  background-color: #3A9FFF;
+  margin-right: 10px;
+}
+
+.index_page_buttons .put {
+  background-color: #00D97E;
+}
+
+.index_page_buttons .put i {
+  margin-left: 10px;
+}
+/*# sourceMappingURL=index.css.map */

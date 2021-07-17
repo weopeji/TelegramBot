@@ -8,7 +8,7 @@ const UserShema = new mongoose.Schema({
     language_code: String,
     is_bot: String,
     type: String,
-    where: JSON,
+    img: String,
 });
 
 mongoose.model('User', UserShema);

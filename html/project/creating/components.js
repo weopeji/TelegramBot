@@ -192,12 +192,6 @@
                         },
                         {
                             type: "string",
-                            name: "Компания/проект",
-                            info: "null",
-                            _id: "company_project"
-                        },
-                        {
-                            type: "string",
                             name: "Должность",
                             info: "null",
                             _id: "position"
@@ -257,18 +251,6 @@
                         },
                         {
                             type: "string",
-                            name: "Назначение платежа",
-                            info: "null",
-                            _id: "get_pay"
-                        },
-                        {
-                            type: "string",
-                            name: "ИНН",
-                            info: "null",
-                            _id: "bank_inn"
-                        },
-                        {
-                            type: "string",
                             name: "КПП",
                             info: "kpp",
                         }
@@ -305,6 +287,41 @@
                     ]
                 }
             };
+
+            this.signature = {
+                1: {
+                    "+1_s": {
+                        header: "Документ",
+                        body: [
+                            {
+                                type: "file",
+                                name: `Отправьте документ`,
+                                _id: "file+1_s"
+                            },
+                        ]
+                    },
+                    "+2_s": {
+                        header: "Документ",
+                        body: [
+                            {
+                                type: "file",
+                                name: `Отправьте документ`,
+                                _id: "file+2_s"
+                            },
+                        ]
+                    },
+                    "+3_s": {
+                        header: "Документ",
+                        body: [
+                            {
+                                type: "file",
+                                name: `Отправьте документ`,
+                                _id: "file+3_s"
+                            },
+                        ]
+                    },
+                }
+            }
         };
 
         start_preloader(_this, callback) {
@@ -353,7 +370,7 @@
             });
         }
 
-        string(data) 
+        string(data, put) 
         {
             var _line = $(`
                 <div class="body_point_line">
@@ -367,9 +384,17 @@
                             <span class="_yes">Готово</span>
                         </div>
                     </div>
-                    <textarea id="${data._id}" class="text_area" rows="1"></textarea>
+                    <textarea id="${data._id}" class="text_area" rows="1" placeholder="Введите значение"></textarea>
                 </div>
             `);
+
+            
+
+            if(typeof put != "undefined") {
+                _line.find(`#${data._id}`).val(put.data[data._id]);
+                _line.find('._yes').css('display', "block");
+                _line.find('._not').css('display', "none");
+            }
 
             return _line;
         }
@@ -411,16 +436,17 @@
 
         async render(param) 
         {
-
             $('.index_page_body_points').empty();
 
             for (var key in this.struct) 
             {
-                if(param != "1") {
-                    if(key == "+3.1" || key == "+3.2" || key == "+3.3") {
+                if(param != 1) 
+                {
+                    if(key == "+3_1" || key == "+3_2" || key == "+3_3") {
                         continue;
                     }
                 }
+
 
                 var data = this.struct[key];
 
@@ -481,6 +507,150 @@
             }
         }
 
+        render_signature() 
+        {
+            var templateText = $(`
+                <div class="watch_document">
+                    <a href="../../documents/zaim" target="_blank">Посмотреть договор</a>
+                </div>
+                <div class="signature_canvas">
+                    <div class="row">
+                        <p>Подписание договора</p>
+                        <canvas width="650" height="400"></canvas>
+                        <div class="index_page_buttons">
+                            <span class="clean">Очистить</span>
+                        </div>
+                    </div>
+                </div>
+            `);
+
+            $('.index_page_body_points').append(templateText);
+        }
+
+        getId(_id) {
+            return callApi({
+                methodName: 'getID',
+                data: _id,
+            }).then((data) => {
+                return data; 
+            });
+        }
+
+        async render_redacting(_project) 
+        {
+            $('.index_page_body_points').empty();
+
+            _project.redacting.forEach(element => 
+            {
+                var data = this.struct[element.type];
+
+                var _body = $(`<div class="body_point"></div>`);
+
+                _body.append(`
+                    <div class="body_point_header">
+                        <span>${data.header}</span>
+                    </div>
+                    <div class="body_point_header_info_red">
+                        <span>${element.value}</span>
+                    </div>
+                `);
+
+                var param = _project.data.organization;
+                if(element.type == "+2") {
+                    if(param == "1" || param == "2") {
+                        
+                        data.body[1].forEach(element => 
+                            {
+                                if(element.type == "string")
+                                {
+                                    var _string = this.string(element, _project);
+                                    _body.append(_string);
+                                }
+                                if(element.type == "file")
+                                {
+                                    var _string = this.file(element);
+                                    _body.append(_string);
+                                }
+                            });
+                    } else {
+                        data.body[2].forEach(element => 
+                            {
+                                if(element.type == "string")
+                                {
+                                    var _string = this.string(element, _project);
+                                    _body.append(_string);
+                                }
+                                if(element.type == "file")
+                                {
+                                    var _string = this.file(element);
+                                    _body.append(_string);
+                                }
+                            });
+                    }
+                } else {
+                    data.body.forEach(element => 
+                    {
+                        if(element.type == "string")
+                        {
+                            var _string = this.string(element, _project);
+                            _body.append(_string);
+                        }
+                        if(element.type == "file")
+                        {
+                            var _string = this.file(element);
+                            _body.append(_string);
+                        }
+                    });
+                }
+                
+
+                $('.index_page_body_points').append(_body);
+            })
+        }
+
+        putRedacting(data) {
+            return callApi({
+                methodName: 'putRedacting',
+                data: data,
+            }).then((data) => {
+                return data; 
+            });
+        }
+
+        async redactingAgain(_id) 
+        {
+            var _array = [];
+
+            $('.body_point').each((i, element) => {
+                $(element).find('.body_point_line').each((i, _element) => {
+                    if($(_element).find("textarea").length) {
+                        _array.push({
+                            name: $(_element).find("textarea").attr('id'),
+                            val: $(_element).find("textarea").val()
+                        });
+                    } else {
+                        _array.push({
+                            name: $(_element).find(".loader_input").attr('id').split('_')[0],
+                            val: $(_element).find("textarea").val()
+                        });
+                    }
+                });
+            });
+
+            $('.index_page').empty();
+            $('.preloader').fadeIn();
+
+            this.putRedacting({
+                array: _array,
+                _id: _id,
+            }).then(() => {
+                $('.preloader').fadeOut( function() {
+                    $('.end_get_project').css('display', "flex");
+                });
+            });
+            
+        }
+
         changeTextArea(block) {
             if(block.val().length > 0) {
                 block.parent().find('._not').fadeOut( function() {
@@ -497,7 +667,7 @@
         {
             var correctArray = {};
 
-            correctArray.organization = $('.index_page_header_logo_menu_row').find('.selected').attr('data');
+            correctArray.organization = $('.index_page_body_header_type').find('.selected').attr('data');
 
             for (var key in this.struct) 
             {
@@ -550,6 +720,15 @@
                 }
             }
 
+            for(var key in correctArray) 
+            {
+                var _data = correctArray[key];
+                if(_data.length == 0 || _data == null) {
+                    alert('Введите все данные!');
+                    return;
+                }
+            }
+
             $('.index_page').empty();
             $('.preloader').fadeIn();
 
@@ -562,7 +741,30 @@
             }).then((data) => {
                 $('.preloader').fadeOut( function() {
                     $('.end_get_project').css('display', "flex");
-                })
+                });
+            });
+        }
+
+
+
+
+        // =======================================================================================
+
+        getProject(_id) {
+            return callApi({
+                methodName: 'getProject_id',
+                data: _id,
+            }).then((data) => {
+                return data; 
+            });
+        }
+
+        correct_signature(_id) {
+            return callApi({
+                methodName: 'correct_signature',
+                data: _id,
+            }).then((data) => {
+                return data; 
             });
         }
     }
