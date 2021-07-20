@@ -14,7 +14,7 @@ html, body {
   font-family: sans-serif;
 }
 
-.index_page {
+.index_page_profil {
   width: 60vw;
   background-color: white;
   margin-top: 80px;
@@ -22,7 +22,7 @@ html, body {
   margin-bottom: 80px;
 }
 
-.index_page h1 {
+.index_page_profil h1 {
   letter-spacing: -.02em;
   font-size: 1.25rem;
   font-weight: 400;
@@ -31,7 +31,7 @@ html, body {
   padding-bottom: 15px;
 }
 
-.page_line {
+.index_page_profil .page_line {
   width: 90%;
   margin: 0 auto;
   display: -webkit-box;
@@ -48,11 +48,12 @@ html, body {
   border-bottom: 1px solid #edf2f9;
 }
 
-.page_line p {
+.index_page_profil .page_line p {
   padding: 0;
   margin: 0;
   font-size: 13px;
   color: #95aac9 !important;
   text-align: right;
+  width: 48%;
 }
 /*# sourceMappingURL=index.css.map */

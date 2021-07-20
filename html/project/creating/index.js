@@ -35,27 +35,13 @@
             $('.index_page_body_header_type').remove();
             
             if(_project.signature) {
-                $('.index_page_body h1').html('Подписание документов');
-                $('.index_page_body h2').html('Отправьте последние документы для составления договора и подпишите его');
+                $('.index_page_body h1').html('Дополнительные документы');
+                $('.index_page_body h2').html('Отправьте последние документы для составления договора');
                 $('.index_page_body_button span').html('Отправить');
 
                 await _components.render_signature(_project);
 
-                var canvas          = document.querySelector("canvas");
-                var signaturePad    = new SignaturePad(canvas);
-
-                $('.clean').click( function() {
-                    signaturePad.clear();
-                });
-
-                $('.index_page_body_button').click( function() {
-                    _components.correct_signature(_id);
-                    $('.preloader').fadeIn( function() {
-                        $('.preloader').fadeOut( function() {
-                            $('.end_get_project').css('display', "flex");
-                        });
-                    });
-                });
+                changeTextArea();
             }
 
             if(_project.redacting) {

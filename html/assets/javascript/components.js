@@ -94,7 +94,7 @@
                             </div>
                             <div class="index_page_body_body_line_right">
                                 <div class="row">
-                                    <span>СБОР МЕСЯЦЕВ</span>
+                                    <span>СРОК ИНВЕСТИРОВАНИЯ</span>
                                     <p>${element.data.date}</p>
                                 </div>
                             </div>
@@ -279,7 +279,7 @@
                         <p>${element.data.target}</p>
                         <div class="index_page_body_moderation_block_info_line">
                             <div class="index_page_body_moderation_block_info_line_row">
-                                <span>№ ${element._id}</span><a>Активный</a>
+                                <span>№ ${element._id}</span><a>На исправлении</a>
                             </div>
                         </div>
                         <div class="index_page_body_body_line">
@@ -720,104 +720,133 @@
                 
                 $('.index_page_body_project_data').append(_body);
             } 
-            
-            var templateText = `
-                <div class="info_block">
-                    <div class="info_block_line">
-                        <h1>Заемщик - ЮРИДИЧЕСКОЕ ЛИЦО</h1>
-                        <div class="info_block_line_text">
-                            <span>Название компании</span>
-                            <p>${_project.parce.name}</p>
-                        </div>
-                        <div class="info_block_line_text">
-                            <span>Подробная информация</span>
-                            <p>${_project.parce.info}</p>
-                        </div>
-                        <div class="info_block_line_text">
-                            <span>ИНН/ОГРН</span>
-                            <p>${_project.parce.inn}/${_project.parce.ogrn}</p>
-                        </div>
-                        <div class="info_block_line_text">
-                            <span>Фактический адрес:</span>
-                            <p>${_project.parce.addr}</p>
-                        </div>
-                        <div class="info_block_line_text">
-                            <span>Учредитель</span>
-                            <p>${_project.parce.founder}</p>
-                        </div>
+
+            $('.index_page_body_row').append(`
+                <div class="index_page_profil">
+                    <div class="index_page_profil_header">
+                        <span class="selected">Профиль для инвестора</span>
+                        <span>Полный профиль</span>
                     </div>
-                    <div class="info_block_line">
-                        <h1>Кредитная история в «<strong>investER</strong>»</h1>
-                        <div class="info_block_line_text">
-                            <span>Сумма закрытых займов</span>
-                            <p>0 ₽</p>
-                        </div>
-                        <div class="info_block_line_text">
-                            <span>Сумма займов за текущий календарный год</span>
-                            <p>0 ₽</p>
-                        </div>
-                        <div class="info_block_line_text">
-                            <span>Максимальная сумма займа</span>
-                            <p>0 ₽</p>
-                        </div>
-                        <div class="info_block_line_text">
-                            <span>Дата закрытия последнего договора займа</span>
-                            <p></p>
-                        </div>
-                        <div class="info_block_line_text">
-                            <span>Обеспечение</span>
-                            <p>недоступно</p>
-                        </div>
-                    </div>
-                    <div class="info_block_line">
-                        <h1>Арбитражная практика</h1>
-                        <div class="info_block_line_text">
-                            <span>Статус</span>
-                            <p>Недоступно</p>
-                        </div>
-                        <div class="info_block_line_text">
-                            <span></span>
-                            <p>Недоступно</p>
-                        </div>
-                        <div class="info_block_line_text">
-                            <span>Сумма исковых требований</span>
-                            <p>Недоступно</p>
-                        </div>
-                        <div class="info_block_line_text">
-                            <span>Завершенные судебные дела</span>
-                            <p>Недоступно</p>
-                        </div>
-                        <div class="info_block_line_text">
-                            <span></span>
-                            <p>Недоступно</p>
-                        </div>
-                    </div>
+                    <iframe id="profil" src="./html/project/profil#${_project._id}" frameborder="0"></iframe>
                 </div>
-            `;
+            `);
 
-            $('.index_page_body_row').append(templateText);
+            var _iframe = $('#profil');
+            _iframe.on('load', function () {
+                var _content = _iframe.contents();
+                var _height = _content.find('.index_page_profil')[0];
+                console.log(_height);
+                _iframe.css('height', '1934px');
+                _content.find('.index_page_profil').css({
+                    'width': '100%',
+                    'margin': 0,
+                });
+                _content.find('body').css('width', '100%');
+            })
 
-            var templateText = `
+
+            // var _config = 
+            // {
+            //     header: function() 
+            //     {
+            //         var type = "Займ";
+            //         var organization;
+            //         if(_project.data.organization == "1") organization = "Юридическое лицо";
+            //         if(_project.data.organization == "2") organization = "Индивидуальный предпрениматель";
+            //         if(_project.data.organization == "3") organization = "Физическое лицо";
+            //         var text = `${type} - ${organization}`;
+            //         return text;
+            //     },
+            //     data: {
+            //         _append: function(name, data, a) 
+            //         {
+            //             if(a) {
+            //                 $('.index_page_profil_data').append(`
+            //                 <div class="page_line">
+            //                     <span>${name}</span>
+            //                     <p><a href="${data}">${data}</a></p>
+            //                 </div>`);
+            //             } else {
+            //                 $('.index_page_profil_data').append(`
+            //                 <div class="page_line">
+            //                     <span>${name}</span>
+            //                     <p>${data}</p>
+            //                 </div>`);
+            //             }
+            //         },
+            //         "1": function() 
+            //         {
+            //             $('.index_page_profil').append(`
+            //                 <div class="index_page_profil_data">
+            //                     <h1></h1>
+            //                 </div>
+            //             `);
+            //             $('.index_page_profil_data h1').html(_config.header());
+            //             this._append("Название компании", _project.parce.name);
+            //             this._append("Подробная информация", _project.parce.info, true);
+            //             this._append("ИНН/ОГРН", _project.parce.inn + "/" + _project.parce.ogrn);
+            //             this._append("Адрес юридический", _project.parce.addr);
+            //             this._append("Адрес фактический", _project.data.addr);
+            //             this._append("Сайт", _project.data.syte, true);
+            //             this._append("Цель займа", _project.data.target);
+            //             this._append("Учредитель", _project.parce.founder);
+            //         },
+            //     },
+            //     credit_story: {
+            //         _append: function(name, data) {
+            //             $('.index_page_profil_credit').append(`
+            //             <div class="page_line">
+            //                 <span>${name}</span>
+            //                 <p>${data}</p>
+            //             </div>`);
+            //         },
+            //         _push: function() {
+            //             $('.index_page_profil').append(`
+            //                 <div class="index_page_profil_credit">
+            //                     <h1>Кредитная история в «investER»</h1>
+            //                 </div>
+            //             `);
+            //             this._append("Сумма закрытых займов", "0 ₽");
+            //             this._append("Сумма займов за текущий календарный год", "0 ₽");
+            //             this._append("Максимальная сумма займа", "0 ₽");
+            //             this._append("Дата закрытия последнего договора займа", "0 ₽");
+            //             this._append("Обеспечение", "0 ₽");
+            //         },
+            //     }
+            // }
+
+            // _config.data[_project.data.organization]();
+            // _config.credit_story._push();
+
+
+
+
+            const newLocal = `
                 <div class="index_page_more_menu">
                     <div class="index_page_body_project_body_type">
                         <span class="selected" data="1">Займ</span>
                         <span data="2">Займ с залогом</span>
-                        <span data="3">Доля в ООО</span>
-                        <span data="4">Займ с залогом доли в ООО</span>
-                        <span data="5">Доля в объекте недвижимости</span>
+                        <span data="3">Займ с поручительством</span>
+                        <span data="4">Доля в ООО</span>
+                        <span data="5">Займ с залогом доли в ООО</span>
+                        <span data="6">Доля в объекте недвижимости</span>
+                    </div>
+                    <div class="index_page_more_menu_blocks">
+                        <h1>Получаемые данные</h1>
+                        <div class="index_page_more_menu_blocks_need"></div>
                     </div>
                     <div class="index_page_more_menu_buttons">
                         <span class="get_new_data">Получить данные</span>
                     </div>
                 </div>
             `;
+            var templateText = newLocal;
 
             $('.index_page_body_row').append(templateText);
 
             var _this = this;
             $('.get_new_data').click( function() {
-                var _eq = $('.index_page_body_project_body_type').find('span.selected').attr('data');
-                _this.getNewDataProjects(_eq, _project._id);
+                _this.getNewDataProjects($('.index_page_body_project_body_type').find('span.selected').attr('data'), _project._id);
                 $('.index_page_body_row').children().fadeOut('fast');
             })
         }
@@ -834,17 +863,17 @@
                 var _data = $(this).attr('data');
                 if(_data == "2") {
                     $('.index_page_body_project_data').css('display', 'none');
-                    $('.info_block').css('display', "block");
+                    $('.index_page_profil').css('display', "block");
                     $('.index_page_more_menu').css('display', 'none');
                 } 
                 if(_data == "1") {
                     $('.index_page_body_project_data').css('display', 'block');
-                    $('.info_block').css('display', "none");
+                    $('.index_page_profil').css('display', "none");
                     $('.index_page_more_menu').css('display', 'none');
                 }
                 if(_data == "3") {
                     $('.index_page_body_project_data').css('display', 'none');
-                    $('.info_block').css('display', "none");
+                    $('.index_page_profil').css('display', "none");
                     $('.index_page_more_menu').css('display', 'block');
                 }
             });
@@ -857,9 +886,114 @@
                 }
             }
 
+            var _doc = 
+            {
+                _append: function(data) 
+                {
+                    $('.index_page_more_menu_blocks_need').append(`<p>${data}</p>`)
+                },
+                "1": function() 
+                {
+                    var text = `
+                    1. Устав <br>
+                    2. Решение об избрании руководителя <br>
+                    3. Приказ о назначении руководителя <br>
+                    4. Свидетельство ИНН <br>
+                    5. ОГРН <br>
+                    6. Карточка с банковскими реквизитами <br>
+                    7. Бух.отчетность за последний год <br>
+                    `;
+                    this._append(text);
+                },
+                "2": function() {
+                    var text = `
+                    1. Устав <br>
+                    2. Решение об избрании руководителя <br>
+                    3. Приказ о назначении руководителя <br>
+                    4. Свидетельство ИНН <br>
+                    5. ОГРН <br>
+                    6. Карточка с банковскими реквизитами <br>
+                    7. Бух.отчетность за последний год <br>
+                    8. Выписку из ЕГРН на недвижимость (+свидетельство о собственности, если есть) <br>
+                    9. Предоставляемую в залог <br>
+                    10. Договор купли-продажи недвижимости (основание приобретение недвижимости) <br>
+                    11. Cогласие супруга на залог <br>
+                    `;
+                    this._append(text);
+                },
+                "3": function() 
+                {
+                    var text = `
+                    1. Устав <br>
+                    2. Решение об избрании руководителя <br>
+                    3. Приказ о назначении руководителя <br>
+                    4. Свидетельство ИНН <br>
+                    5. ОГРН <br>
+                    6. Карточка с банковскими реквизитами <br>
+                    7. Бух.отчетность за последний год <br>
+                    8. Паспорт поручителя
+                    9. Cогласие поручителя на обработку персональных данных
+                    `;
+                    this._append(text);
+                },
+                "4": function() 
+                {
+                    var text = `
+                    1. Устав <br>
+                    2. Решение об избрании руководителя <br>
+                    3. Приказ о назначении руководителя <br>
+                    4. Свидетельство ИНН <br>
+                    5. ОГРН <br>
+                    6. Карточка с банковскими реквизитами <br>
+                    7. Бух.отчетность за последний год <br>
+                    8. Паспорт поручителя
+                    9. Согласие супруга на купли-продажу доли
+                    `;
+                    this._append(text);
+                },
+                "5": function() 
+                {
+                    var text = `
+                    1. Устав <br>
+                    2. Решение об избрании руководителя <br>
+                    3. Приказ о назначении руководителя <br>
+                    4. Свидетельство ИНН <br>
+                    5. ОГРН <br>
+                    6. Карточка с банковскими реквизитами <br>
+                    7. Бух.отчетность за последний год <br>
+                    8. Выписку из ЕГРН на недвижимость (+свидетельство о собственности, если есть), предоставляемую в залог <br>
+                    9. Договор купли-продажи недвижимости (основание приобретение недвижимости) <br>
+                    10. Согласие супруга на залог доли
+                    `;
+                    this._append(text);
+                },
+                "6": function() 
+                {
+                    var text = `
+                    1. Устав <br>
+                    2. Решение об избрании руководителя <br>
+                    3. Приказ о назначении руководителя <br>
+                    4. Свидетельство ИНН <br>
+                    5. ОГРН <br>
+                    6. Карточка с банковскими реквизитами <br>
+                    7. Бух.отчетность за последний год <br>
+                    8. Выписку из ЕГРН на недвижимость (+свидетельство о собственности, если есть), предоставляемую в залог <br>
+                    9. Договор купли-продажи недвижимости (основание приобретение недвижимости) <br>
+                    10. Согласие супруга на залог доли
+                    `;
+                    this._append(text);
+                },
+            }
+
+            $('.index_page_more_menu_blocks_need').empty();
+            _doc["1"]();
+
             $('.index_page_body_project_body_type span').click( function() {
                 $('.index_page_body_project_body_type span').removeClass('selected');
                 $(this).addClass('selected');
+
+                $('.index_page_more_menu_blocks_need').empty();
+                _doc[$(this).attr('data')]();
             })
         }
 
@@ -881,7 +1015,7 @@
                                     <span class="selected" data="1">Поданные данные</span>
                                     <span data="2">Компания</span>
                                     <span data="3">Дополнительно</span>
-                                    <a><d_t>Подпись не получена</d_t><i class="fas fa-times-circle"></i></a>
+                                    <a><d_t>Дополнительные данные не получены</d_t><i class="fas fa-times-circle"></i></a>
                                 </div>
                                 <div class="index_page_body_project_body_content">
                                     

@@ -7,9 +7,12 @@ var request     = null;
 var cheerio     = null;
 var puppeteer   = null;
 var bot         = null;
-var fetch       = null;;
+var fetch       = null;
+
 var { google }  = require('googleapis');
 const Instagram = require('instagram-web-api');
+var Youtube = require('youtube-video-api');
+var config_you = require('../client_secret.json');
 
 
 module.exports = {
@@ -37,13 +40,6 @@ function privateInit(initPlagins) {
     fetch       = require("node-fetch");
     readline    = require('readline');
     multer      = require("multer");
-    OAuth2      = google.auth.OAuth2;
-    Jimp = require("jimp")
-    
-    SCOPES = ['https://www.googleapis.com/auth/youtube.readonly'];
-    TOKEN_DIR = (process.env.HOME || process.env.HOMEPATH ||
-    process.env.USERPROFILE) + '/.credentials/';
-    TOKEN_PATH = TOKEN_DIR + 'youtube-nodejs-quickstart.json';
 }
 
 
@@ -117,7 +113,7 @@ async function getProject_id(socket,data,callback) {
 
 async function getNewDataProjects(socket,data,callback) {
     var _project = await Project.findOneAndUpdate({_id: data._id}, {
-        type_more: data.data,
+        type: "correction",
         signature: {
             type: data.data,
         }
@@ -143,6 +139,7 @@ async function setActive(socket,data,callback) {
 
 async function acceptProject(socket,data,callback) 
 {
+    var _project = await Project.findOne({_id: data});
 
     var _urlImgProject = `http://localhost/tbot/html/project/cover/?id=${data}`;
     const browser = await puppeteer.launch({
@@ -173,7 +170,7 @@ async function acceptProject(socket,data,callback)
         }
     });
 
-    const client = new Instagram({ username: "_opeji", password: "3107Ab3107" });
+    const client = new Instagram({ username: "_opeji", password: "3107Ab3107AbAb" });
  
     ;(async () => {
         Jimp.read(`../projects/${data}/logo.png`, async function (err, image) {
@@ -187,22 +184,30 @@ async function acceptProject(socket,data,callback)
                 console.log(photo);
             
                 await client.login()
+
+                var _caption = `
+                    *
+                    ${_project.data.name}
+                    ${_project.data.target}
+                    Ставка: ${_project.data.rate}
+                    Вход от: ${_project.data.minimal_amount}
+                    Сбор до: ${_project.data.date}
+                `;
             
                 // Upload Photo to feed or story, just configure 'post' to 'feed' or 'story'
-                const { media } = await client.uploadPhoto({ photo: photo, caption: 'http://google.ru', post: 'feed' })
+                const { media } = await client.uploadPhoto({ photo: photo, caption: _caption, post: 'feed' })
                 console.log(`https://www.instagram.com/p/${media.code}/`)
             }
         })
         
-    })()
+    })();
 }
 
 async function parceProject(type, data, callback) 
 {
-
     var url = "https://suggestions.dadata.ru/suggestions/api/4_1/rs/findById/party";
     var token = "cd3a829357362fec55fc201c3f761002def9906f";
-    var query = "7811177643";
+    var query = data.inn;
     
     var options = {
         method: "POST",
@@ -223,14 +228,31 @@ async function parceProject(type, data, callback)
         var _data = _dataFirst.suggestions[0].data;
 
         if(type == "1")
+        {
+            var _conf = 
+            {
+                name: _data.name.full_with_opf,
+                info: `https://www.rusprofile.ru/id/${query}`,
+                inn: _data.inn,
+                ogrn: _data.ogrn,
+                kpp: _data.kpp,
+                addr: _data.address.value,
+                do: null,
+                founder: _data.management.name,
+            } 
+
+            callback(_conf);
+        }
+
+        if(type == "2")
         {   
             var _conf = 
             {
                 name: _data.name.full_with_opf,
                 info: `https://www.rusprofile.ru/id/${query}`,
                 inn: _data.inn,
-                kpp: _data.kpp,
                 ogrn: _data.ogrn,
+                kpp: _data.kpp,
                 addr: _data.address.value,
                 do: null,
                 founder: _data.management.name,
@@ -241,20 +263,21 @@ async function parceProject(type, data, callback)
 
             callback(_conf);
         }
+
     });
 }
 
 async function setProject(socket,data,callback) 
 {
     var _User       = await User.findOne({user: data.user});
-    parceProject(data.data.organization, data.data, async function(_parce) 
+
+    async function start_load(_parce) 
     {
         var _project    = await Project.create({
             user: data.user,
             type: "moderation",
             data: data.data,
             parce: _parce,
-            type_more: null,
             redacting: null,
             signature: null,
         });
@@ -275,9 +298,19 @@ async function setProject(socket,data,callback)
                 });
             }
         });
-    
+    }
+
+    if(data.data.organization == "3") {
+        start_load();
         callback({status: "ok"});
-    });
+    } else {
+        parceProject(data.data.organization, data.data, async function(_parce) 
+        {
+            start_load(_parce);
+            callback({status: "ok"});
+        });
+    }
+    
 }
 
 async function getUser(socket,data,callback) {

@@ -1,5 +1,5 @@
-(function (global) {
-
+(function (global) 
+{
     (() => {
         delete imSocket;
         imSocket = null;

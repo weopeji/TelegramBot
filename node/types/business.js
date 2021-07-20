@@ -50,20 +50,31 @@ async function not_active(msg)
     var _correction = _projects.filter(el => el.type == "correction");
 
     var keyboard = [
-        ["⬅️ Назад"]
     ];
 
     if(_moderation.length > 0) {
-        keyboard.unshift(["Ожидают модерации"]);
+        keyboard.unshift([{
+            text: "Ожидают модерации",
+            url: "google.ru"
+        }]);
     }
     if(_correction.length > 0) {
-        keyboard.unshift(["Ожидают исправления"]);
+        keyboard.unshift([{
+            text: "Ожидают исправления",
+            url: "google.ru"
+        }]);
     }
 
-    var html = `У вас ${_moderation.length + _correction.length} неактивных проектов\n\n<strong>Ожидают модерацию: ${_moderation.length}</strong>\n<strong>Ожидают исправления: ${_correction.length}</strong>\n\nВыберите группу проектов:`;
-    h.send_html(msg.chat.id, html, {
+    await h.send_html(msg.chat.id, "Неактивные проекты", {
         "resize_keyboard": true,
-        "keyboard": keyboard,
+        "keyboard": [["⬅️ Назад"]],
+    });
+
+    for(var i = 0; i < 1; i++) { bot.deleteMessage(msg.chat.id, msg.message_id - i); }; 
+
+    var html = `У вас ${_moderation.length + _correction.length} неактивных проектов\n\n<strong>Ожидают модерацию: ${_moderation.length}</strong>\n<strong>Ожидают исправления: ${_correction.length}</strong>\n\nВыберите группу проектов:`;
+    await h.send_html(msg.chat.id, html, {
+        "inline_keyboard": keyboard,
     });
 };
 
