@@ -576,4 +576,36 @@ html, body {
   justify-content: center;
   align-items: center;
 }
+
+._menu textarea {
+  display: none;
+}
+
+._menu .menu_block_inline {
+  display: none;
+  cursor: pointer;
+}
+
+._menu .menu_block_inline p:hover {
+  font-weight: 600;
+}
+
+.menu_block {
+  width: calc(100% - 20px);
+  color: #12263f;
+  font-size: .9375rem;
+  font-weight: 400;
+  background-color: #F8FAFB;
+  display: block;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  border: 0;
+  cursor: pointer;
+  position: relative;
+}
+
+.menu_block span {
+  font-weight: 400;
+}
 /*# sourceMappingURL=creating.css.map */

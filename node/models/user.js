@@ -5,6 +5,7 @@ const UserShema = new mongoose.Schema({
     first_name: String,
     last_name: String,
     username: String,
+    googleAuth: String,
     language_code: String,
     is_bot: String,
     type: String,

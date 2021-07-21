@@ -40,6 +40,13 @@ function privateInit(initPlagins) {
     fetch       = require("node-fetch");
     readline    = require('readline');
     multer      = require("multer");
+    OAuth2      = google.auth.OAuth2;
+    Jimp        = require("jimp")
+    
+    SCOPES = ['https://www.googleapis.com/auth/youtube.readonly'];
+    TOKEN_DIR = (process.env.HOME || process.env.HOMEPATH ||
+    process.env.USERPROFILE) + '/.credentials/';
+    TOKEN_PATH = TOKEN_DIR + 'youtube-nodejs-quickstart.json';
 }
 
 
@@ -75,10 +82,11 @@ var action_linker = {
 }
 
 async function correct_signature(socket,data,callback) {
-    var _project = await Project.findOne({_id: data});
+    var _project = await Project.findOne({_id: data._id});
     var _array = _project.signature;
-    _array.end = true;
-    await Project.findOneAndUpdate({_id: data}, {signature: _array});
+    _array.data = data.data;
+    _array.status = "on";
+    await Project.findOneAndUpdate({_id: data}, {signature: _array, type: "moderation"});
 }
 
 async function getID(socket,data,callback) {
@@ -115,6 +123,7 @@ async function getNewDataProjects(socket,data,callback) {
     var _project = await Project.findOneAndUpdate({_id: data._id}, {
         type: "correction",
         signature: {
+            status: 'wait',
             type: data.data,
         }
     });
@@ -153,11 +162,12 @@ async function acceptProject(socket,data,callback)
     await element.screenshot({path: `../projects/${data}/logo.png`});
     await browser.close();
 
-    var html = ``;
+    var html = `[Профиль компании](http://www.example.com/)\n[Презентация](http://www.example.com/)\n[Видео-презентация](http://www.example.com/)`;
     var _url = `https://t.me/TestTalegrammBot?start=project_${data}`;
     const stream = fs.createReadStream(`../projects/${data}/logo.png`);
     bot.sendPhoto(-1001563744679, stream, {
         "caption": html,
+        "parse_mode": "MarkdownV2",
         "reply_markup": {
             "inline_keyboard": [
                 [

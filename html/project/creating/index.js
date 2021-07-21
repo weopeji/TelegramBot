@@ -27,6 +27,8 @@
         const _components       = new global.Components.components();
         var _User               = await _components._User(_id);
 
+        global._typePage = 'creating';
+
         
         if(_id.length < 9) 
         {
@@ -34,17 +36,30 @@
 
             $('.index_page_body_header_type').remove();
             
-            if(_project.signature) {
-                $('.index_page_body h1').html('Дополнительные документы');
-                $('.index_page_body h2').html('Отправьте последние документы для составления договора');
-                $('.index_page_body_button span').html('Отправить');
+            if(_project.signature) 
+            {
+                if(_project.signature.status == 'wait') 
+                {
+                    global._typePage = 'signature';
 
-                await _components.render_signature(_project);
+                    $('.index_page_body h1').html('Дополнительные документы');
+                    $('.index_page_body h2').html('Отправьте последние документы для составления договора');
+                    $('.index_page_body_button span').html('Отправить');
 
-                changeTextArea();
+                    await _components.render_signature(_project);
+
+                    $('.index_page_body_button').click( function() {
+                        _components.correct_signature(_project.signature.type, _id);
+                    });
+                    
+
+                    changeTextArea();
+
+                }
             }
 
-            if(_project.redacting) {
+            if(_project.redacting) 
+            {
                 $('.index_page_body h1').html('Исправление данных');
                 $('.index_page_body h2').html('Исправте все недостающие данные');
                 $('.index_page_body_button span').html('Отправить');
@@ -84,6 +99,11 @@
             });
         }
 
+
+
+
+        // =============================================================================================
+
         function changeTextArea() 
         {
             $('.text_area').change( function() {
@@ -92,20 +112,20 @@
 
             $('.body_point_line_header_text input[type=file]').change( async function() 
             {
-                var id_ = _id;
-                if(_id.length < 10) {
-                    id_ = await _components.getId(_id);
+                if(_typePage == 'signature') {
+                    _components.load_file_signature(this, _id, $(this).attr('id'));
+                } else {
+                    _components.load_file(this, _id, $(this).attr('id'));
                 }
-                _components.load_file(this, id_, $(this).attr('id'));
             });
 
             $('.all_good_cheack').click( async function() {
-                var id_ = _id;
-                if(_id.length < 10) {
-                    id_ = await _components.getId(_id);
-                }
                 var file_name = $(this).parent().parent().parent().find('.loader_input').attr('data');
-                global.open(`http://localhost/tbot/users/${id_}/${file_name}`, "_blank");
+                if(global._typePage == "signature") {
+                    global.open(`http://localhost/tbot/projects/${_id}/${file_name}`, "_blank");
+                } else {
+                    global.open(`http://localhost/tbot/users/${_id}/${file_name}`, "_blank");
+                }
             });
 
             $('.all_good_del').click( function() {

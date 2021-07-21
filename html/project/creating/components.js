@@ -27,20 +27,21 @@
                         {
                             type: "string",
                             name: "Название проекта",
-                            info: "Введите название проекта латинскими буквами",
+                            info: "Введите название проекта латинскими буквами или кирилицей",
                             _id: "name"
                         },
                         {
                             type: "string",
                             name: "Цель привлечения средств",
-                            info: "Введите название проекта латинскими буквами",
+                            info: "Введите цель привлечения средств латинскими буквами или кирилицей",
                             _id: "target"
                         },
                         {
                             type: "string",
                             name: "Общая сумма привлечения",
                             info: "Введите целое значение суммы в рублях",
-                            _id: "attraction_amount"
+                            _id: "attraction_amount",
+                            redacting: true,
                         },
                         {
                             type: "string",
@@ -52,7 +53,8 @@
                             type: "string",
                             name: "Минимальная сумма",
                             info: "Введите целое значение суммы в рублях (от 50000)",
-                            _id: "minimal_amount"
+                            _id: "minimal_amount",
+                            redacting: true,
                         },
                         {
                             type: "string",
@@ -61,7 +63,8 @@
                             _id: "rate"
                         },
                         {
-                            type: "string",
+                            type: "menu",
+                            menu_list: ['Ежедневно', 'Ежемесячно', 'Ежеквартально', 'Ежегодно'],
                             name: "Выплата процентов",
                             info: "Ежедневно, Ежемесячно, Ежеквартально, Ежегодно",
                             _id: "date_payments"
@@ -253,6 +256,7 @@
                             type: "string",
                             name: "КПП",
                             info: "kpp",
+                            _id: "kpp"
                         }
                     ]
                 },
@@ -651,6 +655,34 @@
             });
         }
 
+        async load_file_signature(_this, _id, file_id) {
+            let Data = new FormData();
+
+            $(_this.files).each(function(index, file) {
+                Data.append('files', file);
+                Data.append('file_id', file_id);
+                Data.append('_id', _id);
+            });
+
+            this.start_preloader($(_this), function() {
+                $.ajax({
+                    url: "http://localhost:3000/upload_project_signature",
+                    type: "POST",
+                    data: Data,
+                    contentType: false,
+                    processData: false,
+                    success: function(data) {
+                        $(_this).parent().parent().find('.loader_input').attr('data', data.file_name);
+                        $(_this).parent().parent().find('.loader_input').fadeOut( function() {
+                            $(_this).parent().parent().find('.all_good').fadeIn( function() {
+                        
+                            });
+                        });
+                    }
+               });
+            });
+        }
+
         _User(_id) {
             return callApi({
                 methodName: 'getUser',
@@ -679,6 +711,15 @@
             `);
 
             
+            if(typeof data.redacting != 'undefined') {
+                _line.find('textarea').on('keyup input', function() 
+                {
+                    var _val = $(this).val();
+                    _val = _val.replace(/\s/g, '');
+                    var format = String(_val).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
+                    $(this).val(format);
+                })
+            }
 
             if(typeof put != "undefined") {
                 _line.find(`#${data._id}`).val(put.data[data._id]);
@@ -689,7 +730,8 @@
             return _line;
         }
 
-        file(data) {
+        file(data) 
+        {
             var _file = `
                 <div class="download_buttons">
                     <input class="file_load" id='${data._id}' type='file'>
@@ -723,6 +765,49 @@
             return _line;
         }
 
+        menu(data) 
+        {
+            var _line = $(`
+                <div class="body_point_line _menu">
+                    <div class="body_point_line_header">
+                        <div class="body_point_line_header_text">
+                            <span>${data.name}</span>
+                            <p>${data.info}</p>
+                        </div>
+                        <div class="body_point_line_header_info">
+                            <span class="_not">Не заполнено</span>
+                            <span class="_yes">Готово</span>
+                        </div>
+                    </div>
+                    <textarea id="${data._id}" class="text_area" rows="1" placeholder="Введите значение"></textarea>
+                    <div class="menu_block">
+                        <span>Ежедневно</span>
+                        <i class="far fa-layer-group"></i>
+                        <div class="menu_block_inline">
+
+                        </div>
+                    </div>
+                </div>
+            `);
+
+            _line.find('textarea').val(data.menu_list[0]);
+
+            data.menu_list.forEach(element => {
+                _line.find('.menu_block_inline').append(`<p>${element}</p>`);
+            });
+
+            _line.find('.menu_block').click( function() {
+                $(this).find('.menu_block_inline').fadeToggle();
+            })
+
+            _line.find('.menu_block p').click( function() {
+                _line.find('.menu_block span').html($(this).html());
+                _line.find('textarea').val($(this).html());
+            })
+
+            return _line;
+        }
+
 
         async render(param) 
         {
@@ -747,49 +832,49 @@
                     </div>
                 `);
 
+                var _this = this;
+
+                var FUN = 
+                {
+                    _string: function(element) 
+                    {
+                        var _string = _this.string(element);
+                        _body.append(_string);
+                    },
+                    _file: function(element) 
+                    {
+                        var _string = _this.file(element);
+                        _body.append(_string);
+                    },
+                    _menu: function(element)
+                    {
+                        var _string = _this.menu(element);
+                        _body.append(_string);
+                    },
+                }
+
                 if(key == "+2") {
                     if(param == 1 || param == 2) {
                         data.body[1].forEach(element => 
-                            {
-                                if(element.type == "string")
-                                {
-                                    var _string = this.string(element);
-                                    _body.append(_string);
-                                }
-                                if(element.type == "file")
-                                {
-                                    var _string = this.file(element);
-                                    _body.append(_string);
-                                }
-                            });
+                        {
+                            if(element.type == "string") FUN._string(element);
+                            if(element.type == "file") FUN._file(element);
+                            if(element.type == "menu") FUN._menu(element);
+                        });
                     } else {
                         data.body[2].forEach(element => 
-                            {
-                                if(element.type == "string")
-                                {
-                                    var _string = this.string(element);
-                                    _body.append(_string);
-                                }
-                                if(element.type == "file")
-                                {
-                                    var _string = this.file(element);
-                                    _body.append(_string);
-                                }
-                            });
+                        {
+                            if(element.type == "string") FUN._string(element);
+                            if(element.type == "file") FUN._file(element);
+                            if(element.type == "menu") FUN._menu(element);
+                        });
                     }
                 } else {
                     data.body.forEach(element => 
                     {
-                        if(element.type == "string")
-                        {
-                            var _string = this.string(element);
-                            _body.append(_string);
-                        }
-                        if(element.type == "file")
-                        {
-                            var _string = this.file(element);
-                            _body.append(_string);
-                        }
+                        if(element.type == "string") FUN._string(element);
+                        if(element.type == "file") FUN._file(element);
+                        if(element.type == "menu") FUN._menu(element);
                     });
                 }
                 
@@ -804,7 +889,6 @@
             for (var key in this.signature[_type]) 
             {
                 var data = this.signature[_type][key];
-                console.log(data);
 
                 var _body = $(`<div class="body_point"></div>`);
                 _body.append(`
@@ -976,43 +1060,44 @@
 
                 var data = this.struct[key];
 
+                var FUN = 
+                {
+                    _string: function(element) 
+                    {
+                        correctArray[element._id] = $(`#${element._id}`).val();
+                    },
+                    _file: function(element) 
+                    {
+                        correctArray[element._id] = document.getElementById(`${element._id}_block`).getAttribute('data');
+                    },
+                    _menu: function(element)
+                    {
+                        correctArray[element._id] = $(`#${element._id}`).val();
+                    },
+                }
+
                 if(key == "+2") {
                     if(param == 1 || param == 2) {
                         data.body[1].forEach(element => 
                         {
-                            if(element.type == "string")
-                            {
-                                correctArray[element._id] = $(`#${element._id}`).val();
-                            }
-                            if(element.type == "file")
-                            {
-                                correctArray[element._id] = document.getElementById(`${element._id}_block`).getAttribute('data');
-                            }
+                            if(element.type == "string") FUN._string(element);
+                            if(element.type == "file") FUN._file(element);
+                            if(element.type == "menu") FUN._menu(element);
                         });
                     } else {
                         data.body[2].forEach(element => 
                         {
-                            if(element.type == "string")
-                            {
-                                correctArray[element._id] = $(`#${element._id}`).val();
-                            }
-                            if(element.type == "file")
-                            {
-                                correctArray[element._id] = document.getElementById(`${element._id}_block`).getAttribute('data');
-                            }
+                            if(element.type == "string") FUN._string(element);
+                            if(element.type == "file") FUN._file(element);
+                            if(element.type == "menu") FUN._menu(element);
                         });
                     }
                 } else {
                     data.body.forEach(element => 
                     {
-                        if(element.type == "string")
-                        {
-                            correctArray[element._id] = $(`#${element._id}`).val();
-                        }
-                        if(element.type == "file")
-                        {
-                            correctArray[element._id] = document.getElementById(`${element._id}_block`).getAttribute('data');
-                        }
+                        if(element.type == "string") FUN._string(element);
+                        if(element.type == "file") FUN._file(element);
+                        if(element.type == "menu") FUN._menu(element);
                     });
                 }
             }
@@ -1045,6 +1130,47 @@
             });
         }
 
+        correct_signature(_type, _id)
+        {
+            var correctArray = {};
+
+            for (var key in this.signature[_type]) 
+            {
+                var data = this.signature[_type][key];
+
+                data.body.forEach(element => 
+                {
+                    correctArray[element._id] = document.getElementById(`${element._id}_block`).getAttribute('data');
+                });
+            }
+
+            for(var key in correctArray) 
+            {
+                var _data = correctArray[key];
+                if(_data == null) {
+                    alert('Введите все данные!');
+                    return;
+                }
+            }
+
+            $('.index_page').empty();
+            $('.preloader').fadeIn( function() {
+                $('.preloader').fadeOut( function() {
+                    $('.end_get_project').css('display', "flex");
+                });
+            });
+
+            return callApi({
+                methodName: 'correct_signature',
+                data: {
+                    _id: _id,
+                    data: correctArray,
+                },
+            }).then((data) => {
+                return data; 
+            });
+        }
+
 
 
 
@@ -1053,15 +1179,6 @@
         getProject(_id) {
             return callApi({
                 methodName: 'getProject_id',
-                data: _id,
-            }).then((data) => {
-                return data; 
-            });
-        }
-
-        correct_signature(_id) {
-            return callApi({
-                methodName: 'correct_signature',
                 data: _id,
             }).then((data) => {
                 return data; 
