@@ -628,58 +628,53 @@
 
         async load_file(_this, _id, file_id) 
         {
-            let Data = new FormData();
+            let Data = {};
 
             $(_this.files).each(function(index, file) {
-                Data.append('files', file);
-                Data.append('file_id', file_id);
-                Data.append('_id', _id);
+                Data.files = file;
+                Data.file_id = file_id;
+                Data._id = _id;
+                Data._pts = file.type;
             });
 
-            this.start_preloader($(_this), function() {
-                $.ajax({
-                    url: "http://localhost:3000/upload_project",
-                    type: "POST",
+            this.start_preloader($(_this), async function() 
+            {
+                callApi({
+                    methodName: 'putFile',
                     data: Data,
-                    contentType: false,
-                    processData: false,
-                    success: function(data) {
-                        $(_this).parent().parent().find('.loader_input').attr('data', data.file_name);
-                        $(_this).parent().parent().find('.loader_input').fadeOut( function() {
-                            $(_this).parent().parent().find('.all_good').fadeIn( function() {
-                        
-                            });
+                }).then((data) => {
+                    $(_this).parent().parent().find('.loader_input').attr('data', data.file_name);
+                    $(_this).parent().parent().find('.loader_input').fadeOut( function() {
+                        $(_this).parent().parent().find('.all_good').fadeIn( function() {
+                    
                         });
-                    }
-               });
+                    });
+                });
             });
         }
 
         async load_file_signature(_this, _id, file_id) {
-            let Data = new FormData();
+            let Data = {};
 
             $(_this.files).each(function(index, file) {
-                Data.append('files', file);
-                Data.append('file_id', file_id);
-                Data.append('_id', _id);
+                Data.files = file;
+                Data.file_id = file_id;
+                Data._id = _id;
+                Data._pts = file.type;
             });
 
             this.start_preloader($(_this), function() {
-                $.ajax({
-                    url: "http://localhost:3000/upload_project_signature",
-                    type: "POST",
+                callApi({
+                    methodName: 'putFileSignature',
                     data: Data,
-                    contentType: false,
-                    processData: false,
-                    success: function(data) {
-                        $(_this).parent().parent().find('.loader_input').attr('data', data.file_name);
-                        $(_this).parent().parent().find('.loader_input').fadeOut( function() {
-                            $(_this).parent().parent().find('.all_good').fadeIn( function() {
-                        
-                            });
+                }).then((data) => {
+                    $(_this).parent().parent().find('.loader_input').attr('data', data.file_name);
+                    $(_this).parent().parent().find('.loader_input').fadeOut( function() {
+                        $(_this).parent().parent().find('.all_good').fadeIn( function() {
+                    
                         });
-                    }
-               });
+                    });
+                });
             });
         }
 
@@ -908,6 +903,31 @@
             
         }
 
+        render_signature_document(_project) 
+        {
+            var _body = $(`
+                <div class="row_canvas">
+                    <canvas width="700" height="400"></canvas>
+                </div>
+                <div class="index_page_buttons">
+                    <span class="clean">Очистить</span>
+                    <span class="put">Посмотреть подписаемый документ<i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+                </div>
+            `);
+            $('.index_page_body_points').append(_body);
+
+            var canvas          = document.querySelector("canvas");
+            var signaturePad    = new SignaturePad(canvas);
+
+            $('.clean').click( function() {
+                signaturePad.clear();
+            });
+
+            $('.put').click( function() {
+                window.open(`https://skin-win.ru/projects/${_project._id}/${_project.signature_document.document}`, '_blank');
+            });
+        }
+
         getId(_id) {
             return callApi({
                 methodName: 'getID',
@@ -1053,7 +1073,7 @@
             for (var key in this.struct) 
             {
                 if(param != "1") {
-                    if(key == "+3.1" || key == "+3.2" || key == "+3.3") {
+                    if(key == "+3_1" || key == "+3_2" || key == "+3_3") {
                         continue;
                     }
                 }
@@ -1114,7 +1134,7 @@
                 }
             }
 
-            $('.index_page').empty();
+            $('.index_page').fadeOut();
             $('.preloader').fadeIn();
 
             callApi({
@@ -1124,9 +1144,16 @@
                     user: user,
                 },
             }).then((data) => {
-                $('.preloader').fadeOut( function() {
-                    $('.end_get_project').css('display', "flex");
-                });
+                if(data == "error") {
+                    alert('Инн введен не верно!');
+                    $('.preloader').fadeOut();
+                    $('.index_page').fadeIn();
+                } else {
+                    $('.preloader').fadeOut( function() {
+                        $('.end_get_project').css('display', "flex");
+                    });
+                }
+                
             });
         }
 
@@ -1166,6 +1193,15 @@
                     _id: _id,
                     data: correctArray,
                 },
+            }).then((data) => {
+                return data; 
+            });
+        }
+
+        correct_signature_document(_id) {
+            return callApi({
+                methodName: 'correct_signature_document',
+                data: _id,
             }).then((data) => {
                 return data; 
             });

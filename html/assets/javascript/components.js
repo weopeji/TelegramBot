@@ -111,9 +111,9 @@
                             </div>
                         </div>
                         <div class="index_page_body_hrefs">
-                            <a target="_blank" href="http://localhost/tbot/html/project/profil/#${element._id}">Профиль компании</a>
-                            <a target="_blank" href="http://localhost/tbot/projects/${element._id}/${element.data["file+7"]}">Презентация</a>
-                            <a target="_blank" href="http://localhost/tbot/projects/${element._id}/${element.data["file+8"]}">Видео-презентация</a>
+                            <a target="_blank" href="${getURL()}/html/project/profil/#${element._id}">Профиль компании</a>
+                            <a target="_blank" href="${getURL()}/projects/${element._id}/${element.data["file+7"]}">Презентация</a>
+                            <a target="_blank" href="${getURL()}/projects/${element._id}/${element.data["file+8"]}">Видео-презентация</a>
                         </div>
                     </div>
                 `;
@@ -172,7 +172,6 @@
             this.$component.empty();
             this.$component.append(this.header);
             var _moderations = await this.getActiveBlocks();
-            console.log(_moderations);
             _moderations.forEach(element => {
                 var templateText = `
                     <div class="index_page_body_moderation_block">
@@ -210,9 +209,9 @@
                             </div>
                         </div>
                         <div class="index_page_body_hrefs">
-                            <a target="_blank" href="http://localhost/tbot/html/project/profil/#${element._id}">Профиль компании</a>
-                            <a target="_blank" href="http://localhost/tbot/projects/${element._id}/${element.data["file+7"]}">Презентация</a>
-                            <a target="_blank" href="http://localhost/tbot/projects/${element._id}/${element.data["file+8"]}">Видео-презентация</a>
+                            <a target="_blank" href="${getURL()}/html/project/profil/#${element._id}">Профиль компании</a>
+                            <a target="_blank" href="${getURL()}/projects/${element._id}/${element.data["file+7"]}">Презентация</a>
+                            <a target="_blank" href="${getURL()}/projects/${element._id}/${element.data["file+8"]}">Видео-презентация</a>
                         </div>
                     </div>
                 `;
@@ -308,9 +307,9 @@
                             </div>
                         </div>
                         <div class="index_page_body_hrefs">
-                            <a target="_blank" href="http://localhost/tbot/html/project/profil/#${element._id}">Профиль компании</a>
-                            <a target="_blank" href="http://localhost/tbot/projects/${element._id}/${element.data["file+7"]}">Презентация</a>
-                            <a target="_blank" href="http://localhost/tbot/projects/${element._id}/${element.data["file+8"]}">Видео-презентация</a>
+                            <a target="_blank" href="${getURL()}/html/project/profil/#${element._id}">Профиль компании</a>
+                            <a target="_blank" href="${getURL()}/projects/${element._id}/${element.data["file+7"]}">Презентация</a>
+                            <a target="_blank" href="${getURL()}/projects/${element._id}/${element.data["file+8"]}">Видео-презентация</a>
                         </div>
                     </div>
                 `;
@@ -916,6 +915,18 @@
             });
         }
 
+        setSignatureFile(_id, _file) {
+            return callApi({
+                methodName: 'setSignatureFile',
+                data: {
+                    file: _file,
+                    _id: _id,
+                },
+            }).then((data) => {
+                return data; 
+            });
+        }
+
         string(data, _project) 
         {
             var need_block = _project.data[data._id];
@@ -937,7 +948,7 @@
 
             var _file = `
                 <div class="download_buttons">
-                    <a target="_blank" href="http://localhost/tbot/projects/${_project._id}/${_project.data[data._id]}">Посмотреть <i class='fas fa-download'></i></a>
+                    <a target="_blank" href="${getURL()}/projects/${_project._id}/${_project.data[data._id]}">Посмотреть <i class='fas fa-download'></i></a>
                 </div>  
             `;
             var _line = $(`
@@ -1055,7 +1066,6 @@
             _iframe.on('load', function () {
                 var _content = _iframe.contents();
                 var _height = _content.find('.index_page_profil')[0];
-                console.log(_height);
                 _iframe.css('height', '1934px');
                 _content.find('.index_page_profil').css({
                     'width': '100%',
@@ -1075,6 +1085,35 @@
 
                 if(_lenth > 1) 
                 {
+                    var putDocumentToSignature = $(`
+                        <div class="putDocumentToSignature">
+                            <input type="file" name="" id="DocumentToSignature">
+                            <label for="DocumentToSignature" class="putDocumentToSignature_open">
+                                <span>Загрузить документ</span>
+                            </label>
+                        </div>
+                    `);
+
+                    var _this = this;
+
+                    putDocumentToSignature.find('input[type=file]').change( async function() 
+                    {
+                        let Data = {};
+
+                        $(this.files).each(function(index, file) {
+                            Data.files = file;
+                            Data._id = _project._id;
+                            Data._pts = file.type;
+                        });
+
+                        _this.setSignatureFile(_project._id, Data);
+
+                        $('.index_page_body_row').empty();
+                    });
+
+
+                    $('.index_page_more_menu').append(putDocumentToSignature);
+
                     var _header = $(`<div class="body_point"></div>`);
                     _header.append(`
                         <div class="body_point_header">
@@ -1090,7 +1129,7 @@
                             this.signature[key]['+1_s'].body.forEach(element => {
                                 var _file = `
                                     <div class="download_buttons">
-                                        <a target="_blank" href="http://localhost/tbot/projects/${_project._id}/${_project.signature.data[element._id]}">Посмотреть <i class='fas fa-download'></i></a>
+                                        <a target="_blank" href="${getURL()}/projects/${_project._id}/${_project.signature.data[element._id]}">Посмотреть <i class='fas fa-download'></i></a>
                                     </div>  
                                 `;
                                 var _line = $(`
@@ -1120,6 +1159,13 @@
                     $('.index_page_more_menu').append(_header);
                 }
             };
+
+            if(_project.signature_document) {
+                if(_project.signature_document.status == 'on') {
+                    $('.index_page_more_menu').empty();
+                    $('.index_page_more_menu').append('<h1>Документ подписан</h1>')
+                }
+            }
 
             var templateText = $(`
                 <div class="index_page_body_project_body_type">

@@ -1,16 +1,26 @@
 console.log ( '%c%s', 'color: red; font: 2.2rem/1 Tahoma;', "WARNING" );
 console.log ( '%c%s', 'color: white; font: 0.8rem/1 Tahoma;', "Эта функция предназначена только для" );
 console.log ( '%c%s', 'color: yellow; font: 0.8rem/1 Tahoma;', "РАЗРАБОТЧИКОВ" );
-console.log ( '%c%s', 'color: white; font: 0.8rem/1 Tahoma;', "Если кто-то пообещал бесплатные скины, деньги или любую другую выгоду за копирование чего-либо, он попытается получить доступ к вашей учетной записи, чтобы обмануть вас." );
+console.log ( '%c%s', 'color: white; font: 0.8rem/1 Tahoma;', "Если кто-то пообещал бесплатные деньги или любую другую выгоду за копирование чего-либо, он попытается получить доступ к вашей учетной записи, чтобы обмануть вас." );
 
 var imSocket = null;
 
 window.global_data = {
     data_url_localhost: 'http://localhost:3000',
-    data_url_server: 'https://skin-win.ru/',
+    data_url_server: 'https://skin-win.ru',
+    data_url_localhost_non: 'http://localhost',
 };
 
 //========= Cookies ===================================================================
+
+function getURL() 
+{
+    if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+        return window.global_data.data_url_localhost_non + "/tbot";
+    } else {
+        return window.global_data.data_url_server;
+    }
+}
 
 function delCookie(name) {
     document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
@@ -58,6 +68,56 @@ function _GET(key) {
 }
 
 //======== mains ======================================================================
+
+async function postData(url, data) {
+    // Default options are marked with *
+    const response = await fetch(url, {
+        method: 'POST', // *GET, POST, PUT, DELETE, etc.
+        mode: 'cors', // no-cors, *cors, same-origin
+        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: 'same-origin', // include, *same-origin, omit
+        headers: {
+            'Content-Type': 'application/json'
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        redirect: 'follow', // manual, *follow, error
+        referrerPolicy: 'no-referrer', // no-referrer, *client
+        body: JSON.stringify(data) // body data type must match "Content-Type" header
+    });
+    return await response.json(); // parses JSON response into native JavaScript objects
+}
+
+function io_connect(callback) 
+{
+    delete imSocket;
+    imSocket = null;
+    var url = null;
+    if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+        url = global_data.data_url_localhost;
+        imSocket = io(url, {transports: ['polling']});
+    } else {
+        url = global_data.data_url_server;
+        imSocket = io(url, {transports: ['websocket', 'polling']});
+        // imSocket = io(url, {
+        //     path: '/socket.io'
+        // });
+    }
+    imSocket.on('connect', function() {
+        console.log("Сервер подключен к: " + url);
+        if(callback) {
+            callback();
+        }
+    });
+}
+
+function getURL() 
+{
+    if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+        return window.global_data.data_url_localhost_non;
+    } else {
+        return window.global_data.data_url_server;
+    }
+}
 
 function updateURL(url) {
     if (history.pushState) {

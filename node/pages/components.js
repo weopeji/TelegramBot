@@ -9,10 +9,7 @@ var puppeteer   = null;
 var bot         = null;
 var fetch       = null;
 
-var { google }  = require('googleapis');
 const Instagram = require('instagram-web-api');
-var Youtube = require('youtube-video-api');
-var config_you = require('../client_secret.json');
 
 
 module.exports = {
@@ -40,13 +37,8 @@ function privateInit(initPlagins) {
     fetch       = require("node-fetch");
     readline    = require('readline');
     multer      = require("multer");
-    OAuth2      = google.auth.OAuth2;
-    Jimp        = require("jimp")
-    
-    SCOPES = ['https://www.googleapis.com/auth/youtube.readonly'];
-    TOKEN_DIR = (process.env.HOME || process.env.HOMEPATH ||
-    process.env.USERPROFILE) + '/.credentials/';
-    TOKEN_PATH = TOKEN_DIR + 'youtube-nodejs-quickstart.json';
+    Jimp        = require("jimp");
+    h           = initPlagins.helper_functions;
 }
 
 
@@ -79,6 +71,61 @@ var action_linker = {
     "putRedacting": putRedacting,
     "getID": getID,
     "correct_signature": correct_signature,
+    "putFile": putFile,
+    "putFileSignature": putFileSignature,
+    "setSignatureFile": setSignatureFile,
+    "correct_signature_document": correct_signature_document,
+}
+
+async function correct_signature_document(socket,data,callback) {
+    var _project = await Project.findOne({_id: data});
+    var _array = _project.signature_document;
+    _array.status = 'on';
+    await Project.findOneAndUpdate({_id: data}, {type: "moderation", signature_document: _array});
+}
+
+async function setSignatureFile(socket,data,callback) 
+{
+    var data = data.file;
+
+    var _pts        = data._pts.split('/')[1];
+    var _user_id    = data._id;
+    var file_id     = data.file_id;
+
+    fs.writeFile(`../projects/${_user_id}/signature_document.${_pts}`, data.files, async (err) => {
+        if(err) throw err;
+        var _project = await Project.findOneAndUpdate({_id: data._id}, {type: "correction",signature_document: {
+            status: "wait",
+            document: `signature_document.${_pts}`,
+        }});
+    });
+}
+
+async function putFileSignature(socket,data,callback) {
+    var _pts        = data._pts.split('/')[1];
+    var _user_id    = data._id;
+    var file_id     = data.file_id;
+
+    fs.writeFile(`../projects/${_user_id}/${file_id}.${_pts}`, data.files, (err) => {
+        if(err) throw err;
+        callback({
+            file_name: `${file_id}.${_pts}`,
+        });
+    });
+}
+
+async function putFile(socket,data,callback) 
+{
+    var _pts        = data._pts.split('/')[1];
+    var _user_id    = data._id;
+    var file_id     = data.file_id;
+
+    fs.writeFile(`../users/${_user_id}/${file_id}.${_pts}`, data.files, (err) => {
+        if(err) throw err;
+        callback({
+            file_name: `${file_id}.${_pts}`,
+        });
+    });
 }
 
 async function correct_signature(socket,data,callback) {
@@ -142,75 +189,73 @@ async function setSignature(socket,data,callback)
 }
 
 async function setActive(socket,data,callback) {
-    var _project = await Project.findOneAndUpdate({_id: data}, {type: "active"});
+    //var _project = await Project.findOneAndUpdate({_id: data}, {type: "active"});
     callback('ok');
 }
 
 async function acceptProject(socket,data,callback) 
 {
-    var _project = await Project.findOne({_id: data});
+    // var _project = await Project.findOne({_id: data});
 
-    var _urlImgProject = `http://localhost/tbot/html/project/cover/?id=${data}`;
-    const browser = await puppeteer.launch({
-        args: ["--no-sandbox",
-            "--disable-setuid-sandbox"]
-    });
-    const page = await browser.newPage();
-    await page.goto(_urlImgProject);
-    await page.emulateMedia('screen');
-    const element = await page.$('.cover_block');   
-    await element.screenshot({path: `../projects/${data}/logo.png`});
-    await browser.close();
+    // var _urlImgProject = `${h.getURL()}html/project/cover/?id=${data}`;
+    // const browser = await puppeteer.launch({
+    //     args: ["--no-sandbox",
+    //         "--disable-setuid-sandbox"]
+    // });
+    // const page = await browser.newPage();
+    // await page.goto(_urlImgProject);
+    // await page.emulateMedia('screen');
+    // const element = await page.$('.cover_block');   
+    // await element.screenshot({path: `../projects/${data}/logo.png`});
+    // await browser.close();
 
-    var html = `[Профиль компании](http://www.example.com/)\n[Презентация](http://www.example.com/)\n[Видео-презентация](http://www.example.com/)`;
-    var _url = `https://t.me/TestTalegrammBot?start=project_${data}`;
-    const stream = fs.createReadStream(`../projects/${data}/logo.png`);
-    bot.sendPhoto(-1001563744679, stream, {
-        "caption": html,
-        "parse_mode": "MarkdownV2",
-        "reply_markup": {
-            "inline_keyboard": [
-                [
-                    {
-                        text: "Инвестровать",
-                        url: _url,
-                    }
-                ]
-            ],
-        }
-    });
+    // var html = `[Профиль компании](${h.getURL()}/profil/#${_project._id})\n[Презентация](http://www.example.com/)\n[Видео-презентация](http://www.example.com/)`;
+    // var _url = `https://t.me/TestTalegrammBot?start=project_${data}`;
+    // const stream = fs.createReadStream(`../projects/${data}/logo.png`);
+    // bot.sendPhoto(-1001563744679, stream, {
+    //     "caption": html,
+    //     "parse_mode": "MarkdownV2",
+    //     "reply_markup": {
+    //         "inline_keyboard": [
+    //             [
+    //                 {
+    //                     text: "Инвестровать",
+    //                     url: _url,
+    //                 }
+    //             ]
+    //         ],
+    //     }
+    // });
 
-    const client = new Instagram({ username: "_opeji", password: "3107Ab3107AbAb" });
+    // const client = new Instagram({ username: "investER_official", password: "336688ea" });
  
-    ;(async () => {
-        Jimp.read(`../projects/${data}/logo.png`, async function (err, image) {
-            if (err) {
-                console.log(err)
-            } else {
-                await image.write(`../projects/${data}/logo.jpg`);
-                // URL or path of photo
-                const photo = `http://localhost/tbot/projects/${data}/logo.jpg`;
-                //const photo = `https://www.rosphoto.com/images/u/articles/1510/3_13.jpg`;
-                console.log(photo);
+    // ;(async () => {
+    //     Jimp.read(`../projects/${data}/logo.png`, async function (err, image) {
+    //         if (err) {
+    //             console.log(err)
+    //         } else {
+    //             await image.write(`../projects/${data}/logo.jpg`);
+    //             // URL or path of photo
+    //             const photo = `http://localhost/tbot/projects/${data}/logo.jpg`;
+    //             console.log(photo);
             
-                await client.login()
+    //             await client.login()
 
-                var _caption = `
-                    *
-                    ${_project.data.name}
-                    ${_project.data.target}
-                    Ставка: ${_project.data.rate}
-                    Вход от: ${_project.data.minimal_amount}
-                    Сбор до: ${_project.data.date}
-                `;
+    //             var _caption = `
+    //                 *
+    //                 ${_project.data.name}
+    //                 ${_project.data.target}
+    //                 Ставка: ${_project.data.rate}
+    //                 Вход от: ${_project.data.minimal_amount}
+    //                 Сбор до: ${_project.data.date}
+    //             `;
             
-                // Upload Photo to feed or story, just configure 'post' to 'feed' or 'story'
-                const { media } = await client.uploadPhoto({ photo: photo, caption: _caption, post: 'feed' })
-                console.log(`https://www.instagram.com/p/${media.code}/`)
-            }
-        })
+    //             const { media } = await client.uploadPhoto({ photo: photo, caption: _caption, post: 'feed' })
+    //             console.log(`https://www.instagram.com/p/${media.code}/`)
+    //         }
+    //     })
         
-    })();
+    // })();
 }
 
 async function parceProject(type, data, callback) 
@@ -235,6 +280,12 @@ async function parceProject(type, data, callback)
     .then(result => 
     {
         var _dataFirst = JSON.parse(result.toString());
+
+        if(_dataFirst.suggestions.length == 0) 
+        {
+            callback('error');
+            return;
+        }
         var _data = _dataFirst.suggestions[0].data;
 
         if(type == "1")
@@ -290,10 +341,9 @@ async function setProject(socket,data,callback)
             parce: _parce,
             redacting: null,
             signature: null,
+            signature_document: null,
         });
-    
-        console.log(_project);
-    
+        
         var _patch = `../projects/${_project._id}`;
         var user_path = `../users/${_User.user}`;
     
@@ -316,6 +366,10 @@ async function setProject(socket,data,callback)
     } else {
         parceProject(data.data.organization, data.data, async function(_parce) 
         {
+            if(_parce == 'error') {
+                callback('error');
+                return;
+            }
             start_load(_parce);
             callback({status: "ok"});
         });

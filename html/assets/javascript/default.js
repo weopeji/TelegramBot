@@ -1,25 +1,11 @@
 (function (global) 
 {
-    (() => {
-        delete imSocket;
-        imSocket = null;
-        var url = null;
-        if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
-            url = global_data.data_url_localhost;
-            imSocket = io(url, {transports: ['polling']});
-        } else {
-            url = global_data.data_url_server;
-            imSocket = io(url, {
-                path: '/socket.io'
-            });
-        }
-        imSocket.on('connect', function() {
-            console.log("Сервер подключен к: " + url);
-            global.loadResources(['./html/assets/javascript/components.js'], () => {
-                Main();
-            });
-        });
-    })();
+    io_connect( function() 
+    {
+        global.loadResources(['./html/assets/javascript/components.js'], () => {
+            Main();
+        });    
+    })
 
     function Main()
     {
@@ -95,6 +81,9 @@
                     _id: _id,
                     data: _array,
                 });
+                $('.index_page_body_row').empty();
+                $('.index_page_body_row').append(_block);
+                redactingButton();
             });
         }
         

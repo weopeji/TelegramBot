@@ -10,11 +10,22 @@ module.exports = {
     _GET,
     _User,
     R_Where,
+    getURL,
 }
 
 function privateInit(initPlagins) {
     bot     = initPlagins.bot;
     User    = initPlagins.User;
+    config  = initPlagins.config;
+}
+
+function getURL() 
+{
+    if (config.secure) {
+        return config.host_url_server;
+    } else {
+        return config.host_url;
+    }
 }
 
 function R_Where(msg, data) {

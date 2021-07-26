@@ -15,41 +15,31 @@ const models                        = require('./models');
 const config                        = require('./config.json');
 const _data                         = require('./data.js');
 
-const bot                           = new TelegramBot(config.token, { polling: true });
+const User                          = mongoose.model('User');
+const Project                       = mongoose.model('Project');
 
+const bot                           = null;
 var helper_functions                = null;
-
 var main_page                       = null;
 var investor_page                   = null;
 var business_page                   = null;
 var attraction_page                 = null;
 var components_html                 = null;
-
-const User                          = mongoose.model('User');
-const Project                       = mongoose.model('Project');
-
 var server                          = null;
 var io                              = null;
+var mongoURl                        = config.mongoUri;
 
-app.use(fileUpload({}));
-
-// cheach OS ==============================================================================
 if(process.platform == 'win32') {config.secure = false} else {config.secure = true};
 
-// creating server =========================================================================
 if (config.secure)
 {
     console.log('Server now!');
-    var options = {
-        key: fs.readFileSync('/etc/letsencrypt/live/skin-win.ru/privkey.pem', 'utf8'),
-        cert: fs.readFileSync('/etc/letsencrypt/live/skin-win.ru/cert.pem', 'utf8'),
-        ca: fs.readFileSync('/etc/letsencrypt/live/skin-win.ru/chain.pem', 'utf8')
-    };
-    server = require('http').createServer(options, app);
+    server = require('http').createServer(app);
     params = {
-        path: '/socket.io'
+        transports: ['websocket', 'polling'],
     }
-    io = require("socket.io")(server, params);
+    io          = require("socket.io")(server, params);
+    bot         = new TelegramBot(config.token, { polling: true });
 } else
 {
     console.log('localhost now!');
@@ -59,12 +49,14 @@ if (config.secure)
             methods: ["GET", "POST"]
         }
     }
-    server = require('http').createServer(app);
-    io = require("socket.io")(server, params);
+    server      = require('http').createServer(app);
+    io          = require("socket.io")(server, params);
+    bot         = new TelegramBot(config.token_host, { polling: true });
 }
 
 // MongoDB Connect =========================================================================
-mongoose.connect(config.mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
+
+mongoose.connect(mongoURl, { useNewUrlParser: true, useUnifiedTopology: true })
     .then( function() { 
         console.log(`Mongo Db Connect to ${config.mongoUri}`);
         server.listen(config.appPort,
@@ -84,14 +76,9 @@ var load_helpers = () =>
         helper_functions.init({
             bot: bot,
             User: User,
+            config: config,
         });
     }
-
-    load_pages();
-}
-
-var load_pages = () => 
-{
     if(main_page == null) 
     {
         main_page = require('./types/main');
@@ -145,6 +132,7 @@ var load_pages = () =>
             wrench: wrench,
             path: path,
             bot: bot,
+            helper_functions: helper_functions,
         });
     };
 }
@@ -253,35 +241,4 @@ io.on('connection', function(socket) {
         components_page(this, data, callback);
     });
 
-});
-
-
-app.post('/upload_project', function(req, res) {
-
-    var _pts        = req.files.files.mimetype.split('/')[1];
-    var _user_id    = req.body._id;
-    var file_id     = req.body.file_id;
-
-    fs.writeFile(`../users/${_user_id}/${file_id}.${_pts}`, req.files.files.data, (err) => {
-        if(err) throw err;
-        res.set({
-            'Access-Control-Allow-Origin': "*"
-        });
-        res.status(200).send({ file_name: file_id+"."+_pts});
-    });
-});
-
-app.post('/upload_project_signature', function(req, res) {
-
-    var _pts        = req.files.files.mimetype.split('/')[1];
-    var _user_id    = req.body._id;
-    var file_id     = req.body.file_id;
-
-    fs.writeFile(`../projects/${_user_id}/${file_id}.${_pts}`, req.files.files.data, (err) => {
-        if(err) throw err;
-        res.set({
-            'Access-Control-Allow-Origin': "*"
-        });
-        res.status(200).send({ file_name: file_id+"."+_pts});
-    });
 });

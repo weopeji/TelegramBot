@@ -32,31 +32,41 @@ const MF =
     create_user: async function(msg) 
     {
         var _patch = `../users/${msg.from.id}`;
-        fs.stat(_patch, async function(err) {
-            if (!err) {}
-            else if (err.code === 'ENOENT') {
-                await fs.mkdir(_patch);
-            }
 
+        async function _start() {
             var _path_profile = `../users_profile/${msg.from.id}`;
 
-            fs.stat(_path_profile, async function(err) {
-                if (!err) {}
-                else if (err.code === 'ENOENT') {
-                    await fs.mkdir(_path_profile);
-                }
-
+            async function _start_profil() 
+            {
                 var user_profile    = await bot.getUserProfilePhotos(msg.from.id);
-                var file_id         = user_profile.photos[0][0].file_id;
-                var file            = await bot.getFile(file_id);
-                var file_path       = file.file_path;
-                var photo_url       = `https://api.telegram.org/file/bot${config.token}/${file_path}`;
-                var name_photo      = `avatar-${file_path.split('/')[1]}`;
-    
-                const _file      = fs.createWriteStream(`../users_profile/${msg.from.id}/${name_photo}`);
-                const request   = https.get(photo_url, async function(response) {
-                    response.pipe(_file);
-    
+                var file_id         = null;
+                var file            = null;
+                var file_path       = null;
+                var photo_url       = null;
+                var name_photo      = null;
+                if(typeof user_profile.photos[0] != 'undefined') {
+                    file_id = user_profile.photos[0][0].file_id;
+                    file            = await bot.getFile(file_id);
+                    file_path       = file.file_path;
+                    photo_url       = `https://api.telegram.org/file/bot${config.token}/${file_path}`;
+                    name_photo      = `avatar-${file_path.split('/')[1]}`;
+                    const _file      = fs.createWriteStream(`../users_profile/${msg.from.id}/${name_photo}`);
+                    const request   = https.get(photo_url, async function(response) {
+                        response.pipe(_file);
+        
+                        return User.create({
+                            user: msg.from.id, 
+                            first_name: msg.from.first_name, 
+                            last_name: msg.from.last_name,
+                            username: msg.from.username,
+                            language_code: msg.from.language_code,
+                            is_bot: msg.from.is_bot,
+                            type: null,
+                            img: name_photo,
+                            googleAuth: null,
+                        });
+                    });
+                } else {
                     return User.create({
                         user: msg.from.id, 
                         first_name: msg.from.first_name, 
@@ -65,11 +75,32 @@ const MF =
                         language_code: msg.from.language_code,
                         is_bot: msg.from.is_bot,
                         type: null,
-                        img: name_photo,
+                        img: null,
                         googleAuth: null,
                     });
-                });
+                }
+    
+            }
+
+            fs.stat(_path_profile, async function(err) {
+                if (!err) {_start_profil();}
+                else if (err.code === 'ENOENT') {
+                    await fs.mkdir(_path_profile, function() {
+                        _start_profil();
+                    });
+                }
             })
+        }
+
+        fs.stat(_patch, async function(err) {
+            if (!err) {
+                _start();
+            }
+            else if (err.code === 'ENOENT') {
+                await fs.mkdir(_patch, function() {
+                    _start();
+                });
+            }
         });
     },
     Update_Type: function(msg, data) {
@@ -143,23 +174,23 @@ async function _MainMenu(msg)
                 }
             });
 
-            if(!_User.googleAuth) 
-            {
-                var _html = `Вы можете защитить свой аккаунт двойной аунтификацией <strong>googleAuth</strong>\n\nЖмите на кнопку <strong>Защитить</strong>`;
-                bot.sendMessage(msg.chat.id, _html, {
-                    parse_mode: "HTML",
-                    reply_markup: {
-                        "inline_keyboard": [
-                            [
-                                {
-                                    text: "Защитить",
-                                    url: "https://t.me/testPut",
-                                }
-                            ]
-                        ],
-                    }
-                });
-            }
+            // if(!_User.googleAuth) 
+            // {
+            //     var _html = `Вы можете защитить свой аккаунт двойной аунтификацией <strong>googleAuth</strong>\n\nЖмите на кнопку <strong>Защитить</strong>`;
+            //     bot.sendMessage(msg.chat.id, _html, {
+            //         parse_mode: "HTML",
+            //         reply_markup: {
+            //             "inline_keyboard": [
+            //                 [
+            //                     {
+            //                         text: "Защитить",
+            //                         url: "https://t.me/testPut",
+            //                     }
+            //                 ]
+            //             ],
+            //         }
+            //     });
+            // }
         },
         attraction: function(msg) {
             var html = `<strong>${msg.from.first_name} ${msg.from.last_name}</strong> добро пожаловать на investER. Вы можете стать нашим партнером по привлечению инвесторов.\n\nПриглашайте инвесторов на investER либо отправляйте инвестиционное предложения из канала (в слово зашита ссылка) или вашу личную ссылку. И зарабатывайте с каждой их инвестиции. Приглашенный Вами инвестор будет за вами закреплен навсегда и за каждую инвестицию в любые проекты вы будете получать бонус.\n\nПредусмотренный бонус в каждом инвестиционном предложении разный, от 0,5 - до 10% от суммы инвестиций приглашенного инвестора. Как только приглашенный Вами инвестор проинвестирует, вам придет сообщение с датой, (именем пользователя), суммой инвестиций и бонусом для вас.\n\nЧтоб бонус пришел к вам на карту, заполните данные реквизитов, нажав кнопку реквизиты`;

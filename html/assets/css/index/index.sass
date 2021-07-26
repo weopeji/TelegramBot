@@ -544,6 +544,7 @@ html, body
     height: 38px
     border-radius: 9px
     overflow: hidden
+    background-color: #A0A4A7
 
     img
         width: 100%
@@ -765,3 +766,45 @@ html, body
     span.selected::before
             display: block
         
+
+.putDocumentToSignature
+    width: 100%
+    display: flex
+    justify-content: flex-end
+    margin-top: 20px
+
+    input
+        display: none
+
+.putDocumentToSignature_open
+    padding: 10px 20px
+    background-color: #3A9FFF
+    color: white
+    border-radius: 5px
+    cursor: pointer
+    display: flex
+
+.putDocumentToSignature_block
+    display: none
+    align-items: center
+
+    .selected
+        display: block
+
+.putDocumentToSignature_block_del,
+.putDocumentToSignature_block_start
+    padding: 10px 20px
+    color: white
+    border-radius: 5px
+    cursor: pointer
+    display: none
+
+    .selected
+        display: flex
+
+.putDocumentToSignature_block_del
+    background-color: #FEBD2F
+    margin-right: 10px
+
+.putDocumentToSignature_block_start
+    background-color: #1FD860

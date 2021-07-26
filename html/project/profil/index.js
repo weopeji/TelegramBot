@@ -13,24 +13,10 @@
         });
     }
 
-    (() => {
-        delete imSocket;
-        imSocket = null;
-        var url = null;
-        if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
-            url = global_data.data_url_localhost;
-            imSocket = io(url, {transports: ['polling']});
-        } else {
-            url = global_data.data_url_server;
-            imSocket = io(url, {
-                path: '/socket.io'
-            });
-        }
-        imSocket.on('connect', function() {
-            console.log("Сервер подключен к: " + url);
-            Main();
-        });
-    })();
+    io_connect( function() 
+    {
+        Main();
+    });
 
     async function Main()
     {
@@ -82,6 +68,25 @@
                     this._append("Цель займа", need_project.data.target);
                     this._append("Учредитель", need_project.parce.founder);
                 },
+                "2": function (params) {
+                    $('.index_page_profil_data h1').html(_config.header());
+                    this._append("Название компании", need_project.parce.name);
+                    this._append("Подробная информация", need_project.parce.info, true);
+                    this._append("ИНН/ОГРН", need_project.parce.inn + "/" + need_project.parce.ogrn);
+                    this._append("Адрес юридический", need_project.parce.addr);
+                    this._append("Адрес фактический", need_project.data.addr);
+                    this._append("Сайт", need_project.data.syte, true);
+                    this._append("Цель займа", need_project.data.target);
+                    this._append("Учредитель", need_project.parce.founder);
+                },
+                "3": function (params) {
+                    $('.index_page_profil_data h1').html(_config.header());
+                    this._append("Название компании", need_project.data.name);
+                    this._append("ИНН", need_project.data.inn);
+                    this._append("Адрес фактический", need_project.data.addr);
+                    this._append("Сайт", need_project.data.syte, true);
+                    this._append("Цель займа", need_project.data.target);
+                }
             },
             credit_story: {
                 _append: function(name, data) {

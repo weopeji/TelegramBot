@@ -13,24 +13,10 @@
         });
     }
 
-    (() => {
-        delete imSocket;
-        imSocket = null;
-        var url = null;
-        if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
-            url = global_data.data_url_localhost;
-            imSocket = io(url, {transports: ['polling']});
-        } else {
-            url = global_data.data_url_server;
-            imSocket = io(url, {
-                path: '/socket.io'
-            });
-        }
-        imSocket.on('connect', function() {
-            console.log("Сервер подключен к: " + url);
-            Main();
-        });
-    })();
+    io_connect( function() 
+    {
+        Main();
+    });
 
     async function Main()
     {
@@ -41,7 +27,6 @@
             data: _id,
         });
 
-        console.log(need_project);
 
         $('#name').html(need_project.data.name || "Null");
         $('#target').html(need_project.data.target || "Null");

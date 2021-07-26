@@ -81,7 +81,6 @@ async function not_active_callback(msg)
     var _id         = h._GET(_data, 'msg_id');
     var _type       = h._GET(_data, 'type');
 
-    console.log(_id);
 
     const FUN = 
     {
@@ -101,12 +100,12 @@ async function not_active_callback(msg)
             _moderation.forEach(element => {
                 var _array = [];
                 _array.push({
-                    text: `Открыть проект под номером ${element._id}`,
-                    url: `localhost.ru/tbot/html/project/creating/#${element._id}`,
+                    text: `Ппроект под номером ${element._id}`,
+                    url: `${h.getURL()}html/project/profil/#${element._id}`,
                 })
                 _keyboard.push(_array);
             });
-            this.editMSG('Выберите проект для правки:', _id, _keyboard);
+            this.editMSG('Проекты на модерации:', _id, _keyboard);
         },
         "correction": function()
         {
@@ -116,7 +115,7 @@ async function not_active_callback(msg)
                 var _array = [];
                 _array.push({
                     text: `Открыть проект под номером ${element._id}`,
-                    url: `localhost.ru/tbot/html/project/creating/#${element._id}`,
+                    url: `${h.getURL()}html/project/creating/#${element._id}`,
                 })
                 _keyboard.push(_array);
             });
@@ -163,7 +162,7 @@ async function addProject(msg)
     });
 
     var html = `Вам нужно заполнить данные, чтобы создать проект, нажмите кнопку "Заполнить данные", чтобы продолжить когда будите готовы`;
-    var _url = `${config.host_url}html/project/creating/#${msg.from.id}`;
+    var _url = `${h.getURL()}html/project/creating/#${msg.from.id}`;
 
     await h.send_html(msg.from.id, html, {
         "inline_keyboard": [

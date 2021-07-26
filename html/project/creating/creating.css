@@ -431,6 +431,28 @@ html, body {
   background-color: #ECF0F3;
 }
 
+.end_get_project_row h1 {
+  font-weight: 600;
+  font-size: 27px;
+}
+
+.end_get_project_row a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #3A9FFE;
+  height: 50px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: white;
+  text-decoration: none;
+  border-radius: 9px;
+}
+
 .end_get_project_img {
   width: 100px;
   height: 100px;
@@ -607,5 +629,54 @@ html, body {
 
 .menu_block span {
   font-weight: 400;
+}
+
+.row_canvas {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.row_canvas canvas {
+  background-color: white;
+  margin: 0 auto;
+}
+
+.index_page_buttons {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.index_page_buttons span {
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+.index_page_buttons .clean {
+  background-color: #9A73E4;
+  margin-right: 10px;
+}
+
+.index_page_buttons .put {
+  background-color: #3A9FFF;
+}
+
+.index_page_buttons .put i {
+  margin-left: 10px;
 }
 /*# sourceMappingURL=creating.css.map */

@@ -1,25 +1,11 @@
 (function (global) {
 
-    (() => {
-        delete imSocket;
-        imSocket = null;
-        var url = null;
-        if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
-            url = global_data.data_url_localhost;
-            imSocket = io(url, {transports: ['polling']});
-        } else {
-            url = global_data.data_url_server;
-            imSocket = io(url, {
-                path: '/socket.io'
-            });
-        }
-        imSocket.on('connect', function() {
-            console.log("Сервер подключен к: " + url);
-            global.loadResources(['./components.js'], () => {
-                Main();
-            });
+    io_connect( function() 
+    {
+        global.loadResources(['./components.js'], () => {
+            Main();
         });
-    })();
+    });
 
     async function Main()
     {
@@ -58,6 +44,29 @@
                 }
             }
 
+            if(_project.signature_document) 
+            {
+                if(_project.signature_document.status == 'wait') 
+                {
+                    global._typePage = 'signature_document';
+
+                    $('.index_page_body h1').html('Подписание документов');
+                    $('.index_page_body h2').html('Подпишите составленный документ');
+                    $('.index_page_body_button span').html('Отправить');
+
+                    await _components.render_signature_document(_project);
+
+                    $('.index_page_body_button').click( function() {
+                        _components.correct_signature_document(_id);
+                        $('.end_get_project').css('display', "flex");
+                    });
+                    
+
+                    changeTextArea();
+
+                }
+            }
+
             if(_project.redacting) 
             {
                 $('.index_page_body h1').html('Исправление данных');
@@ -76,7 +85,7 @@
         } else 
         {
             $('.index_page_header_user span').html(`${_User.first_name} ${_User.last_name}`);
-            $('.index_page_header_user_img').html(`<img src='http://localhost/tbot/users_profile/${_User.user}/${_User.img}'></img>`)
+            $('.index_page_header_user_img').html(`<img src='${getURL()}/users_profile/${_User.user}/${_User.img}'></img>`)
     
             $('.index_page_body_points').fadeOut( async function() {
                 await _components.render($('.index_page_body_header_type .selected').attr('data'));
@@ -122,9 +131,9 @@
             $('.all_good_cheack').click( async function() {
                 var file_name = $(this).parent().parent().parent().find('.loader_input').attr('data');
                 if(global._typePage == "signature") {
-                    global.open(`http://localhost/tbot/projects/${_id}/${file_name}`, "_blank");
+                    global.open(`${getURL()}/projects/${_id}/${file_name}`, "_blank");
                 } else {
-                    global.open(`http://localhost/tbot/users/${_id}/${file_name}`, "_blank");
+                    global.open(`${getURL()}/users/${_id}/${file_name}`, "_blank");
                 }
             });
 

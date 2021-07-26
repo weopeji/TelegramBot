@@ -766,6 +766,7 @@ html, body {
   height: 38px;
   border-radius: 9px;
   overflow: hidden;
+  background-color: #A0A4A7;
 }
 
 .user_block_img img {
@@ -1022,5 +1023,67 @@ html, body {
 
 .index_page_profil_header span.selected::before {
   display: block;
+}
+
+.putDocumentToSignature {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.putDocumentToSignature input {
+  display: none;
+}
+
+.putDocumentToSignature_open {
+  padding: 10px 20px;
+  background-color: #3A9FFF;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.putDocumentToSignature_block {
+  display: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.putDocumentToSignature_block .selected {
+  display: block;
+}
+
+.putDocumentToSignature_block_del,
+.putDocumentToSignature_block_start {
+  padding: 10px 20px;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  display: none;
+}
+
+.putDocumentToSignature_block_del .selected,
+.putDocumentToSignature_block_start .selected {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.putDocumentToSignature_block_del {
+  background-color: #FEBD2F;
+  margin-right: 10px;
+}
+
+.putDocumentToSignature_block_start {
+  background-color: #1FD860;
 }
 /*# sourceMappingURL=index.css.map */
