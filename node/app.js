@@ -10,6 +10,7 @@ const fileUpload                    = require('express-fileupload');
 const wrench                        = require('wrench');
 const util                          = require('util');
 const path                          = require('path');
+const exec                          = require('child_process').exec;
 
 const models                        = require('./models');
 const config                        = require('./config.json');
@@ -28,6 +29,8 @@ var components_html                 = null;
 var server                          = null;
 var io                              = null;
 var mongoURl                        = config.mongoUri;
+
+// platform ================================================================================
 
 if(process.platform == 'win32') {config.secure = false} else {config.secure = true};
 
@@ -63,6 +66,7 @@ mongoose.connect(mongoURl, { useNewUrlParser: true, useUnifiedTopology: true })
             () => {
                 console.log(`Занят на сервере${config.appPort} порт...`);
                 load_helpers(); 
+                webhook();
             }
         );
     })
@@ -240,5 +244,4 @@ io.on('connection', function(socket) {
     socket.on('components', function(data, callback) {
         components_page(this, data, callback);
     });
-
 });
