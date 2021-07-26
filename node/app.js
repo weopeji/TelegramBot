@@ -19,7 +19,7 @@ const _data                         = require('./data.js');
 const User                          = mongoose.model('User');
 const Project                       = mongoose.model('Project');
 
-const bot                           = null;
+var bot                           = null;
 var helper_functions                = null;
 var main_page                       = null;
 var investor_page                   = null;
