@@ -66,7 +66,6 @@ mongoose.connect(mongoURl, { useNewUrlParser: true, useUnifiedTopology: true })
             () => {
                 console.log(`Занят на сервере${config.appPort} порт...`);
                 load_helpers(); 
-                webhook();
             }
         );
     })
