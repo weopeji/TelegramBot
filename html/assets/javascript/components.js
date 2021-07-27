@@ -123,6 +123,27 @@
             return this.$component;
         }
 
+        async render_mini() 
+        {
+            this.$component.empty();
+            this.$component.append(this.header);
+            var _moderations = await this.getModerationsBlocks();
+            _moderations.forEach(element => {
+                var templateText = `
+                    <div class="index_page_body_moderation_block">
+                        <div class="redacting_button" data="${element._id}">
+                            <i class="fas fa-pen-square"></i>
+                        </div>
+
+                        <h1>${element.data.name} № ${element._id}</h1>
+                    </div>
+                `;
+                this.$component.append(templateText);
+            });
+
+            return this.$component;
+        }
+
     }
 
     class active {

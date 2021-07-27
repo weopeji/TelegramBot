@@ -15,31 +15,37 @@
         const _project          = new global.Components.project();
         const _correction       = new global.Components.correction();
 
+        const _components = {
+            "moderation": async function() {
+                var _block = await _moderation.render();
+                $('.index_page_body_row').empty();
+                $('.index_page_body_row').append(_block);
+                redactingButton();
+            },
+            "moderation_mini": async function() {
+                var _block = await _moderation.render_mini();
+                $('.index_page_body_row').empty();
+                $('.index_page_body_row').append(_block);
+                redactingButton();
+            },
+            "active": async function() {
+                var _block = await _active.render();
+                $('.index_page_body_row').empty();
+                $('.index_page_body_row').append(_block);
+                redactingButton();
+            },
+            "correction": async function() {
+                var _block = await _correction.render();
+                $('.index_page_body_row').empty();
+                $('.index_page_body_row').append(_block);
+                redactingButton();
+            },
+        }
+
         $('.index_page_menu_line').click( function() 
         {
             $('.index_page_menu_line').removeClass('selected');
             $(this).addClass('selected');
-
-            const _components = {
-                "moderation": async function() {
-                    var _block = await _moderation.render();
-                    $('.index_page_body_row').empty();
-                    $('.index_page_body_row').append(_block);
-                    redactingButton();
-                },
-                "active": async function() {
-                    var _block = await _active.render();
-                    $('.index_page_body_row').empty();
-                    $('.index_page_body_row').append(_block);
-                    redactingButton();
-                },
-                "correction": async function() {
-                    var _block = await _correction.render();
-                    $('.index_page_body_row').empty();
-                    $('.index_page_body_row').append(_block);
-                    redactingButton();
-                },
-            }
 
             _components[$(this).attr('data')]();
         });
@@ -55,11 +61,13 @@
             $('.moderation_search_block_buttons_type_full').click( function() {
                 $('.moderation_search_block_buttons_type_mini').removeClass('selected');
                 $(this).addClass('selected');
+                _components.moderation();
             });
 
             $('.moderation_search_block_buttons_type_mini').click( function() {
                 $('.moderation_search_block_buttons_type_full').removeClass('selected');
                 $(this).addClass('selected');
+                _components.moderation_mini();
             })
         }
 
