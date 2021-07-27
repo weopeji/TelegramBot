@@ -499,7 +499,7 @@ html, body {
 }
 
 .body_point textarea {
-  width: calc(100% - 100px);
+  width: calc(100% - 85px);
   color: #12263f;
   font-size: .9375rem;
   font-weight: 400;
@@ -507,7 +507,7 @@ html, body {
   border: 1px solid #d2ddec;
   display: block;
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 5px;
   margin: 0 auto;
   margin-bottom: 20px;
 }
@@ -819,7 +819,7 @@ html, body {
 .wrapper_block .wrapper {
   margin-top: 20px;
   margin-bottom: 20px;
-  border-radius: 5px;
+  border-radius: 2px;
   overflow: hidden;
   color: white;
 }
