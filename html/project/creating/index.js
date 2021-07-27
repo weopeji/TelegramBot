@@ -16,7 +16,7 @@
         global._typePage = 'creating';
 
         
-        if(_id.length < 9) 
+        if(_id.length < 7) 
         {
             var _project = await _components.getProject(_id);
 
