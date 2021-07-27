@@ -60,7 +60,7 @@
                 {
                     $('.index_page_profil_data h1').html(_config.header());
                     this._append("Название компании", need_project.parce.name);
-                    this._append("Подробная информация", need_project.parce.info, true);
+                    this._append("Подробная информация", "https://www.rusprofile.ru", true);
                     this._append("ИНН/ОГРН", need_project.parce.inn + "/" + need_project.parce.ogrn);
                     this._append("Адрес юридический", need_project.parce.addr);
                     this._append("Адрес фактический", need_project.data.addr);
