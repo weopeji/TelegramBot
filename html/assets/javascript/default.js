@@ -57,8 +57,8 @@
                 $(this).addClass('selected');
             });
 
-            $('.moderation_search_block_buttons_type_full').click( function() {
-                $('.moderation_search_block_buttons_type_mini').removeClass('selected');
+            $('.moderation_search_block_buttons_type_mini').click( function() {
+                $('.moderation_search_block_buttons_type_full').removeClass('selected');
                 $(this).addClass('selected');
             })
         }
