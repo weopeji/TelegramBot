@@ -49,9 +49,18 @@
                 var _id     = $(this).attr("data");
                 $('.index_page_body_row').empty();
                 var _block  = await _project.render(_id);
-
                 acceptingButtons(_id);
             });
+
+            $('.moderation_search_block_buttons_type_full').click( function() {
+                $('.moderation_search_block_buttons_type_mini').removeClass('selected');
+                $(this).addClass('selected');
+            });
+
+            $('.moderation_search_block_buttons_type_full').click( function() {
+                $('.moderation_search_block_buttons_type_mini').removeClass('selected');
+                $(this).addClass('selected');
+            })
         }
 
         function acceptingButtons(_id) {
