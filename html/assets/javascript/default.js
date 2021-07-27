@@ -42,6 +42,8 @@
             },
         }
 
+        _components.moderation();
+
         $('.index_page_menu_line').click( function() 
         {
             $('.index_page_menu_line').removeClass('selected');

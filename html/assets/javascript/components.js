@@ -75,7 +75,7 @@
                 var templateText = `
                     <div class="index_page_body_moderation_block">
                         <div class="redacting_button" data="${element._id}">
-                            <i class="fas fa-pen-square"></i>
+                            <i class="fas fa-bars"></i>
                         </div>
 
                         <h1>${element.data.name}</h1>
