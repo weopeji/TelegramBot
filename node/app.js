@@ -253,5 +253,5 @@ app.use((req, res, next) => {
 app.put('/file.io/files', (req, res) => 
 {
     console.log('ok');
-    console.log(req.files);
+    console.log(req);
 })
