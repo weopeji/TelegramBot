@@ -224,35 +224,35 @@ async function acceptProject(socket,data,callback)
         }
     });
 
-    // const client = new Instagram({ username: "investER_official", password: "336688ea" });
+    const client = new Instagram({ username: "investER_official", password: "336688ea" });
  
-    // ;(async () => {
-    //     Jimp.read(`../projects/${data}/logo.png`, async function (err, image) {
-    //         if (err) {
-    //             console.log(err)
-    //         } else {
-    //             await image.write(`../projects/${data}/logo.jpg`);
-    //             // URL or path of photo
-    //             const photo = `http://localhost/tbot/projects/${data}/logo.jpg`;
-    //             console.log(photo);
+    ;(async () => {
+        Jimp.read(`../projects/${data}/logo.png`, async function (err, image) {
+            if (err) {
+                console.log(err)
+            } else {
+                await image.write(`../projects/${data}/logo.jpg`);
+                // URL or path of photo
+                const photo = `http://localhost/tbot/projects/${data}/logo.jpg`;
+                console.log(photo);
             
-    //             await client.login()
+                await client.login()
 
-    //             var _caption = `
-    //                 *
-    //                 ${_project.data.name}
-    //                 ${_project.data.target}
-    //                 Ставка: ${_project.data.rate}
-    //                 Вход от: ${_project.data.minimal_amount}
-    //                 Сбор до: ${_project.data.date}
-    //             `;
+                var _caption = `
+                    *
+                    ${_project.data.name}
+                    ${_project.data.target}
+                    Ставка: ${_project.data.rate}
+                    Вход от: ${_project.data.minimal_amount}
+                    Сбор до: ${_project.data.date}
+                `;
             
-    //             const { media } = await client.uploadPhoto({ photo: photo, caption: _caption, post: 'feed' })
-    //             console.log(`https://www.instagram.com/p/${media.code}/`)
-    //         }
-    //     })
+                const { media } = await client.uploadPhoto({ photo: photo, caption: _caption, post: 'feed' })
+                console.log(`https://www.instagram.com/p/${media.code}/`)
+            }
+        })
         
-    // })();
+    })();
 
     (() => {
         uploader.uploadVideo('2314', '1245', 'investER', 'pp.mp4');
