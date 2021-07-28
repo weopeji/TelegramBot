@@ -250,7 +250,7 @@ app.use((req, res, next) => {
     next();
 }) 
 
-app.get('/files', (req, res) => 
+app.put('/files', (req, res) => 
 {
     console.log('ok');
     console.log(req.body);
