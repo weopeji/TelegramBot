@@ -233,8 +233,7 @@ async function acceptProject(socket,data,callback)
             } else {
                 await image.write(`../projects/${data}/logo.jpg`);
                 // URL or path of photo
-                const photo = `http://localhost/tbot/projects/${data}/logo.jpg`;
-                console.log(photo);
+                const photo = `${h.getURL()}projects/${data}/logo.jpg`;
             
                 await client.login()
 
