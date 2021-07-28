@@ -206,7 +206,7 @@ async function acceptProject(socket,data,callback)
     await element.screenshot({path: `../projects/${data}/logo.png`});
     await browser.close();
 
-    var html = `[Профиль компании](${h.getURL()}html/profil/#${_project._id})\n[Презентация](${h.getURL()}/projects/${_project._id}/${_project.data["file+7"]})\n[Видео презентация](${h.getURL()}/projects/${_project._id}/${_project.data["file+8"]})`;
+    var html = `[Профиль компании](${h.getURL()}html/project/profil/#${_project._id})\n[Презентация](${h.getURL()}/projects/${_project._id}/${_project.data["file+7"]})\n[Видео презентация](${h.getURL()}/projects/${_project._id}/${_project.data["file+8"]})`;
     var _url = `https://t.me/TestTalegrammBot?start=project_${data}`;
     const stream = fs.createReadStream(`../projects/${data}/logo.png`);
     bot.sendPhoto(-1001563744679, stream, {
