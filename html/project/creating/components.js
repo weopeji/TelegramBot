@@ -644,7 +644,7 @@
                 var _url = `${getURL()}/file.io/files`;
 
                 const response = await fetch(_url, {
-                    method: 'PUT',
+                    method: 'POST',
                     body: Data
                 });
                 const result = await response.json();
