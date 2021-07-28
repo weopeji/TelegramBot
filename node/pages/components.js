@@ -198,7 +198,8 @@ async function acceptProject(socket,data,callback)
     console.log(_urlImgProject);
     const browser = await puppeteer.launch({
         args: ["--no-sandbox",
-            "--disable-setuid-sandbox"]
+            "--disable-setuid-sandbox"],
+        executablePath: '/usr/bin/chromium-browser'
     });
     const page = await browser.newPage();
     await page.goto(_urlImgProject);
