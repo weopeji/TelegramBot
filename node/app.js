@@ -198,8 +198,8 @@ bot.on('message', async (msg) =>
         // ГЛАВНЫЕ ФУНКЦИИ =====================================
         "/start": main_page._CreatorFUN,
         "💰 Инвестор": main_page.change_type,
-        "🏭 Бизнес": main_page.change_type,
-        "🤝 Привлечение": main_page.change_type,
+        "💼 Бизнес": main_page.change_type,
+        "📣 Привлечение": main_page.change_type,
         "🔁 Сменить роль": main_page.notType,
         "⬅️ Назад": main_page.close,
         // ИНВЕСТОР ===========================================
