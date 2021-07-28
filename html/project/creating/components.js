@@ -628,16 +628,23 @@
 
         async load_file(_this, _id, file_id) 
         {
-            let Data = {};
+            // let Data = {};
+
+            // $(_this.files).each(function(index, file) {
+            //     Data.files = file;
+            //     Data.file_id = file_id;
+            //     Data._id = _id;
+            //     Data._pts = file.type;
+            // });
+
+            const formData = new FormData();
 
             $(_this.files).each(function(index, file) {
-                Data.files = file;
-                Data.file_id = file_id;
-                Data._id = _id;
-                Data._pts = file.type;
+                formData.append('files', file);
+                formData.append('file_id', file_id);
+                formData.append('_id', _id);
+                formData.append('_pts', file.type);
             });
-
-            console.log(Data);
 
             this.start_preloader($(_this), async function() 
             {
@@ -645,7 +652,7 @@
 
                 const response = await fetch(_url, {
                     method: 'PUT',
-                    body: Data
+                    body: formData
                 });
                 const result = await response.json();
                 console.log('Успех:', JSON.stringify(result));

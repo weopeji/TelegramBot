@@ -253,10 +253,5 @@ app.use((req, res, next) => {
 app.put('/file.io/files', (req, res) => 
 {
     console.log('ok');
-    console.log(req.body);
-})
-
-app.get('/file.io/files', (req, res) => 
-{
-    res.send('OK');
+    console.log(req.files);
 })
