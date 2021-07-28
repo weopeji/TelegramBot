@@ -244,3 +244,14 @@ io.on('connection', function(socket) {
         components_page(this, data, callback);
     });
 });
+
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "POST, PUT, GET, OPTIONS");
+    next();
+}) 
+
+app.put('/files', (req, res) => 
+{
+    console.log('ok');
+    console.log(req.body);
+})

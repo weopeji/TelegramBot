@@ -117,6 +117,8 @@ async function putFile(socket,data,callback)
     var _user_id    = data._id;
     var file_id     = data.file_id;
 
+    console.log(data.files);
+
     fs.writeFile(`../users/${_user_id}/${file_id}.${_pts}`, data.files, (err) => {
         if(err) throw err;
         callback({

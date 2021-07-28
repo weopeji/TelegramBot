@@ -637,19 +637,29 @@
                 Data._pts = file.type;
             });
 
+            console.log(Data);
+
             this.start_preloader($(_this), async function() 
             {
-                callApi({
-                    methodName: 'putFile',
-                    data: Data,
-                }).then((data) => {
-                    $(_this).parent().parent().find('.loader_input').attr('data', data.file_name);
-                    $(_this).parent().parent().find('.loader_input').fadeOut( function() {
-                        $(_this).parent().parent().find('.all_good').fadeIn( function() {
-                    
-                        });
-                    });
+                var _url = `${getURL()}:3000/files`;
+
+                const response = await fetch(_url, {
+                    method: 'PUT',
+                    body: Data
                 });
+                const result = await response.json();
+                console.log('Успех:', JSON.stringify(result));
+                // await callApi({
+                //     methodName: 'putFile',
+                //     data: Data,
+                // }).then((data) => {
+                //     $(_this).parent().parent().find('.loader_input').attr('data', data.file_name);
+                //     $(_this).parent().parent().find('.loader_input').fadeOut( function() {
+                //         $(_this).parent().parent().find('.all_good').fadeIn( function() {
+                    
+                //         });
+                //     });
+                // });
             });
         }
 
