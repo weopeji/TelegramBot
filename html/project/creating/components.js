@@ -641,7 +641,7 @@
 
             this.start_preloader($(_this), async function() 
             {
-                var _url = `${getURL()}socket.io/files`;
+                var _url = `${getURL()}/socket.io/files`;
 
                 const response = await fetch(_url, {
                     method: 'PUT',
