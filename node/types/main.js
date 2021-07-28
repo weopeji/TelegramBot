@@ -205,6 +205,7 @@ async function _MainMenu(msg)
     };
 
     var _User = await MF.find_user(msg);
+    console.log(_User);
     infoTypes[_User.type](msg);
 }
 
@@ -213,8 +214,8 @@ async function change_type(msg)
     const MF_DATA = 
     {
         "💰 инвестор": "investor",
-        "🏭 бизнес": "business",
-        "🤝 привлечение": "attraction",
+        "💼 бизнес": "business",
+        "📣 привлечение": "attraction",
     }
     await MF.Update_Type(msg, MF_DATA[msg.text.toLowerCase()]);
     _MainMenu(msg);
