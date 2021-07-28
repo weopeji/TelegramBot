@@ -197,9 +197,9 @@ async function acceptProject(socket,data,callback)
     var _urlImgProject = `${h.getURL()}html/project/cover/?id=${data}`;
     console.log(_urlImgProject);
     const browser = await puppeteer.launch({
+        headless: false,
         args: ["--no-sandbox",
             "--disable-setuid-sandbox"],
-        executablePath: '/usr/bin/chromium-browser'
     });
     const page = await browser.newPage();
     await page.goto(_urlImgProject);
