@@ -3,11 +3,16 @@ var User        = null;
 var fs          = null;
 var wrench      = null;
 var path        = null;
-var request     = null;
-var cheerio     = null;
-var puppeteer   = null;
 var bot         = null;
-var fetch       = null;
+var request     = require("request");
+var cheerio     = require("cheerio");
+var needle      = require('needle');
+var puppeteer   = require('puppeteer');
+var fetch       = require("node-fetch");
+var readline    = require('readline');
+var multer      = require("multer");
+var Jimp        = require("jimp");
+var uploader    = require('../helpers/uploader/upload');
 
 const Instagram = require('instagram-web-api');
 
@@ -30,14 +35,6 @@ function privateInit(initPlagins) {
     wrench      = initPlagins.wrench;
     path        = initPlagins.path;
     bot         = initPlagins.bot;
-    request     = require("request");
-    cheerio     = require("cheerio");
-    needle      = require('needle');
-    puppeteer   = require('puppeteer');
-    fetch       = require("node-fetch");
-    readline    = require('readline');
-    multer      = require("multer");
-    Jimp        = require("jimp");
     h           = initPlagins.helper_functions;
 }
 
@@ -189,43 +186,44 @@ async function setSignature(socket,data,callback)
 }
 
 async function setActive(socket,data,callback) {
-    //var _project = await Project.findOneAndUpdate({_id: data}, {type: "active"});
+    var _project = await Project.findOneAndUpdate({_id: data}, {type: "active"});
     callback('ok');
 }
 
 async function acceptProject(socket,data,callback) 
 {
-    // var _project = await Project.findOne({_id: data});
+    var _project = await Project.findOne({_id: data});
 
-    // var _urlImgProject = `${h.getURL()}html/project/cover/?id=${data}`;
-    // const browser = await puppeteer.launch({
-    //     args: ["--no-sandbox",
-    //         "--disable-setuid-sandbox"]
-    // });
-    // const page = await browser.newPage();
-    // await page.goto(_urlImgProject);
-    // await page.emulateMedia('screen');
-    // const element = await page.$('.cover_block');   
-    // await element.screenshot({path: `../projects/${data}/logo.png`});
-    // await browser.close();
+    var _urlImgProject = `${h.getURL()}html/project/cover/?id=${data}`;
+    console.log(_urlImgProject);
+    const browser = await puppeteer.launch({
+        args: ["--no-sandbox",
+            "--disable-setuid-sandbox"]
+    });
+    const page = await browser.newPage();
+    await page.goto(_urlImgProject);
+    await page.emulateMedia('screen');
+    const element = await page.$('.cover_block');   
+    await element.screenshot({path: `../projects/${data}/logo.png`});
+    await browser.close();
 
-    // var html = `[Профиль компании](${h.getURL()}/profil/#${_project._id})\n[Презентация](http://www.example.com/)\n[Видео-презентация](http://www.example.com/)`;
-    // var _url = `https://t.me/TestTalegrammBot?start=project_${data}`;
-    // const stream = fs.createReadStream(`../projects/${data}/logo.png`);
-    // bot.sendPhoto(-1001563744679, stream, {
-    //     "caption": html,
-    //     "parse_mode": "MarkdownV2",
-    //     "reply_markup": {
-    //         "inline_keyboard": [
-    //             [
-    //                 {
-    //                     text: "Инвестровать",
-    //                     url: _url,
-    //                 }
-    //             ]
-    //         ],
-    //     }
-    // });
+    var html = `[Профиль компании](${h.getURL()}/profil/#${_project._id})\n[Презентация](http://www.example.com/)\n[Видео-презентация](http://www.example.com/)`;
+    var _url = `https://t.me/TestTalegrammBot?start=project_${data}`;
+    const stream = fs.createReadStream(`../projects/${data}/logo.png`);
+    bot.sendPhoto(-1001563744679, stream, {
+        "caption": html,
+        "parse_mode": "MarkdownV2",
+        "reply_markup": {
+            "inline_keyboard": [
+                [
+                    {
+                        text: "Инвестровать",
+                        url: _url,
+                    }
+                ]
+            ],
+        }
+    });
 
     // const client = new Instagram({ username: "investER_official", password: "336688ea" });
  
@@ -256,6 +254,10 @@ async function acceptProject(socket,data,callback)
     //     })
         
     // })();
+
+    (() => {
+        uploader.uploadVideo('2314', '1245', 'investER', 'pp.mp4');
+    })()
 }
 
 async function parceProject(type, data, callback) 
