@@ -186,7 +186,7 @@ async function setSignature(socket,data,callback)
 }
 
 async function setActive(socket,data,callback) {
-    var _project = await Project.findOneAndUpdate({_id: data}, {type: "active"});
+    //var _project = await Project.findOneAndUpdate({_id: data}, {type: "active"});
     callback('ok');
 }
 
