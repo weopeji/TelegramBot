@@ -269,6 +269,10 @@ app.use(express.urlencoded({ extended: true }));
 
 app.post('/file.io/files', (req, res) => 
 {
+    console.log(req.body);
+    console.log(req.file);
+    console.log(req.files);
+    console.log(req.form);
 
     var body = '';
     req.on('data',function(data) { body += data; });
