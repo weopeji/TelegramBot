@@ -271,14 +271,17 @@ app.post('/file.io/files', (req, res) =>
         console.log('Error parsing form: ' + err.stack);
     });
 
-    form.on('part', function(part) {
+    form.on('file', (name, file) => 
+    {
+        console.log(name);
+        console.log(file);
+    })
 
-        console.log(part);
-
-        part.on('error', function(err) {
-
-        });
-    });
+    form.on('field', (name, value) => 
+    {
+        console.log(name);
+        console.log(value);
+    })
 
     form.on('close', function() {
         console.log('Upload completed!');
@@ -287,24 +290,8 @@ app.post('/file.io/files', (req, res) =>
 
     form.parse(req);
 
-    // var form = new multiparty.Form();
-
-    // form.parse(req, function(err, fields, files) 
-    // {
-    //     Object.keys(fields).forEach(function(name) {
-    //         console.log('got field named ' + name);
-    //     });
-       
-    //     Object.keys(files).forEach(function(name) {
-    //         console.log('got file named ' + name);
-    //     });
-       
-    //     console.log('Upload completed!');
-    //     res.json({status: "ok"});
-
-    //     fs.rename(files.files[0].path, `/var/www/projects/${fields._id[0]}/${fields.file_id[0]}.${fields._pts[0].split('/')[1]}`, function (err) {
-    //         if (err) throw err
-    //         console.log('Successfully renamed - AKA moved!')
-    //     });
+    // fs.rename(files.files[0].path, `/var/www/projects/${fields._id[0]}/${fields.file_id[0]}.${fields._pts[0].split('/')[1]}`, function (err) {
+    //     if (err) throw err
+    //     console.log('Successfully renamed - AKA moved!')
     // });
 })
