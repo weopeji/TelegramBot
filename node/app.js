@@ -272,10 +272,10 @@ app.post('/file.io/files', (req, res) =>
         res.write('received upload:\n\n');
         res.end(util.inspect({ fields: fields, files: files }));
 
-        console.log(files.files.path);
+        console.log(files.path);
         console.log(`../projects/${fields._id[0]}/${fields.file_id[0]}.${fields._pts[0].split('/')[1]}`);
 
-        fs.rename(files.files.path, `../projects/${fields._id[0]}/${fields.file_id[0]}.${fields._pts[0].split('/')[1]}`, function (err) {
+        fs.rename(files.path, `../projects/${fields._id[0]}/${fields.file_id[0]}.${fields._pts[0].split('/')[1]}`, function (err) {
             if (err) throw err
             console.log('Successfully renamed - AKA moved!')
         })
