@@ -645,7 +645,17 @@
                     headers: {
                       'Content-Type': 'multipart/form-data'
                     }
-                });
+                }).then(data => {
+                    console.log(data);
+                    if(data.status == "ok") {
+                        $(_this).parent().parent().find('.loader_input').attr('data', data.file_name);
+                        $(_this).parent().parent().find('.loader_input').fadeOut( function() {
+                            $(_this).parent().parent().find('.all_good').fadeIn( function() {
+                        
+                            });
+                        });
+                    }
+                })
 
             });
         }
