@@ -287,7 +287,7 @@ app.post('/file.io/files', (req, res) =>
         try {
             if (fs.existsSync(_path)) {
                 console.log('Файл найден');
-                fs.rename(_data.path, `/var/www/projects/${_data._id[0]}/${_data.file_id}.${_data._pts[0].split('/')[1]}`, function (err) {
+                fs.rename(_data.path, `/var/www/projects/${_data._id[0]}/${_data.file_id}.${_data._pts.split('/')[1]}`, function (err) {
                     if (err) throw err
                     console.log('Successfully renamed - AKA moved!');
                     res.json({status: 'ok'});
