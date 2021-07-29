@@ -58,13 +58,13 @@ async function not_active(msg)
     if(_moderation.length > 0) {
         keyboard.unshift([{
             text: "Ожидают модерации",
-            callback_data: `place=not_active&msg_id=${msg.message_id + 2}&type=moderation`,
+            callback_data: `place=not_active&msg_id=${msg.message_id + 2}&type=moderation&data=0`,
         }]);
     }
     if(_correction.length > 0) {
         keyboard.unshift([{
             text: "Ожидают исправления",
-            callback_data: `place=not_active&msg_id=${msg.message_id + 2}&type=correction`,
+            callback_data: `place=not_active&msg_id=${msg.message_id + 2}&type=correction&data=0`,
         }]);
     }
 
@@ -80,6 +80,7 @@ async function not_active_callback(msg)
     var _data       = msg.data;
     var _id         = h._GET(_data, 'msg_id');
     var _type       = h._GET(_data, 'type');
+    var btnData     = h._GET(_data, 'data');
 
 
     const FUN = 
@@ -96,6 +97,11 @@ async function not_active_callback(msg)
         "moderation": function() 
         {
             var _moderation = _projects.filter(el => el.type == "moderation");
+
+            console.log(_moderation);
+
+
+
             var _keyboard   = [];
             _moderation.forEach(element => {
                 var _array = [];
