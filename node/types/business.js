@@ -105,7 +105,7 @@ async function not_active_callback(msg)
                 needProject = _moderation[0];
             }
 
-            var _urlImgProject = `${h.getURL()}html/project/cover/?id=${data}`;
+            var _urlImgProject = `${h.getURL()}html/project/cover/?id=${needProject._id}`;
             const browser = await puppeteer.launch({
                 args: ['--no-sandbox', '--disable-setuid-sandbox'],
             });
