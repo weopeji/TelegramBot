@@ -259,9 +259,9 @@ app.post('/file.io/files', (req, res) =>
         console.log(chunk.toString());
     });
 
-    request.on('end', function(){
-        response.writeHead(200, "OK", {'Content-Type' : 'text/html'});
-        response.end()
+    req.on('end', function(){
+        res.writeHead(200, "OK", {'Content-Type' : 'text/html'});
+        res.end()
     });
 
     // var _pts        = req.files.files.mimetype.split('/')[1];
