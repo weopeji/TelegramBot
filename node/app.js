@@ -268,7 +268,7 @@ app.post('/file.io/files', (req, res) =>
     var form    = new multiparty.Form({
         maxFilesSize: 2 * 1024 * 1024
     });
-    
+
     var _data   = {};
 
     form.on('error', function(err) {
@@ -290,7 +290,7 @@ app.post('/file.io/files', (req, res) =>
         try {
             if (fs.existsSync(_path)) {
                 console.log('Файл найден');
-                fs.rename(_data.path, `/var/www/projects/${_data._id[0]}/${_data.file_id}.${_data._pts.split('/')[1]}`, function (err) {
+                fs.rename(_data.path, `/var/www/users/${_data._id}/${_data.file_id}.${_data._pts.split('/')[1]}`, function (err) {
                     if (err) throw err
                     console.log('Successfully renamed - AKA moved!');
                     res.json({
