@@ -641,8 +641,17 @@
             {
                 var _url = `${getURL()}/file.io/files`;
 
-                var post_file = await postData(_url, formData);
-                console.log(post_file);
+                // var post_file = await postData(_url, formData);
+                // console.log(post_file);
+
+                fetch(_url, {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(r => r.json())
+                .then(data => {
+                    onsole.log(data)
+                })
 
                 // $.ajax({
                 //     url: _url,

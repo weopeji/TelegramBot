@@ -267,7 +267,10 @@ app.post('/file.io/files', (req, res) =>
 {
     res.writeHead(200, "OK", {'Content-Type' : 'text/html'});
 
+    console.log(req.body);
+
     req.on("data", function(chunk) {
+        console.log(chunk);
         var _data = getFormData(chunk);
         console.log(_data);
     });
