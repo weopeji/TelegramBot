@@ -628,29 +628,29 @@
 
         async load_file(_this, _id, file_id) 
         {
-            const formData = new FormData();
+            var _formData = new FormData();
 
             $(_this.files).each(function(index, file) {
-                formData.append('files', file);
-                formData.append('file_id', file_id);
-                formData.append('_id', _id);
-                formData.append('_pts', file.type);
+                _formData.append('files', file);
+                _formData.append('file_id', file_id);
+                _formData.append('_id', _id);
+                _formData.append('_pts', file.type);
             });
 
-            var _data = {};
+            // var _data = {};
 
-            $(_this.files).each(function(index, file) {
-                _data.files     = file;
-                _data.file_id   = file_id;
-                _data._id       = _id;
-                _data._pts      = file.type;
-            });
+            // $(_this.files).each(function(index, file) {
+            //     _data.files     = file;
+            //     _data.file_id   = file_id;
+            //     _data._id       = _id;
+            //     _data._pts      = file.type;
+            // });
 
             this.start_preloader($(_this), async function() 
             {
                 var _url = `${getURL()}/file.io/files`;
 
-                var _file = JSON.stringify(_data);
+                var _file = JSON.stringify(_formData);
 
                 console.log(_file);
 
