@@ -265,7 +265,10 @@ function getFormData($form){
 
 app.post('/file.io/files', (req, res) => 
 {
-    var form    = new multiparty.Form();
+    var form    = new multiparty.Form({
+        maxFilesSize: 2 * 1024 * 1024
+    });
+    
     var _data   = {};
 
     form.on('error', function(err) {
