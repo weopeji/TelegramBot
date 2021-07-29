@@ -122,10 +122,12 @@
             $('.body_point_line_header_text input[type=file]').change( async function() 
             {
                 if(_typePage == 'signature') {
-                    _components.load_file_signature(this, _id, $(this).attr('id'));
+                    await _components.load_file_signature(this, _id, $(this).attr('id'));
                 } else {
-                    _components.load_file(this, _id, $(this).attr('id'));
+                    await _components.load_file(this, _id, $(this).attr('id'));
                 }
+
+                $(this).val('');
             });
 
             $('.all_good_cheack').click( async function() {
