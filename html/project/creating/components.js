@@ -643,7 +643,10 @@
 
                 fetch(_url, {
                     method: 'POST',
-                    body: formData
+                    body: formData,
+                    headers: {
+                        "Content-Type": "multipart/form-data"
+                    },
                 }).then(function (response) {
                     
                 });
