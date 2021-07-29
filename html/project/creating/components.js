@@ -628,14 +628,14 @@
 
         async load_file(_this, _id, file_id) 
         {
-            var _formData = new FormData();
+            // var _formData = new FormData();
 
-            $(_this.files).each(function(index, file) {
-                _formData.append('files', file);
-                _formData.append('file_id', file_id);
-                _formData.append('_id', _id);
-                _formData.append('_pts', file.type);
-            });
+            // $(_this.files).each(function(index, file) {
+            //     _formData.append('files', file);
+            //     _formData.append('file_id', file_id);
+            //     _formData.append('_id', _id);
+            //     _formData.append('_pts', file.type);
+            // });
 
             // var _data = {};
 
@@ -646,11 +646,23 @@
             //     _data._pts      = file.type;
             // });
 
+            var form    = new FormData();
+            
+            console.log($(_this.files)[0]);
+
+            $(_this.files).each(function(index, file) {
+                form.append('files', file);
+                form.append('file_id', file_id);
+                form.append('_id', _id);
+                form.append('_pts', file.type);
+            });
+        
+
             this.start_preloader($(_this), async function() 
             {
                 var _url = `${getURL()}/file.io/files`;
 
-                var _file = _formData;
+                var _file = form;
 
                 console.log(_file);
 
@@ -766,8 +778,10 @@
         {
             var _file = `
                 <div class="download_buttons">
-                    <input class="file_load" id='${data._id}' type='file'>
-                    <label for="${data._id}">Загрузить <i class='fas fa-download'></i></label>
+                    <form id="${data._id}_form">
+                        <input class="file_load" id='${data._id}' type='file'>
+                        <label for="${data._id}">Загрузить <i class='fas fa-download'></i></label>
+                    <form id="data">
                 </div>
                 <div class="loader_input" id="${data._id}_block">
                     <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
