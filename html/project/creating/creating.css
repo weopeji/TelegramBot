@@ -385,8 +385,8 @@ html, body {
   color: white;
   border-radius: 2px;
   cursor: pointer;
-  color: white;
-  font-size: 125px;
+  color: white !important;
+  font-size: 15px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
