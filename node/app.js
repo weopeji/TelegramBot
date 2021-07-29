@@ -265,9 +265,7 @@ function getFormData($form){
 
 app.post('/file.io/files', (req, res) => 
 {
-    var count = 0;
-    
-    var form = new multiparty.Form();
+    var form    = new multiparty.Form();
 
     form.on('error', function(err) {
         console.log('Error parsing form: ' + err.stack);
@@ -275,16 +273,7 @@ app.post('/file.io/files', (req, res) =>
 
     form.on('part', function(part) {
 
-        if (!part.filename) {
-            console.log('got field named ' + part.name);
-            part.resume();
-        }
-
-        if (part.filename) {
-            count++;
-            console.log('got file named ' + part.name);
-            part.resume();
-        }
+        console.log(part);
 
         part.on('error', function(err) {
 
@@ -293,8 +282,7 @@ app.post('/file.io/files', (req, res) =>
 
     form.on('close', function() {
         console.log('Upload completed!');
-        res.setHeader('text/plain');
-        res.end('Received ' + count + ' files');
+        res.json({status: 'ok'});
     });
 
     form.parse(req);
