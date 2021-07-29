@@ -275,6 +275,8 @@ app.post('/file.io/files', (req, res) =>
  
     form.on('part', function(part) {
         console.log('Procces parsing form');
+
+        console.log(part);
     });
 
     form.on('close', function() {
@@ -293,8 +295,5 @@ app.post('/file.io/files', (req, res) =>
         res.writeHead(200, { 'content-type': 'text/plain' });
         res.write('received upload:\n\n');
         res.end(util.inspect({ fields: fields, files: files }));
-
-        formData.fields     = fields;
-        formData.files      = files;
     });
 })
