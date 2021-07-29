@@ -267,17 +267,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(express.urlencoded({ extended: true }));
 
-var storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, './uploads')
-    },
-    filename: function (req, file, cb) {
-        cb(null, Date.now()+'-'+ file.originalname);
-    }
-});
-    
-var upload = multer({ storage: storage })
-
 app.post('/file.io/files', (req, res) => 
 {
 
