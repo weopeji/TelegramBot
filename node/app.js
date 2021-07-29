@@ -254,8 +254,5 @@ app.use(express.json());
 
 app.put('/file.io/files', (req, res) => 
 {
-    req.on('data', function(data) {
-        console.log(data);
-    })
-    console.log('ok');
+    console.log(req.file);
 })
