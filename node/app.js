@@ -250,18 +250,19 @@ io.on('connection', function(socket) {
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "POST, PUT, GET, OPTIONS");
     next();
-}) 
+});
 
-app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post('/file.io/files', (req, res) => 
 {
+    console.log(req.body);
 
     req.on("data", function(chunk) {
-        console.log(chunk.toString());
-        console.log(chunk.file_id);
-        console.log(req.body);
+        // console.log(chunk.toString());
+        // console.log(chunk.file_id);
+        console.log(req.body.file_id);
     });
 
     req.on('end', function(){
