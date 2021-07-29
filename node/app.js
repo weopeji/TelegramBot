@@ -267,33 +267,23 @@ app.post('/file.io/files', (req, res) =>
 {
     var form = new multiparty.Form();
 
-    var formData = {};
-
-    form.on('error', function(err) {
-        console.log('Error parsing form: ' + err.stack);
-    });
- 
-    form.on('part', function(part) {
-        console.log('Procces parsing form');
-
-        console.log(part);
-    });
-
-    form.on('close', function() {
+    form.parse(req, function(err, fields, files) 
+    {
+        Object.keys(fields).forEach(function(name) {
+            console.log('got field named ' + name);
+        });
+       
+        Object.keys(files).forEach(function(name) {
+            console.log('got file named ' + name);
+        });
+       
         console.log('Upload completed!');
+        res.setHeader('text/plain');
+        res.end('Received ' + files.length + ' files');
 
-        console.log(formData);
-
-        fs.rename(formData.files.files[0].path, `/var/www/projects/${formData.fields._id[0]}/${formData.fields.file_id[0]}.${formData.fields._pts[0].split('/')[1]}`, function (err) {
+        fs.rename(files.files[0].path, `/var/www/projects/${fields._id[0]}/${fields.file_id[0]}.${fields._pts[0].split('/')[1]}`, function (err) {
             if (err) throw err
             console.log('Successfully renamed - AKA moved!')
         });
-    });
-
-    form.parse(req, function(err, fields, files) 
-    {
-        res.writeHead(200, { 'content-type': 'text/plain' });
-        res.write('received upload:\n\n');
-        res.end(util.inspect({ fields: fields, files: files }));
     });
 })
