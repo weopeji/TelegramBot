@@ -252,16 +252,23 @@ app.use((req, res, next) => {
     next();
 });
 
-var urlencodedParcser = bodyParser.urlencoded({ extended: true });
+function getFormData($form){
+    var unindexed_array = $form.serializeArray();
+    var indexed_array = {};
 
-app.post('/file.io/files', urlencodedParcser, (req, res) => 
+    $.map(unindexed_array, function(n, i){
+        indexed_array[n['name']] = n['value'];
+    });
+
+    return indexed_array;
+}
+
+app.post('/file.io/files', (req, res) => 
 {
-    console.log(req.body);
 
     req.on("data", function(chunk) {
-        // console.log(chunk.toString());
-        // console.log(chunk.file_id);
-        console.log(req.body.file_id);
+        var _data = getFormData(chunk);
+        console.log(_data);
     });
 
     req.on('end', function(){
