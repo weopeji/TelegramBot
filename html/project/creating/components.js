@@ -646,7 +646,7 @@
                     _pts: $(_this.files)[0].type,
                 };
 
-                onsole.log(_file.getAll('files'));
+                console.log(_file.getAll('files'));
 
                 console.log(_file);
 
