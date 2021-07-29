@@ -637,6 +637,8 @@
                 formData.append('_pts', file.type);
             });
 
+            console.log(formData);
+
             this.start_preloader($(_this), async function() 
             {
                 var _url = `${getURL()}/file.io/files`;
