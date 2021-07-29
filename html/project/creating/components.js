@@ -645,7 +645,7 @@
                     url: _url,
                     type: "POST",
                     data: formData,
-                    contentType: false,
+                    contentType: 'multipart/form-data',
                     processData: false,
                     success: function(data) {
                         $(_this).parent().parent().find('.loader_input').attr('data', data.file_name);

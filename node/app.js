@@ -255,9 +255,15 @@ app.use(express.json());
 app.post('/file.io/files', (req, res) => 
 {
 
-    req.on("data", function(data) {
-        console.log(data);
-    })
+    req.on("data", function(chunk) {
+        console.log(chunk.tostring());
+    });
+
+    request.on('end', function(){
+        response.writeHead(200, "OK", {'Content-Type' : 'text/html'});
+        response.end()
+    });
+
     // var _pts        = req.files.files.mimetype.split('/')[1];
     // var _user_id    = req.body._id;
     // var file_id     = req.body.file_id;
