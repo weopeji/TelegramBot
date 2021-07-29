@@ -250,6 +250,8 @@ app.use((req, res, next) => {
     next();
 }) 
 
+app.use(express.json());
+
 app.put('/file.io/files', (req, res) => 
 {
     req.on('data', function(data) {

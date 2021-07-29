@@ -640,10 +640,10 @@
             const formData = new FormData();
 
             $(_this.files).each(function(index, file) {
-                formData.append('files', file);
-                formData.append('file_id', file_id);
-                formData.append('_id', _id);
-                formData.append('_pts', file.type);
+                Data.files = file;
+                Data.file_id = file_id;
+                Data._id = _id;
+                Data._pts = file.type;
             });
 
             this.start_preloader($(_this), async function() 
@@ -652,7 +652,7 @@
 
                 const response = await fetch(_url, {
                     method: 'PUT',
-                    body: formData
+                    body: Data
                 });
                 const result = await response.json();
                 console.log('Успех:', JSON.stringify(result));
