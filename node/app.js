@@ -265,14 +265,27 @@ function getFormData($form){
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
-app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: true }));
+
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './uploads')
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now()+'-'+ file.originalname);
+    }
+});
+    
+var upload = multer({ storage: storage })
 
 app.post('/file.io/files', (req, res) => 
 {
 
-    console.log(req.body);
-    console.log(req.files);
-    res.sendStatus(200);
+    var body = '';
+    req.on('data',function(data) { body += data; });
+    req.on('end', function(data) {
+        console.log(JSON.parse(body));
+    });
 
     // req.on("data", function(chunk) {
     //     req.body += chunk;
