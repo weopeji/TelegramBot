@@ -265,7 +265,7 @@
                     body: [
                         {
                             type: "file",
-                            name: "null",
+                            name: "Загрузите вашу презентацию. Обращаем внимание: Презентация не должна содержать контактов!",
                             _id: "file+7"
                         },
                     ]
@@ -738,7 +738,7 @@
             var _file = `
                 <div class="download_buttons">
                     <input class="file_load" id='${data._id}' type='file'>
-                    <label for="${data._id}">Загрузить <i class='fas fa-download'></i></label>
+                    <label for="${data._id}">Загрузить <i class="fas fa-angle-double-down"></i></label>
                 </div>
                 <div class="loader_input" id="${data._id}_block">
                     <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
