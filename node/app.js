@@ -12,7 +12,7 @@ const util                          = require('util');
 const path                          = require('path');
 const exec                          = require('child_process').exec;
 const formidable                    = require('formidable');
-var bodyParser                      = require('body-parser');
+
 
 const models                        = require('./models');
 const config                        = require('./config.json');
@@ -263,38 +263,15 @@ function getFormData($form){
     return indexed_array;
 };
 
-app.use(bodyParser.json());
-app.use(express.urlencoded({ extended: true }));
-
 app.post('/file.io/files', (req, res) => 
 {
-    console.log(req.body);
-    console.log(req.file);
-    console.log(req.files);
-    console.log(req.form);
-
-    var body = '';
-    req.on('data',function(data) { body += data; });
-    req.on('end', function(data) {
-        console.log(data + 'data');
+    var form = new multiparty.Form();
+ 
+    form.parse(req, function(err, fields, files) {
+        res.writeHead(200, { 'content-type': 'text/plain' });
+        res.write('received upload:\n\n');
+        res.end(util.inspect({ fields: fields, files: files }));
     });
-
-    // req.on("data", function(chunk) {
-    //     req.body += chunk;
-    // });
-
-    // req.on('end', function() {
-    //     console.log(req.body);
-    //     res.end()
-    // });
-
-    // res.writeHead(200, "OK", {'Content-Type' : 'text/html'});
-
-    // var _pts        = req.files.files.mimetype.split('/')[1];
-    // var _user_id    = req.body._id;
-    // var file_id     = req.body.file_id;
-
-    // console.log(_pts + _user_id + file_id);
 
     // fs.writeFile(`../projects/${_user_id}/${file_id}.${_pts}`, req.files.files.data, (err) => {
     //     if(err) throw err;

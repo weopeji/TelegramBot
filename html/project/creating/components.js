@@ -657,7 +657,8 @@
             });
         }
 
-        async load_file_signature(_this, _id, file_id) {
+        async load_file_signature(_this, _id, file_id) 
+        {
             let Data = {};
 
             $(_this.files).each(function(index, file) {
