@@ -277,6 +277,7 @@ app.post('/file.io/files', (req, res) =>
 
     form.on('close', function() {
         console.log('Upload completed!');
+        console.log(form);
 
         fs.rename(files.files[0].path, `/var/www/projects/${fields._id[0]}/${fields.file_id[0]}.${fields._pts[0].split('/')[1]}`, function (err) {
             if (err) throw err
@@ -284,7 +285,8 @@ app.post('/file.io/files', (req, res) =>
         });
     });
 
-    form.parse(req, function(err, fields, files) {
+    form.parse(req, function(err, fields, files) 
+    {
         res.writeHead(200, { 'content-type': 'text/plain' });
         res.write('received upload:\n\n');
         res.end(util.inspect({ fields: fields, files: files }));
