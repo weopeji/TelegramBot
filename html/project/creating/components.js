@@ -635,6 +635,8 @@
             _form.append('_id', _id);
             _form.append('_pts', $(_this.files)[0].type);
 
+            console.log($(_this.files)[0]);
+
             this.start_preloader($(_this), async function() 
             {
                 var _url = `${getURL()}/file.io/files`;
