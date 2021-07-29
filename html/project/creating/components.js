@@ -628,35 +628,12 @@
 
         async load_file(_this, _id, file_id) 
         {
-            // var _formData = new FormData();
+            var _form    = new FormData();
 
-            // $(_this.files).each(function(index, file) {
-            //     _formData.append('files', file);
-            //     _formData.append('file_id', file_id);
-            //     _formData.append('_id', _id);
-            //     _formData.append('_pts', file.type);
-            // });
-
-            // var _data = {};
-
-            // $(_this.files).each(function(index, file) {
-            //     _data.files     = file;
-            //     _data.file_id   = file_id;
-            //     _data._id       = _id;
-            //     _data._pts      = file.type;
-            // });
-
-            var form    = new FormData();
-            
-            console.log($(_this.files)[0]);
-
-            $(_this.files).each(function(index, file) {
-                form.append('files', file);
-                form.append('file_id', file_id);
-                form.append('_id', _id);
-                form.append('_pts', file.type);
-            });
-        
+            _form.append('files', $(_this.files)[0]);
+            _form.append('file_id', file_id);
+            _form.append('_id', _id);
+            _form.append('_pts', $(_this.files)[0].type);
 
             this.start_preloader($(_this), async function() 
             {
@@ -670,35 +647,8 @@
                     headers: {
                       'Content-Type': 'application/json'
                     }
-                }); 
+                });
 
-                // $.ajax({
-                //     url: _url,
-                //     type: "POST",
-                //     data: formData,
-                //     contentType: 'multipart/form-data',
-                //     processData: false,
-                //     success: function(data) {
-                //         $(_this).parent().parent().find('.loader_input').attr('data', data.file_name);
-                //         $(_this).parent().parent().find('.loader_input').fadeOut( function() {
-                //             $(_this).parent().parent().find('.all_good').fadeIn( function() {
-                        
-                //             });
-                //         });
-                //     }
-                // });
-
-                // await callApi({
-                //     methodName: 'putFile',
-                //     data: Data,
-                // }).then((data) => {
-                //     $(_this).parent().parent().find('.loader_input').attr('data', data.file_name);
-                //     $(_this).parent().parent().find('.loader_input').fadeOut( function() {
-                //         $(_this).parent().parent().find('.all_good').fadeIn( function() {
-                    
-                //         });
-                //     });
-                // });
             });
         }
 
