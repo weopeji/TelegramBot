@@ -266,6 +266,7 @@ function getFormData($form){
 app.post('/file.io/files', (req, res) => 
 {
     var form    = new multiparty.Form();
+    var _data   = {};
 
     form.on('error', function(err) {
         console.log('Error parsing form: ' + err.stack);
@@ -274,13 +275,11 @@ app.post('/file.io/files', (req, res) =>
     form.on('file', (name, file) => 
     {
         console.log(name);
-        console.log(file);
     })
 
     form.on('field', (name, value) => 
     {
-        console.log(name);
-        console.log(value);
+        
     })
 
     form.on('close', function() {
