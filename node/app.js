@@ -266,23 +266,25 @@ function getFormData($form){
 app.post('/file.io/files', (req, res) => 
 {
     var form = new multiparty.Form();
+
+    form.on('error', function(err) {
+        console.log('Error parsing form: ' + err.stack);
+    });
  
-    form.parse(req, function(err, fields, files) {
-        res.writeHead(200, { 'content-type': 'text/plain' });
-        res.write('received upload:\n\n');
-        res.end(util.inspect({ fields: fields, files: files }));
+    form.on('part', function(part) {
+        console.log('Procces parsing form');
+    });
+
+    form.on('close', function() {
+        console.log('Upload completed!');
+        res.setHeader('text/plain');
+        res.end('Received ' + count + ' files');
 
         fs.rename(files.files[0].path, `/var/www/projects/${fields._id[0]}/${fields.file_id[0]}.${fields._pts[0].split('/')[1]}`, function (err) {
             if (err) throw err
             console.log('Successfully renamed - AKA moved!')
-        })
+        });
     });
 
-    // fs.writeFile(`../projects/${_user_id}/${file_id}.${_pts}`, req.files.files.data, (err) => {
-    //     if(err) throw err;
-    //     res.set({
-    //         'Access-Control-Allow-Origin': "*"
-    //     });
-    //     res.status(200).send({ file_name: file_id+"."+_pts});
-    // });
+    form.parse(req);
 })
