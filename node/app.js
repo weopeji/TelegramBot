@@ -269,8 +269,15 @@ app.post('/file.io/files', (req, res) =>
 
     form.parse(req, function(err, fields, files) 
     {
+        Object.keys(fields).forEach(function(name) {
+            console.log('got field named ' + name);
+        });
+       
+        Object.keys(files).forEach(function(name) {
+            console.log('got file named ' + name);
+        });
+       
         console.log('Upload completed!');
-
         res.json({status: "ok"});
 
         fs.rename(files.files[0].path, `/var/www/projects/${fields._id[0]}/${fields.file_id[0]}.${fields._pts[0].split('/')[1]}`, function (err) {
