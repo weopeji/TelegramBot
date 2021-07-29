@@ -641,21 +641,24 @@
             {
                 var _url = `${getURL()}/file.io/files`;
 
-                $.ajax({
-                    url: _url,
-                    type: "POST",
-                    data: formData,
-                    contentType: 'multipart/form-data',
-                    processData: false,
-                    success: function(data) {
-                        $(_this).parent().parent().find('.loader_input').attr('data', data.file_name);
-                        $(_this).parent().parent().find('.loader_input').fadeOut( function() {
-                            $(_this).parent().parent().find('.all_good').fadeIn( function() {
+                var post_file = await postData(_url, formData);
+                console.log(post_file);
+
+                // $.ajax({
+                //     url: _url,
+                //     type: "POST",
+                //     data: formData,
+                //     contentType: 'multipart/form-data',
+                //     processData: false,
+                //     success: function(data) {
+                //         $(_this).parent().parent().find('.loader_input').attr('data', data.file_name);
+                //         $(_this).parent().parent().find('.loader_input').fadeOut( function() {
+                //             $(_this).parent().parent().find('.all_good').fadeIn( function() {
                         
-                            });
-                        });
-                    }
-                });
+                //             });
+                //         });
+                //     }
+                // });
 
                 // await callApi({
                 //     methodName: 'putFile',
