@@ -263,25 +263,22 @@ function getFormData($form){
     return indexed_array;
 }
 
-app.use(bodyParser.urlencoded({
-    extended: true
- }))
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post('/file.io/files', (req, res) => 
 {
     console.log(req.body);
+    res.send(req.body);
 
-    res.status(200);
-    res.send('ok');
+    // req.on("data", function(chunk) {
+    //     body += chunk;
+    // });
 
-    req.on("data", function(chunk) {
-        body += chunk;
-    });
-
-    req.on('end', function() {
-        console.log(req.body);
-        res.end()
-    });
+    // req.on('end', function() {
+    //     console.log(req.body);
+    //     res.end()
+    // });
 
     // res.writeHead(200, "OK", {'Content-Type' : 'text/html'});
 

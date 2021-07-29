@@ -641,17 +641,11 @@
             {
                 var _url = `${getURL()}/file.io/files`;
 
-                fetch(_url, {
-                    method: 'POST',
-                    body: formData,
+                axios.post(_url, formData, {
                     headers: {
-                        'Content-Type': 'application/json'
-                    },
-                })
-                .then(r => r.json())
-                .then(data => {
-                    console.log(data)
-                })
+                      'Content-Type': 'application/json'
+                    }
+                });
 
                 // $.ajax({
                 //     url: _url,
