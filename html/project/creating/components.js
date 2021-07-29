@@ -641,7 +641,11 @@
             {
                 var _url = `${getURL()}/file.io/files`;
 
-                axios.post(_url, JSON.stringify(formData), {
+                var _file = JSON.stringify(formData);
+
+                console.log(_file);
+
+                axios.post(_url, _file, {
                     headers: {
                       'Content-Type': 'application/json'
                     }
