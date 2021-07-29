@@ -263,17 +263,21 @@ function getFormData($form){
     return indexed_array;
 }
 
+app.use(bodyParser.json());
+
 app.post('/file.io/files', (req, res) => 
 {
-    req.on("data", function(chunk) {
-        body += chunk;
-    });
+    
 
-    req.on('end', function() {
-        console.log(req.body);
-        res.writeHead(200, "OK", {'Content-Type' : 'text/html'});
-        res.end()
-    });
+    // req.on("data", function(chunk) {
+    //     body += chunk;
+    // });
+
+    // req.on('end', function() {
+    //     console.log(req.body);
+    //     res.writeHead(200, "OK", {'Content-Type' : 'text/html'});
+    //     res.end()
+    // });
 
     // res.writeHead(200, "OK", {'Content-Type' : 'text/html'});
 

@@ -646,7 +646,10 @@
 
                 fetch(_url, {
                     method: 'POST',
-                    body: formData
+                    body: formData,
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
                 })
                 .then(r => r.json())
                 .then(data => {
