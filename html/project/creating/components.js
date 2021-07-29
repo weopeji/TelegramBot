@@ -655,7 +655,7 @@
                             });
                         });
                     }
-               });
+                });
 
                 // await callApi({
                 //     methodName: 'putFile',

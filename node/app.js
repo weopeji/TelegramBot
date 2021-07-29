@@ -11,6 +11,8 @@ const wrench                        = require('wrench');
 const util                          = require('util');
 const path                          = require('path');
 const exec                          = require('child_process').exec;
+const formidable                    = require('formidable')
+var bodyParser                      = require('body-parser');
 
 const models                        = require('./models');
 const config                        = require('./config.json');
@@ -250,7 +252,8 @@ app.use((req, res, next) => {
     next();
 }) 
 
-app.use(express.json());
+app.use(bodyParser.urlencoded());
+app.use(bodyParser.json());
 
 app.post('/file.io/files', (req, res) => 
 {
