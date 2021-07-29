@@ -271,6 +271,9 @@ app.post('/file.io/files', (req, res) =>
         res.writeHead(200, { 'content-type': 'text/plain' });
         res.write('received upload:\n\n');
         res.end(util.inspect({ fields: fields, files: files }));
+
+        console.log(fields);
+        console.log(files);
     });
 
     // fs.writeFile(`../projects/${_user_id}/${file_id}.${_pts}`, req.files.files.data, (err) => {
