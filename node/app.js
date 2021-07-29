@@ -257,6 +257,8 @@ app.post('/file.io/files', (req, res) =>
 
     req.on("data", function(chunk) {
         console.log(chunk.toString());
+        console.log(chunk.file_id);
+        console.log(req.body);
     });
 
     req.on('end', function(){
