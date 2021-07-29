@@ -261,15 +261,12 @@ function getFormData($form){
     });
 
     return indexed_array;
-}
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+};
 
 app.post('/file.io/files', (req, res) => 
 {
-    console.log(req.body);
-    res.send(req.body);
+    console.log(req);
+    res.send('form');
 
     // req.on("data", function(chunk) {
     //     body += chunk;
