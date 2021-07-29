@@ -282,14 +282,29 @@ app.post('/file.io/files', (req, res) =>
         _data[name] = value;
     });
 
+    var cheack_file = (_path) => 
+    {
+        try {
+            if (fs.existsSync(_path)) {
+                console.log('Файл найден');
+            } else {
+                console.log('Файл не найден');
+                cheack_file();
+            }
+        } catch(err) {
+            console.error(err)
+        }
+    }
+
     form.on('close', function() 
     {
         console.log('Upload completed!');
-        fs.rename(_data.path, `/var/www/projects/${_data._id[0]}/${_data.file_id[0]}.${_data._pts[0].split('/')[1]}`, function (err) {
-            if (err) throw err
-            console.log('Successfully renamed - AKA moved!');
-            res.json({status: 'ok'});
-        });
+        cheack_file(_data.path);
+        // fs.rename(_data.path, `/var/www/projects/${_data._id[0]}/${_data.file_id}.${_data._pts[0].split('/')[1]}`, function (err) {
+        //     if (err) throw err
+        //     console.log('Successfully renamed - AKA moved!');
+        //     res.json({status: 'ok'});
+        // });
     });
 
     form.parse(req);
