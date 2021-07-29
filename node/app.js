@@ -274,23 +274,23 @@ app.post('/file.io/files', (req, res) =>
 
     form.on('file', (name, file) => 
     {
-        console.log(name);
-    })
+        _data.path = file.path;
+    });
 
     form.on('field', (name, value) => 
     {
-        
-    })
+        _data[name] = value;
+    });
 
-    form.on('close', function() {
+    form.on('close', function() 
+    {
         console.log('Upload completed!');
-        res.json({status: 'ok'});
+        fs.rename(_data.path, `/var/www/projects/${_data._id[0]}/${_data.file_id[0]}.${_data._pts[0].split('/')[1]}`, function (err) {
+            if (err) throw err
+            console.log('Successfully renamed - AKA moved!');
+            res.json({status: 'ok'});
+        });
     });
 
     form.parse(req);
-
-    // fs.rename(files.files[0].path, `/var/www/projects/${fields._id[0]}/${fields.file_id[0]}.${fields._pts[0].split('/')[1]}`, function (err) {
-    //     if (err) throw err
-    //     console.log('Successfully renamed - AKA moved!')
-    // });
-})
+});
