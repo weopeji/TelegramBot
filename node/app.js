@@ -254,5 +254,17 @@ app.use(express.json());
 
 app.post('/file.io/files', (req, res) => 
 {
-    console.log(req.body);
+    var _pts        = req.files.files.mimetype.split('/')[1];
+    var _user_id    = req.body._id;
+    var file_id     = req.body.file_id;
+
+    console.log(_pts + _user_id + file_id);
+
+    fs.writeFile(`../projects/${_user_id}/${file_id}.${_pts}`, req.files.files.data, (err) => {
+        if(err) throw err;
+        res.set({
+            'Access-Control-Allow-Origin': "*"
+        });
+        res.status(200).send({ file_name: file_id+"."+_pts});
+    });
 })

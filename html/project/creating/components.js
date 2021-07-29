@@ -628,15 +628,9 @@
 
         async load_file(_this, _id, file_id) 
         {
-            let Data = {};
-
             const formData = new FormData();
 
             $(_this.files).each(function(index, file) {
-                Data.files = file;
-                Data.file_id = file_id;
-                Data._id = _id;
-                Data._pts = file.type;
                 formData.append('files', file);
                 formData.append('file_id', file_id);
                 formData.append('_id', _id);
@@ -647,15 +641,21 @@
             {
                 var _url = `${getURL()}/file.io/files`;
 
-                const response = await fetch(_url, {
-                    method: 'POST',
-                    body: {
-                        data: 'id',
-                        file: formData
+                $.ajax({
+                    url: _url,
+                    type: "POST",
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function(data) {
+                        $(_this).parent().parent().find('.loader_input').attr('data', data.file_name);
+                        $(_this).parent().parent().find('.loader_input').fadeOut( function() {
+                            $(_this).parent().parent().find('.all_good').fadeIn( function() {
+                        
+                            });
+                        });
                     }
-                });
-                const result = await response.json();
-                console.log('Успех:', JSON.stringify(result));
+               });
 
                 // await callApi({
                 //     methodName: 'putFile',
