@@ -641,7 +641,7 @@
             {
                 var _url = `${getURL()}/file.io/files`;
 
-                fetch("/url", {
+                fetch(_url, {
                     method: 'POST',
                     body: formData
                 }).then(function (response) {
