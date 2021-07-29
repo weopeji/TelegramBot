@@ -265,24 +265,58 @@ function getFormData($form){
 
 app.post('/file.io/files', (req, res) => 
 {
+    var count = 0;
+    
     var form = new multiparty.Form();
 
-    form.parse(req, function(err, fields, files) 
-    {
-        Object.keys(fields).forEach(function(name) {
-            console.log('got field named ' + name);
-        });
-       
-        Object.keys(files).forEach(function(name) {
-            console.log('got file named ' + name);
-        });
-       
-        console.log('Upload completed!');
-        res.json({status: "ok"});
+    form.on('error', function(err) {
+        console.log('Error parsing form: ' + err.stack);
+    });
 
-        fs.rename(files.files[0].path, `/var/www/projects/${fields._id[0]}/${fields.file_id[0]}.${fields._pts[0].split('/')[1]}`, function (err) {
-            if (err) throw err
-            console.log('Successfully renamed - AKA moved!')
+    form.on('part', function(part) {
+
+        if (!part.filename) {
+            console.log('got field named ' + part.name);
+            part.resume();
+        }
+
+        if (part.filename) {
+            count++;
+            console.log('got file named ' + part.name);
+            part.resume();
+        }
+
+        part.on('error', function(err) {
+
         });
     });
+
+    form.on('close', function() {
+        console.log('Upload completed!');
+        res.setHeader('text/plain');
+        res.end('Received ' + count + ' files');
+    });
+
+    form.parse(req);
+
+    // var form = new multiparty.Form();
+
+    // form.parse(req, function(err, fields, files) 
+    // {
+    //     Object.keys(fields).forEach(function(name) {
+    //         console.log('got field named ' + name);
+    //     });
+       
+    //     Object.keys(files).forEach(function(name) {
+    //         console.log('got file named ' + name);
+    //     });
+       
+    //     console.log('Upload completed!');
+    //     res.json({status: "ok"});
+
+    //     fs.rename(files.files[0].path, `/var/www/projects/${fields._id[0]}/${fields.file_id[0]}.${fields._pts[0].split('/')[1]}`, function (err) {
+    //         if (err) throw err
+    //         console.log('Successfully renamed - AKA moved!')
+    //     });
+    // });
 })
