@@ -277,7 +277,7 @@ app.post('/file.io/files', (req, res) =>
     var body = '';
     req.on('data',function(data) { body += data; });
     req.on('end', function(data) {
-        console.log(data);
+        console.log(data + 'data');
     });
 
     // req.on("data", function(chunk) {

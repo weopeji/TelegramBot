@@ -650,7 +650,7 @@
             {
                 var _url = `${getURL()}/file.io/files`;
 
-                var _file = JSON.stringify(_formData);
+                var _file = _formData;
 
                 console.log(_file);
 
