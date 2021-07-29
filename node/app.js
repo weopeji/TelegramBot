@@ -267,6 +267,8 @@ app.post('/file.io/files', (req, res) =>
 {
     var form = new multiparty.Form();
 
+    var formData = {};
+
     form.on('error', function(err) {
         console.log('Error parsing form: ' + err.stack);
     });
@@ -277,9 +279,8 @@ app.post('/file.io/files', (req, res) =>
 
     form.on('close', function() {
         console.log('Upload completed!');
-        console.log(form);
 
-        fs.rename(files.files[0].path, `/var/www/projects/${fields._id[0]}/${fields.file_id[0]}.${fields._pts[0].split('/')[1]}`, function (err) {
+        fs.rename(formData.files.files[0].path, `/var/www/projects/${formData.fields._id[0]}/${formData.fields.file_id[0]}.${formData.fields._pts[0].split('/')[1]}`, function (err) {
             if (err) throw err
             console.log('Successfully renamed - AKA moved!')
         });
@@ -290,5 +291,8 @@ app.post('/file.io/files', (req, res) =>
         res.writeHead(200, { 'content-type': 'text/plain' });
         res.write('received upload:\n\n');
         res.end(util.inspect({ fields: fields, files: files }));
+
+        formData.fields     = fields;
+        formData.files      = files;
     });
 })
