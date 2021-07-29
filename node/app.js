@@ -265,17 +265,15 @@ function getFormData($form){
 
 app.post('/file.io/files', (req, res) => 
 {
-    console.log(req);
-    res.send('form');
 
-    // req.on("data", function(chunk) {
-    //     body += chunk;
-    // });
+    req.on("data", function(chunk) {
+        body += chunk;
+    });
 
-    // req.on('end', function() {
-    //     console.log(req.body);
-    //     res.end()
-    // });
+    req.on('end', function() {
+        console.log(req.body);
+        res.end()
+    });
 
     // res.writeHead(200, "OK", {'Content-Type' : 'text/html'});
 
