@@ -628,7 +628,7 @@
 
         async load_file(_this, _id, file_id) 
         {
-            // let Data = {};
+            let Data = {};
 
             // $(_this.files).each(function(index, file) {
             //     Data.files = file;
