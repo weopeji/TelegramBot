@@ -116,7 +116,7 @@
                             {
                                 type: "string",
                                 name: "Прописка как в паспорте",
-                                info: "null",
+                                info: "Введите точные данные как в паспорте",
                                 _id: "registration"
                             },
                             {
@@ -190,31 +190,31 @@
                         {
                             type: "string",
                             name: "ФИО",
-                            info: "null",
+                            info: "Введите ФИО кирилицей",
                             _id: "initials"
                         },
                         {
                             type: "string",
                             name: "Должность",
-                            info: "null",
+                            info: "Должность которую вы занимаете в компании",
                             _id: "position"
                         },
                         {
                             type: "string",
                             name: "Телефон",
-                            info: "null",
+                            info: "Ваш номер телефона",
                             _id: "phone"
                         },
                         {
                             type: "string",
                             name: "WhatsApp",
-                            info: "null",
+                            info: "Ваш номер телефона привязанный к WhatsApp",
                             _id: "whatsapp"
                         },
                         {
                             type: "string",
                             name: "Email",
-                            info: "null",
+                            info: "Ваш действующий email",
                             _id: "email"
                         }
                     ]
@@ -225,37 +225,37 @@
                         {
                             type: "string",
                             name: "Банк-получатель",
-                            info: "null",
+                            info: "Введите название банка",
                             _id: "bank"
                         },
                         {
                             type: "string",
                             name: "Корр. счет",
-                            info: "null",
+                            info: "Введите Корр. счет",
                             _id: "account_correct"
                         },
                         {
                             type: "string",
                             name: "БИК",
-                            info: "null",
+                            info: "Введите БИК",
                             _id: "bik"
                         },
                         {
                             type: "string",
                             name: "Получатель",
-                            info: "null",
+                            info: "Введите получателя",
                             _id: "recipient"
                         },
                         {
                             type: "string",
                             name: "Счет получателя",
-                            info: "null",
+                            info: "Введите счет получателя",
                             _id: "account_get"
                         },
                         {
                             type: "string",
                             name: "КПП",
-                            info: "kpp",
+                            info: "Введите КПП",
                             _id: "kpp"
                         }
                     ]
@@ -778,8 +778,8 @@
                             <p>${data.info}</p>
                         </div>
                         <div class="body_point_line_header_info">
-                            <span class="_not">Не заполнено</span>
-                            <span class="_yes">Готово</span>
+                            <span class="_not" style="display: none;">Не заполнено</span>
+                            <span class="_yes" style="display: block;">Готово</span>
                         </div>
                     </div>
                     <textarea id="${data._id}" class="text_area" rows="1" placeholder="Введите значение"></textarea>
@@ -1075,6 +1075,7 @@
         correct(param, user) 
         {
             var correctArray = {};
+            var types = {};
 
             correctArray.organization = param;
 
@@ -1093,14 +1094,17 @@
                     _string: function(element) 
                     {
                         correctArray[element._id] = $(`#${element._id}`).val();
+                        types[element._id] = "string";
                     },
                     _file: function(element) 
                     {
                         correctArray[element._id] = document.getElementById(`${element._id}_block`).getAttribute('data');
+                        types[element._id] = "file";
                     },
                     _menu: function(element)
                     {
                         correctArray[element._id] = $(`#${element._id}`).val();
+                        types[element._id] = "menu";
                     },
                 }
 
@@ -1132,9 +1136,8 @@
 
             for(var key in correctArray) 
             {
-                if(key == "rate") {
-                    correctArray[key] = correctArray[key] * 12;
-                }
+                if(key == "rate") {correctArray[key] = correctArray[key] * 12;};
+                if(types[key] == 'file') continue;
                 var _data = correctArray[key];
                 if(_data.length == 0 || _data == null) {
                     alert('Введите все данные!');
