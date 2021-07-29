@@ -270,25 +270,10 @@ app.use(express.urlencoded({ extended: true }));
 app.post('/file.io/files', (req, res) => 
 {
 
-    // connect-form adds the req.form object
-    // we can (optionally) define onComplete, passing
-    // the exception (if any) fields parsed, and files parsed
-    req.form.complete(function(err, fields, files){
-        if (err) {
-        next(err);
-        } else {
-        console.log('\nuploaded %s to %s'
-            ,  files.image.filename
-            , files.image.path);
-        res.redirect('back');
-        }
-    });
-
-    // We can add listeners for several form
-    // events such as "progress"
-    req.form.on('progress', function(bytesReceived, bytesExpected){
-        var percent = (bytesReceived / bytesExpected * 100) | 0;
-        process.stdout.write('Uploading: %' + percent + '\r');
+    var body = '';
+    req.on('data',function(data) { body += data; });
+    req.on('end', function(data) {
+        console.log(data);
     });
 
     // req.on("data", function(chunk) {
