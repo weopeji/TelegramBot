@@ -637,13 +637,20 @@
                 formData.append('_pts', file.type);
             });
 
-            console.log(formData);
+            var _data = {};
+
+            $(_this.files).each(function(index, file) {
+                _data.files     = file;
+                _data.file_id   = file_id;
+                _data._id       = _id;
+                _data._pts      = file.type;
+            });
 
             this.start_preloader($(_this), async function() 
             {
                 var _url = `${getURL()}/file.io/files`;
 
-                var _file = JSON.stringify(formData);
+                var _file = JSON.stringify(_data);
 
                 console.log(_file);
 
