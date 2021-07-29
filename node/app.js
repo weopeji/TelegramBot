@@ -254,6 +254,9 @@ app.use(express.json());
 
 app.post('/file.io/files', (req, res) => 
 {
+    console.log(req);
+    res.status(200);
+    
     req.on("data", function() {
         console.log(req);
     })
