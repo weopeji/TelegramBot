@@ -263,6 +263,10 @@ function getFormData($form){
     return indexed_array;
 };
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 app.post('/file.io/files', (req, res) => 
 {
 
