@@ -252,6 +252,8 @@ app.use((req, res, next) => {
 
 app.put('/file.io/files', (req, res) => 
 {
+    req.on('data', function(data) {
+        console.log(data);
+    })
     console.log('ok');
-    console.log(req);
 })
