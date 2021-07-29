@@ -728,10 +728,8 @@
         {
             var _file = `
                 <div class="download_buttons">
-                    <form id="${data._id}_form">
-                        <input class="file_load" id='${data._id}' type='file'>
-                        <label for="${data._id}">Загрузить <i class='fas fa-download'></i></label>
-                    <form id="data">
+                    <input class="file_load" id='${data._id}' type='file'>
+                    <label for="${data._id}">Загрузить <i class='fas fa-download'></i></label>
                 </div>
                 <div class="loader_input" id="${data._id}_block">
                     <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
