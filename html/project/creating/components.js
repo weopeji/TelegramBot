@@ -646,8 +646,6 @@
                     _pts: $(_this.files)[0].type,
                 };
 
-                console.log(_file.getAll('files'));
-
                 console.log(_file);
 
                 axios.post(_url, _file, {
