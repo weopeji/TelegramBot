@@ -290,14 +290,15 @@ app.post('/file.io/files', (req, res) =>
         try {
             if (fs.existsSync(_path)) {
                 console.log('Файл найден');
-                fs.rename(_data.path, `/var/www/users/${_data._id}/${_data.file_id}.${_data._pts.split('/')[1]}`, function (err) {
-                    if (err) throw err
-                    console.log('Successfully renamed - AKA moved!');
-                    res.json({
-                        status: 'ok',
-                        file_name: `${_data.file_id}.${_data._pts.split('/')[1]}`,
-                    });
-                });
+                console.log(`/var/www/users/${_data._id}/${_data.file_id}.${_data._pts.split('/')[1]}`);
+                // fs.rename(_data.path, `/var/www/users/${_data._id}/${_data.file_id}.${_data._pts.split('/')[1]}`, function (err) {
+                //     if (err) throw err
+                //     console.log('Successfully renamed - AKA moved!');
+                //     res.json({
+                //         status: 'ok',
+                //         file_name: `${_data.file_id}.${_data._pts.split('/')[1]}`,
+                //     });
+                // });
             } else {
                 console.log('Файл не найден');
                 cheack_file();
