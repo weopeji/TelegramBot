@@ -265,29 +265,16 @@ function getFormData($form){
 
 app.post('/file.io/files', (req, res) => 
 {
-
-    var form = new formidable.IncomingForm();
-    form.parse(req, function (err, fields, files) {
-        console.log(fields);
-        console.log(files);
-        // var oldpath = files.filetoupload.path;
-        // var newpath = 'C:/Users/Your Name/' + files.filetoupload.name;
-        // fs.rename(oldpath, newpath, function (err) {
-        //     if (err) throw err;
-        //     res.write('File uploaded and moved!');
-        //     res.end();
-        // });
+    req.on("data", function(chunk) {
+        console.log(chunk)
+        // var _data = getFormData(chunk);
+        // console.log(_data);
     });
 
-    // req.on("data", function(chunk) {
-    //     console.log(chunk)
-    //     var _data = getFormData(chunk);
-    //     console.log(_data);
-    // });
-
-    // req.on('end', function(){
-    //     res.end()
-    // });
+    req.on('end', function() {
+        res.writeHead(200, "OK", {'Content-Type' : 'text/html'});
+        res.end()
+    });
 
     // res.writeHead(200, "OK", {'Content-Type' : 'text/html'});
 
