@@ -288,7 +288,7 @@ app.post('/file.io/files', (req, res) =>
     var cheack_file = (_path) => 
     {
         try {
-            if (fs.existsSync(_path)) {
+            if (fs.existsSync(_path)) { 
                 console.log('Файл найден');
                 console.log(`/var/www/users/${_data._id}/${_data.file_id}.${_data._pts.split('/')[1]}`);
                 // fs.rename(_data.path, `/var/www/users/${_data._id}/${_data.file_id}.${_data._pts.split('/')[1]}`, function (err) {
