@@ -290,7 +290,10 @@ app.post('/file.io/files', (req, res) =>
                 fs.rename(_data.path, `/var/www/projects/${_data._id[0]}/${_data.file_id}.${_data._pts.split('/')[1]}`, function (err) {
                     if (err) throw err
                     console.log('Successfully renamed - AKA moved!');
-                    res.json({status: 'ok'});
+                    res.json({
+                        status: 'ok',
+                        file_name: `${_data.file_id}.${_data._pts.split('/')[1]}`,
+                    });
                 });
             } else {
                 console.log('Файл не найден');
