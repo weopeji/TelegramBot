@@ -274,15 +274,14 @@ app.post('/file.io/files', (req, res) =>
     res.status(200);
     res.send('ok');
 
-    // req.on("data", function(chunk) {
-    //     body += chunk;
-    // });
+    req.on("data", function(chunk) {
+        body += chunk;
+    });
 
-    // req.on('end', function() {
-    //     console.log(req.body);
-    //     res.writeHead(200, "OK", {'Content-Type' : 'text/html'});
-    //     res.end()
-    // });
+    req.on('end', function() {
+        console.log(req.body);
+        res.end()
+    });
 
     // res.writeHead(200, "OK", {'Content-Type' : 'text/html'});
 
