@@ -267,14 +267,16 @@ app.post('/file.io/files', (req, res) =>
 {
 
     req.on("data", function(chunk) {
+        console.log(chunk)
         var _data = getFormData(chunk);
         console.log(_data);
     });
 
     req.on('end', function(){
-        res.writeHead(200, "OK", {'Content-Type' : 'text/html'});
         res.end()
     });
+
+    res.writeHead(200, "OK", {'Content-Type' : 'text/html'});
 
     // var _pts        = req.files.files.mimetype.split('/')[1];
     // var _user_id    = req.body._id;
