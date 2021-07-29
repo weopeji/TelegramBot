@@ -645,7 +645,7 @@
                     headers: {
                       'Content-Type': 'application/json'
                     }
-                });
+                }); 
 
                 // $.ajax({
                 //     url: _url,
