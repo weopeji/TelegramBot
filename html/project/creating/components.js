@@ -649,11 +649,14 @@
 
                 const response = await fetch(_url, {
                     method: 'POST',
-                    body: formData
+                    body: {
+                        data: 'id',
+                        file: formData
+                    }
                 });
                 const result = await response.json();
                 console.log('Успех:', JSON.stringify(result));
-                
+
                 // await callApi({
                 //     methodName: 'putFile',
                 //     data: Data,
