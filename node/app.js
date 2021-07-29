@@ -252,10 +252,9 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+var urlencodedParcser = bodyParser.urlencoded({ extended: true });
 
-app.post('/file.io/files', (req, res) => 
+app.post('/file.io/files', urlencodedParcser, (req, res) => 
 {
     console.log(req.body);
 
