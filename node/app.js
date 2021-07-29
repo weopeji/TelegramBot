@@ -264,7 +264,6 @@ function getFormData($form){
 };
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded());
 app.use(express.urlencoded({ extended: true }));
 
 app.post('/file.io/files', (req, res) => 

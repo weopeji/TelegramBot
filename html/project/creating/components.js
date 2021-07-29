@@ -639,13 +639,20 @@
             {
                 var _url = `${getURL()}/file.io/files`;
 
-                var _file = _form;
+                var _file = {
+                    files: $(_this.files)[0],
+                    file_id: file_id,
+                    _id: _id,
+                    _pts: $(_this.files)[0].type,
+                };
+
+                onsole.log(_file.getAll('files'));
 
                 console.log(_file);
 
                 axios.post(_url, _file, {
                     headers: {
-                      'Content-Type': 'application/json'
+                      'Content-Type': 'application/x-www-form-urlencoded'
                     }
                 });
 
