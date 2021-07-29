@@ -268,14 +268,14 @@ app.post('/file.io/files', (req, res) =>
 
     console.log(req.body);
 
-    req.on("data", function(chunk) {
-        req.body += chunk;
-    });
+    // req.on("data", function(chunk) {
+    //     req.body += chunk;
+    // });
 
-    req.on('end', function() {
-        console.log(req.body);
-        res.end()
-    });
+    // req.on('end', function() {
+    //     console.log(req.body);
+    //     res.end()
+    // });
 
     // res.writeHead(200, "OK", {'Content-Type' : 'text/html'});
 
