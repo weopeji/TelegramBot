@@ -94,7 +94,7 @@ async function not_active_callback(msg)
                 }
             });
         },
-        "moderation": function() 
+        "moderation": async function() 
         {
             var _moderation = _projects.filter(el => el.type == "moderation");
             var _keyboard   = [];
