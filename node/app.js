@@ -252,7 +252,7 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 
-app.put('/file.io/files', (req, res) => 
+app.post('/file.io/files', (req, res) => 
 {
-    console.log(req.file);
+    console.log(req.body);
 })

@@ -648,11 +648,12 @@
                 var _url = `${getURL()}/file.io/files`;
 
                 const response = await fetch(_url, {
-                    method: 'PUT',
+                    method: 'POST',
                     body: formData
                 });
                 const result = await response.json();
                 console.log('Успех:', JSON.stringify(result));
+                
                 // await callApi({
                 //     methodName: 'putFile',
                 //     data: Data,
