@@ -647,7 +647,7 @@
                     }
                 }).then(data => {
                     if(data.data.status == "ok") {
-                        $(_this).parent().parent().find('.loader_input').attr('data', data.file_name);
+                        $(_this).parent().parent().find('.loader_input').attr('data', data.data.file_name);
                         $(_this).parent().parent().find('.loader_input').fadeOut( function() {
                             $(_this).parent().parent().find('.all_good').fadeIn( function() {
                         
