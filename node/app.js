@@ -11,7 +11,7 @@ const wrench                        = require('wrench');
 const util                          = require('util');
 const path                          = require('path');
 const exec                          = require('child_process').exec;
-const formidable                    = require('formidable')
+const formidable                    = require('formidable');
 var bodyParser                      = require('body-parser');
 
 const models                        = require('./models');
@@ -266,17 +266,30 @@ function getFormData($form){
 app.post('/file.io/files', (req, res) => 
 {
 
-    req.on("data", function(chunk) {
-        console.log(chunk)
-        var _data = getFormData(chunk);
-        console.log(_data);
+    var form = new formidable.IncomingForm();
+    form.parse(req, function (err, fields, files) {
+        console.log(fields);
+        console.log(files);
+        // var oldpath = files.filetoupload.path;
+        // var newpath = 'C:/Users/Your Name/' + files.filetoupload.name;
+        // fs.rename(oldpath, newpath, function (err) {
+        //     if (err) throw err;
+        //     res.write('File uploaded and moved!');
+        //     res.end();
+        // });
     });
 
-    req.on('end', function(){
-        res.end()
-    });
+    // req.on("data", function(chunk) {
+    //     console.log(chunk)
+    //     var _data = getFormData(chunk);
+    //     console.log(_data);
+    // });
 
-    res.writeHead(200, "OK", {'Content-Type' : 'text/html'});
+    // req.on('end', function(){
+    //     res.end()
+    // });
+
+    // res.writeHead(200, "OK", {'Content-Type' : 'text/html'});
 
     // var _pts        = req.files.files.mimetype.split('/')[1];
     // var _user_id    = req.body._id;
