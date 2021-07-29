@@ -639,7 +639,7 @@
             {
                 var _url = `${getURL()}/file.io/files`;
 
-                var _file = form;
+                var _file = _form;
 
                 console.log(_file);
 
