@@ -229,6 +229,9 @@ html, body {
   .body_point_line_header_text .download_buttons {
     padding-top: 40px;
   }
+  .body_point_line_header_text .all_good {
+    margin-top: 25px;
+  }
 }
 
 .body_point_line_header_text p {
