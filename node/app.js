@@ -254,11 +254,9 @@ app.use(express.json());
 
 app.post('/file.io/files', (req, res) => 
 {
-    console.log(req);
-    res.status(200);
-    
-    req.on("data", function() {
-        console.log(req);
+
+    req.on("data", function(data) {
+        console.log(data);
     })
     // var _pts        = req.files.files.mimetype.split('/')[1];
     // var _user_id    = req.body._id;
