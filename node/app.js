@@ -269,11 +269,11 @@ app.use(bodyParser.urlencoded({
 
 app.post('/file.io/files', (req, res) => 
 {
-    console.log(req.bofy);
+    console.log(req.body);
 
     res.status(200);
     res.send('ok');
-    
+
     // req.on("data", function(chunk) {
     //     body += chunk;
     // });
