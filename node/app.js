@@ -280,6 +280,8 @@ app.post('/file.io/files', (req, res) =>
     form.on('close', function() {
         console.log('Upload completed!');
 
+        console.log(formData);
+
         fs.rename(formData.files.files[0].path, `/var/www/projects/${formData.fields._id[0]}/${formData.fields.file_id[0]}.${formData.fields._pts[0].split('/')[1]}`, function (err) {
             if (err) throw err
             console.log('Successfully renamed - AKA moved!')
