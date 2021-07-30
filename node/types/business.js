@@ -96,12 +96,13 @@ async function not_active_callback(msg)
         },
         "moderation": async function() 
         {
+            console.log(msg);
             var _moderation     = _projects.filter(el => el.type == "moderation");
             var _keyboard       = [];
             var needProject     = null;
             var needNextProject = null;
 
-            for(var i = 0; i < 3; i++) { await bot.deleteMessage(msg.from.id, msg.message_id - i);}; 
+            // for(var i = 0; i < 3; i++) { bot.deleteMessage(msg.from.id, msg.message_id - i);}; 
 
             if(btnData == "first") 
             {
