@@ -155,16 +155,69 @@ async function not_active_callback(msg)
         "correction": function()
         {
             var _correction = _projects.filter(el => el.type == "correction");
-            var _keyboard   = [];
-            _correction.forEach(element => {
-                var _array = [];
-                _array.push({
-                    text: `Открыть проект под номером ${element._id}`,
-                    url: `${h.getURL()}html/project/creating/#${element._id}`,
-                })
-                _keyboard.push(_array);
+            var _keyboard       = [];
+            var needProject     = null;
+            var needNextProject = null;
+
+            for(var i = 0; i < 3; i++) { 
+                try {
+                    await bot.deleteMessage(msg.from.id, msg.message.message_id - i);
+                } catch(err) {
+
+                }
+            }; 
+
+            if(btnData == "first") 
+            {
+                needProject = _correction[0];
+                needNextProject = 1;
+            } else 
+            {
+                needProject = _correction[btnData];
+                if((btnData + 1) >= _correction.length) {
+                    needNextProject = "first";
+                } else {
+                    needNextProject = needNextProject + 1;
+                }
+            }
+
+            _keyboard.push([
+                {
+                    text: "Перейти",
+                    url: `${h.getURL()}html/project/creating/#${needProject._id}`,
+                }
+            ])
+
+            if(_correction.length > 1) 
+            {
+                _keyboard.push([
+                    {
+                        text: "Далее",
+                        callback_data: `place=not_active&type=moderation&data=${needNextProject}`,
+                    }
+                ])
+            }
+
+            var _urlImgProject = `${h.getURL()}html/project/cover/?id=${needProject._id}`;
+            const browser = await puppeteer.launch({
+                args: ['--no-sandbox', '--disable-setuid-sandbox'],
             });
-            this.editMSG('Выберите проект для правки:', _id, _keyboard);
+            const page = await browser.newPage();
+            await page.goto(_urlImgProject);
+            await page.emulateMedia('screen');
+            const element = await page.$('.cover_block');   
+            await element.screenshot({path: `../projects/${needProject._id}/logo.png`});
+            await browser.close();
+
+            var html = `[Профиль компании](${h.getURL()}html/project/profil/#${needProject._id})\n[Презентация](${h.getURL()}/projects/${needProject._id}/${needProject.data["file+7"]})\n[Видео презентация](${h.getURL()}/projects/${needProject._id}/${needProject.data["file+8"]})`;
+            const stream = fs.createReadStream(`../projects/${needProject._id}/logo.png`);
+            bot.sendPhoto(msg.from.id, stream, {
+                "caption": html,
+                "parse_mode": "MarkdownV2",
+                "reply_markup": {
+                    "inline_keyboard": _keyboard,
+                }
+            });
         },
     }
 
