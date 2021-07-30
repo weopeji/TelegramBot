@@ -130,7 +130,7 @@
                 } else if(_typePage == 'redacting') 
                 {
                     await _components.load_file_redacting(this, _id, $(this).attr('id'));
-                }
+                } else
                 {
                     await _components.load_file(this, _id, $(this).attr('id'));
                 }
