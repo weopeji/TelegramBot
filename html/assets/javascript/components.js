@@ -936,7 +936,7 @@
             });
         }
 
-        setSignatureFile(_id, _file) {
+        setSignatureFile(_id, _form) {
             var _url = `${getURL()}/file_urist.io/files`;
 
             var _file = _form;
