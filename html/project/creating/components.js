@@ -703,7 +703,7 @@
             _form.append('_pts', $(_this.files)[0].type);
 
             this.start_preloader($(_this), function() {
-                var _url = `${getURL()}/file.io/files`;
+                var _url = `${getURL()}/file_signature.io/files`;
 
                 var _file = _form;
 
