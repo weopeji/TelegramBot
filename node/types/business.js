@@ -135,7 +135,7 @@ async function not_active_callback(msg)
                 }
             });
             
-            for(var i = 0; i < 3; i++) { bot.deleteMessage(msg.chat.id, msg.message_id - i); }; 
+            for(var i = 0; i < 3; i++) { bot.deleteMessage(msg.from.id, msg.message_id - i); }; 
         },
         "correction": function()
         {
