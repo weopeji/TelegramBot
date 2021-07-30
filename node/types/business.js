@@ -82,18 +82,16 @@ async function not_active_callback(msg)
     var _type       = h._GET(_data, 'type');
     var btnData     = h._GET(_data, 'data');
 
+    h.send_html(msg.chat.id, "*", {
+        "resize_keyboard": true,
+        "keyboard": [
+            ["⬅️ Назад"]
+        ],
+    });
+
 
     const FUN = 
     {
-        editMSG: function (html, _id, keyboard) {
-            bot.editMessageText(html, {
-                chat_id: msg.from.id,
-                message_id: _id,
-                reply_markup: {
-                    "inline_keyboard": keyboard,
-                }
-            });
-        },
         "moderation": async function() 
         {
             var _moderation     = _projects.filter(el => el.type == "moderation");
