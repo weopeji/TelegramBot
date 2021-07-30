@@ -82,7 +82,7 @@ async function not_active_callback(msg)
     var _type       = h._GET(_data, 'type');
     var btnData     = h._GET(_data, 'data');
 
-    h.send_html(msg.chat.id, "*", {
+    h.send_html(msg.from.id, "*", {
         "resize_keyboard": true,
         "keyboard": [
             ["⬅️ Назад"]
