@@ -193,7 +193,7 @@ async function not_active_callback(msg)
                 _keyboard.push([
                     {
                         text: "Далее",
-                        callback_data: `place=not_active&type=moderation&data=${needNextProject}`,
+                        callback_data: `place=not_active&type=correction&data=${needNextProject}`,
                     }
                 ])
             }
