@@ -59,13 +59,13 @@ async function not_active(msg)
     if(_moderation.length > 0) {
         keyboard.unshift([{
             text: "Ожидают модерации",
-            callback_data: `place=not_active&msg_id=${msg.message_id + 2}&type=moderation&data=first`,
+            callback_data: `place=not_active&type=moderation&data=first`,
         }]);
     }
     if(_correction.length > 0) {
         keyboard.unshift([{
             text: "Ожидают исправления",
-            callback_data: `place=not_active&msg_id=${msg.message_id + 2}&type=correction&data=first`,
+            callback_data: `place=not_active&type=correction&data=first`,
         }]);
     }
 
@@ -79,7 +79,6 @@ async function not_active_callback(msg)
 {
     var _projects   = await Project.find({user: msg.from.id});
     var _data       = msg.data;
-    var _id         = h._GET(_data, 'msg_id');
     var _type       = h._GET(_data, 'type');
     var btnData     = h._GET(_data, 'data');
 
@@ -97,13 +96,33 @@ async function not_active_callback(msg)
         },
         "moderation": async function() 
         {
-            var _moderation = _projects.filter(el => el.type == "moderation");
-            var _keyboard   = [];
-            var needProject = null;
+            var _moderation     = _projects.filter(el => el.type == "moderation");
+            var _keyboard       = [];
+            var needProject     = null;
+            var needNextProject = null;
+
+            for(var i = 0; i < 3; i++) { await bot.deleteMessage(msg.from.id, msg.message_id - i);}; 
 
             if(btnData == "first") 
             {
                 needProject = _moderation[0];
+                needNextProject = 1;
+            } else 
+            {
+                if((btnData + 1) >= _moderation.length) {
+                    needNextProject = "first"
+                } else {
+                    needNextProject = needNextProject + 1;
+                }
+            }
+            if(_moderation.length > 1) 
+            {
+                _keyboard.push([
+                    {
+                        text: "Далее",
+                        callback_data: `place=not_active&type=moderation&data=${needNextProject}`,
+                    }
+                ])
             }
 
             var _urlImgProject = `${h.getURL()}html/project/cover/?id=${needProject._id}`;
@@ -118,24 +137,15 @@ async function not_active_callback(msg)
             await browser.close();
 
             var html = `[Профиль компании](${h.getURL()}html/project/profil/#${needProject._id})\n[Презентация](${h.getURL()}/projects/${needProject._id}/${needProject.data["file+7"]})\n[Видео презентация](${h.getURL()}/projects/${needProject._id}/${needProject.data["file+8"]})`;
-            var _url = `https://t.me/TestTalegrammBot?start=project_${needProject._id}`;
             const stream = fs.createReadStream(`../projects/${needProject._id}/logo.png`);
             bot.sendPhoto(msg.from.id, stream, {
                 "caption": html,
                 "parse_mode": "MarkdownV2",
                 "reply_markup": {
-                    "inline_keyboard": [
-                        [
-                            {
-                                text: "Инвестровать",
-                                url: _url,
-                            }
-                        ]
-                    ],
+                    "inline_keyboard": _keyboard,
                 }
             });
             
-            for(var i = 0; i < 3; i++) { bot.deleteMessage(msg.from.id, msg.message_id - i); }; 
         },
         "correction": function()
         {
