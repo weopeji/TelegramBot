@@ -101,7 +101,13 @@ async function not_active_callback(msg)
             var needProject     = null;
             var needNextProject = null;
 
-            for(var i = 0; i < 3; i++) { await bot.deleteMessage(msg.from.id, msg.message.message_id - i);}; 
+            for(var i = 0; i < 3; i++) { 
+                try {
+                    await bot.deleteMessage(msg.from.id, msg.message.message_id - i);
+                } catch(err) {
+
+                }
+            }; 
 
             if(btnData == "first") 
             {
