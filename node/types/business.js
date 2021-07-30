@@ -113,8 +113,9 @@ async function not_active_callback(msg)
                 needNextProject = 1;
             } else 
             {
+                needProject = _moderation[btnData];
                 if((btnData + 1) >= _moderation.length) {
-                    needNextProject = "first"
+                    needNextProject = "first";
                 } else {
                     needNextProject = needNextProject + 1;
                 }
