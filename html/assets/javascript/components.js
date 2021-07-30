@@ -1123,7 +1123,7 @@
                         var _form    = new FormData();
 
                         _form.append('files', $(_this.files)[0]);
-                        _form.append('_id', _id);
+                        _form.append('_id', _project._id);
                         _form.append('_pts', $(_this.files)[0].type);
 
                         _this.setSignatureFile(_project._id, _form);
