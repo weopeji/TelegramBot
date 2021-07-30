@@ -1177,19 +1177,20 @@
                     });
 
                     $('.index_page_more_menu').append(_header);
-                }
 
-                if(_project.signature_document) {
-                    if(_project.signature_document.status == 'on') {
-                        $('.putDocumentToSignature').find('p').html('Документ подписан бизнесом');
-                        $('.putDocumentToSignature').find('label').remove();
-                        $('.putDocumentToSignature').append(`
-                            <div class="putDocumentToSignature_show">
-                                <span>Посмотреть</span>
-                            </div>
-                        `).remove();
+                    if(_project.signature_document) {
+                        if(_project.signature_document.status == 'on') {
+                            $('.putDocumentToSignature').find('p').html('Документ подписан бизнесом');
+                            $('.putDocumentToSignature').find('label').remove();
+                            $('.putDocumentToSignature').append(`
+                                <div class="putDocumentToSignature_show">
+                                    <span>Посмотреть</span>
+                                </div>
+                            `);
+                        }
                     }
                 }
+                
             };
 
             var templateText = $(`
