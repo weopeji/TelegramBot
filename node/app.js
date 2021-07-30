@@ -285,6 +285,10 @@ app.post('/file_urist.io/files', (req, res) => {
                 fs.rename(_data.path, `/var/www/projects/${_data._id}/signature_document.${_data._pts.split('/')[1]}`, function (err) {
                     if (err) throw err
                     console.log('Successfully renamed - AKA moved!');
+                    var _project = await Project.findOneAndUpdate({_id: data._id}, {type: "correction",signature_document: {
+                        status: "wait",
+                        document: `signature_document.${_data._pts.split('/')[1]}`,
+                    }});
                     res.json({
                         status: 'ok',
                         file_name: `signature_document.${_data._pts.split('/')[1]}`,
