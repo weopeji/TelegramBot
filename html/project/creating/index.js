@@ -69,6 +69,9 @@
 
             if(_project.redacting) 
             {
+
+                global._typePage = 'redacting'; 
+
                 $('.index_page_body h1').html('Исправление данных');
                 $('.index_page_body h2').html('Исправте все недостающие данные');
                 $('.index_page_body_button span').html('Отправить');
@@ -121,9 +124,14 @@
 
             $('.body_point_line_header_text input[type=file]').change( async function() 
             {
-                if(_typePage == 'signature') {
+                if(_typePage == 'signature') 
+                {
                     await _components.load_file_signature(this, _id, $(this).attr('id'));
-                } else {
+                } else if(_typePage == 'redacting') 
+                {
+                    await _components.load_file_redacting(this, _id, $(this).attr('id'));
+                }
+                {
                     await _components.load_file(this, _id, $(this).attr('id'));
                 }
 

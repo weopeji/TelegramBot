@@ -263,6 +263,61 @@ function getFormData($form){
     return indexed_array;
 };
 
+app.post('/file_redacting.io/files', (req, res) => {
+    var form    = new multiparty.Form({
+        maxFilesSize: 2 * 1024 * 1024 * 1024
+    });
+
+    var _data   = {};
+
+    form.on('error', function(err) {
+        console.log('Error parsing form: ' + err.stack);
+    });
+
+    form.on('file', (name, file) => 
+    {
+        _data.path = file.path;
+    });
+
+    form.on('field', (name, value) => 
+    {
+        _data[name] = value;
+    });
+
+    var cheack_file = (_path) => 
+    {
+        try {
+            if (fs.existsSync(_path)) { 
+                console.log('Файл найден');
+                if(fs.existsSync(`/var/www/projects/${_data._id}/${_data.file_id}.${_data._pts.split('/')[1]}`)) {
+                    fs.unlinkSync(`/var/www/projects/${_data._id}/${_data.file_id}.${_data._pts.split('/')[1]}`);
+                }
+                fs.rename(_data.path, `/var/www/projects/${_data._id}/${_data.file_id}.${_data._pts.split('/')[1]}`, function (err) {
+                    if (err) throw err
+                    console.log('Successfully renamed - AKA moved!');
+                    res.json({
+                        status: 'ok',
+                        file_name: `${_data.file_id}.${_data._pts.split('/')[1]}`,
+                    });
+                });
+            } else {
+                console.log('Файл не найден');
+                cheack_file();
+            }
+        } catch(err) {
+            console.error(err)
+        }
+    }
+
+    form.on('close', function() 
+    {
+        console.log('Upload completed!');
+        cheack_file(_data.path);
+    });
+
+    form.parse(req);
+})
+
 app.post('/file.io/files', (req, res) => 
 {
     var form    = new multiparty.Form({

@@ -635,7 +635,6 @@
             _form.append('_id', _id);
             _form.append('_pts', $(_this.files)[0].type);
 
-            console.log($(_this.files)[0]);
 
             this.start_preloader($(_this), async function() 
             {
@@ -661,28 +660,67 @@
             });
         }
 
-        async load_file_signature(_this, _id, file_id) {
-            let Data = {};
+        async load_file_redacting(_this, _id, file_id) {
+            var _form    = new FormData();
 
-            $(_this.files).each(function(index, file) {
-                Data.files = file;
-                Data.file_id = file_id;
-                Data._id = _id;
-                Data._pts = file.type;
+            _form.append('files', $(_this.files)[0]);
+            _form.append('file_id', file_id);
+            _form.append('_id', _id);
+            _form.append('_pts', $(_this.files)[0].type);
+
+
+            this.start_preloader($(_this), async function() 
+            {
+                var _url = `${getURL()}/file_redacting.io/files`;
+
+                var _file = _form;
+
+                axios.post(_url, _file, {
+                    headers: {
+                      'Content-Type': 'multipart/form-data'
+                    }
+                }).then(data => {
+                    if(data.data.status == "ok") {
+                        $(_this).parent().parent().find('.loader_input').attr('data', data.data.file_name);
+                        $(_this).parent().parent().find('.loader_input').fadeOut( function() {
+                            $(_this).parent().parent().find('.all_good').fadeIn( function() {
+                        
+                            });
+                        });
+                    }
+                })
+
             });
+        }
+
+        async load_file_signature(_this, _id, file_id) 
+        {
+            var _form    = new FormData();
+
+            _form.append('files', $(_this.files)[0]);
+            _form.append('file_id', file_id);
+            _form.append('_id', _id);
+            _form.append('_pts', $(_this.files)[0].type);
 
             this.start_preloader($(_this), function() {
-                callApi({
-                    methodName: 'putFileSignature',
-                    data: Data,
-                }).then((data) => {
-                    $(_this).parent().parent().find('.loader_input').attr('data', data.file_name);
-                    $(_this).parent().parent().find('.loader_input').fadeOut( function() {
-                        $(_this).parent().parent().find('.all_good').fadeIn( function() {
-                    
+                var _url = `${getURL()}/file.io/files`;
+
+                var _file = _form;
+
+                axios.post(_url, _file, {
+                    headers: {
+                      'Content-Type': 'multipart/form-data'
+                    }
+                }).then(data => {
+                    if(data.data.status == "ok") {
+                        $(_this).parent().parent().find('.loader_input').attr('data', data.data.file_name);
+                        $(_this).parent().parent().find('.loader_input').fadeOut( function() {
+                            $(_this).parent().parent().find('.all_good').fadeIn( function() {
+                        
+                            });
                         });
-                    });
-                });
+                    }
+                })
             });
         }
 
