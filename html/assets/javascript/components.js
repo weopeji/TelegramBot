@@ -1182,8 +1182,13 @@
 
             if(_project.signature_document) {
                 if(_project.signature_document.status == 'on') {
-                    $('.index_page_more_menu').empty();
-                    $('.index_page_more_menu').append('<h1>Документ подписан</h1>')
+                    $('.putDocumentToSignature').find('p').html('Документ подписан бизнесом');
+                    $('.putDocumentToSignature').find('label').remove();
+                    $('.putDocumentToSignature').append(`
+                        <div class="putDocumentToSignature_show">
+                            <span>Посмотреть</span>
+                        </div>
+                    `).remove();
                 }
             }
 
