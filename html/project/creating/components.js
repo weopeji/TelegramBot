@@ -1078,7 +1078,7 @@
                     } else {
                         _array.push({
                             name: $(_element).find(".loader_input").attr('id').split('_')[0],
-                            val: $(_element).find("textarea").val()
+                            val: $(_element).find(".loader_input").attr('data')
                         });
                     }
                 });
