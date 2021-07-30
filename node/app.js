@@ -264,6 +264,7 @@ function getFormData($form){
 };
 
 app.post('/file_redacting.io/files', (req, res) => {
+    console.log('ok1');
     var form    = new multiparty.Form({
         maxFilesSize: 2 * 1024 * 1024 * 1024 
     });
@@ -320,6 +321,7 @@ app.post('/file_redacting.io/files', (req, res) => {
 
 app.post('/file.io/files', (req, res) => 
 {
+    console.log('ok2');
     var form    = new multiparty.Form({
         maxFilesSize: 2 * 1024 * 1024 * 1024
     });
