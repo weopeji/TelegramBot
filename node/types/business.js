@@ -5,6 +5,7 @@ var https       = null;
 var config      = null;
 var _data       = null;
 var Project     = null;
+var puppeteer   = require('puppeteer');
 
 module.exports = {
     init:function(initPlagins)
