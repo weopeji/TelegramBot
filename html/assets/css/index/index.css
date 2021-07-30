@@ -427,6 +427,12 @@ html, body {
   letter-spacing: -.02em;
   font-size: 1.625rem;
   font-weight: 500;
+  margin-left: 10px;
+}
+
+.index_page_body_project_header p {
+  color: #6e84a3;
+  margin-left: 10px;
 }
 
 .index_page_body_project_body {
@@ -462,9 +468,18 @@ html, body {
   padding: 0 10px;
 }
 
-.index_page_body_project_body_header span.selected {
-  color: #12263f;
-  border-bottom: 1px solid #2c7be5;
+.index_page_body_project_body_header span::before {
+  content: "";
+  display: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #2c7be5;
+  margin-right: 10px;
+}
+
+.index_page_body_project_body_header span.selected::before {
+  display: block;
 }
 
 .index_page_body_project_body_header a {
@@ -477,10 +492,11 @@ html, body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  color: #6e84a3;
 }
 
 .index_page_body_project_body_header a i {
-  color: #414650;
+  color: #6e84a3;
   font-size: 20px;
   margin-left: 10px;
 }
@@ -494,8 +510,9 @@ html, body {
   margin: 0 auto;
   background-color: white;
   border: 2px solid #edf2f9;
-  border-radius: 8px;
+  border-radius: 2px;
   margin-top: 20px;
+  border-top: 4px solid #2c7be5;
 }
 
 .body_point textarea {
@@ -708,7 +725,7 @@ html, body {
 
 .index_page_body_project_header_buttons span {
   padding: 15px 30px;
-  border-radius: 5px;
+  border-radius: 2px;
   font-size: 13px;
   cursor: pointer;
   color: white;
@@ -785,19 +802,19 @@ html, body {
   padding-top: 4px;
   padding-bottom: 4px;
   background-color: white;
-  border-radius: 5px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  margin-top: 20px;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  border-top: 4px solid #3A9FFF;
+  padding-top: 20px;
 }
 
 .index_page_body_project_body_type span {
-  padding: 15px 20px;
+  padding: 15px 40px;
   color: #95aac9;
   cursor: pointer;
   border-radius: 5px;
@@ -894,17 +911,25 @@ html, body {
   background-color: #3A9FFF;
   color: white;
   padding: 15px 35px;
-  border-radius: 5px;
+  border-radius: 2px;
   font-size: 13px;
   cursor: pointer;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .index_page_more_menu_blocks {
   width: calc(100% - 40px);
   padding: 20px;
   background-color: white;
-  margin-top: 20px;
-  border-radius: 8px;
 }
 
 .index_page_more_menu_blocks h1 {
@@ -1031,10 +1056,20 @@ html, body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  margin-top: 20px;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  background-color: white;
+  height: 100px;
+  border-top: 4px solid #3A9FFF;
+}
+
+.putDocumentToSignature p {
+  font-size: 17px;
 }
 
 .putDocumentToSignature input {
@@ -1045,11 +1080,12 @@ html, body {
   padding: 10px 20px;
   background-color: #3A9FFF;
   color: white;
-  border-radius: 5px;
+  border-radius: 2px;
   cursor: pointer;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  font-size: 15px;
 }
 
 .putDocumentToSignature_block {

@@ -937,14 +937,14 @@
         }
 
         setSignatureFile(_id, _file) {
-            return callApi({
-                methodName: 'setSignatureFile',
-                data: {
-                    file: _file,
-                    _id: _id,
-                },
-            }).then((data) => {
-                return data; 
+            var _url = `${getURL()}/file_urist.io/files`;
+
+            var _file = _form;
+
+            axios.post(_url, _file, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
             });
         }
 
@@ -1108,6 +1108,7 @@
                 {
                     var putDocumentToSignature = $(`
                         <div class="putDocumentToSignature">
+                            <p>Загрузите документ на подписание</p>
                             <input type="file" name="" id="DocumentToSignature">
                             <label for="DocumentToSignature" class="putDocumentToSignature_open">
                                 <span>Загрузить документ</span>
@@ -1119,15 +1120,13 @@
 
                     putDocumentToSignature.find('input[type=file]').change( async function() 
                     {
-                        let Data = {};
+                        var _form    = new FormData();
 
-                        $(this.files).each(function(index, file) {
-                            Data.files = file;
-                            Data._id = _project._id;
-                            Data._pts = file.type;
-                        });
+                        _form.append('files', $(_this.files)[0]);
+                        _form.append('_id', _id);
+                        _form.append('_pts', $(_this.files)[0].type);
 
-                        _this.setSignatureFile(_project._id, Data);
+                        _this.setSignatureFile(_project._id, _form);
 
                         $('.index_page_body_row').empty();
                     });

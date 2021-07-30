@@ -18,8 +18,9 @@ html, body {
   width: 60vw;
   background-color: white;
   margin-top: 80px;
-  border-radius: 10px;
+  border-radius: 2px;
   margin-bottom: 80px;
+  border-top: 4px solid #3A9FFF;
 }
 
 .index_page_profil h1 {
