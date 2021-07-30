@@ -140,7 +140,7 @@
 
             $('.all_good_cheack').click( async function() {
                 var file_name = $(this).parent().parent().parent().find('.loader_input').attr('data');
-                if(global._typePage == "signature") {
+                if(global._typePage == "signature" || global._typePage == "redacting") {
                     global.open(`${getURL()}/projects/${_id}/${file_name}`, "_blank");
                 } else {
                     global.open(`${getURL()}/users/${_id}/${file_name}`, "_blank");

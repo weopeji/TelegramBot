@@ -252,19 +252,8 @@ app.use((req, res, next) => {
     next();
 });
 
-function getFormData($form){
-    var unindexed_array = $form.serializeArray();
-    var indexed_array = {};
-
-    $.map(unindexed_array, function(n, i){
-        indexed_array[n['name']] = n['value'];
-    });
-
-    return indexed_array;
-};
-
 app.post('/file_redacting.io/files', (req, res) => {
-    console.log('ok1');
+
     var form    = new multiparty.Form({
         maxFilesSize: 2 * 1024 * 1024 * 1024 
     });
@@ -321,7 +310,6 @@ app.post('/file_redacting.io/files', (req, res) => {
 
 app.post('/file.io/files', (req, res) => 
 {
-    console.log('ok2');
     var form    = new multiparty.Form({
         maxFilesSize: 2 * 1024 * 1024 * 1024
     });
