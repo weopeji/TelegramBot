@@ -282,7 +282,7 @@ app.post('/file_urist.io/files', (req, res) => {
                 if(fs.existsSync(`/var/www/projects/${_data._id}/signature_document.${_data._pts.split('/')[1]}`)) {
                     fs.unlinkSync(`/var/www/projects/${_data._id}/signature_document.${_data._pts.split('/')[1]}`);
                 }
-                fs.rename(_data.path, `/var/www/projects/${_data._id}/signature_document.${_data._pts.split('/')[1]}`, function (err) {
+                fs.rename(_data.path, `/var/www/projects/${_data._id}/signature_document.${_data._pts.split('/')[1]}`, async function (err) {
                     if (err) throw err
                     console.log('Successfully renamed - AKA moved!');
                     var _project = await Project.findOneAndUpdate({_id: data._id}, {type: "correction",signature_document: {
