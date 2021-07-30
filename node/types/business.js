@@ -135,15 +135,7 @@ async function not_active_callback(msg)
                 }
             });
             
-            _moderation.forEach(element => {
-                var _array = [];
-                _array.push({
-                    text: `Ппроект под номером ${element._id}`,
-                    url: `${h.getURL()}html/project/profil/#${element._id}`,
-                })
-                _keyboard.push(_array);
-            });
-            this.editMSG('Проекты на модерации:', _id, _keyboard);
+            for(var i = 0; i < 3; i++) { bot.deleteMessage(msg.chat.id, msg.message_id - i); }; 
         },
         "correction": function()
         {
