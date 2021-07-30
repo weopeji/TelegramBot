@@ -1087,6 +1087,8 @@
             $('.index_page').empty();
             $('.preloader').fadeIn();
 
+            console.log(_array);
+
             this.putRedacting({
                 array: _array,
                 _id: _id,
