@@ -265,7 +265,7 @@ function getFormData($form){
 
 app.post('/file_redacting.io/files', (req, res) => {
     var form    = new multiparty.Form({
-        maxFilesSize: 2 * 1024 * 1024 * 1024
+        maxFilesSize: 2 * 1024 * 1024 * 1024 
     });
 
     var _data   = {};
