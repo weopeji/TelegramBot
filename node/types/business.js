@@ -152,7 +152,7 @@ async function not_active_callback(msg)
             });
             
         },
-        "correction": function()
+        "correction": async function()
         {
             var _correction = _projects.filter(el => el.type == "correction");
             var _keyboard       = [];
