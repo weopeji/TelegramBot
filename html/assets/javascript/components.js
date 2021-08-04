@@ -413,7 +413,7 @@
                         },
                         {
                             type: "string",
-                            name: "Ставка % в месяц",
+                            name: "Ставка % в год",
                             _id: "rate"
                         },
                         {
@@ -585,20 +585,6 @@
                             name: "Счет получателя",
                             _id: "account_get"
                         },
-                        {
-                            type: "string",
-                            name: "Назначение платежа",
-                            _id: "get_pay"
-                        },
-                        {
-                            type: "string",
-                            name: "ИНН",
-                            _id: "bank_inn"
-                        },
-                        {
-                            type: "string",
-                            name: "КПП",
-                        }
                     ]
                 },
                 "+7": {
@@ -1486,7 +1472,6 @@
             moderation,
             active,
             project,
-            
         }
     }
     
