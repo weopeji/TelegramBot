@@ -1127,23 +1127,17 @@
                             || extension === 'DOCX'
                             || extension === 'PDF'
                             ){
-                            alert('Valid extension.');
+                            
+                            var _form    = new FormData();
+
+                            _form.append('files', $(this.files)[0]);
+                            _form.append('_id', _project._id);
+                            _form.append('_pts', extension);
+                            _this.setSignatureFile(_project._id, _form);
+                            $('.index_page_body_row').empty();
                         }else{
                             alert('Invalid extension: ' + extension + '. Only: DOC, DOCX, PDF are allowed.');
-                        }
-
-
-                        var _form    = new FormData();
-
-                        _form.append('files', $(this.files)[0]);
-                        _form.append('_id', _project._id);
-                        _form.append('_pts', extension);
-
-                        
-
-                        // _this.setSignatureFile(_project._id, _form);
-
-                        // $('.index_page_body_row').empty();
+                        }  
                     });
 
 

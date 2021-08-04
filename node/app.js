@@ -12,6 +12,7 @@ const util                          = require('util');
 const path                          = require('path');
 const exec                          = require('child_process').exec;
 const formidable                    = require('formidable');
+const mammoth                       = require("mammoth");
 
 
 const models                        = require('./models');
@@ -276,15 +277,21 @@ app.post('/file_urist.io/files', (req, res) => {
 
     var redactingDocument = async () => 
     {
-        
-        var _project = await Project.findOneAndUpdate({_id: _data._id}, {type: "correction",signature_document: {
-            status: "wait",
-            document: `signature_document.${_data._pts.split('/')[1]}`,
-        }});
-        res.json({
-            status: 'ok',
-            file_name: `signature_document.${_data._pts.split('/')[1]}`,
-        });
+        mammoth.convertToHtml({path: `/var/www/projects/${_data._id}/signature_document.${_data._pts.split('/')[1]}`})
+            .then(function(result) {
+                var html = result.value;
+                var need_html = html.replace(/ /g,"&nbsp;");
+
+                var _project = await Project.findOneAndUpdate({_id: _data._id}, {type: "correction",signature_document: {
+                    status: "wait",
+                    document: `signature_document.${_data._pts}`,
+                    document_html: need_html,
+                }});
+                res.json({
+                    status: 'ok',
+                });
+            })
+            .done();
     }
 
     var cheack_file = (_path) => 
