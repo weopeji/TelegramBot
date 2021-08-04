@@ -27,14 +27,14 @@
             data: _id,
         });
 
-        var _document = need_project.signature_document.document_html.toString();
-        
-        _document.replace('%date_now%', 'hello')
-            // .replace(/%invester_name%/g, "_______________")
-            // .replace(/%bizznes_name%/g, need_project.data.initials)
-            // .replace(/ %inn%/g, need_project.data.inn)
+        var templateText = need_project.signature_document.document_html.toString();
 
-        $('.index_page').append(_document);
+        templateText = templateText.replace(new RegExp("%date_now%", 'g'), new Date().format('m-d-Y'));
+        templateText = templateText.replace(new RegExp("%bizznes_name%", 'g'), need_project.data.initials);
+        templateText = templateText.replace(new RegExp("%invester_name%", 'g'), "_______________");
+        templateText = templateText.replace(new RegExp("%inn%", 'g'), need_project.data.inn);
+
+        $('.index_page').append(templateText);
         $('.index_page p').eq(0).css("text-align", "center")
         $('.index_page p').eq(1).css("text-align", "center")
     }
