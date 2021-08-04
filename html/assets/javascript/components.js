@@ -1119,13 +1119,16 @@
 
                     putDocumentToSignature.find('input[type=file]').change( async function() 
                     {
+                        console.log($(this.files)[0]);
+
+                        
                         var _form    = new FormData();
 
                         _form.append('files', $(this.files)[0]);
                         _form.append('_id', _project._id);
                         _form.append('_pts', $(this.files)[0].type);
 
-                        console.log($(this.files)[0].type);
+                        
 
                         // _this.setSignatureFile(_project._id, _form);
 
