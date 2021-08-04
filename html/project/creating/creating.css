@@ -232,6 +232,9 @@ html, body {
   .body_point_line_header_text .all_good {
     margin-top: 25px;
   }
+  .end_get_project_row {
+    width: 90%;
+  }
 }
 
 .body_point_line_header_text p {

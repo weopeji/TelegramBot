@@ -270,7 +270,7 @@ async function addProject(msg)
         "inline_keyboard": [
             [
                 {
-                    text: "Заполнить данные",
+                    text: "Заполнить данные 📝",
                     url: _url
                 }
             ]
