@@ -34,8 +34,20 @@
                 $('.index_page_body_row').append(_block);
                 redactingButton();
             },
+            "active_mini": async function() {
+                var _block = await _active.render_mini();
+                $('.index_page_body_row').empty();
+                $('.index_page_body_row').append(_block);
+                redactingButton();
+            },
             "correction": async function() {
                 var _block = await _correction.render();
+                $('.index_page_body_row').empty();
+                $('.index_page_body_row').append(_block);
+                redactingButton();
+            },
+            "correction_mini": async function() {
+                var _block = await _correction.render_mini();
                 $('.index_page_body_row').empty();
                 $('.index_page_body_row').append(_block);
                 redactingButton();
@@ -46,11 +58,13 @@
 
         $('.preloader').fadeOut();
 
+        var typeAttr = 'moderation';
+
         $('.index_page_menu_line').click( function() 
         {
             $('.index_page_menu_line').removeClass('selected');
             $(this).addClass('selected');
-
+            typeAttr = $(this).attr('data');
             _components[$(this).attr('data')]();
         });
 
@@ -65,13 +79,13 @@
             $('.moderation_search_block_buttons_type_full').click( function() {
                 $('.moderation_search_block_buttons_type_mini').removeClass('selected');
                 $(this).addClass('selected');
-                _components.moderation();
+                _components[typeAttr]();
             });
 
             $('.moderation_search_block_buttons_type_mini').click( function() {
                 $('.moderation_search_block_buttons_type_full').removeClass('selected');
                 $(this).addClass('selected');
-                _components.moderation_mini();
+                _components[typeAttr + "_mini"]();
             })
         }
 

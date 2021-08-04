@@ -245,6 +245,7 @@ async function acceptProject(socket,data,callback)
                     ${_project.data.name}
                     ${_project.data.target}
                     Ставка: ${_project.data.rate}
+                    Выплаты: ${_project.data.date_payments}
                     Вход от: ${_project.data.minimal_amount}
                     Сбор до: ${_project.data.date}
                 `;

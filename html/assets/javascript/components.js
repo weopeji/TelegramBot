@@ -242,6 +242,23 @@
             return this.$component;
         }
 
+        async render_mini() 
+        {
+            this.$component.empty();
+            this.$component.append(this.header);
+            var _moderations = await this.getActiveBlocks();
+            _moderations.forEach(element => {
+                var templateText = `
+                    <div class="index_page_body_moderation_block">
+                        <h1>${element.data.name}</h1>
+                    </div>
+                `;
+                this.$component.append(templateText);
+            });
+
+            return this.$component;
+        }
+
     }
 
     class correction {
@@ -332,6 +349,23 @@
                             <a target="_blank" href="${getURL()}/projects/${element._id}/${element.data["file+7"]}">Презентация</a>
                             <a target="_blank" href="${getURL()}/projects/${element._id}/${element.data["file+8"]}">Видео-презентация</a>
                         </div>
+                    </div>
+                `;
+                this.$component.append(templateText);
+            });
+
+            return this.$component;
+        }
+
+        async render_mini() 
+        {
+            this.$component.empty();
+            this.$component.append(this.header);
+            var _moderations = await this.getСorrectionBlocks();
+            _moderations.forEach(element => {
+                var templateText = `
+                    <div class="index_page_body_moderation_block">
+                        <h1>${element.data.name}</h1>
                     </div>
                 `;
                 this.$component.append(templateText);
