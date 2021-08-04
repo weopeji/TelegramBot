@@ -755,7 +755,7 @@
             if(typeof data.redacting != 'undefined') {
                 _line.find('textarea').on('keyup input', function() 
                 {
-                    var _val = $(this).val($(this).val().replace (/\D/, '')).replace(/\s/g, '');;
+                    var _val = $(this).val($(this).val().replace (/\D/, '').replace(/\s/g, ''));
                     var format = _val.replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
                     $(this).val(format);
                 })
