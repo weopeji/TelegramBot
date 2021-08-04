@@ -1119,7 +1119,7 @@
 
                     putDocumentToSignature.find('input[type=file]').change( async function() 
                     {
-                        var filename = $(this.files).val();
+                        var filename = $(this.files)[0].val();
                         var aux = filename.split('.');
                         var extension = aux[aux.length -1].toUpperCase();
 
