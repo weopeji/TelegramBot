@@ -1197,7 +1197,7 @@
                                 </div>
                             `);
                             $('.putDocumentToSignature_show').click( function() {
-                                window.open(`https://skin-win.ru/projects/${_project._id}/${_project.signature_document.document}`, '_blank');
+                                window.open(`https://skin-win.ru/html/project/document/#${_project._id}`, '_blank');
                             })
                         }
                     }
