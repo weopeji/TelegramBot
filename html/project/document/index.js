@@ -29,11 +29,10 @@
 
         var _document = need_project.signature_document.document_html;
         
-        _document
-            .replace(/%date_now%/g, new Date(0, 0, 0))
-            .replace(/%invester_name%/g, "_______________")
-            .replace(/%bizznes_name%/g, need_project.data.initials)
-            .replace(/ %inn%/g, need_project.data.inn)
+        _document.replace(/%date_now%/g, new Date(0, 0, 0))
+            // .replace(/%invester_name%/g, "_______________")
+            // .replace(/%bizznes_name%/g, need_project.data.initials)
+            // .replace(/ %inn%/g, need_project.data.inn)
 
         $('.index_page').append(_document);
         $('.index_page p').eq(0).css("text-align", "center")
