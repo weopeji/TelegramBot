@@ -29,7 +29,7 @@
 
         var templateText = need_project.signature_document.document_html.toString();
 
-        templateText = templateText.replace(new RegExp("%date_now%", 'g'), new Date().format('m-d-Y'));
+        templateText = templateText.replace(new RegExp("%date_now%", 'g'), "04.08.2021");
         templateText = templateText.replace(new RegExp("%bizznes_name%", 'g'), need_project.data.initials);
         templateText = templateText.replace(new RegExp("%invester_name%", 'g'), "_______________");
         templateText = templateText.replace(new RegExp("%inn%", 'g'), need_project.data.inn);
