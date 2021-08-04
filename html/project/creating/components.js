@@ -756,7 +756,7 @@
                 _line.find('textarea').on('keyup input', function() 
                 {
                     var _val = $(this).val();
-                    _val = _val.replace (/\D/, '');
+                    _val = _val.replace(/[^\d;]/g, '')
                     _val = _val.replace(/\s/g, '');
                     var format = String(_val).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
                     $(this).val(format);
