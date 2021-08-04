@@ -29,7 +29,7 @@
 
         var _document = need_project.signature_document.document_html.toString();
         
-        _document.replace(/%date_now%/g, new Date(0, 0, 0))
+        _document.replace('%date_now%/', 'hello')
             // .replace(/%invester_name%/g, "_______________")
             // .replace(/%bizznes_name%/g, need_project.data.initials)
             // .replace(/ %inn%/g, need_project.data.inn)
