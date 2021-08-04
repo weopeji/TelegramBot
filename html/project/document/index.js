@@ -27,7 +27,7 @@
             data: _id,
         });
 
-        var _document = need_project.signature_document.document_html;
+        var _document = need_project.signature_document.document_html.toString();
         
         _document.replace(/%date_now%/g, new Date(0, 0, 0))
             // .replace(/%invester_name%/g, "_______________")
