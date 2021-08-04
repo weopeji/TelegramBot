@@ -1125,7 +1125,7 @@
                         _form.append('_id', _project._id);
                         _form.append('_pts', $(this.files)[0].type);
 
-                        console.log(_form);
+                        console.log($(this.files)[0].type);
 
                         // _this.setSignatureFile(_project._id, _form);
 
