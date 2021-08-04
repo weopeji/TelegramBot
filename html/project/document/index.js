@@ -27,7 +27,15 @@
             data: _id,
         });
 
-        $('.index_page').append(need_project.signature_document.document_html);
+        var document = need_project.signature_document.document_html;
+        
+        document
+            .replace(/%date_now%/g, new Date(0, 0, 0))
+            .replace(/%invester_name%/g, "_______________")
+            .replace(/%bizznes_name%/g, need_project.data.initials)
+            .replace(/ %inn%/g, need_project.data.inn)
+
+        $('.index_page').append(document);
         $('.index_page p').eq(0).css("text-align", "center")
         $('.index_page p').eq(1).css("text-align", "center")
     }
