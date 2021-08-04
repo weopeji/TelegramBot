@@ -40,9 +40,17 @@
         templateText = templateText.replace(new RegExp("%bank%", 'g'), need_project.data.bank);
         templateText = templateText.replace(new RegExp("%bik%", 'g'), need_project.data.bik);
         templateText = templateText.replace(new RegExp("%state%", 'g'), need_project.data.account_get);
-        templateText = templateText.replace(new RegExp("%document%", 'g'), "_______________");
         templateText = templateText.replace(new RegExp("%pay%", 'g'), "_______________");
         templateText = templateText.replace(new RegExp("%pay_investor%", 'g'), "_______________");
+
+        if(typeof need_project.signature_document.img != "undefined")
+        {
+            templateText = templateText.replace(new RegExp("%document%", 'g'), `<img src="${need_project.signature_document.img}" alt>`);
+        } else {
+            templateText = templateText.replace(new RegExp("%document%", 'g'), "_______________");
+        }
+
+        
 
         $('.index_page').append(templateText);
         $('.index_page p').eq(0).css("text-align", "center")
