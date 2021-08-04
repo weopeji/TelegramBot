@@ -31,7 +31,7 @@
         $('#name').html(need_project.data.name || "Null");
         $('#target').html(need_project.data.target || "Null");
         $('#money').html(need_project.data.attraction_amount || "Null");
-        $('#date').html(need_project.data.date || "Null");
+        $('#date').html(need_project.data.date + " мес." || "Null");
         $('.minimal_amount').html(need_project.data.minimal_amount + "руб" || "Null");
         $('.rate').html(need_project.data.rate + "%" || "Null");
         $('.date_payments').html(need_project.data.date_payments || "Null");
