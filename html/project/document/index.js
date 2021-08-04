@@ -28,6 +28,8 @@
         });
 
         $('.index_page').append(need_project.signature_document.document_html);
+        $('.index_page p').eq(0).css("text-align", "center")
+        $('.index_page p').eq(1).css("text-align", "center")
     }
 
 }(window))

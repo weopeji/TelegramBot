@@ -7,9 +7,4 @@ html, body {
   width: 80%;
   margin: 0 auto;
 }
-
-.index_page:nth-of-type(0) p,
-.index_page:nth-of-type(1) p {
-  text-align: center;
-}
 /*# sourceMappingURL=index.css.map */
