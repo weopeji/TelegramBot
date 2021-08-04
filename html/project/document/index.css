@@ -7,4 +7,9 @@ html, body {
   width: 80%;
   margin: 0 auto;
 }
+
+.index_page:nth-child(0),
+.index_page:nth-child(1) {
+  text-align: center;
+}
 /*# sourceMappingURL=index.css.map */
