@@ -148,6 +148,7 @@
             });
 
             $('.all_good_del').click( function() {
+                $(this).parent().parent().parent().find('.loader_input').removeAttr('data');
                 $(this).parent().parent().fadeOut( function() {
                     $(this).parent().parent().parent().find('.download_buttons').fadeIn();
                 })

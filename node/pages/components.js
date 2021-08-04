@@ -295,7 +295,7 @@ async function parceProject(type, data, callback)
             var _conf = 
             {
                 name: _data.name.full_with_opf,
-                info: `https://www.rusprofile.ru/id/${query}`,
+                info: `https://www.rusprofile.ru/search?query=${query}&type=ul`,
                 inn: _data.inn,
                 ogrn: _data.ogrn,
                 kpp: _data.kpp,
@@ -312,7 +312,7 @@ async function parceProject(type, data, callback)
             var _conf = 
             {
                 name: _data.name.full_with_opf,
-                info: `https://www.rusprofile.ru/id/${query}`,
+                info: `https://www.rusprofile.ru/search?query=${query}&type=ul`,
                 inn: _data.inn,
                 ogrn: _data.ogrn,
                 kpp: _data.kpp,

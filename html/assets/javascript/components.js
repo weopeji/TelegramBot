@@ -1077,7 +1077,6 @@
                 <div class="index_page_profil">
                     <div class="index_page_profil_header">
                         <span class="selected">Профиль для инвестора</span>
-                        <span>Полный профиль</span>
                     </div>
                     <iframe id="profil" src="./html/project/profil#${_project._id}" frameborder="0"></iframe>
                 </div>
@@ -1126,9 +1125,11 @@
                         _form.append('_id', _project._id);
                         _form.append('_pts', $(this.files)[0].type);
 
-                        _this.setSignatureFile(_project._id, _form);
+                        console.log(_form);
 
-                        $('.index_page_body_row').empty();
+                        // _this.setSignatureFile(_project._id, _form);
+
+                        // $('.index_page_body_row').empty();
                     });
 
 

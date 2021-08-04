@@ -222,9 +222,9 @@ bot.on('message', async (msg) =>
 
     if(typeof action_linker[msg.text] != "undefined") 
     {
-        action_linker[msg.text](msg);  
-        for(var i = 0; i < 3; i++) { bot.deleteMessage(msg.chat.id, msg.message_id - i); }; 
-        await User.findOneAndUpdate({user: msg.from.id}, {where: null});
+        action_linker[msg.text](msg);
+    } else {
+        await h.DM(msg, 1);
     }
 });
 
@@ -274,6 +274,19 @@ app.post('/file_urist.io/files', (req, res) => {
         _data[name] = value;
     });
 
+    var redactingDocument = async () => 
+    {
+        
+        var _project = await Project.findOneAndUpdate({_id: _data._id}, {type: "correction",signature_document: {
+            status: "wait",
+            document: `signature_document.${_data._pts.split('/')[1]}`,
+        }});
+        res.json({
+            status: 'ok',
+            file_name: `signature_document.${_data._pts.split('/')[1]}`,
+        });
+    }
+
     var cheack_file = (_path) => 
     {
         try {
@@ -285,14 +298,7 @@ app.post('/file_urist.io/files', (req, res) => {
                 fs.rename(_data.path, `/var/www/projects/${_data._id}/signature_document.${_data._pts.split('/')[1]}`, async function (err) {
                     if (err) throw err
                     console.log('Successfully renamed - AKA moved!');
-                    var _project = await Project.findOneAndUpdate({_id: _data._id}, {type: "correction",signature_document: {
-                        status: "wait",
-                        document: `signature_document.${_data._pts.split('/')[1]}`,
-                    }});
-                    res.json({
-                        status: 'ok',
-                        file_name: `signature_document.${_data._pts.split('/')[1]}`,
-                    });
+                    redactingDocument();
                 });
             } else {
                 console.log('Файл не найден');

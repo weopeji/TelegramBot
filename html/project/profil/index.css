@@ -57,4 +57,10 @@ html, body {
   text-align: right;
   width: 48%;
 }
+
+@media (max-width: 900px) {
+  .index_page_profil {
+    width: 95vw;
+  }
+}
 /*# sourceMappingURL=index.css.map */

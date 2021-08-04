@@ -11,7 +11,14 @@ module.exports = {
     _User,
     R_Where,
     getURL,
+    DM,
 }
+
+async function DM(msg, how) 
+{
+    for(var i = 0; i < how; i++) { await bot.deleteMessage(msg.chat.id, msg.message_id - i); };
+    return;
+} 
 
 function privateInit(initPlagins) {
     bot     = initPlagins.bot;

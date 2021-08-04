@@ -34,7 +34,7 @@
                 var type = "Займ";
                 var organization;
                 if(need_project.data.organization == "1") organization = "Юридическое лицо";
-                if(need_project.data.organization == "2") organization = "Индивидуальный предпрениматель";
+                if(need_project.data.organization == "2") organization = "Индивидуальный предприниматель";
                 if(need_project.data.organization == "3") organization = "Физическое лицо";
                 var text = `${type} - ${organization}`;
                 return text;
@@ -43,10 +43,14 @@
                 _append: function(name, data, a) 
                 {
                     if(a) {
+                        var _url = data;
+                        if(_url.substr(0, 5) != "https") {
+                            _url = "https://" + _url
+                        }
                         $('.index_page_profil_data').append(`
                         <div class="page_line">
                             <span>${name}</span>
-                            <p><a href="${data}">${data}</a></p>
+                            <p><a href="${_url}" target="_blank">${data}</a></p>
                         </div>`);
                     } else {
                         $('.index_page_profil_data').append(`

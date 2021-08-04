@@ -139,7 +139,7 @@
                     body: [
                         {
                             type: "file",
-                            name: "Загрузите вашу выписку из банка за 8 месяцев",
+                            name: "Загрузите вашу выписку из банка за 6 месяцев",
                             _id: "file+3"
                         },
                     ]
@@ -189,7 +189,7 @@
                     body: [
                         {
                             type: "string",
-                            name: "ФИО",
+                            name: "ФИО Представителя",
                             info: "Введите ФИО кирилицей",
                             _id: "initials"
                         },
@@ -220,7 +220,7 @@
                     ]
                 },
                 "+6": {
-                    header: "6. Реквезиты",
+                    header: "6. Реквизиты",
                     body: [
                         {
                             type: "string",
@@ -814,10 +814,6 @@
                         <div class="body_point_line_header_text">
                             <span>${data.name}</span>
                             <p>${data.info}</p>
-                        </div>
-                        <div class="body_point_line_header_info">
-                            <span class="_not" style="display: none;">Не заполнено</span>
-                            <span class="_yes" style="display: block;">Готово</span>
                         </div>
                     </div>
                     <textarea id="${data._id}" class="text_area" rows="1" placeholder="Введите значение"></textarea>

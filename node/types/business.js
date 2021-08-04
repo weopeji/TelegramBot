@@ -31,16 +31,18 @@ function privateInit(initPlagins) {
     Project     = initPlagins.Project;
 }
 
-function how_add(msg)
+async function how_add(msg)
 {
     const stream = fs.createReadStream('assets/videos/video.mp4');
-    bot.sendVideo(msg.chat.id, stream, {
+    await bot.sendVideo(msg.chat.id, stream, {
         reply_markup: {
             "resize_keyboard": true,
             "keyboard": [["⬅️ Назад"]],
             "one_time_keyboard": true,
         }
     });
+
+    await h.DM(msg, 2);
 }
 
 async function not_active(msg) 
@@ -73,6 +75,8 @@ async function not_active(msg)
     await h.send_html(msg.chat.id, html, {
         "inline_keyboard": keyboard,
     });
+
+    await h.DM(msg, 2);
 };
 
 async function not_active_callback(msg) 
@@ -251,15 +255,15 @@ async function clean_project(msg) {
 
 async function addProject(msg) 
 {
-    var html = "*";
-    await h.send_html(msg.from.id, html, {
+    var html = "Создание проекта:";
+    let del_msg = await h.send_html(msg.from.id, html, {
         "resize_keyboard": true,
         "keyboard": [
             ["⬅️ Назад"]
         ],
     });
 
-    var html = `Вам нужно заполнить данные, чтобы создать проект, нажмите кнопку "Заполнить данные", чтобы продолжить когда будите готовы`;
+    var html = `Нажмите кнопку <strong>"Заполнить данные"</strong>, чтобы создать проект и подать его на модерацию`;
     var _url = `${h.getURL()}html/project/creating/#${msg.from.id}`;
 
     await h.send_html(msg.from.id, html, {
