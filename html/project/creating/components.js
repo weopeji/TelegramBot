@@ -1175,7 +1175,7 @@
 
             for(var key in correctArray)
             {
-                if(key == "rate") {correctArray[key] = correctArray[key].replace(/,/, '.') * 12};
+                if(key == "rate") {correctArray[key] = (correctArray[key].replace(/,/, '.') * 12).toFixed(2)};
                 if(types[key] == 'file') continue;
                 var _data = correctArray[key];
                 if(_data.length == 0 || _data == null) {
