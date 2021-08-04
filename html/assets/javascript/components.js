@@ -1119,14 +1119,25 @@
 
                     putDocumentToSignature.find('input[type=file]').change( async function() 
                     {
-                        console.log($(this.files)[0]);
+                        var filename = $(this.files).val();
+                        var aux = filename.split('.');
+                        var extension = aux[aux.length -1].toUpperCase();
 
-                        
+                        if(extension === 'DOC'
+                            || extension === 'DOCX'
+                            || extension === 'PDF'
+                            ){
+                            alert('Valid extension.');
+                        }else{
+                            alert('Invalid extension: ' + extension + '. Only: DOC, DOCX, PDF are allowed.');
+                        }
+
+
                         var _form    = new FormData();
 
                         _form.append('files', $(this.files)[0]);
                         _form.append('_id', _project._id);
-                        _form.append('_pts', $(this.files)[0].type);
+                        _form.append('_pts', extension);
 
                         
 
