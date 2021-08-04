@@ -59,8 +59,7 @@
                     $('.index_page_body_button').click( function() 
                     {
                         const _dataImg = signaturePad.toDataURL();
-                        console.log(_dataImg);
-                        _components.correct_signature_document(_id);
+                        _components.correct_signature_document(_id, _dataImg);
                         $('.end_get_project').css('display', "flex");
                     });
 

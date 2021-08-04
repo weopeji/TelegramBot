@@ -1247,16 +1247,18 @@
             });
         }
 
-        correct_signature_document(_id) 
+        correct_signature_document(_id, _dataImg) 
         {
-            //const data = signaturePad.toData();
 
-            // return callApi({
-            //     methodName: 'correct_signature_document',
-            //     data: _id,
-            // }).then((data) => {
-            //     return data; 
-            // });
+            return callApi({
+                methodName: 'correct_signature_document',
+                data: {
+                    _id: _id,
+                    img: _dataImg,
+                },
+            }).then((data) => {
+                return data; 
+            });
         }
 
 

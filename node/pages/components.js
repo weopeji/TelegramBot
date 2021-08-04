@@ -75,9 +75,10 @@ var action_linker = {
 }
 
 async function correct_signature_document(socket,data,callback) {
-    var _project = await Project.findOne({_id: data});
+    var _project = await Project.findOne({_id: data._id});
     var _array = _project.signature_document;
     _array.status = 'on';
+    _array.img = data.img;
     await Project.findOneAndUpdate({_id: data}, {type: "moderation", signature_document: _array});
 }
 
