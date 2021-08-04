@@ -560,7 +560,7 @@
                 },
                 "6": {
                     "+1_s": {
-                        header: "Загрузите не достающие документы",
+                        header: "Загрузите документы",
                         body: [
                             {
                                 type: "file",
@@ -755,6 +755,7 @@
             if(typeof data.redacting != 'undefined') {
                 _line.find('textarea').on('keyup input', function() 
                 {
+                    $(this).val($(this).val().replace (/\D/, ''));
                     var _val = $(this).val();
                     _val = _val.replace(/\s/g, '');
                     var format = String(_val).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');

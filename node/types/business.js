@@ -255,7 +255,7 @@ async function clean_project(msg) {
 
 async function addProject(msg) 
 {
-    var html = "Создание проекта:";
+    var html = "Заполнить данные:";
     let del_msg = await h.send_html(msg.from.id, html, {
         "resize_keyboard": true,
         "keyboard": [
@@ -276,4 +276,6 @@ async function addProject(msg)
             ]
         ],
     });
+
+    await h.DM(msg, 2);
 }

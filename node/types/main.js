@@ -22,6 +22,7 @@ function privateInit(initPlagins) {
     _data   = initPlagins._data;
     config  = initPlagins.config;
     https   = initPlagins.https;
+    Project = initPlagins.Project;
 }
 
 const MF =
@@ -137,6 +138,7 @@ async function notType(msg)
 async function _MainMenu(msg)
 {
     var _User = await MF.find_user(msg);
+    var _projects = await Project.find({user: msg.from.id});
 
     var infoTypes = 
     {
@@ -168,10 +170,23 @@ async function _MainMenu(msg)
         {
             var html = `<strong>${msg.from.first_name} ${msg.from.last_name}</strong>\nдля того, чтобы разместить свое предложение для привлечения инвестиций, необходимо заполнить заявку и прикрепить документы на <strong>investER.</strong>\n\n`;
 
+            var notActiveBlock = "❌ Неактивные проекты";
+
+            var _moderation     = _projects.filter(el => el.type == "moderation");
+            var _correction = _projects.filter(el => el.type == "correction");
+
+            if(_moderation.length > 0) {
+                notActiveBlock = "❌ Неактивные проекты 🔶";
+            }
+
+            if(_correction.length > 0) {
+                notActiveBlock = "❌ Неактивные проекты 🔶";
+            }
+
             await bot.sendMessage(msg.chat.id, html, {
                 parse_mode: "HTML",
                 reply_markup: {
-                    "keyboard": [["❓ Как добавить проект"], ["✍ Добавить проект", "✔️ Активные проекты","❌ Неактивные проекты"], ['🔁 Сменить роль']],
+                    "keyboard": [["❓ Как добавить проект"], ["✍ Добавить проект", "✔️ Активные проекты",notActiveBlock], ['🔁 Сменить роль']],
                     "one_time_keyboard": true,
                 }
             });

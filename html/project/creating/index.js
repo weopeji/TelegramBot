@@ -29,7 +29,7 @@
                     global._typePage = 'signature';
 
                     $('.index_page_body h1').html('Дополнительные документы');
-                    $('.index_page_body h2').html('Отправьте последние документы для составления договора');
+                    $('.index_page_body h2').html('Отправьте следующие документы для составления договора');
                     $('.index_page_body_button span').html('Отправить');
 
                     await _components.render_signature(_project);
@@ -110,6 +110,7 @@
             $('.index_page_body_button').click( function() {
                 _components.correct($('.index_page_body_header_type').find('.selected').attr('data'), _id);
             });
+
         }
 
 

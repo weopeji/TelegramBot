@@ -96,6 +96,7 @@ var load_helpers = () =>
             _data : _data,
             config: config,
             https: https,
+            Project: Project,
         });
     }
     if(investor_page == null) 
@@ -213,6 +214,7 @@ bot.on('message', async (msg) =>
         "❓ Как добавить проект": business_page.how_add,
         "✍ Добавить проект": business_page.addProject,
         "❌ Неактивные проекты": business_page.not_active,
+        "❌ Неактивные проекты 🔶": business_page.not_active,
         "🧹 Очистить проект": business_page.clean_project,
         "✅ Подать на модерацию": business_page.put_project,
         // ПРИВЛЕЧЕНИЕ ========================================
