@@ -1249,7 +1249,7 @@
 
         correct_signature_document(_id) 
         {
-            const data = signaturePad.toData();
+            //const data = signaturePad.toData();
 
             // return callApi({
             //     methodName: 'correct_signature_document',
