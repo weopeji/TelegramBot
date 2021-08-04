@@ -130,7 +130,6 @@ async function notType(msg)
     await h.send_html(msg.chat.id, html, {
         "resize_keyboard": true,
         "keyboard": [["💰 Инвестор", "💼 Бизнес", "📣 Привлечение"]],
-        "one_time_keyboard": true,
     });
     await h.DM(msg, 2);
 } 
@@ -182,14 +181,9 @@ async function _MainMenu(msg)
             if(_correction.length > 0) {
                 notActiveBlock = "❌ Неактивные проекты 🔶";
             }
-
-            await bot.sendMessage(msg.chat.id, html, {
-                parse_mode: "HTML",
-                resize_keyboard: true,
-                reply_markup: {
-                    "keyboard": [["❓ Как добавить проект", "✍ Добавить проект"], [ "✔️ Активные проекты",notActiveBlock], ['🔁 Сменить роль']],
-                    "one_time_keyboard": true,
-                }
+            await h.send_html(msg.chat.id, html, {
+                "resize_keyboard": true,
+                "keyboard": [["❓ Как добавить проект", "✍ Добавить проект"], [ "✔️ Активные проекты",notActiveBlock], ['🔁 Сменить роль']]
             });
 
             return;
