@@ -27,7 +27,7 @@
             data: _id,
         });
 
-        console.log(need_project);
+        $('.index_page').append(need_project.signature_document.document_html);
     }
 
 }(window))
