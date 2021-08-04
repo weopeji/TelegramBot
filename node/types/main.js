@@ -185,6 +185,7 @@ async function _MainMenu(msg)
 
             await bot.sendMessage(msg.chat.id, html, {
                 parse_mode: "HTML",
+                "resize_keyboard": true,
                 reply_markup: {
                     "keyboard": [["❓ Как добавить проект", "✍ Добавить проект"], [ "✔️ Активные проекты",notActiveBlock], ['🔁 Сменить роль']],
                     "one_time_keyboard": true,
