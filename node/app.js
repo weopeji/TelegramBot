@@ -278,7 +278,7 @@ app.post('/file_urist.io/files', (req, res) => {
     var redactingDocument = async () => 
     {
         mammoth.convertToHtml({path: `/var/www/projects/${_data._id}/signature_document.${_data._pts.split('/')[1]}`})
-            .then(function(result) {
+            .then(async function(result) {
                 var html = result.value;
                 var need_html = html.replace(/ /g,"&nbsp;");
 
