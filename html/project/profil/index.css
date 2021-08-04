@@ -58,6 +58,10 @@ html, body {
   width: 48%;
 }
 
+.index_page_profil .page_line a {
+  overflow-wrap: anywhere;
+}
+
 @media (max-width: 900px) {
   .index_page_profil {
     width: 95vw;
