@@ -54,13 +54,15 @@
                     $('.index_page_body h2').html('Подпишите составленный документ');
                     $('.index_page_body_button span').html('Отправить');
 
-                    await _components.render_signature_document(_project);
+                    var signaturePad = await _components.render_signature_document(_project);
 
-                    $('.index_page_body_button').click( function() {
+                    $('.index_page_body_button').click( function() 
+                    {
+                        const _dataImg = signaturePad.toData();
+                        console.log(_dataImg);
                         _components.correct_signature_document(_id);
                         $('.end_get_project').css('display', "flex");
                     });
-                    
 
                     changeTextArea();
 

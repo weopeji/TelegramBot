@@ -968,6 +968,8 @@
             $('.put').click( function() {
                 window.open(`https://skin-win.ru/html/project/document/#${_project._id}`, '_blank');
             });
+
+            return signaturePad;
         }
 
         getId(_id) {
@@ -1245,13 +1247,16 @@
             });
         }
 
-        correct_signature_document(_id) {
-            return callApi({
-                methodName: 'correct_signature_document',
-                data: _id,
-            }).then((data) => {
-                return data; 
-            });
+        correct_signature_document(_id) 
+        {
+            const data = signaturePad.toData();
+
+            // return callApi({
+            //     methodName: 'correct_signature_document',
+            //     data: _id,
+            // }).then((data) => {
+            //     return data; 
+            // });
         }
 
 
