@@ -304,7 +304,7 @@ async function parceProject(type, data, callback)
                 addr: _data.address.value,
                 do: null,
                 founder: _data.management.name,
-            } 
+            }
 
             callback(_conf);
         }

@@ -31,7 +31,7 @@
         {
             header: function() 
             {
-                var type = "Займ";
+                var type = "Заемщик";
                 var organization;
                 if(need_project.data.organization == "1") organization = "Юридическое лицо";
                 if(need_project.data.organization == "2") organization = "Индивидуальный предприниматель";

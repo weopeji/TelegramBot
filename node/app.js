@@ -210,7 +210,7 @@ bot.on('message', async (msg) =>
         "МОИ ИНВЕСТИЦИИ": investor_page.my_investment,
         "Активные проекты": investor_page.active_projects,
         // БИЗНЕС =============================================
-        "✔️ Активные проекты": business_page.active,
+        "✅ Активные проекты": business_page.active,
         "❓ Как добавить проект": business_page.how_add,
         "✍ Добавить проект": business_page.addProject,
         "❌ Неактивные проекты": business_page.not_active,
