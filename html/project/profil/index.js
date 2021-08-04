@@ -31,12 +31,11 @@
         {
             header: function() 
             {
-                var type = "Заемщик";
                 var organization;
                 if(need_project.data.organization == "1") organization = "Юридическое лицо";
                 if(need_project.data.organization == "2") organization = "Индивидуальный предприниматель";
                 if(need_project.data.organization == "3") organization = "Физическое лицо";
-                var text = `${type} - ${organization}`;
+                var text = `${organization}`;
                 return text;
             },
             data: {
