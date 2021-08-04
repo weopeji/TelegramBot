@@ -11,4 +11,8 @@ html, body {
 .index_page p {
   overflow-wrap: break-word;
 }
+
+.index_page img {
+  width: 190px;
+}
 /*# sourceMappingURL=index.css.map */
