@@ -28,6 +28,7 @@
     </div>
     <div class="index_page">
         <div class="index_page_header">
+            <div class="header_img"></div>
             <div class="index_page_header_logo">
                 <img src="../../assets/images/logo.png" alt="">
             </div>
@@ -63,13 +64,20 @@
     </div>
 
     <script src="../../assets/mods/jquery/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.0/dist/js.cookie.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.1/socket.io.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="../../assets/mods/async.min.js"></script>
+    <script src="../../assets/mods/jquery/jquery.maskedinput.min.js"></script>
+    <script src="../../assets/mods/jquery/inputmask.js"></script>
     <script src="../../assets/mods/signature_pad.min.js"></script>
     <script src="../../assets/javascript/main.js"></script>
 
     <script src="index.js"></script>
+
+    <script>
+        $.mask.definitions['N'] = "[0-9]";
+    </script>
 
 </body>
 </html>

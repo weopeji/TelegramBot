@@ -13,6 +13,9 @@ var readline    = require('readline');
 var multer      = require("multer");
 var Jimp        = require("jimp");
 var uploader    = require('../helpers/uploader/upload');
+const { TelegramClient } = require("telegram");
+const { StringSession } = require("telegram/sessions");
+const { spawn, exec } = require('child_process');
 
 const Instagram = require('instagram-web-api');
 
@@ -72,6 +75,37 @@ var action_linker = {
     "putFileSignature": putFileSignature,
     "setSignatureFile": setSignatureFile,
     "correct_signature_document": correct_signature_document,
+    "getAddr": getAddr,
+    "alertProject": alertProject
+}
+
+function alertProject(socket,data,callback) 
+{
+    exec(`python "../python/app.py" "${data}"`);
+}   
+
+async function getAddr(socket,data,callback) 
+{
+    var _url = "https://cleaner.dadata.ru/api/v1/clean/address";
+    var token = "cd3a829357362fec55fc201c3f761002def9906f";
+    var secret = "17df8cdd3e4ace2be6c66bd1ee208d26e54d9843";
+    var query = data;
+
+    var options = {
+        method: "POST",
+        mode: "cors",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Token " + token,
+            "X-Secret": secret
+        },
+        body: JSON.stringify([query])
+    }
+
+    fetch(_url, options)
+        .then(response => response.text())
+        .then(result => callback(result))
+        .catch(error => console.log("error", error));
 }
 
 async function correct_signature_document(socket,data,callback) {
@@ -378,6 +412,8 @@ async function setProject(socket,data,callback)
             callback({status: "ok"});
         });
     }
+
+    exec(`python "../python/app.py" "Проект подан на модерацию"`);
     
 }
 

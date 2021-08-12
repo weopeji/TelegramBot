@@ -14,6 +14,8 @@ html, body
     display: flex
     background-color: white
     border-bottom: 2px solid #edf2f9
+    padding-top: 20px
+    position: relative
 
 .index_page_header_logo
     flex: 1
@@ -128,12 +130,25 @@ html, body
 .body_point_line
     width: calc(100% - 3rem)
     margin: 0 1.5rem
+    position: relative
 
     span
         font-weight: 600
         font-size: 15px
 
-    textarea
+    input
+        width: calc(100% - 20px)
+        color: #12263f
+        font-size: .9375rem
+        font-weight: 400
+        background-color: #F8FAFB
+        display: block
+        padding: 10px
+        border-radius: 10px
+        margin-bottom: 20px
+        border: 0
+
+    input[type=date]
         width: calc(100% - 20px)
         color: #12263f
         font-size: .9375rem
@@ -442,7 +457,7 @@ html, body
 
 ._menu
 
-    textarea
+    input
         display: none
 
     .menu_block_inline
@@ -506,3 +521,27 @@ html, body
         span
             font-weight: 400
             color: #12263f
+
+
+.body_point_line_more_info_addr
+    width: 100%
+    margin-bottom: 10px
+    position: relative
+    top: -10px
+    display: none
+
+    span
+        display: flex
+        align-items: center
+        padding: 10px
+        width: calc(100% - 20px)
+        cursor: pointer
+
+.header_img
+    width: 100%
+    height: 20px
+    background-image: url(../../assets/images/background-live-fall-94c8orkshs.png)
+    background-size: cover
+    position: absolute
+    top: 0
+    left: 0

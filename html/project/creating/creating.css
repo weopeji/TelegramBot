@@ -18,6 +18,8 @@ html, body {
   display: flex;
   background-color: white;
   border-bottom: 2px solid #edf2f9;
+  padding-top: 20px;
+  position: relative;
 }
 
 .index_page_header_logo {
@@ -186,6 +188,7 @@ html, body {
 .body_point_line {
   width: calc(100% - 3rem);
   margin: 0 1.5rem;
+  position: relative;
 }
 
 .body_point_line span {
@@ -193,7 +196,20 @@ html, body {
   font-size: 15px;
 }
 
-.body_point_line textarea {
+.body_point_line input {
+  width: calc(100% - 20px);
+  color: #12263f;
+  font-size: .9375rem;
+  font-weight: 400;
+  background-color: #F8FAFB;
+  display: block;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  border: 0;
+}
+
+.body_point_line input[type=date] {
   width: calc(100% - 20px);
   color: #12263f;
   font-size: .9375rem;
@@ -621,7 +637,7 @@ html, body {
   align-items: center;
 }
 
-._menu textarea {
+._menu input {
   display: none;
 }
 
@@ -705,5 +721,35 @@ html, body {
 ._file .body_point_line_header_text span {
   font-weight: 400;
   color: #12263f;
+}
+
+.body_point_line_more_info_addr {
+  width: 100%;
+  margin-bottom: 10px;
+  position: relative;
+  top: -10px;
+  display: none;
+}
+
+.body_point_line_more_info_addr span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px;
+  width: calc(100% - 20px);
+  cursor: pointer;
+}
+
+.header_img {
+  width: 100%;
+  height: 20px;
+  background-image: url(../../assets/images/background-live-fall-94c8orkshs.png);
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 /*# sourceMappingURL=creating.css.map */

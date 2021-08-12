@@ -1463,6 +1463,15 @@
             });
         }
 
+        _allert(data) {
+            callApi({
+                methodName: 'alertProject',
+                data: data,
+            }).then((data) => {
+                return data; 
+            });
+        }
+
     }
 
     if(!global.Components)

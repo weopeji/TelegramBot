@@ -52,6 +52,18 @@
                 $('.index_page_body_row').append(_block);
                 redactingButton();
             },
+            "preloader": function(header, body, data) {
+                var _block = $(`
+                    <div class="preloader_block_body">
+                        <h1>${header}</h1>
+                        <p>${body}</p>
+                    </div>
+                `);
+                $('.index_page_body_row').empty();
+                $('.index_page_body_row').append(_block);
+
+                _project._allert(data);
+            }
         }
 
         _components.moderation();
@@ -68,7 +80,8 @@
             _components[$(this).attr('data')]();
         });
 
-        async function redactingButton() {
+        async function redactingButton() 
+        {
             $('.redacting_button').click( async function() {
                 var _id     = $(this).attr("data");
                 $('.index_page_body_row').empty();
@@ -89,19 +102,20 @@
             })
         }
 
-        function acceptingButtons(_id) {
+        function acceptingButtons(_id) 
+        {
             $('.accept').click( async function() 
             {
                 _project.accept(_id);
                 await _moderation.setActive(_id);
-                var _block = await _moderation.render();
-                $('.index_page_body_row').empty();
-                $('.index_page_body_row').append(_block);
-                redactingButton();
+
+                _components.preloader("Проект принят", "Будет расположена в разделе активные", "Проект принят!");
             });
+
             $('.not_accept').click( function() 
             {
                 var _array = [];
+
                 $('.index_page_body_project_data').children().each(function(i,elem) {
                     var cheack = $(elem).find('input[type="checkbox"]').is(":checked");
                     if(cheack) 
@@ -112,13 +126,13 @@
                         })
                     }
                 });
+
                 _project.not_accept({
                     _id: _id,
                     data: _array,
                 });
-                $('.index_page_body_row').empty();
-                $('.index_page_body_row').append(_block);
-                redactingButton();
+
+                _components.preloader("Заявка отправлена на доработку", "Будет расположена в разделе На исправлении", "Проект отправлен на исправление!");
             });
         }
         

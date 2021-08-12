@@ -86,7 +86,7 @@ async function not_active_callback(msg)
     var _type       = h._GET(_data, 'type');
     var btnData     = h._GET(_data, 'data');
 
-    h.send_html(msg.from.id, "*", {
+    h.send_html(msg.from.id, "Проекты:", {
         "resize_keyboard": true,
         "keyboard": [
             ["⬅️ Назад"]
@@ -117,27 +117,39 @@ async function not_active_callback(msg)
                 needNextProject = 1;
             } else 
             {
-                needProject = _moderation[btnData];
-                if((btnData + 1) >= _moderation.length) {
-                    needNextProject = "first";
+                if(btnData <= 0) {
+                    needProject = _moderation[0];
+                    needNextProject = 1;
                 } else {
-                    needNextProject = needNextProject + 1;
+                    needProject = _moderation[btnData];
+                    if((btnData + 1) >= _moderation.length) {
+                        needNextProject = "first";
+                    } else {
+                        needNextProject = needNextProject + 1;
+                    }
                 }
             }
+
             if(_moderation.length > 1) 
             {
                 _keyboard.push([
                     {
-                        text: "Далее",
+                        text: "⬅️",
+                        callback_data: `place=not_active&type=moderation&data=${needNextProject - 2}`,
+                    },
+                    {
+                        text: "➡️",
                         callback_data: `place=not_active&type=moderation&data=${needNextProject}`,
                     }
                 ])
             }
+            
 
             var _urlImgProject = `${h.getURL()}html/project/cover/?id=${needProject._id}`;
             const browser = await puppeteer.launch({
                 args: ['--no-sandbox', '--disable-setuid-sandbox'],
             });
+
             const page = await browser.newPage();
             await page.goto(_urlImgProject);
             await page.emulateMedia('screen');
@@ -177,27 +189,40 @@ async function not_active_callback(msg)
                 needNextProject = 1;
             } else 
             {
-                needProject = _correction[btnData];
-                if((btnData + 1) >= _correction.length) {
-                    needNextProject = "first";
+                if(btnData <= 0) {
+                    needProject = _correction[0];
+                    needNextProject = 1;
                 } else {
-                    needNextProject = needNextProject + 1;
+                    needProject = _correction[btnData];
+                    if((btnData + 1) >= _correction.length) {
+                        needNextProject = "first";
+                    } else {
+                        needNextProject = needNextProject + 1;
+                    }
                 }
             }
-
-            _keyboard.push([
-                {
-                    text: "Перейти",
-                    url: `${h.getURL()}html/project/creating/#${needProject._id}`,
-                }
-            ])
 
             if(_correction.length > 1) 
             {
                 _keyboard.push([
                     {
-                        text: "Далее",
+                        text: "⬅️",
+                        callback_data: `place=not_active&type=correction&data=${needNextProject - 2}`,
+                    },
+                    {
+                        text: `№${needProject._id}`,
+                        url: `${h.getURL()}html/project/creating/#${needProject._id}`,
+                    },
+                    {
+                        text: "➡️",
                         callback_data: `place=not_active&type=correction&data=${needNextProject}`,
+                    }
+                ])
+            } else {
+                _keyboard.push([
+                    {
+                        text: "Перейти",
+                        url: `${h.getURL()}html/project/creating/#${needProject._id}`,
                     }
                 ])
             }
@@ -206,6 +231,7 @@ async function not_active_callback(msg)
             const browser = await puppeteer.launch({
                 args: ['--no-sandbox', '--disable-setuid-sandbox'],
             });
+
             const page = await browser.newPage();
             await page.goto(_urlImgProject);
             await page.emulateMedia('screen');

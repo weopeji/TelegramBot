@@ -47,7 +47,8 @@
                             type: "string",
                             name: "Срок инвестирования",
                             info: "Укажите целое количество месяцев",
-                            _id: "date"
+                            _id: "date",
+                            number: true
                         },
                         {
                             type: "string",
@@ -60,7 +61,8 @@
                             type: "string",
                             name: "Ставка % в месяц",
                             info: "Введите целое или дробное значение в формате 1.15",
-                            _id: "rate"
+                            _id: "rate",
+                            number_t: true
                         },
                         {
                             type: "menu",
@@ -70,9 +72,9 @@
                             _id: "date_payments"
                         },
                         {
-                            type: "string",
+                            type: "date",
                             name: "Период сбора",
-                            info: "Укажите целое количество месяцев либо Бессрочно",
+                            info: "Выберите дату периода сбора",
                             _id: "collection_period"
                         }
                     ]
@@ -91,16 +93,18 @@
                                 type: "string",
                                 name: "ИНН",
                                 info: "Введите ИНН",
-                                _id: "inn"
+                                _id: "inn",
+                                number: true
                             },
                             {
                                 type: "string",
                                 name: "ОГРН",
                                 info: "Введите ОГРН",
-                                _id: "ogrn"
+                                _id: "ogrn",
+                                number: true
                             },
                             {
-                                type: "string",
+                                type: "addr",
                                 name: "Фактический адрес",
                                 info: "Введите Фактический адрес",
                                 _id: "addr"
@@ -203,19 +207,22 @@
                             type: "string",
                             name: "Телефон",
                             info: "Ваш номер телефона",
-                            _id: "phone"
+                            _id: "phone",
+                            phone: true
                         },
                         {
                             type: "string",
                             name: "WhatsApp",
                             info: "Ваш номер телефона привязанный к WhatsApp",
-                            _id: "whatsapp"
+                            _id: "whatsapp",
+                            phone: true
                         },
                         {
                             type: "string",
                             name: "Email",
                             info: "Ваш действующий email",
-                            _id: "email"
+                            _id: "email",
+                            mail: true
                         }
                     ]
                 },
@@ -232,31 +239,35 @@
                             type: "string",
                             name: "Корр. счет",
                             info: "Введите Корр. счет",
-                            _id: "account_correct"
+                            _id: "account_correct",
+                            number: true
                         },
                         {
                             type: "string",
                             name: "БИК",
                             info: "Введите БИК",
-                            _id: "bik"
+                            _id: "bik",
+                            number: true,
                         },
                         {
                             type: "string",
                             name: "Получатель",
-                            info: "Введите получателя",
+                            info: "Введите кто будет получать инвестиции",
                             _id: "recipient"
                         },
                         {
                             type: "string",
                             name: "Счет получателя",
                             info: "Введите счет получателя",
-                            _id: "account_get"
+                            _id: "account_get",
+                            number: true
                         },
                         {
                             type: "string",
                             name: "КПП",
                             info: "Введите КПП",
-                            _id: "kpp"
+                            _id: "kpp",
+                            number: true
                         }
                     ]
                 },
@@ -733,119 +744,244 @@
             });
         }
 
-        string(data, put) 
+        dataLines = 
         {
-            var _line = $(`
-                <div class="body_point_line">
-                    <div class="body_point_line_header">
-                        <div class="body_point_line_header_text">
-                            <span>${data.name}</span>
-                            <p>${data.info}</p>
+            "string": function(data, put) 
+            {
+                var _line = $(`
+                    <div class="body_point_line">
+                        <div class="body_point_line_header">
+                            <div class="body_point_line_header_text">
+                                <span>${data.name}</span>
+                                <p>${data.info}</p>
+                            </div>
+                            <div class="body_point_line_header_info">
+                                <span class="_not">Не заполнено</span>
+                                <span class="_yes">Готово</span>
+                            </div>
                         </div>
-                        <div class="body_point_line_header_info">
-                            <span class="_not">Не заполнено</span>
-                            <span class="_yes">Готово</span>
-                        </div>
+                        <input id="${data._id}" class="text_area" placeholder="Введите значение">
                     </div>
-                    <textarea id="${data._id}" class="text_area" rows="1" placeholder="Введите значение"></textarea>
-                </div>
-            `);
+                `);
 
-            
-            if(typeof data.redacting != 'undefined') {
-                _line.find('textarea').on('keyup input', function() 
+                _line.find(`#${data._id}`).on('keyup input', function() 
                 {
                     var _val = $(this).val();
-                    _val = _val.replace(/[^\d;]/g, '')
-                    _val = _val.replace(/\s/g, '');
-                    var format = String(_val).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
-                    $(this).val(format);
-                })
-            }
+                    Cookies.set(data._id, _val);
+                });
 
-            if(typeof put != "undefined") {
-                _line.find(`#${data._id}`).val(put.data[data._id]);
-                _line.find('._yes').css('display', "block");
-                _line.find('._not').css('display', "none");
-            }
+                if(typeof Cookies.get(data._id) != "undefined") {
+                    _line.find(`#${data._id}`).val(Cookies.get(data._id));
+                }
 
-            return _line;
-        }
-
-        file(data) 
-        {
-            var _file = `
-                <div class="download_buttons">
-                    <input class="file_load" id='${data._id}' type='file'>
-                    <label for="${data._id}">Загрузить <i class="fas fa-angle-double-down"></i></label>
-                </div>
-                <div class="loader_input" id="${data._id}_block">
-                    <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
-                </div>
-                <div class="all_good">
-                    <div class="all_good_row">
-                        <span class="all_good_cheack">Посмотреть</span>
-                        <span class="all_good_del">Удалить</span>
-                    </div>
-                </div>
                 
-            `;
-            var _line = $(`
-                <div class="body_point_line _file">
-                    <div class="body_point_line_header">
-                        <div class="body_point_line_header_text">
-                            <span>${data.name}</span>
-                            ${_file}
-                        </div>
-                        <div class="body_point_line_header_info">
+                if(typeof data.redacting != 'undefined') {
+                    _line.find(`#${data._id}`).on('keyup input', function() 
+                    {
+                        var _val = $(this).val();
+                        _val = _val.replace(/[^\d;]/g, '')
+                        _val = _val.replace(/\s/g, '');
+                        var format = String(_val).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
+                        $(this).val(format);
+                    });
+                }
 
+                if(typeof put != "undefined") {
+                    _line.find(`#${data._id}`).val(put.data[data._id]);
+                    _line.find('._yes').css('display', "block");
+                    _line.find('._not').css('display', "none");
+                }
+
+                if(typeof data.phone != "undefined") {
+                    _line.find(`#${data._id}`).mask("+7(999) 999-9999");
+                }
+
+                if(typeof data.inn_type != "undefined") {
+                    _line.find(`#${data._id}`).mask("NNNNNNNNNNNN");
+                }
+
+                if(typeof data.number != "undefined") {
+                    _line.find(`#${data._id}`).bind("change keyup input click", function() {
+                        if (this.value.match(/[^0-9]/g)) {
+                            this.value = this.value.replace(/[^0-9]/g, '');
+                        }
+                    });
+                }
+
+                if(typeof data.number_t != "undefined") {
+                    _line.find(`#${data._id}`).bind("change keyup input click", function() {
+                        if (this.value.match(/[^0-9\.]/g)) {
+                            this.value = this.value.replace(/[^0-9\.]/g, '');
+                        }
+                    });
+                }
+
+                if(typeof data.mail != "undefined") {
+                    _line.find(`#${data._id}`).inputmask("email");
+                }
+
+                return _line;
+            },
+            "file": function(data) 
+            {
+                var _file = `
+                    <div class="download_buttons">
+                        <input class="file_load" id='${data._id}' type='file'>
+                        <label for="${data._id}">Загрузить <i class="fas fa-angle-double-down"></i></label>
+                    </div>
+                    <div class="loader_input" id="${data._id}_block">
+                        <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+                    </div>
+                    <div class="all_good">
+                        <div class="all_good_row">
+                            <span class="all_good_cheack">Посмотреть</span>
+                            <span class="all_good_del">Удалить</span>
                         </div>
                     </div>
-                </div>
-            `);
+                    
+                `;
+                var _line = $(`
+                    <div class="body_point_line _file">
+                        <div class="body_point_line_header">
+                            <div class="body_point_line_header_text">
+                                <span>${data.name}</span>
+                                ${_file}
+                            </div>
+                            <div class="body_point_line_header_info">
 
-            return _line;
+                            </div>
+                        </div>
+                    </div>
+                `);
+
+                return _line;
+            },
+            "menu": function(data) {
+                var _line = $(`
+                    <div class="body_point_line _menu">
+                        <div class="body_point_line_header">
+                            <div class="body_point_line_header_text">
+                                <span>${data.name}</span>
+                                <p>${data.info}</p>
+                            </div>
+                        </div>
+                        <input id="${data._id}" class="text_area" placeholder="Введите значение">
+                        <div class="menu_block">
+                            <span>Ежедневно</span>
+                            <i class="far fa-layer-group"></i>
+                            <div class="menu_block_inline">
+
+                            </div>
+                        </div>
+                    </div>
+                `);
+
+                _line.find('textarea').val(data.menu_list[0]);
+
+                data.menu_list.forEach(element => {
+                    _line.find('.menu_block_inline').append(`<p>${element}</p>`);
+                });
+
+                _line.find('.menu_block').click( function() {
+                    $(this).find('.menu_block_inline').fadeToggle();
+                })
+
+                _line.find('.menu_block p').click( function() {
+                    _line.find('.menu_block span').html($(this).html());
+                    _line.find('input').val($(this).html());
+                })
+
+                return _line;
+            },
+            "date": function(data) 
+            {
+               
+                var _line = $(`
+                    <div class="body_point_line">
+                        <div class="body_point_line_header">
+                            <div class="body_point_line_header_text">
+                                <span>${data.name}</span>
+                                <p>${data.info}</p>
+                            </div>
+                            <div class="body_point_line_header_info">
+                                <span class="_not">Не заполнено</span>
+                                <span class="_yes">Готово</span>
+                            </div>
+                        </div>
+                        <input id="${data._id}" type="date" class="text_area" name="calendar" min="2021-08-07">
+                    </div>
+                `);
+
+                return _line;
+            },
+            "addr": function(data) {
+                var _line = $(`
+                    <div class="body_point_line">
+                        <div class="body_point_line_header">
+                            <div class="body_point_line_header_text">
+                                <span>${data.name}</span>
+                                <p>${data.info}</p>
+                            </div>
+                            <div class="body_point_line_header_info">
+                                <span class="_not">Не заполнено</span>
+                                <span class="_yes">Готово</span>
+                            </div>
+                        </div>
+                        <input id="${data._id}" class="text_area" placeholder="Введите значение">
+                        <div class="body_point_line_more_info_addr">
+                            <span>addr</span>
+                            <span>addr</span>
+                        </div>
+                    </div>
+                `);
+
+                var $input = _line.find(`#${data._id}`);
+                var typingTimer;
+                var doneTypingInterval = 1000;
+
+                $input.on('keyup', function () {
+                    clearTimeout(typingTimer);
+                    typingTimer = setTimeout(doneTyping, doneTypingInterval);
+                });
+                  
+                $input.on('keydown', function () {
+                    clearTimeout(typingTimer);
+                });
+                  
+                async function doneTyping () 
+                {
+                    if($input.val().length == 0) {
+                        return;
+                    }
+
+                    var getAddr = await callApi({
+                        methodName: 'getAddr',
+                        data: $input.val(),
+                    });
+
+                    
+
+                    var _data = JSON.parse(getAddr);
+
+                    console.log(_data);
+
+                    $('.body_point_line_more_info_addr span').eq(0).text(_data[0].result);
+                    $('.body_point_line_more_info_addr span').eq(1).text(_data[0].source);
+                    $('.body_point_line_more_info_addr').fadeOut( function () {
+                        $(this).fadeIn();
+                    });
+
+                    $('.body_point_line_more_info_addr span').click( function () {
+                        var inputText = $(this).text();
+                        $(this).parent().parent().find('input').val(inputText);
+                        $('.body_point_line_more_info_addr').fadeOut();
+                    })
+                }
+                    
+                return _line;
+            }
+            
         }
-
-        menu(data) 
-        {
-            var _line = $(`
-                <div class="body_point_line _menu">
-                    <div class="body_point_line_header">
-                        <div class="body_point_line_header_text">
-                            <span>${data.name}</span>
-                            <p>${data.info}</p>
-                        </div>
-                    </div>
-                    <textarea id="${data._id}" class="text_area" rows="1" placeholder="Введите значение"></textarea>
-                    <div class="menu_block">
-                        <span>Ежедневно</span>
-                        <i class="far fa-layer-group"></i>
-                        <div class="menu_block_inline">
-
-                        </div>
-                    </div>
-                </div>
-            `);
-
-            _line.find('textarea').val(data.menu_list[0]);
-
-            data.menu_list.forEach(element => {
-                _line.find('.menu_block_inline').append(`<p>${element}</p>`);
-            });
-
-            _line.find('.menu_block').click( function() {
-                $(this).find('.menu_block_inline').fadeToggle();
-            })
-
-            _line.find('.menu_block p').click( function() {
-                _line.find('.menu_block span').html($(this).html());
-                _line.find('textarea').val($(this).html());
-            })
-
-            return _line;
-        }
-
 
         async render(param) 
         {
@@ -871,50 +1007,13 @@
                 `);
 
                 var _this = this;
-
-                var FUN = 
+                
+                var _dataBlock = data.body;
+                if(key == "+2") { if(param == 1 || param == 2) { _dataBlock = data.body[1] } else { _dataBlock = data.body[2] }; }; 
+                _dataBlock.forEach(element => 
                 {
-                    _string: function(element) 
-                    {
-                        var _string = _this.string(element);
-                        _body.append(_string);
-                    },
-                    _file: function(element) 
-                    {
-                        var _string = _this.file(element);
-                        _body.append(_string);
-                    },
-                    _menu: function(element)
-                    {
-                        var _string = _this.menu(element);
-                        _body.append(_string);
-                    },
-                }
-
-                if(key == "+2") {
-                    if(param == 1 || param == 2) {
-                        data.body[1].forEach(element => 
-                        {
-                            if(element.type == "string") FUN._string(element);
-                            if(element.type == "file") FUN._file(element);
-                            if(element.type == "menu") FUN._menu(element);
-                        });
-                    } else {
-                        data.body[2].forEach(element => 
-                        {
-                            if(element.type == "string") FUN._string(element);
-                            if(element.type == "file") FUN._file(element);
-                            if(element.type == "menu") FUN._menu(element);
-                        });
-                    }
-                } else {
-                    data.body.forEach(element => 
-                    {
-                        if(element.type == "string") FUN._string(element);
-                        if(element.type == "file") FUN._file(element);
-                        if(element.type == "menu") FUN._menu(element);
-                    });
-                }
+                    _body.append(_this.dataLines[element.type](element));
+                });
                 
                 $('.index_page_body_points').append(_body);
             }
@@ -1154,6 +1253,8 @@
                             if(element.type == "string") FUN._string(element);
                             if(element.type == "file") FUN._file(element);
                             if(element.type == "menu") FUN._menu(element);
+                            if(element.type == "addr") FUN._string(element);
+                            if(element.type == "date") FUN._string(element);
                         });
                     } else {
                         data.body[2].forEach(element => 
@@ -1161,6 +1262,8 @@
                             if(element.type == "string") FUN._string(element);
                             if(element.type == "file") FUN._file(element);
                             if(element.type == "menu") FUN._menu(element);
+                            if(element.type == "addr") FUN._string(element);
+                            if(element.type == "date") FUN._string(element);
                         });
                     }
                 } else {
