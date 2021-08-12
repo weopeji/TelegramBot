@@ -94,8 +94,8 @@
                             </div>
                             <div class="index_page_body_body_line_right">
                                 <div class="row">
-                                    <span>СРОК ИНВЕСТИРОВАНИЯ</span>
-                                    <p>${element.data.date} мес.</p>
+                                    <span>НА СРОК</span>
+                                    <p>${element.data.collection_period.replace(/-/g, ".")}</p>
                                 </div>
                             </div>
                         </div>
@@ -135,7 +135,11 @@
                             <i class="fas fa-bars"></i>
                         </div>
 
-                        <h1>${element.data.name} № ${element._id}</h1>
+                        <div class="index_page_body_moderation_block_mini">
+                            <h1>${element.data.name}</h1>
+                            <p>${element.data.target}</p>
+                            <span>Сумма: ${element.data.attraction_amount}</span>
+                        </div>
                     </div>
                 `;
                 this.$component.append(templateText);
@@ -976,11 +980,22 @@
                     <div class="body_point_line_header">
                         <div class="body_point_line_header_text">
                             <span>${data.name}:</span>
-                            <p>${need_block}</p>
+                            <p>${need_block} <input type="text" class="body_point_line_micro_input"> <i class="fas fa-pencil-alt"></i><i class="fas fa-check-circle"></i></p>
                         </div>
                     </div>
                 </div>
             `);
+
+            _line.find('.fa-pencil-alt').click( function () {
+                _line.find('input').css('display', 'block');
+                _line.find('p').css('display', 'flex');
+                _line.find('.fa-pencil-alt').css('display', 'none');
+                _line.find('.fa-check-circle').css('display', 'block');
+            });
+
+            _line.find('.fa-check-circle').click( function () {
+                _line.find('p').html(`<p>${_line.find('input').val()} <input type="text" class="body_point_line_micro_input"> <i class="fas fa-pencil-alt"></i><i class="fas fa-check-circle"></i></p>`);
+            })
 
             return _line;
         }

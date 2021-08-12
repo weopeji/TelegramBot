@@ -771,7 +771,11 @@
                 });
 
                 if(typeof Cookies.get(data._id) != "undefined") {
-                    _line.find(`#${data._id}`).val(Cookies.get(data._id));
+                    if(Cookies.get(data._id).length != 0) {
+                        _line.find(`#${data._id}`).val(Cookies.get(data._id));
+                        _line.find('._yes').css('display', "block");
+                        _line.find('._not').css('display', "none");
+                    }
                 }
 
                 
@@ -876,7 +880,7 @@
                     </div>
                 `);
 
-                _line.find('textarea').val(data.menu_list[0]);
+                _line.find('input').val(data.menu_list[0]);
 
                 data.menu_list.forEach(element => {
                     _line.find('.menu_block_inline').append(`<p>${element}</p>`);
@@ -889,6 +893,7 @@
                 _line.find('.menu_block p').click( function() {
                     _line.find('.menu_block span').html($(this).html());
                     _line.find('input').val($(this).html());
+                    console.log(_line.find('input').val());
                 })
 
                 return _line;
@@ -1168,10 +1173,10 @@
 
             $('.body_point').each((i, element) => {
                 $(element).find('.body_point_line').each((i, _element) => {
-                    if($(_element).find("textarea").length) {
+                    if($(_element).find("input").length) {
                         _array.push({
-                            name: $(_element).find("textarea").attr('id'),
-                            val: $(_element).find("textarea").val()
+                            name: $(_element).find("input").attr('id'),
+                            val: $(_element).find("input").val()
                         });
                     } else {
                         _array.push({
@@ -1244,37 +1249,49 @@
                         correctArray[element._id] = $(`#${element._id}`).val();
                         types[element._id] = "menu";
                     },
+                    _addr: function(element)
+                    {
+                        correctArray[element._id] = $(`#${element._id}`).val();
+                        types[element._id] = "string";
+                    },
+                    _date: function(element)
+                    {
+                        console.log($(`#${element._id}`).val());
+                        correctArray[element._id] = $(`#${element._id}`).val();
+                        types[element._id] = "string";
+                    }
+                }
+
+                function _el(element)
+                {
+                    if(element.type == "string") FUN._string(element);
+                    if(element.type == "file") FUN._file(element);
+                    if(element.type == "menu") FUN._menu(element);
+                    if(element.type == "addr") FUN._addr(element);
+                    if(element.type == "date") FUN._date(element);
                 }
 
                 if(key == "+2") {
                     if(param == 1 || param == 2) {
                         data.body[1].forEach(element => 
                         {
-                            if(element.type == "string") FUN._string(element);
-                            if(element.type == "file") FUN._file(element);
-                            if(element.type == "menu") FUN._menu(element);
-                            if(element.type == "addr") FUN._string(element);
-                            if(element.type == "date") FUN._string(element);
+                            _el(element)
                         });
                     } else {
                         data.body[2].forEach(element => 
                         {
-                            if(element.type == "string") FUN._string(element);
-                            if(element.type == "file") FUN._file(element);
-                            if(element.type == "menu") FUN._menu(element);
-                            if(element.type == "addr") FUN._string(element);
-                            if(element.type == "date") FUN._string(element);
+                            _el(element)
                         });
                     }
                 } else {
                     data.body.forEach(element => 
                     {
-                        if(element.type == "string") FUN._string(element);
-                        if(element.type == "file") FUN._file(element);
-                        if(element.type == "menu") FUN._menu(element);
+                        _el(element)
                     });
                 }
             }
+
+            console.log(correctArray);
 
             for(var key in correctArray)
             {
@@ -1304,6 +1321,10 @@
                 } else {
                     $('.preloader').fadeOut( function() {
                         $('.end_get_project').css('display', "flex");
+                        var cookies = $.cookie();
+                        for(var cookie in cookies) {
+                            $.removeCookie(cookie, { path: '/' });
+                        }
                     });
                 }
                 

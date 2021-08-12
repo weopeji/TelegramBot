@@ -603,6 +603,19 @@ html, body {
   display: none;
 }
 
+.body_point_line_header_text i {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.body_point_line_header_text .body_point_line_micro_input {
+  width: 100px;
+}
+
+.body_point_line_header_text .fa-check-circle {
+  display: none;
+}
+
 ._not {
   font-size: 12px !important;
   padding: 10px 15px;
@@ -1212,5 +1225,23 @@ html, body {
   font-family: Liner;
   margin-bottom: 0;
   padding-bottom: 0;
+}
+
+.index_page_body_moderation_block_mini {
+  text-align: left;
+}
+
+.index_page_body_moderation_block_mini h1 {
+  text-align: left;
+  margin-top: 0;
+}
+
+.index_page_body_moderation_block_mini p {
+  text-align: left;
+}
+
+.index_page_body_moderation_block_mini span {
+  text-align: left;
+  font-size: 13px;
 }
 /*# sourceMappingURL=index.css.map */
