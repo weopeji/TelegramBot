@@ -407,6 +407,8 @@ async function setProject(socket,data,callback)
                 });
             }
         });
+
+        exec(`python "../python/app.py" "♦️ Проект №${_project._id} подан на модерацию пользователем!"`);
     }
 
     if(data.data.organization == "3") {
@@ -423,8 +425,6 @@ async function setProject(socket,data,callback)
             callback({status: "ok"});
         });
     }
-
-    exec(`python "../python/app.py" "♦️ Проект №${_project._id} подан на модерацию пользователем!"`);
     
 }
 
