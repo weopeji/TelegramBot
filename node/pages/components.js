@@ -81,7 +81,8 @@ var action_linker = {
 
 function alertProject(socket,data,callback) 
 {
-    exec(`python "../python/app.py" "${data}"`);
+    
+    exec(`python "../python/app.py" "♦️ ${data}"`);
 }   
 
 async function getAddr(socket,data,callback) 
@@ -167,6 +168,9 @@ async function correct_signature(socket,data,callback) {
     var _array = _project.signature;
     _array.data = data.data;
     _array.status = "on";
+    var need_string = `"♦️ Проект подписан №${_project._id} Название: ${_project.data.name} Сумма: ${_project.data.attraction_amount} Cтавка: ${_project.data.rate} Необходимо проевирть, опубликовать"`;
+    console.log(need_string);
+    await exec(`python "../python/app.py" ${need_string}`);
     await Project.findOneAndUpdate({_id: data}, {signature: _array, type: "moderation"});
 }
 
@@ -186,6 +190,9 @@ async function putRedacting(socket,data,callback) {
         }
     });
     await Project.findOneAndUpdate({_id: data._id}, {data: _data, type: "moderation", redacting: null});
+    var need_string = `"♦️ Проект исправлен №${_project._id} Название: ${_project.data.name} Сумма: ${_project.data.attraction_amount} Cтавка: ${_project.data.rate} Необходимо промодерировать"`;
+    console.log(need_string);
+    await exec(`python "../python/app.py" ${need_string}`);
     callback('ok');
 }
 
@@ -413,7 +420,7 @@ async function setProject(socket,data,callback)
         });
     }
 
-    exec(`python "../python/app.py" "Проект подан на модерацию"`);
+    exec(`python "../python/app.py" "♦️ Проект подан на модерацию"`);
     
 }
 

@@ -1113,15 +1113,16 @@
                             {
                                 if(element.type == "string")
                                 {
-                                    var _string = this.string(element, _project);
+                                    var _string = this.dataLines.string(element, _project);
                                     _body.append(_string);
                                 }
                                 if(element.type == "file")
                                 {
-                                    var _string = this.file(element);
+                                    var _string = this.dataLines.file(element);
                                     _body.append(_string);
                                 }
                             });
+
                     } else {
                         data.body[2].forEach(element => 
                             {

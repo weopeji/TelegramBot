@@ -175,12 +175,13 @@ async function _MainMenu(msg)
             var _correction = _projects.filter(el => el.type == "correction");
 
             if(_moderation.length > 0) {
-                notActiveBlock = "❌ Неактивные проекты 🔶";
+                notActiveBlock = "❌ Неактивные проекты ♦️";
             }
 
             if(_correction.length > 0) {
-                notActiveBlock = "❌ Неактивные проекты 🔶";
+                notActiveBlock = "❌ Неактивные проекты ♦️";
             }
+            
             await h.send_html(msg.chat.id, html, {
                 "resize_keyboard": true,
                 "keyboard": [["❓ Как добавить проект", "✍ Добавить проект"], [ "✅ Активные проекты",notActiveBlock], ['🔁 Сменить роль']]
