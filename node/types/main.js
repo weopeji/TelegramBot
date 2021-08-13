@@ -34,7 +34,8 @@ const MF =
     {
         var _patch = `../users/${msg.from.id}`;
 
-        async function _start() {
+        async function _start() 
+        {
             var _path_profile = `../users_profile/${msg.from.id}`;
 
             async function _start_profil() 
@@ -45,6 +46,7 @@ const MF =
                 var file_path       = null;
                 var photo_url       = null;
                 var name_photo      = null;
+
                 if(typeof user_profile.photos[0] != 'undefined') {
                     file_id = user_profile.photos[0][0].file_id;
                     file            = await bot.getFile(file_id);
@@ -133,7 +135,7 @@ async function notType(msg)
         "resize_keyboard": true,
         "keyboard": [["💰 Инвестор", "💼 Бизнес", "📣 Привлечение"]],
     });
-    await h.DM(msg, 2);
+    //await h.DM(msg, 2);
 } 
 
 async function _MainMenu(msg)
