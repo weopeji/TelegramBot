@@ -1105,6 +1105,8 @@
                     </div>
                 `);
 
+                var _this = this;
+
                 var param = _project.data.organization;
                 if(element.type == "+2") {
                     if(param == "1" || param == "2") {
