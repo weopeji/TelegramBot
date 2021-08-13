@@ -136,9 +136,16 @@
                         </div>
 
                         <div class="index_page_body_moderation_block_mini">
-                            <h1>${element.data.name}</h1>
-                            <p>${element.data.target}</p>
-                            <span>Сумма: ${element.data.attraction_amount}</span>
+                            <div class="index_page_body_moderation_block_mini_box">
+                                <h1>№ ${element._id} ${element.data.name}</h1>
+                                <p>${element.data.target}</p>
+                                <span>Сумма: ${element.data.attraction_amount}</span>
+                            </div>
+                            <div class="index_page_body_moderation_block_mini_box">
+                                <h1>${element.data.collection_period}</h1>
+                                <h1>${element.data.rate}</h1>
+                                <p>На модерации</p>
+                            </div>
                         </div>
                     </div>
                 `;

@@ -1229,11 +1229,15 @@ html, body {
 
 .index_page_body_moderation_block_mini {
   text-align: left;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .index_page_body_moderation_block_mini h1 {
   text-align: left;
   margin-top: 0;
+  font-size: 15px;
 }
 
 .index_page_body_moderation_block_mini p {
@@ -1243,5 +1247,11 @@ html, body {
 .index_page_body_moderation_block_mini span {
   text-align: left;
   font-size: 13px;
+}
+
+.index_page_body_moderation_block_mini_box {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 /*# sourceMappingURL=index.css.map */
