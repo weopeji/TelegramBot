@@ -53,9 +53,12 @@ async function not_active(msg)
     var _User = await User.findOne({user: msg.from.id});
     var htmlInfo = "Неактивные проекты";
 
-    if(typeof _User.alerts.NA_First != "undefined")  {
-        htmlInfo = "Неактивные проекты ♦️";
+    if(_User.alerts) {
+        if(typeof _User.alerts.NA_First != "undefined")  {
+            htmlInfo = "Неактивные проекты ♦️";
+        }
     }
+    
 
     await h.send_html(msg.chat.id, htmlInfo, {
         "resize_keyboard": true,
