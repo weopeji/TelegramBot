@@ -137,7 +137,7 @@ async function notType(msg)
         "resize_keyboard": true,
         "keyboard": [["💰 Инвестор", "💼 Бизнес", "📣 Привлечение"]],
     });
-    //await h.DM(msg, 2);
+    await h.DM(msg, 2);
 } 
 
 async function _MainMenu(msg)

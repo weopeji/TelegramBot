@@ -16,7 +16,14 @@ module.exports = {
 
 async function DM(msg, how) 
 {
-    for(var i = 0; i < how; i++) { await bot.deleteMessage(msg.chat.id, msg.message_id - i); };
+    for(var i = 0; i < how; i++) { 
+        try {
+            await bot.deleteMessage(msg.chat.id, msg.message_id - i); 
+        } catch (e) {
+            console.log('Не удалилось');
+        }
+        
+    };
     return;
 } 
 
