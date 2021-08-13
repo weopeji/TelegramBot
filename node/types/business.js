@@ -53,8 +53,6 @@ async function not_active(msg)
     var _User = await User.findOne({user: msg.from.id});
     var htmlInfo = "Неактивные проекты";
 
-    console.log(typeof _User.alerts.NA_First);
-
     if(typeof _User.alerts.NA_First != "undefined")  {
         htmlInfo = "Неактивные проекты ♦️";
     }
