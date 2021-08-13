@@ -93,7 +93,7 @@ async function not_active(msg)
         }]);
     }
 
-    var html = `У вас ${_moderation.length + _correction.length} неактивных проектов\n\n<strong>Ожидают модерацию: ${_moderation.length} ${romb1}</strong>\n<strong>Ожидают исправления: ${_correction.length} ${romb1}</strong>\n\nВыберите группу проектов:`;
+    var html = `У вас ${_moderation.length + _correction.length} неактивных проектов\n\n<strong>Ожидают модерацию: ${_moderation.length} ${romb1}</strong>\n<strong>Ожидают исправления: ${_correction.length} ${romb2}</strong>\n\nВыберите группу проектов:`;
     await h.send_html(msg.chat.id, html, {
         "inline_keyboard": keyboard,
     });
