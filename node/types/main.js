@@ -71,18 +71,18 @@ const MF =
                 //         });
                 //     });
                 // } else {
-                    return User.create({
-                        user: msg.from.id, 
-                        first_name: msg.from.first_name, 
-                        last_name: msg.from.last_name,
-                        username: msg.from.username,
-                        language_code: msg.from.language_code,
-                        is_bot: msg.from.is_bot,
-                        type: null,
-                        img: null,
-                        googleAuth: null,
-                        alerts: null,
-                    });
+                return User.create({
+                    user: msg.from.id, 
+                    first_name: msg.from.first_name, 
+                    last_name: msg.from.last_name,
+                    username: msg.from.username,
+                    language_code: msg.from.language_code,
+                    is_bot: msg.from.is_bot,
+                    type: null,
+                    img: null,
+                    googleAuth: null,
+                    alerts: null,
+                });
                 // }
     
             }
@@ -137,7 +137,7 @@ async function notType(msg)
         "resize_keyboard": true,
         "keyboard": [["💰 Инвестор", "💼 Бизнес", "📣 Привлечение"]],
     });
-    await h.DM(msg, 2);
+    //await h.DM(msg, 2);
 } 
 
 async function _MainMenu(msg)
