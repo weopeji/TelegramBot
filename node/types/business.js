@@ -53,12 +53,25 @@ async function not_active(msg)
     var _User = await User.findOne({user: msg.from.id});
     var htmlInfo = "Неактивные проекты";
 
+    var textButton = "Ожидают модерации";
+    var textButton2 = "Ожидают исправления";
+
+    var romb1 = "";
+    var romb2 = "";
+
     if(_User.alerts) {
-        if(typeof _User.alerts.NA_First != "undefined")  {
-            htmlInfo = "Неактивные проекты ♦️";
+        if(typeof _User.alerts.NA_First != "undefined")  
+        {
+            if(_moderation.length > 0) {
+                textButton = "Ожидают модерации ♦️"
+                romb1 = "♦️ ";
+            }
+            if(_correction.length > 0) {
+                textButton2 = "Ожидают исправления ♦️";
+                romb2 = "♦️ ";
+            }
         }
     }
-    
 
     await h.send_html(msg.chat.id, htmlInfo, {
         "resize_keyboard": true,
@@ -69,18 +82,18 @@ async function not_active(msg)
 
     if(_moderation.length > 0) {
         keyboard.unshift([{
-            text: "Ожидают модерации",
+            text: textButton,
             callback_data: `place=not_active&type=moderation&data=first`,
         }]);
     }
     if(_correction.length > 0) {
         keyboard.unshift([{
-            text: "Ожидают исправления",
+            text: textButton2,
             callback_data: `place=not_active&type=correction&data=first`,
         }]);
     }
 
-    var html = `У вас ${_moderation.length + _correction.length} неактивных проектов\n\n<strong>Ожидают модерацию: ${_moderation.length}</strong>\n<strong>Ожидают исправления: ${_correction.length}</strong>\n\nВыберите группу проектов:`;
+    var html = `У вас ${_moderation.length + _correction.length} неактивных проектов\n\n<strong>Ожидают модерацию: ${_moderation.length} ${romb1}</strong>\n<strong>Ожидают исправления: ${_correction.length} ${romb1}</strong>\n\nВыберите группу проектов:`;
     await h.send_html(msg.chat.id, html, {
         "inline_keyboard": keyboard,
     });
