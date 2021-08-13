@@ -51,7 +51,7 @@ async function not_active(msg)
     var _moderation = _projects.filter(el => el.type == "moderation");
     var _correction = _projects.filter(el => el.type == "correction");
     var _User = await User.findOne({user: msg.from.id});
-    var htmlInfo = "Неактивные проекты";
+    var htmlInfo = "Неактивные проекты";  
 
     if(typeof _User.alerts.NA_First != "undefined")  {
         htmlInfo = "Неактивные проекты ♦️";
