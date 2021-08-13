@@ -47,30 +47,30 @@ const MF =
                 var photo_url       = null;
                 var name_photo      = null;
 
-                if(typeof user_profile.photos[0] != 'undefined') {
-                    file_id = user_profile.photos[0][0].file_id;
-                    file            = await bot.getFile(file_id);
-                    file_path       = file.file_path;
-                    photo_url       = `https://api.telegram.org/file/bot${config.token}/${file_path}`;
-                    name_photo      = `avatar-${file_path.split('/')[1]}`;
-                    const _file      = fs.createWriteStream(`../users_profile/${msg.from.id}/${name_photo}`);
-                    const request   = https.get(photo_url, async function(response) {
-                        response.pipe(_file);
+                // if(typeof user_profile.photos[0] != 'undefined') {
+                //     file_id = user_profile.photos[0][0].file_id;
+                //     file            = await bot.getFile(file_id);
+                //     file_path       = file.file_path;
+                //     photo_url       = `https://api.telegram.org/file/bot${config.token}/${file_path}`;
+                //     name_photo      = `avatar-${file_path.split('/')[1]}`;
+                //     const _file      = fs.createWriteStream(`../users_profile/${msg.from.id}/${name_photo}`);
+                //     const request   = https.get(photo_url, async function(response) {
+                //         response.pipe(_file);
         
-                        return User.create({
-                            user: msg.from.id, 
-                            first_name: msg.from.first_name, 
-                            last_name: msg.from.last_name,
-                            username: msg.from.username,
-                            language_code: msg.from.language_code,
-                            is_bot: msg.from.is_bot,
-                            type: null,
-                            img: name_photo,
-                            googleAuth: null,
-                            alerts: null,
-                        });
-                    });
-                } else {
+                //         return User.create({
+                //             user: msg.from.id, 
+                //             first_name: msg.from.first_name, 
+                //             last_name: msg.from.last_name,
+                //             username: msg.from.username,
+                //             language_code: msg.from.language_code,
+                //             is_bot: msg.from.is_bot,
+                //             type: null,
+                //             img: name_photo,
+                //             googleAuth: null,
+                //             alerts: null,
+                //         });
+                //     });
+                // } else {
                     return User.create({
                         user: msg.from.id, 
                         first_name: msg.from.first_name, 
@@ -83,7 +83,7 @@ const MF =
                         googleAuth: null,
                         alerts: null,
                     });
-                }
+                // }
     
             }
 
@@ -117,6 +117,8 @@ async function _CreatorFUN(msg)
 {
     var _user = await MF.find_user(msg);
 
+    console.log(_user);
+
     if(!_user)
     {
         await MF.create_user(msg);
@@ -135,7 +137,7 @@ async function notType(msg)
         "resize_keyboard": true,
         "keyboard": [["💰 Инвестор", "💼 Бизнес", "📣 Привлечение"]],
     });
-    //await h.DM(msg, 2);
+    await h.DM(msg, 2);
 } 
 
 async function _MainMenu(msg)
