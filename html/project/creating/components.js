@@ -1111,46 +1111,51 @@
                         
                         data.body[1].forEach(element => 
                             {
-                                if(element.type == "string")
-                                {
-                                    var _string = this.dataLines.string(element, _project);
-                                    _body.append(_string);
-                                }
-                                if(element.type == "file")
-                                {
-                                    var _string = this.dataLines.file(element);
-                                    _body.append(_string);
-                                }
+                                _body.append(_this.dataLines[element.type](element));
+                                // if(element.type == "string")
+                                // {
+                                //     var _string = this.dataLines.string(element, _project);
+                                //     _body.append(_string);
+                                // }
+                                // else if(element.type == "file")
+                                // {
+                                //     var _string = this.dataLines.file(element);
+                                //     _body.append(_string);
+                                // }
                             });
 
                     } else {
                         data.body[2].forEach(element => 
                             {
-                                if(element.type == "string")
-                                {
-                                    var _string = this.string(element, _project);
-                                    _body.append(_string);
-                                }
-                                if(element.type == "file")
-                                {
-                                    var _string = this.file(element);
-                                    _body.append(_string);
-                                }
+                                _body.append(_this.dataLines[element.type](element));
+                                // if(element.type == "string")
+                                // {
+                                //     var _string = this.string(element, _project);
+                                //     _body.append(_string);
+                                // }
+                                // else if(element.type == "file")
+                                // {
+                                //     var _string = this.file(element);
+                                //     _body.append(_string);
+                                // } else {
+
+                                // }
                             });
                     }
                 } else {
                     data.body.forEach(element => 
                     {
-                        if(element.type == "string")
-                        {
-                            var _string = this.string(element, _project);
-                            _body.append(_string);
-                        }
-                        if(element.type == "file")
-                        {
-                            var _string = this.file(element);
-                            _body.append(_string);
-                        }
+                        _body.append(_this.dataLines[element.type](element));
+                        // if(element.type == "string")
+                        // {
+                        //     var _string = this.string(element, _project);
+                        //     _body.append(_string);
+                        // }
+                        // if(element.type == "file")
+                        // {
+                        //     var _string = this.file(element);
+                        //     _body.append(_string);
+                        // }
                     });
                 }
                 
