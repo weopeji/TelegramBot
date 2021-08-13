@@ -377,6 +377,10 @@ async function setProject(socket,data,callback)
 {
     var _User       = await User.findOne({user: data.user});
 
+    var NA_First = await User.findOneAndUpdate({user: data.user}, {alerts: {
+        NA_First: true,
+    }});
+
     async function start_load(_parce) 
     {
         var _project    = await Project.create({
@@ -420,7 +424,7 @@ async function setProject(socket,data,callback)
         });
     }
 
-    exec(`python "../python/app.py" "♦️ Проект подан на модерацию"`);
+    exec(`python "../python/app.py" "♦️ Проект №${_project._id} подан на модерацию пользователем!"`);
     
 }
 

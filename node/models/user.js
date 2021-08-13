@@ -10,6 +10,7 @@ const UserShema = new mongoose.Schema({
     is_bot: String,
     type: String,
     img: String,
+    alerts: JSON,
 });
 
 mongoose.model('User', UserShema);

@@ -50,8 +50,16 @@ async function not_active(msg)
     var _projects   = await Project.find({user: msg.from.id});
     var _moderation = _projects.filter(el => el.type == "moderation");
     var _correction = _projects.filter(el => el.type == "correction");
+    var _User = await User.findOne({user: msg.from.id});
+    var htmlInfo = "Неактивные проекты";
 
-    await h.send_html(msg.chat.id, "Неактивные проекты", {
+    console.log(typeof _User.alerts.NA_First);
+
+    if(typeof _User.alerts.NA_First != "undefined")  {
+        htmlInfo = "Неактивные проекты ♦️";
+    }
+
+    await h.send_html(msg.chat.id, htmlInfo, {
         "resize_keyboard": true,
         "keyboard": [["⬅️ Назад"]],
     });
@@ -85,6 +93,10 @@ async function not_active_callback(msg)
     var _data       = msg.data;
     var _type       = h._GET(_data, 'type');
     var btnData     = h._GET(_data, 'data');
+
+    var alertNull = await User.findOneAndUpdate({user: msg.from.id}, {alerts: null});
+
+    console.log(msg);
 
     h.send_html(msg.from.id, "Проекты:", {
         "resize_keyboard": true,

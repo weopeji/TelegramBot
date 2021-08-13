@@ -65,6 +65,7 @@ const MF =
                             type: null,
                             img: name_photo,
                             googleAuth: null,
+                            alerts: null,
                         });
                     });
                 } else {
@@ -78,6 +79,7 @@ const MF =
                         type: null,
                         img: null,
                         googleAuth: null,
+                        alerts: null,
                     });
                 }
     
@@ -171,15 +173,12 @@ async function _MainMenu(msg)
 
             var notActiveBlock = "❌ Неактивные проекты";
 
-            var _moderation     = _projects.filter(el => el.type == "moderation");
-            var _correction = _projects.filter(el => el.type == "correction");
-
-            if(_moderation.length > 0) {
-                notActiveBlock = "❌ Неактивные проекты ♦️";
-            }
-
-            if(_correction.length > 0) {
-                notActiveBlock = "❌ Неактивные проекты ♦️";
+            if(_User.alerts) 
+            {
+                if(typeof _User.alerts.NA_First != "undefined") 
+                {
+                    notActiveBlock = "❌ Неактивные проекты ♦️";
+                }
             }
             
             await h.send_html(msg.chat.id, html, {
