@@ -11,6 +11,7 @@ const UserShema = new mongoose.Schema({
     type: String,
     img: String,
     alerts: JSON,
+    deleteMsgs: Array,
 });
 
 mongoose.model('User', UserShema);

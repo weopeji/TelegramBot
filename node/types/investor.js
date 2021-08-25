@@ -15,20 +15,33 @@ function privateInit(initPlagins) {
     h       = initPlagins.helper_functions;
 }
 
-function my_investment(msg)
+async function my_investment(msg)
 {
-    var html = "Мои инвестиции";
-    h.send_html(msg.chat.id, html, {
-        "keyboard": [["АКТИВНЫЕ ПРОЕКТЫ"], ["В ПРОЦЕССЕ"], ["⬅️ Назад"]],
+    var _array = [];
+
+    var html = "Вы находитесь в меню:\n<strong>Мои инвестиции</strong>";
+    var fat = h.send_html(msg.chat.id, html, {
+        "resize_keyboard": true,
+        "keyboard": [["Активные проекты", "В процессе"], ["⬅️ Назад"]],
         "one_time_keyboard": true,
     });
+
+    _array.push(fat.message_id);
+
+    await h.DMA(msg, _array);
 }
 
-function active_projects(msg)
+async function active_projects(msg)
 {
-    var html = "Активные проекты";
-    h.send_html(msg.chat.id, html, {
+    var _array = [];
+
+    var html = "Вы находитесь в меню:\n<strong>Активные проекты</strong>";
+    var fat = h.send_html(msg.chat.id, html, {
+        "resize_keyboard": true,
         "keyboard": [["СТАТИСТИКА"], ["ПРОЕКТЫ"], ["⬅️ Назад"]],
         "one_time_keyboard": true,
     });
+    _array.push(fat.message_id);
+
+    await h.DMA(msg, _array);
 }

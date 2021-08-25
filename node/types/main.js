@@ -147,17 +147,23 @@ async function _MainMenu(msg)
 
     var infoTypes = 
     {
-        investor: async function(msg) {
+        investor: async function(msg) 
+        {
+            var _array = [];
+
             var html = `Вы <strong>Инвестор</strong>`;
-            await bot.sendMessage(msg.chat.id, html, {
+            var fat = await bot.sendMessage(msg.chat.id, html, {
                 parse_mode: "HTML",
-                reply_markup: { 
+                reply_markup: {
+                    "resize_keyboard": true, 
                     "keyboard": [["💰 Мои инвестиции", "📈 Инвестировать", "💳 Реквезиты"], ["👨‍💼 Рекомендовать","🔁 Сменить роль"]],
                     "one_time_keyboard": true,
                 }
             });
+            _array.push(fat.message_id);
+
             var html = `<strong>${msg.from.first_name} ${msg.from.last_name}</strong>\nВы можете ознакомится с предложениями на данной платформе.`;
-            bot.sendMessage(msg.chat.id, html, {
+            var fat = await bot.sendMessage(msg.chat.id, html, {
                 parse_mode: "HTML",
                 reply_markup: {
                     "inline_keyboard": [
@@ -170,6 +176,9 @@ async function _MainMenu(msg)
                     ],
                 }
             });
+            _array.push(fat.message_id);
+
+            await h.DMA(msg, _array);
         },
         business: async function(msg) 
         {

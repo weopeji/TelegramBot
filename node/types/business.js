@@ -16,7 +16,6 @@ module.exports = {
     not_active,
     active,
     addProject,
-    clean_project,
     not_active_callback,
 }
 
@@ -33,8 +32,10 @@ function privateInit(initPlagins) {
 
 async function how_add(msg)
 {
+    var _array = [];
+
     const stream = fs.createReadStream('assets/videos/video.mp4');
-    await bot.sendVideo(msg.chat.id, stream, {
+    var sendVideo = await bot.sendVideo(msg.chat.id, stream, {
         reply_markup: {
             "resize_keyboard": true,
             "keyboard": [["⬅️ Назад"]],
@@ -42,11 +43,15 @@ async function how_add(msg)
         }
     });
 
-    await h.DM(msg, 2);
+    _array.push(sendVideo.message_id);
+
+    await h.DMA(msg, _array);
 }
 
 async function not_active(msg) 
 {
+    var _array = [];
+
     var _projects   = await Project.find({user: msg.from.id});
     var _moderation = _projects.filter(el => el.type == "moderation");
     var _correction = _projects.filter(el => el.type == "correction");
@@ -73,10 +78,12 @@ async function not_active(msg)
         }
     }
 
-    await h.send_html(msg.chat.id, htmlInfo, {
+    var _again = await h.send_html(msg.chat.id, htmlInfo, {
         "resize_keyboard": true,
         "keyboard": [["⬅️ Назад"]],
     });
+    _array.push(_again.message_id);
+
 
     var keyboard = [];
 
@@ -94,11 +101,12 @@ async function not_active(msg)
     }
 
     var html = `У вас ${_moderation.length + _correction.length} неактивных проектов\n\n<strong>Ожидают модерацию: ${_moderation.length} ${romb1}</strong>\n<strong>Ожидают исправления: ${_correction.length} ${romb2}</strong>\n\nВыберите группу проектов:`;
-    await h.send_html(msg.chat.id, html, {
+    var globalMsg = await h.send_html(msg.chat.id, html, {
         "inline_keyboard": keyboard,
     });
+    _array.push(globalMsg.message_id);
 
-    await h.DM(msg, 2);
+    await h.DMA(msg, _array);
 };
 
 async function not_active_callback(msg) 
@@ -109,8 +117,6 @@ async function not_active_callback(msg)
     var btnData     = h._GET(_data, 'data');
 
     var alertNull = await User.findOneAndUpdate({user: msg.from.id}, {alerts: null});
-
-    console.log(msg);
 
     h.send_html(msg.from.id, "Проекты:", {
         "resize_keyboard": true,
@@ -286,7 +292,7 @@ async function active(msg)
     var _active     = _projects.filter(el => el.type == "active");
 
     var html = `У вас ${_active.length} активных проектов\n\nВы можете вернутьсь назад и добавьте проект`;
-    h.send_html(msg.chat.id, html, {
+    var _msg = h.send_html(msg.chat.id, html, {
         "resize_keyboard": true,
         "keyboard": [
             ["Получение денег от инвестора", "Выплаты"],
@@ -294,15 +300,7 @@ async function active(msg)
         ],
     });
 
-}
-
-async function clean_project(msg) {
-    await User.findOneAndUpdate({user: msg.from.id}, {new_project: _data.new_project});
-    var html = "🧹 Проект очищен, вернитесь назад";
-    h.send_html(msg.chat.id, html, {
-        "resize_keyboard": true,
-        "keyboard": [["⬅️ Назад"]],
-    });
+    await h.DMA(msg, [_msg.message_id]);
 }
 
 async function addProject(msg) 
@@ -315,10 +313,12 @@ async function addProject(msg)
         ],
     });
 
+    await h.DMA(msg, [del_msg.message_id]);
+
     var html = `Нажмите кнопку <strong>"Заполнить данные"</strong>, чтобы создать проект и подать его на модерацию`;
     var _url = `${h.getURL()}html/project/creating/#${msg.from.id}`;
 
-    await h.send_html(msg.from.id, html, {
+    var _msg = await h.send_html(msg.from.id, html, {
         "inline_keyboard": [
             [
                 {
@@ -329,5 +329,5 @@ async function addProject(msg)
         ],
     });
 
-    await h.DM(msg, 2);
+    await h.DMA(msg, [_msg.message_id]);
 }

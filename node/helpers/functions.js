@@ -12,6 +12,13 @@ module.exports = {
     R_Where,
     getURL,
     DM,
+    DMA,
+}
+
+function privateInit(initPlagins) {
+    bot     = initPlagins.bot;
+    User    = initPlagins.User;
+    config  = initPlagins.config;
 }
 
 async function DM(msg, how) 
@@ -27,10 +34,35 @@ async function DM(msg, how)
     return;
 } 
 
-function privateInit(initPlagins) {
-    bot     = initPlagins.bot;
-    User    = initPlagins.User;
-    config  = initPlagins.config;
+async function DMA(msg, array) 
+{
+
+    var _User = await User.findOne({user: msg.from.id});
+
+    var deleteMsgs = _User.deleteMsgs;
+
+    if(deleteMsgs.length != 0) {
+        for(var i = 0; i < deleteMsgs.length; i++) { 
+            try {
+                await bot.deleteMessage(msg.from.id, deleteMsgs[i]); 
+            } catch (e) {
+                console.log('Не удалилось');
+            }
+        };
+    }
+
+    await User.findOneAndUpdate({user: msg.from.id}, {deleteMsgs: []});
+
+    var _array = [];
+
+    array.forEach(function(element)
+    {
+        _array.push(element);
+    });
+
+    await User.findOneAndUpdate({user: msg.from.id}, {deleteMsgs: _array});
+    
+    return;
 }
 
 function getURL() 

@@ -207,7 +207,7 @@ bot.on('message', async (msg) =>
         "🔁 Сменить роль": main_page.notType,
         "⬅️ Назад": main_page.close,
         // ИНВЕСТОР ===========================================
-        "МОИ ИНВЕСТИЦИИ": investor_page.my_investment,
+        "💰 Мои инвестиции": investor_page.my_investment,
         "Активные проекты": investor_page.active_projects,
         // БИЗНЕС =============================================
         "✅ Активные проекты": business_page.active,
@@ -226,6 +226,7 @@ bot.on('message', async (msg) =>
     if(typeof action_linker[msg.text] != "undefined") 
     {
         action_linker[msg.text](msg);
+        await h.DM(msg, 1);
     } else {
         await h.DM(msg, 1);
     }
