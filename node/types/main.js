@@ -231,6 +231,6 @@ async function change_type(msg)
 
 async function close(msg)
 {
-    await User.findOneAndUpdate({user: msg.from.id}, {where: null, putProject: null})
+    await User.findOneAndUpdate({user: msg.from.id}, {where: null})
     _MainMenu(msg);
 }
