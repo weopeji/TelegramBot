@@ -572,8 +572,6 @@ async function save_investing(msg) {
 
     await h.DMA(msg, _array);
 
-    //exec(`python "../python/bio/app.py" `);
-
     var _urlImgProject = `${h.getURL()}html/project/document/#${_User.where.project}`;
     console.log(_urlImgProject);
     const browser = await puppeteer.launch({
@@ -585,6 +583,8 @@ async function save_investing(msg) {
     await page.waitForSelector('.all_good');
     await page.pdf({path: `../projects/${_User.where.project}/pdf_document.pdf`, format: 'a4'});
     await browser.close();
+
+    exec(`python "../python/bio/app.py" ${_User.username} "Подпишите документ!" ../projects/${_User.where.project}/pdf_document.pdf`);
 
     await InvDoc.create({
         projectId: _User.where.project,
