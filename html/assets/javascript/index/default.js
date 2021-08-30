@@ -44,6 +44,11 @@
             $('.content').empty();
 
             renderPage[pageID]();
+
+            $('.index_page_body_menu_line span').click( function() {
+                $('.content').empty();
+                renderPage[$(this).attr('data')]();
+            })
         }
     }
 
