@@ -168,8 +168,6 @@ async function _MainMenu(msg)
                     }
                 });
                 _array.push(fat.message_id);
-            
-                await h.DMA(msg, _array);
         
             }
             var html = `Вы <strong>Инвестор</strong>`;
