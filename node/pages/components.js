@@ -39,8 +39,8 @@ function privateInit(initPlagins) {
     path        = initPlagins.path;
     bot         = initPlagins.bot;
     h           = initPlagins.helper_functions;
+    InvDoc      = initPlagins.InvDoc;
 }
-
 
 var privat_index_page = function(socket,data,callback) {
     var action = data.action;
@@ -76,12 +76,19 @@ var action_linker = {
     "setSignatureFile": setSignatureFile,
     "correct_signature_document": correct_signature_document,
     "getAddr": getAddr,
-    "alertProject": alertProject
+    "alertProject": alertProject,
+    "invester_status_projects": invester_status_projects,
+}
+
+async function invester_status_projects(socket,data,callback)
+{
+    var _User = await User.findOne({_id: data._id});
+    var _InvDoc = await InvDoc.find({invester: _User.user});
+    callback(_InvDoc)
 }
 
 function alertProject(socket,data,callback) 
 {
-    
     exec(`python "../python/app.py" "♦️ ${data}"`);
 }   
 
@@ -251,7 +258,7 @@ async function acceptProject(socket,data,callback)
     await browser.close();
 
     var html = `[Профиль компании](${h.getURL()}html/project/profil/#${_project._id})\n[Презентация](${h.getURL()}/projects/${_project._id}/${_project.data["file+7"]})\n[Видео презентация](${h.getURL()}/projects/${_project._id}/${_project.data["file+8"]})`;
-    var _url = `https://t.me/TestTalegrammBot?start=project_${data}`;
+    var _url = `https://t.me/investER_localhost_bot?start=project_${data}`;
     const stream = fs.createReadStream(`../projects/${data}/logo.png`);
     bot.sendPhoto(-1001205415519, stream, {
         "caption": html,
@@ -268,39 +275,39 @@ async function acceptProject(socket,data,callback)
         }
     });
 
-    const client = new Instagram({ username: "investER_official", password: "e<<@H&_ArB~5ef7" });
+    // const client = new Instagram({ username: "investER_official", password: "e<<@H&_ArB~5ef7" });
  
-    ;(async () => {
-        Jimp.read(`../projects/${data}/logo.png`, async function (err, image) {
-            if (err) {
-                console.log(err)
-            } else {
-                await image.write(`../projects/${data}/logo.jpg`);
-                // URL or path of photo
-                const photo = `${h.getURL()}projects/${data}/logo.jpg`;
+    // ;(async () => {
+    //     Jimp.read(`../projects/${data}/logo.png`, async function (err, image) {
+    //         if (err) {
+    //             console.log(err)
+    //         } else {
+    //             await image.write(`../projects/${data}/logo.jpg`);
+    //             // URL or path of photo
+    //             const photo = `${h.getURL()}projects/${data}/logo.jpg`;
             
-                await client.login()
+    //             await client.login()
 
-                var _caption = `
-                    *
-                    ${_project.data.name}
-                    ${_project.data.target}
-                    Ставка: ${_project.data.rate}
-                    Выплаты: ${_project.data.date_payments}
-                    Вход от: ${_project.data.minimal_amount}
-                    Сбор до: ${_project.data.date}
-                `;
+    //             var _caption = `
+    //                 *
+    //                 ${_project.data.name}
+    //                 ${_project.data.target}
+    //                 Ставка: ${_project.data.rate}
+    //                 Выплаты: ${_project.data.date_payments}
+    //                 Вход от: ${_project.data.minimal_amount}
+    //                 Сбор до: ${_project.data.date}
+    //             `;
             
-                const { media } = await client.uploadPhoto({ photo: photo, caption: _caption, post: 'feed' })
-                console.log(`https://www.instagram.com/p/${media.code}/`)
-            }
-        })
+    //             const { media } = await client.uploadPhoto({ photo: photo, caption: _caption, post: 'feed' })
+    //             console.log(`https://www.instagram.com/p/${media.code}/`)
+    //         }
+    //     })
         
-    })();
+    // })();
 
-    (() => {
-        uploader.uploadVideo('2314', '1245', 'investER', 'pp.mp4');
-    })()
+    // (() => {
+    //     uploader.uploadVideo('2314', '1245', 'investER', 'pp.mp4');
+    // })()
 }
 
 async function parceProject(type, data, callback) 

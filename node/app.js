@@ -21,8 +21,9 @@ const _data                         = require('./data.js');
 
 const User                          = mongoose.model('User');
 const Project                       = mongoose.model('Project');
+const InvDoc                        = mongoose.model('InvDoc');
 
-var bot                           = null;
+var bot                             = null;
 var helper_functions                = null;
 var main_page                       = null;
 var investor_page                   = null;
@@ -105,6 +106,8 @@ var load_helpers = () =>
         investor_page.init({
             bot: bot,
             helper_functions: helper_functions,
+            User: User,
+            InvDoc: InvDoc,
         });
     }
     if(business_page == null) 
@@ -140,6 +143,7 @@ var load_helpers = () =>
             path: path,
             bot: bot,
             helper_functions: helper_functions,
+            InvDoc: InvDoc,
         });
     };
 }
@@ -151,6 +155,10 @@ bot.on("callback_query", function(callbackQuery)
     const action_linker =
     {
         "not_active": business_page.not_active_callback,
+        "investing": investor_page.startInvestingMsgSecond,
+        "contact": investor_page.startInvestingMsgOld,
+        "investing_money": investor_page.investing_money,
+        "save_investing": investor_page.save_investing,
     }
 
     if(typeof action_linker[helper_functions._GET(callbackQuery.data, "place")] != "undefined") {
@@ -160,39 +168,27 @@ bot.on("callback_query", function(callbackQuery)
 
 bot.onText(/\/start (.+)/, async (msg, match) => 
 {
-    for(var i = 0; i < 5; i++) { bot.deleteMessage(msg.chat.id, msg.message_id - i); };
-    const chatId = msg.chat.id;
-    const resp = match[1];
-    var _idProject = resp.split('_')[1];
-    var html = `Открыт проект под номером: ${_idProject}`;
-    const stream = fs.createReadStream(`../projects/${_idProject}/logo.png`);
-    await bot.sendPhoto(msg.chat.id, stream, {
+    const resp      = match[1];
+    var _idProject  = resp.split('_')[1];
+    var html        = `<strong>Инвестиция в проект: ${_idProject}</strong>\n\nСледуйте инструкциям и отправляйте в чат нужные документы и сведения. Вы в любой момент можете вернуться и изменить любые данные.`;
+    const stream    = fs.createReadStream(`../projects/${_idProject}/logo.png`);
+    var _array      = [];
+
+    var fat = await bot.sendPhoto(msg.chat.id, stream, {
         "caption": html,
+        "parse_mode": "HTML",
         "reply_markup": {
+            "resize_keyboard": true,
             "keyboard": [
-                [
-                    {
-                        text: "Внести данные",
-                        url: 'google.ru',
-                    },
-                    {
-                        text: "Оплатить",
-                        url: 'google.ru',
-                    }
-                ],
-                [
-                    {
-                        text: "Прикрепить чек об оплате",
-                        url: 'google.ru',
-                    },
-                    {
-                        text: "⬅️ Назад",
-                        url: 'google.ru',
-                    }
-                ],
+                ["⬅️ Назад"],
             ],
         }
     });
+    _array.push(fat.message_id);
+
+    await h.DMA(msg, []);
+
+    investor_page.startInvestingMsg(msg, 1, _array, "1", _idProject);
 });
 
 bot.on('message', async (msg) => 
@@ -209,6 +205,14 @@ bot.on('message', async (msg) =>
         // ИНВЕСТОР ===========================================
         "💰 Мои инвестиции": investor_page.my_investment,
         "Активные проекты": investor_page.active_projects,
+        "📈 Инвестировать": investor_page.goInvesting,
+        "👨‍💼 Рекомендовать": investor_page.recomendations,
+        "В процессе": investor_page.inProcess,
+        "Статус получения денег бизнесом": investor_page.statusProjects,
+        "Вознаграждение по проектам": investor_page.payerBonus,
+        "Мной привлечено": investor_page.myPeoples,
+        "Статистика": investor_page.active_statistik,
+        "Проекты": investor_page.active_projects_stat,
         // БИЗНЕС =============================================
         "✅ Активные проекты": business_page.active,
         "❓ Как добавить проект": business_page.how_add,
@@ -227,8 +231,19 @@ bot.on('message', async (msg) =>
     {
         action_linker[msg.text](msg);
         await h.DM(msg, 1);
-    } else {
-        await h.DM(msg, 1);
+    } else 
+    {
+        var _User = await User.findOne({user: msg.from.id});
+        if(_User.where) 
+        {
+            const action_where = {
+                "investor": investor_page.actionWhere,
+            }
+            action_where[_User.where.type](msg);
+            await h.DM(msg, 1);
+        } else {
+            await h.DM(msg, 1);
+        }
     }
 });
 

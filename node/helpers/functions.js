@@ -13,6 +13,7 @@ module.exports = {
     getURL,
     DM,
     DMA,
+    MA,
 }
 
 function privateInit(initPlagins) {
@@ -33,6 +34,21 @@ async function DM(msg, how)
     };
     return;
 } 
+
+async function MA(msg, array)
+{
+    var _User       = await User.findOne({user: msg.from.id});
+    var deleteMsgs  = _User.deleteMsgs;
+
+    array.forEach(function(element)
+    {
+        deleteMsgs.push(element);
+    });
+
+    await User.findOneAndUpdate({user: msg.from.id}, {deleteMsgs: deleteMsgs});
+
+    return;
+}
 
 async function DMA(msg, array) 
 {

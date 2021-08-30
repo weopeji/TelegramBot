@@ -1,63 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>InvestER</title>
 
     <link rel="stylesheet" href="./html/assets/css/index/index.css">
-
     <script src="https://kit.fontawesome.com/283bf0a253.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="preloader">
-        <img src="./html/assets/images/1490.gif" alt="">
-    </div>
     <div class="index_page">
-        <div class="index_page_menu">
-            <div class="index_page_menu_row">
-                <div class="click_button">
-                    <i class="fas fa-arrow-circle-right"></i>
-                </div>
-                <div class="user_block">
-                    <div class="user_block_img">
-                        <!-- <img src="./html/assets/images/cmt4BW9dlzk.jpg" alt=""> -->
-                    </div>
-                    <span>Администратор</span>
-                </div>
-                <div class="index_page_menu_line selected" data="moderation">
-                    <i class="fas fa-clock"></i>
-                    <span>На модерации</span>
-                </div>
-                <div class="index_page_menu_line" data="active">
-                    <i class="fas fa-donate"></i>
-                    <span>Действующие</span>
-                </div>
-                <div class="index_page_menu_line" data="correction">
-                    <i class="fas fa-check-double"></i>
-                    <span>На исправлении</span>
-                </div>
-                <div class="index_page_menu_line" data="correction">
-                    <i class="fas fa-users"></i>
-                    <span>Пользователи</span>
-                </div>
-                <div class="index_page_menu_line" data="correction">
-                    <i class="fas fa-money-check-alt"></i>
-                    <span>Транзакции</span>
-                </div>
-                <div class="index_page_menu_line" data="correction">
-                    <i class="fas fa-folder"></i>
-                    <span>Файлы</span>
-                </div>
-                <div class="index_page_menu_line" data="correction">
-                    <i class="fas fa-server"></i>
-                    <span>Статистика сервера</span>
+        <div class="index_page_header">
+            <div class="index_page_header_row">
+                <div class="logo">
+                    <img src="./html/assets/images/logo.png" alt="">
                 </div>
             </div>
         </div>
         <div class="index_page_body">
-            <div class="index_page_body_row">
+            <div class="index_page_body_menu">
+                <div class="index_page_body_menu_line">
+                    <span><i class="far fa-user"></i>Мой профиль</span>
+                </div>
+                <div class="index_page_body_menu_line">
+                    <span><i class="fas fa-tasks"></i>Проекты</span>
+                </div>
+            </div>
+            <div class="content">
 
             </div>
         </div>
@@ -69,8 +39,7 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./html/assets/mods/async.min.js"></script>
 
-
     <script src="./html/assets/javascript/main.js"></script>
-    <script src="./html/assets/javascript/default.js"></script>
+    <script src="./html/assets/javascript/index/default.js"></script>
 </body>
 </html>

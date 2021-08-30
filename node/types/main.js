@@ -82,6 +82,8 @@ const MF =
                     img: null,
                     googleAuth: null,
                     alerts: null,
+                    investor_data: null,
+                    where: null,
                 });
                 // }
     
@@ -144,13 +146,12 @@ async function _MainMenu(msg)
 {
     var _User = await MF.find_user(msg);
     var _projects = await Project.find({user: msg.from.id});
+    var _array = [];
 
     var infoTypes = 
     {
         investor: async function(msg) 
         {
-            var _array = [];
-
             var html = `Вы <strong>Инвестор</strong>`;
             var fat = await bot.sendMessage(msg.chat.id, html, {
                 parse_mode: "HTML",
@@ -214,7 +215,6 @@ async function _MainMenu(msg)
     };
 
     await infoTypes[_User.type](msg);
-    await h.DM(msg, 5);
 }
 
 async function change_type(msg)
@@ -231,5 +231,6 @@ async function change_type(msg)
 
 async function close(msg)
 {
+    await User.findOneAndUpdate({user: msg.from.id}, {where: null})
     _MainMenu(msg);
 }

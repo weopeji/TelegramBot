@@ -100,7 +100,7 @@ function io_connect(callback)
     delete imSocket;
     imSocket = null;
     var url = null;
-    if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+    if (location.hostname === "localhost" || location.hostname === "127.0.0.1" || location.hostname === "localhost.ru") {
         url = global_data.data_url_localhost;
         imSocket = io(url, {transports: ['polling']});
     } else {

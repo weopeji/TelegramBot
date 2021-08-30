@@ -2,7 +2,7 @@
 {
     io_connect( function() 
     {
-        global.loadResources(['./html/assets/javascript/components.js'], () => {
+        global.loadResources(['../html/assets/javascript/admin/components.js'], () => {
             Main();
         });    
     })

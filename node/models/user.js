@@ -12,6 +12,8 @@ const UserShema = new mongoose.Schema({
     img: String,
     alerts: JSON,
     deleteMsgs: Array,
+    investor_data: JSON,
+    where: JSON,
 });
 
 mongoose.model('User', UserShema);

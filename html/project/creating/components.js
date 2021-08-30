@@ -1041,7 +1041,7 @@
 
                 data.body.forEach(element => 
                 {
-                    var _string = this.file(element);
+                    var _string = this.dataLines["file"](element);
                     _body.append(_string);
                 });
 
