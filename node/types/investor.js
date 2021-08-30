@@ -582,6 +582,7 @@ async function save_investing(msg) {
     const page = await browser.newPage();
     await page.goto(_urlImgProject);
     await page.emulateMedia('screen');
+    await page.waitForSelector('.all_good');
     await page.pdf({path: `../projects/${_User.where.project}/pdf_document.pdf`, format: 'a4'});
     await browser.close();
 
