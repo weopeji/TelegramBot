@@ -53,7 +53,7 @@
             var text = `
                 <div class="invester_status_project ${statusBlock}">
                     <p>Вставте документ</p>
-                    <input type="text" placeholder="Документ">
+                    <input type="file" placeholder="Документ">
                 </div>
             `;
 
