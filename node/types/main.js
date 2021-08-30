@@ -152,32 +152,54 @@ async function _MainMenu(msg)
     {
         investor: async function(msg) 
         {
-            var html = `Вы <strong>Инвестор</strong>`;
-            var fat = await bot.sendMessage(msg.chat.id, html, {
-                parse_mode: "HTML",
-                reply_markup: {
-                    "resize_keyboard": true, 
-                    "keyboard": [["💰 Мои инвестиции", "📈 Инвестировать", "💳 Реквезиты"], ["👨‍💼 Рекомендовать","🔁 Сменить роль"]],
-                    "one_time_keyboard": true,
-                }
-            });
-            _array.push(fat.message_id);
-
-            var html = `<strong>${msg.from.first_name} ${msg.from.last_name}</strong>\nВы можете ознакомится с предложениями на данной платформе.`;
-            var fat = await bot.sendMessage(msg.chat.id, html, {
-                parse_mode: "HTML",
-                reply_markup: {
-                    "inline_keyboard": [
-                        [
-                            {
-                                text: "ОЗНАКОМИТСЯ С ПРЕДЛОЖЕНИЯМИ",
-                                url: "https://t.me/testPut",
-                            }
-                        ]
-                    ],
-                }
-            });
-            _array.push(fat.message_id);
+            if(_User.putProject) 
+            {
+                var needProject = await Project.findOne({_id: _User.putProject});
+                var html = `Выбран проект: ${_idProject}\n[Профиль компании](${helper_functions.getURL()}html/project/profil/#${needProject._id})\n[Презентация](${helper_functions.getURL()}/projects/${needProject._id}/${needProject.data["file+7"]})\n[Видео презентация](${helper_functions.getURL()}/projects/${needProject._id}/${needProject.data["file+8"]})`;
+                const stream    = fs.createReadStream(`../projects/${_idProject}/logo.png`);
+                var _array      = [];
+            
+                var fat = await bot.sendPhoto(msg.chat.id, stream, {
+                    "caption": html,
+                    "parse_mode": "MarkdownV2",
+                    "reply_markup": {
+                        "resize_keyboard": true,
+                        "keyboard": [["💰 Мои инвестиции", "📈 Инвестировать", "💳 Реквезиты"], ["👨‍💼 Рекомендовать","🔁 Сменить роль"]],
+                    }
+                });
+                _array.push(fat.message_id);
+            
+                await h.DMA(msg, _array);
+        
+            } else {
+                var html = `Вы <strong>Инвестор</strong>`;
+                var fat = await bot.sendMessage(msg.chat.id, html, {
+                    parse_mode: "HTML",
+                    reply_markup: {
+                        "resize_keyboard": true, 
+                        "keyboard": [["💰 Мои инвестиции", "📈 Инвестировать", "💳 Реквезиты"], ["👨‍💼 Рекомендовать","🔁 Сменить роль"]],
+                        "one_time_keyboard": true,
+                    }
+                });
+                _array.push(fat.message_id);
+    
+                var html = `<strong>${msg.from.first_name} ${msg.from.last_name}</strong>\nВы можете ознакомится с предложениями на данной платформе.`;
+                var fat = await bot.sendMessage(msg.chat.id, html, {
+                    parse_mode: "HTML",
+                    reply_markup: {
+                        "inline_keyboard": [
+                            [
+                                {
+                                    text: "ОЗНАКОМИТСЯ С ПРЕДЛОЖЕНИЯМИ",
+                                    url: "https://t.me/testPut",
+                                }
+                            ]
+                        ],
+                    }
+                });
+                _array.push(fat.message_id);
+            }
+            
 
             await h.DMA(msg, _array);
         },
