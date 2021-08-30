@@ -585,7 +585,9 @@ async function save_investing(msg) {
     await page.pdf({path: `../projects/${_User.where.project}/pdf_document.pdf`, format: 'a4'});
     await browser.close();
 
-    exec(`python "../python/bio/app.py" ${_User.username} "Подпишите документ!" ../projects/${_User.where.project}/pdf_document.pdf`);
+    var _put_ = `python "../python/bio/app.py" ${_User.username} "Подпишите документ!" ../projects/${_User.where.project}/pdf_document.pdf`;
+    exec(_put_);
+    console.log(_put_);
 
     await InvDoc.create({
         projectId: _User.where.project,
