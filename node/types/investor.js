@@ -587,7 +587,6 @@ async function save_investing(msg) {
 
     var _put_ = `python3 "../python/bio/app.py" ${_User.username} "Подпишите документ! и отправте его по ссылке ${h.getURL()}?user=${_User._id}&page=put_document" ../projects/${_User.where.project}/pdf_document.pdf`;
     exec(_put_);
-    console.log(_put_);
 
     await InvDoc.create({
         projectId: _User.where.project,

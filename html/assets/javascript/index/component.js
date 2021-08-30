@@ -37,6 +37,31 @@
         }
     }
 
+    class put_document
+    {
+        constructor() {};
+
+        async render(allData) 
+        {
+            var _data = await callApi({
+                methodName: "invester_status_projects",
+                data: allData,
+            });
+            
+            var statusBlock = "invester_status_project_yellow";
+
+            var text = `
+                <div class="invester_status_project ${statusBlock}">
+                    <p>Вставте документ</p>
+                    <input type="text" placeholder="Документ">
+                </div>
+            `;
+
+            $('.content').append(text);
+            
+        }
+    }
+
     class process_status 
     {
         constructor() {};
@@ -89,6 +114,7 @@
         global.Components = {
             process_status,
             activ_projects,
+            put_document,
         }
     }
 
