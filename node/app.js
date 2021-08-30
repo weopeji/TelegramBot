@@ -168,6 +168,9 @@ bot.on("callback_query", function(callbackQuery)
 
 bot.onText(/\/start (.+)/, async (msg, match) => 
 {
+    cosnole.log(msg);
+    console.log(match);
+
     const resp      = match[1];
     var _idProject  = resp.split('_')[1];
     var needProject = await Project.findOne({_id: _idProject});
