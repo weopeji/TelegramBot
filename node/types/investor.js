@@ -573,7 +573,7 @@ async function save_investing(msg) {
 
     //exec(`python "../python/bio/app.py" `);
 
-    var _urlImgProject = `${h.getURL()}html/project/cover/?id=${data}`;
+    var _urlImgProject = `${h.getURL()}html/project/document/#${_User.where.project}`;
     console.log(_urlImgProject);
     const browser = await puppeteer.launch({
         args: ['--no-sandbox', '--disable-setuid-sandbox'],
@@ -581,8 +581,7 @@ async function save_investing(msg) {
     const page = await browser.newPage();
     await page.goto(_urlImgProject);
     await page.emulateMedia('screen');
-    const element = await page.$('.cover_block');   
-    await element.screenshot({path: `../projects/${data}/logo.png`});
+    await page.pdf({path: `../projects/${_User.where.project}/pdf_document.pdf`, format: 'a4'});
     await browser.close();
 
     await InvDoc.create({
