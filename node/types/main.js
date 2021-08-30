@@ -171,34 +171,34 @@ async function _MainMenu(msg)
             
                 await h.DMA(msg, _array);
         
-            } else {
-                var html = `Вы <strong>Инвестор</strong>`;
-                var fat = await bot.sendMessage(msg.chat.id, html, {
-                    parse_mode: "HTML",
-                    reply_markup: {
-                        "resize_keyboard": true, 
-                        "keyboard": [["💰 Мои инвестиции", "📈 Инвестировать", "💳 Реквезиты"], ["👨‍💼 Рекомендовать","🔁 Сменить роль"]],
-                        "one_time_keyboard": true,
-                    }
-                });
-                _array.push(fat.message_id);
-    
-                var html = `<strong>${msg.from.first_name} ${msg.from.last_name}</strong>\nВы можете ознакомится с предложениями на данной платформе.`;
-                var fat = await bot.sendMessage(msg.chat.id, html, {
-                    parse_mode: "HTML",
-                    reply_markup: {
-                        "inline_keyboard": [
-                            [
-                                {
-                                    text: "ОЗНАКОМИТСЯ С ПРЕДЛОЖЕНИЯМИ",
-                                    url: "https://t.me/testPut",
-                                }
-                            ]
-                        ],
-                    }
-                });
-                _array.push(fat.message_id);
             }
+            var html = `Вы <strong>Инвестор</strong>`;
+            var fat = await bot.sendMessage(msg.chat.id, html, {
+                parse_mode: "HTML",
+                reply_markup: {
+                    "resize_keyboard": true, 
+                    "keyboard": [["💰 Мои инвестиции", "📈 Инвестировать", "💳 Реквезиты"], ["👨‍💼 Рекомендовать","🔁 Сменить роль"]],
+                    "one_time_keyboard": true,
+                }
+            });
+            _array.push(fat.message_id);
+
+            var html = `<strong>${msg.from.first_name} ${msg.from.last_name}</strong>\nВы можете ознакомится с предложениями на данной платформе.`;
+            var fat = await bot.sendMessage(msg.chat.id, html, {
+                parse_mode: "HTML",
+                reply_markup: {
+                    "inline_keyboard": [
+                        [
+                            {
+                                text: "ОЗНАКОМИТСЯ С ПРЕДЛОЖЕНИЯМИ",
+                                url: "https://t.me/testPut",
+                            }
+                        ]
+                    ],
+                }
+            });
+            _array.push(fat.message_id);
+            
             
 
             await h.DMA(msg, _array);
