@@ -170,25 +170,25 @@ bot.onText(/\/start (.+)/, async (msg, match) =>
 {
     const resp      = match[1];
     var _idProject  = resp.split('_')[1];
-    var html        = `<strong>Инвестиция в проект: ${_idProject}</strong>\n\nСледуйте инструкциям и отправляйте в чат нужные документы и сведения. Вы в любой момент можете вернуться и изменить любые данные.`;
+    var needProject = await Project.findOne({_id: _idProject});
+    //var html        = `<strong>Инвестиция в проект: ${_idProject}</strong>\n\nСледуйте инструкциям и отправляйте в чат нужные документы и сведения. Вы в любой момент можете вернуться и изменить любые данные.`;
+    var html = `Выбран проект: ${_idProject}\n[Профиль компании](${helper_functions.getURL()}html/project/profil/#${needProject._id})\n[Презентация](${helper_functions.getURL()}/projects/${needProject._id}/${needProject.data["file+7"]})\n[Видео презентация](${helper_functions.getURL()}/projects/${needProject._id}/${needProject.data["file+8"]})`;
     const stream    = fs.createReadStream(`../projects/${_idProject}/logo.png`);
     var _array      = [];
 
     var fat = await bot.sendPhoto(msg.chat.id, stream, {
         "caption": html,
-        "parse_mode": "HTML",
+        "parse_mode": "MarkdownV2",
         "reply_markup": {
             "resize_keyboard": true,
-            "keyboard": [
-                ["⬅️ Назад"],
-            ],
+            "keyboard": [["💰 Мои инвестиции", "📈 Инвестировать", "💳 Реквезиты"], ["👨‍💼 Рекомендовать","🔁 Сменить роль"]],
         }
     });
     _array.push(fat.message_id);
 
-    await h.DMA(msg, []);
+    await h.DMA(msg, _array);
 
-    investor_page.startInvestingMsg(msg, 1, _array, "1", _idProject);
+    await User.findOneAndUpdate({user: needProject.user}, {putProject: _idProject});
 });
 
 bot.on('message', async (msg) => 

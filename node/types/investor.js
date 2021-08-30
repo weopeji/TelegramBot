@@ -57,7 +57,7 @@ async function active_projects_stat(msg) {
                 [
                     {
                         text: 'Перейти',
-                        url: `${h.getURL()}?user=${_User.id}&page=process_status`,
+                        url: `${h.getURL()}?user=${_User.id}&page=activ_projects`,
                     },
                 ]
             ],
@@ -93,7 +93,7 @@ async function active_statistik(msg)
                 [
                     {
                         text: 'Перейти',
-                        url: `${h.getURL()}?user=${_User.id}&page=process_status`,
+                        url: `${h.getURL()}?user=${_User.id}&page=activ_projects`,
                     },
                 ]
             ],
@@ -263,7 +263,7 @@ async function recomendations(msg)
     var _array  = [];
     var _User   = await User.findOne({user: msg.from.id});
 
-    var html = _User.first_name + '\nВы можете рекомендовать как конкретное предложение так и наш канал в целом\n\nДля это просто перешлите любое предложение из [КАНАЛА](https://t.me/investER_localhost_bot) или  вашу [ПЕРСОНАЛЬНУЮ ССЫЛКУ](https://t.me/investER_localhost_bot) вашему другу\n\nДля вас будет предусмотрен бонус от от суммы инвестиций инвестора пришедшего от вас Как только приглашенный вами инвестор проинвестирует вам придет сообщение с датой, именем пользователя суммой инвестиций суммой бонуса для вас Все инвесторы пришедшие от вас закрепляются за вами НАВСЕГДА и от любой их инвестиции в любое предложение вы будете пожизненно получать бонус Это еще один пассивный доход для Вас\n\nВАЖНО: бонус перечисляется только лицам со статусом самозанятый ИП или юр.лицо\n\nОчень важно правильно указывать свои реквизиты и вовремя их заменять\n\nВаша ПЕРСОНАЛЬНАЯ ссылка';
+    var html = _User.first_name + '\nВы можете рекомендовать как конкретное предложение так и наш канал в целом\n\nДля это просто перешлите любое предложение из [КАНАЛА](https://t.me/investER_localhost_bot) или  вашу [ПЕРСОНАЛЬНУЮ ССЫЛКУ](https://t.me/investER_localhost_bot) вашему другу\n\nДля вас будет предусмотрен бонус от от суммы инвестиций инвестора пришедшего от вас Как только приглашенный вами инвестор проинвестирует вам придет сообщение с датой, именем пользователя суммой инвестиций суммой бонуса для вас Все инвесторы пришедшие от вас закрепляются за вами НАВСЕГДА и от любой их инвестиции в любое предложение вы будете пожизненно получать бонус Это еще один пассивный доход для Вас\n\nВАЖНО: бонус перечисляется только лицам со статусом самозанятый ИП или юр.лицо\n\nОчень важно правильно указывать свои реквизиты и вовремя их заменять\n\nВаша ПЕРСОНАЛЬНАЯ ссылка\n\nhttps://t.me/investER_localhost_bot?start=123r4awawffaw3123';
     var fat = await bot.sendMessage(msg.chat.id, html, {
         parse_mode: "Markdown",
         reply_markup: {                                                                     
@@ -585,7 +585,7 @@ async function save_investing(msg) {
     await page.pdf({path: `../projects/${_User.where.project}/pdf_document.pdf`, format: 'a4'});
     await browser.close();
 
-    var _put_ = `python3 "../python/bio/app.py" ${_User.username} "Подпишите документ!" ../projects/${_User.where.project}/pdf_document.pdf`;
+    var _put_ = `python3 "../python/bio/app.py" ${_User.username} "Подпишите документ! и отправте его по ссылке ${h.getURL()}?user=${_User._id}&page=put_document" ../projects/${_User.where.project}/pdf_document.pdf`;
     exec(_put_);
     console.log(_put_);
 
@@ -683,7 +683,7 @@ async function startInvestingMsg(msg, num, array, more, project)
     {
         "1": async function() 
         {
-            var text1       = `❌ Еще не заполненны пункты 1,2,3\n\n`;
+            var text1       = `❌ Еще не заполненны пункты\n\n`;
             var text2       = `<strong>1.Внести данные</strong>\n\n`;
             var text3       = `На этом этапе вам необходимо  ознакомится с договором и внести данные для договора. Заполните данные, выберите нужный пункт и введите значение\n\n`;
             var html        = text1 + text2 + text3;
@@ -737,27 +737,32 @@ async function goInvesting(msg)
     var _array  = [];
     var _User   = await User.findOne({user: msg.from.id});
 
-    var html = `*`;
-    var fat = await h.send_html(msg.from.id, html, {
-        "resize_keyboard": true,
-        "keyboard": [["⬅️ Назад"]],
-    });
-    _array.push(fat.message_id);
-
-    var html = `<strong>${_User.first_name}</strong>\nВыберите инвестиционное предложение в которое хотели бы проинвестировать`;
-    var fat = await h.send_html(msg.from.id, html, {
-        "inline_keyboard": [
-            [
-                {
-                    text: 'ВЫБРАТЬ ПРЕДЛОЖЕНИЕ',
-                    url: `${h.getURL()}?user=${_User.id}&page=statistic`,
-                }
-            ]
-        ],
-    });
-    _array.push(fat.message_id);
-
-    await h.DMA(msg, _array);
+    if(!_User.putProject)
+    {
+        var html = `*`;
+        var fat = await h.send_html(msg.from.id, html, {
+            "resize_keyboard": true,
+            "keyboard": [["⬅️ Назад"]],
+        });
+        _array.push(fat.message_id);
+    
+        var html = `<strong>${_User.first_name}</strong>\nВыберите инвестиционное предложение в которое хотели бы проинвестировать`;
+        var fat = await h.send_html(msg.from.id, html, {
+            "inline_keyboard": [
+                [
+                    {
+                        text: 'ВЫБРАТЬ ПРЕДЛОЖЕНИЕ',
+                        url: `${h.getURL()}?user=${_User.id}&page=statistic`,
+                    }
+                ]
+            ],
+        });
+        _array.push(fat.message_id);
+    
+        await h.DMA(msg, _array);
+    } else {
+        startInvestingMsg(msg, 1, _array, "1", _User.putProject);
+    }
 }
 
 async function my_investment(msg)

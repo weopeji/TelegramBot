@@ -14,6 +14,7 @@ const UserShema = new mongoose.Schema({
     deleteMsgs: Array,
     investor_data: JSON,
     where: JSON,
+    putProject: String,
 });
 
 mongoose.model('User', UserShema);

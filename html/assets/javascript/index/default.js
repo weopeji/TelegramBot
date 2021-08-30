@@ -31,11 +31,15 @@
         if(_id) 
         {
             const process_status    = new global.Components.process_status();
+            const activ_projects    = new global.Components.activ_projects();
 
             var renderPage = 
             {
                 "process_status": function() {process_status.render(allData)},
+                "activ_projects": function() {activ_projects.render(allData)}
             }
+
+            $('.content').empty();
 
             renderPage[pageID]();
         }
