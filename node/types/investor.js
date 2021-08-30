@@ -1,5 +1,6 @@
-var bot     = null;
-var h       = null;
+var bot         = null;
+var h           = null;
+var puppeteer   = require('puppeteer');
 
 function privateInit(initPlagins) {
     bot     = initPlagins.bot;
