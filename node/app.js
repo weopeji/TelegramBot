@@ -168,7 +168,7 @@ bot.on("callback_query", function(callbackQuery)
 
 bot.onText(/\/start (.+)/, async (msg, match) => 
 {
-    cosnole.log(msg);
+    console.log(msg);
     console.log(match);
 
     const resp      = match[1];
