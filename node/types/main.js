@@ -155,8 +155,8 @@ async function _MainMenu(msg)
             if(_User.putProject) 
             {
                 var needProject = await Project.findOne({_id: _User.putProject});
-                var html = `Выбран проект: ${_idProject}\n[Профиль компании](${helper_functions.getURL()}html/project/profil/#${needProject._id})\n[Презентация](${helper_functions.getURL()}/projects/${needProject._id}/${needProject.data["file+7"]})\n[Видео презентация](${helper_functions.getURL()}/projects/${needProject._id}/${needProject.data["file+8"]})`;
-                const stream    = fs.createReadStream(`../projects/${_idProject}/logo.png`);
+                var html = `Выбран проект: ${_User.putProject}\n[Профиль компании](${helper_functions.getURL()}html/project/profil/#${needProject._id})\n[Презентация](${helper_functions.getURL()}/projects/${needProject._id}/${needProject.data["file+7"]})\n[Видео презентация](${helper_functions.getURL()}/projects/${needProject._id}/${needProject.data["file+8"]})`;
+                const stream    = fs.createReadStream(`../projects/${_User.putProject}/logo.png`);
                 var _array      = [];
             
                 var fat = await bot.sendPhoto(msg.chat.id, stream, {
