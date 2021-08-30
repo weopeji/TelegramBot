@@ -1,6 +1,7 @@
 var bot         = null;
 var h           = null;
 var puppeteer   = require('puppeteer');
+const { spawn, exec } = require('child_process');
 
 function privateInit(initPlagins) {
     bot     = initPlagins.bot;
