@@ -571,8 +571,6 @@ async function save_investing(msg) {
     });
     _array.push(fat.message_id);
 
-    await h.DMA(msg, _array);
-
     var _urlImgProject = `${h.getURL()}html/project/document/#${_User.where.project}`;
     const browser = await puppeteer.launch({
         args: ['--no-sandbox', '--disable-setuid-sandbox'],
@@ -587,6 +585,12 @@ async function save_investing(msg) {
     const stream = fs.createReadStream(`../projects/${_User.where.project}/pdf_document.pdf`);
     var fat = await bot.sendDocument(msg.from.id, stream);
     _array.push(fat.message_id);
+
+    await h.DMA(msg, _array);
+
+    await User.findOneAndUpdate({user: msg.from.id}, {where: {
+        type: "document_load",
+    }})
 
     // await InvDoc.create({
     //     projectId: _User.where.project,
