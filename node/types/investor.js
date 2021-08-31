@@ -557,6 +557,28 @@ async function startInvestingMsgOld(msg, button)
     await h.MA(msg, _array);
 }
 
+async function payerInvester(msg) 
+{
+    var _User       = await User.findOne({user: msg.from.id});
+    var _Project    = await Project.findOne({_id: _User.putProject});
+    var _array      = [];
+
+    var html = `<strong>2.оплатить</strong>\n\nЗдесь вам необходимо произвести оплату инвестиций согласно банковским реквизитам, будьте очень внимательны и проверяйте несколько раз вводимые вами данные.\n\n`;
+    html = html + `Банк-получатель: ${_Project.data.bank}\n`;
+    html = html + `Корр. счёт: ${_Project.data.account_correct}\n`;
+    html = html + `БИК: ${_Project.data.bik}\n`;
+    html = html + `Получатель: ${_Project.data.recipient}\n`;
+    html = html + `Счёт получателя: ${_Project.data.account_get}\n`;
+    html = html + `ИНН: ${_Project.data.inn}\n`;
+    html = html + `КПП: ${_Project.data.kpp}\n`;
+
+    var fat = await h.send_html(msg.from.id, html, {
+        "resize_keyboard": true,
+        "keyboard": [["Мои покупки", "⬅️ Назад"]],
+    });
+    _array.push(fat.message_id);
+}
+
 async function document_load(msg) 
 {
     var _User   = await User.findOne({user: msg.from.id});
@@ -577,12 +599,15 @@ async function document_load(msg)
 
             await User.findOneAndUpdate({user: msg.from.id}, {investor_data: _arrayData});
 
-            // var html = `Лот создан!`;
-            // var fat = await h.send_html(msg.from.id, html, {
-            //     "resize_keyboard": true,
-            //     "keyboard": [["Мои покупки", "⬅️ Назад"]],
-            // });
-            // _array.push(fat.message_id);
+            await InvDoc.create({
+                projectId: _User.where.project,
+                document: null,
+                invester: msg.from.id,
+                status: "wait",
+                data: _User.investor_data,
+            });
+
+            
         });
     }
 }
@@ -622,14 +647,6 @@ async function save_investing(msg) {
     await User.findOneAndUpdate({user: msg.from.id}, {where: {
         type: "document_load",
     }})
-
-    // await InvDoc.create({
-    //     projectId: _User.where.project,
-    //     document: null,
-    //     invester: msg.from.id,
-    //     status: "wait",
-    //     data: _User.investor_data,
-    // });
 }
 
 async function investing_money(msg) 
