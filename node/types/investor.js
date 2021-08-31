@@ -602,7 +602,7 @@ async function save_investing(msg) {
     });
     _array.push(fat.message_id);
 
-    var _urlImgProject = `${h.getURL()}html/project/document/#${_User.where.project}`;
+    var _urlImgProject = `${h.getURL()}html/project/document/#${_User.putProject}`;
     const browser = await puppeteer.launch({
         args: ['--no-sandbox', '--disable-setuid-sandbox'],
     });
@@ -610,10 +610,10 @@ async function save_investing(msg) {
     await page.goto(_urlImgProject);
     await page.emulateMedia('screen');
     await page.waitForSelector('.all_good');
-    await page.pdf({path: `../projects/${_User.where.project}/pdf_document.pdf`, format: 'a4'});
+    await page.pdf({path: `../projects/${_User.putProject}/pdf_document.pdf`, format: 'a4'});
     await browser.close();
 
-    const stream = fs.createReadStream(`../projects/${_User.where.project}/pdf_document.pdf`);
+    const stream = fs.createReadStream(`../projects/${_User.putProject}/pdf_document.pdf`);
     var fat = await bot.sendDocument(msg.from.id, stream);
     _array.push(fat.message_id);
 
@@ -797,28 +797,13 @@ async function goInvesting(msg)
     } else 
     {
         var investor_data   = _User.investor_data;
-        var _error          = false;
+        
 
-        buttons.forEach(el => {
-            if(!investor_data[el.id]) _error = true;
-        });
+        if(investor_data['document']) {
 
-        buttons_2.forEach(el => {
-            if(!investor_data[el.id]) _error = true;
-        });
-
-        if(_error) 
-        {
+        } else {
             startInvestingMsg(msg, 1, _array, "1", _User.putProject);
-        } else 
-        {
-            if(investor_data['document']) {
-
-            } else {
-                save_investing(msg);
-            }
         }
-
         
     }
 }
