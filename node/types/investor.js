@@ -561,7 +561,7 @@ async function save_investing(msg) {
     var _array      = [];
     var _User       = await User.findOne({user: msg.from.id});
 
-    var html = `Наш менеджер заполнит договор и пришлет его вам в личным сообщением. Вам необходимо его распечатать, подписать, отсканировать и отправить ответным сообщением подписанный вами договор.`;
+    var html = `Вы должны ознакомится с договором, подписать его и отправить ответным сообщением в бот`;
 
     var fat = await h.send_html(msg.from.id, html, {
         "resize_keyboard": true,
@@ -574,7 +574,6 @@ async function save_investing(msg) {
     await h.DMA(msg, _array);
 
     var _urlImgProject = `${h.getURL()}html/project/document/#${_User.where.project}`;
-    console.log(_urlImgProject);
     const browser = await puppeteer.launch({
         args: ['--no-sandbox', '--disable-setuid-sandbox'],
     });
@@ -585,16 +584,17 @@ async function save_investing(msg) {
     await page.pdf({path: `../projects/${_User.where.project}/pdf_document.pdf`, format: 'a4'});
     await browser.close();
 
-    var _put_ = `python3 "../python/bio/app.py" ${_User.username} "Подпишите документ! и отправте его по ссылке ${h.getURL()}?user=${_User._id}&page=put_document" ../projects/${_User.where.project}/pdf_document.pdf`;
-    exec(_put_);
+    const stream = fs.createReadStream(`../projects/${_User.where.project}/pdf_document.pdf`);
+    var fat = await bot.sendDocument(msg.chat.id, stream);
+    _array.push(fat.message_id);
 
-    await InvDoc.create({
-        projectId: _User.where.project,
-        document: null,
-        invester: msg.from.id,
-        status: "wait",
-        data: _User.investor_data,
-    });
+    // await InvDoc.create({
+    //     projectId: _User.where.project,
+    //     document: null,
+    //     invester: msg.from.id,
+    //     status: "wait",
+    //     data: _User.investor_data,
+    // });
 }
 
 async function investing_money(msg) 
