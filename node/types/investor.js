@@ -574,7 +574,7 @@ async function payerInvester(msg)
 
     var fat = await h.send_html(msg.from.id, html, {
         "resize_keyboard": true,
-        "keyboard": [["Мои покупки", "⬅️ Назад"]],
+        "keyboard": [["⬅️ Назад"]],
     });
     _array.push(fat.message_id);
 }
@@ -582,7 +582,6 @@ async function payerInvester(msg)
 async function document_load(msg) 
 {
     var _User   = await User.findOne({user: msg.from.id});
-    var _array  = [];
 
     if(msg.document) 
     {
@@ -600,8 +599,7 @@ async function document_load(msg)
             await User.findOneAndUpdate({user: msg.from.id}, {investor_data: _arrayData});
 
             await InvDoc.create({
-                projectId: _User.where.project,
-                document: null,
+                projectId: _User.putProject,
                 invester: msg.from.id,
                 status: "wait",
                 data: _User.investor_data,
