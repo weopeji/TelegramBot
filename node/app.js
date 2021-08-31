@@ -241,6 +241,7 @@ bot.on('message', async (msg) =>
         {
             const action_where = {
                 "investor": investor_page.actionWhere,
+                "document_load": investor_page.document_load,
             }
             action_where[_User.where.type](msg);
             await h.DM(msg, 1);

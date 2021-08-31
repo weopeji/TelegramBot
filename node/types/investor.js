@@ -31,6 +31,7 @@ module.exports = {
     myPeoples,
     active_statistik,
     active_projects_stat,
+    document_load,
 }
 
 async function active_projects_stat(msg) {
@@ -554,6 +555,20 @@ async function startInvestingMsgOld(msg, button)
     await User.findOneAndUpdate({user: msg.from.id}, {where: _where})
 
     await h.MA(msg, _array);
+}
+
+async function document_load(msg) 
+{
+    var _User   = await User.findOne({user: msg.from.id});
+    var _array  = [];
+
+    if(msg.document) 
+    {
+        var _file       = await bot.getFile(msg.document.file_id);
+        var file_url    = `https://api.telegram.org/file/bot${config.token}/${_file.file_path}`;
+        console.log(file_url);
+        //const file      = fs.createWriteStream(`../projects/${_User.putProject}/`);
+    }
 }
 
 async function save_investing(msg) {
