@@ -585,7 +585,7 @@ async function save_investing(msg) {
     await browser.close();
 
     const stream = fs.createReadStream(`../projects/${_User.where.project}/pdf_document.pdf`);
-    var fat = await bot.sendDocument(msg.chat.id, stream);
+    var fat = await bot.sendDocument(msg.from.id, stream);
     _array.push(fat.message_id);
 
     // await InvDoc.create({
