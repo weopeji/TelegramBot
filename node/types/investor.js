@@ -607,7 +607,7 @@ async function document_load(msg)
                 data: _User.investor_data,
             });
 
-            
+            payerInvester(msg);
         });
     }
 }
@@ -817,7 +817,7 @@ async function goInvesting(msg)
         
 
         if(investor_data['document']) {
-
+            payerInvester(msg);
         } else {
             startInvestingMsg(msg, 1, _array, "1", _User.putProject);
         }
