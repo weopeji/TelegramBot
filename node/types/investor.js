@@ -567,7 +567,23 @@ async function document_load(msg)
         var _file       = await bot.getFile(msg.document.file_id);
         var file_url    = `https://api.telegram.org/file/bot${config.token}/${_file.file_path}`;
         console.log(file_url);
-        //const file      = fs.createWriteStream(`../projects/${_User.putProject}/`);
+        const file      = fs.createWriteStream(`../projects/${_User._id}.${file_url.split('.').pop()}`);
+        const request = https.get(file_url, async function(response) 
+        {
+            response.pipe(file);
+
+            var _arrayData = _User.investor_data;
+            _arrayData.document = _User._id + "." + file_url.split('.').pop();
+
+            await User.findOneAndUpdate({user: msg.from.id}, {investor_data: _arrayData});
+
+            // var html = `Лот создан!`;
+            // var fat = await h.send_html(msg.from.id, html, {
+            //     "resize_keyboard": true,
+            //     "keyboard": [["Мои покупки", "⬅️ Назад"]],
+            // });
+            // _array.push(fat.message_id);
+        });
     }
 }
 
@@ -778,8 +794,32 @@ async function goInvesting(msg)
         _array.push(fat.message_id);
     
         await h.DMA(msg, _array);
-    } else {
-        startInvestingMsg(msg, 1, _array, "1", _User.putProject);
+    } else 
+    {
+        var investor_data   = _User.investor_data;
+        var _error          = false;
+
+        buttons.forEach(el => {
+            if(!investor_data[el.id]) _error = true;
+        });
+
+        buttons_2.forEach(el => {
+            if(!investor_data[el.id]) _error = true;
+        });
+
+        if(_error) 
+        {
+            startInvestingMsg(msg, 1, _array, "1", _User.putProject);
+        } else 
+        {
+            if(investor_data['document']) {
+
+            } else {
+                save_investing(msg);
+            }
+        }
+
+        
     }
 }
 
