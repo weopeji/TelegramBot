@@ -40,14 +40,14 @@ module.exports = {
 
 async function drafts(msg) 
 {
-    var InvDocs = await InvDoc.find({invester: msg.from.id, receipt: null});
+    var _InvDocs = await InvDoc.find({invester: msg.from.id, receipt: null});
 
-    if(InvDocs.length > 0) 
+    if(_InvDocs.length > 0) 
     {
-        var needProject = await Project.findOne({_id: InvDocs.projectId});
+        var needProject = await Project.findOne({_id: _InvDocs[0].projectId});
 
-        console.log(InvDocs);
-        console.log(InvDocs.projectId);
+        console.log(_InvDocs[0]);
+        console.log(_InvDocs[0].projectId);
 
         var html = `Выбран проект: ${InvDocs.projectId}\n[Профиль компании](${h.getURL()}html/project/profil/#${needProject._id})\n[Презентация](${h.getURL()}/projects/${needProject._id}/${needProject.data["file+7"]})\n[Видео презентация](${h.getURL()}/projects/${needProject._id}/${needProject.data["file+8"]})\n\n`;
         const stream    = fs.createReadStream(`../projects/${InvDocs.projectId}/logo.png`);
