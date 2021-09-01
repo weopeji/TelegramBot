@@ -48,7 +48,7 @@ async function drafts(msg)
         var _doc = _InvDocs[0]
 
         var html = `Выбран проект: ${_doc.projectId}\n[Профиль компании](${h.getURL()}html/project/profil/#${needProject._id})\n[Презентация](${h.getURL()}/projects/${needProject._id}/${needProject.data["file+7"]})\n[Видео презентация](${h.getURL()}/projects/${needProject._id}/${needProject.data["file+8"]})\n\n`;
-        const stream    = fs.createReadStream(`../projects/${InvDocs.projectId}/logo.png`);
+        const stream    = fs.createReadStream(`../projects/${_doc.projectId}/logo.png`);
     
         var fat = await bot.sendPhoto(msg.from.id, stream, {
             "caption": html,
