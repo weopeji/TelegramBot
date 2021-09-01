@@ -834,8 +834,7 @@ async function goInvesting(msg)
     var _array  = [];
     var _User   = await User.findOne({user: msg.from.id});
 
-    if(!_User.putProject)
-    {
+    let defaultMsg = () => {
         var html = `*`;
         var fat = await h.send_html(msg.from.id, html, {
             "resize_keyboard": true,
@@ -857,6 +856,11 @@ async function goInvesting(msg)
         _array.push(fat.message_id);
     
         await h.DMA(msg, _array);
+    }
+
+    if(!_User.putProject)
+    {
+        defaultMsg();
     } else 
     {
         var investingBlock = await InvDoc.findOne({projectId: _User.putProject, invester: msg.from.id});
@@ -866,7 +870,12 @@ async function goInvesting(msg)
         {
             startInvestingMsg(msg, 1, _array, "1", _User.putProject);
         } else {
-            payerInvester(msg);
+            if(investingBlock.receipt) {
+                defaultMsg();
+            } else {
+                payerInvester(msg);
+            }
+            
         }
         
     }
