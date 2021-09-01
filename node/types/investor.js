@@ -39,7 +39,7 @@ module.exports = {
 }
 
 async function drafts(msg) {
-    var InvDocs = find({invester: msg.from.id, receipt: null});
+    var InvDocs = InvDoc.find({invester: msg.from.id, receipt: null});
     console.log(InvDocs);
 }
 
