@@ -35,6 +35,12 @@ module.exports = {
     document_load,
     payerInBissness,
     payerInBissnessDocument,
+    drafts,
+}
+
+async function drafts(msg) {
+    var InvDocs = find({invester: msg.from.id, receipt: null});
+    console.log(InvDocs);
 }
 
 async function payerInBissnessDocument(msg) {
@@ -633,7 +639,6 @@ async function document_load(msg)
     {
         var _file       = await bot.getFile(msg.document.file_id);
         var file_url    = `https://api.telegram.org/file/bot${config.token}/${_file.file_path}`;
-        console.log(file_url);
         const file      = fs.createWriteStream(`../projects/${_User._id}.${file_url.split('.').pop()}`);
         const request = https.get(file_url, async function(response) 
         {
@@ -647,6 +652,7 @@ async function document_load(msg)
                 invester: msg.from.id,
                 status: "wait",
                 data: _arrayData,
+                receipt: null,
             });
 
             _arrayData.document = null;
