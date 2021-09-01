@@ -45,11 +45,9 @@ async function drafts(msg)
     if(_InvDocs.length > 0) 
     {
         var needProject = await Project.findOne({_id: _InvDocs[0].projectId});
+        var _doc = _InvDocs[0]
 
-        console.log(_InvDocs[0]);
-        console.log(_InvDocs[0].projectId);
-
-        var html = `Выбран проект: ${InvDocs.projectId}\n[Профиль компании](${h.getURL()}html/project/profil/#${needProject._id})\n[Презентация](${h.getURL()}/projects/${needProject._id}/${needProject.data["file+7"]})\n[Видео презентация](${h.getURL()}/projects/${needProject._id}/${needProject.data["file+8"]})\n\n`;
+        var html = `Выбран проект: ${_doc.projectId}\n[Профиль компании](${h.getURL()}html/project/profil/#${needProject._id})\n[Презентация](${h.getURL()}/projects/${needProject._id}/${needProject.data["file+7"]})\n[Видео презентация](${h.getURL()}/projects/${needProject._id}/${needProject.data["file+8"]})\n\n`;
         const stream    = fs.createReadStream(`../projects/${InvDocs.projectId}/logo.png`);
     
         var fat = await bot.sendPhoto(msg.from.id, stream, {
@@ -60,13 +58,15 @@ async function drafts(msg)
                     [
                         {
                             text: 'Продолжить',
-                            callback_data: `place=drafts&id=${InvDocs.projectId}`,
+                            callback_data: `place=drafts&id=${_doc.projectId}`,
                         },
                     ]
                 ],
             }
         });
         _array.push(fat.message_id);
+
+        await h.DMA(msg, _array);
 
     } else {
         var html = `У вас нет черновиков!`;
