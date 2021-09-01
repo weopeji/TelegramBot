@@ -170,7 +170,7 @@ async function _MainMenu(msg)
                 });
                 _array.push(fat.message_id);
 
-                if(needInv.receipt != null) 
+                if(typeof needInv.receipt != "null") 
                 {
                     var html = `<strong>Вы инвестировали в проект!</strong>\n\nВы можете написать бизнесу по ссылке ниже`;
                     var fat = await bot.sendMessage(msg.chat.id, html, {
