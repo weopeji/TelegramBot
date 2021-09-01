@@ -158,12 +158,6 @@ async function _MainMenu(msg)
                 var needInv = await InvDoc.findOne({projectId: _User.putProject, invester: msg.from.id});
 
                 var html = `Выбран проект: ${_User.putProject}\n[Профиль компании](${h.getURL()}html/project/profil/#${needProject._id})\n[Презентация](${h.getURL()}/projects/${needProject._id}/${needProject.data["file+7"]})\n[Видео презентация](${h.getURL()}/projects/${needProject._id}/${needProject.data["file+8"]})\n\n`;
-                
-                if(needInv.receipt) 
-                {
-                    html = html + `<strong>Вы инвестировали в проект!</strong>`;
-                }
-                
                 const stream    = fs.createReadStream(`../projects/${_User.putProject}/logo.png`);
             
                 var fat = await bot.sendPhoto(msg.from.id, stream, {
@@ -175,6 +169,25 @@ async function _MainMenu(msg)
                     }
                 });
                 _array.push(fat.message_id);
+
+                if(needInv.receipt) 
+                {
+                    var html = `<strong>Вы инвестировали в проект!</strong>\n\nВы можете написать бизнесу по ссылке ниже`;
+                    var fat = await bot.sendMessage(msg.chat.id, html, {
+                        parse_mode: "HTML",
+                        reply_markup: {
+                            "inline_keyboard": [
+                                [
+                                    {
+                                        text: 'Написать бизнесу',
+                                        url: `${h.getURL()}?user=${_User.id}&page=chat&id=${_User.putProject}`,
+                                    },
+                                ]
+                            ],
+                        }
+                    });
+                    _array.push(fat.message_id);
+                }
         
             } else {
                 var html = `Вы <strong>Инвестор</strong>`;
