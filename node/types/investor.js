@@ -48,7 +48,8 @@ async function drafts_block(msg)
 
 async function drafts(msg) 
 {
-    var _InvDocs = await InvDoc.find({invester: msg.from.id, receipt: null});
+    var _InvDocs    = await InvDoc.find({invester: msg.from.id, receipt: null});
+    var _array      = [];
 
     if(_InvDocs.length > 0) 
     {
