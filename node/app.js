@@ -160,6 +160,7 @@ bot.on("callback_query", function(callbackQuery)
         "contact": investor_page.startInvestingMsgOld,
         "investing_money": investor_page.investing_money,
         "save_investing": investor_page.save_investing,
+        "drafts": investor_page.drafts_block,
     }
 
     if(typeof action_linker[helper_functions._GET(callbackQuery.data, "place")] != "undefined") {

@@ -36,6 +36,14 @@ module.exports = {
     payerInBissness,
     payerInBissnessDocument,
     drafts,
+    drafts_block,
+}
+
+async function drafts_block(msg) 
+{
+    var _idProject = h._GET(msg.data, "id");
+    await User.findOneAndUpdate({user: needProject.user}, {putProject: _idProject});
+    goInvesting(msg);
 }
 
 async function drafts(msg) 
