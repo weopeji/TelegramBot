@@ -155,7 +155,15 @@ async function _MainMenu(msg)
             if(_User.putProject) 
             {
                 var needProject = await Project.findOne({_id: _User.putProject});
-                var html = `Выбран проект: ${_User.putProject}\n[Профиль компании](${h.getURL()}html/project/profil/#${needProject._id})\n[Презентация](${h.getURL()}/projects/${needProject._id}/${needProject.data["file+7"]})\n[Видео презентация](${h.getURL()}/projects/${needProject._id}/${needProject.data["file+8"]})`;
+                var needInv = await InvDoc.findOne({projectId: _User.putProject, invester: msg.from.id});
+
+                var html = `Выбран проект: ${_User.putProject}\n[Профиль компании](${h.getURL()}html/project/profil/#${needProject._id})\n[Презентация](${h.getURL()}/projects/${needProject._id}/${needProject.data["file+7"]})\n[Видео презентация](${h.getURL()}/projects/${needProject._id}/${needProject.data["file+8"]})\n\n`;
+                
+                if(needInv.receipt) 
+                {
+                    html = html + `<strong>Вы инвестировали в проект!</strong>`;
+                }
+                
                 const stream    = fs.createReadStream(`../projects/${_User.putProject}/logo.png`);
             
                 var fat = await bot.sendPhoto(msg.from.id, stream, {
