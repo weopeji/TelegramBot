@@ -38,8 +38,9 @@ module.exports = {
     drafts,
 }
 
-async function drafts(msg) {
-    var InvDocs = InvDoc.find({invester: msg.from.id, receipt: null});
+async function drafts(msg) 
+{
+    var InvDocs = await InvDoc.find({invester: msg.from.id, receipt: null});
     console.log(InvDocs);
 }
 
