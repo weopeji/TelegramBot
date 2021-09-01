@@ -574,7 +574,9 @@ async function payerInvester(msg)
 
     var fat = await h.send_html(msg.from.id, html, {
         "resize_keyboard": true,
-        "keyboard": [["⬅️ Назад"]],
+        "keyboard": [
+            ["Оплатил", "⬅️ Назад"]
+        ],
     });
     _array.push(fat.message_id);
 }
@@ -596,14 +598,16 @@ async function document_load(msg)
             var _arrayData = _User.investor_data;
             _arrayData.document = _User._id + "." + file_url.split('.').pop();
 
-            await User.findOneAndUpdate({user: msg.from.id}, {investor_data: _arrayData});
-
             await InvDoc.create({
                 projectId: _User.putProject,
                 invester: msg.from.id,
                 status: "wait",
-                data: _User.investor_data,
+                data: _arrayData,
             });
+
+            _arrayData.document = null;
+
+            await User.findOneAndUpdate({user: msg.from.id}, {investor_data: _arrayData});
 
             payerInvester(msg);
         });
