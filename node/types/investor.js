@@ -4,10 +4,11 @@ var puppeteer   = require('puppeteer');
 const { spawn, exec } = require('child_process');
 
 function privateInit(initPlagins) {
-    bot     = initPlagins.bot;
-    h       = initPlagins.helper_functions;
-    User    = initPlagins.User;
-    InvDoc  = initPlagins.InvDoc;
+    bot         = initPlagins.bot;
+    h           = initPlagins.helper_functions;
+    User        = initPlagins.User;
+    InvDoc      = initPlagins.InvDoc;
+    main_page   = initPlagins.main_page;
 }
 
 module.exports = {
@@ -33,6 +34,24 @@ module.exports = {
     active_projects_stat,
     document_load,
     payerInBissness,
+    payerInBissnessDocument,
+}
+
+async function payerInBissnessDocument(msg) {
+    var _User   = await User.findOne({user: msg.from.id});
+    if(msg.document) 
+    {
+        var _file       = await bot.getFile(msg.document.file_id);
+        var file_url    = `https://api.telegram.org/file/bot${config.token}/${_file.file_path}`;
+        const file      = fs.createWriteStream(`../projects/receipt_${_User._id}.${file_url.split('.').pop()}`);
+        const request = https.get(file_url, async function(response) 
+        {
+            response.pipe(file);
+            await InvDoc.findOneAndUpdate({projectId: _User.putProject, invester: msg.from.id}, {receipt: `receipt_${_User._id}.${file_url.split('.').pop()}`});
+            
+            main_page.close(msg);
+        });
+    }
 }
 
 async function payerInBissness(msg) 
@@ -40,7 +59,7 @@ async function payerInBissness(msg)
     var _array      = [];
     var _User       = await User.findOne({user: msg.from.id});
 
-    var html = `<strong>3.прикрепить чек об оплате</strong>\n\nВ течение 3х дней вам необходимо загрузить квитанцию об оплате. При отсутствии чека, бизнес не подтвердит получение денежных средств`;
+    var html = `<strong>3. Прикрепить чек об оплате</strong>\n\nВ течение 3х дней вам необходимо загрузить квитанцию об оплате. При отсутствии чека, бизнес не подтвердит получение денежных средств`;
 
     var fat = await h.send_html(msg.from.id, html, {
         "resize_keyboard": true,

@@ -108,6 +108,7 @@ var load_helpers = () =>
             helper_functions: helper_functions,
             User: User,
             InvDoc: InvDoc,
+            main_page: main_page,
         });
     }
     if(business_page == null) 
@@ -243,6 +244,7 @@ bot.on('message', async (msg) =>
             const action_where = {
                 "investor": investor_page.actionWhere,
                 "document_load": investor_page.document_load,
+                "payerInBissness": investor_page.payerInBissnessDocument,
             }
             action_where[_User.where.type](msg);
             await h.DM(msg, 1);
