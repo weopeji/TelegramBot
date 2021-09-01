@@ -47,7 +47,7 @@ async function drafts(msg)
         var needProject = await Project.findOne({_id: InvDocs.projectId});
 
         console.log(InvDocs);
-        console.log(needProject);
+        console.log(InvDocs.projectId);
 
         var html = `Выбран проект: ${InvDocs.projectId}\n[Профиль компании](${h.getURL()}html/project/profil/#${needProject._id})\n[Презентация](${h.getURL()}/projects/${needProject._id}/${needProject.data["file+7"]})\n[Видео презентация](${h.getURL()}/projects/${needProject._id}/${needProject.data["file+8"]})\n\n`;
         const stream    = fs.createReadStream(`../projects/${InvDocs.projectId}/logo.png`);
