@@ -42,7 +42,7 @@ module.exports = {
 async function drafts_block(msg) 
 {
     var _idProject = h._GET(msg.data, "id");
-    await User.findOneAndUpdate({user: needProject.user}, {putProject: _idProject});
+    await User.findOneAndUpdate({user: msg.from.id}, {putProject: _idProject});
     goInvesting(msg);
 }
 
