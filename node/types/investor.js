@@ -41,6 +41,43 @@ module.exports = {
 async function drafts(msg) 
 {
     var InvDocs = await InvDoc.find({invester: msg.from.id, receipt: null});
+
+    if(InvDocs.length > 0) 
+    {
+        var needProject = await Project.findOne({_id: InvDocs.projectId});
+
+        var html = `Выбран проект: ${InvDocs.projectId}\n[Профиль компании](${h.getURL()}html/project/profil/#${needProject._id})\n[Презентация](${h.getURL()}/projects/${needProject._id}/${needProject.data["file+7"]})\n[Видео презентация](${h.getURL()}/projects/${needProject._id}/${needProject.data["file+8"]})\n\n`;
+        const stream    = fs.createReadStream(`../projects/${InvDocs.projectId}/logo.png`);
+    
+        var fat = await bot.sendPhoto(msg.from.id, stream, {
+            "caption": html,
+            "parse_mode": "MarkdownV2",
+            "reply_markup": {
+                "inline_keyboard": [
+                    [
+                        {
+                            text: 'Продолжить',
+                            callback_data: `place=drafts&id=${InvDocs.projectId}`,
+                        },
+                    ]
+                ],
+            }
+        });
+        _array.push(fat.message_id);
+
+    } else {
+        var html = `У вас нет черновиков!`;
+
+        var fat = await h.send_html(msg.from.id, html, {
+            "resize_keyboard": true,
+            "keyboard": [ 
+                ["⬅️ Назад"]
+            ],
+        });
+        _array.push(fat.message_id);
+
+        await h.DMA(msg, _array);
+    }
     console.log(InvDocs);
 }
 
