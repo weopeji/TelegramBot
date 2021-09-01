@@ -815,14 +815,14 @@ async function goInvesting(msg)
         await h.DMA(msg, _array);
     } else 
     {
-        var investor_data   = _User.investor_data;
-        
+        var investingBlock = await InvDoc.findOne({projectId: _User.putProject, invester: msg.from.id});
 
-        if(investor_data['document']) {
-            payerInvester(msg);
-        } else {
-            startInvestingMsg(msg, 1, _array, "1", _User.putProject);
-        }
+        console.log(investingBlock);
+        // if(investor_data['document']) {
+        //     payerInvester(msg);
+        // } else {
+        //     startInvestingMsg(msg, 1, _array, "1", _User.putProject);
+        // }
         
     }
 }
