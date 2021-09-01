@@ -216,6 +216,7 @@ bot.on('message', async (msg) =>
         "Мной привлечено": investor_page.myPeoples,
         "Статистика": investor_page.active_statistik,
         "Проекты": investor_page.active_projects_stat,
+        "Оплатил": investor_page.payerInBissness,
         // БИЗНЕС =============================================
         "✅ Активные проекты": business_page.active,
         "❓ Как добавить проект": business_page.how_add,

@@ -32,6 +32,29 @@ module.exports = {
     active_statistik,
     active_projects_stat,
     document_load,
+    payerInBissness,
+}
+
+async function payerInBissness(msg) 
+{
+    var _array      = [];
+    var _User       = await User.findOne({user: msg.from.id});
+
+    var html = `<strong>3.прикрепить чек об оплате</strong>\n\nВ течение 3х дней вам необходимо загрузить квитанцию об оплате. При отсутствии чека, бизнес не подтвердит получение денежных средств`;
+
+    var fat = await h.send_html(msg.from.id, html, {
+        "resize_keyboard": true,
+        "keyboard": [ 
+            ["⬅️ Назад"]
+        ],
+    });
+    _array.push(fat.message_id);
+
+    await h.DMA(msg, _array);
+
+    await User.findOneAndUpdate({user: msg.from.id}, {where: {
+        type: "payerInBissness",
+    }})
 }
 
 async function active_projects_stat(msg) {
@@ -579,6 +602,8 @@ async function payerInvester(msg)
         ],
     });
     _array.push(fat.message_id);
+
+    await h.DMA(msg, _array);
 }
 
 async function document_load(msg) 
