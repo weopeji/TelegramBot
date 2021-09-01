@@ -834,7 +834,7 @@ async function goInvesting(msg)
     var _array  = [];
     var _User   = await User.findOne({user: msg.from.id});
 
-    let defaultMsg = () => {
+    let defaultMsg = async () => {
         var html = `*`;
         var fat = await h.send_html(msg.from.id, html, {
             "resize_keyboard": true,
