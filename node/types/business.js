@@ -17,6 +17,7 @@ module.exports = {
     active,
     addProject,
     not_active_callback,
+    getMoney,
 }
 
 function privateInit(initPlagins) {
@@ -28,6 +29,22 @@ function privateInit(initPlagins) {
     config      = initPlagins.config;
     _data       = initPlagins._data;
     Project     = initPlagins.Project;
+}
+
+async function getMoney(msg) 
+{
+    var _array  = [];
+    var _User   = await User.findOne({user: msg.from.id});
+
+    var html = `Бизнес ${_User.first_name}\n\nОплачено инвесторами 5\n\nНе подтверждено получение денег Бизнесом 2`;
+
+    var fat = await h.send_html(msg.chat.id, html, {
+        "resize_keyboard": true,
+        "keyboard": [["⬅️ Назад"]],
+    });
+    _array.push(fat.message_id);
+
+    await h.DMA(msg, _array);
 }
 
 async function how_add(msg)
