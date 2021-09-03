@@ -141,7 +141,7 @@ async function notType(msg)
         "keyboard": [["💰 Инвестор", "💼 Бизнес", "📣 Привлечение"]],
     });
     _array.push(fat.message_id);
-    await h.DMA(msg, 2);
+    await h.DMA(msg, _array);
 } 
 
 async function _MainMenu(msg)
