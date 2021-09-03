@@ -311,7 +311,7 @@ async function addProject(msg)
     var _array = [];
 
     var html = "Вы находитесь в меню: Добавить проект";
-    let fat = await h.send_html(msg.from.id, html, {
+    var fat = await h.send_html(msg.from.id, html, {
         "resize_keyboard": true,
         "keyboard": [
             ["⬅️ Назад"]
