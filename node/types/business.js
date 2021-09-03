@@ -311,16 +311,14 @@ async function addProject(msg)
     var _array = [];
 
     var html = "Вы находитесь в меню: Добавить проект";
-    let del_msg = await h.send_html(msg.from.id, html, {
+    let fat = await h.send_html(msg.from.id, html, {
         "resize_keyboard": true,
         "keyboard": [
             ["⬅️ Назад"]
         ],
     });
 
-    _array.push(del_msg.message_id)
-
-    await h.DMA(msg, [del_msg.message_id]);
+    _array.push(fat.message_id)
 
     var html = `Нажмите кнопку <strong>"Заполнить данные"</strong>, чтобы создать проект и подать его на модерацию`;
     var _url = `${h.getURL()}html/project/creating/#${msg.from.id}`;
@@ -335,7 +333,6 @@ async function addProject(msg)
             ]
         ],
     });
-
     _array.push(_msg.message_id)
 
     await h.DMA(msg, [_msg.message_id]);
