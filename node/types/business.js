@@ -57,7 +57,7 @@ async function getMoney(msg)
         })
     });
     
-    bar.then(() => {
+    bar.then(async () => {
         
         var _arrayAllInvs = [];
 
