@@ -292,7 +292,7 @@ async function active(msg)
     var _active     = _projects.filter(el => el.type == "active");
     var _array      = [];
 
-    var html = `У вас ${_active.length} активных проектов\n\nВы можете вернутьсь назад и добавьте проект`;
+    var html = `📝 У вас ${_active.length} активных проектов\n\nВы можете вернутьсь назад и <strong>добавить</strong> проект`;
     var _msg = await h.send_html(msg.chat.id, html, {
         "resize_keyboard": true,
         "keyboard": [
