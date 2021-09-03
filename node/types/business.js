@@ -290,6 +290,7 @@ async function active(msg)
 {
     var _projects   = await Project.find({user: msg.from.id});
     var _active     = _projects.filter(el => el.type == "active");
+    var _array      = [];
 
     var html = `У вас ${_active.length} активных проектов\n\nВы можете вернутьсь назад и добавьте проект`;
     var _msg = h.send_html(msg.chat.id, html, {
@@ -300,7 +301,9 @@ async function active(msg)
         ],
     });
 
-    await h.DMA(msg, [_msg.message_id]);
+    _array.push(_msg.message_id);
+
+    await h.DMA(msg, _array);
 }
 
 async function addProject(msg) 
