@@ -236,10 +236,14 @@ async function _MainMenu(msg)
                 }
             }
             
-            await h.send_html(msg.chat.id, html, {
+            var fat = await h.send_html(msg.chat.id, html, {
                 "resize_keyboard": true,
                 "keyboard": [["❓ Как добавить проект", "✍ Добавить проект"], [ "✅ Активные проекты",notActiveBlock], ['🔁 Сменить роль']]
             });
+
+            _array.push(fat.message_id);
+
+            await h.DMA(msg, _array);
 
             return;
         },
