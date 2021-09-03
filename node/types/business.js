@@ -308,13 +308,17 @@ async function active(msg)
 
 async function addProject(msg) 
 {
-    var html = "Заполнить данные:";
+    var _array = [];
+
+    var html = "Вы находитесь в меню: Добавить проект";
     let del_msg = await h.send_html(msg.from.id, html, {
         "resize_keyboard": true,
         "keyboard": [
             ["⬅️ Назад"]
         ],
     });
+
+    _array.push(del_msg.message_id)
 
     await h.DMA(msg, [del_msg.message_id]);
 
@@ -331,6 +335,8 @@ async function addProject(msg)
             ]
         ],
     });
+
+    _array.push(_msg.message_id)
 
     await h.DMA(msg, [_msg.message_id]);
 }
