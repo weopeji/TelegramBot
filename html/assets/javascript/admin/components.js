@@ -1120,7 +1120,7 @@
                     <div class="index_page_profil_header">
                         <span class="selected">Профиль для инвестора</span>
                     </div>
-                    <iframe id="profil" src="./html/project/profil#${_project._id}" frameborder="0"></iframe>
+                    <iframe id="profil" src="../html/project/profil#${_project._id}" frameborder="0"></iframe>
                 </div>
             `);
 
