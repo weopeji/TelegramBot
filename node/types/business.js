@@ -49,6 +49,7 @@ async function getMoney(msg)
     var bar = new Promise((resolve, reject) => {
         _arrayProjects.forEach(async (value, index, array) => {
             var InvDocs = await InvDoc.find({projectId: value});
+            console.log(InvDocs);
             if(InvDocs.length > 0) {
                 allInv.push(InvDocs);
             }
