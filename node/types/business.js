@@ -58,20 +58,28 @@ async function getMoney(msg)
     });
     
     bar.then(() => {
-        console.log(allInv);
+        
+        var _arrayAllInvs = [];
+
+        allInv.forEach(el => {
+            el.forEach(el2 => {
+                _arrayAllInvs.push(el2);
+            })
+        });
+
+        console.log(_arrayAllInvs);
+
+
+        var html = `Бизнес ${_User.first_name}\n\nОплачено инвесторами 5\n\nНе подтверждено получение денег Бизнесом 2`;
+
+        var fat = await h.send_html(msg.chat.id, html, {
+            "resize_keyboard": true,
+            "keyboard": [["⬅️ Назад"]],
+        });
+        _array.push(fat.message_id);
+
+        await h.DMA(msg, _array);
     });
-
-    
-
-    var html = `Бизнес ${_User.first_name}\n\nОплачено инвесторами 5\n\nНе подтверждено получение денег Бизнесом 2`;
-
-    var fat = await h.send_html(msg.chat.id, html, {
-        "resize_keyboard": true,
-        "keyboard": [["⬅️ Назад"]],
-    });
-    _array.push(fat.message_id);
-
-    await h.DMA(msg, _array);
 }
 
 async function how_add(msg)
