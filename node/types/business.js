@@ -115,15 +115,18 @@ async function not_active_callback(msg)
     var _data       = msg.data;
     var _type       = h._GET(_data, 'type');
     var btnData     = h._GET(_data, 'data');
+    var _array      = [];
 
     var alertNull = await User.findOneAndUpdate({user: msg.from.id}, {alerts: null});
 
-    h.send_html(msg.from.id, "Проекты:", {
+    var fat = await h.send_html(msg.from.id, "Проекты:", {
         "resize_keyboard": true,
         "keyboard": [
             ["⬅️ Назад"]
         ],
     });
+
+    _array.push(fat.message_id);
 
 
     const FUN = 
@@ -191,13 +194,16 @@ async function not_active_callback(msg)
 
             var html = `[Профиль компании](${h.getURL()}html/project/profil/#${needProject._id})\n[Презентация](${h.getURL()}/projects/${needProject._id}/${needProject.data["file+7"]})\n[Видео презентация](${h.getURL()}/projects/${needProject._id}/${needProject.data["file+8"]})`;
             const stream = fs.createReadStream(`../projects/${needProject._id}/logo.png`);
-            bot.sendPhoto(msg.from.id, stream, {
+            var fat = await bot.sendPhoto(msg.from.id, stream, {
                 "caption": html,
                 "parse_mode": "MarkdownV2",
                 "reply_markup": {
                     "inline_keyboard": _keyboard,
                 }
             });
+
+            _array.push(fat.message_id);
+            await h.DMA(msg, _array);
             
         },
         "correction": async function()
@@ -273,13 +279,16 @@ async function not_active_callback(msg)
 
             var html = `[Профиль компании](${h.getURL()}html/project/profil/#${needProject._id})\n[Презентация](${h.getURL()}/projects/${needProject._id}/${needProject.data["file+7"]})\n[Видео презентация](${h.getURL()}/projects/${needProject._id}/${needProject.data["file+8"]})`;
             const stream = fs.createReadStream(`../projects/${needProject._id}/logo.png`);
-            bot.sendPhoto(msg.from.id, stream, {
+            var fat = await bot.sendPhoto(msg.from.id, stream, {
                 "caption": html,
                 "parse_mode": "MarkdownV2",
                 "reply_markup": {
                     "inline_keyboard": _keyboard,
                 }
             });
+
+            _array.push(fat.message_id);
+            await h.DMA(msg, _array);
         },
     }
 
@@ -292,7 +301,7 @@ async function active(msg)
     var _active     = _projects.filter(el => el.type == "active");
     var _array      = [];
 
-    var html = `📝 У вас ${_active.length} активных проектов\n\nВы можете вернутьсь назад и <strong>добавить</strong> проект`;
+    var html = `📝 У вас ${_active.length} активных проектов\n\nВы можете вернутьсь <strong>назад</strong> и <strong>добавить</strong> проект`;
     var _msg = await h.send_html(msg.chat.id, html, {
         "resize_keyboard": true,
         "keyboard": [
