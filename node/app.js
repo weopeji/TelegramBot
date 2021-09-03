@@ -123,6 +123,7 @@ var load_helpers = () =>
             config: config,
             _data : _data,
             Project: Project,
+            InvDoc: InvDoc,
         });
     }
     if(attraction_page == null) 

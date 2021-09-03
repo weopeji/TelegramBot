@@ -29,6 +29,7 @@ function privateInit(initPlagins) {
     config      = initPlagins.config;
     _data       = initPlagins._data;
     Project     = initPlagins.Project;
+    InvDoc      = initPlagins.InvDoc;
 }
 
 async function getMoney(msg) 
@@ -47,7 +48,7 @@ async function getMoney(msg)
 
     var bar = new Promise((resolve, reject) => {
         _arrayProjects.forEach(async (value, index, array) => {
-            var InvDocs = await InvDocs.find({projectId: value});
+            var InvDocs = await InvDoc.find({projectId: value});
             allInv.push(InvDocs);
             if (index === array.length -1) resolve();
         })
