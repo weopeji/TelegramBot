@@ -293,15 +293,13 @@ async function active(msg)
     var _array      = [];
 
     var html = `У вас ${_active.length} активных проектов\n\nВы можете вернутьсь назад и добавьте проект`;
-    var _msg = h.send_html(msg.chat.id, html, {
+    var _msg = await h.send_html(msg.chat.id, html, {
         "resize_keyboard": true,
         "keyboard": [
             ["Получение денег от инвестора", "Выплаты"],
             ["Статистика","⬅️ Назад"]
         ],
     });
-
-    console.log(_msg.message_id);
 
     _array.push(_msg.message_id);
 
