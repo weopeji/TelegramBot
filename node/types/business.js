@@ -323,7 +323,7 @@ async function addProject(msg)
     var html = `Нажмите кнопку <strong>"Заполнить данные"</strong>, чтобы создать проект и подать его на модерацию`;
     var _url = `${h.getURL()}html/project/creating/#${msg.from.id}`;
 
-    var _msg = await h.send_html(msg.from.id, html, {
+    var fat = await h.send_html(msg.from.id, html, {
         "inline_keyboard": [
             [
                 {
@@ -333,7 +333,7 @@ async function addProject(msg)
             ]
         ],
     });
-    _array.push(_msg.message_id)
+    _array.push(fat.message_id)
 
-    await h.DMA(msg, [_msg.message_id]);
+    await h.DMA(msg, _array);
 }
