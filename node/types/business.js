@@ -301,6 +301,8 @@ async function active(msg)
         ],
     });
 
+    console.log(_msg.message_id);
+
     _array.push(_msg.message_id);
 
     await h.DMA(msg, _array);
