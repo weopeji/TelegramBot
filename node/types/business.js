@@ -33,8 +33,19 @@ function privateInit(initPlagins) {
 
 async function getMoney(msg) 
 {
-    var _array  = [];
-    var _User   = await User.findOne({user: msg.from.id});
+    var _array          = [];
+    var _User           = await User.findOne({user: msg.from.id});
+    var allProjects     = await Project.find({user: msg.from.id});
+
+    var _arrayProjects  = [];
+
+    allProjects.forEach(function(project) {
+        _arrayProjects.push(project._id);
+    });
+
+    console.log(_arrayProjects);
+
+    // var InvDocs = await InvDocs.find({projectId: })
 
     var html = `Бизнес ${_User.first_name}\n\nОплачено инвесторами 5\n\nНе подтверждено получение денег Бизнесом 2`;
 
