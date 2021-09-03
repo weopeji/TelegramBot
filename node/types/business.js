@@ -56,9 +56,11 @@ async function getMoney(msg)
         })
     });
     
-    await bar;
+    bar.then(() => {
+        console.log(allInv);
+    });
 
-    console.log(allInv);
+    
 
     var html = `Бизнес ${_User.first_name}\n\nОплачено инвесторами 5\n\nНе подтверждено получение денег Бизнесом 2`;
 
