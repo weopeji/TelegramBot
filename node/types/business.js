@@ -43,9 +43,19 @@ async function getMoney(msg)
         _arrayProjects.push(project._id);
     });
 
-    console.log(_arrayProjects);
+    var allInv = [];
 
-    // var InvDocs = await InvDocs.find({projectId: })
+    var bar = new Promise((resolve, reject) => {
+        _arrayProjects.forEach(async (value, index, array) => {
+            var InvDocs = await InvDocs.find({projectId: value});
+            allInv.push(InvDocs);
+            if (index === array.length -1) resolve();
+        })
+    });
+    
+    await bar;
+
+    console.log(allInv);
 
     var html = `Бизнес ${_User.first_name}\n\nОплачено инвесторами 5\n\nНе подтверждено получение денег Бизнесом 2`;
 
