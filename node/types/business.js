@@ -38,6 +38,14 @@ async function getMoney(msg)
     var _User           = await User.findOne({user: msg.from.id});
     var allProjects     = await Project.find({user: msg.from.id});
 
+    var html = `Вы находитесь в меню: "Получение денег от инвестора"`;
+
+    var fat = await h.send_html(msg.chat.id, html, {
+        "resize_keyboard": true,
+        "keyboard": [["⬅️ Назад"]],
+    });
+    _array.push(fat.message_id);
+
     var _arrayProjects  = [];
 
     allProjects.forEach(function(project) {
