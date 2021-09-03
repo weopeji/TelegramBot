@@ -67,10 +67,18 @@ async function getMoney(msg)
             })
         });
 
-        console.log(_arrayAllInvs);
+        var falseInvs   = [];
+        var trueInvs    = [];
 
+        _arrayAllInvs.forEach(element => {
+            if(element.receipt) {
+                trueInvs.push(element);
+            } else {
+                falseInvs.push(element);
+            }
+        });
 
-        var html = `Бизнес ${_User.first_name}\n\nОплачено инвесторами 5\n\nНе подтверждено получение денег Бизнесом 2`;
+        var html = `Бизнес ${_User.first_name}\n\nОплачено инвесторами ${trueInvs.length}\nНе подтверждено получение денег Бизнесом ${falseInvs.length}`;
 
         var fat = await h.send_html(msg.chat.id, html, {
             "resize_keyboard": true,
