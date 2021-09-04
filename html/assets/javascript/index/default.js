@@ -34,7 +34,7 @@
             const activ_projects    = new global.Components.activ_projects();
             const put_document      = new global.Components.put_document();
             const pay_investors     = new global.Components.pay_investors();
-            const acceptPays        = new global.Components.accept_pays();
+            const acceptPays        = new global.Components.acceptPays();
 
             var renderPage = 
             {
