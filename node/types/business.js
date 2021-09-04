@@ -35,10 +35,11 @@ function privateInit(initPlagins) {
 }
 
 async function viplati_call(msg) {
-    console.log(msg);
+  
     var _data           = msg.data;
-    var _id             = h._GET(_data, 'id');
-    var needProject     = Project.findOne({_id: _id});
+    var _idData         = h._GET(_data, 'id');
+    console.log(_idData);
+    var needProject     = Project.findOne({_id: _idData});
     var _array          = [];
 
     var html = `Выбран проект: ${needProject._id}`;
