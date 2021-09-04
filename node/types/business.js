@@ -184,7 +184,11 @@ async function getMoney(msg)
             }
         });
 
-        var html = `Бизнес ${_User.first_name}\n\nОплачено инвесторами ${trueInvs.length}\nНе подтверждено получение денег Бизнесом ${falseInvs.length}`;
+        var html = `Бизнес ${_User.first_name}\n\nОплачено инвесторами ${trueInvs.length}\nНе подтверждено получение денег Бизнесом ${falseInvs.length}\n\n`;
+        
+        falseInvs.forEach((el, i) => {
+            html = html + `№${el.projectId}/${i}  `;
+        })
 
         var fat = await h.send_html(msg.chat.id, html, {
             "resize_keyboard": true,
