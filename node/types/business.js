@@ -187,12 +187,19 @@ async function getMoney(msg)
         var html = `Бизнес ${_User.first_name}\n\nОплачено инвесторами ${trueInvs.length}\nНе подтверждено получение денег Бизнесом ${falseInvs.length}\n\n`;
         
         falseInvs.forEach((el, i) => {
-            html = html + `№${el.projectId}/${i}  `;
+            html = html + `№${el.projectId}/${i + 1}  `;
         })
 
         var fat = await h.send_html(msg.chat.id, html, {
             "resize_keyboard": true,
-            "keyboard": [["⬅️ Назад"]],
+            "inline_keyboard": [
+                [
+                    {
+                        text: "Подтвердить",
+                        url: `${h.getURL()}?user=${_User._id}&page=acceptPays`
+                    }
+                ]
+            ],
         });
         _array.push(fat.message_id);
 
