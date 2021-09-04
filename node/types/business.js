@@ -42,7 +42,7 @@ async function viplati_call(msg) {
 
     var html = `Выбран проект: ${needProject._id}`;
 
-    var fat = await h.send_html(msg.chat.id, html, {
+    var fat = await h.send_html(msg.from.id, html, {
         "resize_keyboard": true,
         "keyboard": [["⬅️ Назад"]],
     });
