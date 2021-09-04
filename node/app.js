@@ -162,6 +162,7 @@ bot.on("callback_query", function(callbackQuery)
         "investing_money": investor_page.investing_money,
         "save_investing": investor_page.save_investing,
         "drafts": investor_page.drafts_block,
+        "viplati": business_page.viplati_call,
     }
 
     if(typeof action_linker[helper_functions._GET(callbackQuery.data, "place")] != "undefined") {

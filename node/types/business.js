@@ -19,6 +19,7 @@ module.exports = {
     not_active_callback,
     getMoney,
     viplati,
+    viplati_call,
 }
 
 function privateInit(initPlagins) {
@@ -31,6 +32,52 @@ function privateInit(initPlagins) {
     _data       = initPlagins._data;
     Project     = initPlagins.Project;
     InvDoc      = initPlagins.InvDoc;
+}
+
+async function viplati_call(msg) {
+    var _id             = h._GET(_data, 'id');
+    var needProject     = Project.findOne({_id: _id});
+    var _array          = [];
+
+    var html = `Выбран проект: ${needProject._id}`;
+
+    var fat = await h.send_html(msg.chat.id, html, {
+        "resize_keyboard": true,
+        "keyboard": [["⬅️ Назад"]],
+    });
+    _array.push(fat.message_id);
+
+    var _urlImgProject = `${h.getURL()}html/project/cover/?id=${needProject._id}`; 
+    const browser = await puppeteer.launch({
+        args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    });
+
+    const page = await browser.newPage();
+    await page.goto(_urlImgProject);
+    await page.emulateMedia('screen');
+    const element = await page.$('.cover_block');   
+    await element.screenshot({path: `../projects/${needProject._id}/logo.png`});
+    await browser.close();
+
+    var html = ``;
+    const stream = fs.createReadStream(`../projects/${needProject._id}/logo.png`);
+    var fat = await bot.sendPhoto(msg.from.id, stream, {
+        "caption": html,
+        "parse_mode": "html",
+        "reply_markup": {
+            "inline_keyboard": [
+                [
+                    {
+                        text: "Выбрать",
+                        callback_data: `place=viplati&id=${needProject._id}`,
+                    }
+                ]
+            ],
+        }
+    });
+
+    _array.push(fat.message_id);
+    await h.DMA(msg, _array);
 }
 
 async function viplati(msg) {
@@ -68,7 +115,7 @@ async function viplati(msg) {
                 [
                     {
                         text: "Выбрать",
-                        callback_data: "place",
+                        callback_data: `place=viplati&id=${needProject._id}`,
                     }
                 ]
             ],
