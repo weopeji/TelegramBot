@@ -204,7 +204,7 @@
 
                 var text = `
                     <div class="invester_status_project ${statusBlock} payingInvest">
-                        <p>${el.data.fio}</p>
+                        <p>${el.data.fio} №41/1</p>
                         <p>Принять оплату</p>
                     </div>
                 `;
