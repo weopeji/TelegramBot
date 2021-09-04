@@ -139,6 +139,19 @@
                 `;
 
                 $('.content').append(text);
+            } else {
+                _needData.forEach(el => {
+                    var statusBlock = "invester_status_project_red";
+
+                    var text = `
+                        <div class="invester_status_project ${statusBlock}">
+                            <p>Не оплачен инвестор</p>
+                            <p>${el.data.fio}</p>
+                        </div>
+                    `;
+
+                    $('.content').append(text);
+                })
             }
 
             console.log(_data);
