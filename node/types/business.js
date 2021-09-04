@@ -46,7 +46,7 @@ async function viplati(msg) {
     });
     _array.push(fat.message_id);
 
-    var _urlImgProject = `${h.getURL()}html/project/cover/?id=${needProject._id}`;
+    var _urlImgProject = `${h.getURL()}html/project/cover/?id=${needProject._id}`; 
     const browser = await puppeteer.launch({
         args: ['--no-sandbox', '--disable-setuid-sandbox'],
     });
