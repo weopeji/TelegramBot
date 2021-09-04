@@ -35,7 +35,8 @@ function privateInit(initPlagins) {
 }
 
 async function viplati_call(msg) {
-    var _data       = msg.data;
+    console.log(msg);
+    var _data           = msg.data;
     var _id             = h._GET(_data, 'id');
     var needProject     = Project.findOne({_id: _id});
     var _array          = [];
