@@ -152,6 +152,9 @@
 
                 $('.content').append(text);
             } else {
+
+                var _this = this;
+                
                 _needData.forEach(el => {
                     var statusBlock = "invester_status_project_red";
 
@@ -164,8 +167,10 @@
 
                     $('.content').append(text);
 
+                   
+
                     $('.cheackInvestingUser').click( function () {
-                        this.rednderCheackInvesting(el.invester);
+                        _this.rednderCheackInvesting(el.invester);
                     })
                 });
             }
