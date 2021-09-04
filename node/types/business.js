@@ -178,7 +178,8 @@ async function getMoney(msg)
         _arrayAllInvs.forEach(element => {
             if(element.receipt) {
                 trueInvs.push(element);
-            } else {
+            } 
+            if(element.status == "wait") {
                 falseInvs.push(element);
             }
         });
