@@ -83,8 +83,8 @@ var action_linker = {
 }
 
 async function notAcceptInvesting(socket,data,callback) {
-    var _User           = await User.findOne({user: msg.from.id});
-    var allProjects     = await Project.find({user: msg.from.id});
+    var _User           = await User.findOne({user: data});
+    var allProjects     = await Project.find({user: data});
 
     var _arrayProjects  = [];
 
