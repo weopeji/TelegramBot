@@ -112,12 +112,34 @@
     class pay_investors {
         constructor() {};
 
-        async render() {
+        async render() 
+        {
             var _id = _GET('id');
             var _data = await callApi({
                 methodName: "getInvestorsProject",
                 data: _id,
             });
+
+            var _needData = [];
+
+            _data.forEach(el => {
+                if(el.receipt) {
+                    _needData.push(el);
+                }
+            });
+
+            if(_needData.length == 0) 
+            {
+                var statusBlock = "invester_status_project_red";
+
+                var text = `
+                    <div class="invester_status_project ${statusBlock}">
+                        <p>Инвесторы не найдены</p>
+                    </div>
+                `;
+
+                $('.content').append(text);
+            }
 
             console.log(_data);
         }
