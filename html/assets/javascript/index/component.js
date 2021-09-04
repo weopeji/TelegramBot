@@ -109,12 +109,27 @@
         }
     }
 
+    class pay_investors {
+        constructor() {};
+
+        async render() {
+            var _id = _GET('id');
+            var _data = await callApi({
+                methodName: "getInvestorsProject",
+                data: _id,
+            });
+
+            console.log(_data);
+        }
+    }
+
     if(!global.Components)
     {
         global.Components = {
             process_status,
             activ_projects,
             put_document,
+            pay_investors,
         }
     }
 

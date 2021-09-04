@@ -78,6 +78,12 @@ var action_linker = {
     "getAddr": getAddr,
     "alertProject": alertProject,
     "invester_status_projects": invester_status_projects,
+    "getInvestorsProject": getInvestorsProject,
+}
+
+async function getInvestorsProject(socket,data,callback) {
+    var _InvDoc = await InvDoc.find({projectId: data});
+    callback(_InvDoc);
 }
 
 async function invester_status_projects(socket,data,callback)
