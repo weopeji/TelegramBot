@@ -187,7 +187,7 @@
 
 
         payingInvest(_id) {
-            
+
         }
 
         async render() 
@@ -205,6 +205,7 @@
                 var text = `
                     <div class="invester_status_project ${statusBlock} payingInvest">
                         <p>${el.data.fio}</p>
+                        <p>Принять оплату</p>
                     </div>
                 `;
 
