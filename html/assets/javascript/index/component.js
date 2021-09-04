@@ -181,6 +181,23 @@
         }
     }
 
+    class acceptPays 
+    {
+        constructor() {};
+
+        async render() 
+        {
+            var _id = global.allData._id;
+
+            var _data = await callApi({
+                methodName: "notAcceptInvesting",
+                data: _id,
+            });
+
+            console.log(_data);
+        }
+    }
+
     if(!global.Components)
     {
         global.Components = {
@@ -188,6 +205,7 @@
             activ_projects,
             put_document,
             pay_investors,
+            acceptPays,
         }
     }
 

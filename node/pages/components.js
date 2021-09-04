@@ -79,6 +79,56 @@ var action_linker = {
     "alertProject": alertProject,
     "invester_status_projects": invester_status_projects,
     "getInvestorsProject": getInvestorsProject,
+    "notAcceptInvesting": notAcceptInvesting,
+}
+
+async function notAcceptInvesting(socket,data,callback) {
+    var _User           = await User.findOne({user: msg.from.id});
+    var allProjects     = await Project.find({user: msg.from.id});
+
+    var _arrayProjects  = [];
+
+    allProjects.forEach(function(project) {
+        _arrayProjects.push(project._id);
+    });
+
+    var allInv = [];
+
+    var bar = new Promise((resolve, reject) => {
+        _arrayProjects.forEach(async (value, index, array) => {
+            var InvDocs = await InvDoc.find({projectId: value});
+            console.log(InvDocs);
+            if(InvDocs.length > 0) {
+                allInv.push(InvDocs);
+            }
+            if (index === array.length -1) resolve();
+        })
+    });
+    
+    bar.then(async () => {
+        
+        var _arrayAllInvs = [];
+
+        allInv.forEach(el => {
+            el.forEach(el2 => {
+                _arrayAllInvs.push(el2);
+            })
+        });
+
+        var falseInvs   = [];
+        var trueInvs    = [];
+
+        _arrayAllInvs.forEach(element => {
+            if(element.receipt) {
+                trueInvs.push(element);
+            } 
+            if(element.status == "wait") {
+                falseInvs.push(element);
+            }
+        });
+
+        callback(falseInvs);
+    });
 }
 
 async function getInvestorsProject(socket,data,callback) {

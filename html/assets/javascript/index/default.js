@@ -24,7 +24,7 @@
 
         var _id = _getCookie('token');
 
-        var allData = {
+        global.allData = {
             _id: _id,
         }
 
@@ -34,13 +34,15 @@
             const activ_projects    = new global.Components.activ_projects();
             const put_document      = new global.Components.put_document();
             const pay_investors     = new global.Components.pay_investors();
+            const acceptPays        = new global.Components.accept_pays();
 
             var renderPage = 
             {
-                "process_status": function() {process_status.render(allData)},
-                "activ_projects": function() {activ_projects.render(allData)},
-                "put_document": function() {put_document.render(allData)},
-                "pay_investors": function() {pay_investors.render(allData)},
+                "process_status": function() {process_status.render(global.allData)},
+                "activ_projects": function() {activ_projects.render(global.allData)},
+                "put_document": function() {put_document.render(global.allData)},
+                "pay_investors": function() {pay_investors.render(global.allData)},
+                "acceptPays": function() {acceptPays.render(global.allData)},
             }
 
             $('.content').empty();
