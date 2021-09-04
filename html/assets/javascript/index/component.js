@@ -112,6 +112,18 @@
     class pay_investors {
         constructor() {};
 
+        rednderCheackInvesting(_id) {
+            $('.content').empty(text);
+
+            var text = `
+                <div class="invester_status_project ${statusBlock} cheackInvestingUser">
+                    <p>Оплаченно</p>
+                </div>
+            `;
+
+            $('.content').append(text);
+        }
+
         async render() 
         {
             var _id = _GET('id');
@@ -144,14 +156,18 @@
                     var statusBlock = "invester_status_project_red";
 
                     var text = `
-                        <div class="invester_status_project ${statusBlock}">
+                        <div class="invester_status_project ${statusBlock} cheackInvestingUser">
                             <p>Не оплачен инвестор</p>
                             <p>${el.data.fio}</p>
                         </div>
                     `;
 
                     $('.content').append(text);
-                })
+
+                    $('.cheackInvestingUser').click( function () {
+                        rednderCheackInvesting(el.invester);
+                    })
+                });
             }
 
             console.log(_data);
