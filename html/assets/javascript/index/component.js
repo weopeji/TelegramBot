@@ -165,7 +165,7 @@
                     $('.content').append(text);
 
                     $('.cheackInvestingUser').click( function () {
-                        rednderCheackInvesting(el.invester);
+                        this.rednderCheackInvesting(el.invester);
                     })
                 });
             }
