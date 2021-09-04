@@ -39,7 +39,7 @@ async function viplati_call(msg) {
     var _data           = msg.data;
     var _idData         = h._GET(_data, 'id');
     console.log(_idData);
-    var needProject     = Project.findOne({_id: _idData});
+    var needProject     = Project.findOne({_id: Number(_idData)});
     var _array          = [];
 
     var html = `Выбран проект: ${needProject._id}`;
