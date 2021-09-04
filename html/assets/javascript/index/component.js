@@ -185,6 +185,11 @@
     {
         constructor() {};
 
+
+        payingInvest(_id) {
+            
+        }
+
         async render() 
         {
             var _id = global.allData._id;
@@ -194,7 +199,23 @@
                 data: _id,
             });
 
-            
+            _data.forEach(function(el) {
+                var statusBlock = "invester_status_project_red";
+
+                var text = `
+                    <div class="invester_status_project ${statusBlock} payingInvest">
+                        <p>${el.data.fio}</p>
+                    </div>
+                `;
+
+                $('.content').append(text);
+
+                
+
+                $('.payingInvest').click( function () {
+                    _this.payingInvest(el.invester);
+                })
+            })
 
             console.log(_data);
         }
