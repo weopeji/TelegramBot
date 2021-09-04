@@ -40,6 +40,7 @@ async function viplati_call(msg) {
     var _idData         = h._GET(_data, 'id');
     var needProject     = await Project.findOne({_id: _idData});
     var _array          = [];
+    var _User           = await User.findOne({user: msg.from.id});
 
     var html = `Выбран проект: ${needProject._id}`;
 
@@ -61,7 +62,7 @@ async function viplati_call(msg) {
     await element.screenshot({path: `../projects/${needProject._id}/logo.png`});
     await browser.close();
 
-    var html = ``;
+    var html = `Перейдите в личный кабинет для продолжения`;
     const stream = fs.createReadStream(`../projects/${needProject._id}/logo.png`);
     var fat = await bot.sendPhoto(msg.from.id, stream, {
         "caption": html,
@@ -70,8 +71,8 @@ async function viplati_call(msg) {
             "inline_keyboard": [
                 [
                     {
-                        text: "Выбрать",
-                        callback_data: `place=viplati&id=${needProject._id}`,
+                        text: "Платежи инвесторам",
+                        url: `${h.getURL()}?user=${_User._id}&page=pay_investors&id=${needProject._id}`,
                     }
                 ]
             ],
