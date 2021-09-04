@@ -115,6 +115,8 @@
         rednderCheackInvesting(_id) {
             $('.content').empty(text);
 
+            var statusBlock = "invester_status_project_red";
+
             var text = `
                 <div class="invester_status_project ${statusBlock} cheackInvestingUser">
                     <p>Оплаченно</p>
@@ -154,7 +156,7 @@
             } else {
 
                 var _this = this;
-                
+
                 _needData.forEach(el => {
                     var statusBlock = "invester_status_project_red";
 
