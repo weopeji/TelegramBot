@@ -238,13 +238,21 @@
             var buttons = {
                 "investor": 
                 `
-                    <div class="index_page_menu_block_line">
+                    <div class="index_page_menu_block_line" data="activ_projects">
                         <i class="fal fa-user"></i>
                         <span>Активные проекты</span>
                     </div>
                     <div class="index_page_menu_block_line">
                         <i class="fal fa-user"></i>
                         <span>В процессе</span>
+                    </div>
+                    <div class="index_page_menu_block_line">
+                        <i class="fal fa-user"></i>
+                        <span>Вознаграждение по проектам</span>
+                    </div>
+                    <div class="index_page_menu_block_line">
+                        <i class="fal fa-user"></i>
+                        <span>Мной привлечено</span>
                     </div>
                 `,
             }
