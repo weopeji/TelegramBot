@@ -239,17 +239,21 @@
                 "investor": 
                 `
                     <div class="index_page_menu_block_line">
-                    <i class="fal fa-user"></i>
-                    <span>Активные проекты</span>
-                </div>
-                <div class="index_page_menu_block_line">
-                    <i class="fal fa-user"></i>
-                    <span>В процессе</span>
-                </div>
+                        <i class="fal fa-user"></i>
+                        <span>Активные проекты</span>
+                    </div>
+                    <div class="index_page_menu_block_line">
+                        <i class="fal fa-user"></i>
+                        <span>В процессе</span>
+                    </div>
                 `,
             }
 
-            $('.index_page_menu_block').append(buttons[_User.type]);
+            var button = buttons[_User.type];
+
+            console.log(button);
+
+            $('.index_page_menu_block').append(button);
  
             return _User;
         }
