@@ -49,7 +49,7 @@ html, body {
 
 .index_page_menu_block_line {
   padding: 15px 25px;
-  width: calc(100% - 70px);
+  width: calc(100% - 50px);
   color: #596A9A;
   font-size: 18px;
   cursor: pointer;
