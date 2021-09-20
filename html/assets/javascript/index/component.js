@@ -234,6 +234,22 @@
 
             $('.index_page_body_header_user_avatar_name span').html(_User.first_name + " " + _User.last_name);
             $('.index_page_body_header_user_avatar_name p').html(_User.type);
+
+            var buttons = {
+                "investor": 
+                `
+                    <div class="index_page_menu_block_line">
+                    <i class="fal fa-user"></i>
+                    <span>Активные проекты</span>
+                </div>
+                <div class="index_page_menu_block_line">
+                    <i class="fal fa-user"></i>
+                    <span>В процессе</span>
+                </div>
+                `,
+            }
+
+            $('.index_page_menu_block').append(buttons[_User.type]);
  
             return _User;
         }
