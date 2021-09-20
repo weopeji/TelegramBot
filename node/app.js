@@ -68,7 +68,7 @@ mongoose.connect(mongoURl, { useNewUrlParser: true, useUnifiedTopology: true })
         console.log(`Mongo Db Connect to ${config.mongoUri}`);
         server.listen(config.appPort,
             () => {
-                console.log(`Занят на сервере${config.appPort} порт...`);
+                console.log(`Занят на сервере ${config.appPort} порт...`);
                 load_helpers(); 
             }
         );

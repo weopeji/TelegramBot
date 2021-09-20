@@ -222,6 +222,23 @@
         }
     }
 
+    class user_block 
+    {
+        constructor() {};
+
+        async render(_id) {
+            var _User = await callApi({
+                methodName: "getUserForId",
+                data: _id,
+            });
+
+            $('.index_page_body_header_user_avatar_name span').html(_User.first_name + " " + _User.last_name);
+            $('.index_page_body_header_user_avatar_name p').html(_User.type);
+
+            return _User;
+        }
+    }
+
     if(!global.Components)
     {
         global.Components = {
@@ -230,6 +247,7 @@
             put_document,
             pay_investors,
             acceptPays,
+            user_block,
         }
     }
 
