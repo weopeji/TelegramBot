@@ -26,6 +26,7 @@
 
         global.allData = {
             _id: _id,
+            pageID: pageID,
         }
 
         if(_id) 

@@ -226,7 +226,8 @@
     {
         constructor() {};
 
-        async render(_id) {
+        async render(_id) 
+        {
             var _User = await callApi({
                 methodName: "getUserForId",
                 data: _id,
@@ -262,6 +263,8 @@
             console.log(button);
 
             $('.index_page_menu_block').append(button);
+
+            $(`.index_page_menu_block_line[data="${global.allData.pageID}"]`).addClass('selected');
  
             return _User;
         }
