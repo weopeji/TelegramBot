@@ -248,7 +248,7 @@
                     </div>
                     <div class="index_page_menu_block_line">
                         <i class="fal fa-user"></i>
-                        <span>Вознаграждение по проектам</span>
+                        <span>Вознаграждение</span>
                     </div>
                     <div class="index_page_menu_block_line">
                         <i class="fal fa-user"></i>
