@@ -32,9 +32,13 @@
                     <div class="settingBlock_header">
                         <p>Проекты</p>
                         <div class="settingBlock_header_line">
-                            <span>projectId</span>
-                            <span>status</span>
+                            <span>#</span>
+                            <span>ID</span>
+                            <span>Статус</span>
                         </div>
+                    </div>
+                    <div class="settingBlock_body">
+                        
                     </div>
                 </div>
             `);
