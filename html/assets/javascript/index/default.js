@@ -43,7 +43,7 @@
             {
                 "profil": function() {profil_page.render(global.allData)},
                 "activ_projects": function() {activ_projects.render(global.allData)},
-                "acceptPays": function() {accept_pays.render(global.allData)},
+                "acceptPays": function() {acceptPays.render(global.allData)},
             }
 
             renderPage[pageID]();
