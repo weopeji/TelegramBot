@@ -66,6 +66,7 @@ html, body {
 .index_page_menu_block_line.selected {
   border-left: 2px solid #2FA1E8;
   background-color: #161826;
+  color: #15A9F5;
 }
 
 .index_page_menu_block_line:hover {
@@ -115,6 +116,7 @@ html, body {
       -ms-flex-align: center;
           align-items: center;
   margin: 0 auto;
+  text-transform: uppercase;
 }
 
 .index_page_body_header_user_avatar {
