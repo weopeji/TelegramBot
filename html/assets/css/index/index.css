@@ -192,7 +192,7 @@ html, body {
 
 .settingBlock_body_line {
   width: 100%;
-  padding: 10px 0;
+  margin: 10px 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -206,9 +206,9 @@ html, body {
   color: #8592C6;
 }
 
-.settingBlock_wait_block {
+.settingBlock_block {
   padding: 10px 20px;
-  color: white;
+  color: white !important;
   border-radius: 15px;
 }
 
