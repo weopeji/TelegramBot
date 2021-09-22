@@ -243,13 +243,14 @@
             _data.forEach(function(element, i) {
                 var _status = {
                     "wait": `
-                        <span class="settingBlock_wait settingBlock_block">Ожидает подтверждения</span>
+                        <span class="settingBlock_wait settingBlock_block">Подтвердить</span>
                     `,
                 }
                 var template_text = `
                     <div class="settingBlock_body_line">
                         <span>${i + 1}</span>
                         <span>${element.projectId}</span>
+                        <span>${element.invester}</span>
                         <span>${_status[element.status]}</span>
                     </div>
                 `;
