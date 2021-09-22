@@ -85,7 +85,7 @@ var action_linker = {
 }
 
 async function acceptInvestor(socket,data,callback) {
-    var InvDoc = await InvDoc.findOneAndUpdate({invester: data}, {status: "accept"});
+    var InvDocs = await InvDoc.findOneAndUpdate({invester: data}, {status: "accept"});
     callback(InvDoc);
 }
 
