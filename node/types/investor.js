@@ -206,14 +206,33 @@ async function active_statistik(msg)
 async function active_projects(msg)
 {
     var _array  = [];
+    var _User   = await User.findOne({user: msg.from.id});
 
-    var html = "Вы находитесь в меню:\n<strong>Активные проекты</strong>";
-    var fat = await h.send_html(msg.chat.id, html, {
-        "resize_keyboard": true, 
-        "keyboard": [
-            ['Проекты', 'Статистика'],
-            ["⬅️ Назад"]
-        ], 
+    var html = `Инвестор ${_User.first_name}\nВы находитесь в меню "Активные проекты"`;
+    var fat = await bot.sendMessage(msg.chat.id, toEscapeMSg(html), {
+        parse_mode: "html",
+        reply_markup: {  
+            "resize_keyboard": true, 
+            "keyboard": [
+                ["⬅️ Назад"]
+            ],                                                                   
+        }
+    });
+    _array.push(fat.message_id);
+
+    var html = `Перейдите в личный кабинет, чтобы посмотреть Активные проекты и их статистику`;
+    var fat = await bot.sendMessage(msg.chat.id, toEscapeMSg(html), {
+        parse_mode: "html",
+        reply_markup: {                                                                     
+            "inline_keyboard": [
+                [
+                    {
+                        text: 'Перейти',
+                        url: `${h.getURL()}?user=${_User.id}&page=activ_projects`,
+                    },
+                ]
+            ],
+        }
     });
     _array.push(fat.message_id);
 
