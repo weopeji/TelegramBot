@@ -265,7 +265,7 @@
             $('.settingBlock_accept').click( async function () {
                 var acceptInvestor = await callApi({
                     methodName: "acceptInvestor",
-                    data: $(this).attr(data),
+                    data: $(this).attr("data"),
                 });
 
                 if(acceptInvestor) {
