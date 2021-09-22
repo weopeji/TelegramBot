@@ -46,7 +46,7 @@
             _data.forEach(function(element, i) {
                 var _status = {
                     "wait": `
-                        <span class="settingBlock_wait">Ожидает подтверждения</span>
+                        <span class="settingBlock_wait settingBlock_wait_block">Ожидает подтверждения</span>
                     `,
                 }
                 var template_text = `
