@@ -221,26 +221,43 @@
                 data: _id,
             });
 
-            _data.forEach(function(el) {
-                var statusBlock = "invester_status_project_red";
+            console.log(_data);
 
-                var text = `
-                    <div class="invester_status_project ${statusBlock} payingInvest">
-                        <p>${el.data.fio} №41/1</p>
-                        <p>Принять оплату</p>
+            var settingBlock = $(`
+                <div class="settingBlock">
+                    <div class="settingBlock_header">
+                        <p>Не подтвержденные проекты</p>
+                        <div class="settingBlock_header_line">
+                            <span>#</span>
+                            <span>ID</span>
+                            <span>Инвестор ID</span>
+                            <span>Кнопка</span>
+                        </div>
+                    </div>
+                    <div class="settingBlock_body">
+
+                    </div>
+                </div>
+            `);
+
+            _data.forEach(function(element, i) {
+                <!-- var _status = {
+                    "wait": `
+                        <span class="settingBlock_wait settingBlock_block">Ожидает подтверждения</span>
+                    `,
+                }
+                var template_text = `
+                    <div class="settingBlock_body_line">
+                        <span>${i + 1}</span>
+                        <span>${element.projectId}</span>
+                        <span>${_status[element.status]}</span>
                     </div>
                 `;
 
-                $('.content').append(text);
-
-                
-
-                $('.payingInvest').click( function () {
-                    _this.payingInvest(el.invester);
-                })
+                settingBlock.find('.settingBlock_body').append(template_text); -->
             })
 
-            console.log(_data);
+            $('.index_page_body_data').append(settingBlock);
         }
     }
 
@@ -280,7 +297,7 @@
                 `,
                 "business": `
                     <div class="index_page_menu_block_line" data="acceptPays">
-                        <i class="fal fa-chart-line"></i>
+                        <i class="fal fa-check-square"></i>
                         <span>Получение</span>
                     </div>
                 `,
