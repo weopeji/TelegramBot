@@ -88,7 +88,8 @@ async function getUserForId(socket,data,callback) {
     callback(_User);
 }
 
-async function notAcceptInvesting(socket,data,callback) {
+async function notAcceptInvesting(socket,data,callback) 
+{
     var _User           = await User.findOne({_id: data});
     var allProjects     = await Project.find({user: _User.user});
 
@@ -120,6 +121,8 @@ async function notAcceptInvesting(socket,data,callback) {
                 _arrayAllInvs.push(el2);
             })
         });
+
+        console.log(_arrayAllInvs);
 
         var falseInvs   = [];
         var trueInvs    = [];
