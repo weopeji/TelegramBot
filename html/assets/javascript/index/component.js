@@ -48,6 +48,9 @@
                     "wait": `
                         <span class="settingBlock_wait settingBlock_block">Ожидает подтверждения</span>
                     `,
+                    "accept": `
+                        <span class="settingBlock_wait settingBlock_block">Оплата подтверждена</span>
+                    `,
                 }
                 var template_text = `
                     <div class="settingBlock_body_line">
