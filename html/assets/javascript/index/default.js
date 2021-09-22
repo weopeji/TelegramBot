@@ -42,7 +42,7 @@
                 "profil": function() {profil_page.render(global.allData)},
             }
 
-            renderPage[pageID]();
+            //renderPage[pageID]();
 
 
             // const process_status    = new global.Components.process_status();
