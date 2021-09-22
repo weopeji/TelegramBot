@@ -55,6 +55,8 @@
                         <span>${element.projectId}</span>
                     </div>
                 `;
+
+                settingBlock.find('.settingBlock_body').append(template_text);
             })
 
             $('.index_page_body_data').append(settingBlock);
