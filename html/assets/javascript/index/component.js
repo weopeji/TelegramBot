@@ -298,10 +298,6 @@
                         <i class="fal fa-chart-line"></i>
                         <span>Активные проекты</span>
                     </div>
-                    <div class="index_page_menu_block_line" data="process_status">
-                        <i class="fal fa-microchip"></i>
-                        <span>В процессе</span>
-                    </div>
                     <div class="index_page_menu_block_line">
                         <i class="fal fa-money-check-alt"></i>
                         <span>Вознаграждение</span>
