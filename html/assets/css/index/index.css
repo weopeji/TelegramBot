@@ -192,7 +192,7 @@ html, body {
 
 .settingBlock_body_line {
   width: 100%;
-  margin: 10px 0;
+  margin: 20px 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
