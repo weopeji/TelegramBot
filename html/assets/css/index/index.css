@@ -158,4 +158,15 @@ html, body {
   height: 100vh;
   background-color: #161826;
 }
+
+.settingBlock {
+  width: 100%;
+  background-color: #182037;
+  border-radius: 3px;
+}
+
+.settingBlock span {
+  font-weight: bold;
+  color: #9BAAD9;
+}
 /*# sourceMappingURL=index.css.map */
