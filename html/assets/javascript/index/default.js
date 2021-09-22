@@ -60,6 +60,10 @@
             //     $('.content').empty();
             //     renderPage[$(this).attr('data')]();
             // })
+
+            $('.preloader').fadeOut( function() {
+                $(this).remove();
+            })
         }
     }
 

@@ -243,7 +243,7 @@
                         <i class="fal fa-user"></i>
                         <span>Активные проекты</span>
                     </div>
-                    <div class="index_page_menu_block_line">
+                    <div class="index_page_menu_block_line" data="process_status">
                         <i class="fal fa-user"></i>
                         <span>В процессе</span>
                     </div>

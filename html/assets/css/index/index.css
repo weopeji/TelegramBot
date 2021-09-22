@@ -146,4 +146,13 @@ html, body {
   font-size: 20px;
   color: #32B8FF;
 }
+
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #161826;
+}
 /*# sourceMappingURL=index.css.map */
