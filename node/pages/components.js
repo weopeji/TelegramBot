@@ -81,6 +81,12 @@ var action_linker = {
     "getInvestorsProject": getInvestorsProject,
     "notAcceptInvesting": notAcceptInvesting,
     "getUserForId": getUserForId,
+    "acceptInvestor": acceptInvestor,
+}
+
+async function acceptInvestor(socket,data,callback) {
+    var InvDoc = await InvDoc.findOneAndUpdate({invester: data}, {status: "accept"});
+    callback(InvDoc);
 }
 
 async function getUserForId(socket,data,callback) {

@@ -262,8 +262,18 @@
 
             $('.index_page_body_data').append(settingBlock);
 
-            $('.settingBlock_accept').click( function () {
+            $('.settingBlock_accept').click( async function () {
+                var acceptInvestor = await callApi({
+                    methodName: "acceptInvestor",
+                    data: $(this).attr(data),
+                });
 
+                if(acceptInvestor) {
+                    alert('Оплата подтвержденна!');
+                    location.reload();
+                } else {
+                    alert('Ошибка');
+                }
             })
         }
     }
