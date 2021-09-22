@@ -189,4 +189,20 @@ html, body {
       -ms-flex: 1;
           flex: 1;
 }
+
+.settingBlock_body_line {
+  width: 100%;
+  padding: 10px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: left;
+}
+
+.settingBlock_body_line span {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  color: #8592C6;
+}
 /*# sourceMappingURL=index.css.map */
