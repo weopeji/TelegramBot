@@ -32,6 +32,7 @@
         if(_id) 
         {
             const user_block        = new global.Components.user_block();
+            const activ_projects    = new global.Components.activ_projects();
             //const profil_page       = new global.Components.profil_page();
 
             var _User = await user_block.render(_id);
@@ -40,13 +41,14 @@
             var renderPage = 
             {
                 "profil": function() {profil_page.render(global.allData)},
+                "activ_projects": function() {activ_projects.render(global.allData)},
             }
 
             //renderPage[pageID]();
 
 
             // const process_status    = new global.Components.process_status();
-            // const activ_projects    = new global.Components.activ_projects();
+            
             // const put_document      = new global.Components.put_document();
             // const pay_investors     = new global.Components.pay_investors();
             // const acceptPays        = new global.Components.acceptPays();
@@ -54,7 +56,7 @@
             // var renderPage = 
             // {
             //     "process_status": function() {process_status.render(global.allData)},
-            //     "activ_projects": function() {activ_projects.render(global.allData)},
+            //     
             //     "put_document": function() {put_document.render(global.allData)},
             //     "pay_investors": function() {pay_investors.render(global.allData)},
             //     "acceptPays": function() {acceptPays.render(global.allData)},

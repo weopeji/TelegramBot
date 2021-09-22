@@ -25,6 +25,8 @@
                 data: allData,
             });
 
+            console.log(_data);
+
             var statusBlock = "invester_status_project_red";
 
             var text = `
