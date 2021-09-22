@@ -244,7 +244,7 @@
             _data.forEach(function(element, i) {
                 var _status = {
                     "wait": `
-                        <span class="settingBlock_wait settingBlock_block">Подтвердить</span>
+                        <span class="settingBlock_wait settingBlock_block settingBlock_accept" data="${element.invester}">Подтвердить</span>
                     `,
                 }
                 var template_text = `
@@ -261,6 +261,10 @@
             })
 
             $('.index_page_body_data').append(settingBlock);
+
+            $('.settingBlock_accept').click( function () {
+
+            })
         }
     }
 
@@ -302,6 +306,10 @@
                     <div class="index_page_menu_block_line" data="acceptPays">
                         <i class="fal fa-check-square"></i>
                         <span>Получение</span>
+                    </div>
+                    <div class="index_page_menu_block_line" data="activ_projects">
+                        <i class="fal fa-chart-line"></i>
+                        <span>Активные</span>
                     </div>
                 `,
             }
