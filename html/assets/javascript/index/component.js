@@ -27,13 +27,17 @@
 
             console.log(_data);
 
-            var statusBlock = "invester_status_project_red";
-
-            var text = `
-                <div class="invester_status_project ${statusBlock}">
-                    <p>Вы не оплатили ни один проект</p>
+            var settingBlock = $(`
+                <div class="settingBlock">
+                    <div class="settingBlock_header">
+                        <span>Проекты</span>
+                        <div class="settingBlock_header_line">
+                            <span>projectId</span>
+                            <span>status</span>
+                        </div>
+                    </div>
                 </div>
-            `;
+            `);
 
             $('.content').append(text);
         }
