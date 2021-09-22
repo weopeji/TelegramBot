@@ -183,7 +183,7 @@ async function _MainMenu(msg)
                                     [
                                         {
                                             text: 'Написать бизнесу',
-                                            url: `${h.getURL()}?user=${_User.id}&page=chat&id=${_User.putProject}`,
+                                            url: `${h.getURL()}?user=${_User.id}&page=chats&id=${_User.putProject}`,
                                         },
                                     ]
                                 ],
