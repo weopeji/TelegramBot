@@ -32,7 +32,7 @@
         if(_id) 
         {
             const user_block        = new global.Components.user_block();
-            const profil_page       = new global.Components.profil_page();
+            //const profil_page       = new global.Components.profil_page();
 
             var _User = await user_block.render(_id);
             global.allData.User = _User;
