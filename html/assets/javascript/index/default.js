@@ -35,6 +35,7 @@
             const activ_projects    = new global.Components.activ_projects();
             const acceptPays        = new global.Components.acceptPays();
             const chats             = new global.Components.chats();
+            const pay_investors     = new global.Components.pay_investors();
 
             var _User = await user_block.render(_id);
             global.allData.User = _User;
@@ -44,7 +45,8 @@
                 "profil": function() {profil_page.render(global.allData)},
                 "activ_projects": function() {activ_projects.render(global.allData)},
                 "acceptPays": function() {acceptPays.render(global.allData)},
-                "chats": function() {chats.render(global.allData)}
+                "chats": function() {chats.render(global.allData)},
+                "pay_investors": function() {pay_investors.render(global.allData)},
             }
 
             renderPage[pageID]();

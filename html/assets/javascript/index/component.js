@@ -174,42 +174,70 @@
                 }
             });
 
-            if(_needData.length == 0) 
-            {
-                var statusBlock = "invester_status_project_red";
-
-                var text = `
-                    <div class="invester_status_project ${statusBlock}">
-                        <p>Инвесторы не найдены</p>
-                    </div>
-                `;
-
-                $('.content').append(text);
-            } else {
-
-                var _this = this;
-
-                _needData.forEach(el => {
-                    var statusBlock = "invester_status_project_red";
-
-                    var text = `
-                        <div class="invester_status_project ${statusBlock} cheackInvestingUser">
-                            <p>Не оплачен инвестор</p>
-                            <p>${el.data.fio}</p>
+            // if(_needData.length == 0) 
+            // {
+                var settingBlock = $(`
+                    <div class="settingBlock">
+                        <div class="settingBlock_header">
+                            <p>Не выплачено</p>
+                            <div class="settingBlock_header_line">
+                                <span>#</span>
+                                <span>ID</span>
+                                <span>Инвестор ID</span>
+                                <span>Написать</span>
+                                <span>Кнопка</span>
+                            </div>
                         </div>
-                    `;
+                        <div class="settingBlock_body">
 
-                    $('.content').append(text);
+                        </div>
+                    </div>
+                `);
+
+                $('.index_page_body_data').append(settingBlock);
+            // } else {
+
+            //     var _this = this;
+
+            //     var settingBlock = $(`
+            //         <div class="settingBlock">
+            //             <div class="settingBlock_header">
+            //                 <p>Не подтвержденные проекты</p>
+            //                 <div class="settingBlock_header_line">
+            //                     <span>#</span>
+            //                     <span>ID</span>
+            //                     <span>Инвестор ID</span>
+            //                     <span>Написать</span>
+            //                     <span>Кнопка</span>
+            //                 </div>
+            //             </div>
+            //             <div class="settingBlock_body">
+
+            //             </div>
+            //         </div>
+            //     `);
+
+            //     _needData.forEach(el => {
+            //         var statusBlock = "invester_status_project_red";
+
+            //         var text = `
+            //             <div class="invester_status_project ${statusBlock} cheackInvestingUser">
+            //                 <p>Не оплачен инвестор</p>
+            //                 <p>${el.data.fio}</p>
+            //             </div>
+            //         `;
+
+            //         $('.content').append(text);
 
                    
 
-                    $('.cheackInvestingUser').click( function () {
-                        _this.rednderCheackInvesting(el.invester);
-                    })
-                });
-            }
+            //         $('.cheackInvestingUser').click( function () {
+            //             _this.rednderCheackInvesting(el.invester);
+            //         })
+            //     });
+            // }
 
-            console.log(_data);
+            // console.log(_data);
         }
     }
 
