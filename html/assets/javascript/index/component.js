@@ -53,6 +53,7 @@
                     <div class="settingBlock_body_line">
                         <span>${i + 1}</span>
                         <span>${element.projectId}</span>
+                        <span>${_status[element.status]}</span>
                     </div>
                 `;
 
