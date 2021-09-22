@@ -39,7 +39,7 @@
                 </div>
             `);
 
-            $('.content').append(text);
+            $('.content').append(settingBlock);
         }
     }
 
