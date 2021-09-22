@@ -49,7 +49,7 @@
                         <span class="settingBlock_wait settingBlock_block">Ожидает подтверждения</span>
                     `,
                     "accept": `
-                        <span class="settingBlock_wait settingBlock_block">Оплата подтверждена</span>
+                        <span class="settingBlock_accept_color settingBlock_block">Оплата подтверждена</span>
                     `,
                 }
                 var template_text = `
