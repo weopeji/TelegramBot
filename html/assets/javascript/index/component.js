@@ -34,6 +34,7 @@
                         <div class="settingBlock_header_line">
                             <span>#</span>
                             <span>ID</span>
+                            <span>ID Инвестора</span>
                             <span>Статус</span>
                         </div>
                     </div>
@@ -56,6 +57,7 @@
                     <div class="settingBlock_body_line">
                         <span>${i + 1}</span>
                         <span>${element.projectId}</span>
+                        <span>${element.invester}</span>
                         <span>${_status[element.status]}</span>
                     </div>
                 `;
