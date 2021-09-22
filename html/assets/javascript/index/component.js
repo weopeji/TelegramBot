@@ -346,6 +346,10 @@
                         <i class="fal fa-chart-line"></i>
                         <span>Принятые</span>
                     </div>
+                    <div class="index_page_menu_block_line" data="pay_investors">
+                        <i class="fal fa-money-check-alt"></i>
+                        <span>Не выплачено</span>
+                    </div>
                 `,
             }
 
