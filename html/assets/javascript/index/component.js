@@ -212,11 +212,6 @@
     {
         constructor() {};
 
-
-        payingInvest(_id) {
-
-        }
-
         async render() 
         {
             var _id = global.allData._id;
@@ -284,7 +279,7 @@
                     </div>
                 `,
                 "business": `
-                    <div class="index_page_menu_block_line" data="activ_projects">
+                    <div class="index_page_menu_block_line" data="acceptPays">
                         <i class="fal fa-chart-line"></i>
                         <span>Получение</span>
                     </div>
