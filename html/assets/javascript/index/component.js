@@ -38,10 +38,24 @@
                         </div>
                     </div>
                     <div class="settingBlock_body">
-                        
+
                     </div>
                 </div>
             `);
+
+            _data.forEach(function(element, i) {
+                var _status = {
+                    "wait": `
+                        <span class="settingBlock_wait">Ожидает подтверждения</span>
+                    `,
+                }
+                var template_text = `
+                    <div class="settingBlock_body_line">
+                        <span>${i + 1}</span>
+                        <span>${element.projectId}</span>
+                    </div>
+                `;
+            })
 
             $('.index_page_body_data').append(settingBlock);
         }
