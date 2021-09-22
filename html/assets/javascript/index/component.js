@@ -266,6 +266,11 @@
 
             $(`.index_page_menu_block_line[data="${global.allData.pageID}"]`).addClass('selected');
             $('.index_page_body_header_info span').html($('.index_page_menu_block_line.selected').text());
+
+            $('.index_page_menu_block_line').click( function() {
+                $('.index_page_menu_block_line').removeClass('selected');
+                $(this).addClass('selected');
+            });
  
             return _User;
         }
