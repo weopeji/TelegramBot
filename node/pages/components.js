@@ -122,21 +122,17 @@ async function notAcceptInvesting(socket,data,callback)
             })
         });
 
-        console.log(_arrayAllInvs);
-
-        var falseInvs   = [];
         var trueInvs    = [];
 
         _arrayAllInvs.forEach(element => {
             if(element.receipt) {
-                trueInvs.push(element);
-            } 
-            if(element.status == "wait") {
-                falseInvs.push(element);
+                if(element.status == "wait") {
+                    trueInvs.push(element);
+                }
             }
         });
 
-        callback(falseInvs);
+        callback(trueInvs);
     });
 }
 

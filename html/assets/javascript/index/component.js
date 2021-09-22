@@ -240,24 +240,24 @@
                 </div>
             `);
 
-            // _data.forEach(function(element, i) {
-            //     var _status = {
-            //         "wait": `
-            //             <span class="settingBlock_wait settingBlock_block">Ожидает подтверждения</span>
-            //         `,
-            //     }
-            //     var template_text = `
-            //         <div class="settingBlock_body_line">
-            //             <span>${i + 1}</span>
-            //             <span>${element.projectId}</span>
-            //             <span>${_status[element.status]}</span>
-            //         </div>
-            //     `;
+            _data.forEach(function(element, i) {
+                var _status = {
+                    "wait": `
+                        <span class="settingBlock_wait settingBlock_block">Ожидает подтверждения</span>
+                    `,
+                }
+                var template_text = `
+                    <div class="settingBlock_body_line">
+                        <span>${i + 1}</span>
+                        <span>${element.projectId}</span>
+                        <span>${_status[element.status]}</span>
+                    </div>
+                `;
 
-            //     settingBlock.find('.settingBlock_body').append(template_text);
-            // })
+                settingBlock.find('.settingBlock_body').append(template_text);
+            })
 
-            // $('.index_page_body_data').append(settingBlock);
+            $('.index_page_body_data').append(settingBlock);
         }
     }
 
