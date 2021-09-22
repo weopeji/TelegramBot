@@ -50,7 +50,6 @@
 
             renderPage[pageID]();
 
-
             // const process_status    = new global.Components.process_status();
             
             // const put_document      = new global.Components.put_document();

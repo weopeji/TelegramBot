@@ -215,4 +215,25 @@ html, body {
 .settingBlock_wait {
   background-color: #FB62D6;
 }
+
+.chat_block {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.chat_block_chat {
+  -webkit-box-flex: 3;
+      -ms-flex: 3;
+          flex: 3;
+}
+
+.chat_block_info {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  height: 300px;
+  background-color: white;
+}
 /*# sourceMappingURL=index.css.map */

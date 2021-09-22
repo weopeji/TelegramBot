@@ -345,6 +345,23 @@
 
         async render() {
 
+            var ID = _GET('id');
+
+            if(ID) {
+                var templateText = `
+                    <div class="chat_block">
+                        <div class="chat_block_chat">
+
+                        </div>
+                        <div class="chat_block_info">
+                            
+                        </div>
+                    </div>
+                `;
+    
+                $('.index_page_body_data').append(templateText);
+            }
+           
         }
     }
 
