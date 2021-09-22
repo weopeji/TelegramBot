@@ -283,6 +283,12 @@
                         <span>Мной привлечено</span>
                     </div>
                 `,
+                "business": `
+                    <div class="index_page_menu_block_line" data="activ_projects">
+                        <i class="fal fa-chart-line"></i>
+                        <span>Получение</span>
+                    </div>
+                `,
             }
 
             var button = buttons[_User.type];
