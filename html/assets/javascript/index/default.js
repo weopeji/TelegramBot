@@ -34,6 +34,7 @@
             const user_block        = new global.Components.user_block();
             const activ_projects    = new global.Components.activ_projects();
             const acceptPays        = new global.Components.acceptPays();
+            const chats             = new global.Components.chats();
             //const profil_page       = new global.Components.profil_page();
 
             var _User = await user_block.render(_id);
@@ -44,6 +45,7 @@
                 "profil": function() {profil_page.render(global.allData)},
                 "activ_projects": function() {activ_projects.render(global.allData)},
                 "acceptPays": function() {acceptPays.render(global.allData)},
+                "chats": function() {chats.render(global.allData)}
             }
 
             renderPage[pageID]();

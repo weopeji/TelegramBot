@@ -318,7 +318,7 @@
                     </div>
                     <div class="index_page_menu_block_line" data="activ_projects">
                         <i class="fal fa-chart-line"></i>
-                        <span>Активные</span>
+                        <span>Принятые</span>
                     </div>
                 `,
             }
@@ -340,6 +340,14 @@
         }
     }
 
+    class chats {
+        constructor() {};
+
+        async render() {
+
+        }
+    }
+
     if(!global.Components)
     {
         global.Components = {
@@ -349,6 +357,7 @@
             pay_investors,
             acceptPays,
             user_block,
+            chats,
         }
     }
 
