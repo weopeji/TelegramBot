@@ -351,10 +351,12 @@
                 var templateText = `
                     <div class="chat_block">
                         <div class="chat_block_chat">
-
+                            <div class="chat_block_chat_header">
+                                <span>Чат</span>
+                            </div>
                         </div>
                         <div class="chat_block_info">
-                            
+
                         </div>
                     </div>
                 `;
