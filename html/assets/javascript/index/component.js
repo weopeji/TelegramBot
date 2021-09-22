@@ -30,7 +30,7 @@
             var settingBlock = $(`
                 <div class="settingBlock">
                     <div class="settingBlock_header">
-                        <p>Проекты</p>
+                        <p>Статистика</p>
                         <div class="settingBlock_header_line">
                             <span>#</span>
                             <span>ID</span>
