@@ -215,7 +215,7 @@ bot.on('message', async (msg) =>
         "📈 Инвестировать": investor_page.goInvesting,
         "👨‍💼 Рекомендовать": investor_page.recomendations,
         "В процессе": investor_page.inProcess,
-        "Статус получения денег бизнесом": investor_page.statusProjects,
+        "Статус получения денег бизнесом": investor_page.active_projects,
         "Вознаграждение по проектам": investor_page.payerBonus,
         "Мной привлечено": investor_page.myPeoples,
         "Статистика": investor_page.active_statistik,

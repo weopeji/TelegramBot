@@ -230,6 +230,7 @@ html, body {
   margin-right: 20px;
   height: calc(100vh - 200px);
   background-color: #182037;
+  position: relative;
 }
 
 .chat_block_chat_header {
@@ -249,6 +250,7 @@ html, body {
 .chat_block_chat_header span {
   font-weight: bold;
   color: #8592C6;
+  font-size: 20px;
 }
 
 .chat_block_info {
