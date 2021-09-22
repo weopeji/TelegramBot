@@ -38,9 +38,12 @@ html, body {
 }
 
 .index_page_body_data {
-  width: 100%;
+  width: 95%;
   min-height: 100%;
   overflow-y: scroll;
+  margin: 0 auto;
+  position: relative;
+  top: 10%;
 }
 
 .index_page_menu_block {
