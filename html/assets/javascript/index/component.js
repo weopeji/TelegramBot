@@ -268,12 +268,8 @@
                     data: $(this).attr("data"),
                 });
 
-                if(acceptInvestor) {
-                    alert('Оплата подтвержденна!');
-                    location.reload();
-                } else {
-                    alert('Ошибка');
-                }
+                alert('Оплата подтвержденна!');
+                location.reload();
             })
         }
     }
