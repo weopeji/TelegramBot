@@ -54,7 +54,7 @@
                     `,
                 }
                 var template_text = `
-                    <div class="settingBlock_body_line" data="${invester}">
+                    <div class="settingBlock_body_line" data="${element.invester}">
                         <span>${i + 1}</span>
                         <span>${element.projectId}</span>
                         <span>${element.invester}</span>
