@@ -20,13 +20,22 @@
 
         async renderType(allData)
         {
+            var _data = await callApi({
+                methodName: "invester_status_projects",
+                data: _GET('id'),
+            });
+
+            console.log(_data);
+
             var settingBlock = $(`
                 <div class="info_active_block">
                     <div class="info_active_block_left">
-1
+                        
                     </div>
                     <div class="info_active_block_right">
-                        1
+                        <div class="info_active_block_photo">
+                            
+                        </div>
                     </div>
                 </div>
             `);
@@ -37,7 +46,7 @@
         async render(allData) 
         {
             var _data = await callApi({
-                methodName: "invester_status_projects",
+                methodName: "invester_status_project",
                 data: allData,
             });
 

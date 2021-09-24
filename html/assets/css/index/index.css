@@ -351,6 +351,23 @@ html, body {
   padding: 20px;
 }
 
+.info_active_block_photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  overflow: hidden;
+  background-color: #A4B1E0;
+}
+
 @media (max-width: 500px) {
   .buttons_menu {
     display: block;
