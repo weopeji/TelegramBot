@@ -339,7 +339,7 @@
             })
 
             $('.settingBlock_body_line').click( function () {
-                location.href = window.location.href + `&id=${$(this).attr('data')}`;
+                location.href = `/?page=activ_projects&id=${$(this).attr('data')}`;
             })
         }
     }
