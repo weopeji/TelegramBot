@@ -220,7 +220,6 @@
                                 <span>#</span>
                                 <span>ID</span>
                                 <span>Инвестор ID</span>
-                                <span>Написать</span>
                                 <span>Кнопка</span>
                             </div>
                         </div>
@@ -300,7 +299,6 @@
                             <span>#</span>
                             <span>ID</span>
                             <span>Инвестор ID</span>
-                            <span>Написать</span>
                             <span>Кнопка</span>
                         </div>
                     </div>
@@ -321,7 +319,6 @@
                         <span>${i + 1}</span>
                         <span>${element.projectId}</span>
                         <span>${element.invester}</span>
-                        <span>Перейти в чат</span>
                         <span>${_status[element.status]}</span>
                     </div>
                 `;
