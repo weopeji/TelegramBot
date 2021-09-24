@@ -116,7 +116,7 @@ function io_connect(callback)
         if(!connectReload)
         {
             console.log("Сервер подключен к: " + url);
-            connectReload = true; 
+            connectReload = true;
             if(callback) {
                 callback();
             }
