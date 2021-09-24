@@ -47,7 +47,7 @@
                     if(!_GET('id')) {
                         activ_projects.render(global.allData)
                     } else {
-
+                        activ_projects.renderType(global.allData)
                     }
                 },
                 "acceptPays": function() {acceptPays.render(global.allData)},

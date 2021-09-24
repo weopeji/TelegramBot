@@ -18,6 +18,20 @@
     {
         constructor() {};
 
+        async renderType(allData)
+        {
+            var settingBlock = $(`
+                <div class="info_active_block">
+                    <div class="info_active_block_left">
+1
+                    </div>
+                    <div class="info_active_block_right">
+                        1
+                    </div>
+                </div>
+            `);
+        }
+
         async render(allData) 
         {
             var _data = await callApi({

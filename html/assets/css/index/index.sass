@@ -223,6 +223,7 @@ html, body
 
     span:nth-child(2)
         display: none
+
     span:nth-child(1)
         position: relative
         transform: rotateZ(45deg)
@@ -238,8 +239,40 @@ html, body
             flex: none
 
 .settingBlock_body_line:hover
-    background-color: #161826
+    background-color: #2E3756
    
+
+.info_active_block
+    width: 100%
+    display: flex
+    justify-content: space-between
+    align-items: center
+
+.info_active_block_left,
+.info_active_block_right
+    width: 48%
+    background-color: #182037
+    border-radius: 3px
+    padding: 20px
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @media (max-width: 500px)
 
@@ -264,7 +297,7 @@ html, body
             white-space: nowrap
 
         span:nth-child(1),
-        span:nth-child(3)
+        span:nth-child(2)
             display: none
 
         span:nth-child(4)
@@ -274,7 +307,7 @@ html, body
 
     .settingBlock_header_line
         span:nth-child(1),
-        span:nth-child(3)
+        span:nth-child(2)
             display: none
 
     .settingBlock_block
