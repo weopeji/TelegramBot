@@ -456,5 +456,12 @@ html, body {
     padding: 8px 12px;
     font-size: 12px;
   }
+  .info_active_block {
+    display: none;
+  }
+  .info_active_block_left,
+  .info_active_block_right {
+    margin-bottom: 20px;
+  }
 }
 /*# sourceMappingURL=index.css.map */
