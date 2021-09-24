@@ -441,7 +441,7 @@
                             <div class="info_active_block_photo">
                             
                             </div>
-                            <span>${_data.invester.first_name} ${_data.invester.last_name}</span>
+                            <span>Кирилл Максимов</span>
                             <p>Invester</p>
     
                             <div class="info_active_block_massage_button">
