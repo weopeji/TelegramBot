@@ -60,6 +60,7 @@
         (() => {
             $('.buttons_menu').click( function() {
                 $('.index_page_menu').toggleClass('selected');
+                $('.buttons_menu').toggleClass('selected');
             })
         })()
     }
