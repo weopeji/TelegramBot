@@ -211,18 +211,18 @@ html, body
         background-color: #596A9A
         margin: 9px 0
 
-.buttons_menu.selected:nth-child(2)
-    display: none
-
-.buttons_menu.selected:nth-child(1)
-    position: relative
-    transform: rotateZ(45deg)
-    top: 5.5px
-
-.buttons_menu.selected:nth-child(3)
-    position: relative
-    transform: rotateZ(315deg)
-    top: -5.5px
+.buttons_menu.selected
+    span:nth-child(2)
+        display: none
+    span:nth-child(1)
+        position: relative
+        transform: rotateZ(45deg)
+        top: 5.5px
+    span:nth-child(3)
+        position: relative
+        transform: rotateZ(315deg)
+        top: -5.5px
+   
 
 @media (max-width: 500px)
 

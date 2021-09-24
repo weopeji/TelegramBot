@@ -289,18 +289,18 @@ html, body {
   margin: 9px 0;
 }
 
-.buttons_menu.selected:nth-child(2) {
+.buttons_menu.selected span:nth-child(2) {
   display: none;
 }
 
-.buttons_menu.selected:nth-child(1) {
+.buttons_menu.selected span:nth-child(1) {
   position: relative;
   -webkit-transform: rotateZ(45deg);
           transform: rotateZ(45deg);
   top: 5.5px;
 }
 
-.buttons_menu.selected:nth-child(3) {
+.buttons_menu.selected span:nth-child(3) {
   position: relative;
   -webkit-transform: rotateZ(315deg);
           transform: rotateZ(315deg);
