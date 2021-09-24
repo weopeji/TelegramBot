@@ -54,7 +54,7 @@
                     `,
                 }
                 var template_text = `
-                    <div class="settingBlock_body_line">
+                    <div class="settingBlock_body_line" data="${invester}">
                         <span>${i + 1}</span>
                         <span>${element.projectId}</span>
                         <span>${element.invester}</span>
@@ -66,6 +66,10 @@
             })
 
             $('.index_page_body_data').append(settingBlock);
+
+            $('.settingBlock_body_line').click( function () {
+                location.href = window.location.href + `&id=${$(this).attr('data')}`;
+            })
         }
     }
 
