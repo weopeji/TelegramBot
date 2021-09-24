@@ -370,6 +370,10 @@ html, body {
   margin-top: 50px;
 }
 
+.info_active_block_right {
+  text-align: center;
+}
+
 .info_active_block_right span {
   font-size: 30px;
   color: #32B8FF;
