@@ -324,6 +324,10 @@ html, body {
           flex: none;
 }
 
+.settingBlock_body_line:hover {
+  background-color: #161826;
+}
+
 @media (max-width: 500px) {
   .buttons_menu {
     display: block;
