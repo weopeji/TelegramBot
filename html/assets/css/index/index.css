@@ -319,12 +319,9 @@ html, body {
 }
 
 .settingBlock_body_line span:nth-child(4) span {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
 }
 
 @media (max-width: 500px) {
