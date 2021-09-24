@@ -244,7 +244,7 @@ html, body {
 }
 
 .chat_block_chat_header {
-  width: calc(100% - 80px);
+  width: 100%;
   height: 100px;
   padding: 0 40px;
   border-bottom: 1px solid #252E4A;
@@ -469,6 +469,27 @@ html, body {
   background: #8c80fe;
   background: -webkit-gradient(linear, left top, right top, from(#8c80fe), color-stop(61%, #594bd3));
   background: linear-gradient(90deg, #8c80fe 0%, #594bd3 61%);
+}
+
+.chat_block_chat_body_row {
+  position: relative;
+}
+
+.chat_block_chat_body_row_input {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.chat_block_chat_body_row_input input {
+  border: 0;
+  width: calc(100% - 20px);
+  padding: 20px;
+  background-color: #0E1122;
 }
 
 @media (max-width: 500px) {

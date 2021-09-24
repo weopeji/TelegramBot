@@ -427,7 +427,13 @@
                             </div>
                             <div class="chat_block_chat_body">
                                 <div class="chat_block_chat_body_row">
-                                    
+
+
+
+                                    <div class="chat_block_chat_body_row_input">
+                                        <input type="text">
+                                        <span>Отправить</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
