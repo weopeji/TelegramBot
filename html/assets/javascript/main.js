@@ -95,6 +95,8 @@ async function postData(url, data) {
     return await response.json();
 }
 
+var connectReload = false;
+
 function io_connect(callback) 
 {
     delete imSocket;
@@ -111,9 +113,15 @@ function io_connect(callback)
         // });
     }
     imSocket.on('connect', function() {
-        console.log("Сервер подключен к: " + url);
-        if(callback) {
-            callback();
+        if(!connectReload)
+        {
+            console.log("Сервер подключен к: " + url);
+            connectReload = true;
+            if(callback) {
+                callback();
+            }
+        } else {
+            location.reload();
         }
     });
 }
