@@ -30,7 +30,8 @@
             var settingBlock = $(`
                 <div class="info_active_block">
                     <div class="info_active_block_left">
-                        <p>Информация по платежу</p>
+                        <p class="info_active_block_left_header">Информация по платежу</p>
+                        <p></p>
                     </div>
                     <div class="info_active_block_right">
                         <div class="info_active_block_photo">

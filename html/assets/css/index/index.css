@@ -338,9 +338,6 @@ html, body {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 
 .info_active_block_left,
@@ -349,6 +346,9 @@ html, body {
   background-color: #182037;
   border-radius: 3px;
   padding: 20px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
 .info_active_block_photo {
@@ -405,7 +405,7 @@ html, body {
   color: white;
 }
 
-.info_active_block_left p {
+.info_active_block_left_header {
   font-weight: bold;
   color: #9BAAD9;
   font-size: 20px;
