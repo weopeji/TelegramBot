@@ -265,4 +265,12 @@ html, body {
 .settingBlock_accept_color {
   background-color: #10C760;
 }
+
+@media (max-width: 900px) {
+  .index_page_menu {
+    osition: fixed;
+    z-index: 100000;
+    width: 100vw;
+  }
+}
 /*# sourceMappingURL=index.css.map */
