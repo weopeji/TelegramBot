@@ -61,7 +61,7 @@
             $('.buttons_menu').click( function() {
                 $('.index_page_menu').toggleClass('selected');
             })
-        })
+        })()
     }
 
 }(window))
