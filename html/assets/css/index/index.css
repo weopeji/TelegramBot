@@ -495,6 +495,7 @@ html, body {
 
 .chat_block_chat_body_row_input span {
   padding: 20px 40px;
+  cursor: pointer;
   background: #13aaf9;
   background: -webkit-gradient(linear, left top, right top, from(#13aaf9), color-stop(61%, #1484fd));
   background: linear-gradient(90deg, #13aaf9 0%, #1484fd 61%);
