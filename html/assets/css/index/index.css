@@ -274,7 +274,7 @@ html, body {
 .buttons_menu {
   z-index: 10000;
   position: absolute;
-  top: 200px;
+  top: 20px;
   left: 20px;
 }
 
