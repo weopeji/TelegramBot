@@ -425,6 +425,11 @@
                             <div class="chat_block_chat_header">
                                 <span>Чат</span>
                             </div>
+                            <div class="chat_block_chat_body">
+                                <div class="chat_block_chat_body_row">
+                                    
+                                </div>
+                            </div>
                         </div>
                         <div class="chat_block_info">
 
