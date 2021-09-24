@@ -273,6 +273,8 @@ html, body {
 .buttons_menu {
   z-index: 10000;
   position: relative;
+  top: 200px;
+  left: 20px;
 }
 
 .buttons_menu span {
@@ -280,7 +282,7 @@ html, body {
   width: 35px;
   height: 3px;
   background-color: white;
-  margin: 7px 0;
+  margin: 9px 0;
 }
 
 @media (max-width: 900px) {
