@@ -36,6 +36,8 @@
                         <div class="info_active_block_photo">
                             
                         </div>
+                        <span>${_data.invester.first_name} ${_data.invester.last_name}</span>
+                        <p>Invester</p>
                     </div>
                 </div>
             `);
