@@ -30,6 +30,8 @@
                     </div>
                 </div>
             `);
+
+            $('.index_page_body_data').append(settingBlock);
         }
 
         async render(allData) 
