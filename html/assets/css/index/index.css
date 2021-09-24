@@ -318,6 +318,15 @@ html, body {
   top: -5.5px;
 }
 
+.settingBlock_body_line span:nth-child(4) span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 @media (max-width: 500px) {
   .buttons_menu {
     display: block;
@@ -346,7 +355,12 @@ html, body {
     display: none;
   }
   .settingBlock_body_line span:nth-child(4) span {
-    display: block;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
   .settingBlock_header_line span:nth-child(1),
   .settingBlock_header_line span:nth-child(3) {
