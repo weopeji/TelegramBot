@@ -88,8 +88,8 @@ var action_linker = {
 async function invester_status_project(socket,data,callback)
 {
     var _InvDoc     = await InvDoc.findOne({invester: data});
-    var _User       = await InvDoc.findOne({user: data});
-    
+    var _User       = await User.findOne({user: data});
+
     callback({
         invester: _User,
         InvDoc: _InvDoc,
