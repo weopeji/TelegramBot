@@ -266,11 +266,30 @@ html, body {
   background-color: #10C760;
 }
 
+.index_page_menu.selected {
+  margin-left: 0;
+}
+
+.buttons_menu {
+  z-index: 10000;
+  position: relative;
+}
+
+.buttons_menu span {
+  display: block;
+  width: 40px;
+  height: 4px;
+  background-color: white;
+}
+
 @media (max-width: 900px) {
   .index_page_menu {
     position: fixed;
     z-index: 100000;
     width: 100vw;
+    margin-left: -100%;
+    -webkit-transition: all .5s linear;
+    transition: all .5s linear;
   }
 }
 /*# sourceMappingURL=index.css.map */
