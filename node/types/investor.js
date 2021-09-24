@@ -113,9 +113,8 @@ async function payerInBissnessDocument(msg) {
 async function payerInBissness(msg) 
 {
     var _array      = [];
-    var _User       = await User.findOne({user: msg.from.id});
 
-    var html = `<strong>3. Прикрепить чек об оплате</strong>\n\nВ течение 3х дней вам необходимо загрузить квитанцию об оплате. При отсутствии чека, бизнес не подтвердит получение денежных средств`;
+    var html = `<strong>3. Прикрепить чек об оплате</strong>\n\nСейчас вам необходимо загрузить чек об оплате. При отсутствии чека, бизнес не подтвердит получение денежных средств, Инвестиция не будет засчитана и деньги будут возвращены вам на расчетный счет`;
 
     var fat = await h.send_html(msg.from.id, html, {
         "resize_keyboard": true,
