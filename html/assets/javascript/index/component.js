@@ -31,7 +31,11 @@
                 <div class="info_active_block">
                     <div class="info_active_block_left">
                         <p class="info_active_block_left_header">Информация по платежу</p>
-                        <p></p>
+                        <div class="info_active_block_left_buttons">
+                            <span class="accept_block">Подтвердить оплату</span>
+                            <span class="remove_block">Отказать</span>
+                            <span class="show_block">Посмотреть чек об оплате</span>
+                        </div>
                     </div>
                     <div class="info_active_block_right">
                         <div class="info_active_block_photo">
@@ -311,7 +315,7 @@
             _data.forEach(function(element, i) {
                 var _status = {
                     "wait": `
-                        <span class="settingBlock_wait settingBlock_block settingBlock_accept" data="${element.invester}">Подтвердить</span>
+                        <span class="settingBlock_wait settingBlock_block settingBlock_accept" data="${element.invester}">Подтвердить оплату</span>
                     `,
                 }
                 var template_text = `
