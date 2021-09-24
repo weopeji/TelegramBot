@@ -244,7 +244,7 @@ html, body {
 }
 
 .chat_block_chat_header {
-  width: 100%;
+  width: calc(100% - 80px);
   height: 100px;
   padding: 0 40px;
   border-bottom: 1px solid #252E4A;
@@ -264,7 +264,7 @@ html, body {
 }
 
 .chat_block_chat_body {
-  width: calc(100% - 80px);
+  width: 100%;
   height: calc(100% - 100px);
   display: -webkit-box;
   display: -ms-flexbox;
