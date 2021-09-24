@@ -21,7 +21,7 @@
         async renderType(allData)
         {
             var _data = await callApi({
-                methodName: "invester_status_projects",
+                methodName: "invester_status_project",
                 data: _GET('id'),
             });
 
@@ -46,7 +46,7 @@
         async render(allData) 
         {
             var _data = await callApi({
-                methodName: "invester_status_project",
+                methodName: "invester_status_projects",
                 data: allData,
             });
 
