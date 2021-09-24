@@ -289,6 +289,10 @@ html, body {
   margin: 9px 0;
 }
 
+.buttons_menu.selected {
+  top: 25px;
+}
+
 .buttons_menu.selected span:nth-child(2) {
   display: none;
 }
@@ -318,6 +322,9 @@ html, body {
     margin-left: -100%;
     -webkit-transition: all .2s;
     transition: all .2s;
+  }
+  .index_page_body_header_user {
+    width: 90%;
   }
 }
 /*# sourceMappingURL=index.css.map */
