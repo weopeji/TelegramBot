@@ -445,7 +445,7 @@ html, body {
       flex-wrap: wrap;
 }
 
-.info_active_block_left span {
+.info_active_block_left_buttons span {
   padding: 7px 20px;
   border-radius: 3px;
   margin-right: 20px;
@@ -518,6 +518,16 @@ html, body {
   margin: 0;
   color: #3F496A;
   margin-bottom: 40px;
+}
+
+.info_active_block_left_info {
+  margin: 20px 0;
+  color: #8999CF;
+  font-size: 20px;
+}
+
+.info_active_block_left_info_line {
+  margin-bottom: 5px;
 }
 
 @media (max-width: 500px) {
