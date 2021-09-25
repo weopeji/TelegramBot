@@ -523,11 +523,16 @@ html, body {
 .info_active_block_left_info {
   margin: 20px 0;
   color: #8999CF;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .info_active_block_left_info_line {
-  margin-bottom: 5px;
+  margin-bottom: 7px;
+}
+
+.info_active_block_left_info_line a {
+  color: #9BAAD9;
+  font-size: 20px;
 }
 
 @media (max-width: 500px) {
