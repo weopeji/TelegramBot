@@ -31,6 +31,28 @@
                 <div class="info_active_block">
                     <div class="info_active_block_left">
                         <p class="info_active_block_left_header">Информация по платежу</p>
+                        <div class="info_active_block_left_info">
+                            <div class="info_active_block_left_info_line">
+                                <span>Номер проекта:</span>
+                                <a></a>
+                            </div>
+                            <div class="info_active_block_left_info_line">
+                                <span>ФИО Инвестора:</span>
+                                <a>${_data.invester.first_name} ${_data.invester.last_name}</a>
+                            </div>
+                            <div class="info_active_block_left_info_line">
+                                <span>Номер инвестора в проекте:</span>
+                                <a></a>
+                            </div>
+                            <div class="info_active_block_left_info_line">
+                                <span>Дата прикрепления чека:</span>
+                                <a></a>
+                            </div>
+                            <div class="info_active_block_left_info_line">
+                                <span>Статус:</span>
+                                <a></a>
+                            </div>
+                        </div>
                         <div class="info_active_block_left_buttons">
                             <span class="accept_block">Подтвердить оплату</span>
                             <span class="remove_block">Отказать</span>
@@ -69,7 +91,7 @@
                         <p>Статистика</p>
                         <div class="settingBlock_header_line">
                             <span>#</span>
-                            <span>ID</span>
+                            <span>Номер проекта</span>
                             <span>ID Инвестора</span>
                             <span>Статус</span>
                         </div>
@@ -301,7 +323,7 @@
                         <p>Не подтвержденные проекты</p>
                         <div class="settingBlock_header_line">
                             <span>#</span>
-                            <span>ID</span>
+                            <span>Номер проекта</span>
                             <span>Инвестор ID</span>
                             <span>Кнопка</span>
                         </div>
