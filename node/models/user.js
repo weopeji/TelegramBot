@@ -15,6 +15,7 @@ const UserShema = new mongoose.Schema({
     investor_data: JSON,
     where: JSON,
     putProject: String,
+    member: String,
 });
 
 mongoose.model('User', UserShema);

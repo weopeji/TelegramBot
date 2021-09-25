@@ -241,7 +241,7 @@
             //     var settingBlock = $(`
             //         <div class="settingBlock">
             //             <div class="settingBlock_header">
-            //                 <p>Не подтвержденные проекты</p>
+            //                 <p>Не подтвержденные инвесторы</p>
             //                 <div class="settingBlock_header_line">
             //                     <span>#</span>
             //                     <span>ID</span>
@@ -315,7 +315,7 @@
             _data.forEach(function(element, i) {
                 var _status = {
                     "wait": `
-                        <span class="settingBlock_wait settingBlock_block settingBlock_accept" data="${element.invester}">Подтвердить оплату</span>
+                        <span class="settingBlock_wait settingBlock_block settingBlock_accept" data="${element.invester}">Открыть</span>
                     `,
                 }
                 var template_text = `
@@ -332,15 +332,15 @@
 
             $('.index_page_body_data').append(settingBlock);
 
-            $('.settingBlock_accept').click( async function () {
-                var acceptInvestor = await callApi({
-                    methodName: "acceptInvestor",
-                    data: $(this).attr("data"),
-                });
+            // $('.settingBlock_accept').click( async function () {
+            //     var acceptInvestor = await callApi({
+            //         methodName: "acceptInvestor",
+            //         data: $(this).attr("data"),
+            //     });
 
-                alert('Оплата подтвержденна!');
-                location.reload();
-            })
+            //     alert('Оплата подтвержденна!');
+            //     location.reload();
+            // })
 
             $('.settingBlock_body_line').click( function () {
                 location.href = `/?page=activ_projects&id=${$(this).attr('data')}`;
@@ -385,11 +385,11 @@
                     </div>
                     <div class="index_page_menu_block_line" data="activ_projects">
                         <i class="fal fa-chart-line"></i>
-                        <span>Принятые</span>
+                        <span>Статистика</span>
                     </div>
                     <div class="index_page_menu_block_line" data="pay_investors">
                         <i class="fal fa-money-check-alt"></i>
-                        <span>Не выплачено </span>
+                        <span>Не выплачено</span>
                     </div>
                 `,
             }
