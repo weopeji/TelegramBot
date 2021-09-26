@@ -374,12 +374,12 @@
     {
         constructor() {};
 
-        async render(data) 
+        async render(data_rt) 
         {
 
             var _data = await callApi({
                 methodName: "getAllProjectsBusiness",
-                data: data._id,
+                data: data_rt._id,
             });
 
             console.log(_data);
