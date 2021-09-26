@@ -543,6 +543,9 @@ html, body {
 .info_active_block_left_info_line a {
   color: #9BAAD9;
   font-size: 20px;
+  width: 100%;
+  display: block;
+  margin-top: 20px;
 }
 
 .discret {
