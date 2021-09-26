@@ -482,12 +482,12 @@
 
                 settingBlock.find('.settingBlock_body').append(template_text);
             })
-            
+
+            $('.index_page_body_data').append(settingBlock);
+
             $('.settingBlock_body_line').click( function() {
                 location.href = `/?page=myProjects&id=${$(this).attr('data')}`;
             })
-
-            $('.index_page_body_data').append(settingBlock);
         }
     }
 
