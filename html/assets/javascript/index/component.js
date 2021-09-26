@@ -432,7 +432,7 @@
                             <div class="wrappert">
                                 <div class="wrapper">
                                     <div class="container">
-                                        <div id="validate-bar__parcent-bar" data-percent="77"></div>
+                                        <div id="validate-bar__parcent-bar"></div>
                                     </div>
                                 </div>
                             </div>
@@ -444,7 +444,7 @@
                     var el = document.getElementById('validate-bar__parcent-bar');
 
                     var options = {
-                        percent: el.getAttribute('data-percent') || 25,
+                        percent: el.getAttribute('data-percent') || 0,
                         size: el.getAttribute('data-size') || 220,
                         lineWidth: el.getAttribute('data-line') || 10,
                         rotate: el.getAttribute('data-rotate') || 0
@@ -482,7 +482,7 @@
                         ctx.stroke();
                     };
 
-                    drawCircle('#efefef', options.lineWidth, 100 / 100);
+                    drawCircle('#0E1122', options.lineWidth, 100 / 100);
                     drawCircle('#4598d1', options.lineWidth, options.percent / 100);
                 }
             }

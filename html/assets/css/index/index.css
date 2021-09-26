@@ -548,8 +548,14 @@ html, body {
 
 #validate-bar__parcent-bar {
   font-weight: 100;
-  font-size: 52px;
+  font-size: 40px;
   color: #8394C9;
+}
+
+#validate-bar__parcent-bar::after {
+  color: #8394C9;
+  bottom: 0;
+  font-size: 28px;
 }
 
 @media (max-width: 500px) {
