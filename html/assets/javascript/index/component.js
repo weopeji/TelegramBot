@@ -341,7 +341,7 @@
                     `,
                 }
                 var template_text = `
-                    <div class="settingBlock_body_line" data="${element.invester}">
+                    <div class="settingBlock_body_line" data="${element._id}">
                         <span>${i + 1}</span>
                         <span>${element.projectId}</span>
                         <span>${element.invester}</span>
@@ -364,7 +364,7 @@
             //     location.reload();
             // })
 
-            $('.settingBlock_body_line').click( function () {
+            $('.settingBlock_accept').click( function () {
                 location.href = `/?page=activ_projects&id=${$(this).attr('data')}`;
             })
         }
