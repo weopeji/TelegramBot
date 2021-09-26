@@ -482,8 +482,8 @@
                         ctx.stroke();
                     };
 
-                    drawCircle('#0E1122', options.lineWidth, 100 / 100);
-                    drawCircle('#4598d1', options.lineWidth, options.percent / 100);
+                    drawCircle('#4598d1', options.lineWidth, 100 / 100);
+                    drawCircle('#0E1122', options.lineWidth, options.percent / 100);
                 }
             }
 
