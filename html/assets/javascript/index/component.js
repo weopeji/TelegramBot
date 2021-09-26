@@ -429,6 +429,7 @@
                 {
                     var template_text = $(`
                         <div class="discret">
+                            <span class="discret_header">Выплаченная сумма</span>
                             <div class="wrappert">
                                 <div class="wrapper">
                                     <div class="container">
@@ -452,7 +453,6 @@
 
                     var canvas = document.createElement('canvas');
                     var span = document.createElement('span');
-                    var validateText = span.className = "validate-bar__parcent-bar";
 
                     span.textContent = options.percent;
 
