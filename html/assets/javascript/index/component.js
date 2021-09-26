@@ -341,7 +341,7 @@
                     `,
                 }
                 var template_text = `
-                    <div class="settingBlock_body_line" data="${element._id}">
+                    <div class="settingBlock_body_line" data="${element.invester}">
                         <span>${i + 1}</span>
                         <span>${element.projectId}</span>
                         <span>${element.invester}</span>
@@ -364,7 +364,7 @@
             //     location.reload();
             // })
 
-            $('.settingBlock_accept').click( function () {
+            $('.settingBlock_body_line').click( function () {
                 location.href = `/?page=activ_projects&id=${$(this).attr('data')}`;
             })
         }
@@ -471,13 +471,8 @@
             `);
 
             _data.forEach(function(element, i) {
-                var _status = {
-                    "wait": `
-                        
-                    `,
-                }
                 var template_text = `
-                    <div class="settingBlock_body_line" data="${element.invester}">
+                    <div class="settingBlock_body_line" data="${element._id}">
                         <span>${i + 1}</span>
                         <span>${element._id}</span>
                         <span>${element.data.name}</span>
@@ -488,8 +483,8 @@
                 settingBlock.find('.settingBlock_body').append(template_text);
             })
             
-            $('.settingBlock_accept').click( function() {
-                 location.href = `/?page=myProjects&id=${$(this).attr('data')}`;
+            $('.settingBlock_body_line').click( function() {
+                location.href = `/?page=myProjects&id=${$(this).attr('data')}`;
             })
 
             $('.index_page_body_data').append(settingBlock);
