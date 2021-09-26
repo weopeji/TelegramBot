@@ -368,6 +368,59 @@
                 location.href = `/?page=activ_projects&id=${$(this).attr('data')}`;
             })
         }
+    }
+
+    class myProjects
+    {
+        constructor() {};
+
+        async render(data_rt) 
+        {
+
+            var _data = await callApi({
+                methodName: "getAllProjectsBusiness",
+                data: data_rt._id,
+            });
+
+            console.log(_data);
+
+            var settingBlock = $(`
+                <div class="settingBlock">
+                    <div class="settingBlock_header">
+                        <p>Доступные проекты</p>
+                        <div class="settingBlock_header_line">
+                            <span>#</span>
+                            <span>Номер проекта</span>
+                            <span>Название</span>
+                            <span>Кнопка</span>
+                        </div>
+                    </div>
+                    <div class="settingBlock_body">
+
+                    </div>
+                </div>
+            `);
+
+            _data.forEach(function(element, i) {
+                var template_text = `
+                    <div class="settingBlock_body_line" data="${element._id}">
+                        <span>${i + 1}</span>
+                        <span>${element._id}</span>
+                        <span>${element.data.name}</span>
+                        <span><span class="settingBlock_wait settingBlock_block settingBlock_accept" data="${element._id}">Открыть</span></span>
+                    </div>
+                `;
+
+                settingBlock.find('.settingBlock_body').append(template_text);
+            })
+
+            $('.index_page_body_data').append(settingBlock);
+
+            $('.settingBlock_body_line').click( function() {
+                location.href = `/?page=myProjects&id=${$(this).attr('data')}`;
+            })
+        }
+
 
         async renderType()
         {
@@ -436,58 +489,6 @@
                 charts[key]();
             }
             
-        }
-    }
-
-    class myProjects
-    {
-        constructor() {};
-
-        async render(data_rt) 
-        {
-
-            var _data = await callApi({
-                methodName: "getAllProjectsBusiness",
-                data: data_rt._id,
-            });
-
-            console.log(_data);
-
-            var settingBlock = $(`
-                <div class="settingBlock">
-                    <div class="settingBlock_header">
-                        <p>Доступные проекты</p>
-                        <div class="settingBlock_header_line">
-                            <span>#</span>
-                            <span>Номер проекта</span>
-                            <span>Название</span>
-                            <span>Кнопка</span>
-                        </div>
-                    </div>
-                    <div class="settingBlock_body">
-
-                    </div>
-                </div>
-            `);
-
-            _data.forEach(function(element, i) {
-                var template_text = `
-                    <div class="settingBlock_body_line" data="${element._id}">
-                        <span>${i + 1}</span>
-                        <span>${element._id}</span>
-                        <span>${element.data.name}</span>
-                        <span><span class="settingBlock_wait settingBlock_block settingBlock_accept" data="${element._id}">Открыть</span></span>
-                    </div>
-                `;
-
-                settingBlock.find('.settingBlock_body').append(template_text);
-            })
-
-            $('.index_page_body_data').append(settingBlock);
-
-            $('.settingBlock_body_line').click( function() {
-                location.href = `/?page=myProjects&id=${$(this).attr('data')}`;
-            })
         }
     }
 
