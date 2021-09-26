@@ -424,6 +424,14 @@
 
         async renderType()
         {
+            var _header = $(`
+                <div class="info_block_project">
+                    <span>43</span>
+                </div>
+            `);
+
+            $('.index_page_body_data').append(_header);
+
             var charts = {
                 first_chart: function() 
                 {
