@@ -191,7 +191,7 @@ async function active_statistik(msg)
                 [
                     {
                         text: 'Перейти',
-                        url: `${h.getURL()}?user=${_User.id}&page=activ_projects`,
+                        url: `${h.getURL()}?user=${_User.id}&page=myProjects`,
                     },
                 ]
             ],

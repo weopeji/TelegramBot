@@ -88,7 +88,7 @@
             var settingBlock = $(`
                 <div class="settingBlock">
                     <div class="settingBlock_header">
-                        <p>Статистика</p>
+                        <p>История оплат</p>
                         <div class="settingBlock_header_line">
                             <span>#</span>
                             <span>Номер проекта</span>
@@ -401,13 +401,17 @@
                     </div>
                 `,
                 "business": `
+                    <div class="index_page_menu_block_line" data="myProjects">
+                        <i class="fal fa-check-square"></i>
+                        <span>Мои проекты</span>
+                    </div>
                     <div class="index_page_menu_block_line" data="acceptPays">
                         <i class="fal fa-check-square"></i>
                         <span>Получение</span>
                     </div>
                     <div class="index_page_menu_block_line" data="activ_projects">
                         <i class="fal fa-chart-line"></i>
-                        <span>Статистика</span>
+                        <span>История</span>
                     </div>
                     <div class="index_page_menu_block_line" data="pay_investors">
                         <i class="fal fa-money-check-alt"></i>
