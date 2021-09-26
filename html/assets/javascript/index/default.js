@@ -9,9 +9,9 @@
 
     async function Main()
     {
-        var pageID = _GET('page');
-        var userID = _GET('user');
-        var token = _getCookie('token');
+        var pageID      = _GET('page');
+        var userID      = _GET('user');
+        var token       = _getCookie('token');
 
         if(!userID) {
             if(!token) {

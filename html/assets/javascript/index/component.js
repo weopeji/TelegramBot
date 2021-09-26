@@ -374,10 +374,12 @@
     {
         constructor() {};
 
-        async render() {
+        async render(data) 
+        {
+
             var _data = await callApi({
-                methodName: "notAcceptInvesting",
-                data: _id,
+                methodName: "getAllProjectsBusiness",
+                data: data._id,
             });
 
             console.log(_data);

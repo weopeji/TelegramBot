@@ -83,6 +83,13 @@ var action_linker = {
     "getUserForId": getUserForId,
     "acceptInvestor": acceptInvestor,
     "invester_status_project": invester_status_project,
+    "getAllProjectsBusiness": getAllProjectsBusiness,
+}
+
+async function getAllProjectsBusiness(socket, data, callback)
+{
+    var _Projects = await Project.find({user: data});
+    callback(_Projects);
 }
 
 async function invester_status_project(socket,data,callback)
