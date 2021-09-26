@@ -371,7 +371,11 @@
 
         async renderType()
         {
-            
+            var template_text = $(`
+                    
+            `);
+
+            $('.index_page_body_data').append(template_text);
         }
     }
 
