@@ -446,7 +446,7 @@
                     var options = {
                         percent: el.getAttribute('data-percent') || 25,
                         size: el.getAttribute('data-size') || 220,
-                        lineWidth: el.getAttribute('data-line') || 15,
+                        lineWidth: el.getAttribute('data-line') || 10,
                         rotate: el.getAttribute('data-rotate') || 0
                     }
 

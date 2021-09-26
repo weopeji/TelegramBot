@@ -542,6 +542,10 @@ html, body {
   border-radius: 3px;
 }
 
+.discret canvas {
+  width: 43%;
+}
+
 #validate-bar__parcent-bar {
   font-weight: 100;
   font-size: 52px;
