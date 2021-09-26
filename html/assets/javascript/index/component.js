@@ -320,7 +320,7 @@
             var settingBlock = $(`
                 <div class="settingBlock">
                     <div class="settingBlock_header">
-                        <p>Не подтвержденные проекты</p>
+                        <p>Не подтвержденные оплаты</p>
                         <div class="settingBlock_header_line">
                             <span>#</span>
                             <span>Номер проекта</span>
