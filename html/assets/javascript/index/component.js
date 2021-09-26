@@ -428,7 +428,7 @@
                 first_chart: function() 
                 {
                     var template_text = $(`
-                        div class="wrappert">
+                        <div class="wrappert">
                             <div class="wrapper">
                                 <div class="container">
                                     <div id="validate-bar__parcent-bar" data-percent="77"></div>
