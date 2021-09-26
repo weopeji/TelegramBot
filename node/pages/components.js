@@ -88,9 +88,9 @@ var action_linker = {
 
 async function getAllProjectsBusiness(socket, data, callback)
 {
-    console.log(data);
-    var _Projects = await Project.find({user: data});
-    console.log(_Projects);
+    var _User       = await User.findOne({_id: data});
+    var _Projects   = await Project.find({user: _User.user});
+
     callback(_Projects);
 }
 
