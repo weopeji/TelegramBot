@@ -387,11 +387,11 @@
             var settingBlock = $(`
                 <div class="settingBlock">
                     <div class="settingBlock_header">
-                        <p>Не подтвержденные проекты</p>
+                        <p>Доступные проекты</p>
                         <div class="settingBlock_header_line">
                             <span>#</span>
                             <span>Номер проекта</span>
-                            <span>Инвестор ID</span>
+                            <span>Название</span>
                             <span>Кнопка</span>
                         </div>
                     </div>
@@ -404,15 +404,15 @@
             _data.forEach(function(element, i) {
                 var _status = {
                     "wait": `
-                        <span class="settingBlock_wait settingBlock_block settingBlock_accept" data="${element.invester}">Открыть</span>
+                        
                     `,
                 }
                 var template_text = `
                     <div class="settingBlock_body_line" data="${element.invester}">
                         <span>${i + 1}</span>
-                        <span>${element.projectId}</span>
-                        <span>${element.invester}</span>
-                        <span>${_status[element.status]}</span>
+                        <span>${element._id}</span>
+                        <span>${element.data.name}</span>
+                        <span><span class="settingBlock_wait settingBlock_block settingBlock_accept" data="${element._id}">Открыть</span></span>
                     </div>
                 `;
 
