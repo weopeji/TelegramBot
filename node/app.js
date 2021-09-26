@@ -172,30 +172,56 @@ bot.on("callback_query", function(callbackQuery)
 
 bot.onText(/\/start (.+)/, async (msg, match) => 
 {
-    console.log(msg);
-    console.log(match);
-
     const resp      = match[1];
     var _idProject  = resp.split('_')[1];
-    var needProject = await Project.findOne({_id: _idProject});
-    //var html        = `<strong>Инвестиция в проект: ${_idProject}</strong>\n\nСледуйте инструкциям и отправляйте в чат нужные документы и сведения. Вы в любой момент можете вернуться и изменить любые данные.`;
-    var html = `Выбран проект: ${_idProject}\n[Профиль компании](${helper_functions.getURL()}html/project/profil/#${needProject._id})\n[Презентация](${helper_functions.getURL()}/projects/${needProject._id}/${needProject.data["file+7"]})\n[Видео презентация](${helper_functions.getURL()}/projects/${needProject._id}/${needProject.data["file+8"]})`;
-    const stream    = fs.createReadStream(`../projects/${_idProject}/logo.png`);
     var _array      = [];
 
-    var fat = await bot.sendPhoto(msg.chat.id, stream, {
-        "caption": html,
-        "parse_mode": "MarkdownV2",
-        "reply_markup": {
-            "resize_keyboard": true,
-            "keyboard": [["💰 Мои инвестиции", "📈 Инвестировать", "💳 Реквезиты"], ["👨‍💼 Рекомендовать","🔁 Сменить роль"]],
-        }
-    });
-    _array.push(fat.message_id);
+    if(resp.split('_')[0] == "member") 
+    {
+        var html = `Чтобы рекомендовать проект и закрепить за собой инвестора\nВам нужно поделится личной ссылкой:\nИли переслать сообщение ниже`;
 
-    await h.DMA(msg, _array);
+        await bot.sendMessage(msg.chat.id, html, 
+        {
+            parse_mode: "HTML",
+        });
 
-    await User.findOneAndUpdate({user: needProject.user}, {putProject: _idProject});
+        var needProject = await Project.findOne({_id: _idProject});
+        //var html        = `<strong>Инвестиция в проект: ${_idProject}</strong>\n\nСледуйте инструкциям и отправляйте в чат нужные документы и сведения. Вы в любой момент можете вернуться и изменить любые данные.`;
+        var html = `Выбран проект: ${_idProject}\n[Профиль компании](${helper_functions.getURL()}html/project/profil/#${needProject._id})\n[Презентация](${helper_functions.getURL()}/projects/${needProject._id}/${needProject.data["file+7"]})\n[Видео презентация](${helper_functions.getURL()}/projects/${needProject._id}/${needProject.data["file+8"]})`;
+        const stream    = fs.createReadStream(`../projects/${_idProject}/logo.png`);
+    
+        var fat = await bot.sendPhoto(msg.chat.id, stream, {
+            "caption": html,
+            "parse_mode": "MarkdownV2",
+            "reply_markup": {
+                "resize_keyboard": true,
+                "keyboard": [["💰 Мои инвестиции", "📈 Инвестировать", "💳 Реквезиты"], ["👨‍💼 Рекомендовать","🔁 Сменить роль"]],
+            }
+        });
+        _array.push(fat.message_id);
+    
+        await h.DMA(msg, _array);
+    } else 
+    {
+        var needProject = await Project.findOne({_id: _idProject});
+        //var html        = `<strong>Инвестиция в проект: ${_idProject}</strong>\n\nСледуйте инструкциям и отправляйте в чат нужные документы и сведения. Вы в любой момент можете вернуться и изменить любые данные.`;
+        var html = `Выбран проект: ${_idProject}\n[Профиль компании](${helper_functions.getURL()}html/project/profil/#${needProject._id})\n[Презентация](${helper_functions.getURL()}/projects/${needProject._id}/${needProject.data["file+7"]})\n[Видео презентация](${helper_functions.getURL()}/projects/${needProject._id}/${needProject.data["file+8"]})`;
+        const stream    = fs.createReadStream(`../projects/${_idProject}/logo.png`);
+    
+        var fat = await bot.sendPhoto(msg.chat.id, stream, {
+            "caption": html,
+            "parse_mode": "MarkdownV2",
+            "reply_markup": {
+                "resize_keyboard": true,
+                "keyboard": [["💰 Мои инвестиции", "📈 Инвестировать", "💳 Реквезиты"], ["👨‍💼 Рекомендовать","🔁 Сменить роль"]],
+            }
+        });
+        _array.push(fat.message_id);
+    
+        await h.DMA(msg, _array);
+    
+        await User.findOneAndUpdate({user: needProject.user}, {putProject: _idProject});
+    }
 });
 
 bot.on('message', async (msg) => 
