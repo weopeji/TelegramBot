@@ -54,7 +54,13 @@
                 "acceptPays": function() {acceptPays.render(global.allData)},
                 "chats": function() {chats.render(global.allData)},
                 "pay_investors": function() {pay_investors.render(global.allData)},
-                "myProjects": function() {myProjects.render(global.allData)},
+                "myProjects": function() {
+                    if(!_GET('id')) {
+                        myProjects.render(global.allData)
+                    } else {
+                        myProjects.renderType(global.allData)
+                    }
+                },
             }
 
             renderPage[pageID]();

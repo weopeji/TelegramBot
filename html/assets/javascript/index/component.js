@@ -368,6 +368,11 @@
                 location.href = `/?page=activ_projects&id=${$(this).attr('data')}`;
             })
         }
+
+        async renderType()
+        {
+            
+        }
     }
 
     class myProjects
@@ -417,6 +422,10 @@
                 `;
 
                 settingBlock.find('.settingBlock_body').append(template_text);
+            })
+            
+            $('.settingBlock_accept').click( function() {
+                 location.href = `/?page=myProjects&id=${$(this).attr('data')}`;
             })
 
             $('.index_page_body_data').append(settingBlock);
