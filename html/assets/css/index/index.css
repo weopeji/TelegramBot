@@ -524,10 +524,20 @@ html, body {
   margin: 20px 0;
   color: #8999CF;
   font-size: 18px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .info_active_block_left_info_line {
   margin-bottom: 7px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.info_active_block_left_info_line span {
+  color: #40486c;
 }
 
 .info_active_block_left_info_line a {
@@ -638,5 +648,6 @@ html, body {
       -ms-flex-align: center;
           align-items: center;
   margin-bottom: 20px;
+  font-size: 23px;
 }
 /*# sourceMappingURL=index.css.map */

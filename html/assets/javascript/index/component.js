@@ -34,23 +34,19 @@
                         <div class="info_active_block_left_info">
                             <div class="info_active_block_left_info_line">
                                 <span>Номер проекта:</span>
-                                <a></a>
+                                <a>${_data.InvDoc.projectId}</a>
                             </div>
                             <div class="info_active_block_left_info_line">
-                                <span>ФИО Инвестора:</span>
-                                <a>${_data.invester.first_name} ${_data.invester.last_name}</a>
+                                <span>Номер инвестора:</span>
+                                <a>1</a>
                             </div>
                             <div class="info_active_block_left_info_line">
-                                <span>Номер инвестора в проекте:</span>
-                                <a></a>
-                            </div>
-                            <div class="info_active_block_left_info_line">
-                                <span>Дата прикрепления чека:</span>
+                                <span>Дата:</span>
                                 <a></a>
                             </div>
                             <div class="info_active_block_left_info_line">
                                 <span>Статус:</span>
-                                <a></a>
+                                <a>${_data.InvDoc.status}</a>
                             </div>
                         </div>
                         <div class="info_active_block_left_buttons">
@@ -541,13 +537,13 @@
                         <i class="fal fa-check-square"></i>
                         <span>Получение</span>
                     </div>
-                    <div class="index_page_menu_block_line" data="activ_projects">
-                        <i class="fal fa-chart-line"></i>
-                        <span>История</span>
-                    </div>
                     <div class="index_page_menu_block_line" data="pay_investors">
                         <i class="fal fa-money-check-alt"></i>
                         <span>Не выплачено</span>
+                    </div>
+                    <div class="index_page_menu_block_line" data="activ_projects">
+                        <i class="fal fa-chart-line"></i>
+                        <span>История</span>
                     </div>
                 `,
             }
