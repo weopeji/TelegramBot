@@ -370,6 +370,57 @@
         }
     }
 
+    class myProjects
+    {
+        constructor() {};
+
+        async render() {
+            var _data = await callApi({
+                methodName: "notAcceptInvesting",
+                data: _id,
+            });
+
+            console.log(_data);
+
+            var settingBlock = $(`
+                <div class="settingBlock">
+                    <div class="settingBlock_header">
+                        <p>Не подтвержденные проекты</p>
+                        <div class="settingBlock_header_line">
+                            <span>#</span>
+                            <span>Номер проекта</span>
+                            <span>Инвестор ID</span>
+                            <span>Кнопка</span>
+                        </div>
+                    </div>
+                    <div class="settingBlock_body">
+
+                    </div>
+                </div>
+            `);
+
+            _data.forEach(function(element, i) {
+                var _status = {
+                    "wait": `
+                        <span class="settingBlock_wait settingBlock_block settingBlock_accept" data="${element.invester}">Открыть</span>
+                    `,
+                }
+                var template_text = `
+                    <div class="settingBlock_body_line" data="${element.invester}">
+                        <span>${i + 1}</span>
+                        <span>${element.projectId}</span>
+                        <span>${element.invester}</span>
+                        <span>${_status[element.status]}</span>
+                    </div>
+                `;
+
+                settingBlock.find('.settingBlock_body').append(template_text);
+            })
+
+            $('.index_page_body_data').append(settingBlock);
+        }
+    }
+
     class user_block 
     {
         constructor() {};
@@ -402,7 +453,7 @@
                 `,
                 "business": `
                     <div class="index_page_menu_block_line" data="myProjects">
-                        <i class="fal fa-check-square"></i>
+                    <i class="fal fa-project-diagram"></i>
                         <span>Мои проекты</span>
                     </div>
                     <div class="index_page_menu_block_line" data="acceptPays">
@@ -489,6 +540,7 @@
             acceptPays,
             user_block,
             chats,
+            myProjects,
         }
     }
 

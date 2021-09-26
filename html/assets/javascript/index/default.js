@@ -36,6 +36,7 @@
             const acceptPays        = new global.Components.acceptPays();
             const chats             = new global.Components.chats();
             const pay_investors     = new global.Components.pay_investors();
+            const myProjects        = new global.Components.myProjects();
 
             var _User = await user_block.render(_id);
             global.allData.User = _User;
@@ -53,6 +54,7 @@
                 "acceptPays": function() {acceptPays.render(global.allData)},
                 "chats": function() {chats.render(global.allData)},
                 "pay_investors": function() {pay_investors.render(global.allData)},
+                "myProjects": function() {myProjects.render(global.allData)},
             }
 
             renderPage[pageID]();
