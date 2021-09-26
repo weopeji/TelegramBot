@@ -535,6 +535,19 @@ html, body {
   font-size: 20px;
 }
 
+.discret {
+  width: 33%;
+  height: 350px;
+  background-color: #182037;
+  border-radius: 3px;
+}
+
+#validate-bar__parcent-bar {
+  font-weight: 100;
+  font-size: 52px;
+  color: #8394C9;
+}
+
 @media (max-width: 500px) {
   .buttons_menu {
     display: block;
