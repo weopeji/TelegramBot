@@ -195,7 +195,7 @@ bot.onText(/\/start (.+)/, async (msg, match) =>
         var html = `[Профиль компании](${helper_functions.getURL()}html/project/profil/#${needProject._id})\n[Презентация](${helper_functions.getURL()}/projects/${needProject._id}/${needProject.data["file+7"]})\n[Видео презентация](${helper_functions.getURL()}/projects/${needProject._id}/${needProject.data["file+8"]})`;
         const stream    = fs.createReadStream(`../projects/${_idProject}/logo.png`);
     
-        var _url = `https://t.me/investER_localhost_bot?start=project_${needProject._id}`;
+        var _url = `https://t.me/investER_localhost_bot?start=adder_${needProject._id}_user_${msg.chat.id}`;
 
         var fat = await bot.sendPhoto(msg.chat.id, stream, {
             "caption": html,
