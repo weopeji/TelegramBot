@@ -160,12 +160,12 @@ html, body {
 
 .body_point {
   width: 100%;
-  background-color: white;
+  background-color: #182037;
   border: 1px solid #edf2f9;
   -webkit-box-shadow: 0px 0px 17px -11px rgba(34, 60, 80, 0.2);
           box-shadow: 0px 0px 17px -11px rgba(34, 60, 80, 0.2);
   margin-bottom: 20px;
-  border-top: 4px solid #2c7be5;
+  border-top: 4px solid #2FA1E8;
 }
 
 .body_point_header {
