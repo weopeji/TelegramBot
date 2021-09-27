@@ -43,7 +43,7 @@ html, body {
 
 .index_page_menu_line {
   width: calc(100% - 35px);
-  padding: 8px 10px;
+  adding: 17px 16px;
   color: #596A9A;
   font-size: 16px;
   display: -webkit-box;
@@ -54,7 +54,6 @@ html, body {
           align-items: center;
   cursor: pointer;
   margin: 0 auto;
-  border-radius: 5px;
   margin-bottom: 10px;
   font-family: Liner;
 }
@@ -69,7 +68,7 @@ html, body {
 
 .index_page_menu_line.selected {
   color: #FDFDFD;
-  background-color: #50565D;
+  background-color: #0E1122;
 }
 
 .index_page_body_row {
