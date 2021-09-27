@@ -27,7 +27,16 @@
             data: _id,
         });
 
+        var getPays = await callApi({
+            methodName: 'getPaysProject',
+            data: _id,
+        });
 
+        var procent = (getPays / need_project.data.attraction_amount) * 100;
+
+        $('.liner_center').css('width', procent);
+
+        $('.cover_block_liner a').html(getPays);
         $('#name').html(need_project.data.name || "Null");
         $('#target').html(need_project.data.target || "Null");
         $('#money').html(need_project.data.attraction_amount || "Null");

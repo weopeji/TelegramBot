@@ -84,6 +84,20 @@ var action_linker = {
     "acceptInvestor": acceptInvestor,
     "invester_status_project": invester_status_project,
     "getAllProjectsBusiness": getAllProjectsBusiness,
+    "getPaysProject": getPaysProject,
+}
+
+async function getPaysProject(socket,data,callback)
+{
+    var _InvDocs    = await InvDoc.find({projectId: data});
+
+    var allPays = 0;
+
+    _InvDocs.forEach(el => {
+        allPays = allPays + Number(el.data.pay);
+    });
+
+    callback(allPays);
 }
 
 async function getAllProjectsBusiness(socket, data, callback)
