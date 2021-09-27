@@ -183,19 +183,31 @@ bot.onText(/\/start (.+)/, async (msg, match) =>
         await bot.sendMessage(msg.chat.id, html, 
         {
             parse_mode: "HTML",
+            "reply_markup": {
+                "resize_keyboard": true,
+                "keyboard": [["💰 Мои инвестиции", "📈 Инвестировать", "💳 Реквезиты"], ["👨‍💼 Рекомендовать","🔁 Сменить роль"]],
+            }
         });
 
         var needProject = await Project.findOne({_id: _idProject});
         //var html        = `<strong>Инвестиция в проект: ${_idProject}</strong>\n\nСледуйте инструкциям и отправляйте в чат нужные документы и сведения. Вы в любой момент можете вернуться и изменить любые данные.`;
-        var html = `Выбран проект: ${_idProject}\n[Профиль компании](${helper_functions.getURL()}html/project/profil/#${needProject._id})\n[Презентация](${helper_functions.getURL()}/projects/${needProject._id}/${needProject.data["file+7"]})\n[Видео презентация](${helper_functions.getURL()}/projects/${needProject._id}/${needProject.data["file+8"]})`;
+        var html = `[Профиль компании](${helper_functions.getURL()}html/project/profil/#${needProject._id})\n[Презентация](${helper_functions.getURL()}/projects/${needProject._id}/${needProject.data["file+7"]})\n[Видео презентация](${helper_functions.getURL()}/projects/${needProject._id}/${needProject.data["file+8"]})`;
         const stream    = fs.createReadStream(`../projects/${_idProject}/logo.png`);
     
+        var _url = `https://t.me/investER_localhost_bot?start=project_${needProject._id}`;
+
         var fat = await bot.sendPhoto(msg.chat.id, stream, {
             "caption": html,
             "parse_mode": "MarkdownV2",
             "reply_markup": {
-                "resize_keyboard": true,
-                "keyboard": [["💰 Мои инвестиции", "📈 Инвестировать", "💳 Реквезиты"], ["👨‍💼 Рекомендовать","🔁 Сменить роль"]],
+                "inline_keyboard": [
+                    [
+                        {
+                            text: "Инвестровать",
+                            url: _url,
+                        }
+                    ]
+                ],
             }
         });
         _array.push(fat.message_id);
