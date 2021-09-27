@@ -346,7 +346,7 @@ async function acceptProject(socket,data,callback)
     await browser.close();
 
     var html = `[Профиль компании](${h.getURL()}html/project/profil/#${_project._id})\n[Презентация](${h.getURL()}/projects/${_project._id}/${_project.data["file+7"]})\n[Видео презентация](${h.getURL()}/projects/${_project._id}/${_project.data["file+8"]})`;
-    var _url = `https://t.me/investER_localhost_bot?start=project_${data}`;
+    
     const stream = fs.createReadStream(`../projects/${data}/logo.png`);
     bot.sendPhoto(-1001205415519, stream, {
         "caption": html,
@@ -355,8 +355,14 @@ async function acceptProject(socket,data,callback)
             "inline_keyboard": [
                 [
                     {
+                        text: "Рекомендовать",
+                        url: `https://t.me/investER_localhost_bot?start=member_${data}`,
+                    }
+                ],
+                [
+                    {
                         text: "Инвестровать",
-                        url: _url,
+                        url: `https://t.me/investER_localhost_bot?start=project_${data}`,
                     }
                 ]
             ],
