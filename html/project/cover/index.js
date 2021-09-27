@@ -32,7 +32,7 @@
             data: _id,
         });
 
-        var procent = (getPays / need_project.data.attraction_amount) * 100;
+        var procent = (getPays / Number(need_project.data.attraction_amount)) * 100;
 
         $('.liner_center').css('width', procent);
 
