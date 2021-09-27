@@ -3,7 +3,7 @@ html, body {
   margin: 0;
   background-color: white;
   font-family: system-ui;
-  background-color: #ECF0F3;
+  background-color: #0E1122;
 }
 
 .index_page {
@@ -16,8 +16,7 @@ html, body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background-color: white;
-  border-bottom: 2px solid #edf2f9;
+  background-color: #131931;
   padding-top: 20px;
   position: relative;
 }
@@ -516,7 +515,7 @@ html, body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #F8FAFB;
+  background-color: #182037;
   color: #ACAEAF;
   padding: 15px 0;
   margin-bottom: 10px;
