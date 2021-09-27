@@ -196,7 +196,7 @@ bot.onText(/\/start (.+)/, async (msg, match) =>
         var html = `[Профиль компании](${helper_functions.getURL()}html/project/profil/#${needProject._id})\n[Презентация](${helper_functions.getURL()}/projects/${needProject._id}/${needProject.data["file+7"]})\n[Видео презентация](${helper_functions.getURL()}/projects/${needProject._id}/${needProject.data["file+8"]})`;
         const stream    = fs.createReadStream(`../projects/${_idProject}/logo.png`);
     
-        var _url = `https://t.me/investER_localhost_bot?start=adder_${needProject._id}_user_${msg.chat.id}`;
+        var _url = `https://t.me/investER_localhost_bot?start=adder_${needProject._id}_user_${msg.from.id}`;
 
         var fat = await bot.sendPhoto(msg.chat.id, stream, {
             "caption": html,
@@ -215,7 +215,16 @@ bot.onText(/\/start (.+)/, async (msg, match) =>
         _array.push(fat.message_id);
     
         await h.DMA(msg, _array);
+    } else if(resp.split('_')[0] == "adder") 
+    {
+        await User.findOneAndUpdate({user: msg.from.id}, {member: resp.split('_')[3]});
+        defaultShowProject();
     } else 
+    {
+        defaultShowProject();
+    }
+
+    async function defaultShowProject()
     {
         var needProject = await Project.findOne({_id: _idProject});
         //var html        = `<strong>Инвестиция в проект: ${_idProject}</strong>\n\nСледуйте инструкциям и отправляйте в чат нужные документы и сведения. Вы в любой момент можете вернуться и изменить любые данные.`;
@@ -234,7 +243,7 @@ bot.onText(/\/start (.+)/, async (msg, match) =>
     
         await h.DMA(msg, _array);
     
-        await User.findOneAndUpdate({user: needProject.user}, {putProject: _idProject});
+        await User.findOneAndUpdate({user: msg.from.id}, {putProject: _idProject});
     }
 });
 
