@@ -43,7 +43,7 @@ html, body {
 
 .index_page_menu_line {
   width: calc(100% - 35px);
-  adding: 17px 16px;
+  padding: 17px 16px;
   color: #596A9A;
   font-size: 16px;
   display: -webkit-box;
