@@ -2,6 +2,7 @@ var bot     = null;
 var User    = null;
 var h       = null;
 var fs      = null;
+var puppeteer                       = require('puppeteer');
 
 module.exports = {
     init:function(initPlagins)
