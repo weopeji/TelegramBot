@@ -178,41 +178,78 @@ bot.onText(/\/start (.+)/, async (msg, match) =>
 
     if(resp.split('_')[0] == "member") 
     {
-        var html = `Чтобы рекомендовать проект и закрепить за собой инвестора\nВам нужно поделится личной ссылкой:\nИли переслать сообщение ниже`;
+        var _project = await Project.findOne({_id: _idProject});
 
-        await bot.sendMessage(msg.chat.id, html, 
-        {
-            parse_mode: "HTML",
-            "reply_markup": {
-                "resize_keyboard": true,
-                "keyboard": [["💰 Мои инвестиции", "📈 Инвестировать", "💳 Реквезиты"], ["👨‍💼 Рекомендовать","🔁 Сменить роль"]],
-            }
+        var _urlImgProject = `${h.getURL()}html/project/cover/?id=${_idProject}`;
+        console.log(_urlImgProject);
+        const browser = await puppeteer.launch({
+            args: ['--no-sandbox', '--disable-setuid-sandbox'],
         });
+        const page = await browser.newPage();
+        await page.goto(_urlImgProject);
+        await page.emulateMedia('screen');
+        const element = await page.$('.cover_block');   
+        await element.screenshot({path: `../projects/${_idProject}/logo.png`});
+        await browser.close();
 
-        var needProject = await Project.findOne({_id: _idProject});
-        //var html        = `<strong>Инвестиция в проект: ${_idProject}</strong>\n\nСледуйте инструкциям и отправляйте в чат нужные документы и сведения. Вы в любой момент можете вернуться и изменить любые данные.`;
-        var html = `[Профиль компании](${helper_functions.getURL()}html/project/profil/#${needProject._id})\n[Презентация](${helper_functions.getURL()}/projects/${needProject._id}/${needProject.data["file+7"]})\n[Видео презентация](${helper_functions.getURL()}/projects/${needProject._id}/${needProject.data["file+8"]})`;
-        const stream    = fs.createReadStream(`../projects/${_idProject}/logo.png`);
-    
-        var _url = `https://t.me/investER_localhost_bot?start=project_${needProject._id}`;
-
-        var fat = await bot.sendPhoto(msg.chat.id, stream, {
+        var html = `[Профиль компании](${h.getURL()}html/project/profil/#${_project._id})\n[Презентация](${h.getURL()}/projects/${_project._id}/${_project.data["file+7"]})\n[Видео презентация](${h.getURL()}/projects/${_project._id}/${_project.data["file+8"]})`;
+        
+        const stream = fs.createReadStream(`../projects/${_idProject}/logo.png`);
+        bot.sendPhoto(-1001205415519, stream, {
             "caption": html,
             "parse_mode": "MarkdownV2",
             "reply_markup": {
                 "inline_keyboard": [
                     [
                         {
+                            text: "Рекомендовать",
+                            url: `https://t.me/investER_localhost_bot?start=member_${_idProject}`,
+                        }
+                    ],
+                    [
+                        {
                             text: "Инвестровать",
-                            url: _url,
+                            url: `https://t.me/investER_localhost_bot?start=project_${_idProject}`,
                         }
                     ]
                 ],
             }
         });
-        _array.push(fat.message_id);
+        // var html = `Чтобы рекомендовать проект и закрепить за собой инвестора\nВам нужно поделится личной ссылкой:\nИли переслать сообщение ниже`;
+
+        // await bot.sendMessage(msg.chat.id, html, 
+        // {
+        //     parse_mode: "HTML",
+        //     "reply_markup": {
+        //         "resize_keyboard": true,
+        //         "keyboard": [["💰 Мои инвестиции", "📈 Инвестировать", "💳 Реквезиты"], ["👨‍💼 Рекомендовать","🔁 Сменить роль"]],
+        //     }
+        // });
+
+        // var needProject = await Project.findOne({_id: _idProject});
+        // //var html        = `<strong>Инвестиция в проект: ${_idProject}</strong>\n\nСледуйте инструкциям и отправляйте в чат нужные документы и сведения. Вы в любой момент можете вернуться и изменить любые данные.`;
+        // var html = `[Профиль компании](${helper_functions.getURL()}html/project/profil/#${needProject._id})\n[Презентация](${helper_functions.getURL()}/projects/${needProject._id}/${needProject.data["file+7"]})\n[Видео презентация](${helper_functions.getURL()}/projects/${needProject._id}/${needProject.data["file+8"]})`;
+        // const stream    = fs.createReadStream(`../projects/${_idProject}/logo.png`);
     
-        await h.DMA(msg, _array);
+        // var _url = `https://t.me/investER_localhost_bot?start=project_${needProject._id}`;
+
+        // var fat = await bot.sendPhoto(msg.chat.id, stream, {
+        //     "caption": html,
+        //     "parse_mode": "MarkdownV2",
+        //     "reply_markup": {
+        //         "inline_keyboard": [
+        //             [
+        //                 {
+        //                     text: "Инвестровать",
+        //                     url: _url,
+        //                 }
+        //             ]
+        //         ],
+        //     }
+        // });
+        // _array.push(fat.message_id);
+    
+        // await h.DMA(msg, _array);
     } else 
     {
         var needProject = await Project.findOne({_id: _idProject});
