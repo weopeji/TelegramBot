@@ -36,7 +36,7 @@
         console.log(getPays);
 
         var _attraction_amount  = need_project.data.attraction_amount;
-        _attraction_amount      = _attraction_amount.trim();
+        _attraction_amount      = _attraction_amount.replace(/\s/g, '');
         var procent             = (getPays / _attraction_amount) * 100;
 
         console.log(_attraction_amount);
