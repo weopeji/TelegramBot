@@ -267,8 +267,8 @@ async function _MainMenu(msg)
             var fat = await bot.sendMessage(msg.chat.id, html, {
                 parse_mode: "HTML",
                 reply_markup: {
+                    "resize_keyboard": true,
                     "keyboard": [["🔗 Моя реферальная ссылка", "🙋‍♂️ Мною привлечено"], ["💳 Реквезиты","🔁 Сменить роль"]],
-                    "one_time_keyboard": true,
                 }
             });
             _array.push(fat.message_id);
