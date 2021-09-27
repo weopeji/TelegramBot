@@ -42,7 +42,7 @@
         console.log(_attraction_amount);
         console.log(procent);
 
-        $('.liner_center').css('width', procent);
+        $('.liner_center').css('width', procent + "%");
 
         $('.cover_block_liner a').html(getPays);
         $('#name').html(need_project.data.name || "Null");
