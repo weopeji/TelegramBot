@@ -226,6 +226,17 @@ bot.onText(/\/start (.+)/, async (msg, match) =>
 
     async function defaultShowProject()
     {
+        var _urlImgProject = `${h.getURL()}html/project/cover/?id=${_idProject}`;
+        const browser = await puppeteer.launch({
+            args: ['--no-sandbox', '--disable-setuid-sandbox'],
+        });
+        const page = await browser.newPage();
+        await page.goto(_urlImgProject);
+        await page.emulateMedia('screen');
+        const element = await page.$('.cover_block');   
+        await element.screenshot({path: `../projects/${_idProject}/logo.png`});
+        await browser.close();
+
         var needProject = await Project.findOne({_id: _idProject});
         //var html        = `<strong>Инвестиция в проект: ${_idProject}</strong>\n\nСледуйте инструкциям и отправляйте в чат нужные документы и сведения. Вы в любой момент можете вернуться и изменить любые данные.`;
         var html = `Выбран проект: ${_idProject}\n[Профиль компании](${helper_functions.getURL()}html/project/profil/#${needProject._id})\n[Презентация](${helper_functions.getURL()}/projects/${needProject._id}/${needProject.data["file+7"]})\n[Видео презентация](${helper_functions.getURL()}/projects/${needProject._id}/${needProject.data["file+8"]})`;
