@@ -175,8 +175,8 @@ html, body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border-bottom: 1px solid #edf2f9;
   margin-bottom: 20px;
+  color: white;
 }
 
 .body_point_header span {
@@ -194,6 +194,7 @@ html, body {
 .body_point_line span {
   font-weight: 600;
   font-size: 15px;
+  color: #fff;
 }
 
 .body_point_line input {
@@ -201,7 +202,7 @@ html, body {
   color: #12263f;
   font-size: .9375rem;
   font-weight: 400;
-  background-color: #F8FAFB;
+  background-color: #0E1122;
   display: block;
   padding: 10px;
   margin-bottom: 20px;
