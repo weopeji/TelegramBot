@@ -632,6 +632,38 @@ html, body {
   display: none;
 }
 
+.signature .index_page_body_header {
+  height: 80px;
+}
+
+.signature .index_page_body_header_user {
+  height: 100%;
+}
+
+.signature .index_page_buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.signature .index_page_buttons span {
+  padding: 7px 20px;
+  margin-right: 20px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.signature .index_page_buttons .clean {
+  background: -webkit-gradient(linear, left top, right top, from(#f94646), color-stop(61%, #d52d2d));
+  background: linear-gradient(90deg, #f94646 0%, #d52d2d 61%);
+}
+
+.signature .index_page_buttons .put {
+  background: -webkit-gradient(linear, left top, right top, from(#8c80fe), color-stop(61%, #594bd3));
+  background: linear-gradient(90deg, #8c80fe 0%, #594bd3 61%);
+}
+
 @media (max-width: 500px) {
   .buttons_menu {
     display: block;
