@@ -785,18 +785,22 @@
     
                 $('.index_page_body_data').append(templateText);
 
-                all_msgs.msgs.forEach(function(el) {
-                    var myBlock = `
-                        <div class="chat_block_chat_body_msgs_line">
-                            <div class="chat_block_chat_body_msgs_line_my">
-                                <span>${el.text}</span>
-                            </div>
-                        </div>
-                    `;
-                    $('.chat_block_chat_body_msgs').append(myBlock);
-                })
-
-                $('.chat_block_chat_body_msgs').animate({scrollTop: $('.chat_block_chat_body_msgs').height()}, 'fast');
+                if(all_msgs.msgs) {
+                    if(all_msgs.msgs.length > 0) {
+                        all_msgs.msgs.forEach(function(el) {
+                            var myBlock = `
+                                <div class="chat_block_chat_body_msgs_line">
+                                    <div class="chat_block_chat_body_msgs_line_my">
+                                        <span>${el.text}</span>
+                                    </div>
+                                </div>
+                            `;
+                            $('.chat_block_chat_body_msgs').append(myBlock);
+                        })
+        
+                        $('.chat_block_chat_body_msgs').animate({scrollTop: $('.chat_block_chat_body_msgs').height()}, 'fast');
+                    }
+                }
             }
 
             var _User = await callApi({
