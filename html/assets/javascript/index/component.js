@@ -738,10 +738,8 @@
     class chats {
         constructor() {};
 
-        async render() {
-
-            var ID = _GET('id');
-
+        async render() 
+        {
             if(ID) {
                 var templateText = `
                     <div class="chat_block">
@@ -772,6 +770,34 @@
                 `;
     
                 $('.index_page_body_data').append(templateText);
+            }
+
+            var _User = await callApi({
+                methodName: "getUserForId",
+                data: _GET('user'),
+            });
+
+            var Project_data = await callApi({
+                methodName: "getProject",
+                data: _GET('id'),
+            });
+
+            var headerShow = {
+                "investor": function() {
+                    $('.chat_block_info span').html(Project_data.data.name);
+                    $('.chat_block_info p').html(Project_data.data.recipient);
+                },
+                "business": function() {
+
+                },
+            }
+
+            if(_User.type == "investor") 
+            {
+
+            } else if(_User.type == "business") 
+            {
+
             }
            
         }
