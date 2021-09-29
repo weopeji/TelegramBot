@@ -749,7 +749,18 @@ async function save_investing(msg) {
     await browser.close();
 
     const stream = fs.createReadStream(`../projects/${_User.putProject}/pdf_document.pdf`);
-    var fat = await bot.sendDocument(msg.from.id, stream);
+    var fat = await bot.sendDocument(msg.from.id, stream, {
+        reply_markup: {
+            "inline_keyboard": [
+                [
+                    {
+                        text: 'Подписать факсимильно',
+                        url: `https://skin-win.ru/?user=${_User._id}&page=signature`,
+                    }
+                ]
+            ],
+        },
+    });
     _array.push(fat.message_id);
 
     await h.DMA(msg, _array);
@@ -768,19 +779,6 @@ async function save_investing(msg) {
     });
     _array.push(fat.message_id);
 
-    var html = `Вы можете воспользоватся факсемильным подписанием документа через сайт, нажав на кнопку ниже`;
-
-    var fat = await h.send_html(msg.from.id, html, {
-        "inline_keyboard": [
-            [
-                {
-                    text: 'Перейти',
-                    url: `https://skin-win.ru/?user=${_User._id}&page=signature`,
-                }
-            ]
-        ],
-    });
-    _array.push(fat.message_id);
 }
 
 async function investing_money(msg) 
