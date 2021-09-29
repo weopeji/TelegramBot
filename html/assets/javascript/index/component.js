@@ -813,6 +813,11 @@
             $('.put').click( function() {
                 window.open(`https://skin-win.ru/html/project/document/#${_GET('id')}`, '_blank');
             });
+
+            $('.accept_signature').click( function() {
+                alert('Документ подписан!');
+                location.href = "/";
+            })
         }
     }
 
