@@ -430,6 +430,15 @@
                 data: _GET('id'),
             });
 
+            var _getPaysProject = await callApi({
+                methodName: "getPaysProject",
+                data: _GET('id'),
+            })
+
+            var _attraction_amount  = Project_data.data.attraction_amount;
+            _attraction_amount      = _attraction_amount.replace(/\s/g, '');
+            var _procent             = (_getPaysProject / _attraction_amount) * 100;
+
             console.log(Project_data);
             console.log(_Invs);
 
@@ -466,7 +475,7 @@
                         percent: el.getAttribute('data-percent') || 0,
                         size: el.getAttribute('data-size') || 220,
                         lineWidth: el.getAttribute('data-line') || 10,
-                        rotate: el.getAttribute('data-rotate') || 0
+                        rotate: el.getAttribute('data-rotate') || _procent
                     }
 
                     var canvas = document.createElement('canvas');
