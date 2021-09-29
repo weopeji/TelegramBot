@@ -793,7 +793,18 @@
             }
 
             headerShow[_User.type]();
-           
+
+            $('.chat_block_chat_body_row_input span').click( function() {
+                await callApi({
+                    methodName: "msgUP",
+                    data: {
+                        user: _GET('user'),
+                        to: _GET('id'),
+                        type: _User.type,
+                        msg: $('.chat_block_chat_body_row_input input').val(),
+                    },
+                });
+            });
         }
     }
 

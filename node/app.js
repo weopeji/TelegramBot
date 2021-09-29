@@ -23,6 +23,7 @@ const _data                         = require('./data.js');
 const User                          = mongoose.model('User');
 const Project                       = mongoose.model('Project');
 const InvDoc                        = mongoose.model('InvDoc');
+const MsgDB                         = mongoose.model('Msg');
 
 var bot                             = null;
 var helper_functions                = null;
@@ -147,6 +148,7 @@ var load_helpers = () =>
             bot: bot,
             helper_functions: helper_functions,
             InvDoc: InvDoc,
+            MsgDB: MsgDB,
         });
     };
 }

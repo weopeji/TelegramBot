@@ -40,6 +40,7 @@ function privateInit(initPlagins) {
     bot         = initPlagins.bot;
     h           = initPlagins.helper_functions;
     InvDoc      = initPlagins.InvDoc;
+    MsgDB       = initPlagins.MsgDB;
 }
 
 var privat_index_page = function(socket,data,callback) {
@@ -86,6 +87,42 @@ var action_linker = {
     "getAllProjectsBusiness": getAllProjectsBusiness,
     "getPaysProject": getPaysProject,
     "removePayInvestor": removePayInvestor,
+    "msgUP": msgUP,
+}
+
+async function msgUP(socket,data,callback)
+{
+    var funs = {
+        "investor": function() 
+        {
+            var _MsgDB = await MsgDB.findOne({investor: data.user});
+            if(!_MsgDB) {
+                var _array  = [];
+                _array.push({
+                    text: data.msg,
+                    type: data.type,
+                })
+                await MsgDB.create(
+                    {
+                        investor: data.user,
+                        business: data.to,
+                        msgs: _array,
+                    });
+            } else {
+                var _array = _MsgDB.msgs;
+                _array.push({
+                    text: data.msg,
+                    type: data.type,
+                })
+                await MsgDB.findOneAndUpdate(
+                    {
+                        msgs: _array,
+                    });
+            }
+        }
+    }
+
+    funs[data.type]();
 }
 
 async function removePayInvestor(socket,data,callback)
