@@ -822,7 +822,7 @@
             headerShow[_User.type]();
 
             $('.chat_block_chat_body_row_input input').focus( async function() {
-                $(window).keyup(function(event){
+                $(window).keyup(async function(event){
                     if(event.keyCode == 13) {
                         event.preventDefault();
                         var myBlock = `
