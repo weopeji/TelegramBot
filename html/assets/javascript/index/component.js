@@ -72,7 +72,7 @@
             $('.index_page_body_data').append(settingBlock);
 
             $('.show_block').click( function() {
-                location.href = `./users/${_data.invester.user}/${_data.InvDoc.receipt}`;
+                location.href = `./projects/${_data.InvDoc.receipt}`;
             })
         }
 
