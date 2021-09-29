@@ -442,6 +442,14 @@
             console.log(Project_data);
             console.log(_Invs);
 
+            var initialDate = Project_data.data.collection_period;
+            var now = Date.now();
+            var difference = now - initialDate;
+            var millisecondsPerDay = 24 * 60 * 60 * 1000;
+            var daysSince = Math.floor(difference / millisecondsPerDay);
+            
+            console.log(daysSince);
+
 
             var _header = $(`
                 <div class="info_block_project">
@@ -518,7 +526,7 @@
                 {
                     var template_text = $(`
                         <div class="discret">
-                            <span class="discret_header">Выплаченная сумма2</span>
+                            <span class="discret_header">Оставшееся время</span>
                             <div class="wrappert">
                                 <div class="wrapper">
                                     <div class="container">
