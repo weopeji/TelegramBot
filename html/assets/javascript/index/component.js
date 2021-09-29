@@ -611,7 +611,8 @@
     {
         constructor() {};
 
-        async render() {
+        async render() 
+        {
             $('.index_page').addClass('signature');
 
             var _body = $(`
@@ -623,7 +624,8 @@
                         </div>
                         <div class="index_page_buttons">
                             <span class="clean">Очистить</span>
-                            <span class="put">Посмотреть подписаемый документ<i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+                            <span class="put">Посмотреть подписываемый документ<i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+                            <span class="accept_signature">Отправить</span>
                         </div>
                     </div>
                 </div>

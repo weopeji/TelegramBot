@@ -664,6 +664,11 @@ html, body {
   background: linear-gradient(90deg, #8c80fe 0%, #594bd3 61%);
 }
 
+.signature .index_page_buttons .accept_signature {
+  background: -webkit-gradient(linear, left top, right top, from(#13aaf9), color-stop(61%, #1484fd));
+  background: linear-gradient(90deg, #13aaf9 0%, #1484fd 61%);
+}
+
 @media (max-width: 500px) {
   .buttons_menu {
     display: block;
