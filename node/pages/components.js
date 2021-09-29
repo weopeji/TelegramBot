@@ -139,11 +139,6 @@ async function notAcceptInvesting(socket,data,callback)
     var _arrayAllInvs   = [];
     var trueInvs        = [];
 
-    console.log('_arrayProjects' + _arrayProjects);
-    console.log('allInv' + allInv);
-    console.log('_arrayAllInvs' + _arrayAllInvs);
-    console.log('trueInvs' + trueInvs);
-
     allProjects.forEach(function(project) {
         _arrayProjects.push(project._id);
     });
@@ -174,6 +169,11 @@ async function notAcceptInvesting(socket,data,callback)
                 }
             }
         });
+
+        console.log('_arrayProjects' + _arrayProjects);
+        console.log('allInv' + allInv);
+        console.log('_arrayAllInvs' + _arrayAllInvs);
+        console.log('trueInvs' + trueInvs);
 
         callback(trueInvs);
     });
