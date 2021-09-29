@@ -93,7 +93,7 @@ var action_linker = {
 async function msgUP(socket,data,callback)
 {
     var funs = {
-        "investor": function() 
+        "investor": async function() 
         {
             var _MsgDB = await MsgDB.findOne({investor: data.user});
             if(!_MsgDB) {
