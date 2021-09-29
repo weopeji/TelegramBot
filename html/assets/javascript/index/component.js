@@ -88,6 +88,16 @@
                 alert('Оплата подтвержденна!');
                 location.reload();
             })
+
+            $('.remove_block').click( async function () {
+                var acceptInvestor = await callApi({
+                    methodName: "removePayInvestor",
+                    data: _data.invester.user,
+                });
+
+                alert('Отказано!');
+                location.reload();
+            })
         }
 
         async render(allData) 

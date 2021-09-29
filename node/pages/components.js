@@ -85,6 +85,13 @@ var action_linker = {
     "invester_status_project": invester_status_project,
     "getAllProjectsBusiness": getAllProjectsBusiness,
     "getPaysProject": getPaysProject,
+    "removePayInvestor": removePayInvestor,
+}
+
+async function removePayInvestor(socket,data,callback)
+{
+    await InvDoc.deleteOne({invester: data});
+    callback();
 }
 
 async function getPaysProject(socket,data,callback)
