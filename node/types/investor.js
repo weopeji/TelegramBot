@@ -737,6 +737,17 @@ async function save_investing(msg) {
     var _array      = [];
     var _User       = await User.findOne({user: msg.from.id});
 
+    
+    var html = `Вы должны ознакомится с договором, подписать его и отправить ответным сообщением в бот!`;
+
+    var fat = await h.send_html(msg.from.id, html, {
+        "resize_keyboard": true,
+        "keyboard": [ 
+            ["⬅️ Назад"]
+        ],
+    });
+    _array.push(fat.message_id);
+
     var _urlImgProject = `${h.getURL()}html/project/document/#${_User.putProject}`;
     const browser = await puppeteer.launch({
         args: ['--no-sandbox', '--disable-setuid-sandbox'],
@@ -768,17 +779,6 @@ async function save_investing(msg) {
     await User.findOneAndUpdate({user: msg.from.id}, {where: {
         type: "document_load",
     }})
-
-    var html = `Вы должны ознакомится с договором, подписать его и отправить ответным сообщением в бот!`;
-
-    var fat = await h.send_html(msg.from.id, html, {
-        "resize_keyboard": true,
-        "keyboard": [ 
-            ["⬅️ Назад"]
-        ],
-    });
-    _array.push(fat.message_id);
-
 }
 
 async function investing_money(msg) 
