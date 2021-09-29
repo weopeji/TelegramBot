@@ -157,6 +157,8 @@ async function notAcceptInvesting(socket,data,callback)
         
         var _arrayAllInvs = [];
 
+        console.log(_arrayAllInvs);
+
         allInv.forEach(el => {
             el.forEach(el2 => {
                 _arrayAllInvs.push(el2);
