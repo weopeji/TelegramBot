@@ -47,3 +47,42 @@ canvas {
     bottom: 12px;
 }
   
+
+#validate-bar__parcent-bar2 {
+    color: #4598d1;
+    display: block;
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 60px;
+    margin-left: 5px;
+    font-weight: bold;
+    color: #4598d1;
+}
+  
+#validate-bar__parcent-bar2::after {
+    content: '%';
+    font-size: 20px;
+    position: relative;
+    color: #4598d1;
+    bottom: 12px;
+}
+
+
+#validate-bar__parcent-bar3 {
+    color: #4598d1;
+    display: block;
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 60px;
+    margin-left: 5px;
+    font-weight: bold;
+    color: #4598d1;
+}
+  
+#validate-bar__parcent-bar3::after {
+    content: '%';
+    font-size: 20px;
+    position: relative;
+    color: #4598d1;
+    bottom: 12px;
+}
