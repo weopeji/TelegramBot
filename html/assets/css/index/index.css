@@ -602,6 +602,12 @@ html, body {
           align-items: center;
 }
 
+.signature_canvas canvas {
+  position: relative;
+  width: auto;
+  background-color: white;
+}
+
 .signature .index_page_menu {
   display: none;
 }

@@ -617,6 +617,7 @@
             var _body = $(`
                 <div class="signature_canvas">
                     <div class="signature_canvas_row">
+                        <span>Подпишите документ</span>
                         <div class="row_canvas">
                             <canvas width="700" height="400"></canvas>
                         </div>
