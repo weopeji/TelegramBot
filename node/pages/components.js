@@ -88,6 +88,13 @@ var action_linker = {
     "getPaysProject": getPaysProject,
     "removePayInvestor": removePayInvestor,
     "msgUP": msgUP,
+    "all_msgs": all_msgs,
+}
+
+async function all_msgs(socket,data,callback)
+{
+    var _MsgDB = await MsgDB.findOne({investor: data.user, business: data.to});
+    callback(_MsgDB);
 }
 
 async function msgUP(socket,data,callback)

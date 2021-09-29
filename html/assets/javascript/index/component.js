@@ -741,6 +741,18 @@
         async render() 
         {
             if(_GET('id')) {
+
+                var all_msgs = await callApi({
+                    methodName: "all_msgs",
+                    data: {
+                        user: _GET('user'),
+                        to: _GET('id'),
+                    },
+                });
+
+                console.log(all_msgs);
+
+
                 var templateText = `
                     <div class="chat_block">
                         <div class="chat_block_chat">
