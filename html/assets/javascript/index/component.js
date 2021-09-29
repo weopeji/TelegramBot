@@ -794,7 +794,7 @@
 
             headerShow[_User.type]();
 
-            $('.chat_block_chat_body_row_input span').click( function() {
+            $('.chat_block_chat_body_row_input span').click( async function() {
                 await callApi({
                     methodName: "msgUP",
                     data: {
