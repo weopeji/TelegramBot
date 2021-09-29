@@ -445,9 +445,9 @@
 
             var _header = $(`
                 <div class="info_block_project">
-                    <span>№${Project_data._id}</span>
-                    <span>№${Project_data.data.name}</span>
-                    <span>№${Project_data.type}</span>
+                    <span>№ ${Project_data._id}</span>
+                    <span>${Project_data.data.name}</span>
+                    <span>${Project_data.type}</span>
                 </div>
             `);
 
