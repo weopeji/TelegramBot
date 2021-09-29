@@ -404,8 +404,10 @@ async function recomendations(msg)
     var fat = await bot.sendMessage(msg.chat.id, html, {
         parse_mode: "Markdown",
         reply_markup: {                                                                     
-            "resize_keyboard": true, 
-            "keyboard": [["Реквизиты", "Мной привлечено"],["Вознаграждение по проектам", "⬅️ Назад"]],
+            inline_keyboard: [[{
+                text: 'Share with your friends',
+                switch_inline_query: 'share'
+            }]]
         }
     });
     _array.push(fat.message_id);
