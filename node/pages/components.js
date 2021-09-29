@@ -135,12 +135,18 @@ async function notAcceptInvesting(socket,data,callback)
     var allProjects     = await Project.find({user: _User.user});
 
     var _arrayProjects  = [];
+    var allInv          = [];
+    var _arrayAllInvs   = [];
+    var trueInvs        = [];
+
+    console.log('_arrayProjects' + _arrayProjects);
+    console.log('allInv' + allInv);
+    console.log('_arrayAllInvs' + _arrayAllInvs);
+    console.log('trueInvs' + trueInvs);
 
     allProjects.forEach(function(project) {
         _arrayProjects.push(project._id);
     });
-
-    var allInv = [];
 
     var bar = new Promise((resolve, reject) => {
         _arrayProjects.forEach(async (value, index, array) => {
@@ -155,17 +161,11 @@ async function notAcceptInvesting(socket,data,callback)
     
     bar.then(async () => {
         
-        var _arrayAllInvs = [];
-
-        
-
         allInv.forEach(el => {
             el.forEach(el2 => {
                 _arrayAllInvs.push(el2);
             })
         });
-
-        var trueInvs    = [];
 
         _arrayAllInvs.forEach(element => {
             if(element.receipt) {
@@ -174,9 +174,6 @@ async function notAcceptInvesting(socket,data,callback)
                 }
             }
         });
-
-        console.log(_arrayAllInvs);
-        console.log(trueInvs);
 
         callback(trueInvs);
     });
