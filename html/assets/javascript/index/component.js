@@ -785,7 +785,7 @@
     
                 $('.index_page_body_data').append(templateText);
 
-                if(all_msgs.msgs) {
+                if(typeof all_msgs.msgs != 'null') {
                     if(all_msgs.msgs.length > 0) {
                         all_msgs.msgs.forEach(function(el) {
                             var myBlock = `
