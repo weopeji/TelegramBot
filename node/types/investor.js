@@ -737,7 +737,7 @@ async function save_investing(msg) {
     var _array      = [];
     var _User       = await User.findOne({user: msg.from.id});
 
-    var html = `Вы должны ознакомится с договором, подписать его и отправить ответным сообщением в бот`;
+    var html = `Вы должны ознакомится с договором, подписать его и отправить ответным сообщением в бот!`;
 
     var fat = await h.send_html(msg.from.id, html, {
         "resize_keyboard": true,
