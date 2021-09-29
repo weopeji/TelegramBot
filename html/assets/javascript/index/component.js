@@ -831,8 +831,6 @@
 
                 $('.chat_block_chat_body_msgs').append(myBlock);
 
-                $('.chat_block_chat_body_row_input input').val('');
-
                 await callApi({
                     methodName: "msgUP",
                     data: {
@@ -842,6 +840,8 @@
                         msg: $('.chat_block_chat_body_row_input input').val(),
                     },
                 });
+
+                $('.chat_block_chat_body_row_input input').val('');
             });
         }
     }
