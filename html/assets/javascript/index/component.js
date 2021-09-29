@@ -795,6 +795,8 @@
                     `;
                     $('.chat_block_chat_body_msgs').append(myBlock);
                 })
+
+                $('.chat_block_chat_body_msgs').animate({scrollTop: $('.chat_block_chat_body_msgs').height()}, 'fast');
             }
 
             var _User = await callApi({
