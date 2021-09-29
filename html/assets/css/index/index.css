@@ -588,6 +588,14 @@ html, body {
   font-size: 20px;
 }
 
+.signature .index_page_menu {
+  display: none;
+}
+
+.signature .index_page_body_header_info {
+  display: none;
+}
+
 @media (max-width: 500px) {
   .buttons_menu {
     display: block;
