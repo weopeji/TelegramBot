@@ -390,7 +390,7 @@ async function recomendations(msg)
     });
     _array.push(fat.message_id);
 
-    var html = '\nДля это просто перешлите любое предложение из [КАНАЛА](https://t.me/investER_localhost_bot) или  вашу [ПЕРСОНАЛЬНУЮ ССЫЛКУ](https://t.me/investER_localhost_bot) вашему другу\n\nВаша ПЕРСОНАЛЬНАЯ ссылка';
+    var html = '\nДля это просто перешлите любое предложение из [КАНАЛА](https://t.me/investER_localhost_bot) или  вашу [ПЕРСОНАЛЬНУЮ ССЫЛКУ](https://t.me/investER_localhost_bot) вашему другу\n\nВаша ПЕРСОНАЛЬНАЯ ссылка ⬇️';
     var fat = await bot.sendMessage(msg.chat.id, html, {
         parse_mode: "Markdown",
         reply_markup: {                                                                     
