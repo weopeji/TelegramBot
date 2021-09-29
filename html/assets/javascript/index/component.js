@@ -447,7 +447,7 @@
             var difference = now - initialDate;
             var millisecondsPerDay = 24 * 60 * 60 * 1000;
             var daysSince = Math.floor(difference / millisecondsPerDay);
-            
+
             console.log(daysSince);
 
 
@@ -585,7 +585,7 @@
                 thirds: function () {
                     var template_text = $(`
                         <div class="discret">
-                            <span class="discret_header">Выплаченная сумма2</span>
+                            <span class="discret_header">Выплаченно инвесторам</span>
                             <div class="wrappert">
                                 <div class="wrapper">
                                     <div class="container">
@@ -601,7 +601,7 @@
                     var el = document.getElementById('validate-bar__parcent-bar3');
 
                     var options = {
-                        percent: el.getAttribute('data-percent') || 0,
+                        percent: el.getAttribute('data-percent') || 100,
                         size: el.getAttribute('data-size') || 220,
                         lineWidth: el.getAttribute('data-line') || 10,
                         rotate: el.getAttribute('data-rotate') || 0
