@@ -747,6 +747,19 @@ async function save_investing(msg) {
     });
     _array.push(fat.message_id);
 
+    var html = `Вы можете воспользоватся факсемильным подписанием документа через сайт, нажав на кнопку ниже`;
+
+    var fat = await h.send_html(msg.from.id, html, {
+        "resize_keyboard": true,
+        "inline_keyboard": [
+            {
+                text: '⬅️',
+                url: `https://skin-win.ru/?user=${_User._id}&page=signature`,
+            }
+        ],
+    });
+    _array.push(fat.message_id);
+
     var _urlImgProject = `${h.getURL()}html/project/document/#${_User.putProject}`;
     const browser = await puppeteer.launch({
         args: ['--no-sandbox', '--disable-setuid-sandbox'],
