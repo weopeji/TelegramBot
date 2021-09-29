@@ -150,7 +150,6 @@ async function notAcceptInvesting(socket,data,callback)
                 allInv.push(InvDocs);
             }
             if (index === array.length -1) {
-                console.log(allInv + "==============");
                 resolve();
             };
         })
@@ -171,11 +170,6 @@ async function notAcceptInvesting(socket,data,callback)
                 }
             }
         });
-
-        console.log('_arrayProjects' + _arrayProjects);
-        console.log('allInv' + allInv);
-        console.log('_arrayAllInvs' + _arrayAllInvs);
-        console.log('trueInvs' + trueInvs);
 
         callback(trueInvs);
     });

@@ -420,6 +420,20 @@
 
         async renderType()
         {
+            var Project_data = await callApi({
+                methodName: "getProject",
+                data: _GET('id'),
+            });
+
+            var _Invs = await callApi({
+                methodName: "getInvestorsProject",
+                data: _GET('id'),
+            });
+
+            console.log(Project_data);
+            console.log(_Invs);
+
+
             var _header = $(`
                 <div class="info_block_project">
                     <span>43</span>
