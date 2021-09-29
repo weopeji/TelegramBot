@@ -766,7 +766,7 @@ async function save_investing(msg) {
                 [
                     {
                         text: 'Подписать факсимильно',
-                        url: `https://skin-win.ru/?user=${_User._id}&page=signature`,
+                        url: `https://skin-win.ru/?user=${_User._id}&page=signature&id=${_User.putProject}`,
                     }
                 ]
             ],
