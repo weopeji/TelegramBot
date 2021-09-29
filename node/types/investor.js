@@ -750,7 +750,6 @@ async function save_investing(msg) {
     var html = `Вы можете воспользоватся факсемильным подписанием документа через сайт, нажав на кнопку ниже`;
 
     var fat = await h.send_html(msg.from.id, html, {
-        "resize_keyboard": true,
         "inline_keyboard": [
             {
                 text: '⬅️',
