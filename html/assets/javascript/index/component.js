@@ -73,6 +73,16 @@
 
             $('.show_block').click( function() {
                 location.href = `./projects/${_data.InvDoc.receipt}`;
+            });
+
+            $('.accept_block').click( async function () {
+                var acceptInvestor = await callApi({
+                    methodName: "acceptInvestor",
+                    data: _GET('id'),
+                });
+
+                alert('Оплата подтвержденна!');
+                location.reload();
             })
         }
 
@@ -353,16 +363,6 @@
             })
 
             $('.index_page_body_data').append(settingBlock);
-
-            // $('.settingBlock_accept').click( async function () {
-            //     var acceptInvestor = await callApi({
-            //         methodName: "acceptInvestor",
-            //         data: $(this).attr("data"),
-            //     });
-
-            //     alert('Оплата подтвержденна!');
-            //     location.reload();
-            // })
 
             $('.settingBlock_body_line').click( function () {
                 location.href = `/?page=activ_projects&id=${$(this).attr('data')}`;
