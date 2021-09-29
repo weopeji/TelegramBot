@@ -70,6 +70,10 @@
             `);
 
             $('.index_page_body_data').append(settingBlock);
+
+            $('.show_block').click( function() {
+                location.href = `./users/${_data.invester.user}/${_data.InvDoc.receipt}`;
+            })
         }
 
         async render(allData) 
@@ -601,7 +605,7 @@
                     var el = document.getElementById('validate-bar__parcent-bar3');
 
                     var options = {
-                        percent: el.getAttribute('data-percent') || 100,
+                        percent: el.getAttribute('data-percent') || 0,
                         size: el.getAttribute('data-size') || 220,
                         lineWidth: el.getAttribute('data-line') || 10,
                         rotate: el.getAttribute('data-rotate') || 0
