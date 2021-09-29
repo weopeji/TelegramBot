@@ -785,7 +785,7 @@
     
                 $('.index_page_body_data').append(templateText);
 
-                all_msgs.forEach(function(el) {
+                all_msgs.msgs.forEach(function(el) {
                     var myBlock = `
                         <div class="chat_block_chat_body_msgs_line">
                             <div class="chat_block_chat_body_msgs_line_my">
