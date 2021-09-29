@@ -607,6 +607,15 @@
         }
     }
 
+    class signature
+    {
+        constructor() {};
+
+        async render() {
+            $('.index_page').addClass('signature');
+        }
+    }
+
     if(!global.Components)
     {
         global.Components = {
@@ -618,6 +627,7 @@
             user_block,
             chats,
             myProjects,
+            signature,
         }
     }
 
