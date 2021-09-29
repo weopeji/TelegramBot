@@ -820,6 +820,19 @@
             headerShow[_User.type]();
 
             $('.chat_block_chat_body_row_input span').click( async function() {
+
+                var myBlock = `
+                    <div class="chat_block_chat_body_msgs_line">
+                        <div class="chat_block_chat_body_msgs_line_my">
+                            <span>${$('.chat_block_chat_body_row_input input').val()}</span>
+                        </div>
+                    </div>
+                `;
+
+                $('.chat_block_chat_body_msgs').append(myBlock);
+
+                $('.chat_block_chat_body_row_input input').val('');
+
                 await callApi({
                     methodName: "msgUP",
                     data: {
