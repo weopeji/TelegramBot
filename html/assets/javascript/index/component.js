@@ -613,6 +613,18 @@
 
         async render() {
             $('.index_page').addClass('signature');
+
+            var _body = $(`
+                <div class="row_canvas">
+                    <canvas width="700" height="400"></canvas>
+                </div>
+                <div class="index_page_buttons">
+                    <span class="clean">Очистить</span>
+                    <span class="put">Посмотреть подписаемый документ<i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+                </div>
+            `);
+            
+            $('.index_page_body_data').append(_body);
         }
     }
 
