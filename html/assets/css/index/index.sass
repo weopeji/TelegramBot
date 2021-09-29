@@ -408,11 +408,13 @@ html, body
 
 
 .discret
-    width: 33%
+    width: calc(33% - 20px)
     height: 350px
     background-color: #182037
     border-radius: 3px
     position: relative
+    float: left
+    margin-right: 20px
 
     canvas
         width: 43%
@@ -426,6 +428,28 @@ html, body
     color: #8394C9
 
 #validate-bar__parcent-bar::after
+    color: #8394C9
+    bottom: 0
+    font-size: 28px
+
+
+#validate-bar__parcent-bar2
+    font-weight: 100
+    font-size: 40px
+    color: #8394C9
+
+#validate-bar__parcent-bar2::after
+    color: #8394C9
+    bottom: 0
+    font-size: 28px
+
+
+#validate-bar__parcent-bar3
+    font-weight: 100
+    font-size: 40px
+    color: #8394C9
+
+#validate-bar__parcent-bar3::after
     color: #8394C9
     bottom: 0
     font-size: 28px
