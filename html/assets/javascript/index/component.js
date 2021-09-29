@@ -816,7 +816,7 @@
 
             $('.accept_signature').click( function() {
                 alert('Документ подписан!');
-                location.href = "/";
+                location.href = "https://t.me/investER_localhost_bot";
             })
         }
     }
