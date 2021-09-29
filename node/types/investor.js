@@ -751,10 +751,12 @@ async function save_investing(msg) {
 
     var fat = await h.send_html(msg.from.id, html, {
         "inline_keyboard": [
-            {
-                text: '⬅️',
-                url: `https://skin-win.ru/?user=${_User._id}&page=signature`,
-            }
+            [
+                {
+                    text: '⬅️',
+                    url: `https://skin-win.ru/?user=${_User._id}&page=signature`,
+                }
+            ]
         ],
     });
     _array.push(fat.message_id);
