@@ -608,6 +608,20 @@ html, body {
   background-color: white;
 }
 
+.signature_canvas_span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: calc(100% - 40px);
+  height: 80px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 20px;
+  font-size: 22px;
+  background-color: #182037;
+}
+
 .signature .index_page_menu {
   display: none;
 }

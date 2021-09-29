@@ -617,7 +617,7 @@
             var _body = $(`
                 <div class="signature_canvas">
                     <div class="signature_canvas_row">
-                        <span>Подпишите документ</span>
+                        <span class="signature_canvas_span">Подпишите документ</span>
                         <div class="row_canvas">
                             <canvas width="700" height="400"></canvas>
                         </div>
@@ -630,6 +630,17 @@
             `);
 
             $('.index_page_body_data').append(_body);
+
+            var canvas          = document.querySelector("canvas");
+            var signaturePad    = new SignaturePad(canvas);
+
+            $('.clean').click( function() {
+                signaturePad.clear();
+            });
+
+            $('.put').click( function() {
+                window.open(`https://skin-win.ru/html/project/document/#${_project._id}`, '_blank');
+            });
         }
     }
 
