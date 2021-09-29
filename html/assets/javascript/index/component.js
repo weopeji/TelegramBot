@@ -762,7 +762,9 @@
                             <div class="chat_block_chat_body">
                                 <div class="chat_block_chat_body_row">
 
+                                    <div class="chat_block_chat_body_msgs">
 
+                                    </div>
 
                                     <div class="chat_block_chat_body_row_input">
                                         <input type="text">
@@ -783,6 +785,17 @@
     
                 $('.index_page_body_data').append(templateText);
             }
+
+            all_msgs.forEach(function(el) {
+                var myBlock = `
+                    <div class="chat_block_chat_body_msgs_line">
+                        <div class="chat_block_chat_body_msgs_line_my">
+                            <span>${el.text}</span>
+                        </div>
+                    </div>
+                `;
+                $('.chat_block_chat_body_msgs').append(myBlock);
+            })
 
             var _User = await callApi({
                 methodName: "getUserForId",
