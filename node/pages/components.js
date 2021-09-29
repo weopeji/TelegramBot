@@ -157,7 +157,7 @@ async function notAcceptInvesting(socket,data,callback)
         
         var _arrayAllInvs = [];
 
-        console.log(_arrayAllInvs);
+        
 
         allInv.forEach(el => {
             el.forEach(el2 => {
@@ -174,6 +174,9 @@ async function notAcceptInvesting(socket,data,callback)
                 }
             }
         });
+
+        console.log(_arrayAllInvs);
+        console.log(trueInvs);
 
         callback(trueInvs);
     });
