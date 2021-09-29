@@ -792,13 +792,7 @@
                 },
             }
 
-            if(_User.type == "investor") 
-            {
-
-            } else if(_User.type == "business") 
-            {
-
-            }
+            headerShow[_User.type]();
            
         }
     }
