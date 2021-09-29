@@ -740,7 +740,7 @@
 
         async render() 
         {
-            if(ID) {
+            if(_GET('id')) {
                 var templateText = `
                     <div class="chat_block">
                         <div class="chat_block_chat">
