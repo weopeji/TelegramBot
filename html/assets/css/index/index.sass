@@ -528,6 +528,16 @@ html, body
 
 .chat_block_chat_body_msgs
     height: calc(100% - 80px)
+    overflow-y: scroll
+
+.chat_block_chat_body_msgs::-webkit-scrollbar-thumb
+    background-color: darkgrey
+
+.chat_block_chat_body_msgs::-webkit-scrollbar-track
+    background-color: black
+
+.chat_block_chat_body_msgs::-webkit-scrollbar
+    width: 0
 
 .chat_block_chat_body_msgs_line
     width: 100%
