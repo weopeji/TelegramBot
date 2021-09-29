@@ -71,6 +71,10 @@
 
             $('.index_page_body_data').append(settingBlock);
 
+            if(_data.InvDoc.status == "accept") {
+                $('.info_active_block').addClass('accepting');
+            }
+
             $('.show_block').click( function() {
                 location.href = `./projects/${_data.InvDoc.receipt}`;
             });
