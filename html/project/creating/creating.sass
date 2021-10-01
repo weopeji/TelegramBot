@@ -114,6 +114,7 @@ html, body
     box-shadow: 0px 0px 17px -11px rgba(34, 60, 80, 0.2)
     margin-bottom: 20px
     border-top: 4px solid #2FA1E8
+    padding-bottom: 15px
 
 .body_point_header
     height: 60px
@@ -139,7 +140,7 @@ html, body
 
     input
         width: calc(100% - 20px)
-        color: #12263f
+        color: white
         font-size: .9375rem
         font-weight: 400
         background-color: #0E1122
@@ -147,8 +148,11 @@ html, body
         padding: 10px
         margin-bottom: 20px
         border: 0
-        border-left: 2px solid
+        border-left: 2px solid #2FA1E8
         border-radius: 7px
+
+    input::placeholder
+        color: #9BAAD9
 
     input[type=date]
         width: calc(100% - 20px)
