@@ -96,6 +96,8 @@ async function Attracted_by_me(socket,data,callback)
 {
     var _User               = await User.findOne({_id: data});
     var Attracted_by_me     = await User.find({member: _User.username});
+    console.log(_User);
+    console.log(Attracted_by_me);
     callback(Attracted_by_me);
 }
 
