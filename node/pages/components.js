@@ -89,6 +89,14 @@ var action_linker = {
     "removePayInvestor": removePayInvestor,
     "msgUP": msgUP,
     "all_msgs": all_msgs,
+    "process_status_get": process_status_get,
+}
+
+async function process_status_get(socket,data,callback)
+{
+    var _User       = await User.findOne({_id: data});
+    var PrcNeed     = await User.find({member: _User.username});
+    callback(PrcNeed);
 }
 
 async function all_msgs(socket,data,callback)

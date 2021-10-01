@@ -929,6 +929,49 @@
         }
     }
 
+    class process_status
+    {
+        constructor() {};
+
+        async render(data) 
+        {
+            var _data = await callApi({
+                methodName: "process_status_get",
+                data: data._id,
+            });
+
+            console.log(_data);
+
+            var settingBlock = $(`
+                <div class="settingBlock">
+                    <div class="settingBlock_header">
+                        <p>Мной привлечено</p>
+                        <div class="settingBlock_header_line">
+                            <span>#</span>
+                            <span>ID Инвестора</span>
+                        </div>
+                    </div>
+                    <div class="settingBlock_body">
+
+                    </div>
+                </div>
+            `);
+
+            _data.forEach(function(element, i) {
+                var template_text = `
+                    <div class="settingBlock_body_line">
+                        <span>${i + 1}</span>
+                        <span>${element.user}</span>
+                    </div>
+                `;
+
+                settingBlock.find('.settingBlock_body').append(template_text);
+            })
+
+            $('.index_page_body_data').append(settingBlock);
+        }
+    }
+
     if(!global.Components)
     {
         global.Components = {
@@ -941,6 +984,7 @@
             chats,
             myProjects,
             signature,
+            process_status,
         }
     }
 

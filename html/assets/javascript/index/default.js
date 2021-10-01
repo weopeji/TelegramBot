@@ -38,6 +38,7 @@
             const pay_investors     = new global.Components.pay_investors();
             const myProjects        = new global.Components.myProjects();
             const signature         = new global.Components.signature();
+            const process_status    = new global.Components.process_status();
 
             var _User = await user_block.render(_id);
             global.allData.User = _User;
@@ -63,6 +64,7 @@
                     }
                 },
                 "signature": function() {signature.render(global.allData)},
+                "process_status": function() {process_status.render(global.allData)},
             }
 
             renderPage[pageID]();
