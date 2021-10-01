@@ -693,7 +693,7 @@
                         <i class="fal fa-money-check-alt"></i>
                         <span>Вознаграждение</span>
                     </div>
-                    <div class="index_page_menu_block_line">
+                    <div class="index_page_menu_block_line" data="Attracted_by_me">
                         <i class="fal fa-users"></i>
                         <span>Мной привлечено</span>
                     </div>
@@ -929,14 +929,14 @@
         }
     }
 
-    class process_status
+    class Attracted_by_me
     {
         constructor() {};
 
         async render(data) 
         {
             var _data = await callApi({
-                methodName: "process_status_get",
+                methodName: "Attracted_by_me",
                 data: data._id,
             });
 
@@ -975,7 +975,7 @@
     if(!global.Components)
     {
         global.Components = {
-            process_status,
+            Attracted_by_me,
             activ_projects,
             put_document,
             pay_investors,

@@ -262,7 +262,7 @@ async function myPeoples(msg) {
                 [
                     {
                         text: 'Перейти',
-                        url: `${h.getURL()}?user=${_User.id}&page=process_status`,
+                        url: `${h.getURL()}?user=${_User.id}&page=Attracted_by_me`,
                     },
                 ]
             ],
