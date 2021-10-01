@@ -672,10 +672,10 @@ html, body {
 
 .menu_block {
   width: calc(100% - 20px);
-  color: #12263f;
+  color: white;
   font-size: .9375rem;
   font-weight: 400;
-  background-color: #F8FAFB;
+  background-color: #0E1122;
   display: block;
   padding: 10px;
   border-radius: 10px;
