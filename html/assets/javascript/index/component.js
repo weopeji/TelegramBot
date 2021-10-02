@@ -696,7 +696,7 @@
                         <i class="fal fa-chart-line"></i>
                         <span>Активные проекты</span>
                     </div>
-                    <div class="index_page_menu_block_line">
+                    <div class="index_page_menu_block_line" data="reward">
                         <i class="fal fa-money-check-alt"></i>
                         <span>Вознаграждение</span>
                     </div>
@@ -1025,6 +1025,32 @@
         }
     }
 
+    class reward
+    {
+        constructor() {};
+
+        async render() {
+            var settingBlock = $(`
+                <div class="settingBlock">
+                    <div class="settingBlock_header">
+                        <p>Доступные вознаграждения</p>
+                        <div class="settingBlock_header_line">
+                            <span>#</span>
+                            <span>Номер проекта</span>
+                            <span>Дата</span>
+                            <span>Статус</span>
+                        </div>
+                    </div>
+                    <div class="settingBlock_body">
+
+                    </div>
+                </div>
+            `);
+
+            $('.index_page_body_data').append(settingBlock);
+        }
+    }
+
     if(!global.Components)
     {
         global.Components = {
@@ -1037,6 +1063,7 @@
             chats,
             myProjects,
             signature,
+            reward,
         }
     }
 

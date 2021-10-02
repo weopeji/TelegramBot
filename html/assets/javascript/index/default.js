@@ -39,6 +39,7 @@
             const myProjects        = new global.Components.myProjects();
             const signature         = new global.Components.signature();
             const Attracted_by_me   = new global.Components.Attracted_by_me();
+            const reward            = new global.Components.Reward();
 
             var _User = await user_block.render(_id);
             global.allData.User = _User;
@@ -65,6 +66,7 @@
                 },
                 "signature": function() {signature.render(global.allData)},
                 "Attracted_by_me": function() {Attracted_by_me.render(global.allData)},
+                "reward": function() {reward.render(global.allData)}
             }
 
             renderPage[pageID]();
