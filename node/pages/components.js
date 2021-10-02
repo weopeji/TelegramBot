@@ -96,7 +96,7 @@ var action_linker = {
 
 async function selectedMsgChats(socket,data,callback)
 {
-    var _User = await User.findOne({_id: data.id});
+    var _User = await User.findOne({_id: data});
     
     if(_User.type == "investor")
     {
