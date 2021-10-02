@@ -791,11 +791,15 @@ html, body {
 
 .headerPaysBlock {
   width: 95%;
-  height: calc(100vh - 150px);
-  overflow-y: scroll;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding-bottom: 1px;
   margin: 0 auto;
   position: relative;
   top: 30px;
+  margin-bottom: 60px;
+  background-color: #182037;
 }
 
 .headerPaysBlock_header_span {
