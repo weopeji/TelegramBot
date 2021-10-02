@@ -142,6 +142,9 @@
                         </div>
                     </div>
                 `);
+
+
+                $('.info_active_block').append(headerPaysBlock);
             }
 
             $('.index_page_body_data').append(settingBlock);
