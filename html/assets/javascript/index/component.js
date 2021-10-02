@@ -888,6 +888,8 @@
                     data: data._id,
                 });
 
+                console.log(selectedMsgChats);
+
                 var block = $(`
                     <div class="msg_block_getting">
 
