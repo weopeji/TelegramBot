@@ -745,6 +745,49 @@ html, body {
   background-color: #3E4C71;
 }
 
+.msg_block_getting {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.msg_block_getting_line {
+  width: calc(50% - 60px);
+  padding: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-right: 20px;
+  background-color: #182037;
+}
+
+.msg_block_getting_line_img {
+  width: 60px;
+  height: 60px;
+  background-color: #A4B1E0;
+  border-radius: 50%;
+}
+
+.msg_block_getting_line_text {
+  margin-left: 20px;
+}
+
+.msg_block_getting_line_text p {
+  padding: 0;
+  margin: 0;
+  margin-top: 10px;
+  color: #3F4B6F;
+}
+
+.msg_block_getting_line_text span {
+  color: #8091C4;
+  font-weight: 600;
+  font-size: 18px;
+}
+
 @media (max-width: 500px) {
   .buttons_menu {
     display: block;
