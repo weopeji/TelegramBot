@@ -86,9 +86,6 @@
                     </div>
                     <span>${getBussnes.data.name}</span>
                     <p>business</p>
-                    <div class="info_active_block_massage_button">
-                        <span>Перейти к диалогу</span>
-                    </div>
                 `);
             }
 
