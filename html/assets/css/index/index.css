@@ -790,16 +790,10 @@ html, body {
 }
 
 .headerPaysBlock {
-  width: 95%;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  padding-bottom: 1px;
-  margin: 0 auto;
-  position: relative;
-  top: 30px;
-  margin-bottom: 60px;
+  width: calc(100% - 40px);
   background-color: #182037;
+  border-radius: 3px;
+  padding: 20px;
 }
 
 .headerPaysBlock_header_span {
