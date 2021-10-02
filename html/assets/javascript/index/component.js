@@ -92,31 +92,41 @@
                                 <span>1</span>
                                 <span>02.10.2022</span>
                                 <span>35 000 руб</span>
-                                <span class="headerPaysBlock_button">Прикреить чек</span>
+                                <span class="headerPaysBlock_button">
+                                    <span>Прикреить чек</span>
+                                </span>
                             </div>
                             <div class="headerPaysBlock_body_line">
                                 <span>2</span>
                                 <span>02.10.2023</span>
                                 <span>35 000 руб</span>
-                                <span class="headerPaysBlock_button">Прикреить чек</span>
+                                <span class="headerPaysBlock_button">
+                                    <span>Прикреить чек</span>
+                                </span>
                             </div>
                             <div class="headerPaysBlock_body_line">
                                 <span>3</span>
                                 <span>02.10.2024</span>
                                 <span>35 000 руб</span>
-                                <span class="headerPaysBlock_button">Прикреить чек</span>
+                                <span class="headerPaysBlock_button">
+                                    <span>Прикреить чек</span>
+                                </span>
                             </div>
                             <div class="headerPaysBlock_body_line">
                                 <span>4</span>
                                 <span>02.10.2025</span>
                                 <span>35 000 руб</span>
-                                <span class="headerPaysBlock_button">Прикреить чек</span>
+                                <span class="headerPaysBlock_button">
+                                    <span>Прикреить чек</span>
+                                </span>
                             </div>
                             <div class="headerPaysBlock_body_line">
                                 <span>5</span>
                                 <span>02.10.2026</span>
                                 <span>35 000 руб</span>
-                                <span class="headerPaysBlock_button">Прикреить чек</span>
+                                <span class="headerPaysBlock_button">
+                                    <span>Прикреить чек</span>
+                                </span>
                             </div>
                         </div>
                     </div>
