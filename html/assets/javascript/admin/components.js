@@ -1039,7 +1039,9 @@
             $('.index_page_body_row').append('<div class="index_page_body_project_data"></div>');
 
             var tempText = $(`
-                123
+                <div class="body_point_header">
+                    <span>Процент вылачеваемый привлечению</span>
+                </div>
             `);
 
             $('.index_page_body_project_data').append(tempText);
