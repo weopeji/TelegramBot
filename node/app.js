@@ -13,7 +13,7 @@ const path                          = require('path');
 const exec                          = require('child_process').exec;
 const formidable                    = require('formidable');
 const mammoth                       = require("mammoth");
-var puppeteer                       = require('puppeteer');
+const puppeteer                     = require('puppeteer');
 
 
 const models                        = require('./models');

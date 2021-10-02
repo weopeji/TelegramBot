@@ -26,6 +26,12 @@ html, body {
           flex: 1;
   height: 100%;
   background-color: #131931;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .index_page_body {
@@ -38,7 +44,6 @@ html, body {
 
 .index_page_menu_row {
   width: 100%;
-  padding-top: 30px;
 }
 
 .index_page_menu_line {
@@ -780,9 +785,7 @@ html, body {
 .user_block {
   width: 88%;
   margin: 0 auto;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: none;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
