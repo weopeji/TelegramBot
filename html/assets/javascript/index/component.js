@@ -76,20 +76,6 @@
                     </div>
                 `);
             } else {
-                var getBussnes = await callApi({
-                    methodName: "getBussnes",
-                    data: _data.InvDoc.projectId,
-                });
-                settingBlock.find('.info_active_block_right').append(`
-                    <div class="info_active_block_photo">
-                            
-                    </div>
-                    <span>${getBussnes.data.name}</span>
-                    <p>business</p>
-                `);
-
-
-
 
                 var headerPaysBlock = $(`
                     <div class="headerPaysBlock">
@@ -145,6 +131,19 @@
 
 
                 $('.info_active_block').append(headerPaysBlock);
+
+
+                var getBussnes = await callApi({
+                    methodName: "getBussnes",
+                    data: _data.InvDoc.projectId,
+                });
+                settingBlock.find('.info_active_block_right').append(`
+                    <div class="info_active_block_photo">
+                            
+                    </div>
+                    <span>${getBussnes.data.name}</span>
+                    <p>business</p>
+                `);
             }
 
             $('.index_page_body_data').append(settingBlock);
