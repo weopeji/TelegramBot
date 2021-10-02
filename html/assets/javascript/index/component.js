@@ -888,6 +888,12 @@
                     data: data._id,
                 });
 
+                var block = $(`
+                    <div class="msg_block_getting">
+
+                    </div>
+                `);
+
                 selectedMsgChats.forEach(el => {
 
                     var template_text = $(`
@@ -895,10 +901,11 @@
                             1
                         </div>
                     `);
-
-
+                    
+                    block.append(template_text);
                 })
 
+                $('.index_page_body_data').append(block);
 
             }
         }
