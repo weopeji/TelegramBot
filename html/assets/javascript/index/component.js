@@ -67,7 +67,7 @@
                 </div>
             `);
 
-            if(allData._User.type == "business")
+            if(allData.User.type == "business")
             {
                 settingBlock.find('.info_active_block_right').append(`
                     <div class="info_active_block_massage_button">
