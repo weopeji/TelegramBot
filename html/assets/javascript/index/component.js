@@ -130,7 +130,7 @@
                 `);
 
 
-                $('.info_active_block').append(headerPaysBlock);
+                $('.index_page_body_data').append(headerPaysBlock);
 
 
                 var getBussnes = await callApi({
@@ -149,7 +149,7 @@
             $('.index_page_body_data').append(settingBlock);
 
             if(_data.InvDoc.status == "accept") {
-                $('.index_page_body_data').addClass('accepting');
+                $('.info_active_block').addClass('accepting');
             }
 
             $('.show_block').click( function() {
