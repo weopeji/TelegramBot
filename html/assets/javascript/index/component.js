@@ -62,12 +62,19 @@
                         <span>${_data.invester.first_name} ${_data.invester.last_name}</span>
                         <p>Invester</p>
 
-                        <div class="info_active_block_massage_button">
-                            <span>Перейти к диалогу</span>
-                        </div>
+                        
                     </div>
                 </div>
             `);
+
+            if(allData._User.type == "business")
+            {
+                settingBlock.find('.info_active_block_right').append(`
+                    <div class="info_active_block_massage_button">
+                        <span>Перейти к диалогу</span>
+                    </div>
+                `);
+            }
 
             $('.index_page_body_data').append(settingBlock);
 
