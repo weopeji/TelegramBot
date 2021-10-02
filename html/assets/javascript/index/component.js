@@ -87,6 +87,61 @@
                     <span>${getBussnes.data.name}</span>
                     <p>business</p>
                 `);
+
+
+
+
+                var headerPaysBlock = $(`
+                    <div class="headerPaysBlock">
+                        <div class="headerPaysBlock_header">
+                            <span>Выплаты по проекту</span>
+                            <div class="headerPaysBlock_header_line">
+                                <span>#</span>
+                                <span>Дата</span>
+                                <span>Сумма</span>
+                                <span>Статус</span>
+                                <span>Чек оплаты</span>
+                            </div>
+                        </div>
+                        <div class="headerPaysBlock_body">
+                            <div class="headerPaysBlock_body_line">
+                                <span>1</span>
+                                <span>02.10.2022</span>
+                                <span>35 000 руб</span>
+                                <span>Ожидает оплату</span>
+                                <span>Не имеется</span>
+                            </div>
+                            <div class="headerPaysBlock_body_line">
+                                <span>2</span>
+                                <span>02.10.2023</span>
+                                <span>35 000 руб</span>
+                                <span>Ожидает оплату</span>
+                                <span>Не имеется</span>
+                            </div>
+                            <div class="headerPaysBlock_body_line">
+                                <span>3</span>
+                                <span>02.10.2024</span>
+                                <span>35 000 руб</span>
+                                <span>Ожидает оплату</span>
+                                <span>Не имеется</span>
+                            </div>
+                            <div class="headerPaysBlock_body_line">
+                                <span>4</span>
+                                <span>02.10.2025</span>
+                                <span>35 000 руб</span>
+                                <span>Ожидает оплату</span>
+                                <span>Не имеется</span>
+                            </div>
+                            <div class="headerPaysBlock_body_line">
+                                <span>5</span>
+                                <span>02.10.2026</span>
+                                <span>35 000 руб</span>
+                                <span>Ожидает оплату</span>
+                                <span>Не имеется</span>
+                            </div>
+                        </div>
+                    </div>
+                `);
             }
 
             $('.index_page_body_data').append(settingBlock);
