@@ -91,6 +91,19 @@ var action_linker = {
     "all_msgs": all_msgs,
     "Attracted_by_me": Attracted_by_me,
     "Attracted_by_me_investing_pay": Attracted_by_me_investing_pay,
+    "selectedMsgChats": selectedMsgChats,
+}
+
+async function selectedMsgChats(socket,data,callback)
+{
+    var _User = await User.findOne({_id: data.id});
+    
+    if(_User.type == "investor")
+    {
+        var AllMsgs = await MsgDB.find({investor: _User._id});
+
+        callback(AllMsgs);
+    }
 }
 
 async function Attracted_by_me_investing_pay(socket,data,callback)

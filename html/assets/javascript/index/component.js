@@ -738,7 +738,7 @@
     class chats {
         constructor() {};
 
-        async render() 
+        async render(data) 
         {
             if(_GET('id')) {
 
@@ -801,87 +801,106 @@
                         $('.chat_block_chat_body_msgs').animate({scrollTop: $('.chat_block_chat_body_msgs').height()}, 'fast');
                     }
                 }
-            }
 
-            var _User = await callApi({
-                methodName: "getUserForId",
-                data: _GET('user'),
-            });
-
-            var Project_data = await callApi({
-                methodName: "getProject",
-                data: _GET('id'),
-            });
-
-            var headerShow = {
-                "investor": function() {
-                    $('.chat_block_info span').html(Project_data.data.name);
-                    $('.chat_block_info p').html(Project_data.data.recipient);
-                },
-                "business": function() {
-
-                },
-            }
-
-            headerShow[_User.type]();
-
-            $('.chat_block_chat_body_row_input input').focus( async function() {
-                $(window).keyup(async function(event){
-                    if(event.keyCode == 13) {
-                        event.preventDefault();
-                        var myBlock = `
-                            <div class="chat_block_chat_body_msgs_line">
-                                <div class="chat_block_chat_body_msgs_line_my">
-                                    <span>${$('.chat_block_chat_body_row_input input').val()}</span>
-                                </div>
-                            </div>
-                        `;
-
-                        $('.chat_block_chat_body_msgs').append(myBlock);
-
-                        $('.chat_block_chat_body_msgs').animate({scrollTop: $('.chat_block_chat_body_msgs').height()}, 'fast');
-
-                        await callApi({
-                            methodName: "msgUP",
-                            data: {
-                                user: _GET('user'),
-                                to: _GET('id'),
-                                type: _User.type,
-                                msg: $('.chat_block_chat_body_row_input input').val(),
-                            },
-                        });
-
-                        $('.chat_block_chat_body_row_input input').val('');
-                    }
+                var _User = await callApi({
+                    methodName: "getUserForId",
+                    data: _GET('user'),
                 });
-            });
-
-            $('.chat_block_chat_body_row_input span').click( async function() {
-
-                var myBlock = `
-                    <div class="chat_block_chat_body_msgs_line">
-                        <div class="chat_block_chat_body_msgs_line_my">
-                            <span>${$('.chat_block_chat_body_row_input input').val()}</span>
-                        </div>
-                    </div>
-                `;
-
-                $('.chat_block_chat_body_msgs').append(myBlock);
-
-                $('.chat_block_chat_body_msgs').animate({scrollTop: $('.chat_block_chat_body_msgs').height()}, 'fast');
-
-                await callApi({
-                    methodName: "msgUP",
-                    data: {
-                        user: _GET('user'),
-                        to: _GET('id'),
-                        type: _User.type,
-                        msg: $('.chat_block_chat_body_row_input input').val(),
+    
+                var Project_data = await callApi({
+                    methodName: "getProject",
+                    data: _GET('id'),
+                });
+    
+                var headerShow = {
+                    "investor": function() {
+                        $('.chat_block_info span').html(Project_data.data.name);
+                        $('.chat_block_info p').html(Project_data.data.recipient);
                     },
+                    "business": function() {
+    
+                    },
+                }
+    
+                headerShow[_User.type]();
+    
+                $('.chat_block_chat_body_row_input input').focus( async function() {
+                    $(window).keyup(async function(event){
+                        if(event.keyCode == 13) {
+                            event.preventDefault();
+                            var myBlock = `
+                                <div class="chat_block_chat_body_msgs_line">
+                                    <div class="chat_block_chat_body_msgs_line_my">
+                                        <span>${$('.chat_block_chat_body_row_input input').val()}</span>
+                                    </div>
+                                </div>
+                            `;
+    
+                            $('.chat_block_chat_body_msgs').append(myBlock);
+    
+                            $('.chat_block_chat_body_msgs').animate({scrollTop: $('.chat_block_chat_body_msgs').height()}, 'fast');
+    
+                            await callApi({
+                                methodName: "msgUP",
+                                data: {
+                                    user: _GET('user'),
+                                    to: _GET('id'),
+                                    type: _User.type,
+                                    msg: $('.chat_block_chat_body_row_input input').val(),
+                                },
+                            });
+    
+                            $('.chat_block_chat_body_row_input input').val('');
+                        }
+                    });
+                });
+    
+                $('.chat_block_chat_body_row_input span').click( async function() {
+    
+                    var myBlock = `
+                        <div class="chat_block_chat_body_msgs_line">
+                            <div class="chat_block_chat_body_msgs_line_my">
+                                <span>${$('.chat_block_chat_body_row_input input').val()}</span>
+                            </div>
+                        </div>
+                    `;
+    
+                    $('.chat_block_chat_body_msgs').append(myBlock);
+    
+                    $('.chat_block_chat_body_msgs').animate({scrollTop: $('.chat_block_chat_body_msgs').height()}, 'fast');
+    
+                    await callApi({
+                        methodName: "msgUP",
+                        data: {
+                            user: _GET('user'),
+                            to: _GET('id'),
+                            type: _User.type,
+                            msg: $('.chat_block_chat_body_row_input input').val(),
+                        },
+                    });
+    
+                    $('.chat_block_chat_body_row_input input').val('');
+                });
+            } else {
+
+                var selectedMsgChats = await callApi({
+                    methodName: "selectedMsgChats",
+                    data: data._id,
                 });
 
-                $('.chat_block_chat_body_row_input input').val('');
-            });
+                selectedMsgChats.forEach(el => {
+
+                    var template_text = $(`
+                        <div class="msg_block_getting">
+                            1
+                        </div>
+                    `);
+
+
+                })
+
+
+            }
         }
     }
 
