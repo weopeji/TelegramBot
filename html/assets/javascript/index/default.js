@@ -39,7 +39,7 @@
             const myProjects        = new global.Components.myProjects();
             const signature         = new global.Components.signature();
             const Attracted_by_me   = new global.Components.Attracted_by_me();
-            const reward            = new global.Components.Reward();
+            const reward            = new global.Components.reward();
 
             var _User = await user_block.render(_id);
             global.allData.User = _User;
