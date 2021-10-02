@@ -1039,8 +1039,18 @@
             $('.index_page_body_row').append('<div class="index_page_body_project_data"></div>');
 
             var tempText = $(`
-                <div class="body_point_header">
-                    <span>Процент вылачеваемый привлечению</span>
+                <div class="body_point">
+                    <div class="body_point_header">
+                        <span>Процент вылачеваемый привлечению</span>
+                    </div>
+                    <div class="body_point_line">
+                        <div class="body_point_line_header">
+                            <div class="body_point_line_header_text">
+                                <span>Target</span>
+                                <p>1% <input type="text" class="body_point_line_micro_input"> <i class="fas fa-pencil-alt"></i><i class="fas fa-check-circle"></i></p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             `);
 
