@@ -956,7 +956,7 @@ async function goInvesting(msg)
                 [
                     {
                         text: 'ВЫБРАТЬ ПРЕДЛОЖЕНИЕ',
-                        url: `${h.getURL()}?user=${_User.id}&page=statistic`,
+                        url: `https://t.me/invester_official`,
                     }
                 ]
             ],
