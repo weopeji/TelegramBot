@@ -402,7 +402,7 @@ async function recomendations(msg)
 
     var html = `https://t.me/investER_localhost_bot?start=user_${_User.user}`;
     var fat = await bot.sendMessage(msg.chat.id, html, {
-        parse_mode: "Markdown",
+        parse_mode: "HTML",
         reply_markup: {                                                                     
             inline_keyboard: [[{
                 text: 'Share with your friends',
