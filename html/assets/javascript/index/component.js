@@ -56,11 +56,7 @@
                         </div>
                     </div>
                     <div class="info_active_block_right">
-                        <div class="info_active_block_photo">
-                            
-                        </div>
-                        <span>${_data.invester.first_name} ${_data.invester.last_name}</span>
-                        <p>Invester</p>
+                        
 
                         
                     </div>
@@ -70,6 +66,26 @@
             if(allData.User.type == "business")
             {
                 settingBlock.find('.info_active_block_right').append(`
+                    <div class="info_active_block_photo">
+                            
+                    </div>
+                    <span>${_data.invester.first_name} ${_data.invester.last_name}</span>
+                    <p>Invester</p>
+                    <div class="info_active_block_massage_button">
+                        <span>Перейти к диалогу</span>
+                    </div>
+                `);
+            } else {
+                var getBussnes = await callApi({
+                    methodName: "getBussnes",
+                    data: _data.InvDoc.projectId,
+                });
+                settingBlock.find('.info_active_block_right').append(`
+                    <div class="info_active_block_photo">
+                            
+                    </div>
+                    <span>${getBussnes.data.name}</span>
+                    <p>business</p>
                     <div class="info_active_block_massage_button">
                         <span>Перейти к диалогу</span>
                     </div>

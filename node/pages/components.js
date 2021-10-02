@@ -92,6 +92,13 @@ var action_linker = {
     "Attracted_by_me": Attracted_by_me,
     "Attracted_by_me_investing_pay": Attracted_by_me_investing_pay,
     "selectedMsgChats": selectedMsgChats,
+    "getBussnes": getBussnes,
+}
+
+async function getBussnes(socket,data,callback)
+{
+    var _Project = await Project.findOne({_id: data});
+    callback(_Project);
 }
 
 async function selectedMsgChats(socket,data,callback)
