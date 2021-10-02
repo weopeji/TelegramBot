@@ -35,9 +35,9 @@ html, body {
 }
 
 .index_page_body {
-  -webkit-box-flex: 4.5;
-      -ms-flex: 4.5;
-          flex: 4.5;
+  -webkit-box-flex: 6.5;
+      -ms-flex: 6.5;
+          flex: 6.5;
   height: 100vh;
   overflow-y: scroll;
 }
@@ -439,6 +439,7 @@ html, body {
   font-size: 1.625rem;
   font-weight: 500;
   margin-left: 10px;
+  color: white;
 }
 
 .index_page_body_project_header p {
@@ -455,11 +456,12 @@ html, body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  border-bottom: 1px solid #e3ebf6;
   position: relative;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
 .index_page_body_project_body_header span {
@@ -497,9 +499,7 @@ html, body {
   position: absolute;
   right: 20px;
   top: 25px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: none;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
