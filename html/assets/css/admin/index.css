@@ -94,30 +94,31 @@ html, body {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  padding-top: 130px;
+  padding-top: 100px;
   position: relative;
 }
 
 .index_page_body_moderation_block {
-  background-color: white;
+  background-color: #182037;
   border-radius: 2px;
-  width: 30%;
+  width: 27%;
   margin-right: 20px;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   padding: 15px;
-  border: 0.5px solid #e3ebf6;
   position: relative;
   margin-bottom: 20px;
   border-top: 4px solid #3A9FFF;
   min-width: 280px;
+  border-radius: 3px;
 }
 
 .index_page_body_moderation_block h1 {
   font-size: 20px;
   font-weight: 400;
   text-align: center;
+  color: white;
 }
 
 .index_page_body_moderation_block p {
@@ -183,8 +184,6 @@ html, body {
   width: 90%;
   margin: 0 auto;
   margin-top: 20px;
-  border-bottom: 1px solid #e3ebf6;
-  border-top: 1px solid #e3ebf6;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -227,7 +226,7 @@ html, body {
 }
 
 .index_page_body_body_line_left {
-  border-right: 1px solid #e3ebf6;
+  border-right: 1px solid #0E1122;
 }
 
 .index_page_body_info_line {
@@ -285,22 +284,21 @@ html, body {
 .index_page_body_moderation_search h1 {
   display: block;
   width: 100%;
-  border-bottom: 1px solid #e3ebf6;
   margin: 0;
   letter-spacing: -.02em;
-  font-size: 22px;
+  font-size: 30px;
   font-weight: 400;
   line-height: 1.1;
   padding-bottom: 20px;
   font-family: Liner;
   font-weight: 400;
+  color: #9BAAD9;
+  margin-top: 18px;
 }
 
 .moderation_search_block {
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: none;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
