@@ -1303,13 +1303,6 @@
                 }
             });
 
-            
-
-            if(_project.signature) {
-                if(_project.signature.type == "wait") {
-                    _projectBlock.find('.index_page_body_project_body_header d_t').html('Ожидает данных');
-                }
-            }
 
             var _doc = 
             {
@@ -1440,7 +1433,8 @@
                                 <div class="index_page_body_project_body_header">
                                     <span class="selected" data="1">Поданные данные</span>
                                     <span data="2">Компания</span>
-                                    <span data="3">Дополнительно</span>
+                                    <span data="3">Юридические данные</span>
+                                    <span data="4">Дополнительно</span>
                                     <a><d_t>Дополнительные данные не получены</d_t><i class="fas fa-times-circle"></i></a>
                                 </div>
                                 <div class="index_page_body_project_body_content">
