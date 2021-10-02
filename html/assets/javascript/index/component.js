@@ -899,8 +899,14 @@
                 selectedMsgChats.forEach(el => {
 
                     var template_text = $(`
-                        <div class="msg_block_getting">
-                            1
+                        <div class="msg_block_getting_line">
+                            <div class="msg_block_getting_line_img">
+                                <div class="msg_block_getting_line_img_block"></div>
+                            </div>
+                            <div class="msg_block_getting_line_text">
+                                <span>VIBERY.STORE</span>
+                                <p>${el.msgs[el.msgs.length() - 1]}</p>
+                            </div>
                         </div>
                     `);
                     
