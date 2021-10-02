@@ -954,7 +954,7 @@
                     </div>
                     <div class="settingBlock_body">
 
-                    </div>
+                    </div> 
                 </div>
             `);
 
