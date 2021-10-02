@@ -905,7 +905,7 @@
                             </div>
                             <div class="msg_block_getting_line_text">
                                 <span>VIBERY.STORE</span>
-                                <p>${el.msgs[el.msgs.length - 1]}</p>
+                                <p>${el.msgs[el.msgs.length - 1].text}</p>
                             </div>
                         </div>
                     `);
