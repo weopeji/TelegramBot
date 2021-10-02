@@ -101,7 +101,7 @@ html, body {
 .index_page_body_moderation_block {
   background-color: #182037;
   border-radius: 2px;
-  width: 27%;
+  width: 25%;
   margin-right: 20px;
   height: -webkit-fit-content;
   height: -moz-fit-content;
@@ -216,7 +216,7 @@ html, body {
 
 .index_page_body_body_line_right p,
 .index_page_body_body_line_left p {
-  color: black !important;
+  color: white;
   font-size: 17px;
   letter-spacing: -.02em;
   font-size: 1.25rem;
@@ -244,6 +244,10 @@ html, body {
       -ms-flex-pack: justify;
           justify-content: space-between;
   font-size: 13px;
+}
+
+.index_page_body_info_line span {
+  color: white;
 }
 
 .index_page_body_hrefs {
