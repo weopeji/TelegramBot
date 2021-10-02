@@ -1033,6 +1033,13 @@
 
         showProjectData(_project) 
         {
+
+            var tempText = $(`
+                123
+            `);
+
+            $('.index_page_body_project_data').append(tempText);
+
             var param = _project.data.organization;
 
             $('.index_page_body_row').append('<div class="index_page_body_project_data"></div>');
