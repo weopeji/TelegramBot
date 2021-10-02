@@ -958,7 +958,7 @@
                 </div>
             `);
 
-            _data.forEach(function(element, i) {
+            _data.forEach(async function(element, i) {
 
                 var investing_pay = await callApi({
                     methodName: "Attracted_by_me_investing_pay",
