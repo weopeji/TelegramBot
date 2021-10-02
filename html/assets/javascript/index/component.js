@@ -949,6 +949,7 @@
                         <div class="settingBlock_header_line">
                             <span>#</span>
                             <span>ID Инвестора</span>
+                            <span>Сумма инвестиций</span>
                         </div>
                     </div>
                     <div class="settingBlock_body">
@@ -958,10 +959,17 @@
             `);
 
             _data.forEach(function(element, i) {
+
+                var investing_pay = await callApi({
+                    methodName: "Attracted_by_me_investing_pay",
+                    data: element.user,
+                });
+
                 var template_text = `
                     <div class="settingBlock_body_line">
                         <span>${i + 1}</span>
                         <span>${element.user}</span>
+                        <span>${investing_pay}</span>
                     </div>
                 `;
 

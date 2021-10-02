@@ -90,6 +90,19 @@ var action_linker = {
     "msgUP": msgUP,
     "all_msgs": all_msgs,
     "Attracted_by_me": Attracted_by_me,
+    "Attracted_by_me_investing_pay": Attracted_by_me_investing_pay,
+}
+
+async function Attracted_by_me_investing_pay(socket,data,callback)
+{
+    var _InvDocs    = await InvDoc.find({invester: data});
+    var AllPays     = 0;
+
+    _InvDocs.forEach(el => {
+        AllPays = AllPays + Number(el.data.pay.trim());
+    });
+
+    callback(AllPays);
 }
 
 async function Attracted_by_me(socket,data,callback)

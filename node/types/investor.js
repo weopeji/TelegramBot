@@ -400,7 +400,7 @@ async function recomendations(msg)
     });
     _array.push(fat.message_id);
 
-    var html = '``https://t.me/investER_localhost_bot?start=123r4awawffaw3123``';
+    var html = `https://t.me/investER_localhost_bot?start=user_${_User.user}`;
     var fat = await bot.sendMessage(msg.chat.id, html, {
         parse_mode: "Markdown",
         reply_markup: {                                                                     
