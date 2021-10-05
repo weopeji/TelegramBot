@@ -52,6 +52,24 @@
                                 <a>${_data.InvDoc.status}</a>
                             </div>
                         </div>
+                        <div class="info_active_block_left_info">
+                            <div class="info_active_block_left_info_line">
+                                <span>Номер проекта:</span>
+                                <a>${_data.InvDoc.projectId}</a>
+                            </div>
+                            <div class="info_active_block_left_info_line">
+                                <span>Номер инвестора:</span>
+                                <a>1</a>
+                            </div>
+                            <div class="info_active_block_left_info_line">
+                                <span>Дата:</span>
+                                <a></a>
+                            </div>
+                            <div class="info_active_block_left_info_line">
+                                <span>Статус:</span>
+                                <a>${_data.InvDoc.status}</a>
+                            </div>
+                        </div>
                         <div class="info_active_block_left_buttons">
                             <span class="accept_block">Подтвердить оплату</span>
                             <span class="remove_block">Отказать</span>
