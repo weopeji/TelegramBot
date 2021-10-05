@@ -851,6 +851,12 @@ html, body {
   background: linear-gradient(90deg, #8c80fe 0%, #594bd3 61%);
 }
 
+.show_document {
+  background: #fc65d8;
+  background: -webkit-gradient(linear, left top, right top, from(#fc65d8), color-stop(61%, #d82bad));
+  background: linear-gradient(90deg, #fc65d8 0%, #d82bad 61%);
+}
+
 @media (max-width: 500px) {
   .buttons_menu {
     display: block;
