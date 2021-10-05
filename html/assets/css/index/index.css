@@ -367,9 +367,6 @@ html, body {
   background-color: #182037;
   border-radius: 3px;
   padding: 20px;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
 }
 
 .info_active_block_photo {
@@ -448,6 +445,7 @@ html, body {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  margin-top: 50px;
 }
 
 .info_active_block_left_buttons span {
@@ -457,6 +455,13 @@ html, body {
   margin-bottom: 10px;
   margin-top: 10px;
   cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: calc(50% - 60px);
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .accept_block {
