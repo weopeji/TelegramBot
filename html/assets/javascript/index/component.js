@@ -209,7 +209,7 @@
             }
 
             $('.info_active_block_massage_button').click(function() {
-                location.href = `./?user=${_User._id}&page=chats&id=${_data._id}`;
+                location.href = `./?user=${allData.User._id}&page=chats&id=${_data._id}`;
             });
 
             if(_data.InvDoc.status == "accept") {
