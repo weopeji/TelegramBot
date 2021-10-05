@@ -135,6 +135,20 @@
 
                 $('.index_page_body_data').append(headerPaysBlock);
             } else {
+                var getBussnes = await callApi({
+                    methodName: "getBussnes",
+                    data: _data.InvDoc.projectId,
+                });
+
+                settingBlock.find('.info_active_block_right').append(`
+                    <div class="info_active_block_photo">
+                            
+                    </div>
+                    <span>${getBussnes.data.name}</span>
+                    <p>business</p>
+                `);
+
+                $('.index_page_body_data').append(settingBlock);
 
                 var headerPaysBlock = $(`
                     <div class="headerPaysBlock">
@@ -184,22 +198,7 @@
 
 
                 $('.index_page_body_data').append(headerPaysBlock);
-
-
-                var getBussnes = await callApi({
-                    methodName: "getBussnes",
-                    data: _data.InvDoc.projectId,
-                });
-                settingBlock.find('.info_active_block_right').append(`
-                    <div class="info_active_block_photo">
-                            
-                    </div>
-                    <span>${getBussnes.data.name}</span>
-                    <p>business</p>
-                `);
             }
-
-            $('.index_page_body_data').append(settingBlock);
 
             if(_data.InvDoc.status == "accept") {
                 $('.info_active_block').addClass('accepting');
