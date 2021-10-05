@@ -6,6 +6,7 @@ const UserShema = new mongoose.Schema({
     status: String,
     receipt: String,
     data: JSON,
+    pays: JSON,
 });
 
 mongoose.model('InvDoc', UserShema);

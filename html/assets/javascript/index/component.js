@@ -55,7 +55,7 @@
                         <div class="info_active_block_left_info">
                             <div class="info_active_block_left_info_line">
                                 <span>Сумма инвестиции:</span>
-                                <a>${_data.InvDoc.data.pay}</a>
+                                <a>${_data.InvDoc.data.pay} руб</a>
                             </div>
                         </div>
                         <div class="info_active_block_left_buttons">
@@ -207,6 +207,10 @@
 
                 $('.index_page_body_data').append(headerPaysBlock);
             }
+
+            $('.info_active_block_massage_button').click(function() {
+                location.href = `./?user=${_User._id}&page=chats&id=${_data._id}`;
+            });
 
             if(_data.InvDoc.status == "accept") {
                 $('.info_active_block').addClass('accepting');

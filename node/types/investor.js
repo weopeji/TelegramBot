@@ -93,7 +93,8 @@ async function drafts(msg)
     console.log(InvDocs);
 }
 
-async function payerInBissnessDocument(msg) {
+async function payerInBissnessDocument(msg) 
+{
     var _User   = await User.findOne({user: msg.from.id});
     if(msg.document) 
     {
@@ -103,7 +104,13 @@ async function payerInBissnessDocument(msg) {
         const request = https.get(file_url, async function(response) 
         {
             response.pipe(file);
-            await InvDoc.findOneAndUpdate({projectId: _User.putProject, invester: msg.from.id}, {receipt: `receipt_${_User._id}.${file_url.split('.').pop()}`});
+            
+            await InvDoc.findOneAndUpdate({
+                projectId: _User.putProject, 
+                invester: msg.from.id
+            }, {
+                receipt: `receipt_${_User._id}.${file_url.split('.').pop()}`
+            });
             
             main_page.close(msg);
         });
@@ -743,6 +750,7 @@ async function document_load(msg)
                 status: "wait",
                 data: _arrayData,
                 receipt: null,
+                pays: null,
             });
 
             _arrayData.document = null;
