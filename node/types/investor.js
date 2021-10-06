@@ -278,6 +278,8 @@ async function myPeoples(msg) {
     _array.push(fat.message_id);
 
     await h.DMA(msg, _array);
+
+    await User.findOneAndUpdate({user: msg.from.id}, {alerts: null});
 }
 
 async function payerBonus(msg) {
