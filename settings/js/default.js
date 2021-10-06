@@ -9,10 +9,9 @@
 
     async function Main()
     {
-        
-        const auth_block        = new global.Components.auth_block();
-
         global.pageID           = _GET('page');
+
+        const auth_block        = new global.Components.auth_block().render();
 
         (() => {
             $('.buttons_menu').click( function() {
