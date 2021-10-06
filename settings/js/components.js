@@ -26,7 +26,7 @@
             }
 
             $('.index_page_menu_block_line').click( function() {
-                location.href = `/?page=${$(this).attr('data')}`;
+                location.href = `/settings/?page=${$(this).attr('data')}`;
             });
         }
     }
