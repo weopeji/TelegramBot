@@ -31,7 +31,7 @@ function howmany(msg) {
 async function url(msg) 
 {
     var _array  = [];
-    var _url = `https://t.me/TestTalegrammBot?start=user_${msg.from.id}`;
+    var _url = `https://t.me/investER_localhost_bot?start=user_${msg.from.id}`;
     var html = `<strong>${msg.from.first_name} ${msg.from.last_name}</strong> делитесь с друзьями вашей реферальной ссылкой\n\n${_url}`;
     var fat = await h.send_html(msg.chat.id, html, 
     {
@@ -67,6 +67,7 @@ async function reqezits(msg)
 
 async function requisites(msg) 
 {
+    var _User = await User.findOne({ user: msg.from.id });
     var _array  = [];
     var html = `<strong>${msg.from.first_name} ${msg.from.last_name}</strong> Заполните данные для заключения агентского договора и реквизиты для перечислений. Обращаем ваше внимание, что подписание договора и перечисление бонуса осуществляется только с лицами, имеющими статус самозанятый, ИП или юр.лицо.`;
     var fat = await h.send_html(msg.chat.id, html, 
@@ -79,14 +80,7 @@ async function requisites(msg)
     });
     _array.push(fat.message_id);
     var html = `Выберите свой тип:`;
-    var fat = await h.send_html(msg.chat.id, html, 
-    {
-        "resize_keyboard": true,
-        "keyboard": [ 
-            ['Юр.лицо', 'ИП', "Физ.лицо"],
-            ["⬅️ Назад"]
-        ],
-    });
+    var fat = await h.send_html(msg.chat.id, html);
     _array.push(fat.message_id);
     await h.DMA(msg, _array);
 
