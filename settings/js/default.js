@@ -14,7 +14,8 @@
         const auth_block        = new global.Components.auth_block().render();
         const moderations       = new global.Components.moderations();
 
-        var pagesLAN = {
+        var pagesLAN = 
+        {
             "moderations": function() {moderations.render();},
         }
 
