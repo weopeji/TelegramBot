@@ -14,6 +14,7 @@ module.exports = {
     DM,
     DMA,
     MA,
+    alertBot,
 }
 
 function privateInit(initPlagins) {
@@ -118,4 +119,24 @@ function _GET(line, key) {
     var s = line;
     s = s.match(new RegExp(key + '=([^&=]+)'));
     return s ? s[1] : false;
+}
+
+async function alertBot(msg, type) 
+{
+    var _User   = await User.findOne({user: msg.from.id});
+    var alerts  = _User.alerts;
+
+    if(!alerts) {
+        alerts = [
+            {
+                type: type
+            }
+        ];
+    } else {
+        alerts.push({
+            type: type
+        })
+    }
+
+    await User.findOneAndUpdate({user: msg.from.id}, { alerts: alerts });
 }

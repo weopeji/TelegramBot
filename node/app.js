@@ -220,6 +220,7 @@ bot.onText(/\/start (.+)/, async (msg, match) =>
     } else if(resp.split('_')[0] == "adder") 
     {
         await User.findOneAndUpdate({user: msg.from.id}, {member: resp.split('_')[3]});
+        helper_functions.alertBot(msg, "Attracted_by_me");
         defaultShowProject();
     } else 
     {
@@ -254,7 +255,7 @@ bot.onText(/\/start (.+)/, async (msg, match) =>
         });
         _array.push(fat.message_id);
     
-        await h.DMA(msg, _array);
+        await helper_functions.DMA(msg, _array);
     
         await User.findOneAndUpdate({user: msg.from.id}, {putProject: _idProject});
     }
@@ -315,9 +316,9 @@ bot.on('message', async (msg) =>
                 "payerInBissness": investor_page.payerInBissnessDocument,
             }
             action_where[_User.where.type](msg);
-            await h.DM(msg, 1);
+            await helper_functions.DM(msg, 1);
         } else {
-            await h.DM(msg, 1);
+            await helper_functions.DM(msg, 1);
         }
     }
 });
