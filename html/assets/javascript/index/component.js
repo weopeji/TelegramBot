@@ -226,6 +226,9 @@
 
 
                 $('.index_page_body_data').append(headerPaysBlock);
+
+                $('.accept_block').remove();
+                $('.remove_block').remove();
             }
 
             $('.info_active_block_massage_button').click(function() {
