@@ -10,6 +10,7 @@ module.exports = {
     url,
     howmany,
     requisites,
+    reqezits,
 }
 
 function privateInit(initPlagins) {
@@ -41,14 +42,41 @@ async function url(msg)
     await h.DMA(msg, _array);
 }
 
-async function requisites(msg) {
+async function reqezits(msg)
+{
     var _array  = [];
-    var html = `<strong>${msg.from.first_name} ${msg.from.last_name}</strong> Заполните данные для заключения агентского договора и реквизиты для перечислений. Обращаем ваше внимание, что подписание договора и перечисление бонуса осуществляется только с лицами, имеющими статус самозанятый, ИП или юр.лицо.\n\nС помощью стрелок ⬇️ и ⬆️ выберите нужный пункт и введите значение.`;
+    var html = `<strong>${msg.from.first_name} ${msg.from.last_name}</strong> Заполните данные для заключения агентского договора и реквизиты для перечислений. Обращаем ваше внимание, что подписание договора и перечисление бонуса осуществляется только с лицами, имеющими статус самозанятый, ИП или юр.лицо.`;
     var fat = await h.send_html(msg.chat.id, html, 
     {
         "resize_keyboard": true,
-        "keyboard": [["⬅️ Назад"]],
+        "keyboard": [ 
+            ["⬅️ Назад"]
+        ],
     });
     _array.push(fat.message_id);
     await h.DMA(msg, _array);
+
+    await User.findOneAndUpdate({user: msg.from.id}, { where: {
+        type: "attraction",
+    }});
+}
+
+async function requisites(msg) 
+{
+    var _array  = [];
+    var html = `<strong>${msg.from.first_name} ${msg.from.last_name}</strong> Заполните данные для заключения агентского договора и реквизиты для перечислений. Обращаем ваше внимание, что подписание договора и перечисление бонуса осуществляется только с лицами, имеющими статус самозанятый, ИП или юр.лицо.`;
+    var fat = await h.send_html(msg.chat.id, html, 
+    {
+        "resize_keyboard": true,
+        "keyboard": [ 
+            ['Юр.лицо', 'ИП', "Физ.лицо"],
+            ["⬅️ Назад"]
+        ],
+    });
+    _array.push(fat.message_id);
+    await h.DMA(msg, _array);
+
+    await User.findOneAndUpdate({user: msg.from.id}, { where: {
+        type: "attraction",
+    }});
 }
