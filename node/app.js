@@ -314,6 +314,7 @@ bot.on('message', async (msg) =>
                 "investor": investor_page.actionWhere,
                 "document_load": investor_page.document_load,
                 "payerInBissness": investor_page.payerInBissnessDocument,
+                "attraction": attraction_page.reqezits,
             }
             action_where[_User.where.type](msg);
             await helper_functions.DM(msg, 1);

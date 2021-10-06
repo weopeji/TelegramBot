@@ -981,7 +981,6 @@ async function goInvesting(msg)
     {
         var investingBlock = await InvDoc.findOne({projectId: _User.putProject, invester: msg.from.id});
 
-        console.log(investingBlock);
         if(!investingBlock) 
         {
             startInvestingMsg(msg, 1, _array, "1", _User.putProject);
