@@ -18,12 +18,10 @@
             "moderations": function() {moderations.render();},
         }
 
-        (() => {
-            $('.buttons_menu').click( function() {
-                $('.index_page_menu').toggleClass('selected');
-                $('.buttons_menu').toggleClass('selected');
-            })
-        })()
+        if(global.pageID)
+        {
+            pagesLAN[global.pageID]();
+        }
     }
 
 }(window))
