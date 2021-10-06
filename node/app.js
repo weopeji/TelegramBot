@@ -276,6 +276,7 @@ bot.on('message', async (msg) =>
         "💰 Мои инвестиции": investor_page.my_investment,
         "💰 Мои инвестиции ♦️": investor_page.my_investment,
         "Активные проекты": investor_page.active_projects,
+        "Активные проекты ♦️": investor_page.active_projects,
         "📈 Инвестировать": investor_page.goInvesting,
         "👨‍💼 Рекомендовать": investor_page.recomendations,
         "👨‍💼 Рекомендовать ♦️": investor_page.recomendations,
