@@ -27,15 +27,18 @@ function howmany(msg) {
     });
 }
 
-function url(msg) 
+async function url(msg) 
 {
-    var _url = `https://t.me/TestTalegrammBot?start=${msg.from.id}`;
+    var _array  = [];
+    var _url = `https://t.me/TestTalegrammBot?start=user_${msg.from.id}`;
     var html = `<strong>${msg.from.first_name} ${msg.from.last_name}</strong> делитесь с друзьями вашей реферальной ссылкой\n\n${_url}`;
-    h.send_html(msg.chat.id, html, 
+    var fat = await h.send_html(msg.chat.id, html, 
     {
         "resize_keyboard": true,
         "keyboard": [["⬅️ Назад"]],
     });
+    _array.push(fat.message_id);
+    await h.DMA(msg, _array);
 }
 
 function requisites(msg) {
