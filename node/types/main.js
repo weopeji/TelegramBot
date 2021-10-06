@@ -155,6 +155,14 @@ async function _MainMenu(msg)
     {
         investor: async function(msg) 
         {
+            var myInvestingText     = "💰 Мои инвестиции";
+            var InvestingText       = "📈 Инвестировать";
+            var rekvexitionText     = "💳 Реквезиты";
+
+            _User.alerts.forEach(function(el) {
+                if(el.type == "Attracted_by_me") myInvestingText = "💰 Мои инвестиции ♦️";
+            });
+
             if(_User.putProject) 
             {
                 var needProject = await Project.findOne({_id: _User.putProject});
@@ -181,7 +189,7 @@ async function _MainMenu(msg)
                     "parse_mode": "MarkdownV2",
                     "reply_markup": {
                         "resize_keyboard": true,
-                        "keyboard": [["💰 Мои инвестиции", "📈 Инвестировать", "💳 Реквезиты"], ["👨‍💼 Рекомендовать","🔁 Сменить роль"]],
+                        "keyboard": [[myInvestingText, InvestingText, rekvexitionText], ["👨‍💼 Рекомендовать","🔁 Сменить роль"]],
                     }
                 });
                 _array.push(fat.message_id);
