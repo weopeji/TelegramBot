@@ -12,6 +12,11 @@
         global.pageID           = _GET('page');
 
         const auth_block        = new global.Components.auth_block().render();
+        const moderations       = new global.Components.moderations();
+
+        var pagesLAN = {
+            "moderations": function() {moderations.render();},
+        }
 
         (() => {
             $('.buttons_menu').click( function() {
