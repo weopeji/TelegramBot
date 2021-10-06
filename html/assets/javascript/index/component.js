@@ -240,6 +240,10 @@
                 location.href = `./projects/${_data.InvDoc.receipt}`;
             });
 
+            $('.show_document').click( function() {
+                window.open(`https://skin-win.ru/html/project/document/#${_data.InvDoc.projectId}`, '_blank');
+            });
+
             $('.accept_block').click( async function () {
                 var acceptInvestor = await callApi({
                     methodName: "acceptInvestor",
