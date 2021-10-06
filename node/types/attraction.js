@@ -41,7 +41,7 @@ async function url(msg)
     await h.DMA(msg, _array);
 }
 
-function requisites(msg) {
+async function requisites(msg) {
     var _array  = [];
     var html = `<strong>${msg.from.first_name} ${msg.from.last_name}</strong> Заполните данные для заключения агентского договора и реквизиты для перечислений. Обращаем ваше внимание, что подписание договора и перечисление бонуса осуществляется только с лицами, имеющими статус самозанятый, ИП или юр.лицо.\n\nС помощью стрелок ⬇️ и ⬆️ выберите нужный пункт и введите значение.`;
     var fat = await h.send_html(msg.chat.id, html, 
