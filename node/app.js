@@ -221,7 +221,7 @@ bot.onText(/\/start (.+)/, async (msg, match) =>
     {
         await User.findOneAndUpdate({user: msg.from.id}, {member: resp.split('_')[3]});
         helper_functions.alertBot(msg, "Attracted_by_me");
-        defaultShowProject();
+        main_page._CreatorFUN(msg)
     } else 
     {
         defaultShowProject();
