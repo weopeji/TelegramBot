@@ -163,6 +163,7 @@ async function _MainMenu(msg)
             if(_User.alerts) {
                 _User.alerts.forEach(function(el) {
                     if(el.type == "Attracted_by_me") rekomendationText = "👨‍💼 Рекомендовать ♦️";
+                    if(el.type == "acceptInvestor") myInvestingText = "💰 Мои инвестиции ♦️";
                 });
             }
 
