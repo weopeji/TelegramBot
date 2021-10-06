@@ -297,7 +297,7 @@ bot.on('message', async (msg) =>
         "Выплаты": business_page.viplati,
         // ПРИВЛЕЧЕНИЕ ========================================
         "🔗 Моя реферальная ссылка": attraction_page.url,
-        "🙋‍♂️ Мною привлечено": attraction_page.howmany,
+        "🙋‍♂️ Мною привлечено": investor_page.myPeoples,
         "💳 Реквезиты": attraction_page.requisites,
     }
 

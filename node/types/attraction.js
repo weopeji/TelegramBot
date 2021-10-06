@@ -42,10 +42,13 @@ async function url(msg)
 }
 
 function requisites(msg) {
+    var _array  = [];
     var html = `<strong>${msg.from.first_name} ${msg.from.last_name}</strong> Заполните данные для заключения агентского договора и реквизиты для перечислений. Обращаем ваше внимание, что подписание договора и перечисление бонуса осуществляется только с лицами, имеющими статус самозанятый, ИП или юр.лицо.\n\nС помощью стрелок ⬇️ и ⬆️ выберите нужный пункт и введите значение.`;
-    h.send_html(msg.chat.id, html, 
+    var fat = await h.send_html(msg.chat.id, html, 
     {
         "resize_keyboard": true,
         "keyboard": [["⬅️ Назад"]],
     });
+    _array.push(fat.message_id);
+    await h.DMA(msg, _array);
 }
