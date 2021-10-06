@@ -397,9 +397,13 @@ async function recomendations(msg)
 
     var myAdders = "🙋‍♂️ Мной привлечено";
 
-    _User.alerts.forEach(function(el) {
-        if(el.type == "Attracted_by_me") myAdders = "🙋‍♂️ Мной привлечено ♦️";
-    });
+    if(_User.alerts)
+    {
+        _User.alerts.forEach(function(el) {
+            if(el.type == "Attracted_by_me") myAdders = "🙋‍♂️ Мной привлечено ♦️";
+        });
+    }
+    
 
     var html = '\nДля это просто перешлите любое предложение из [КАНАЛА](https://t.me/investER_localhost_bot) или  вашу [ПЕРСОНАЛЬНУЮ ССЫЛКУ](https://t.me/investER_localhost_bot) вашему другу\n\nВаша ПЕРСОНАЛЬНАЯ ссылка ⬇️';
     var fat = await bot.sendMessage(msg.chat.id, html, {

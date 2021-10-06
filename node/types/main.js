@@ -160,9 +160,11 @@ async function _MainMenu(msg)
             var rekvexitionText     = "💳 Реквезиты";
             var rekomendationText   = "👨‍💼 Рекомендовать";
 
-            _User.alerts.forEach(function(el) {
-                if(el.type == "Attracted_by_me") rekomendationText = "👨‍💼 Рекомендовать ♦️";
-            });
+            if(_User.alerts) {
+                _User.alerts.forEach(function(el) {
+                    if(el.type == "Attracted_by_me") rekomendationText = "👨‍💼 Рекомендовать ♦️";
+                });
+            }
 
             if(_User.putProject) 
             {
