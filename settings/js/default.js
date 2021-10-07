@@ -21,6 +21,7 @@
 
         if(global.pageID)
         {
+            $('.index_page_body_data').empty();
             pagesLAN[global.pageID]();
         }
     }

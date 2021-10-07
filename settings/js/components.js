@@ -42,20 +42,12 @@
 
         async render() 
         {
-            $('.index_page_body_data').empty();
-
             var item_block = $(`
                 <div class="index_page_body_moderation_block">
-                    <div class="redacting_button" data="41">
-                        <i class="fas fa-bars" aria-hidden="true"></i>
-                    </div>
-
                     <h1>VYBERI.STORE</h1>
                     <p>На развитие</p>
                     <div class="index_page_body_moderation_block_info_line">
-                        <div class="index_page_body_moderation_block_info_line_row">
-                            <span>№ 41</span><a>На модерации</a>
-                        </div>
+                        <span>№ 41</span><a>На модерации</a>
                     </div>
                     <div class="index_page_body_body_line">
                         <div class="index_page_body_body_line_left">
@@ -91,6 +83,7 @@
             `);
 
             this.global_block.append(item_block);
+
             $('.index_page_body_data').append(this.global_block);
         }
     }
