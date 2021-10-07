@@ -74,7 +74,7 @@
                             <i class="fal fa-presentation"></i>
                         </a>
                         <a target="_blank" href="https://skin-win.ru/projects/41/file+8.mp4">
-                            <i class="fal fa-camcorder"></i>
+                            <i class="fal fa-play"></i>
                         </a>
                     </div>
                 </div>
