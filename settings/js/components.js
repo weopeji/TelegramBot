@@ -87,15 +87,17 @@
         async render(type) 
         {
             var typeRender = {
-                "moderations": function() {
+                "moderations": async function() {
                     var getModerations = await callApi({
                         methodName: "getModerations",
-                        data: _GET('id'),
+                        data: null,
                     });
+
+                    console.log(getModerations);
                 },
             }
 
-            getBlocks(typeRender[type]())
+            this.getBlocks(typeRender[type]())
         }
     }
 
