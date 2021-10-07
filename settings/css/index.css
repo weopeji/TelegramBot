@@ -3,6 +3,8 @@
   background-color: #182037;
   padding: 35px;
   position: relative;
+  cursor: pointer;
+  z-index: 100;
 }
 
 .index_page_body_moderation_block h1 {
@@ -22,7 +24,7 @@
   text-align: center;
 }
 
-.index_page_body_moderation_block::hover {
+.index_page_body_moderation_block:hover {
   top: -4px;
 }
 
