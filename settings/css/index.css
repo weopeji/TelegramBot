@@ -47,9 +47,28 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  padding: 15px 0;
 }
 
 .index_page_body_info_line p {
   margin-bottom: 0;
+}
+
+.index_page_body_hrefs {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.index_page_body_hrefs a {
+  display: block;
+  padding: 10px;
+  border-radius: 8px;
 }
 /*# sourceMappingURL=index.css.map */

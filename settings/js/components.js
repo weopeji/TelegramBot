@@ -67,9 +67,15 @@
                         </div>
                     </div>
                     <div class="index_page_body_hrefs">
-                        <a target="_blank" href="https://skin-win.ru/html/project/profil/#41">Профиль компании</a>
-                        <a target="_blank" href="https://skin-win.ru/projects/41/file+7.jpeg">Презентация</a>
-                        <a target="_blank" href="https://skin-win.ru/projects/41/file+8.mp4">Видео-презентация</a>
+                        <a target="_blank" href="https://skin-win.ru/html/project/profil/#41">
+                            <i class="fal fa-id-card"></i>
+                        </a>
+                        <a target="_blank" href="https://skin-win.ru/projects/41/file+7.jpeg">
+                            <i class="fal fa-presentation"></i>
+                        </a>
+                        <a target="_blank" href="https://skin-win.ru/projects/41/file+8.mp4">
+                            <i class="fal fa-camcorder"></i>
+                        </a>
                     </div>
                 </div>
             `);
