@@ -12,11 +12,11 @@
         global.pageID           = _GET('page');
 
         const auth_block        = new global.Components.auth_block().render();
-        const moderations       = new global.Components.moderations();
+        const projects          = new global.Components.projects();
 
         var pagesLAN = 
         {
-            "moderations": function() {moderations.render();},
+            "moderations": function() {projects.render("moderations");},
         }
 
         if(global.pageID)

@@ -31,7 +31,7 @@
         }
     }
 
-    class moderations
+    class projects
     {
         constructor() 
         {
@@ -40,8 +40,7 @@
             `);
         };
 
-        async render() 
-        {
+        getBlocks() {
             var item_block = $(`
                 <div class="index_page_body_moderation_block">
                     <h1>VYBERI.STORE</h1>
@@ -84,13 +83,27 @@
 
             $('.index_page_body_data').append(this.global_block);
         }
+
+        async render(type) 
+        {
+            var typeRender = {
+                "moderations": function() {
+                    var getModerations = await callApi({
+                        methodName: "getModerations",
+                        data: _GET('id'),
+                    });
+                },
+            }
+
+            getBlocks(typeRender[type]())
+        }
     }
 
     if(!global.Components)
     {
         global.Components = {
             auth_block,
-            moderations,
+            projects,
         }
     }
 
