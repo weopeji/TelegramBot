@@ -47,23 +47,15 @@
                     <h1>VYBERI.STORE</h1>
                     <p>На развитие</p>
                     <div class="index_page_body_moderation_block_info_line">
-                        <span>№ 41</span><a>На модерации</a>
-                    </div>
-                    <div class="index_page_body_body_line">
-                        <div class="index_page_body_body_line_left">
-                            <div class="row">
-                                <span>СУММА</span>
-                                <p> 7 000 000 руб.</p>
-                            </div>
-                        </div>
-                        <div class="index_page_body_body_line_right">
-                            <div class="row">
-                                <span>НА СРОК</span>
-                                <p>2026.12.03</p>
-                            </div>
-                        </div>
+                        <span>41</span><a>На модерации</a>
                     </div>
                     <div class="index_page_body_info">
+                        <div class="index_page_body_info_line">
+                            <span>СУММА</span><p>7 000 000 руб.</p>
+                        </div>
+                        <div class="index_page_body_info_line">
+                            <span>НА СРОК</span><p>2026.12.03</p>
+                        </div>
                         <div class="index_page_body_info_line">
                             <span>Ставка % в год</span><p>1.00%</p>
                         </div>
