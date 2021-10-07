@@ -38,4 +38,18 @@
   border: 1px solid;
   font-size: 13px;
 }
+
+.index_page_body_info_line {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.index_page_body_info_line p {
+  margin-bottom: 0;
+}
 /*# sourceMappingURL=index.css.map */
