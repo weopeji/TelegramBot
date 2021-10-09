@@ -104,7 +104,7 @@
                 },
             }
 
-            this.getBlocks(typeRender[type](), "На модерации")
+            this.getBlocks(await typeRender[type](), "На модерации")
         }
     }
 
