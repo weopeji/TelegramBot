@@ -40,48 +40,55 @@
             `);
         };
 
-        getBlocks() {
-            var item_block = $(`
-                <div class="index_page_body_moderation_block">
-                    <h1>VYBERI.STORE</h1>
-                    <p>На развитие</p>
-                    <div class="index_page_body_moderation_block_info_line">
-                        <span>41</span><a>На модерации</a>
+        getBlocks(_array, name) 
+        {
+            _array.forEach(element => {
+                var item_block = $(`
+                    <div class="index_page_body_moderation_block" data="${element._id}">
+                        <h1>${element.data.name}</h1>
+                        <p>${element.data.target}</p>
+                        <div class="index_page_body_moderation_block_info_line">
+                            <span>${element._id}</span><a>${name}</a>
+                        </div>
+                        <div class="index_page_body_info">
+                            <div class="index_page_body_info_line">
+                                <span>Сумма</span><p>${element.data.attraction_amount} руб.</p>
+                            </div>
+                            <div class="index_page_body_info_line">
+                                <span>На срок</span><p>${element.data.collection_period.replace(/-/g, ".")}</p>
+                            </div>
+                            <div class="index_page_body_info_line">
+                                <span>Ставка % в год</span><p>${element.data.rate}%</p>
+                            </div>
+                            <div class="index_page_body_info_line">
+                                <span>Выплаты</span><p>${element.data.date_payments}</p>
+                            </div>
+                            <div class="index_page_body_info_line">
+                                <span>Вход от</span><p>${element.data.minimal_amount} руб.</p>
+                            </div>
+                        </div>
+                        <div class="index_page_body_hrefs">
+                            <a target="_blank" href="${getURL()}/html/project/profil/#${element._id}">
+                                <i class="fal fa-id-card"></i>
+                            </a>
+                            <a target="_blank" href="${getURL()}/projects/${element._id}/${element.data["file+7"]}">
+                                <i class="fal fa-presentation"></i>
+                            </a>
+                            <a target="_blank" href="${getURL()}/projects/${element._id}/${element.data["file+8"]}">
+                                <i class="fal fa-play"></i>
+                            </a>
+                        </div>
                     </div>
-                    <div class="index_page_body_info">
-                        <div class="index_page_body_info_line">
-                            <span>СУММА</span><p>7 000 000 руб.</p>
-                        </div>
-                        <div class="index_page_body_info_line">
-                            <span>НА СРОК</span><p>2026.12.03</p>
-                        </div>
-                        <div class="index_page_body_info_line">
-                            <span>Ставка % в год</span><p>1.00%</p>
-                        </div>
-                        <div class="index_page_body_info_line">
-                            <span>Выплаты</span><p>Ежегодно</p>
-                        </div>
-                        <div class="index_page_body_info_line">
-                            <span>Вход от</span><p>50 000 руб.</p>
-                        </div>
-                    </div>
-                    <div class="index_page_body_hrefs">
-                        <a target="_blank" href="https://skin-win.ru/html/project/profil/#41">
-                            <i class="fal fa-id-card"></i>
-                        </a>
-                        <a target="_blank" href="https://skin-win.ru/projects/41/file+7.jpeg">
-                            <i class="fal fa-presentation"></i>
-                        </a>
-                        <a target="_blank" href="https://skin-win.ru/projects/41/file+8.mp4">
-                            <i class="fal fa-play"></i>
-                        </a>
-                    </div>
-                </div>
-            `);
+                `);
 
-            this.global_block.append(item_block);
+                this.global_block.append(item_block);
+            });
 
             $('.index_page_body_data').append(this.global_block);
+
+            $('.index_page_body_moderation_block').click( function () {
+                location.href = `/settings/?page=block&id=${$(this).attr('data')}`;
+            });
         }
 
         async render(type) 
@@ -93,11 +100,11 @@
                         data: null,
                     });
 
-                    console.log(getModerations);
+                    return getModerations;
                 },
             }
 
-            this.getBlocks(typeRender[type]())
+            this.getBlocks(typeRender[type](), "На модерации")
         }
     }
 
