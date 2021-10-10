@@ -13,10 +13,12 @@
 
         const auth_block        = new global.Components.auth_block().render();
         const projects          = new global.Components.projects();
+        const block             = new global.Components.block();
 
         var pagesLAN = 
         {
             "moderations": function() {projects.render("moderations");},
+            "block": function() {block.render();},
         }
 
         if(global.pageID)

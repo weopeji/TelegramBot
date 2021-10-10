@@ -108,11 +108,50 @@
         }
     }
 
+    class block
+    {
+        constructor() {
+            this.global_block = $(`
+                <div class="global_block"></div>
+            `);
+        };
+
+        async render_header(_project)
+        {
+            this.global_block.append(`
+                <div class="global_block_header">
+                    <div class="global_block_header_info">
+                        <h1>NAME</h1>
+                        <p>INFO</p>
+                    </div>
+                    <div class="global_block_header_accept_button">
+                        <span>Принять проект<i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </div>
+            `);
+        }
+
+        async render()
+        {
+            var getProject = await callApi({
+                methodName: "getProject",
+                data: _GET('id'),
+            });
+
+            console.log(getProject);
+
+            this.render_header(getProject);
+
+            $('.index_page_body_data').append(this.global_block);
+        }
+    }
+
     if(!global.Components)
     {
         global.Components = {
             auth_block,
             projects,
+            block,
         }
     }
 
