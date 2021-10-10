@@ -42,8 +42,17 @@
 .index_page_body_moderation_block_info_line a {
   padding: 7px 16px;
   border-radius: 3px;
-  border: 1px solid;
   font-size: 13px;
+}
+
+.index_page_body_moderation_block_info_line span {
+  background: -webkit-gradient(linear, left top, right top, from(#8c80fe), color-stop(61%, #594bd3));
+  background: linear-gradient(90deg, #8c80fe 0%, #594bd3 61%);
+}
+
+.index_page_body_moderation_block_info_line a {
+  background: -webkit-gradient(linear, left top, right top, from(#fc65d8), color-stop(61%, #d82bad));
+  background: linear-gradient(90deg, #fc65d8 0%, #d82bad 61%);
 }
 
 .index_page_body_info_line {
