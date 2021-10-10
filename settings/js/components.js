@@ -392,12 +392,8 @@
 
                 var _line = $(`
                     <div class="body_point_line">
-                        <div class="body_point_line_header">
-                            <div class="body_point_line_header_text">
-                                <span>${element.name}:</span>
-                                ${moreBlock[element.type]()}
-                            </div>
-                        </div>
+                        <span>${element.name}:</span>
+                        ${moreBlock[element.type]()}
                     </div>
                 `);
 

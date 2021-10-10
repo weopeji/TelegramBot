@@ -191,5 +191,25 @@
   -ms-flex-pack: center;
   justify-content: center;
   margin-bottom: 20px;
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.body_point_line {
+  width: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.body_point_line p {
+  margin: 0;
+  padding: 0;
 }
 /*# sourceMappingURL=index.css.map */
