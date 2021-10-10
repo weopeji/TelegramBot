@@ -179,7 +179,7 @@
   margin-top: 20px;
 }
 
-.body_point input {
+.body_point textarea {
   border: 0;
   width: calc(100% - 20px);
   padding: 20px;
