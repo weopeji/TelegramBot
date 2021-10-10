@@ -154,5 +154,7 @@
   display: -ms-flexbox;
   display: flex;
   border-bottom: 1px solid #2B3552;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 /*# sourceMappingURL=index.css.map */

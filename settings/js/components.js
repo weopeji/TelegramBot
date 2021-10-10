@@ -132,7 +132,9 @@
 
             var header_menu = $(`
                 <div class="global_block_menu">
-                    
+                    <span>Поданные данные</span>
+                    <span>О компании</span>
+                    <span>Юридические данные</span>
                 </div>
             `);
 
