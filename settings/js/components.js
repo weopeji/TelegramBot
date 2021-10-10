@@ -437,7 +437,11 @@
                     });
                 }
 
-                _body.append(`<textarea id="${key}_textarea" class="text_area" rows="1"></textarea>`);
+                _body.append(`
+                    <div class="body_point_textarea">
+                        <textarea id="${key}_textarea" class="text_area" rows="1"></textarea>
+                    </div>
+                `);
                 
                 this.global_block.append(_body);
             }
