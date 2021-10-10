@@ -426,21 +426,18 @@
                     if(param == 1 || param == 2) {
                         data.body[1].forEach(element => 
                         {
-                            var _string = this.string(element, _project);
-                            _body.append(_string);
+                            _body.append(string(element, _project));
                         });
                     } else {
                         data.body[2].forEach(element => 
                         {
-                            var _string = this.string(element, _project);
-                            _body.append(_string);
+                            _body.append(string(element, _project));
                         });
                     }
                 } else {
                     data.body.forEach(element => 
                     {
-                        var _string = this.string(element, _project);
-                        _body.append(_string);
+                        _body.append(string(element, _project));
                     });
                 }
 
