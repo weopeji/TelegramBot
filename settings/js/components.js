@@ -132,11 +132,15 @@
 
             var header_menu = $(`
                 <div class="global_block_menu">
-                    <span>Поданные данные</span>
-                    <span>О компании</span>
-                    <span>Юридические данные</span>
+                    <span data="data">Поданные данные</span>
+                    <span data="info">О компании</span>
+                    <span data="more">Юридические данные</span>
                 </div>
             `);
+
+            header_menu.find('span').click( function () {
+                location.href = `/settings/?page=block&id=${_project._id}&more=${$(this).attr('data')}`;
+            });
 
             this.global_block.append(header_info);
             this.global_block.append(header_menu);
