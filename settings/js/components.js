@@ -121,8 +121,8 @@
             var header_info = $(`
                 <div class="global_block_header">
                     <div class="global_block_header_info">
-                        <h1>NAME</h1>
-                        <p>INFO</p>
+                        <h1>${_project.data.name}</h1>
+                        <p>${_project.data.target}</p>
                     </div>
                     <div class="global_block_header_accept_button">
                         <span>Принять проект<i class="fas fa-arrow-right"></i></span>
@@ -146,6 +146,319 @@
             this.global_block.append(header_menu);
         }
 
+        async renderData(_project)
+        {
+            var struct = 
+            {
+                "+1": {
+                    header: "1. Описание предложения",
+                    body: [
+                        {
+                            type: "string",
+                            name: "Название проекта",
+                            _id: "name"
+                        },
+                        {
+                            type: "string",
+                            name: "Цель привлечения средств",
+                            _id: "target"
+                        },
+                        {
+                            type: "string",
+                            name: "Общая сумма привлечения",
+                            _id: "attraction_amount"
+                        },
+                        {
+                            type: "string",
+                            name: "Срок инвестирования",
+                            _id: "date"
+                        },
+                        {
+                            type: "string",
+                            name: "Минимальная сумма",
+                            _id: "minimal_amount"
+                        },
+                        {
+                            type: "string",
+                            name: "Ставка % в год",
+                            _id: "rate"
+                        },
+                        {
+                            type: "string",
+                            name: "Выплата процентов",
+                            _id: "date_payments"
+                        },
+                        {
+                            type: "string",
+                            name: "Период сбора",
+                            _id: "collection_period"
+                        }
+                    ]
+                },
+                "+2": {
+                    header: "2. Данные о компании",
+                    body: {
+                        1: [
+                            {
+                                type: "string",
+                                name: "Название компании",
+                                _id: "name_company"
+                            },
+                            {
+                                type: "string",
+                                name: "ИНН",
+                                _id: "inn"
+                            },
+                            {
+                                type: "string",
+                                name: "ОГРН",
+                                _id: "ogrn"
+                            },
+                            {
+                                type: "string",
+                                name: "Фактический адрес",
+                                _id: "addr"
+                            },
+                            {
+                                type: "string",
+                                name: "Сайт",
+                                _id: "syte"
+                            }
+                        ],
+                        2: [
+                            {
+                                type: "string",
+                                name: "Прописка как в паспорте",
+                                _id: "registration"
+                            },
+                            {
+                                type: "string",
+                                name: "Регион согласно паспорту",
+                                _id: "region"
+                            },
+                            {
+                                type: "string",
+                                name: "Основанная деятельность",
+                                _id: "activity"
+                            }
+                        ]
+                    }
+                },
+                "+3": {
+                    header: "3. Выписка из банка",
+                    body: [
+                        {
+                            type: "file",
+                            name: "Загруженная выписка",
+                            _id: "file+3"
+                        },
+                    ]
+                },
+                "+3_1": {
+                    header: "3.1. Отчет о прибылях",
+                    body: [
+                        {
+                            type: "file",
+                            name: "Загруженный отчет",
+                            _id: "file+3_1"
+                        },
+                    ]
+                },
+                "+3_2": {
+                    header: "3.2. Отчет о движении денежных средств",
+                    body: [
+                        {
+                            type: "file",
+                            name: "Загруженный отчет",
+                            _id: "file+3_2"
+                        },
+                    ]
+                },
+                "+3_3": {
+                    header: "3.3. Бухгалтерский баланс",
+                    body: [
+                        {
+                            type: "file",
+                            name: "Загруженный бухгалтерский баланс",
+                            _id: "file+3_3"
+                        },
+                    ]
+                },
+                "+4": {
+                    header: "4. Скан паспорта",
+                    body: [
+                        {
+                            type: "file",
+                            name: "Загруженный скан паспорта",
+                            _id: "file+4"
+                        },
+                    ]
+                },
+                "+5": {
+                    header: "5. Контакты",
+                    body: [
+                        {
+                            type: "string",
+                            name: "ФИО",
+                            _id: "initials"
+                        },
+                        {
+                            type: "string",
+                            name: "Должность",
+                            _id: "position"
+                        },
+                        {
+                            type: "string",
+                            name: "Телефон",
+                            _id: "phone"
+                        },
+                        {
+                            type: "string",
+                            name: "WhatsApp",
+                            _id: "whatsapp"
+                        },
+                        {
+                            type: "string",
+                            name: "Email",
+                            _id: "email"
+                        }
+                    ]
+                },
+                "+6": {
+                    header: "6. Реквезиты",
+                    body: [
+                        {
+                            type: "string",
+                            name: "Банк-получатель",
+                            _id: "bank"
+                        },
+                        {
+                            type: "string",
+                            name: "Корр. счет",
+                            _id: "account_correct"
+                        },
+                        {
+                            type: "string",
+                            name: "БИК",
+                            _id: "bik"
+                        },
+                        {
+                            type: "string",
+                            name: "Получатель",
+                            _id: "recipient"
+                        },
+                        {
+                            type: "string",
+                            name: "Счет получателя",
+                            _id: "account_get"
+                        },
+                    ]
+                },
+                "+7": {
+                    header: "7. Презентация",
+                    body: [
+                        {
+                            type: "file",
+                            name: "Презентация",
+                            _id: "file+7"
+                        },
+                    ]
+                },
+                "+8": {
+                    header: "8. Видео презентация",
+                    body: [
+                        {
+                            type: "file",
+                            name: `Видео-презентация`,
+                            _id: "file+8"
+                        },
+                    ]
+                }
+            };
+
+            var param       = _project.data.organization;
+
+            var string      = function (element, _project)
+            {
+
+                var moreBlock  = {
+                    "string": function() {
+                        return `<p>${_project.data[data._id]} <input type="text" class="body_point_line_micro_input"> <i class="fas fa-pencil-alt"></i><i class="fas fa-check-circle"></i></p>`;
+                    },
+                    "file": function() {
+                        return ``;
+                    },
+                };
+
+                var _line = $(`
+                    <div class="body_point_line">
+                        <div class="body_point_line_header">
+                            <div class="body_point_line_header_text">
+                                <span>${data.name}:</span>
+                                ${moreBlock[element.type]()}
+                            </div>
+                        </div>
+                    </div>
+                `);
+
+                return _line;
+            }
+
+            for (var key in struct) 
+            {
+                var _body       = $(`<div class="body_point"></div>`);
+
+                if(param != "1") {
+                    if(key == "+3.1" || key == "+3.2" || key == "+3.3") {
+                        continue;
+                    }
+                }
+
+                var data = struct[key];
+
+                _body.append(`
+                    <div class="body_point_header">
+                        <span>${data.header}</span>
+                    </div>
+                `);
+
+                if(key == "+2") {
+                    if(param == 1 || param == 2) {
+                        data.body[1].forEach(element => 
+                        {
+                            var _string = this.string(element, _project);
+                            _body.append(_string);
+                        });
+                    } else {
+                        data.body[2].forEach(element => 
+                        {
+                            var _string = this.string(element, _project);
+                            _body.append(_string);
+                        });
+                    }
+                } else {
+                    data.body.forEach(element => 
+                    {
+                        var _string = this.string(element, _project);
+                        _body.append(_string);
+                    });
+                }
+
+                _body.append(`
+                    <div class="wrapper_block">
+                        <div class="wrapper">
+                            <input type="checkbox" class="checkbox_true" id="${key}_checkbox" />
+                            <label for="${key}_checkbox"></label>
+                        </div>
+                    </div>
+                `);
+
+                _body.append(`<textarea id="${key}_textarea" class="text_area" rows="1"></textarea>`);
+                
+                this.global_block.append(_body);
+            }
+        }
+
         async render()
         {
             var getProject = await callApi({
@@ -156,6 +469,16 @@
             console.log(getProject);
 
             this.render_header(getProject);
+
+            if(_GET('more')) {
+                var renderMore = {
+                    "data": function () {
+                        this.renderData(_project);
+                    },
+                };
+
+                renderMore[_GET('more')]();
+            }
 
             $('.index_page_body_data').append(this.global_block);
         }
