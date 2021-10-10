@@ -437,15 +437,6 @@
                     });
                 }
 
-                _body.append(`
-                    <div class="wrapper_block">
-                        <div class="wrapper">
-                            <input type="checkbox" class="checkbox_true" id="${key}_checkbox" />
-                            <label for="${key}_checkbox"></label>
-                        </div>
-                    </div>
-                `);
-
                 _body.append(`<textarea id="${key}_textarea" class="text_area" rows="1"></textarea>`);
                 
                 this.global_block.append(_body);
