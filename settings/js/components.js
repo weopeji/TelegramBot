@@ -466,6 +466,11 @@
                     'margin': 0,
                     "margin-top": "20px",
                 });
+                _content.find('.index_page_profil').css({
+                    'width': '100%',
+                    'margin': 0,
+                });
+                _content.find('body').css('width', '100%');
             });
 
             this.global_block.append(_body);
