@@ -165,5 +165,7 @@
 .global_block_menu span {
   display: block;
   padding: 20px 35px;
+  font-size: 18px;
+  cursor: pointer;
 }
 /*# sourceMappingURL=index.css.map */
