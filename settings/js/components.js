@@ -383,7 +383,7 @@
 
                 var moreBlock  = {
                     "string": function() {
-                        return `<p>${_project.data[element._id]} <input type="text" class="body_point_line_micro_input"> <i class="fas fa-pencil-alt"></i><i class="fas fa-check-circle"></i></p>`;
+                        return `<p>${_project.data[element._id]}</p>`;
                     },
                     "file": function() {
                         return ``;
