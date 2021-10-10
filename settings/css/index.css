@@ -169,6 +169,10 @@
   cursor: pointer;
 }
 
+.global_block_menu .selected {
+  color: #1294FC;
+}
+
 .index_page_body_data {
   height: calc(100vh - 35px);
 }
