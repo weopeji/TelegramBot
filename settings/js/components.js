@@ -142,6 +142,11 @@
                 location.href = `/settings/?page=block&id=${_project._id}&more=${$(this).attr('data')}`;
             });
 
+            if(_GET('more'))
+            {
+                header_menu.find(`span[data="${_GET('more')}"]`).addClass('selected');
+            }
+
             this.global_block.append(header_info);
             this.global_block.append(header_menu);
         }
@@ -476,6 +481,11 @@
             this.global_block.append(_body);
         }
 
+        async renderMore(_project)
+        {
+
+        }
+
         async render()
         {
             var _this = this;
@@ -497,6 +507,9 @@
                     "info": function () {
                         _this.renderInfo(getProject);
                     },
+                    "more": function () {
+                        _this.renderMore(getProject);
+                    }
                 };
 
                 renderMore[_GET('more')]();
