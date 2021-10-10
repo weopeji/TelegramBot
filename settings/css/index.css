@@ -153,13 +153,13 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  border-bottom: 1px solid #2B3552;
   -ms-flex-pack: distribute;
       justify-content: space-around;
   background-color: #182037;
   color: #8394C8;
   margin-top: 20px;
-  padding-top: 10px;
+  padding: 10px 0;
+  border-radius: 8px;
 }
 
 .global_block_menu span {
