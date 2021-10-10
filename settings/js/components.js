@@ -118,7 +118,7 @@
 
         async render_header(_project)
         {
-            this.global_block.append(`
+            var header_info = $(`
                 <div class="global_block_header">
                     <div class="global_block_header_info">
                         <h1>NAME</h1>
@@ -129,6 +129,15 @@
                     </div>
                 </div>
             `);
+
+            var header_menu = $(`
+                <div class="global_block_menu">
+                    
+                </div>
+            `);
+
+            this.global_block.append(header_info);
+            this.global_block.append(header_menu);
         }
 
         async render()
