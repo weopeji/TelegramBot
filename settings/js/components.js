@@ -461,6 +461,8 @@
 
         async render()
         {
+            var _this = this;
+
             var getProject = await callApi({
                 methodName: "getProject",
                 data: _GET('id'),
@@ -473,7 +475,7 @@
             if(_GET('more')) {
                 var renderMore = {
                     "data": function () {
-                        this.renderData(getProject);
+                        _this.renderData(getProject);
                     },
                 };
 
