@@ -473,7 +473,7 @@
             if(_GET('more')) {
                 var renderMore = {
                     "data": function () {
-                        this.renderData(_project);
+                        this.renderData(getProject);
                     },
                 };
 
