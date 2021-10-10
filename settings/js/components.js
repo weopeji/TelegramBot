@@ -447,6 +447,33 @@
             }
         }
 
+        async renderInfo(_project)
+        {
+            var _body = $(`
+                <div class="index_page_profil">
+                    <div class="index_page_profil_header">
+                        <span class="selected">Профиль для инвестора</span>
+                    </div>
+                    <iframe id="profil" src="../html/project/profil#${_project._id}" frameborder="0"></iframe>
+                </div>
+            `);
+
+            var _iframe = _body.find('#profil');
+            
+            _iframe.on('load', function () {
+                var _content = _iframe.contents();
+                var _height = _content.find('.index_page_profil')[0];
+                _iframe.css('height', '1934px');
+                _content.find('.index_page_profil').css({
+                    'width': '100%',
+                    'margin': 0,
+                });
+                _content.find('body').css('width', '100%');
+            });
+
+            this.global_block.append(_body);
+        }
+
         async render()
         {
             var _this = this;
@@ -464,6 +491,9 @@
                 var renderMore = {
                     "data": function () {
                         _this.renderData(getProject);
+                    },
+                    "info": function () {
+                        _this.renderInfo(getProject);
                     },
                 };
 
