@@ -93,6 +93,14 @@ var action_linker = {
     "Attracted_by_me_investing_pay": Attracted_by_me_investing_pay,
     "selectedMsgChats": selectedMsgChats,
     "getBussnes": getBussnes,
+    "getInvestorDocument": getInvestorDocument,
+}
+
+async function getInvestorDocument(socket,data,callback)
+{
+    var _Investor = await User.findOne({_id: data.id});
+    var _InvDoc     = await InvDoc.findOne({projectId: data.projectId, invester: _Investor});
+    callback(_InvDoc);
 }
 
 async function getBussnes(socket,data,callback)
