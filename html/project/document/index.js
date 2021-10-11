@@ -59,6 +59,8 @@
             templateText = templateText.replace(new RegExp("%document%", 'g'), "_______________");
         }
 
+        console.log(_GET__('id'));
+        
         if(_GET__('id'))
         {
             var getInvestorDocument = await callApi({
