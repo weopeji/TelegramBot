@@ -821,6 +821,8 @@
                             <div class="body_point_header">
                                 <span>Загрузите документ на подписание</span>
                             </div>
+                        </div>
+                        <div class="putDocumentToSignature">
                             <input type="file" name="" id="DocumentToSignature">
                             <label for="DocumentToSignature" class="putDocumentToSignature_open">
                                 <span>Загрузить документ</span>
