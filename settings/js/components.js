@@ -481,6 +481,18 @@
             this.global_block.append(_body);
         }
 
+        getNewDataProjects(_eq, _id) {
+            return callApi({
+                methodName: 'getNewDataProjects',
+                data: {
+                    data: _eq,
+                    _id: _id,
+                },
+            }).then((data) => {
+                return data; 
+            });
+        }
+
         async renderMore(_project)
         {
             var signature = {
@@ -872,10 +884,16 @@
                     var _header = $(`<div class="body_point"></div>`);
 
                     _header.append(`
-                        <div class="body_point_header">
+                        <div class="body_point_header get_new_data">
                             <span>Полученные данные</span>
                         </div>
                     `);
+
+                    _header.find('.get_new_data').click( function() {
+                        _this.getNewDataProjects($('.index_page_body_project_body_type').find('span.selected').attr('data'), _project._id);
+                        alert('Успешно!');
+                        location.reload();
+                    });
                     
                     var _type = _project.signature.type;
 
