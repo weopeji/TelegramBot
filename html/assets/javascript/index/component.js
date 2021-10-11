@@ -1069,7 +1069,7 @@
                 selectedMsgChats.forEach(el => {
 
                     var template_text = $(`
-                        <div class="msg_block_getting_line" data="${el.business}">
+                        <div class="msg_block_getting_line" data="${el.business}" data-more="">
                             <div class="msg_block_getting_line_img">
                                 <div class="msg_block_getting_line_img_block"></div>
                             </div>
