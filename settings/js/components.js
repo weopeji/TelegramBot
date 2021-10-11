@@ -816,40 +816,40 @@
 
                 if(_lenth > 1)
                 {
-                    // var putDocumentToSignature = $(`
-                    //     <div class="putDocumentToSignature">
-                    //         <p>Загрузите документ на подписание</p>
-                    //         <input type="file" name="" id="DocumentToSignature">
-                    //         <label for="DocumentToSignature" class="putDocumentToSignature_open">
-                    //             <span>Загрузить документ</span>
-                    //         </label>
-                    //     </div>
-                    // `);
+                    var putDocumentToSignature = $(`
+                        <div class="putDocumentToSignature">
+                            <p>Загрузите документ на подписание</p>
+                            <input type="file" name="" id="DocumentToSignature">
+                            <label for="DocumentToSignature" class="putDocumentToSignature_open">
+                                <span>Загрузить документ</span>
+                            </label>
+                        </div>
+                    `);
 
-                    // putDocumentToSignature.find('input[type=file]').change( async function() 
-                    // {
-                    //     var filename = $(this.files)[0].name;
-                    //     var aux = filename.split('.');
-                    //     var extension = aux[aux.length -1].toUpperCase();
+                    putDocumentToSignature.find('input[type=file]').change( async function() 
+                    {
+                        var filename = $(this.files)[0].name;
+                        var aux = filename.split('.');
+                        var extension = aux[aux.length -1].toUpperCase();
 
-                    //     if(extension === 'DOC'
-                    //         || extension === 'DOCX'
-                    //         ){
+                        if(extension === 'DOC'
+                            || extension === 'DOCX'
+                            ){
                             
-                    //         var _form    = new FormData();
+                            var _form    = new FormData();
 
-                    //         _form.append('files', $(this.files)[0]);
-                    //         _form.append('_id', _project._id);
-                    //         _form.append('_pts', extension);
-                    //         // _this.setSignatureFile(_project._id, _form);
-                    //         // $('.index_page_body_row').empty();
-                    //     }else{
-                    //         alert('Invalid extension: ' + extension + '. Only: DOC, DOCX are allowed.');
-                    //     }  
-                    // });
+                            _form.append('files', $(this.files)[0]);
+                            _form.append('_id', _project._id);
+                            _form.append('_pts', extension);
+                            // _this.setSignatureFile(_project._id, _form);
+                            // $('.index_page_body_row').empty();
+                        }else{
+                            alert('Invalid extension: ' + extension + '. Only: DOC, DOCX are allowed.');
+                        }  
+                    });
 
 
-                    // this.global_block.append(templateTputDocumentToSignatureext);
+                    this.global_block.append(templateTputDocumentToSignatureext);
 
                     var _header = $(`<div class="body_point"></div>`);
 
