@@ -883,15 +883,19 @@
 
                     var _header = $(`<div class="body_point"></div>`);
 
-                    _header.append(`
+                    var headerButton = $(`
                         <div class="body_point_header get_new_data">
                             <span>Полученные данные</span>
                         </div>
-                    `).click( function() {
+                    `);
+
+                    headerButton.click( function() {
                         _this.getNewDataProjects($('.index_page_body_project_body_type').find('span.selected').attr('data'), _project._id);
                         alert('Успешно!');
                         location.reload();
                     });
+
+                    _header.append(headerButton);
                     
                     var _type = _project.signature.type;
 
