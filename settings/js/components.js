@@ -128,6 +128,8 @@
 
         async render_header(_project)
         {
+            var _this = this;
+
             var header_info = $(`
                 <div class="global_block_header">
                     <div class="global_block_header_info">
@@ -149,7 +151,7 @@
             `);
 
             header_info.find('.global_block_header_accept_button').click( function () {
-                this.accept(_project._id);
+                _this.accept(_project._id);
                 alert('Успешно!');
                 location.reload();
             });
