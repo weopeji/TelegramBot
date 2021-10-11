@@ -29,7 +29,14 @@
 
         var templateText = need_project.signature_document.document_html.toString();
 
-        templateText = templateText.replace(new RegExp("%date_now%", 'g'), new Date());
+        function getFormattedDate() {
+            var date = new Date();
+            var str = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+        
+            return str;
+        }
+
+        templateText = templateText.replace(new RegExp("%date_now%", 'g'), getFormattedDate());
         templateText = templateText.replace(new RegExp("%bizznes_name%", 'g'), need_project.data.initials);
         templateText = templateText.replace(new RegExp("%invester_name%", 'g'), "_______________");
         templateText = templateText.replace(new RegExp("%inn%", 'g'), need_project.data.inn);
