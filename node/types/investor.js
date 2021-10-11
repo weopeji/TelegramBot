@@ -413,7 +413,7 @@ async function recomendations(msg)
         parse_mode: "Markdown",
         reply_markup: {                                                                     
             "resize_keyboard": true, 
-            "keyboard": [["Реквизиты", myAdders],["Вознаграждение по проектам", "⬅️ Назад"]],
+            "keyboard": [[myAdders, "Вознаграждение по проектам"],["⬅️ Назад"]],
         }
     });
     _array.push(fat.message_id);
