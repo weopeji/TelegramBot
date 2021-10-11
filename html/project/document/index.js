@@ -49,8 +49,6 @@
         templateText = templateText.replace(new RegExp("%date_pay%", 'g'), need_project.data.collection_period);
         templateText = templateText.replace(new RegExp("%pay_investor%", 'g'), need_project.data.rate + " " + need_project.data.date_payments);
         templateText = templateText.replace(new RegExp("%document_more%", 'g'), "_______________");
-        templateText = templateText.replace(new RegExp("%pay%", 'g'), "_______________");
-        templateText = templateText.replace(new RegExp("%invester_name%", 'g'), "_______________");
 
         if(typeof need_project.signature_document.img != "undefined")
         {
@@ -74,6 +72,9 @@
 
             templateText = templateText.replace(new RegExp("%invester_name%", 'g'), getInvestorDocument.investor_data.fio);
             templateText = templateText.replace(new RegExp("%pay%", 'g'), getInvestorDocument.investor_data.pay + " руб");
+        } else {
+            templateText = templateText.replace(new RegExp("%pay%", 'g'), "_______________");
+            templateText = templateText.replace(new RegExp("%invester_name%", 'g'), "_______________");
         }
 
         $('.index_page').append(templateText);
