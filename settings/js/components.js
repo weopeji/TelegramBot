@@ -148,7 +148,7 @@
                 </div>
             `);
 
-            header_menu.find('.global_block_header_accept_button').click( function () {
+            header_info.find('.global_block_header_accept_button').click( function () {
                 this.accept(_project._id);
                 alert('Успешно!');
                 location.reload();
