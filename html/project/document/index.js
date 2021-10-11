@@ -72,8 +72,8 @@
 
             console.log(getInvestorDocument);
 
-            templateText = templateText.replace(new RegExp("%invester_name%", 'g'), getInvestorDocument.data.fio);
-            templateText = templateText.replace(new RegExp("%pay%", 'g'), getInvestorDocument.data.pay + " руб");
+            templateText = templateText.replace(new RegExp("%invester_name%", 'g'), getInvestorDocument.investor_data.fio);
+            templateText = templateText.replace(new RegExp("%pay%", 'g'), getInvestorDocument.investor_data.pay + " руб");
         }
 
         $('.index_page').append(templateText);

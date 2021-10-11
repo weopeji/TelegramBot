@@ -99,10 +99,7 @@ var action_linker = {
 async function getInvestorDocument(socket,data,callback)
 {
     var _Investor   = await User.findOne({_id: data.id});
-    var _InvDoc     = await InvDoc.findOne({projectId: data.projectId, invester: _Investor.user});
-    console.log(_Investor.user);
-    console.log(_InvDoc.receipt);
-    callback(_InvDoc);
+    callback(_Investor);
 }
 
 async function getBussnes(socket,data,callback)
