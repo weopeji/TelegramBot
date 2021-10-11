@@ -239,7 +239,7 @@ async function _MainMenu(msg)
                             [
                                 {
                                     text: "ОЗНАКОМИТСЯ С ПРЕДЛОЖЕНИЯМИ",
-                                    url: "https://t.me/testPut",
+                                    url: "https://t.me/invester_official",
                                 }
                             ]
                         ],
