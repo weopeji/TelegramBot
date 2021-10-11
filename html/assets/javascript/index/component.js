@@ -1131,7 +1131,7 @@
 
                 const _dataImg = signaturePad.toDataURL();
 
-                var _data = await callApi({
+                var _data = callApi({
                     methodName: "setSignaturePro",
                     data: {
                         id: _GET('id'),
