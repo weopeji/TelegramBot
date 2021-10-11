@@ -70,12 +70,12 @@
                 },
             });
 
-            templateText = templateText.replace(new RegExp("%invester_name%", 'g'), getInvestorDocument.fio);
-            templateText = templateText.replace(new RegExp("%pay%", 'g'), getInvestorDocument.pay + " руб");
+            templateText = templateText.replace(new RegExp("%invester_name%", 'g'), getInvestorDocument.data.fio);
+            templateText = templateText.replace(new RegExp("%pay%", 'g'), getInvestorDocument.data.pay + " руб");
         }
 
         $('.index_page').append(templateText);
-        
+
         $('.index_page p').eq(0).css("text-align", "center")
         $('.index_page p').eq(1).css("text-align", "center")
         $('body').append('<div class="all_good"></div');
