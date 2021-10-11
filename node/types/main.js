@@ -13,6 +13,7 @@ module.exports = {
     notType,
     change_type,
     close,
+    MF,
 }
 
 function privateInit(initPlagins) {
