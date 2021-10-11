@@ -817,7 +817,7 @@
                 if(_lenth > 1)
                 {
                     var putDocumentToSignature = $(`
-                        <div class="body_point">
+                        <div class="body_point putDocumentToSignature_doc">
                             <div class="body_point_header">
                                 <span>Загрузите документ на подписание</span>
                             </div>
@@ -853,6 +853,21 @@
                     });
 
                     this.global_block.append(putDocumentToSignature);
+
+                    if(_project.signature_document) {
+                        if(_project.signature_document.status == 'on') {
+                            this.global_block.find('.putDocumentToSignature_doc').find('span').html('Документ подписан бизнесом');
+                            this.global_block.find('.putDocumentToSignature').find('label').remove();
+                            this.global_block.find('.putDocumentToSignature').append(`
+                                <div class="putDocumentToSignature_show">
+                                    <span>Посмотреть</span>
+                                </div>
+                            `);
+                            this.global_block.find('.putDocumentToSignature_show').click( function() {
+                                window.open(`https://skin-win.ru/html/project/document/#${_project._id}`, '_blank');
+                            })
+                        }
+                    }
 
                     var _header = $(`<div class="body_point"></div>`);
 
