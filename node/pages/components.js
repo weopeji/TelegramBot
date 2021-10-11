@@ -113,10 +113,6 @@ async function setSignaturePro(socket,data,callback)
         pays: null,
     });
 
-    _arrayData.document = null;
-
-    await User.findOneAndUpdate({user: msg.from.id}, {investor_data: _arrayData});
-
     callback();
 }
 
