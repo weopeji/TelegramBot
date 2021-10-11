@@ -552,6 +552,8 @@ async function acceptProject(socket,data,callback)
                     Выплаты: ${_project.data.date_payments}
                     Вход от: ${_project.data.minimal_amount}
                     Сбор до: ${_project.data.date}
+                    *
+                    Подробнее по ссылке в шапке профиля
                 `;
             
                 const { media } = await client.uploadPhoto({ photo: photo, caption: _caption, post: 'feed' })
@@ -595,6 +597,8 @@ async function parceProject(type, data, callback)
             return;
         }
         var _data = _dataFirst.suggestions[0].data;
+
+        console.log(_data);
 
         if(type == "1")
         {
