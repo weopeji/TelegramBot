@@ -146,8 +146,7 @@ async function Attracted_by_me_investing_pay(socket,data,callback)
     var AllPays         = 0;
     var allMorePlays    = 0;
 
-    _InvDocs.forEach(async (el) => 
-    {
+    for (const el of _InvDocs) {
         var _Project = await Project.findOne({_id: el.projectId});
 
         if(_Project.payerCent) 
@@ -161,7 +160,7 @@ async function Attracted_by_me_investing_pay(socket,data,callback)
         }
 
         AllPays = AllPays + Number(el.data.pay.trim());
-    });
+    }
 
     callback({
         AllPays: AllPays,
