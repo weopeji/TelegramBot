@@ -861,7 +861,7 @@
                     
                     var _type = _project.signature.type;
 
-                    for(var key in this.signature) 
+                    for(var key in signature) 
                     {
                         if(key == _type) {
                             this.signature[key]['+1_s'].body.forEach(element => {
