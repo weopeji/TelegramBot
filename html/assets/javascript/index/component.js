@@ -28,6 +28,8 @@
                 },
             });
 
+            console.log(_data);
+
             var settingBlock = $(`
                 <div class="info_active_block">
                     <div class="info_active_block_right">
