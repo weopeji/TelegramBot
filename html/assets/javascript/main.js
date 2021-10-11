@@ -76,6 +76,14 @@ function _GET(key) {
 
 }
 
+function _GET2(key) {
+
+    var s = window.location.href;
+    s = s.match(new RegExp(key + '=([^&=]+)'));
+    return s ? s[1] : false;
+
+}
+
 //======== mains ======================================================================
 
 async function postData(url, data) {

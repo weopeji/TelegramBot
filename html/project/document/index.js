@@ -59,13 +59,13 @@
             templateText = templateText.replace(new RegExp("%document%", 'g'), "_______________");
         }
 
-        if(_GET('id'))
+        if(_GET2('id'))
         {
             var getInvestorDocument = await callApi({
                 methodName: 'getInvestorDocument',
                 data: 
                 {
-                    id: _GET('id'),
+                    id: _GET2('id'),
                     projectId: _id,
                 },
             });
