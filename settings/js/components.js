@@ -889,12 +889,6 @@
                         </div>
                     `);
 
-                    headerButton.click( function() {
-                        _this.getNewDataProjects($('.index_page_body_project_body_type').find('span.selected').attr('data'), _project._id);
-                        alert('Успешно!');
-                        location.reload();
-                    });
-
                     _header.append(headerButton);
                     
                     var _type = _project.signature.type;
@@ -975,10 +969,11 @@
                 </div>
             `);
 
-            // templateText.find('.get_new_data').click( function() {
-            //     _this.getNewDataProjects($('.index_page_body_project_body_type').find('span.selected').attr('data'), _project._id);
-            //     $('.index_page_body_row').children().fadeOut('fast');
-            // });
+            templateText.find('.get_new_data').click( function() {
+                _this.getNewDataProjects($('.index_page_body_project_body_type').find('span.selected').attr('data'), _project._id);
+                alert('Успешно!');
+                location.reload();
+            });
 
             var _doc = 
             {
