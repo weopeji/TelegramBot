@@ -116,6 +116,16 @@
             `);
         };
 
+        accept(_id) 
+        {
+            callApi({
+                methodName: 'acceptProject',
+                data: _id,
+            }).then((data) => {
+                return data; 
+            });
+        }
+
         async render_header(_project)
         {
             var header_info = $(`
@@ -137,6 +147,12 @@
                     <span data="more">Юридические данные</span>
                 </div>
             `);
+
+            header_menu.find('.global_block_header_accept_button').click( function () {
+                this.accept(_project._id);
+                alert('Успешно!');
+                location.reload();
+            });
 
             header_menu.find('span').click( function () {
                 location.href = `/settings/?page=block&id=${_project._id}&more=${$(this).attr('data')}`;
