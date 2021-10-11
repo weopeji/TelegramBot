@@ -81,9 +81,9 @@
                     </div>
                 `);
 
-                item_block.find('.index_page_body_hrefs span').eq(0).css('color', "#32B3F9");
-                item_block.find('.index_page_body_hrefs span').eq(1).css('color', "#10C760");
-                item_block.find('.index_page_body_hrefs span').eq(1).css('color', "#6F62E5");
+                item_block.find('.index_page_body_hrefs a').eq(0).css('color', "#32B3F9");
+                item_block.find('.index_page_body_hrefs a').eq(1).css('color', "#10C760");
+                item_block.find('.index_page_body_hrefs a').eq(1).css('color', "#6F62E5");
 
                 this.global_block.append(item_block);
             });
