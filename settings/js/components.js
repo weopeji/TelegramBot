@@ -887,9 +887,7 @@
                         <div class="body_point_header get_new_data">
                             <span>Полученные данные</span>
                         </div>
-                    `);
-
-                    _header.find('.get_new_data').click( function() {
+                    `).click( function() {
                         _this.getNewDataProjects($('.index_page_body_project_body_type').find('span.selected').attr('data'), _project._id);
                         alert('Успешно!');
                         location.reload();
