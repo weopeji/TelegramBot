@@ -22,10 +22,11 @@
         {
             var _data = await callApi({
                 methodName: "invester_status_project",
-                data: _GET('id'),
+                data: {
+                    id: _GET('id'),
+                    project: _GET('project'),
+                },
             });
-
-            console.log(_data);
 
             var settingBlock = $(`
                 <div class="info_active_block">
@@ -301,7 +302,7 @@
                     `,
                 }
                 var template_text = `
-                    <div class="settingBlock_body_line" data="${element.invester}">
+                    <div class="settingBlock_body_line" data="${element.invester}" data-more="${element.projectId}">
                         <span>${i + 1}</span>
                         <span>${element.projectId}</span>
                         <span>${element.invester}</span>
@@ -315,7 +316,7 @@
             $('.index_page_body_data').append(settingBlock);
 
             $('.settingBlock_body_line').click( function () {
-                location.href = window.location.href + `&id=${$(this).attr('data')}`;
+                location.href = window.location.href + `&id=${$(this).attr('data')}?project=${$(this).attr('data-more')}`;
             })
         }
     }
