@@ -848,8 +848,7 @@
                         }  
                     });
 
-
-                    this.global_block.append(templateTputDocumentToSignatureext);
+                    this.global_block.append(putDocumentToSignature);
 
                     var _header = $(`<div class="body_point"></div>`);
 
