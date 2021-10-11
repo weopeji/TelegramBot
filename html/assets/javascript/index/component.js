@@ -252,7 +252,10 @@
             $('.accept_block').click( async function () {
                 var acceptInvestor = await callApi({
                     methodName: "acceptInvestor",
-                    data: _GET('id'),
+                    data: {
+                        id: _GET('id'),
+                        projectId: _GET('project'),
+                    },
                 });
 
                 alert('Оплата подтвержденна!');

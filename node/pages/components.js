@@ -258,7 +258,7 @@ async function invester_status_project(socket,data,callback)
 }
 
 async function acceptInvestor(socket,data,callback) {
-    var InvDocs = await InvDoc.findOneAndUpdate({invester: data}, {status: "accept"});
+    var InvDocs = await InvDoc.findOneAndUpdate({invester: data.id, projectId: data.projectId}, {status: "accept"});
     var _User = User.findOne({user: data});
     if(!_User.alerts)
     {
