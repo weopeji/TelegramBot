@@ -76,7 +76,7 @@ function _GET(key) {
 
 }
 
-function _GET2(key) {
+function _GET__(key) {
 
     var s = window.location.href;
     s = s.match(new RegExp(key + '=([^&=]+)'));
