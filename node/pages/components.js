@@ -172,8 +172,6 @@ async function msgUP(socket,data,callback)
         {
             var _MsgDB = await MsgDB.findOne({investor: data.user, business: data.to});
 
-            console.log(_MsgDB);
-
             if(!_MsgDB) {
                 var _array  = [];
                 _array.push({
@@ -191,7 +189,7 @@ async function msgUP(socket,data,callback)
                 _array.push({
                     text: data.msg,
                     type: data.type,
-                })
+                }) 
                 await MsgDB.findOneAndUpdate({
                     _id: _MsgDB._id,
                 },
