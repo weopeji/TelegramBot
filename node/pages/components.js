@@ -98,8 +98,8 @@ var action_linker = {
 
 async function getInvestorDocument(socket,data,callback)
 {
-    var _Investor = await User.findOne({_id: data.id});
-    var _InvDoc     = await InvDoc.findOne({projectId: data.projectId, invester: _Investor});
+    var _Investor   = await User.findOne({_id: data.id});
+    var _InvDoc     = await InvDoc.findOne({projectId: data.projectId, invester: _Investor.user});
     callback(_InvDoc);
 }
 

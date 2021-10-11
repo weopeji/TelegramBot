@@ -59,8 +59,6 @@
             templateText = templateText.replace(new RegExp("%document%", 'g'), "_______________");
         }
 
-        console.log(_GET__('id'));
-        
         if(_GET__('id'))
         {
             var getInvestorDocument = await callApi({
@@ -71,8 +69,6 @@
                     projectId: _id,
                 },
             });
-
-            console.log(getInvestorDocument);
 
             templateText = templateText.replace(new RegExp("%invester_name%", 'g'), getInvestorDocument.fio);
             templateText = templateText.replace(new RegExp("%pay%", 'g'), getInvestorDocument.pay + " руб");
