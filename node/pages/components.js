@@ -170,7 +170,7 @@ async function msgUP(socket,data,callback)
     var funs = {
         "investor": async function() 
         {
-            var _MsgDB = await MsgDB.findOne({investor: data.user});
+            var _MsgDB = await MsgDB.findOne({investor: data.user, business: data.to});
             if(!_MsgDB) {
                 var _array  = [];
                 _array.push({
