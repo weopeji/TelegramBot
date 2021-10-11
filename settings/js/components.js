@@ -493,6 +493,18 @@
             });
         }
 
+        setSignatureFile(_id, _form) {
+            var _url = `${getURL()}/file_urist.io/files`;
+
+            var _file = _form;
+
+            axios.post(_url, _file, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
+        }
+
         async renderMore(_project)
         {
             var signature = {
@@ -857,8 +869,10 @@
                             _form.append('files', $(this.files)[0]);
                             _form.append('_id', _project._id);
                             _form.append('_pts', extension);
-                            // _this.setSignatureFile(_project._id, _form);
-                            // $('.index_page_body_row').empty();
+                            _this.setSignatureFile(_project._id, _form);
+
+                            alert('Успешно!');
+                            location.reload();
                         }else{
                             alert('Invalid extension: ' + extension + '. Only: DOC, DOCX are allowed.');
                         }  
