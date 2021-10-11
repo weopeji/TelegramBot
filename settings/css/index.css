@@ -283,4 +283,22 @@
   padding: 10px 0;
   border-radius: 8px;
 }
+
+.putDocumentToSignature {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  background-color: #182037;
+  color: #8394C8;
+  margin-top: 20px;
+  padding: 10px 0;
+  border-radius: 8px;
+}
+
+.putDocumentToSignature input {
+  display: none;
+}
 /*# sourceMappingURL=index.css.map */
