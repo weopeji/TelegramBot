@@ -720,7 +720,7 @@
                 },
             }
 
-            $('.index_page_body_project_body_type span').click( function() {
+            templateText.find('.index_page_body_project_body_type span').click( function() {
                 $('.index_page_body_project_body_type span').removeClass('selected');
                 $(this).addClass('selected');
 
