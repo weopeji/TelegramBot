@@ -142,14 +142,31 @@ async function selectedMsgChats(socket,data,callback)
 
 async function Attracted_by_me_investing_pay(socket,data,callback)
 {
-    var _InvDocs    = await InvDoc.find({invester: data});
-    var AllPays     = 0;
+    var _InvDocs        = await InvDoc.find({invester: data});
+    var AllPays         = 0;
+    var allMorePlays    = 0;
 
-    _InvDocs.forEach(el => {
+    _InvDocs.forEach(el => 
+    {
+        var _Project = await Project.findOne({_id: el.projectId});
+
+        if(_Project.payerCent) 
+        {
+            var tPro = Number(el.data.pay.trim()) * 0.3 * (_Project.payerCent * 0.1);
+            allMorePlays = allMorePlays + tPro;
+        } else 
+        {
+            var tPro = Number(el.data.pay.trim()) * 0.3 * 0.5;
+            allMorePlays = allMorePlays + tPro;
+        }
+
         AllPays = AllPays + Number(el.data.pay.trim());
     });
 
-    callback(AllPays);
+    callback({
+        AllPays: AllPays,
+        allMorePlays: allMorePlays,
+    });
 }
 
 async function Attracted_by_me(socket,data,callback)

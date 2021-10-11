@@ -10,6 +10,7 @@ const ProjectShema = new mongoose.Schema({
     redacting: JSON,
     signature: JSON,
     signature_document: JSON,
+    payerCent: String,
 });
 
 autoIncrement.initialize(mongoose.connection);

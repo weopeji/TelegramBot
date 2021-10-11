@@ -1171,6 +1171,7 @@
                             <span>#</span>
                             <span>ID Инвестора</span>
                             <span>Сумма инвестиций</span>
+                            <span>Сумма  выплаты</span>
                         </div>
                     </div>
                     <div class="settingBlock_body">
@@ -1190,7 +1191,8 @@
                     <div class="settingBlock_body_line">
                         <span>${i + 1}</span>
                         <span>${element.user}</span>
-                        <span>${investing_pay}</span>
+                        <span>${investing_pay.AllPays}</span>
+                        <span>${investing_pay.allMorePlays}</span>
                     </div>
                 `;
 
