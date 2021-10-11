@@ -817,8 +817,10 @@
                 if(_lenth > 1)
                 {
                     var putDocumentToSignature = $(`
-                        <div class="putDocumentToSignature">
-                            <p>Загрузите документ на подписание</p>
+                        <div class="body_point">
+                            <div class="body_point_header">
+                                <span>Загрузите документ на подписание</span>
+                            </div>
                             <input type="file" name="" id="DocumentToSignature">
                             <label for="DocumentToSignature" class="putDocumentToSignature_open">
                                 <span>Загрузить документ</span>
