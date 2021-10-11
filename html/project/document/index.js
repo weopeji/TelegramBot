@@ -75,6 +75,7 @@
         }
 
         $('.index_page').append(templateText);
+        
         $('.index_page p').eq(0).css("text-align", "center")
         $('.index_page p').eq(1).css("text-align", "center")
         $('body').append('<div class="all_good"></div');
