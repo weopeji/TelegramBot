@@ -1140,7 +1140,7 @@
                     },
                 });
 
-                location.href = "https://t.me/investER_localhost_bot";
+                location.href = "https://t.me/investER_localhost_bot?start=setSignaturePro_1";
             })
         }
     }

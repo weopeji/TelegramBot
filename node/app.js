@@ -222,6 +222,8 @@ bot.onText(/\/start (.+)/, async (msg, match) =>
         await User.findOneAndUpdate({user: msg.from.id}, {member: resp.split('_')[3]});
         helper_functions.alertBot(msg, "Attracted_by_me");
         main_page._CreatorFUN(msg)
+    }else if(resp.split('_')[0] == "setSignaturePro") {
+        investor_page.payerInvester(msg);
     } else 
     {
         defaultShowProject();
