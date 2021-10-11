@@ -859,10 +859,10 @@
                         <i class="fal fa-chart-line"></i>
                         <span>Активные проекты</span>
                     </div>
-                    <div class="index_page_menu_block_line" data="reward">
+                    <!-- <div class="index_page_menu_block_line" data="reward">
                         <i class="fal fa-money-check-alt"></i>
                         <span>Вознаграждение</span>
-                    </div>
+                    </div> -->
                     <div class="index_page_menu_block_line" data="Attracted_by_me">
                         <i class="fal fa-users"></i>
                         <span>Мной привлечено</span>
