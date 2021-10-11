@@ -192,7 +192,9 @@ async function msgUP(socket,data,callback)
                     text: data.msg,
                     type: data.type,
                 })
-                await MsgDB.findOneAndUpdate(
+                await MsgDB.findOneAndUpdate({
+                    _id: _MsgDB._id,
+                },
                     {
                         msgs: _array,
                     });
