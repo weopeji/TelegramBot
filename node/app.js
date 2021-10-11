@@ -219,12 +219,6 @@ bot.onText(/\/start (.+)/, async (msg, match) =>
         await h.DMA(msg, _array);
     } else if(resp.split('_')[0] == "adder") 
     {
-        var _User = await main_page.MF.find_user(msg);
-        if(!_User)
-        {
-            await main_page.MF.create_user(msg);
-        }
-
         await User.findOneAndUpdate({user: msg.from.id}, {member: resp.split('_')[3]});
         helper_functions.alertBot(msg, "Attracted_by_me");
         main_page._CreatorFUN(msg)
