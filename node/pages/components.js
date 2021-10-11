@@ -94,6 +94,30 @@ var action_linker = {
     "selectedMsgChats": selectedMsgChats,
     "getBussnes": getBussnes,
     "getInvestorDocument": getInvestorDocument,
+    "setSignaturePro": setSignaturePro,
+}
+
+async function setSignaturePro(socket,data,callback)
+{
+    var _User   = await User.findOne({_id: data.user});
+    var _arrayData = _User.investor_data;
+
+    _arrayData.document = data.data;
+
+    await InvDoc.create({
+        projectId: _User.putProject,
+        invester: _User.user,
+        status: "wait",
+        data: _arrayData,
+        receipt: null,
+        pays: null,
+    });
+
+    _arrayData.document = null;
+
+    await User.findOneAndUpdate({user: msg.from.id}, {investor_data: _arrayData});
+
+    callback();
 }
 
 async function getInvestorDocument(socket,data,callback)

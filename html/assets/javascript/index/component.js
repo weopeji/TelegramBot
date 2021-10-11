@@ -1125,8 +1125,21 @@
                 window.open(`https://skin-win.ru/html/project/document/#${_GET('id')}#/?id=${global.allData.User._id}`, '_blank');
             });
 
-            $('.accept_signature').click( function() {
+            $('.accept_signature').click( function() 
+            {
                 alert('Документ подписан!');
+
+                const _dataImg = signaturePad.toDataURL();
+
+                var _data = await callApi({
+                    methodName: "setSignaturePro",
+                    data: {
+                        id: _GET('id'),
+                        user: _GET('user'),
+                        data: _dataImg,
+                    },
+                });
+
                 location.href = "https://t.me/investER_localhost_bot";
             })
         }
