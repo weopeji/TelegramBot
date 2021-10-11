@@ -316,7 +316,7 @@
             $('.index_page_body_data').append(settingBlock);
 
             $('.settingBlock_body_line').click( function () {
-                location.href = window.location.href + `&id=${$(this).attr('data')}?project=${$(this).attr('data-more')}`;
+                location.href = window.location.href + `&id=${$(this).attr('data')}&project=${$(this).attr('data-more')}`;
             })
         }
     }
