@@ -853,10 +853,6 @@
 
                     var _header = $(`<div class="body_point"></div>`);
 
-                    _header.css({
-                        "margin-bottom": 0,
-                    })
-
                     _header.append(`
                         <div class="body_point_header">
                             <span>Полученные данные</span>
@@ -892,11 +888,6 @@
                             }) 
                         }
                     }
-
-                    _header.css({
-                        'margin-bottom': '50px',
-                        'width': '100%',
-                    });
 
                     this.global_block.append(_header);
 
