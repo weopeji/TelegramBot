@@ -894,7 +894,7 @@
                         'width': '100%',
                     });
 
-                    $('.index_page_more_menu').append(_header);
+                    this.global_block.append(_header);
 
                     if(_project.signature_document) {
                         if(_project.signature_document.status == 'on') {
