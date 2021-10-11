@@ -264,4 +264,18 @@
   padding: 30px;
   line-height: 2;
 }
+
+.index_page_more_menu_buttons {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  background-color: #182037;
+  color: #8394C8;
+  margin-top: 20px;
+  padding: 10px 0;
+  border-radius: 8px;
+}
 /*# sourceMappingURL=index.css.map */
