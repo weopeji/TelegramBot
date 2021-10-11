@@ -193,7 +193,7 @@ async function _MainMenu(msg)
                     "parse_mode": "MarkdownV2",
                     "reply_markup": {
                         "resize_keyboard": true,
-                        "keyboard": [[myInvestingText, InvestingText, rekvexitionText], [rekomendationText,"🔁 Сменить роль"]],
+                        "keyboard": [[myInvestingText, InvestingText], [rekomendationText,"🔁 Сменить роль"]],
                     }
                 });
                 _array.push(fat.message_id);
