@@ -483,110 +483,436 @@
 
         async renderMore(_project)
         {
+            var signature = {
+                "1": {
+                    "+1_s": {
+                        header: "Загрузите не достающие документы",
+                        body: [
+                            {
+                                type: "file",
+                                name: `Устав`,
+                                _id: "file+1_s"
+                            },
+                            {
+                                type: "file",
+                                name: `Решение об избрании руководителя`,
+                                _id: "file+2_s"
+                            },
+                            {
+                                type: "file",
+                                name: `Приказ о назначении руководителя`,
+                                _id: "file+3_s"
+                            },
+                            {
+                                type: "file",
+                                name: `Свидетельство ИНН`,
+                                _id: "file+4_s"
+                            },
+                            {
+                                type: "file",
+                                name: `ОГРН`,
+                                _id: "file+5_s"
+                            },
+                            {
+                                type: "file",
+                                name: `Карточка с банковскими реквизитами`,
+                                _id: "file+6_s"
+                            },
+                            {
+                                type: "file",
+                                name: `Бух.отчетность за последний год`,
+                                _id: "file+7_s"
+                            },
+                        ]
+                    },
+                },
+                "2": {
+                    "+1_s": {
+                        header: "Загрузите не достающие документы",
+                        body: [
+                            {
+                                type: "file",
+                                name: `Устав`,
+                                _id: "file+1_s"
+                            },
+                            {
+                                type: "file",
+                                name: `Решение об избрании руководителя`,
+                                _id: "file+2_s"
+                            },
+                            {
+                                type: "file",
+                                name: `Приказ о назначении руководителя`,
+                                _id: "file+3_s"
+                            },
+                            {
+                                type: "file",
+                                name: `Свидетельство ИНН`,
+                                _id: "file+4_s"
+                            },
+                            {
+                                type: "file",
+                                name: `ОГРН`,
+                                _id: "file+5_s"
+                            },
+                            {
+                                type: "file",
+                                name: `Карточка с банковскими реквизитами`,
+                                _id: "file+6_s"
+                            },
+                            {
+                                type: "file",
+                                name: `Бух.отчетность за последний год`,
+                                _id: "file+7_s"
+                            },
+                            {
+                                type: "file",
+                                name: `Выписку из ЕГРН на недвижимость (+свидетельство о собственности, если есть)`,
+                                _id: "file+8_s"
+                            },
+                            {
+                                type: "file",
+                                name: `Предоставляемую в залог`,
+                                _id: "file+9_s"
+                            },
+                            {
+                                type: "file",
+                                name: `Договор купли-продажи недвижимости (основание приобретение недвижимости)`,
+                                _id: "file+10_s"
+                            },
+                            {
+                                type: "file",
+                                name: `Cогласие супруга на залог`,
+                                _id: "file+11_s"
+                            },
+                        ]
+                    }
+                },
+                "3": {
+                    "+1_s": {
+                        header: "Загрузите не достающие документы",
+                        body: [
+                            {
+                                type: "file",
+                                name: `Устав`,
+                                _id: "file+1_s"
+                            },
+                            {
+                                type: "file",
+                                name: `Решение об избрании руководителя`,
+                                _id: "file+2_s"
+                            },
+                            {
+                                type: "file",
+                                name: `Приказ о назначении руководителя`,
+                                _id: "file+3_s"
+                            },
+                            {
+                                type: "file",
+                                name: `Свидетельство ИНН`,
+                                _id: "file+4_s"
+                            },
+                            {
+                                type: "file",
+                                name: `ОГРН`,
+                                _id: "file+5_s"
+                            },
+                            {
+                                type: "file",
+                                name: `Карточка с банковскими реквизитами`,
+                                _id: "file+6_s"
+                            },
+                            {
+                                type: "file",
+                                name: `Бух.отчетность за последний год`,
+                                _id: "file+7_s"
+                            },
+                            {
+                                type: "file",
+                                name: `Паспорт поручителя`,
+                                _id: "file+8_s"
+                            },
+                            {
+                                type: "file",
+                                name: `Cогласие поручителя на обработку персональных данных`,
+                                _id: "file+9_s"
+                            },
+                        ]
+                    },
+                },
+                "4": {
+                    "+1_s": {
+                        header: "Загрузите не достающие документы",
+                        body: [
+                            {
+                                type: "file",
+                                name: `Устав`,
+                                _id: "file+1_s"
+                            },
+                            {
+                                type: "file",
+                                name: `Решение об избрании руководителя`,
+                                _id: "file+2_s"
+                            },
+                            {
+                                type: "file",
+                                name: `Приказ о назначении руководителя`,
+                                _id: "file+3_s"
+                            },
+                            {
+                                type: "file",
+                                name: `Свидетельство ИНН`,
+                                _id: "file+4_s"
+                            },
+                            {
+                                type: "file",
+                                name: `ОГРН`,
+                                _id: "file+5_s"
+                            },
+                            {
+                                type: "file",
+                                name: `Карточка с банковскими реквизитами`,
+                                _id: "file+6_s"
+                            },
+                            {
+                                type: "file",
+                                name: `Бух.отчетность за последний год`,
+                                _id: "file+7_s"
+                            },
+                            {
+                                type: "file",
+                                name: `Паспорт поручителя`,
+                                _id: "file+8_s"
+                            },
+                            {
+                                type: "file",
+                                name: `Согласие супруга на купли-продажу доли`,
+                                _id: "file+9_s"
+                            },
+                        ]
+                    },
+                },
+                "5": {
+                    "+1_s": {
+                        header: "Загрузите не достающие документы",
+                        body: [
+                            {
+                                type: "file",
+                                name: `Устав`,
+                                _id: "file+1_s"
+                            },
+                            {
+                                type: "file",
+                                name: `Решение об избрании руководителя`,
+                                _id: "file+2_s"
+                            },
+                            {
+                                type: "file",
+                                name: `Приказ о назначении руководителя`,
+                                _id: "file+3_s"
+                            },
+                            {
+                                type: "file",
+                                name: `Свидетельство ИНН`,
+                                _id: "file+4_s"
+                            },
+                            {
+                                type: "file",
+                                name: `ОГРН`,
+                                _id: "file+5_s"
+                            },
+                            {
+                                type: "file",
+                                name: `Карточка с банковскими реквизитами`,
+                                _id: "file+6_s"
+                            },
+                            {
+                                type: "file",
+                                name: `Бух.отчетность за последний год`,
+                                _id: "file+7_s"
+                            },
+                            {
+                                type: "file",
+                                name: `Выписку из ЕГРН на недвижимость (+свидетельство о собственности, если есть), предоставляемую в залог`,
+                                _id: "file+8_s"
+                            },
+                            {
+                                type: "file",
+                                name: `Договор купли-продажи недвижимости (основание приобретение недвижимости)`,
+                                _id: "file+9_s"
+                            },
+                            {
+                                type: "file",
+                                name: `Согласие супруга на залог доли`,
+                                _id: "file+10_s"
+                            },
+                        ]
+                    },
+                },
+                "6": {
+                    "+1_s": {
+                        header: "Загрузите не достающие документы",
+                        body: [
+                            {
+                                type: "file",
+                                name: `Устав`,
+                                _id: "file+1_s"
+                            },
+                            {
+                                type: "file",
+                                name: `Решение об избрании руководителя`,
+                                _id: "file+2_s"
+                            },
+                            {
+                                type: "file",
+                                name: `Приказ о назначении руководителя`,
+                                _id: "file+3_s"
+                            },
+                            {
+                                type: "file",
+                                name: `Свидетельство ИНН`,
+                                _id: "file+4_s"
+                            },
+                            {
+                                type: "file",
+                                name: `ОГРН`,
+                                _id: "file+5_s"
+                            },
+                            {
+                                type: "file",
+                                name: `Карточка с банковскими реквизитами`,
+                                _id: "file+6_s"
+                            },
+                            {
+                                type: "file",
+                                name: `Бух.отчетность за последний год`,
+                                _id: "file+7_s"
+                            },
+                            {
+                                type: "file",
+                                name: `Выписку из ЕГРН на недвижимость (+свидетельство о собственности, если есть), предоставляемую в залог`,
+                                _id: "file+8_s"
+                            },
+                            {
+                                type: "file",
+                                name: `Договор купли-продажи недвижимости (основание приобретение недвижимости)`,
+                                _id: "file+9_s"
+                            },
+                            {
+                                type: "file",
+                                name: `Согласие супруга на залог доли`,
+                                _id: "file+10_s"
+                            },
+                        ]
+                    }
+                },
+            };
+
             var _this = this;
 
-            // if(_project.signature) 
-            // {
-            //     var _lenth = Object.keys(_project.signature).length;
+            if(_project.signature) 
+            {
+                var _lenth = Object.keys(_project.signature).length;
 
-            //     if(_lenth > 1) 
-            //     {
-            //         var putDocumentToSignature = $(`
-            //             <div class="putDocumentToSignature">
-            //                 <p>Загрузите документ на подписание</p>
-            //                 <input type="file" name="" id="DocumentToSignature">
-            //                 <label for="DocumentToSignature" class="putDocumentToSignature_open">
-            //                     <span>Загрузить документ</span>
-            //                 </label>
-            //             </div>
-            //         `);
+                if(_lenth > 1)
+                {
+                    // var putDocumentToSignature = $(`
+                    //     <div class="putDocumentToSignature">
+                    //         <p>Загрузите документ на подписание</p>
+                    //         <input type="file" name="" id="DocumentToSignature">
+                    //         <label for="DocumentToSignature" class="putDocumentToSignature_open">
+                    //             <span>Загрузить документ</span>
+                    //         </label>
+                    //     </div>
+                    // `);
 
-            //         putDocumentToSignature.find('input[type=file]').change( async function() 
-            //         {
-            //             var filename = $(this.files)[0].name;
-            //             var aux = filename.split('.');
-            //             var extension = aux[aux.length -1].toUpperCase();
+                    // putDocumentToSignature.find('input[type=file]').change( async function() 
+                    // {
+                    //     var filename = $(this.files)[0].name;
+                    //     var aux = filename.split('.');
+                    //     var extension = aux[aux.length -1].toUpperCase();
 
-            //             if(extension === 'DOC'
-            //                 || extension === 'DOCX'
-            //                 ){
+                    //     if(extension === 'DOC'
+                    //         || extension === 'DOCX'
+                    //         ){
                             
-            //                 var _form    = new FormData();
+                    //         var _form    = new FormData();
 
-            //                 _form.append('files', $(this.files)[0]);
-            //                 _form.append('_id', _project._id);
-            //                 _form.append('_pts', extension);
-            //                 _this.setSignatureFile(_project._id, _form);
-            //                 $('.index_page_body_row').empty();
-            //             }else{
-            //                 alert('Invalid extension: ' + extension + '. Only: DOC, DOCX are allowed.');
-            //             }  
-            //         });
+                    //         _form.append('files', $(this.files)[0]);
+                    //         _form.append('_id', _project._id);
+                    //         _form.append('_pts', extension);
+                    //         // _this.setSignatureFile(_project._id, _form);
+                    //         // $('.index_page_body_row').empty();
+                    //     }else{
+                    //         alert('Invalid extension: ' + extension + '. Only: DOC, DOCX are allowed.');
+                    //     }  
+                    // });
 
 
-            //         $('.index_page_more_menu').append(putDocumentToSignature);
+                    // this.global_block.append(templateTputDocumentToSignatureext);
 
-            //         var _header = $(`<div class="body_point"></div>`);
-            //         _header.append(`
-            //             <div class="body_point_header">
-            //                 <span>Полученные данные</span>
-            //             </div>
-            //         `);
+                    var _header = $(`<div class="body_point"></div>`);
+
+                    _header.append(`
+                        <div class="body_point_header">
+                            <span>Полученные данные</span>
+                        </div>
+                    `);
                     
-            //         var _type = _project.signature.type;
+                    var _type = _project.signature.type;
 
-            //         for(var key in this.signature) 
-            //         {
-            //             if(key == _type) {
-            //                 this.signature[key]['+1_s'].body.forEach(element => {
-            //                     var _file = `
-            //                         <div class="download_buttons">
-            //                             <a target="_blank" href="${getURL()}/projects/${_project._id}/${_project.signature.data[element._id]}">Посмотреть <i class='fas fa-download'></i></a>
-            //                         </div>  
-            //                     `;
-            //                     var _line = $(`
-            //                         <div class="body_point_line _file">
-            //                             <div class="body_point_line_header">
-            //                                 <div class="body_point_line_header_text">
-            //                                     <span>${element.name}</span>
-            //                                     ${_file}
-            //                                 </div>
-            //                                 <div class="body_point_line_header_info">
+                    for(var key in this.signature) 
+                    {
+                        if(key == _type) {
+                            this.signature[key]['+1_s'].body.forEach(element => {
+                                var _file = `
+                                    <div class="download_buttons">
+                                        <a target="_blank" href="${getURL()}/projects/${_project._id}/${_project.signature.data[element._id]}">Посмотреть <i class='fas fa-download'></i></a>
+                                    </div>  
+                                `;
+                                var _line = $(`
+                                    <div class="body_point_line _file">
+                                        <div class="body_point_line_header">
+                                            <div class="body_point_line_header_text">
+                                                <span>${element.name}</span>
+                                                ${_file}
+                                            </div>
+                                            <div class="body_point_line_header_info">
 
-            //                                 </div>
-            //                             </div>
-            //                         </div>
-            //                     `);
+                                            </div>
+                                        </div>
+                                    </div>
+                                `);
 
-            //                     _header.append(_line);
-            //                 }) 
-            //             }
-            //         }
+                                _header.append(_line);
+                            }) 
+                        }
+                    }
 
-            //         _header.css({
-            //             'margin-bottom': '50px',
-            //             'width': '100%',
-            //         });
+                    _header.css({
+                        'margin-bottom': '50px',
+                        'width': '100%',
+                    });
 
-            //         $('.index_page_more_menu').append(_header);
+                    $('.index_page_more_menu').append(_header);
 
-            //         if(_project.signature_document) {
-            //             if(_project.signature_document.status == 'on') {
-            //                 $('.putDocumentToSignature').find('p').html('Документ подписан бизнесом');
-            //                 $('.putDocumentToSignature').find('label').remove();
-            //                 $('.putDocumentToSignature').append(`
-            //                     <div class="putDocumentToSignature_show">
-            //                         <span>Посмотреть</span>
-            //                     </div>
-            //                 `);
-            //                 $('.putDocumentToSignature_show').click( function() {
-            //                     window.open(`https://skin-win.ru/html/project/document/#${_project._id}`, '_blank');
-            //                 })
-            //             }
-            //         }
-            //     }
+                    if(_project.signature_document) {
+                        if(_project.signature_document.status == 'on') {
+                            $('.putDocumentToSignature').find('p').html('Документ подписан бизнесом');
+                            $('.putDocumentToSignature').find('label').remove();
+                            $('.putDocumentToSignature').append(`
+                                <div class="putDocumentToSignature_show">
+                                    <span>Посмотреть</span>
+                                </div>
+                            `);
+                            $('.putDocumentToSignature_show').click( function() {
+                                window.open(`https://skin-win.ru/html/project/document/#${_project._id}`, '_blank');
+                            })
+                        }
+                    }
+                }
                 
-            // };
+            };
 
             var templateText = $(`
                 <div class="index_page_body_project_body_type">

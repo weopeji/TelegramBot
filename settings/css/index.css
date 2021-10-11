@@ -255,6 +255,10 @@
   border-radius: 8px;
 }
 
+.index_page_body_project_body_type .selected {
+  color: #1294FC;
+}
+
 .index_page_more_menu_blocks {
   width: calc(100% - 60px);
   border-radius: 8px;
