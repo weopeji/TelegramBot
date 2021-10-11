@@ -483,7 +483,252 @@
 
         async renderMore(_project)
         {
+            var _this = this;
 
+            // if(_project.signature) 
+            // {
+            //     var _lenth = Object.keys(_project.signature).length;
+
+            //     if(_lenth > 1) 
+            //     {
+            //         var putDocumentToSignature = $(`
+            //             <div class="putDocumentToSignature">
+            //                 <p>Загрузите документ на подписание</p>
+            //                 <input type="file" name="" id="DocumentToSignature">
+            //                 <label for="DocumentToSignature" class="putDocumentToSignature_open">
+            //                     <span>Загрузить документ</span>
+            //                 </label>
+            //             </div>
+            //         `);
+
+            //         putDocumentToSignature.find('input[type=file]').change( async function() 
+            //         {
+            //             var filename = $(this.files)[0].name;
+            //             var aux = filename.split('.');
+            //             var extension = aux[aux.length -1].toUpperCase();
+
+            //             if(extension === 'DOC'
+            //                 || extension === 'DOCX'
+            //                 ){
+                            
+            //                 var _form    = new FormData();
+
+            //                 _form.append('files', $(this.files)[0]);
+            //                 _form.append('_id', _project._id);
+            //                 _form.append('_pts', extension);
+            //                 _this.setSignatureFile(_project._id, _form);
+            //                 $('.index_page_body_row').empty();
+            //             }else{
+            //                 alert('Invalid extension: ' + extension + '. Only: DOC, DOCX are allowed.');
+            //             }  
+            //         });
+
+
+            //         $('.index_page_more_menu').append(putDocumentToSignature);
+
+            //         var _header = $(`<div class="body_point"></div>`);
+            //         _header.append(`
+            //             <div class="body_point_header">
+            //                 <span>Полученные данные</span>
+            //             </div>
+            //         `);
+                    
+            //         var _type = _project.signature.type;
+
+            //         for(var key in this.signature) 
+            //         {
+            //             if(key == _type) {
+            //                 this.signature[key]['+1_s'].body.forEach(element => {
+            //                     var _file = `
+            //                         <div class="download_buttons">
+            //                             <a target="_blank" href="${getURL()}/projects/${_project._id}/${_project.signature.data[element._id]}">Посмотреть <i class='fas fa-download'></i></a>
+            //                         </div>  
+            //                     `;
+            //                     var _line = $(`
+            //                         <div class="body_point_line _file">
+            //                             <div class="body_point_line_header">
+            //                                 <div class="body_point_line_header_text">
+            //                                     <span>${element.name}</span>
+            //                                     ${_file}
+            //                                 </div>
+            //                                 <div class="body_point_line_header_info">
+
+            //                                 </div>
+            //                             </div>
+            //                         </div>
+            //                     `);
+
+            //                     _header.append(_line);
+            //                 }) 
+            //             }
+            //         }
+
+            //         _header.css({
+            //             'margin-bottom': '50px',
+            //             'width': '100%',
+            //         });
+
+            //         $('.index_page_more_menu').append(_header);
+
+            //         if(_project.signature_document) {
+            //             if(_project.signature_document.status == 'on') {
+            //                 $('.putDocumentToSignature').find('p').html('Документ подписан бизнесом');
+            //                 $('.putDocumentToSignature').find('label').remove();
+            //                 $('.putDocumentToSignature').append(`
+            //                     <div class="putDocumentToSignature_show">
+            //                         <span>Посмотреть</span>
+            //                     </div>
+            //                 `);
+            //                 $('.putDocumentToSignature_show').click( function() {
+            //                     window.open(`https://skin-win.ru/html/project/document/#${_project._id}`, '_blank');
+            //                 })
+            //             }
+            //         }
+            //     }
+                
+            // };
+
+            var templateText = $(`
+                <div class="index_page_body_project_body_type">
+                    <span class="selected" data="1">Займ</span>
+                    <span data="2">Займ с залогом</span>
+                    <span data="3">Займ с поручительством</span>
+                    <span data="4">Доля в ООО</span>
+                    <span data="5">Займ с залогом доли в ООО</span>
+                    <span data="6">Доля в объекте недвижимости</span>
+                </div>
+                <div class="index_page_more_menu_blocks">
+                    <h1>Получаемые данные</h1>
+                    <div class="index_page_more_menu_blocks_need">
+                        <p>
+                            1. Устав <br>
+                            2. Решение об избрании руководителя <br>
+                            3. Приказ о назначении руководителя <br>
+                            4. Свидетельство ИНН <br>
+                            5. ОГРН <br>
+                            6. Карточка с банковскими реквизитами <br>
+                            7. Бух.отчетность за последний год <br>
+                        </p>
+                    </div>
+                </div>
+                <div class="index_page_more_menu_buttons">
+                    <span class="get_new_data">Получить данные</span>
+                </div>
+            `);
+
+            // templateText.find('.get_new_data').click( function() {
+            //     _this.getNewDataProjects($('.index_page_body_project_body_type').find('span.selected').attr('data'), _project._id);
+            //     $('.index_page_body_row').children().fadeOut('fast');
+            // });
+
+            var _doc = 
+            {
+                _append: function(data) 
+                {
+                    $('.index_page_more_menu_blocks_need').append(`<p>${data}</p>`)
+                },
+                "1": function() 
+                {
+                    var text = `
+                    1. Устав <br>
+                    2. Решение об избрании руководителя <br>
+                    3. Приказ о назначении руководителя <br>
+                    4. Свидетельство ИНН <br>
+                    5. ОГРН <br>
+                    6. Карточка с банковскими реквизитами <br>
+                    7. Бух.отчетность за последний год <br>
+                    `;
+                    this._append(text);
+                },
+                "2": function() {
+                    var text = `
+                    1. Устав <br>
+                    2. Решение об избрании руководителя <br>
+                    3. Приказ о назначении руководителя <br>
+                    4. Свидетельство ИНН <br>
+                    5. ОГРН <br>
+                    6. Карточка с банковскими реквизитами <br>
+                    7. Бух.отчетность за последний год <br>
+                    8. Выписку из ЕГРН на недвижимость (+свидетельство о собственности, если есть) <br>
+                    9. Предоставляемую в залог <br>
+                    10. Договор купли-продажи недвижимости (основание приобретение недвижимости) <br>
+                    11. Cогласие супруга на залог <br>
+                    `;
+                    this._append(text);
+                },
+                "3": function() 
+                {
+                    var text = `
+                    1. Устав <br>
+                    2. Решение об избрании руководителя <br>
+                    3. Приказ о назначении руководителя <br>
+                    4. Свидетельство ИНН <br>
+                    5. ОГРН <br>
+                    6. Карточка с банковскими реквизитами <br>
+                    7. Бух.отчетность за последний год <br>
+                    8. Паспорт поручителя <br>
+                    9. Cогласие поручителя на обработку персональных данных <br>
+                    `;
+                    this._append(text);
+                },
+                "4": function() 
+                {
+                    var text = `
+                    1. Устав <br>
+                    2. Решение об избрании руководителя <br>
+                    3. Приказ о назначении руководителя <br>
+                    4. Свидетельство ИНН <br>
+                    5. ОГРН <br>
+                    6. Карточка с банковскими реквизитами <br>
+                    7. Бух.отчетность за последний год <br>
+                    8. Паспорт поручителя <br>
+                    9. Согласие супруга на купли-продажу доли <br>
+                    `;
+                    this._append(text);
+                },
+                "5": function() 
+                {
+                    var text = `
+                    1. Устав <br>
+                    2. Решение об избрании руководителя <br>
+                    3. Приказ о назначении руководителя <br>
+                    4. Свидетельство ИНН <br>
+                    5. ОГРН <br>
+                    6. Карточка с банковскими реквизитами <br>
+                    7. Бух.отчетность за последний год <br>
+                    8. Выписку из ЕГРН на недвижимость (+свидетельство о собственности, если есть), предоставляемую в залог <br>
+                    9. Договор купли-продажи недвижимости (основание приобретение недвижимости) <br>
+                    10. Согласие супруга на залог доли <br>
+                    `;
+                    this._append(text);
+                },
+                "6": function() 
+                {
+                    var text = `
+                    1. Устав <br>
+                    2. Решение об избрании руководителя <br>
+                    3. Приказ о назначении руководителя <br>
+                    4. Свидетельство ИНН <br>
+                    5. ОГРН <br>
+                    6. Карточка с банковскими реквизитами <br>
+                    7. Бух.отчетность за последний год <br>
+                    8. Выписку из ЕГРН на недвижимость (+свидетельство о собственности, если есть), предоставляемую в залог <br>
+                    9. Договор купли-продажи недвижимости (основание приобретение недвижимости) <br>
+                    10. Согласие супруга на залог доли <br>
+                    `;
+                    this._append(text);
+                },
+            }
+
+            $('.index_page_body_project_body_type span').click( function() {
+                $('.index_page_body_project_body_type span').removeClass('selected');
+                $(this).addClass('selected');
+
+                $('.index_page_more_menu_blocks_need').empty();
+                _doc[$(this).attr('data')]();
+            })
+
+            this.global_block.append(templateText);
         }
 
         async render()
