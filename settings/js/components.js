@@ -102,9 +102,17 @@
 
                     return getModerations;
                 },
+                "active": async function() {
+                    var getModerations = await callApi({
+                        methodName: "getActive",
+                        data: null,
+                    });
+
+                    return getModerations;
+                },
             }
 
-            this.getBlocks(await typeRender[type](), "На модерации")
+            this.getBlocks(await typeRender[type](), type)
         }
     }
 

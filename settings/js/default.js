@@ -18,6 +18,7 @@
         var pagesLAN = 
         {
             "moderations": function() {projects.render("moderations");},
+            "active": function() {projects.render("active");},
             "block": function() {block.render();},
         }
 
