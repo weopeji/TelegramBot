@@ -37,6 +37,7 @@ module.exports = {
     payerInBissnessDocument,
     drafts,
     drafts_block,
+    payerInvester,
 }
 
 async function drafts_block(msg) 
