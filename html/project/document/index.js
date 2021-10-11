@@ -70,6 +70,8 @@
                 },
             });
 
+            console.log(getInvestorDocument);
+
             templateText = templateText.replace(new RegExp("%invester_name%", 'g'), getInvestorDocument.fio);
             templateText = templateText.replace(new RegExp("%pay%", 'g'), getInvestorDocument.pay + " руб");
         }
