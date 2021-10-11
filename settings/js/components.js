@@ -864,7 +864,7 @@
                     for(var key in signature) 
                     {
                         if(key == _type) {
-                            this.signature[key]['+1_s'].body.forEach(element => {
+                            signature[key]['+1_s'].body.forEach(element => {
                                 var _file = `
                                     <div class="download_buttons">
                                         <a target="_blank" href="${getURL()}/projects/${_project._id}/${_project.signature.data[element._id]}">Посмотреть <i class='fas fa-download'></i></a>
