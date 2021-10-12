@@ -58,7 +58,7 @@
     else { 
         for(var key in components)
         {
-            global.Components[key] = key;
+            global.Components[key] = components[key];
         }
     }
 
