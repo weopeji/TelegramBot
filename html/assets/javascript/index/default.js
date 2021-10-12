@@ -43,6 +43,8 @@
             const Attracted_by_me   = new global.Components.Attracted_by_me();
             const reward            = new global.Components.reward();
 
+            const creating_page     = new global.Components.creating_page();
+
             var _User = await user_block.render(_id);
 
             global.allData.User = _User;
@@ -69,7 +71,8 @@
                 },
                 "signature": function() {signature.render(global.allData)},
                 "Attracted_by_me": function() {Attracted_by_me.render(global.allData)},
-                "reward": function() {reward.render(global.allData)}
+                "reward": function() {reward.render(global.allData)},
+                "creating": function() {creating_page.render(global.allData)},
             }
 
             if(pageID)
@@ -79,8 +82,6 @@
             {
                 renderPage["chats"]();
             }
-
-            
 
             $('.preloader').fadeOut( function() {
                 $(this).remove();
