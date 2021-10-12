@@ -3,7 +3,9 @@
     io_connect( function() 
     {
         global.loadResources(['./html/assets/javascript/index/component.js'], () => {
-            Main();
+            global.loadResources(['./html/assets/javascript/index/creating_page.js'], () => {
+                Main();
+            }); 
         });    
     });
 
@@ -42,6 +44,7 @@
             const reward            = new global.Components.reward();
 
             var _User = await user_block.render(_id);
+
             global.allData.User = _User;
 
             var renderPage = 
@@ -69,7 +72,15 @@
                 "reward": function() {reward.render(global.allData)}
             }
 
-            renderPage[pageID]();
+            if(pageID)
+            {
+                renderPage[pageID]();
+            } else 
+            {
+                renderPage["chats"]();
+            }
+
+            
 
             $('.preloader').fadeOut( function() {
                 $(this).remove();
