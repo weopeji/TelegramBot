@@ -26,7 +26,8 @@
 
         var _id = _getCookie('token');
 
-        global.allData = {
+        global.allData = 
+        {
             _id: _id,
             pageID: pageID,
         }

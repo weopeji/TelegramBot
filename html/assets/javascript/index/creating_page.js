@@ -38,17 +38,20 @@
             $('.index_page_body_header_info span').html("СОЗДАНИЕ ПРОЕКТА");
         }
 
+        async startDefault()
+        {
+
+        }
+
         async render() 
         {
             this.defaultCSS();    
+            this.startDefault();
         }
     }
 
-    if(!global.Components)
-    {
-        global.Components = {
-            creating_page,
-        }
+    global.Components = {
+        creating_page,
     }
 
 }(window))
