@@ -50,8 +50,16 @@
         }
     }
 
-    global.Components = {
+    var components = {
         creating_page,
+    };
+
+    if(!global.Components) { global.Components = components; } 
+    else { 
+        for(var key in components)
+        {
+            global.Components[key] = key;
+        }
     }
 
 }(window))

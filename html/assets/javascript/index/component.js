@@ -1246,20 +1246,25 @@
         }
     }
 
-    if(!global.Components)
-    {
-        global.Components = {
-            Attracted_by_me,
-            activ_projects,
-            put_document,
-            pay_investors,
-            acceptPays,
-            user_block,
-            chats,
-            myProjects,
-            signature,
-            reward,
-            process_status,
+    var components = {
+        Attracted_by_me,
+        activ_projects,
+        put_document,
+        pay_investors,
+        acceptPays,
+        user_block,
+        chats,
+        myProjects,
+        signature,
+        reward,
+        process_status,
+    };
+
+    if(!global.Components) { global.Components = components; } 
+    else { 
+        for(var key in components)
+        {
+            global.Components[key] = key;
         }
     }
 
