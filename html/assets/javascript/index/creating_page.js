@@ -61,11 +61,7 @@
             `);
 
             this.global.append(msgsBlock);
-        }
-
-        async startAnimation()
-        {
-            $('.creating_page_start').css("opacity", "1");
+            this.global.append(inputText);
         }
 
         async render() 
@@ -74,8 +70,6 @@
             this.startDefault();
 
             $('.index_page_body_data').append(this.global);
-
-            this.startAnimation();
         }
     }
 

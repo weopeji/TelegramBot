@@ -890,7 +890,6 @@ html, body {
   width: fit-content;
   font-size: 17px;
   line-height: 1.7;
-  opacity: 0;
   -webkit-transition: all .5s;
   transition: all .5s;
 }
