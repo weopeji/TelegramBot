@@ -882,7 +882,7 @@ html, body {
 }
 
 .creating_page_start {
-  padding: 20px 50px;
+  padding: 20px 50px 20px 30px;
   background-color: #3E4C71;
   border-radius: 8px;
   width: -webkit-fit-content;
@@ -892,6 +892,20 @@ html, body {
   line-height: 1.7;
   -webkit-transition: all .5s;
   transition: all .5s;
+}
+
+.creating_page_start_user_block {
+  padding: 20px 50px;
+  background-color: #252C46;
+  border-radius: 8px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-size: 17px;
+  line-height: 1.7;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+  color: #8395C4;
 }
 
 .creating_page_input {
