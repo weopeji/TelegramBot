@@ -65,7 +65,7 @@
 
         async startAnimation()
         {
-            $('.creating_page_start').animate("opacity", "1");
+            $('.creating_page_start').css("opacity", "1");
         }
 
         async render() 
