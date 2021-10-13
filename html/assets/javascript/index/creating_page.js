@@ -75,8 +75,10 @@
                 </div>
             `);
 
+            var _this = this;
+
             inputText.find('.creating_page_input_button span').click( function () {
-                this.nextRender();
+                _this.nextRender();
             });
 
             this.global.append(msgsBlock);
