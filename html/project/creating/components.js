@@ -834,7 +834,7 @@
                     {
                         if(data.parsing_data.indexOf('/') > -1)
                         {
-                            
+                            _line.find(`#${data._id}`).val(global._User.creatingData.data[data.parsing_data.split('/')[0]][data.parsing_data.split('/')[1]]);
                         } else 
                         {
                             _line.find(`#${data._id}`).val(global._User.creatingData.data[data.parsing_data]);
