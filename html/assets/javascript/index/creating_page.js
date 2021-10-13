@@ -40,13 +40,24 @@
 
         async startDefault()
         {
+            var tamplateText = $(`
+                <div class="creating_page_start">
+                    <span>
+                        Добро пожаловать в мастер создания проекта! <br>
+                        Введите свой инн для продолжения...
+                    </span>
+                </div>
+            `);
 
+            this.global.appemd(tamplateText);
         }
 
         async render() 
         {
             this.defaultCSS();    
             this.startDefault();
+
+            $('.index_page_body_data').append(this.global);
         }
     }
 
