@@ -64,6 +64,13 @@
 
             $('.creating_page_block').append(user_block);
             $('.creating_page_block').append(msgsBlock);
+
+            var creatingData = await callApi({
+                methodName: "creatingData",
+                data: inn,
+            });
+
+            console.log(creatingData);
         }
 
         async startDefault()

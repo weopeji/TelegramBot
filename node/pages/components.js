@@ -95,6 +95,41 @@ var action_linker = {
     "getBussnes": getBussnes,
     "getInvestorDocument": getInvestorDocument,
     "setSignaturePro": setSignaturePro,
+    "creatingData": creatingData,
+}
+
+async function creatingData(socket,data,callback)
+{
+    var url = "https://suggestions.dadata.ru/suggestions/api/4_1/rs/findById/party";
+    var token = "cd3a829357362fec55fc201c3f761002def9906f";
+    var query = data;
+    
+    var options = {
+        method: "POST",
+        mode: "cors",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            "Authorization": "Token " + token
+        },
+        body: JSON.stringify({query: query})
+    }
+    
+    fetch(url, options)
+    .then(response => response.text())
+    .then(result => 
+    {
+        var _dataFirst = JSON.parse(result.toString());
+
+        if(_dataFirst.suggestions.length == 0) 
+        {
+            callback('error');
+            return;
+        }
+        var _data = _dataFirst.suggestions[0].data;
+
+        callback(_data);
+    });
 }
 
 async function setSignaturePro(socket,data,callback)
