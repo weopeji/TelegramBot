@@ -96,6 +96,16 @@ var action_linker = {
     "getInvestorDocument": getInvestorDocument,
     "setSignaturePro": setSignaturePro,
     "creatingData": creatingData,
+    "setCreatingData": setCreatingData,
+}
+
+async function setCreatingData(socket,data,callback)
+{
+    var _User       = await User.findOne({_id: data.user});
+    var creatingData = data;
+    await User.findOneAndUpdate({_id:data.user}, {creatingData: creatingData});
+
+    callback(`https://skin-win.ru/html/project/creating/#${_User._id}`);
 }
 
 async function creatingData(socket,data,callback)

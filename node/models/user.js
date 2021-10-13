@@ -16,6 +16,7 @@ const UserShema = new mongoose.Schema({
     where: JSON,
     putProject: String,
     member: String,
+    creatingData: JSON,
 });
 
 mongoose.model('User', UserShema);

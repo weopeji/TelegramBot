@@ -371,7 +371,18 @@
             if(creatingData == "error") {type["FIZ"]()}
             else {type[creatingData.type]()};
 
-            
+            var _data = {
+                user: global.allData._id,
+                type: param,
+                data: creatingData,
+            };
+
+            var setCreatingData = await callApi({
+                methodName: "setCreatingData",
+                data: _data,
+            });
+
+            location.href = setCreatingData;
         }
 
         defaultCSS()
