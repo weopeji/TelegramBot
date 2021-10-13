@@ -604,10 +604,12 @@
 
         async startRenderCreating(creatingData)
         {
+            var param = 0;
+
             var type = {
-                "LEGAL": function() {},
-                "INDIVIDUAL": function() {},
-                "FIZ": function() {},
+                "LEGAL": function() {param = 1},
+                "INDIVIDUAL": function() {param = 2},
+                "FIZ": function() {param = 3},
             }
 
             if(creatingData == "error") {type["FIZ"]()}
