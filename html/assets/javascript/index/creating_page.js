@@ -52,7 +52,18 @@
                 </div>
             `);
 
+            var msgsBlock = $(`
+                <div class="creating_page_block">
+                    <div class="creating_page_start">
+                        <span>
+                            Подождите...
+                        </span>
+                    </div>
+                </div>
+            `);
+
             $('.creating_page_block').append(user_block);
+            $('.creating_page_block').append(msgsBlock);
         }
 
         async startDefault()
