@@ -494,7 +494,8 @@ async function active(msg)
 
 async function addProject(msg) 
 {
-    var _array = [];
+    var _array  = [];
+    var _User   = await User.findOne({user: msg.from.id});
 
     var html = "Вы находитесь в меню: Добавить проект";
     var fat = await h.send_html(msg.from.id, html, {
@@ -507,7 +508,7 @@ async function addProject(msg)
     _array.push(fat.message_id)
 
     var html = `Нажмите кнопку <strong>"Заполнить данные"</strong>, чтобы создать проект и подать его на модерацию`;
-    var _url = `${h.getURL()}html/project/creating/#${msg.from.id}`;
+    var _url = `${h.getURL()}?user=${_User._id}&page=creating`;
 
     var fat = await h.send_html(msg.from.id, html, {
         "inline_keyboard": [
