@@ -115,25 +115,41 @@
                 </div>
             `);
 
-            var msgsBlock = $(`
-                <div class="creating_page_block">
-                    <div class="creating_page_start">
-                        <span>
-                            Подождите...
-                        </span>
-                    </div>
-                </div>
-            `);
-
+            
             $('.creating_page_block').append(user_block);
-            $('.creating_page_block').append(msgsBlock);
+            
 
             var cheackINN = this.validateInn(inn);
 
-            var creatingData = await callApi({
-                methodName: "creatingData",
-                data: inn,
-            });
+            if(!cheackINN.result)
+            {
+                var msgsBlock = `
+                    <div class="creating_page_block">
+                        <div class="creating_page_start">
+                            <span>
+                               ${cheackINN.error.message}
+                            </span>
+                        </div>
+                    </div>
+                `;
+                $('.creating_page_block').append(msgsBlock);
+            } else {
+                var creatingData = await callApi({
+                    methodName: "creatingData",
+                    data: inn,
+                });
+
+                var msgsBlock = `
+                    <div class="creating_page_block">
+                        <div class="creating_page_start">
+                            <span>
+                               Подождите...
+                            </span>
+                        </div>
+                    </div>
+                `;
+                $('.creating_page_block').append(msgsBlock);
+            }
 
             console.log(creatingData);
             console.log(cheackINN);
