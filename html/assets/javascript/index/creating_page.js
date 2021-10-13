@@ -74,7 +74,7 @@
             };
         }
 
-        async startRenderCreating(creatingData)
+        async startRenderCreating(creatingData, inn)
         {
             var param = 0;
 
@@ -91,6 +91,7 @@
                 user: global.allData._id,
                 type: param,
                 data: creatingData,
+                inn: inn,
             };
 
             var setCreatingData = await callApi({
@@ -165,7 +166,7 @@
                 `;
                 $('.creating_page_block').append(msgsBlock);
 
-                this.startRenderCreating(creatingData);
+                this.startRenderCreating(creatingData, inn);
             }
 
             console.log(creatingData);
