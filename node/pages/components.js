@@ -123,12 +123,29 @@ async function creatingData(socket,data,callback)
 
         if(_dataFirst.suggestions.length == 0) 
         {
-            callback('error');
-            return;
+            if (!date) {
+                date = new Date();
+            }
+            const dateStr = date.toISOString().substring(0, 10);
+            const url = "https://statusnpd.nalog.ru/api/v1/tracker/taxpayer_status";
+            const data = {
+                inn: inn,
+                requestDate: dateStr,
+            };
+            resp = fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+            }).then((response) => {
+                var _dataFirst = JSON.parse(response.toString());
+                callback(_dataFirst);
+            });
+        } else {
+            var _data = _dataFirst.suggestions[0].data;
+            callback(_data);
         }
-        var _data = _dataFirst.suggestions[0].data;
-
-        callback(_data);
     });
 }
 
