@@ -872,6 +872,29 @@ html, body {
   background-image: radial-gradient(circle at 100% 100%, transparent 19px, #13a9f6 19px, #13a9f6 20px, transparent 20px), linear-gradient(to right, #13a9f6, #165096), radial-gradient(circle at 0% 100%, transparent 19px, #165096 19px, #165096 20px, transparent 20px), linear-gradient(to bottom, #165096, #164e93), radial-gradient(circle at 0% 0%, transparent 19px, #164e93 19px, #164e93 20px, transparent 20px), linear-gradient(to left, #164e93, #14a6f5), radial-gradient(circle at 100% 0%, transparent 19px, #14a6f5 19px, #14a6f5 20px, transparent 20px), linear-gradient(to top, #14a6f5, #13a9f6);
 }
 
+.creating_page_block {
+  width: 100%;
+}
+
+.creating_page {
+  width: 40%;
+  margin: 0 auto;
+}
+
+.creating_page_start {
+  padding: 20px 50px;
+  background-color: #3E4C71;
+  border-radius: 8px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-size: 17px;
+  line-height: 1.7;
+  opacity: 0;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+}
+
 @media (max-width: 500px) {
   .buttons_menu {
     display: block;

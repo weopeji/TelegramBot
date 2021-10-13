@@ -40,16 +40,32 @@
 
         async startDefault()
         {
-            var tamplateText = $(`
-                <div class="creating_page_start">
-                    <span>
-                        Добро пожаловать в мастер создания проекта! <br>
-                        Введите свой инн для продолжения...
-                    </span>
+            var msgsBlock = $(`
+                <div class="creating_page_block">
+                    <div class="creating_page_start">
+                        <span>
+                            Добро пожаловать в мастер создания проекта! <br>
+                            Введите свой инн для продолжения...
+                        </span>
+                    </div>
                 </div>
             `);
 
-            this.global.append(tamplateText);
+            var inputText = $(`
+                <div class="creating_page_input">
+                    <input type="text">
+                    <div class="creating_page_input_button">
+                        <span>Отправить</span>
+                    </div>
+                </div>
+            `);
+
+            this.global.append(msgsBlock);
+        }
+
+        async startAnimation()
+        {
+            $('.creating_page_start').animate("opacity", "1");
         }
 
         async render() 
@@ -58,6 +74,8 @@
             this.startDefault();
 
             $('.index_page_body_data').append(this.global);
+
+            this.startAnimation();
         }
     }
 
