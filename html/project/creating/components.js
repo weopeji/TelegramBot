@@ -992,6 +992,9 @@
         {
             $('.index_page_body_points').empty();
 
+            $('.index_page_body_header_type span').css('display', "none");
+            $('.index_page_body_header_type selected').css('display', "block");
+
             for (var key in this.struct) 
             {
                 if(param != 1) 
