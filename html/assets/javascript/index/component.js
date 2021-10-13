@@ -917,6 +917,10 @@
             $('.index_page_menu_block_line').click( function() {
                 location.href = `/?page=${$(this).attr('data')}`;
             });
+
+            $('.add_project_button').click( function() {
+                location.href = `/?page=creating`;
+            });
  
             return _User;
         }
