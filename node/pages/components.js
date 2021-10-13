@@ -139,8 +139,7 @@ async function creatingData(socket,data,callback)
                 },
                 body: JSON.stringify(data),
             }).then((response) => {
-                var _dataFirst = JSON.parse(response.toString());
-                callback(_dataFirst);
+                callback(response.json());
             });
         } else {
             var _data = _dataFirst.suggestions[0].data;
