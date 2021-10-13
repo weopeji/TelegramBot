@@ -949,7 +949,9 @@ html, body {
 .creating_page_start_user {
   margin-top: 20px;
   width: 100%;
-  display: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;

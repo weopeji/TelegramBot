@@ -53,8 +53,6 @@
             `);
 
             $('.creating_page_block').append(user_block);
-
-            $('.creating_page_start_user').animate('display', 'flex');
         }
 
         async startDefault()
