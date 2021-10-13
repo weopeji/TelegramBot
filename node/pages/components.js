@@ -740,7 +740,7 @@ async function setProject(socket,data,callback)
 }
 
 async function getUser(socket,data,callback) {
-    var _user = await User.findOne({user: data});
+    var _user = await User.findOne({_id: data});
     callback(_user);
 }
 

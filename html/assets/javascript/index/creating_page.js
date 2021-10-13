@@ -120,7 +120,7 @@
         {
             var inn = $('.creating_page_input input').val();
 
-            $('.creating_page_input input').val("")
+            $('.creating_page_input input').val("");
 
             var user_block = `
                 <div class="creating_page_start_user">
