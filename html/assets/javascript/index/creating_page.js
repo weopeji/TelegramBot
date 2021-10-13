@@ -49,7 +49,7 @@
                 </div>
             `);
 
-            this.global.appemd(tamplateText);
+            this.global.append(tamplateText);
         }
 
         async render() 
