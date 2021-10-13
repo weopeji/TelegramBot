@@ -43,14 +43,18 @@
             $('.creating_page_input input').val("")
 
             var user_block = $(`
-                <div class="creating_page_start_user_block">
-                    <span>
-                        ${inn}
-                    </span>
+                <div class="creating_page_start_user">
+                    <div class="creating_page_start_user_block">
+                        <span>
+                            ${inn}
+                        </span>
+                    </div>
                 </div>
             `);
 
             $('.creating_page_block').append(user_block);
+
+            $('.creating_page_start_user').animate('display', 'flex');
         }
 
         async startDefault()
