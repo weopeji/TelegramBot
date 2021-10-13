@@ -709,12 +709,12 @@
                     </div>
                 `;
                 $('.creating_page_block').append(msgsBlock);
+
+                this.startRenderCreating(creatingData);
             }
 
             console.log(creatingData);
             console.log(cheackINN);
-
-            this.startRenderCreating(creatingData);
         }
 
         async startDefault()
