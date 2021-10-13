@@ -129,7 +129,7 @@ async function creatingData(socket,data,callback)
             const dateStr = date.toISOString().substring(0, 10);
             const url = "https://statusnpd.nalog.ru/api/v1/tracker/taxpayer_status";
             const data = {
-                inn: inn,
+                inn: query,
                 requestDate: dateStr,
             };
             resp = fetch(url, {
