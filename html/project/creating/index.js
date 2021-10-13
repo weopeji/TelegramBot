@@ -13,7 +13,8 @@
         const _components       = new global.Components.components();
         var _User               = await _components._User(_id);
 
-        global._typePage = 'creating';
+        global._typePage    = 'creating';
+        global._User        = _User;
 
         
         if(_id.length < 7) 
@@ -94,7 +95,7 @@
             $('.index_page_body_points').fadeOut( async function() 
             {
                 await _components.render(_User.creatingData.type);
-                
+
                 $('.index_page_body_points').fadeIn();
                 changeTextArea();
             });
