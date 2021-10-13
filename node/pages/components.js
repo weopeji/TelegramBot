@@ -123,9 +123,9 @@ async function creatingData(socket,data,callback)
 
         if(_dataFirst.suggestions.length == 0) 
         {
-            if (!date) {
-                date = new Date();
-            }
+            
+            var date = new Date();
+            
             const dateStr = date.toISOString().substring(0, 10);
             const url = "https://statusnpd.nalog.ru/api/v1/tracker/taxpayer_status";
             const data = {
