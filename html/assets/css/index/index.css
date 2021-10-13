@@ -957,6 +957,15 @@ html, body {
           justify-content: flex-end;
 }
 
+.add_project_button {
+  background: #14b6ff;
+  background: -webkit-gradient(linear, left top, right top, from(#14b6ff), color-stop(61%, #1387ff));
+  background: linear-gradient(90deg, #14b6ff 0%, #1387ff 61%);
+  padding: 10px 20px;
+  border-radius: 3px;
+  margin-right: 60px;
+}
+
 @media (max-width: 500px) {
   .buttons_menu {
     display: block;
