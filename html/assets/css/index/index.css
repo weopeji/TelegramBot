@@ -904,12 +904,14 @@ html, body {
 }
 
 .creating_page_input input {
-  width: 100%;
+  width: calc(100% - 20px);
   margin: 0 auto;
   border: 0;
   background-color: #0E1122;
   height: 40px;
   border-radius: 8px;
+  color: white;
+  padding: 0 10px;
 }
 
 .creating_page_input_button {
@@ -927,6 +929,7 @@ html, body {
   padding: 10px 20px;
   margin-top: 10px;
   border-radius: 8px;
+  cursor: pointer;
 }
 
 @media (max-width: 500px) {

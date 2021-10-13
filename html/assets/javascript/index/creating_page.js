@@ -38,6 +38,21 @@
             $('.index_page_body_header_info span').html("СОЗДАНИЕ ПРОЕКТА");
         }
 
+        async nextRender() {
+            var inn = $('.creating_page_input input').val();
+            $('.creating_page_input input').val("")
+
+            var user_block = $(`
+                <div class="creating_page_start_user_block">
+                    <span>
+                        ${inn}
+                    </span>
+                </div>
+            `);
+
+            $('.creating_page_block').append(user_block);
+        }
+
         async startDefault()
         {
             var msgsBlock = $(`
@@ -59,6 +74,10 @@
                     </div>
                 </div>
             `);
+
+            inputText.find('.creating_page_input_button span').click( function () {
+                this.nextRender();
+            });
 
             this.global.append(msgsBlock);
             this.global.append(inputText);
