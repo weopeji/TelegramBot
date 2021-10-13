@@ -28,12 +28,14 @@
                             type: "string",
                             name: "Название проекта",
                             info: "Введите название проекта латинскими буквами или кирилицей",
+                            parsing_data: null,
                             _id: "name"
                         },
                         {
                             type: "string",
                             name: "Цель привлечения средств",
                             info: "Введите цель привлечения средств латинскими буквами или кирилицей",
+                            parsing_data: null,
                             _id: "target"
                         },
                         {
@@ -41,12 +43,14 @@
                             name: "Общая сумма привлечения",
                             info: "Введите целое значение суммы в рублях",
                             _id: "attraction_amount",
+                            parsing_data: null,
                             redacting: true,
                         },
                         {
                             type: "string",
                             name: "Срок инвестирования",
                             info: "Укажите целое количество месяцев",
+                            parsing_data: null,
                             _id: "date",
                             number: true
                         },
@@ -54,6 +58,7 @@
                             type: "string",
                             name: "Минимальная сумма",
                             info: "Введите целое значение суммы в рублях (от 50000)",
+                            parsing_data: null,
                             _id: "minimal_amount",
                             redacting: true,
                         },
@@ -61,6 +66,7 @@
                             type: "string",
                             name: "Ставка % в месяц",
                             info: "Введите целое или дробное значение в формате 1.15",
+                            parsing_data: null,
                             _id: "rate",
                             number_t: true
                         },
@@ -87,6 +93,7 @@
                                 type: "string",
                                 name: "Название компании",
                                 info: "Введите название проекта латинскими буквами",
+                                parsing_data: "name/short_with_opf",
                                 _id: "name_company"
                             },
                             {
@@ -94,12 +101,14 @@
                                 name: "ИНН",
                                 info: "Введите ИНН",
                                 _id: "inn",
+                                parsing_data: "inn",
                                 number: true
                             },
                             {
                                 type: "string",
                                 name: "ОГРН",
                                 info: "Введите ОГРН",
+                                parsing_data: "ogrn",
                                 _id: "ogrn",
                                 number: true
                             },
@@ -107,12 +116,14 @@
                                 type: "addr",
                                 name: "Фактический адрес",
                                 info: "Введите Фактический адрес",
+                                parsing_data: null,
                                 _id: "addr"
                             },
                             {
                                 type: "string",
                                 name: "Сайт",
                                 info: "Введите название ссылку на ваш сайт",
+                                parsing_data: null,
                                 _id: "syte"
                             }
                         ],
@@ -121,18 +132,21 @@
                                 type: "string",
                                 name: "Прописка как в паспорте",
                                 info: "Введите точные данные как в паспорте",
+                                parsing_data: null,
                                 _id: "registration"
                             },
                             {
                                 type: "string",
                                 name: "Регион согласно паспорту",
                                 info: "Например Московская область, Свердловская область",
+                                parsing_data: null,
                                 _id: "region"
                             },
                             {
                                 type: "string",
                                 name: "Основанная деятельность",
                                 info: "Например розничная торговля",
+                                parsing_data: null,
                                 _id: "activity"
                             }
                         ]
@@ -769,15 +783,6 @@
                     var _val = $(this).val();
                     Cookies.set(data._id, _val);
                 });
-
-                if(typeof Cookies.get(data._id) != "undefined") {
-                    if(Cookies.get(data._id).length != 0) {
-                        _line.find(`#${data._id}`).val(Cookies.get(data._id));
-                        _line.find('._yes').css('display', "block");
-                        _line.find('._not').css('display', "none");
-                    }
-                }
-
                 
                 if(typeof data.redacting != 'undefined') {
                     _line.find(`#${data._id}`).on('keyup input', function() 
@@ -822,6 +827,19 @@
 
                 if(typeof data.mail != "undefined") {
                     _line.find(`#${data._id}`).inputmask("email");
+                }
+
+                if(typeof data.parsing_data != "undefined") {
+                    if(data.parsing_data)
+                    {
+                        if(data.parsing_data.indexOf('/') > -1)
+                        {
+                            
+                        } else 
+                        {
+                            _line.find(`#${data._id}`).val(global._User.creatingData.data[data.parsing_data]);
+                        }
+                    }
                 }
 
                 return _line;
@@ -992,8 +1010,10 @@
         {
             $('.index_page_body_points').empty();
 
+            $('.index_page_header_user').css('display', 'none');
+
             $('.index_page_body_header_type span').css('display', "none");
-            $(`.index_page_body_header_type span[data="${global._User.creatingData.type}"]`).css('display', "block");
+            $(`.index_page_body_header_type span[data="${global._User.creatingData.type}"]`).css('display', "flex");
 
             for (var key in this.struct) 
             {
