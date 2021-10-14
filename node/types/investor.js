@@ -955,7 +955,55 @@ async function investing_money(msg)
             }
 
             return error;
-        }
+        },
+        "Юр.лицо": async function() 
+        {
+            var error = false;
+
+            buttons2.forEach(element => {
+                if(!_User.investor_data[element.id])
+                {
+                    error = true;
+                }
+            })
+
+            buttons_2.forEach(element => {
+                if(!_User.investor_data[element.id])
+                {
+                    error = true;
+                }
+            })
+
+            if(!_User.investor_data.pay) {
+                error = true;
+            }
+
+            return error;
+        },
+        "Физ.лицо": async function() 
+        {
+            var error = false;
+
+            buttons3.forEach(element => {
+                if(!_User.investor_data[element.id])
+                {
+                    error = true;
+                }
+            })
+
+            buttons_2.forEach(element => {
+                if(!_User.investor_data[element.id])
+                {
+                    error = true;
+                }
+            })
+
+            if(!_User.investor_data.pay) {
+                error = true;
+            }
+
+            return error;
+        },
     }
 
     var errorKeyboard = await cheackAndStartButton[_User.investor_data.type]();
