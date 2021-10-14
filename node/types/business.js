@@ -355,19 +355,6 @@ async function not_active_callback(msg)
                     }
                 ])
             }
-            
-
-            var _urlImgProject = `${h.getURL()}html/project/cover/?id=${needProject._id}`;
-            const browser = await puppeteer.launch({
-                args: ['--no-sandbox', '--disable-setuid-sandbox'],
-            });
-
-            const page = await browser.newPage();
-            await page.goto(_urlImgProject);
-            await page.emulateMedia('screen');
-            const element = await page.$('.cover_block');   
-            await element.screenshot({path: `../projects/${needProject._id}/logo.png`});
-            await browser.close();
 
             var html = `[Профиль компании](${h.getURL()}html/project/profil/#${needProject._id})\n[Презентация](${h.getURL()}/projects/${needProject._id}/${needProject.data["file+7"]})\n[Видео презентация](${h.getURL()}/projects/${needProject._id}/${needProject.data["file+8"]})`;
             const stream = fs.createReadStream(`../projects/${needProject._id}/logo.png`);
