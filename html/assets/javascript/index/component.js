@@ -976,11 +976,6 @@
     
                 $('.index_page_body_data').append(templateText);
 
-                var _User = await callApi({
-                    methodName: "getUserForId",
-                    data: _GET('user'),
-                });
-
                 if(all_msgs) {
                     if(all_msgs.msgs.length > 0) {
                         all_msgs.msgs.forEach(function(el) 
@@ -1029,14 +1024,20 @@
                     methodName: "getProject",
                     data: _GET('id'),
                 });
+
+                var _User = await callApi({
+                    methodName: "getUserForId",
+                    data: _GET('user'),
+                });
     
                 var headerShow = {
                     "investor": function() {
                         $('.chat_block_info span').html(Project_data.data.name);
-                        $('.chat_block_info p').html(Project_data.data.recipient);
+                        $('.chat_block_info p').html("business");
                     },
                     "business": function() {
-    
+                        $('.chat_block_info span').html(_User.first_name + " " + _User.last_name);
+                        $('.chat_block_info p').html("investor");
                     },
                 }
     

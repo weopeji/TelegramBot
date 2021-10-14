@@ -241,40 +241,33 @@ async function all_msgs(socket,data,callback)
 
 async function msgUP(socket,data,callback)
 {
-    var funs = {
-        "investor": async function() 
+    var _MsgDB = await MsgDB.findOne({investor: data.user, business: data.to});
+
+    if(!_MsgDB) {
+        var _array  = [];
+        _array.push({
+            text: data.msg,
+            type: data.type,
+        })
+        await MsgDB.create(
         {
-            var _MsgDB = await MsgDB.findOne({investor: data.user, business: data.to});
-
-            if(!_MsgDB) {
-                var _array  = [];
-                _array.push({
-                    text: data.msg,
-                    type: data.type,
-                })
-                await MsgDB.create(
-                    {
-                        investor: data.user,
-                        business: data.to,
-                        msgs: _array,
-                    });
-            } else {
-                var _array = _MsgDB.msgs;
-                _array.push({
-                    text: data.msg,
-                    type: data.type,
-                }) 
-                await MsgDB.findOneAndUpdate({
-                    _id: _MsgDB._id,
-                },
-                    {
-                        msgs: _array,
-                    });
-            }
-        }
+            investor: data.user,
+            business: data.to,
+            msgs: _array,
+        });
+    } else {
+        var _array = _MsgDB.msgs;
+        _array.push({
+            text: data.msg,
+            type: data.type,
+        }) 
+        await MsgDB.findOneAndUpdate({
+            _id: _MsgDB._id,
+        },
+        {
+            msgs: _array,
+        });
     }
-
-    funs[data.type]();
 }
 
 async function removePayInvestor(socket,data,callback)
