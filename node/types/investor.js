@@ -636,11 +636,13 @@ async function startInvestingMsgSecond(msg, html, button)
         _where.page.button = 0
     } else {
         var _data = null;
-        if(button) {
+
+        if(button || button == 0) {
             _data = button;
         } else {
             _data = h._GET(msg.data, "data");
         }
+
         _data = Number(_data);
 
         console.log(_data);
