@@ -996,7 +996,7 @@
                                 </div>
                             `;
 
-                            if(_User.type == "business")
+                            if(global.User.type == "business")
                             {
                                 if(el.type == "investor")
                                 {
