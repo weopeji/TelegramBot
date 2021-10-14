@@ -1072,8 +1072,10 @@
     
                     $('.chat_block_chat_body_row_input input').val('');
                 });
-            } else {
-
+            } else 
+            {
+                console.log('start');
+                
                 var selectedMsgChats = await callApi({
                     methodName: "selectedMsgChats",
                     data: data._id,
