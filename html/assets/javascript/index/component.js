@@ -978,7 +978,8 @@
 
                 if(all_msgs) {
                     if(all_msgs.msgs.length > 0) {
-                        all_msgs.msgs.forEach(function(el) {
+                        all_msgs.msgs.forEach(function(el) 
+                        {
                             var myBlock = `
                                 <div class="chat_block_chat_body_msgs_line">
                                     <div class="chat_block_chat_body_msgs_line_my">
@@ -986,7 +987,33 @@
                                     </div>
                                 </div>
                             `;
-                            $('.chat_block_chat_body_msgs').append(myBlock);
+
+                            var notMyblock = `
+                                <div class="chat_block_chat_body_msgs_line chat_block_chat_body_msgs_line_left">
+                                    <div class="chat_block_chat_body_msgs_line_my">
+                                        <span>${el.text}</span>
+                                    </div>
+                                </div>
+                            `;
+
+                            if(_User.type == "business")
+                            {
+                                if(el.type == "investor")
+                                {
+                                    $('.chat_block_chat_body_msgs').append(notMyblock);
+                                } else {
+                                    $('.chat_block_chat_body_msgs').append(myBlock);
+                                }
+                            } else {
+                                if(el.type == "investor")
+                                {
+                                    $('.chat_block_chat_body_msgs').append(myBlock);
+                                } else {
+                                    $('.chat_block_chat_body_msgs').append(notMyblock);
+                                }
+                            }
+
+                            
                         })
         
                         $('.chat_block_chat_body_msgs').animate({scrollTop: $('.chat_block_chat_body_msgs').height()}, 'fast');
@@ -1075,7 +1102,7 @@
             } else 
             {
                 console.log('start');
-                
+
                 var selectedMsgChats = await callApi({
                     methodName: "selectedMsgChats",
                     data: data._id,

@@ -967,6 +967,12 @@ html, body {
   cursor: pointer;
 }
 
+.chat_block_chat_body_msgs_line_left {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+}
+
 @media (max-width: 500px) {
   .buttons_menu {
     display: block;
