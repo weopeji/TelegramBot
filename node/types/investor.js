@@ -433,6 +433,49 @@ async function recomendations(msg)
     await h.DMA(msg, _array);
 }
 
+var buttons2 = [
+    {
+        name: "ИНН",
+        id: "inn",
+    },
+    {
+        name: "КПП",
+        id: "kpp",
+    },
+    {
+        name: "ОГРН",
+        id: "ogrn",
+    },
+    {
+        name: "Должность",
+        id: "dolgnost",
+    },
+    {
+        name: "ФИО должностного лица",
+        id: "dolgnost_fio",
+    },
+    {
+        name: "Юридический адрес",
+        id: "addr_qr",
+    },
+    {
+        name: "Банк получателя",
+        id: "bank",
+    },
+    {
+        name: "БИК",
+        id: "bik",
+    },
+    {
+        name: "Номер расчетного счета",
+        id: "nomer",
+    },
+    {
+        name: "Номер корреспондентского  счета",
+        id: "nomer_kor",
+    },
+]
+
 var buttons = [
     {
         name: "ФИО",
@@ -538,90 +581,97 @@ async function startInvestingMsgSecond(msg, html, button)
         _array.push(fat.message_id);
     }
 
+    var _buttons;
+
     var types = 
     {
         "ИП": async function() 
         {
-            
-            var _where          = _User.where;
-            _where.page.more    = 2;
-
-            if(typeof _where.page.button != 'number' && typeof _where.page.button != "string")
-            {
-                _where.page.button = 0
-            } else {
-                var _data = null;
-                if(button) {
-                    _data = button;
-                } else {
-                    _data = h._GET(msg.data, "data");
-                }
-                _data = Number(_data);
-
-                console.log(_data);
-                
-                if(_data < 0) {
-                    _data = 0;
-                }
-                if(_data >= buttons.length) {
-                    _data = buttons.length - 1;
-                }
-                _where.page.button = _data;
-            }
-
-            var html   = `Для <strong>${_User.investor_data.type}</strong> нужно заполнить данные:\n\n`;
-
-            var need_button = _where.page.button;
-
-            buttons.forEach((element, i) => 
-            {
-                var strong          = '';
-                var strong_second   = '';
-                var dataBlock       = '[Не задано]';
-                var smile           = '❌';
-
-                if(i == need_button) {
-                    strong          = '<strong>*';
-                    strong_second   = '*</strong>\n';
-                }
-
-                if(_User.investor_data[element.id]) {
-                    dataBlock = _User.investor_data[element.id];
-                    smile = '✅';
-                }
-                
-                html = html + `${smile} ${strong} ${element.name}:   ${dataBlock} ${strong_second}\n`;
-            })
-
-            var fat = await h.send_html(msg.from.id, html, {
-                "inline_keyboard": [
-                    [
-                        {
-                            text: '⬇️',
-                            callback_data: `place=investing&type=button&data=${need_button + 1}`,
-                        },
-                        {
-                            text: '⬆️',
-                            callback_data: `place=investing&type=button&data=${need_button - 1}`,
-                        },
-                        {
-                            text: '➡️',
-                            callback_data: `place=contact`,
-                        }
-                    ]
-                ],
-            });
-            _array.push(fat.message_id);
-
-            _where.msg = fat.message_id;
-
-            await User.findOneAndUpdate({user: msg.from.id}, {where: _where})
-
-            await h.MA(msg, _array);
-        }
+            _buttons = buttons;
+        },
+        "Юр.лицо": async function() 
+        {
+            _buttons = buttons2;
+        },
     }
 
     types[_User.investor_data.type]();
+
+    var _where          = _User.where;
+    _where.page.more    = 2;
+
+    if(typeof _where.page.button != 'number' && typeof _where.page.button != "string")
+    {
+        _where.page.button = 0
+    } else {
+        var _data = null;
+        if(button) {
+            _data = button;
+        } else {
+            _data = h._GET(msg.data, "data");
+        }
+        _data = Number(_data);
+
+        console.log(_data);
+        
+        if(_data < 0) {
+            _data = 0;
+        }
+        if(_data >= _buttons.length) {
+            _data = _buttons.length - 1;
+        }
+        _where.page.button = _data;
+    }
+
+    var html   = `Для <strong>${_User.investor_data.type}</strong> нужно заполнить данные:\n\n`;
+
+    var need_button = _where.page.button;
+
+    _buttons.forEach((element, i) => 
+    {
+        var strong          = '';
+        var strong_second   = '';
+        var dataBlock       = '[Не задано]';
+        var smile           = '❌';
+
+        if(i == need_button) {
+            strong          = '<strong>*';
+            strong_second   = '*</strong>\n';
+        }
+
+        if(_User.investor_data[element.id]) {
+            dataBlock = _User.investor_data[element.id];
+            smile = '✅';
+        }
+        
+        html = html + `${smile} ${strong} ${element.name}:   ${dataBlock} ${strong_second}\n`;
+    })
+
+    var fat = await h.send_html(msg.from.id, html, {
+        "inline_keyboard": [
+            [
+                {
+                    text: '⬇️',
+                    callback_data: `place=investing&type=button&data=${need_button + 1}`,
+                },
+                {
+                    text: '⬆️',
+                    callback_data: `place=investing&type=button&data=${need_button - 1}`,
+                },
+                {
+                    text: '➡️',
+                    callback_data: `place=contact`,
+                }
+            ]
+        ],
+    });
+    _array.push(fat.message_id);
+
+    _where.msg = fat.message_id;
+
+    await User.findOneAndUpdate({user: msg.from.id}, {where: _where})
+
+    await h.MA(msg, _array);
 }
 
 async function startInvestingMsgOld(msg, button) 
