@@ -174,17 +174,6 @@ async function _MainMenu(msg)
 
                 var _idProject = needProject._id;
 
-                var _urlImgProject = `${h.getURL()}html/project/cover/?id=${_idProject}`;
-                const browser = await puppeteer.launch({
-                    args: ['--no-sandbox', '--disable-setuid-sandbox'],
-                });
-                const page = await browser.newPage();
-                await page.goto(_urlImgProject);
-                await page.emulateMedia('screen');
-                const element = await page.$('.cover_block');   
-                await element.screenshot({path: `../projects/${_idProject}/logo.png`});
-                await browser.close();
-
                 var html = `Выбран проект: ${_User.putProject}\n[Профиль компании](${h.getURL()}html/project/profil/#${needProject._id})\n[Презентация](${h.getURL()}/projects/${needProject._id}/${needProject.data["file+7"]})\n[Видео презентация](${h.getURL()}/projects/${needProject._id}/${needProject.data["file+8"]})\n\n`;
                 const stream    = fs.createReadStream(`../projects/${_User.putProject}/logo.png`);
             
