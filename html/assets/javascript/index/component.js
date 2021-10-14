@@ -976,6 +976,11 @@
     
                 $('.index_page_body_data').append(templateText);
 
+                var _User = await callApi({
+                    methodName: "getUserForId",
+                    data: _GET('user'),
+                });
+
                 if(all_msgs) {
                     if(all_msgs.msgs.length > 0) {
                         all_msgs.msgs.forEach(function(el) 
@@ -996,7 +1001,7 @@
                                 </div>
                             `;
 
-                            if(global.User.type == "business")
+                            if(global.allData.User.type == "business")
                             {
                                 if(el.type == "investor")
                                 {
@@ -1019,11 +1024,6 @@
                         $('.chat_block_chat_body_msgs').animate({scrollTop: $('.chat_block_chat_body_msgs').height()}, 'fast');
                     }
                 }
-
-                var _User = await callApi({
-                    methodName: "getUserForId",
-                    data: _GET('user'),
-                });
     
                 var Project_data = await callApi({
                     methodName: "getProject",
