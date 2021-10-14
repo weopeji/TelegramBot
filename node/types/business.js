@@ -50,18 +50,6 @@ async function viplati_call(msg) {
     });
     _array.push(fat.message_id);
 
-    var _urlImgProject = `${h.getURL()}html/project/cover/?id=${needProject._id}`; 
-    const browser = await puppeteer.launch({
-        args: ['--no-sandbox', '--disable-setuid-sandbox'],
-    });
-
-    const page = await browser.newPage();
-    await page.goto(_urlImgProject);
-    await page.emulateMedia('screen');
-    const element = await page.$('.cover_block');   
-    await element.screenshot({path: `../projects/${needProject._id}/logo.png`});
-    await browser.close();
-
     var html = `Перейдите в личный кабинет для продолжения`;
     const stream = fs.createReadStream(`../projects/${needProject._id}/logo.png`);
     var fat = await bot.sendPhoto(msg.from.id, stream, {
@@ -95,18 +83,6 @@ async function viplati(msg) {
         "keyboard": [["⬅️ Назад"]],
     });
     _array.push(fat.message_id);
-
-    var _urlImgProject = `${h.getURL()}html/project/cover/?id=${needProject._id}`; 
-    const browser = await puppeteer.launch({
-        args: ['--no-sandbox', '--disable-setuid-sandbox'],
-    });
-
-    const page = await browser.newPage();
-    await page.goto(_urlImgProject);
-    await page.emulateMedia('screen');
-    const element = await page.$('.cover_block');   
-    await element.screenshot({path: `../projects/${needProject._id}/logo.png`});
-    await browser.close();
 
     var html = ``;
     const stream = fs.createReadStream(`../projects/${needProject._id}/logo.png`);
