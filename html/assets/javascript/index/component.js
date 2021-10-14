@@ -914,25 +914,25 @@
             $(`.index_page_menu_block_line[data="${global.allData.pageID}"]`).addClass('selected');
             $('.index_page_body_header_info span').html($('.index_page_menu_block_line.selected').text());
 
-           
+            $('.index_page_menu_block_line').click( function() {
+                location.href = `/?page=${$(this).attr('data')}`;
+            });
 
             if(_User.type == "business")
             {
-                $('.index_page_menu_block_line').click( function() {
-                    location.href = `/?page=${$(this).attr('data')}`;
+                $('.add_project_button').click( function() {
+                    location.href = `/?page=creating`;
                 });
             } else 
             {
-                $('.index_page_menu_block_line span').html("Инвестировать");
+                $('.add_project_button span').html("Инвестировать");
 
-                $('.index_page_menu_block_line').click( function() {
+                $('.add_project_button').click( function() {
                     location.href = `https://t.me/invester_official`;
                 });
             }
 
-            $('.add_project_button').click( function() {
-                location.href = `/?page=creating`;
-            });
+            
  
             return _User;
         }
