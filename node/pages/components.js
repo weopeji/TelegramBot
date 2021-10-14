@@ -181,6 +181,20 @@ async function selectedMsgChats(socket,data,callback)
         var AllMsgs = await MsgDB.find({investor: _User._id});
 
         callback(AllMsgs);
+    } else if(_User.type == "business")
+    {
+        var allChats = [];
+
+        var allProjects = await Project.find({user: _User.user});
+
+        for (const _project of allProjects) {
+            var AllMsgs = await MsgDB.find({business: _project._id});
+            AllMsgs.forEach(el => {
+                allChats.push(el);
+            })
+        }
+
+        callback(allChats);
     }
 }
 
