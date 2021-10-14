@@ -542,7 +542,7 @@ async function actionWhere(msg)
             },
             "2": async function() 
             {
-                _array[buttons[_User.where.page.button].id] = msg.text;
+                _array[_User.where.type_more] = msg.text;
                 await User.findOneAndUpdate({user: msg.from.id}, {investor_data: _array});
                 startInvestingMsgSecond(msg, null, _User.where.page.button);
             },
@@ -668,6 +668,7 @@ async function startInvestingMsgSecond(msg, html, button)
     _array.push(fat.message_id);
 
     _where.msg = fat.message_id;
+    _where.type_more = _buttons[need_button].id;
 
     await User.findOneAndUpdate({user: msg.from.id}, {where: _where})
 
