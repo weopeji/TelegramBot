@@ -433,6 +433,33 @@ async function recomendations(msg)
     await h.DMA(msg, _array);
 }
 
+var buttons3 = [
+    {
+        name: "Фио полностью",
+        id: "fio_fiz",
+    },
+    {
+        name: "Номер паспорта",
+        id: "passport_number",
+    },
+    {
+        name: "Банк получателя",
+        id: "bank",
+    },
+    {
+        name: "БИК",
+        id: "bik",
+    },
+    {
+        name: "Номер расчетного счета",
+        id: "nomer",
+    },
+    {
+        name: "Номер корреспондентского  счета",
+        id: "nomer_kor",
+    },
+]
+
 var buttons2 = [
     {
         name: "ИНН",
@@ -592,6 +619,10 @@ async function startInvestingMsgSecond(msg, html, button)
         "Юр.лицо": async function() 
         {
             _buttons = buttons2;
+        },
+        "Физ.лицо": async function() 
+        {
+            _buttons = buttons3;
         },
     }
 
