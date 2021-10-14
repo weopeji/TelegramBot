@@ -366,7 +366,7 @@ async function inProcess(msg)
         reply_markup: {                                                                     
             "resize_keyboard": true, 
             "keyboard": [
-                ["Статус получения денег бизнесом"],
+                ["📜 Статус получения денег бизнесом"],
                 ["Черновики", "⬅️ Назад"]
             ],
         }
@@ -1012,19 +1012,19 @@ async function my_investment(msg)
     var _array  = [];
     var _User   = await User.findOne({user: msg.from.id});
 
-    var activeProjects = "Активные проекты";
+    var activeProjects = "🧮 Активные проекты";
 
     if(_User.alerts)
     {
         _User.alerts.forEach(function(el) {
-            if(el.type == "acceptInvestor") activeProjects = "Активные проекты ♦️";
+            if(el.type == "acceptInvestor") activeProjects = "🧮 Активные проекты ♦️";
         });
     }
 
     var html = "Вы находитесь в меню:\n<strong>Мои инвестиции</strong>";
     var fat = await h.send_html(msg.chat.id, html, {
         "resize_keyboard": true,
-        "keyboard": [[activeProjects, "В процессе"], ["⬅️ Назад"]],
+        "keyboard": [[activeProjects, "⌛ В процессе"], ["⬅️ Назад"]],
         "one_time_keyboard": true,
     });
 
