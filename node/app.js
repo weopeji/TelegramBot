@@ -253,8 +253,8 @@ bot.onText(/\/start (.+)/, async (msg, match) =>
 bot.on('message', async (msg) => 
 {
     console.log(msg);
-    
-    const action_linker =
+
+    const action_linker = 
     {
         // ГЛАВНЫЕ ФУНКЦИИ =====================================
         "/start": main_page._CreatorFUN,
