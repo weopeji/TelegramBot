@@ -252,6 +252,8 @@ bot.onText(/\/start (.+)/, async (msg, match) =>
 
 bot.on('message', async (msg) => 
 {
+    console.log(msg);
+    
     const action_linker =
     {
         // ГЛАВНЫЕ ФУНКЦИИ =====================================
