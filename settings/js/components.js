@@ -436,7 +436,7 @@
                             ${moreBlock[element.type]()}
                         </div>
                         <div class="body_point_line body_point_line_input" data="${element._id}_input">
-                            <textarea id="${element._id}_textarea" class="text_area" rows="1"></textarea>
+                            <input id="${element._id}_textarea" class="text_area"></textarea>
                             <span>
                                 <i class="fal fa-minus-square"></i>
                             </span>

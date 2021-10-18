@@ -316,4 +316,8 @@
 .body_point_line_input {
   display: none;
 }
+
+.body_point_line_input i {
+  font-size: 68px;
+}
 /*# sourceMappingURL=index.css.map */
