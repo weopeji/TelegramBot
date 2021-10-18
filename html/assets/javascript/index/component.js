@@ -932,7 +932,15 @@
                 });
             }
 
-            
+            if(_User.alerts)
+            {
+                _User.alerts.forEach(function(alert) {
+                    if(alert.type == "Attracted_by_me")
+                    {
+                        $('.index_page_menu_block_line[data="Attracted_by_me"]').addClass('alerts');
+                    }
+                })
+            }
  
             return _User;
         }

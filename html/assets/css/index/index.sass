@@ -47,18 +47,27 @@ html, body
     i
         color: #2FAAF5
 
+.index_page_menu_block_line.alerts::before
+
 .index_page_menu_block_line::before
-    width: 30px
-    height: 30px
+    width: 25px
+    height: 25px
+    font-size: 13px
     border-radius: 50%
     background-color: #2FA1E8
     position: absolute
-    right: 30px
+    right: 20px
     top: 13px
     color: white
-    content: "0"
-    display: flex
+    content: "1"
+    display: -webkit-box
+    display: -ms-flexbox
+    display: none
+    -webkit-box-pack: center
+    -ms-flex-pack: center
     justify-content: center
+    -webkit-box-align: center
+    -ms-flex-align: center
     align-items: center
 
 .index_page_menu_block_line.selected
