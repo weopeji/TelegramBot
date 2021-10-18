@@ -413,7 +413,7 @@
 
             var param       = _project.data.organization;
 
-            var string      = function (element, _project)
+            var string      = function (element, _project, key)
             {
 
                 var moreBlock  = {
@@ -421,12 +421,16 @@
                         return `<p>${_project.data[element._id]}</p>`;
                     },
                     "file": function() {
-                        return ``;
+                        var file_block = $(`
+                        
+                        `);
+
+                        return file_block;
                     },
                 };
 
                 var _line = $(`
-                    <div class="body_point_line">
+                    <div class="body_point_line" data="${key}">
                         <span>${element.name}:</span>
                         ${moreBlock[element.type]()}
                     </div>
@@ -457,18 +461,18 @@
                     if(param == 1 || param == 2) {
                         data.body[1].forEach(element => 
                         {
-                            _body.append(string(element, _project));
+                            _body.append(string(element, _project, key), );
                         });
                     } else {
                         data.body[2].forEach(element => 
                         {
-                            _body.append(string(element, _project));
+                            _body.append(string(element, _project, key));
                         });
                     }
                 } else {
                     data.body.forEach(element => 
                     {
-                        _body.append(string(element, _project));
+                        _body.append(string(element, _project, key));
                     });
                 }
 
