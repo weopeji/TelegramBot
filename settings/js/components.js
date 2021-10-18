@@ -444,7 +444,7 @@
 
                 _line.find(".body_point_line_first").click( function() {
                     $(this).fadeOut( function() {
-                        _line.find("#body_point_line_input").fadeIn();
+                        $(this).parent().find("#body_point_line_input").fadeIn();
                     });
                 })
 
