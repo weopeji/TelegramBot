@@ -437,7 +437,7 @@
                         </div>
                         <div class="body_point_line body_point_line_input" data="${element._id}_input">
                             <textarea rows="1" id="${element._id}_textarea" class="text_area"></textarea>
-                            <span>
+                            <span class="body_point_line_input_close">
                                 <i class="fal fa-minus-square"></i>
                             </span>
                             <span>
@@ -446,6 +446,12 @@
                         </div>
                     </div>
                 `);
+
+                _line.find(".body_point_line_input_close").click( function() {
+                    $(this).fadeOut( function() {
+                        $(this).parent().find(".body_point_line_first").fadeIn();
+                    });
+                })
 
                 _line.find(".body_point_line_first").click( function() {
                     $(this).fadeOut( function() {
