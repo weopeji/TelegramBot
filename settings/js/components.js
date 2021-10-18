@@ -434,7 +434,17 @@
                         <span>${element.name}:</span>
                         ${moreBlock[element.type]()}
                     </div>
+                    <div class="body_point_line body_point_line_input" data="${element._id}_input">
+                        <span>${element.name}:</span>
+                        ${moreBlock[element.type]()}
+                    </div>
                 `);
+
+                _line.eq(0).click( function() {
+                    $(this).fadeOut( function() {
+                        _line.eq(1).fadeIn();
+                    });
+                })
 
                 return _line;
             }
