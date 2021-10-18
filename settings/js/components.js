@@ -421,11 +421,11 @@
                         return `<p>${_project.data[element._id]}</p>`;
                     },
                     "file": function() {
-                        var file_block = $(`
+                        var file_block = `
                             <div class="body_point_line_file_show">
                                 <span>Посмотреть</span>
                             </div>
-                        `);
+                        `;
 
                         return file_block;
                     },
