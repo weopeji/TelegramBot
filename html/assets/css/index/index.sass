@@ -14,7 +14,7 @@ html, body
     overflow-y: hidden
 
 .index_page_menu
-    flex: 1
+    flex: 1.2
     height: 100vh
     background-color: #131931
     display: flex
@@ -34,6 +34,7 @@ html, body
     width: 100%
 
 .index_page_menu_block_line
+    position: relative
     padding: 15px 25px
     width: calc(100% - 50px)
     color: #596A9A
@@ -45,6 +46,20 @@ html, body
 
     i
         color: #2FAAF5
+
+.index_page_menu_block_line::before
+    width: 30px
+    height: 30px
+    border-radius: 50%
+    background-color: #2FA1E8
+    position: absolute
+    right: 30px
+    top: 13px
+    color: white
+    content: "0"
+    display: flex
+    justify-content: center
+    align-items: center
 
 .index_page_menu_block_line.selected
     border-left: 2px solid #2FA1E8
