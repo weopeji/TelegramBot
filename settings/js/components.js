@@ -436,8 +436,13 @@
                             ${moreBlock[element.type]()}
                         </div>
                         <div class="body_point_line body_point_line_input" data="${element._id}_input">
-                            <span>${element.name}:</span>
-                            ${moreBlock[element.type]()}
+                            <textarea id="${element._id}_textarea" class="text_area" rows="1"></textarea>
+                            <span>
+                                <i class="fal fa-minus-square"></i>
+                            </span>
+                            <span>
+                                <i class="fal fa-check-square"></i>
+                            </span>
                         </div>
                     </div>
                 `);
