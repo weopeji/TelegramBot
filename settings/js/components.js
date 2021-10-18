@@ -413,7 +413,7 @@
 
             var param       = _project.data.organization;
 
-            var string      = function (element, _project, key)
+            var string      = function (element, _project)
             {
 
                 var moreBlock  = {
@@ -430,7 +430,7 @@
                 };
 
                 var _line = $(`
-                    <div class="body_point_line" data="${key}">
+                    <div class="body_point_line" data="${element._id}">
                         <span>${element.name}:</span>
                         ${moreBlock[element.type]()}
                     </div>
@@ -461,18 +461,18 @@
                     if(param == 1 || param == 2) {
                         data.body[1].forEach(element => 
                         {
-                            _body.append(string(element, _project, key), );
+                            _body.append(string(element, _project), );
                         });
                     } else {
                         data.body[2].forEach(element => 
                         {
-                            _body.append(string(element, _project, key));
+                            _body.append(string(element, _project));
                         });
                     }
                 } else {
                     data.body.forEach(element => 
                     {
-                        _body.append(string(element, _project, key));
+                        _body.append(string(element, _project));
                     });
                 }
 
