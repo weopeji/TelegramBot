@@ -114,7 +114,7 @@
                 "justify-content": "center",
             });
 
-            $('.index_page_body_header_info span').html("СОЗДАНИЕ ПРОЕКТА");
+            $('.index_page_body_header_info span').html("ЗАЯВКА НА ФИНАНСИРОВАНИЕ ПРОЕКТА");
         }
 
         async nextRender() 
@@ -180,7 +180,7 @@
                     <div class="creating_page_start">
                         <span>
                             Добро пожаловать в мастер создания проекта! <br>
-                            Введите свой инн для продолжения...
+                            Введите инн проекта для создания заявки на его финансирование
                         </span>
                     </div>
                 </div>
