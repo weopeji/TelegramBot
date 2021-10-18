@@ -64,7 +64,7 @@ html, body {
   color: #2FAAF5;
 }
 
-.alerts::before {
+.index_page_menu_block_line.alerts::before {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
