@@ -213,7 +213,7 @@
 }
 
 .body_point_line {
-  width: 90%;
+  width: calc(90% - 40px);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -224,12 +224,16 @@
       -ms-flex-align: center;
           align-items: center;
   margin: 0 auto;
-  padding: 20px 0;
+  padding: 20px 20px;
 }
 
 .body_point_line p {
   margin: 0;
   padding: 0;
+}
+
+.body_point_line:hover {
+  background-color: #0E1122;
 }
 
 .body_point_textarea {
@@ -244,6 +248,7 @@
       -ms-flex-align: center;
           align-items: center;
   padding-bottom: 20px;
+  padding-top: 20px;
 }
 
 .index_page_body_project_body_type {
