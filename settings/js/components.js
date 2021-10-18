@@ -422,7 +422,9 @@
                     },
                     "file": function() {
                         var file_block = $(`
-                        
+                            <div class="body_point_line_file_show">
+                                <span>Посмотреть</span>
+                            </div>
                         `);
 
                         return file_block;
