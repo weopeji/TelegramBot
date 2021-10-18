@@ -442,7 +442,7 @@
                     </div>
                 `);
 
-                _line.find("#body_point_line_first").click( function() {
+                _line.find(".body_point_line_first").click( function() {
                     $(this).fadeOut( function() {
                         _line.find("#body_point_line_input").fadeIn();
                     });
