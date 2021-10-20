@@ -1028,7 +1028,7 @@
 
                 template_text.find('.body_point_line').css('display', 'none');
                 template_text.find('#moreGet_checkbox').click( function() {
-                    $(this).parent().toggleClass('selected');
+                    $(this).parent().parent().toggleClass('selected');
                 })
 
                 _line.prepend(template_text);
