@@ -84,9 +84,6 @@
                     </div>
                 `);
 
-                settingBlock.find('.info_active_block_left').css('width', '46.5%');
-                settingBlock.find('.info_active_block_right').css('width', '46.5%');
-
                 $('.index_page_body_data').append(settingBlock);
 
                 var headerPaysBlock = $(`
