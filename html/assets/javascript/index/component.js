@@ -1300,6 +1300,8 @@
                 </div>
             `);
 
+            settingBlock.css("margin-top", "20px");
+
             
             for(var element of _data)
             {
