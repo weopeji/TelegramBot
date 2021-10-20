@@ -150,6 +150,11 @@
 
                 console.log(getBussnes);
 
+                settingBlock.find('.accept_block').remove();
+                settingBlock.find('.remove_block').remove();
+
+                settingBlock.find('.info_active_block_left_buttons').css("margin-top", "100px");
+
                 settingBlock.find('.info_active_block_right').append(`
                     <div class="info_active_block_photo">
                             
