@@ -99,6 +99,13 @@ var action_linker = {
     "setCreatingData": setCreatingData,
     "allUsers": allUsers,
     "allInvestings": allInvestings,
+    "getAllProjectsInvesting": getAllProjectsInvesting,
+}
+
+async function getAllProjectsInvesting(socket,data,callback)
+{
+    var _getAllProjectsInvesting = await Project.find({type: "active"});
+    callback(_getAllProjectsInvesting);
 }
 
 async function allInvestings(socket,data,callback)
