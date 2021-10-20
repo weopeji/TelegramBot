@@ -1243,6 +1243,51 @@
         }
     }
 
+    class investings
+    {
+        constructor() {};
+
+        async render()
+        {
+            var allInvestings = await callApi({
+                methodName: "allInvestings",
+                data: null,
+            });
+
+            var templateText = $(`
+                <div class="settingBlock">
+                    <div class="settingBlock_header">
+                        <p>Пользавтели</p>
+                        <div class="settingBlock_header_line">
+                            <span>#</span>
+                            <span>ID Инвестора</span>
+                            <span>ID Проекта</span>
+                            <span>Сумма</span>
+                        </div>
+                    </div>
+                    <div class="settingBlock_body">
+                       
+                    </div>
+                </div>
+            `);
+
+            allUsers.forEach( function (user, i) {
+                var userLine = $(`
+                    <div class="settingBlock_body_line" data="1062688870" data-more="41">
+                        <span>${i + 1}</span>
+                        <span>${user.invester}</span>
+                        <span>${user.projectId}</span>
+                        <span>${data.pay} руб</span>
+                    </div>
+                `);
+
+                templateText.find('.settingBlock_body').append(userLine);
+            })
+
+            $('.index_page_body_data').append(templateText);
+        }
+    }
+
     if(!global.Components)
     {
         global.Components = {
@@ -1250,6 +1295,7 @@
             projects,
             block,
             all_users,
+            investings,
         }
     }
 

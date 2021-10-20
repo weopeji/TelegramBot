@@ -15,6 +15,7 @@
         const projects          = new global.Components.projects();
         const block             = new global.Components.block();
         const all_users         = new global.Components.all_users();
+        const investings        = new global.Components.investing();
 
         var pagesLAN = 
         {
@@ -22,6 +23,7 @@
             "active": function() {projects.render("active");},
             "block": function() {block.render();},
             "all_users": function() {all_users.render();},
+            "investings": function() {investings.render()},
         }
 
         if(global.pageID)
