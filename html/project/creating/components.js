@@ -1013,8 +1013,8 @@
                         <div class="body_point_line">
                             <div class="body_point_line_header">
                                 <div class="body_point_line_header_text">
-                                    <span>${data.name}</span>
-                                    <p>${data.info}</p>
+                                    <span>Ваш Фактический адресс</span>
+                                    <p>#</p>
                                 </div>
                                 <div class="body_point_line_header_info">
                                     <span class="_not">Не заполнено</span>
@@ -1032,7 +1032,6 @@
                 })
 
                 _line.prepend(template_text);
-                
                     
                 return _line;
             }
