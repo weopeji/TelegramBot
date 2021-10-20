@@ -1271,7 +1271,7 @@
                 </div>
             `);
 
-            allUsers.forEach( function (user, i) {
+            allInvestings.forEach( function (user, i) {
                 var userLine = $(`
                     <div class="settingBlock_body_line" data="1062688870" data-more="41">
                         <span>${i + 1}</span>
