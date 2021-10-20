@@ -1204,37 +1204,40 @@
 
         async render()
         {
+            var allUsers = await callApi({
+                methodName: "allUsers",
+                data: null,
+            });
+
             var templateText = $(`
                 <div class="settingBlock">
                     <div class="settingBlock_header">
-                        <p>История оплат</p>
+                        <p>Пользавтели</p>
                         <div class="settingBlock_header_line">
                             <span>#</span>
-                            <span>Номер проекта</span>
                             <span>ID Инвестора</span>
-                            <span>Статус</span>
+                            <span>ФИО</span>
+                            <span>Тип</span>
                         </div>
                     </div>
                     <div class="settingBlock_body">
-                        <div class="settingBlock_body_line" data="1062688870" data-more="41">
-                            <span>1</span>
-                            <span>41</span>
-                            <span>1062688870</span>
-                            <span>
-                                <span class="settingBlock_accept_color settingBlock_block">Оплата подтверждена</span>
-                            </span>
-                        </div>
-                    
-                        <div class="settingBlock_body_line" data="1062688870" data-more="46">
-                            <span>2</span>
-                            <span>46</span>
-                            <span>1062688870</span>
-                            <span>
-                            <span class="settingBlock_wait settingBlock_block">Ожидает подтверждения</span>
-                        </span>
+                       
                     </div>
                 </div>
             `);
+
+            allUsers.forEach( function (user, i) {
+                var userLine = $(`
+                    <div class="settingBlock_body_line" data="1062688870" data-more="41">
+                        <span>${i + 1}</span>
+                        <span>${user.user}</span>
+                        <span>${user.first_name + " " + user.last_name}</span>
+                        <span>${user.type}</span>
+                    </div>
+                `);
+
+                templateText.find('.settingBlock_body').append(userLine);
+            })
 
             $('.index_page_body_data').append(templateText);
         }
