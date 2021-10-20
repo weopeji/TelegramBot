@@ -1277,7 +1277,7 @@
                         <span>${i + 1}</span>
                         <span>${user.invester}</span>
                         <span>${user.projectId}</span>
-                        <span>${data.pay} руб</span>
+                        <span>${user.data.pay} руб</span>
                     </div>
                 `);
 
