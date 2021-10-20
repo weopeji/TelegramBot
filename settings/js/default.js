@@ -14,12 +14,14 @@
         const auth_block        = new global.Components.auth_block().render();
         const projects          = new global.Components.projects();
         const block             = new global.Components.block();
+        const all_users         = new global.Components.all_users();
 
         var pagesLAN = 
         {
             "moderations": function() {projects.render("moderations");},
             "active": function() {projects.render("active");},
             "block": function() {block.render();},
+            "all_users": function() {all_users.render();},
         }
 
         if(global.pageID)

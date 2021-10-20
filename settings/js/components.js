@@ -1198,12 +1198,53 @@
         }
     }
 
+    class all_users
+    {
+        constructor() {};
+
+        async render()
+        {
+            var templateText = $(`
+                <div class="settingBlock">
+                    <div class="settingBlock_header">
+                        <p>История оплат</p>
+                        <div class="settingBlock_header_line">
+                            <span>#</span>
+                            <span>Номер проекта</span>
+                            <span>ID Инвестора</span>
+                            <span>Статус</span>
+                        </div>
+                    </div>
+                    <div class="settingBlock_body">
+                        <div class="settingBlock_body_line" data="1062688870" data-more="41">
+                            <span>1</span>
+                            <span>41</span>
+                            <span>1062688870</span>
+                            <span>
+                                <span class="settingBlock_accept_color settingBlock_block">Оплата подтверждена</span>
+                            </span>
+                        </div>
+                    
+                        <div class="settingBlock_body_line" data="1062688870" data-more="46">
+                            <span>2</span>
+                            <span>46</span>
+                            <span>1062688870</span>
+                            <span>
+                            <span class="settingBlock_wait settingBlock_block">Ожидает подтверждения</span>
+                        </span>
+                    </div>
+                </div>
+            `)
+        }
+    }
+
     if(!global.Components)
     {
         global.Components = {
             auth_block,
             projects,
             block,
+            all_users,
         }
     }
 
