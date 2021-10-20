@@ -419,12 +419,12 @@
                         <span>Выплаты инвестиций</span>
                     </div>
                     <div class="body_point_line_block_more">
-                        <div class="body_point_line body_point_line_first" data="${element._id}">
+                        <div class="body_point_line body_point_line_first" data="investings_pay">
                             <span>Процент:</span>
                             <p>50</p>
                         </div>
-                        <div class="body_point_line body_point_line_input" data="${element._id}_input">
-                            <textarea rows="1" id="${element._id}_textarea" class="text_area"></textarea>
+                        <div class="body_point_line body_point_line_input" data="investings_pay_input">
+                            <textarea rows="1" id="investings_pay_textarea" class="text_area"></textarea>
                             <span class="body_point_line_input_close">
                                 <i class="fal fa-minus-square"></i>
                             </span>
