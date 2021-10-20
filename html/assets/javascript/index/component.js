@@ -1306,13 +1306,17 @@
             for(var element of _data)
             {
 
-                var template_text = `
+                var template_text = $(`
                     <div class="settingBlock_body_line">
                         <span>${element._id}</span>
                         <span>${element.data.name}</span>
                         <span>50%</span>
                     </div>
-                `;
+                `);
+
+                template_text.click( function() {
+                    location.href = 'https://t.me/invester_official/64';
+                })
 
                 settingBlock.find('.settingBlock_body').append(template_text);
             }
