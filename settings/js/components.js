@@ -479,7 +479,7 @@
                 `);
 
                 _line.find(".body_point_line_input_close").click( function() {
-                    $(this).parent().fadeOut( function() {
+                    $(this).parent().parent().fadeOut( function() {
                         $(this).parent().find(".body_point_line_first").fadeIn();
                     });
                 })
