@@ -413,6 +413,31 @@
 
             var param       = _project.data.organization;
 
+            var firstBlockMore = $(`
+                <div class="body_point">
+                    <div class="body_point_header">
+                        <span>Выплаты инвестиций</span>
+                    </div>
+                    <div class="body_point_line_block_more">
+                        <div class="body_point_line body_point_line_first" data="${element._id}">
+                            <span>Процент:</span>
+                            <p>50</p>
+                        </div>
+                        <div class="body_point_line body_point_line_input" data="${element._id}_input">
+                            <textarea rows="1" id="${element._id}_textarea" class="text_area"></textarea>
+                            <span class="body_point_line_input_close">
+                                <i class="fal fa-minus-square"></i>
+                            </span>
+                            <span>
+                                <i class="fal fa-check-square"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            `);
+
+            this.global_block.append(firstBlockMore);
+
             var string      = function (element, _project)
             {
 
