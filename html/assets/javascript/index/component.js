@@ -1290,6 +1290,7 @@
                         <p>Все предложения для инвестиций</p>
                         <div class="settingBlock_header_line">
                             <span>ID Предложения</span>
+                            <span>Имя предложения</span>
                             <span>Сумма выплаты</span>
                         </div>
                     </div>
@@ -1302,16 +1303,12 @@
             
             for(var element of _data)
             {
-                var investing_pay = await callApi({
-                    methodName: "getAllProjectsInvesting",
-                    data: null,
-                });
 
                 var template_text = `
                     <div class="settingBlock_body_line">
-                        <span>${element.user}</span>
-                        <span>${investing_pay.AllPays}</span>
-                        <span>${investing_pay.allMorePlays}</span>
+                        <span>${element._id}</span>
+                        <span>${element.data.name}</span>
+                        <span>50%</span>
                     </div>
                 `;
 
