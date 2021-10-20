@@ -98,6 +98,13 @@ var action_linker = {
     "creatingData": creatingData,
     "setCreatingData": setCreatingData,
     "allUsers": allUsers,
+    "allInvestings": allInvestings,
+}
+
+async function allInvestings(socket,data,callback)
+{
+    var _Inestings = await InvDoc.find({});
+    callback(_Inestings);
 }
 
 async function allUsers(socket,data,callback)
