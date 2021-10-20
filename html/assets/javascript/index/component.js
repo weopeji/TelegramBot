@@ -84,6 +84,8 @@
                     </div>
                 `);
 
+                $('.index_page_body_data').append(settingBlock);
+
                 var headerPaysBlock = $(`
                     <div class="headerPaysBlock">
                         <div class="headerPaysBlock_header">
