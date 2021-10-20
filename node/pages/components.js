@@ -97,6 +97,13 @@ var action_linker = {
     "setSignaturePro": setSignaturePro,
     "creatingData": creatingData,
     "setCreatingData": setCreatingData,
+    "allUsers": allUsers,
+}
+
+async function allUsers(socket,data,callback)
+{
+    var _Users      = await User.find({});
+    callback(_Users);
 }
 
 async function setCreatingData(socket,data,callback)
