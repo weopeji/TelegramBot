@@ -436,6 +436,8 @@
                 </div>
             `);
 
+            firstBlockMore.css("padding-bottom", "20px");
+
             this.global_block.append(firstBlockMore);
 
             var string      = function (element, _project)
