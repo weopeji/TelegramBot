@@ -386,6 +386,11 @@ html, body {
           animation-delay: -0.15s;
 }
 
+.selected .body_point_line {
+  display: block;
+  margin: 0;
+}
+
 @-webkit-keyframes lds-ring {
   0% {
     -webkit-transform: rotate(0deg);
