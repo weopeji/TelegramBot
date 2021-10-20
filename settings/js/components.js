@@ -470,7 +470,7 @@
                                 <span class="body_point_line_input_close">
                                     <i class="fal fa-minus-square"></i>
                                 </span>
-                                <span>
+                                <span class="body_point_line_input_accept">
                                     <i class="fal fa-check-square"></i>
                                 </span>
                             </div>
