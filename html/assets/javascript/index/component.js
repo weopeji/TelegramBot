@@ -1278,8 +1278,8 @@
             $('.index_page_body_data').append(settingBlock);
 
             var _data = await callApi({
-                methodName: "Attracted_by_me",
-                data: data._id,
+                methodName: "getAllProjectsInvesting",
+                data: null,
             });
 
             console.log(_data);
