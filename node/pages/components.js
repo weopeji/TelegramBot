@@ -358,36 +358,29 @@ async function notAcceptInvesting(socket,data,callback)
         _arrayProjects.push(project._id);
     });
 
-    var bar = new Promise((resolve, reject) => {
-        _arrayProjects.forEach(async (value, index, array) => {
-            var InvDocs = await InvDoc.find({projectId: value});
-            if(InvDocs.length > 0) {
-                allInv.push(InvDocs);
-            }
-            if (index === array.length -1) {
-                resolve();
-            };
+    for (const value of _arrayProjects) {
+        var InvDocs = await InvDoc.find({projectId: value});
+        if(InvDocs.length > 0) {
+            allInv.push(InvDocs);
+        }
+    }
+
+    allInv.forEach(el => {
+        el.forEach(el2 => {
+            _arrayAllInvs.push(el2);
         })
     });
-    
-    bar.then(async () => {
-        
-        allInv.forEach(el => {
-            el.forEach(el2 => {
-                _arrayAllInvs.push(el2);
-            })
-        });
 
-        _arrayAllInvs.forEach(element => {
-            if(element.receipt) {
-                if(element.status == "wait") {
-                    trueInvs.push(element);
-                }
+    _arrayAllInvs.forEach(element => {
+        if(element.receipt) {
+            if(element.status == "wait") {
+                trueInvs.push(element);
             }
-        });
-
-        callback(trueInvs);
+        }
     });
+
+    callback(trueInvs);
+   
 }
 
 async function getInvestorsProject(socket,data,callback) {
