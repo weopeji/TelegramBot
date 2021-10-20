@@ -117,6 +117,7 @@
                                 name: "Фактический адрес",
                                 info: "Введите Фактический адрес",
                                 parsing_data: null,
+                                moreGet: true,
                                 _id: "addr"
                             },
                             {
@@ -840,6 +841,34 @@
                             _line.find(`#${data._id}`).val(global._User.creatingData.data[data.parsing_data]);
                         }
                     }
+                }
+
+                if(typeof data.moreGet != "undefined") {
+                    var template_text = $(`
+                        <div class="moreGet">
+                            <input type="checkbox" name="moreGet_checkbox" id="moreGet_checkbox">
+                            <div class="body_point_line">
+                                <div class="body_point_line_header">
+                                    <div class="body_point_line_header_text">
+                                        <span>${data.name}</span>
+                                        <p>${data.info}</p>
+                                    </div>
+                                    <div class="body_point_line_header_info">
+                                        <span class="_not">Не заполнено</span>
+                                        <span class="_yes">Готово</span>
+                                    </div>
+                                </div>
+                                <input id="${data._id}" class="text_area" placeholder="Введите значение">
+                            </div>
+                        </div>
+                    `);
+
+                    template_text.find('.body_point_line').css('display', 'none');
+                    template_text.find('#moreGet_checkbox').click( function() {
+                        $(this).parent().toggleClass('selected');
+                    })
+
+                    _line.find('.body_point_line_header').append(template_text);
                 }
 
                 return _line;
