@@ -1006,7 +1006,10 @@
                 
                 var template_text = $(`
                     <div class="moreGet">
-                        <input type="checkbox" name="moreGet_checkbox" id="moreGet_checkbox">
+                        <div class="moreGet_input">
+                            <input type="checkbox" name="moreGet_checkbox" id="moreGet_checkbox">
+                            <span>Адрес фактический совпадает с юридическим?</span>
+                        </div>
                         <div class="body_point_line">
                             <div class="body_point_line_header">
                                 <div class="body_point_line_header_text">
@@ -1028,7 +1031,7 @@
                     $(this).parent().toggleClass('selected');
                 })
 
-                _line.find('.body_point_line_header').append(template_text);
+                _line.prepend(template_text);
                 
                     
                 return _line;
