@@ -15,7 +15,7 @@
         const projects          = new global.Components.projects();
         const block             = new global.Components.block();
         const all_users         = new global.Components.all_users();
-        const investings        = new global.Components.investing();
+        const investings        = new global.Components.investings();
 
         var pagesLAN = 
         {
