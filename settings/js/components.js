@@ -477,7 +477,7 @@
                         </div>
                     </div>
                 `);
-
+ 
                 _line.find(".body_point_line_input_close").click( function() {
                     $(this).parent().parent().fadeOut( function() 
                     {
