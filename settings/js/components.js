@@ -428,7 +428,7 @@
                             <span class="body_point_line_input_close">
                                 <i class="fal fa-minus-square"></i>
                             </span>
-                            <span>
+                            <span class="body_point_line_input_accept">
                                 <i class="fal fa-check-square"></i>
                             </span>
                         </div>
@@ -481,12 +481,21 @@
                 _line.find(".body_point_line_input_close").click( function() {
                     $(this).parent().parent().fadeOut( function() 
                     {
+                        $(this).parent().find(".body_point_line_first").fadeIn();
+                    });
+                })
+
+                _line.find(".body_point_line_input_accept").click( function() {
+                    $(this).parent().parent().fadeOut( function() 
+                    {
                         var _text = $(this).parent().find("textarea").val();
                         $(this).parent().find("body_point_line_first p").html(_text);
 
                         $(this).parent().find(".body_point_line_first").fadeIn();
                     });
                 })
+
+
 
                 if(element.type == "string") {
                     _line.find(".body_point_line_first").click( function() {
