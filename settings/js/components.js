@@ -466,12 +466,14 @@
                         </div>
                         <div class="body_point_line body_point_line_input" data="${element._id}_input">
                             <textarea rows="1" id="${element._id}_textarea" class="text_area"></textarea>
-                            <span class="body_point_line_input_close">
-                                <i class="fal fa-minus-square"></i>
-                            </span>
-                            <span>
-                                <i class="fal fa-check-square"></i>
-                            </span>
+                            <div class="body_point_line_input_buttons">
+                                <span class="body_point_line_input_close">
+                                    <i class="fal fa-minus-square"></i>
+                                </span>
+                                <span>
+                                    <i class="fal fa-check-square"></i>
+                                </span>
+                            </div>
                         </div>
                     </div>
                 `);
