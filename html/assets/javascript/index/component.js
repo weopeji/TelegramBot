@@ -1246,7 +1246,6 @@
                     <div class="settingBlock_header">
                         <p>Мной привлечено</p>
                         <div class="settingBlock_header_line">
-                            <span>#</span>
                             <span>ID Инвестора</span>
                             <span>Сумма инвестиций</span>
                             <span>Сумма  выплаты</span>
@@ -1258,8 +1257,8 @@
                 </div>
             `);
 
-            _data.forEach(async function(element, i) {
-
+            for(var element of _data)
+            {
                 var investing_pay = await callApi({
                     methodName: "Attracted_by_me_investing_pay",
                     data: element.user,
@@ -1267,7 +1266,6 @@
 
                 var template_text = `
                     <div class="settingBlock_body_line">
-                        <span>${i + 1}</span>
                         <span>${element.user}</span>
                         <span>${investing_pay.AllPays}</span>
                         <span>${investing_pay.allMorePlays}</span>
@@ -1275,7 +1273,7 @@
                 `;
 
                 settingBlock.find('.settingBlock_body').append(template_text);
-            })
+            }
 
             $('.index_page_body_data').append(settingBlock);
 
@@ -1291,7 +1289,6 @@
                     <div class="settingBlock_header">
                         <p>Все предложения для инвестиций</p>
                         <div class="settingBlock_header_line">
-                            <span>#</span>
                             <span>ID Предложения</span>
                             <span>Сумма выплаты</span>
                         </div>
@@ -1302,8 +1299,9 @@
                 </div>
             `);
 
-            _data.forEach(async function(element, i) {
-
+            
+            for(var element of _data)
+            {
                 var investing_pay = await callApi({
                     methodName: "getAllProjectsInvesting",
                     data: null,
@@ -1311,7 +1309,6 @@
 
                 var template_text = `
                     <div class="settingBlock_body_line">
-                        <span>${i + 1}</span>
                         <span>${element.user}</span>
                         <span>${investing_pay.AllPays}</span>
                         <span>${investing_pay.allMorePlays}</span>
@@ -1319,7 +1316,7 @@
                 `;
 
                 settingBlock.find('.settingBlock_body').append(template_text);
-            })
+            }
 
             $('.index_page_body_data').append(settingBlock);
         }
