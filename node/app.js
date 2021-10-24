@@ -87,7 +87,7 @@ var load_helpers = () =>
             User: User,
             config: config,
         });
-    }
+    } 
     if(main_page == null) 
     {
         main_page = require('./types/main');
