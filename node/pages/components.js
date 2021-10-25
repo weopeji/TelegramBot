@@ -126,7 +126,7 @@ async function setCreatingData(socket,data,callback)
     var creatingData = data;
     await User.findOneAndUpdate({_id:data.user}, {creatingData: creatingData});
 
-    callback(`https://skin-win.ru/html/project/creating/#${_User._id}`);
+    callback(`https://invester-relocation.site/html/project/creating/#${_User._id}`);
 }
 
 async function creatingData(socket,data,callback)
