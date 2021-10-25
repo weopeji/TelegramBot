@@ -1026,6 +1026,23 @@ html, body {
           justify-content: center;
 }
 
+._file .body_point_line_header {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+._file .body_point_line_header .body_point_line_header_text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+}
+
 @media (max-width: 500px) {
   .buttons_menu {
     display: block;
