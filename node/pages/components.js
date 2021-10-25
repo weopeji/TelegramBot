@@ -709,10 +709,6 @@ async function setProject(socket,data,callback)
 {
     var _User       = await User.findOne({user: data.user});
 
-    var NA_First = await User.findOneAndUpdate({user: data.user}, {alerts: {
-        NA_First: true,
-    }});
-
     async function start_load(_parce) 
     {
         var _project    = await Project.create({
@@ -727,6 +723,8 @@ async function setProject(socket,data,callback)
         
         var _patch = `../projects/${_project._id}`;
         var user_path = `../users/${_User.user}`;
+
+        savePuppeter(_project._id);
     
         await wrench.copyDirSyncRecursive(user_path, _patch);
     
@@ -739,8 +737,6 @@ async function setProject(socket,data,callback)
                 });
             }
         });
-
-        exec(`python "../python/app.py" "♦️ Проект №${_project._id} подан на модерацию пользователем!"`);
     }
 
     if(data.data.organization == "3") {
@@ -758,6 +754,20 @@ async function setProject(socket,data,callback)
         });
     }
     
+}
+
+async function savePuppeter(putProject)
+{
+    var _urlImgProject = `${h.getURL()}html/project/document/#${putProject}`;
+    const browser = await puppeteer.launch({
+        args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    });
+    const page = await browser.newPage();
+    await page.goto(_urlImgProject);
+    await page.emulateMedia('screen');
+    await page.waitForSelector('.all_good');
+    await page.pdf({path: `../projects/${putProject}/pdf_document.pdf`, format: 'a4'});
+    await browser.close();
 }
 
 async function getUser(socket,data,callback) {
