@@ -9,10 +9,10 @@
 
     async function Main()
     {
-        var _id                 = global.location.href.split("#")[1];
-        const _components       = new global.Components.components();
-        var _User               = await _components._User(_id);
-        var _id                 = _User.user;
+        var _id                             = global.location.href.split("#")[1];
+        const _components                   = new global.Components.components();
+        if(_id.length >= 7) var _User       = await _components._User(_id);
+        var _id                             = _User.user;
 
         global._typePage    = 'creating';
         global._User        = _User;
