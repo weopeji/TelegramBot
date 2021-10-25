@@ -1010,7 +1010,7 @@
                     <div class="moreGet">
                         <div class="moreGet_input">
                             <input type="checkbox" name="moreGet_checkbox" id="moreGet_checkbox">
-                            <span>Адрес фактический совпадает с юридическим?</span>
+                            <span>Юридический адрес не совпадает с фактическим</span>
                         </div>
                         <div class="body_point_line">
                             <div class="body_point_line_header">
