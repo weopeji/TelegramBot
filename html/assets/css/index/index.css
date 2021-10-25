@@ -1026,10 +1026,6 @@ html, body {
           justify-content: center;
 }
 
-._file {
-  margin-bottom: 20px;
-}
-
 ._file .body_point_line_header {
   width: 100%;
   display: -webkit-box;

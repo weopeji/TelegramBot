@@ -118,6 +118,12 @@ const MF =
 
 async function _CreatorFUN(msg)
 {
+    var _array = [];
+    var html =`Добро пожаловать!`;
+    var fat = await h.send_html(msg.chat.id, html);
+    _array.push(fat.message_id);
+    await h.DMA(msg, _array);
+
     var _user = await MF.find_user(msg);
 
     console.log(_user);
