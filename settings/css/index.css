@@ -141,6 +141,8 @@
   padding: 10px 20px;
   border-radius: 3px;
   border: 1px solid;
+  color: #10c760;
+  font-size: 12px;
 }
 
 .global_block_header_accept_button i {
