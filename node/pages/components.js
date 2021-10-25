@@ -758,15 +758,16 @@ async function setProject(socket,data,callback)
 
 async function savePuppeter(putProject)
 {
-    var _urlImgProject = `${h.getURL()}html/project/document/#${putProject}`;
+    var _urlImgProject = `${h.getURL()}html/project/cover/?id=${putProject}`;
+    console.log(_urlImgProject);
     const browser = await puppeteer.launch({
         args: ['--no-sandbox', '--disable-setuid-sandbox'],
     });
     const page = await browser.newPage();
     await page.goto(_urlImgProject);
     await page.emulateMedia('screen');
-    await page.waitForSelector('.all_good');
-    await page.pdf({path: `../projects/${putProject}/pdf_document.pdf`, format: 'a4'});
+    const element = await page.$('.cover_block');   
+    await element.screenshot({path: `../projects/${putProject}/logo.png`});
     await browser.close();
 }
 
