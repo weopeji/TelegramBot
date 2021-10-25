@@ -2,7 +2,7 @@
     "mongoUri": "mongodb://127.0.0.1:27017/bot",
     "host_url": "http://localhost.ru/tbot/",
     "host_url_server": "https://invester-relocation.site/",
-    "token":"2035585047:AAGb6l9shEL-dvtg6qcAGrNRtSn34LEZd8o",
+    "token":"2035585047:AAGb6l9shEL-dvtg6qcAGrNRtSn34LEZd8o", 
     "token_host": "2035585047:AAGb6l9shEL-dvtg6qcAGrNRtSn34LEZd8o",
     "secure": false,
     "appPort": 3000,
