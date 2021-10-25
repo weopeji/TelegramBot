@@ -723,8 +723,6 @@ async function setProject(socket,data,callback)
         
         var _patch = `../projects/${_project._id}`;
         var user_path = `../users/${_User.user}`;
-
-        savePuppeter(_project._id);
     
         await wrench.copyDirSyncRecursive(user_path, _patch);
     
@@ -737,6 +735,8 @@ async function setProject(socket,data,callback)
                 });
             }
         });
+
+        savePuppeter(_project._id);
     }
 
     if(data.data.organization == "3") {
