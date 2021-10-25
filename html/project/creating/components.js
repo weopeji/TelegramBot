@@ -114,8 +114,8 @@
                             },
                             {
                                 type: "addr",
-                                name: "Фактический адрес",
-                                info: "Введите Фактический адрес",
+                                name: "Юридический адрес",
+                                info: "Введите Юридический адрес",
                                 parsing_data: null,
                                 moreGet: true,
                                 _id: "addr"
@@ -836,9 +836,11 @@
                         if(data.parsing_data.indexOf('/') > -1)
                         {
                             _line.find(`#${data._id}`).val(global._User.creatingData.data[data.parsing_data.split('/')[0]][data.parsing_data.split('/')[1]]);
+                            _line.find(`#${data._id}`).attr("readonly", "readonly");
                         } else 
                         {
                             _line.find(`#${data._id}`).val(global._User.creatingData.data[data.parsing_data]);
+                            _line.find(`#${data._id}`).attr("readonly", "readonly");
                         }
                     }
                 }
@@ -1031,7 +1033,7 @@
                     $(this).parent().parent().toggleClass('selected');
                 })
 
-                _line.prepend(template_text);
+                _line.append(template_text);
                     
                 return _line;
             }
