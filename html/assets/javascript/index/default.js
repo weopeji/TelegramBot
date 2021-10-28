@@ -1,5 +1,18 @@
 (function (global) 
 {
+    const callApi = ({ methodName, data }) => {    
+        return new Promise((resolve, reject) => 
+        {
+            global.PostComponents(
+                methodName,
+                data,
+                (response) => {
+                    resolve(response)
+                }
+            )
+        });
+    }
+
     io_connect( function() 
     {
         global.loadResources(['./html/assets/javascript/index/component.js'], () => {
@@ -99,6 +112,18 @@
 
             $('.menu_reload_type').click( function() {
                 $('.menu_reload_type_menu').fadeToggle();
+            });
+
+            $('.menu_reload_type_menu_line').click( async function() {
+                var _type = $(this).attr('data');
+                var _data = await callApi({
+                    methodName: "reload_type",
+                    data: {
+                        type: _type,
+                        _id: global.allData._id,
+                    },
+                });
+                location.reload();
             })
         })()    
     }

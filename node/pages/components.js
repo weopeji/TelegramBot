@@ -100,6 +100,16 @@ var action_linker = {
     "allUsers": allUsers,
     "allInvestings": allInvestings,
     "getAllProjectsInvesting": getAllProjectsInvesting,
+    "reload_type": reload_type,
+}
+
+async function reload_type(socket,data,callback)
+{
+    var _type   = data.type;
+    var _id     = data._id;
+
+    await User.findOneAndUpdate({_id: _id}, {type: _type});
+    callback();
 }
 
 async function getAllProjectsInvesting(socket,data,callback)
