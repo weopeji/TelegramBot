@@ -90,12 +90,17 @@
         }
 
 
-        (() => {
+        (() => 
+        {
             $('.buttons_menu').click( function() {
                 $('.index_page_menu').toggleClass('selected');
                 $('.buttons_menu').toggleClass('selected');
+            });
+
+            $('.menu_reload_type').click( function() {
+                $('.menu_reload_type_menu').fadeToggle();
             })
-        })()
+        })()    
     }
 
 }(window))
