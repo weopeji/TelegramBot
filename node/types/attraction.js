@@ -20,7 +20,7 @@ module.exports = {
     startFun,
 }
 
-async function startFun(start,data,callback)
+async function startFun(msg)
 {
     await h.DMA(msg, _array);
     var _array          = [];
