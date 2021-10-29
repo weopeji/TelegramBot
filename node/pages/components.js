@@ -56,7 +56,8 @@ var privat_index_page = function(socket,data,callback) {
     }
 }
 
-var action_linker = {
+var action_linker = 
+{
     "getModerations": getModerations,
     "getActive": getActive,
     "getProject": getProject,
