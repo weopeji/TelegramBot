@@ -23,6 +23,8 @@ module.exports = {
 
 async function startFunMore(msg)
 {
+    await User.findOneAndUpdate({user: msg.from.id}, {attractType: 2});
+
     var _array          = [];
 
     var html = `<strong>${msg.from.first_name} ${msg.from.last_name}</strong> добро пожаловать на investER. Вы можете стать нашим партнером по привлечению бизнес-проектов.`;
@@ -43,6 +45,8 @@ async function startFunMore(msg)
 
 async function startFun(msg)
 {
+    await User.findOneAndUpdate({user: msg.from.id}, {attractType: 2});
+    
     var _array          = [];
     var html = `<strong>${msg.from.first_name} ${msg.from.last_name}</strong> добро пожаловать на investER. Вы можете стать нашим партнером по привлечению инвесторов.\n\nПриглашайте инвесторов на investER либо отправляйте инвестиционное предложения из канала (в слово зашита ссылка) или вашу личную ссылку. И зарабатывайте с каждой их инвестиции. Приглашенный Вами инвестор будет за вами закреплен навсегда и за каждую инвестицию в любые проекты вы будете получать бонус.\n\nПредусмотренный бонус в каждом инвестиционном предложении разный, от 0,5 - до 10% от суммы инвестиций приглашенного инвестора. Как только приглашенный Вами инвестор проинвестирует, вам придет сообщение с датой, (именем пользователя), суммой инвестиций и бонусом для вас.\n\nЧтоб бонус пришел к вам на карту, заполните данные реквизитов, нажав кнопку реквизиты`;
     var fat = await bot.sendMessage(msg.chat.id, html, {
@@ -67,16 +71,52 @@ function howmany(msg) {
 
 async function url(msg) 
 {
-    var _array  = [];
-    var _url = `https://t.me/investER_localhost_bot?start=user_${msg.from.id}`;
-    var html = `<strong>${msg.from.first_name} ${msg.from.last_name}</strong> делитесь с друзьями вашей реферальной ссылкой\n\n${_url}`;
-    var fat = await h.send_html(msg.chat.id, html, 
+    var _User = await User.findOne({user: msg.from.id});
+
+    if(_User.attractType == 1)
     {
-        "resize_keyboard": true,
-        "keyboard": [["⬅️ Назад"]],
-    });
-    _array.push(fat.message_id);
-    await h.DMA(msg, _array);
+        var _array  = [];
+        var _url = `https://t.me/investER_localhost_bot?start=user_${msg.from.id}`;
+        var html = `<strong>${msg.from.first_name} ${msg.from.last_name}</strong> делитесь с друзьями вашей реферальной ссылкой\n\n${_url}`;
+        var fat = await h.send_html(msg.chat.id, html, 
+        {
+            "resize_keyboard": true,
+            "keyboard": [["⬅️ Назад"]],
+        });
+        _array.push(fat.message_id);
+        await h.DMA(msg, _array);
+    } else 
+    {
+        var _array  = [];
+        var _User   = await User.findOne({user: msg.from.id});
+    
+        var html = "Делитесь с бизнес-проектами вашей реферальной ссылкой. Все проекты, прошедшие проверку и размещенные на канале investER, будут закреплены за вами";
+        var fat = await h.send_html(msg.from.id, html, {
+            "resize_keyboard": true,
+            "keyboard": [
+                ["⬅️ Назад"]
+            ],
+        });
+    
+        _array.push(fat.message_id)
+    
+        var html = `При добавлении проекта по этой ссылке все проекты в админке маркируются как поступившие от бизнес-брокера и закрепляются за конкретным человеком.`;
+        var _url = `${h.getURL()}?user=${_User._id}&page=ref_url`;
+    
+        var fat = await h.send_html(msg.from.id, html, {
+            "inline_keyboard": [
+                [
+                    {
+                        text: "Заполнить данные 📝",
+                        url: _url
+                    }
+                ]
+            ],
+        });
+        _array.push(fat.message_id)
+    
+        await h.DMA(msg, _array);
+    }
 }
 
 async function reqezits(msg)
