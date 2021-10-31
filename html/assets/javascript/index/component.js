@@ -1241,6 +1241,24 @@
 
             console.log(_data);
 
+            var headerInfoBlock = 
+            $(`
+                <div class="Attracted_headerInfoBlock">
+                    <div class="Attracted_headerInfoBlock_block">
+                        <div class="Attracted_headerInfoBlock_block_text">
+                            <span>Мной привлечено проектов</span>
+                            <p>0</p>
+                        </div>
+                    </div>
+                    <div class="Attracted_headerInfoBlock_block">
+                        <div class="Attracted_headerInfoBlock_block_text">
+                            <span>Общая сумма бонусов начисленных/выплаченных</span>
+                            <p>0</p>
+                        </div>
+                    </div>
+                </div>
+            `);
+
             var settingBlock = $(`
                 <div class="settingBlock">
                     <div class="settingBlock_header">
