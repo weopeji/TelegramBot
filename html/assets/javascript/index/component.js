@@ -1259,6 +1259,8 @@
                 </div>
             `);
 
+            $('.index_page_body_data').append(headerInfoBlock);
+
             var settingBlock = $(`
                 <div class="settingBlock">
                     <div class="settingBlock_header">
