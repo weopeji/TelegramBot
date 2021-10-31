@@ -107,7 +107,7 @@ async function url(msg)
             "inline_keyboard": [
                 [
                     {
-                        text: "Заполнить данные 📝",
+                        text: "Получить ссылку 📝",
                         url: _url
                     }
                 ]

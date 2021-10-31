@@ -294,8 +294,8 @@ bot.on('message', async (msg) =>
         "🔗 Моя реферальная ссылка": attraction_page.url,
         "🙋‍♂️ Мною привлечено": investor_page.myPeoples,
         "💳 Реквезиты": attraction_page.requisites,
-        "Привлечь инвесторов": attraction_page.startFun,
-        "Привлечь бизнес": attraction_page.startFunMore,
+        "📊 Привлечь инвесторов": attraction_page.startFun,
+        "👔 Привлечь бизнес": attraction_page.startFunMore,
     }
 
     if(typeof action_linker[msg.text] != "undefined") 
