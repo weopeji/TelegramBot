@@ -678,7 +678,7 @@
 
                 var _file = _form;
 
-                var myVar = setInterval(function() {
+                var myVar = setInterval( async function() {
                     var getBitsFile = await callApi({
                         methodName: 'getBitsFile',
                         data: _id,
