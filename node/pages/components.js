@@ -16,7 +16,7 @@ var uploader    = require('../helpers/uploader/upload');
 const { TelegramClient } = require("telegram");
 const { StringSession } = require("telegram/sessions");
 const { spawn, exec } = require('child_process');
-const _app = require("./app");
+const _app = require("../app");
 
 const Instagram = require('instagram-web-api');
 
