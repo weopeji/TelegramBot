@@ -112,6 +112,7 @@ var action_linker =
 var filesMoreData = {};
 
 async function setFileData(_data) {
+    console.log(_data);
     filesMoreData[_data._token] = {
         now: _data.now,
         max: _data.max,
