@@ -108,8 +108,13 @@ var action_linker =
 
 async function getBitsFile(socket,data,callback)
 {
-    var _element = _app.filesMoreData[data];
-    callback(_element);
+    if(typeof _app.filesMoreData[data] != "undefined")
+    {
+        var _element = _app.filesMoreData[data];
+        callback(_element);
+    } else {
+        callback(null);
+    }
 }
 
 async function reload_type(socket,data,callback)
