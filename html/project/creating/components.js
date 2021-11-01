@@ -658,7 +658,7 @@
         };
         
         token = function() {
-            return rand() + rand(); // to make it longer
+            return this.rand() + this.rand(); // to make it longer
         };
 
         async load_file(_this, _id, file_id) 
