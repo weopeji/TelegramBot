@@ -18,6 +18,7 @@ const UserShema = new mongoose.Schema({
     member: String,
     creatingData: JSON,
     attractType: String,
+    reqvesits: JSON,
 });
 
 mongoose.model('User', UserShema);
