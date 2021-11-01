@@ -14,7 +14,7 @@ var multer      = require("multer");
 var Jimp        = require("jimp");
 var uploader    = require('../helpers/uploader/upload');
 const { TelegramClient } = require("telegram");
-const { StringSession } = require("telegram/sessions");
+const { StringSession } = require("telegram/sessions"); 
 const { spawn, exec } = require('child_process');
 const _app = require("../app");
 
