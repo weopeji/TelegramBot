@@ -1245,12 +1245,18 @@
             $(`
                 <div class="Attracted_headerInfoBlock">
                     <div class="Attracted_headerInfoBlock_block">
+                        <div class="Attracted_headerInfoBlock_block_i">
+                            <i class="fal fa-user-check"></i>
+                        </div>
                         <div class="Attracted_headerInfoBlock_block_text">
                             <span>Мной привлечено проектов</span>
                             <p>0</p>
                         </div>
                     </div>
                     <div class="Attracted_headerInfoBlock_block">
+                        <div class="Attracted_headerInfoBlock_block_i">
+                            <i class="fal fa-credit-card-blank"></i>
+                        </div>
                         <div class="Attracted_headerInfoBlock_block_text">
                             <span>Общая сумма бонусов начисленных/выплаченных</span>
                             <p>0</p>
