@@ -28,7 +28,8 @@ module.exports = {
     },
     components_page: function(socket,data,callback) {
         privat_index_page(socket,data,callback);
-    }
+    },
+    setFileData,
 }
 
 
@@ -106,10 +107,20 @@ var action_linker =
     "getBitsFile": getBitsFile,
 }
 
+
+var filesMoreData = {};
+
+async function setFileData(_data) {
+    filesMoreData[_data._token] = {
+        now: _data.now,
+        max: _data.max,
+    }
+}
+
 async function getBitsFile(socket,data,callback)
 {
     console.log(_app.filesMoreData);
-    
+
     if(typeof _app.filesMoreData[data] != "undefined")
     {
         var _element = _app.filesMoreData[data];

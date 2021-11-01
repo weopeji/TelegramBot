@@ -529,11 +529,6 @@ app.post('/file_redacting.io/files', (req, res) => {
     form.parse(req);
 });
 
-var filesMoreData = {};
-
-module.exports = {
-    filesMoreData,
-}
 
 app.post('/file.io/files', (req, res) => 
 {
@@ -559,10 +554,11 @@ app.post('/file.io/files', (req, res) =>
 
     form.on('progress', (bytesReceived, bytesExpected) => 
     {
-        filesMoreData[_data._token] = {
+        components_html.setFileData({
+            _token: _token,
             now: bytesReceived,
             max: bytesExpected,
-        }
+        })
     });
 
     var cheack_file = (_path) => 
