@@ -119,11 +119,11 @@ async function setFileData(_data) {
 
 async function getBitsFile(socket,data,callback)
 {
-    console.log(_app.filesMoreData);
+    console.log(filesMoreData);
 
-    if(typeof _app.filesMoreData[data] != "undefined")
+    if(typeof filesMoreData[data] != "undefined")
     {
-        var _element = _app.filesMoreData[data];
+        var _element = filesMoreData[data];
         
         callback(_element);
     } else {
