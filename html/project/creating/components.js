@@ -665,11 +665,13 @@
         {
             var _form    = new FormData();
 
+            var _token = this.token();
+
             _form.append('files', $(_this.files)[0]);
             _form.append('file_id', file_id);
             _form.append('_id', _id);
             _form.append('_pts', $(_this.files)[0].type);
-            _form.append('_token', this.token());
+            _form.append('_token', _token);
 
 
             this.start_preloader($(_this), async function() 
@@ -681,7 +683,7 @@
                 var myVar = setInterval( async function() {
                     var getBitsFile = await callApi({
                         methodName: 'getBitsFile',
-                        data: _id,
+                        data: _token,
                     });
                     console.log(getBitsFile);
                 }, 1000);
