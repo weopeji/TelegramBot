@@ -1102,7 +1102,7 @@ html, body {
 }
 
 .Attracted_headerInfoBlock_block {
-  width: calc(50% - 10px);
+  width: calc(50% - 40px);
   background-color: #182037;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1130,6 +1130,25 @@ html, body {
   background: -webkit-gradient(linear, left top, right top, from(#14b3ff), to(#1282fa));
   background: linear-gradient(90deg, #14b3ff 0%, #1282fa 100%);
   font-size: 30px;
+  margin-left: 20px;
+}
+
+.Attracted_headerInfoBlock_block_text {
+  margin-left: 200px;
+}
+
+.Attracted_headerInfoBlock_block_text span {
+  color: #9BAAD9;
+  font-size: 20px;
+  padding: 0;
+  margin: 0;
+}
+
+.Attracted_headerInfoBlock_block_text p {
+  margin: 0;
+  margin-top: -5px;
+  font-size: 50px;
+  font-weight: 100;
 }
 
 @media (max-width: 500px) {
