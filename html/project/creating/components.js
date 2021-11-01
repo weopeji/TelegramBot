@@ -653,14 +653,6 @@
             }); 
         }
 
-        rand = function() {
-            return Math.random().toString(36).substr(2); // remove `0.`
-        };
-        
-        token = function() {
-            return this.rand() + this.rand(); // to make it longer
-        };
-
         async load_file(_this, _id, file_id) 
         {
             var _form    = new FormData();
@@ -671,7 +663,6 @@
             _form.append('file_id', file_id);
             _form.append('_id', _id);
             _form.append('_pts', $(_this.files)[0].type);
-            _form.append('_token', _token);
 
 
             this.start_preloader($(_this), async function() 
@@ -683,7 +674,7 @@
                 var myVar = setInterval( async function() {
                     var getBitsFile = await callApi({
                         methodName: 'getBitsFile',
-                        data: _token,
+                        data: _id,
                     });
                     console.log(getBitsFile);
                 }, 1000);
