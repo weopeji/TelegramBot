@@ -529,7 +529,11 @@ app.post('/file_redacting.io/files', (req, res) => {
     form.parse(req);
 });
 
-global.filesMoreData = {};
+var filesMoreData = {};
+
+module.exports = {
+    filesMoreData,
+}
 
 app.post('/file.io/files', (req, res) => 
 {
