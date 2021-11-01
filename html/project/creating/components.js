@@ -645,12 +645,21 @@
         };
 
         start_preloader(_this, callback) {
+
             _this.parent().fadeOut( function() {
                 _this.parent().parent().find('.loader_input').fadeIn( function() {
                     callback();
                 });
             }); 
         }
+
+        rand = function() {
+            return Math.random().toString(36).substr(2); // remove `0.`
+        };
+        
+        token = function() {
+            return rand() + rand(); // to make it longer
+        };
 
         async load_file(_this, _id, file_id) 
         {
@@ -660,6 +669,7 @@
             _form.append('file_id', file_id);
             _form.append('_id', _id);
             _form.append('_pts', $(_this.files)[0].type);
+            _form.append('_token', token());
 
 
             this.start_preloader($(_this), async function() 
@@ -667,6 +677,16 @@
                 var _url = `${getURL()}/file.io/files`;
 
                 var _file = _form;
+
+                var myVar = setInterval(function() {
+                    var getBitsFile = await callApi({
+                        methodName: 'getBitsFile',
+                        data: _id,
+                    });
+                    console.log(getBitsFile);
+                }, 1000);
+
+                setInterval();
 
                 axios.post(_url, _file, {
                     headers: {
@@ -677,11 +697,11 @@
                         $(_this).parent().parent().find('.loader_input').attr('data', data.data.file_name);
                         $(_this).parent().parent().find('.loader_input').fadeOut( function() {
                             $(_this).parent().parent().find('.all_good').fadeIn( function() {
-                        
+                                clearInterval(myVar);
                             });
                         });
                     }
-                })
+                });
 
             });
         }

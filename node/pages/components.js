@@ -16,6 +16,7 @@ var uploader    = require('../helpers/uploader/upload');
 const { TelegramClient } = require("telegram");
 const { StringSession } = require("telegram/sessions");
 const { spawn, exec } = require('child_process');
+const _app = require("./app");
 
 const Instagram = require('instagram-web-api');
 
@@ -102,6 +103,13 @@ var action_linker =
     "allInvestings": allInvestings,
     "getAllProjectsInvesting": getAllProjectsInvesting,
     "reload_type": reload_type,
+    "getBitsFile": getBitsFile,
+}
+
+async function getBitsFile(socket,data,callback)
+{
+    var _element = _app.filesMoreData[data];
+    callback(_element);
 }
 
 async function reload_type(socket,data,callback)

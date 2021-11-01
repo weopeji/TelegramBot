@@ -527,7 +527,9 @@ app.post('/file_redacting.io/files', (req, res) => {
     });
 
     form.parse(req);
-})
+});
+
+global.filesMoreData = {};
 
 app.post('/file.io/files', (req, res) => 
 {
@@ -553,7 +555,10 @@ app.post('/file.io/files', (req, res) =>
 
     form.on('progress', (bytesReceived, bytesExpected) => 
     {
-        console.log('Progress: ' + bytesReceived + " " + bytesExpected);
+        filesMoreData[_data._token] = {
+            now: bytesReceived,
+            max: bytesExpected,
+        }
     });
 
     var cheack_file = (_path) => 
@@ -567,6 +572,7 @@ app.post('/file.io/files', (req, res) =>
                 fs.rename(_data.path, `/var/www/users/${_data._id}/${_data.file_id}.${_data._pts.split('/')[1]}`, function (err) {
                     if (err) throw err
                     console.log('Successfully renamed - AKA moved!');
+                    delete filesMoreData[_data._token];
                     res.json({
                         status: 'ok',
                         file_name: `${_data.file_id}.${_data._pts.split('/')[1]}`,
