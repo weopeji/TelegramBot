@@ -108,9 +108,12 @@ var action_linker =
 
 async function getBitsFile(socket,data,callback)
 {
+    console.log(_app.filesMoreData);
+    
     if(typeof _app.filesMoreData[data] != "undefined")
     {
         var _element = _app.filesMoreData[data];
+        
         callback(_element);
     } else {
         callback(null);

@@ -686,8 +686,6 @@
                     console.log(getBitsFile);
                 }, 1000);
 
-                this.myVar();
-
                 axios.post(_url, _file, {
                     headers: {
                       'Content-Type': 'multipart/form-data'
