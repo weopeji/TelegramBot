@@ -686,7 +686,7 @@
                     console.log(getBitsFile);
                 }, 1000);
 
-                setInterval();
+                myVar();
 
                 axios.post(_url, _file, {
                     headers: {
