@@ -555,7 +555,7 @@ app.post('/file.io/files', (req, res) =>
     form.on('progress', (bytesReceived, bytesExpected) => 
     {
         components_html.setFileData({
-            _token: _token,
+            _token: _data._token,
             now: bytesReceived,
             max: bytesExpected,
         })
@@ -572,7 +572,7 @@ app.post('/file.io/files', (req, res) =>
                 fs.rename(_data.path, `/var/www/users/${_data._id}/${_data.file_id}.${_data._pts.split('/')[1]}`, function (err) {
                     if (err) throw err
                     console.log('Successfully renamed - AKA moved!');
-                    delete filesMoreData[_data._token];
+                    components_html.dellFileData(_data._token);
                     res.json({
                         status: 'ok',
                         file_name: `${_data.file_id}.${_data._pts.split('/')[1]}`,

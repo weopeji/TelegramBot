@@ -30,6 +30,7 @@ module.exports = {
         privat_index_page(socket,data,callback);
     },
     setFileData,
+    dellFileData,
 }
 
 
@@ -115,6 +116,10 @@ async function setFileData(_data) {
         now: _data.now,
         max: _data.max,
     }
+}
+
+async function dellFileData(_token) {
+    delete filesMoreData[_token];
 }
 
 async function getBitsFile(socket,data,callback)
