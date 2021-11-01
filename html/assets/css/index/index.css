@@ -1088,6 +1088,50 @@ html, body {
   color: white;
 }
 
+.Attracted_headerInfoBlock {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.Attracted_headerInfoBlock_block {
+  width: calc(50% - 10px);
+  background-color: #182037;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 15px;
+}
+
+.Attracted_headerInfoBlock_block_i {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #14b3ff;
+  background: -webkit-gradient(linear, left top, right top, from(#14b3ff), to(#1282fa));
+  background: linear-gradient(90deg, #14b3ff 0%, #1282fa 100%);
+  font-size: 30px;
+}
+
 @media (max-width: 500px) {
   .buttons_menu {
     display: block;

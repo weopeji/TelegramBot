@@ -1246,7 +1246,7 @@
                 <div class="Attracted_headerInfoBlock">
                     <div class="Attracted_headerInfoBlock_block">
                         <div class="Attracted_headerInfoBlock_block_i">
-                            <i class="fal fa-user-check"></i>
+                            <i class="fas fa-users"></i>
                         </div>
                         <div class="Attracted_headerInfoBlock_block_text">
                             <span>Мной привлечено проектов</span>
