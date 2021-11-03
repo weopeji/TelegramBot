@@ -29,8 +29,6 @@ module.exports = {
     components_page: function(socket,data,callback) {
         privat_index_page(socket,data,callback);
     },
-    setFileData,
-    dellFileData,
 }
 
 
