@@ -1273,6 +1273,7 @@
                             <span>ID Инвестора</span>
                             <span>Сумма инвестиций</span>
                             <span>Сумма  выплаты</span>
+                            <span>Чек</span>
                         </div>
                     </div>
                     <div class="settingBlock_body">
@@ -1293,6 +1294,7 @@
                         <span>${element.user}</span>
                         <span>${investing_pay.AllPays}</span>
                         <span>${investing_pay.allMorePlays}</span>
+                        <span>Чек отсутствует</span>
                     </div>
                 `;
 
@@ -1313,6 +1315,7 @@
                             <span>Номер проекта</span>
                             <span>Сумма привлеченная в проект</span>
                             <span>Сумма  выплаты</span>
+                            <span>Чек</span>
                         </div>
                     </div>
                     <div class="settingBlock_body">
