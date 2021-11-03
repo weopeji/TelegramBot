@@ -9,6 +9,7 @@ i = 0
 
 for param in sys.argv:
     print(param)
+    print(i)
     # if(param == "../python/app.py"):
     #     continue
 
