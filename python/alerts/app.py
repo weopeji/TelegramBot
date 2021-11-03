@@ -8,16 +8,15 @@ session_name = 'session_name'
 i = 0
 
 for param in sys.argv:
-    print(param)
-    print(i)
     # if(param == "../python/app.py"):
     #     continue
 
     if(i == 0):
+        i += 1
         continue
 
     client = TelegramClient(session_name, app_id, secret)
     client.start()
     client.send_message("meopeji", param)
 
-    i = i + 1
+    i += 1
