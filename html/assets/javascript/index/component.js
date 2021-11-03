@@ -1241,6 +1241,8 @@
 
             console.log(_data);
 
+            var allMoneyMembers = 0;
+
             var headerInfoBlock = 
             $(`
                 <div class="Attracted_headerInfoBlock">
@@ -1249,15 +1251,15 @@
                             <i class="fas fa-users"></i>
                         </div>
                         <div class="Attracted_headerInfoBlock_block_text">
-                            <span>Мной привлечено проектов</span>
-                            <p>0</p>
+                            <span>Мной привлечено</span>
+                            <p>${_data.length}</p>
                         </div>
                     </div>
                     <div class="Attracted_headerInfoBlock_block">
                         <div class="Attracted_headerInfoBlock_block_i">
                             <i class="fal fa-credit-card-blank"></i>
                         </div>
-                        <div class="Attracted_headerInfoBlock_block_text">
+                        <div class="Attracted_headerInfoBlock_block_text Attracted_headerInfoBlock_block_text_moneys">
                             <span>Общая сумма бонусов начисленных/выплаченных</span>
                             <p>0</p>
                         </div>
@@ -1298,8 +1300,12 @@
                     </div>
                 `;
 
+                allMoneyMembers += investing_pay.allMorePlays;
+
                 settingBlock.find('.settingBlock_body').append(template_text);
             }
+
+            $('.Attracted_headerInfoBlock_block_text_moneys p').html(allMoneyMembers);
 
             $('.index_page_body_data').append(settingBlock);
 
