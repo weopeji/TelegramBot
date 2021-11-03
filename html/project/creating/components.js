@@ -668,19 +668,16 @@
             {
                 var _url = `${getURL()}/file.io/files`;
 
-                var _file = _form;
-
-                var myVar = setInterval( async function() {
-                    var getBitsFile = await callApi({
-                        methodName: 'getBitsFile',
-                        data: _id,
-                    });
-                    console.log(getBitsFile);
-                }, 1000);
-
-                axios.post(_url, _file, {
+                axios.post(_url, _form, {
                     headers: {
                       'Content-Type': 'multipart/form-data'
+                    },
+                    onUploadProgress: (progressEvent) => {
+                        const totalLength = progressEvent.lengthComputable ? progressEvent.total : progressEvent.target.getResponseHeader('content-length') || progressEvent.target.getResponseHeader('x-decompressed-content-length');
+                        console.log("onUploadProgress", totalLength);
+                        if (totalLength !== null) {
+                            console.log(Math.round( (progressEvent.loaded * 100) / totalLength ));
+                        }
                     }
                 }).then(data => {
                     if(data.data.status == "ok") {

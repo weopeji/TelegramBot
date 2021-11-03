@@ -108,21 +108,6 @@ var action_linker =
     "getBitsFile": getBitsFile,
 }
 
-
-var filesMoreData = {};
-
-async function setFileData(_data) {
-    console.log(_data);
-    filesMoreData[_data._token] = {
-        now: _data.now,
-        max: _data.max,
-    }
-}
-
-async function dellFileData(_token) {
-    delete filesMoreData[_token];
-}
-
 async function getBitsFile(socket,data,callback)
 {
     console.log(filesMoreData);

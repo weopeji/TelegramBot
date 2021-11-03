@@ -552,17 +552,6 @@ app.post('/file.io/files', (req, res) =>
         _data[name] = value;
     });
 
-    form.on('progress', (bytesReceived, bytesExpected) => 
-    {
-        console.log(_data);
-        
-        components_html.setFileData({
-            _token: _data._id,
-            now: bytesReceived,
-            max: bytesExpected,
-        })
-    });
-
     var cheack_file = (_path) => 
     {
         try {
