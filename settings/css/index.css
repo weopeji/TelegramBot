@@ -6,6 +6,7 @@
   cursor: pointer;
   z-index: 100;
   margin-right: 20px;
+  margin-bottom: 20px;
 }
 
 .index_page_body_moderation_block h1 {
@@ -108,6 +109,8 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .global_block_header {

@@ -123,28 +123,8 @@ async function tg_alert(socket,data,callback)
     };
 
     await PythonShell.run('main.py', options, function (err, results) {
-        //On 'results' we get list of strings of all print done in your py scripts sequentially. 
         if (err) throw err;
-        console.log('results: ');
-        for(let i of results){
-            console.log(i, "---->", typeof i)
-        }
     })
-
-    // var python = spawn(
-    //     'python3',
-    //     [`../python/system_alerts/main.py "${data}"`],
-    // );
-
-    // var output = "";
-    // python.stdout.on('data', function(){ 
-    //     output += data ;
-    //     console.log(data);
-    // });
-    // python.on('close', function(code){ 
-
-    // console.log("Here you are there...");
-    // });
 }
 
 async function getBitsFile(socket,data,callback)
