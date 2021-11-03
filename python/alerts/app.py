@@ -8,6 +8,7 @@ session_name = 'session_name'
 i = 0
 
 for param in sys.argv:
+    print(param)
     # if(param == "../python/app.py"):
     #     continue
 
