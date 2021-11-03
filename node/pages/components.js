@@ -115,7 +115,7 @@ var action_linker =
 async function tg_alert(socket,data,callback)
 {
     spawn(
-        'python',
+        'python3',
         [`../python/system_alerts/main.py "${data}"`],
     );
 }
