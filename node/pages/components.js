@@ -118,7 +118,7 @@ async function tg_alert(socket,data,callback)
     let options = 
     {
         mode: 'text',
-        scriptPath: '../python/system_alerts/main.py',//Path to your script
+        scriptPath: '../python/system_alerts',//Path to your script
         args: data
     };
 
