@@ -17,6 +17,7 @@ const { TelegramClient } = require("telegram");
 const { StringSession } = require("telegram/sessions"); 
 const { spawn, exec } = require('child_process');
 const _app = require("../app");
+let {PythonShell} = require('python-shell')
 
 const Instagram = require('instagram-web-api');
 
@@ -114,20 +115,36 @@ var action_linker =
 
 async function tg_alert(socket,data,callback)
 {
-    var python = spawn(
-        'python3',
-        [`../python/system_alerts/main.py "${data}"`],
-    );
+    let options = 
+    {
+        mode: 'text',
+        scriptPath: '../python/system_alerts/main.py',//Path to your script
+        args: data
+    };
 
-    var output = "";
-    python.stdout.on('data', function(){ 
-        output += data ;
-        console.log(data);
-    });
-    python.on('close', function(code){ 
+    await PythonShell.run('main.py', options, function (err, results) {
+        //On 'results' we get list of strings of all print done in your py scripts sequentially. 
+        if (err) throw err;
+        console.log('results: ');
+        for(let i of results){
+            console.log(i, "---->", typeof i)
+        }
+    })
 
-    console.log("Here you are there...");
-    });
+    // var python = spawn(
+    //     'python3',
+    //     [`../python/system_alerts/main.py "${data}"`],
+    // );
+
+    // var output = "";
+    // python.stdout.on('data', function(){ 
+    //     output += data ;
+    //     console.log(data);
+    // });
+    // python.on('close', function(code){ 
+
+    // console.log("Here you are there...");
+    // });
 }
 
 async function getBitsFile(socket,data,callback)
