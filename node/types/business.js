@@ -270,7 +270,7 @@ async function not_active_callback(msg)
     var btnData     = h._GET(_data, 'data');
     var _array      = [];
 
-    var alertNull = await User.findOneAndUpdate({user: msg.from.id}, {alerts: null});
+    await User.findOneAndUpdate({user: msg.from.id}, {alerts: null});
 
     var fat = await h.send_html(msg.from.id, "Проекты:", {
         "resize_keyboard": true,
@@ -313,7 +313,7 @@ async function not_active_callback(msg)
                     if((btnData + 1) >= _moderation.length) {
                         needNextProject = "first";
                     } else {
-                        needNextProject = needNextProject + 1;
+                        needNextProject = btnData + 1;
                     }
                 }
             }
