@@ -1305,6 +1305,24 @@
 
             $('.index_page_body_data').append(settingBlock);
 
+            var settingBlock = $(`
+                <div class="settingBlock">
+                    <div class="settingBlock_header">
+                        <p>Мной привлечено бизнесс проектов</p>
+                        <div class="settingBlock_header_line">
+                            <span>Номер проекта</span>
+                            <span>Сумма привлеченная в проект</span>
+                            <span>Сумма  выплаты</span>
+                        </div>
+                    </div>
+                    <div class="settingBlock_body">
+
+                    </div> 
+                </div>
+            `);
+
+            $('.index_page_body_data').append(settingBlock);
+
             var _data = await callApi({
                 methodName: "getAllProjectsInvesting",
                 data: null,
