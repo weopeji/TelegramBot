@@ -59,6 +59,12 @@ var privat_index_page = function(socket,data,callback) {
 
 var action_linker = 
 {
+    //  main
+    "tg_alert": tg_alert,
+
+
+
+    //  funs
     "getModerations": getModerations,
     "getActive": getActive,
     "getProject": getProject,
@@ -104,6 +110,14 @@ var action_linker =
     "getAllProjectsInvesting": getAllProjectsInvesting,
     "reload_type": reload_type,
     "getBitsFile": getBitsFile,
+}
+
+async function tg_alert(socket,data,callback)
+{
+    spawn(
+        'python',
+        [`../python/system_alerts/main.py "${data}"`],
+    );
 }
 
 async function getBitsFile(socket,data,callback)
