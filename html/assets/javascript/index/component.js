@@ -1321,6 +1321,8 @@
                 </div>
             `);
 
+            settingBlock.css("margin-top", "20px");
+
             $('.index_page_body_data').append(settingBlock);
 
             var _data = await callApi({
