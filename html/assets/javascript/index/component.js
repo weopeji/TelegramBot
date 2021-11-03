@@ -897,10 +897,6 @@
                     </div>
                 `,
                 "attraction": `
-                    <div class="index_page_menu_block_line" data="activ_projects">
-                        <i class="fal fa-chart-line"></i>
-                        <span>Активные проекты</span>
-                    </div>
                     <!-- <div class="index_page_menu_block_line" data="reward">
                         <i class="fal fa-money-check-alt"></i>
                         <span>Вознаграждение</span>
@@ -1272,7 +1268,7 @@
             var settingBlock = $(`
                 <div class="settingBlock">
                     <div class="settingBlock_header">
-                        <p>Мной привлечено</p>
+                        <p>Мной привлечено инвесторов</p>
                         <div class="settingBlock_header_line">
                             <span>ID Инвестора</span>
                             <span>Сумма инвестиций</span>

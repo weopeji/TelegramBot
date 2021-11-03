@@ -145,7 +145,7 @@ async function notType(msg)
     await h.DMA(msg, _array);
 } 
 
-async function _MainMenu(msg)
+async function _MainMenu(msg, close)
 {
     var _User = await MF.find_user(msg);
     var _projects = await Project.find({user: msg.from.id});
@@ -263,17 +263,33 @@ async function _MainMenu(msg)
             await h.DMA(msg, _array);
         },
         attraction: async function(msg) {
-            var _array          = [];
-            var html = `<strong>${msg.from.first_name} ${msg.from.last_name}</strong> добро пожаловать на investER. Вы можете стать нашим партнером по привлечению инвесторов`;
-            var fat = await bot.sendMessage(msg.chat.id, html, {
-                parse_mode: "HTML",
-                reply_markup: {
-                    "resize_keyboard": true,
-                    "keyboard": [["📊 Привлечь инвесторов", "👔 Привлечь бизнес"]],
+            if(!close)
+            {
+                var _array          = [];
+                var html = `<strong>${msg.from.first_name} ${msg.from.last_name}</strong> добро пожаловать на investER. Вы можете стать нашим партнером по привлечению инвесторов`;
+                var fat = await bot.sendMessage(msg.chat.id, html, {
+                    parse_mode: "HTML",
+                    reply_markup: {
+                        "resize_keyboard": true,
+                        "keyboard": [["📊 Привлечь инвесторов", "👔 Привлечь бизнес"]],
+                    }
+                });
+                _array.push(fat.message_id);
+                await h.DMA(msg, _array);
+            } else {
+                var reqAttraction = require("./attraction");
+
+                var funs = {
+                    "1": function() {
+                        reqAttraction.startFun(msg);
+                    },
+                    "2": function() {
+                        reqAttraction.startFunMore(msg);
+                    }
                 }
-            });
-            _array.push(fat.message_id);
-            await h.DMA(msg, _array);
+
+                funs[_User.attractType]();
+            }
         },
     };
 
@@ -295,5 +311,5 @@ async function change_type(msg)
 async function close(msg)
 {
     await User.findOneAndUpdate({user: msg.from.id}, {where: null})
-    _MainMenu(msg);
+    _MainMenu(msg, true);
 }
