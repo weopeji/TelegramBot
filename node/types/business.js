@@ -318,6 +318,9 @@ async function not_active_callback(msg)
                 }
             }
 
+            console.log(_moderation);
+            console.log(needProject);
+
             if(_moderation.length > 1) 
             {
                 _keyboard.push([
