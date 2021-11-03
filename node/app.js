@@ -220,7 +220,7 @@ bot.onText(/\/start (.+)/, async (msg, match) =>
     {
         var _User = await User.findOne({user: msg.from.id});
 
-        await User.findOneAndUpdate({user: msg.from.id}, {member: resp.split('_')[3]});
+        await User.findOneAndUpdate({user: msg.from.id}, {member: resp.split('_')[1]});
         helper_functions.alertBot(msg, "Attracted_by_me");
         components_page(this, {
             action: "tg_alert_user",
