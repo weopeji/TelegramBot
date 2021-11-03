@@ -554,6 +554,8 @@ app.post('/file.io/files', (req, res) =>
 
     form.on('progress', (bytesReceived, bytesExpected) => 
     {
+        console.log(_data);
+        
         components_html.setFileData({
             _token: _data._id,
             now: bytesReceived,
@@ -564,7 +566,8 @@ app.post('/file.io/files', (req, res) =>
     var cheack_file = (_path) => 
     {
         try {
-            if (fs.existsSync(_path)) { 
+            if (fs.existsSync(_path)) 
+            { 
                 console.log('Файл найден');
                 if(fs.existsSync(`/var/www/users/${_data._id}/${_data.file_id}.${_data._pts.split('/')[1]}`)) {
                     fs.unlinkSync(`/var/www/users/${_data._id}/${_data.file_id}.${_data._pts.split('/')[1]}`);
