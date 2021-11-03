@@ -981,6 +981,8 @@
                 $input.on('keydown', function () {
                     clearTimeout(typingTimer);
                 });
+
+                $input.val(global._User.creatingData.data.address.value);
                   
                 async function doneTyping () 
                 {
