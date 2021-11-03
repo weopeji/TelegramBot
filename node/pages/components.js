@@ -62,7 +62,7 @@ var action_linker =
 {
     //  main
     "tg_alert": tg_alert,
-
+    "tg_alert_user": tg_alert_user,
 
 
     //  funs
@@ -111,6 +111,20 @@ var action_linker =
     "getAllProjectsInvesting": getAllProjectsInvesting,
     "reload_type": reload_type,
     "getBitsFile": getBitsFile,
+}
+
+async function tg_alert_user(socket,data,callback)
+{
+    let options = 
+    {
+        mode: 'text',
+        scriptPath: '../python/system_alerts_user',//Path to your script
+        args: [data.user, data.text]
+    };
+
+    await PythonShell.run('main.py', options, function (err, results) {
+        if (err) throw err;
+    })
 }
 
 async function tg_alert(socket,data,callback)

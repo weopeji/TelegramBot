@@ -218,8 +218,17 @@ bot.onText(/\/start (.+)/, async (msg, match) =>
         await h.DMA(msg, _array);
     } else if(resp.split('_')[0] == "adder") 
     {
+        var _User = await User.findOne({user: msg.from.id});
+
         await User.findOneAndUpdate({user: msg.from.id}, {member: resp.split('_')[3]});
         helper_functions.alertBot(msg, "Attracted_by_me");
+        components_page(this, {
+            action: "tg_alert_user",
+            data: {
+                text: "Вы привели нового инвестора! Вы можете посмотреть весь список у себя в профиле...",
+                user: _User.username,
+            },
+        }, () => {});
         main_page._CreatorFUN(msg)
     }else if(resp.split('_')[0] == "setSignaturePro") {
         investor_page.payerInvester(msg);
