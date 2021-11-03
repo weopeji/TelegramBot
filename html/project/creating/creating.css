@@ -406,6 +406,15 @@ html, body {
   margin-right: 20px;
 }
 
+.loader_input {
+  position: relative;
+}
+
+.loader_input span {
+  margin-left: 20px;
+  font-size: 30px;
+}
+
 @-webkit-keyframes lds-ring {
   0% {
     -webkit-transform: rotate(0deg);

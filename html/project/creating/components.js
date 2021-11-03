@@ -674,7 +674,8 @@
                         const totalLength = progressEvent.lengthComputable ? progressEvent.total : progressEvent.target.getResponseHeader('content-length') || progressEvent.target.getResponseHeader('x-decompressed-content-length');
                         console.log("onUploadProgress", totalLength);
                         if (totalLength !== null) {
-                            console.log(Math.round( (progressEvent.loaded * 100) / totalLength ));
+                            var progressBarData = Math.round( (progressEvent.loaded * 100) / totalLength );
+                            $(_this).parent().parent().find('.loader_input span').html(progressBarData + "%");
                         }
                     }
                 }).then(data => {
@@ -862,6 +863,7 @@
                     </div>
                     <div class="loader_input" id="${data._id}_block">
                         <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+                        <span></span>
                     </div>
                     <div class="all_good">
                         <div class="all_good_row">
