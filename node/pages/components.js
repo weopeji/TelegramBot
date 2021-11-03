@@ -114,10 +114,20 @@ var action_linker =
 
 async function tg_alert(socket,data,callback)
 {
-    spawn(
+    var python = spawn(
         'python3',
         [`../python/system_alerts/main.py "${data}"`],
     );
+
+    var output = "";
+    python.stdout.on('data', function(){ 
+        output += data ;
+        console.log(data);
+    });
+    python.on('close', function(code){ 
+
+    console.log("Here you are there...");
+    });
 }
 
 async function getBitsFile(socket,data,callback)
