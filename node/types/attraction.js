@@ -200,14 +200,35 @@ async function cheackUserStatus(msg)
 
     var funs = 
     {
+        "error": function(msgText)
+        {
+            var html    = msgText;
+            var fat     = await h.send_html(msg.chat.id, html);
+            _array.push(fat.message_id);
+            await h.MA(msg, _array);
+        },
         "first": function() 
         {
             checkStatus(_User.reqezits_data.inn)
             .then((response) => {
                 return response.json();
             })
-            .then((response) => {
-                console.log(response);
+            .then((response) => 
+            {
+                var _data = response;
+
+                if(!_data.status)
+                {
+                    funs["error"](_data.message);
+                } else {
+                    if(!_data.status)
+                    {
+                        funs["error"](_data.message);
+                    } else {
+
+                    }
+                }
+
             });
         },
         "second": function() 
