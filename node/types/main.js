@@ -271,7 +271,7 @@ async function _MainMenu(msg, close)
                     parse_mode: "HTML",
                     reply_markup: {
                         "resize_keyboard": true,
-                        "keyboard": [["📊 Привлечь инвесторов", "👔 Привлечь бизнес"]],
+                        "keyboard": [["📊 Привлечь инвесторов", "👔 Привлечь бизнес"],["⬅️ Назад"]],
                     }
                 });
                 _array.push(fat.message_id);
