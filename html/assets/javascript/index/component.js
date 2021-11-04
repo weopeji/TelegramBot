@@ -1247,7 +1247,7 @@
                             <i class="fas fa-users"></i>
                         </div>
                         <div class="Attracted_headerInfoBlock_block_text">
-                            <span>Мной привлечено</span>
+                            <span>Мной привлечено инвесторов</span>
                             <p>${_data.length}</p>
                         </div>
                     </div>
@@ -1256,7 +1256,33 @@
                             <i class="fal fa-credit-card-blank"></i>
                         </div>
                         <div class="Attracted_headerInfoBlock_block_text Attracted_headerInfoBlock_block_text_moneys">
-                            <span>Общая сумма бонусов начисленных/выплаченных</span>
+                            <span>Общая сумма бонусов начисленных</span>
+                            <p>0</p>
+                        </div>
+                    </div>
+                </div>
+            `);
+
+            $('.index_page_body_data').append(headerInfoBlock);
+
+            var headerInfoBlock = 
+            $(`
+                <div class="Attracted_headerInfoBlock">
+                    <div class="Attracted_headerInfoBlock_block">
+                        <div class="Attracted_headerInfoBlock_block_i">
+                            <i class="fal fa-tv-alt"></i>
+                        </div>
+                        <div class="Attracted_headerInfoBlock_block_text">
+                            <span>Мной привлечено бизнесс проектов</span>
+                            <p>0</p>
+                        </div>
+                    </div>
+                    <div class="Attracted_headerInfoBlock_block">
+                        <div class="Attracted_headerInfoBlock_block_i">
+                            <i class="fal fa-envelope-open-dollar"></i>
+                        </div>
+                        <div class="Attracted_headerInfoBlock_block_text Attracted_headerInfoBlock_block_text_moneys">
+                            <span>Общая сумма бонусов выплаченных</span>
                             <p>0</p>
                         </div>
                     </div>
