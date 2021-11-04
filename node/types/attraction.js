@@ -396,7 +396,7 @@ async function cheackUserStatus(msg)
 
     if(_User.reqezits_data.inn)
     {
-        if(_User.reqezits_data.type = "Самозанятый")
+        if(_User.reqezits_data.type == "Самозанятый")
         {
             funs["first"]();
         } else {
