@@ -164,7 +164,7 @@ var reqezitsType =
     ],
 }
 
-async function start_reqezits(msg)
+async function start_reqezits(msg, need_button)
 {
     var _User           = await User.findOne({user: msg.from.id});
     var _buttons        = reqezitsType[_User.reqezits_data.type];
@@ -251,7 +251,7 @@ async function reqezits(msg)
         reqezits_data: _reqezits_data,
     });
 
-    start_reqezits(msg);
+    start_reqezits(msg, 0);
 }
 
 async function requisites(msg) 
