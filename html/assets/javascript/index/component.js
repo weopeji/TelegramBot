@@ -1241,6 +1241,7 @@
             });
 
             console.log(_data);
+            console.log(_dataMore);
 
             var allMoneyMembers = 0;
 
