@@ -1360,7 +1360,7 @@
 
             for(var element of _dataMore)
             {
-
+                console.log(element);
                 var template_text = `
                     <div class="settingBlock_body_line">
                         <span>${element._id}</span>
