@@ -227,6 +227,9 @@ async function start_reqezits(msg, _need_button)
     });
     _array.push(fat.message_id);
 
+    console.log(_buttons[need_button]);
+    console.log(need_button);
+
     _where.msg          = fat.message_id;
     _where.type_more    = _buttons[need_button].id;
 
