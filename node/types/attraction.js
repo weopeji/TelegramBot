@@ -178,16 +178,12 @@ async function start_reqezits(msg, _need_button)
         await bot.deleteMessage(msg.from.id, _User.where.msg); 
     }
 
-    console.log(need_button);
-
-    if(_need_button) 
+    if(_need_button || _need_button == 0) 
     {
         need_button                 = _need_button
     } else {
         need_button                 = h._GET(msg.data, "data");;
     }
-
-    console.log(need_button);
 
     var html        = `Для <strong>${_User.reqezits_data.type}</strong> нужно заполнить данные:\n\n`;
 
