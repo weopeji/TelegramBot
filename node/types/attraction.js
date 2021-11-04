@@ -171,6 +171,9 @@ async function start_reqezits(msg, _need_button)
     var _buttons                    = reqezitsType[_User.reqezits_data.type];
     var _reqezits_data              = _User.reqezits_data;
     var need_button                 = 0;
+    var _where                      = _User.where;
+
+    await bot.deleteMessage(msg.from.id, _User.where.msg); 
 
     if(_need_button) 
     {
@@ -255,7 +258,7 @@ async function reqezits(msg)
 
     await User.findOneAndUpdate({user: msg.from.id}, { where: {
         type: "attraction",
-        kill_block: fat._id,
+        msg: fat._id,
     },
         reqezits_data: _reqezits_data,
     });
