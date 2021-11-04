@@ -173,7 +173,10 @@ async function start_reqezits(msg, _need_button)
     var need_button                 = 0;
     var _where                      = _User.where;
 
-    await bot.deleteMessage(msg.from.id, _User.where.msg); 
+    if(_User.where.msg)
+    {
+        await bot.deleteMessage(msg.from.id, _User.where.msg); 
+    }
 
     if(_need_button) 
     {
