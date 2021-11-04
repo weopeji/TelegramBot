@@ -1280,7 +1280,7 @@
                         </div>
                         <div class="Attracted_headerInfoBlock_block_text">
                             <span>Мной привлечено бизнесс проектов</span>
-                            <p>${_dataMore.length}</p>
+                            <p>${_dataMore[0].length}</p>
                         </div>
                     </div>
                     <div class="Attracted_headerInfoBlock_block">
@@ -1358,7 +1358,7 @@
 
             settingBlock.css("margin-top", "20px");
 
-            for(var element of _dataMore)
+            for(var element of _dataMore[0])
             {
                 console.log(element);
                 var template_text = `
