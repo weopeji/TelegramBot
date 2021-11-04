@@ -1374,7 +1374,7 @@
                         if(global._User.member_b)
                         {
                             callApi({
-                                methodName: 'tg_alert_user',
+                                methodName: 'tg_alert_user_numbers',
                                 data: {
                                     text: "Вы привели новый Проект! Вы можете посмотреть весь список у себя в кабинете",
                                     user: global._User.member_b,

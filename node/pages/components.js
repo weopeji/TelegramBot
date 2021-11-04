@@ -63,6 +63,7 @@ var action_linker =
     //  main
     "tg_alert": tg_alert,
     "tg_alert_user": tg_alert_user,
+    "tg_alert_user_numbers": tg_alert_user_numbers,
 
 
     //  funs
@@ -111,6 +112,22 @@ var action_linker =
     "getAllProjectsInvesting": getAllProjectsInvesting,
     "reload_type": reload_type,
     "getBitsFile": getBitsFile,
+}
+
+async function tg_alert_user_numbers(socket,data,callback)
+{
+    var _User       = await User.findOne({_id: data.user});
+
+    let options = 
+    {
+        mode: 'text',
+        scriptPath: '../python/system_alerts_user',//Path to your script
+        args: [_User.username, data.text]
+    };
+
+    await PythonShell.run('main.py', options, function (err, results) {
+        if (err) throw err;
+    })
 }
 
 async function tg_alert_user(socket,data,callback)
