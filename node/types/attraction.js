@@ -327,6 +327,15 @@ async function cheackUserStatus(msg)
         },
         "success": async function()
         {
+            var html    = `Вы находитесь в меню заполнения реквезитов`;
+            var fat     = await h.send_html(msg.chat.id, html, {
+                "resize_keyboard": true,
+                "keyboard": [ 
+                    ["⬅️ Назад"]
+                ],
+            });
+            _array.push(fat.message_id);
+            await h.MA(msg, _array);
             startReqezitsData(msg, 0);
         },
         "first": async function() 
