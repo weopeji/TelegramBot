@@ -119,11 +119,116 @@ async function url(msg)
     }
 }
 
+var reqezitsType = 
+{
+    "Юр.лицо": 
+    [
+        {
+            id: name,
+            name: "Наименование юр.лица"
+        },
+        {
+            id: fio,
+            name: "ФИО ответственного лица"
+        },
+    ],
+    "ИП": 
+    [
+        {
+            id: inn,
+            name: "ИНН"
+        },
+        {
+            id: fio,
+            name: "ФИО"
+        },
+    ],
+    "Самозанятый": 
+    [
+        {
+            id: inn,
+            name: "ИНН"
+        },
+        {
+            id: fio,
+            name: "ФИО"
+        },
+        {
+            id: data,
+            name: "Дата рождения"
+        },
+        {
+            id: passport,
+            name: "Серия и номер паспорта"
+        }
+    ],
+}
+
+async function start_reqezits(msg)
+{
+    var _User           = await User.findOne({user: msg.from.id});
+    var _buttons        = reqezitsType[_User.where.data.type];
+    var _reqezits_data  = _User.reqezits_data;
+
+    var html        = `Для <strong>${_User.where.data.type}</strong> нужно заполнить данные:\n\n`;
+
+    _buttons.forEach((element, i) => 
+    {
+        var strong          = '';
+        var strong_second   = '';
+        var dataBlock       = '[Не задано]';
+        var smile           = '❌';
+
+        if(i == need_button) {
+            strong          = '<strong>*';
+            strong_second   = '*</strong>\n';
+        }
+
+        if(_reqezits_data[element.id]) {
+            dataBlock = _reqezits_data[element.id];
+            smile = '✅';
+        }
+        
+        html = html + `${smile} ${strong} ${element.name}:   ${dataBlock} ${strong_second}\n`;
+    })
+
+    var fat = await h.send_html(msg.from.id, html, {
+        "inline_keyboard": [
+            [
+                {
+                    text: '⬇️',
+                    callback_data: `place=attraction&type=button&data=${need_button + 1}`,
+                },
+                {
+                    text: '⬆️',
+                    callback_data: `place=attraction&type=button&data=${need_button - 1}`,
+                },
+                {
+                    text: '➡️',
+                    callback_data: `place=attraction_reqezits`,
+                }
+            ]
+        ],
+    });
+    _array.push(fat.message_id);
+
+    _where.msg          = fat.message_id;
+    _where.type_more    = _buttons[need_button].id;
+
+    await User.findOneAndUpdate({user: msg.from.id}, {where: _where})
+
+    await h.MA(msg, _array);
+}
+
 async function reqezits(msg)
 {
-    var _array  = [];
-    var html = `<strong>${msg.from.first_name} ${msg.from.last_name}</strong> Заполните данные для заключения агентского договора и реквизиты для перечислений. Обращаем ваше внимание, что подписание договора и перечисление бонуса осуществляется только с лицами, имеющими статус самозанятый, ИП или юр.лицо.`;
-    var fat = await h.send_html(msg.chat.id, html, 
+    var _array          = [];
+    var _User           = await User.findOne({user: msg.from.id});
+    var _reqezits_data  = _User.reqezits_data;
+    if(!_reqezits_data) _reqezits_data = {};
+
+    var html    = `<strong>${msg.from.first_name} ${msg.from.last_name}</strong> Заполните данные для заключения агентского договора и реквизиты для перечислений. Обращаем ваше внимание, что подписание договора и перечисление бонуса осуществляется только с лицами, имеющими статус самозанятый, ИП или юр.лицо.`;
+    var fat     = await h.send_html(msg.chat.id, html, 
     {
         "resize_keyboard": true,
         "keyboard": [ 
@@ -131,15 +236,18 @@ async function reqezits(msg)
         ],
     });
     _array.push(fat.message_id);
-    var html = `Введите свой инн:`;
-    var fat = await h.send_html(msg.chat.id, html);
-    _array.push(fat.message_id);
     await h.DMA(msg, _array);
+
+    _reqezits_data.type = msg.text;
 
     await User.findOneAndUpdate({user: msg.from.id}, { where: {
         type: "attraction",
-        more: true,
-    }});
+        kill_block: fat._id,
+    },
+        reqezits_data: _reqezits_data,
+    });
+
+    start_reqezits(msg);
 }
 
 async function requisites(msg) 
@@ -156,7 +264,7 @@ async function requisites(msg)
         {
             "resize_keyboard": true,
             "keyboard": [ 
-                ['Юр.лицо', 'ИП', "Физ.лицо"],
+                ['Юр.лицо', 'ИП', "Самозанятый"],
                 ["⬅️ Назад"]
             ],
         });
