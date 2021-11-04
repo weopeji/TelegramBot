@@ -6,7 +6,7 @@ import sys
 CLIENT_SECRET_FILE = './client_secret.json'
 API_NAME = 'youtube'
 API_VERSION = 'v3'
-SCOPES = ['https://mail.google.com/']
+SCOPES = ['https://www.googleapis.com/auth/youtube.upload']
 
 service = Create_Service(CLIENT_SECRET_FILE, API_NAME, API_VERSION, SCOPES)
 
