@@ -166,6 +166,7 @@ bot.on("callback_query", function(callbackQuery)
         "save_investing": investor_page.save_investing,
         "drafts": investor_page.drafts_block,
         "viplati": business_page.viplati_call,
+        "attraction_reqezits": attraction_page.start_reqezits,
     }
 
     if(typeof action_linker[helper_functions._GET(callbackQuery.data, "place")] != "undefined") {

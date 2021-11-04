@@ -164,11 +164,20 @@ var reqezitsType =
     ],
 }
 
-async function start_reqezits(msg, need_button)
+async function start_reqezits(msg, _need_button)
 {
-    var _User           = await User.findOne({user: msg.from.id});
-    var _buttons        = reqezitsType[_User.reqezits_data.type];
-    var _reqezits_data  = _User.reqezits_data;
+    var _array                      = [];
+    var _User                       = await User.findOne({user: msg.from.id});
+    var _buttons                    = reqezitsType[_User.reqezits_data.type];
+    var _reqezits_data              = _User.reqezits_data;
+    var need_button                 = 0;
+
+    if(_need_button) 
+    {
+        need_button                 = _need_button
+    } else {
+        need_button                 = h._GET(msg.data, "data");;
+    }
 
     var html        = `Для <strong>${_User.reqezits_data.type}</strong> нужно заполнить данные:\n\n`;
 
@@ -197,15 +206,15 @@ async function start_reqezits(msg, need_button)
             [
                 {
                     text: '⬇️',
-                    callback_data: `place=attraction&type=button&data=${need_button + 1}`,
+                    callback_data: `place=attraction_reqezits&type=button&data=${need_button + 1}`,
                 },
                 {
                     text: '⬆️',
-                    callback_data: `place=attraction&type=button&data=${need_button - 1}`,
+                    callback_data: `place=attraction_reqezits&type=button&data=${need_button - 1}`,
                 },
                 {
                     text: '➡️',
-                    callback_data: `place=attraction_reqezits`,
+                    callback_data: `place=attraction_reqezits_more`,
                 }
             ]
         ],
