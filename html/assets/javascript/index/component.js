@@ -1270,7 +1270,7 @@
                 <div class="Attracted_headerInfoBlock">
                     <div class="Attracted_headerInfoBlock_block">
                         <div class="Attracted_headerInfoBlock_block_i">
-                            <i class="fal fa-tv-alt"></i>
+                            <i class="fal fa-chair-office"></i>
                         </div>
                         <div class="Attracted_headerInfoBlock_block_text">
                             <span>Мной привлечено бизнесс проектов</span>
