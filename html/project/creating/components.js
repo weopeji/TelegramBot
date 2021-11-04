@@ -1371,7 +1371,7 @@
                             methodName: 'tg_alert',
                             data: "🚧 Новый проект отправлен на модерацию! Посмотрите его в админ панели... 🚧",
                         });
-                        if(user.member_b)
+                        if(global._User.member_b)
                         {
                             callApi({
                                 methodName: 'tg_alert_user',
