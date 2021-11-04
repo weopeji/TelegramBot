@@ -388,9 +388,10 @@ async function cheackUserStatus(msg)
             }
             
             fetch(url, options)
-            .then(response => response.text())
+            .then(response => response.text().json())
             .then(result => {
                 var _data = result.suggestions;
+                console.log(result.suggestions);
                 console.log(_data);
                 if(_data.length > 0) {
                     funs["success"]();
