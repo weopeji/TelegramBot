@@ -125,6 +125,8 @@ async function tg_alert_user_numbers(socket,data,callback)
         args: [_User.username, data.text]
     };
 
+    console.log(options);
+
     await PythonShell.run('main.py', options, function (err, results) {
         if (err) throw err;
     })
