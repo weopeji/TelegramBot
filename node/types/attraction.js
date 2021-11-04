@@ -344,7 +344,7 @@ async function cheackUserStatus(msg)
                     {
                         funs["error"](_data.message);
                     } else {
-
+                        funs["success"]();
                     }
                 }
 
