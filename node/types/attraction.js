@@ -339,7 +339,7 @@ async function cheackUserStatus(msg)
             var html    = `*`;
             var fat     = await h.send_html(msg.chat.id, html);
             _array.push(fat.message_id);
-            await h.DA(msg, _array);
+            await h.MA(msg, _array);
             var _User           = await User.findOne({user: msg.from.id});
             var _where          = _User.where;
             _where.msg          = fat.message_id;
