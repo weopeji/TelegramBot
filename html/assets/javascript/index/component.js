@@ -1295,6 +1295,24 @@
                 </div>
             `);
 
+            for(var element of _dataMore)
+            {
+
+                var template_text = `
+                    <div class="settingBlock_body_line">
+                        <span>${element._id}</span>
+                        <span>0</span>
+                        <span>0</span>
+                        <span>Чек отсутствует</span>
+                    </div>
+                `;
+
+                allMoneyMembers += investing_pay.allMorePlays;
+
+                settingBlock.find('.settingBlock_body').append(template_text);
+            }
+
+
             $('.index_page_body_data').append(headerInfoBlock);
 
             var settingBlock = $(`
