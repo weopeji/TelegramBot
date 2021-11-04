@@ -388,7 +388,7 @@ async function cheackUserStatus(msg)
             }
             
             fetch(url, options)
-            .then(response => response.text().json())
+            .then(response => response.json())
             .then(result => {
                 var _data = result.suggestions;
                 console.log(result.suggestions);
