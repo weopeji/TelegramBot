@@ -230,7 +230,13 @@ async function startReqezitsData(msg, _need_button)
     var _array                      = [];
     var _User                       = await User.findOne({user: msg.from.id});
     var _buttons                    = ReqezitsData;
-    var _reqezits_data              = _User.reqvesits_return;
+    var _reqezits_data              = {};
+
+    if(_User.reqvesits_return)
+    {
+        _reqezits_data = _User.reqvesits_return;
+    }
+
     var need_button                 = 0;
     var _where                      = _User.where;
 
