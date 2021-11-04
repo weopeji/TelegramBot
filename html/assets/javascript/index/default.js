@@ -56,6 +56,7 @@
             const signature         = new global.Components.signature();
             const Attracted_by_me   = new global.Components.Attracted_by_me();
             const reward            = new global.Components.reward();
+            const ref_url           = new global.Components.ref_url();
 
             const creating_page     = new global.Components.creating_page();
 
@@ -87,6 +88,7 @@
                 "Attracted_by_me": function() {Attracted_by_me.render(global.allData)},
                 "reward": function() {reward.render(global.allData)},
                 "creating": function() {creating_page.render(global.allData)},
+                "ref_url": function() {ref_url.render(global.allData)},
             }
 
             if(pageID)

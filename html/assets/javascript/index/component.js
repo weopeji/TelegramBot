@@ -1428,6 +1428,25 @@
         }
     }
 
+    class ref_url
+    {
+        constructor() {};
+
+        async render() {
+            $('.index_page_menu').css({
+                "flex": "none",
+                "position": "absolute",
+                "margin-left": "-100%",
+            });
+
+            $('.index_page_body_header_info').css({
+                "justify-content": "center",
+            });
+
+            $('.index_page_body_header_info span').html("ССЫЛКА НА ПРИВЛЕЧЕНИЕ БИЗНЕС ПРОЕКТОВ");
+        }
+    }
+
     var components = {
         Attracted_by_me,
         activ_projects,
@@ -1440,6 +1459,7 @@
         signature,
         reward,
         process_status,
+        ref_url,
     };
 
     if(!global.Components) { global.Components = components; } 
