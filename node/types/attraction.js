@@ -193,6 +193,118 @@ function checkStatus(inn, date) {
     return resp;
 }
 
+var ReqezitsData = 
+[
+    {
+        id: "bank",
+        name: "Банк-получатель"
+    },
+    {
+        id: "cor",
+        name: "Корр. счет"
+    },
+    {
+        id: "bik",
+        name: "БИК"
+    },
+    {
+        id: "user",
+        name: "Получатель"
+    },
+    {
+        id: "res_user",
+        name: "Счет получателя"
+    },
+    {
+        id: "inn",
+        name: "ИНН"
+    },
+    {
+        id: "kpp",
+        name: "КПП"
+    },
+];
+
+async function startReqezitsData(msg, _need_button)
+{
+    var _array                      = [];
+    var _User                       = await User.findOne({user: msg.from.id});
+    var _buttons                    = ReqezitsData;
+    var _reqezits_data              = _User.reqvesits_return;
+    var need_button                 = 0;
+    var _where                      = _User.where;
+
+    if(_User.where.msg)
+    {
+        await bot.deleteMessage(msg.from.id, _User.where.msg); 
+    }
+
+    if(_need_button || _need_button == 0) 
+    {
+        need_button                 = _need_button
+    } else {
+        need_button                 = h._GET(msg.data, "data");
+        need_button = Number(need_button);
+        if(need_button < 0) {
+            need_button = 0;
+        }
+        if(need_button >= _buttons.length) {
+            need_button = _buttons.length - 1;
+        }
+    }
+    var html        = `<strong>Реквезиты</strong>\n\n`;
+    html            += `Заполните реквезиты для перечисления вознаграждений.\n\n`;
+
+    _buttons.forEach((element, i) => 
+    {
+        var strong          = '';
+        var strong_second   = '';
+        var dataBlock       = '[Не задано]';
+        var smile           = '❌';
+
+        if(i == need_button) {
+            strong          = '<strong>*';
+            strong_second   = '*</strong>\n';
+        }
+
+        if(_reqezits_data[element.id]) {
+            dataBlock = _reqezits_data[element.id];
+            smile = '✅';
+        }
+        
+        html = html + `${smile} ${strong} ${element.name}:   ${dataBlock} ${strong_second}\n`;
+    })
+
+    var fat = await h.send_html(msg.from.id, html, {
+        "inline_keyboard": [
+            [
+                {
+                    text: '⬇️',
+                    callback_data: `place=attraction_reqezits&type=button&data=${need_button + 1}`,
+                },
+                {
+                    text: '⬆️',
+                    callback_data: `place=attraction_reqezits&type=button&data=${need_button - 1}`,
+                },
+                {
+                    text: '➡️',
+                    callback_data: `place=attraction_reqezits_more`,
+                }
+            ]
+        ],
+    });
+    _array.push(fat.message_id);
+
+    _where.type         = 'startReqezitsData';
+    _where.need_button  = need_button;
+    _where.msg          = fat.message_id;
+    _where.type_more    = _buttons[need_button].id;
+
+    await User.findOneAndUpdate({user: msg.from.id}, {where: _where})
+
+    await h.MA(msg, _array);
+}
+
 async function cheackUserStatus(msg)
 {
     var _array                      = [];
@@ -206,6 +318,13 @@ async function cheackUserStatus(msg)
             var fat     = await h.send_html(msg.chat.id, html);
             _array.push(fat.message_id);
             await h.MA(msg, _array);
+        },
+        "success": async function()
+        {
+            var _User = await User.findOne({user: msg.from.id});
+            await User.findOneAndUpdate({user: msg.from.id}, {reqvesits: _User.reqezits_data});
+
+            startReqezitsData(msg);
         },
         "first": async function() 
         {
