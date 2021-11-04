@@ -121,7 +121,7 @@ async function tg_alert_user_numbers(socket,data,callback)
     let options = 
     {
         mode: 'text',
-        scriptPath: '../python/system_alerts_user',//Path to your script
+        scriptPath: '../python/system_alerts_user',
         args: [_User.username, data.text]
     };
 
@@ -135,7 +135,7 @@ async function tg_alert_user(socket,data,callback)
     let options = 
     {
         mode: 'text',
-        scriptPath: '../python/system_alerts_user',//Path to your script
+        scriptPath: '../python/system_alerts_user',
         args: [data.user, data.text]
     };
 
@@ -149,7 +149,7 @@ async function tg_alert(socket,data,callback)
     let options = 
     {
         mode: 'text',
-        scriptPath: '../python/system_alerts',//Path to your script
+        scriptPath: '../python/system_alerts',
         args: data
     };
 
