@@ -20,7 +20,7 @@ const UserShema = new mongoose.Schema({
     creatingData: JSON,
     attractType: String,
     reqvesits: JSON,
-    reqezits_data,
+    reqezits_data: JSON,
 });
 
 mongoose.model('User', UserShema);
