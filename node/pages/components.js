@@ -708,10 +708,6 @@ async function acceptProject(socket,data,callback)
         })
         
     })();
-
-    // (() => {
-    //     uploader.uploadVideo('2314', '1245', 'investER', 'pp.mp4');
-    // })()
 }
 
 async function parceProject(type, data, callback) 
@@ -819,16 +815,16 @@ async function setProject(socket,data,callback)
 
         savePuppeter(_project._id);
 
-        let options = 
-        {
-            mode: 'text',
-            scriptPath: '../python/YouTube_Upload',
-            args: _patch + '/' +_project.data[file+8],
-        };
+        // let options = 
+        // {
+        //     mode: 'text',
+        //     scriptPath: '../python/YouTube_Upload',
+        //     args: _patch + '/' +_project.data[file+8],
+        // };
 
-        await PythonShell.run('main.py', options, function (err, results) {
-            if (err) throw err;
-        })
+        // await PythonShell.run('main.py', options, function (err, results) {
+        //     if (err) throw err;
+        // })
     }
 
     if(data.data.organization == "3") {
