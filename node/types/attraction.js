@@ -389,7 +389,14 @@ async function cheackUserStatus(msg)
             
             fetch(url, options)
             .then(response => response.text())
-            .then(result => console.log(result))
+            .then(result => {
+                var _data = result.suggestions;
+                if(_data.length > 0) {
+                    funs["success"]();
+                } else {
+                    funs["error"]("Инн не верен, попробуйте еще раз...");
+                }
+            })
             .catch(error => console.log("error", error));
         }
     }
