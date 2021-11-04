@@ -327,7 +327,7 @@ async function cheackUserStatus(msg)
         },
         "success": async function()
         {
-            var html    = `Вы находитесь в меню заполнения реквезитов`;
+            var html    = `<strong>${msg.from.first_name} ${msg.from.last_name}</strong> Заполните данные для заключения агентского договора и реквизиты для перечислений. Обращаем ваше внимание, что подписание договора и перечисление бонуса осуществляется только с лицами, имеющими статус самозанятый, ИП или юр.лицо.`;
             var fat     = await h.send_html(msg.chat.id, html, {
                 "resize_keyboard": true,
                 "keyboard": [ 
