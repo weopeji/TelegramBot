@@ -391,6 +391,7 @@ async function cheackUserStatus(msg)
             .then(response => response.text())
             .then(result => {
                 var _data = result.suggestions;
+                console.log(_data);
                 if(_data.length > 0) {
                     funs["success"]();
                 } else {
