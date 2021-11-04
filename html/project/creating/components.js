@@ -1377,7 +1377,7 @@
                                 methodName: 'tg_alert_user',
                                 data: {
                                     text: "Вы привели новый Проект! Вы можете посмотреть весь список у себя в кабинете",
-                                    user: user.member_b,
+                                    user: global._User.member_b,
                                 },
                             });
                         }
