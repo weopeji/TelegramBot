@@ -20,6 +20,7 @@ module.exports = {
     startFun,
     startFunMore,
     start_reqezits,
+    actionReqezits,
 }
 
 async function startFunMore(msg)
