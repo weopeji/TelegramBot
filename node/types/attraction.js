@@ -173,9 +173,7 @@ async function actionReqezits(msg)
     if(!_array) _array              = {};
     _array[_User.where.type_more]   = msg.text;
     await User.findOneAndUpdate({user: msg.from.id}, {reqezits_data: _array});
-    var index = reqezitsType[_User.reqezits_data.type].indexOf(el => {el.id == _User.where.type_more});
-    console.log(index);
-    start_reqezits(msg, index);
+    start_reqezits(msg, _User.where.need_button);
 }
 
 async function start_reqezits(msg, _need_button)
@@ -252,6 +250,7 @@ async function start_reqezits(msg, _need_button)
     console.log(need_button);
 
     _where.type         = 'actionReqezits';
+    _where.need_button  = need_button;
     _where.msg          = fat.message_id;
     _where.type_more    = _buttons[need_button].id;
 
