@@ -335,7 +335,7 @@ async function cheackUserStatus(msg)
                 ],
             });
             _array.push(fat.message_id);
-            await h.MA(msg, _array);
+            await h.DMA(msg, _array);
             startReqezitsData(msg, 0);
         },
         "first": async function() 
