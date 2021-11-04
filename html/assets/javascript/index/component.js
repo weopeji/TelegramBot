@@ -1235,6 +1235,11 @@
                 data: data._id,
             });
 
+            var _dataMore = await callApi({
+                methodName: "Attracted_by_me_b",
+                data: data._id,
+            });
+
             console.log(_data);
 
             var allMoneyMembers = 0;
@@ -1274,7 +1279,7 @@
                         </div>
                         <div class="Attracted_headerInfoBlock_block_text">
                             <span>Мной привлечено бизнесс проектов</span>
-                            <p>0</p>
+                            <p>${_dataMore.length}</p>
                         </div>
                     </div>
                     <div class="Attracted_headerInfoBlock_block">

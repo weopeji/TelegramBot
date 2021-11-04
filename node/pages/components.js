@@ -101,6 +101,7 @@ var action_linker =
     "all_msgs": all_msgs,
     "Attracted_by_me": Attracted_by_me,
     "Attracted_by_me_investing_pay": Attracted_by_me_investing_pay,
+    "Attracted_by_me_b": Attracted_by_me_b,
     "selectedMsgChats": selectedMsgChats,
     "getBussnes": getBussnes,
     "getInvestorDocument": getInvestorDocument,
@@ -326,6 +327,23 @@ async function Attracted_by_me_investing_pay(socket,data,callback)
         AllPays: AllPays,
         allMorePlays: allMorePlays,
     });
+}
+
+async function Attracted_by_me_b(socket,data,callback)
+{
+    var _User               = await User.findOne({_id: data});
+    var Attracted_by_me     = await User.find({member_b: _User.user});
+
+    var AllProjects = [];
+
+    for (const value of Attracted_by_me) {
+        var _Project = await Project.find({user: value.user});
+        if(_Project.length > 0) {
+            AllProjects.push(_Project);
+        }
+    }
+
+    callback(AllProjects);
 }
 
 async function Attracted_by_me(socket,data,callback)
