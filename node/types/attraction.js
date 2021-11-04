@@ -173,7 +173,7 @@ async function actionReqezits(msg)
     if(!_array) _array              = {};
     _array[_User.where.type_more]   = msg.text;
     await User.findOneAndUpdate({user: msg.from.id}, {reqezits_data: _array});
-    var index = reqezitsType.indexOf(el => el.id == _User.where.type_more);
+    var index = reqezitsType.indexOf(el => {el.id == _User.where.type_more});
     start_reqezits(msg, index);
 }
 
