@@ -1307,8 +1307,6 @@
                     </div>
                 `;
 
-                allMoneyMembers += investing_pay.allMorePlays;
-
                 settingBlock.find('.settingBlock_body').append(template_text);
             }
 
