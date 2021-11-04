@@ -275,6 +275,7 @@ async function reqezits(msg)
     {
         "resize_keyboard": true,
         "keyboard": [ 
+            ["✔️ Проверить статус"],
             ["⬅️ Назад"]
         ],
     });
