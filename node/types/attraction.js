@@ -200,14 +200,14 @@ async function cheackUserStatus(msg)
 
     var funs = 
     {
-        "error": function(msgText)
+        "error": async function(msgText)
         {
             var html    = msgText;
             var fat     = await h.send_html(msg.chat.id, html);
             _array.push(fat.message_id);
             await h.MA(msg, _array);
         },
-        "first": function() 
+        "first": async function() 
         {
             checkStatus(_User.reqezits_data.inn)
             .then((response) => {
@@ -231,7 +231,7 @@ async function cheackUserStatus(msg)
 
             });
         },
-        "second": function() 
+        "second": async function() 
         {
             var url = "https://suggestions.dadata.ru/suggestions/api/4_1/rs/findById/party";
             var token = "cd3a829357362fec55fc201c3f761002def9906f";
