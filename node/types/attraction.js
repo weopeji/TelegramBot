@@ -327,9 +327,6 @@ async function cheackUserStatus(msg)
         },
         "success": async function()
         {
-            var _User = await User.findOne({user: msg.from.id});
-            await User.findOneAndUpdate({user: msg.from.id}, {reqvesits: _User.reqezits_data});
-
             startReqezitsData(msg, 0);
         },
         "first": async function() 
