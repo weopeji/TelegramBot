@@ -336,6 +336,10 @@ async function cheackUserStatus(msg)
             });
             _array.push(fat.message_id);
             await h.DMA(msg, _array);
+            var _User           = await User.findOne({user: msg.from.id});
+            var _where          = _User.where;
+            _where.msg          = fat.message_id;
+            await User.findOneAndUpdate({user: msg.from.id}, {where: _where})
             startReqezitsData(msg, 0);
         },
         "first": async function() 
