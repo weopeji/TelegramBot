@@ -216,7 +216,8 @@ bot.onText(/\/start (.+)/, async (msg, match) =>
         _array.push(fat.message_id);
     
         await h.DMA(msg, _array);
-    } else if(resp.split('_')[0] == "adder") 
+    } 
+    else if(resp.split('_')[0] == "adder") 
     {
         var _User = await User.findOne({user: msg.from.id});
 
@@ -230,7 +231,14 @@ bot.onText(/\/start (.+)/, async (msg, match) =>
             },
         }, () => {});
         main_page._CreatorFUN(msg)
-    }else if(resp.split('_')[0] == "setSignaturePro") {
+    }
+    else if(resp.split('_')[0] == "adder-b") 
+    {
+        var _User = await User.findOne({user: msg.from.id});
+        await User.findOneAndUpdate({user: msg.from.id}, {member_b: resp.split('_')[1]});
+        main_page._CreatorFUN(msg)
+    }
+    else if(resp.split('_')[0] == "setSignaturePro") {
         investor_page.payerInvester(msg);
     } else 
     {

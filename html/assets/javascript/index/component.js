@@ -1459,6 +1459,8 @@
                 </div>
             `);
 
+            msgsBlock.css('margin', '0 auto');
+
             this.global.append(msgsBlock);
 
             $('.index_page_body_data').append(this.global);
