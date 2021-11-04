@@ -170,7 +170,7 @@ async function start_reqezits(msg)
     var _buttons        = reqezitsType[_User.reqezits_data.type];
     var _reqezits_data  = _User.reqezits_data;
 
-    var html        = `Для <strong>${_User.where.data.type}</strong> нужно заполнить данные:\n\n`;
+    var html        = `Для <strong>${_User.reqezits_data.type}</strong> нужно заполнить данные:\n\n`;
 
     _buttons.forEach((element, i) => 
     {
