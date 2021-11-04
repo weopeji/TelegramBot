@@ -183,7 +183,14 @@ async function start_reqezits(msg, _need_button)
     {
         need_button                 = _need_button
     } else {
-        need_button                 = h._GET(msg.data, "data");;
+        need_button                 = h._GET(msg.data, "data");
+        need_button = Number(need_button);
+        if(need_button < 0) {
+            need_button = 0;
+        }
+        if(need_button >= _buttons.length) {
+            need_button = _buttons.length - 1;
+        }
     }
 
     var html        = `Для <strong>${_User.reqezits_data.type}</strong> нужно заполнить данные:\n\n`;
