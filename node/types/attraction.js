@@ -19,6 +19,7 @@ module.exports = {
     reqezits,
     startFun,
     startFunMore,
+    start_reqezits,
 }
 
 async function startFunMore(msg)
