@@ -124,41 +124,41 @@ var reqezitsType =
     "Юр.лицо": 
     [
         {
-            id: name,
+            id: "name",
             name: "Наименование юр.лица"
         },
         {
-            id: fio,
+            id: "fio",
             name: "ФИО ответственного лица"
         },
     ],
     "ИП": 
     [
         {
-            id: inn,
+            id: "inn",
             name: "ИНН"
         },
         {
-            id: fio,
+            id: "fio",
             name: "ФИО"
         },
     ],
     "Самозанятый": 
     [
         {
-            id: inn,
+            id: "inn",
             name: "ИНН"
         },
         {
-            id: fio,
+            id: "fio",
             name: "ФИО"
         },
         {
-            id: data,
+            id: "data",
             name: "Дата рождения"
         },
         {
-            id: passport,
+            id: "passport",
             name: "Серия и номер паспорта"
         }
     ],
@@ -225,7 +225,7 @@ async function reqezits(msg)
     var _array          = [];
     var _User           = await User.findOne({user: msg.from.id});
     var _reqezits_data  = {};
-    
+
     if(_User.reqezits_data)
     {
         _reqezits_data = _User.reqezits_data;
