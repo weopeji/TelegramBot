@@ -2,6 +2,8 @@ var bot     = null;
 var User    = null;
 var h       = null;
 
+const fetch = require("node-fetch");
+
 function privateInit(initPlagins) {
     bot     = initPlagins.bot;
     User    = initPlagins.User;
@@ -21,6 +23,7 @@ module.exports = {
     startFunMore,
     start_reqezits,
     actionReqezits,
+    cheackUserStatus,
 }
 
 async function startFunMore(msg)
@@ -126,6 +129,10 @@ var reqezitsType =
     "Юр.лицо": 
     [
         {
+            id: "inn",
+            name: "ИНН"
+        },
+        {
             id: "name",
             name: "Наименование юр.лица"
         },
@@ -164,6 +171,78 @@ var reqezitsType =
             name: "Серия и номер паспорта"
         }
     ],
+}
+
+function checkStatus(inn, date) {
+    if (!date) {
+        date = new Date();
+    }
+    const dateStr = date.toISOString().substring(0, 10);
+    const url = "https://statusnpd.nalog.ru/api/v1/tracker/taxpayer_status";
+    const data = {
+        inn: inn,
+        requestDate: dateStr,
+    };
+    resp = fetch(url, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+    });
+    return resp;
+}
+
+async function cheackUserStatus(msg)
+{
+    var _array                      = [];
+    var _User                       = await User.findOne({user: msg.from.id});
+
+    var funs = 
+    {
+        "first": function() 
+        {
+            checkStatus(_User.reqezits_data.inn)
+            .then((response) => {
+                return response.json();
+            })
+            .then((response) => {
+                console.log(response);
+            });
+        },
+        "second": function() 
+        {
+            var url = "https://suggestions.dadata.ru/suggestions/api/4_1/rs/findById/party";
+            var token = "cd3a829357362fec55fc201c3f761002def9906f";
+            var query = _User.reqezits_data.inn;
+            
+            var options = {
+                method: "POST",
+                mode: "cors",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                    "Authorization": "Token " + token
+                },
+                body: JSON.stringify({query: query})
+            }
+            
+            fetch(url, options)
+            .then(response => response.text())
+            .then(result => console.log(result))
+            .catch(error => console.log("error", error));
+        }
+    }
+
+    if(_User.reqezits_data.inn)
+    {
+        if(_User.reqezits_data.type = "Самозанятый")
+        {
+            funs["first"]();
+        } else {
+            funs["second"]();
+        }
+    }
 }
 
 async function actionReqezits(msg) 
