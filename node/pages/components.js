@@ -116,7 +116,7 @@ var action_linker =
 
 async function tg_alert_user_numbers(socket,data,callback)
 {
-    var _User       = await User.findOne({_id: data.user});
+    var _User       = await User.findOne({user: data.user});
 
     let options = 
     {
