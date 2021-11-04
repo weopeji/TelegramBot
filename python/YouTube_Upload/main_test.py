@@ -30,6 +30,7 @@ request_body = {
 
 mediaFile = MediaFileUpload('video.mp4')
 
+
 response_upload = service.videos().insert(
     part='snippet,status',
     body=request_body,
