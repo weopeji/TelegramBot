@@ -1430,7 +1430,11 @@
 
     class ref_url
     {
-        constructor() {};
+        constructor() {
+            this.global = $(`
+                <div class="creating_page"></div>
+            `);
+        };
 
         async render() {
             $('.index_page_menu').css({
@@ -1443,7 +1447,21 @@
                 "justify-content": "center",
             });
 
-            $('.index_page_body_header_info span').html("ССЫЛКА НА ПРИВЛЕЧЕНИЕ БИЗНЕС ПРОЕКТОВ");
+            $('.index_page_body_header_info span').html("ВАША ССЫЛКА НА ПРИВЛЕЧЕНИЕ БИЗНЕС ПРОЕКТОВ");
+
+            var msgsBlock = $(`
+                <div class="creating_page_block">
+                    <div class="creating_page_start">
+                        <span>
+                            https://t.me/invester_official_bot?start=adder-b_${global.allData.User.user}
+                        </span>
+                    </div>
+                </div>
+            `);
+
+            this.global.append(msgsBlock);
+
+            $('.index_page_body_data').append(this.global);
         }
     }
 
