@@ -165,6 +165,16 @@ var reqezitsType =
     ],
 }
 
+async function actionReqezits(msg) 
+{
+    var _User                       = await User.findOne({user: msg.from.id});
+    var _array                      = _User.reqezits_data;
+    if(!_array) _array              = {};
+    _array[_User.where.type_more]   = msg.text;
+    await User.findOneAndUpdate({user: msg.from.id}, {reqezits_data: _array});
+    start_reqezits(msg);
+}
+
 async function start_reqezits(msg, _need_button)
 {
     var _array                      = [];
@@ -238,6 +248,7 @@ async function start_reqezits(msg, _need_button)
     console.log(_buttons[need_button]);
     console.log(need_button);
 
+    _where.type         = 'actionReqezits';
     _where.msg          = fat.message_id;
     _where.type_more    = _buttons[need_button].id;
 
