@@ -554,7 +554,7 @@ async function requisites(msg)
     var _array  = [];
     var _User   = await User.findOne({user: msg.from.id});
 
-    function defaultStart_requisites()
+    async function defaultStart_requisites()
     {
         var html = `<strong>${msg.from.first_name} ${msg.from.last_name}</strong> Заполните данные для заключения агентского договора и реквизиты для перечислений. Обращаем ваше внимание, что подписание договора и перечисление бонуса осуществляется только с лицами, имеющими статус самозанятый, ИП или юр.лицо.`;
         var fat = await h.send_html(msg.chat.id, html, 
