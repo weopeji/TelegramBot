@@ -606,7 +606,14 @@ async function requisites(msg)
         {
             defaultStart_requisites();
         } else {
+            var _reqezits_data = _User.reqvesits;
+
             var html = `Инвестор ${_User.first_name}\nВы находитесь в меню "РЕКВИЗИТЫ"`;
+
+            ReqezitsData.forEach(el => {
+                html += `${el.name}: ${_reqezits_data[el.id]}\n`;
+            })
+
             var fat = await bot.sendMessage(msg.chat.id, html, {
                 parse_mode: "html",
                 reply_markup: {  
