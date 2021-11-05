@@ -26,6 +26,7 @@ module.exports = {
     cheackUserStatus,
     startReqezitsData,
     startReqezitsDataMore,
+    acceptReqezitsData,
 }
 
 async function startFunMore(msg)
@@ -226,6 +227,24 @@ var ReqezitsData =
         name: "КПП"
     },
 ];
+
+async function acceptReqezitsData(msg)
+{
+    var _User                       = await User.findOne({user: msg.from.id});
+    var _error                      = false;
+
+    ReqezitsData.forEach(el => {
+        if(!_User.reqvesits[el.id]) _error = true;
+    });
+
+    if(!_error)
+    {
+        var _array                      = _User.reqvesits;
+        _array["status"]                = true;
+        await User.findOneAndUpdate({user: msg.from.id}, {reqvesits: _array});
+        startFunMore(msg);
+    }
+}
 
 async function startReqezitsDataMore(msg)
 {
@@ -581,16 +600,12 @@ async function requisites(msg)
         defaultStart_requisites();
     } else
     {
-        var _error = false;
-
-        ReqezitsData.forEach(el => {
-            if(!_User.reqvesits[el.id]) _error = true;
-        });
-
-        if(!_error)
+        if(!_User.reqvesits.status)
         {
+            defaultStart_requisites();
+        } else {
             var html = `Инвестор ${_User.first_name}\nВы находитесь в меню "РЕКВИЗИТЫ"`;
-            var fat = await bot.sendMessage(msg.chat.id, toEscapeMSg(html), {
+            var fat = await bot.sendMessage(msg.chat.id, html, {
                 parse_mode: "html",
                 reply_markup: {  
                     "resize_keyboard": true, 
@@ -603,8 +618,6 @@ async function requisites(msg)
             _array.push(fat.message_id);
         
             await h.DMA(msg, _array);
-        } else {
-            defaultStart_requisites();
         }
     }
 }
