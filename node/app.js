@@ -333,6 +333,7 @@ bot.on('message', async (msg) =>
                 "payerInBissness": investor_page.payerInBissnessDocument,
                 "attraction": attraction_page.reqezits,
                 "actionReqezits": attraction_page.actionReqezits,
+                "startReqezitsData": attraction_page.startReqezitsDataMore,
             }
             action_where[_User.where.type](msg);
             await helper_functions.DM(msg, 1);

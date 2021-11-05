@@ -25,6 +25,7 @@ module.exports = {
     actionReqezits,
     cheackUserStatus,
     startReqezitsData,
+    startReqezitsDataMore,
 }
 
 async function startFunMore(msg)
@@ -225,6 +226,16 @@ var ReqezitsData =
         name: "КПП"
     },
 ];
+
+async function startReqezitsDataMore(msg)
+{
+    var _User                       = await User.findOne({user: msg.from.id});
+    var _array                      = _User.reqezits;
+    if(!_array) _array              = {};
+    _array[_User.where.type_more]   = msg.text;
+    await User.findOneAndUpdate({user: msg.from.id}, {reqezits: _array});
+    startReqezitsData(msg, _User.where.need_button);
+}
 
 async function startReqezitsData(msg, _need_button)
 {
@@ -543,10 +554,8 @@ async function requisites(msg)
     var _array  = [];
     var _User   = await User.findOne({user: msg.from.id});
 
-    if(!_User.reqvesits)
+    function defaultStart_requisites()
     {
-        var _User = await User.findOne({ user: msg.from.id });
-        var _array  = [];
         var html = `<strong>${msg.from.first_name} ${msg.from.last_name}</strong> Заполните данные для заключения агентского договора и реквизиты для перечислений. Обращаем ваше внимание, что подписание договора и перечисление бонуса осуществляется только с лицами, имеющими статус самозанятый, ИП или юр.лицо.`;
         var fat = await h.send_html(msg.chat.id, html, 
         {
@@ -565,21 +574,37 @@ async function requisites(msg)
         await User.findOneAndUpdate({user: msg.from.id}, { where: {
             type: "attraction",
         }});
+    }
+
+    if(!_User.reqvesits)
+    {
+        defaultStart_requisites();
     } else
     {
-        var html = `Инвестор ${_User.first_name}\nВы находитесь в меню "РЕКВИЗИТЫ"`;
-        var fat = await bot.sendMessage(msg.chat.id, toEscapeMSg(html), {
-            parse_mode: "html",
-            reply_markup: {  
-                "resize_keyboard": true, 
-                "keyboard": [
-                    ["✔️ Принять реквезиты", "✏️ Заменить реквизиты"],
-                    ["⬅️ Назад"]
-                ],                                                                   
-            }
+        var _error = false;
+
+        ReqezitsData.forEach(el => {
+            if(!_User.reqvesits[el.id]) _error = true;
         });
-        _array.push(fat.message_id);
-    
-        await h.DMA(msg, _array);
+
+        if(!_error)
+        {
+            var html = `Инвестор ${_User.first_name}\nВы находитесь в меню "РЕКВИЗИТЫ"`;
+            var fat = await bot.sendMessage(msg.chat.id, toEscapeMSg(html), {
+                parse_mode: "html",
+                reply_markup: {  
+                    "resize_keyboard": true, 
+                    "keyboard": [
+                        ["✔️ Принять реквезиты", "✏️ Заменить реквизиты"],
+                        ["⬅️ Назад"]
+                    ],                                                                   
+                }
+            });
+            _array.push(fat.message_id);
+        
+            await h.DMA(msg, _array);
+        } else {
+            defaultStart_requisites();
+        }
     }
 }
