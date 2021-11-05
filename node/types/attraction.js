@@ -2,7 +2,8 @@ var bot     = null;
 var User    = null;
 var h       = null;
 
-const fetch = require("node-fetch");
+const fetch             = require("node-fetch");
+
 
 function privateInit(initPlagins) {
     bot     = initPlagins.bot;
@@ -242,6 +243,7 @@ async function acceptReqezitsData(msg)
         var _array                      = _User.reqvesits;
         _array["status"]                = true;
         await User.findOneAndUpdate({user: msg.from.id}, {reqvesits: _array});
+        h.alertUser(msg, "💳 Вы изменили свои реквезиты")
         startFunMore(msg);
     }
 }

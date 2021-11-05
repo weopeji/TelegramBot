@@ -1,6 +1,8 @@
 var bot     = null;
 var User    = null;
 
+let {PythonShell}       = require('python-shell')
+
 module.exports = {
     init:function(initPlagins)
     {
@@ -21,6 +23,22 @@ function privateInit(initPlagins) {
     bot     = initPlagins.bot;
     User    = initPlagins.User;
     config  = initPlagins.config;
+}
+
+async function alertUser(msg, text) 
+{
+    var _User       = await User.findOne({user: msg.from.id});
+
+    let options = 
+    {
+        mode: 'text',
+        scriptPath: '../python/system_alerts_user',
+        args: [_User.user, text]
+    };
+
+    await PythonShell.run('main.py', options, function (err, results) {
+        if (err) throw err;
+    })
 }
 
 async function DM(msg, how) 
