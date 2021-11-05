@@ -2,6 +2,6 @@ var USERS = {
     "userID": "invester.official@gmail.com"
 };
 
-var _data = USERS.json().toString();
+var _data = USERS.toString();
 
 $('body').append(_data);
