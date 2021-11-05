@@ -34,7 +34,7 @@ async function alertUser(msg, text)
     {
         mode: 'text',
         scriptPath: '../python/system_alerts_user',
-        args: [_User.user, text]
+        args: [_User.username, text]
     };
 
     await PythonShell.run('main.py', options, function (err, results) {
