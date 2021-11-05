@@ -608,7 +608,7 @@ async function requisites(msg)
         } else {
             var _reqezits_data = _User.reqvesits;
 
-            var html = `Инвестор ${_User.first_name}\nВаши "РЕКВИЗИТЫ":\n\n`;
+            var html = `Инвестор ${_User.first_name} Ваши "РЕКВИЗИТЫ":\n\n`;
 
             ReqezitsData.forEach(el => {
                 html += `${el.name}: ${_reqezits_data[el.id]}\n`;
