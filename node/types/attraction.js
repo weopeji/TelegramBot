@@ -293,12 +293,6 @@ async function startReqezitsData(msg, _need_button)
                     text: '⬆️',
                     callback_data: `place=startReqezitsData&type=button&data=${need_button - 1}`,
                 },
-            ],
-            [
-                {
-                    text: 'Принять реквезиты',
-                    callback_data: `place=startReqezitsData&type=accept`,
-                }
             ]
         ],
     });
@@ -334,6 +328,7 @@ async function cheackUserStatus(msg)
             var fat     = await h.send_html(msg.chat.id, html, {
                 "resize_keyboard": true,
                 "keyboard": [ 
+                    ["✔️ Принять реквезиты"],
                     ["⬅️ Назад"]
                 ],
             });
