@@ -259,7 +259,7 @@ async function startReqezitsDataMore(msg)
     startReqezitsData(msg, _User.where.need_button);
 }
 
-async function startReqezitsData_need(msg) {v
+async function startReqezitsData_need(msg) {
     var _array  = [];
     var html    = `<strong>${msg.from.first_name} ${msg.from.last_name}</strong> Заполните данные для заключения агентского договора и реквизиты для перечислений. Обращаем ваше внимание, что подписание договора и перечисление бонуса осуществляется только с лицами, имеющими статус самозанятый, ИП или юр.лицо.`;
     var fat     = await h.send_html(msg.chat.id, html, {
