@@ -17,6 +17,7 @@ module.exports = {
     DMA,
     MA,
     alertBot,
+    alertUser,
 }
 
 function privateInit(initPlagins) {
