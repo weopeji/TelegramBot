@@ -15,8 +15,8 @@ upload_date_time = datetime.datetime(2020, 12, 25, 12, 30, 0).isoformat() + '.00
 request_body = {
     'snippet': {
         'categoryI': 19,
-        'title': 'Upload Testing',
-        'description': 'Hello World Description',
+        'title': 'Testing video upload',
+        'description': 'need description',
         'tags': ['Travel', 'video test', 'Travel Tips']
     },
     'status': {
