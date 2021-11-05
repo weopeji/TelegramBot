@@ -167,6 +167,7 @@ bot.on("callback_query", function(callbackQuery)
         "drafts": investor_page.drafts_block,
         "viplati": business_page.viplati_call,
         "attraction_reqezits": attraction_page.start_reqezits,
+        "startReqezitsData": attraction_page.startReqezitsData,
     }
 
     if(typeof action_linker[helper_functions._GET(callbackQuery.data, "place")] != "undefined") {
@@ -332,7 +333,6 @@ bot.on('message', async (msg) =>
                 "payerInBissness": investor_page.payerInBissnessDocument,
                 "attraction": attraction_page.reqezits,
                 "actionReqezits": attraction_page.actionReqezits,
-                "startReqezitsData": attraction_page.startReqezitsData,
             }
             action_where[_User.where.type](msg);
             await helper_functions.DM(msg, 1);
