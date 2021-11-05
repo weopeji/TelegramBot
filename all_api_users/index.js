@@ -2,6 +2,8 @@ var USERS = {
     "userID": "invester.official@gmail.com"
 };
 
-var _data = USERS.toString();
+for(var key in USERS)
+{
+    $('body').append(`<p>${key}:${USERS[key]}</p>`);
+}
 
-$('body').append(_data);
