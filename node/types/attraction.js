@@ -230,10 +230,10 @@ var ReqezitsData =
 async function startReqezitsDataMore(msg)
 {
     var _User                       = await User.findOne({user: msg.from.id});
-    var _array                      = _User.reqezits;
+    var _array                      = _User.reqvesits;
     if(!_array) _array              = {};
     _array[_User.where.type_more]   = msg.text;
-    await User.findOneAndUpdate({user: msg.from.id}, {reqezits: _array});
+    await User.findOneAndUpdate({user: msg.from.id}, {reqvesits: _array});
     startReqezitsData(msg, _User.where.need_button);
 }
 
@@ -244,9 +244,9 @@ async function startReqezitsData(msg, _need_button)
     var _buttons                    = ReqezitsData;
     var _reqezits_data              = {};
 
-    if(_User.reqezits)
+    if(_User.reqvesits)
     {
-        _reqezits_data = _User.reqezits;
+        _reqezits_data = _User.reqvesits;
     }
 
     var need_button                 = 0;

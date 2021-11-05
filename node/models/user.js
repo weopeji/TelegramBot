@@ -21,7 +21,6 @@ const UserShema = new mongoose.Schema({
     attractType: String,
     reqvesits: JSON,
     reqezits_data: JSON,
-    reqvesits_return: JSON,
 });
 
 mongoose.model('User', UserShema);
