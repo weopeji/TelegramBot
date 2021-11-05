@@ -2,6 +2,8 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.utils import ChromeType
 from selenium_stealth import stealth
 import json
 
@@ -10,7 +12,7 @@ options.add_argument("start-maximized")
 
 options.add_experimental_option("excludeSwitches", ["enable-automation"])
 options.add_experimental_option('useAutomationExtension', False)
-driver = webdriver.Chrome(options=options, executable_path="/usr/lib/chromium-browser/chromedriver")
+driver = webdriver.Chrome(options=options, executable_path=ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
 
 stealth(driver,
         languages=["en-US", "en"],
