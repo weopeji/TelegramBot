@@ -317,6 +317,7 @@ bot.on('message', async (msg) =>
         "👔 Привлечь бизнес": attraction_page.startFunMore,
         "✔️ Проверить статус": attraction_page.cheackUserStatus,
         "✔️ Принять реквезиты": attraction_page.acceptReqezitsData,
+        "✏️ Заменить реквизиты": attraction_page.startReqezitsData_need,
     }
 
     if(typeof action_linker[msg.text] != "undefined") 

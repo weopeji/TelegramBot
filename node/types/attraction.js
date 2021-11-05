@@ -28,6 +28,7 @@ module.exports = {
     startReqezitsData,
     startReqezitsDataMore,
     acceptReqezitsData,
+    startReqezitsData_need,
 }
 
 async function startFunMore(msg)
@@ -256,6 +257,10 @@ async function startReqezitsDataMore(msg)
     _array[_User.where.type_more]   = msg.text;
     await User.findOneAndUpdate({user: msg.from.id}, {reqvesits: _array});
     startReqezitsData(msg, _User.where.need_button);
+}
+
+async function startReqezitsData_need(msg) {
+    startReqezitsData(msg, 0);
 }
 
 async function startReqezitsData(msg, _need_button)
