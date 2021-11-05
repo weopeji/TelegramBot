@@ -244,9 +244,9 @@ async function startReqezitsData(msg, _need_button)
     var _buttons                    = ReqezitsData;
     var _reqezits_data              = {};
 
-    if(_User.reqvesits_return)
+    if(_User.reqezits)
     {
-        _reqezits_data = _User.reqvesits_return;
+        _reqezits_data = _User.reqezits;
     }
 
     var need_button                 = 0;
