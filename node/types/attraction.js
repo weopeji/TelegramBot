@@ -260,6 +260,24 @@ async function startReqezitsDataMore(msg)
 }
 
 async function startReqezitsData_need(msg) {
+    var html    = `<strong>${msg.from.first_name} ${msg.from.last_name}</strong> Заполните данные для заключения агентского договора и реквизиты для перечислений. Обращаем ваше внимание, что подписание договора и перечисление бонуса осуществляется только с лицами, имеющими статус самозанятый, ИП или юр.лицо.`;
+    var fat     = await h.send_html(msg.chat.id, html, {
+        "resize_keyboard": true,
+        "keyboard": [ 
+            ["✔️ Принять реквезиты"],
+            ["⬅️ Назад"]
+        ],
+    });
+    _array.push(fat.message_id);
+    await h.DMA(msg, _array);
+    var html    = `*`;
+    var fat     = await h.send_html(msg.chat.id, html);
+    _array.push(fat.message_id);
+    await h.MA(msg, _array);
+    var _User           = await User.findOne({user: msg.from.id});
+    var _where          = _User.where;
+    _where.msg          = fat.message_id;
+    await User.findOneAndUpdate({user: msg.from.id}, {where: _where})
     startReqezitsData(msg, 0);
 }
 
