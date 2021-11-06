@@ -4,18 +4,26 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.chrome.options import Options
 from selenium_stealth import stealth
 import json
 
-options = webdriver.ChromeOptions()
-options.add_argument("start-maximized")
-options.add_experimental_option("excludeSwitches", ["enable-automation"])
-options.add_experimental_option('useAutomationExtension', False)
-options.add_argument('--no-sandbox')
-options.add_argument('--disable-dev-shm-usage')
-options.add_argument("--headless")
+# options = webdriver.ChromeOptions()
+# options.add_argument("start-maximized")
+# options.add_experimental_option("excludeSwitches", ["enable-automation"])
+# options.add_experimental_option('useAutomationExtension', False)
+# options.add_argument('--no-sandbox')
+# options.add_argument('--disable-dev-shm-usage')
+# options.add_argument("--headless")
 
-driver = webdriver.Chrome(executable_path='/var/www/python/parcingArbitraj/chromedriver', options=options)
+s = Service(ChromeDriverManager().install())
+
+chrome_options = Options()
+# chrome_options.add_argument('--headless')
+chrome_options.add_argument('--no-sandbox')
+chrome_options.add_argument('--disable-dev-shm-usage')
+
+driver = webdriver.Chrome(service=s, chrome_options=chrome_options)
 
 stealth(driver,
         languages=["en-US", "en"],
