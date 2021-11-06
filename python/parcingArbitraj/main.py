@@ -13,6 +13,7 @@ options.add_experimental_option("excludeSwitches", ["enable-automation"])
 options.add_experimental_option('useAutomationExtension', False)
 options.add_argument('--no-sandbox')
 options.add_argument('--disable-dev-shm-usage')
+options.add_argument("--headless")
 
 driver = webdriver.Chrome(executable_path='/var/www/python/parcingArbitraj/chromedriver', options=options)
 
