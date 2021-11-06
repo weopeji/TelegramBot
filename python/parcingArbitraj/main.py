@@ -12,9 +12,7 @@ options.add_argument("start-maximized")
 options.add_experimental_option("excludeSwitches", ["enable-automation"])
 options.add_experimental_option('useAutomationExtension', False)
 
-s = Service(ChromeDriverManager().install())
-
-driver = webdriver.Chrome(options=options, service=s)
+driver = webdriver.Chrome('/var/www/python/parcingArbitraj/chromedriver', options=options)
 
 stealth(driver,
         languages=["en-US", "en"],
