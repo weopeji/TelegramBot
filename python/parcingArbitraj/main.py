@@ -7,26 +7,22 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options
 from selenium_stealth import stealth
 import json
-
-# options = webdriver.ChromeOptions()
-# options.add_argument("start-maximized")
-# options.add_experimental_option("excludeSwitches", ["enable-automation"])
-# options.add_experimental_option('useAutomationExtension', False)
-# options.add_argument('--no-sandbox')
-# options.add_argument('--disable-dev-shm-usage')
-# options.add_argument("--headless")
+import sys
 
 s = Service(ChromeDriverManager().install())
 
+my_json_string = """{}"""
+to_python = json.loads(my_json_string)
+
+
 chrome_options = Options()
-chrome_options.add_argument('--headless')
+chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
+chrome_options.add_experimental_option('useAutomationExtension', False)
 chrome_options.add_argument('start-maximized')
-# chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
-# chrome_options.add_experimental_option('useAutomationExtension', False)
 chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--disable-dev-shm-usage')
 
-driver = webdriver.Chrome(service=s, chrome_options=chrome_options)
+driver = webdriver.Chrome(executable_path=ChromeDriverManager().install(), chrome_options=chrome_options)
 
 stealth(driver,
         languages=["en-US", "en"],
@@ -37,16 +33,11 @@ stealth(driver,
         fix_hairline=True,
         )
 
-my_json_string = """{}"""
-to_python = json.loads(my_json_string)
-
 wait = WebDriverWait(driver, 10)
 
 driver.get("https://kad.arbitr.ru/")
 
-driver.set_window_size(1920, 1080)
-
-driver.find_element(By.ID, "sug-participants").find_element(By.TAG_NAME, "textarea").send_keys("7704582421")
+driver.find_element(By.CSS_SELECTOR, 'textarea[class="g-ph"]').send_keys("7704582421")
 driver.find_element(By.ID, "b-form-submit").click()
 
 try:
@@ -65,7 +56,9 @@ try:
         def sity():
             need_data = ""
             try:
-                need_data = i.find_element(By.CLASS_NAME, "court").find_element(By.CLASS_NAME, "b-container").find_element(By.XPATH, ".//div[2]").text
+                need_data = i.find_element(By.CLASS_NAME, "court").find_element(By.CLASS_NAME,
+                                                                                "b-container").find_element(
+                    By.XPATH, ".//div[2]").text
             except:
                 need_data = "Null"
             return need_data
@@ -73,7 +66,8 @@ try:
         def respondent():
             need_data = ""
             try:
-                need_data = i.find_element(By.CLASS_NAME, "respondent").find_element(By.CLASS_NAME, "b-newRollover").text
+                need_data = i.find_element(By.CLASS_NAME, "respondent").find_element(By.CLASS_NAME,
+                                                                                     "b-newRollover").text
             except:
                 need_data = "Null"
             return need_data
@@ -81,7 +75,9 @@ try:
         def judge():
             need_data = ""
             try:
-                need_data = i.find_element(By.CLASS_NAME, "court").find_element(By.CLASS_NAME, "b-container").find_element(By.XPATH, ".//div[1]").text
+                need_data = i.find_element(By.CLASS_NAME, "court").find_element(By.CLASS_NAME,
+                                                                                "b-container").find_element(
+                    By.XPATH, ".//div[1]").text
             except:
                 need_data = "Null"
             return need_data
@@ -89,7 +85,8 @@ try:
         def id_url():
             need_data = ""
             try:
-                need_data = i.find_element(By.CLASS_NAME, "num").find_element(By.TAG_NAME, "a").get_attribute("href")
+                need_data = i.find_element(By.CLASS_NAME, "num").find_element(By.TAG_NAME, "a").get_attribute(
+                    "href")
             except:
                 need_data = "Null"
             return need_data
@@ -105,7 +102,8 @@ try:
         def data():
             need_data = ""
             try:
-                need_data = i.find_element(By.CLASS_NAME, "num").find_element(By.TAG_NAME, "span").get_attribute("innerHTML")
+                need_data = i.find_element(By.CLASS_NAME, "num").find_element(By.TAG_NAME, "span").get_attribute(
+                    "innerHTML")
             except:
                 need_data = "Null"
             return need_data
@@ -113,7 +111,8 @@ try:
         def plaintiff():
             need_data = ""
             try:
-                need_data = i.find_element(By.CLASS_NAME, "plaintiff").find_element(By.CLASS_NAME, "b-newRollover").text
+                need_data = i.find_element(By.CLASS_NAME, "plaintiff").find_element(By.CLASS_NAME,
+                                                                                    "b-newRollover").text
             except:
                 need_data = "Null"
             return need_data
@@ -136,4 +135,7 @@ except:
     to_python["many"] = "Найдено 0 элементов"
     to_python["response"] = "Null"
 
-print(to_python)
+driver.close()
+
+print(json.dumps(to_python))
+
