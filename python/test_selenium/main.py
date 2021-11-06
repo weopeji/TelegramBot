@@ -1,7 +1,17 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-driver = webdriver.Chrome("/usr/lib/chromium-browser/chromedriver")
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.by import By
+
+s = Service(ChromeDriverManager().install())
+
+driver = webdriver.Chrome(service=s)
+driver.maximize_window()
+
 driver.get("http://www.python.org")
+
+
 assert "Python" in driver.title
 elem = driver.find_element_by_name("q")
 elem.clear()
