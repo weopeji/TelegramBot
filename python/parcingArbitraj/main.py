@@ -21,8 +21,8 @@ s = Service(ChromeDriverManager().install())
 chrome_options = Options()
 chrome_options.add_argument('--headless')
 chrome_options.add_argument('start-maximized')
-chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
-chrome_options.add_experimental_option('useAutomationExtension', False)
+# chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
+# chrome_options.add_experimental_option('useAutomationExtension', False)
 chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--disable-dev-shm-usage')
 
@@ -43,6 +43,8 @@ to_python = json.loads(my_json_string)
 wait = WebDriverWait(driver, 10)
 
 driver.get("https://kad.arbitr.ru/")
+
+driver.set_window_size(1920, 1080)
 
 driver.find_element(By.ID, "sug-participants").find_element(By.TAG_NAME, "textarea").send_keys("7704582421")
 driver.find_element(By.ID, "b-form-submit").click()
