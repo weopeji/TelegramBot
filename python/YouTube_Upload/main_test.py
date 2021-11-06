@@ -15,8 +15,8 @@ upload_date_time = datetime.datetime(2020, 12, 25, 12, 30, 0).isoformat() + '.00
 request_body = {
     'snippet': {
         'categoryI': 19,
-        'title': 'PRUFFME',
-        'description': 'На развитие',
+        'title': 'Test title',
+        'description': 'need description',
         'tags': ['video test']
     },
     'status': {
@@ -28,20 +28,20 @@ request_body = {
 }
 
 
-def main():
-    mediaFile = MediaFileUpload(sys.argv[1])
-
-    response_upload = service.videos().insert(
-        part='snippet,status',
-        body=request_body,
-        media_body=mediaFile
-    ).execute()
-
-    service.thumbnails().set(
-        videoId=response_upload.get('id'),
-        media_body=MediaFileUpload('photo.jpg')
-    ).execute()
+mediaFile = MediaFileUpload('video.mp4')
 
 
-main()
+response_upload = service.videos().insert(
+    part='snippet,status',
+    body=request_body,
+    media_body=mediaFile
+).execute()
+
+service.thumbnails().set(
+    videoId=response_upload.get('id'),
+    media_body=MediaFileUpload('photo.jpg')
+).execute()
+
+
+
 

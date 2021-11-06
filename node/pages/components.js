@@ -842,6 +842,8 @@ async function setProject(socket,data,callback)
 
         await PythonShell.run('main.py', options, function (err, results) {
             if (err) throw err;
+
+            
         })
     }
 
