@@ -837,13 +837,11 @@ async function setProject(socket,data,callback)
         {
             mode: 'text',
             scriptPath: '../python/YouTube_Upload',
-            args: _patch + '/' +_project.data[file+8],
+            args: _patch + '/' +_project.data["file+8"],
         };
 
         await PythonShell.run('main.py', options, function (err, results) {
             if (err) throw err;
-
-            
         })
     }
 
