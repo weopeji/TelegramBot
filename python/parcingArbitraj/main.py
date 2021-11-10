@@ -139,7 +139,7 @@ except:
 
 driver.close()
 
-_response = json.loads(json.dumps(_array, ensure_ascii=False).encode('utf8').decode())
+_response = json.dumps(_array, ensure_ascii=False).encode('utf8').decode()
 
 print(_response)
 
