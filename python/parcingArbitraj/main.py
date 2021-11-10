@@ -137,5 +137,5 @@ except:
 
 driver.close()
 
-print(json.dumps(to_python))
+print(to_python)
 

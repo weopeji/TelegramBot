@@ -28,20 +28,20 @@ request_body = {
 }
 
 
-def main():
-    mediaFile = MediaFileUpload(sys.argv[1])
 
-    response_upload = service.videos().insert(
-        part='snippet,status',
-        body=request_body,
-        media_body=mediaFile
-    ).execute()
+mediaFile = MediaFileUpload(sys.argv[1])
 
-    service.thumbnails().set(
-        videoId=response_upload.get('id'),
-        media_body=MediaFileUpload('photo.jpg')
-    ).execute()
+response_upload = service.videos().insert(
+    part='snippet,status',
+    body=request_body,
+    media_body=mediaFile
+).execute()
+
+service.thumbnails().set(
+    videoId=response_upload.get('id'),
+    media_body=MediaFileUpload('photo.jpg')
+).execute()
 
 
-main()
+
 
