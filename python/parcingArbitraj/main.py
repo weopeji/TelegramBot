@@ -35,8 +35,7 @@ stealth(driver,
 
 wait = WebDriverWait(driver, 10)
 
-my_json_string = """{}"""
-to_python = json.loads(my_json_string)
+_array = {}
 
 driver.get("https://kad.arbitr.ru/")
 
@@ -44,7 +43,7 @@ driver.find_element(By.CSS_SELECTOR, 'textarea[class="g-ph"]').send_keys("770458
 driver.find_element(By.ID, "b-form-submit").click()
 
 try:
-    to_python["many"] = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, '.b-found-total'))).get_attribute("innerHTML")
+    _array["many"] = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, '.b-found-total'))).get_attribute("innerHTML")
 
     wait.until(EC.visibility_of_element_located((By.XPATH, '//table/colgroup')))
 
@@ -132,13 +131,18 @@ try:
 
         all_children_data.append(elementJSON)
 
-    to_python["response"] = json.dumps(all_children_data, ensure_ascii=False).encode('utf8').decode()
+    _array["response"] = all_children_data
 
 except:
-    to_python["many"] = "Найдено 0 элементов"
-    to_python["response"] = "Null"
+    _array["many"] = "Найдено 0 элементов"
+    _array["response"] = "Null"
 
 driver.close()
 
-print(json.dumps(to_python, ensure_ascii=False).encode('utf8').decode())
+my_json_string = """{}"""
+_response = json.loads(my_json_string)
+
+_response["response"] = json.dumps(_array, ensure_ascii=False).encode('utf8').decode()
+
+print(_response)
 
