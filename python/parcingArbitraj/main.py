@@ -140,5 +140,5 @@ except:
 
 driver.close()
 
-print(to_python)
+print(json.dumps(to_python, ensure_ascii=False).encode('utf8').decode())
 
