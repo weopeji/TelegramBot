@@ -139,10 +139,7 @@ except:
 
 driver.close()
 
-my_json_string = """{}"""
-_response = json.loads(my_json_string)
-
-_response = json.dumps(_array, ensure_ascii=False).encode('utf8').decode()
+_response = json.loads(json.dumps(_array, ensure_ascii=False).encode('utf8').decode())
 
 print(_response)
 
