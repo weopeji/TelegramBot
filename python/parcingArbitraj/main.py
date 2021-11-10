@@ -10,136 +10,140 @@ import json
 from pyvirtualdisplay import Display
 import sys
 
-display = Display(visible=0, size=(800, 600))
-display.start()
+def main(argv):
 
-s = Service(ChromeDriverManager().install())
+    display = Display(visible=0, size=(800, 600))
+    display.start()
 
-chrome_options = Options()
-chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
-chrome_options.add_experimental_option('useAutomationExtension', False)
-chrome_options.add_argument('start-maximized')
-chrome_options.add_argument('--no-sandbox')
-chrome_options.add_argument('--disable-dev-shm-usage')
+    s = Service(ChromeDriverManager().install())
 
-driver = webdriver.Chrome(executable_path=ChromeDriverManager().install(), chrome_options=chrome_options)
+    chrome_options = Options()
+    chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
+    chrome_options.add_experimental_option('useAutomationExtension', False)
+    chrome_options.add_argument('start-maximized')
+    chrome_options.add_argument('--no-sandbox')
+    chrome_options.add_argument('--disable-dev-shm-usage')
 
-stealth(driver,
-        languages=["en-US", "en"],
-        vendor="Google Inc.",
-        platform="Win32",
-        webgl_vendor="Intel Inc.",
-        renderer="Intel Iris OpenGL Engine",
-        fix_hairline=True,
-        )
+    driver = webdriver.Chrome(executable_path=ChromeDriverManager().install(), chrome_options=chrome_options)
 
-wait = WebDriverWait(driver, 10)
+    stealth(driver,
+            languages=["en-US", "en"],
+            vendor="Google Inc.",
+            platform="Win32",
+            webgl_vendor="Intel Inc.",
+            renderer="Intel Iris OpenGL Engine",
+            fix_hairline=True,
+            )
 
-_array = {}
+    wait = WebDriverWait(driver, 10)
 
-driver.get("https://kad.arbitr.ru/")
+    _array = {}
 
-driver.find_element(By.CSS_SELECTOR, 'textarea[class="g-ph"]').send_keys("7704582421")
-driver.find_element(By.ID, "b-form-submit").click()
+    driver.get("https://kad.arbitr.ru/")
 
-try:
-    _array["many"] = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, '.b-found-total'))).get_attribute("innerHTML")
+    driver.find_element(By.CSS_SELECTOR, 'textarea[class="g-ph"]').send_keys(argv)
+    driver.find_element(By.ID, "b-form-submit").click()
 
-    wait.until(EC.visibility_of_element_located((By.XPATH, '//table/colgroup')))
+    try:
+        _array["many"] = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, '.b-found-total'))).get_attribute("innerHTML")
 
-    header_table = driver.find_element(By.ID, "table")
+        wait.until(EC.visibility_of_element_located((By.XPATH, '//table/colgroup')))
 
-    all_children = header_table.find_elements(By.TAG_NAME, "tr")
+        header_table = driver.find_element(By.ID, "table")
 
-    all_children_data = []
+        all_children = header_table.find_elements(By.TAG_NAME, "tr")
 
-    for i in all_children:
+        all_children_data = []
 
-        def sity():
-            need_data = ""
-            try:
-                need_data = i.find_element(By.CLASS_NAME, "court").find_element(By.CLASS_NAME,
-                                                                                "b-container").find_element(
-                    By.XPATH, ".//div[2]").text
-            except:
-                need_data = "Null"
-            return need_data
+        for i in all_children:
 
-        def respondent():
-            need_data = ""
-            try:
-                need_data = i.find_element(By.CLASS_NAME, "respondent").find_element(By.CLASS_NAME,
-                                                                                     "b-newRollover").text
-            except:
-                need_data = "Null"
-            return need_data
+            def sity():
+                need_data = ""
+                try:
+                    need_data = i.find_element(By.CLASS_NAME, "court").find_element(By.CLASS_NAME,
+                                                                                    "b-container").find_element(
+                        By.XPATH, ".//div[2]").text
+                except:
+                    need_data = "Null"
+                return need_data
 
-        def judge():
-            need_data = ""
-            try:
-                need_data = i.find_element(By.CLASS_NAME, "court").find_element(By.CLASS_NAME,
-                                                                                "b-container").find_element(
-                    By.XPATH, ".//div[1]").text
-            except:
-                need_data = "Null"
-            return need_data
+            def respondent():
+                need_data = ""
+                try:
+                    need_data = i.find_element(By.CLASS_NAME, "respondent").find_element(By.CLASS_NAME,
+                                                                                         "b-newRollover").text
+                except:
+                    need_data = "Null"
+                return need_data
 
-        def id_url():
-            need_data = ""
-            try:
-                need_data = i.find_element(By.CLASS_NAME, "num").find_element(By.TAG_NAME, "a").get_attribute(
-                    "href")
-            except:
-                need_data = "Null"
-            return need_data
+            def judge():
+                need_data = ""
+                try:
+                    need_data = i.find_element(By.CLASS_NAME, "court").find_element(By.CLASS_NAME,
+                                                                                    "b-container").find_element(
+                        By.XPATH, ".//div[1]").text
+                except:
+                    need_data = "Null"
+                return need_data
 
-        def id():
-            need_data = ""
-            try:
-                need_data = i.find_element(By.CLASS_NAME, "num").find_element(By.TAG_NAME, "a").text
-            except:
-                need_data = "Null"
-            return need_data
+            def id_url():
+                need_data = ""
+                try:
+                    need_data = i.find_element(By.CLASS_NAME, "num").find_element(By.TAG_NAME, "a").get_attribute(
+                        "href")
+                except:
+                    need_data = "Null"
+                return need_data
 
-        def data():
-            need_data = ""
-            try:
-                need_data = i.find_element(By.CLASS_NAME, "num").find_element(By.TAG_NAME, "span").get_attribute(
-                    "innerHTML")
-            except:
-                need_data = "Null"
-            return need_data
+            def id():
+                need_data = ""
+                try:
+                    need_data = i.find_element(By.CLASS_NAME, "num").find_element(By.TAG_NAME, "a").text
+                except:
+                    need_data = "Null"
+                return need_data
 
-        def plaintiff():
-            need_data = ""
-            try:
-                need_data = i.find_element(By.CLASS_NAME, "plaintiff").find_element(By.CLASS_NAME,
-                                                                                    "b-newRollover").text
-            except:
-                need_data = "Null"
-            return need_data
+            def data():
+                need_data = ""
+                try:
+                    need_data = i.find_element(By.CLASS_NAME, "num").find_element(By.TAG_NAME, "span").get_attribute(
+                        "innerHTML")
+                except:
+                    need_data = "Null"
+                return need_data
 
-        elementJSON = {
-            "data": data(),
-            "id": id(),
-            "id_url": id_url(),
-            "judge": judge(),
-            "sity": sity(),
-            "plaintiff": plaintiff(),
-            "respondent": respondent(),
-        }
+            def plaintiff():
+                need_data = ""
+                try:
+                    need_data = i.find_element(By.CLASS_NAME, "plaintiff").find_element(By.CLASS_NAME,
+                                                                                        "b-newRollover").text
+                except:
+                    need_data = "Null"
+                return need_data
 
-        all_children_data.append(elementJSON)
+            elementJSON = {
+                "data": data(),
+                "id": id(),
+                "id_url": id_url(),
+                "judge": judge(),
+                "sity": sity(),
+                "plaintiff": plaintiff(),
+                "respondent": respondent(),
+            }
 
-    _array["response"] = all_children_data
+            all_children_data.append(elementJSON)
 
-except:
-    _array["many"] = "Найдено 0 элементов"
-    _array["response"] = "Null"
+        _array["response"] = all_children_data
 
-driver.close()
+    except:
+        _array["many"] = "Найдено 0 элементов"
+        _array["response"] = "Null"
 
-_response = json.dumps(_array, ensure_ascii=False).encode('utf8').decode()
+    driver.close()
 
-print(_response)
+    _response = json.dumps(_array, ensure_ascii=False).encode('utf8').decode()
+
+    print(_response)
+
+main(sys.argv[1])
 
