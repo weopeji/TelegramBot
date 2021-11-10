@@ -7,13 +7,13 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options
 from selenium_stealth import stealth
 import json
+from pyvirtualdisplay import Display
 import sys
 
+display = Display(visible=0, size=(800, 600))
+display.start()
+
 s = Service(ChromeDriverManager().install())
-
-my_json_string = """{}"""
-to_python = json.loads(my_json_string)
-
 
 chrome_options = Options()
 chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
@@ -34,6 +34,9 @@ stealth(driver,
         )
 
 wait = WebDriverWait(driver, 10)
+
+my_json_string = """{}"""
+to_python = json.loads(my_json_string)
 
 driver.get("https://kad.arbitr.ru/")
 
