@@ -1,25 +1,23 @@
-var Project     = null;
-var User        = null;
-var fs          = null;
-var wrench      = null;
-var path        = null;
-var bot         = null;
-var request     = require("request");
-var cheerio     = require("cheerio");
-var needle      = require('needle');
-var puppeteer   = require('puppeteer');
-var fetch       = require("node-fetch");
-var readline    = require('readline');
-var multer      = require("multer");
-var Jimp        = require("jimp");
-var uploader    = require('../helpers/uploader/upload');
-const { TelegramClient } = require("telegram");
-const { StringSession } = require("telegram/sessions"); 
-const { spawn, exec } = require('child_process');
-const _app = require("../app");
-let {PythonShell} = require('python-shell')
-
-const Instagram = require('instagram-web-api');
+var Project                 = null;
+var User                    = null;
+var fs                      = null;
+var wrench                  = null;
+var path                    = null;
+var bot                     = null;
+var request                 = require("request");
+var cheerio                 = require("cheerio");
+var needle                  = require('needle');
+var puppeteer               = require('puppeteer');
+var fetch                   = require("node-fetch");
+var readline                = require('readline');
+var multer                  = require("multer");
+var Jimp                    = require("jimp");
+const { TelegramClient }    = require("telegram");
+const { StringSession }     = require("telegram/sessions"); 
+const { spawn, exec }       = require('child_process');
+const _app                  = require("../app");
+let {PythonShell}           = require('python-shell')
+const Instagram             = require('instagram-web-api');
 
 
 module.exports = {
