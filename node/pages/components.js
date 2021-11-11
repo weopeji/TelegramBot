@@ -60,6 +60,10 @@ var privat_index_page = function(socket,data,callback) {
 
 var action_linker = 
 {
+    //test
+    "test_fun": test_fun,
+
+
     //  main
     "tg_alert": tg_alert,
     "tg_alert_user": tg_alert_user,
@@ -113,6 +117,22 @@ var action_linker =
     "getAllProjectsInvesting": getAllProjectsInvesting,
     "reload_type": reload_type,
     "getBitsFile": getBitsFile,
+}
+
+async function test_fun(socket,data,callback)
+{
+    let options = 
+    {
+        mode: 'text',
+        scriptPath: '../python/parcingArbitraj',
+        args: " 5029069967",
+    };
+
+    await PythonShell.run('main.py', options, function (err, results) {
+        if (err) throw err;
+
+        console.log(results);
+    })
 }
 
 async function tg_alert_user_numbers(socket,data,callback)
@@ -829,7 +849,7 @@ async function setProject(socket,data,callback)
                     if (err) throw err;
                 });
             }
-        });
+        }); 
 
         savePuppeter(_project._id);
 
@@ -842,6 +862,8 @@ async function setProject(socket,data,callback)
 
         await PythonShell.run('main.py', options, function (err, results) {
             if (err) throw err;
+
+            console.log(results);
         })
     }
 
