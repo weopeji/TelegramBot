@@ -124,13 +124,14 @@ async function test_fun(socket,data,callback)
     {
         mode: 'text',
         scriptPath: '../python/parcingArbitraj',
-        args: " 5029069967",
+        args: "5029069967",
     };
 
     await PythonShell.run('main.py', options, function (err, results) {
         if (err) throw err;
 
         console.log(JSON.parse(results));
+        console.log(results);
     })
 }
 
