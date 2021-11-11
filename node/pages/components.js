@@ -130,7 +130,7 @@ async function test_fun(socket,data,callback)
     await PythonShell.run('main.py', options, function (err, results) {
         if (err) throw err;
 
-        JSON.parse(results);
+        console.log(JSON.parse(results));
     })
 }
 
