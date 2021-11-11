@@ -149,6 +149,7 @@ var load_helpers = () =>
             helper_functions: helper_functions,
             InvDoc: InvDoc,
             MsgDB: MsgDB,
+            config: config,
         });
     };
 }

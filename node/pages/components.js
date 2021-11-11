@@ -43,6 +43,7 @@ function privateInit(initPlagins) {
     h           = initPlagins.helper_functions;
     InvDoc      = initPlagins.InvDoc;
     MsgDB       = initPlagins.MsgDB;
+    config      = initPlagins.config;
 }
 
 var privat_index_page = function(socket,data,callback) {
@@ -123,7 +124,7 @@ async function test_fun(socket,data,callback)
 {
     let options = 
     {
-        mode: 'text',
+        mode: 'json',
         scriptPath: '../python/parcingArbitraj',
         args: " 5029069967",
     };
@@ -748,81 +749,115 @@ async function acceptProject(socket,data,callback)
     })();
 }
 
-async function parceProject(type, data, callback) 
+
+
+
+
+async function parceProject(type, data) 
 {
-    var url = "https://suggestions.dadata.ru/suggestions/api/4_1/rs/findById/party";
-    var token = "cd3a829357362fec55fc201c3f761002def9906f";
-    var query = data.inn;
-    
-    var options = {
-        method: "POST",
-        mode: "cors",
-        headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json",
-            "Authorization": "Token " + token
-        },
-        body: JSON.stringify({query: query})
-    }
-    
-    fetch(url, options)
-    .then(response => response.text())
-    .then(result => 
+    var _ParcingArbitraj = async () => 
     {
-        var _dataFirst = JSON.parse(result.toString());
-
-        if(_dataFirst.suggestions.length == 0) 
+        let options = 
         {
-            callback('error');
-            return;
-        }
-        var _data = _dataFirst.suggestions[0].data;
+            mode: 'text',
+            scriptPath: '../python/parcingArbitraj',
+            args: " 5029069967",
+        };
 
-        console.log(_data);
+        await PythonShell.run('main.py', options, function (err, results) {
+            if (err) throw err;
 
-        if(type == "1")
-        {
-            var _conf = 
-            {
-                name: _data.name.full_with_opf,
-                info: `https://www.rusprofile.ru/search?query=${query}&type=ul`,
-                inn: _data.inn,
-                ogrn: _data.ogrn,
-                kpp: _data.kpp,
-                addr: _data.address.value,
-                do: null,
-                founder: _data.management.name,
+            console.log(results);
+        })
+        return new Promise((resolve,reject) =>{
+            try{
+                PythonShell.run(pythonFile, options, function(err, results) {
+                        if (err) {console.log(err);}
+                        console.log('results', results);
+                        resolve();          
+                }); 
             }
+            catch{
+                console.log('error running python code')
+                reject();
+            }
+        })
+    }
 
-            callback(_conf);
+    return new Promise((resolve,reject) =>
+    {   
+        var options = 
+        {
+            method: "POST",
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "Authorization": "Token " + config.dadata_token
+            },
+            body: JSON.stringify({query: data.inn})
         }
-
-        if(type == "2")
-        {   
-            var _conf = 
+        
+        fetch("https://suggestions.dadata.ru/suggestions/api/4_1/rs/findById/party", options)
+        .then(response => response.text())
+        .then(result => 
+        {
+            var _dataFirst = JSON.parse(result.toString());
+    
+            if(_dataFirst.suggestions.length == 0) 
             {
-                name: _data.name.full_with_opf,
-                info: `https://www.rusprofile.ru/search?query=${query}&type=ul`,
-                inn: _data.inn,
-                ogrn: _data.ogrn,
-                kpp: _data.kpp,
-                addr: _data.address.value,
-                do: null,
-                founder: _data.management.name,
-                credit_story: null,
-                practic: null,
-                production: null,
-            };
-
-            callback(_conf);
-        }
-
+                resolve('error');
+            } else 
+            {
+                resolve(_dataFirst.suggestions[0].data);
+            }
+        });
     });
 }
 
 async function setProject(socket,data,callback) 
 {
-    var _User       = await User.findOne({user: data.user});
+    var _User           = await User.findOne({user: data.user});
+    var user_path       = `../users/${_User.user}`;
+    var _DataProject    = 
+    {
+        user: data.user,
+        type: "moderation",
+        data: data.data,
+        parce: null,
+        redacting: null,
+        signature: null,
+        signature_document: null,
+    };
+
+    if(data.data.organization != "3")
+    {
+        var _Parce = await parceProject(data.data.organization, data.data);
+        if(_Parce == 'error') { callback('error'); return; };
+        _DataProject.parce = _Parce;
+    }
+
+    var _Project        = await Project.create(_DataProject);
+    var _patch          = `../projects/${_Project._id}`;
+
+    await wrench.copyDirSyncRecursive(user_path, _patch);
+
+    await fs.readdir(user_path, (err, files) => {
+        if (err) throw err;
+      
+        for (const file of files) {
+            fs.unlink(path.join(user_path, file), err => {
+                if (err) throw err;
+            });
+        }
+    }); 
+
+    savePuppeter(_project._id);
+    callback({status: "ok"});
+
+
+
+
 
     async function start_load(_parce) 
     {
@@ -836,8 +871,7 @@ async function setProject(socket,data,callback)
             signature_document: null,
         });
         
-        var _patch = `../projects/${_project._id}`;
-        var user_path = `../users/${_User.user}`;
+        
     
         await wrench.copyDirSyncRecursive(user_path, _patch);
     
