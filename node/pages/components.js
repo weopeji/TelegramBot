@@ -122,7 +122,7 @@ async function test_fun(socket,data,callback)
 {
     let options = 
     {
-        mode: 'json',
+        mode: 'text',
         scriptPath: '../python/parcingArbitraj',
         args: " 5029069967",
     };
