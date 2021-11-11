@@ -130,7 +130,7 @@ async function test_fun(socket,data,callback)
     await PythonShell.run('main.py', options, function (err, results) {
         if (err) throw err;
 
-        console.log(results);
+        JSON.parse(results);
     })
 }
 
@@ -762,22 +762,15 @@ async function parceProject(type, data)
             args: " 5029069967",
         };
 
-        await PythonShell.run('main.py', options, function (err, results) {
-            if (err) throw err;
-
-            console.log(results);
-        })
-        return new Promise((resolve,reject) =>{
-            try{
-                PythonShell.run(pythonFile, options, function(err, results) {
-                        if (err) {console.log(err);}
-                        console.log('results', results);
-                        resolve();          
-                }); 
+        return new Promise((resolve,reject) => {
+            try {
+                PythonShell.run('main.py', options, function (err, results) {
+                    if (err) throw err;
+                    resolve(results);  
+                });
             }
             catch{
-                console.log('error running python code')
-                reject();
+                resolve("error");  
             }
         })
     }
