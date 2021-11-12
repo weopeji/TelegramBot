@@ -325,4 +325,21 @@
 .body_point_line_input i {
   font-size: 58px;
 }
+
+.not_accept_block_button {
+  width: calc(100% - 40px);
+  padding: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  background-color: #182037;
+  margin-top: 20px;
+}
 /*# sourceMappingURL=index.css.map */
