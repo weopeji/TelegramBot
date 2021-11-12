@@ -817,7 +817,7 @@ var _AllParce =
             try {
                 PythonShell.run('main.py', options, function (err, results) {
                     if (err) throw err;
-                    resolve(JSON.parse(results)); 
+                    resolve(results); 
                 })
             }
             catch{
