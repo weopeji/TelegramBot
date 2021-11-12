@@ -438,17 +438,34 @@
 
             firstBlockMore.css("padding-bottom", "20px");
 
-            firstBlockMore.click( function () {
-                var _this = $(this);
-                _this.find('.body_point_line_first').fadeOut( function () {
-                    _this.find('.body_point_line_input').fadeIn();
+            // firstBlockMore.click( function () {
+            //     var _this = $(this);
+            //     _this.find('.body_point_line_first').fadeOut( function () {
+            //         _this.find('.body_point_line_input').fadeIn();
+            //     });
+            // })
+
+            // firstBlockMore.find('.body_point_line_input_close').click( function () {
+            //     var _this = $(this).parent().parent();
+            //     _this.find('.body_point_line_input').fadeOut( function () {
+            //         _this.find('.body_point_line_first').fadeIn();
+            //     });
+            // })
+
+            firstBlockMore.find(".body_point_line_input_close").click( function() {
+                $(this).parent().parent().fadeOut( function() 
+                {
+                    $(this).parent().find(".body_point_line_first").fadeIn();
                 });
             })
 
-            firstBlockMore.find('.body_point_line_input_close').click( function () {
-                var _this = $(this).parent().parent();
-                _this.find('.body_point_line_input').fadeOut( function () {
-                    _this.find('.body_point_line_first').fadeIn();
+            firstBlockMore.find(".body_point_line_input_accept").click( function() {
+                $(this).parent().parent().fadeOut( function() 
+                {
+                    var _text = $(this).parent().find("textarea").val();
+                    $(this).parent().find(".body_point_line_first p").html(_text);
+
+                    $(this).parent().find(".body_point_line_first").fadeIn();
                 });
             })
 
