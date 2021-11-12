@@ -1278,19 +1278,19 @@
                     </div>
                 `);
 
-                userLine.click(async function() {
-                    var _id = $(this).attr('data');
-                    var getUserID = await callApi({
-                        methodName: "getUserID",
-                        data: _id,
-                    });
-                    location.href = `/user=${getUserID}`;
-                })
-
                 templateText.find('.settingBlock_body').append(userLine);
             })
 
             $('.index_page_body_data').append(templateText);
+
+            $('.settingBlock_body_line').click(async function() {
+                var _id = $(this).attr('data');
+                var getUserID = await callApi({
+                    methodName: "getUserID",
+                    data: _id,
+                });
+                location.href = `/user=${getUserID}`;
+            })
         }
     }
 
