@@ -2,6 +2,7 @@ import datetime
 from Google import Create_Service
 from googleapiclient.http import MediaFileUpload
 import sys
+import json
 
 CLIENT_SECRET_FILE = '/var/www/python/YouTube_Upload/client_secret.json'
 API_NAME = 'youtube'
@@ -40,7 +41,7 @@ service.thumbnails().set(
     media_body=MediaFileUpload('photo.jpg')
 ).execute()
 
-print(response_upload)
+print(json.dumps(response_upload, ensure_ascii=False).encode('utf8').decode())
 
 
 
