@@ -101,6 +101,7 @@
                 _components[typeAttr + "_mini"]();
             })
         }
+        
 
         function acceptingButtons(_id) 
         {

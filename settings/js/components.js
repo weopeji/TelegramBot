@@ -566,7 +566,43 @@
                 </div>
             `);
 
+            not_accept.click( function () 
+            {
+                var _array = [];
+
+                $('.body_point').each(function(i,elem) 
+                {
+                    var _input = $(elem).find('input').val();
+
+                    if(_input.length > 0)
+                    {
+                        _array.push({
+                            type: $(elem).find('textarea').attr('id').split('_')[0],
+                            value: $(elem).find('textarea').val(),
+                        })
+                    }
+
+                    this.not_accept({
+                        _id: _GET('id'),
+                        data: _array,
+                    });
+
+                    alert('Проект отправленн на исправление!');
+                    
+                    location.reload();
+                })
+            })
+
             this.global_block.append(not_accept);
+        }
+
+        not_accept(data) {
+            callApi({
+                methodName: 'not_acceptProject',
+                data: data,
+            }).then((data) => {
+                return data; 
+            });
         }
 
         async renderInfo(_project)
