@@ -751,7 +751,7 @@ async function acceptProject(socket,data,callback)
 
 var _AllParce = 
 {
-    "parceProject": function()
+    "parceProject": async function()
     {
         return new Promise((resolve,reject) =>
         {   
@@ -783,7 +783,7 @@ var _AllParce =
             });
         });
     },
-    "_ParcingArbitraj": function(inn)
+    "_ParcingArbitraj": async function(inn)
     {
         let options = 
         {
@@ -804,7 +804,7 @@ var _AllParce =
             }
         })
     },
-    "uploadVideo": function(_projectPath)
+    "uploadVideo": async function(_projectPath)
     {
         let options = 
         {
@@ -815,7 +815,7 @@ var _AllParce =
 
         return new Promise((resolve,reject) => {
             try {
-                await PythonShell.run('main.py', options, function (err, results) {
+                PythonShell.run('main.py', options, function (err, results) {
                     if (err) throw err;
                     resolve(JSON.parse(results)); 
                 })
