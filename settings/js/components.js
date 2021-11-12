@@ -438,12 +438,12 @@
 
             firstBlockMore.css("padding-bottom", "20px");
 
-            // firstBlockMore.click( function () {
-            //     var _this = $(this);
-            //     _this.find('.body_point_line_first').fadeOut( function () {
-            //         _this.find('.body_point_line_input').fadeIn();
-            //     });
-            // })
+            firstBlockMore.click( function () {
+                var _this = $(this);
+                _this.find('.body_point_line_first').fadeOut( function () {
+                    _this.find('.body_point_line_input').fadeIn();
+                });
+            })
 
             // firstBlockMore.find('.body_point_line_input_close').click( function () {
             //     var _this = $(this).parent().parent();
