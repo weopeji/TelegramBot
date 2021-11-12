@@ -445,6 +445,13 @@
                 });
             })
 
+            firstBlockMore.find('.body_point_line_input_close').click( function () {
+                var _this = $(this).parent().parent();
+                _this.find('.body_point_line_input').fadeOut( function () {
+                    _this.find('.body_point_line_first').fadeIn();
+                });
+            })
+
             this.global_block.append(firstBlockMore);
 
             var string      = function (element, _project)
