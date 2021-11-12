@@ -749,63 +749,84 @@ async function acceptProject(socket,data,callback)
 }
 
 
-
-
-
-async function parceProject(type, data) 
+var _AllParce = 
 {
-    var _ParcingArbitraj = async () => 
+    "parceProject": function()
+    {
+        return new Promise((resolve,reject) =>
+        {   
+            var options = 
+            {
+                method: "POST",
+                mode: "cors",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                    "Authorization": "Token " + config.dadata_token
+                },
+                body: JSON.stringify({query: data.inn})
+            }
+            
+            fetch("https://suggestions.dadata.ru/suggestions/api/4_1/rs/findById/party", options)
+            .then(response => response.text())
+            .then(result => 
+            {
+                var _dataFirst = JSON.parse(result.toString());
+        
+                if(_dataFirst.suggestions.length == 0) 
+                {
+                    resolve('error');
+                } else 
+                {
+                    resolve(_dataFirst.suggestions[0].data);
+                }
+            });
+        });
+    },
+    "_ParcingArbitraj": function(inn)
     {
         let options = 
         {
             mode: 'text',
             scriptPath: '../python/parcingArbitraj',
-            args: " 5029069967",
+            args: inn,
         };
 
         return new Promise((resolve,reject) => {
             try {
                 PythonShell.run('main.py', options, function (err, results) {
                     if (err) throw err;
-                    resolve(results);  
+                    resolve(JSON.parse(results));  
                 });
             }
             catch{
-                resolve("error");  
+                reject();  
+            }
+        })
+    },
+    "uploadVideo": function(_projectPath)
+    {
+        let options = 
+        {
+            mode: 'text',
+            scriptPath: '../python/YouTube_Upload',
+            args: _patch + '/' + _projectPath,
+        };
+
+        return new Promise((resolve,reject) => {
+            try {
+                await PythonShell.run('main.py', options, function (err, results) {
+                    if (err) throw err;
+                    resolve(JSON.parse(results)); 
+                })
+            }
+            catch{
+                reject();  
             }
         })
     }
-
-    return new Promise((resolve,reject) =>
-    {   
-        var options = 
-        {
-            method: "POST",
-            mode: "cors",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json",
-                "Authorization": "Token " + config.dadata_token
-            },
-            body: JSON.stringify({query: data.inn})
-        }
-        
-        fetch("https://suggestions.dadata.ru/suggestions/api/4_1/rs/findById/party", options)
-        .then(response => response.text())
-        .then(result => 
-        {
-            var _dataFirst = JSON.parse(result.toString());
-    
-            if(_dataFirst.suggestions.length == 0) 
-            {
-                resolve('error');
-            } else 
-            {
-                resolve(_dataFirst.suggestions[0].data);
-            }
-        });
-    });
 }
+
 
 async function setProject(socket,data,callback) 
 {
@@ -824,9 +845,13 @@ async function setProject(socket,data,callback)
 
     if(data.data.organization != "3")
     {
-        var _Parce = await parceProject(data.data.organization, data.data);
-        if(_Parce == 'error') { callback('error'); return; };
-        _DataProject.parce = _Parce;
+        var _ParceProject       = await _AllParce.parceProject(data.data.organization, data.data);
+        if(_ParceProject == 'error') { callback('error'); return; };
+        var _ParceProjectAr     = await _AllParce._ParcingArbitraj(data.data.inn);
+        _DataProject.parce      = {
+            "pr": _ParceProject,
+            "ar": _ParceProjectAr,
+        };
     }
 
     var _Project        = await Project.create(_DataProject);
@@ -844,70 +869,10 @@ async function setProject(socket,data,callback)
         }
     }); 
 
-    savePuppeter(_project._id);
-    callback({status: "ok"});
-
-
-
-
-
-    async function start_load(_parce) 
-    {
-        var _project    = await Project.create({
-            user: data.user,
-            type: "moderation",
-            data: data.data,
-            parce: _parce,
-            redacting: null,
-            signature: null,
-            signature_document: null,
-        });
-        
-        
-    
-        await wrench.copyDirSyncRecursive(user_path, _patch);
-    
-        await fs.readdir(user_path, (err, files) => {
-            if (err) throw err;
-          
-            for (const file of files) {
-                fs.unlink(path.join(user_path, file), err => {
-                    if (err) throw err;
-                });
-            }
-        }); 
-
-        savePuppeter(_project._id);
-
-        let options = 
-        {
-            mode: 'text',
-            scriptPath: '../python/YouTube_Upload',
-            args: _patch + '/' +_project.data["file+8"],
-        };
-
-        await PythonShell.run('main.py', options, function (err, results) {
-            if (err) throw err;
-
-            console.log(results);
-        })
-    }
-
-    if(data.data.organization == "3") {
-        start_load();
-        callback({status: "ok"});
-    } else {
-        parceProject(data.data.organization, data.data, async function(_parce) 
-        {
-            if(_parce == 'error') {
-                callback('error');
-                return;
-            }
-            start_load(_parce);
-            callback({status: "ok"});
-        });
-    }
-    
+    var YT_VIDEO = _AllParce.uploadVideo(_Project.data["file+8"]);
+    await Project.findOneAndUpdate({_id: _Project._id}, {YT_VIDEO: YT_VIDEO});
+    savePuppeter(_Project._id);
+    callback({status: "ok"});    
 }
 
 async function savePuppeter(putProject)
@@ -915,10 +880,11 @@ async function savePuppeter(putProject)
     var _urlImgProject = `${h.getURL()}html/project/cover/?id=${putProject}`;
     console.log(_urlImgProject);
     const browser = await puppeteer.launch({
+        defaultViewport: {width: 1920, height: 1080},
         args: ['--no-sandbox', '--disable-setuid-sandbox'],
     });
     const page = await browser.newPage();
-    await page.goto(_urlImgProject);
+    await page.goto(_urlImgProject); 
     await page.emulateMedia('screen');
     const element = await page.$('.cover_block');   
     await element.screenshot({path: `../projects/${putProject}/logo.png`});

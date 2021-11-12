@@ -27,9 +27,7 @@ request_body = {
     'notifySubscribers': False
 }
 
-
-mediaFile = MediaFileUpload('video.mp4')
-
+mediaFile = MediaFileUpload(sys.argv[1])
 
 response_upload = service.videos().insert(
     part='snippet,status',
@@ -41,6 +39,8 @@ service.thumbnails().set(
     videoId=response_upload.get('id'),
     media_body=MediaFileUpload('photo.jpg')
 ).execute()
+
+print(response_upload)
 
 
 
