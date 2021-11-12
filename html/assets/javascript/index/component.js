@@ -253,7 +253,7 @@
             });
 
             $('.show_document').click( function() {
-                window.open(`https://skin-win.ru/html/project/document/#${_data.InvDoc.projectId}`, '_blank');
+                window.open(`https://invester-relocation.site/html/project/document/#${_data.InvDoc.projectId}`, '_blank');
             });
 
             $('.accept_block').click( async function () {
