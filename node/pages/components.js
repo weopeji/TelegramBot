@@ -831,7 +831,7 @@ var _AllParce =
 async function setProject(socket,data,callback) 
 {
     var _User           = await User.findOne({user: data.user});
-    var user_path       = `/var/www/users/${_User.user}`;
+    var user_path       = `../users/${_User.user}`;
     var _DataProject    = 
     {
         user: data.user,
@@ -855,7 +855,7 @@ async function setProject(socket,data,callback)
     }
 
     var _Project        = await Project.create(_DataProject);
-    var _patch          = `../projects/${_Project._id}`;
+    var _patch          = `/var/www/projects/${_Project._id}`;
 
     await wrench.copyDirSyncRecursive(user_path, _patch);
 
