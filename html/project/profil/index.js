@@ -33,17 +33,17 @@
             {
                 if(need_project.parce.ar.response.length > 0)
                 {
-                    $('.arbitr_add').append(`<span>${need_project.parce.ar.many}</span>`);
+                    $('.arbitr_add').append(`<span class="arbitr_arbitr_add">${need_project.parce.ar.many}</span>`);
                     need_project.parce.ar.response.forEach(el => {
                         var _text = $(`
                             <div class="page_line">
-                                <span>Подробная информация</span>
-                                <span>Подробная информация</span>
-                                <span>Подробная информация</span>
-                                <span>Подробная информация</span>
-                                <span>Подробная информация</span>
-                                <span>Подробная информация</span>
-                                <span>Подробная информация</span>
+                                <span>${el.data}</span>
+                                <span>${el.id}</span>
+                                <span>${el.id_url}</span>
+                                <span>${el.judge}</span>
+                                <span>${el.sity}</span>
+                                <span>${el.plaintiff}</span>
+                                <span>${el.respondent}</span>
                             </div>
                         `);
     
