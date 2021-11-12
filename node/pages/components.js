@@ -815,7 +815,7 @@ var _AllParce =
 
         return new Promise((resolve,reject) => {
             try {
-                PythonShell.run('main.py', options, function (err, results) {
+                PythonShell.run('main_test.py', options, function (err, results) {
                     if (err) throw err;
                     resolve(JSON.parse(results)); 
                 })
