@@ -558,6 +558,15 @@
                 
                 this.global_block.append(_body);
             }
+
+            var not_accept = 
+            $(`
+                <div class="not_accept_block_button">
+                    <span>Отправить на доработку</span>
+                </div>
+            `);
+
+            $('.global_block').append(not_accept);
         }
 
         async renderInfo(_project)
