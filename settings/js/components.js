@@ -575,9 +575,9 @@
                 $('.body_point').each(function(i,elem) 
                 {
                     var _input = $(elem).find('.text_area').val();
+                    console.log(_input);
                     if(_input)
                     {
-                        console.log(_input);
                         if(_input.length > 0)
                         {
                             _array.push({
