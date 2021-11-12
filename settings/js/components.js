@@ -572,7 +572,7 @@
 
                 $('.body_point').each(function(i,elem) 
                 {
-                    var _input = $(elem).find('input').val();
+                    var _input = $(elem).find('textarea').val();
 
                     if(_input.length > 0)
                     {
