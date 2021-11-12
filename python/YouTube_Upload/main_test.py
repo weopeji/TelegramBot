@@ -27,7 +27,7 @@ request_body = {
     'notifySubscribers': False
 }
 
-mediaFile = MediaFileUpload(sys.argv[1])
+mediaFile = MediaFileUpload("video.mp4")
 
 response_upload = service.videos().insert(
     part='snippet,status',
