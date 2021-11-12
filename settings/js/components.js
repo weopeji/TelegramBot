@@ -439,8 +439,9 @@
             firstBlockMore.css("padding-bottom", "20px");
 
             firstBlockMore.click( function () {
-                $('.body_point_line_first').fadeOut( function () {
-                    $('.body_point_line_input').fadeIn();
+                var _this = $(this);
+                _this.find('.body_point_line_first').fadeOut( function () {
+                    _this.find('.body_point_line_input').fadeIn();
                 });
             })
 
