@@ -459,12 +459,12 @@
             })
 
             firstBlockMore.find(".body_point_line_input_accept").click( function() {
-                $(this).parent().parent().fadeOut( function() 
+                $(this).parent().fadeOut( function() 
                 {
                     var _text = $(this).parent().find("textarea").val();
-                    $(this).parent().find(".body_point_line_first p").html(_text);
+                    $(this).parent().parent().find(".body_point_line_first p").html(_text);
 
-                    $(this).parent().find(".body_point_line_first").fadeIn();
+                    $(this).parent().parent().find(".body_point_line_first").fadeIn();
                 });
             })
 
