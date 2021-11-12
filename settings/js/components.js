@@ -566,6 +566,8 @@
                 </div>
             `);
 
+            var _this = this;
+
             not_accept.click( function () 
             {
                 var _array = [];
@@ -582,7 +584,7 @@
                         })
                     }
 
-                    this.not_accept({
+                    _this.not_accept({
                         _id: _GET('id'),
                         data: _array,
                     });
