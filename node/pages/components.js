@@ -709,13 +709,13 @@ async function acceptProject(socket,data,callback)
                 [
                     {
                         text: "Рекомендовать",
-                        url: `https://t.me/investER_localhost_bot?start=member_${data}`,
+                        url: `https://t.me/invester_official_bot?start=member_${data}`,
                     }
                 ],
                 [
                     {
                         text: "Инвестровать",
-                        url: `https://t.me/investER_localhost_bot?start=project_${data}`,
+                        url: `https://t.me/invester_official_bot?start=project_${data}`,
                     }
                 ]
             ],
