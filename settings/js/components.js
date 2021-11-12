@@ -583,16 +583,16 @@
                             value: $(elem).find('textarea').val(),
                         })
                     }
-
-                    _this.not_accept({
-                        _id: _GET('id'),
-                        data: _array,
-                    });
-
-                    alert('Проект отправленн на исправление!');
-                    
-                    location.reload();
                 })
+
+                _this.not_accept({
+                    _id: _GET('id'),
+                    data: _array,
+                });
+
+                alert('Проект отправленн на исправление!');
+                
+                location.reload();
             })
 
             this.global_block.append(not_accept);
