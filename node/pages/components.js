@@ -751,7 +751,7 @@ async function acceptProject(socket,data,callback)
 
 var _AllParce = 
 {
-    "parceProject": async function()
+    "parceProject": async function(inn)
     {
         return new Promise((resolve,reject) =>
         {   
@@ -764,7 +764,7 @@ var _AllParce =
                     "Accept": "application/json",
                     "Authorization": "Token " + config.dadata_token
                 },
-                body: JSON.stringify({query: data.inn})
+                body: JSON.stringify({query: inn})
             }
             
             fetch("https://suggestions.dadata.ru/suggestions/api/4_1/rs/findById/party", options)
@@ -845,7 +845,7 @@ async function setProject(socket,data,callback)
 
     if(data.data.organization != "3")
     {
-        var _ParceProject       = await _AllParce.parceProject(data.data.organization, data.data);
+        var _ParceProject       = await _AllParce.parceProject(data.data.inn);
         if(_ParceProject == 'error') { callback('error'); return; };
         var _ParceProjectAr     = await _AllParce._ParcingArbitraj(data.data.inn);
         _DataProject.parce      = {
