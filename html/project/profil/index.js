@@ -40,11 +40,14 @@
                                 <span>${el.data}</span>
                                 <span>${el.id}</span>
                                 <span>${el.id_url}</span>
+                            </div>
+                            <div class="page_line">
                                 <span>${el.judge}</span>
                                 <span>${el.sity}</span>
                                 <span>${el.plaintiff}</span>
                                 <span>${el.respondent}</span>
                             </div>
+                            <div class="page_line_line"></div>
                         `);
     
                         $('.arbitr_add').append(_text);
