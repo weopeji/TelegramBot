@@ -686,41 +686,41 @@ async function acceptProject(socket,data,callback)
 {
     var _project = await Project.findOne({_id: data});
 
-    // var _urlImgProject = `${h.getURL()}html/project/cover/?id=${data}`;
-    // console.log(_urlImgProject);
-    // const browser = await puppeteer.launch({
-    //     args: ['--no-sandbox', '--disable-setuid-sandbox'],
-    // });
-    // const page = await browser.newPage();
-    // await page.goto(_urlImgProject);
-    // await page.emulateMedia('screen');
-    // const element = await page.$('.cover_block');   
-    // await element.screenshot({path: `../projects/${data}/logo.png`});
-    // await browser.close();
+    var _urlImgProject = `${h.getURL()}html/project/cover/?id=${data}`;
+    console.log(_urlImgProject);
+    const browser = await puppeteer.launch({
+        args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    });
+    const page = await browser.newPage();
+    await page.goto(_urlImgProject);
+    await page.emulateMedia('screen');
+    const element = await page.$('.cover_block');   
+    await element.screenshot({path: `../projects/${data}/logo.png`});
+    await browser.close();
 
-    // var html = `[Профиль компании](${h.getURL()}html/project/profil/#${_project._id})\n[Презентация](${h.getURL()}/projects/${_project._id}/${_project.data["file+7"]})\n[Видео презентация](${h.getURL()}/projects/${_project._id}/${_project.data["file+8"]})`;
+    var html = `[Профиль компании](${h.getURL()}html/project/profil/#${_project._id})\n[Презентация](${h.getURL()}/projects/${_project._id}/${_project.data["file+7"]})\n[Видео презентация](${h.getURL()}/projects/${_project._id}/${_project.data["file+8"]})`;
     
-    // const stream = fs.createReadStream(`../projects/${data}/logo.png`);
-    // bot.sendPhoto(-1001205415519, stream, {
-    //     "caption": html,
-    //     "parse_mode": "MarkdownV2",
-    //     "reply_markup": {
-    //         "inline_keyboard": [
-    //             [
-    //                 {
-    //                     text: "Рекомендовать",
-    //                     url: `https://t.me/investER_localhost_bot?start=member_${data}`,
-    //                 }
-    //             ],
-    //             [
-    //                 {
-    //                     text: "Инвестровать",
-    //                     url: `https://t.me/investER_localhost_bot?start=project_${data}`,
-    //                 }
-    //             ]
-    //         ],
-    //     }
-    // });
+    const stream = fs.createReadStream(`../projects/${data}/logo.png`);
+    bot.sendPhoto(-1001205415519, stream, {
+        "caption": html,
+        "parse_mode": "MarkdownV2",
+        "reply_markup": {
+            "inline_keyboard": [
+                [
+                    {
+                        text: "Рекомендовать",
+                        url: `https://t.me/investER_localhost_bot?start=member_${data}`,
+                    }
+                ],
+                [
+                    {
+                        text: "Инвестровать",
+                        url: `https://t.me/investER_localhost_bot?start=project_${data}`,
+                    }
+                ]
+            ],
+        }
+    });
 
     const client = new Instagram({ username: "investER_official", password: "e<<@H&_ArB~5ef7" });
  
