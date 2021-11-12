@@ -37,15 +37,15 @@
                     need_project.parce.ar.response.forEach(el => {
                         var _text = $(`
                             <div class="page_line">
-                                <span>${el.data}</span>
-                                <span>${el.id}</span>
-                                <span>${el.id_url}</span>
+                                <p>${el.data}</p>
+                                <p>${el.id}</p>
+                                <p>${el.id_url}</p>
                             </div>
                             <div class="page_line">
-                                <span>${el.judge}</span>
-                                <span>${el.sity}</span>
-                                <span>${el.plaintiff}</span>
-                                <span>${el.respondent}</span>
+                                <p>${el.judge}</p>
+                                <p>${el.sity}</p>
+                                <p>${el.plaintiff}</p>
+                                <p>${el.respondent}</p>
                             </div>
                             <div class="page_line_line"></div>
                         `);
