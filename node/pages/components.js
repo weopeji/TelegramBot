@@ -806,6 +806,7 @@ var _AllParce =
     },
     "uploadVideo": async function(_patch, _projectPath, name, target)
     {
+        conso.log('START UPLOAD VIDEO YT');
         let options = 
         {
             mode: 'text',
