@@ -1049,7 +1049,7 @@
                                 </div>
                             `);
                             this.global_block.find('.putDocumentToSignature_show').click( function() {
-                                window.open(`https://skin-win.ru/html/project/document/#${_project._id}`, '_blank');
+                                window.open(`https://invester-relocation.site/html/project/document/#${_project._id}`, '_blank');
                             })
                         }
                     }
