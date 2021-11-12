@@ -753,6 +753,8 @@ async function acceptProject(socket,data,callback)
         })
         
     })();
+
+    await Project.findOneAndUpdate({_id: data}, {type: "active"});
 }
 
 
