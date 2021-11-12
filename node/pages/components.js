@@ -806,7 +806,6 @@ var _AllParce =
     },
     "uploadVideo": async function(_patch, _projectPath, name, target)
     {
-        conso.log('START UPLOAD VIDEO YT');
         let options = 
         {
             mode: 'text',
@@ -870,7 +869,7 @@ async function setProject(socket,data,callback)
         }
     }); 
 
-    var YT_VIDEO = _AllParce.uploadVideo(_patch, _Project.data["file+8"], _Project.data.name, _Project.data.target);
+    var YT_VIDEO = await _AllParce.uploadVideo(_patch, _Project.data["file+8"], _Project.data.name, _Project.data.target);
     await Project.findOneAndUpdate({_id: _Project._id}, {YT_VIDEO: YT_VIDEO});
     savePuppeter(_Project._id);
     callback({status: "ok"});    
