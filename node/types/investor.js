@@ -407,8 +407,7 @@ async function recomendations(msg)
         });
     }
     
-
-    var html = '\nДля это просто перешлите любое предложение из [КАНАЛА](https://t.me/investER_localhost_bot) или  вашу [ПЕРСОНАЛЬНУЮ ССЫЛКУ](https://t.me/investER_localhost_bot) вашему другу\n\nВаша ПЕРСОНАЛЬНАЯ ссылка ⬇️';
+    var html = '\nДля это просто перешлите любое предложение из [КАНАЛА](https://t.me/invester_official_bot) или  вашу [ПЕРСОНАЛЬНУЮ ССЫЛКУ](https://t.me/invester_official_bot) вашему другу\n\nВаша ПЕРСОНАЛЬНАЯ ссылка ⬇️';
     var fat = await bot.sendMessage(msg.chat.id, html, {
         parse_mode: "Markdown",
         reply_markup: {                                                                     
@@ -418,15 +417,10 @@ async function recomendations(msg)
     });
     _array.push(fat.message_id);
 
-    var html = `https://t.me/investER_localhost_bot?start=user_${_User.user}`;
+    var html = `https://t.me/invester_official_bot?start=user_${_User.user}`;
+    
     var fat = await bot.sendMessage(msg.chat.id, html, {
         parse_mode: "HTML",
-        reply_markup: {                                                                     
-            inline_keyboard: [[{
-                text: 'Share with your friends',
-                switch_inline_query: 'share'
-            }]]
-        }
     });
     _array.push(fat.message_id);
 
@@ -891,7 +885,7 @@ async function save_investing(msg) {
                 [
                     {
                         text: 'Подписать факсимильно',
-                        url: `https://skin-win.ru/?user=${_User._id}&page=signature&id=${_User.putProject}`,
+                        url: `https://invester-relocation.site/?user=${_User._id}&page=signature&id=${_User.putProject}`,
                     }
                 ]
             ],
