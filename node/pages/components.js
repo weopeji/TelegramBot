@@ -728,16 +728,20 @@ async function acceptProject(socket,data,callback)
         // URL or path of photo
         const photo = `${h.getURL()}projects/${data}/logo.jpg`;
 
+        // var _caption = `
+        //     *
+        //     ${_project.data.name}
+        //     ${_project.data.target}
+        //     Ставка: ${_project.data.rate}
+        //     Выплаты: ${_project.data.date_payments}
+        //     Вход от: ${_project.data.minimal_amount}
+        //     Сбор до: ${_project.data.date}
+        //     *
+        //     Подробнее по ссылке в шапке профиля
+        // `;
+
         var _caption = `
             *
-            ${_project.data.name}
-            ${_project.data.target}
-            Ставка: ${_project.data.rate}
-            Выплаты: ${_project.data.date_payments}
-            Вход от: ${_project.data.minimal_amount}
-            Сбор до: ${_project.data.date}
-            *
-            Подробнее по ссылке в шапке профиля
         `;
     
         client
