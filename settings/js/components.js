@@ -438,6 +438,12 @@
 
             firstBlockMore.css("padding-bottom", "20px");
 
+            firstBlockMore.click( function () {
+                $('.body_point_line_first').fadeOut( function () {
+                    $('.body_point_line_input').fadeIn();
+                });
+            })
+
             this.global_block.append(firstBlockMore);
 
             var string      = function (element, _project)
