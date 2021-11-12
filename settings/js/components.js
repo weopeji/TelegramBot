@@ -574,15 +574,19 @@
 
                 $('.body_point').each(function(i,elem) 
                 {
-                    var _input = $(elem).find('textarea').val();
-                    console.log(_input);
-                    if(_input.length > 0)
+                    var _input = $(elem).find('.text_area').val();
+                    if(_input)
                     {
-                        _array.push({
-                            type: $(elem).find('textarea').attr('id').split('_')[0],
-                            value: $(elem).find('textarea').val(),
-                        })
+                        console.log(_input);
+                        if(_input.length > 0)
+                        {
+                            _array.push({
+                                type: $(elem).find('textarea').attr('id').split('_')[0],
+                                value: $(elem).find('textarea').val(),
+                            })
+                        }
                     }
+                   
                 })
 
                 _this.not_accept({
