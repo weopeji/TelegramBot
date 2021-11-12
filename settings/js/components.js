@@ -1270,7 +1270,7 @@
 
             allUsers.forEach( function (user, i) {
                 var userLine = $(`
-                    <div class="settingBlock_body_line" data="1062688870" data-more="41">
+                    <div class="settingBlock_body_line" data="${user._id}" data-more="41">
                         <span>${i + 1}</span>
                         <span>${user.user}</span>
                         <span>${user.first_name + " " + user.last_name}</span>
@@ -1285,11 +1285,11 @@
 
             $('.settingBlock_body_line').click(async function() {
                 var _id = $(this).attr('data');
-                var getUserID = await callApi({
-                    methodName: "getUserID",
-                    data: _id,
-                });
-                location.href = `/?user=${getUserID}`;
+                // var getUserID = await callApi({
+                //     methodName: "getUserID",
+                //     data: _id,
+                // });
+                location.href = `/?user=${_id}`;
             })
         }
     }
