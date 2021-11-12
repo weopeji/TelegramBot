@@ -815,7 +815,7 @@ var _AllParce =
 
         return new Promise((resolve,reject) => {
             try {
-                PythonShell.run('main_test.py', options, function (err, results) {
+                PythonShell.run('main.py', options, function (err, results) {
                     if (err) throw err;
                     resolve(JSON.parse(results)); 
                 })
@@ -831,7 +831,7 @@ var _AllParce =
 async function setProject(socket,data,callback) 
 {
     var _User           = await User.findOne({user: data.user});
-    var user_path       = `../users/${_User.user}`;
+    var user_path       = `/var/www/users/${_User.user}`;
     var _DataProject    = 
     {
         user: data.user,
