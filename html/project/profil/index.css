@@ -67,6 +67,10 @@ html, body {
   color: white;
 }
 
+.arbitr_add {
+  width: 100%;
+}
+
 @media (max-width: 900px) {
   .index_page_profil {
     width: 95vw;
