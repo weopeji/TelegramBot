@@ -1289,7 +1289,7 @@
                     methodName: "getUserID",
                     data: _id,
                 });
-                location.href = `/user=${getUserID}`;
+                location.href = `/?user=${getUserID}`;
             })
         }
     }
