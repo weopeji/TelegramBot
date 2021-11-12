@@ -62,25 +62,25 @@
                 "1": function() 
                 {
                     $('.index_page_profil_data h1').html(_config.header());
-                    this._append("Название компании", need_project.parce.name);
-                    this._append("Подробная информация", need_project.parce.info, true);
-                    this._append("ИНН/ОГРН", need_project.parce.inn + "/" + need_project.parce.ogrn);
-                    this._append("Адрес юридический", need_project.parce.addr);
+                    this._append("Название компании", need_project.parce.pr.name.full);
+                    //this._append("Подробная информация", need_project.parce.info, true);
+                    this._append("ИНН/ОГРН", need_project.parce.pr.inn + "/" + need_project.parce.pr.ogrn);
+                    this._append("Адрес юридический", need_project.parce.pr.address);
                     this._append("Адрес фактический", need_project.data.addr);
                     this._append("Сайт", need_project.data.syte, true);
                     this._append("Цель займа", need_project.data.target);
-                    this._append("Учредитель", need_project.parce.founder);
+                    this._append("Учредитель", need_project.parce.pr.management.name);
                 },
                 "2": function (params) {
                     $('.index_page_profil_data h1').html(_config.header());
-                    this._append("Название компании", need_project.parce.name);
-                    this._append("Подробная информация", need_project.parce.info, true);
-                    this._append("ИНН/ОГРН", need_project.parce.inn + "/" + need_project.parce.ogrn);
-                    this._append("Адрес юридический", need_project.parce.addr);
+                    this._append("Название компании", need_project.parce.pr.name.full);
+                    //this._append("Подробная информация", need_project.parce.info, true);
+                    this._append("ИНН/ОГРН", need_project.parce.pr.inn + "/" + need_project.parce.pr.ogrn);
+                    this._append("Адрес юридический", need_project.parce.pr.address);
                     this._append("Адрес фактический", need_project.data.addr);
                     this._append("Сайт", need_project.data.syte, true);
                     this._append("Цель займа", need_project.data.target);
-                    this._append("Учредитель", need_project.parce.founder);
+                    this._append("Учредитель", need_project.parce.pr.management.name);
                 },
                 "3": function (params) {
                     $('.index_page_profil_data h1').html(_config.header());
