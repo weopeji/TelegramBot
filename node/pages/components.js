@@ -728,23 +728,31 @@ async function acceptProject(socket,data,callback)
         // URL or path of photo
         const photo = `${h.getURL()}projects/${data}/logo.jpg`;
     
-        await client.login()
+        client
+        .login()
+        .then(() => {
+            client
+            .getProfile()
+            .then(console.log)
+        })
 
-        var _caption = `
-            *
-            ${_project.data.name}
-            ${_project.data.target}
-            Ставка: ${_project.data.rate}
-            Выплаты: ${_project.data.date_payments}
-            Вход от: ${_project.data.minimal_amount}
-            Сбор до: ${_project.data.date}
-            *
-            Подробнее по ссылке в шапке профиля
-        `;
+        // await client.login()
+
+        // var _caption = `
+        //     *
+        //     ${_project.data.name}
+        //     ${_project.data.target}
+        //     Ставка: ${_project.data.rate}
+        //     Выплаты: ${_project.data.date_payments}
+        //     Вход от: ${_project.data.minimal_amount}
+        //     Сбор до: ${_project.data.date}
+        //     *
+        //     Подробнее по ссылке в шапке профиля
+        // `;
     
-        const { media } = await client.uploadPhoto({ photo: photo, caption: _caption, post: 'feed' });
-        
-        console.log(`https://www.instagram.com/p/${media.code}/`);
+        // const { media } = await client.uploadPhoto({ photo: photo, caption: _caption, post: 'feed' });
+
+        // console.log(`https://www.instagram.com/p/${media.code}/`);
     })();
 
     await Project.findOneAndUpdate({_id: data}, {type: "active"});
