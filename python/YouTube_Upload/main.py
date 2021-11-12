@@ -15,8 +15,8 @@ upload_date_time = datetime.datetime(2020, 12, 25, 12, 30, 0).isoformat() + '.00
 request_body = {
     'snippet': {
         'categoryI': 19,
-        'title': 'PRUFFME',
-        'description': 'На развитие',
+        'title': sys.argv[2],
+        'description': sys.argv[3],
         'tags': ['video test']
     },
     'status': {
@@ -42,6 +42,5 @@ service.thumbnails().set(
     media_body=MediaFileUpload('photo.jpg')
 ).execute()
 
-
-
+print(response_upload)
 

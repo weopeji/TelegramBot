@@ -804,13 +804,13 @@ var _AllParce =
             }
         })
     },
-    "uploadVideo": async function(_patch, _projectPath)
+    "uploadVideo": async function(_patch, _projectPath, name, target)
     {
         let options = 
         {
             mode: 'text',
             scriptPath: '../python/YouTube_Upload',
-            args: _patch + '/' + _projectPath,
+            args: [_patch + '/' + _projectPath, name, target],
         };
 
         return new Promise((resolve,reject) => {
@@ -869,7 +869,7 @@ async function setProject(socket,data,callback)
         }
     }); 
 
-    var YT_VIDEO = _AllParce.uploadVideo(_patch, _Project.data["file+8"]);
+    var YT_VIDEO = _AllParce.uploadVideo(_patch, _Project.data["file+8"], _Project.data.name, _Project.data.target);
     await Project.findOneAndUpdate({_id: _Project._id}, {YT_VIDEO: YT_VIDEO});
     savePuppeter(_Project._id);
     callback({status: "ok"});    
