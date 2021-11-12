@@ -686,6 +686,18 @@ async function acceptProject(socket,data,callback)
 {
     var _project = await Project.findOne({_id: data});
 
+    var _urlImgProject = `${h.getURL()}html/project/cover/?id=${data}`;
+    console.log(_urlImgProject);
+    const browser = await puppeteer.launch({
+        args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    });
+    const page = await browser.newPage();
+    await page.goto(_urlImgProject);
+    await page.emulateMedia('screen');
+    const element = await page.$('.cover_block');   
+    await element.screenshot({path: `../projects/${data}/logo.png`});
+    await browser.close();
+
     var html = `[Профиль компании](${h.getURL()}html/project/profil/#${_project._id})\n[Презентация](${h.getURL()}/projects/${_project._id}/${_project.data["file+7"]})\n[Видео презентация](${h.getURL()}/projects/${_project._id}/${_project.data["file+8"]})`;
     
     const stream = fs.createReadStream(`../projects/${data}/logo.png`);
