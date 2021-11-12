@@ -29,33 +29,36 @@
 
         function startArbitr()
         {
-            if(need_project.parce.ar.length > 0)
+            if(need_project.parce.ar)
             {
-                $('.arbitr_add').append(`<span>${need_project.parce.ar.many}</span>`);
-                need_project.parce.ar.response.forEach(el => {
-                    var _text = $(`
+                if(need_project.parce.ar.response.length > 0)
+                {
+                    $('.arbitr_add').append(`<span>${need_project.parce.ar.many}</span>`);
+                    need_project.parce.ar.response.forEach(el => {
+                        var _text = $(`
+                            <div class="page_line">
+                                <span>Подробная информация</span>
+                                <span>Подробная информация</span>
+                                <span>Подробная информация</span>
+                                <span>Подробная информация</span>
+                                <span>Подробная информация</span>
+                                <span>Подробная информация</span>
+                                <span>Подробная информация</span>
+                            </div>
+                        `);
+    
+                        $('.arbitr_add').append(_text);
+                    })
+                } else {
+                    var _default = $(`
                         <div class="page_line">
                             <span>Подробная информация</span>
-                            <span>Подробная информация</span>
-                            <span>Подробная информация</span>
-                            <span>Подробная информация</span>
-                            <span>Подробная информация</span>
-                            <span>Подробная информация</span>
-                            <span>Подробная информация</span>
+                            <p>Отсутствует</p>
                         </div>
                     `);
-
-                    $('.arbitr_add').append(_text);
-                })
-            } else {
-                var _default = $(`
-                    <div class="page_line">
-                        <span>Подробная информация</span>
-                        <p>Отсутствует</p>
-                    </div>
-                `);
-
-                $('.arbitr_add').append(_default);
+    
+                    $('.arbitr_add').append(_default);
+                }
             }
         }
 
