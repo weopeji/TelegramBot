@@ -452,9 +452,9 @@
             // })
 
             firstBlockMore.find(".body_point_line_input_close").click( function() {
-                $(this).parent().parent().fadeOut( function() 
+                $(this).parent().fadeOut( function() 
                 {
-                    $(this).parent().find(".body_point_line_first").fadeIn();
+                    $(this).parent().parent().find(".body_point_line_first").fadeIn();
                 });
             })
 
