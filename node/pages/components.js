@@ -116,6 +116,13 @@ var action_linker =
     "getAllProjectsInvesting": getAllProjectsInvesting,
     "reload_type": reload_type,
     "getBitsFile": getBitsFile,
+    "getUserID": getUserID,
+}
+
+async function getUserID(socket,data,callback)
+{
+    var _User = await User.findOne({user: data});
+    callback(_User._id);
 }
 
 async function test_fun(socket,data,callback)

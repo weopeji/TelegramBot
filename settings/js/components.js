@@ -1254,7 +1254,7 @@
             var templateText = $(`
                 <div class="settingBlock">
                     <div class="settingBlock_header">
-                        <p>Пользавтели</p>
+                        <p>Пользавтели (Нажмите на пользователя чтобы просмотреть его кабинет)</p>
                         <div class="settingBlock_header_line">
                             <span>#</span>
                             <span>ID Инвестора</span>
@@ -1277,6 +1277,15 @@
                         <span>${user.type}</span>
                     </div>
                 `);
+
+                userLine.click(function() {
+                    var _id = $(this).attr('data');
+                    var getUserID = await callApi({
+                        methodName: "getUserID",
+                        data: _id,
+                    });
+                    location.href = `/user=${getUserID}`;
+                })
 
                 templateText.find('.settingBlock_body').append(userLine);
             })
