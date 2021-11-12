@@ -31,7 +31,8 @@
         {
             if(need_project.parce.ar.length > 0)
             {
-                need_project.parce.ar.forEach(el => {
+                $('.arbitr_add').append(`<span>${need_project.parce.ar.many}</span>`);
+                need_project.parce.ar.response.forEach(el => {
                     var _text = $(`
                         <div class="page_line">
                             <span>Подробная информация</span>
