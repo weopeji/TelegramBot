@@ -1278,7 +1278,7 @@
                     </div>
                 `);
 
-                userLine.click(function() {
+                userLine.click(async function() {
                     var _id = $(this).attr('data');
                     var getUserID = await callApi({
                         methodName: "getUserID",
