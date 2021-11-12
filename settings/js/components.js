@@ -566,7 +566,7 @@
                 </div>
             `);
 
-            $('.global_block').append(not_accept);
+            this.global_block.append(not_accept);
         }
 
         async renderInfo(_project)
