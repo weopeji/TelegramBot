@@ -457,20 +457,47 @@ async function invester_status_project(socket,data,callback)
     });
 }
 
-async function acceptInvestor(socket,data,callback) {
-    var InvDocs = await InvDoc.findOneAndUpdate({invester: data.id, projectId: data.projectId}, {status: "accept"});
-    var _User = User.findOne({user: data.id});
-    if(!_User.alerts)
+async function acceptInvestor(socket,data,callback) 
+{
+    var _Project        = await Project.findOne({_id: data.projectId});
+    var _InvDoc         = await InvDoc.findOne({invester: data.id, projectId: data.projectId});
+
+    var nowDate         = new Date();
+    var moneyPay        = _InvDoc.data.pay;
+    var mouncePay       = _Project.data.date;
+    var payments        = 
     {
-        _User.alerts = [{
-            type: "acceptInvestor",
-        }];
-    } else {
-        _User.alerts.push({
-            type: "acceptInvestor",
-        })
+        "Ежедневно": 1,
+        "Ежемесячно": 30,
+        "Ежеквартально": 90,
+        "Ежегодно": 365,
+    };
+    var date_payments   = payments[_Project.data.date_payments];
+    var _rate           = (_Project.data.rate / 12 / 30) * date_payments;
+    var manyPays        = (mouncePay * 30) / date_payments;
+    var needPayment     = moneyPay * (manyPays / 100);
+
+    var pays = [];
+    
+    for(var i = 0; i < manyPays; i++)
+    {
+        var needDate = nowDate.setDate(D.getDate() + (date_payments * (i + 1)));
+
+        pays.push({
+            pay: needPayment,
+            date: needDate,
+            receipt: null,
+            status: "wait",
+        });
     }
-    await User.findOneAndUpdate({user: data}, {alerts: _User.alerts});
+
+    tg_alert_user_numbers(null,{
+        user: data.id,
+        text: `Ваша инвестиция была подтверждена! Номер проекта: ${data.projectId}`,
+    });
+
+    await InvDoc.findOneAndUpdate({invester: data.id, projectId: data.projectId}, {status: "accept"});
+
     callback(InvDocs);
 }
 
