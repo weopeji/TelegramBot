@@ -33,7 +33,7 @@
 
             $('.index_page_body_data').append(`
                 <div class="Attracted_headerInfoBlock">
-                    <div class="Attracted_headerInfoBlock_block">
+                    <div class="Attracted_headerInfoBlock_block accept_block_tap">
                         <div class="Attracted_headerInfoBlock_block_i">
                             <i class="fad fa-check"></i>
                         </div>
@@ -41,7 +41,7 @@
                             <p>Подтвердить оплату</p>
                         </div>
                     </div>
-                    <div class="Attracted_headerInfoBlock_block">
+                    <div class="Attracted_headerInfoBlock_block remove_block_tap">
                         <div class="Attracted_headerInfoBlock_block_i">
                             <i class="fad fa-times"></i>
                         </div>
@@ -109,7 +109,7 @@
             `);
 
 
-            $('.index_page_body_data').append(headerPaysBlock);
+            // $('.index_page_body_data').append(headerPaysBlock);
         }
 
         async invester_render(_data)
@@ -196,7 +196,7 @@
             `);
 
 
-            $('.index_page_body_data').append(headerPaysBlock);
+            // $('.index_page_body_data').append(headerPaysBlock);
         }
 
         async renderType(allData)
@@ -266,10 +266,6 @@
                 location.href = `./?user=${allData.User._id}&page=chats&id=${_data.InvDoc.projectId}`;
             });
 
-            if(_data.InvDoc.status == "accept") {
-                $('.info_active_block').addClass('accepting');
-            }
-
             $('.show_block').click( function() {
                 location.href = `./projects/${_data.InvDoc.receipt}`;
             });
@@ -278,7 +274,8 @@
                 window.open(`https://invester-relocation.site/html/project/document/#${_data.InvDoc.projectId}`, '_blank');
             });
 
-            $('.accept_block').click( async function () {
+            $('.accept_block_tap').click( async function () 
+            {
                 var acceptInvestor = await callApi({
                     methodName: "acceptInvestor",
                     data: {
@@ -291,7 +288,8 @@
                 location.reload();
             })
 
-            $('.remove_block').click( async function () {
+            $('.remove_block_tap').click( async function () 
+            {
                 var acceptInvestor = await callApi({
                     methodName: "removePayInvestor",
                     data: _data.invester.user,
