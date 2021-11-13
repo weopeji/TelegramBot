@@ -72,10 +72,17 @@
 
             templateText = templateText.replace(new RegExp("%invester_name%", 'g'), getInvestorDocument.investor_data.fio);
             templateText = templateText.replace(new RegExp("%pay%", 'g'), getInvestorDocument.investor_data.pay + " руб");
+
+            if(_GET__('accept'))
+            {
+                templateText = templateText.replace(new RegExp("%document_more%", 'g'), `<img src="${getInvestorDocument.data.document}" alt>`);
+            }
         } else {
             templateText = templateText.replace(new RegExp("%pay%", 'g'), "_______________");
             templateText = templateText.replace(new RegExp("%invester_name%", 'g'), "_______________");
         }
+
+        
 
         $('.index_page').append(templateText);
 
