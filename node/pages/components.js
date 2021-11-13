@@ -176,8 +176,10 @@ async function toAttractPay(socket,data,callback)
         {
             var AM_data_fun = await __Attracted_by_me_investing_pay(AM_data.user);
 
-            var _User_Pays = AM_data_fun;
-            _User_Pays.AM_data = AM_data;
+            var _User_Pays = {
+                AM_data_fun: AM_data_fun,
+                AM_data: AM_data,
+            };
 
             all_pays.push(_User_Pays);
         }   
