@@ -462,7 +462,7 @@ async function acceptInvestor(socket,data,callback)
     var _Project        = await Project.findOne({_id: data.projectId});
     var _InvDoc         = await InvDoc.findOne({invester: data.id, projectId: data.projectId});
 
-    var nowDate         = new Date();
+    var nowDate         = new Date().getTime();
     var moneyPay        = _InvDoc.data.pay;
     var mouncePay       = _Project.data.date;
     var payments        = 
@@ -477,13 +477,11 @@ async function acceptInvestor(socket,data,callback)
     var manyPays        = (mouncePay * 30) / date_payments;
     var needPayment     = moneyPay * (_rate / 100);
 
-    console.log(date_payments * (i + 1));
-
     var pays = [];
     
     for(var i = 0; i < manyPays; i++)
     {
-        var needDate = nowDate.setDate(nowDate.getDate() + (date_payments * (i + 1)));
+        var needDate = nowDate + ((date_payments * (i + 1) * 86400000));
 
         pays.push({
             pay: needPayment,
