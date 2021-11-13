@@ -126,7 +126,7 @@ var action_linker =
 
 async function toAttractPay(socket,data,callback)
 {
-    var _Users = await Users.find({});
+    var _Users = await User.find({});
 
     function __Attracted_by_me()
     {
