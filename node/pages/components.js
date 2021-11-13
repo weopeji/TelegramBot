@@ -43,6 +43,7 @@ function privateInit(initPlagins) {
     MsgDB       = initPlagins.MsgDB;
     config      = initPlagins.config;
     PaysAttract = initPlagins.PaysAttract;
+    bPays       = initPlagins.bPays;
 }
 
 var privat_index_page = function(socket,data,callback) {
@@ -119,6 +120,13 @@ var action_linker =
     "getBitsFile": getBitsFile,
     "getUserID": getUserID,
     "Attracted_by_me_Bussnes_pay": Attracted_by_me_Bussnes_pay,
+    "bPays": bPaysFun,
+}
+
+async function bPaysFun(socket,data,callback)
+{
+    var _bPays  = await BPays.find({});
+    callback(_bPays);
 }
 
 async function getUserID(socket,data,callback)
