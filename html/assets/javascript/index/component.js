@@ -1242,7 +1242,7 @@
                     },
                 });
 
-                location.href = "https://t.me/investER_localhost_bot?start=setSignaturePro_1";
+                location.href = "https://t.me/invester_official_bot?start=setSignaturePro_1";
             })
         }
     }
