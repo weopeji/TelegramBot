@@ -496,7 +496,7 @@ async function acceptInvestor(socket,data,callback)
         text: `Ваша инвестиция была подтверждена! Номер проекта: ${data.projectId}`,
     });
 
-    await InvDoc.findOneAndUpdate({invester: data.id, projectId: data.projectId}, {status: "accept"});
+    await InvDoc.findOneAndUpdate({invester: data.id, projectId: data.projectId}, {status: "accept", pays: pays});
 
     callback(InvDocs);
 }
