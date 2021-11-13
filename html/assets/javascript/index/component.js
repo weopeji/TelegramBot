@@ -18,6 +18,10 @@
     {
         constructor() {};
 
+        pad(s, width, character) {
+            return new Array(width - s.toString().length + 1).join(character) + s;
+        }
+
         async business_render(_data) 
         {
             $('.info_active_block_right').append(`
@@ -58,8 +62,8 @@
                     var maxDate = new Date(el.date);
                     var maxDateFormatted =
                         maxDate.getFullYear() +
-                        ':' + pad(maxDate.getMonth() + 1, 2, '0') +
-                        ':' + pad(maxDate.getDate(), 2, '0');
+                        ':' + this.pad(maxDate.getMonth() + 1, 2, '0') +
+                        ':' + this.pad(maxDate.getDate(), 2, '0');
                 
                     var _block = $(`
                         <div class="headerPaysBlock_body_line">
@@ -102,10 +106,6 @@
 
         async invester_render(_data)
         {
-            function pad(s, width, character) {
-                return new Array(width - s.toString().length + 1).join(character) + s;
-            }
-
             var settingBlock = $(`.info_active_block`);
 
             settingBlock.find('.info_active_block_right').append(`
@@ -148,8 +148,8 @@
                     var maxDate = new Date(el.date);
                     var maxDateFormatted =
                         maxDate.getFullYear() +
-                        ':' + pad(maxDate.getMonth() + 1, 2, '0') +
-                        ':' + pad(maxDate.getDate(), 2, '0');
+                        ':' + this.pad(maxDate.getMonth() + 1, 2, '0') +
+                        ':' + this.pad(maxDate.getDate(), 2, '0');
                 
                     var _block = $(`
                         <div class="headerPaysBlock_body_line">
