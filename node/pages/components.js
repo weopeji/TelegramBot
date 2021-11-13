@@ -125,7 +125,7 @@ var action_linker =
 
 async function bPaysFun(socket,data,callback)
 {
-    var _bPays  = await BPays.find({});
+    var _bPays  = await bPays.find({});
     callback(_bPays);
 }
 
