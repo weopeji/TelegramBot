@@ -1206,7 +1206,7 @@
                 $('.index_page_body_data').append(block);
 
                 $('.msg_block_getting_line').click( function() {
-                    location.href = `https://skin-win.ru/?user=612c7ba18b28880d5c0f8d05&page=chats&id=${$(this).attr('data')}`;
+                    location.href = `https://invester-relocation.site/?user=612c7ba18b28880d5c0f8d05&page=chats&id=${$(this).attr('data')}`;
                 })
 
             }
