@@ -1280,9 +1280,7 @@
         }
 
         async renderInvesters(_data) 
-        {
-            
-               
+        {      
             var settingBlock = $(`
                 <div class="settingBlock">
                     <div class="settingBlock_header">
