@@ -246,7 +246,7 @@
             });
 
             $('.show_document').click( function() {
-                window.open(`https://invester-relocation.site/html/project/document/#${_data.InvDoc.projectId}&id=${_data.invester._id}&accept=true`, '_blank');
+                window.open(`https://invester-relocation.site/html/project/document/#${_data.InvDoc.projectId}/?id=${_data.invester._id}&accept=true`, '_blank');
             });
 
             $('.accept_block_tap').click( async function () 
