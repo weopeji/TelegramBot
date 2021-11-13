@@ -1481,11 +1481,11 @@
             var templateText = $(`
                 <div class="settingBlock">
                     <div class="settingBlock_header">
-                        <p>Выплаты от бизнеса</p>
+                        <p>Выплаты Привлечению</p>
                         <div class="settingBlock_header_line">
                             <span>#</span>
-                            <span>ID Проекта</span>
-                            <span>Сумма</span>
+                            <span>ID</span>
+                            <span>Сумма выплаты</span>
                             <span>Чек</span>
                         </div>
                     </div>
@@ -1496,16 +1496,20 @@
             `);
 
             bPays.forEach( function (el, i) {
-                var userLine = $(`
-                    <div class="settingBlock_body_line" data="1062688870" data-more="41">
-                        <span>${i + 1}</span>
-                        <span>${el.projectId}</span>
-                        <span>${el.pay}</span>
-                        <span>Прикрепить чек</span>
-                    </div>
-                `);
 
-                templateText.find('.settingBlock_body').append(userLine);
+                el.AM_data_fun.forEach(el2 => {
+                    var userLine = $(`
+                        <div class="settingBlock_body_line" data="1062688870" data-more="41">
+                            <span>${i + 1}</span>
+                            <span>${el.AM_data.user}</span>
+                            <span>${el2.YouPay}</span>
+                            <span>Прикрепить чек</span>
+                        </div>
+                    `);
+
+                    templateText.find('.settingBlock_body').append(userLine);
+                })
+                
             })
 
             $('.index_page_body_data').append(templateText);
