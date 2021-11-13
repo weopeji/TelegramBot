@@ -448,7 +448,7 @@ async function invester_status_project(socket,data,callback)
 {
     var _InvDoc     = await InvDoc.findOne({invester: data.id, projectId: data.project});
     var _User       = await User.findOne({user: data.id});
-    var _Project    = await Project.findOne({projectId: data.project});
+    var _Project    = await Project.findOne({_id: data.project});
 
     callback({
         invester: _User,
