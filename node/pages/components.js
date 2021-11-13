@@ -380,6 +380,8 @@ async function Attracted_by_me_investing_pay(socket,data,callback)
             status: status,
         })
     }
+
+    callback(AllPays);
 }
 
 async function Attracted_by_me_b(socket,data,callback)
