@@ -156,8 +156,6 @@ async function toAttractPay(socket,data,callback)
 
     for (const _User of _Users) 
     {
-        console.log(_User);
-
         var AM = await __Attracted_by_me(_User);
         var AB = await __Attracted_by_me_b(_User);
 
