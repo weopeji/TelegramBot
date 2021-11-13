@@ -331,29 +331,54 @@ async function selectedMsgChats(socket,data,callback)
 async function Attracted_by_me_investing_pay(socket,data,callback)
 {
     var _InvDocs        = await InvDoc.find({invester: data});
-    var AllPays         = 0;
-    var allMorePlays    = 0;
 
-    for (const el of _InvDocs) {
-        var _Project = await Project.findOne({_id: el.projectId});
+    // var AllPays         = 0;
+    // var allMorePlays    = 0;
 
-        if(_Project.payerCent) 
+    // for (const el of _InvDocs) 
+    // {
+    //     var _Project = await Project.findOne({_id: el.projectId});
+
+    //     if(_Project.payerCent) 
+    //     {
+    //         var tPro = Number(el.data.pay.trim()) * 0.3 * (_Project.payerCent * 0.1);
+    //         allMorePlays = allMorePlays + tPro;
+    //     } else 
+    //     {
+    //         var tPro = Number(el.data.pay.trim()) * 0.3 * 0.5;
+    //         allMorePlays = allMorePlays + tPro;
+    //     }
+
+    //     AllPays = AllPays + Number(el.data.pay.trim());
+    // }
+
+    // callback({
+    //     AllPays: AllPays,
+    //     allMorePlays: allMorePlays,
+    // });
+
+    var AllPays         = [];
+
+    for (const el of _InvDocs) 
+    {
+        var Pay     = el.data.pay;
+        var YouPay  = el.data.pay * 0.875;
+
+        var status = "Ожидает оплаты";
+
+        var PayAttract = await PayAttract.findOne({idInv: el._id});
+
+        if(PayAttract)
         {
-            var tPro = Number(el.data.pay.trim()) * 0.3 * (_Project.payerCent * 0.1);
-            allMorePlays = allMorePlays + tPro;
-        } else 
-        {
-            var tPro = Number(el.data.pay.trim()) * 0.3 * 0.5;
-            allMorePlays = allMorePlays + tPro;
+            status = "Оплачено";
         }
 
-        AllPays = AllPays + Number(el.data.pay.trim());
+        AllPays.push({
+            Pay: Pay,
+            YouPay: YouPay,
+            status: status,
+        })
     }
-
-    callback({
-        AllPays: AllPays,
-        allMorePlays: allMorePlays,
-    });
 }
 
 async function Attracted_by_me_b(socket,data,callback)

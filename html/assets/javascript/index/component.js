@@ -1223,24 +1223,9 @@
     {
         constructor() {};
 
-        async render(data) 
+        async renderHeader(_data, _dataMore) 
         {
-            var _data = await callApi({
-                methodName: "Attracted_by_me",
-                data: data._id,
-            });
-
-            var _dataMore = await callApi({
-                methodName: "Attracted_by_me_b",
-                data: data._id,
-            });
-
-            console.log(_data);
-            console.log(_dataMore);
-
-            var allMoneyMembers = 0;
-
-            var headerInfoBlock = 
+            var headerInfoBlock1 = 
             $(`
                 <div class="Attracted_headerInfoBlock">
                     <div class="Attracted_headerInfoBlock_block">
@@ -1256,7 +1241,7 @@
                         <div class="Attracted_headerInfoBlock_block_i">
                             <i class="fal fa-credit-card-blank"></i>
                         </div>
-                        <div class="Attracted_headerInfoBlock_block_text Attracted_headerInfoBlock_block_text_moneys">
+                        <div class="Attracted_headerInfoBlock_block_text Attracted_headerInfoBlock_block_text_moneys" data="wait">
                             <span>Общая сумма бонусов начисленных</span>
                             <p>0</p>
                         </div>
@@ -1264,9 +1249,7 @@
                 </div>
             `);
 
-            $('.index_page_body_data').append(headerInfoBlock);
-
-            var headerInfoBlock = 
+            var headerInfoBlock2 = 
             $(`
                 <div class="Attracted_headerInfoBlock">
                     <div class="Attracted_headerInfoBlock_block">
@@ -1282,7 +1265,7 @@
                         <div class="Attracted_headerInfoBlock_block_i">
                             <i class="fal fa-envelope-open-dollar"></i>
                         </div>
-                        <div class="Attracted_headerInfoBlock_block_text Attracted_headerInfoBlock_block_text_moneys">
+                        <div class="Attracted_headerInfoBlock_block_text Attracted_headerInfoBlock_block_text_moneys" data="pays">
                             <span>Общая сумма бонусов выплаченных</span>
                             <p>0</p>
                         </div>
@@ -1290,12 +1273,18 @@
                 </div>
             `);
 
-            $('.index_page_body_data').append(headerInfoBlock);
+            $('.index_page_body_data').append(headerInfoBlock1);
+            $('.index_page_body_data').append(headerInfoBlock2);
+        }
 
+        async renderInvesters(_data) 
+        {
+            var allMoneyMembers     = 0;
+               
             var settingBlock = $(`
                 <div class="settingBlock">
                     <div class="settingBlock_header">
-                        <p>Мной привлечено инвесторов</p>
+                        <p>Выплаты за Инвесторов</p>
                         <div class="settingBlock_header_line">
                             <span>ID Инвестора</span>
                             <span>Сумма инвестиций</span>
@@ -1316,23 +1305,45 @@
                     data: element.user,
                 });
 
-                var template_text = `
-                    <div class="settingBlock_body_line">
-                        <span>${element.user}</span>
-                        <span>${investing_pay.AllPays}</span>
-                        <span>${investing_pay.allMorePlays}</span>
-                        <span>Чек отсутствует</span>
-                    </div>
-                `;
+                for(var el of investing_pay)
+                {
+                    var template_text = `
+                        <div class="settingBlock_body_line">
+                            <span>${element.user}</span>
+                            <span>${el.Pay}</span>
+                            <span>${el.YouPay}</span>
+                            <span>${el.status}</span>
+                        </div>
+                    `;
 
-                allMoneyMembers += investing_pay.allMorePlays;
+                    allMoneyMembers += el.YouPay;
 
-                settingBlock.find('.settingBlock_body').append(template_text);
+                    settingBlock.find('.settingBlock_body').append(template_text);
+                }
             }
 
-            $('.Attracted_headerInfoBlock_block_text_moneys p').html(allMoneyMembers);
+            $('.Attracted_headerInfoBlock_block_text_moneys[data="wait"] p').html(allMoneyMembers);
 
             $('.index_page_body_data').append(settingBlock);
+        }
+
+        async render(data) 
+        {
+            var _data           = await callApi({
+                methodName: "Attracted_by_me",
+                data: data._id,
+            });
+            var _dataMore       = await callApi({
+                methodName: "Attracted_by_me_b",
+                data: data._id,
+            });
+           
+
+            console.log(_data);
+            console.log(_dataMore);
+
+            this.renderHeader(_data, _dataMore);
+            this.renderInvesters(_data);
 
             var settingBlock = $(`
                 <div class="settingBlock">
