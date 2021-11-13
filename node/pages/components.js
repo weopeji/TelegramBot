@@ -461,8 +461,6 @@ async function acceptInvestor(socket,data,callback)
 {
     var _Project        = await Project.findOne({_id: data.projectId});
     var _InvDoc         = await InvDoc.findOne({invester: data.id, projectId: data.projectId});
-
-    var nowDate         = ;
     var moneyPay        = _InvDoc.data.pay;
     var mouncePay       = _Project.data.date;
     var payments        = 
