@@ -35,20 +35,18 @@
                 <div class="Attracted_headerInfoBlock">
                     <div class="Attracted_headerInfoBlock_block">
                         <div class="Attracted_headerInfoBlock_block_i">
-                            <i class="fas fa-users"></i>
+                            <i class="fad fa-check"></i>
                         </div>
                         <div class="Attracted_headerInfoBlock_block_text">
-                            <span>Мной привлечено инвесторов</span>
-                            <p>${_data.length}</p>
+                            <p>Подтвердить оплату</p>
                         </div>
                     </div>
                     <div class="Attracted_headerInfoBlock_block">
                         <div class="Attracted_headerInfoBlock_block_i">
-                            <i class="fal fa-credit-card-blank"></i>
+                            <i class="fad fa-times"></i>
                         </div>
                         <div class="Attracted_headerInfoBlock_block_text Attracted_headerInfoBlock_block_text_moneys">
-                            <span>Общая сумма бонусов начисленных</span>
-                            <p>0</p>
+                            <p>Отказать</p>
                         </div>
                     </div>
                 </div>
