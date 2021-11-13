@@ -126,9 +126,9 @@ var action_linker =
 
 async function toAttractPay(socket,data,callback)
 {
-    var _User = await User.find({});
+    var _Users = await User.find({});
 
-    function __Attracted_by_me()
+    function __Attracted_by_me(_User)
     {
         return new Promise((resolve,reject) =>
         {   
@@ -138,7 +138,7 @@ async function toAttractPay(socket,data,callback)
         });
     }
 
-    function Attracted_by_me_b()
+    function Attracted_by_me_b(_User)
     {
         return new Promise((resolve,reject) =>
         {   
@@ -152,8 +152,8 @@ async function toAttractPay(socket,data,callback)
 
     for (const el of _Users) 
     {
-        var AM = __Attracted_by_me();
-        var AB = Attracted_by_me_b();
+        var AM = __Attracted_by_me(_User);
+        var AB = Attracted_by_me_b(_User);
 
         console.log(AM);
         console.log(AB);
