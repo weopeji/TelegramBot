@@ -484,7 +484,7 @@ html, body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: calc(50% - 60px);
+  width: 100%;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
