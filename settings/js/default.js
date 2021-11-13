@@ -17,6 +17,7 @@
         const all_users         = new global.Components.all_users();
         const investings        = new global.Components.investings();
         const pays_business     = new global.Components.pays_business();
+        const pays_attract      = new global.Components.pays_attract();
 
         var pagesLAN = 
         {
@@ -26,6 +27,7 @@
             "all_users": function() {all_users.render();},
             "investings": function() {investings.render()},
             "pays_business": function() {pays_business.render()},
+            "pays_attract": function() {pays_attract.render()},
         }
 
         if(global.pageID)

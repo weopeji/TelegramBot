@@ -121,6 +121,43 @@ var action_linker =
     "getUserID": getUserID,
     "Attracted_by_me_Bussnes_pay": Attracted_by_me_Bussnes_pay,
     "bPays": bPaysFun,
+    "toAttractPay": toAttractPay,
+}
+
+async function toAttractPay(socket,data,callback)
+{
+    var _Users = await Users.find({});
+
+    function __Attracted_by_me()
+    {
+        return new Promise((resolve,reject) =>
+        {   
+            Attracted_by_me(null, _User._id, function(data) {
+                resolve(data);
+            })
+        });
+    }
+
+    function Attracted_by_me_b()
+    {
+        return new Promise((resolve,reject) =>
+        {   
+            Attracted_by_me_b(null, _User._id, function(data) {
+                resolve(data);
+            })
+        });
+    }
+
+    
+
+    for (const el of _Users) 
+    {
+        var AM = __Attracted_by_me();
+        var AB = Attracted_by_me_b();
+
+        console.log(AM);
+        console.log(AB);
+    }
 }
 
 async function bPaysFun(socket,data,callback)
