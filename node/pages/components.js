@@ -42,6 +42,7 @@ function privateInit(initPlagins) {
     InvDoc      = initPlagins.InvDoc;
     MsgDB       = initPlagins.MsgDB;
     config      = initPlagins.config;
+    PaysAttract = initPlagins.PaysAttract;
 }
 
 var privat_index_page = function(socket,data,callback) {
@@ -366,9 +367,9 @@ async function Attracted_by_me_investing_pay(socket,data,callback)
 
         var status = "Ожидает оплаты";
 
-        var PayAttract = await PayAttract.findOne({idInv: el._id});
+        var _PaysAttract = await PaysAttract.findOne({idInv: el._id});
 
-        if(PayAttract)
+        if(_PaysAttract)
         {
             status = "Оплачено";
         }
