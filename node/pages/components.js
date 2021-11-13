@@ -363,7 +363,7 @@ async function Attracted_by_me_investing_pay(socket,data,callback)
     for (const el of _InvDocs) 
     {
         var Pay     = el.data.pay;
-        var YouPay  = el.data.pay * 0.875;
+        var YouPay  = el.data.pay - (el.data.pay * 0.875);
 
         var status = "Ожидает оплаты";
 
