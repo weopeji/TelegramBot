@@ -130,9 +130,11 @@ async function toAttractPay(socket,data,callback)
 
     function __Attracted_by_me(_User)
     {
+        var _id = _User._id;
+
         return new Promise((resolve,reject) =>
         {   
-            Attracted_by_me(null, _User._id, function(data) {
+            Attracted_by_me(null, _id, function(data) {
                 resolve(data);
             })
         });
@@ -140,9 +142,11 @@ async function toAttractPay(socket,data,callback)
 
     function Attracted_by_me_b(_User)
     {
+        var _id = _User._id;
+
         return new Promise((resolve,reject) =>
         {   
-            Attracted_by_me_b(null, _User._id, function(data) {
+            Attracted_by_me_b(null, _id, function(data) {
                 resolve(data);
             })
         });
@@ -153,9 +157,9 @@ async function toAttractPay(socket,data,callback)
     for (const _User of _Users) 
     {
         console.log(_User);
-        
-        var AM = __Attracted_by_me(_User);
-        var AB = Attracted_by_me_b(_User);
+
+        var AM = await __Attracted_by_me(_User);
+        var AB = await Attracted_by_me_b(_User);
 
         console.log(AM);
         console.log(AB);
