@@ -386,6 +386,8 @@ async function Attracted_by_me_Bussnes_pay(socket,data,callback)
             status: status,
         })
     }
+    
+    callback(AllPays);
 }
 
 async function Attracted_by_me_b(socket,data,callback)

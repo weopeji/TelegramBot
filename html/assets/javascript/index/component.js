@@ -1329,7 +1329,6 @@
 
         async renderBussnes(_dataMore)
         {
-
             var settingBlock = $(`
                 <div class="settingBlock">
                     <div class="settingBlock_header">
