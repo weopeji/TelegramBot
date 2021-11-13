@@ -559,11 +559,11 @@
             _data.forEach(function(element, i) {
                 var _status = {
                     "wait": `
-                        <span class="settingBlock_wait settingBlock_block settingBlock_accept" data="${element.invester}" data_more="${element.projectId}">Открыть</span>
+                        <span class="settingBlock_wait settingBlock_block settingBlock_accept" data="${element.invester}">Открыть</span>
                     `,
                 }
                 var template_text = `
-                    <div class="settingBlock_body_line" data="${element.invester}">
+                    <div class="settingBlock_body_line" data="${element.invester}"  data_more="${element.projectId}">
                         <span>${i + 1}</span>
                         <span>${element.projectId}</span>
                         <span>${element.invester}</span>
