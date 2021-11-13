@@ -156,13 +156,13 @@
                     "wait": "Ожидает оплату",
                 }
 
-                var maxDate = new Date(el.date);
-                var maxDateFormatted =
-                    maxDate.getFullYear() +
-                    ' ' + pad(maxDate.getMonth() + 1, 2, '0') +
-                    ' ' + pad(maxDate.getDate(), 2, '0');
-                
                 _data.InvDoc.pays.forEach((el, i) => {
+                    var maxDate = new Date(el.date);
+                    var maxDateFormatted =
+                        maxDate.getFullYear() +
+                        ' ' + pad(maxDate.getMonth() + 1, 2, '0') +
+                        ' ' + pad(maxDate.getDate(), 2, '0');
+                
                     var _block = $(`
                         <div class="headerPaysBlock_body_line">
                             <span>${i + 1}</span>
