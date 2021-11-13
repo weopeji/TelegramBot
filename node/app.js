@@ -241,18 +241,20 @@ bot.onText(/\/start (.+)/, async (msg, match) =>
         await User.findOneAndUpdate({user: msg.from.id}, {member_b: resp.split('_')[1]});
         main_page._CreatorFUN(msg)
     }
-    else if(resp.split('_')[0] == "setSignaturePro") {
+    else if(resp.split('_')[0] == "setSignaturePro") 
+    {
         investor_page.payerInvester(msg);
-    } else 
+    } 
+    else 
     {
         defaultShowProject();
     }
 
     async function defaultShowProject()
     {
-        var needProject = await Project.findOne({_id: _idProject});
-        var html = `Выбран проект: ${_idProject}\n[Профиль компании](${helper_functions.getURL()}html/project/profil/#${needProject._id})\n[Презентация](${helper_functions.getURL()}/projects/${needProject._id}/${needProject.data["file+7"]})\n[Видео презентация](${helper_functions.getURL()}/projects/${needProject._id}/${needProject.data["file+8"]})`;
-        const stream    = fs.createReadStream(`../projects/${_idProject}/logo.png`);
+        var needProject     = await Project.findOne({_id: _idProject});
+        var html            = `Выбран проект: ${_idProject}\n[Профиль компании](${helper_functions.getURL()}html/project/profil/#${needProject._id})\n[Презентация](${helper_functions.getURL()}/projects/${needProject._id}/${needProject.data["file+7"]})\n[Видео презентация](${helper_functions.getURL()}/projects/${needProject._id}/${needProject.data["file+8"]})`;
+        const stream        = fs.createReadStream(`../projects/${_idProject}/logo.png`);
     
         var fat = await bot.sendPhoto(msg.chat.id, stream, {
             "caption": html,

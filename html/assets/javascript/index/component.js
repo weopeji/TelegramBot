@@ -18,6 +18,166 @@
     {
         constructor() {};
 
+        async business_render(_data) 
+        {
+            $('.info_active_block_right').append(`
+                <div class="info_active_block_photo">
+                        
+                </div>
+                <span>${_data.invester.first_name} ${_data.invester.last_name}</span>
+                <p>Invester</p>
+                <div class="info_active_block_massage_button">
+                    <span>Перейти к диалогу</span>
+                </div>
+            `);
+
+            var headerPaysBlock = $(`
+                    <div class="headerPaysBlock">
+                        <div class="headerPaysBlock_header">
+                            <span class="headerPaysBlock_header_span">Выплаты по проекту</span>
+                            <div class="headerPaysBlock_header_line">
+                                <span>#</span>
+                                <span>Дата</span>
+                                <span>Сумма</span>
+                                <span>Статус</span>
+                            </div>
+                        </div>
+                        <div class="headerPaysBlock_body">
+                            <div class="headerPaysBlock_body_line">
+                                <span>1</span>
+                                <span>02.10.2022</span>
+                                <span>35 000 руб</span>
+                                <span class="headerPaysBlock_button">
+                                    <span>Прикреить чек</span>
+                                </span>
+                            </div>
+                            <div class="headerPaysBlock_body_line">
+                                <span>2</span>
+                                <span>02.10.2023</span>
+                                <span>35 000 руб</span>
+                                <span class="headerPaysBlock_button">
+                                    <span>Прикреить чек</span>
+                                </span>
+                            </div>
+                            <div class="headerPaysBlock_body_line">
+                                <span>3</span>
+                                <span>02.10.2024</span>
+                                <span>35 000 руб</span>
+                                <span class="headerPaysBlock_button">
+                                    <span>Прикреить чек</span>
+                                </span>
+                            </div>
+                            <div class="headerPaysBlock_body_line">
+                                <span>4</span>
+                                <span>02.10.2025</span>
+                                <span>35 000 руб</span>
+                                <span class="headerPaysBlock_button">
+                                    <span>Прикреить чек</span>
+                                </span>
+                            </div>
+                            <div class="headerPaysBlock_body_line">
+                                <span>5</span>
+                                <span>02.10.2026</span>
+                                <span>35 000 руб</span>
+                                <span class="headerPaysBlock_button">
+                                    <span>Прикреить чек</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                `);
+
+
+                $('.index_page_body_data').append(headerPaysBlock);
+        }
+
+        async invester_render(_data)
+        {
+            var settingBlock = $(`.info_active_block`);
+
+            settingBlock.find('.info_active_block_right').append(`
+                <div class="info_active_block_photo">
+                        
+                </div>
+                <span>${_data.project.data.name}</span>
+                <p>business</p>
+                <div class="info_active_block_massage_button">
+                    <span>Перейти к диалогу</span>
+                </div>
+            `);
+
+            $('.index_page_body_data').append(settingBlock);
+
+            var headerPaysBlock = $(`
+                <div class="headerPaysBlock">
+                    <div class="headerPaysBlock_header">
+                        <span class="headerPaysBlock_header_span">Выплаты по проекту</span>
+                        <div class="headerPaysBlock_header_line">
+                            <span>#</span>
+                            <span>Дата</span>
+                            <span>Сумма</span>
+                            <span>Статус</span>
+                        </div>
+                    </div>
+                    <div class="headerPaysBlock_body">
+                        <div class="headerPaysBlock_body_line">
+                            <span>1</span>
+                            <span>02.10.2022</span>
+                            <span>35 000 руб</span>
+                            <span class="headerPaysBlock_body_line_inv">
+                                <span>
+                                    Ожидает оплату
+                                </span>
+                            </span>
+                        </div>
+                        <div class="headerPaysBlock_body_line">
+                            <span>2</span>
+                            <span>02.10.2023</span>
+                            <span>35 000 руб</span>
+                            <span class="headerPaysBlock_body_line_inv">
+                                <span>
+                                    Ожидает оплату
+                                </span>
+                            </span>
+                        </div>
+                        <div class="headerPaysBlock_body_line">
+                            <span>3</span>
+                            <span>02.10.2024</span>
+                            <span>35 000 руб</span>
+                            <span class="headerPaysBlock_body_line_inv">
+                                <span>
+                                    Ожидает оплату
+                                </span>
+                            </span>
+                        </div>
+                        <div class="headerPaysBlock_body_line">
+                            <span>4</span>
+                            <span>02.10.2025</span>
+                            <span>35 000 руб</span>
+                            <span class="headerPaysBlock_body_line_inv">
+                                <span>
+                                    Ожидает оплату
+                                </span>
+                            </span>
+                        </div>
+                        <div class="headerPaysBlock_body_line">
+                            <span>5</span>
+                            <span>02.10.2026</span>
+                            <span>35 000 руб</span>
+                            <span class="headerPaysBlock_body_line_inv">
+                                <span>
+                                    Ожидает оплату
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            `);
+
+
+            $('.index_page_body_data').append(headerPaysBlock);
+        }
+
         async renderType(allData)
         {
             var _data = await callApi({
@@ -71,173 +231,14 @@
                 </div>
             `);
 
+            $('.index_page_body_data').append(settingBlock);
+
             if(allData.User.type == "business")
             {
-                settingBlock.find('.info_active_block_right').append(`
-                    <div class="info_active_block_photo">
-                            
-                    </div>
-                    <span>${_data.invester.first_name} ${_data.invester.last_name}</span>
-                    <p>Invester</p>
-                    <div class="info_active_block_massage_button">
-                        <span>Перейти к диалогу</span>
-                    </div>
-                `);
-
-                $('.index_page_body_data').append(settingBlock);
-
-                var headerPaysBlock = $(`
-                    <div class="headerPaysBlock">
-                        <div class="headerPaysBlock_header">
-                            <span class="headerPaysBlock_header_span">Выплаты по проекту</span>
-                            <div class="headerPaysBlock_header_line">
-                                <span>#</span>
-                                <span>Дата</span>
-                                <span>Сумма</span>
-                                <span>Статус</span>
-                            </div>
-                        </div>
-                        <div class="headerPaysBlock_body">
-                            <div class="headerPaysBlock_body_line">
-                                <span>1</span>
-                                <span>02.10.2022</span>
-                                <span>35 000 руб</span>
-                                <span class="headerPaysBlock_button">
-                                    <span>Прикреить чек</span>
-                                </span>
-                            </div>
-                            <div class="headerPaysBlock_body_line">
-                                <span>2</span>
-                                <span>02.10.2023</span>
-                                <span>35 000 руб</span>
-                                <span class="headerPaysBlock_button">
-                                    <span>Прикреить чек</span>
-                                </span>
-                            </div>
-                            <div class="headerPaysBlock_body_line">
-                                <span>3</span>
-                                <span>02.10.2024</span>
-                                <span>35 000 руб</span>
-                                <span class="headerPaysBlock_button">
-                                    <span>Прикреить чек</span>
-                                </span>
-                            </div>
-                            <div class="headerPaysBlock_body_line">
-                                <span>4</span>
-                                <span>02.10.2025</span>
-                                <span>35 000 руб</span>
-                                <span class="headerPaysBlock_button">
-                                    <span>Прикреить чек</span>
-                                </span>
-                            </div>
-                            <div class="headerPaysBlock_body_line">
-                                <span>5</span>
-                                <span>02.10.2026</span>
-                                <span>35 000 руб</span>
-                                <span class="headerPaysBlock_button">
-                                    <span>Прикреить чек</span>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                `);
-
-
-                $('.index_page_body_data').append(headerPaysBlock);
-            } else {
-                var getBussnes = await callApi({
-                    methodName: "getBussnes",
-                    data: _data.InvDoc.projectId,
-                });
-
-                console.log(getBussnes);
-
-                settingBlock.find('.accept_block').remove();
-                settingBlock.find('.remove_block').remove();
-
-                settingBlock.find('.info_active_block_left_buttons').css("margin-top", "100px");
-
-                settingBlock.find('.info_active_block_right').append(`
-                    <div class="info_active_block_photo">
-                            
-                    </div>
-                    <span>${getBussnes.data.name}</span>
-                    <p>business</p>
-                    <div class="info_active_block_massage_button">
-                        <span>Перейти к диалогу</span>
-                    </div>
-                `);
-
-                $('.index_page_body_data').append(settingBlock);
-
-                var headerPaysBlock = $(`
-                    <div class="headerPaysBlock">
-                        <div class="headerPaysBlock_header">
-                            <span class="headerPaysBlock_header_span">Выплаты по проекту</span>
-                            <div class="headerPaysBlock_header_line">
-                                <span>#</span>
-                                <span>Дата</span>
-                                <span>Сумма</span>
-                                <span>Статус</span>
-                            </div>
-                        </div>
-                        <div class="headerPaysBlock_body">
-                            <div class="headerPaysBlock_body_line">
-                                <span>1</span>
-                                <span>02.10.2022</span>
-                                <span>35 000 руб</span>
-                                <span class="headerPaysBlock_body_line_inv">
-                                    <span>
-                                        Ожидает оплату
-                                    </span>
-                                </span>
-                            </div>
-                            <div class="headerPaysBlock_body_line">
-                                <span>2</span>
-                                <span>02.10.2023</span>
-                                <span>35 000 руб</span>
-                                <span class="headerPaysBlock_body_line_inv">
-                                    <span>
-                                        Ожидает оплату
-                                    </span>
-                                </span>
-                            </div>
-                            <div class="headerPaysBlock_body_line">
-                                <span>3</span>
-                                <span>02.10.2024</span>
-                                <span>35 000 руб</span>
-                                <span class="headerPaysBlock_body_line_inv">
-                                    <span>
-                                        Ожидает оплату
-                                    </span>
-                                </span>
-                            </div>
-                            <div class="headerPaysBlock_body_line">
-                                <span>4</span>
-                                <span>02.10.2025</span>
-                                <span>35 000 руб</span>
-                                <span class="headerPaysBlock_body_line_inv">
-                                    <span>
-                                        Ожидает оплату
-                                    </span>
-                                </span>
-                            </div>
-                            <div class="headerPaysBlock_body_line">
-                                <span>5</span>
-                                <span>02.10.2026</span>
-                                <span>35 000 руб</span>
-                                <span class="headerPaysBlock_body_line_inv">
-                                    <span>
-                                        Ожидает оплату
-                                    </span>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                `);
-
-
-                $('.index_page_body_data').append(headerPaysBlock);
+                this.business_render(_data);
+            } else 
+            {
+                this.invester_render(_data);
             }
 
             $('.info_active_block_massage_button').click(function() {
@@ -541,7 +542,7 @@
             _data.forEach(function(element, i) {
                 var _status = {
                     "wait": `
-                        <span class="settingBlock_wait settingBlock_block settingBlock_accept" data="${element.invester}">Открыть</span>
+                        <span class="settingBlock_wait settingBlock_block settingBlock_accept" data="${element.invester}" data_more="${element.projectId}">Открыть</span>
                     `,
                 }
                 var template_text = `
@@ -559,7 +560,7 @@
             $('.index_page_body_data').append(settingBlock);
 
             $('.settingBlock_body_line').click( function () {
-                location.href = `/?page=activ_projects&id=${$(this).attr('data')}`;
+                location.href = `/?page=activ_projects&id=${$(this).attr('data')}&project=${$(this).attr('data_more')}`;
             })
         }
     }
