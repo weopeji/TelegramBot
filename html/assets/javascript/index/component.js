@@ -868,7 +868,7 @@
                 </div>
             `);
 
-            settingBlock.css("margin-top", "20px");
+            settingBlock.css("margin-top", "400px");
 
             
             for(var element of getPaysBusiness)
