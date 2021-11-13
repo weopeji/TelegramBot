@@ -1327,7 +1327,7 @@
             $('.index_page_body_data').append(settingBlock);
         }
 
-        async renderBussnes()
+        async renderBussnes(_dataMore)
         {
 
             var settingBlock = $(`
@@ -1376,7 +1376,7 @@
             $('.index_page_body_data').append(settingBlock);
         }
 
-        async allProjectsRender(_dataMore) {
+        async allProjectsRender() {
             var _data = await callApi({
                 methodName: "getAllProjectsInvesting",
                 data: null,
