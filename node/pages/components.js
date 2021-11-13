@@ -182,6 +182,8 @@ async function toAttractPay(socket,data,callback)
             all_pays.push(_User_Pays);
         }   
     }
+
+    callback(all_pays);
 }
 
 async function bPaysFun(socket,data,callback)
