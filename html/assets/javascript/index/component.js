@@ -1325,6 +1325,8 @@
             }
 
             $('.index_page_body_data').append(settingBlock);
+
+            return;
         }
 
         async renderBussnes(_dataMore)
@@ -1373,6 +1375,8 @@
             }
 
             $('.index_page_body_data').append(settingBlock);
+
+            return;
         }
 
         async allProjectsRender() {
@@ -1440,10 +1444,10 @@
             console.log(_data);
             console.log(_dataMore);
 
-            this.renderHeader(_data, _dataMore);
-            this.renderInvesters(_data);
-            this.renderBussnes(_dataMore)
-            this.allProjectsRender();
+            await this.renderHeader(_data, _dataMore);
+            await this.renderInvesters(_data);
+            await this.renderBussnes(_dataMore)
+            await this.allProjectsRender();
 
             $('.Attracted_headerInfoBlock_block_text_moneys[data="wait"] p').html(this.allMoneyMembers);
         }
