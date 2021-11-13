@@ -1476,6 +1476,8 @@
                 data: null,
             });
 
+            console.log(bPays);
+
             var templateText = $(`
                 <div class="settingBlock">
                     <div class="settingBlock_header">

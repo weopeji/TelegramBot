@@ -164,20 +164,22 @@ async function toAttractPay(socket,data,callback)
         });
     }
 
+    var all_pays = [];
     
 
     for (const _User of _Users) 
     {
         var AM = await __Attracted_by_me(_User);
         // var AB = await __Attracted_by_me_b(_User);
-
-        console.log(AM);
         
         for (const AM_data of AM) 
         {
             var AM_data_fun = await __Attracted_by_me_investing_pay(AM_data.user);
 
-            console.log(AM_data_fun);
+            var _User_Pays = AM_data_fun;
+            _User_Pays.AM_data = AM_data;
+
+            all_pays.push(_User_Pays);
         }   
     }
 }
