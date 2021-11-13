@@ -243,8 +243,6 @@
                             </div>
                         </div>
                         <div class="info_active_block_left_buttons">
-                            <span class="accept_block">Подтвердить оплату</span>
-                            <span class="remove_block">Отказать</span>
                             <span class="show_block">Посмотреть чек об оплате</span>
                             <span class="show_document">Посмотреть договор</span>
                         </div>
