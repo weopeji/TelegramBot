@@ -1374,7 +1374,7 @@
             $('.index_page_body_data').append(settingBlock);
         }
 
-        async allProjectsRender() {
+        async allProjectsRender(_dataMore) {
             var _data = await callApi({
                 methodName: "getAllProjectsInvesting",
                 data: null,
@@ -1442,7 +1442,7 @@
             this.renderBussnes(_dataMore)
             this.allProjectsRender();
 
-            $('.Attracted_headerInfoBlock_block_text_moneys[data="wait"] p').html(allMoneyMembers);
+            $('.Attracted_headerInfoBlock_block_text_moneys[data="wait"] p').html(this.allMoneyMembers);
         }
     }
 
