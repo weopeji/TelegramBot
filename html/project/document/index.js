@@ -70,12 +70,23 @@
 
             console.log(getInvestorDocument);
 
+            var getInv = await callApi({
+                methodName: 'getInv',
+                data: 
+                {
+                    id: _GET__('id'),
+                    projectId: _id,
+                },
+            });
+
+            console.log(getInvestorDocument);
+
             templateText = templateText.replace(new RegExp("%invester_name%", 'g'), getInvestorDocument.investor_data.fio);
             templateText = templateText.replace(new RegExp("%pay%", 'g'), getInvestorDocument.investor_data.pay + " руб");
 
             if(_GET__('accept'))
             {
-                templateText = templateText.replace(new RegExp("%document_more%", 'g'), `<img src="${getInvestorDocument.data.document}" alt>`);
+                templateText = templateText.replace(new RegExp("%document_more%", 'g'), `<img src="${getInv}" alt>`);
             }
         } else {
             templateText = templateText.replace(new RegExp("%pay%", 'g'), "_______________");

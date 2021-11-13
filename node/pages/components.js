@@ -123,6 +123,13 @@ var action_linker =
     "bPays": bPaysFun,
     "toAttractPay": toAttractPay,
     "getPaysBusiness": getPaysBusiness,
+    "getInv": getInv,
+}
+
+async function getInv(socket,data,callback)
+{
+    var _InvDoc   = await InvDoc.findOne({projectId: projectId, invester: id});
+    callback(_InvDoc.data.document);
 }
 
 async function getPaysBusiness(socket,data,callback)
