@@ -1422,6 +1422,8 @@
 
     class pays_business
     {
+        constructor() {};
+        
         async render()
         {
             var bPays = await callApi({
