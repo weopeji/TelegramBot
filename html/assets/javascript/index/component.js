@@ -211,6 +211,11 @@
 
             console.log(_data);
 
+            var status = {
+                "wait": "Ожидает подтверждения",
+                "accept": "Подтверждено",
+            }
+
             var settingBlock = $(`
                 <div class="info_active_block">
                     <div class="info_active_block_right">
@@ -221,7 +226,7 @@
                         <div class="info_active_block_left_info">
                             <div class="info_active_block_left_info_line">
                                 <span>Номер проекта:</span>
-                                <a>${_data.InvDoc.projectId}</a>
+                                <a>${status[_data.InvDoc.projectId]}</a>
                             </div>
                             <div class="info_active_block_left_info_line">
                                 <span>Номер инвестора:</span>
