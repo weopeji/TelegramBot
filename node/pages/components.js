@@ -470,12 +470,12 @@ async function acceptInvestor(socket,data,callback)
         "Ежедневно": 1,
         "Ежемесячно": 30,
         "Ежеквартально": 90,
-        "Ежегодно": 365,
+        "Ежегодно": 360,
     };
     var date_payments   = payments[_Project.data.date_payments];
     var _rate           = (_Project.data.rate / 12 / 30) * date_payments;
     var manyPays        = (mouncePay * 30) / date_payments;
-    var needPayment     = moneyPay * (manyPays / 100);
+    var needPayment     = moneyPay * (_rate / 100);
 
     var pays = [];
     
