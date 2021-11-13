@@ -1221,7 +1221,9 @@
 
     class Attracted_by_me
     {
-        constructor() {};
+        constructor() {
+            this.allMoneyMembers = 0;
+        };
 
         async renderHeader(_data, _dataMore) 
         {
@@ -1279,7 +1281,7 @@
 
         async renderInvesters(_data) 
         {
-            var allMoneyMembers     = 0;
+            
                
             var settingBlock = $(`
                 <div class="settingBlock">
@@ -1316,19 +1318,18 @@
                         </div>
                     `;
 
-                    allMoneyMembers += el.YouPay;
+                    this.allMoneyMembers += el.YouPay;
 
                     settingBlock.find('.settingBlock_body').append(template_text);
                 }
             }
-
-            $('.Attracted_headerInfoBlock_block_text_moneys[data="wait"] p').html(allMoneyMembers);
 
             $('.index_page_body_data').append(settingBlock);
         }
 
         async renderBussnes()
         {
+
             var settingBlock = $(`
                 <div class="settingBlock">
                     <div class="settingBlock_header">
@@ -1364,6 +1365,8 @@
                         <span>${el.status}</span>
                     </div>
                 `;
+
+                this.allMoneyMembers += el.YouPay;
 
                 settingBlock.find('.settingBlock_body').append(template_text);
             }
@@ -1438,6 +1441,8 @@
             this.renderInvesters(_data);
             this.renderBussnes(_dataMore)
             this.allProjectsRender();
+
+            $('.Attracted_headerInfoBlock_block_text_moneys[data="wait"] p').html(allMoneyMembers);
         }
     }
 
