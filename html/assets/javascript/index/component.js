@@ -1356,19 +1356,21 @@
                     data: element._id,
                 });
 
+                for(var el of investing_pay)
+                {
+                    var template_text = `
+                        <div class="settingBlock_body_line">
+                            <span>${element._id}</span>
+                            <span>${el.Pay}</span>
+                            <span>${el.YouPay}</span>
+                            <span>${el.status}</span>
+                        </div>
+                    `;
 
-                var template_text = `
-                    <div class="settingBlock_body_line">
-                        <span>${element._id}</span>
-                        <span>${el.Pay}</span>
-                        <span>${el.YouPay}</span>
-                        <span>${el.status}</span>
-                    </div>
-                `;
+                    this.allMoneyMembers += el.YouPay;
 
-                this.allMoneyMembers += el.YouPay;
-
-                settingBlock.find('.settingBlock_body').append(template_text);
+                    settingBlock.find('.settingBlock_body').append(template_text);
+                }
             }
 
             $('.index_page_body_data').append(settingBlock);
@@ -1389,7 +1391,8 @@
                         <div class="settingBlock_header_line">
                             <span>ID Предложения</span>
                             <span>Имя предложения</span>
-                            <span>Сумма выплаты</span>
+                            <span>Сумма выплаты за инвестора</span>
+                            <span>Сумма выплаты за бизнес</span>
                         </div>
                     </div>
                     <div class="settingBlock_body">
@@ -1409,6 +1412,7 @@
                         <span>${element._id}</span>
                         <span>${element.data.name}</span>
                         <span>70%</span>
+                        <span>30%</span>
                     </div>
                 `);
 
