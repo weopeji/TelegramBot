@@ -117,8 +117,8 @@
             function toDateTime(secs) {
                 var t = new Date(1970, 0, 1); // Epoch
                 t.setSeconds(secs);
-                t.toLocaleDateString();
-                return t;
+                var need_date = t.toLocaleDateString();
+                return need_date;
             }
 
             var settingBlock = $(`.info_active_block`);
