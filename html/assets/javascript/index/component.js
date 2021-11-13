@@ -114,6 +114,12 @@
 
         async invester_render(_data)
         {
+            function toDateTime(secs) {
+                var t = new Date(1970, 0, 1); // Epoch
+                t.setSeconds(secs);
+                return t;
+            }
+
             var settingBlock = $(`.info_active_block`);
 
             settingBlock.find('.info_active_block_right').append(`
@@ -129,74 +135,48 @@
 
             $('.index_page_body_data').append(settingBlock);
 
-            var headerPaysBlock = $(`
-                <div class="headerPaysBlock">
-                    <div class="headerPaysBlock_header">
-                        <span class="headerPaysBlock_header_span">Выплаты по проекту</span>
-                        <div class="headerPaysBlock_header_line">
-                            <span>#</span>
-                            <span>Дата</span>
-                            <span>Сумма</span>
-                            <span>Статус</span>
+            if(_data.InvDoc.status == "accept")
+            {
+                var headerPaysBlock = $(`
+                    <div class="headerPaysBlock">
+                        <div class="headerPaysBlock_header">
+                            <span class="headerPaysBlock_header_span">Выплаты по проекту</span>
+                            <div class="headerPaysBlock_header_line">
+                                <span>#</span>
+                                <span>Дата</span>
+                                <span>Сумма</span>
+                                <span>Статус</span>
+                            </div>
+                        </div>
+                        <div class="headerPaysBlock_body">
+
                         </div>
                     </div>
-                    <div class="headerPaysBlock_body">
-                        <div class="headerPaysBlock_body_line">
-                            <span>1</span>
-                            <span>02.10.2022</span>
-                            <span>35 000 руб</span>
-                            <span class="headerPaysBlock_body_line_inv">
-                                <span>
-                                    Ожидает оплату
-                                </span>
-                            </span>
-                        </div>
-                        <div class="headerPaysBlock_body_line">
-                            <span>2</span>
-                            <span>02.10.2023</span>
-                            <span>35 000 руб</span>
-                            <span class="headerPaysBlock_body_line_inv">
-                                <span>
-                                    Ожидает оплату
-                                </span>
-                            </span>
-                        </div>
-                        <div class="headerPaysBlock_body_line">
-                            <span>3</span>
-                            <span>02.10.2024</span>
-                            <span>35 000 руб</span>
-                            <span class="headerPaysBlock_body_line_inv">
-                                <span>
-                                    Ожидает оплату
-                                </span>
-                            </span>
-                        </div>
-                        <div class="headerPaysBlock_body_line">
-                            <span>4</span>
-                            <span>02.10.2025</span>
-                            <span>35 000 руб</span>
-                            <span class="headerPaysBlock_body_line_inv">
-                                <span>
-                                    Ожидает оплату
-                                </span>
-                            </span>
-                        </div>
-                        <div class="headerPaysBlock_body_line">
-                            <span>5</span>
-                            <span>02.10.2026</span>
-                            <span>35 000 руб</span>
-                            <span class="headerPaysBlock_body_line_inv">
-                                <span>
-                                    Ожидает оплату
-                                </span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            `);
+                `);
 
+                var _status = {
+                    "wait": "Ожидает оплату",
+                }
+                
+                _data.InvDoc.pays.forEach((el, i) => {
+                    var _block = $(`
+                        <div class="headerPaysBlock_body_line">
+                            <span>${i + 1}</span>
+                            <span>${toDateTime(el.date)}</span>
+                            <span>${Math.ceil(el.pay)} руб</span>
+                            <span class="headerPaysBlock_body_line_inv">
+                                <span>
+                                    ${_status[el.status]}
+                                </span>
+                            </span>
+                        </div>
+                    `);
 
-            // $('.index_page_body_data').append(headerPaysBlock);
+                    headerPaysBlock.find('.headerPaysBlock_body').append(_block);
+                });
+
+                $('.index_page_body_data').append(headerPaysBlock);
+            }
         }
 
         async renderType(allData)
