@@ -118,6 +118,7 @@ var action_linker =
     "reload_type": reload_type,
     "getBitsFile": getBitsFile,
     "getUserID": getUserID,
+    "Attracted_by_me_Bussnes_pay": Attracted_by_me_Bussnes_pay,
 }
 
 async function getUserID(socket,data,callback)
@@ -333,31 +334,6 @@ async function Attracted_by_me_investing_pay(socket,data,callback)
 {
     var _InvDocs        = await InvDoc.find({invester: data});
 
-    // var AllPays         = 0;
-    // var allMorePlays    = 0;
-
-    // for (const el of _InvDocs) 
-    // {
-    //     var _Project = await Project.findOne({_id: el.projectId});
-
-    //     if(_Project.payerCent) 
-    //     {
-    //         var tPro = Number(el.data.pay.trim()) * 0.3 * (_Project.payerCent * 0.1);
-    //         allMorePlays = allMorePlays + tPro;
-    //     } else 
-    //     {
-    //         var tPro = Number(el.data.pay.trim()) * 0.3 * 0.5;
-    //         allMorePlays = allMorePlays + tPro;
-    //     }
-
-    //     AllPays = AllPays + Number(el.data.pay.trim());
-    // }
-
-    // callback({
-    //     AllPays: AllPays,
-    //     allMorePlays: allMorePlays,
-    // });
-
     var AllPays         = [];
 
     for (const el of _InvDocs) 
@@ -382,6 +358,34 @@ async function Attracted_by_me_investing_pay(socket,data,callback)
     }
 
     callback(AllPays);
+}
+
+async function Attracted_by_me_Bussnes_pay(socket,data,callback)
+{
+    var _InvDocs        = await InvDoc.find({projectId: data});
+
+    var AllPays         = [];
+
+    for (const el of _InvDocs) 
+    {
+        var Pay     = el.data.pay;
+        var YouPay  = el.data.pay - (el.data.pay * 0.375);
+
+        var status = "Ожидает оплаты";
+
+        var _PaysAttract = await PaysAttract.findOne({idInv: el._id});
+
+        if(_PaysAttract)
+        {
+            status = "Оплачено";
+        }
+
+        AllPays.push({
+            Pay: Pay,
+            YouPay: YouPay,
+            status: status,
+        })
+    }
 }
 
 async function Attracted_by_me_b(socket,data,callback)

@@ -1327,28 +1327,12 @@
             $('.index_page_body_data').append(settingBlock);
         }
 
-        async render(data) 
+        async renderBussnes()
         {
-            var _data           = await callApi({
-                methodName: "Attracted_by_me",
-                data: data._id,
-            });
-            var _dataMore       = await callApi({
-                methodName: "Attracted_by_me_b",
-                data: data._id,
-            });
-           
-
-            console.log(_data);
-            console.log(_dataMore);
-
-            this.renderHeader(_data, _dataMore);
-            this.renderInvesters(_data);
-
             var settingBlock = $(`
                 <div class="settingBlock">
                     <div class="settingBlock_header">
-                        <p>Мной привлечено бизнесс проектов</p>
+                        <p>Выплаты по бизнесс проектам</p>
                         <div class="settingBlock_header_line">
                             <span>Номер проекта</span>
                             <span>Сумма привлеченная в проект</span>
@@ -1366,13 +1350,18 @@
 
             for(var element of _dataMore[0])
             {
-                console.log(element);
+                var investing_pay = await callApi({
+                    methodName: "Attracted_by_me_Bussnes_pay",
+                    data: element._id,
+                });
+
+
                 var template_text = `
                     <div class="settingBlock_body_line">
                         <span>${element._id}</span>
-                        <span>0</span>
-                        <span>0</span>
-                        <span>Чек отсутствует</span>
+                        <span>${el.Pay}</span>
+                        <span>${el.YouPay}</span>
+                        <span>${el.status}</span>
                     </div>
                 `;
 
@@ -1380,7 +1369,9 @@
             }
 
             $('.index_page_body_data').append(settingBlock);
+        }
 
+        async allProjectsRender() {
             var _data = await callApi({
                 methodName: "getAllProjectsInvesting",
                 data: null,
@@ -1414,7 +1405,7 @@
                     <div class="settingBlock_body_line">
                         <span>${element._id}</span>
                         <span>${element.data.name}</span>
-                        <span>50%</span>
+                        <span>70%</span>
                     </div>
                 `);
 
@@ -1426,6 +1417,27 @@
             }
 
             $('.index_page_body_data').append(settingBlock);
+        }
+
+        async render(data) 
+        {
+            var _data           = await callApi({
+                methodName: "Attracted_by_me",
+                data: data._id,
+            });
+            var _dataMore       = await callApi({
+                methodName: "Attracted_by_me_b",
+                data: data._id,
+            });
+           
+
+            console.log(_data);
+            console.log(_dataMore);
+
+            this.renderHeader(_data, _dataMore);
+            this.renderInvesters(_data);
+            this.renderBussnes(_dataMore)
+            this.allProjectsRender();
         }
     }
 
