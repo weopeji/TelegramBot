@@ -610,7 +610,6 @@
             })
         }
 
-
         async renderType()
         {
             var Project_data = await callApi({
@@ -839,7 +838,59 @@
             for(var key in charts) {
                 charts[key]();
             }
+
+            this.renderPay();
             
+        }
+
+        async renderPay()
+        {
+            var getPaysBusiness = await callApi({
+                methodName: "getPaysBusiness",
+                data: _GET('id'),
+            });
+
+            var settingBlock = $(`
+                <div class="settingBlock">
+                    <div class="settingBlock_header">
+                        <p>Сумма выплат процентов за инвестиции</p>
+
+                        <div class="settingBlock_header_line">
+                            <span>ID Инвестора</span>
+                            <span>Сумма инвестиции</span>
+                            <span>Сумма выплаты</span>
+                            <span>Чек</span>
+                        </div>
+                    </div>
+                    <div class="settingBlock_body">
+
+                    </div> 
+                </div>
+            `);
+
+            settingBlock.css("margin-top", "20px");
+
+            
+            for(var element of getPaysBusiness)
+            {
+
+                var template_text = $(`
+                    <div class="settingBlock_body_line">
+                        <span>${element.Inv.invester}</span>
+                        <span>${element.pay}</span>
+                        <span>${element.needPay}</span>
+                        <span>Прикрепить чек</span>
+                    </div>
+                `);
+
+                template_text.click( function() {
+                    location.href = 'https://t.me/invester_official/64';
+                })
+
+                settingBlock.find('.settingBlock_body').append(template_text);
+            }
+
+            $('.index_page_body_data').append(settingBlock);
         }
     }
 

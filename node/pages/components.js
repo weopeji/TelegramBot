@@ -122,6 +122,26 @@ var action_linker =
     "Attracted_by_me_Bussnes_pay": Attracted_by_me_Bussnes_pay,
     "bPays": bPaysFun,
     "toAttractPay": toAttractPay,
+    "getPaysBusiness": getPaysBusiness,
+}
+
+async function getPaysBusiness(socket,data,callback)
+{
+
+    var alls = [];
+
+    var _InvDocs   = await InvDoc.find({projectId: data});
+
+    for (const _User of _InvDocs) 
+    {
+        alls.push({
+            pay: _User.data.pay,
+            needPay: (_User.data.pay * 0.25),
+            Inv: _User,
+        })
+    }
+
+    callback(alls);
 }
 
 async function toAttractPay(socket,data,callback)
