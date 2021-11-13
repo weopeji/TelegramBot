@@ -140,7 +140,7 @@ async function toAttractPay(socket,data,callback)
         });
     }
 
-    function Attracted_by_me_b(_User)
+    function __Attracted_by_me_b(_User)
     {
         var _id = _User._id;
 
@@ -159,7 +159,7 @@ async function toAttractPay(socket,data,callback)
         console.log(_User);
 
         var AM = await __Attracted_by_me(_User);
-        var AB = await Attracted_by_me_b(_User);
+        var AB = await __Attracted_by_me_b(_User);
 
         console.log(AM);
         console.log(AB);
