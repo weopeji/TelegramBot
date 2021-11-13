@@ -118,7 +118,7 @@
                 var t = new Date(1970, 0, 1); // Epoch
                 t.setSeconds(secs);
                 var need_date = t.toLocaleDateString();
-                return t;
+                return need_date;
             }
 
             var settingBlock = $(`.info_active_block`);

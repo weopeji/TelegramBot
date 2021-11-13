@@ -477,6 +477,8 @@ async function acceptInvestor(socket,data,callback)
     var manyPays        = (mouncePay * 30) / date_payments;
     var needPayment     = moneyPay * (_rate / 100);
 
+    console.log(nowDate);
+
     var pays = [];
     
     for(var i = 0; i < manyPays; i++)
