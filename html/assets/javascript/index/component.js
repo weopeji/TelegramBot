@@ -114,11 +114,8 @@
 
         async invester_render(_data)
         {
-            function toDateTime(secs) {
-                var t = new Date(1970, 0, 1); // Epoch
-                t.setSeconds(secs);
-                var need_date = t.toLocaleDateString();
-                return need_date;
+            function pad(s, width, character) {
+                return new Array(width - s.toString().length + 1).join(character) + s;
             }
 
             var settingBlock = $(`.info_active_block`);
@@ -158,12 +155,18 @@
                 var _status = {
                     "wait": "Ожидает оплату",
                 }
+
+                var maxDate = new Date(el.date);
+                var maxDateFormatted =
+                    maxDate.getFullYear() +
+                    ' ' + pad(maxDate.getMonth() + 1, 2, '0') +
+                    ' ' + pad(maxDate.getDate(), 2, '0');
                 
                 _data.InvDoc.pays.forEach((el, i) => {
                     var _block = $(`
                         <div class="headerPaysBlock_body_line">
                             <span>${i + 1}</span>
-                            <span>${toDateTime(el.date)}</span>
+                            <span>${maxDateFormatted}</span>
                             <span>${Math.ceil(el.pay)} руб</span>
                             <span class="headerPaysBlock_body_line_inv">
                                 <span>
