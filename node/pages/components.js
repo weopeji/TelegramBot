@@ -481,7 +481,7 @@ async function acceptInvestor(socket,data,callback)
     
     for(var i = 0; i < manyPays; i++)
     {
-        var needDate = nowDate.setDate(D.getDate() + (date_payments * (i + 1)));
+        var needDate = nowDate.setDate(nowDate.getDate() + (date_payments * (i + 1)));
 
         pays.push({
             pay: needPayment,
