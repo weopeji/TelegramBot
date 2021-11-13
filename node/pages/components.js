@@ -339,7 +339,7 @@ async function Attracted_by_me_investing_pay(socket,data,callback)
     for (const el of _InvDocs) 
     {
         var Pay     = el.data.pay;
-        var YouPay  = el.data.pay - (el.data.pay * 0.875);
+        var YouPay  = el.data.pay * 0.0875;
 
         var status = "Ожидает оплаты";
 
@@ -369,7 +369,7 @@ async function Attracted_by_me_Bussnes_pay(socket,data,callback)
     for (const el of _InvDocs) 
     {
         var Pay     = el.data.pay;
-        var YouPay  = el.data.pay - (el.data.pay * 0.375);
+        var YouPay  = el.data.pay * 0.0375;
 
         var status = "Ожидает оплаты";
 
@@ -386,7 +386,7 @@ async function Attracted_by_me_Bussnes_pay(socket,data,callback)
             status: status,
         })
     }
-    
+
     callback(AllPays);
 }
 
