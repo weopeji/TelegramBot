@@ -44,6 +44,7 @@ function privateInit(initPlagins) {
     config      = initPlagins.config;
     PaysAttract = initPlagins.PaysAttract;
     bPays       = initPlagins.bPays;
+    Payments    = initPlagins.Payments;
 }
 
 var privat_index_page = function(socket,data,callback) {
