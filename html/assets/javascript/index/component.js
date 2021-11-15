@@ -1328,8 +1328,8 @@
 
             var moreGetButtons = $(`
                 <div class="moreGetButtons">
-                    <span data="get">Запросить выплату</span>
-                    <span data="pay">инвестировать в проект</span>
+                    <span data="get"><i class="fad fa-money-check-edit-alt"></i> Запросить выплату</span>
+                    <span data="pay"><i class="fad fa-handshake"></i> Инвестировать в проект</span>
                 </div>
             `);
 
