@@ -908,10 +908,16 @@
                 console.log(element);
 
                 var _status = "Прикрепить чек";
+                var _block = $(`
+                    <label for="${element.Inv._id}">
+                        <span>${_status}</span>
+                    </label>
+                `);
 
                 if(element.status)
                 {
-                    _status + "Оплачено";
+                    _status = "Оплачено";
+                    _block = $(`<span data="call" data-target="${element.status.recipient}">${_status}</span>`);
                 }
 
                 var template_text = $(`
@@ -920,11 +926,12 @@
                         <span>${element.Inv.invester}</span>
                         <span>${element.pay}</span>
                         <span>${element.needPay}</span>
-                        <label for="${element.Inv._id}">
-                            <span>${_status}</span>
-                        </label>
                     </div>
                 `);
+
+                template_text.find('span[data="call"]').click( function () {
+                    location.href = `/projects/${_GET('id')}/${$(this).attr('data-target')}`;
+                })
 
                 template_text.find('input').css("display", "none");
 
