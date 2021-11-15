@@ -925,9 +925,9 @@
 
                 template_text.find('input').css("display", "none");
 
-                template_text.click( function() {
-                    location.href = 'https://t.me/invester_official/64';
-                })
+                // template_text.click( function() {
+                //     location.href = 'https://t.me/invester_official/64';
+                // })
 
                 template_text.find('input[type=file]').change( async function() 
                 {
