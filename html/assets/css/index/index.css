@@ -893,7 +893,7 @@ html, body {
   background: linear-gradient(90deg, #fc65d8 0%, #d82bad 61%);
 }
 
-.headerPaysBlock_body_line_inv label {
+.headerPaysBlock_body_line_inv span {
   display: block;
   padding: 10px 20px;
   border-radius: 3px;
