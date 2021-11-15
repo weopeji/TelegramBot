@@ -919,7 +919,9 @@
                         <span>${element.Inv.invester}</span>
                         <span>${element.pay}</span>
                         <span>${element.needPay}</span>
-                        <span>${_status}</span>
+                        <label for="${element.Inv._id}">
+                            <span>${_status}</span>
+                        </label>
                     </div>
                 `);
 
