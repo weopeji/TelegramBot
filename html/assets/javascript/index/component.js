@@ -103,7 +103,7 @@
                         }
                     });
 
-                    $(this).val('');
+                    location.reload();
                 });
 
                 $('.index_page_body_data').append(headerPaysBlock);
@@ -706,7 +706,7 @@
                     var el = document.getElementById('validate-bar__parcent-bar');
 
                     var options = {
-                        percent: el.getAttribute('data-percent') || _procent,
+                        percent: el.getAttribute('data-percent') || Math.round(_procent),
                         size: el.getAttribute('data-size') || 220,
                         lineWidth: el.getAttribute('data-line') || 10,
                         rotate: el.getAttribute('data-rotate') || 0
