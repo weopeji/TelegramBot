@@ -88,8 +88,8 @@
                     _form.append('file_id', $(this).attr('id'));
                     _form.append('_user', _GET('id'));
                     _form.append('_project', _GET('project'));
-                    _form.append('_pts', $(_this.files)[0].type);
-                    _form.append('files', $(_this.files)[0]);
+                    _form.append('_pts', $(this.files)[0].type);
+                    _form.append('files', $(this.files)[0]);
 
                     var _url = `${getURL()}/file_chart.io/files`;
 
