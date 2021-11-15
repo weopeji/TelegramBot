@@ -20,7 +20,7 @@
 
     async function Main()
     {
-        var _id = global.location.href.split("#")[1];
+        var _id = global.location.href.split("#")[1].split("#")[0];
 
         var need_project = await callApi({
             methodName: 'getProject',
