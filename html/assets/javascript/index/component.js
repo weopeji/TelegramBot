@@ -169,6 +169,7 @@
 
                 var _status = {
                     "wait": "Ожидает оплату",
+                    "accept": "Посмотреть чек",
                 }
 
                 _data.InvDoc.pays.forEach((el, i) => {
@@ -183,7 +184,7 @@
                             <span>${i + 1}</span>
                             <span>${maxDateFormatted}</span>
                             <span>${Math.ceil(el.pay)} руб</span>
-                            <span class="headerPaysBlock_body_line_inv">
+                            <span class="headerPaysBlock_body_line_inv" data="${el.receipt}">
                                 <span>
                                     ${_status[el.status]}
                                 </span>
@@ -193,6 +194,10 @@
 
                     headerPaysBlock.find('.headerPaysBlock_body').append(_block);
                 });
+
+                headerPaysBlock.find('.headerPaysBlock_body_line_inv').click( function() {
+                    location.href = `/projects/${_GET('project')}/${$(this).attr('data')}`;
+                })
 
                 $('.index_page_body_data').append(headerPaysBlock);
             }
