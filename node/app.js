@@ -26,6 +26,7 @@ const InvDoc                        = mongoose.model('InvDoc');
 const MsgDB                         = mongoose.model('Msg');
 const PaysAttract                   = mongoose.model('PaysAttract');
 const bPays                         = mongoose.model('bPays');
+const Payments                      = mongoose.model('Payments');
 
 var bot                             = null;
 var helper_functions                = null;
@@ -154,6 +155,7 @@ var load_helpers = () =>
             config: config,
             PaysAttract: PaysAttract,
             bPays: bPays,
+            Payments: Payments,
         });
     };
 }

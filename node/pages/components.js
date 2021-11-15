@@ -595,6 +595,7 @@ async function acceptInvestor(socket,data,callback)
 {
     var _Project        = await Project.findOne({_id: data.projectId});
     var _InvDoc         = await InvDoc.findOne({invester: data.id, projectId: data.projectId});
+    var _User           = await User.findOne({user: _Project.user});
     var moneyPay        = _InvDoc.data.pay;
     var mouncePay       = _Project.data.date;
     var payments        = 
@@ -629,6 +630,28 @@ async function acceptInvestor(socket,data,callback)
     });
 
     var _InvDocNeed = await InvDoc.findOneAndUpdate({invester: data.id, projectId: data.projectId}, {status: "accept", pays: pays});
+
+    if(_User.member)
+    {
+        await Payments.create({
+            user: _User.member,
+            type: "investing",
+            pay: _InvDoc.data.pay,
+            data: null,
+        })
+    }
+
+    if(_User.member_b)
+    {
+        await Payments.create({
+            user: _User.member_b,
+            type: "business",
+            pay: _InvDoc.data.pay,
+            data: {
+                projectId: _Project._id
+            },
+        })
+    }
 
     callback(_InvDocNeed);
 }
