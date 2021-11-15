@@ -81,7 +81,7 @@
                     headerPaysBlock.find('.headerPaysBlock_body').append(_block);
                 });
 
-                _block.find('input[type=file]').change( async function() 
+                headerPaysBlock.find('input[type=file]').change( async function() 
                 {
                     var _form    = new FormData();
             
