@@ -125,6 +125,7 @@ var action_linker =
     "toAttractPay": toAttractPay,
     "getPaysBusiness": getPaysBusiness,
     "getInv": getInv,
+    "allPayments": allPayments,
 }
 
 async function allPayments(socket,data,callback)
@@ -137,7 +138,7 @@ async function allPayments(socket,data,callback)
 
 async function getInv(socket,data,callback)
 {
-    var _InvDoc   = await InvDoc.findOne({projectId: projectId, invester: id});
+    var _InvDoc   = await InvDoc.findOne({projectId: projectId, invester: data._id});
     callback(_InvDoc.data.document);
 }
 

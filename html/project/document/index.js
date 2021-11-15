@@ -74,7 +74,7 @@
                 methodName: 'getInv',
                 data: 
                 {
-                    id: _GET__('id'),
+                    _id: _GET__('id'),
                     projectId: _id,
                 },
             });
