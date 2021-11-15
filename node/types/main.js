@@ -293,7 +293,10 @@ async function _MainMenu(msg, close)
         },
     };
 
-    await infoTypes[_User.type](msg);
+    if(_User.type)
+    {
+        await infoTypes[_User.type](msg);
+    }
 }
 
 async function change_type(msg)
