@@ -135,14 +135,18 @@ async function _CreatorFUN(msg)
 
 async function notType(msg)
 {
-    var _array = [];
-    var html =`Приветствуем <strong>${msg.from.first_name} ${msg.from.last_name}</strong>на <strong>investER</strong>. Выбери свой профиль:\n\n<strong>ИНВЕСТОР</strong>💰 - Инвестирую в компании/проекты\n\n<strong>БИЗНЕС</strong>💼 - Привлекаю инвестиции в свой бизнес/проект\n\n<strong>ПРИВЛЕЧЕНИЕ</strong>📣 - Хочу стать партнером по привлечению инвесторов\n\n`;
-    var fat = await h.send_html(msg.chat.id, html, {
-        "resize_keyboard": true,
-        "keyboard": [["💰 Инвестор", "💼 Бизнес", "📣 Привлечение"]],
-    });
-    _array.push(fat.message_id);
-    await h.DMA(msg, _array);
+    var _User = await User.findOne({user: msg.from.id});
+    if(_User)
+    {
+        var _array = [];
+        var html =`Приветствуем <strong>${msg.from.first_name} ${msg.from.last_name}</strong>на <strong>investER</strong>. Выбери свой профиль:\n\n<strong>ИНВЕСТОР</strong>💰 - Инвестирую в компании/проекты\n\n<strong>БИЗНЕС</strong>💼 - Привлекаю инвестиции в свой бизнес/проект\n\n<strong>ПРИВЛЕЧЕНИЕ</strong>📣 - Хочу стать партнером по привлечению инвесторов\n\n`;
+        var fat = await h.send_html(msg.chat.id, html, {
+            "resize_keyboard": true,
+            "keyboard": [["💰 Инвестор", "💼 Бизнес", "📣 Привлечение"]],
+        });
+        _array.push(fat.message_id);
+        await h.DMA(msg, _array);
+    }
 } 
 
 async function _MainMenu(msg, close)
