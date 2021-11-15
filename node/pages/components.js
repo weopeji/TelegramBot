@@ -138,8 +138,10 @@ async function allPayments(socket,data,callback)
 
 async function getInv(socket,data,callback)
 {
+    console.log(data);
+
     var _InvDoc   = await InvDoc.findOne({projectId: data.projectId, invester: data._id});
-    callback(_InvDoc.data.document);
+    callback(_InvDoc);
 }
 
 async function getPaysBusiness(socket,data,callback)
