@@ -4,3 +4,4 @@ require('./invester_document');
 require('./msg');
 require('./payAttract');
 require('./bussines_pays');
+require('./payments');
