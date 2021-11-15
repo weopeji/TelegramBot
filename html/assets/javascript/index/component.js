@@ -73,7 +73,7 @@
                             <span>${Math.ceil(el.pay)} руб</span>
                             <span class="headerPaysBlock_button" data="${el.status}">
                                 <input type="file" name="" id='${i}'>
-                                <label for="${data._id}">${_status[el.status]}</label>
+                                <label for="${i}">${_status[el.status]}</label>
                             </span>
                         </div>
                     `);
