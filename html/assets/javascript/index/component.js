@@ -1333,6 +1333,10 @@
                 </div>
             `);
 
+            moreGetButtons.find('span[data="pay"]').click( function () {
+                location.href = "https://t.me/invester_official";
+            })
+
             $('.index_page_body_data').append(headerInfoBlock1);
             $('.index_page_body_data').append(headerInfoBlock2);
             $('.index_page_body_data').append(moreGetButtons);
