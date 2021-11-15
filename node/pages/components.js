@@ -127,6 +127,14 @@ var action_linker =
     "getInv": getInv,
 }
 
+async function allPayments(socket,data,callback)
+{
+    var _User           = await User.findOne({_id: data});
+    var _allPayments    = await Payments.find({user: _User.user});
+
+    callback(_allPayments);
+}
+
 async function getInv(socket,data,callback)
 {
     var _InvDoc   = await InvDoc.findOne({projectId: projectId, invester: id});
@@ -638,7 +646,9 @@ async function acceptInvestor(socket,data,callback)
             user: _User.member,
             type: "investing",
             pay: _InvDoc.data.pay,
-            data: null,
+            data: {
+                _id: _InvDoc.invester
+            },
         })
     }
 
@@ -649,7 +659,7 @@ async function acceptInvestor(socket,data,callback)
             type: "business",
             pay: _InvDoc.data.pay,
             data: {
-                projectId: _Project._id
+                _id: _Project._id
             },
         })
     }

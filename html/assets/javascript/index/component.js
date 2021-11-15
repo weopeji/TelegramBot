@@ -1326,8 +1326,16 @@
                 </div>
             `);
 
+            var moreGetButtons = $(`
+                <div class="moreGetButtons">
+                    <span data="get">Запросить выплату</span>
+                    <span data="pay">инвестировать в проект</span>
+                </div>
+            `);
+
             $('.index_page_body_data').append(headerInfoBlock1);
             $('.index_page_body_data').append(headerInfoBlock2);
+            $('.index_page_body_data').append(moreGetButtons);
         }
 
         async renderInvesters(_data) 
@@ -1478,6 +1486,59 @@
             $('.index_page_body_data').append(settingBlock);
         }
 
+        async renderAllPayments()
+        {
+            var allPayments     = await callApi({
+                methodName: "allPayments",
+                data:  global.allData._id,
+            });
+
+            console.log(allPayments);
+
+            var settingBlock = $(`
+                <div class="settingBlock">
+                    <div class="settingBlock_header">
+                        <p>Статистика ваших выплат</p>
+                        <div class="settingBlock_header_line">
+                            <span>Номер</span>
+                            <span>ID Проекта/Инвестора</span>
+                            <span>Сумма выплаты</span>
+                            <span>Статус/span>
+                        </div>
+                    </div>
+                    <div class="settingBlock_body">
+
+                    </div> 
+                </div>
+            `);
+
+            settingBlock.css("margin-top", "20px");
+
+            var i = 1;
+            for(var element of allPayments)
+            {
+
+                var template_text = $(`
+                    <div class="settingBlock_body_line">
+                        <span>${i}</span>
+                        <span>${element.data._id}</span>
+                        <span>${element.data._id}</span>
+                        <span>Ожидает оплаты</span>
+                    </div>
+                `);
+
+                template_text.click( function() {
+                    location.href = 'https://t.me/invester_official/64';
+                })
+
+                settingBlock.find('.settingBlock_body').append(template_text);
+
+                i++;
+            }
+
+            $('.index_page_body_data').append(settingBlock);
+        }
+
         async render(data) 
         {
             var _data           = await callApi({
@@ -1496,6 +1557,7 @@
             await this.renderHeader(_data, _dataMore);
             await this.renderInvesters(_data);
             await this.renderBussnes(_dataMore)
+            // await this.renderAllPayments();
             await this.allProjectsRender();
 
             $('.Attracted_headerInfoBlock_block_text_moneys[data="wait"] p').html(this.allMoneyMembers);
