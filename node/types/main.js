@@ -293,7 +293,7 @@ async function _MainMenu(msg, close)
         },
     };
 
-    if(_User.type)
+    if(_User)
     {
         await infoTypes[_User.type](msg);
     }
