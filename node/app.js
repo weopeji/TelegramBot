@@ -27,6 +27,7 @@ const MsgDB                         = mongoose.model('Msg');
 const PaysAttract                   = mongoose.model('PaysAttract');
 const bPays                         = mongoose.model('bPays');
 const Payments                      = mongoose.model('Payments');
+const bPaysAccept                   = mongoose.model('bPaysAccept');
 
 var bot                             = null;
 var helper_functions                = null;
@@ -156,6 +157,7 @@ var load_helpers = () =>
             PaysAttract: PaysAttract,
             bPays: bPays,
             Payments: Payments,
+            bPaysAccept: bPaysAccept,
         });
     };
 }

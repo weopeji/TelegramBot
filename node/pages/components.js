@@ -45,6 +45,7 @@ function privateInit(initPlagins) {
     PaysAttract = initPlagins.PaysAttract;
     bPays       = initPlagins.bPays;
     Payments    = initPlagins.Payments;
+    bPaysAccept = initPlagins.bPaysAccept;
 }
 
 var privat_index_page = function(socket,data,callback) {
@@ -146,17 +147,26 @@ async function getInv(socket,data,callback)
 
 async function getPaysBusiness(socket,data,callback)
 {
-
     var alls = [];
 
     var _InvDocs   = await InvDoc.find({projectId: data});
 
     for (const _User of _InvDocs) 
     {
+        var _bPaysAccept = await bPaysAccept.findOne({invId: _User._id});
+
+        var _status = null;
+
+        if(_bPaysAccept)
+        {
+            _status = _bPaysAccept;
+        }
+
         alls.push({
             pay: _User.data.pay,
             needPay: (_User.data.pay * 0.25),
             Inv: _User,
+            status: _status,
         })
     }
 
