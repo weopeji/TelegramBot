@@ -905,6 +905,7 @@
             
             for(var element of getPaysBusiness)
             {
+                console.log(element);
 
                 var _status = "Прикрепить чек";
 
