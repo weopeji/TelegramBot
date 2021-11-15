@@ -85,7 +85,7 @@
 
             if(_GET__('accept'))
             {
-                templateText = templateText.replace(new RegExp("%document_more%", 'g'), `<img src="${getInv}" alt>`);
+                templateText = templateText.replace(new RegExp("%document_more%", 'g'), `<img src="${getInv.data.document}" alt>`);
             }
         } else {
             templateText = templateText.replace(new RegExp("%pay%", 'g'), "_______________");

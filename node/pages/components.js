@@ -139,8 +139,8 @@ async function allPayments(socket,data,callback)
 async function getInv(socket,data,callback)
 {
     console.log(data);
-
-    var _InvDoc   = await InvDoc.findOne({projectId: data.projectId, invester: data._id});
+    var _User       = await User.findOne({_id: data._id});
+    var _InvDoc     = await InvDoc.findOne({projectId: data.projectId, invester: _User.user});
     callback(_InvDoc);
 }
 
