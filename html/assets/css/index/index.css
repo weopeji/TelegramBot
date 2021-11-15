@@ -1173,6 +1173,10 @@ html, body {
   color: white;
 }
 
+.moreGetButtons i {
+  margin-right: 20px;
+}
+
 @media (max-width: 500px) {
   .buttons_menu {
     display: block;
