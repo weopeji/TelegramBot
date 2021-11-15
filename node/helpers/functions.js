@@ -75,8 +75,14 @@ async function DMA(msg, array)
 
     var _User = await User.findOne({user: msg.from.id});
 
-    var deleteMsgs = _User.deleteMsgs;
+    var deleteMsgs = [];
 
+    if(_User.deleteMsgs)
+    {
+        deleteMsgs = _User.deleteMsgs;
+    }
+
+    
     if(deleteMsgs.length != 0) {
         for(var i = 0; i < deleteMsgs.length; i++) { 
             try {
