@@ -913,14 +913,14 @@
                 if(element.status)
                 {
                     _status = "Оплачено";
-                    _block = $(`<span data="call" data-target="${element.status.recipient}">${_status}</span>`);
+                    _block = `<span data="call" data-target="${element.status.recipient}">${_status}</span>`;
                 }
                 else {
-                    _block = $(`
+                    _block = `
                     <label for="${element.Inv._id}">
                         <span>${_status}</span>
                     </label>
-                `);
+                `;
                 }
 
                 var template_text = $(`
