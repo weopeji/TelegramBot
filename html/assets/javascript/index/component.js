@@ -929,6 +929,7 @@
                         <span>${element.Inv.invester}</span>
                         <span>${element.pay}</span>
                         <span>${element.needPay}</span>
+                        ${_block}
                     </div>
                 `);
 
