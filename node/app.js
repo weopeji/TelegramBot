@@ -342,6 +342,7 @@ bot.on('message', async (msg) =>
     } else 
     {
         var _User = await User.findOne({user: msg.from.id});
+        
         if(_User.where) 
         {
             const action_where = {

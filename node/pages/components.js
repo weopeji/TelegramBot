@@ -932,25 +932,26 @@ async function acceptProject(socket,data,callback)
 
     const client = new Instagram({ username: "investER_official", password: "e<<@H&_ArB~5ef7" });
  
-    ;(async () => {
+    ;(async () => 
+    {
         // URL or path of photo
-        const photo = `${h.getURL()}projects/${data}/logo.jpg`;
-
-        // var _caption = `
-        //     *
-        //     ${_project.data.name}
-        //     ${_project.data.target}
-        //     Ставка: ${_project.data.rate}
-        //     Выплаты: ${_project.data.date_payments}
-        //     Вход от: ${_project.data.minimal_amount}
-        //     Сбор до: ${_project.data.date}
-        //     *
-        //     Подробнее по ссылке в шапке профиля
-        // `;
+        const photo = `https://invester-relocation.site/projects/${data}/logo.jpg`;
 
         var _caption = `
             *
+            ${_project.data.name}
+            ${_project.data.target}
+            Ставка: ${_project.data.rate}
+            Выплаты: ${_project.data.date_payments}
+            Вход от: ${_project.data.minimal_amount}
+            Сбор до: ${_project.data.date}
+            *
+            Подробнее по ссылке в шапке профиля
         `;
+
+        // var _caption = `
+        //     *
+        // `;
     
         client
             .login()
@@ -963,8 +964,6 @@ async function acceptProject(socket,data,callback)
                 }
                 
             })
-
-        
     })();
 
     await Project.findOneAndUpdate({_id: data}, {type: "active"});
@@ -1091,8 +1090,8 @@ async function setProject(socket,data,callback)
         }
     }); 
 
-    var YT_VIDEO = await _AllParce.uploadVideo(_patch, _Project.data["file+8"], _Project.data.name, _Project.data.target);
-    await Project.findOneAndUpdate({_id: _Project._id}, {YT_VIDEO: YT_VIDEO});
+    // var YT_VIDEO = await _AllParce.uploadVideo(_patch, _Project.data["file+8"], _Project.data.name, _Project.data.target);
+    // await Project.findOneAndUpdate({_id: _Project._id}, {YT_VIDEO: YT_VIDEO});
     savePuppeter(_Project._id);
     callback({status: "ok"});    
 }
