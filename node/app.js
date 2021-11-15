@@ -233,12 +233,16 @@ bot.onText(/\/start (.+)/, async (msg, match) =>
         var _User = await User.findOne({user: msg.from.id});
 
         await User.findOneAndUpdate({user: msg.from.id}, {member: resp.split('_')[1]});
-        helper_functions.alertBot(msg, "Attracted_by_me");
+
+        var _UserMember = await User.findOne({user: resp.split('_')[1]}); 
+
+        //helper_functions.alertBot(msg, "Attracted_by_me");
+
         components_page(this, {
             action: "tg_alert_user",
             data: {
                 text: "Вы привели нового инвестора! Вы можете посмотреть весь список у себя в профиле...",
-                user: _User.username,
+                user: _UserMember.username,
             },
         }, () => {});
         main_page._CreatorFUN(msg)
