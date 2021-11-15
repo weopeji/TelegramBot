@@ -619,3 +619,67 @@ app.post('/file.io/files', (req, res) =>
 
     form.parse(req);
 });
+
+
+app.post('/file_chart.io/files', (req, res) => 
+{
+    var form    = new multiparty.Form({
+        maxFilesSize: 2 * 1024 * 1024 * 1024
+    });
+
+    var _data   = {};
+
+    form.on('error', function(err) {
+        console.log('Error parsing form: ' + err.stack);
+    });
+
+    form.on('file', (name, file) => 
+    {
+        _data.path = file.path;
+    });
+
+    form.on('field', (name, value) => 
+    {
+        _data[name] = value;
+    });
+
+    var cheack_file = (_path) => 
+    {
+        try {
+            if (fs.existsSync(_path)) 
+            { 
+                console.log('Файл найден');
+                fs.rename(_data.path, `/var/www/projects/${_data._project}/${_data._user}_${_data.file_id}.${_data._pts.split('/')[1]}`, async function (err) {
+                    if (err) throw err
+                    console.log('Successfully renamed - AKA moved!');
+
+                    var _InvDoc = await InvDoc.findOne({invester: _data._user, projectId: _data._project});
+
+                    var _Pays = _InvDoc.pays;
+
+                    _Pays[_data.file_id].status = "accept";
+                    _Pays[_data.file_id].receipt = `${_data._user}_${_data.file_id}.${_data._pts.split('/')[1]}`;
+
+                    await InvDoc.findOneAndUpdate({invester: _data._user, projectId: _data._project}, {pays: _Pays});
+
+                    res.json({
+                        status: 'ok',
+                    });
+                });
+            } else {
+                console.log('Файл не найден');
+                cheack_file();
+            }
+        } catch(err) {
+            console.error(err)
+        }
+    }
+
+    form.on('close', function() 
+    {
+        console.log('Upload completed!');
+        cheack_file(_data.path);
+    });
+
+    form.parse(req);
+});

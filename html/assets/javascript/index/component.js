@@ -55,7 +55,8 @@
                 `);
 
                 var _status = {
-                    "wait": "Ожидает оплату",
+                    "wait": "Прикреить чек",
+                    "accept": "Оплачено"
                 }
 
                 _data.InvDoc.pays.forEach((el, i) => {
@@ -70,13 +71,40 @@
                             <span>${i + 1}</span>
                             <span>${maxDateFormatted}</span>
                             <span>${Math.ceil(el.pay)} руб</span>
-                            <span class="headerPaysBlock_button">
-                                <span>Прикреить чек</span>
+                            <span class="headerPaysBlock_button" data="${el.status}">
+                                <input type="file" name="" id='${i}'>
+                                <label for="${data._id}">${_status[el.status]}</label>
                             </span>
                         </div>
                     `);
 
                     headerPaysBlock.find('.headerPaysBlock_body').append(_block);
+                });
+
+                _block.find('input[type=file]').change( async function() 
+                {
+                    var _form    = new FormData();
+            
+                    _form.append('file_id', $(this).attr('id'));
+                    _form.append('_id', _id);
+                    _form.append('_user', _GET('id'));
+                    _form.append('_project', _GET('project'));
+                    _form.append('_pts', $(_this.files)[0].type);
+                    _form.append('files', $(_this.files)[0]);
+
+                    var _url = `${getURL()}/file_chart.io/files`;
+
+                    axios.post(_url, _form, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data'
+                        },
+                    }).then(data => {
+                        if(data.data.status == "ok") {
+                            alert("Чек прикоеплен!");
+                        }
+                    });
+
+                    $(this).val('');
                 });
 
                 $('.index_page_body_data').append(headerPaysBlock);
