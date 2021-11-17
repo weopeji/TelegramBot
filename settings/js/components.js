@@ -42,7 +42,12 @@
 
         getBlocks(_array, name) 
         {
+            
+
             _array.forEach(element => {
+
+                var _date = element.data.collection_period.slice('-');
+
                 var item_block = $(`
                     <div class="index_page_body_moderation_block" data="${element._id}">
                         <h1>${element.data.name}</h1>
@@ -55,7 +60,7 @@
                                 <span>Сумма</span><p>${element.data.attraction_amount} руб.</p>
                             </div>
                             <div class="index_page_body_info_line">
-                                <span>На срок</span><p>${element.data.collection_period.replace(/-/g, ".")}</p>
+                                <span>На срок</span><p>${_date[2]}.${_data[1]}.${_data[0]}</p>
                             </div>
                             <div class="index_page_body_info_line">
                                 <span>Ставка % в год</span><p>${element.data.rate}%</p>
