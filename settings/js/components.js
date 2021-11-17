@@ -692,6 +692,16 @@
             });
         }
 
+        dellSignatureFile(projectId)
+        {
+            return callApi({
+                methodName: 'dellSignatureFile',
+                data: projectId,
+            }).then((data) => {
+                return data; 
+            });
+        }
+
         async renderMore(_project)
         {
             var signature = {
@@ -1103,6 +1113,11 @@
                                 window.open(`https://invester-relocation.site/html/project/document/#${_project._id}`, '_blank');
                             })
                             this.global_block.find('.Attracted_headerInfoBlock_block[data="dell"]').find('p').html(`Удалить документ`);
+                            this.global_block.find('.Attracted_headerInfoBlock_block[data="dell"]').click( function() {
+                                _this.dellSignatureFile(_project._id);
+                                alert("Успешно");
+                                location.reload();
+                            })
                         }
                     } else {
                         this.global_block.find('.Attracted_headerInfoBlock_block[data="loader"]').click( function() {

@@ -127,6 +127,13 @@ var action_linker =
     "getPaysBusiness": getPaysBusiness,
     "getInv": getInv,
     "allPayments": allPayments,
+    "dellSignatureFile": dellSignatureFile,
+}
+
+async function dellSignatureFile(socket,data,callback)
+{
+    await Project.findOneAndUpdate({_id: data}, {signature_document: null, type: "moderation"});
+    callback();
 }
 
 async function allPayments(socket,data,callback)
