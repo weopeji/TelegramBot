@@ -421,7 +421,7 @@
             var firstBlockMore = $(`
                 <div class="body_point">
                     <div class="body_point_header">
-                        <span>Выплаты инвестиций</span>
+                        <span>Редактирование выплат</span>
                     </div>
                     <div class="body_point_line_block_more">
                         <div class="body_point_line body_point_line_first" data="investings_pay">
