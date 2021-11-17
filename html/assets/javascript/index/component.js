@@ -219,7 +219,7 @@
 
             if(_data.InvDoc.date)
             {
-                var maxDate = new Date(el.date);
+                var maxDate = new Date(_data.InvDoc.date);
                 var maxDateFormatted =
                     maxDate.getFullYear() +
                     ':' + this.pad(maxDate.getMonth() + 1, 2, '0') +
