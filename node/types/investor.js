@@ -565,8 +565,10 @@ async function actionWhere(msg)
             },
             "2": async function() 
             {
+                var _Where = _User.where;
+                _Where.page.button = _Where.page.button + 1;
                 _array[_User.where.type_more] = msg.text;
-                await User.findOneAndUpdate({user: msg.from.id}, {investor_data: _array});
+                await User.findOneAndUpdate({user: msg.from.id}, {investor_data: _array, where: _Where});
                 startInvestingMsgSecond(msg, null, _User.where.page.button);
             },
             "3": async function() 
