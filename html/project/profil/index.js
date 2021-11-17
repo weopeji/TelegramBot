@@ -39,7 +39,7 @@
                             <div class="page_line">
                                 <span>${el.data}</span>
                                 <span>${el.id}</span>
-                                <span><a href="${el.id_url}">Перейти</a></span>
+                                <span><a href="${el.id_url}" target="_blank">Перейти</a></span>
                             </div>
                             <div class="page_line">
                                 <span>${el.judge}</span>
