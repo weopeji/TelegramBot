@@ -1041,7 +1041,8 @@
                         </div> -->
 
                         <div class="Attracted_headerInfoBlock">
-                            <div class="Attracted_headerInfoBlock_block">
+                            <input type="file" name="" id="DocumentToSignature">
+                            <div class="Attracted_headerInfoBlock_block" data="loader">
                                 <div class="Attracted_headerInfoBlock_block_i">
                                     <i class="fad fa-file-download"></i>
                                 </div>
@@ -1050,13 +1051,13 @@
                                     <p>Загрузить документ</p>
                                 </div>
                             </div>
-                            <div class="Attracted_headerInfoBlock_block">
+                            <div class="Attracted_headerInfoBlock_block" data="dell">
                                 <div class="Attracted_headerInfoBlock_block_i">
-                                    <i class="fad fa-file-download"></i>
+                                    <i class="fad fa-times-circle"></i>
                                 </div>
                                 <div class="Attracted_headerInfoBlock_block_text">
                                     <span>Действие с документом</span>
-                                    <p>Вы должны загрузить документ</p>
+                                    <p>Недоступно</p>
                                 </div>
                             </div>
                         </div>
@@ -1087,6 +1088,10 @@
                     });
 
                     this.global_block.append(putDocumentToSignature);
+
+                    this.global_block.find('.Attracted_headerInfoBlock_block[data="loader"]').click( function() {
+                        this.global_block.find('#DocumentToSignature').trigger('click');
+                    })
 
                     if(_project.signature_document) {
                         if(_project.signature_document.status == 'on') {
