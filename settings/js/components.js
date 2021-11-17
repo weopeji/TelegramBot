@@ -1028,7 +1028,7 @@
                 if(_lenth > 1)
                 {
                     var putDocumentToSignature = $(`
-                        <div class="body_point putDocumentToSignature_doc">
+                        <!-- <div class="body_point putDocumentToSignature_doc">
                             <div class="body_point_header">
                                 <span>Загрузите документ на подписание</span>
                             </div>
@@ -1038,23 +1038,27 @@
                             <label for="DocumentToSignature" class="putDocumentToSignature_open">
                                 <span>Загрузить документ</span>
                             </label>
-                        </div>
+                        </div> -->
 
                         <div class="Attracted_headerInfoBlock">
                             <div class="Attracted_headerInfoBlock_block">
                                 <div class="Attracted_headerInfoBlock_block_i">
-                                    <i class="fas fa-users"></i>
+                                    <i class="fad fa-file-download"></i>
                                 </div>
                                 <div class="Attracted_headerInfoBlock_block_text">
                                     <span>Загрузите документ на подписание</span>
                                     <p>Загрузить документ</p>
                                 </div>
                             </div>
-                            <!-- <div class="Attracted_headerInfoBlock_block_delete">
-                                <div class="Attracted_headerInfoBlock_block_delete_block_i">
-                                    <i class="fas fa-users"></i>
+                            <div class="Attracted_headerInfoBlock_block">
+                                <div class="Attracted_headerInfoBlock_block_i">
+                                    <i class="fad fa-file-download"></i>
                                 </div>
-                            </div> -->
+                                <div class="Attracted_headerInfoBlock_block_text">
+                                    <span>Действие с документом</span>
+                                    <p>Вы должны загрузить документ</p>
+                                </div>
+                            </div>
                         </div>
                     `);
 
