@@ -215,6 +215,18 @@
 
             console.log(_data);
 
+            var _dateText = "Ожидание";
+
+            if(_data.InvDoc.date)
+            {
+                var maxDate = new Date(el.date);
+                var maxDateFormatted =
+                    maxDate.getFullYear() +
+                    ':' + this.pad(maxDate.getMonth() + 1, 2, '0') +
+                    ':' + this.pad(maxDate.getDate(), 2, '0');
+                _dateText = maxDateFormatted;
+            }
+
             var _status = {
                 "wait": "Ожидает подтверждения",
                 "accept": "Подтверждено",
