@@ -449,13 +449,6 @@
                 });
             })
 
-            // firstBlockMore.find('.body_point_line_input_close').click( function () {
-            //     var _this = $(this).parent().parent();
-            //     _this.find('.body_point_line_input').fadeOut( function () {
-            //         _this.find('.body_point_line_first').fadeIn();
-            //     });
-            // })
-
             firstBlockMore.find(".body_point_line_input_close").click( function() {
                 $(this).parent().fadeOut( function() 
                 {
@@ -1045,6 +1038,23 @@
                             <label for="DocumentToSignature" class="putDocumentToSignature_open">
                                 <span>Загрузить документ</span>
                             </label>
+                        </div>
+
+                        <div class="Attracted_headerInfoBlock">
+                            <div class="Attracted_headerInfoBlock_block">
+                                <div class="Attracted_headerInfoBlock_block_i">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div class="Attracted_headerInfoBlock_block_text">
+                                    <span>Загрузите документ на подписание</span>
+                                    <p>Загрузить документ</p>
+                                </div>
+                            </div>
+                            <!-- <div class="Attracted_headerInfoBlock_block_delete">
+                                <div class="Attracted_headerInfoBlock_block_delete_block_i">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                            </div> -->
                         </div>
                     `);
 
