@@ -86,8 +86,15 @@ async function url(msg)
     if(_User.attractType == 1)
     {
         var _array  = [];
+        var html = `<strong>${msg.from.first_name} ${msg.from.last_name}</strong> делитесь с друзьями вашей реферальной ссылкой`;
+        var fat = await h.send_html(msg.chat.id, html, 
+        {
+            "resize_keyboard": true,
+            "keyboard": [["⬅️ Назад"]],
+        });
+        _array.push(fat.message_id);
         var _url = `https://t.me/invester_official_bot?start=adder_${msg.from.id}`;
-        var html = `<strong>${msg.from.first_name} ${msg.from.last_name}</strong> делитесь с друзьями вашей реферальной ссылкой\n\n${_url}`;
+        var html = `${_url}`;
         var fat = await h.send_html(msg.chat.id, html, 
         {
             "resize_keyboard": true,
