@@ -1090,7 +1090,7 @@
                     this.global_block.append(putDocumentToSignature);
 
                     this.global_block.find('.Attracted_headerInfoBlock_block[data="loader"]').click( function() {
-                        this.global_block.find('#DocumentToSignature').trigger('click');
+                        $('#DocumentToSignature').trigger('click');
                     })
 
                     if(_project.signature_document) {
