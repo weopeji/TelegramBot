@@ -250,7 +250,7 @@
                             </div>
                             <div class="info_active_block_left_info_line">
                                 <span>Дата:</span>
-                                <a></a>
+                                <a>${_dateText}</a>
                             </div>
                             <div class="info_active_block_left_info_line">
                                 <span>Статус:</span>
