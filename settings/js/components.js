@@ -46,9 +46,8 @@
 
             _array.forEach(element => {
 
-                var _date = element.data.collection_period.slice('-');
-                console.log(_date);
-                console.log(element.data.collection_period);
+                var _date = element.data.collection_period.split('-');
+                
                 var item_block = $(`
                     <div class="index_page_body_moderation_block" data="${element._id}">
                         <h1>${element.data.name}</h1>
