@@ -551,7 +551,8 @@ var buttons_2 = [
 
 async function actionWhere(msg) 
 {
-    var _User = await User.findOne({user: msg.from.id});
+    var _User       = await User.findOne({user: msg.from.id});
+    var _Project    = await Project.findOne({_id: _User.putProject});
     var _array = _User.investor_data;
     if(!_array) _array = {};
 
@@ -579,9 +580,18 @@ async function actionWhere(msg)
             },
             "4": async function() 
             {
-                _array.pay = msg.text;
-                await User.findOneAndUpdate({user: msg.from.id}, {investor_data: _array});
-                investing_money(msg);
+                if(msg.text < _Project.data.minimal_amount)
+                {
+                    var _arrayA = [];
+                    var html = `Сумма не верна`;
+                    var fat = await h.send_html(msg.chat.id, html);
+                    _arrayA.push(fat.message_id);
+                    h.MA(msg, _arrayA);
+                } else {
+                    _array.pay = msg.text;
+                    await User.findOneAndUpdate({user: msg.from.id}, {investor_data: _array});
+                    investing_money(msg);
+                }
             }
         },
     }
@@ -908,6 +918,7 @@ async function investing_money(msg)
 {
     var _array      = [];
     var _User       = await User.findOne({user: msg.from.id});
+    var _Project    = await Project.findOne({_id: _User.putProject})
 
     await bot.deleteMessage(msg.from.id, _User.where.msg); 
 
@@ -915,7 +926,7 @@ async function investing_money(msg)
 
     _where.page.more    = 4;
 
-    var html   = `Введите сумму инвестирования:\n\nМинимальная сумма входа от 50.000руб\n\n`;
+    var html   = `Введите сумму инвестирования:\n\nМинимальная сумма входа от ${_Project.data.minimal_amount} руб\n\n`;
 
     if(_User.investor_data.pay) {
         html = html + `✅ Выбранна сумма: ${_User.investor_data.pay} руб`;
