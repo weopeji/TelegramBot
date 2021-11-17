@@ -29,10 +29,10 @@
 
         var templateText = need_project.signature_document.document_html.toString();
 
-        function getFormattedDate() {
+        function getFormattedDate() 
+        {
             var date = new Date();
-            var str = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
-        
+            var str = date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear();
             return str;
         }
 
