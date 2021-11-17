@@ -438,6 +438,21 @@
                             </span>
                         </div>
                     </div>
+                    <div class="body_point_line_block_more">
+                        <div class="body_point_line body_point_line_first" data="investings_pay">
+                            <span>Процент:</span>
+                            <p>50</p>
+                        </div>
+                        <div class="body_point_line body_point_line_input" data="investings_pay_input">
+                            <textarea rows="1" id="investings_pay_textarea" class="text_area"></textarea>
+                            <span class="body_point_line_input_close">
+                                <i class="fal fa-minus-square"></i>
+                            </span>
+                            <span class="body_point_line_input_accept">
+                                <i class="fal fa-check-square"></i>
+                            </span>
+                        </div>
+                    </div>
                 </div>
             `);
 
