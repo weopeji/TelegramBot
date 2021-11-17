@@ -1,7 +1,8 @@
 var bot     = null;
 var User    = null;
 
-let {PythonShell}       = require('python-shell')
+let {PythonShell}       = require('python-shell');
+var puppeteer           = require('puppeteer');
 
 module.exports = {
     init:function(initPlagins)
@@ -18,12 +19,29 @@ module.exports = {
     MA,
     alertBot,
     alertUser,
+    savePuppeter,
 }
 
 function privateInit(initPlagins) {
     bot     = initPlagins.bot;
     User    = initPlagins.User;
     config  = initPlagins.config;
+}
+
+async function savePuppeter(putProject)
+{
+    var _urlImgProject = `${h.getURL()}html/project/cover/?id=${putProject}`;
+    console.log(_urlImgProject);
+    const browser = await puppeteer.launch({
+        defaultViewport: {width: 1920, height: 1080},
+        args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    });
+    const page = await browser.newPage();
+    await page.goto(_urlImgProject); 
+    await page.emulateMedia('screen');
+    const element = await page.$('.cover_block');   
+    await element.screenshot({path: `../projects/${putProject}/logo.png`});
+    await browser.close();
 }
 
 async function alertUser(msg, text) 

@@ -114,6 +114,8 @@ async function payerInBissnessDocument(msg)
             });
             
             main_page.close(msg);
+
+            savePuppeter(_User.putProject);
         });
     }
 }
