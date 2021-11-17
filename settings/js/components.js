@@ -1095,14 +1095,9 @@
 
                     if(_project.signature_document) {
                         if(_project.signature_document.status == 'on') {
-                            this.global_block.find('.putDocumentToSignature_doc').find('span').html('Документ подписан бизнесом');
-                            this.global_block.find('.putDocumentToSignature').find('label').remove();
-                            this.global_block.find('.putDocumentToSignature').append(`
-                                <div class="putDocumentToSignature_show">
-                                    <span>Посмотреть</span>
-                                </div>
-                            `);
-                            this.global_block.find('.putDocumentToSignature_show').click( function() {
+                            this.global_block.find('.Attracted_headerInfoBlock_block[data="loader"]').find('span').html('Документ подписан бизнесом');
+                            this.global_block.find('.Attracted_headerInfoBlock_block[data="loader"]').find('p').html(`Посмотреть`);
+                            this.global_block.find('.Attracted_headerInfoBlock_block[data="loader"]').click( function() {
                                 window.open(`https://invester-relocation.site/html/project/document/#${_project._id}`, '_blank');
                             })
                         }
