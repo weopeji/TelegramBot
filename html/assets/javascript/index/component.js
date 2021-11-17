@@ -219,14 +219,11 @@
 
             if(_data.InvDoc.date)
             {
-                
                 var maxDate = new Date(Number(_data.InvDoc.date));
-                console.log(maxDate);
-                console.log(_data.InvDoc.date);
                 var maxDateFormatted =
-                    maxDate.getFullYear() +
+                     + this.pad(maxDate.getDate(), 2, '0')
                     ':' + this.pad(maxDate.getMonth() + 1, 2, '0') +
-                    ':' + this.pad(maxDate.getDate(), 2, '0');
+                    ':' + maxDate.getFullYear();
                 _dateText = maxDateFormatted;
             }
 
