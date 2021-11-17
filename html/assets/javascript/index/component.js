@@ -220,7 +220,7 @@
             if(_data.InvDoc.date)
             {
                 
-                var maxDate = new Date(_data.InvDoc.date);
+                var maxDate = new Date(Number(_data.InvDoc.date));
                 console.log(maxDate);
                 console.log(_data.InvDoc.date);
                 var maxDateFormatted =
