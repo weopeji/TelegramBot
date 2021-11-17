@@ -44,11 +44,13 @@
 
         $('.liner_center').css('width', procent + "%");
 
+        var _data = need_project.data.collection_period.split("-");
+
         $('.cover_block_liner a').html(getPays);
         $('#name').html(need_project.data.name || "Null");
         $('#target').html(need_project.data.target || "Null");
         $('#money').html(need_project.data.attraction_amount || "Null");
-        $('#date').html(need_project.data.collection_period.replace(/-/g, ".") || "Null");
+        $('#date').html(`${_data[2]}.${_data[1]}.${_data[0]}` || "Null");
         $('.minimal_amount').html(need_project.data.minimal_amount + "руб" || "Null");
         $('.rate').html(need_project.data.rate + "%" || "Null");
         $('.date_payments').html(need_project.data.date_payments || "Null");
