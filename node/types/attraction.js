@@ -98,7 +98,9 @@ async function url(msg)
         var fat = await h.send_html(msg.chat.id, html, 
         {
             "resize_keyboard": true,
-            "keyboard": [["⬅️ Назад"]],
+            inline_keyboard: [
+                [{ text: 'Поделитесь с друзьями', switch_inline_query: _url}]
+            ]
         });
         _array.push(fat.message_id);
         await h.DMA(msg, _array);
