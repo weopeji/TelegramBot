@@ -870,14 +870,21 @@ async function getProject_id(socket,data,callback) {
     callback(_project);
 }
 
-async function getNewDataProjects(socket,data,callback) {
-    var _project = await Project.findOneAndUpdate({_id: data._id}, {
+async function getNewDataProjects(socket,data,callback) 
+{
+    var _project = await Project.findOne({_id: data._id});
+
+    h.full_alert_user(_project.user, `К проекту номер ${_project._id} запрошенны дополнительные документы`);
+
+    var _project = await Project.findOneAndUpdate({_id: data._id}, 
+    {
         type: "correction",
         signature: {
             status: 'wait',
             type: data.data,
         }
     });
+    
     callback('ok');
 }
 

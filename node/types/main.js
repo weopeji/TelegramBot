@@ -162,9 +162,13 @@ async function startAlertsMain(msg)
         _array.push(fat.message_id);
         await h.DMA(msg, _array);
 
+        var i = 0;
+
         for(const element in alertsMain)
         {
-            var html =``;
+            i++;
+            var html = i;
+            
             var fat = await h.send_html(msg.chat.id, html);
             _array.push(fat.message_id);
             await h.DMA(msg, _array);

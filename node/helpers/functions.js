@@ -20,12 +20,46 @@ module.exports = {
     alertBot,
     alertUser,
     savePuppeter,
+    full_alert_user,
 }
 
 function privateInit(initPlagins) {
     bot     = initPlagins.bot;
     User    = initPlagins.User;
     config  = initPlagins.config;
+}
+
+var rand = function() 
+{
+    return Math.random().toString(36).substr(2);
+};
+
+var token = function() 
+{
+    return rand() + rand();
+};
+
+async function full_alert_user(_id, _text) 
+{
+    var _User           = await findOne({user: _id});
+    var _tokenAlert     = token();
+    var _path           = `../users_alerts/${_User.user}/`;
+    var _urlImgAlert    = `https://invester-relocation.site/html/project/cover/?id=${data}`;
+
+
+
+
+
+
+    const browser = await puppeteer.launch({
+        args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    });
+    const page = await browser.newPage();
+    await page.goto(_urlImgProject);
+    await page.emulateMedia('screen');
+    const element = await page.$('.cover_block');   
+    await element.screenshot({path: });
+    await browser.close();
 }
 
 async function savePuppeter(putProject)
