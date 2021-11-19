@@ -49,6 +49,8 @@ async function full_alert_user(_id, _text, _type)
     var _urlImgAlert    = `https://invester-relocation.site/html/project/alert/?text=${_text}`;
     var _Alerts         = _User.alerts_main;
 
+    console.log(_urlImgAlert);
+
     if(!_Alerts)
     {
         _Alerts         = [];
