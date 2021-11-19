@@ -178,7 +178,7 @@ async function startAlertsMain(msg)
         var html =`Оповещения: ⠀ `;
         var fat = await h.send_html(msg.chat.id, html);
         _array.push(fat.message_id);
-        var html =`⠀`;
+        var html =`Отсутствуют`;
         var fat = await h.send_html(msg.chat.id, html);
         _array.push(fat.message_id);
         await h.DMA(msg, _array);
