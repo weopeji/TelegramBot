@@ -38,6 +38,7 @@ jspm_packages/
 users/
 users_profile/
 projects/
+users_alerts/
 
 # TypeScript v1 declaration files
 typings/
