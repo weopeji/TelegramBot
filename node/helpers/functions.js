@@ -39,23 +39,35 @@ var token = function()
     return rand() + rand();
 };
 
-async function full_alert_user(_id, _text) 
+async function full_alert_user(_id, _text, _type) 
 {
     var _User           = await User.findOne({user: _id});
     var _tokenAlert     = token();
     var _path           = `../users_alerts/${_User.user}/${_tokenAlert}.png`;
     var _urlImgAlert    = `https://invester-relocation.site/html/project/alert/?text=${_text}`;
+    var _Alerts         = _User.alerts_main;
+
+    if(!_Alerts)
+    {
+        _Alerts         = [];
+    }
+
+    _Alerts.unshift({
+        type: _type,
+        img: `${_tokenAlert}.png`,
+    }) 
+
     const browser = await puppeteer.launch({
         args: ['--no-sandbox', '--disable-setuid-sandbox'],
     });
     const page = await browser.newPage();
     await page.goto(_urlImgProject);
     await page.emulateMedia('screen');
-    const element = await page.$('.cover_block');   
+    const element = await page.$('.alert');   
     await element.screenshot({path: _urlImgAlert});
     await browser.close();
 
-    //await User.findOneAndUpdate({user: _id}, {});
+    await User.findOneAndUpdate({user: _id}, {alerts_main: _Alerts});
 }
 
 async function savePuppeter(putProject)
