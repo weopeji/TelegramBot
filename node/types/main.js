@@ -161,16 +161,11 @@ async function _MainMenu(msg, close)
         var html =`Оповещения: ⠀ `;
         var fat = await h.send_html(msg.chat.id, html);
         _array.push(fat.message_id);
-        await h.DMA(msg, _array);
-
-        var i = 0;
 
         for(const element in alertsMain)
         {
-            i++;
-            var html = i;
-            
-            var fat = await h.send_html(msg.chat.id, html);
+            const stream    = fs.createReadStream(`../users_alerts/${_User.user}/${element.img}`);
+            var fat = await bot.sendPhoto(msg.from.id, stream);
             _array.push(fat.message_id);
         }
     }
