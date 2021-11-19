@@ -149,11 +149,40 @@ async function notType(msg)
     }
 } 
 
+async function startAlertsMain(msg)
+{
+    var _array      = [];
+    var _User       = await MF.find_user(msg);
+    var alertsMain  = _User.alerts_main;
+
+    if(alertsMain)
+    {
+        var html =`Оповещения: ⠀ `;
+        var fat = await h.send_html(msg.chat.id, html);
+        _array.push(fat.message_id);
+        await h.DMA(msg, _array);
+        // var html =`⠀`;
+        // var fat = await h.send_html(msg.chat.id, html);
+        // _array.push(fat.message_id);
+        // await h.DMA(msg, _array);
+
+        for(const element in alertsMain)
+        {
+            var html =`⠀`;
+            var fat = await h.send_html(msg.chat.id, html);
+            _array.push(fat.message_id);
+            await h.DMA(msg, _array);
+        }
+    }
+}
+
 async function _MainMenu(msg, close)
 {
     var _User = await MF.find_user(msg);
     var _projects = await Project.find({user: msg.from.id});
     var _array = [];
+
+    startAlertsMain(msg);
 
     var infoTypes = 
     {
