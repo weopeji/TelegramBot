@@ -1108,7 +1108,7 @@ async function setProject(socket,data,callback)
 
     // var YT_VIDEO = await _AllParce.uploadVideo(_patch, _Project.data["file+8"], _Project.data.name, _Project.data.target);
     // await Project.findOneAndUpdate({_id: _Project._id}, {YT_VIDEO: YT_VIDEO});
-    savePuppeter(_Project._id);
+    await savePuppeter(_Project._id);
 
 
     h.alertAdmin({
@@ -1135,6 +1135,8 @@ async function savePuppeter(putProject)
     const element = await page.$('.cover_block');   
     await element.screenshot({path: `../projects/${putProject}/logo.png`});
     await browser.close();
+
+    return true;
 }
 
 async function getUser(socket,data,callback) {
