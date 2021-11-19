@@ -307,16 +307,18 @@ async function tg_alert_user(socket,data,callback)
 
 async function tg_alert(socket,data,callback)
 {
-    let options = 
-    {
-        mode: 'text',
-        scriptPath: '../python/system_alerts',
-        args: data
-    };
+    // let options = 
+    // {
+    //     mode: 'text',
+    //     scriptPath: '../python/system_alerts',
+    //     args: data
+    // };
 
-    await PythonShell.run('main.py', options, function (err, results) {
-        if (err) throw err;
-    })
+    // await PythonShell.run('main.py', options, function (err, results) {
+    //     if (err) throw err;
+    // })
+
+    
 }
 
 async function getBitsFile(socket,data,callback)
@@ -1107,6 +1109,15 @@ async function setProject(socket,data,callback)
     // var YT_VIDEO = await _AllParce.uploadVideo(_patch, _Project.data["file+8"], _Project.data.name, _Project.data.target);
     // await Project.findOneAndUpdate({_id: _Project._id}, {YT_VIDEO: YT_VIDEO});
     savePuppeter(_Project._id);
+
+
+    h.alertAdmin({
+        type: "creating_project",
+        text: "Новый проект подан на модерацию",
+        projectId: _Project._id,
+    })
+
+
     callback({status: "ok"});    
 }
 

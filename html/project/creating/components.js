@@ -1363,10 +1363,6 @@
                 } else {
                     $('.preloader').fadeOut( function() {
                         $('.end_get_project').css('display', "flex");
-                        callApi({
-                            methodName: 'tg_alert',
-                            data: "🚧 Новый проект отправлен на модерацию! Посмотрите его в админ панели... 🚧",
-                        });
                         if(global._User.member_b)
                         {
                             callApi({

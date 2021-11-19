@@ -22,6 +22,7 @@ module.exports = {
     alertUser,
     savePuppeter,
     full_alert_user,
+    alertAdmin,
 }
 
 function privateInit(initPlagins) {
@@ -112,6 +113,33 @@ async function alertUser(msg, text)
     await PythonShell.run('main.py', options, function (err, results) {
         if (err) throw err;
     })
+}
+
+async function alertAdmin(data) 
+{
+    var _funs = {
+        "creating_project": function()
+        {
+            var _patch      = `/var/www/projects/${data.projectId}`;
+            var html        = `${data.text}`;
+            const stream    = fs.createReadStream(_patch);
+            await bot.sendPhoto(-1001693050369, stream, {
+                "caption": html,
+                "parse_mode": "html",
+                "reply_markup": {
+                    "inline_keyboard": [
+                        [
+                            {
+                                text: "Перейти к модерации",
+                                url: `https://invester-relocation.site/settings/?page=moderations`,
+                            }
+                        ]
+                    ],
+                }
+            });
+        },
+    };
+    _funs[data.type]();
 }
 
 async function DM(msg, how) 
