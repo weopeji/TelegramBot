@@ -118,7 +118,7 @@ async function alertUser(msg, text)
 async function alertAdmin(data) 
 {
     var _funs = {
-        "creating_project": function()
+        "creating_project": async function()
         {
             var _patch      = `/var/www/projects/${data.projectId}`;
             var html        = `${data.text}`;
