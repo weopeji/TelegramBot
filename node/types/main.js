@@ -173,6 +173,15 @@ async function startAlertsMain(msg)
             _array.push(fat.message_id);
             await h.DMA(msg, _array);
         }
+    } else 
+    {
+        var html =`Оповещения: ⠀ `;
+        var fat = await h.send_html(msg.chat.id, html);
+        _array.push(fat.message_id);
+        var html =`⠀`;
+        var fat = await h.send_html(msg.chat.id, html);
+        _array.push(fat.message_id);
+        await h.DMA(msg, _array);
     }
 
     return true;
