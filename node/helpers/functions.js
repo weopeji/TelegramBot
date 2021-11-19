@@ -58,7 +58,7 @@ async function full_alert_user(_id, _text, _type)
         img: `${_tokenAlert}.png`,
     }) 
 
-    var defaultCreate = () => 
+    var defaultCreate = async () => 
     {
         const browser = await puppeteer.launch({
             args: ['--no-sandbox', '--disable-setuid-sandbox'],
