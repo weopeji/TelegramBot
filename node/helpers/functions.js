@@ -61,10 +61,10 @@ async function full_alert_user(_id, _text, _type)
         args: ['--no-sandbox', '--disable-setuid-sandbox'],
     });
     const page = await browser.newPage();
-    await page.goto(_urlImgProject);
+    await page.goto(_urlImgAlert);
     await page.emulateMedia('screen');
     const element = await page.$('.alert');   
-    await element.screenshot({path: _urlImgAlert});
+    await element.screenshot({path: _path});
     await browser.close();
 
     await User.findOneAndUpdate({user: _id}, {alerts_main: _Alerts});
