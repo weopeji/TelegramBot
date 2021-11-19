@@ -164,9 +164,7 @@ async function _MainMenu(msg, close)
 
         for(const element in alertsMain)
         {
-            console.log(element);
-            
-            const stream    = fs.createReadStream(`../users_alerts/${_User.user}/${element.img}`);
+            const stream    = fs.createReadStream(`../users_alerts/${_User.user}/${alertsMain[element].img}`);
             var fat = await bot.sendPhoto(msg.from.id, stream);
             _array.push(fat.message_id);
         }
