@@ -149,11 +149,12 @@ async function notType(msg)
     }
 } 
 
-async function startAlertsMain(msg)
+async function _MainMenu(msg, close)
 {
-    var _array      = [];
     var _User       = await MF.find_user(msg);
+    var _projects   = await Project.find({user: msg.from.id});
     var alertsMain  = _User.alerts_main;
+    var _array = [];
 
     if(alertsMain)
     {
@@ -171,20 +172,9 @@ async function startAlertsMain(msg)
             
             var fat = await h.send_html(msg.chat.id, html);
             _array.push(fat.message_id);
-            await h.DMA(msg, _array);
         }
     }
 
-    return true;
-}
-
-async function _MainMenu(msg, close)
-{
-    var _User = await MF.find_user(msg);
-    var _projects = await Project.find({user: msg.from.id});
-    var _array = [];
-
-    await startAlertsMain(msg);
 
     var infoTypes = 
     {
