@@ -174,6 +174,8 @@ async function startAlertsMain(msg)
             await h.DMA(msg, _array);
         }
     }
+
+    return true;
 }
 
 async function _MainMenu(msg, close)
@@ -182,7 +184,7 @@ async function _MainMenu(msg, close)
     var _projects = await Project.find({user: msg.from.id});
     var _array = [];
 
-    startAlertsMain(msg);
+    await startAlertsMain(msg);
 
     var infoTypes = 
     {
