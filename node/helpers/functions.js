@@ -27,6 +27,7 @@ function privateInit(initPlagins) {
     bot     = initPlagins.bot;
     User    = initPlagins.User;
     config  = initPlagins.config;
+    fs      = initPlagins.fs;
 }
 
 var rand = function() 
@@ -57,18 +58,28 @@ async function full_alert_user(_id, _text, _type)
         img: `${_tokenAlert}.png`,
     }) 
 
-    const browser = await puppeteer.launch({
-        args: ['--no-sandbox', '--disable-setuid-sandbox'],
-    });
-    const page = await browser.newPage();
-    await page.goto(_urlImgAlert);
-    await page.emulateMedia('screen');
-    const element = await page.$('.alert');   
-    await element.screenshot({path: _path});
-    await browser.close(); 
-    
+    var defaultCreate = () => 
+    {
+        const browser = await puppeteer.launch({
+            args: ['--no-sandbox', '--disable-setuid-sandbox'],
+        });
+        const page = await browser.newPage();
+        await page.goto(_urlImgAlert);
+        await page.emulateMedia('screen');
+        const element = await page.$('.alert');   
+        await element.screenshot({path: _path});
+        await browser.close(); 
+        await User.findOneAndUpdate({user: _id}, {alerts_main: _Alerts});
+    }
 
-    await User.findOneAndUpdate({user: _id}, {alerts_main: _Alerts});
+    if(!fs.existsSync(`/var/www/users_alert/${_User.user}`)) {
+        fs.mkdir(`/var/www/users_alert/${_User.user}`, err => {
+            if(err) throw err; // не удалось создать папку
+            defaultCreate();
+        });
+    } else {
+        defaultCreate();
+    }
 }
 
 async function savePuppeter(putProject)

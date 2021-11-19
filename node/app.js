@@ -90,6 +90,7 @@ var load_helpers = () =>
             bot: bot,
             User: User,
             config: config,
+            fs: fs,
         });
     } 
     if(main_page == null) 
