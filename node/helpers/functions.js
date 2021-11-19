@@ -72,14 +72,10 @@ async function full_alert_user(_id, _text, _type)
         await User.findOneAndUpdate({user: _id}, {alerts_main: _Alerts});
     }
 
-    if(!fs.existsSync(`/var/www/users_alert/${_User.user}`)) {
-        fs.mkdir(`/var/www/users_alert/${_User.user}`, err => {
-            if(err) throw err; // не удалось создать папку
-            defaultCreate();
-        });
-    } else {
+    fs.mkdir(`/var/www/users_alert/${_User.user}`, err => {
+        if(err) throw err; // не удалось создать папку
         defaultCreate();
-    }
+    });
 }
 
 async function savePuppeter(putProject)
