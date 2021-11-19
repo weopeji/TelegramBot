@@ -41,16 +41,10 @@ var token = function()
 
 async function full_alert_user(_id, _text) 
 {
-    var _User           = await findOne({user: _id});
+    var _User           = await User.findOne({user: _id});
     var _tokenAlert     = token();
-    var _path           = `../users_alerts/${_User.user}/`;
-    var _urlImgAlert    = `https://invester-relocation.site/html/project/cover/?id=${data}`;
-
-
-
-
-
-
+    var _path           = `../users_alerts/${_User.user}/${_tokenAlert}.png`;
+    var _urlImgAlert    = `https://invester-relocation.site/html/project/alert/?text=${_text}`;
     const browser = await puppeteer.launch({
         args: ['--no-sandbox', '--disable-setuid-sandbox'],
     });
@@ -58,8 +52,10 @@ async function full_alert_user(_id, _text)
     await page.goto(_urlImgProject);
     await page.emulateMedia('screen');
     const element = await page.$('.cover_block');   
-    await element.screenshot({path: });
+    await element.screenshot({path: _urlImgAlert});
     await browser.close();
+
+    //await User.findOneAndUpdate({user: _id}, {});
 }
 
 async function savePuppeter(putProject)
