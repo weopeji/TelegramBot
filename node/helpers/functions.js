@@ -45,8 +45,9 @@ async function full_alert_user(_id, _text, _type)
 {
     var _User           = await User.findOne({user: _id});
     var _tokenAlert     = token();
+    var _textDecoded    = encodeURIComponent(_text);
     var _path           = `../users_alerts/${_User.user}/${_tokenAlert}.png`;
-    var _urlImgAlert    = `https://invester-relocation.site/html/project/alert/?text=${_text}`;
+    var _urlImgAlert    = `https://invester-relocation.site/html/project/alert/?text=${_textDecoded}`;
     var _Alerts         = _User.alerts_main;
 
     console.log(_urlImgAlert);
