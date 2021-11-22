@@ -144,6 +144,9 @@ async function allAttracted(socket,data,callback)
         for (const _UserB of _investorsB) 
         {
             var _Projects   = await Project.find({user: _UserB.user});
+
+            console.log(_Projects);
+
             _Projects.forEach(el => {
                 _array.push(el);
             });
@@ -877,7 +880,7 @@ async function correct_signature(socket,data,callback)
 
     h.alertAdmin({
         type: "correct_signature",
-        text: "Новый проект подан на модерацию",
+        text: "Юр данные проекта были добавлены!",
         projectId: _project._id,
     })
     

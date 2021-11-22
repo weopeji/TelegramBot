@@ -119,7 +119,8 @@ async function alertAdmin(data)
 {
     var _project = await Project.findOne({_id: data.projectId});
 
-    var _funs = {
+    var _funs = 
+    {
         "creating_project": async function()
         {
             var html = `[Профиль компании](https://invester-relocation.site/html/project/profil/#${_project._id})\n[Презентация](https://invester-relocation.site/projects/${_project._id}/${_project.data["file+7"]})\n[Видео презентация](https://invester-relocation.site/projects/${_project._id}/${_project.data["file+8"]})\n\n`;
