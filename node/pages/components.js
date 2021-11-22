@@ -694,10 +694,7 @@ async function acceptInvestor(socket,data,callback)
         });
     }
 
-    tg_alert_user_numbers(null,{
-        user: data.id,
-        text: `Ваша инвестиция была подтверждена! Номер проекта: ${data.projectId}`,
-    });
+    h.full_alert_user(data.id, `Ваша инвестиция была подтверждена! Номер проекта: ${data.projectId}`, "acceptInvestor");
 
     var _InvDocNeed = await InvDoc.findOneAndUpdate({invester: data.id, projectId: data.projectId}, {status: "accept", pays: pays, date: new Date().getTime()});
 
