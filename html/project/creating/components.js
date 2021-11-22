@@ -742,6 +742,14 @@
                 axios.post(_url, _file, {
                     headers: {
                       'Content-Type': 'multipart/form-data'
+                    },
+                    onUploadProgress: (progressEvent) => {
+                        const totalLength = progressEvent.lengthComputable ? progressEvent.total : progressEvent.target.getResponseHeader('content-length') || progressEvent.target.getResponseHeader('x-decompressed-content-length');
+                        console.log("onUploadProgress", totalLength);
+                        if (totalLength !== null) {
+                            var progressBarData = Math.round( (progressEvent.loaded * 100) / totalLength );
+                            $(_this).parent().parent().find('.loader_input span').html(progressBarData + "%");
+                        }
                     }
                 }).then(data => {
                     if(data.data.status == "ok") {
