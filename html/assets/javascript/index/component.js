@@ -1501,8 +1501,6 @@
                     </div>
                 `;
 
-                this.allMoneyMembers += el.YouPay;
-
                 settingBlock.find('.settingBlock_body').append(template_text);
             }
 
