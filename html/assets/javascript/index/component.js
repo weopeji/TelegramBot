@@ -1363,12 +1363,13 @@
     class Attracted_by_me
     {
         constructor() {
-            this.allMoneyMembers = 0;
-            this._paysInvesters  = [];
-            this._paysBusiness   = [];
+            this.allMoneyMembers    = 0;
+            this._paysInvesters     = [];
+            this._paysBusiness      = [];
+            this.allAttracted       = null;
         };
 
-        async renderHeader(_pays) 
+        async renderHeader() 
         {
             var headerInfoBlock1 = 
             $(`
@@ -1379,7 +1380,7 @@
                         </div>
                         <div class="Attracted_headerInfoBlock_block_text">
                             <span>Мной привлечено инвесторов</span>
-                            <p>${this._paysInvesters.length}</p>
+                            <p>${this.allAttracted.investors.length}</p>
                         </div>
                     </div>
                     <div class="Attracted_headerInfoBlock_block">
@@ -1403,7 +1404,7 @@
                         </div>
                         <div class="Attracted_headerInfoBlock_block_text">
                             <span>Мной привлечено бизнесс проектов</span>
-                            <p>${this._paysBusiness.length}</p>
+                            <p>${this.allAttracted.business.length}</p>
                         </div>
                     </div>
                     <div class="Attracted_headerInfoBlock_block">
@@ -1439,12 +1440,11 @@
             var settingBlock = $(`
                 <div class="settingBlock">
                     <div class="settingBlock_header">
-                        <p>Выплаты за Инвесторов</p>
+                        <p>Привлеченные инвестора</p>
                         <div class="settingBlock_header_line">
                             <span>ID Инвестора</span>
-                            <span>Сумма инвестиций</span>
-                            <span>Сумма  выплаты</span>
-                            <span>Чек</span>
+                            <span>username</span>
+                            <span>Имя</span>
                         </div>
                     </div>
                     <div class="settingBlock_body">
@@ -1455,28 +1455,18 @@
 
             settingBlock.css("margin-top", "20px");
 
-            for(var element of this._paysInvesters)
+            for(var element of this.allAttracted.investors)
             {
-                var investing_pay = await callApi({
-                    methodName: "Attracted_by_me_investing_pay",
-                    data: element.user,
-                });
+                var template_text = `
+                    <div class="settingBlock_body_line">
+                        <span>${element.user}</span>
+                        <span>${el.username}</span>
+                        <span>${el.YouPay}</span>
+                        <span>${el.first_name}</span>
+                    </div>
+                `;
 
-                for(var el of investing_pay)
-                {
-                    var template_text = `
-                        <div class="settingBlock_body_line">
-                            <span>${element.user}</span>
-                            <span>${el.Pay}</span>
-                            <span>${el.YouPay}</span>
-                            <span>${el.status}</span>
-                        </div>
-                    `;
-
-                    this.allMoneyMembers += el.YouPay;
-
-                    settingBlock.find('.settingBlock_body').append(template_text);
-                }
+                settingBlock.find('.settingBlock_body').append(template_text);
             }
 
             $('.index_page_body_data').append(settingBlock);
@@ -1489,12 +1479,10 @@
             var settingBlock = $(`
                 <div class="settingBlock">
                     <div class="settingBlock_header">
-                        <p>Выплаты по бизнесс проектам</p>
+                        <p>Привлеченные бизнес проекты</p>
                         <div class="settingBlock_header_line">
                             <span>Номер проекта</span>
-                            <span>Сумма привлеченная в проект</span>
-                            <span>Сумма  выплаты</span>
-                            <span>Чек</span>
+                            <span>Название проекта</span>
                         </div>
                     </div>
                     <div class="settingBlock_body">
@@ -1505,28 +1493,18 @@
 
             settingBlock.css("margin-top", "20px");
 
-            for(var element of _dataMore[0])
-            {
-                var investing_pay = await callApi({
-                    methodName: "Attracted_by_me_Bussnes_pay",
-                    data: element._id,
-                });
+            for(var element of this.allAttracted.business)
+            {  
+                var template_text = `
+                    <div class="settingBlock_body_line">
+                        <span>${element._id}</span>
+                        <span>${el.data.name}</span>
+                    </div>
+                `;
 
-                for(var el of investing_pay)
-                {
-                    var template_text = `
-                        <div class="settingBlock_body_line">
-                            <span>${element._id}</span>
-                            <span>${el.Pay}</span>
-                            <span>${el.YouPay}</span>
-                            <span>${el.status}</span>
-                        </div>
-                    `;
+                this.allMoneyMembers += el.YouPay;
 
-                    this.allMoneyMembers += el.YouPay;
-
-                    settingBlock.find('.settingBlock_body').append(template_text);
-                }
+                settingBlock.find('.settingBlock_body').append(template_text);
             }
 
             $('.index_page_body_data').append(settingBlock);
@@ -1654,6 +1632,8 @@
             console.log(_pays);
             console.log(allAttracted);
 
+            this.allAttracted = allAttracted;
+
             _pays.forEach(el=> {
                 if(el.type == "investing")
                 {
@@ -1663,9 +1643,9 @@
                 }
             })
 
-            await this.renderHeader(_pays);
-            //await this.renderInvesters(_pays);
-            // await this.renderBussnes(_dataMore)
+            await this.renderHeader();
+            await this.renderInvesters();
+            await this.renderBussnes()
             // // await this.renderAllPayments();
             // await this.allProjectsRender();
 
