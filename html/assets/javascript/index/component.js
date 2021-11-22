@@ -184,12 +184,19 @@
                         maxDate.getFullYear() +
                         ':' + this.pad(maxDate.getMonth() + 1, 2, '0') +
                         ':' + this.pad(maxDate.getDate(), 2, '0');
+
+                    var morePay = "";
+
+                    if((i + 1) == _data.InvDoc.pays.length)
+                    {
+                        morePay = ` + ${_data.InvDoc.data.pay} руб.`
+                    }
                 
                     var _block = $(`
                         <div class="headerPaysBlock_body_line">
                             <span>${i + 1}</span>
                             <span>${maxDateFormatted}</span>
-                            <span>${Math.ceil(el.pay)} руб</span>
+                            <span>${Math.ceil(el.pay)} руб ${morePay}</span>
                             <span class="headerPaysBlock_body_line_inv" data="${el.receipt}">
                                 <span>
                                     ${_status[el.status]}
