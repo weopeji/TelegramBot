@@ -147,7 +147,7 @@ async function allAttracted(socket,data,callback)
         {
             var _Projects   = await Project.find({user: _UserB.user});
 
-            console.log(_Projects);
+            console.log(_UserB);
 
             _Projects.forEach(el => {
                 _array.push(el);
