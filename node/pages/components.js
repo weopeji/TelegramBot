@@ -593,6 +593,7 @@ async function all_msgs(socket,data,callback)
 async function msgUP(socket,data,callback)
 {
     var _MsgDB = await MsgDB.findOne({investor: data.user, business: data.to});
+    await User.findOneAndUpdate({user: data.to}, {alert_msgs: true});
 
     if(!_MsgDB) {
         var _array  = [];

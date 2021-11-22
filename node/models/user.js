@@ -22,6 +22,7 @@ const UserShema = new mongoose.Schema({
     reqvesits: JSON,
     reqezits_data: JSON,
     alerts_main: JSON,
+    alert_msgs: boolean,
 });
 
 mongoose.model('User', UserShema);
