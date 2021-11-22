@@ -70,10 +70,7 @@
                     }
 
                     var maxDate = new Date(el.date);
-                    var maxDateFormatted =
-                        maxDate.getFullYear() +
-                        ':' + this.pad(maxDate.getMonth() + 1, 2, '0') +
-                        ':' + this.pad(maxDate.getDate(), 2, '0');
+                    var maxDateFormatted =  this.pad(maxDate.getDate(), 2, '0') + ':' + this.pad(maxDate.getMonth() + 1, 2, '0') + ':' + maxDate.getFullYear();
                 
                     var _block = $(`
                         <div class="headerPaysBlock_body_line">
