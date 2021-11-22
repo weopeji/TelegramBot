@@ -1644,9 +1644,15 @@
                 data: data._id,
             });
 
+            var allAttracted = await callApi({
+                methodName: "allAttracted",
+                data: data._id,
+            }); 
+
             var _this = this;
 
             console.log(_pays);
+            console.log(allAttracted);
 
             _pays.forEach(el=> {
                 if(el.type == "investing")

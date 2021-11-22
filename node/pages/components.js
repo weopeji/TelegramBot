@@ -129,6 +129,32 @@ var action_linker =
     "allPayments": allPayments,
     "dellSignatureFile": dellSignatureFile,
     "Attracted_by_pays": Attracted_by_pays,
+    "allAttracted": allAttracted,
+}
+
+async function allAttracted(socket,data,callback)
+{
+    var _User       = await User.findOne({_id: data});
+    
+    var _data = 
+    {
+        "investors": await User.find({member: _User.user}),
+        "business": async function()
+        {
+            var _array      = [];
+            var _investorsB = await User.find({member_b: _User.user});
+            
+            for (const _UserB of _investorsB) 
+            {
+                var _Projects   = await Project.find({member_b: _User.user});
+                _Projects.forEach(el => {
+                    _array.push(el);
+                })
+            }
+        },
+    }
+
+    callback(_data);
 }
 
 async function Attracted_by_pays(socket,data,callback)
