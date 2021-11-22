@@ -1364,9 +1364,11 @@
     {
         constructor() {
             this.allMoneyMembers = 0;
+            this._paysInvesters  = [];
+            this._paysBusiness   = [];
         };
 
-        async renderHeader(_data, _dataMore) 
+        async renderHeader(_pays) 
         {
             var headerInfoBlock1 = 
             $(`
@@ -1377,7 +1379,7 @@
                         </div>
                         <div class="Attracted_headerInfoBlock_block_text">
                             <span>Мной привлечено инвесторов</span>
-                            <p>${_data.length}</p>
+                            <p>${this._paysInvesters.length}</p>
                         </div>
                     </div>
                     <div class="Attracted_headerInfoBlock_block">
@@ -1401,7 +1403,7 @@
                         </div>
                         <div class="Attracted_headerInfoBlock_block_text">
                             <span>Мной привлечено бизнесс проектов</span>
-                            <p>${_dataMore[0].length}</p>
+                            <p>${this._paysBusiness.length}</p>
                         </div>
                     </div>
                     <div class="Attracted_headerInfoBlock_block">
@@ -1432,7 +1434,7 @@
             $('.index_page_body_data').append(moreGetButtons);
         }
 
-        async renderInvesters(_data) 
+        async renderInvesters(_pays) 
         {      
             var settingBlock = $(`
                 <div class="settingBlock">
@@ -1453,7 +1455,7 @@
 
             settingBlock.css("margin-top", "20px");
 
-            for(var element of _data)
+            for(var element of this._paysInvesters)
             {
                 var investing_pay = await callApi({
                     methodName: "Attracted_by_me_investing_pay",
@@ -1637,26 +1639,26 @@
 
         async render(data) 
         {
-            // var _data           = await callApi({
-            //     methodName: "Attracted_by_me",
-            //     data: data._id,
-            // });
-            // var _dataMore       = await callApi({
-            //     methodName: "Attracted_by_me_b",
-            //     data: data._id,
-            // });
-
             var _pays       = await callApi({
                 methodName: "Attracted_by_pays",
                 data: data._id,
             });
 
+            var _this = this;
+
             console.log(_pays);
 
-            // console.log(_dataMore);
+            _pays.forEach(el=> {
+                if(el.type == "investing")
+                {
+                    _this._paysInvesters.push(el);
+                } else {
+                    _this._paysBusiness.push(el);
+                }
+            })
 
-            await this.renderHeader(_data, _dataMore);
-            // await this.renderInvesters(_data);
+            await this.renderHeader(_pays);
+            //await this.renderInvesters(_pays);
             // await this.renderBussnes(_dataMore)
             // // await this.renderAllPayments();
             // await this.allProjectsRender();
