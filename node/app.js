@@ -420,6 +420,11 @@ app.post('/file_urist.io/files', (req, res) => {
                     document: `signature_document.${_data._pts}`,
                     document_html: need_html,
                 }});
+
+                var _User   = await User.findOne({user: _project.user});
+
+                helper_functions.full_alert_user(_User._id, `Нужно подписание документа в проекте под номером ${_project._id}`, "file_urist");
+
                 res.json({
                     status: 'ok',
                 });
