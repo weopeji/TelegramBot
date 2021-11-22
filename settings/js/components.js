@@ -96,7 +96,7 @@
             $('.index_page_body_data').append(this.global_block);
 
             $('.index_page_body_moderation_block').click( function () {
-                location.href = `/settings/?page=block&id=${$(this).attr('data')}`;
+                location.href = `/settings/?page=block&id=${$(this).attr('data')}&more=data`;
             });
         }
 
