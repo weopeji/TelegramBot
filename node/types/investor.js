@@ -583,7 +583,7 @@ async function actionWhere(msg)
                 if(msg.text < _Project.data.minimal_amount)
                 {
                     var _arrayA = [];
-                    var html = `Сумма не верна`;
+                    var html = `Указанная сумма меньше минимального входа`;
                     var fat = await h.send_html(msg.chat.id, html);
                     _arrayA.push(fat.message_id);
                     h.MA(msg, _arrayA);
