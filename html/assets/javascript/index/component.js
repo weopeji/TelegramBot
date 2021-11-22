@@ -1655,7 +1655,7 @@
 
             // console.log(_dataMore);
 
-            // await this.renderHeader(_data, _dataMore);
+            await this.renderHeader(_data, _dataMore);
             // await this.renderInvesters(_data);
             // await this.renderBussnes(_dataMore)
             // // await this.renderAllPayments();

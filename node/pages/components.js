@@ -676,6 +676,7 @@ async function acceptInvestor(socket,data,callback)
             user: _User.member,
             type: "investing",
             pay: _InvDoc.data.pay,
+            status: "wait",
             data: {
                 _id: _InvDoc.invester
             },
@@ -688,6 +689,7 @@ async function acceptInvestor(socket,data,callback)
             user: _User.member_b,
             type: "business",
             pay: _InvDoc.data.pay,
+            status: "wait",
             data: {
                 _id: _Project._id
             },
