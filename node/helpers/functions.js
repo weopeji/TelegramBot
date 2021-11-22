@@ -117,12 +117,14 @@ async function alertUser(msg, text)
 
 async function alertAdmin(data) 
 {
+    var _project = await Project.findOne({_id: data.projectId});
+
     var _funs = {
         "creating_project": async function()
         {
-            var _patch      = `/var/www/projects/${data.projectId}`;
-            var html        = `${data.text}`;
-            const stream    = fs.createReadStream(_patch);
+            var html = `[Профиль компании](https://invester-relocation.site/html/project/profil/#${_project._id})\n[Презентация](https://invester-relocation.site/projects/${_project._id}/${_project.data["file+7"]})\n[Видео презентация](https://invester-relocation.site/projects/${_project._id}/${_project.data["file+8"]})\n\n`;
+            html += data.text;
+            const stream = fs.createReadStream(`../projects/${data.projectId}/logo.png`);
             await bot.sendPhoto(-1001693050369, stream, {
                 "caption": html,
                 "parse_mode": "html",
@@ -131,13 +133,33 @@ async function alertAdmin(data)
                         [
                             {
                                 text: "Перейти к модерации",
-                                url: `https://invester-relocation.site/settings/?page=moderations`,
+                                url: `https://invester-relocation.site/settings/?page=block&id=4`,
                             }
                         ]
                     ],
                 }
             });
         },
+        "correct_signature": function()
+        {
+            var html = `[Профиль компании](https://invester-relocation.site/html/project/profil/#${_project._id})\n[Презентация](https://invester-relocation.site/projects/${_project._id}/${_project.data["file+7"]})\n[Видео презентация](https://invester-relocation.site/projects/${_project._id}/${_project.data["file+8"]})\n\n`;
+            html += data.text;
+            const stream = fs.createReadStream(`../projects/${data.projectId}/logo.png`);
+            bot.sendPhoto(-1001693050369, stream, {
+                "caption": html,
+                "parse_mode": "MarkdownV2",
+                "reply_markup": {
+                    "inline_keyboard": [
+                        [
+                            {
+                                text: "Перейти к модерации",
+                                url: `https://invester-relocation.site/settings/?page=block&id=4`,
+                            }
+                        ]
+                    ],
+                }
+            });
+        }
     };
     _funs[data.type]();
 }

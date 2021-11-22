@@ -828,14 +828,19 @@ async function putFile(socket,data,callback)
     });
 }
 
-async function correct_signature(socket,data,callback) {
+async function correct_signature(socket,data,callback) 
+{
     var _project = await Project.findOne({_id: data._id});
     var _array = _project.signature;
     _array.data = data.data;
     _array.status = "on";
-    var need_string = `"♦️ Проект подписан №${_project._id} Название: ${_project.data.name} Сумма: ${_project.data.attraction_amount} Cтавка: ${_project.data.rate} Необходимо проевирть, опубликовать"`;
-    console.log(need_string);
-    await exec(`python "../python/app.py" ${need_string}`);
+    h.alertAdmin({
+        type: "correct_signature",
+        text: "Новый проект подан на модерацию",
+        projectId: _Project._id,
+    })
+    
+
     await Project.findOneAndUpdate({_id: data}, {signature: _array, type: "moderation"});
 }
 
