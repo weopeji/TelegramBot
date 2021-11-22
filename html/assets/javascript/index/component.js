@@ -1637,26 +1637,31 @@
 
         async render(data) 
         {
-            var _data           = await callApi({
-                methodName: "Attracted_by_me",
+            // var _data           = await callApi({
+            //     methodName: "Attracted_by_me",
+            //     data: data._id,
+            // });
+            // var _dataMore       = await callApi({
+            //     methodName: "Attracted_by_me_b",
+            //     data: data._id,
+            // });
+
+            var _pays       = await callApi({
+                methodName: "Attracted_by_pays",
                 data: data._id,
             });
-            var _dataMore       = await callApi({
-                methodName: "Attracted_by_me_b",
-                data: data._id,
-            });
-           
 
-            console.log(_data);
-            console.log(_dataMore);
+            console.log(_pays);
 
-            await this.renderHeader(_data, _dataMore);
-            await this.renderInvesters(_data);
-            await this.renderBussnes(_dataMore)
-            // await this.renderAllPayments();
-            await this.allProjectsRender();
+            // console.log(_dataMore);
 
-            $('.Attracted_headerInfoBlock_block_text_moneys[data="wait"] p').html(this.allMoneyMembers);
+            // await this.renderHeader(_data, _dataMore);
+            // await this.renderInvesters(_data);
+            // await this.renderBussnes(_dataMore)
+            // // await this.renderAllPayments();
+            // await this.allProjectsRender();
+
+            // $('.Attracted_headerInfoBlock_block_text_moneys[data="wait"] p').html(this.allMoneyMembers);
         }
     }
 

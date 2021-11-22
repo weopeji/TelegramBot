@@ -128,6 +128,13 @@ var action_linker =
     "getInv": getInv,
     "allPayments": allPayments,
     "dellSignatureFile": dellSignatureFile,
+    "Attracted_by_pays": Attracted_by_pays,
+}
+
+async function Attracted_by_pays(socket,data,callback)
+{
+    var AllPays = await Payments.find({user: data});
+    callback(AllPays);
 }
 
 async function dellSignatureFile(socket,data,callback)
@@ -834,7 +841,7 @@ async function correct_signature(socket,data,callback)
     var _array = _project.signature;
     _array.data = data.data;
     _array.status = "on";
-    
+
     h.alertAdmin({
         type: "correct_signature",
         text: "Новый проект подан на модерацию",
