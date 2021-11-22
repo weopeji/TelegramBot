@@ -1460,9 +1460,8 @@
                 var template_text = `
                     <div class="settingBlock_body_line">
                         <span>${element.user}</span>
-                        <span>${el.username}</span>
-                        <span>${el.YouPay}</span>
-                        <span>${el.first_name}</span>
+                        <span>${element.username}</span>
+                        <span>${element.first_name}</span>
                     </div>
                 `;
 
@@ -1498,7 +1497,7 @@
                 var template_text = `
                     <div class="settingBlock_body_line">
                         <span>${element._id}</span>
-                        <span>${el.data.name}</span>
+                        <span>${element.data.name}</span>
                     </div>
                 `;
 
