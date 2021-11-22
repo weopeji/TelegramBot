@@ -817,6 +817,13 @@ async function correct_signature_document(socket,data,callback) {
     var _array = _project.signature_document;
     _array.status = 'on';
     _array.img = data.img;
+
+    h.alertAdmin({
+        type: "correct_signature_document",
+        text: "Получена подпись проекта!",
+        projectId: _project._id,
+    })
+
     await Project.findOneAndUpdate({_id: data}, {type: "moderation", signature_document: _array});
 }
 
