@@ -1643,7 +1643,7 @@
             await this.renderHeader();
             await this.renderInvesters();
             await this.renderBussnes()
-            // // await this.renderAllPayments();
+            await this.renderAllPayments();
             // await this.allProjectsRender();
 
             // $('.Attracted_headerInfoBlock_block_text_moneys[data="wait"] p').html(this.allMoneyMembers);
