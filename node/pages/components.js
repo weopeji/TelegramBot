@@ -151,6 +151,8 @@ async function allAttracted(socket,data,callback)
                     _array.push(el);
                 })
             }
+
+            return _array;
         },
     }
 
