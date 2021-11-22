@@ -133,7 +133,8 @@ var action_linker =
 
 async function Attracted_by_pays(socket,data,callback)
 {
-    var AllPays = await Payments.find({user: data});
+    var _User       = await User.findOne({_id: data});
+    var AllPays     = await Payments.find({user: _User.user});
     callback(AllPays);
 }
 
