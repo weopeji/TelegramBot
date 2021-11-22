@@ -834,10 +834,11 @@ async function correct_signature(socket,data,callback)
     var _array = _project.signature;
     _array.data = data.data;
     _array.status = "on";
+    
     h.alertAdmin({
         type: "correct_signature",
         text: "Новый проект подан на модерацию",
-        projectId: _Project._id,
+        projectId: _project._id,
     })
     
 
