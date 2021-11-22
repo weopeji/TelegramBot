@@ -1587,7 +1587,7 @@
                             <span>#</span>
                             <span>ID</span>
                             <span>Сумма выплаты</span>
-                            <span>Чек</span>
+                            <span>Статус самозанятого</span>
                         </div>
                     </div>
                     <div class="settingBlock_body">
@@ -1604,9 +1604,13 @@
                             <span>${i + 1}</span>
                             <span>${el.AM_data.user}</span>
                             <span>${el2.YouPay}</span>
-                            <span>Прикрепить чек</span>
+                            <span>
+                                <i class="fad fa-check-circle"></i>
+                            </span>
                         </div>
                     `);
+
+                    userLine.find('i').css('color', "green");
 
                     templateText.find('.settingBlock_body').append(userLine);
                 })
