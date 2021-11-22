@@ -1590,6 +1590,8 @@
                 </div>
             `);
 
+            templateText.css('margin-bottom', '20px');
+
             $('.index_page_body_data').append(templateText);
 
             var bPays = await callApi({
