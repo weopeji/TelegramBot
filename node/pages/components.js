@@ -140,6 +140,8 @@ async function allAttracted(socket,data,callback)
     {
         var _array      = [];
         var _investorsB = await User.find({member_b: _User.user});
+
+        console.log(_investorsB);
         
         for (const _UserB of _investorsB) 
         {
