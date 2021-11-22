@@ -148,7 +148,7 @@ async function alertAdmin(data)
             const stream = fs.createReadStream(`../projects/${data.projectId}/logo.png`);
             bot.sendPhoto(-1001693050369, stream, {
                 "caption": html,
-                "parse_mode": "MarkdownV2",
+                "parse_mode": "html",
                 "reply_markup": {
                     "inline_keyboard": [
                         [
