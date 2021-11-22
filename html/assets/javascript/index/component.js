@@ -1576,7 +1576,6 @@
                             <span>Номер</span>
                             <span>ID Проекта/Инвестора</span>
                             <span>Сумма выплаты</span>
-                            <span>Статус/span>
                         </div>
                     </div>
                     <div class="settingBlock_body">
@@ -1590,13 +1589,20 @@
             var i = 1;
             for(var element of allPayments)
             {
+                var _pay = 0;
+
+                if(element.type == "investing")
+                {
+                    _pay = element.pay * 0.0875;
+                } else {
+                    _pay = element.pay * 0.0375;
+                }
 
                 var template_text = $(`
                     <div class="settingBlock_body_line">
                         <span>${i}</span>
                         <span>${element.data._id}</span>
-                        <span>${element.data._id}</span>
-                        <span>Ожидает оплаты</span>
+                        <span>${_pay}</span>
                     </div>
                 `);
 
@@ -1641,9 +1647,10 @@
             })
 
             await this.renderHeader();
+            await this.renderAllPayments();
             await this.renderInvesters();
             await this.renderBussnes()
-            await this.renderAllPayments();
+            
             // await this.allProjectsRender();
 
             // $('.Attracted_headerInfoBlock_block_text_moneys[data="wait"] p').html(this.allMoneyMembers);
