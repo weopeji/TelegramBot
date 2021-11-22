@@ -59,7 +59,16 @@
                     "accept": "Оплачено"
                 }
 
-                _data.InvDoc.pays.forEach((el, i) => {
+                _data.InvDoc.pays.forEach((el, i) => 
+                {
+                    var _pay = Math.ceil(el.pay);
+                    var morePay = "";
+
+                    if((i + 1) == _data.InvDoc.pays.length)
+                    {
+                        morePay = ` + ${_data.InvDoc.data.pay} руб.`
+                    }
+
                     var maxDate = new Date(el.date);
                     var maxDateFormatted =
                         maxDate.getFullYear() +
@@ -70,7 +79,7 @@
                         <div class="headerPaysBlock_body_line">
                             <span>${i + 1}</span>
                             <span>${maxDateFormatted}</span>
-                            <span>${Math.ceil(el.pay)} руб</span>
+                            <span>${_pay} руб ${morePay}</span>
                             <span class="headerPaysBlock_button" data="${el.status}">
                                 <input type="file" name="" id='${i}'>
                                 <label for="${i}">${_status[el.status]}</label>
