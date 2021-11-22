@@ -819,7 +819,7 @@ async function correct_signature_document(socket,data,callback) {
     _array.img = data.img;
 
     h.alertAdmin({
-        type: "correct_signature_document",
+        type: "correct_signature",
         text: "Получена подпись проекта!",
         projectId: _project._id,
     })
