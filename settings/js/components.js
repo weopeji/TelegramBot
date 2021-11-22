@@ -1572,6 +1572,26 @@
 
         async render()
         {
+            var templateText = $(`
+                <div class="settingBlock">
+                    <div class="settingBlock_header">
+                        <p>Запрошенные выплаты</p>
+                        <div class="settingBlock_header_line">
+                            <span>#</span>
+                            <span>ID</span>
+                            <span>Сумма выплаты</span>
+                            <span>Статус самозанятого</span>
+                            <span>Чек</span>
+                        </div>
+                    </div>
+                    <div class="settingBlock_body">
+                       
+                    </div>
+                </div>
+            `);
+
+            $('.index_page_body_data').append(templateText);
+
             var bPays = await callApi({
                 methodName: "toAttractPay",
                 data: null,
@@ -1582,7 +1602,7 @@
             var templateText = $(`
                 <div class="settingBlock">
                     <div class="settingBlock_header">
-                        <p>Выплаты Привлечению</p>
+                        <p>Выплаты ожидающие подтверждения</p>
                         <div class="settingBlock_header_line">
                             <span>#</span>
                             <span>ID</span>
@@ -1610,7 +1630,7 @@
                         </div>
                     `);
 
-                    userLine.find('i').css('color', "green");
+                    userLine.find('i').css('color', "#28BA32");
 
                     templateText.find('.settingBlock_body').append(userLine);
                 })
