@@ -42,8 +42,10 @@
 
         var _data = need_project.data.collection_period.split("-");
 
+        var cover_block_liner_k_numer = need_project.data.attraction_amount - getPays;
+
         $('.cover_block_liner a').html(getPays);
-        $('.cover_block_liner k').html(need_project.data.attraction_amount);
+        $('.cover_block_liner k').html(cover_block_liner_k_numer);
         $('#name').html(need_project.data.name || "Null");
         $('#target').html(need_project.data.target || "Null");
         $('#money').html(need_project.data.attraction_amount || "Null");

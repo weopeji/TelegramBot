@@ -655,18 +655,66 @@
 
         async load_file(_this, _id, file_id) 
         {
+            var filename = $(_this.files)[0].name;
+            var aux = filename.split('.');
+            var extension = aux[aux.length -1].toUpperCase();
 
             if(file_id == 'file+4')
             {
-                var filename = $(_this.files)[0].name;
-                var aux = filename.split('.');
-                var extension = aux[aux.length -1].toUpperCase();
-
                 if(extension === 'PNG'
                     || extension === 'JPG'
                     || extension === 'PDF'
+                    || extension === 'WEBP'
                 ){}else{
-                    alert('Неверный формат: ' + extension + '. Только: PNG JPG PDF.');
+                    alert('Неверный формат: ' + extension + '. Только: PNG JPG PDF WEBP.');
+                    return;
+                }  
+            }
+
+            if(file_id == 'file+3')
+            {
+                if(extension === 'PNG'
+                    || extension === 'JPG'
+                    || extension === 'PDF'
+                    || extension === 'WEBP'
+                ){}else{
+                    alert('Неверный формат: ' + extension + '. Только: PNG JPG PDF WEBP.');
+                    return;
+                }  
+            }
+
+            if(file_id == 'file+3_1')
+            {
+                if(extension === 'PNG'
+                    || extension === 'JPG'
+                    || extension === 'PDF'
+                    || extension === 'WEBP'
+                ){}else{
+                    alert('Неверный формат: ' + extension + '. Только: PNG JPG PDF WEBP.');
+                    return;
+                }  
+            }
+            
+            if(file_id == 'file+3_3')
+            {
+                if(extension === 'PNG'
+                    || extension === 'JPG'
+                    || extension === 'PDF'
+                    || extension === 'WEBP'
+                ){}else{
+                    alert('Неверный формат: ' + extension + '. Только: PNG JPG PDF WEBP.');
+                    return;
+                }  
+            }
+            
+            if(file_id == 'file+3_2')
+            {
+                if(extension === 'PNG'
+                    || extension === 'JPG'
+                    || extension === 'PDF'
+                    || extension === 'WEBP'
+                ){}else{
+                    alert('Неверный формат: ' + extension + '. Только: PNG JPG PDF WEBP.');
                     return;
                 }  
             }
