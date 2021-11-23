@@ -34,15 +34,9 @@
 
         getPays = getPays.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1 ');
 
-        console.log(need_project);
-        console.log(getPays);
-
         var _attraction_amount  = need_project.data.attraction_amount;
         _attraction_amount      = _attraction_amount.replace(/\s/g, '');
         var procent             = (getPays / _attraction_amount) * 100;
-
-        console.log(_attraction_amount);
-        console.log(procent);
 
         $('.liner_center').css('width', procent + "%");
 
