@@ -140,12 +140,10 @@
             if(!cheackINN.result)
             {
                 var msgsBlock = `
-                    <div class="creating_page_block">
-                        <div class="creating_page_start">
-                            <span>
-                               ${cheackINN.error.message}
-                            </span>
-                        </div>
+                    <div class="creating_page_start">
+                        <span>
+                            ${cheackINN.error.message}
+                        </span>
                     </div>
                 `;
                 $('.creating_page_block').append(msgsBlock);
