@@ -32,7 +32,7 @@
             data: _id,
         });
 
-        getPays = getPays.replace(/(\d)(?=(\d{3})+$)/g, '$1 ');
+        getPays = getPays.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1 ');
 
         console.log(need_project);
         console.log(getPays);
