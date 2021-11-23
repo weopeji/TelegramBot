@@ -656,7 +656,7 @@
         async load_file(_this, _id, file_id) 
         {
 
-            if(_id == 'file+4_block')
+            if(file_id == 'file+4')
             {
                 var filename = $(_this.files)[0].name;
                 var aux = filename.split('.');
