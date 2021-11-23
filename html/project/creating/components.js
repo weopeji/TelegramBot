@@ -655,6 +655,22 @@
 
         async load_file(_this, _id, file_id) 
         {
+
+            if(_id == 'file+4_block')
+            {
+                var filename = $(_this.files)[0].name;
+                var aux = filename.split('.');
+                var extension = aux[aux.length -1].toUpperCase();
+
+                if(extension === 'PNG'
+                    || extension === 'JPG'
+                    || extension === 'PDF'
+                ){}else{
+                    alert('Неверный формат: ' + extension + '. Только: PNG JPG PDF.');
+                    return;
+                }  
+            }
+
             var _form    = new FormData();
             
             _form.append('file_id', file_id);
