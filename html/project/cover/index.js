@@ -32,6 +32,8 @@
             data: _id,
         });
 
+        getPays = getPays.replace(/(\d)(?=(\d{3})+$)/g, '$1 ');
+
         console.log(need_project);
         console.log(getPays);
 
@@ -46,7 +48,7 @@
 
         var _data = need_project.data.collection_period.split("-");
 
-        $('.cover_block_liner a').html(getPays.replace(/(\d)(?=(\d{3})+$)/g, '$1 '));
+        $('.cover_block_liner a').html(getPays);
         $('.cover_block_liner k').html(need_project.data.attraction_amount);
         $('#name').html(need_project.data.name || "Null");
         $('#target').html(need_project.data.target || "Null");
