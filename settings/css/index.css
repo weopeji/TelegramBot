@@ -390,4 +390,11 @@
   background-color: #0E1122;
   color: white;
 }
+
+.upload_video_block_unputs_text {
+  width: calc(100% - 40px);
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #0E1122;
+}
 /*# sourceMappingURL=index.css.map */
