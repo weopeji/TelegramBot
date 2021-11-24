@@ -1118,6 +1118,11 @@
                     },
                 });
 
+                var clearAlertMsg = await callApi({
+                    methodName: "clearAlertMsg",
+                    data: global.allData._id,
+                });
+
                 console.log(all_msgs);
 
 

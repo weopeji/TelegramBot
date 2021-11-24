@@ -131,6 +131,13 @@ var action_linker =
     "Attracted_by_pays": Attracted_by_pays,
     "allAttracted": allAttracted,
     "cheackInnCreator": cheackInnCreator,
+    "clearAlertMsg": clearAlertMsg,
+}
+
+async function clearAlertMsg(socket,data,callback)
+{
+    await User.findOneAndUpdate({_id: data}, {alert_msgs: null});
+    callback('ok');
 }
 
 async function allAttracted(socket,data,callback)
