@@ -1399,8 +1399,12 @@
                     <h1>Загрузка видео на YouTube</h1>
                     <video controls="controls" src="https://invester-relocation.site/projects/${_project._id}/${_project.data['file+8']}"></video>
                     <div class="upload_video_block_unputs">
-                        <textarea name="name">${_project.data.name} № ${_project._id}</textarea>
-                        <textarea name="description">${_description}</textarea>
+                        <div id="upload_video_name" contenteditable="true">
+                            ${_project.data.name} № ${_project._id}
+                        </div>
+                        <div id="upload_video_description" contenteditable="true">
+                            ${_description}
+                        </div>
                     </div>
                 </div>
             `);
