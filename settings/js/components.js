@@ -663,15 +663,17 @@
                 $('.body_point').each(function(i,elem) 
                 {
                     var _input = $(elem).find('.text_area_redacting').val();
-                    
-                    if(_input.length > 0)
+
+                    if(typeof _input != 'undefined')
                     {
-                        _array.push({
-                            type: $(elem).find('.text_area_redacting').attr('id').split('_')[0],
-                            value: $(elem).find('.text_area_redacting').val(),
-                        })
+                        if(_input.length > 0)
+                        {
+                            _array.push({
+                                type: $(elem).find('.text_area_redacting').attr('id').split('_')[0],
+                                value: $(elem).find('.text_area_redacting').val(),
+                            })
+                        }
                     }
-                   
                 })
 
                 _this.not_accept({
