@@ -164,6 +164,7 @@
                     <span data="data">Поданные данные</span>
                     <span data="info">О компании</span>
                     <span data="more">Юридические данные</span>
+                    <span data="settings">Редактирование проекта</span>
                 </div>
             `);
 
