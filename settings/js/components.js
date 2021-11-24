@@ -1392,14 +1392,7 @@
 
             this.global_block.append(firstBlockMore);
 
-            var _description = `
-                ${_project.data.name} № ${_project._id}<br>
-                ${_project.data.target}<br>
-                Ставка ${_project.data.rate * 12}% годовых<br>
-                Выплаты ${_project.data.date_payments}<br>
-                Вход от ${_project.data.minimal_amount} руб.
-                Подробнее о предложении в телеграм канале - https://t.me/invester_official
-            `.toString().trim();
+            var _description = `${_project.data.name} № ${_project._id}<br>${_project.data.target}<br>Ставка ${_project.data.rate * 12}% годовых<br>Выплаты ${_project.data.date_payments}<br>Вход от ${_project.data.minimal_amount} руб.Подробнее о предложении в телеграм канале - https://t.me/invester_official`.toString().trim();
 
             var tamplateText = $(`
                 <div class="upload_video_block">
