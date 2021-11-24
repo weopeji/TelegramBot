@@ -983,6 +983,11 @@ async function acceptProject(socket,data,callback)
     const page = await browser.newPage();
     await page.goto(_urlImgProject);
     await page.emulateMedia('screen');
+    await page.setViewport({
+        width: 800,
+        height: 800,
+        deviceScaleFactor: 1
+    });
     const element = await page.$('.cover_block');   
     await element.screenshot({path: `../projects/${data}/logo_instagram.jpg`});
     await browser.close();
