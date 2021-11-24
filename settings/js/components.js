@@ -1396,6 +1396,10 @@
                 <div class="upload_video_block">
                     <h1>Загрузка видео на YouTube</h1>
                     <video controls="controls" src="https://invester-relocation.site/projects/${_project._id}/${_project.data['file+8']}"></video>
+                    <div class="upload_video_block_unputs">
+                        <input type="text" data="name">
+                        <input type="text" data="description">
+                    </div>
                 </div>
             `);
 

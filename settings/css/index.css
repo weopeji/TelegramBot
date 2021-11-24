@@ -373,4 +373,9 @@
   font-size: 20px;
   font-weight: 400;
 }
+
+.upload_video_block video {
+  margin: 0 auto;
+  display: block;
+}
 /*# sourceMappingURL=index.css.map */
