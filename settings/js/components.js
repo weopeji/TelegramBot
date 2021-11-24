@@ -667,8 +667,8 @@
                     if(_input.length > 0)
                     {
                         _array.push({
-                            type: $(elem).find('textarea').attr('id').split('_')[0],
-                            value: $(elem).find('textarea').val(),
+                            type: $(elem).find('.text_area_redacting').attr('id').split('_')[0],
+                            value: $(elem).find('.text_area_redacting').val(),
                         })
                     }
                    
