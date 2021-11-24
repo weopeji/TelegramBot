@@ -1302,7 +1302,7 @@
                 selectedMsgChats.forEach(el => {
 
                     var template_text = $(`
-                        <div class="msg_block_getting_line" data="${el.business}" data-more="">
+                        <div class="msg_block_getting_line" data="${el.business}" data-more="${el.investor}">
                             <div class="msg_block_getting_line_img">
                                 <div class="msg_block_getting_line_img_block"></div>
                             </div>
@@ -1319,7 +1319,7 @@
                 $('.index_page_body_data').append(block);
 
                 $('.msg_block_getting_line').click( function() {
-                    location.href = `https://invester-relocation.site/?user=612c7ba18b28880d5c0f8d05&page=chats&id=${$(this).attr('data')}`;
+                    location.href = `https://invester-relocation.site/?user=${$(this).attr('data-more')}&page=chats&id=${$(this).attr('data')}`;
                 })
 
             }
