@@ -1329,7 +1329,7 @@
             }
         }
 
-        correct(param, user) 
+        async correct(param, user) 
         {
             var correctArray = {};
             var types = {};
@@ -1421,34 +1421,44 @@
             $('.index_page').fadeOut();
             $('.preloader').fadeIn();
 
-            callApi({
-                methodName: 'setProject',
+            var cheackInnCreator = await callApi({
+                methodName: "cheackInnCreator",
                 data: {
                     data: correctArray,
                     user: user,
                 },
-            }).then((data) => {
-                if(data == "error") {
-                    alert('Инн введен не верно!');
-                    $('.preloader').fadeOut();
-                    $('.index_page').fadeIn();
-                } else {
-                    $('.preloader').fadeOut( function() {
-                        $('.end_get_project').css('display', "flex");
-                        if(global._User.member_b)
-                        {
-                            callApi({
-                                methodName: 'tg_alert_user_numbers',
-                                data: {
-                                    text: "Вы привели новый Проект! Вы можете посмотреть весь список у себя в кабинете",
-                                    user: global._User.member_b,
-                                },
-                            });
-                        }
+            });
+
+            if(cheackInnCreator == "error") 
+            {
+                alert('Инн введен не верно!');
+                $('.preloader').fadeOut();
+                $('.index_page').fadeIn();
+            } else 
+            {
+                callApi({
+                    methodName: 'setProject',
+                    data: {
+                        data: correctArray,
+                        user: user,
+                    },
+                });
+
+                if(global._User.member_b)
+                {
+                    callApi({
+                        methodName: 'tg_alert_user_numbers',
+                        data: {
+                            text: "Вы привели новый Проект! Вы можете посмотреть весь список у себя в кабинете",
+                            user: global._User.member_b,
+                        },
                     });
                 }
                 
-            });
+                $('.preloader').fadeOut( function() {
+                    $('.end_get_project').css('display', "flex"); 
+                });
+            }
         }
 
         correct_signature(_type, _id)

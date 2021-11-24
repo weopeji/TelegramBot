@@ -130,6 +130,7 @@ var action_linker =
     "dellSignatureFile": dellSignatureFile,
     "Attracted_by_pays": Attracted_by_pays,
     "allAttracted": allAttracted,
+    "cheackInnCreator": cheackInnCreator,
 }
 
 async function allAttracted(socket,data,callback)
@@ -1115,6 +1116,12 @@ var _AllParce =
     }
 }
 
+async function cheackInnCreator(socket,data,callback)
+{
+    var _ParceProject       = await _AllParce.parceProject(data.data.inn);
+    if(_ParceProject == 'error') { callback('error'); return; };
+    callback('ok');
+}
 
 async function setProject(socket,data,callback) 
 {
