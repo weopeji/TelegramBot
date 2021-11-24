@@ -990,6 +990,7 @@ async function acceptProject(socket,data,callback)
     var html = `[Профиль компании](${h.getURL()}html/project/profil/#${_project._id})\n[Презентация](${h.getURL()}/projects/${_project._id}/${_project.data["file+7"]})\n[Видео презентация](${h.getURL()}/projects/${_project._id}/${_project.data["file+8"]})`;
     
     const stream = fs.createReadStream(`../projects/${data}/logo.png`);
+    
     bot.sendPhoto(-1001205415519, stream, {
         "caption": html,
         "parse_mode": "MarkdownV2",
@@ -1016,7 +1017,7 @@ async function acceptProject(socket,data,callback)
     ;(async () => 
     {
         // URL or path of photo
-        const photo = `https://invester-relocation.site/projects/${data}/logo.jpg`;
+        const photo = `https://invester-relocation.site/projects/${data}/logo.png`;
 
         var _caption = `
             *
