@@ -1414,6 +1414,9 @@
                         </div>
                     </div>
                 </div>
+                <div class="upload_video_block_button">
+                    <span>Загрузить видео</span>
+                </div>
             `);
 
             this.global_block.append(tamplateText);
