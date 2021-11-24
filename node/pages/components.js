@@ -988,7 +988,7 @@ async function acceptProject(socket,data,callback)
     await page.goto(_urlImgProject);
     await page.emulateMedia('screen');
     const element = await page.$('.cover_block');   
-    await element.screenshot({path: `../projects/${data}/logo.png`});
+    await element.screenshot({path: `../projects/${data}/logo_instagram.jpg`});
     await browser.close();
 
     // var html = `[Профиль компании](${h.getURL()}html/project/profil/#${_project._id})\n[Презентация](${h.getURL()}/projects/${_project._id}/${_project.data["file+7"]})\n[Видео презентация](${h.getURL()}/projects/${_project._id}/${_project.data["file+8"]})`;
@@ -1017,13 +1017,12 @@ async function acceptProject(socket,data,callback)
     // });
 
     const client = new Instagram({ username: "investER_official", password: "e<<@H&_ArB~5ef7" });
- 
 
 
     ;(async () => 
     {
         // URL or path of photo
-        const photo = `https://invester-relocation.site/projects/${data}/logo.png`;
+        const photo = `https://invester-relocation.site/projects/${data}/logo_instagram.jpg`;
 
         var _caption = `
             *
