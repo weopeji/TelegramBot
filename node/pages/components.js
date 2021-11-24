@@ -984,8 +984,8 @@ async function acceptProject(socket,data,callback)
     await page.goto(_urlImgProject);
     await page.emulateMedia('screen');
     await page.setViewport({
-        width: 800,
-        height: 800,
+        width: 1080,
+        height: 1350,
         deviceScaleFactor: 1
     });
     const element = await page.$('.cover_block');   
