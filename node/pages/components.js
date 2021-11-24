@@ -973,7 +973,7 @@ async function setActive(socket,data,callback) {
 
 async function acceptProject(socket,data,callback) 
 {
-    // var _project = await Project.findOne({_id: data});
+    var _project = await Project.findOne({_id: data});
 
     // var _urlImgProject = `${h.getURL()}html/project/cover/?id=${data}`;
     // console.log(_urlImgProject);
