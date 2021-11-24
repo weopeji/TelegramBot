@@ -38,16 +38,16 @@
                         var _text = $(`
                             <div class="page_line">
                                 <div class="page_line_block">
-                                    <span>${el.data}</span>
-                                    <span>${el.id}</span>
+                                    <span>${el.data}</span><br>
+                                    <span>${el.id}</span><br>
                                 </div>
                                 <div class="page_line_block">
-                                    <span>${el.judge}</span>
-                                    <span>${el.sity}</span>
+                                    <span>${el.judge}</span><br>
+                                    <span>${el.sity}</span><br>
                                 </div>
                                 <div class="page_line_block">
-                                    <span>${el.plaintiff}</span>
-                                    <span>${el.respondent}</span>
+                                    <span>${el.plaintiff}</span><br>
+                                    <span>${el.respondent}</span><br>
                                 </div>
                                 <div class="page_line_block">
                                     <span><a href="${el.id_url}" target="_blank">Перейти</a></span>
@@ -55,6 +55,9 @@
                             </div>
                             <div class="page_line_line"></div>
                         `);
+
+                        _text.css('margin-top','20px');
+                        _text.css('margin-bottom','20px');
     
                         $('.arbitr_add').append(_text);
                     })
