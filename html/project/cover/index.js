@@ -42,7 +42,7 @@
 
         var _data = need_project.data.collection_period.split("-");
 
-        var cover_block_liner_k_numer = need_project.data.attraction_amount - getPays;
+        var cover_block_liner_k_numer = parseInt(need_project.data.attraction_amount, 10) - parseInt(getPays, 10);
 
         $('.cover_block_liner a').html(getPays);
         $('.cover_block_liner k').html(cover_block_liner_k_numer);
