@@ -79,9 +79,10 @@ html, body {
 }
 
 .page_line_line {
-  width: 100%;
+  width: 92%;
   height: 2px;
   background-color: white;
+  margin: 0 auto;
 }
 
 @media (max-width: 900px) {
