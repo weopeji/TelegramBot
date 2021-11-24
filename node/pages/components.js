@@ -983,39 +983,34 @@ async function acceptProject(socket,data,callback)
     const page = await browser.newPage();
     await page.goto(_urlImgProject);
     await page.emulateMedia('screen');
-    await page.setViewport({
-        width: 1080,
-        height: 1350,
-        deviceScaleFactor: 1
-    });
     const element = await page.$('.cover_block');   
     await element.screenshot({path: `../projects/${data}/logo_instagram.jpg`});
     await browser.close();
 
-    // var html = `[Профиль компании](${h.getURL()}html/project/profil/#${_project._id})\n[Презентация](${h.getURL()}/projects/${_project._id}/${_project.data["file+7"]})\n[Видео презентация](${h.getURL()}/projects/${_project._id}/${_project.data["file+8"]})`;
+    var html = `[Профиль компании](${h.getURL()}html/project/profil/#${_project._id})\n[Презентация](${h.getURL()}/projects/${_project._id}/${_project.data["file+7"]})\n[Видео презентация](${h.getURL()}/projects/${_project._id}/${_project.data["file+8"]})`;
     
-    // const stream = fs.createReadStream(`../projects/${data}/logo.png`);
+    const stream = fs.createReadStream(`../projects/${data}/logo.png`);
 
-    // bot.sendPhoto(-1001205415519, stream, {
-    //     "caption": html,
-    //     "parse_mode": "MarkdownV2",
-    //     "reply_markup": {
-    //         "inline_keyboard": [
-    //             [
-    //                 {
-    //                     text: "Рекомендовать",
-    //                     url: `https://t.me/invester_official_bot?start=member_${data}`,
-    //                 }
-    //             ],
-    //             [
-    //                 {
-    //                     text: "Инвестровать",
-    //                     url: `https://t.me/invester_official_bot?start=project_${data}`,
-    //                 }
-    //             ]
-    //         ],
-    //     }
-    // });
+    bot.sendPhoto(-1001205415519, stream, {
+        "caption": html,
+        "parse_mode": "MarkdownV2",
+        "reply_markup": {
+            "inline_keyboard": [
+                [
+                    {
+                        text: "Рекомендовать",
+                        url: `https://t.me/invester_official_bot?start=member_${data}`,
+                    }
+                ],
+                [
+                    {
+                        text: "Инвестровать",
+                        url: `https://t.me/invester_official_bot?start=project_${data}`,
+                    }
+                ]
+            ],
+        }
+    });
 
     const client = new Instagram({ username: "investER_official", password: "e<<@H&_ArB~5ef7" });
 
@@ -1054,11 +1049,11 @@ async function acceptProject(socket,data,callback)
             })
     })();
 
-    // await Project.findOneAndUpdate({_id: data}, {type: "active"});
+    await Project.findOneAndUpdate({_id: data}, {type: "active"});
 
-    // var _patch          = `/var/www/projects/${_project._id}`;
-    // var YT_VIDEO        = await _AllParce.uploadVideo(_patch, _project.data["file+8"], _project.data.name, _project.data.target);
-    // await Project.findOneAndUpdate({_id: _project._id}, {YT_VIDEO: YT_VIDEO});
+    var _patch          = `/var/www/projects/${_project._id}`;
+    var YT_VIDEO        = await _AllParce.uploadVideo(_patch, _project.data["file+8"], _project.data.name, _project.data.target);
+    await Project.findOneAndUpdate({_id: _project._id}, {YT_VIDEO: YT_VIDEO});
 }
 
 
