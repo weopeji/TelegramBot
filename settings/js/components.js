@@ -419,116 +419,6 @@
 
             var param       = _project.data.organization;
 
-            var firstBlockMore = $(`
-                <div class="body_point">
-                    <div class="body_point_header">
-                        <span>Редактирование выплат</span>
-                    </div>
-                    <div class="body_point_line_block_more">
-                        <div class="body_point_line body_point_line_first" data="investings_pay">
-                            <span>Комиссия от привлеченных средств:</span>
-                            <p>25</p>
-                        </div>
-                        <div class="body_point_line body_point_line_input" data="investings_pay_input">
-                            <textarea rows="1" id="investings_pay_textarea" class="text_area"></textarea>
-                            <span class="body_point_line_input_close">
-                                <i class="fal fa-minus-square"></i>
-                            </span>
-                            <span class="body_point_line_input_accept">
-                                <i class="fal fa-check-square"></i>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="body_point_line_block_more">
-                        <div class="body_point_line body_point_line_first" data="investings_pay">
-                            <span>Процент доли компании:</span>
-                            <p>5</p>
-                        </div>
-                        <div class="body_point_line body_point_line_input" data="investings_pay_input">
-                            <textarea rows="1" id="investings_pay_textarea" class="text_area"></textarea>
-                            <span class="body_point_line_input_close">
-                                <i class="fal fa-minus-square"></i>
-                            </span>
-                            <span class="body_point_line_input_accept">
-                                <i class="fal fa-check-square"></i>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="body_point_line_block_more">
-                        <div class="body_point_line body_point_line_first" data="investings_pay">
-                            <span>Процент Отчисления за привлечение:</span>
-                            <p>50</p>
-                        </div>
-                        <div class="body_point_line body_point_line_input" data="investings_pay_input">
-                            <textarea rows="1" id="investings_pay_textarea" class="text_area"></textarea>
-                            <span class="body_point_line_input_close">
-                                <i class="fal fa-minus-square"></i>
-                            </span>
-                            <span class="body_point_line_input_accept">
-                                <i class="fal fa-check-square"></i>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="body_point_line_block_more">
-                        <div class="body_point_line body_point_line_first" data="investings_pay">
-                            <span>За привлечение инвесторов:</span>
-                            <p>70</p>
-                        </div>
-                        <div class="body_point_line body_point_line_input" data="investings_pay_input">
-                            <textarea rows="1" id="investings_pay_textarea" class="text_area"></textarea>
-                            <span class="body_point_line_input_close">
-                                <i class="fal fa-minus-square"></i>
-                            </span>
-                            <span class="body_point_line_input_accept">
-                                <i class="fal fa-check-square"></i>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="body_point_line_block_more">
-                        <div class="body_point_line body_point_line_first" data="investings_pay">
-                            <span>За привлечение бизнеса:</span>
-                            <p>30</p>
-                        </div>
-                        <div class="body_point_line body_point_line_input" data="investings_pay_input">
-                            <textarea rows="1" id="investings_pay_textarea" class="text_area"></textarea>
-                            <span class="body_point_line_input_close">
-                                <i class="fal fa-minus-square"></i>
-                            </span>
-                            <span class="body_point_line_input_accept">
-                                <i class="fal fa-check-square"></i>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            `);
-
-            firstBlockMore.css("padding-bottom", "20px");
-
-            firstBlockMore.find('.body_point_line_first').click( function () {
-                $(this).fadeOut( function() {
-                    $(this).parent().find(".body_point_line_input").css("display", "flex");
-                });
-            })
-
-            firstBlockMore.find(".body_point_line_input_close").click( function() {
-                $(this).parent().fadeOut( function() 
-                {
-                    $(this).parent().parent().find(".body_point_line_first").fadeIn();
-                });
-            })
-
-            firstBlockMore.find(".body_point_line_input_accept").click( function() {
-                $(this).parent().fadeOut( function() 
-                {
-                    var _text = $(this).parent().find("textarea").val();
-                    $(this).parent().parent().find(".body_point_line_first p").html(_text);
-
-                    $(this).parent().parent().find(".body_point_line_first").fadeIn();
-                });
-            })
-
-            this.global_block.append(firstBlockMore);
-
             var string      = function (element, _project)
             {
 
@@ -1390,6 +1280,119 @@
             this.global_block.append(templateText);
         }
 
+        async renderSettings(_project)
+        {
+            var firstBlockMore = $(`
+                <div class="body_point">
+                    <div class="body_point_header">
+                        <span>Редактирование выплат</span>
+                    </div>
+                    <div class="body_point_line_block_more">
+                        <div class="body_point_line body_point_line_first" data="investings_pay">
+                            <span>Комиссия от привлеченных средств:</span>
+                            <p>25</p>
+                        </div>
+                        <div class="body_point_line body_point_line_input" data="investings_pay_input">
+                            <textarea rows="1" id="investings_pay_textarea" class="text_area"></textarea>
+                            <span class="body_point_line_input_close">
+                                <i class="fal fa-minus-square"></i>
+                            </span>
+                            <span class="body_point_line_input_accept">
+                                <i class="fal fa-check-square"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="body_point_line_block_more">
+                        <div class="body_point_line body_point_line_first" data="investings_pay">
+                            <span>Процент доли компании:</span>
+                            <p>5</p>
+                        </div>
+                        <div class="body_point_line body_point_line_input" data="investings_pay_input">
+                            <textarea rows="1" id="investings_pay_textarea" class="text_area"></textarea>
+                            <span class="body_point_line_input_close">
+                                <i class="fal fa-minus-square"></i>
+                            </span>
+                            <span class="body_point_line_input_accept">
+                                <i class="fal fa-check-square"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="body_point_line_block_more">
+                        <div class="body_point_line body_point_line_first" data="investings_pay">
+                            <span>Процент Отчисления за привлечение:</span>
+                            <p>50</p>
+                        </div>
+                        <div class="body_point_line body_point_line_input" data="investings_pay_input">
+                            <textarea rows="1" id="investings_pay_textarea" class="text_area"></textarea>
+                            <span class="body_point_line_input_close">
+                                <i class="fal fa-minus-square"></i>
+                            </span>
+                            <span class="body_point_line_input_accept">
+                                <i class="fal fa-check-square"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="body_point_line_block_more">
+                        <div class="body_point_line body_point_line_first" data="investings_pay">
+                            <span>За привлечение инвесторов:</span>
+                            <p>70</p>
+                        </div>
+                        <div class="body_point_line body_point_line_input" data="investings_pay_input">
+                            <textarea rows="1" id="investings_pay_textarea" class="text_area"></textarea>
+                            <span class="body_point_line_input_close">
+                                <i class="fal fa-minus-square"></i>
+                            </span>
+                            <span class="body_point_line_input_accept">
+                                <i class="fal fa-check-square"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="body_point_line_block_more">
+                        <div class="body_point_line body_point_line_first" data="investings_pay">
+                            <span>За привлечение бизнеса:</span>
+                            <p>30</p>
+                        </div>
+                        <div class="body_point_line body_point_line_input" data="investings_pay_input">
+                            <textarea rows="1" id="investings_pay_textarea" class="text_area"></textarea>
+                            <span class="body_point_line_input_close">
+                                <i class="fal fa-minus-square"></i>
+                            </span>
+                            <span class="body_point_line_input_accept">
+                                <i class="fal fa-check-square"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            `);
+
+            firstBlockMore.css("padding-bottom", "20px");
+
+            firstBlockMore.find('.body_point_line_first').click( function () {
+                $(this).fadeOut( function() {
+                    $(this).parent().find(".body_point_line_input").css("display", "flex");
+                });
+            })
+
+            firstBlockMore.find(".body_point_line_input_close").click( function() {
+                $(this).parent().fadeOut( function() 
+                {
+                    $(this).parent().parent().find(".body_point_line_first").fadeIn();
+                });
+            })
+
+            firstBlockMore.find(".body_point_line_input_accept").click( function() {
+                $(this).parent().fadeOut( function() 
+                {
+                    var _text = $(this).parent().find("textarea").val();
+                    $(this).parent().parent().find(".body_point_line_first p").html(_text);
+
+                    $(this).parent().parent().find(".body_point_line_first").fadeIn();
+                });
+            })
+
+            this.global_block.append(firstBlockMore);
+        }
+
         async render()
         {
             var _this = this;
@@ -1413,7 +1416,10 @@
                     },
                     "more": function () {
                         _this.renderMore(getProject);
-                    }
+                    },
+                    "settings": function () {
+                        _this.renderSettings(getProject);
+                    },
                 };
 
                 renderMore[_GET('more')]();
