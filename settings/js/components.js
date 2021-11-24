@@ -640,7 +640,7 @@
 
                 _body.append(`
                     <div class="body_point_textarea">
-                        <textarea id="${key}_textarea" class="text_area" rows="1"></textarea>
+                        <textarea id="${key}_textarea" class="text_area text_area_redacting" rows="1"></textarea>
                     </div>
                 `);
                 
@@ -662,17 +662,14 @@
 
                 $('.body_point').each(function(i,elem) 
                 {
-                    var _input = $(elem).find('.text_area').val();
-                    console.log(_input);
-                    if(_input)
+                    var _input = $(elem).find('.text_area_redacting').val();
+                    
+                    if(_input.length > 0)
                     {
-                        if(_input.length > 0)
-                        {
-                            _array.push({
-                                type: $(elem).find('textarea').attr('id').split('_')[0],
-                                value: $(elem).find('textarea').val(),
-                            })
-                        }
+                        _array.push({
+                            type: $(elem).find('textarea').attr('id').split('_')[0],
+                            value: $(elem).find('textarea').val(),
+                        })
                     }
                    
                 })
