@@ -1096,7 +1096,7 @@
 
             if(_User.alert_msgs)
             {
-
+                $('.index_page_menu_block_line[data="chats"] .index_page_menu_block_line_alert i').css('display', 'flex');
             }
  
             return _User;
