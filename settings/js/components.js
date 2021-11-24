@@ -594,7 +594,8 @@
                 } else {
                     var _url = getURL() + "/projects/" + _project._id + "/" + _project.data[element._id];
                     _line.find(".body_point_line_first").click( function() {
-                        location.href = _url;
+                        // location.href = _url;
+                        window.open(_url);
                     })
                 }
 
