@@ -108,6 +108,7 @@
                     this._append("Сайт", need_project.data.syte, true);
                     this._append("Цель займа", need_project.data.target);
                     this._append("Учредитель", need_project.parce.pr.management.name);
+                    this._append("List.org", `https://www.list-org.com/search?type=inn&val=${need_project.parce.pr.inn}`, true);
 
                     startArbitr();
                 },
@@ -121,6 +122,7 @@
                     this._append("Сайт", need_project.data.syte, true);
                     this._append("Цель займа", need_project.data.target);
                     this._append("Учредитель", need_project.parce.pr.management.name);
+                    this._append("List.org", `https://www.list-org.com/search?type=inn&val=${need_project.parce.pr.inn}`, true);
 
                     startArbitr();
                 },
