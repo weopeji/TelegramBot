@@ -595,6 +595,12 @@ async function msgUP(socket,data,callback)
 {
     var _MsgDB = await MsgDB.findOne({investor: data.user, business: data.to});
 
+    await User.findOneAndUpdate({_id: data.user}, {alert_msgs: "true"});
+
+    var _Project        = await Project.findOne({_id: data.to});
+
+    await User.findOneAndUpdate({user: _Project.user}, {alert_msgs: "true"});
+
     if(!_MsgDB) {
         var _array  = [];
         _array.push({
