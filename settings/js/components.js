@@ -1392,17 +1392,24 @@
 
             this.global_block.append(firstBlockMore);
 
-            var _description = `${_project.data.name} № ${_project._id}\n${_project.data.target}\nСтавка ${_project.data.rate * 12}% годовых\n>Выплаты ${_project.data.date_payments}\nВход от ${_project.data.minimal_amount} руб.Подробнее о предложении в телеграм канале - https://t.me/invester_official`.toString().trim();
+            var _description = `
+                ${_project.data.name} № ${_project._id} <br>
+                ${_project.data.target} <br>
+                Ставка ${_project.data.rate * 12}% годовых <br>
+                Выплаты ${_project.data.date_payments} <br>
+                Вход от ${_project.data.minimal_amount} руб. <br>
+                Подробнее о предложении в телеграм канале - https://t.me/invester_official <br>
+            `.toString().trim();
 
             var tamplateText = $(`
                 <div class="upload_video_block">
                     <h1>Загрузка видео на YouTube</h1>
                     <video controls="controls" src="https://invester-relocation.site/projects/${_project._id}/${_project.data['file+8']}"></video>
                     <div class="upload_video_block_unputs">
-                        <div id="upload_video_name" contenteditable="true">
+                        <div class="upload_video_block_unputs_text" id="upload_video_name" contenteditable="true">
                             ${_project.data.name} № ${_project._id}
                         </div>
-                        <div id="upload_video_description" contenteditable="true">
+                        <div class="upload_video_block_unputs_text" id="upload_video_description" contenteditable="true">
                             ${_description}
                         </div>
                     </div>
