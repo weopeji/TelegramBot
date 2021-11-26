@@ -980,6 +980,10 @@ async function acceptProject(socket,data,callback)
     console.log(_urlImgProject);
     const browser = await puppeteer.launch({
         args: ['--no-sandbox', '--disable-setuid-sandbox'],
+        defaultViewport: {
+            width: 1024,
+            height: 1024
+        }
     });
     const page = await browser.newPage();
     await page.goto(_urlImgProject);
