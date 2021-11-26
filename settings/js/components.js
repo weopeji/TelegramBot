@@ -1314,8 +1314,8 @@
 
             tamplateText.find('.upload_video_block_button').click( function () {
                 alert(`
-                    name: ${$('.upload_video_name').html()} \n
-                    description: ${$('.upload_video_description').html()}}
+                    name: ${$('#upload_video_name').html()} \n
+                    description: ${$('#upload_video_description').html()}
                 `)
             })
 
