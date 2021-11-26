@@ -980,16 +980,25 @@ async function acceptProject(socket,data,callback)
     console.log(_urlImgProject);
     const browser = await puppeteer.launch({
         args: ['--no-sandbox', '--disable-setuid-sandbox'],
-        defaultViewport: {
-            width: 1024,
-            height: 1024
-        }
     });
     const page = await browser.newPage();
+    await page.setViewport({
+        width: 1920,
+        height: 1080,
+    });      
     await page.goto(_urlImgProject);
     await page.emulateMedia('screen');
     const element = await page.$('.cover_block');   
-    await element.screenshot({path: `../projects/${data}/logo_instagram.jpg`});
+    const bounding_box = await example.boundingBox();
+    await element.screenshot({
+        path: `../projects/${data}/logo_instagram.jpg`,
+        clip: {
+            x: bounding_box.x,
+            y: bounding_box.y,
+            width: Math.min(bounding_box.width, page.viewport().width),
+            height: Math.min(bounding_box.height, page.viewport().height),
+        },
+    });
     await browser.close();
 
     // var html = `[Профиль компании](${h.getURL()}html/project/profil/#${_project._id})\n[Презентация](${h.getURL()}/projects/${_project._id}/${_project.data["file+7"]})\n[Видео презентация](${h.getURL()}/projects/${_project._id}/${_project.data["file+8"]})`;
