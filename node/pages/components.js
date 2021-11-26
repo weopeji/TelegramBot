@@ -1013,7 +1013,7 @@ async function acceptProject(socket,data,callback)
     //     }
     // });
 
-    // const client = new Instagram({ username: "investER_official", password: "e<<@H&_ArB~5ef7" });
+    const client = new Instagram({ username: "investER_official", password: "e<<@H&_ArB~5ef7" });
 
 
     ;(async () => 
