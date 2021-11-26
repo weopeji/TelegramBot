@@ -988,32 +988,32 @@ async function acceptProject(socket,data,callback)
     await element.screenshot({path: `../projects/${data}/logo_instagram.jpg`});
     await browser.close();
 
-    var html = `[Профиль компании](${h.getURL()}html/project/profil/#${_project._id})\n[Презентация](${h.getURL()}/projects/${_project._id}/${_project.data["file+7"]})\n[Видео презентация](${h.getURL()}/projects/${_project._id}/${_project.data["file+8"]})`;
+    // var html = `[Профиль компании](${h.getURL()}html/project/profil/#${_project._id})\n[Презентация](${h.getURL()}/projects/${_project._id}/${_project.data["file+7"]})\n[Видео презентация](${h.getURL()}/projects/${_project._id}/${_project.data["file+8"]})`;
     
-    const stream = fs.createReadStream(`../projects/${data}/logo.png`);
+    // const stream = fs.createReadStream(`../projects/${data}/logo.png`);
 
-    bot.sendPhoto(-1001205415519, stream, {
-        "caption": html,
-        "parse_mode": "MarkdownV2",
-        "reply_markup": {
-            "inline_keyboard": [
-                [
-                    {
-                        text: "Рекомендовать",
-                        url: `https://t.me/invester_official_bot?start=member_${data}`,
-                    }
-                ],
-                [
-                    {
-                        text: "Инвестровать",
-                        url: `https://t.me/invester_official_bot?start=project_${data}`,
-                    }
-                ]
-            ],
-        }
-    });
+    // bot.sendPhoto(-1001205415519, stream, {
+    //     "caption": html,
+    //     "parse_mode": "MarkdownV2",
+    //     "reply_markup": {
+    //         "inline_keyboard": [
+    //             [
+    //                 {
+    //                     text: "Рекомендовать",
+    //                     url: `https://t.me/invester_official_bot?start=member_${data}`,
+    //                 }
+    //             ],
+    //             [
+    //                 {
+    //                     text: "Инвестровать",
+    //                     url: `https://t.me/invester_official_bot?start=project_${data}`,
+    //                 }
+    //             ]
+    //         ],
+    //     }
+    // });
 
-    const client = new Instagram({ username: "investER_official", password: "e<<@H&_ArB~5ef7" });
+    // const client = new Instagram({ username: "investER_official", password: "e<<@H&_ArB~5ef7" });
 
 
     ;(async () => 
