@@ -132,6 +132,7 @@ var action_linker =
     "allAttracted": allAttracted,
     "cheackInnCreator": cheackInnCreator,
     "clearAlertMsg": clearAlertMsg,
+    "setYouTubeVideo": setYouTubeVideo,
 }
 
 async function clearAlertMsg(socket,data,callback)
@@ -1050,10 +1051,6 @@ async function acceptProject(socket,data,callback)
     })();
 
     await Project.findOneAndUpdate({_id: data}, {type: "active"});
-
-    var _patch          = `/var/www/projects/${_project._id}`;
-    var YT_VIDEO        = await _AllParce.uploadVideo(_patch, _project.data["file+8"], _project.data.name, _project.data.target);
-    await Project.findOneAndUpdate({_id: _project._id}, {YT_VIDEO: YT_VIDEO});
 }
 
 
@@ -1133,6 +1130,14 @@ var _AllParce =
             }
         })
     }
+}
+
+async function setYouTubeVideo(socket,data,callback)
+{
+    var _project        = await Project.findOne({_id: data.projectId});
+    var _patch          = `/var/www/projects/${_project._id}`;
+    var YT_VIDEO        = await _AllParce.uploadVideo(_patch, _project.data["file+8"], data.name, data.description);
+    await Project.findOneAndUpdate({_id: _project._id}, {YT_VIDEO: YT_VIDEO});
 }
 
 async function cheackInnCreator(socket,data,callback)
