@@ -1283,6 +1283,38 @@
 
         async renderSettings(_project)
         {
+            var _description = `
+                ${_project.data.name} № ${_project._id} <br>
+                ${_project.data.target} <br>
+                Ставка ${_project.data.rate * 12}% годовых <br>
+                Выплаты ${_project.data.date_payments} <br>
+                Вход от ${_project.data.minimal_amount} руб. <br>
+                Подробнее о предложении в телеграм канале - https://t.me/invester_official <br>
+            `.toString().trim();
+
+            var tamplateText = $(`
+                <div class="upload_video_block">
+                    <h1>Загрузка видео на YouTube</h1>
+                    <video controls="controls" src="https://invester-relocation.site/projects/${_project._id}/${_project.data['file+8']}"></video>
+                    <div class="upload_video_block_unputs">
+                        <div class="upload_video_block_unputs_text" id="upload_video_name" contenteditable="true">
+                            ${_project.data.name} № ${_project._id}
+                        </div>
+                        <div class="upload_video_block_unputs_text" id="upload_video_description" contenteditable="true">
+                            ${_description}
+                        </div>
+                    </div>
+                </div>
+                <div class="upload_video_block_button">
+                    <span>Загрузить видео</span>
+                </div>
+            `);
+
+            this.global_block.append(tamplateText);
+        }
+
+        async renderRedacting(_project)
+        {
             var firstBlockMore = $(`
                 <div class="body_point">
                     <div class="body_point_header">
@@ -1392,35 +1424,6 @@
             })
 
             this.global_block.append(firstBlockMore);
-
-            var _description = `
-                ${_project.data.name} № ${_project._id} <br>
-                ${_project.data.target} <br>
-                Ставка ${_project.data.rate * 12}% годовых <br>
-                Выплаты ${_project.data.date_payments} <br>
-                Вход от ${_project.data.minimal_amount} руб. <br>
-                Подробнее о предложении в телеграм канале - https://t.me/invester_official <br>
-            `.toString().trim();
-
-            var tamplateText = $(`
-                <div class="upload_video_block">
-                    <h1>Загрузка видео на YouTube</h1>
-                    <video controls="controls" src="https://invester-relocation.site/projects/${_project._id}/${_project.data['file+8']}"></video>
-                    <div class="upload_video_block_unputs">
-                        <div class="upload_video_block_unputs_text" id="upload_video_name" contenteditable="true">
-                            ${_project.data.name} № ${_project._id}
-                        </div>
-                        <div class="upload_video_block_unputs_text" id="upload_video_description" contenteditable="true">
-                            ${_description}
-                        </div>
-                    </div>
-                </div>
-                <div class="upload_video_block_button">
-                    <span>Загрузить видео</span>
-                </div>
-            `);
-
-            this.global_block.append(tamplateText);
         }
 
         async render()
@@ -1449,6 +1452,9 @@
                     },
                     "settings": function () {
                         _this.renderSettings(getProject);
+                    },
+                    "redacting": function () {
+                        _this.renderRedacting(getProject);
                     },
                 };
 
