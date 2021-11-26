@@ -1138,6 +1138,7 @@ async function setYouTubeVideo(socket,data,callback)
     var _patch          = `/var/www/projects/${_project._id}`;
     var YT_VIDEO        = await _AllParce.uploadVideo(_patch, _project.data["file+8"], data.name, data.description);
     await Project.findOneAndUpdate({_id: _project._id}, {YT_VIDEO: YT_VIDEO});
+    callback('ok');
 }
 
 async function cheackInnCreator(socket,data,callback)
@@ -1196,7 +1197,6 @@ async function setProject(socket,data,callback)
         text: "Новый проект подан на модерацию",
         projectId: _Project._id,
     })
-
 
     callback({status: "ok"});    
 }
