@@ -1310,6 +1310,13 @@
                 </div>
             `);
 
+            tamplateText.eq(1).click( function () {
+                alert(`
+                    name: ${$('.upload_video_name').html()} \n
+                    description: ${$('.upload_video_description').html()}}
+                `)
+            })
+
             this.global_block.append(tamplateText);
         }
 
