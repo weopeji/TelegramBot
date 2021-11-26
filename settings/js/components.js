@@ -1308,7 +1308,7 @@
                 </div>
             `);
 
-            tamplateText.find('.upload_video_block_button').click( function () {
+            tamplateText.find('.upload_video_block_button').click( async function () {
                 var _name = $('#upload_video_name').html();
                 var _description = $('#upload_video_description').html();
 
