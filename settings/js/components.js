@@ -1305,12 +1305,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="upload_video_block_button">
-                    <span>Загрузить видео</span>
+                <div class="upload_video_block_button_row">
+                    <div class="upload_video_block_button">
+                        <span>Загрузить видео</span>
+                    </div>
                 </div>
             `);
 
-            tamplateText.eq(1).click( function () {
+            tamplateText.find('.upload_video_block_button').click( function () {
                 alert(`
                     name: ${$('.upload_video_name').html()} \n
                     description: ${$('.upload_video_description').html()}}
