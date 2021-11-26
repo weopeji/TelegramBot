@@ -1284,12 +1284,12 @@
         async renderSettings(_project)
         {
             var _description = `
-                ${_project.data.name} № ${_project._id} \n
-                ${_project.data.target} \n
-                Ставка ${_project.data.rate * 12}% годовых \n
-                Выплаты ${_project.data.date_payments} \n
-                Вход от ${_project.data.minimal_amount} руб. \n
-                Подробнее о предложении в телеграм канале - https://t.me/invester_official  \n
+                ${_project.data.name} № ${_project._id} <br>
+                ${_project.data.target} <br>
+                Ставка ${_project.data.rate * 12}% годовых <br>
+                Выплаты ${_project.data.date_payments} <br>
+                Вход от ${_project.data.minimal_amount} руб. <br>
+                Подробнее о предложении в телеграм канале - https://t.me/invester_official <br>
             `.toString().trim();
 
             var tamplateText = $(`
@@ -1313,9 +1313,11 @@
             `);
 
             tamplateText.find('.upload_video_block_button').click( function () {
+                var _name = $('#upload_video_name').text();
+                var _description = $('#upload_video_description').text();
                 alert(`
-                    name: ${$('#upload_video_name').html()} \n
-                    description: ${$('#upload_video_description').html()}
+                    name: ${_name} \n
+                    description: ${_name)}
                 `)
             })
 
