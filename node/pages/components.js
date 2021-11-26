@@ -1005,7 +1005,7 @@ async function acceptProject(socket,data,callback)
     var videoPresentationPath = `${h.getURL()}/projects/${_project._id}/${_project.data["file+8"]}`;
     if(_project.YT_VIDEO)
     {
-        var yt_data = JSON.parse(_project.YT_VIDEO);
+        var yt_data = JSON.parse(_project.YT_VIDEO[3]);
         videoPresentationPath = `https://www.youtube.com/watch?v=${yt_data.id}`;
     }
 
