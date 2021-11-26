@@ -1317,7 +1317,7 @@
                 var _description = $('#upload_video_description').text();
                 alert(`
                     name: ${_name} \n
-                    description: ${_name)}
+                    description: ${_name}
                 `)
             })
 
