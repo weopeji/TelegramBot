@@ -1284,12 +1284,12 @@
         async renderSettings(_project)
         {
             var _description = `
-                ${_project.data.name} № ${_project._id} <br>
-                ${_project.data.target} <br>
-                Ставка ${_project.data.rate * 12}% годовых <br>
-                Выплаты ${_project.data.date_payments} <br>
-                Вход от ${_project.data.minimal_amount} руб. <br>
-                Подробнее о предложении в телеграм канале - https://t.me/invester_official <br>
+                ${_project.data.name} № ${_project._id} \n
+                ${_project.data.target} \n
+                Ставка ${_project.data.rate * 12}% годовых \n
+                Выплаты ${_project.data.date_payments} \n
+                Вход от ${_project.data.minimal_amount} руб. \n
+                Подробнее о предложении в телеграм канале - https://t.me/invester_official  \n
             `.toString().trim();
 
             var tamplateText = $(`
