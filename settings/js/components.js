@@ -1313,8 +1313,8 @@
             `);
 
             tamplateText.find('.upload_video_block_button').click( function () {
-                var _name = $('#upload_video_name').text();
-                var _description = $('#upload_video_description').text();
+                var _name = $('#upload_video_name').html();
+                var _description = $('#upload_video_description').html();
                 alert(`
                     name: ${_name} \n
                     description: ${_name}
