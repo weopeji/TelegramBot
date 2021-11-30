@@ -1195,6 +1195,7 @@
                     <canvas width="700" height="400"></canvas>
                 </div>
                 <div class="index_page_buttons">
+                    <span class="add_more">Добавить печать</span>
                     <span class="clean">Очистить</span>
                     <span class="put">Посмотреть подписаемый документ<i class="fas fa-arrow-right" aria-hidden="true"></i></span>
                 </div>
@@ -1207,6 +1208,10 @@
             $('.clean').click( function() {
                 signaturePad.clear();
             });
+
+            $('.add_more').click( function() {
+                location.href = `https://invester-relocation.site/?page=seal&id=${_project._id}`;
+            })
 
             $('.put').click( function() {
                 window.open(`https://invester-relocation.site/html/project/document/#${_project._id}`, '_blank');
