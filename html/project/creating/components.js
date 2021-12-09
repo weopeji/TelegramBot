@@ -1021,7 +1021,7 @@
                                 <span class="_yes">Готово</span>
                             </div>
                         </div>
-                        <input id="${data._id}" type="date" class="text_area" name="calendar" min="2021-08-07">
+                        <input id="${data._id}" type="date" class="text_area" name="calendar">
                     </div>
                 `);
 
