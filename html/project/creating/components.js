@@ -149,6 +149,13 @@
                                 info: "Например розничная торговля",
                                 parsing_data: null,
                                 _id: "activity"
+                            },
+                            {
+                                type: "date",
+                                name: "Ваша дата рождения",
+                                info: "*",
+                                parsing_data: null,
+                                _id: "date_user"
                             }
                         ]
                     }

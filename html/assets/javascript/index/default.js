@@ -57,6 +57,7 @@
             const Attracted_by_me   = new global.Components.Attracted_by_me();
             const reward            = new global.Components.reward();
             const ref_url           = new global.Components.ref_url();
+            const ref_url           = new global.Components.ref_url();
 
             const creating_page     = new global.Components.creating_page();
 
