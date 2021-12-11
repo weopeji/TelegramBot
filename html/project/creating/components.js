@@ -1434,13 +1434,18 @@
             $('.index_page').fadeOut();
             $('.preloader').fadeIn();
 
-            var cheackInnCreator = await callApi({
-                methodName: "cheackInnCreator",
-                data: {
-                    data: correctArray,
-                    user: user,
-                },
-            });
+            var cheackInnCreator = "not error";
+
+            if(param != 3)
+            {
+                cheackInnCreator = await callApi({
+                    methodName: "cheackInnCreator",
+                    data: {
+                        data: correctArray,
+                        user: user,
+                    },
+                });
+            }
 
             if(cheackInnCreator == "error") 
             {
