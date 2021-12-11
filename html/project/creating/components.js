@@ -1350,7 +1350,8 @@
 
             for (var key in this.struct) 
             {
-                if(param != "1") {
+                if(param != 1) 
+                {
                     if(key == "+3_1" || key == "+3_2" || key == "+3_3") {
                         continue;
                     }
