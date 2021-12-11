@@ -123,7 +123,7 @@ async function help_user(msg)
     var _User   = await User.findOne({user: msg.from.id});
 
     var html = `${_User.first_name}\nВы находитесь в меню "Написать тех поддержке"`;
-    var fat = await bot.sendMessage(msg.chat.id, toEscapeMSg(html), {
+    var fat = await bot.sendMessage(msg.chat.id, html, {
         parse_mode: "html",
         reply_markup: {  
             "resize_keyboard": true, 
