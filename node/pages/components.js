@@ -1228,7 +1228,7 @@ async function setProject(socket,data,callback)
         signature_document: null,
     };
 
-    if(data.data.organization != "3")
+    if(data.organization != "3")
     {
         var _ParceProject       = await _AllParce.parceProject(data.data.inn);
         if(_ParceProject == 'error') { callback('error'); return; };
