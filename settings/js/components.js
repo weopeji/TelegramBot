@@ -1512,7 +1512,7 @@
                         <span>Редактирование Кратности</span>
                     </div>
                     <div class="body_point_line_block_more_frame">
-                        <iframe src="https://fssp.gov.ru/iss/ip" frameborder="0"></iframe>
+                        <iframe src="fssp.gov.ru/iss/ip" frameborder="0"></iframe>
                     </div>
                 </div>
             `);
