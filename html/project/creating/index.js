@@ -114,7 +114,7 @@
             });
 
             $('.index_page_body_button').click( function() {
-                _components.correct($('.index_page_body_header_type').find('.selected').attr('data'), _id);
+                _components.correct(_project.data.organization, _id);
             });
 
         }

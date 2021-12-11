@@ -1346,7 +1346,6 @@
             var correctArray = {};
             var types = {};
 
-            var param = _project.data.organization;
             correctArray.organization = param;
 
             for (var key in this.struct) 
