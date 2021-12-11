@@ -1479,6 +1479,31 @@
                 </div>
             `);
 
+            firstBlockMore.css("padding-bottom", "20px");
+
+            firstBlockMore.find('.body_point_line_first').click( function () {
+                $(this).fadeOut( function() {
+                    $(this).parent().find(".body_point_line_input").css("display", "flex");
+                });
+            })
+
+            firstBlockMore.find(".body_point_line_input_close").click( function() {
+                $(this).parent().fadeOut( function() 
+                {
+                    $(this).parent().parent().find(".body_point_line_first").fadeIn();
+                });
+            })
+
+            firstBlockMore.find(".body_point_line_input_accept").click( function() {
+                $(this).parent().fadeOut( function() 
+                {
+                    var _text = $(this).parent().find("textarea").val();
+                    $(this).parent().parent().find(".body_point_line_first p").html(_text);
+
+                    $(this).parent().parent().find(".body_point_line_first").fadeIn();
+                });
+            })
+
             this.global_block.append(firstBlockMore);
         }
 
