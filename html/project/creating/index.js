@@ -77,8 +77,8 @@
 
                 global._typePage = 'redacting'; 
 
-                $('.index_page_body h1').html('Исправление данных');
-                $('.index_page_body h2').html('Исправте все недостающие данные');
+                $('.index_page_body h1').html('Исправление данных');                                   
+                $('.index_page_body h2').html('Исправте все недостающие данные');                      
                 $('.index_page_body_button span').html('Отправить');
 
                 await _components.render_redacting(_project);
@@ -87,7 +87,7 @@
                     _components.redactingAgain(_id);
                 });
 
-                changeTextArea();
+                changeTextArea();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
             }
 
         } else 
