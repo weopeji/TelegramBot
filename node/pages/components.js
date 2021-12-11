@@ -1228,8 +1228,10 @@ async function setProject(socket,data,callback)
         signature_document: null,
     };
 
-    if(data.organization != "3")
+    if(data.data.organization != 3)
     {
+        console.log("Not FIZ");
+
         var _ParceProject       = await _AllParce.parceProject(data.data.inn);
         if(_ParceProject == 'error') { callback('error'); return; };
         var _ParceProjectAr     = await _AllParce._ParcingArbitraj(data.data.inn);
@@ -1238,6 +1240,8 @@ async function setProject(socket,data,callback)
             "ar": _ParceProjectAr,
         };
     } else {
+        console.log("FIZ");
+
         var _ParceProject       = await _AllParce.parceProjectFiz(data.data);
         _DataProject.parce      = {
             "fiz": _ParceProject,
