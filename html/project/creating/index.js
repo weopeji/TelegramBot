@@ -114,7 +114,7 @@
             });
 
             $('.index_page_body_button').click( function() {
-                _components.correct(_project.data.organization, _id);
+                _components.correct(_User.creatingData.type, _id);
             });
 
         }
