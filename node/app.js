@@ -298,6 +298,7 @@ bot.on('message', async (msg) =>
         "📣 Привлечение": main_page.change_type,
         "🔁 Сменить роль": main_page.notType,
         "⬅️ Назад": main_page.close,
+        "💁🏻 Написать в Поддержку": main_page.help_user,
         // ИНВЕСТОР ===========================================
         "💰 Мои инвестиции": investor_page.my_investment,
         "💰 Мои инвестиции ♦️": investor_page.my_investment,

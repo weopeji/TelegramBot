@@ -13,6 +13,7 @@ module.exports = {
     notType,
     change_type,
     close,
+    help_user,
 }
 
 function privateInit(initPlagins) {
@@ -114,6 +115,42 @@ const MF =
     Update_Type: function(msg, data) {
         return User.findOneAndUpdate({user: msg.from.id}, {type: data});
     },
+}
+
+async function help_user(msg) 
+{
+    var _array  = [];
+    var _User   = await User.findOne({user: msg.from.id});
+
+    var html = `${_User.first_name}\nВы находитесь в меню "Написать тех поддержке"`;
+    var fat = await bot.sendMessage(msg.chat.id, toEscapeMSg(html), {
+        parse_mode: "html",
+        reply_markup: {  
+            "resize_keyboard": true, 
+            "keyboard": [
+                ["⬅️ Назад"]
+            ],                                                                   
+        }
+    });
+    _array.push(fat.message_id);
+
+    var html = `Перейдите в личный кабинет, чтобы посмотреть Написать тех поддержке`;
+    var fat = await bot.sendMessage(msg.chat.id, toEscapeMSg(html), {
+        parse_mode: "html",
+        reply_markup: {                                                                     
+            "inline_keyboard": [
+                [
+                    {
+                        text: 'Перейти',
+                        url: `${h.getURL()}?user=${_User.id}&page=activ_projects`,
+                    },
+                ]
+            ],
+        }
+    });
+    _array.push(fat.message_id);
+
+    await h.DMA(msg, _array);
 }
 
 async function _CreatorFUN(msg)
