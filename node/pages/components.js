@@ -1153,6 +1153,53 @@ var _AllParce =
             });
         });
     },
+    "_ParceProjectIspo": function (_data) {
+        return new Promise((resolve,reject) =>
+        {
+            var fio             = _data.initials.split(' ');
+            var query          = _data.region;
+            var url             = "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address";
+            var token           = "cd3a829357362fec55fc201c3f761002def9906f";
+            var first_name      = fio[1];
+            var second_name     = fio[2];
+            var last_name       = fio[0];
+            var birth_date      = _data.date_user;
+
+            var options = {
+                method: "POST",
+                mode: "cors",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                    "Authorization": "Token " + token
+                },
+                body: JSON.stringify({query: query})
+            }
+
+            fetch(url, options)
+            .then(response => response.text())
+            .then(result => 
+            {
+                var _dataFirst = JSON.parse(result.toString()).suggestions[0].data.region_kladr_id;
+
+                _dataFirst = _dataFirst.replace(/0/g, '');
+
+                var config = {
+                    method: 'get',
+                    url: `https://api-ip.fssp.gov.ru/api/v1.0/search/legall?token=er77gLcQvTO5&firstname=${encodeURI(first_name)}&secondname=${encodeURI(second_name)}&lastname=${encodeURI(last_name)}&birthdate=${birth_date}&region=${_dataFirst}`,
+                    headers: { }
+                };    
+                
+                axios(config)
+                .then(function (response) {
+                    resolve(JSON.stringify(response.data));
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+            });
+        });
+    },
     "_ParcingArbitraj": async function(inn)
     {
         let options = 
@@ -1235,9 +1282,11 @@ async function setProject(socket,data,callback)
         var _ParceProject       = await _AllParce.parceProject(data.data.inn);
         if(_ParceProject == 'error') { callback('error'); return; };
         var _ParceProjectAr     = await _AllParce._ParcingArbitraj(data.data.inn);
+        // var _ParceProjectIspo   = await _AllParce._ParceProjectIspo(data.data);
         _DataProject.parce      = {
             "pr": _ParceProject,
             "ar": _ParceProjectAr,
+            // "ispo": _ParceProjectIspo,
         };
     } else {
         console.log("FIZ");
