@@ -135,7 +135,7 @@ async function help_user(msg)
     _array.push(fat.message_id);
 
     var html = `Перейдите в личный кабинет, чтобы посмотреть Написать тех поддержке`;
-    var fat = await bot.sendMessage(msg.chat.id, toEscapeMSg(html), {
+    var fat = await bot.sendMessage(msg.chat.id, html, {
         parse_mode: "html",
         reply_markup: {                                                                     
             "inline_keyboard": [
