@@ -1114,7 +1114,7 @@ var _AllParce =
             });
         });
     },
-    "parceProjectFiz": async function(_data, _id) {
+    "parceProjectFiz": async function(_data) {
         return new Promise((resolve,reject) =>
         {
             var fio             = _data.initials.split(' ');
@@ -1154,7 +1154,6 @@ var _AllParce =
                 axios(config)
                 .then(async function (response) {
                     var adaw = await R_F.create({
-                        projectId: _id,
                         data: JSON.stringify(response.data),
                     })
                     resolve(adaw._id);
@@ -1303,7 +1302,7 @@ async function setProject(socket,data,callback)
     } else {
         console.log("FIZ");
 
-        var _ParceProject       = await _AllParce.parceProjectFiz(data.data, _token);
+        var _ParceProject       = await _AllParce.parceProjectFiz(data.data);
         _DataProject.parce      = {
             "fiz": null,
             "token": _ParceProject,
