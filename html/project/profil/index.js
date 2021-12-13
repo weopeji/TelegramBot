@@ -150,6 +150,15 @@
                     this._append("Цель займа", need_project.data.target);
 
                     $('h1[data="arbitr"]').remove();
+
+                    var _preloader = $(`
+                        <div class="loader_input">
+                            <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+                            <span></span>
+                        </div>
+                    `);
+
+                    $('.ispo_line').append(_preloader);
                 }
             },
             credit_story: {
