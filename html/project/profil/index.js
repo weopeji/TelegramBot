@@ -147,7 +147,6 @@
                 "3": function (params) {
                     $('.index_page_profil_data h1').html(_config.header());
                     this._append("Название компании", need_project.data.name);
-                    this._append("Сайт", need_project.data.syte, true);
                     this._append("Цель займа", need_project.data.target);
                 }
             },
