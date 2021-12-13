@@ -153,8 +153,7 @@
 
                     var _preloader = $(`
                         <div class="loader_input">
-                            <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
-                            <span></span>
+                            <img src="../../assets/images/ispo_preloader.png" alt="">
                         </div>
                     `);
 
