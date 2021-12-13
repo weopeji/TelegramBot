@@ -1153,11 +1153,11 @@ var _AllParce =
                 
                 axios(config)
                 .then(async function (response) {
-                    await R_F.create({
+                    var adaw = await R_F.create({
                         projectId: _id,
                         data: JSON.stringify(response.data),
                     })
-                    resolve(JSON.stringify(response.data));
+                    resolve(adaw._id);
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -1287,16 +1287,6 @@ async function setProject(socket,data,callback)
         signature_document: null,
     };
 
-    var rand = function() {
-        return Math.random().toString(36).substr(2); // remove `0.`
-    };
-    
-    var token = function() {
-        return rand() + rand(); // to make it longer
-    };
-
-    var _token = token();
-
     if(data.data.organization != 3)
     {
         console.log("Not FIZ");
@@ -1313,11 +1303,10 @@ async function setProject(socket,data,callback)
     } else {
         console.log("FIZ");
 
-       
         var _ParceProject       = await _AllParce.parceProjectFiz(data.data, _token);
         _DataProject.parce      = {
             "fiz": null,
-            "token": _token,
+            "token": _ParceProject,
         };
     }
 
