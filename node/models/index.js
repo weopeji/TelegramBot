@@ -6,3 +6,4 @@ require('./payAttract');
 require('./bussines_pays');
 require('./payments');
 require('./bPayAccept');
+require('./requser_fiz');
