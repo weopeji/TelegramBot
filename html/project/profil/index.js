@@ -27,6 +27,11 @@
             data: _id,
         });
 
+        var getR_F = await callApi({
+            methodName: 'getR_F',
+            data: _id,
+        });
+
         function startArbitr()
         {
             if(need_project.parce.ar)

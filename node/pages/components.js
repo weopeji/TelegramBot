@@ -135,6 +135,13 @@ var action_linker =
     "cheackInnCreator": cheackInnCreator,
     "clearAlertMsg": clearAlertMsg,
     "setYouTubeVideo": setYouTubeVideo,
+    "getR_F": getR_F,
+}
+
+async function getR_F(socket,data,callback)
+{
+    // var _getR_F = await R_F.findOne({projectId})
+    callback();
 }
 
 async function clearAlertMsg(socket,data,callback)
@@ -1280,6 +1287,16 @@ async function setProject(socket,data,callback)
         signature_document: null,
     };
 
+    var rand = function() {
+        return Math.random().toString(36).substr(2); // remove `0.`
+    };
+    
+    var token = function() {
+        return rand() + rand(); // to make it longer
+    };
+
+    var _token = token();
+
     if(data.data.organization != 3)
     {
         console.log("Not FIZ");
@@ -1296,9 +1313,11 @@ async function setProject(socket,data,callback)
     } else {
         console.log("FIZ");
 
-        var _ParceProject       = await _AllParce.parceProjectFiz(data.data, data._id);
+       
+        var _ParceProject       = await _AllParce.parceProjectFiz(data.data, _token);
         _DataProject.parce      = {
-            "fiz": _ParceProject,
+            "fiz": null,
+            "token": _token,
         };
     }
 

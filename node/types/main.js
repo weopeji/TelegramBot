@@ -361,6 +361,8 @@ async function _MainMenu(msg, close)
                         var fat = await bot.sendPhoto(msg.from.id, stream);
                         _array.push(fat.message_id);
                     }
+
+                    await h.MA(msg, _array);
                 }
                 var reqAttraction = require("./attraction");
 
