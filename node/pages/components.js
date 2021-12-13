@@ -141,6 +141,7 @@ var action_linker =
 async function getR_F(socket,data,callback)
 {
     var _project = await Project.findOne({_id: data});
+
     if(!_project.parce.fiz)
     {
         var _token = _project.parce.token;
@@ -155,13 +156,26 @@ async function getR_F(socket,data,callback)
         
         axios(config)
         .then(function (response) {
-            console.log(JSON.stringify(response.data));
+            var _dataLast = JSON.stringify(response.data);
+
+            if(_dataLast.response.result.length > 0)
+            {
+                var _fiz = _project.parce;
+                _fiz.fiz = _dataLast;
+
+                await Project.findOneAndUpdate({_id: data}, {parce: _fiz});
+                await R_F.remove({_id: _token});
+
+                callback("ok");
+            } else {
+                callback("error");
+            }
         })
         .catch(function (error) {
             console.log(error);
         });
     } else {
-        callback(_project.parce.fiz);
+        callback("ok");
     }
 }
 

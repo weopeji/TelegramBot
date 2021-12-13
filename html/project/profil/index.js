@@ -22,15 +22,19 @@
     {
         var _id = global.location.href.split("#")[1];
 
+        var getR_F = await callApi({
+            methodName: 'getR_F',
+            data: _id,
+        });
+
+        console.log(getR_F);
+
         var need_project = await callApi({
             methodName: 'getProject',
             data: _id,
         });
 
-        var getR_F = await callApi({
-            methodName: 'getR_F',
-            data: _id,
-        });
+        console.log(need_project);
 
         function startArbitr()
         {
