@@ -348,6 +348,7 @@ async function _MainMenu(msg, close)
                 await h.DMA(msg, _array);
             } else 
             {
+                var _array          = [];
                 if(alertsMain)
                 {
                     var html =`Оповещения: ⠀ `;
