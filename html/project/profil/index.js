@@ -151,13 +151,28 @@
 
                     $('h1[data="arbitr"]').remove();
 
-                    var _preloader = $(`
-                        <div class="loader_input">
-                            <img src="../../assets/images/ispo_preloader.png" alt="">
-                        </div>
-                    `);
+                    if(getR_F == "ok")
+                    {
+                        need_project.parce.fiz[0].result.forEach((el, i) => {
+                            var _block = $(`
+                                <h1>${i + 1}</h1>
+                                 <div class="page_line">
+                                    <span>${el.exe_production}</span>
+                                    <p>${el.subject}</p>
+                                </div>
+                            `);
 
-                    $('.ispo_line').append(_preloader);
+                            $('.ispo_line').append(_preloader);
+                        })
+                    } else {
+                        var _preloader = $(`
+                            <div class="loader_input">
+                                <img src="../../assets/images/ispo_preloader.png" alt="">
+                            </div>
+                        `);
+
+                        $('.ispo_line').append(_preloader);
+                    }
                 }
             },
             credit_story: {
