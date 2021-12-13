@@ -47,6 +47,7 @@ function privateInit(initPlagins) {
     bPays       = initPlagins.bPays;
     Payments    = initPlagins.Payments;
     bPaysAccept = initPlagins.bPaysAccept;
+    R_F         = initPlagins.R_F;
 }
 
 var privat_index_page = function(socket,data,callback) {
@@ -1106,7 +1107,7 @@ var _AllParce =
             });
         });
     },
-    "parceProjectFiz": async function(_data) {
+    "parceProjectFiz": async function(_data, _id) {
         return new Promise((resolve,reject) =>
         {
             var fio             = _data.initials.split(' ');
@@ -1144,7 +1145,11 @@ var _AllParce =
                 };    
                 
                 axios(config)
-                .then(function (response) {
+                .then(async function (response) {
+                    await R_F.create({
+                        projectId: _id,
+                        data: JSON.stringify(response.data),
+                    })
                     resolve(JSON.stringify(response.data));
                 })
                 .catch(function (error) {
@@ -1291,7 +1296,7 @@ async function setProject(socket,data,callback)
     } else {
         console.log("FIZ");
 
-        var _ParceProject       = await _AllParce.parceProjectFiz(data.data);
+        var _ParceProject       = await _AllParce.parceProjectFiz(data.data, data._id);
         _DataProject.parce      = {
             "fiz": _ParceProject,
         };
