@@ -1505,21 +1505,6 @@
             })
 
             this.global_block.append(firstBlockMore);
-
-            var firstBlockMore = $(`
-                <div class="body_point">
-                    <div class="body_point_header">
-                        <span>Редактирование Кратности</span>
-                    </div>
-                    <div class="body_point_line_block_more_frame">
-                        <iframe src="https://fssp.gov.ru/iss/ip"></iframe>
-                    </div>
-                </div>
-            `);
-
-            firstBlockMore.css("padding-bottom", "20px");
-
-            this.global_block.append(firstBlockMore);
         }
 
         async render()

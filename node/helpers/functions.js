@@ -58,10 +58,15 @@ async function full_alert_user(_id, _text, _type)
         _Alerts         = [];
     }
 
-    _Alerts.unshift({
+    _Alerts.push({
         type: _type,
         img: `${_tokenAlert}.png`,
     }) 
+
+    if(_Alerts.length > 3)
+    {
+        _Alerts.shift();
+    }
 
     var defaultCreate = async () => 
     {
