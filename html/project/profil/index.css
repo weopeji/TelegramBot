@@ -85,6 +85,10 @@ html, body {
   margin: 0 auto;
 }
 
+.ispo_line {
+  width: 100%;
+}
+
 @media (max-width: 900px) {
   .index_page_profil {
     width: 95vw;
