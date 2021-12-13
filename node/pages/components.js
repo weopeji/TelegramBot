@@ -159,12 +159,10 @@ async function getR_F(socket,data,callback)
             var _dataLast   = JSON.stringify(response.data);
             var _last       = JSON.parse(_dataLast.toString()).response.result
 
-            console.log(_last);
-
-            if(_dataLast.response.result.length > 0)
+            if(_last.length > 0)
             {
                 var _fiz = _project.parce;
-                _fiz.fiz = _dataLast;
+                _fiz.fiz = _last;
 
                 await Project.findOneAndUpdate({_id: data}, {parce: _fiz});
                 await R_F.remove({_id: _token});
