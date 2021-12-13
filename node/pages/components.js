@@ -155,7 +155,7 @@ async function getR_F(socket,data,callback)
         };
         
         axios(config)
-        .then(function (response) {
+        .then(async function (response) {
             var _dataLast = JSON.stringify(response.data);
 
             if(_dataLast.response.result.length > 0)
