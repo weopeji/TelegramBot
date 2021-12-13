@@ -162,7 +162,7 @@
                                 </div>
                             `);
 
-                            $('.ispo_line').append(_preloader);
+                            $('.ispo_line').append(_block);
                         })
                     } else {
                         var _preloader = $(`
