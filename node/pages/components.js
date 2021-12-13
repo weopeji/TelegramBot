@@ -149,7 +149,7 @@ async function getR_F(socket,data,callback)
        
         var config = {
             method: 'get',
-            url: `https://api-ip.fssp.gov.ru/api/v1.0/result?token=${_data}`,
+            url: `https://api-ip.fssp.gov.ru/api/v1.0/result?token=er77gLcQvTO5&task=${_data}`,
             headers: { }
         };
         
