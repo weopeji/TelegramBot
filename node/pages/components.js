@@ -161,18 +161,18 @@ async function getR_F(socket,data,callback)
 
             console.log(_last);
 
-            // if(_dataLast.response.result.length > 0)
-            // {
-            //     var _fiz = _project.parce;
-            //     _fiz.fiz = _dataLast;
+            if(_dataLast.response.result.length > 0)
+            {
+                var _fiz = _project.parce;
+                _fiz.fiz = _dataLast;
 
-            //     await Project.findOneAndUpdate({_id: data}, {parce: _fiz});
-            //     await R_F.remove({_id: _token});
+                await Project.findOneAndUpdate({_id: data}, {parce: _fiz});
+                await R_F.remove({_id: _token});
 
-            //     callback("ok");
-            // } else {
-            //     callback("error");
-            // }
+                callback("ok");
+            } else {
+                callback("error");
+            }
         })
         .catch(function (error) {
             console.log(error);
