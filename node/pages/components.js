@@ -140,8 +140,29 @@ var action_linker =
 
 async function getR_F(socket,data,callback)
 {
-    // var _getR_F = await R_F.findOne({projectId})
-    callback();
+    var _project = await Project.findOne({_id: data});
+    if(!_project.parce.fiz)
+    {
+        var _token = _project.parce.token;
+        var _getR_F = await R_F.findOne({_id: _token});
+        var _data = JSON.stringify(_getR_F.data);
+       
+        var config = {
+            method: 'get',
+            url: `https://api-ip.fssp.gov.ru/api/v1.0/result?token=${_data.response.task}`,
+            headers: { }
+        };
+        
+        axios(config)
+        .then(function (response) {
+            console.log(JSON.stringify(response.data));
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+    } else {
+        callback(_project.parce.fiz);
+    }
 }
 
 async function clearAlertMsg(socket,data,callback)
