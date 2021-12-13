@@ -145,7 +145,7 @@ async function getR_F(socket,data,callback)
     {
         var _token = _project.parce.token;
         var _getR_F = await R_F.findOne({_id: _token});
-        var _data = JSON.stringify(_getR_F.data);
+        var _data = JSON.parse(_getR_F.data);
         
         console.log(_data);
        
