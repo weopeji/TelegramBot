@@ -1249,7 +1249,7 @@ var _AllParce =
     },
     "_ParcingArbitraj": async function(inn)
     {
-        resolve(null);  
+        return null;  
         // let options = 
         // {
         //     mode: 'text',
