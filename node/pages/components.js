@@ -1249,24 +1249,25 @@ var _AllParce =
     },
     "_ParcingArbitraj": async function(inn)
     {
-        let options = 
-        {
-            mode: 'text',
-            scriptPath: '../python/parcingArbitraj',
-            args: inn,
-        };
+        resolve(null);  
+        // let options = 
+        // {
+        //     mode: 'text',
+        //     scriptPath: '../python/parcingArbitraj',
+        //     args: inn,
+        // };
 
-        return new Promise((resolve,reject) => {
-            try {
-                PythonShell.run('main.py', options, function (err, results) {
-                    if (err) throw err;
-                    resolve(JSON.parse(results));  
-                });
-            }
-            catch{
-                reject();  
-            }
-        })
+        // return new Promise((resolve,reject) => {
+        //     try {
+        //         PythonShell.run('main.py', options, function (err, results) {
+        //             if (err) throw err;
+        //             resolve(JSON.parse(results));  
+        //         });
+        //     }
+        //     catch{
+        //         reject();  
+        //     }
+        // })
     },
     "uploadVideo": async function(_patch, _projectPath, name, target)
     {
