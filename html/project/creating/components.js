@@ -1156,7 +1156,7 @@
                     var preloaderBlockBlock = $(`
                         <div class="preloaderBlockBlock">
                             <div class="preloaderBlockBlock_row">
-                                <p></p>
+                                <p>Вводя персональные данные физических лиц, вы подтверждаете, что ознакомились с Политикой обработки персональных данных и даете согласие на обработку персональных данных</p>
                                 <div class="preloaderBlockBlock_button">
                                     <span>Подтверждаю</span>
                                 </div>
