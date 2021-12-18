@@ -153,6 +153,9 @@
                         <h1>${_project.data.name}</h1>
                         <p>${_project.data.target}</p>
                     </div>
+                    <div class="global_block_header_status">
+                        <span></span>
+                    </div>
                     <div class="global_block_header_accept_button">
                         <span>Принять проект<i class="fas fa-arrow-right"></i></span>
                     </div>
@@ -183,6 +186,20 @@
                     </span>
                 </div>
             `);
+
+            var _status = "Подан первый раз";
+
+            if(_project.signature)
+            {
+                _status = "Полученны дополнительные документы";
+            }
+
+            if(_project.signature_document)
+            {
+                _status = "Получена подпись бизнеса";
+            }
+
+            header_info.find('.global_block_header_status span').html(_status);
 
             header_info.find('.global_block_header_accept_button').click( function () {
                 _this.accept(_project._id);
