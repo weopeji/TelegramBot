@@ -186,6 +186,11 @@
   font-size: 35px;
 }
 
+.global_block_menu p {
+  margin: 0;
+  padding: 0;
+}
+
 .global_block_menu span {
   display: block;
   padding: 20px 35px;
@@ -193,6 +198,17 @@
   cursor: pointer;
   background-color: #182037;
   border-radius: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .global_block_menu .selected {
