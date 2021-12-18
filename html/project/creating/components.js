@@ -1383,11 +1383,15 @@
 
             autch_block.find('.autch_block_buttons_block_close').click( function() {
                 $(this).parent().parent().parent().remove();
-            })
+            });
+
+            var _this = this;
 
             autch_block.find('.autch_block_buttons_block_accept').click( async function() {
-                var correctArray = {};
-                var types = {};
+
+                var correctArray    = {};
+                var types           = {};
+                this                = _this;
     
                 correctArray.organization = param;
     
