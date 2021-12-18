@@ -1164,7 +1164,7 @@
                         </div>
                     `);
 
-                    _block.find('.preloaderBlockBlock_button').click( function () {
+                    preloaderBlockBlock.find('.preloaderBlockBlock_button').click( function () {
                         $(this).parent().parent().remove();
                     })
 
