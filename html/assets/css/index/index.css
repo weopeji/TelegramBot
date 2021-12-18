@@ -986,6 +986,7 @@ html, body {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+  cursor: pointer;
 }
 
 .creating_page_input_button span {

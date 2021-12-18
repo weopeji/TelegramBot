@@ -58,6 +58,12 @@
                 </div>
             `);
 
+            var inputViewProject = $(`
+                <div class="creating_page_input_viev">
+                    <img src="/projects/19/logo.png" alt="">
+                </div>
+            `);
+
             var inputText = $(`
                 <div class="creating_page_input">
                     <div class="creating_page_input_div">
@@ -72,14 +78,8 @@
                 </div>
             `);
 
-            var _this = this;
-
-            inputText.find('.creating_page_input_button span').click( function (event) {
-                _this.nextRender();
-                return(false);
-            });
-
             this.global.append(msgsBlock);
+            this.global.append(inputViewProject);
             this.global.append(inputText);
 
             $('.index_page_body_data').append(this.global);
