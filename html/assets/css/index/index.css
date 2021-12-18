@@ -1215,6 +1215,15 @@ html, body {
           align-items: center;
 }
 
+.creating_page_input_viev {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.creating_page_input_viev img {
+  width: 100%;
+}
+
 @media (max-width: 500px) {
   .buttons_menu {
     display: block;
