@@ -128,7 +128,7 @@ async function alertAdmin(data)
     {
         "creating_project": async function()
         {
-            var html = `[Профиль компании](https://invester-relocation.site/html/project/profil/#${_project._id})\n[Презентация](https://invester-relocation.site/projects/${_project._id}/${_project.data["file+7"]})\n[Видео презентация](https://invester-relocation.site/projects/${_project._id}/${_project.data["file+8"]})\n\n`;
+            var html = `<a href="https://invester-relocation.site/html/project/profil/#${_project._id}">Профиль компании</a>\n<a href="https://invester-relocation.site/projects/${_project._id}/${_project.data["file+7"]}">Презентация</a>\n<a href="https://invester-relocation.site/projects/${_project._id}/${_project.data["file+8"]}">Видео презентация</a>\n\n`;
             html += data.text;
             const stream = fs.createReadStream(`../projects/${data.projectId}/logo.png`);
             await bot.sendPhoto(-1001693050369, stream, {
@@ -148,7 +148,7 @@ async function alertAdmin(data)
         },
         "correct_signature": function()
         {
-            var html = `[Профиль компании](https://invester-relocation.site/html/project/profil/#${_project._id})\n[Презентация](https://invester-relocation.site/projects/${_project._id}/${_project.data["file+7"]})\n[Видео презентация](https://invester-relocation.site/projects/${_project._id}/${_project.data["file+8"]})\n\n`;
+            var html = `<a href="https://invester-relocation.site/html/project/profil/#${_project._id}">Профиль компании</a>\n<a href="https://invester-relocation.site/projects/${_project._id}/${_project.data["file+7"]}">Презентация</a>\n<a href="https://invester-relocation.site/projects/${_project._id}/${_project.data["file+8"]}">Видео презентация</a>\n\n`;
             html += data.text;
             const stream = fs.createReadStream(`../projects/${data.projectId}/logo.png`);
             bot.sendPhoto(-1001693050369, stream, {
