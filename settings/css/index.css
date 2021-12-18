@@ -216,6 +216,22 @@
   color: #1294FC;
 }
 
+.global_block_header_status span {
+  background: #14b6ff;
+  background: -webkit-gradient(linear, left top, right top, from(#14b6ff), color-stop(61%, #1387ff));
+  background: linear-gradient(90deg, #14b6ff 0%, #1387ff 61%);
+  padding: 10px 40px;
+  border-radius: 3px;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
 .index_page_body_data {
   height: calc(100vh - 35px);
 }
