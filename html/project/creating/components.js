@@ -1150,6 +1150,18 @@
                 var data = this.struct[key];
 
                 var _body = $(`<div class="body_point"></div>`);
+
+                if(key = "+5")
+                {
+                    var preloaderBlockBlock = $(`
+                        <div class="preloaderBlockBlock">
+                            
+                        </div>
+                    `);
+
+                    _body.append(preloaderBlockBlock);
+                }
+
                 _body.append(`
                     <div class="body_point_header">
                         <span>${data.header}</span>

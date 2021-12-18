@@ -175,11 +175,11 @@
         {
             var msgsBlock = $(`
                 <div class="creating_page_block">
-                    <div class="creating_page_start">
-                            <span>
-                                Уважаемый Инвестор.... вводя данные вы подтверждаете, что <br> ознакомились и принимаете все условия <a href="https://google.com">"Пользовательского соглашения"</a>.
-                            </span>
-                        </div>
+                    <div class="creating_page_start" style="margin-bottom: 20px">
+                        <span>
+                            Уважаемый Инвестор.... вводя данные вы подтверждаете, что <br> ознакомились и принимаете все условия <a href="https://google.com">"Пользовательского соглашения"</a>.
+                        </span>
+                    </div>
                     <div class="creating_page_start">
                         <span>
                             Добро пожаловать в мастер создания проекта! <br>
