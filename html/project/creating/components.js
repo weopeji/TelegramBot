@@ -1151,11 +1151,11 @@
 
                 var _body = $(`<div class="body_point"></div>`);
 
-                if(key = "+5")
+                if(key == "+5")
                 {
                     var preloaderBlockBlock = $(`
                         <div class="preloaderBlockBlock">
-                            
+
                         </div>
                     `);
 
