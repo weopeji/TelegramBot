@@ -141,11 +141,11 @@
 }
 
 .global_block_header_accept_button {
-  padding: 10px 20px;
+  padding: 15px 40px;
   border-radius: 3px;
   border: 1px solid;
-  color: #10c760;
-  font-size: 12px;
+  color: #32B8FF;
+  font-size: 20px;
 }
 
 .global_block_header_accept_button i {
@@ -189,6 +189,7 @@
 .global_block_menu p {
   margin: 0;
   padding: 0;
+  margin-top: 10px;
 }
 
 .global_block_menu span {
@@ -223,7 +224,7 @@
   width: 100%;
   background-color: #182037;
   margin-top: 20px;
-  border-radius: 5px;
+  border-radius: 15px;
 }
 
 .body_point textarea {
