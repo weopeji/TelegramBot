@@ -174,14 +174,12 @@
         async startDefault()
         {
             var msgsBlock = $(`
-                <div class="creating_page_block" style="margin-bottom: 20px">
-                        <div class="creating_page_start">
+                <div class="creating_page_block">
+                    <div class="creating_page_start">
                             <span>
                                 Уважаемый Инвестор.... вводя данные вы подтверждаете, что <br> ознакомились и принимаете все условия <a href="https://google.com">"Пользовательского соглашения"</a>.
                             </span>
                         </div>
-                    </div>
-                <div class="creating_page_block">
                     <div class="creating_page_start">
                         <span>
                             Добро пожаловать в мастер создания проекта! <br>
