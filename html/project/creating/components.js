@@ -1362,6 +1362,144 @@
             }
         }
 
+        async correct_next_load(param, user) 
+        {
+            var correctArray    = {};
+            var types           = {};
+
+            correctArray.organization = param;
+
+            for (var key in this.struct) 
+            {
+                if(param != 1) 
+                {
+                    if(key == "+3_1" || key == "+3_2" || key == "+3_3") {
+                        continue;
+                    }
+                }
+
+                var data = this.struct[key];
+
+                var FUN = 
+                {
+                    _string: function(element) 
+                    {
+                        correctArray[element._id] = $(`#${element._id}`).val();
+                        types[element._id] = "string";
+                    },
+                    _file: function(element) 
+                    {
+                        correctArray[element._id] = document.getElementById(`${element._id}_block`).getAttribute('data');
+                        types[element._id] = "file";
+                    },
+                    _menu: function(element)
+                    {
+                        correctArray[element._id] = $(`#${element._id}`).val();
+                        types[element._id] = "menu";
+                    },
+                    _addr: function(element)
+                    {
+                        correctArray[element._id] = $(`#${element._id}`).val();
+                        types[element._id] = "string";
+                    },
+                    _date: function(element)
+                    {
+                        console.log($(`#${element._id}`).val());
+                        correctArray[element._id] = $(`#${element._id}`).val();
+                        types[element._id] = "string";
+                    }
+                }
+
+                function _el(element)
+                {
+                    if(element.type == "string") FUN._string(element);
+                    if(element.type == "file") FUN._file(element);
+                    if(element.type == "menu") FUN._menu(element);
+                    if(element.type == "addr") FUN._addr(element);
+                    if(element.type == "date") FUN._date(element);
+                }
+
+                if(key == "+2") {
+                    if(param == 1 || param == 2) {
+                        data.body[1].forEach(element => 
+                        {
+                            _el(element)
+                        });
+                    } else {
+                        data.body[2].forEach(element => 
+                        {
+                            _el(element)
+                        });
+                    }
+                } else {
+                    data.body.forEach(element => 
+                    {
+                        _el(element)
+                    });
+                }
+            }
+
+            console.log(correctArray);
+
+            for(var key in correctArray)
+            {
+                if(key == "rate") {correctArray[key] = (correctArray[key].replace(/,/, '.') * 12).toFixed(2)};
+                if(types[key] == 'file') continue;
+                var _data = correctArray[key];
+                if(_data.length == 0 || _data == null) {
+                    alert('Введите все данные!');
+                    return;
+                }
+            }
+
+            $('.index_page').fadeOut();
+            $('.preloader').fadeIn();
+
+            var cheackInnCreator = "not error";
+
+            if(param != 3)
+            {
+                cheackInnCreator = await callApi({
+                    methodName: "cheackInnCreator",
+                    data: {
+                        data: correctArray,
+                        user: user,
+                    },
+                });
+            }
+
+            if(cheackInnCreator == "error") 
+            {
+                alert('Инн введен не верно!');
+                $('.preloader').fadeOut();
+                $('.index_page').fadeIn();
+            } else 
+            {
+                callApi({
+                    methodName: 'setProject',
+                    data: {
+                        data: correctArray,
+                        user: user,
+                    },
+                });
+
+                if(global._User.member_b)
+                {
+                    callApi({
+                        methodName: 'tg_alert_user_numbers',
+                        data: {
+                            text: "Вы привели новый Проект! Вы можете посмотреть весь список у себя в кабинете",
+                            user: global._User.member_b,
+                        },
+                    });
+                }
+                
+                $('.preloader').fadeOut( function() {
+                    $('.end_get_project').css('display', "flex"); 
+                });
+            }
+        }
+
         async correct(param, user) 
         {
 
@@ -1388,142 +1526,7 @@
             var _this = this;
 
             autch_block.find('.autch_block_buttons_block_accept').click( async function() {
-
-                var correctArray    = {};
-                var types           = {};
-                this                = _this;
-    
-                correctArray.organization = param;
-    
-                for (var key in this.struct) 
-                {
-                    if(param != 1) 
-                    {
-                        if(key == "+3_1" || key == "+3_2" || key == "+3_3") {
-                            continue;
-                        }
-                    }
-    
-                    var data = this.struct[key];
-    
-                    var FUN = 
-                    {
-                        _string: function(element) 
-                        {
-                            correctArray[element._id] = $(`#${element._id}`).val();
-                            types[element._id] = "string";
-                        },
-                        _file: function(element) 
-                        {
-                            correctArray[element._id] = document.getElementById(`${element._id}_block`).getAttribute('data');
-                            types[element._id] = "file";
-                        },
-                        _menu: function(element)
-                        {
-                            correctArray[element._id] = $(`#${element._id}`).val();
-                            types[element._id] = "menu";
-                        },
-                        _addr: function(element)
-                        {
-                            correctArray[element._id] = $(`#${element._id}`).val();
-                            types[element._id] = "string";
-                        },
-                        _date: function(element)
-                        {
-                            console.log($(`#${element._id}`).val());
-                            correctArray[element._id] = $(`#${element._id}`).val();
-                            types[element._id] = "string";
-                        }
-                    }
-    
-                    function _el(element)
-                    {
-                        if(element.type == "string") FUN._string(element);
-                        if(element.type == "file") FUN._file(element);
-                        if(element.type == "menu") FUN._menu(element);
-                        if(element.type == "addr") FUN._addr(element);
-                        if(element.type == "date") FUN._date(element);
-                    }
-    
-                    if(key == "+2") {
-                        if(param == 1 || param == 2) {
-                            data.body[1].forEach(element => 
-                            {
-                                _el(element)
-                            });
-                        } else {
-                            data.body[2].forEach(element => 
-                            {
-                                _el(element)
-                            });
-                        }
-                    } else {
-                        data.body.forEach(element => 
-                        {
-                            _el(element)
-                        });
-                    }
-                }
-    
-                console.log(correctArray);
-    
-                for(var key in correctArray)
-                {
-                    if(key == "rate") {correctArray[key] = (correctArray[key].replace(/,/, '.') * 12).toFixed(2)};
-                    if(types[key] == 'file') continue;
-                    var _data = correctArray[key];
-                    if(_data.length == 0 || _data == null) {
-                        alert('Введите все данные!');
-                        return;
-                    }
-                }
-    
-                $('.index_page').fadeOut();
-                $('.preloader').fadeIn();
-    
-                var cheackInnCreator = "not error";
-    
-                if(param != 3)
-                {
-                    cheackInnCreator = await callApi({
-                        methodName: "cheackInnCreator",
-                        data: {
-                            data: correctArray,
-                            user: user,
-                        },
-                    });
-                }
-    
-                if(cheackInnCreator == "error") 
-                {
-                    alert('Инн введен не верно!');
-                    $('.preloader').fadeOut();
-                    $('.index_page').fadeIn();
-                } else 
-                {
-                    callApi({
-                        methodName: 'setProject',
-                        data: {
-                            data: correctArray,
-                            user: user,
-                        },
-                    });
-    
-                    if(global._User.member_b)
-                    {
-                        callApi({
-                            methodName: 'tg_alert_user_numbers',
-                            data: {
-                                text: "Вы привели новый Проект! Вы можете посмотреть весь список у себя в кабинете",
-                                user: global._User.member_b,
-                            },
-                        });
-                    }
-                    
-                    $('.preloader').fadeOut( function() {
-                        $('.end_get_project').css('display', "flex"); 
-                    });
-                }
+                _this.correct_next_load(param, user);
             })
 
             $('body').append(autch_block);
