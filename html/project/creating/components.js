@@ -1373,7 +1373,7 @@
                             <div class="autch_block_buttons_block">
                                 <span>Отказать</span>
                             </div>
-                            <div class="autch_block_buttons_block">
+                            <div class="autch_block_buttons_block autch_block_buttons_block_blue">
                                 <span>Принять</span>
                             </div>
                         </div>
