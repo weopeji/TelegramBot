@@ -897,9 +897,10 @@ html, body {
 .autch_block_buttons_block {
   margin-left: 20px;
   padding: 10px 25px;
+  cursor: pointer;
 }
 
-.autch_block_buttons_block_blue {
+.autch_block_buttons_block_accept {
   background-color: #3A9FFF;
 }
 /*# sourceMappingURL=creating.css.map */
