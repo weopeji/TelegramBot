@@ -1155,9 +1155,18 @@
                 {
                     var preloaderBlockBlock = $(`
                         <div class="preloaderBlockBlock">
-
+                            <div class="preloaderBlockBlock_row">
+                                <p></p>
+                                <div class="preloaderBlockBlock_button">
+                                    <span>Подтверждаю</span>
+                                </div>
+                            </div>
                         </div>
                     `);
+
+                    _block.find('.preloaderBlockBlock_button').click( function () {
+                        $(this).parent().parent().remove();
+                    })
 
                     _body.append(preloaderBlockBlock);
                 }
