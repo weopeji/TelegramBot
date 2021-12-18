@@ -1364,6 +1364,36 @@
 
         async correct(param, user) 
         {
+
+            var autch_block = $(`
+                <div class="autch_block">
+                    <div class="autch_block_row">
+                        <p>Вы даете согласие на отправку вам сообщений которые могут потребоваться для уточнения информации.</p>
+                        <div class="autch_block_buttons">
+                            <div class="autch_block_buttons_block">
+                                <span>Отказать</span>
+                            </div>
+                            <div class="autch_block_buttons_block">
+                                <span>Принять</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `);
+
+            $('body').append(autch_block);
+
+            return;
+
+
+
+
+
+
+
+
+
+
             var correctArray = {};
             var types = {};
 
