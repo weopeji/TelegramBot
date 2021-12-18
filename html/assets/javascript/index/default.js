@@ -17,7 +17,9 @@
     {
         global.loadResources(['./html/assets/javascript/index/component.js'], () => {
             global.loadResources(['./html/assets/javascript/index/creating_page.js'], () => {
-                Main();
+                global.loadResources(['./html/assets/javascript/index/invester_data.js'], () => {
+                    Main();
+                }); 
             }); 
         });    
     });
@@ -58,6 +60,7 @@
             const reward            = new global.Components.reward();
             const ref_url           = new global.Components.ref_url();
 
+            const invester_data     = new global.Components.invester_data();
             const creating_page     = new global.Components.creating_page();
 
             var _User = await user_block.render(_id);
@@ -89,6 +92,7 @@
                 "reward": function() {reward.render(global.allData)},
                 "creating": function() {creating_page.render(global.allData)},
                 "ref_url": function() {ref_url.render(global.allData)},
+                "invester_data": function() {invester_data.render(global.allData)},
             }
 
             if(pageID)
