@@ -1385,7 +1385,7 @@
                 $(this).parent().parent().parent().remove();
             })
 
-            autch_block.find('.autch_block_buttons_block_accept').click( function() {
+            autch_block.find('.autch_block_buttons_block_accept').click( async function() {
                 var correctArray = {};
                 var types = {};
     
