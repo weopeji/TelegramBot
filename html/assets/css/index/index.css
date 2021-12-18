@@ -958,6 +958,17 @@ html, body {
   padding: 0 10px;
 }
 
+.creating_page_input_div {
+  width: calc(100% - 20px);
+  width-margin: 0 auto;
+  width-border: 0;
+  width-background-color: #0E1122;
+  width-height: 40px;
+  width-border-radius: 8px;
+  width-color: white;
+  width-padding: 0 10px;
+}
+
 .creating_page_input_button {
   display: -webkit-box;
   display: -ms-flexbox;
