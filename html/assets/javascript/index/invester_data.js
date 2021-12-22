@@ -99,37 +99,45 @@
                     var _block = $(`
                         <div class="creating_page_input">
                             <div class="creating_page_input_div">
-                                <span>ИНН</span>
+                                <span contenteditable="true">ИНН</span>
                             </div>
                             <div class="creating_page_input_div">
-                                <span>КПП</span>
+                                <span contenteditable="true">КПП</span>
                             </div>
                             <div class="creating_page_input_div">
-                                <span>ОГРН</span>
+                                <span contenteditable="true">ОГРН</span>
                             </div>
                             <div class="creating_page_input_div">
-                                <span>Должность</span>
+                                <span contenteditable="true">Должность</span>
                             </div>
                             <div class="creating_page_input_div">
-                                <span>ФИО должностного лица</span>
+                                <span contenteditable="true">ФИО должностного лица</span>
                             </div>
                             <div class="creating_page_input_div">
-                                <span>Юридический адрес</span>
+                                <span contenteditable="true">Юридический адрес</span>
                             </div>
                             <div class="creating_page_input_div">
-                                <span>Банк получателя</span>
+                                <span contenteditable="true">Банк получателя</span>
                             </div>
                             <div class="creating_page_input_div">
-                                <span>БИК</span>
+                                <span contenteditable="true">БИК</span>
                             </div>
                             <div class="creating_page_input_div">
-                                <span>Номер расчетного счета</span>
+                                <span contenteditable="true">Номер расчетного счета</span>
                             </div>
                             <div class="creating_page_input_div">
-                                <span>Номер корреспондентского  счета</span>
+                                <span contenteditable="true">Номер корреспондентского  счета</span>
                             </div>
                         </div>
                     `);
+
+                    _block.find('.creating_page_input_div').click( function() {
+                        if(!$(this).attr('data'))
+                        {
+                            $(this).children('span').empty();
+                            $(this).attr('data', "true");
+                        }
+                    })
 
                     $('.creating_page').append(_block);
                 }
