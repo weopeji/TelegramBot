@@ -7,7 +7,7 @@ var imSocket = null;
 
 window.global_data = {
     data_url_localhost: 'http://localhost:3000',
-    data_url_server: 'https://invester-relocation.site',
+    data_url_server: `https://${location.hostname}`,
     data_url_localhost_non: 'http://localhost',
 };
 
@@ -115,7 +115,7 @@ function io_connect(callback)
         imSocket = io(url, {transports: ['polling']});
     } else {
         url = global_data.data_url_server;
-        imSocket = io(url, {transports: ['websocket']});
+        imSocket = io(url, {transports: ['websocket', 'polling']});
     }
     imSocket.on('connect', function() {
         if(!connectReload)
