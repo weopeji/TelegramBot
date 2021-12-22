@@ -1115,11 +1115,11 @@ async function goInvesting(msg)
     });
     _array.push(fat.message_id);
     
-    var needUrl = "https://invester-relocation.site";
+    var needUrl = "https://invester-relocation.site/";
 
     if(_project.urlLocation)
     {
-        needUrl = `https://${needUrl}`;
+        needUrl = `https://${needUrl}/`;
     }
 
     var html = `Перейдите в личный кабинет, чтобы произвести иевестицию`;
