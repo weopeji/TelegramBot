@@ -1119,7 +1119,7 @@ async function goInvesting(msg)
 
     if(_project.urlLocation)
     {
-        needUrl = `https://${(_project.urlLocation}/`;
+        needUrl = `https://${_project.urlLocation}/`;
     }
 
     var html = `Перейдите в личный кабинет, чтобы произвести иевестицию`;
