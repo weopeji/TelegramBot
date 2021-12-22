@@ -66,7 +66,7 @@
 
             var inputText = $(`
                 <div class="creating_page_input">
-                    <div class="creating_page_input_div">
+                    <div class="creating_page_input_div" data="UR">
                         <span>Юр. Лицо</span>
                     </div>
                     <div class="creating_page_input_div">
@@ -83,6 +83,55 @@
             this.global.append(inputText);
 
             $('.index_page_body_data').append(this.global);
+        }
+
+        async render_next(DT) 
+        {
+            var render_nextfuns = 
+            {
+                "UR": function() 
+                {
+                    var _block = $(`
+                        <div class="creating_page_input">
+                            <div class="creating_page_input_div">
+                                <span>ИНН</span>
+                            </div>
+                            <div class="creating_page_input_div">
+                                <span>КПП</span>
+                            </div>
+                            <div class="creating_page_input_div">
+                                <span>ОГРН</span>
+                            </div>
+                            <div class="creating_page_input_div">
+                                <span>Должность</span>
+                            </div>
+                            <div class="creating_page_input_div">
+                                <span>ФИО должностного лица</span>
+                            </div>
+                            <div class="creating_page_input_div">
+                                <span>Юридический адрес</span>
+                            </div>
+                            <div class="creating_page_input_div">
+                                <span>Банк получателя</span>
+                            </div>
+                            <div class="creating_page_input_div">
+                                <span>БИК</span>
+                            </div>
+                            <div class="creating_page_input_div">
+                                <span>Номер расчетного счета</span>
+                            </div>
+                            <div class="creating_page_input_div">
+                                <span>Номер корреспондентского  счета</span>
+                            </div>
+                        </div>
+                    `);
+
+                    $('.creating_page').append(_block);
+                }
+            }
+
+            $('.creating_page').empty();
+            render_nextfuns[DT]();
         }
     }
 
