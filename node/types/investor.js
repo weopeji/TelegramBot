@@ -1101,7 +1101,7 @@ async function goInvesting(msg)
 {
     var _array      = [];
     var _User       = await User.findOne({user: msg.from.id});
-    var _projects   = await Project.find({_id: _User.putProject});
+    var _project    = await Project.findOne({_id: _User.putProject});
 
     var html = `Инвестор ${_User.first_name}\nВы находитесь в меню "Инвестиции в проект"`;
     var fat = await bot.sendMessage(msg.chat.id, toEscapeMSg(html), {
@@ -1117,7 +1117,7 @@ async function goInvesting(msg)
     
     var needUrl = "https://invester-relocation.site";
 
-    if(_projects.urlLocation)
+    if(_project.urlLocation)
     {
         needUrl = `https://${needUrl}`;
     }
