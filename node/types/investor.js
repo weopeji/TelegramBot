@@ -1102,50 +1102,80 @@ async function goInvesting(msg)
     var _array  = [];
     var _User   = await User.findOne({user: msg.from.id});
 
-    let defaultMsg = async () => {
-        var html = `*`;
-        var fat = await h.send_html(msg.from.id, html, {
-            "resize_keyboard": true,
-            "keyboard": [["⬅️ Назад"]],
-        });
-        _array.push(fat.message_id);
-    
-        var html = `<strong>${_User.first_name}</strong>\nВыберите инвестиционное предложение в которое хотели бы проинвестировать`;
-        var fat = await h.send_html(msg.from.id, html, {
+    var html = `Инвестор ${_User.first_name}\nВы находитесь в меню "Инвестиции в проект"`;
+    var fat = await bot.sendMessage(msg.chat.id, toEscapeMSg(html), {
+        parse_mode: "html",
+        reply_markup: {  
+            "resize_keyboard": true, 
+            "keyboard": [
+                ["⬅️ Назад"]
+            ],                                                                   
+        }
+    });
+    _array.push(fat.message_id);
+
+    var html = `Перейдите в личный кабинет, чтобы произвести иевестицию`;
+    var fat = await bot.sendMessage(msg.chat.id, toEscapeMSg(html), {
+        parse_mode: "html",
+        reply_markup: {                                                                     
             "inline_keyboard": [
                 [
                     {
-                        text: 'ВЫБРАТЬ ПРЕДЛОЖЕНИЕ',
-                        url: `https://t.me/invester_official`,
-                    }
+                        text: 'Перейти',
+                        url: `${h.getURL()}?user=${_User.id}&page=invester_data`,
+                    },
                 ]
             ],
-        });
-        _array.push(fat.message_id);
-    
-        await h.DMA(msg, _array);
-    }
-
-    if(!_User.putProject)
-    {
-        defaultMsg();
-    } else 
-    {
-        var investingBlock = await InvDoc.findOne({projectId: _User.putProject, invester: msg.from.id});
-
-        if(!investingBlock) 
-        {
-            startInvestingMsg(msg, 1, _array, "1", _User.putProject);
-        } else {
-            if(investingBlock.receipt) {
-                defaultMsg();
-            } else {
-                payerInvester(msg);
-            }
-            
         }
+    });
+    _array.push(fat.message_id);
+
+    await h.DMA(msg, _array);
+
+    // let defaultMsg = async () => {
+    //     var html = `*`;
+    //     var fat = await h.send_html(msg.from.id, html, {
+    //         "resize_keyboard": true,
+    //         "keyboard": [["⬅️ Назад"]],
+    //     });
+    //     _array.push(fat.message_id);
+    
+    //     var html = `<strong>${_User.first_name}</strong>\nВыберите инвестиционное предложение в которое хотели бы проинвестировать`;
+    //     var fat = await h.send_html(msg.from.id, html, {
+    //         "inline_keyboard": [
+    //             [
+    //                 {
+    //                     text: 'ВЫБРАТЬ ПРЕДЛОЖЕНИЕ',
+    //                     url: `https://t.me/invester_official`,
+    //                 }
+    //             ]
+    //         ],
+    //     });
+    //     _array.push(fat.message_id);
+    
+    //     await h.DMA(msg, _array);
+    // }
+
+    // if(!_User.putProject)
+    // {
+    //     defaultMsg();
+    // } else 
+    // {
+    //     var investingBlock = await InvDoc.findOne({projectId: _User.putProject, invester: msg.from.id});
+
+    //     if(!investingBlock) 
+    //     {
+    //         startInvestingMsg(msg, 1, _array, "1", _User.putProject);
+    //     } else {
+    //         if(investingBlock.receipt) {
+    //             defaultMsg();
+    //         } else {
+    //             payerInvester(msg);
+    //         }
+            
+    //     }
         
-    }
+    // }
 }
 
 async function my_investment(msg)
