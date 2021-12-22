@@ -902,7 +902,7 @@
             var settingBlock = $(`
                 <div class="settingBlock_add_acsess">
                     <div class="settingBlock_add_acsess_row">
-                        <span>Получить ссылку</span>
+                        <span>Предоставить доступ к проекту</span>
                     </div>
                 </div>
             `);
