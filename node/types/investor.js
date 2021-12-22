@@ -1108,83 +1108,82 @@ async function goInvesting(msg)
         defaultMsg();
     } else 
     {
-        var html = `Инвестор ${_User.first_name}\nВы находитесь в меню "Инвестиции в проект"`;
-        var fat = await bot.sendMessage(msg.chat.id, toEscapeMSg(html), {
-            parse_mode: "html",
-            reply_markup: {  
-                "resize_keyboard": true, 
-                "keyboard": [
-                    ["⬅️ Назад"]
-                ],                                                                   
-            }
-        });
-        _array.push(fat.message_id);
-        
-        var needUrl = "https://invester-relocation.site/";
-    
-        if(_project.urlLocation)
-        {
-            needUrl = `https://${_project.urlLocation}/`;
-        }
-    
-        var html = `Перейдите в личный кабинет, чтобы произвести иевестицию`;
-        var fat = await bot.sendMessage(msg.chat.id, toEscapeMSg(html), {
-            parse_mode: "html",
-            reply_markup: {                                                                     
-                "inline_keyboard": [
-                    [
-                        {
-                            text: 'Перейти',
-                            url: `${needUrl}?user=${_User.id}&page=invester_data`,
-                        },
-                    ]
-                ],
-            }
-        });
-        _array.push(fat.message_id);
-    
-        await h.DMA(msg, _array);
-    
-        let defaultMsg = async () => {
-            var html = `*`;
-            var fat = await h.send_html(msg.from.id, html, {
-                "resize_keyboard": true,
-                "keyboard": [["⬅️ Назад"]],
-            });
-            _array.push(fat.message_id);
-        
-            var html = `<strong>${_User.first_name}</strong>\nВыберите инвестиционное предложение в которое хотели бы проинвестировать`;
-            var fat = await h.send_html(msg.from.id, html, {
-                "inline_keyboard": [
-                    [
-                        {
-                            text: 'ВЫБРАТЬ ПРЕДЛОЖЕНИЕ',
-                            url: `https://t.me/invester_official`,
-                        }
-                    ]
-                ],
-            });
-            _array.push(fat.message_id);
-        
-            await h.DMA(msg, _array);
-        }
-    }
-
-    //     var investingBlock = await InvDoc.findOne({projectId: _User.putProject, invester: msg.from.id});
-
-    //     if(!investingBlock) 
-    //     {
-    //         startInvestingMsg(msg, 1, _array, "1", _User.putProject);
-    //     } else {
-    //         if(investingBlock.receipt) {
-    //             defaultMsg();
-    //         } else {
-    //             payerInvester(msg);
+    //     var html = `Инвестор ${_User.first_name}\nВы находитесь в меню "Инвестиции в проект"`;
+    //     var fat = await bot.sendMessage(msg.chat.id, toEscapeMSg(html), {
+    //         parse_mode: "html",
+    //         reply_markup: {  
+    //             "resize_keyboard": true, 
+    //             "keyboard": [
+    //                 ["⬅️ Назад"]
+    //             ],                                                                   
     //         }
-            
-    //     }
+    //     });
+    //     _array.push(fat.message_id);
         
+    //     var needUrl = "https://invester-relocation.site/";
+    
+    //     if(_project.urlLocation)
+    //     {
+    //         needUrl = `https://${_project.urlLocation}/`;
+    //     }
+    
+    //     var html = `Перейдите в личный кабинет, чтобы произвести иевестицию`;
+    //     var fat = await bot.sendMessage(msg.chat.id, toEscapeMSg(html), {
+    //         parse_mode: "html",
+    //         reply_markup: {                                                                     
+    //             "inline_keyboard": [
+    //                 [
+    //                     {
+    //                         text: 'Перейти',
+    //                         url: `${needUrl}?user=${_User.id}&page=invester_data`,
+    //                     },
+    //                 ]
+    //             ],
+    //         }
+    //     });
+    //     _array.push(fat.message_id);
+    
+    //     await h.DMA(msg, _array);
+    
+    //     let defaultMsg = async () => {
+    //         var html = `*`;
+    //         var fat = await h.send_html(msg.from.id, html, {
+    //             "resize_keyboard": true,
+    //             "keyboard": [["⬅️ Назад"]],
+    //         });
+    //         _array.push(fat.message_id);
+        
+    //         var html = `<strong>${_User.first_name}</strong>\nВыберите инвестиционное предложение в которое хотели бы проинвестировать`;
+    //         var fat = await h.send_html(msg.from.id, html, {
+    //             "inline_keyboard": [
+    //                 [
+    //                     {
+    //                         text: 'ВЫБРАТЬ ПРЕДЛОЖЕНИЕ',
+    //                         url: `https://t.me/invester_official`,
+    //                     }
+    //                 ]
+    //             ],
+    //         });
+    //         _array.push(fat.message_id);
+        
+    //         await h.DMA(msg, _array);
+    //     }
     // }
+        var investingBlock = await InvDoc.findOne({projectId: _User.putProject, invester: msg.from.id});
+
+        if(!investingBlock) 
+        {
+            startInvestingMsg(msg, 1, _array, "1", _User.putProject);
+        } else {
+            if(investingBlock.receipt) {
+                defaultMsg();
+            } else {
+                payerInvester(msg);
+            }
+            
+        }
+        
+    }
 }
 
 async function my_investment(msg)
