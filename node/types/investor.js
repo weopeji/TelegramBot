@@ -1099,8 +1099,9 @@ async function startInvestingMsg(msg, num, array, more, project)
 
 async function goInvesting(msg)
 {
-    var _array  = [];
-    var _User   = await User.findOne({user: msg.from.id});
+    var _array      = [];
+    var _User       = await User.findOne({user: msg.from.id});
+    var _projects   = await Project.find({_id: _User.putProject});
 
     var html = `Инвестор ${_User.first_name}\nВы находитесь в меню "Инвестиции в проект"`;
     var fat = await bot.sendMessage(msg.chat.id, toEscapeMSg(html), {
@@ -1113,6 +1114,13 @@ async function goInvesting(msg)
         }
     });
     _array.push(fat.message_id);
+    
+    var needUrl = "https://invester-relocation.site";
+
+    if(_projects.urlLocation)
+    {
+        needUrl = `https://${needUrl}`;
+    }
 
     var html = `Перейдите в личный кабинет, чтобы произвести иевестицию`;
     var fat = await bot.sendMessage(msg.chat.id, toEscapeMSg(html), {
@@ -1122,7 +1130,7 @@ async function goInvesting(msg)
                 [
                     {
                         text: 'Перейти',
-                        url: `${h.getURL()}?user=${_User.id}&page=invester_data`,
+                        url: `${needUrl}?user=${_User.id}&page=invester_data`,
                     },
                 ]
             ],
