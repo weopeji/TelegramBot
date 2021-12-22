@@ -1099,6 +1099,16 @@ async function startInvestingMsg(msg, num, array, more, project)
 
 async function goInvesting(msg)
 {
+    await User.findOneAndUpdate({user: msg.from.id}, {where: {
+        type: "investor",
+        page: {
+            global: 1,
+            more: 2,
+        },
+        msg: fat.message_id,
+        project: project,
+    }});
+
     startInvestingMsgOld(msg, 1);
     // var _array      = [];
     // var _User       = await User.findOne({user: msg.from.id});
