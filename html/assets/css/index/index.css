@@ -1227,6 +1227,34 @@ html, body {
   width: 100%;
 }
 
+.settingBlock_add_acsess {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.settingBlock_add_acsess span {
+  background: #14b6ff;
+  background: -webkit-gradient(linear, left top, right top, from(#14b6ff), color-stop(61%, #1387ff));
+  background: linear-gradient(90deg, #14b6ff 0%, #1387ff 61%);
+  padding: 10px 40px;
+  border-radius: 3px;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 @media (max-width: 500px) {
   .buttons_menu {
     display: block;

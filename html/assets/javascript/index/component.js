@@ -894,7 +894,65 @@
             }
 
             this.renderPay();
+            this.renderAcsess();
             
+        }
+
+        async renderAcsess()
+        {
+            var settingBlock = $(`
+                <div class="settingBlock_add_acsess">
+                    <div class="settingBlock_add_acsess_row">
+                        <span>Получить ссылку</span>
+                    </div>
+                </div>
+            `);
+
+            settingBlock.css("margin-top", "400px");
+
+            $('.index_page_body_data').append(settingBlock);
+
+            var settingBlock = $(`
+                <div class="settingBlock">
+                    <div class="settingBlock_header">
+                        <p>Ожидают доступ к проекту</p>
+
+                        <div class="settingBlock_header_line">
+                            <span>ID Пользователя</span>
+                            <span>ФИО</span>
+                            <span>Кнопка</span>
+                        </div>
+                    </div>
+                    <div class="settingBlock_body">
+
+                    </div> 
+                </div>
+            `);
+
+            settingBlock.css("margin-top", "400px");
+
+            $('.index_page_body_data').append(settingBlock);
+
+            var settingBlock = $(`
+                <div class="settingBlock">
+                    <div class="settingBlock_header">
+                        <p>Доступ к проекту</p>
+
+                        <div class="settingBlock_header_line">
+                            <span>ID Пользователя</span>
+                            <span>ФИО</span>
+                            <span>Дата предоставленного доступа</span>
+                        </div>
+                    </div>
+                    <div class="settingBlock_body">
+
+                    </div> 
+                </div>
+            `);
+
+            settingBlock.css("margin-top", "400px");
+
+            $('.index_page_body_data').append(settingBlock);
         }
 
         async renderPay()
