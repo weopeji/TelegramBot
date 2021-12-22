@@ -128,6 +128,9 @@
                             <div class="creating_page_input_div">
                                 <span contenteditable="true">Номер корреспондентского  счета</span>
                             </div>
+                            <div class="creating_page_input_button">
+                                <span>Отправить</span>
+                            </div>
                         </div>
                     `);
 
