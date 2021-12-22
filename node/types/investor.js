@@ -1099,57 +1099,46 @@ async function startInvestingMsg(msg, num, array, more, project)
 
 async function goInvesting(msg)
 {
-    await User.findOneAndUpdate({user: msg.from.id}, {where: {
-        type: "investor",
-        page: {
-            global: 1,
-            more: 2,
-        },
-        msg: fat.message_id,
-        project: project,
-    }});
+    var _array      = [];
+    var _User       = await User.findOne({user: msg.from.id});
+    var _project    = await Project.findOne({_id: _User.putProject});
 
-    startInvestingMsgOld(msg, 1);
-    // var _array      = [];
-    // var _User       = await User.findOne({user: msg.from.id});
-    // var _project    = await Project.findOne({_id: _User.putProject});
-
-    // var html = `Инвестор ${_User.first_name}\nВы находитесь в меню "Инвестиции в проект"`;
-    // var fat = await bot.sendMessage(msg.chat.id, toEscapeMSg(html), {
-    //     parse_mode: "html",
-    //     reply_markup: {  
-    //         "resize_keyboard": true, 
-    //         "keyboard": [
-    //             ["⬅️ Назад"]
-    //         ],                                                                   
-    //     }
-    // });
-    // _array.push(fat.message_id);
+    var html = `Инвестор ${_User.first_name}\nВы находитесь в меню "Инвестиции в проект"`;
+    var fat = await bot.sendMessage(msg.chat.id, toEscapeMSg(html), {
+        parse_mode: "html",
+        reply_markup: {  
+            "resize_keyboard": true, 
+            "keyboard": [
+                ["⬅️ Назад"]
+            ],                                                                   
+        }
+    });
+    _array.push(fat.message_id);
     
-    // var needUrl = "https://invester-relocation.site/";
+    var needUrl = "https://invester-relocation.site/";
 
-    // if(_project.urlLocation)
-    // {
-    //     needUrl = `https://${_project.urlLocation}/`;
-    // }
+    if(_project.urlLocation)
+    {
+        needUrl = `https://${_project.urlLocation}/`;
+    }
 
-    // var html = `Перейдите в личный кабинет, чтобы произвести иевестицию`;
-    // var fat = await bot.sendMessage(msg.chat.id, toEscapeMSg(html), {
-    //     parse_mode: "html",
-    //     reply_markup: {                                                                     
-    //         "inline_keyboard": [
-    //             [
-    //                 {
-    //                     text: 'Перейти',
-    //                     url: `${needUrl}?user=${_User.id}&page=invester_data`,
-    //                 },
-    //             ]
-    //         ],
-    //     }
-    // });
-    // _array.push(fat.message_id);
+    var html = `Перейдите в личный кабинет, чтобы произвести иевестицию`;
+    var fat = await bot.sendMessage(msg.chat.id, toEscapeMSg(html), {
+        parse_mode: "html",
+        reply_markup: {                                                                     
+            "inline_keyboard": [
+                [
+                    {
+                        text: 'Перейти',
+                        url: `${needUrl}?user=${_User.id}&page=invester_data`,
+                    },
+                ]
+            ],
+        }
+    });
+    _array.push(fat.message_id);
 
-    // await h.DMA(msg, _array);
+    await h.DMA(msg, _array);
 
     // let defaultMsg = async () => {
     //     var html = `*`;
