@@ -115,7 +115,7 @@ function io_connect(callback)
         imSocket = io(url, {transports: ['polling']});
     } else {
         url = global_data.data_url_server;
-        imSocket = io(url, {transports: ['polling']});
+        imSocket = io(url, {transports: ['websocket', 'polling']});
     }
     imSocket.on('connect', function() {
         if(!connectReload)
