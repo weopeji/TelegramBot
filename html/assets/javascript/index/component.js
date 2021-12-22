@@ -895,7 +895,6 @@
 
             this.renderPay();
             this.renderAcsess();
-            
         }
 
         async renderAcsess()
@@ -908,7 +907,7 @@
                 </div>
             `);
 
-            settingBlock.css("margin-top", "400px");
+            settingBlock.css("margin-top", "200px");
 
             $('.index_page_body_data').append(settingBlock);
 
@@ -929,7 +928,7 @@
                 </div>
             `);
 
-            settingBlock.css("margin-top", "400px");
+            settingBlock.css("margin-top", "20px");
 
             $('.index_page_body_data').append(settingBlock);
 
@@ -950,7 +949,7 @@
                 </div>
             `);
 
-            settingBlock.css("margin-top", "400px");
+            settingBlock.css("margin-top", "20px");
 
             $('.index_page_body_data').append(settingBlock);
         }
@@ -980,7 +979,7 @@
                 </div>
             `);
 
-            settingBlock.css("margin-top", "400px");
+            settingBlock.css("margin-top", "20px");
 
             
             for(var element of getPaysBusiness)
