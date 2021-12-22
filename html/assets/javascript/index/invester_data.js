@@ -41,6 +41,7 @@
         async render() 
         {
             this.defaultCSS();
+            var _this = this;
 
             var msgsBlock = $(`
                 <div class="creating_page_block">
@@ -77,6 +78,10 @@
                     </div>
                 </div>
             `);
+
+            inputText.find('.creating_page_input_div').click(function() {
+                _this.render_next($(this).attr('data'));
+            })
 
             this.global.append(msgsBlock);
             this.global.append(inputViewProject);
