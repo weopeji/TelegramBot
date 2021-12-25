@@ -1238,8 +1238,6 @@
             `);
 
             $('.index_page_body_points').append(_body);
-
-            return signaturePad;
         }
 
         getId(_id) {

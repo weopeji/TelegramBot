@@ -58,14 +58,7 @@
                     $('.index_page_body h2').html('Подпишите составленный документ и загрузите его');
                     $('.index_page_body_button span').html('Отправить');
 
-                    var signaturePad = await _components.render_signature_document(_project);
-
-                    $('.index_page_body_button').click( function() 
-                    {
-                        const _dataImg = signaturePad.toDataURL();
-                        _components.correct_signature_document(_id, _dataImg);
-                        $('.end_get_project').css('display', "flex");
-                    });
+                    await _components.render_signature_document(_project);
 
                     changeTextArea();
 
