@@ -1062,23 +1062,17 @@
                         var filename = $(this.files)[0].name;
                         var aux = filename.split('.');
                         var extension = aux[aux.length -1].toUpperCase();
+   
+                        var _form    = new FormData();
 
-                        if(extension === 'DOC'
-                            || extension === 'DOCX'
-                            ){
-                            
-                            var _form    = new FormData();
+                        _form.append('files', $(this.files)[0]);
+                        _form.append('_id', _project._id);
+                        _form.append('_pts', extension);
+                        _this.setSignatureFile(_project._id, _form);
 
-                            _form.append('files', $(this.files)[0]);
-                            _form.append('_id', _project._id);
-                            _form.append('_pts', extension);
-                            _this.setSignatureFile(_project._id, _form);
-
-                            alert('Успешно!');
-                            location.reload();
-                        }else{
-                            alert('Invalid extension: ' + extension + '. Only: DOC, DOCX are allowed.');
-                        }  
+                        alert('Успешно!');
+                        location.reload();
+                       
                     });
 
                     this.global_block.append(putDocumentToSignature);

@@ -140,6 +140,12 @@ var action_linker =
     "getProjectKey": getProjectKey,
     "setInvesterTypeCreating": setInvesterTypeCreating,
     "setInvesterTypeAppend": setInvesterTypeAppend,
+    "setInvesterTypeClassAll": setInvesterTypeClassAll,
+}
+
+async function setInvesterTypeClassAll(socket,data,callback)
+{
+    var _User = await User.findOne({_id: data});
 }
 
 async function setInvesterTypeAppend(socket,data,callback)

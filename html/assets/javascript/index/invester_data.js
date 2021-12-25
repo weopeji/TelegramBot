@@ -239,6 +239,11 @@
                     location.href = './';
                 });
 
+                await callApi({
+                    methodName: "setInvesterTypeClassAll",
+                    data: global.allData._id,
+                });
+
                 $('body').append(PreloaderAddUser_block);
             })
         }
