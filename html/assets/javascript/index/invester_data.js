@@ -79,7 +79,7 @@
                 </div>
             `);
 
-            inputText.find('.creating_page_input_div').click(function() {
+            inputText.find('.creating_page_input_div').click(async function() {
                 await callApi({
                     methodName: "setInvesterTypeCreating",
                     data: {
