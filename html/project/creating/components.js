@@ -1220,14 +1220,11 @@
         {
             var _body = $(`
                 <div class="body_point">
-                    <div class="body_point_header">
-                        <span>Скачайте и подпишите документ, отправте его обратно</span>
-                    </div>
                     <div class="download_buttons">
-                        <input class="file_load" id='${data._id}' type='file'>
-                        <label for="${data._id}">Загрузить <i class="fas fa-angle-double-down"></i></label>
+                        <input class="file_load" id='signature_mass' type='file'>
+                        <label for="signature_mass">Загрузить <i class="fas fa-angle-double-down"></i></label>
                     </div>
-                    <div class="loader_input" id="${data._id}_block">
+                    <div class="loader_input" id="signature_mass_block">
                         <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
                         <span></span>
                     </div>
