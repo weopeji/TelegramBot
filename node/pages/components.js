@@ -138,6 +138,16 @@ var action_linker =
     "setYouTubeVideo": setYouTubeVideo,
     "getR_F": getR_F,
     "getProjectKey": getProjectKey,
+    "setInvesterTypeCreating": setInvesterTypeCreating,
+}
+
+async function setInvesterTypeCreating(socket,data,callback)
+{
+    var _User               = await User.findOne({_id: data.user});
+    var InvesterDataArray   = _User.investor_data;
+    InvesterDataArray.type  = data.data;
+    await User.findOneAndUpdate({_id: data.user}, {investor_data: InvesterDataArray});
+    callback();
 }
 
 async function getProjectKey(socket,data,callback)
