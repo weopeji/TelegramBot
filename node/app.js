@@ -447,6 +447,11 @@ app.post('/file_urist.io/files', (req, res) => {
                     if (err) throw err
                     console.log('Successfully renamed - AKA moved!');
                     // redactingDocument();
+                    helper_functions.full_alert_user(_project.user, `Нужно подписание документа в проекте под номером ${_project._id}`, "file_urist");
+                    var _project = await Project.findOneAndUpdate({_id: _data._id}, {type: "correction",signature_document: {
+                        status: "wait",
+                        document: `signature_document.${_data._pts}`,
+                    }});
                 });
             } else {
                 console.log('Файл не найден');
