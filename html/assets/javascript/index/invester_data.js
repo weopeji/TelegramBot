@@ -84,7 +84,7 @@
                     methodName: "setInvesterTypeCreating",
                     data: {
                         user: global.allData._id,
-                        data: $(this).attr('dat-type'),
+                        data: $(this).attr('data-type'),
                     },
                 });
                 _this.render_next($(this).attr('data'));
