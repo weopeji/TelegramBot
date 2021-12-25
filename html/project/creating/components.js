@@ -1220,20 +1220,30 @@
         {
             var _body = $(`
                 <div class="body_point">
-                    <div class="download_buttons">
-                        <input class="file_load" id='signature_mass' type='file'>
-                        <label for="signature_mass">Загрузить <i class="fas fa-angle-double-down"></i></label>
-                    </div>
-                    <div class="loader_input" id="signature_mass_block">
-                        <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
-                        <span></span>
-                    </div>
-                    <div class="all_good">
-                        <div class="all_good_row">
-                            <span class="all_good_cheack">Посмотреть</span>
-                            <span class="all_good_del">Удалить</span>
+                    <div class="body_point_line _file">
+                        <div class="body_point_line_header">
+                            <div class="body_point_line_header_text">
+                                <span>${data.name}</span>
+                                ${_file}
+                            </div>
+                            <div class="body_point_line_header_info">
+                                <div class="download_buttons">
+                                    <input class="file_load" id='signature_mass' type='file'>
+                                    <label for="signature_mass">Загрузить <i class="fas fa-angle-double-down"></i></label>
+                                </div>
+                                <div class="loader_input" id="signature_mass_block">
+                                    <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+                                    <span></span>
+                                </div>
+                                <div class="all_good">
+                                    <div class="all_good_row">
+                                        <span class="all_good_cheack">Посмотреть</span>
+                                        <span class="all_good_del">Удалить</span>
+                                    </div>
+                                </div>  
+                            </div>
                         </div>
-                    </div>  
+                    </div>
                 </div>
             `);
 
