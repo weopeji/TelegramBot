@@ -143,7 +143,8 @@ var action_linker =
 async function getProjectKey(socket,data,callback)
 {
     var PrjectToken = await project_key.create({
-        projectId: data,
+        user: data.user,
+        projectId: data.projectId,
     });
 
     callback(PrjectToken._id);

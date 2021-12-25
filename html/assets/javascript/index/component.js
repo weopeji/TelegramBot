@@ -913,7 +913,10 @@
 
                 var Project_key = await callApi({
                     methodName: "getProjectKey",
-                    data: _GET('id'),
+                    data: {
+                        user: global.allData._id,
+                        projectId: _GET('id'),
+                    },
                 });
 
                 var PreloaderAddUser_block = $(`

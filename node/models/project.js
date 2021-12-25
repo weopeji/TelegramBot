@@ -4,6 +4,7 @@ var autoIncrement = require('mongoose-auto-increment');
 const ProjectShema = new mongoose.Schema({
     number: Number,
     user: String,
+    user_accsess: JSON,
     type: String,
     data: JSON,
     parce: JSON,
