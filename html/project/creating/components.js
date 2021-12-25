@@ -1223,7 +1223,7 @@
                     <div class="body_point_line _file">
                         <div class="body_point_line_header">
                             <div class="body_point_line_header_text">
-                                <span>1</span>
+                                <span>Загрузите</span>
                                 <div class="download_buttons">
                                     <input class="file_load" id='signature_mass' type='file'>
                                     <label for="signature_mass">Загрузить <i class="fas fa-angle-double-down"></i></label>
@@ -1246,6 +1246,8 @@
                     </div>
                 </div>
             `);
+
+            _block.find('.body_point_line_header').css('margin-top', '30px');
 
             $('.index_page_body_points').append(_body);
         }
