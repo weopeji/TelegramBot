@@ -29,6 +29,7 @@ const bPays                         = mongoose.model('bPays');
 const Payments                      = mongoose.model('Payments');
 const bPaysAccept                   = mongoose.model('bPaysAccept');
 const R_F                           = mongoose.model('R_F');
+const project_key                   = mongoose.model('project_key');
 
 var bot                             = null;
 var helper_functions                = null;
@@ -161,6 +162,7 @@ var load_helpers = () =>
             Payments: Payments,
             bPaysAccept: bPaysAccept,
             R_F: R_F,
+            project_key: project_key,
         });
     };
 }

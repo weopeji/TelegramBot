@@ -48,6 +48,7 @@ function privateInit(initPlagins) {
     Payments    = initPlagins.Payments;
     bPaysAccept = initPlagins.bPaysAccept;
     R_F         = initPlagins.R_F;
+    project_key = initPlagins.project_key;
 }
 
 var privat_index_page = function(socket,data,callback) {
@@ -136,6 +137,27 @@ var action_linker =
     "clearAlertMsg": clearAlertMsg,
     "setYouTubeVideo": setYouTubeVideo,
     "getR_F": getR_F,
+    "getProjectKey": getProjectKey,
+}
+
+async function getProjectKey(socket,data,callback)
+{
+    var rand = function() {
+        return Math.random().toString(36).substr(2); // remove `0.`
+    };
+    
+    var token = function() {
+        return rand() + rand(); // to make it longer
+    };
+
+    var _token = token();
+
+    var PrjectToken = await project_key.create({
+        projectId: data,
+        token: _token,
+    });
+
+    callback(PrjectToken._id);
 }
 
 async function getR_F(socket,data,callback)

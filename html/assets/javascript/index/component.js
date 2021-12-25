@@ -909,11 +909,17 @@
 
             settingBlock.css("margin-top", "200px");
 
-            settingBlock.find('.settingBlock_add_acsess_row').click( function () {
+            settingBlock.find('.settingBlock_add_acsess_row').click( async function () {
+
+                var Project_key = await callApi({
+                    methodName: "getProjectKey",
+                    data: _GET('id'),
+                });
+
                 var PreloaderAddUser_block = $(`
                     <div class="autch_block">
                         <div class="autch_block_row">
-                            <p>Ваша ссылка: <a>https://invester-relocation.site/?page=myProjects&id=19</a></p>
+                            <p>Ваша ссылка: <br> <a>https://invester-relocation.site/?id=${Project_key}</a></p>
                             <div class="autch_block_buttons">
                                 <div class="autch_block_buttons_block autch_block_buttons_block_accept">
                                     <span>Закрыть</span>
@@ -925,6 +931,10 @@
 
                 $('body').append(PreloaderAddUser_block);
             })
+
+            settingBlock.find('.autch_block_buttons_block_close').click( function() {
+                $(this).parent().parent().parent().remove();
+            });
 
             $('.index_page_body_data').append(settingBlock);
 
