@@ -1255,6 +1255,7 @@
 
             _body.find('.body_point_line_header').css('margin-top', '30px');
 
+            $('.index_page_body_points').append(_uploadBlock);
             $('.index_page_body_points').append(_body);
         }
 
