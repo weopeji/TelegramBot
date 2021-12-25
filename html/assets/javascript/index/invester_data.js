@@ -156,7 +156,7 @@
             $('.creating_page').empty();
             render_nextfuns[DT]();
 
-            $('.creating_page_input_button').click( function() {
+            $('.creating_page_input_button').click( async function() {
                 var _arrayData = [];
                 $('.creating_page_input_div').each(function(i, element) {
                     _arrayData.push({
