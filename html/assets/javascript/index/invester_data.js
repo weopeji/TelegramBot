@@ -67,7 +67,7 @@
 
             var inputText = $(`
                 <div class="creating_page_input">
-                    <div class="creating_page_input_div" data="UR">
+                    <div class="creating_page_input_div" data="UR" data-type="Юр. Лицо">
                         <span>Юр. Лицо</span>
                     </div>
                     <div class="creating_page_input_div">
@@ -84,7 +84,7 @@
                     methodName: "setInvesterTypeCreating",
                     data: {
                         user: global.allData._id,
-                        data: $(this).text(),
+                        data: $(this).attr('dat-type'),
                     },
                 });
                 _this.render_next($(this).attr('data'));
