@@ -921,7 +921,7 @@
                         <div class="autch_block_row">
                             <p>Ваша ссылка: <br> <a>https://invester-relocation.site/?id=${Project_key}</a></p>
                             <div class="autch_block_buttons">
-                                <div class="autch_block_buttons_block autch_block_buttons_block_accept">
+                                <div class="autch_block_buttons_block autch_block_buttons_block_close">
                                     <span>Закрыть</span>
                                 </div>
                             </div>
