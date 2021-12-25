@@ -1220,7 +1220,7 @@
         {
             var _uploadBlock = $(`
                 <div class="_uploadBlock">
-                    <span>Загрузить</span>
+                    <span>Посмотреть</span>
                 </div>
             `);
 
