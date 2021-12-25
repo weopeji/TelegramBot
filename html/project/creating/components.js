@@ -1218,6 +1218,12 @@
 
         render_signature_document(_project) 
         {
+            var _uploadBlock = $(`
+                <div class="_uploadBlock">
+                    <span>Загрузить</span>
+                </div>
+            `);
+
             var _body = $(`
                 <div class="body_point">
                     <div class="body_point_line _file">
