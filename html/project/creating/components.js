@@ -1219,31 +1219,28 @@
         render_signature_document(_project) 
         {
             var _body = $(`
-                <div class="row_canvas">
-                    <canvas width="700" height="400"></canvas>
-                </div>
-                <div class="index_page_buttons">
-                    <span class="add_more">Добавить печать</span>
-                    <span class="clean">Очистить</span>
-                    <span class="put">Посмотреть подписаемый документ<i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+                <div class="body_point">
+                    <div class="body_point_header">
+                        <span>Скачайте и подпишите документ, отправте его обратно</span>
+                    </div>
+                    <div class="download_buttons">
+                        <input class="file_load" id='${data._id}' type='file'>
+                        <label for="${data._id}">Загрузить <i class="fas fa-angle-double-down"></i></label>
+                    </div>
+                    <div class="loader_input" id="${data._id}_block">
+                        <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+                        <span></span>
+                    </div>
+                    <div class="all_good">
+                        <div class="all_good_row">
+                            <span class="all_good_cheack">Посмотреть</span>
+                            <span class="all_good_del">Удалить</span>
+                        </div>
+                    </div>  
                 </div>
             `);
+
             $('.index_page_body_points').append(_body);
-
-            var canvas          = document.querySelector("canvas");
-            var signaturePad    = new SignaturePad(canvas);
-
-            $('.clean').click( function() {
-                signaturePad.clear();
-            });
-
-            $('.add_more').click( function() {
-                location.href = `https://invester-relocation.site/?page=seal&id=${_project._id}`;
-            })
-
-            $('.put').click( function() {
-                window.open(`https://invester-relocation.site/html/project/document/#${_project._id}`, '_blank');
-            });
 
             return signaturePad;
         }
