@@ -105,34 +105,34 @@
                 {
                     var _block = $(`
                         <div class="creating_page_input">
-                            <div class="creating_page_input_div">
+                            <div class="creating_page_input_div" data="inn">
                                 <span contenteditable="true">ИНН</span>
                             </div>
-                            <div class="creating_page_input_div">
+                            <div class="creating_page_input_div" data="kpp">
                                 <span contenteditable="true">КПП</span>
                             </div>
-                            <div class="creating_page_input_div">
+                            <div class="creating_page_input_div" data="ogrnip">
                                 <span contenteditable="true">ОГРН</span>
                             </div>
-                            <div class="creating_page_input_div">
+                            <div class="creating_page_input_div" data="cpecial">
                                 <span contenteditable="true">Должность</span>
                             </div>
-                            <div class="creating_page_input_div">
+                            <div class="creating_page_input_div" data="fio">
                                 <span contenteditable="true">ФИО должностного лица</span>
                             </div>
-                            <div class="creating_page_input_div">
+                            <div class="creating_page_input_div" data="addr">
                                 <span contenteditable="true">Юридический адрес</span>
                             </div>
-                            <div class="creating_page_input_div">
+                            <div class="creating_page_input_div" data="bank">
                                 <span contenteditable="true">Банк получателя</span>
                             </div>
-                            <div class="creating_page_input_div">
+                            <div class="creating_page_input_div" data="bik">
                                 <span contenteditable="true">БИК</span>
                             </div>
-                            <div class="creating_page_input_div">
+                            <div class="creating_page_input_div" data="nomer">
                                 <span contenteditable="true">Номер расчетного счета</span>
                             </div>
-                            <div class="creating_page_input_div">
+                            <div class="creating_page_input_div" data="nomer_kor">
                                 <span contenteditable="true">Номер корреспондентского  счета</span>
                             </div>
                             <div class="creating_page_input_button">
@@ -155,6 +155,24 @@
 
             $('.creating_page').empty();
             render_nextfuns[DT]();
+
+            $('.creating_page_input_button').click( function() {
+                var _arrayData = [];
+                $('.creating_page_input_div').each(function(i, element) {
+                    _arrayData.push({
+                        type: $(element).attr('data'),
+                        data: $(element).find('span').text(),
+                    })
+                });
+
+                await callApi({
+                    methodName: "setInvesterTypeAppend",
+                    data: {
+                        user: global.allData._id,
+                        data: _arrayData,
+                    },
+                });
+            })
         }
     }
 

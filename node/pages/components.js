@@ -139,6 +139,20 @@ var action_linker =
     "getR_F": getR_F,
     "getProjectKey": getProjectKey,
     "setInvesterTypeCreating": setInvesterTypeCreating,
+    "setInvesterTypeAppend": setInvesterTypeAppend,
+}
+
+async function setInvesterTypeAppend(socket,data,callback)
+{
+    var _User               = await User.findOne({_id: data.user});
+    var InvesterDataArray   = _User.investor_data;
+
+    data.data.forEach(element => {
+        InvesterDataArray[element.type] = element.data;
+    })
+
+    await User.findOneAndUpdate({_id: data.user}, {investor_data: InvesterDataArray});
+    callback();
 }
 
 async function setInvesterTypeCreating(socket,data,callback)
