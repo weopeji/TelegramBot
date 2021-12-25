@@ -142,19 +142,8 @@ var action_linker =
 
 async function getProjectKey(socket,data,callback)
 {
-    var rand = function() {
-        return Math.random().toString(36).substr(2); // remove `0.`
-    };
-    
-    var token = function() {
-        return rand() + rand(); // to make it longer
-    };
-
-    var _token = token();
-
     var PrjectToken = await project_key.create({
         projectId: data,
-        token: _token,
     });
 
     callback(PrjectToken._id);
