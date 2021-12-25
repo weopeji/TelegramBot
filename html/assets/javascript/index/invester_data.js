@@ -222,7 +222,24 @@
                     },
                 });
 
-                _this.render_close();
+                var PreloaderAddUser_block = $(`
+                    <div class="autch_block">
+                        <div class="autch_block_row">
+                            <p>Вы удачно проинвестировали в проект</p>
+                            <div class="autch_block_buttons">
+                                <div class="autch_block_buttons_block autch_block_buttons_block_close">
+                                    <span>Вернуться</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `);
+
+                PreloaderAddUser_block.find('.autch_block_buttons_block_close').click( function() {
+                    location.href = './';
+                });
+
+                $('body').append(PreloaderAddUser_block);
             })
         }
     }
