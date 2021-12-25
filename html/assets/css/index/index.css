@@ -796,6 +796,7 @@ html, body {
   margin-right: 20px;
   background-color: #182037;
   cursor: pointer;
+  margin-bottom: 20px;
 }
 
 .msg_block_getting_line_img {
@@ -1254,6 +1255,59 @@ html, body {
       -ms-flex-pack: center;
           justify-content: center;
   margin-top: 20px;
+}
+
+.autch_block {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0E1122;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: white;
+}
+
+.autch_block p {
+  width: 85%;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.autch_block_row {
+  width: 450px;
+  height: 195px;
+  background-color: #182037;
+}
+
+.autch_block_buttons {
+  width: 85%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.autch_block_buttons_block {
+  margin-left: 20px;
+  padding: 10px 25px;
+  cursor: pointer;
+}
+
+.autch_block_buttons_block_accept {
+  background-color: #3A9FFF;
 }
 
 @media (max-width: 500px) {

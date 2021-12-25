@@ -909,6 +909,23 @@
 
             settingBlock.css("margin-top", "200px");
 
+            settingBlock.find('.settingBlock_add_acsess_row').click( function () {
+                var PreloaderAddUser_block = $(`
+                    <div class="autch_block">
+                        <div class="autch_block_row">
+                            <p>Ваша ссылка: <a>https://invester-relocation.site/?page=myProjects&id=19</a></p>
+                            <div class="autch_block_buttons">
+                                <div class="autch_block_buttons_block autch_block_buttons_block_accept">
+                                    <span>Закрыть</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `);
+
+                $('body').append(PreloaderAddUser_block);
+            })
+
             $('.index_page_body_data').append(settingBlock);
 
             var settingBlock = $(`
