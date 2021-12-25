@@ -155,9 +155,11 @@
 
             $('.creating_page').empty();
             render_nextfuns[DT]();
+            var _this = this;
 
             $('.creating_page_input_button').click( async function() {
                 var _arrayData = [];
+
                 $('.creating_page_input_div').each(function(i, element) {
                     _arrayData.push({
                         type: $(element).attr('data'),
@@ -172,6 +174,55 @@
                         data: _arrayData,
                     },
                 });
+
+                _this.render_close();
+            })
+        }
+
+        async render_close()
+        {
+            $('.creating_page').empty();
+
+            var _block = $(`
+                <div class="creating_page_input">
+                    <div class="creating_page_input_div" data="pay">
+                        <span contenteditable="true">Введите сумму инвестирования</span>
+                    </div>
+                    <div class="creating_page_input_button">
+                        <span>Отправить</span>
+                    </div>
+                </div>
+            `);
+
+            _block.find('.creating_page_input_div').click( function() {
+                if(!$(this).attr('data'))
+                {
+                    $(this).children('span').empty();
+                    $(this).attr('data', "true");
+                }
+            })
+
+            $('.creating_page').append(_block);
+            
+            $('.creating_page_input_button').click( async function() {
+                var _arrayData = [];
+
+                $('.creating_page_input_div').each(function(i, element) {
+                    _arrayData.push({
+                        type: $(element).attr('data'),
+                        data: $(element).find('span').text(),
+                    })
+                });
+
+                await callApi({
+                    methodName: "setInvesterTypeAppend",
+                    data: {
+                        user: global.allData._id,
+                        data: _arrayData,
+                    },
+                });
+
+                _this.render_close();
             })
         }
     }
