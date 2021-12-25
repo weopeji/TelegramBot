@@ -929,12 +929,14 @@
                     </div>
                 `);
 
+                PreloaderAddUser_block.find('.autch_block_buttons_block_close').click( function() {
+                    $(this).parent().parent().parent().remove();
+                });
+
                 $('body').append(PreloaderAddUser_block);
             })
 
-            settingBlock.find('.autch_block_buttons_block_close').click( function() {
-                $(this).parent().parent().parent().remove();
-            });
+           
 
             $('.index_page_body_data').append(settingBlock);
 
