@@ -1223,10 +1223,7 @@
                     <div class="body_point_line _file">
                         <div class="body_point_line_header">
                             <div class="body_point_line_header_text">
-                                <span>${data.name}</span>
-                                ${_file}
-                            </div>
-                            <div class="body_point_line_header_info">
+                                <span>1</span>
                                 <div class="download_buttons">
                                     <input class="file_load" id='signature_mass' type='file'>
                                     <label for="signature_mass">Загрузить <i class="fas fa-angle-double-down"></i></label>
@@ -1241,6 +1238,9 @@
                                         <span class="all_good_del">Удалить</span>
                                     </div>
                                 </div>  
+                            </div>
+                            <div class="body_point_line_header_info">
+                                
                             </div>
                         </div>
                     </div>
