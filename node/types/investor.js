@@ -439,6 +439,18 @@ var buttons3 = [
         id: "passport_number",
     },
     {
+        name: "Серия паспорта",
+        id: "passport_number",
+    },
+    {
+        name: "Кем выдан",
+        id: "passport_number",
+    },
+    {
+        name: "Прописка",
+        id: "passport_number",
+    },
+    {
         name: "Банк получателя",
         id: "bank",
     },

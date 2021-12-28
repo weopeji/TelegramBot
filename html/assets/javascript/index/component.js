@@ -1535,6 +1535,9 @@
                 <div class="moreGetButtons">
                     <span data="get"><i class="fad fa-money-check-edit-alt"></i> Запросить выплату</span>
                 </div>
+                <div class="moreGetButtons">
+                    <span data="get"><i class="fad fa-money-check-edit-alt"></i> Инвестировать в проект</span>
+                </div>
             `);
 
             moreGetButtons.find('span[data="get"]').click( function () {
