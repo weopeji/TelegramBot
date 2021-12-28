@@ -19,7 +19,7 @@
         constructor() 
         {
             this.global_block = $(`
-            
+                <div class="all_projects_show"></div>
             `);
         };
 
@@ -32,7 +32,9 @@
 
             _projects.forEach(function(project) {
                 var _block = $(`
-            
+                    <div class="all_projects_show_block">
+                        <img src="/projects/${project._id}/logo.png" alt="">
+                    </div>
                 `);
 
                 this.global_block.append(_block);
