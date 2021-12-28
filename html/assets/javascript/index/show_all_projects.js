@@ -25,6 +25,8 @@
 
         async render()
         {
+            var _this = this;
+
             var _projects = await callApi({
                 methodName: "gettAllProjects",
                 data: null,
@@ -37,7 +39,7 @@
                     </div>
                 `);
 
-                this.global_block.append(_block);
+                _this.global_block.append(_block);
             })
             
 
