@@ -1407,6 +1407,9 @@ html, body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.get_money_abstraction_span_cheackbox input {
   margin-right: 10px;
 }
 

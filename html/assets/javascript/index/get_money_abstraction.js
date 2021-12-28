@@ -33,7 +33,7 @@
                 </div>
             `);
 
-            $('.index_page_body_data').append(settingBlock);
+            $('.index_page_body_data').append(_button);
 
             var settingBlock = $(`
                 <div class="settingBlock">
