@@ -1378,4 +1378,23 @@ html, body {
   margin-bottom: 20px;
   font-size: 23px;
 }
+
+.all_projects_show {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.all_projects_show_block {
+  width: 24%;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.all_projects_show_block img {
+  width: 100%;
+}
 /*# sourceMappingURL=index.css.map */
