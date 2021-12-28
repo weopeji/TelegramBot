@@ -19,7 +19,9 @@
             global.loadResources(['./html/assets/javascript/index/creating_page.js'], () => {
                 global.loadResources(['./html/assets/javascript/index/invester_data.js'], () => {
                     global.loadResources(['./html/assets/javascript/index/show_all_projects.js'], () => {
-                        Main();
+                        global.loadResources(['./html/assets/javascript/index/get_money_abstraction.js'], () => {
+                            Main();
+                        });
                     });
                 }); 
             }); 
@@ -51,20 +53,20 @@
 
         if(_id) 
         {
-            const user_block        = new global.Components.user_block();
-            const activ_projects    = new global.Components.activ_projects();
-            const acceptPays        = new global.Components.acceptPays();
-            const chats             = new global.Components.chats();
-            const pay_investors     = new global.Components.pay_investors();
-            const myProjects        = new global.Components.myProjects();
-            const signature         = new global.Components.signature();
-            const Attracted_by_me   = new global.Components.Attracted_by_me();
-            const reward            = new global.Components.reward();
-            const ref_url           = new global.Components.ref_url();
-            const show_all_projects = new global.Components.show_all_projects();
-
-            const invester_data     = new global.Components.invester_data();
-            const creating_page     = new global.Components.creating_page();
+            const user_block            = new global.Components.user_block();
+            const activ_projects        = new global.Components.activ_projects();
+            const acceptPays            = new global.Components.acceptPays();
+            const chats                 = new global.Components.chats();
+            const pay_investors         = new global.Components.pay_investors();
+            const myProjects            = new global.Components.myProjects();
+            const signature             = new global.Components.signature();
+            const Attracted_by_me       = new global.Components.Attracted_by_me();
+            const reward                = new global.Components.reward();
+            const ref_url               = new global.Components.ref_url();
+            const show_all_projects     = new global.Components.show_all_projects();
+            const get_money_abstraction = new global.Components.get_money_abstraction();
+            const invester_data         = new global.Components.invester_data();
+            const creating_page         = new global.Components.creating_page();
 
             var _User = await user_block.render(_id);
 
@@ -97,6 +99,7 @@
                 "ref_url": function() {ref_url.render(global.allData)},
                 "invester_data": function() {invester_data.render(global.allData)},
                 "show_all_projects": function() {show_all_projects.render(global.allData)},
+                "get_money_abstraction": function() {get_money_abstraction.render(global.all)},
             }
 
             if(pageID)

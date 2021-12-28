@@ -34,10 +34,15 @@
 
             _projects.forEach(function(project) {
                 var _block = $(`
-                    <div class="all_projects_show_block">
+                    <div class="all_projects_show_block" data="${project._id}">
                         <img src="/projects/${project._id}/logo.png" alt="">
                     </div>
                 `);
+
+                _block.click( function() 
+                {
+                    
+                });
 
                 _this.global_block.append(_block);
             })
