@@ -1535,13 +1535,13 @@
                 <div class="moreGetButtons">
                     <span data="get"><i class="fad fa-money-check-edit-alt"></i> Запросить выплату</span>
                 </div>
-                <div class="moreGetButtons">
-                    <span data="get"><i class="fad fa-money-check-edit-alt"></i> Инвестировать в проект</span>
+                <div class="moreGetButtons" span[data="get"]>
+                    <span data="get"><i class="fal fa-pager"></i> Инвестировать в проект</span>
                 </div>
             `);
 
             moreGetButtons.find('span[data="get"]').click( function () {
-                
+                location.href = "./?page=show_all_projects"
             })
 
             $('.index_page_body_data').append(headerInfoBlock1);

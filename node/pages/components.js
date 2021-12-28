@@ -141,6 +141,12 @@ var action_linker =
     "setInvesterTypeCreating": setInvesterTypeCreating,
     "setInvesterTypeAppend": setInvesterTypeAppend,
     "setInvesterTypeClassAll": setInvesterTypeClassAll,
+    "gettAllProjects": gettAllProjects,
+}
+
+async function gettAllProjects(socket,data,callback)
+{
+    callback(await Project.find({type: "active"}));
 }
 
 async function setInvesterTypeClassAll(socket,data,callback)

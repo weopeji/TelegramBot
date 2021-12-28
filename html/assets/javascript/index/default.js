@@ -18,7 +18,9 @@
         global.loadResources(['./html/assets/javascript/index/component.js'], () => {
             global.loadResources(['./html/assets/javascript/index/creating_page.js'], () => {
                 global.loadResources(['./html/assets/javascript/index/invester_data.js'], () => {
-                    Main();
+                    global.loadResources(['./html/assets/javascript/index/show_all_projects.js'], () => {
+                        Main();
+                    });
                 }); 
             }); 
         });    
@@ -59,6 +61,7 @@
             const Attracted_by_me   = new global.Components.Attracted_by_me();
             const reward            = new global.Components.reward();
             const ref_url           = new global.Components.ref_url();
+            const show_all_projects = new global.Components.show_all_projects();
 
             const invester_data     = new global.Components.invester_data();
             const creating_page     = new global.Components.creating_page();
@@ -93,6 +96,7 @@
                 "creating": function() {creating_page.render(global.allData)},
                 "ref_url": function() {ref_url.render(global.allData)},
                 "invester_data": function() {invester_data.render(global.allData)},
+                "show_all_projects": function() {show_all_projects.render(global.allData)},
             }
 
             if(pageID)
