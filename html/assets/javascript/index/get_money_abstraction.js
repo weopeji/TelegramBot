@@ -59,7 +59,7 @@
 
                 var template_text = $(`
                     <div class="settingBlock_body_line">
-                        <span>${i}</span>
+                        <span class="get_money_abstraction_span_cheackbox"><input type="checkbox">${i}</span>
                         <span>${element.data._id}</span>
                         <span>${_pay}</span>
                     </div>
