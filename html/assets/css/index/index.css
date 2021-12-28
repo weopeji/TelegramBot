@@ -1396,5 +1396,7 @@ html, body {
 
 .all_projects_show_block img {
   width: 100%;
+  border-radius: 15px;
+  overflow: hidden;
 }
 /*# sourceMappingURL=index.css.map */
