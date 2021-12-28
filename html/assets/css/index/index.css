@@ -1407,6 +1407,23 @@ html, body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.get_money_abstraction_button {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.get_money_abstraction_button span {
+  display: block;
+  padding: 10px 20px;
+  border-radius: 80px;
+  background-color: #3A9FFF;
 }
 /*# sourceMappingURL=index.css.map */

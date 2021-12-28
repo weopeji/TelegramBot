@@ -27,6 +27,14 @@
 
             console.log(allPayments);
 
+            var _button = $(`
+                <div class="get_money_abstraction_button">
+                    <span>Запросить</span>
+                </div>
+            `);
+
+            $('.index_page_body_data').append(settingBlock);
+
             var settingBlock = $(`
                 <div class="settingBlock">
                     <div class="settingBlock_header">
