@@ -522,6 +522,9 @@ html, body {
 .end_get_project_row h1 {
   font-weight: 600;
   font-size: 17px;
+  color: white;
+  margin-bottom: 30px;
+  text-align: center;
 }
 
 .end_get_project_row a {
@@ -544,6 +547,7 @@ html, body {
 .end_get_project_img {
   width: 100px;
   height: 100px;
+  background-color: #182037;
 }
 
 .end_get_project_img img {

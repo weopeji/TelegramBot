@@ -1537,6 +1537,7 @@
             var _this = this;
 
             autch_block.find('.autch_block_buttons_block_accept').click( async function() {
+                $('.autch_block').remove();
                 _this.correct_next_load(param, user);
             })
 
