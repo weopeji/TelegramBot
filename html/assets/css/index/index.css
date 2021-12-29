@@ -1429,4 +1429,34 @@ html, body {
   border-radius: 80px;
   background-color: #3A9FFF;
 }
+
+@media (max-width: 1600px) {
+  .creating_page {
+    width: 50%;
+  }
+}
+
+@media (max-width: 1300px) {
+  .creating_page {
+    width: 60%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .creating_page {
+    width: 90%;
+  }
+}
+
+@media (max-width: 700px) {
+  .creating_page {
+    width: 90%;
+  }
+  .creating_page_input {
+    width: calc(100% - 20px);
+  }
+  .index_page_body_header_user_avatar_img {
+    display: none;
+  }
+}
 /*# sourceMappingURL=index.css.map */
