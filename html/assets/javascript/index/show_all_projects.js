@@ -41,7 +41,7 @@
 
                 _block.click( function() 
                 {
-                    
+
                 });
 
                 _this.global_block.append(_block);
