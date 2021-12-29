@@ -548,10 +548,6 @@ async function start_reqezits(msg, _need_button)
                 {
                     text: '⬆️',
                     callback_data: `place=attraction_reqezits&type=button&data=${need_button - 1}`,
-                },
-                {
-                    text: '➡️',
-                    callback_data: `place=attraction_reqezits_more`,
                 }
             ]
         ],
