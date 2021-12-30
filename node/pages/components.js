@@ -1212,7 +1212,7 @@ var _AllParce =
         return new Promise((resolve,reject) =>
         {
             var fio             = _data.initials.split(' ');
-            var query          = _data.region;
+            var query           = _data.region;
             var url             = "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address";
             var token           = "cd3a829357362fec55fc201c3f761002def9906f";
             var first_name      = fio[1];
@@ -1298,7 +1298,10 @@ var _AllParce =
                 
                 axios(config)
                 .then(function (response) {
-                    resolve(JSON.stringify(response.data));
+                    var adaw = await R_F.create({
+                        data: JSON.stringify(response.data),
+                    })
+                    resolve(adaw._id);
                 })
                 .catch(function (error) {
                     console.log(error);
