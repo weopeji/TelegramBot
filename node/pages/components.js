@@ -1265,7 +1265,7 @@ var _AllParce =
             var _name   = _data.name_company;
             var config  = {
                 method: 'get',
-                url: `https://api-ip.fssp.gov.ru/api/v1.0/search/legal?token=er77gLcQvTO5$name=${encodeURI(_name)}`,
+                url: `https://api-ip.fssp.gov.ru/api/v1.0/search/legal?token=er77gLcQvTO5&name=${encodeURI(_name)}`,
                 headers: {}
             };    
             
