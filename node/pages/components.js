@@ -1032,7 +1032,8 @@ async function putRedacting(socket,data,callback) {
 async function not_acceptProject(socket,data,callback) 
 {
     var _project = await Project.findOneAndUpdate({_id: data._id}, {type: "correction", redacting: data.data});
-    callback(_project);
+    h.full_alert_user(_project.user, `В проекте под номером ${_Project._id} нужно исправить данные!`, "redactingSettings");
+    callback();
 }
 
 async function getProject_id(socket,data,callback) {
