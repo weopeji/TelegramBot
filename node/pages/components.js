@@ -1261,7 +1261,7 @@ var _AllParce =
     "_ParceProjectIspo": function (_data) 
     {
         return new Promise((resolve,reject) => {
-            var query           = _data.region;
+            var query           = _data.addr;
             var url             = "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address";
             var token           = "cd3a829357362fec55fc201c3f761002def9906f";
             var _name           = _data.name_company;
