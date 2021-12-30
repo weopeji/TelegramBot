@@ -1287,7 +1287,7 @@ var _AllParce =
 
                 var config = {
                     method: 'get',
-                    url: `https://api-ip.fssp.gov.ru/api/v1.0/search/legal?token=er77gLcQvTO5&region=${_dataFirst}?name=${encodeURI(_name)}`,
+                    url: `https://api-ip.fssp.gov.ru/api/v1.0/search/legal?token=er77gLcQvTO5&region=${_dataFirst}$name=${encodeURI(_name)}`,
                     headers: {}
                 };    
                 
