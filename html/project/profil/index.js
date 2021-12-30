@@ -172,7 +172,9 @@
                         `);
 
                         $('.ispo_line').append(_preloader);
-                    }
+                    };
+
+                    startArbitr();
                 }
             },
             credit_story: {
