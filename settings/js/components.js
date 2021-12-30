@@ -499,18 +499,19 @@
 
                 _line.find(".body_point_line_input_accept").click( function() 
                 {
+                    var _text = $(this).parent().find("textarea").val();
+                    
                     callApi({
                         methodName: 'redactingLineSettingsPage',
                         data: {
                             projectId: _GET('id'),
-                            lineId: $(this).parent().parent().attr('data').split('_')[0],
+                            lineId: $(this).parent().attr('data').split('_')[0],
                             data: _text,
                         },
                     });
 
                     $(this).parent().parent().fadeOut( function() 
                     {
-                        var _text = $(this).parent().find("textarea").val();
                         $(this).parent().find(".body_point_line_first p").html(_text);
                         $(this).parent().find(".body_point_line_first").fadeIn();
                     });
