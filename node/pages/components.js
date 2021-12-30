@@ -1260,21 +1260,44 @@ var _AllParce =
     },
     "_ParceProjectIspo": function (_data) 
     {
-        return new Promise((resolve,reject) => 
-        {
-            var _name   = _data.name_company;
-            var config  = {
-                method: 'get',
-                url: `https://api-ip.fssp.gov.ru/api/v1.0/search/legal?token=er77gLcQvTO5&name=${encodeURI(_name)}`,
-                headers: {}
-            };    
-            
-            axios(config)
-            .then(function (response) {
-                resolve(JSON.stringify(response.data));
-            })
-            .catch(function (error) {
-                console.log(error);
+        return new Promise((resolve,reject) => {
+            var query           = _data.addr;
+            var url             = "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address";
+            var token           = "cd3a829357362fec55fc201c3f761002def9906f";
+            var _name           = _data.name_company;
+
+            var options = {
+                method: "POST",
+                mode: "cors",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                    "Authorization": "Token " + token
+                },
+                body: JSON.stringify({query: query})
+            }
+
+            fetch(url, options)
+            .then(response => response.text())
+            .then(result => 
+            {
+                var _dataFirst = JSON.parse(result.toString()).suggestions[0].data.region_kladr_id;
+
+                _dataFirst = _dataFirst.replace(/0/g, '');
+
+                var config = {
+                    method: 'get',
+                    url: `https://api-ip.fssp.gov.ru/api/v1.0/search/legal?token=er77gLcQvTO5&name=${encodeURI(_name)}&region=${_dataFirst}`,
+                    headers: {}
+                };    
+                
+                axios(config)
+                .then(function (response) {
+                    resolve(JSON.stringify(response.data));
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
             });
         });
     },
