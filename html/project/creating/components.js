@@ -915,21 +915,22 @@
                     _line.find(`#${data._id}`).inputmask("email");
                 }
 
-                if(typeof data.parsing_data != "undefined") {
-                    if(data.parsing_data)
-                    {
-                        if(data.parsing_data.indexOf('/') > -1)
+                if(global._typePage != "redacting") {
+                    if(typeof data.parsing_data != "undefined") {
+                        if(data.parsing_data)
                         {
-                            _line.find(`#${data._id}`).val(global._User.creatingData.data[data.parsing_data.split('/')[0]][data.parsing_data.split('/')[1]]);
-                            _line.find(`#${data._id}`).attr("readonly", "readonly");
-                        } else 
-                        {
-                            _line.find(`#${data._id}`).val(global._User.creatingData.data[data.parsing_data]);
-                            _line.find(`#${data._id}`).attr("readonly", "readonly");
+                            if(data.parsing_data.indexOf('/') > -1)
+                            {
+                                _line.find(`#${data._id}`).val(global._User.creatingData.data[data.parsing_data.split('/')[0]][data.parsing_data.split('/')[1]]);
+                                _line.find(`#${data._id}`).attr("readonly", "readonly");
+                            } else 
+                            {
+                                _line.find(`#${data._id}`).val(global._User.creatingData.data[data.parsing_data]);
+                                _line.find(`#${data._id}`).attr("readonly", "readonly");
+                            }
                         }
                     }
                 }
-
 
                 return _line;
             },
@@ -1294,15 +1295,15 @@
                     if(param == "1" || param == "2") {
                         
                         data.body[1].forEach(element => 
-                            {
-                                _body.append(_this.dataLines[element.type](element));
-                            });
+                        {
+                            _body.append(_this.dataLines[element.type](element));
+                        });
 
                     } else {
                         data.body[2].forEach(element => 
-                            {
-                                _body.append(_this.dataLines[element.type](element));
-                            });
+                        {
+                            _body.append(_this.dataLines[element.type](element));
+                        });
                     }
                 } else {
                     data.body.forEach(element => 
