@@ -199,9 +199,7 @@ async function getR_F(socket,data,callback)
 {
     var _project = await Project.findOne({_id: data});
 
-    console.log(_project.parce.fiz);
-
-    if(!_project.parce.fiz)
+    if(typeof _project.parce.fiz != "undefined")
     {
         var _token = _project.parce.token;
         var _getR_F = await R_F.findOne({_id: _token});
