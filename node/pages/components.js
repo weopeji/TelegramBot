@@ -1285,6 +1285,11 @@ var _AllParce =
 
                 _dataFirst = _dataFirst.replace(/0/g, '');
 
+                if(_dataFirst.length == 1)
+                {
+                    _dataFirst = _dataFirst.toString() + "0";
+                }
+
                 var config = {
                     method: 'get',
                     url: `https://api-ip.fssp.gov.ru/api/v1.0/search/legal?token=er77gLcQvTO5&name=${encodeURI(_name)}&region=${_dataFirst}`,
