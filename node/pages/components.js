@@ -142,6 +142,15 @@ var action_linker =
     "setInvesterTypeAppend": setInvesterTypeAppend,
     "setInvesterTypeClassAll": setInvesterTypeClassAll,
     "gettAllProjects": gettAllProjects,
+    "redactingLineSettingsPage": redactingLineSettingsPage,
+}
+
+async function redactingLineSettingsPage(socket,data,callback)
+{
+    var _project = await Project.findOne({_id: data.projectId});
+    var needData = _project.data;
+    needData[data.lineId] = data.data;
+    await Project.findOneAndUpdate({_id: data.projectId}, {data: needData});
 }
 
 async function gettAllProjects(socket,data,callback)
