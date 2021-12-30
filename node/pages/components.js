@@ -1259,8 +1259,7 @@ var _AllParce =
         });
     },
     "_ParceProjectIspo": function (_data) {
-        return new Promise((resolve,reject) =>
-        {
+        return new Promise((resolve,reject) => {
             var fio             = _data.initials.split(' ');
             var query          = _data.region;
             var url             = "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address";
@@ -1307,25 +1306,24 @@ var _AllParce =
     },
     "_ParcingArbitraj": async function(inn)
     {
-        return null;  
-        // let options = 
-        // {
-        //     mode: 'text',
-        //     scriptPath: '../python/parcingArbitraj',
-        //     args: inn,
-        // };
+        let options = 
+        {
+            mode: 'text',
+            scriptPath: '../python/parcingArbitraj',
+            args: inn,
+        };
 
-        // return new Promise((resolve,reject) => {
-        //     try {
-        //         PythonShell.run('main.py', options, function (err, results) {
-        //             if (err) throw err;
-        //             resolve(JSON.parse(results));  
-        //         });
-        //     }
-        //     catch{
-        //         reject();  
-        //     }
-        // })
+        return new Promise((resolve,reject) => {
+            try {
+                PythonShell.run('main.py', options, function (err, results) {
+                    if (err) throw err;
+                    resolve(JSON.parse(results));  
+                });
+            }
+            catch{
+                reject();  
+            }
+        })
     },
     "uploadVideo": async function(_patch, _projectPath, name, target)
     {
