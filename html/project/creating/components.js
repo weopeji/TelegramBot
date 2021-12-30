@@ -1062,8 +1062,10 @@
                     clearTimeout(typingTimer);
                 });
 
-                $input.val(global._User.creatingData.data.address.value);
-                  
+                if(global._typePage != "redacting") {
+                    $input.val(global._User.creatingData.data.address.value);
+                }
+
                 async function doneTyping () 
                 {
                     if($input.val().length == 0) {
