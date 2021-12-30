@@ -121,6 +121,14 @@
                                 _id: "addr"
                             },
                             {
+                                type: "addr",
+                                name: "Фактический адрес",
+                                info: "Введите Фактический адрес",
+                                parsing_data: null,
+                                moreGet: true,
+                                _id: "addr"
+                            },
+                            {
                                 type: "string",
                                 name: "Сайт",
                                 info: "Введите название ссылку на ваш сайт",
@@ -1097,34 +1105,34 @@
                 }
 
                 
-                var template_text = $(`
-                    <div class="moreGet">
-                        <div class="moreGet_input">
-                            <input type="checkbox" name="moreGet_checkbox" id="moreGet_checkbox">
-                            <span>Юридический адрес не совпадает с фактическим</span>
-                        </div>
-                        <div class="body_point_line">
-                            <div class="body_point_line_header">
-                                <div class="body_point_line_header_text">
-                                    <span>Ваш Фактический адресс</span>
-                                    <p>#</p>
-                                </div>
-                                <div class="body_point_line_header_info">
-                                    <span class="_not">Не заполнено</span>
-                                    <span class="_yes">Готово</span>
-                                </div>
-                            </div>
-                            <input id="${data._id}" class="text_area" placeholder="Введите значение">
-                        </div>
-                    </div>
-                `);
+                // var template_text = $(`
+                //     <div class="moreGet">
+                //         <div class="moreGet_input">
+                //             <input type="checkbox" name="moreGet_checkbox" id="moreGet_checkbox">
+                //             <span>Юридический адрес не совпадает с фактическим</span>
+                //         </div>
+                //         <div class="body_point_line">
+                //             <div class="body_point_line_header">
+                //                 <div class="body_point_line_header_text">
+                //                     <span>Ваш Фактический адресс</span>
+                //                     <p>#</p>
+                //                 </div>
+                //                 <div class="body_point_line_header_info">
+                //                     <span class="_not">Не заполнено</span>
+                //                     <span class="_yes">Готово</span>
+                //                 </div>
+                //             </div>
+                //             <input id="${data._id}" class="text_area" placeholder="Введите значение">
+                //         </div>
+                //     </div>
+                // `);
 
-                template_text.find('.body_point_line').css('display', 'none');
-                template_text.find('#moreGet_checkbox').click( function() {
-                    $(this).parent().parent().toggleClass('selected');
-                })
+                // template_text.find('.body_point_line').css('display', 'none');
+                // template_text.find('#moreGet_checkbox').click( function() {
+                //     $(this).parent().parent().toggleClass('selected');
+                // })
 
-                _line.append(template_text);
+                // _line.append(template_text);
                     
                 return _line;
             }
