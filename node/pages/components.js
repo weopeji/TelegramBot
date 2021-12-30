@@ -1297,7 +1297,7 @@ var _AllParce =
                 };    
                 
                 axios(config)
-                .then(function (response) {
+                .then(async function (response) {
                     var adaw = await R_F.create({
                         data: JSON.stringify(response.data),
                     })
