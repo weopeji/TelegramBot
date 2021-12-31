@@ -80,13 +80,6 @@
             `);
 
             inputText.find('.creating_page_input_div').click(async function() {
-                await callApi({
-                    methodName: "setInvesterTypeCreating",
-                    data: {
-                        user: global.allData._id,
-                        data: $(this).attr('data-type'),
-                    },
-                });
                 _this.render_next($(this).attr('data'));
             })
 
