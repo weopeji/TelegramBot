@@ -198,6 +198,7 @@ bot.onText(/\/start (.+)/, async (msg, match) =>
 
     if(!_User) {
         await main_page.onlyCreate(msg);
+        _User = await User.findOne({user: msg.from.id});
     }
 
     if(resp.split('_')[0] == "member") 
@@ -242,13 +243,18 @@ bot.onText(/\/start (.+)/, async (msg, match) =>
     } 
     else if(resp.split('_')[0] == "adder") 
     {
-        await User.findOneAndUpdate({user: msg.from.id}, {member: resp.split('_')[1]});
+        if(typeof _User.member == "undefined")
+        {
+            await User.findOneAndUpdate({user: msg.from.id}, {member: resp.split('_')[1]});
+        }
         main_page._CreatorFUN(msg)
     }
     else if(resp.split('_')[0] == "adder-b") 
     {
-        var _User = await User.findOne({user: msg.from.id});
-        await User.findOneAndUpdate({user: msg.from.id}, {member_b: resp.split('_')[1]});
+        if(typeof _User.member_b == "undefined")
+        {
+            await User.findOneAndUpdate({user: msg.from.id}, {member_b: resp.split('_')[1]});
+        }
         main_page._CreatorFUN(msg)
     }
     else if(resp.split('_')[0] == "setSignaturePro") 
