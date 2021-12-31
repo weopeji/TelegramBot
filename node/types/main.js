@@ -257,24 +257,21 @@ async function _MainMenu(msg, close)
                 _array.push(fat.message_id);
 
                 if(needInv) {
-                    if(needInv.receipt) 
-                    {
-                        var html = `<strong>Вы инвестировали в проект!</strong>\n\nВы можете написать бизнесу по ссылке ниже`;
-                        var fat = await bot.sendMessage(msg.chat.id, html, {
-                            parse_mode: "HTML",
-                            reply_markup: {
-                                "inline_keyboard": [
-                                    [
-                                        {
-                                            text: 'Написать бизнесу',
-                                            url: `${h.getURL()}?user=${_User.id}&page=chats&id=${_User.putProject}`,
-                                        },
-                                    ]
-                                ],
-                            }
-                        });
-                        _array.push(fat.message_id);
-                    }
+                    var html = `<strong>Вы инвестировали в проект!</strong>\n\nВы можете написать бизнесу по ссылке ниже`;
+                    var fat = await bot.sendMessage(msg.chat.id, html, {
+                        parse_mode: "HTML",
+                        reply_markup: {
+                            "inline_keyboard": [
+                                [
+                                    {
+                                        text: 'Написать бизнесу',
+                                        url: `${h.getURL()}?user=${_User.id}&page=chats&id=${_User.putProject}`,
+                                    },
+                                ]
+                            ],
+                        }
+                    });
+                    _array.push(fat.message_id);
                 }
         
             } else {
