@@ -833,7 +833,8 @@
                         $(_this).parent().parent().find('.loader_input').attr('data', data.data.file_name);
                         $(_this).parent().parent().find('.loader_input').fadeOut( function() {
                             $(_this).parent().parent().find('.all_good').fadeIn( function() {
-                        
+                                $('.index_page').empty();
+                                $('.preloader').fadeIn();
                             });
                         });
                     }
@@ -873,8 +874,7 @@
                         $(_this).parent().parent().find('.loader_input').attr('data', data.data.file_name);
                         $(_this).parent().parent().find('.loader_input').fadeOut( function() {
                             $(_this).parent().parent().find('.all_good').fadeIn( function() {
-                                $('.index_page').empty();
-                                $('.preloader').fadeIn();
+                                
                             });
                         });
                     }
