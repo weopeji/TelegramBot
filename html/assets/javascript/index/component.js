@@ -296,7 +296,7 @@
             });
 
             $('.show_block').click( function() {
-                location.href = `./projects/${_data.InvDoc.receipt}`;
+                location.href = `./projects/${_data.InvDoc.projectId}/${_data.InvDoc.data.document}`;
             });
 
             $('.show_document').click( function() {
