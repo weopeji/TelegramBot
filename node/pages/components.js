@@ -845,11 +845,13 @@ async function acceptInvestor(socket,data,callback)
 
     var _InvDocNeed = await InvDoc.findOneAndUpdate({invester: data.id, projectId: data.projectId}, {status: "accept", pays: pays, date: new Date().getTime()});
 
-    if(_User.member)
+    var _UserInv = await User.findOne({user: _InvDoc.invester});
+
+    if(_UserInv.member)
     {
         console.log("MEMBER!");
         await Payments.create({
-            user: _User.member,
+            user: _UserInv.user,
             type: "investing",
             pay: _InvDoc.data.pay,
             status: "wait",
@@ -859,11 +861,11 @@ async function acceptInvestor(socket,data,callback)
         })
     }
 
-    if(_User.member_b)
+    if(_UserInv.member_b)
     {
         console.log("MEMBER_B!");
         await Payments.create({
-            user: _User.member_b,
+            user: _UserInv.user,
             type: "business",
             pay: _InvDoc.data.pay,
             status: "wait",
