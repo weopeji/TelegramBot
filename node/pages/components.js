@@ -1098,6 +1098,7 @@ async function acceptProject(socket,data,callback)
     console.log(_urlImgProject);
     const browser = await puppeteer.launch({
         args: ['--no-sandbox', '--disable-setuid-sandbox'],
+        defaultViewport: null,
     });
     const page = await browser.newPage();
     // await page.setViewport({
@@ -1130,7 +1131,7 @@ async function acceptProject(socket,data,callback)
 
     var html = `[Профиль компании](${h.getURL()}html/project/profil/#${_project._id})\n[Презентация](${h.getURL()}/projects/${_project._id}/${_project.data["file+7"]})\n[Видео презентация](${videoPresentationPath})`;
     
-    const stream = fs.createReadStream(`../projects/${data}/logo.png`);
+    const stream = fs.createReadStream(`../projects/${data}/logo_instagram.jpg`);
 
     bot.sendPhoto(-1001205415519, stream, {
         "caption": html,
