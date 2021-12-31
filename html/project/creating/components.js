@@ -1081,10 +1081,14 @@
                         <div class="_showerBlock">
                             <div class="_showerBlock_row">
                                 <span>${data.shower}</span>
-                                <i class="fal fa-chevron-right"></i>
+                                <i class="fal fa-arrow-alt-circle-right"></i>
                             </div>
                         </div>
                     `);
+
+                    _showerBlock.find('._showerBlock_row').click( function() {
+                        $(this).parent().remove();
+                    })
 
                     _line.append(_showerBlock);
                 }

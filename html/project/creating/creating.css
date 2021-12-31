@@ -940,6 +940,7 @@ html, body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  z-index: 1000;
 }
 
 ._showerBlock_row {
@@ -949,13 +950,11 @@ html, body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-
-._showerBlock_row span {
   color: white;
 }
 
 ._showerBlock_row i {
   margin-left: 20px;
+  font-size: 22px;
 }
 /*# sourceMappingURL=creating.css.map */
