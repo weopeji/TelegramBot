@@ -456,6 +456,13 @@ async function startInvestingMsgOld(msg, button)
     var _User           = await User.findOne({user: msg.from.id});
     var _where          = _User.where;
 
+    var html = `*`;
+    var fat = await h.send_html(msg.from.id, html, {
+        "resize_keyboard": true,
+        "keyboard": [["Принять данные"], ["⬅️ Назад"]],
+    });
+    _array.push(fat.message_id);
+
     if(typeof _where.page.button != 'number' && typeof _where.page.button != "string")
     {
         _where.page.button = 0
@@ -512,20 +519,12 @@ async function startInvestingMsgOld(msg, button)
         "inline_keyboard": [
             [
                 {
-                    text: '⬅️',
-                    callback_data: `place=investing&type=button&data=0`,
-                },
-                {
                     text: '⬇️',
                     callback_data: `place=contact&type=button&data=${need_button + 1}`,
                 },
                 {
                     text: '⬆️',
                     callback_data: `place=contact&type=button&data=${need_button - 1}`,
-                },
-                {
-                    text: '➡️',
-                    callback_data: `place=investing_money`,
                 }
             ]
         ],
