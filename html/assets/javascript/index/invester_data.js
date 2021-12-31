@@ -129,10 +129,11 @@
 
             _block.find('.creating_page_input_button span').click( function() {
                 var money = $('.creating_page_input_div span').text();
+                var _projectMoney = _this.project.data.minimal_amount.toString().trim().replace(/\s/g, '');
 
                 console.log(_this.project.data.minimal_amount.toString().trim());
 
-                if(Number(money) < Number(_this.project.data.minimal_amount.toString().trim()))
+                if(Number(money) < Number(_projectMoney))
                 {
                     alert('Сумма недостаточна!');
                 } else {
