@@ -118,6 +118,7 @@
                                 info: "Введите Юридический адрес",
                                 parsing_data: null,
                                 moreGet: true,
+                                readonly: true,
                                 _id: "addr"
                             },
                             {
@@ -1077,8 +1078,6 @@
 
                 if(typeof data.shower != "undefined") 
                 {
-                    $input.val();
-                    
                     var _showerBlock = $(`
                         <div class="_showerBlock">
                             <div class="_showerBlock_row">
@@ -1093,6 +1092,11 @@
                     })
 
                     _line.append(_showerBlock);
+                }
+
+                if(typeof data.readonly != "undefined") 
+                {
+                    $input.attr("readonly", "readonly");
                 }
 
                 async function doneTyping () 
