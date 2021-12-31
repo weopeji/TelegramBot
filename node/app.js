@@ -492,10 +492,10 @@ app.post('/file_cheack_get.io/files', (req, res) => {
         _data[name] = value;
     });
 
-    var cheack_file = (_path) => 
+    var cheack_file = async (_path) => 
     {
         var _User   = await User.findOne({_id: _data._User});
-        
+
         try {
             if (fs.existsSync(_path)) { 
                 console.log('Файл найден');
