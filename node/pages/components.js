@@ -1097,27 +1097,16 @@ async function acceptProject(socket,data,callback)
     var _urlImgProject = `${h.getURL()}html/project/cover/?id=${data}&liner=true`;
     console.log(_urlImgProject);
     const browser = await puppeteer.launch({
-        args: ['--no-sandbox', '--disable-setuid-sandbox'],
+        args: ['--no-sandbox', '--disable-setuid-sandbox', '--window-size=1920,1080'],
         defaultViewport: null,
     });
-    const page = await browser.newPage();
-    // await page.setViewport({
-    //     width: 1920,
-    //     height: 1080,
-    // });      
+    const page = await browser.newPage();   
+    await page._client.send('Emulation.clearDeviceMetricsOverride');
     await page.goto(_urlImgProject);
-    await page.emulateMedia('screen');
+    // await page.emulateMedia('screen');
     const element = await page.$('.cover_block');   
-    // const bounding_box = await element.boundingBox();
-    // console.log(bounding_box);
     await element.screenshot({
         path: `../projects/${data}/logo_instagram.jpg`,
-        // clip: {
-        //     x: bounding_box.x,
-        //     y: bounding_box.y,
-        //     width: 1024,
-        //     height: 1024,
-        // },
     });
     await browser.close();
 
