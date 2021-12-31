@@ -851,7 +851,7 @@ async function acceptInvestor(socket,data,callback)
     {
         console.log("MEMBER!");
         await Payments.create({
-            user: _UserInv.user,
+            user: _User.member,
             type: "investing",
             pay: _InvDoc.data.pay,
             status: "wait",
@@ -865,7 +865,7 @@ async function acceptInvestor(socket,data,callback)
     {
         console.log("MEMBER_B!");
         await Payments.create({
-            user: _UserInv.user,
+            user: _User.member_b,
             type: "business",
             pay: _InvDoc.data.pay,
             status: "wait",
