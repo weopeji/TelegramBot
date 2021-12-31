@@ -130,7 +130,7 @@
             _block.find('.creating_page_input_button span').click( function() {
                 var money = $('.creating_page_input span').text();
 
-                if(money < _this.project.data.minimal_amount.trim())
+                if(Number(money) < Number(_this.project.data.minimal_amount.trim()))
                 {
                     alert('Сумма недостаточна!');
                 }
