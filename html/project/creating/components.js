@@ -1240,6 +1240,10 @@
                 </div>
             `);
 
+            _uploadBlock.click( function () {
+                window.open(`https://invester-relocation.site/projects/${_project._id}/${_project.signature_document.document}`, "_blank");
+            })
+
             var _body = $(`
                 <div class="body_point">
                     <div class="body_point_line _file">

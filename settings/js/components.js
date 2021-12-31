@@ -201,7 +201,7 @@
 
             if(_project.signature_document)
             {
-                if(_project.signature.status == "wait")
+                if(_project.signature_document.status == "wait")
                 {
                     _status = "Запрошена подпись бизнеса";
                 } else
