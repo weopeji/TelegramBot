@@ -895,6 +895,7 @@ async function notAcceptInvesting(socket,data,callback)
 
     for (const value of _arrayProjects) {
         var InvDocs = await InvDoc.find({projectId: value});
+        console.log(InvDocs);
         if(InvDocs.length > 0) {
             allInv.push(InvDocs);
         }
