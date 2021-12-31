@@ -191,9 +191,14 @@ bot.on("callback_query", function(callbackQuery)
 
 bot.onText(/\/start (.+)/, async (msg, match) => 
 {
+    var _User       = await User.findOne({user: msg.from.id});
     const resp      = match[1];
     var _idProject  = resp.split('_')[1];
     var _array      = [];
+
+    if(!_User) {
+        await main_page._CreatorFUN(msg);
+    }
 
     if(resp.split('_')[0] == "member") 
     {
@@ -235,7 +240,6 @@ bot.onText(/\/start (.+)/, async (msg, match) =>
     } 
     else if(resp.split('_')[0] == "adder") 
     {
-        var _User = await User.findOne({user: msg.from.id});
 
         await User.findOneAndUpdate({user: msg.from.id}, {member: resp.split('_')[1]});
 
