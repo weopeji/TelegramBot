@@ -847,6 +847,7 @@ async function acceptInvestor(socket,data,callback)
 
     if(_User.member)
     {
+        console.log("MEMBER!");
         await Payments.create({
             user: _User.member,
             type: "investing",
@@ -860,6 +861,7 @@ async function acceptInvestor(socket,data,callback)
 
     if(_User.member_b)
     {
+        console.log("MEMBER_B!");
         await Payments.create({
             user: _User.member_b,
             type: "business",
