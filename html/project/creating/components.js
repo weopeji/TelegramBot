@@ -1077,6 +1077,8 @@
 
                 if(typeof data.shower != "undefined") 
                 {
+                    $input.val();
+                    
                     var _showerBlock = $(`
                         <div class="_showerBlock">
                             <div class="_showerBlock_row">
