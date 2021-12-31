@@ -1094,33 +1094,34 @@ async function acceptProject(socket,data,callback)
 {
     var _project = await Project.findOne({_id: data});
 
-    var _urlImgProject = `${h.getURL()}html/project/cover/?id=${data}`;
+    var _urlImgProject = `${h.getURL()}html/project/cover/?id=${data}&liner=true`;
     console.log(_urlImgProject);
     const browser = await puppeteer.launch({
         args: ['--no-sandbox', '--disable-setuid-sandbox'],
     });
     const page = await browser.newPage();
-    await page.setViewport({
-        width: 1920,
-        height: 1080,
-    });      
+    // await page.setViewport({
+    //     width: 1920,
+    //     height: 1080,
+    // });      
     await page.goto(_urlImgProject);
     await page.emulateMedia('screen');
     const element = await page.$('.cover_block');   
-    const bounding_box = await element.boundingBox();
-    console.log(bounding_box);
+    // const bounding_box = await element.boundingBox();
+    // console.log(bounding_box);
     await element.screenshot({
         path: `../projects/${data}/logo_instagram.jpg`,
-        clip: {
-            x: bounding_box.x,
-            y: bounding_box.y,
-            width: 1024,
-            height: 1024,
-        },
+        // clip: {
+        //     x: bounding_box.x,
+        //     y: bounding_box.y,
+        //     width: 1024,
+        //     height: 1024,
+        // },
     });
     await browser.close();
 
     var videoPresentationPath = `${h.getURL()}/projects/${_project._id}/${_project.data["file+8"]}`;
+    
     if(_project.YT_VIDEO)
     {
         var yt_data = JSON.parse(_project.YT_VIDEO[3]);
@@ -1153,7 +1154,6 @@ async function acceptProject(socket,data,callback)
     });
 
     const client = new Instagram({ username: "investER_official", password: "e<<@H&_ArB~5ef7" });
-
 
     ;(async () => 
     {

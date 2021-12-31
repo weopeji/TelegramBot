@@ -54,6 +54,11 @@
         $('.rate').html(need_project.data.rate + "%" || "Null");
         $('.date_payments').html(need_project.data.date_payments || "Null");
         $('.collection_period').html(need_project.data.date + " мес" || "Null");
+
+        if(_GET('liner'))
+        {
+            $('.cover_block_liner').remove();
+        }
     }
 
 }(window))
