@@ -899,190 +899,190 @@
 
         async renderAcsess()
         {
-            var settingBlock = $(`
-                <div class="settingBlock_add_acsess">
-                    <div class="settingBlock_add_acsess_row">
-                        <span>Предоставить доступ к проекту</span>
-                    </div>
-                </div>
-            `);
+            // var settingBlock = $(`
+            //     <div class="settingBlock_add_acsess">
+            //         <div class="settingBlock_add_acsess_row">
+            //             <span>Предоставить доступ к проекту</span>
+            //         </div>
+            //     </div>
+            // `);
 
-            settingBlock.css("margin-top", "200px");
+            // settingBlock.css("margin-top", "200px");
 
-            settingBlock.find('.settingBlock_add_acsess_row').click( async function () {
+            // settingBlock.find('.settingBlock_add_acsess_row').click( async function () {
 
-                var Project_key = await callApi({
-                    methodName: "getProjectKey",
-                    data: {
-                        user: global.allData._id,
-                        projectId: _GET('id'),
-                    },
-                });
+            //     var Project_key = await callApi({
+            //         methodName: "getProjectKey",
+            //         data: {
+            //             user: global.allData._id,
+            //             projectId: _GET('id'),
+            //         },
+            //     });
 
-                var PreloaderAddUser_block = $(`
-                    <div class="autch_block">
-                        <div class="autch_block_row">
-                            <p>Ваша ссылка: <br> <a>https://invester-relocation.site/?id=${Project_key}</a></p>
-                            <div class="autch_block_buttons">
-                                <div class="autch_block_buttons_block autch_block_buttons_block_close">
-                                    <span>Закрыть</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `);
+            //     var PreloaderAddUser_block = $(`
+            //         <div class="autch_block">
+            //             <div class="autch_block_row">
+            //                 <p>Ваша ссылка: <br> <a>https://invester-relocation.site/?id=${Project_key}</a></p>
+            //                 <div class="autch_block_buttons">
+            //                     <div class="autch_block_buttons_block autch_block_buttons_block_close">
+            //                         <span>Закрыть</span>
+            //                     </div>
+            //                 </div>
+            //             </div>
+            //         </div>
+            //     `);
 
-                PreloaderAddUser_block.find('.autch_block_buttons_block_close').click( function() {
-                    $(this).parent().parent().parent().remove();
-                });
+            //     PreloaderAddUser_block.find('.autch_block_buttons_block_close').click( function() {
+            //         $(this).parent().parent().parent().remove();
+            //     });
 
-                $('body').append(PreloaderAddUser_block);
-            })
+            //     $('body').append(PreloaderAddUser_block);
+            // })
 
            
 
-            $('.index_page_body_data').append(settingBlock);
+            // $('.index_page_body_data').append(settingBlock);
 
-            var settingBlock = $(`
-                <div class="settingBlock">
-                    <div class="settingBlock_header">
-                        <p>Ожидают доступ к проекту</p>
+            // var settingBlock = $(`
+            //     <div class="settingBlock">
+            //         <div class="settingBlock_header">
+            //             <p>Ожидают доступ к проекту</p>
 
-                        <div class="settingBlock_header_line">
-                            <span>ID Пользователя</span>
-                            <span>ФИО</span>
-                            <span>Кнопка</span>
-                        </div>
-                    </div>
-                    <div class="settingBlock_body">
+            //             <div class="settingBlock_header_line">
+            //                 <span>ID Пользователя</span>
+            //                 <span>ФИО</span>
+            //                 <span>Кнопка</span>
+            //             </div>
+            //         </div>
+            //         <div class="settingBlock_body">
 
-                    </div> 
-                </div>
-            `);
+            //         </div> 
+            //     </div>
+            // `);
 
-            settingBlock.css("margin-top", "20px");
+            // settingBlock.css("margin-top", "20px");
 
-            $('.index_page_body_data').append(settingBlock);
+            // $('.index_page_body_data').append(settingBlock);
 
-            var settingBlock = $(`
-                <div class="settingBlock">
-                    <div class="settingBlock_header">
-                        <p>Доступ к проекту</p>
+            // var settingBlock = $(`
+            //     <div class="settingBlock">
+            //         <div class="settingBlock_header">
+            //             <p>Доступ к проекту</p>
 
-                        <div class="settingBlock_header_line">
-                            <span>ID Пользователя</span>
-                            <span>ФИО</span>
-                            <span>Дата предоставленного доступа</span>
-                        </div>
-                    </div>
-                    <div class="settingBlock_body">
+            //             <div class="settingBlock_header_line">
+            //                 <span>ID Пользователя</span>
+            //                 <span>ФИО</span>
+            //                 <span>Дата предоставленного доступа</span>
+            //             </div>
+            //         </div>
+            //         <div class="settingBlock_body">
 
-                    </div> 
-                </div>
-            `);
+            //         </div> 
+            //     </div>
+            // `);
 
-            settingBlock.css("margin-top", "20px");
+            // settingBlock.css("margin-top", "20px");
 
-            $('.index_page_body_data').append(settingBlock);
+            // $('.index_page_body_data').append(settingBlock);
         }
 
         async renderPay()
         {
-            var getPaysBusiness = await callApi({
-                methodName: "getPaysBusiness",
-                data: _GET('id'),
-            });
+            // var getPaysBusiness = await callApi({
+            //     methodName: "getPaysBusiness",
+            //     data: _GET('id'),
+            // });
 
-            var settingBlock = $(`
-                <div class="settingBlock">
-                    <div class="settingBlock_header">
-                        <p>Сумма выплат процентов за инвестиции</p>
+            // var settingBlock = $(`
+            //     <div class="settingBlock">
+            //         <div class="settingBlock_header">
+            //             <p>Сумма выплат процентов за инвестиции</p>
 
-                        <div class="settingBlock_header_line">
-                            <span>ID Инвестора</span>
-                            <span>Сумма инвестиции</span>
-                            <span>Сумма выплаты</span>
-                            <span>Чек</span>
-                        </div>
-                    </div>
-                    <div class="settingBlock_body">
+            //             <div class="settingBlock_header_line">
+            //                 <span>ID Инвестора</span>
+            //                 <span>Сумма инвестиции</span>
+            //                 <span>Сумма выплаты</span>
+            //                 <span>Чек</span>
+            //             </div>
+            //         </div>
+            //         <div class="settingBlock_body">
 
-                    </div> 
-                </div>
-            `);
+            //         </div> 
+            //     </div>
+            // `);
 
-            settingBlock.css("margin-top", "20px");
+            // settingBlock.css("margin-top", "20px");
 
             
-            for(var element of getPaysBusiness)
-            {
-                console.log(element);
+            // for(var element of getPaysBusiness)
+            // {
+            //     console.log(element);
 
-                var _status = "Прикрепить чек";
-                var _block;
+            //     var _status = "Прикрепить чек";
+            //     var _block;
 
-                if(element.status)
-                {
-                    _status = "Оплачено";
-                    _block = `<span data="call" data-target="${element.status.recipient}">${_status}</span>`;
-                }
-                else {
-                    _block = `
-                    <label for="${element.Inv._id}">
-                        <span>${_status}</span>
-                    </label>
-                `;
-                }
+            //     if(element.status)
+            //     {
+            //         _status = "Оплачено";
+            //         _block = `<span data="call" data-target="${element.status.recipient}">${_status}</span>`;
+            //     }
+            //     else {
+            //         _block = `
+            //         <label for="${element.Inv._id}">
+            //             <span>${_status}</span>
+            //         </label>
+            //     `;
+            //     }
 
-                var template_text = $(`
-                    <div class="settingBlock_body_line">
-                        <input type="file" name="" id='${element.Inv._id}'>
-                        <span>${element.Inv.invester}</span>
-                        <span>${element.pay}</span>
-                        <span>${element.needPay}</span>
-                        ${_block}
-                    </div>
-                `);
+            //     var template_text = $(`
+            //         <div class="settingBlock_body_line">
+            //             <input type="file" name="" id='${element.Inv._id}'>
+            //             <span>${element.Inv.invester}</span>
+            //             <span>${element.pay}</span>
+            //             <span>${element.needPay}</span>
+            //             ${_block}
+            //         </div>
+            //     `);
 
-                template_text.find('span[data="call"]').click( function () {
-                    location.href = `/projects/${_GET('id')}/${$(this).attr('data-target')}`;
-                })
+            //     template_text.find('span[data="call"]').click( function () {
+            //         location.href = `/projects/${_GET('id')}/${$(this).attr('data-target')}`;
+            //     })
 
-                template_text.find('input').css("display", "none");
+            //     template_text.find('input').css("display", "none");
 
-                // template_text.click( function() {
-                //     location.href = 'https://t.me/invester_official/64';
-                // })
+            //     // template_text.click( function() {
+            //     //     location.href = 'https://t.me/invester_official/64';
+            //     // })
 
-                template_text.find('input[type=file]').change( async function() 
-                {
-                    var _form    = new FormData();
+            //     template_text.find('input[type=file]').change( async function() 
+            //     {
+            //         var _form    = new FormData();
             
-                    _form.append('file_id', $(this).attr('id'));
-                    _form.append('_project', _GET('id'));
-                    _form.append('_pts', $(this.files)[0].type);
-                    _form.append('files', $(this.files)[0]);
+            //         _form.append('file_id', $(this).attr('id'));
+            //         _form.append('_project', _GET('id'));
+            //         _form.append('_pts', $(this.files)[0].type);
+            //         _form.append('files', $(this.files)[0]);
 
-                    var _url = `${getURL()}/file_chart_more.io/files`;
+            //         var _url = `${getURL()}/file_chart_more.io/files`;
 
-                    axios.post(_url, _form, {
-                        headers: {
-                            'Content-Type': 'multipart/form-data'
-                        },
-                    }).then(data => {
-                        if(data.data.status == "ok") {
-                            alert("Чек прикоеплен!");
-                            location.reload();
-                        }
-                    });
+            //         axios.post(_url, _form, {
+            //             headers: {
+            //                 'Content-Type': 'multipart/form-data'
+            //             },
+            //         }).then(data => {
+            //             if(data.data.status == "ok") {
+            //                 alert("Чек прикоеплен!");
+            //                 location.reload();
+            //             }
+            //         });
 
                    
-                });
+            //     });
 
-                settingBlock.find('.settingBlock_body').append(template_text);
-            }
+            //     settingBlock.find('.settingBlock_body').append(template_text);
+            // }
 
-            $('.index_page_body_data').append(settingBlock);
+            // $('.index_page_body_data').append(settingBlock);
         }
     }
 

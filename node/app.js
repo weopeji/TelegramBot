@@ -510,6 +510,7 @@ app.post('/file_cheack_get.io/files', (req, res) => {
                     var _arrayData = _User.investor_data;
                 
                     _arrayData.document = `file_cheack_get_${_User.user}.${_data._pts}`;
+                    _arrayData.pay = _data._pay;
                 
                     await InvDoc.create({
                         projectId: _User.putProject,

@@ -149,6 +149,7 @@
                 _form.append('_User', _GET('user'));
                 _form.append('_id', _this.project._id);
                 _form.append('_pts', extension);
+                _form.append('_pay', _this.money);
                 
                 var _url = `${getURL()}/file_cheack_get.io/files`;
 
