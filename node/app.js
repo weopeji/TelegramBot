@@ -470,6 +470,73 @@ app.post('/file_urist.io/files', (req, res) => {
     form.parse(req);
 });
 
+app.post('/file_cheack_get.io/files', (req, res) => {
+
+    var form    = new multiparty.Form({
+        maxFilesSize: 2 * 1024 * 1024 * 1024 
+    });
+
+    var _data   = {};
+
+    form.on('error', function(err) {
+        console.log('Error parsing form: ' + err.stack);
+    });
+
+    form.on('file', (name, file) => 
+    {
+        _data.path = file.path;
+    });
+
+    form.on('field', (name, value) => 
+    {
+        _data[name] = value;
+    });
+
+    var cheack_file = (_path) => 
+    {
+        try {
+            if (fs.existsSync(_path)) { 
+                console.log('Файл найден');
+                if(fs.existsSync(`/var/www/projects/${_data._id}/file_cheack_get_${_User.user}.${_data._pts}`)) {
+                    fs.unlinkSync(`/var/www/projects/${_data._id}/file_cheack_get_${_User.user}.${_data._pts}`);
+                }
+                fs.rename(_data.path, `/var/www/projects/${_data._id}/file_cheack_get_${_User.user}.${_data._pts}`, async function (err) {
+                    if (err) throw err
+                    console.log('Successfully renamed - AKA moved!');
+                    
+                    var _User   = await User.findOne({_id: _data._User});
+                    var _arrayData = _User.investor_data;
+                
+                    _arrayData.document = `file_cheack_get_${_User.user}.${_data._pts}`;
+                
+                    await InvDoc.create({
+                        projectId: _User.putProject,
+                        invester: _User.user,
+                        status: "wait",
+                        data: _arrayData,
+                        receipt: null,
+                        pays: null,
+                    });
+                
+                });
+            } else {
+                console.log('Файл не найден');
+                cheack_file();
+            }
+        } catch(err) {
+            console.error(err)
+        }
+    }
+
+    form.on('close', function() 
+    {
+        console.log('Upload completed!');
+        cheack_file(_data.path);
+    });
+
+    form.parse(req);
+});
+
 app.post('/file_registration.io/files', (req, res) => {
 
     var form    = new multiparty.Form({

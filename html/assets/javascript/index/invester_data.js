@@ -127,6 +127,43 @@
                 _block.find('input').click();
             })
 
+            var _this = this;
+
+            _block.find('input[type=file]').change( async function() 
+            {
+                await callApi({
+                    methodName: "setInvesterDataProjectForInvesterPage",
+                    data: {
+                        user:  _GET('user'),
+                        data: _this.inv,
+                    },
+                });
+
+                var filename = $(this.files)[0].name;
+                var aux = filename.split('.');
+                var extension = aux[aux.length -1].toUpperCase();
+
+                var _form    = new FormData();
+
+                _form.append('files', $(this.files)[0]);
+                _form.append('_User', _GET('user'));
+                _form.append('_id', _this.project._id);
+                _form.append('_pts', extension);
+                
+                var _url = `${getURL()}/file_cheack_get.io/files`;
+
+                var _file = _form;
+    
+                axios.post(_url, _file, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                });
+
+                alert('Успешно!');
+                location.href = `https://t.me/invester_official_bot?start=project_${_this.project._id}`; 
+            });
+
             $('.creating_page').append(msgsBlock);
             $('.creating_page').append(_block);
         }
