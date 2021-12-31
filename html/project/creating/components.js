@@ -1081,7 +1081,7 @@
                         <div class="_showerBlock">
                             <div class="_showerBlock_row">
                                 <span>${data.shower}</span>
-                                <i class="fal fa-arrow-alt-circle-right"></i>
+                                <i class="fal fa-chevron-right"></i>
                             </div>
                         </div>
                     `);
