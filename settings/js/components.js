@@ -1406,7 +1406,7 @@
                     <div class="body_point_line_block_more">
                         <div class="body_point_line body_point_line_first" data="commission">
                             <span>Комиссия от привлеченных средств:</span>
-                            <p>25</p>
+                            <p>${_project.payersData.commission}</p>
                         </div>
                         <div class="body_point_line body_point_line_input" data="commission">
                             <textarea rows="1" id="investings_pay_textarea" class="text_area"></textarea>
@@ -1421,7 +1421,7 @@
                     <div class="body_point_line_block_more">
                         <div class="body_point_line body_point_line_first" data="company_commission">
                             <span>Процент доли компании:</span>
-                            <p>5</p>
+                            <p>${_project.payersData.company_commission}</p>
                         </div>
                         <div class="body_point_line body_point_line_input" data="company_commission">
                             <textarea rows="1" id="investings_pay_textarea" class="text_area"></textarea>
@@ -1436,7 +1436,7 @@
                     <div class="body_point_line_block_more">
                         <div class="body_point_line body_point_line_first" data="attraction_commission">
                             <span>Процент Отчисления за привлечение:</span>
-                            <p>50</p>
+                            <p>${_project.payersData.attraction_commission}</p>
                         </div>
                         <div class="body_point_line body_point_line_input" data="attraction_commission">
                             <textarea rows="1" id="investings_pay_textarea" class="text_area"></textarea>
@@ -1451,7 +1451,7 @@
                     <div class="body_point_line_block_more">
                         <div class="body_point_line body_point_line_first" data="investors_commission">
                             <span>За привлечение инвесторов:</span>
-                            <p>70</p>
+                            <p>${_project.payersData.investors_commission}</p>
                         </div>
                         <div class="body_point_line body_point_line_input" data="investors_commission">
                             <textarea rows="1" id="investings_pay_textarea" class="text_area"></textarea>
@@ -1466,7 +1466,7 @@
                     <div class="body_point_line_block_more">
                         <div class="body_point_line body_point_line_first" data="business_commission">
                             <span>За привлечение бизнеса:</span>
-                            <p>30</p>
+                            <p>${_project.payersData.business_commission}</p>
                         </div>
                         <div class="body_point_line body_point_line_input" data="business_commission">
                             <textarea rows="1" id="investings_pay_textarea" class="text_area"></textarea>
