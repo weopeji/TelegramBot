@@ -125,10 +125,12 @@
                 </div>
             `);
 
+            var _this = this;
+
             _block.find('.creating_page_input_button span').click( function() {
                 var money = $('.creating_page_input span').text();
 
-                if(money < this.project.data.minimal_amount.trim())
+                if(money < _this.project.data.minimal_amount.trim())
                 {
                     alert('Сумма недостаточна!');
                 }
@@ -294,10 +296,13 @@
                 };
         
                 $('.creating_page_input').children().each((i, element) => {
-                    _array.data.push({
-                        _id: $(element).attr('data'),
-                        data: $(element).find('span').text(),
-                    });
+                    if(typeof $(element).attr('data') != 'undefined')
+                    {
+                        _array.data.push({
+                            _id: $(element).attr('data'),
+                            data: $(element).find('span').text(),
+                        });
+                    }
                 });
 
                 _this.renderOldBlock(_array);
