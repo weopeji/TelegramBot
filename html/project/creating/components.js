@@ -948,7 +948,7 @@
                 if(typeof data.readonly != "undefined") 
                 {
                     _line.find(`#${data._id}`).attr("readonly", "readonly");
-                    $_line.find(`#${data._id}`).parent().find('.body_point_line_header_info').remove();
+                    _line.find(`#${data._id}`).parent().find('.body_point_line_header_info').remove();
                 }
 
                 return _line;
