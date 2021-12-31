@@ -22,22 +22,17 @@ module.exports = {
     startInvestingMsg,
     recomendations,
     actionWhere,
-    startInvestingMsgSecond,
     startInvestingMsgOld,
-    investing_money,
-    save_investing,
     inProcess,
     statusProjects,
     payerBonus,
     myPeoples,
     active_statistik,
     active_projects_stat,
-    document_load,
     payerInBissness,
     payerInBissnessDocument,
     drafts,
     drafts_block,
-    payerInvester,
 }
 
 async function drafts_block(msg) 
@@ -429,122 +424,122 @@ async function recomendations(msg)
     await h.DMA(msg, _array);
 }
 
-var buttons3 = [
-    {
-        name: "Фио полностью",
-        id: "fio_fiz",
-    },
-    {
-        name: "Номер паспорта",
-        id: "passport_number",
-    },
-    {
-        name: "Серия паспорта",
-        id: "passport_number",
-    },
-    {
-        name: "Кем выдан",
-        id: "passport_number",
-    },
-    {
-        name: "Прописка",
-        id: "passport_number",
-    },
-    {
-        name: "Банк получателя",
-        id: "bank",
-    },
-    {
-        name: "БИК",
-        id: "bik",
-    },
-    {
-        name: "Номер расчетного счета",
-        id: "nomer",
-    },
-    {
-        name: "Номер корреспондентского  счета",
-        id: "nomer_kor",
-    },
-]
+// var buttons3 = [
+//     {
+//         name: "Фио полностью",
+//         id: "fio_fiz",
+//     },
+//     {
+//         name: "Номер паспорта",
+//         id: "passport_number",
+//     },
+//     {
+//         name: "Серия паспорта",
+//         id: "passport_number",
+//     },
+//     {
+//         name: "Кем выдан",
+//         id: "passport_number",
+//     },
+//     {
+//         name: "Прописка",
+//         id: "passport_number",
+//     },
+//     {
+//         name: "Банк получателя",
+//         id: "bank",
+//     },
+//     {
+//         name: "БИК",
+//         id: "bik",
+//     },
+//     {
+//         name: "Номер расчетного счета",
+//         id: "nomer",
+//     },
+//     {
+//         name: "Номер корреспондентского  счета",
+//         id: "nomer_kor",
+//     },
+// ]
 
-var buttons2 = [
-    {
-        name: "ИНН",
-        id: "inn",
-    },
-    {
-        name: "КПП",
-        id: "kpp",
-    },
-    {
-        name: "ОГРН",
-        id: "ogrn",
-    },
-    {
-        name: "Должность",
-        id: "dolgnost",
-    },
-    {
-        name: "ФИО должностного лица",
-        id: "dolgnost_fio",
-    },
-    {
-        name: "Юридический адрес",
-        id: "addr_qr",
-    },
-    {
-        name: "Банк получателя",
-        id: "bank",
-    },
-    {
-        name: "БИК",
-        id: "bik",
-    },
-    {
-        name: "Номер расчетного счета",
-        id: "nomer",
-    },
-    {
-        name: "Номер корреспондентского  счета",
-        id: "nomer_kor",
-    },
-]
+// var buttons2 = [
+//     {
+//         name: "ИНН",
+//         id: "inn",
+//     },
+//     {
+//         name: "КПП",
+//         id: "kpp",
+//     },
+//     {
+//         name: "ОГРН",
+//         id: "ogrn",
+//     },
+//     {
+//         name: "Должность",
+//         id: "dolgnost",
+//     },
+//     {
+//         name: "ФИО должностного лица",
+//         id: "dolgnost_fio",
+//     },
+//     {
+//         name: "Юридический адрес",
+//         id: "addr_qr",
+//     },
+//     {
+//         name: "Банк получателя",
+//         id: "bank",
+//     },
+//     {
+//         name: "БИК",
+//         id: "bik",
+//     },
+//     {
+//         name: "Номер расчетного счета",
+//         id: "nomer",
+//     },
+//     {
+//         name: "Номер корреспондентского  счета",
+//         id: "nomer_kor",
+//     },
+// ]
 
-var buttons = [
-    {
-        name: "ФИО",
-        id: "fio",
-    },
-    {
-        name: "ИНН",
-        id: "inn",
-    },
-    {
-        name: "ОГРНИП",
-        id: "ogrnip",
-    },
-    {
-        name: "адрес",
-        id: "addr",
-    },
-    {
-        name: "Банк получателя",
-        id: "bank",
-    },
-    {
-        name: "БИК",
-        id: "bik",
-    },
-    {
-        name: "Номер расчетного счета",
-        id: "nomer",
-    },
-    {
-        name: "Номер корреспондентского  счета",
-        id: "nomer_kor",
-    },
-];
+// var buttons = [
+//     {
+//         name: "ФИО",
+//         id: "fio",
+//     },
+//     {
+//         name: "ИНН",
+//         id: "inn",
+//     },
+//     {
+//         name: "ОГРНИП",
+//         id: "ogrnip",
+//     },
+//     {
+//         name: "адрес",
+//         id: "addr",
+//     },
+//     {
+//         name: "Банк получателя",
+//         id: "bank",
+//     },
+//     {
+//         name: "БИК",
+//         id: "bik",
+//     },
+//     {
+//         name: "Номер расчетного счета",
+//         id: "nomer",
+//     },
+//     {
+//         name: "Номер корреспондентского  счета",
+//         id: "nomer_kor",
+//     },
+// ];
 
 var buttons_2 = [
     {
@@ -566,167 +561,11 @@ async function actionWhere(msg)
     var _User       = await User.findOne({user: msg.from.id});
     var _Project    = await Project.findOne({_id: _User.putProject});
     var _array = _User.investor_data;
-    if(!_array) _array = {};
-
-    var _dataFuns = {
-        "1": {
-            "1": async function() 
-            {
-                _array.type = msg.text;
-                await User.findOneAndUpdate({user: msg.from.id}, {investor_data: _array});
-                startInvestingMsg(msg, 1, null, 2);
-            },
-            "2": async function() 
-            {
-                var _Where = _User.where;
-                _Where.page.button = _Where.page.button + 1;
-                _array[_User.where.type_more] = msg.text;
-                await User.findOneAndUpdate({user: msg.from.id}, {investor_data: _array, where: _Where});
-                startInvestingMsgSecond(msg, null, _User.where.page.button);
-            },
-            "3": async function() 
-            {
-                _array[buttons_2[_User.where.page.button].id] = msg.text;
-                await User.findOneAndUpdate({user: msg.from.id}, {investor_data: _array});
-                startInvestingMsgOld(msg, _User.where.page.button);
-            },
-            "4": async function() 
-            {
-                if(msg.text < _Project.data.minimal_amount)
-                {
-                    var _arrayA = [];
-                    var html = `Указанная сумма меньше минимального входа`;
-                    var fat = await h.send_html(msg.chat.id, html);
-                    _arrayA.push(fat.message_id);
-                    h.MA(msg, _arrayA);
-                } else {
-                    _array.pay = msg.text;
-                    await User.findOneAndUpdate({user: msg.from.id}, {investor_data: _array});
-                    investing_money(msg);
-                }
-            }
-        },
-    }
-
-    _dataFuns[_User.where.page.global][_User.where.page.more]();
+    if(!_array) _array = {};  
+    _array[buttons_2[_User.where.page.button].id] = msg.text;
+    await User.findOneAndUpdate({user: msg.from.id}, {investor_data: _array});
+    startInvestingMsgOld(msg, _User.where.page.button);
 }
-
-// async function startInvestingMsgSecond(msg, html, button)
-// {
-//     var _array      = [];
-//     var _User       = await User.findOne({user: msg.from.id});
-
-//     await bot.deleteMessage(msg.from.id, _User.where.msg); 
-
-//     if(html) {
-//         var fat = await h.send_html(msg.chat.id, html, {
-//             "resize_keyboard": true,
-//             "keyboard": [ 
-//                 ["⬅️ Назад"]
-//             ],
-//         });
-//         _array.push(fat.message_id);
-//     }
-
-//     var _buttons;
-
-//     var types = 
-//     {
-//         "ИП": async function() 
-//         {
-//             _buttons = buttons;
-//         },
-//         "Юр.лицо": async function() 
-//         {
-//             _buttons = buttons2;
-//         },
-//         "Физ.лицо": async function() 
-//         {
-//             _buttons = buttons3;
-//         },
-//     }
-
-//     types[_User.investor_data.type]();
-
-//     var _where          = _User.where;
-//     _where.page.more    = 2;
-
-//     if(typeof _where.page.button != 'number' && typeof _where.page.button != "string")
-//     {
-//         _where.page.button = 0
-//     } else {
-//         var _data = null;
-
-//         if(button || button == 0) {
-//             _data = button;
-//         } else {
-//             _data = h._GET(msg.data, "data");
-//         }
-
-//         _data = Number(_data);
-
-//         console.log(_data);
-        
-//         if(_data < 0) {
-//             _data = 0;
-//         }
-//         if(_data >= _buttons.length) {
-//             _data = _buttons.length - 1;
-//         }
-//         _where.page.button = _data;
-//     }
-
-//     var html   = `Для <strong>${_User.investor_data.type}</strong> нужно заполнить данные:\n\n`;
-
-//     var need_button = _where.page.button;
-
-//     _buttons.forEach((element, i) => 
-//     {
-//         var strong          = '';
-//         var strong_second   = '';
-//         var dataBlock       = '[Не задано]';
-//         var smile           = '❌';
-
-//         if(i == need_button) {
-//             strong          = '<strong>*';
-//             strong_second   = '*</strong>\n';
-//         }
-
-//         if(_User.investor_data[element.id]) {
-//             dataBlock = _User.investor_data[element.id];
-//             smile = '✅';
-//         }
-        
-//         html = html + `${smile} ${strong} ${element.name}:   ${dataBlock} ${strong_second}\n`;
-//     })
-
-//     var fat = await h.send_html(msg.from.id, html, {
-//         "inline_keyboard": [
-//             [
-//                 {
-//                     text: '⬇️',
-//                     callback_data: `place=investing&type=button&data=${need_button + 1}`,
-//                 },
-//                 {
-//                     text: '⬆️',
-//                     callback_data: `place=investing&type=button&data=${need_button - 1}`,
-//                 },
-//                 {
-//                     text: '➡️',
-//                     callback_data: `place=contact`,
-//                 }
-//             ]
-//         ],
-//     });
-//     _array.push(fat.message_id);
-
-//     _where.msg = fat.message_id;
-//     _where.type_more = _buttons[need_button].id;
-
-//     await User.findOneAndUpdate({user: msg.from.id}, {where: _where})
-
-//     await h.MA(msg, _array);
-// }
 
 async function startInvestingMsgOld(msg, button) 
 {
@@ -816,240 +655,6 @@ async function startInvestingMsgOld(msg, button)
 
     await h.MA(msg, _array);
 }
-
-// async function payerInvester(msg) 
-// {
-//     var _User       = await User.findOne({user: msg.from.id});
-//     var _Project    = await Project.findOne({_id: _User.putProject});
-//     var _array      = [];
-
-//     var html = `<strong>2.оплатить</strong>\n\nЗдесь вам необходимо произвести оплату инвестиций согласно банковским реквизитам, будьте очень внимательны и проверяйте несколько раз вводимые вами данные.\n\n`;
-//     html = html + `Банк-получатель: ${_Project.data.bank}\n`;
-//     html = html + `Корр. счёт: ${_Project.data.account_correct}\n`;
-//     html = html + `БИК: ${_Project.data.bik}\n`;
-//     html = html + `Получатель: ${_Project.data.recipient}\n`;
-//     html = html + `Счёт получателя: ${_Project.data.account_get}\n`;
-//     html = html + `ИНН: ${_Project.data.inn}\n`;
-//     html = html + `КПП: ${_Project.data.kpp}\n`;
-
-//     var fat = await h.send_html(msg.from.id, html, {
-//         "resize_keyboard": true,
-//         "keyboard": [
-//             ["Оплатил", "⬅️ Назад"]
-//         ],
-//     });
-//     _array.push(fat.message_id);
-
-//     await h.DMA(msg, _array);
-// }
-
-// async function document_load(msg) 
-// {
-//     var _User   = await User.findOne({user: msg.from.id});
-
-//     if(msg.document) 
-//     {
-//         var _file       = await bot.getFile(msg.document.file_id);
-//         var file_url    = `https://api.telegram.org/file/bot${config.token}/${_file.file_path}`;
-//         const file      = fs.createWriteStream(`../projects/${_User._id}.${file_url.split('.').pop()}`);
-//         const request = https.get(file_url, async function(response) 
-//         {
-//             response.pipe(file);
-
-//             var _arrayData = _User.investor_data;
-//             _arrayData.document = _User._id + "." + file_url.split('.').pop();
-
-//             await InvDoc.create({
-//                 projectId: _User.putProject,
-//                 invester: msg.from.id,
-//                 status: "wait",
-//                 data: _arrayData,
-//                 receipt: null,
-//                 pays: null,
-//             });
-
-//             _arrayData.document = null;
-
-//             await User.findOneAndUpdate({user: msg.from.id}, {investor_data: _arrayData});
-
-//             payerInvester(msg);
-//         });
-//     }
-// }
-
-// async function save_investing(msg) {
-
-//     var _array      = [];
-//     var _User       = await User.findOne({user: msg.from.id});
-
-    
-//     var html = `Вы должны ознакомится с договором, подписать его и отправить ответным сообщением в бот!`;
-
-//     var fat = await h.send_html(msg.from.id, html, {
-//         "resize_keyboard": true,
-//         "keyboard": [ 
-//             ["⬅️ Назад"]
-//         ],
-//     });
-//     _array.push(fat.message_id);
-
-//     var _urlImgProject = `${h.getURL()}html/project/document/#${_User.putProject}`;
-//     const browser = await puppeteer.launch({
-//         args: ['--no-sandbox', '--disable-setuid-sandbox'],
-//     });
-//     const page = await browser.newPage();
-//     await page.goto(_urlImgProject);
-//     await page.emulateMedia('screen');
-//     await page.waitForSelector('.all_good');
-//     await page.pdf({path: `../projects/${_User.putProject}/pdf_document.pdf`, format: 'a4'});
-//     await browser.close();
-
-//     const stream = fs.createReadStream(`../projects/${_User.putProject}/pdf_document.pdf`);
-//     var fat = await bot.sendDocument(msg.from.id, stream, {
-//         reply_markup: {
-//             "inline_keyboard": [
-//                 [
-//                     {
-//                         text: 'Подписать факсимильно',
-//                         url: `https://invester-relocation.site/?user=${_User._id}&page=signature&id=${_User.putProject}`,
-//                     }
-//                 ]
-//             ],
-//         },
-//     });
-//     _array.push(fat.message_id);
-
-//     await h.DMA(msg, _array);
-
-//     await User.findOneAndUpdate({user: msg.from.id}, {where: {
-//         type: "document_load",
-//     }})
-// }
-
-// async function investing_money(msg) 
-// {
-//     var _array      = [];
-//     var _User       = await User.findOne({user: msg.from.id});
-//     var _Project    = await Project.findOne({_id: _User.putProject})
-
-//     await bot.deleteMessage(msg.from.id, _User.where.msg); 
-
-//     var _where          = _User.where;
-
-//     _where.page.more    = 4;
-
-//     var html   = `Введите сумму инвестирования:\n\nМинимальная сумма входа от ${_Project.data.minimal_amount} руб\n\n`;
-
-//     if(_User.investor_data.pay) {
-//         html = html + `✅ Выбранна сумма: ${_User.investor_data.pay} руб`;
-//     }
-
-//     var keyboard = [
-//         {
-//             text: '⬅️',
-//             callback_data: `place=contact&type=button&data=0`,
-//         }
-//     ]
-
-//     var cheackAndStartButton = 
-//     {
-//         "ИП": async function() 
-//         {
-//             var error = false;
-
-//             buttons.forEach(element => {
-//                 if(!_User.investor_data[element.id])
-//                 {
-//                     error = true;
-//                 }
-//             })
-
-//             buttons_2.forEach(element => {
-//                 if(!_User.investor_data[element.id])
-//                 {
-//                     error = true;
-//                 }
-//             })
-
-//             if(!_User.investor_data.pay) {
-//                 error = true;
-//             }
-
-//             return error;
-//         },
-//         "Юр.лицо": async function() 
-//         {
-//             var error = false;
-
-//             buttons2.forEach(element => {
-//                 if(!_User.investor_data[element.id])
-//                 {
-//                     error = true;
-//                 }
-//             })
-
-//             buttons_2.forEach(element => {
-//                 if(!_User.investor_data[element.id])
-//                 {
-//                     error = true;
-//                 }
-//             })
-
-//             if(!_User.investor_data.pay) {
-//                 error = true;
-//             }
-
-//             return error;
-//         },
-//         "Физ.лицо": async function() 
-//         {
-//             var error = false;
-
-//             buttons3.forEach(element => {
-//                 if(!_User.investor_data[element.id])
-//                 {
-//                     error = true;
-//                 }
-//             })
-
-//             buttons_2.forEach(element => {
-//                 if(!_User.investor_data[element.id])
-//                 {
-//                     error = true;
-//                 }
-//             })
-
-//             if(!_User.investor_data.pay) {
-//                 error = true;
-//             }
-
-//             return error;
-//         },
-//     }
-
-//     var errorKeyboard = await cheackAndStartButton[_User.investor_data.type]();
-
-//     if(!errorKeyboard) {
-//         keyboard.push( 
-//         {
-//             text: '✅ Сохранить',
-//             callback_data: `place=save_investing`,
-//         })
-//     }
-
-//     var fat = await h.send_html(msg.from.id, html, {
-//         "inline_keyboard": [
-//             keyboard
-//         ],
-//     });
-//     _array.push(fat.message_id);
-
-//     _where.msg = fat.message_id;
-
-//     await User.findOneAndUpdate({user: msg.from.id}, {where: _where})
-
-//     await h.MA(msg, _array);
-// }
 
 async function startInvestingMsg(msg, num, array, more, project)
 {
