@@ -33,89 +33,83 @@ const MF =
     find_user: function(msg) {
         return User.findOne({user: msg.from.id});
     },
-    create_user: async function(msg) 
+    create_user: async function(msg, callback) 
     {
-        return new Promise(async (resolve,reject) =>
+        var _patch = `../users/${msg.from.id}`;
+        async function _start() 
         {
-            var _patch = `../users/${msg.from.id}`;
+            var _path_profile = `../users_profile/${msg.from.id}`;
 
-            async function _start() 
+            async function _start_profil() 
             {
-                var _path_profile = `../users_profile/${msg.from.id}`;
+                var user_profile    = await bot.getUserProfilePhotos(msg.from.id);
+                var file_id         = null;
+                var file            = null;
+                var file_path       = null;
+                var photo_url       = null;
+                var name_photo      = null;
 
-                async function _start_profil() 
-                {
-                    var user_profile    = await bot.getUserProfilePhotos(msg.from.id);
-                    var file_id         = null;
-                    var file            = null;
-                    var file_path       = null;
-                    var photo_url       = null;
-                    var name_photo      = null;
-
-                    // if(typeof user_profile.photos[0] != 'undefined') {
-                    //     file_id = user_profile.photos[0][0].file_id;
-                    //     file            = await bot.getFile(file_id);
-                    //     file_path       = file.file_path;
-                    //     photo_url       = `https://api.telegram.org/file/bot${config.token}/${file_path}`;
-                    //     name_photo      = `avatar-${file_path.split('/')[1]}`;
-                    //     const _file      = fs.createWriteStream(`../users_profile/${msg.from.id}/${name_photo}`);
-                    //     const request   = https.get(photo_url, async function(response) {
-                    //         response.pipe(_file);
-            
-                    //         return User.create({
-                    //             user: msg.from.id, 
-                    //             first_name: msg.from.first_name, 
-                    //             last_name: msg.from.last_name,
-                    //             username: msg.from.username,
-                    //             language_code: msg.from.language_code,
-                    //             is_bot: msg.from.is_bot,
-                    //             type: null,
-                    //             img: name_photo,
-                    //             googleAuth: null,
-                    //             alerts: null,
-                    //         });
-                    //     });
-                    // } else {
-                    return User.create({
-                        user: msg.from.id, 
-                        first_name: msg.from.first_name, 
-                        last_name: msg.from.last_name,
-                        username: msg.from.username,
-                        language_code: msg.from.language_code,
-                        is_bot: msg.from.is_bot,
-                        type: null,
-                        img: null,
-                        googleAuth: null,
-                        alerts: null,
-                        investor_data: null,
-                        where: null,
-                    });
-                    // }
-
-                    resolve();
+                // if(typeof user_profile.photos[0] != 'undefined') {
+                //     file_id = user_profile.photos[0][0].file_id;
+                //     file            = await bot.getFile(file_id);
+                //     file_path       = file.file_path;
+                //     photo_url       = `https://api.telegram.org/file/bot${config.token}/${file_path}`;
+                //     name_photo      = `avatar-${file_path.split('/')[1]}`;
+                //     const _file      = fs.createWriteStream(`../users_profile/${msg.from.id}/${name_photo}`);
+                //     const request   = https.get(photo_url, async function(response) {
+                //         response.pipe(_file);
         
-                }
-
-                fs.stat(_path_profile, async function(err) {
-                    if (!err) {_start_profil();}
-                    else if (err.code === 'ENOENT') {
-                        await fs.mkdir(_path_profile, function() {
-                            _start_profil();
-                        });
-                    }
-                })
+                //         return User.create({
+                //             user: msg.from.id, 
+                //             first_name: msg.from.first_name, 
+                //             last_name: msg.from.last_name,
+                //             username: msg.from.username,
+                //             language_code: msg.from.language_code,
+                //             is_bot: msg.from.is_bot,
+                //             type: null,
+                //             img: name_photo,
+                //             googleAuth: null,
+                //             alerts: null,
+                //         });
+                //     });
+                // } else {
+                await User.create({
+                    user: msg.from.id, 
+                    first_name: msg.from.first_name, 
+                    last_name: msg.from.last_name,
+                    username: msg.from.username,
+                    language_code: msg.from.language_code,
+                    is_bot: msg.from.is_bot,
+                    type: null,
+                    img: null,
+                    googleAuth: null,
+                    alerts: null,
+                    investor_data: null,
+                    where: null,
+                });
+                // }
+                if(callback) {callback();};    
             }
 
-            fs.stat(_patch, async function(err) {
-                if (!err) {
-                    _start();
-                }
+            fs.stat(_path_profile, async function(err) {
+                if (!err) {_start_profil();}
                 else if (err.code === 'ENOENT') {
-                    await fs.mkdir(_patch, function() {
-                        _start();
+                    await fs.mkdir(_path_profile, function() {
+                        _start_profil();
                     });
                 }
-            });
+            })
+        }
+
+        fs.stat(_patch, async function(err) {
+            if (!err) {
+                _start();
+            }
+            else if (err.code === 'ENOENT') {
+                await fs.mkdir(_patch, function() {
+                    _start();
+                });
+            }
         });
     },
     Update_Type: function(msg, data) {
@@ -125,7 +119,12 @@ const MF =
 
 async function onlyCreate(msg)
 {
-    return await MF.create_user(msg);
+    return new Promise(async (resolve,reject) =>
+    {
+        MF.create_user(msg, function() {
+            resolve();
+        })
+    })
 }
 
 async function help_user(msg) 
