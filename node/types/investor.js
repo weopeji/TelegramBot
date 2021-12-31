@@ -450,6 +450,11 @@ async function actionWhere(msg)
             _User.investor_data.watsapp &&
             _User.investor_data.mail
         ) {
+            await User.findOneAndUpdate({user: msg.from.id}, {first_parse: {
+                phone: _User.investor_data.phone,
+                watsapp: _User.investor_data.watsapp,
+                mail: _User.investor_data.mail,
+            }, investor_data: null});
             goInvesting(msg);
         };
     } else {
