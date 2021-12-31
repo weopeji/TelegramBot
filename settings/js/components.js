@@ -1617,6 +1617,11 @@
                 </div>
             `);
 
+            if(typeof _project.multiplicity != 'undefined')
+            {
+                firstBlockMore.find('.body_point_line_first p').html(_project.multiplicity);
+            }
+
             firstBlockMore.css("padding-bottom", "20px");
 
             firstBlockMore.find('.body_point_line_first').click( function () {
