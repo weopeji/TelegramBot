@@ -60,17 +60,17 @@
             $('.cover_block_liner').remove();
             $('.cover_block').css({
                 "padding-bottom": "10px",
-                "width": "600px",
-                "height": "800px",
+                "width": "1080px",
+                "height": "1350px",
             });
             $('.cover_block_logo').css('width', "50%");
             $('.cover_block h1').css({
-                "font-size": "30px",
+                "font-size": "65px",
             })
-            $('.cover_block p').css("font-size", "20px");
-            $('.cover_block_centr_inter span').css("font-size", "25px");
-            $('.cover_block_centr_inter p').css("font-size", "23px");
-            $('.cover_block_body_line').css("font-size", "25px");
+            $('.cover_block p').css("font-size", "42px");
+            $('.cover_block_centr_inter span').css("font-size", "50px");
+            $('.cover_block_centr_inter p').css("font-size", "42px");
+            $('.cover_block_body_line').css("font-size", "48px");
             $('.cover_block_body_line').css("padding", "24px 0");
         }
 
