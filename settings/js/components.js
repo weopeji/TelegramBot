@@ -201,12 +201,18 @@
 
             if(_project.signature_document)
             {
-                _status = "Получена подпись бизнеса";
+                if(_project.signature.status == "wait")
+                {
+                    _status = "Запрошена подпись бизнеса";
+                } else
+                {
+                    _status = "Получена подпись бизнеса";
+                }
             }
 
             if(_project.type == "correction") 
             {
-                header_info.find('.global_block_header_status span').css('background-color', "#500907");
+                header_info.find('.global_block_header_status span').css('background', "#500907");
             }
 
             header_info.find('.global_block_header_status span').html(_status);
