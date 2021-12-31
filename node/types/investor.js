@@ -569,14 +569,9 @@ async function actionWhere(msg)
 
 async function startInvestingMsgOld(msg, button) 
 {
-    var _array      = [];
-    var _User       = await User.findOne({user: msg.from.id});
-
-    await bot.deleteMessage(msg.from.id, _User.where.msg); 
-
+    var _array          = [];
+    var _User           = await User.findOne({user: msg.from.id});
     var _where          = _User.where;
-
-    _where.page.more    = 3;
 
     if(typeof _where.page.button != 'number' && typeof _where.page.button != "string")
     {
@@ -601,7 +596,9 @@ async function startInvestingMsgOld(msg, button)
         _where.page.button = _data;
     }
 
-    var html   = `Контактные данные:\n\n`;
+    var text1       = `Перед тем как использовать платформу вы должны\n\n`;
+    var text2       = `<strong>Внести Контактные данные</strong>\n\n`;
+    var html        = text1 + text2;
 
     var need_button = _where.page.button;
 
@@ -658,26 +655,15 @@ async function startInvestingMsgOld(msg, button)
 
 async function startInvestingMsg(msg, num, array, more, project)
 {
-    var _array      = [];
-    if(array) _array = array;
-
-    var text1       = `Перед тем как использовать платформу вы должны\n\n`;
-    var text2       = `<strong>Внести данные</strong>\n\n`;
-    var text3       = `На этом этапе вам необходимо  ознакомится с договором и внести данные для договора. Заполните данные, выберите нужный пункт и введите значение\n\n`;
-    var html        = text1 + text2 + text3;
-
     await User.findOneAndUpdate({user: msg.from.id}, {where: {
         type: "investor",
         page: {
             global: 1,
-            more: 1,
         },
         project: project,
     }})
 
-    await h.MA(msg, _array);
-
-    startInvestingMsgOld(msg, html);
+    startInvestingMsgOld(msg, 1);
 }
 
 async function goInvesting(msg)
