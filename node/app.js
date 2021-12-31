@@ -494,6 +494,8 @@ app.post('/file_cheack_get.io/files', (req, res) => {
 
     var cheack_file = (_path) => 
     {
+        var _User   = await User.findOne({_id: _data._User});
+        
         try {
             if (fs.existsSync(_path)) { 
                 console.log('Файл найден');
@@ -504,7 +506,7 @@ app.post('/file_cheack_get.io/files', (req, res) => {
                     if (err) throw err
                     console.log('Successfully renamed - AKA moved!');
                     
-                    var _User   = await User.findOne({_id: _data._User});
+                    
                     var _arrayData = _User.investor_data;
                 
                     _arrayData.document = `file_cheack_get_${_User.user}.${_data._pts}`;
