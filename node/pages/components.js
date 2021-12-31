@@ -896,19 +896,19 @@ async function notAcceptInvesting(socket,data,callback)
     for (const value of _arrayProjects) {
         var InvDocs = await InvDoc.find({projectId: value});
         if(InvDocs.length > 0) {
-            InvDocs.forEach(element => {
-                allInv.push(element);
-            })
+            allInv.push(InvDocs);
         }
     }
 
-    console.log(allInv);
+    allInv.forEach(el => {
+        el.forEach(el2 => {
+            _arrayAllInvs.push(el2);
+        })
+    });
 
     _arrayAllInvs.forEach(element => {
-        if(element.receipt) {
-            if(element.status == "wait") {
-                trueInvs.push(element);
-            }
+        if(element.status == "wait") {
+            trueInvs.push(element);
         }
     });
 

@@ -1124,11 +1124,11 @@
                     <div class="index_page_menu_block_line" data="acceptPays">
                         <i class="fal fa-check-square"></i>
                         <span>Получение</span>
-                    </div>
+                    </div> <!--
                     <div class="index_page_menu_block_line" data="pay_investors">
                         <i class="fal fa-money-check-alt"></i>
                         <span>Не выплачено</span>
-                    </div>
+                    </div> -->
                     <div class="index_page_menu_block_line" data="activ_projects">
                         <i class="fal fa-chart-line"></i>
                         <span>История</span>
