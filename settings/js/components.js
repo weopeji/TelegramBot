@@ -206,7 +206,7 @@
 
             if(_project.type == "correction") 
             {
-                header_info.find('.global_block_header_status').css('background-color', "#500907");
+                header_info.find('.global_block_header_status span').css('background-color', "#500907");
             }
 
             header_info.find('.global_block_header_status span').html(_status);
