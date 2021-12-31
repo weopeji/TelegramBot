@@ -1144,7 +1144,7 @@ async function acceptProject(socket,data,callback)
                 ],
                 [
                     {
-                        text: "Инвестровать",
+                        text: "Подробнее",
                         url: `https://t.me/invester_official_bot?start=project_${data}`,
                     }
                 ]
