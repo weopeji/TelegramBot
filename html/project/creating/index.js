@@ -60,6 +60,8 @@
 
                     await _components.render_signature_document(_project);
 
+                    $('.index_page_body_button').remove();
+
                     changeTextArea();
 
                 }
