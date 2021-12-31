@@ -1396,6 +1396,18 @@
             }
         }
 
+        setRegistrationFile(_id, _form) {
+            var _url = `${getURL()}/file_registration.io/files`;
+
+            var _file = _form;
+
+            axios.post(_url, _file, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
+        }
+
         async renderRedacting(_project)
         {
             var firstBlockMore = $(`
@@ -1414,8 +1426,24 @@
 
             firstBlockMore.css("padding-bottom", "20px");
 
-            this.global_block.append(firstBlockMore);
+            firstBlockMore.find('input[type=file]').change( async function() 
+            {
+                var filename = $(this.files)[0].name;
+                var aux = filename.split('.');
+                var extension = aux[aux.length -1].toUpperCase();
 
+                var _form    = new FormData();
+
+                _form.append('files', $(this.files)[0]);
+                _form.append('_id', _project._id);
+                _form.append('_pts', extension);
+                _this.setRegistrationFile(_project._id, _form);
+
+                alert('Успешно!');
+                location.reload(); 
+            });
+
+            this.global_block.append(firstBlockMore);
 
             var firstBlockMore = $(`
                 <div class="body_point">
