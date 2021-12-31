@@ -14,6 +14,7 @@ module.exports = {
     change_type,
     close,
     help_user,
+    onlyCreate,
 }
 
 function privateInit(initPlagins) {
@@ -120,6 +121,11 @@ const MF =
     Update_Type: function(msg, data) {
         return User.findOneAndUpdate({user: msg.from.id}, {type: data});
     },
+}
+
+async function onlyCreate(msg)
+{
+    return await MF.create_user(msg);
 }
 
 async function help_user(msg) 

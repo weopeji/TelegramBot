@@ -197,7 +197,7 @@ bot.onText(/\/start (.+)/, async (msg, match) =>
     var _array      = [];
 
     if(!_User) {
-        await main_page.MF.create_user(msg);
+        await main_page.onlyCreate(msg);
     }
 
     if(resp.split('_')[0] == "member") 
