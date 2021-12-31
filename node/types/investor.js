@@ -442,12 +442,23 @@ var buttons_2 = [
 async function actionWhere(msg) 
 {
     var _User       = await User.findOne({user: msg.from.id});
-    var _Project    = await Project.findOne({_id: _User.putProject});
-    var _array = _User.investor_data;
-    if(!_array) _array = {};  
-    _array[buttons_2[_User.where.page.button].id] = msg.text;
-    await User.findOneAndUpdate({user: msg.from.id}, {investor_data: _array});
-    startInvestingMsgOld(msg, _User.where.page.button);
+
+    if(msg.text == "Принять данные")
+    {
+        if(
+            _User.investor_data.phone &&
+            _User.investor_data.watsapp &&
+            _User.investor_data.mail
+        ) {
+            goInvesting(msg);
+        };
+    } else {
+        var _array      = _User.investor_data;
+        if(!_array) _array = {};  
+        _array[buttons_2[_User.where.page.button].id] = msg.text;
+        await User.findOneAndUpdate({user: msg.from.id}, {investor_data: _array});
+        startInvestingMsgOld(msg, _User.where.page.button);
+    }
 }
 
 async function startInvestingMsgOld(msg, button) 
