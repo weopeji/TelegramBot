@@ -144,6 +144,12 @@ var action_linker =
     "gettAllProjects": gettAllProjects,
     "redactingLineSettingsPage": redactingLineSettingsPage,
     "redactingLineSettingsPageGlobal": redactingLineSettingsPageGlobal,
+    "redactingLineSettingsPageGlobalMultiplicity": redactingLineSettingsPageGlobalMultiplicity,
+}
+
+async function redactingLineSettingsPageGlobalMultiplicity(socket,data,callback)
+{
+    await Project.findOneAndUpdate({_id: data.projectId}, {multiplicity: data.data});
 }
 
 async function redactingLineSettingsPageGlobal(socket,data,callback)

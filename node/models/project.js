@@ -16,6 +16,7 @@ const ProjectShema = new mongoose.Schema({
     urlLocation: String,
     payersData: JSON,
     registrationDocument: JSON,
+    multiplicity: String,
 });
 
 autoIncrement.initialize(mongoose.connection);
