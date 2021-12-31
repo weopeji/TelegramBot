@@ -268,23 +268,6 @@
                     })
 
                     $('.creating_page').append(_block);
-
-                    $('.creating_page_input_button').click( function() 
-                    {
-                        var _array = {
-                            type: DT,
-                            data: [],
-                        };
-                
-                        $('.creating_page_input').children().each((i, element) => {
-                            _array.data.push({
-                                _id: $(element).attr('data'),
-                                data: $(element).find('span').text(),
-                            });
-                        });
-
-                        this.renderOldBlock(_array);
-                    })
                 }
             }
 
@@ -292,94 +275,21 @@
             render_nextfuns[DT]();
             var _this = this;
 
-            $('.creating_page_input_button').click( async function() {
-                var _arrayData = [];
-
-                $('.creating_page_input_div').each(function(i, element) {
-                    _arrayData.push({
-                        type: $(element).attr('data'),
+            $('.creating_page_input_button').click( function() 
+            {
+                var _array = {
+                    type: DT,
+                    data: [],
+                };
+        
+                $('.creating_page_input').children().each((i, element) => {
+                    _array.data.push({
+                        _id: $(element).attr('data'),
                         data: $(element).find('span').text(),
-                    })
+                    });
                 });
 
-                await callApi({
-                    methodName: "setInvesterTypeAppend",
-                    data: {
-                        user: global.allData._id,
-                        data: _arrayData,
-                    },
-                });
-
-                _this.render_close();
-            })
-        }
-
-        async render_close()
-        {
-            $('.creating_page').empty();
-
-            var _block = $(`
-                <div class="creating_page_input">
-                    <div class="creating_page_input_div" data="pay">
-                        <span contenteditable="true">Введите сумму инвестирования</span>
-                    </div>
-                    <div class="creating_page_input_button">
-                        <span>Отправить</span>
-                    </div>
-                </div>
-            `);
-
-            _block.find('.creating_page_input_div').click( function() {
-                if(!$(this).attr('data'))
-                {
-                    $(this).children('span').empty();
-                    $(this).attr('data', "true");
-                }
-            })
-
-            $('.creating_page').append(_block);
-            
-            $('.creating_page_input_button').click( async function() {
-                var _arrayData = [];
-
-                $('.creating_page_input_div').each(function(i, element) {
-                    _arrayData.push({
-                        type: $(element).attr('data'),
-                        data: $(element).find('span').text(),
-                    })
-                });
-
-                await callApi({
-                    methodName: "setInvesterTypeAppend",
-                    data: {
-                        user: global.allData._id,
-                        data: _arrayData,
-                    },
-                });
-
-                var PreloaderAddUser_block = $(`
-                    <div class="autch_block">
-                        <div class="autch_block_row">
-                            <p>Вы удачно проинвестировали в проект</p>
-                            <div class="autch_block_buttons">
-                                <div class="autch_block_buttons_block autch_block_buttons_block_close">
-                                    <span>Вернуться</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `);
-
-                PreloaderAddUser_block.find('.autch_block_buttons_block_close').click( function() {
-                    location.href = './';
-                });
-
-                await callApi({
-                    methodName: "setInvesterTypeClassAll",
-                    data: global.allData._id,
-                });
-
-                $('body').append(PreloaderAddUser_block);
+                _this.renderOldBlock(_array);
             })
         }
     }
