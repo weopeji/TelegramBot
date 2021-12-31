@@ -191,7 +191,12 @@
 
             if(_project.signature)
             {
-                _status = "Полученны дополнительные документы";
+                if(_project.signature.status == "wait")
+                {
+                    _status = "Полученны дополнительные документы";
+                } else {
+                    _status = "Запрошены дополнительные документы";
+                }
             }
 
             if(_project.signature_document)
