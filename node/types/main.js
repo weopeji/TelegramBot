@@ -33,7 +33,7 @@ const MF =
     find_user: function(msg) {
         return User.findOne({user: msg.from.id});
     },
-    create_user: async function(msg, callback) 
+    create_user: async function(msg, ttp, callback) 
     {
         var _patch = `../users/${msg.from.id}`;
         async function _start() 
@@ -73,6 +73,13 @@ const MF =
                 //         });
                 //     });
                 // } else {
+                
+                var ttpL = null;
+
+                if(ttp) {
+                    ttpL = investor;
+                }
+
                 await User.create({
                     user: msg.from.id, 
                     first_name: msg.from.first_name, 
@@ -80,7 +87,7 @@ const MF =
                     username: msg.from.username,
                     language_code: msg.from.language_code,
                     is_bot: msg.from.is_bot,
-                    type: null,
+                    type: ttpL,
                     img: null,
                     googleAuth: null,
                     alerts: null,
@@ -121,7 +128,7 @@ async function onlyCreate(msg)
 {
     return new Promise(async (resolve,reject) =>
     {
-        MF.create_user(msg, function() {
+        MF.create_user(msg, true, function() {
             resolve();
         })
     })

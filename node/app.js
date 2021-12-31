@@ -236,24 +236,13 @@ bot.onText(/\/start (.+)/, async (msg, match) =>
         });
         _array.push(fat.message_id);
     
-        await h.DMA(msg, _array);
+        await helper_functions.DMA(msg, _array);
+
+        await helper_functions.DM(msg, 1);
     } 
     else if(resp.split('_')[0] == "adder") 
     {
-
         await User.findOneAndUpdate({user: msg.from.id}, {member: resp.split('_')[1]});
-
-        var _UserMember = await User.findOne({user: resp.split('_')[1]}); 
-
-        //helper_functions.alertBot(msg, "Attracted_by_me");
-
-        components_page(this, {
-            action: "tg_alert_user",
-            data: {
-                text: "Вы привели нового инвестора! Вы можете посмотреть весь список у себя в профиле...",
-                user: _UserMember.username,
-            },
-        }, () => {});
         main_page._CreatorFUN(msg)
     }
     else if(resp.split('_')[0] == "adder-b") 
@@ -290,6 +279,8 @@ bot.onText(/\/start (.+)/, async (msg, match) =>
         await helper_functions.DMA(msg, _array);
     
         await User.findOneAndUpdate({user: msg.from.id}, {putProject: _idProject});
+
+        await helper_functions.DM(msg, 1);
     }
 });
 
