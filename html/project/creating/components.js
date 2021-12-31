@@ -1091,16 +1091,16 @@
 
                     console.log(_data);
 
-                    $('.body_point_line_more_info_addr span').eq(0).text(_data[0].result);
-                    $('.body_point_line_more_info_addr span').eq(1).text(_data[0].source);
-                    $('.body_point_line_more_info_addr').fadeOut( function () {
+                    $input.find('.body_point_line_more_info_addr span').eq(0).text(_data[0].result);
+                    $input.find('.body_point_line_more_info_addr span').eq(1).text(_data[0].source);
+                    $input.find('.body_point_line_more_info_addr').fadeOut( function () {
                         $(this).fadeIn();
                     });
 
-                    $('.body_point_line_more_info_addr span').click( function () {
+                    $input.find('.body_point_line_more_info_addr span').click( function () {
                         var inputText = $(this).text();
                         $(this).parent().parent().find('input').val(inputText);
-                        $('.body_point_line_more_info_addr').fadeOut();
+                        $input.find('.body_point_line_more_info_addr').fadeOut();
                     })
                 }
 
