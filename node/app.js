@@ -694,6 +694,7 @@ app.post('/file_registration_document.io/files', (req, res) => {
                     var sign = _project.registrationDocument;
 
                     sign.status = "on";
+                    sign.user_document = `file_registration_document.${_data._pts.split('/')[1]}`;
 
                     await Project.findOneAndUpdate({_id: _data._id}, {type: "moderation", registrationDocument: sign});
                 });

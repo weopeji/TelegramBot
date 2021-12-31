@@ -213,7 +213,7 @@
             if(_project.type == "correction") 
             {
                 header_info.find('.global_block_header_status span').css('background', "#500907");
-                header_info.find('.global_block_header_status span').html('На редактировании');
+                _status = 'На редактировании';
             }
 
             header_info.find('.global_block_header_status span').html(_status);
@@ -1451,7 +1451,27 @@
                 this.global_block.append(firstBlockMore);
             } else 
             {
-                
+                if(_project.registrationDocument.status == "on")
+                {
+                    var firstBlockMore = $(`
+                        <div class="body_point">
+                            <div class="body_point_header">
+                                <span>Документ регистрации бизнеса</span>
+                            </div>
+                            <div class="body_point_line_block_more_registration_business">
+                                <st>Посмотреть</st>
+                            </div>
+                        </div>
+                    `);
+
+                    firstBlockMore.css("padding-bottom", "20px");
+
+                    firstBlockMore.find('st').click( function() {
+                        window.open(`https://invester-relocation.site/projects/${_project._id}/${_project.registrationDocument.user_document}`, "_blank")
+                    });
+
+                    this.global_block.append(firstBlockMore);
+                }
             }
 
             var firstBlockMore = $(`
