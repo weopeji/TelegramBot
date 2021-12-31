@@ -1410,6 +1410,8 @@
 
         async renderRedacting(_project)
         {
+            var _this = this;
+            
             var firstBlockMore = $(`
                 <div class="body_point">
                     <div class="body_point_header">
