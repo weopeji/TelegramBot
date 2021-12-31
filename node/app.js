@@ -636,6 +636,11 @@ app.post('/file_signature.io/files', (req, res) => {
                         status: 'ok',
                         file_name: `${_data.file_id}.${_data._pts.split('/')[1]}`,
                     });
+                    helper_functions.alertAdmin({
+                        type: "correct_signature",
+                        text: "Был подписан документ в проекте!",
+                        projectId: _data._id,
+                    })
                 });
             } else {
                 console.log('Файл не найден');
@@ -701,6 +706,12 @@ app.post('/file_signature_document.io/files', (req, res) => {
                     sign.status = "on";
 
                     await Project.findOneAndUpdate({_id: _data._id}, {type: "moderation", signature_document: sign});
+
+                    helper_functions.alertAdmin({
+                        type: "correct_signature",
+                        text: "Был подписан документ в проекте!",
+                        projectId: _data._id,
+                    })
                 });
             } else {
                 console.log('Файл не найден');
@@ -766,6 +777,12 @@ app.post('/file_registration_document.io/files', (req, res) => {
                     sign.user_document = `file_registration_document.${_data._pts.split('/')[1]}`;
 
                     await Project.findOneAndUpdate({_id: _data._id}, {type: "moderation", registrationDocument: sign});
+
+                    helper_functions.alertAdmin({
+                        type: "correct_signature",
+                        text: "Был подписан документ в проекте!",
+                        projectId: _data._id,
+                    })
                 });
             } else {
                 console.log('Файл не найден');
