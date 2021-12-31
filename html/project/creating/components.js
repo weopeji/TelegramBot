@@ -94,6 +94,7 @@
                                 name: "Название компании",
                                 info: "Введите название проекта латинскими буквами",
                                 parsing_data: "name/short_with_opf",
+                                readonly: true,
                                 _id: "name_company"
                             },
                             {
@@ -102,6 +103,7 @@
                                 info: "Введите ИНН",
                                 _id: "inn",
                                 parsing_data: "inn",
+                                readonly: true,
                                 number: true
                             },
                             {
@@ -110,6 +112,7 @@
                                 info: "Введите ОГРН",
                                 parsing_data: "ogrn",
                                 _id: "ogrn",
+                                readonly: true,
                                 number: true
                             },
                             {
