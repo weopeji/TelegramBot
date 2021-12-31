@@ -77,7 +77,7 @@ const MF =
                 var ttpL = null;
 
                 if(ttp) {
-                    ttpL = investor;
+                    ttpL = "investor";
                 }
 
                 await User.create({
