@@ -58,7 +58,23 @@
         if(_GET('liner'))
         {
             $('.cover_block_liner').remove();
+            $('.cover_block').css({
+                "padding-bottom": "10px",
+                "width": "600px",
+                "height": "800px",
+            });
+            $('.cover_block_logo').css('width', "50%");
+            $('.cover_block h1').css({
+                "font-size": "30px",
+            })
+            $('.cover_block p').css("font-size", "20px");
+            $('.cover_block_centr_inter span').css("font-size", "25px");
+            $('.cover_block_centr_inter p').css("font-size", "23px");
+            $('.cover_block_body_line').css("font-size", "25px");
+            $('.cover_block_body_line').css("padding", "24px 0");
         }
+
+        $('body').append('<div class="all_good"></div>')
     }
 
 }(window))

@@ -1103,8 +1103,9 @@ async function acceptProject(socket,data,callback)
     const page = await browser.newPage();   
     await page._client.send('Emulation.clearDeviceMetricsOverride');
     await page.goto(_urlImgProject);
-    // await page.emulateMedia('screen');
-    const element = await page.$('.cover_block');   
+    await page.emulateMedia('screen');
+    const element = await page.$('.cover_block');
+    await page.waitForSelector('.all_good');
     await element.screenshot({
         path: `../projects/${data}/logo_instagram.jpg`,
     });
