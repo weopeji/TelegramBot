@@ -629,6 +629,7 @@ app.post('/file_signature_document.io/files', (req, res) => {
 
                     var sign = _project.signature_document;
 
+                    sign.user_document = `file_signature_document.${_data._pts.split('/')[1]}`;
                     sign.status = "on";
 
                     await Project.findOneAndUpdate({_id: _data._id}, {type: "moderation", signature_document: sign});
