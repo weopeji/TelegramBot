@@ -145,6 +145,14 @@ var action_linker =
     "redactingLineSettingsPage": redactingLineSettingsPage,
     "redactingLineSettingsPageGlobal": redactingLineSettingsPageGlobal,
     "redactingLineSettingsPageGlobalMultiplicity": redactingLineSettingsPageGlobalMultiplicity,
+    "getProjectForInvesterPage": getProjectForInvesterPage,
+}
+
+async function getProjectForInvesterPage(socket, data,callback)
+{
+    var _User       = await User.findOne({_id: data});
+    var _Project    = await Project.findOne({_id: _User.putProject});
+    callback(_Project);
 }
 
 async function redactingLineSettingsPageGlobalMultiplicity(socket,data,callback)

@@ -21,6 +21,7 @@
             this.global = $(`
                 <div class="creating_page"></div>
             `);
+            this.project = null;
         };
 
         defaultCSS()
@@ -42,6 +43,13 @@
         {
             this.defaultCSS();
             var _this = this;
+
+            var _project = await callApi({
+                methodName: "getProjectForInvesterPage",
+                data: _GET('user'),
+            });
+
+            this.project = _project;
 
             var msgsBlock = $(`
                 <div class="creating_page_block">
@@ -109,13 +117,22 @@
             var _block = $(`
                 <div class="creating_page_input">
                     <div class="creating_page_input_div" data="pay">
-                        <span contenteditable="true">Введите сумму инвестирования</span>
+                        <span contenteditable="true"></span>
                     </div>
                     <div class="creating_page_input_button">
                         <span>Отправить</span>
                     </div>
                 </div>
             `);
+
+            _block.find('.creating_page_input_button span').click( function() {
+                var money = $('.creating_page_input span').text();
+
+                if(money < this.project.data.minimal_amount.trim())
+                {
+                    alert('Сумма недостаточна!');
+                }
+            });
 
             $('.creating_page').append(msgsBlock);
             $('.creating_page').append(_block);
