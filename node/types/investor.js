@@ -424,123 +424,6 @@ async function recomendations(msg)
     await h.DMA(msg, _array);
 }
 
-// var buttons3 = [
-//     {
-//         name: "Фио полностью",
-//         id: "fio_fiz",
-//     },
-//     {
-//         name: "Номер паспорта",
-//         id: "passport_number",
-//     },
-//     {
-//         name: "Серия паспорта",
-//         id: "passport_number",
-//     },
-//     {
-//         name: "Кем выдан",
-//         id: "passport_number",
-//     },
-//     {
-//         name: "Прописка",
-//         id: "passport_number",
-//     },
-//     {
-//         name: "Банк получателя",
-//         id: "bank",
-//     },
-//     {
-//         name: "БИК",
-//         id: "bik",
-//     },
-//     {
-//         name: "Номер расчетного счета",
-//         id: "nomer",
-//     },
-//     {
-//         name: "Номер корреспондентского  счета",
-//         id: "nomer_kor",
-//     },
-// ]
-
-// var buttons2 = [
-//     {
-//         name: "ИНН",
-//         id: "inn",
-//     },
-//     {
-//         name: "КПП",
-//         id: "kpp",
-//     },
-//     {
-//         name: "ОГРН",
-//         id: "ogrn",
-//     },
-//     {
-//         name: "Должность",
-//         id: "dolgnost",
-//     },
-//     {
-//         name: "ФИО должностного лица",
-//         id: "dolgnost_fio",
-//     },
-//     {
-//         name: "Юридический адрес",
-//         id: "addr_qr",
-//     },
-//     {
-//         name: "Банк получателя",
-//         id: "bank",
-//     },
-//     {
-//         name: "БИК",
-//         id: "bik",
-//     },
-//     {
-//         name: "Номер расчетного счета",
-//         id: "nomer",
-//     },
-//     {
-//         name: "Номер корреспондентского  счета",
-//         id: "nomer_kor",
-//     },
-// ]
-
-// var buttons = [
-//     {
-//         name: "ФИО",
-//         id: "fio",
-//     },
-//     {
-//         name: "ИНН",
-//         id: "inn",
-//     },
-//     {
-//         name: "ОГРНИП",
-//         id: "ogrnip",
-//     },
-//     {
-//         name: "адрес",
-//         id: "addr",
-//     },
-//     {
-//         name: "Банк получателя",
-//         id: "bank",
-//     },
-//     {
-//         name: "БИК",
-//         id: "bik",
-//     },
-//     {
-//         name: "Номер расчетного счета",
-//         id: "nomer",
-//     },
-//     {
-//         name: "Номер корреспондентского  счета",
-//         id: "nomer_kor",
-//     },
-// ];
-
 var buttons_2 = [
     {
         name: "Телефон",
@@ -649,11 +532,9 @@ async function startInvestingMsgOld(msg, button)
     });
     _array.push(fat.message_id);
 
-    _where.msg = fat.message_id;
-
     await User.findOneAndUpdate({user: msg.from.id}, {where: _where})
 
-    await h.MA(msg, _array);
+    await h.DMA(msg, _array);
 }
 
 async function startInvestingMsg(msg, num, array, more, project)
