@@ -942,6 +942,12 @@
                     }
                 }
 
+                if(typeof data.readonly != "undefined") 
+                {
+                    _line.find(`#${data._id}`).attr("readonly", "readonly");
+                    $_line.find(`#${data._id}`).parent().find('.body_point_line_header_info').remove();
+                }
+
                 return _line;
             },
             "file": function(data) 
@@ -1097,6 +1103,7 @@
                 if(typeof data.readonly != "undefined") 
                 {
                     $input.attr("readonly", "readonly");
+                    $input.parent().find('.body_point_line_header_info').remove();
                 }
 
                 async function doneTyping () 
