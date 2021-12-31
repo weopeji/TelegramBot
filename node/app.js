@@ -570,9 +570,9 @@ app.post('/file_signature_document.io/files', (req, res) => {
 
                     var sign = _project.signature_document;
 
-                    sign.status = "accept";
+                    sign.status = "on";
 
-                    await Project.findOneAndUpdate({_id: _data._id}, {type: "correction", signature_document: sign});
+                    await Project.findOneAndUpdate({_id: _data._id}, {type: "moderation", signature_document: sign});
                 });
             } else {
                 console.log('Файл не найден');
