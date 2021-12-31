@@ -128,7 +128,7 @@
             var _this = this;
 
             _block.find('.creating_page_input_button span').click( function() {
-                var money = $('.creating_page_input span').text();
+                var money = $('.creating_page_input_div span').text();
 
                 if(Number(money) < Number(_this.project.data.minimal_amount.trim()))
                 {
