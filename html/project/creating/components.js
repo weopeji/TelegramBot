@@ -847,6 +847,44 @@
             });
         }
 
+        async load_file_redacting_registration_document(_this, _id)
+        {
+            var _form    = new FormData();
+
+            _form.append('files', $(_this.files)[0]);
+            _form.append('_id', _id);
+            _form.append('_pts', $(_this.files)[0].type);
+
+
+            this.start_preloader($(_this), async function() 
+            {
+                var _url = `${getURL()}/file_registration_document.io/files`;
+
+                var _file = _form;
+
+                axios.post(_url, _file, {
+                    headers: {
+                      'Content-Type': 'multipart/form-data'
+                    }
+                }).then(data => {
+                    if(data.data.status == "ok") {
+                        $(_this).parent().parent().find('.loader_input').attr('data', data.data.file_name);
+                        $(_this).parent().parent().find('.loader_input').fadeOut( function() {
+                            $(_this).parent().parent().find('.all_good').fadeIn( function() {
+                                $('.index_page').empty();
+                                $('.preloader').fadeIn( function() {
+                                    $('.preloader').fadeOut( function() {
+                                        $('.end_get_project').css('display', "flex");
+                                    });
+                                });
+                            });
+                        });
+                    }
+                })
+
+            });
+        }
+
         async load_file_signature(_this, _id, file_id) 
         {
             var _form    = new FormData();
@@ -1280,6 +1318,53 @@
 
             _uploadBlock.click( function () {
                 window.open(`https://invester-relocation.site/projects/${_project._id}/${_project.signature_document.document}`, "_blank");
+            })
+
+            var _body = $(`
+                <div class="body_point">
+                    <div class="body_point_line _file">
+                        <div class="body_point_line_header">
+                            <div class="body_point_line_header_text">
+                                <span>Загрузите</span>
+                                <div class="download_buttons">
+                                    <input class="file_load" id='signature_mass' type='file'>
+                                    <label for="signature_mass">Загрузить <i class="fas fa-angle-double-down"></i></label>
+                                </div>
+                                <div class="loader_input" id="signature_mass_block">
+                                    <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+                                    <span></span>
+                                </div>
+                                <div class="all_good">
+                                    <div class="all_good_row">
+                                        <span class="all_good_cheack">Посмотреть</span>
+                                        <span class="all_good_del">Удалить</span>
+                                    </div>
+                                </div>  
+                            </div>
+                            <div class="body_point_line_header_info">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `);
+
+            _body.find('.body_point_line_header').css('margin-top', '30px');
+
+            $('.index_page_body_points').append(_uploadBlock);
+            $('.index_page_body_points').append(_body);
+        }
+
+        render_registration_document(_project) 
+        {
+            var _uploadBlock = $(`
+                <div class="_uploadBlock">
+                    <span>Загрузить</span>
+                </div>
+            `);
+
+            _uploadBlock.click( function () {
+                window.open(`https://invester-relocation.site/projects/${_project._id}/${_project.registrationDocument.document}`, "_blank");
             })
 
             var _body = $(`

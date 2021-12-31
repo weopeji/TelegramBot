@@ -213,6 +213,7 @@
             if(_project.type == "correction") 
             {
                 header_info.find('.global_block_header_status span').css('background', "#500907");
+                header_info.find('.global_block_header_status span').html('На редактировании');
             }
 
             header_info.find('.global_block_header_status span').html(_status);
@@ -1411,41 +1412,47 @@
         async renderRedacting(_project)
         {
             var _this = this;
-            
-            var firstBlockMore = $(`
-                <div class="body_point">
-                    <div class="body_point_header">
-                        <span>Документ регистрации бизнеса</span>
-                    </div>
-                    <div class="body_point_line_block_more_registration_business">
-                        <input type="file" name="" id="DocumentToRegistration">
-                        <label for="DocumentToRegistration">
-                            <span>Загрузить документ</span>
-                        </label>
-                    </div>
-                </div>
-            `);
 
-            firstBlockMore.css("padding-bottom", "20px");
-
-            firstBlockMore.find('input[type=file]').change( async function() 
+            if(typeof _project.registrationDocument == 'undefined')
             {
-                var filename = $(this.files)[0].name;
-                var aux = filename.split('.');
-                var extension = aux[aux.length -1].toUpperCase();
+                var firstBlockMore = $(`
+                    <div class="body_point">
+                        <div class="body_point_header">
+                            <span>Документ регистрации бизнеса</span>
+                        </div>
+                        <div class="body_point_line_block_more_registration_business">
+                            <input type="file" name="" id="DocumentToRegistration">
+                            <label for="DocumentToRegistration">
+                                <span>Загрузить документ</span>
+                            </label>
+                        </div>
+                    </div>
+                `);
 
-                var _form    = new FormData();
+                firstBlockMore.css("padding-bottom", "20px");
 
-                _form.append('files', $(this.files)[0]);
-                _form.append('_id', _project._id);
-                _form.append('_pts', extension);
-                _this.setRegistrationFile(_project._id, _form);
+                firstBlockMore.find('input[type=file]').change( async function() 
+                {
+                    var filename = $(this.files)[0].name;
+                    var aux = filename.split('.');
+                    var extension = aux[aux.length -1].toUpperCase();
 
-                alert('Успешно!');
-                location.reload(); 
-            });
+                    var _form    = new FormData();
 
-            this.global_block.append(firstBlockMore);
+                    _form.append('files', $(this.files)[0]);
+                    _form.append('_id', _project._id);
+                    _form.append('_pts', extension);
+                    _this.setRegistrationFile(_project._id, _form);
+
+                    alert('Успешно!');
+                    location.reload(); 
+                });
+
+                this.global_block.append(firstBlockMore);
+            } else 
+            {
+                
+            }
 
             var firstBlockMore = $(`
                 <div class="body_point">

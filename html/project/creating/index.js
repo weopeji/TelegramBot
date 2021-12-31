@@ -67,6 +67,25 @@
                 }
             }
 
+            if(typeof _project.registrationDocument != 'undefined') 
+            {
+                if(_project.registrationDocument.status == 'wait') 
+                {
+                    global._typePage = 'registrationDocument';
+
+                    $('.index_page_body h1').html('Подписание документов');
+                    $('.index_page_body h2').html('Подпишите составленный документ и загрузите его');
+                    $('.index_page_body_button span').html('Отправить');
+
+                    await _components.render_registration_document(_project);
+
+                    $('.index_page_body_button').remove();
+
+                    changeTextArea();
+
+                }
+            }
+
             if(_project.redacting) 
             {
 
@@ -136,6 +155,9 @@
                 }else if(_typePage == 'signature_document') 
                 {
                     await _components.load_file_redacting_signature_document(this, _id);
+                }else if(_typePage == 'registrationDocument') 
+                {
+                    await _components.load_file_redacting_registration_document(this, _id);
                 } else
                 {
                     await _components.load_file(this, _id, $(this).attr('id'));
