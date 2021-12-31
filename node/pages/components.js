@@ -143,6 +143,15 @@ var action_linker =
     "setInvesterTypeClassAll": setInvesterTypeClassAll,
     "gettAllProjects": gettAllProjects,
     "redactingLineSettingsPage": redactingLineSettingsPage,
+    "redactingLineSettingsPageGlobal": redactingLineSettingsPageGlobal,
+}
+
+async function redactingLineSettingsPageGlobal(socket,data,callback)
+{
+    var _project = await Project.findOne({_id: data.projectId});
+    var needData = _project.payersData;
+    needData[data.lineId] = data.data;
+    await Project.findOneAndUpdate({_id: data.projectId}, {payersData: needData});
 }
 
 async function redactingLineSettingsPage(socket,data,callback)
