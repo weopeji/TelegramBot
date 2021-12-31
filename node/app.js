@@ -245,7 +245,10 @@ bot.onText(/\/start (.+)/, async (msg, match) =>
     {
         if(typeof _User.member == "undefined")
         {
-            await User.findOneAndUpdate({user: msg.from.id}, {member: resp.split('_')[1]});
+            if(resp.split('_')[1] != _User.user)
+            {
+                await User.findOneAndUpdate({user: msg.from.id}, {member: resp.split('_')[1]});
+            }
         }
         main_page._CreatorFUN(msg)
     }
@@ -253,7 +256,10 @@ bot.onText(/\/start (.+)/, async (msg, match) =>
     {
         if(typeof _User.member_b == "undefined")
         {
-            await User.findOneAndUpdate({user: msg.from.id}, {member_b: resp.split('_')[1]});
+            if(resp.split('_')[1] != _User.user)
+            {
+                await User.findOneAndUpdate({user: msg.from.id}, {member_b: resp.split('_')[1]});
+            }
         }
         main_page._CreatorFUN(msg)
     }
