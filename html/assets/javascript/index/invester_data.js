@@ -130,9 +130,11 @@
             _block.find('.creating_page_input_button span').click( function() {
                 var money = $('.creating_page_input_div span').text();
 
-                if(Number(money) < Number(_this.project.data.minimal_amount.trim()))
+                if(Number(money) < Number(_this.project.data.minimal_amount.toString().trim()))
                 {
                     alert('Сумма недостаточна!');
+                } else {
+                    alert('Сумма верна!');
                 }
             });
 
