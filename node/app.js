@@ -352,21 +352,24 @@ bot.on('message', async (msg) =>
     } else 
     {
         var _User = await User.findOne({user: msg.from.id});
-        
-        if(_User.where) 
+
+        if(_User)
         {
-            const action_where = {
-                "investor": investor_page.actionWhere,
-                "document_load": investor_page.document_load,
-                "payerInBissness": investor_page.payerInBissnessDocument,
-                "attraction": attraction_page.reqezits,
-                "actionReqezits": attraction_page.actionReqezits,
-                "startReqezitsData": attraction_page.startReqezitsDataMore,
+            if(_User.where) 
+            {
+                const action_where = {
+                    "investor": investor_page.actionWhere,
+                    "document_load": investor_page.document_load,
+                    "payerInBissness": investor_page.payerInBissnessDocument,
+                    "attraction": attraction_page.reqezits,
+                    "actionReqezits": attraction_page.actionReqezits,
+                    "startReqezitsData": attraction_page.startReqezitsDataMore,
+                }
+                action_where[_User.where.type](msg);
+                await helper_functions.DM(msg, 1);
+            } else {
+                await helper_functions.DM(msg, 1);
             }
-            action_where[_User.where.type](msg);
-            await helper_functions.DM(msg, 1);
-        } else {
-            await helper_functions.DM(msg, 1);
         }
     }
 });
