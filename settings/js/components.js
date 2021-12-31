@@ -1404,7 +1404,10 @@
                         <span>Документ регистрации бизнеса</span>
                     </div>
                     <div class="body_point_line_block_more_registration_business">
-                        <span>Отправить</span>
+                        <input type="file" name="" id="DocumentToRegistration">
+                        <label for="DocumentToRegistration">
+                            <span>Загрузить документ</span>
+                        </label>
                     </div>
                 </div>
             `);

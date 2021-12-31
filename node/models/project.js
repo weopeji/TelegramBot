@@ -15,6 +15,7 @@ const ProjectShema = new mongoose.Schema({
     YT_VIDEO: JSON,
     urlLocation: String,
     payersData: JSON,
+    registrationDocument: JSON,
 });
 
 autoIncrement.initialize(mongoose.connection);

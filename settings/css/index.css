@@ -489,7 +489,11 @@
           align-items: center;
 }
 
-.body_point_line_block_more_registration_business span {
+.body_point_line_block_more_registration_business input {
+  display: none;
+}
+
+.body_point_line_block_more_registration_business label {
   padding: 10px 20px;
   border-radius: 15px;
   background-color: #1387FF;
