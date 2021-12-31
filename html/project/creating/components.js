@@ -809,6 +809,39 @@
             });
         }
 
+        async load_file_redacting_signature_document(_this, _id)
+        {
+            var _form    = new FormData();
+
+            _form.append('files', $(_this.files)[0]);
+            _form.append('_id', _id);
+            _form.append('_pts', $(_this.files)[0].type);
+
+
+            this.start_preloader($(_this), async function() 
+            {
+                var _url = `${getURL()}/file_signature_document.io/files`;
+
+                var _file = _form;
+
+                axios.post(_url, _file, {
+                    headers: {
+                      'Content-Type': 'multipart/form-data'
+                    }
+                }).then(data => {
+                    if(data.data.status == "ok") {
+                        $(_this).parent().parent().find('.loader_input').attr('data', data.data.file_name);
+                        $(_this).parent().parent().find('.loader_input').fadeOut( function() {
+                            $(_this).parent().parent().find('.all_good').fadeIn( function() {
+                        
+                            });
+                        });
+                    }
+                })
+
+            });
+        }
+
         async load_file_signature(_this, _id, file_id) 
         {
             var _form    = new FormData();

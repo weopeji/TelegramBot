@@ -131,6 +131,9 @@
                 } else if(_typePage == 'redacting') 
                 {
                     await _components.load_file_redacting(this, _id, $(this).attr('id'));
+                }else if(_typePage == 'signature_document') 
+                {
+                    await _components.load_file_redacting_signature_document(this, _id);
                 } else
                 {
                     await _components.load_file(this, _id, $(this).attr('id'));
