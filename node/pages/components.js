@@ -1382,6 +1382,14 @@ async function setProject(socket,data,callback)
         redacting: null,
         signature: null,
         signature_document: null,
+        payersData: 
+        {
+            commission: 25,
+            company_commission: 5,
+            attraction_commission: 50,
+            investors_commission: 70,
+            business_commission: 30,
+        }
     };
 
     if(data.data.organization != 3)
