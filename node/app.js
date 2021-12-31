@@ -440,13 +440,12 @@ app.post('/file_urist.io/files', (req, res) => {
         try {
             if (fs.existsSync(_path)) { 
                 console.log('Файл найден');
-                if(fs.existsSync(`/var/www/projects/${_data._id}/signature_document.${_data._pts.split('/')[1]}`)) {
-                    fs.unlinkSync(`/var/www/projects/${_data._id}/signature_document.${_data._pts.split('/')[1]}`);
+                if(fs.existsSync(`/var/www/projects/${_data._id}/signature_document.${_data._pts}`)) {
+                    fs.unlinkSync(`/var/www/projects/${_data._id}/signature_document.${_data._pts}`);
                 }
-                fs.rename(_data.path, `/var/www/projects/${_data._id}/signature_document.${_data._pts.split('/')[1]}`, async function (err) {
+                fs.rename(_data.path, `/var/www/projects/${_data._id}/signature_document.${_data._pts}`, async function (err) {
                     if (err) throw err
                     console.log('Successfully renamed - AKA moved!');
-                    // redactingDocument();
                     
                     var _project = await Project.findOneAndUpdate({_id: _data._id}, {type: "correction",signature_document: {
                         status: "wait",
