@@ -834,7 +834,11 @@
                         $(_this).parent().parent().find('.loader_input').fadeOut( function() {
                             $(_this).parent().parent().find('.all_good').fadeIn( function() {
                                 $('.index_page').empty();
-                                $('.preloader').fadeIn();
+                                $('.preloader').fadeIn( function() {
+                                    $('.preloader').fadeOut( function() {
+                                        $('.end_get_project').css('display', "flex");
+                                    });
+                                });
                             });
                         });
                     }
@@ -1270,7 +1274,7 @@
         {
             var _uploadBlock = $(`
                 <div class="_uploadBlock">
-                    <span>Посмотреть</span>
+                    <span>Загрузить</span>
                 </div>
             `);
 
