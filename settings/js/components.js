@@ -1401,6 +1401,22 @@
             var firstBlockMore = $(`
                 <div class="body_point">
                     <div class="body_point_header">
+                        <span>Документ регистрации бизнеса</span>
+                    </div>
+                    <div class="body_point_line_block_more_registration_business">
+                        <span>Отправить</span>
+                    </div>
+                </div>
+            `);
+
+            firstBlockMore.css("padding-bottom", "20px");
+
+            this.global_block.append(firstBlockMore);
+
+
+            var firstBlockMore = $(`
+                <div class="body_point">
+                    <div class="body_point_header">
                         <span>Редактирование выплат</span>
                     </div>
                     <div class="body_point_line_block_more">
