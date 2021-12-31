@@ -614,11 +614,14 @@ async function startInvestingMsgOld(msg, button)
             strong_second   = '*</strong>\n';
         }
 
-        if(_User.investor_data[element.id]) {
-            dataBlock = _User.investor_data[element.id];
-            smile = '✅';
+        if(_User.investor_data)
+        {
+            if(_User.investor_data[element.id]) {
+                dataBlock = _User.investor_data[element.id];
+                smile = '✅';
+            }
         }
-        
+
         html = html + `${smile} ${strong} ${element.name}:   ${dataBlock} ${strong_second}\n`;
     })
 
