@@ -980,6 +980,10 @@ html, body {
   margin-bottom: 20px;
 }
 
+.creating_page_input_div input {
+  display: none;
+}
+
 .creating_page_input_div span {
   width: 100%;
 }

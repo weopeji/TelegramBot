@@ -21,7 +21,9 @@
             this.global = $(`
                 <div class="creating_page"></div>
             `);
-            this.project = null;
+            this.project    = null;
+            this.inv        = null;
+            this.money      = null;
         };
 
         defaultCSS()
@@ -98,10 +100,39 @@
             $('.index_page_body_data').append(this.global);
         }
 
-        async renderOldBlock(_array)
+        async cheackGet()
         {
-            console.log(_array);
-            
+            $('.creating_page').empty();
+
+            var msgsBlock = $(`
+                <div class="creating_page_block">
+                    <div class="creating_page_start" style="margin-bottom: 20px">
+                        <span>
+                            Уважаемый Инвестор.... Пришлите чек оплаты для окончания инвестирования</a>.
+                        </span>
+                    </div>
+                </div>
+            `);
+
+            var _block = $(`
+                <div class="creating_page_input">
+                    <div class="creating_page_input_div" data="pay">
+                        <input type="file">
+                        <span style="text-align: center">Загрузить</span>
+                    </div>
+                </div>
+            `);
+
+            _block.find('span').click( function () {
+                _block.find('input').click();
+            })
+
+            $('.creating_page').append(msgsBlock);
+            $('.creating_page').append(_block);
+        }
+
+        async renderOldBlock()
+        {
             $('.creating_page').empty();
 
             var msgsBlock = $(`
@@ -137,7 +168,8 @@
                 {
                     alert('Сумма недостаточна!');
                 } else {
-                    alert('Сумма верна!');
+                    _this.money = Number(money);
+                    _this.cheackGet();
                 }
             });
 
@@ -310,7 +342,8 @@
                     }
                 });
 
-                _this.renderOldBlock(_array);
+                _this.inv = _array;
+                _this.renderOldBlock();
             })
         }
     }
