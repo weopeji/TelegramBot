@@ -414,7 +414,7 @@ async function recomendations(msg)
     });
     _array.push(fat.message_id);
 
-    var html = `https://t.me/invester_official_bot?start=user_${_User.user}`;
+    var html = `https://t.me/invester_official_bot?start=adder_${_User.user}`;
     
     var fat = await bot.sendMessage(msg.chat.id, html, {
         parse_mode: "HTML",
