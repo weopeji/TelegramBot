@@ -923,4 +923,39 @@ html, body {
   background-color: #182037;
   color: white;
 }
+
+._showerBlock {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #000000;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+._showerBlock_row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+._showerBlock_row span {
+  color: white;
+}
+
+._showerBlock_row i {
+  margin-left: 20px;
+}
 /*# sourceMappingURL=creating.css.map */

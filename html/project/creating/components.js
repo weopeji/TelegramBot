@@ -126,6 +126,7 @@
                                 info: "Введите Фактический адрес",
                                 parsing_data: null,
                                 moreGet: true,
+                                shower: "Ваш юридический адрес не совпадают с Фактическим",
                                 _id: "addr"
                             },
                             {
@@ -1074,6 +1075,20 @@
                     $input.val(global._User.creatingData.data.address.value);
                 }
 
+                if(typeof data.shower != "undefined") 
+                {
+                    var _showerBlock = $(`
+                        <div class="_showerBlock">
+                            <div class="_showerBlock_row">
+                                <span>${data.shower]</span>
+                                <i class="fal fa-chevron-right"></i>
+                            </div>
+                        </div>
+                    `);
+
+                    _line.append(_showerBlock);
+                }
+
                 async function doneTyping () 
                 {
                     if($input.val().length == 0) {
@@ -1103,36 +1118,6 @@
                         $input.parent().find('.body_point_line_more_info_addr').fadeOut();
                     })
                 }
-
-                
-                // var template_text = $(`
-                //     <div class="moreGet">
-                //         <div class="moreGet_input">
-                //             <input type="checkbox" name="moreGet_checkbox" id="moreGet_checkbox">
-                //             <span>Юридический адрес не совпадает с фактическим</span>
-                //         </div>
-                //         <div class="body_point_line">
-                //             <div class="body_point_line_header">
-                //                 <div class="body_point_line_header_text">
-                //                     <span>Ваш Фактический адресс</span>
-                //                     <p>#</p>
-                //                 </div>
-                //                 <div class="body_point_line_header_info">
-                //                     <span class="_not">Не заполнено</span>
-                //                     <span class="_yes">Готово</span>
-                //                 </div>
-                //             </div>
-                //             <input id="${data._id}" class="text_area" placeholder="Введите значение">
-                //         </div>
-                //     </div>
-                // `);
-
-                // template_text.find('.body_point_line').css('display', 'none');
-                // template_text.find('#moreGet_checkbox').click( function() {
-                //     $(this).parent().parent().toggleClass('selected');
-                // })
-
-                // _line.append(template_text);
                     
                 return _line;
             }
