@@ -1197,24 +1197,8 @@
 
         async render(data) 
         {
-            if(_GET('id')) {
-
-                var all_msgs = await callApi({
-                    methodName: "all_msgs",
-                    data: {
-                        user: _GET('user'),
-                        to: _GET('id'),
-                    },
-                });
-
-                var clearAlertMsg = await callApi({
-                    methodName: "clearAlertMsg",
-                    data: global.allData._id,
-                });
-
-                console.log(all_msgs);
-
-
+            if(_GET('owner')) 
+            {
                 var templateText = `
                     <div class="chat_block">
                         <div class="chat_block_chat">
@@ -1239,178 +1223,229 @@
                             <div class="info_active_block_photo">
                             
                             </div>
-                            <span>Кирилл Максимов</span>
-                            <p>Invester</p>
+                            <span>Тех поддержка</span>
+                            <p>Администрация</p>
                         </div>
                     </div>
                 `;
-    
+
                 $('.index_page_body_data').append(templateText);
+            } else {
+                if(_GET('id')) {
 
-                if(all_msgs) {
-                    if(all_msgs.msgs.length > 0) {
-                        all_msgs.msgs.forEach(function(el) 
-                        {
-                            var myBlock = `
-                                <div class="chat_block_chat_body_msgs_line">
-                                    <div class="chat_block_chat_body_msgs_line_my">
-                                        <span>${el.text}</span>
-                                    </div>
-                                </div>
-                            `;
-
-                            var notMyblock = `
-                                <div class="chat_block_chat_body_msgs_line chat_block_chat_body_msgs_line_left">
-                                    <div class="chat_block_chat_body_msgs_line_my">
-                                        <span>${el.text}</span>
-                                    </div>
-                                </div>
-                            `;
-
-                            if(global.allData.User.type == "business")
-                            {
-                                if(el.type == "investor")
-                                {
-                                    $('.chat_block_chat_body_msgs').append(notMyblock);
-                                } else {
-                                    $('.chat_block_chat_body_msgs').append(myBlock);
-                                }
-                            } else {
-                                if(el.type == "investor")
-                                {
-                                    $('.chat_block_chat_body_msgs').append(myBlock);
-                                } else {
-                                    $('.chat_block_chat_body_msgs').append(notMyblock);
-                                }
-                            }
-
-                            
-                        })
-        
-                        $('.chat_block_chat_body_msgs').animate({scrollTop: $('.chat_block_chat_body_msgs').height()}, 'fast');
-                    }
-                }
-    
-                var Project_data = await callApi({
-                    methodName: "getProject",
-                    data: _GET('id'),
-                });
-
-                var _User = await callApi({
-                    methodName: "getUserForId",
-                    data: _GET('user'),
-                });
-    
-                var headerShow = {
-                    "investor": function() {
-                        $('.chat_block_info span').html(Project_data.data.name);
-                        $('.chat_block_info p').html("business");
-                    },
-                    "business": function() {
-                        $('.chat_block_info span').html(_User.first_name + " " + _User.last_name);
-                        $('.chat_block_info p').html("investor");
-                    },
-                }
-    
-                headerShow[_User.type]();
-    
-                $('.chat_block_chat_body_row_input input').focus( async function() {
-                    $(window).keyup(async function(event){
-                        if(event.keyCode == 13) {
-                            event.preventDefault();
-                            var myBlock = `
-                                <div class="chat_block_chat_body_msgs_line">
-                                    <div class="chat_block_chat_body_msgs_line_my">
-                                        <span>${$('.chat_block_chat_body_row_input input').val()}</span>
-                                    </div>
-                                </div>
-                            `;
-    
-                            $('.chat_block_chat_body_msgs').append(myBlock);
-    
-                            $('.chat_block_chat_body_msgs').animate({scrollTop: $('.chat_block_chat_body_msgs').height()}, 'fast');
-    
-                            await callApi({
-                                methodName: "msgUP",
-                                data: {
-                                    user: _GET('user'),
-                                    to: _GET('id'),
-                                    type: _User.type,
-                                    msg: $('.chat_block_chat_body_row_input input').val(),
-                                },
-                            });
-    
-                            $('.chat_block_chat_body_row_input input').val('');
-                        }
-                    });
-                });
-    
-                $('.chat_block_chat_body_row_input span').click( async function() {
-    
-                    var myBlock = `
-                        <div class="chat_block_chat_body_msgs_line">
-                            <div class="chat_block_chat_body_msgs_line_my">
-                                <span>${$('.chat_block_chat_body_row_input input').val()}</span>
-                            </div>
-                        </div>
-                    `;
-    
-                    $('.chat_block_chat_body_msgs').append(myBlock);
-    
-                    $('.chat_block_chat_body_msgs').animate({scrollTop: $('.chat_block_chat_body_msgs').height()}, 'fast');
-    
-                    await callApi({
-                        methodName: "msgUP",
+                    var all_msgs = await callApi({
+                        methodName: "all_msgs",
                         data: {
                             user: _GET('user'),
                             to: _GET('id'),
-                            type: _User.type,
-                            msg: $('.chat_block_chat_body_row_input input').val(),
                         },
                     });
     
-                    $('.chat_block_chat_body_row_input input').val('');
-                });
-            } else 
-            {
-                console.log('start');
-
-                var selectedMsgChats = await callApi({
-                    methodName: "selectedMsgChats",
-                    data: data._id,
-                });
-
-                console.log(selectedMsgChats);
-
-                var block = $(`
-                    <div class="msg_block_getting">
-
-                    </div>
-                `);
-
-                selectedMsgChats.forEach(el => {
-
-                    var template_text = $(`
-                        <div class="msg_block_getting_line" data="${el.business}" data-more="${el.investor}">
-                            <div class="msg_block_getting_line_img">
-                                <div class="msg_block_getting_line_img_block"></div>
+                    var clearAlertMsg = await callApi({
+                        methodName: "clearAlertMsg",
+                        data: global.allData._id,
+                    });
+    
+                    console.log(all_msgs);
+    
+    
+                    var templateText = `
+                        <div class="chat_block">
+                            <div class="chat_block_chat">
+                                <div class="chat_block_chat_header">
+                                    <span>Чат</span>
+                                </div>
+                                <div class="chat_block_chat_body">
+                                    <div class="chat_block_chat_body_row">
+    
+                                        <div class="chat_block_chat_body_msgs">
+    
+                                        </div>
+    
+                                        <div class="chat_block_chat_body_row_input">
+                                            <input type="text">
+                                            <span>Отправить</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="msg_block_getting_line_text">
-                                <span>VIBERY.STORE</span>
-                                <p>${el.msgs[el.msgs.length - 1].text}</p>
+                            <div class="chat_block_info">
+                                <div class="info_active_block_photo">
+                                
+                                </div>
+                                <span>Кирилл Максимов</span>
+                                <p>Invester</p>
                             </div>
                         </div>
+                    `;
+        
+                    $('.index_page_body_data').append(templateText);
+    
+                    if(all_msgs) {
+                        if(all_msgs.msgs.length > 0) {
+                            all_msgs.msgs.forEach(function(el) 
+                            {
+                                var myBlock = `
+                                    <div class="chat_block_chat_body_msgs_line">
+                                        <div class="chat_block_chat_body_msgs_line_my">
+                                            <span>${el.text}</span>
+                                        </div>
+                                    </div>
+                                `;
+    
+                                var notMyblock = `
+                                    <div class="chat_block_chat_body_msgs_line chat_block_chat_body_msgs_line_left">
+                                        <div class="chat_block_chat_body_msgs_line_my">
+                                            <span>${el.text}</span>
+                                        </div>
+                                    </div>
+                                `;
+    
+                                if(global.allData.User.type == "business")
+                                {
+                                    if(el.type == "investor")
+                                    {
+                                        $('.chat_block_chat_body_msgs').append(notMyblock);
+                                    } else {
+                                        $('.chat_block_chat_body_msgs').append(myBlock);
+                                    }
+                                } else {
+                                    if(el.type == "investor")
+                                    {
+                                        $('.chat_block_chat_body_msgs').append(myBlock);
+                                    } else {
+                                        $('.chat_block_chat_body_msgs').append(notMyblock);
+                                    }
+                                }
+    
+                                
+                            })
+            
+                            $('.chat_block_chat_body_msgs').animate({scrollTop: $('.chat_block_chat_body_msgs').height()}, 'fast');
+                        }
+                    }
+        
+                    var Project_data = await callApi({
+                        methodName: "getProject",
+                        data: _GET('id'),
+                    });
+    
+                    var _User = await callApi({
+                        methodName: "getUserForId",
+                        data: _GET('user'),
+                    });
+        
+                    var headerShow = {
+                        "investor": function() {
+                            $('.chat_block_info span').html(Project_data.data.name);
+                            $('.chat_block_info p').html("business");
+                        },
+                        "business": function() {
+                            $('.chat_block_info span').html(_User.first_name + " " + _User.last_name);
+                            $('.chat_block_info p').html("investor");
+                        },
+                    }
+        
+                    headerShow[_User.type]();
+        
+                    $('.chat_block_chat_body_row_input input').focus( async function() {
+                        $(window).keyup(async function(event){
+                            if(event.keyCode == 13) {
+                                event.preventDefault();
+                                var myBlock = `
+                                    <div class="chat_block_chat_body_msgs_line">
+                                        <div class="chat_block_chat_body_msgs_line_my">
+                                            <span>${$('.chat_block_chat_body_row_input input').val()}</span>
+                                        </div>
+                                    </div>
+                                `;
+        
+                                $('.chat_block_chat_body_msgs').append(myBlock);
+        
+                                $('.chat_block_chat_body_msgs').animate({scrollTop: $('.chat_block_chat_body_msgs').height()}, 'fast');
+        
+                                await callApi({
+                                    methodName: "msgUP",
+                                    data: {
+                                        user: _GET('user'),
+                                        to: _GET('id'),
+                                        type: _User.type,
+                                        msg: $('.chat_block_chat_body_row_input input').val(),
+                                    },
+                                });
+        
+                                $('.chat_block_chat_body_row_input input').val('');
+                            }
+                        });
+                    });
+        
+                    $('.chat_block_chat_body_row_input span').click( async function() {
+        
+                        var myBlock = `
+                            <div class="chat_block_chat_body_msgs_line">
+                                <div class="chat_block_chat_body_msgs_line_my">
+                                    <span>${$('.chat_block_chat_body_row_input input').val()}</span>
+                                </div>
+                            </div>
+                        `;
+        
+                        $('.chat_block_chat_body_msgs').append(myBlock);
+        
+                        $('.chat_block_chat_body_msgs').animate({scrollTop: $('.chat_block_chat_body_msgs').height()}, 'fast');
+        
+                        await callApi({
+                            methodName: "msgUP",
+                            data: {
+                                user: _GET('user'),
+                                to: _GET('id'),
+                                type: _User.type,
+                                msg: $('.chat_block_chat_body_row_input input').val(),
+                            },
+                        });
+        
+                        $('.chat_block_chat_body_row_input input').val('');
+                    });
+                } else 
+                {
+                    console.log('start');
+    
+                    var selectedMsgChats = await callApi({
+                        methodName: "selectedMsgChats",
+                        data: data._id,
+                    });
+    
+                    console.log(selectedMsgChats);
+    
+                    var block = $(`
+                        <div class="msg_block_getting">
+    
+                        </div>
                     `);
-                    
-                    block.append(template_text);
-                })
-
-                $('.index_page_body_data').append(block);
-
-                $('.msg_block_getting_line').click( function() {
-                    location.href = `https://invester-relocation.site/?user=${$(this).attr('data-more')}&page=chats&id=${$(this).attr('data')}`;
-                })
-
+    
+                    selectedMsgChats.forEach(el => {
+    
+                        var template_text = $(`
+                            <div class="msg_block_getting_line" data="${el.business}" data-more="${el.investor}">
+                                <div class="msg_block_getting_line_img">
+                                    <div class="msg_block_getting_line_img_block"></div>
+                                </div>
+                                <div class="msg_block_getting_line_text">
+                                    <span>VIBERY.STORE</span>
+                                    <p>${el.msgs[el.msgs.length - 1].text}</p>
+                                </div>
+                            </div>
+                        `);
+                        
+                        block.append(template_text);
+                    })
+    
+                    $('.index_page_body_data').append(block);
+    
+                    $('.msg_block_getting_line').click( function() {
+                        location.href = `https://invester-relocation.site/?user=${$(this).attr('data-more')}&page=chats&id=${$(this).attr('data')}`;
+                    })
+    
+                }
             }
         }
     }
