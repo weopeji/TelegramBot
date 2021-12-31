@@ -299,8 +299,12 @@
                 location.href = `./projects/${_data.InvDoc.projectId}/${_data.InvDoc.data.document}`;
             });
 
-            $('.show_document').click( function() {
-                window.open(`https://invester-relocation.site/html/project/document/#${_data.InvDoc.projectId}#/?id=${_data.invester._id}&accept=true`, '_blank');
+            $('.show_document').click( async function() {
+                var getProjectInvfgty = await callApi({
+                    methodName: "getProjectInvfgty",
+                    data: _GET('project'),
+                });
+                window.open(`https://invester-relocation.site/projects/${_data.InvDoc.projectId}/${getProjectInvfgty.signature_document.user_document}`, '_blank');
             });
 
             $('.accept_block_tap').click( async function () 
