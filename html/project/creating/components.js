@@ -131,7 +131,7 @@
                                 parsing_data: null,
                                 moreGet: true,
                                 shower: "Ваш юридический адрес не совпадают с Фактическим",
-                                _id: "addr"
+                                _id: "addr_fact"
                             },
                             {
                                 type: "string",
