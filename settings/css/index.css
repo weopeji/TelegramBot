@@ -525,6 +525,9 @@
         -ms-flex: 1.5;
             flex: 1.5;
   }
+  .index_page_body_moderation_block {
+    width: calc(33% - 20px);
+  }
 }
 
 @media (max-width: 1200px) {
