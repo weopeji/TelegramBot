@@ -519,7 +519,7 @@
   margin-left: 0;
 }
 
-@media (max-width: 1500px) {
+@media (max-width: 1300px) {
   .button_open_settings_page {
     display: block;
   }
