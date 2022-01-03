@@ -383,11 +383,12 @@
 
 .button_open_settings_page
     position: fixed
-    top: 0
-    left: 0
+    top: 20px
+    left: 20px
     z-index: 100000000000000
     color: white
     font-size: 25px
+    display: none
 
 
 .selected
@@ -399,7 +400,9 @@
 
 
 
-@media (max-width: 1500px)       
+@media (max-width: 1500px)     
+    .button_open_settings_page
+        display: block  
 
     .index_page_menu_block 
         width: 100vw
