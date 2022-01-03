@@ -529,24 +529,4 @@
     width: calc(33% - 20px);
   }
 }
-
-@media (max-width: 1100px) {
-  .button_open_settings_page {
-    display: block;
-  }
-  .index_page_menu_block {
-    width: 100vw;
-  }
-  .index_page_menu {
-    margin-left: -100%;
-  }
-  .global_block_menu {
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-  }
-  .global_block_menu span {
-    width: 100%;
-    margin-bottom: 20px;
-  }
-}
 /*# sourceMappingURL=index.css.map */
