@@ -35,6 +35,10 @@
             $('.index_page_body_data').empty();
             pagesLAN[global.pageID]();
         }
+
+        $('.button_open_settings_page').click( function() {
+            $('.index_page').toggleClass('selected');
+        })
     }
 
 }(window))
