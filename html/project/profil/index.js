@@ -40,7 +40,7 @@
         {
             if(need_project.parce.ar)
             {
-                if(need_project.parce.ar.response.length > 0)
+                if(need_project.parce.ar.response.length > 0 && need_project.parce.ar.response)
                 {
                     $('.arbitr_add').append(`<span class="arbitr_arbitr_add">${need_project.parce.ar.many}</span>`);
                     need_project.parce.ar.response.forEach(el => {
