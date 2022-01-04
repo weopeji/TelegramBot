@@ -186,11 +186,12 @@ html, body {
 
 .selected .cover_block {
   width: 1080px;
-  height: 1440px;
+  height: 1190px;
 }
 
 .selected .cover_block h1 {
   font-size: 65px;
+  margin-top: 45px;
 }
 
 .selected .cover_block p {
@@ -209,5 +210,17 @@ html, body {
 
 .selected .cover_block_centr_inter span {
   font-size: 27px;
+}
+
+.selected .cover_block_body_line span {
+  font-size: 35px;
+}
+
+.selected .cover_block_body_line a {
+  font-size: 43px;
+}
+
+.selected .cover_block_body {
+  margin-top: 90px;
 }
 /*# sourceMappingURL=cover.css.map */
