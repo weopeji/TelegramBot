@@ -36,9 +36,9 @@ html, body {
   margin-top: 20px;
   font-size: 25px;
   font-weight: bold;
-  margin-top: 15px;
-  margin-bottom: 6px;
-  font-family: 'Circe ExtraBold';
+  margin-top: 8px;
+  margin-bottom: 0;
+  font-family: 'Circe Bold';
 }
 
 .cover_block p {
@@ -82,19 +82,23 @@ html, body {
   font-weight: bold;
   padding: 0;
   margin: 0;
-  font-family: 'Circe ExtraBold';
+  font-family: 'Circe Bold';
 }
 
 .cover_block_centr_inter_first {
   background: #7cdff2;
   background: -webkit-gradient(linear, left top, right top, color-stop(29%, #7cdff2), to(#9c9bff));
   background: linear-gradient(90deg, #7cdff2 29%, #9c9bff 100%);
+  -webkit-box-shadow: 0px 14px 15px 0px rgba(124, 223, 242, 0.2);
+          box-shadow: 0px 14px 15px 0px rgba(124, 223, 242, 0.2);
 }
 
 .cover_block_centr_inter_second {
   background: #a7a2fc;
   background: -webkit-gradient(linear, left top, right top, color-stop(29%, #a7a2fc), to(#e48bff));
   background: linear-gradient(90deg, #a7a2fc 29%, #e48bff 100%);
+  -webkit-box-shadow: 0px 14px 15px 0px rgba(193, 152, 253, 0.2);
+          box-shadow: 0px 14px 15px 0px rgba(193, 152, 253, 0.2);
 }
 
 .cover_block_body {
@@ -103,7 +107,7 @@ html, body {
   display: -ms-flexbox;
   display: flex;
   margin: 0 auto;
-  margin-top: 34px;
+  margin-top: 30px;
 }
 
 .cover_block_body_line {
@@ -128,13 +132,13 @@ html, body {
   display: block;
   font-size: 15px;
   font-weight: bold;
-  font-family: 'Circe ExtraBold';
+  font-family: 'Circe Bold';
 }
 
 .cover_block_liner {
   width: 90%;
   margin: 0 auto;
-  margin-top: 37px;
+  margin-top: 20px;
   color: #B2B2B2;
 }
 
@@ -189,7 +193,7 @@ html, body {
   color: black;
   font-size: 18px;
   font-weight: 600;
-  font-family: 'Circe ExtraBold';
+  font-family: 'Circe Bold';
 }
 
 .selected .cover_block {
