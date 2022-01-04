@@ -61,9 +61,8 @@
             $('.cover_block').css({
                 "padding-bottom": "10px",
                 "width": "1080px",
-                "height": "1350px",
+                "height": "1440px",
             });
-            $('.cover_block_logo').css('width', "50%");
             $('.cover_block h1').css({
                 "font-size": "65px",
             })
