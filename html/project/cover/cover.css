@@ -179,6 +179,7 @@ html, body {
 
 .cover_block_liner_text a,
 .cover_block_liner_text k {
+  color: black;
   font-size: 18px;
   font-weight: 600;
 }
