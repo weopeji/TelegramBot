@@ -196,4 +196,18 @@ html, body {
 .selected .cover_block p {
   font-size: 42px;
 }
+
+.selected .cover_block_centr_inter {
+  width: 450px;
+  padding: 15px 25px;
+  border-radius: 100px;
+}
+
+.selected .cover_block_centr_inter p {
+  font-size: 65px;
+}
+
+.selected .cover_block_centr_inter span {
+  font-size: 27px;
+}
 /*# sourceMappingURL=cover.css.map */
