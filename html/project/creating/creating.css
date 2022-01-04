@@ -273,6 +273,10 @@ html, body {
   }
 }
 
+.body_point_line_header_text {
+  width: 75%;
+}
+
 .body_point_line_header_text p {
   margin: 0;
   margin-top: 5px;

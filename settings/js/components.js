@@ -1353,7 +1353,7 @@
                 var _description = `
                     ${_project.data.name} № ${_project._id}
                     ${_project.data.target}
-                    Ставка ${_project.data.rate * 12}% годовых
+                    Ставка ${_project.data.rate}% годовых
                     Выплаты ${_project.data.date_payments}
                     Вход от ${_project.data.minimal_amount} руб.
                     Подробнее о предложении в телеграм канале - https://t.me/invester_official
@@ -1418,7 +1418,7 @@
                 var firstBlockMore = $(`
                     <div class="body_point">
                         <div class="body_point_header">
-                            <span>Документ регистрации бизнеса</span>
+                            <span>Договор бизнеса с InvestER</span>
                         </div>
                         <div class="body_point_line_block_more_registration_business">
                             <input type="file" name="" id="DocumentToRegistration">
@@ -1456,7 +1456,7 @@
                     var firstBlockMore = $(`
                         <div class="body_point">
                             <div class="body_point_header">
-                                <span>Документ регистрации бизнеса</span>
+                                <span>Договор бизнеса с InvestER</span>
                             </div>
                             <div class="body_point_line_block_more_registration_business">
                                 <st>Посмотреть</st>
@@ -1651,7 +1651,7 @@
 
                 $(this).parent().fadeOut( function() 
                 {
-                    $(this).parent().find(".body_point_line_first p").html(_text);
+                    $(this).parent().find(".body_point_line_first p").html(_text.toDivide());
                     $(this).parent().find(".body_point_line_first").fadeIn();
                 });
             })
