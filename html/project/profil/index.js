@@ -183,7 +183,10 @@
 
         if(getR_F == "ok")
         {
+            var _error = true;
+
             need_project.parce.fiz[0].result.forEach((el, i) => {
+                _error = false;
                 var _block = $(`
                     <h1>${i + 1}</h1>
                         <div class="page_line">
@@ -193,7 +196,20 @@
                 `);
 
                 $('.ispo_line').append(_block);
-            })
+            });
+
+            if(_error)
+            {
+                var _block = $(`
+                    <h1>${i + 1}</h1>
+                        <div class="page_line">
+                        <span>Информация отсутствует</span>
+                        <p>*</p>
+                    </div>
+                `);
+
+                $('.ispo_line').append(_block);
+            }
         } else {
             var _preloader = $(`
                 <div class="loader_input">
