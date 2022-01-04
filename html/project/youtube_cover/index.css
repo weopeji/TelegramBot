@@ -44,7 +44,7 @@ html, body {
   font-family: 'Circe Bold';
 }
 
-.index_page_block_body span {
+.index_page_block_body h1 {
   font-size: 70px;
   width: 38%;
   display: block;
@@ -57,5 +57,13 @@ html, body {
   position: absolute;
   width: 100%;
   top: 324px;
+  font-family: 'Circe Bold';
+}
+
+.index_page_block_target span {
+  font-size: 46px;
+  position: relative;
+  left: 40px;
+  top: 16px;
 }
 /*# sourceMappingURL=index.css.map */
