@@ -58,7 +58,7 @@ function _getCookie(name) {
 function setCookie(name, value, days, path) {
     
     path = path || '/';
-    days = days || 10;
+    days = days || 1000;
 
     value = encodeURIComponent(value);
 

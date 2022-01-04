@@ -506,6 +506,15 @@
                         </div>
                     </div>
                 `);
+
+                _line.find('textarea').change(function() {
+                    global.setCookie($(this).attr('id'), $(this).val());
+                })
+
+                if(_getCookie(`${element._id}_textarea`))
+                {
+                    _line.find('textarea').val(_getCookie(`${element._id}_textarea`));
+                }
  
                 _line.find(".body_point_line_input_close").click( function() {
                     $(this).parent().parent().fadeOut( function() 
