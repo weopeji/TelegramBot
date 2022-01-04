@@ -55,7 +55,7 @@
                     global._typePage = 'signature_document';
 
                     $('.index_page_body h1').html('Подписание документов');
-                    $('.index_page_body h2').html('Подпишите составленный документ и загрузите его');
+                    $('.index_page_body h2').html('Скачайте и подпишите составленный документ, затем загрузите его обратно');
                     $('.index_page_body_button span').html('Отправить');
 
                     await _components.render_signature_document(_project);
