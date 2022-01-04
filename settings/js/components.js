@@ -1619,7 +1619,7 @@
 
             if(typeof _project.multiplicity != 'undefined')
             {
-                firstBlockMore.find('.body_point_line_first p').html(_project.multiplicity);
+                firstBlockMore.find('.body_point_line_first p').html(Number(_project.multiplicity).toDivide());
             }
 
             firstBlockMore.css("padding-bottom", "20px");
