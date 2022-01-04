@@ -648,11 +648,6 @@ app.post('/file_signature.io/files', (req, res) => {
                         status: 'ok',
                         file_name: `${_data.file_id}.${_data._pts.split('/')[1]}`,
                     });
-                    helper_functions.alertAdmin({
-                        type: "correct_signature",
-                        text: "Был подписан документ в проекте!",
-                        projectId: _data._id,
-                    })
                 });
             } else {
                 console.log('Файл не найден');
