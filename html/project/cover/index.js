@@ -44,8 +44,8 @@
 
         var cover_block_liner_k_numer = Number(need_project.data.attraction_amount.toString().replace( /\s/g, "")) - Number(getPays.toString().replace( /\s/g, ""));
 
-        $('.cover_block_liner a').html(Number(getPays.toString().trim()).toDivide());
-        $('.cover_block_liner k').html(cover_block_liner_k_numer.toDivide());
+        $('.cover_block_liner a').html(Number(getPays.toString().trim()).toDivide() + " ₽");
+        $('.cover_block_liner k').html(cover_block_liner_k_numer.toDivide() + " ₽");
         $('#name').html(need_project.data.name || "Null");
         $('#target').html(need_project.data.target || "Null");
         $('#money').html(need_project.data.attraction_amount || "Null");
