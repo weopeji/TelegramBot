@@ -41,5 +41,21 @@ html, body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  font-family: 'Circe Bold';
+}
+
+.index_page_block_body span {
+  font-size: 70px;
+  width: 38%;
+  display: block;
+  margin-left: 57px;
+  position: relative;
+  top: -20px;
+}
+
+.index_page_block_target {
+  position: absolute;
+  width: 100%;
+  top: 324px;
 }
 /*# sourceMappingURL=index.css.map */
