@@ -42,10 +42,10 @@
 
         var _data = need_project.data.collection_period.split("-");
 
-        var cover_block_liner_k_numer = parseInt(need_project.data.attraction_amount, 10) - parseInt(getPays, 10);
+        var cover_block_liner_k_numer = parseInt(Number(need_project.data.attraction_amount).toString().trim(), 10) - parseInt(Number(getPays.toString().trim()), 10);
 
-        $('.cover_block_liner a').html(getPays);
-        $('.cover_block_liner k').html(cover_block_liner_k_numer);
+        $('.cover_block_liner a').html(Number(getPays.toString().trim()).toDivide());
+        $('.cover_block_liner k').html(cover_block_liner_k_numer.toDivide());
         $('#name').html(need_project.data.name || "Null");
         $('#target').html(need_project.data.target || "Null");
         $('#money').html(need_project.data.attraction_amount || "Null");
