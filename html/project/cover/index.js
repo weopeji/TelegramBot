@@ -57,20 +57,8 @@
 
         if(_GET('liner'))
         {
+            $('.index_page').addClass('selected');
             $('.cover_block_liner').remove();
-            $('.cover_block').css({
-                "padding-bottom": "10px",
-                "width": "1080px",
-                "height": "1440px",
-            });
-            $('.cover_block h1').css({
-                "font-size": "65px",
-            })
-            $('.cover_block p').css("font-size", "42px");
-            $('.cover_block_centr_inter span').css("font-size", "50px");
-            $('.cover_block_centr_inter p').css("font-size", "42px");
-            $('.cover_block_body_line').css("font-size", "48px");
-            $('.cover_block_body_line').css("padding", "24px 0");
         }
 
         $('body').append('<div class="all_good"></div>')
