@@ -138,8 +138,7 @@
                     this._append("Сайт", need_project.data.syte, true);
                     this._append("Цель займа", need_project.data.target);
 
-                    if(typeof need_project.parce.pr.management.name != "undefined")
-                    {
+                    if(typeof need_project.parce.pr.management != "undefined") {
                         this._append("Учредитель", need_project.parce.pr.management.name);
                     } else {
                         if(typeof need_project.parce.pr.name.full != "undefined")
@@ -147,6 +146,7 @@
                             this._append("Учредитель", `${need_project.parce.pr.name.full}`);
                         }   
                     }
+                    
                     
                     this._append("List.org", `https://www.list-org.com/search?type=inn&val=${need_project.parce.pr.inn}`, true);
 
