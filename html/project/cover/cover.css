@@ -38,6 +38,7 @@ html, body {
   font-weight: bold;
   margin-top: 15px;
   margin-bottom: 6px;
+  font-family: 'Circe ExtraBold';
 }
 
 .cover_block p {
@@ -47,6 +48,7 @@ html, body {
   color: #95aac9;
   padding-top: 0;
   margin-top: 0;
+  font-family: 'Circe Light';
 }
 
 .cover_block_centr {
@@ -71,6 +73,7 @@ html, body {
   text-align: center;
   margin: 0 auto;
   display: block;
+  font-family: 'Circe Light';
 }
 
 .cover_block_centr_inter p {
@@ -79,6 +82,7 @@ html, body {
   font-weight: bold;
   padding: 0;
   margin: 0;
+  font-family: 'Circe ExtraBold';
 }
 
 .cover_block_centr_inter_first {
@@ -113,6 +117,7 @@ html, body {
   display: block;
   text-align: center;
   font-size: 13px;
+  font-family: 'Circe Light';
 }
 
 .cover_block_body_line a {
@@ -123,6 +128,7 @@ html, body {
   display: block;
   font-size: 15px;
   font-weight: bold;
+  font-family: 'Circe ExtraBold';
 }
 
 .cover_block_liner {
@@ -175,6 +181,7 @@ html, body {
   width: 95%;
   margin: 0 auto;
   color: #B2B2B2;
+  font-family: 'Circe Light';
 }
 
 .cover_block_liner_text a,
@@ -182,6 +189,10 @@ html, body {
   color: black;
   font-size: 18px;
   font-weight: 600;
+}
+
+.cover_block_liner_text k {
+  font-family: 'Circe ExtraBold';
 }
 
 .selected .cover_block {
