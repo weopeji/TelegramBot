@@ -201,7 +201,6 @@
             if(_error)
             {
                 var _block = $(`
-                    <h1>${i + 1}</h1>
                         <div class="page_line">
                         <span>Информация отсутствует</span>
                         <p>*</p>
