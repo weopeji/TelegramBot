@@ -79,7 +79,22 @@ async function full_alert_user(_id, _text, _type)
         const element = await page.$('.alert');   
         await element.screenshot({path: _path});
         await browser.close(); 
-        await User.findOneAndUpdate({user: _id}, {alerts_main: _Alerts});
+        var _user = await User.findOneAndUpdate({user: _id}, {alerts_main: _Alerts});
+
+        var _array      = [];
+
+        var html = _text;
+
+        var fat = await send_html(msg.from.id, html);
+        _array.push(fat.message_id);
+
+        var nMsg = {
+            from: {
+                id: _user.user
+            }
+        }
+
+        await DMA(nMsg, _array);
     }
 
     mkdirp(`/var/www/users_alerts/${_User.user}`, err => {

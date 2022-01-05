@@ -32,7 +32,8 @@ module.exports = {
 }
 
 
-function privateInit(initPlagins) {
+function privateInit(initPlagins) 
+{
     Project     = initPlagins.Project;
     User        = initPlagins.User;
     fs          = initPlagins.fs;
