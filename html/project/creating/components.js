@@ -988,7 +988,7 @@
                                 <span class="_yes">Готово</span>
                             </div>
                         </div>
-                        <input id="${data._id}" class="text_area" placeholder="Введите значение">
+                        <input id="${data._id}" class="text_area" placeholder="">
                     </div>
                 `);
 
