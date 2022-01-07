@@ -224,6 +224,60 @@
                         },
                     ]
                 },
+                "+4_1": {
+                    header: "4. Данные собстевенника",
+                    body: [
+                        {
+                            type: "string",
+                            name: "Ф.И.О Собственника как в паспорте",
+                            info: "",
+                            parsing_data: null,
+                            _id: "sob_fio"
+                        },
+                        {
+                            type: "string",
+                            name: "Дата рождения",
+                            info: "",
+                            parsing_data: null,
+                            _id: "sob_date"
+                        },
+                        {
+                            type: "string",
+                            name: "Прописка как в паспорте",
+                            info: "",
+                            parsing_data: null,
+                            _id: "sob_prop"
+                        },
+                        {
+                            type: "string",
+                            name: "Регион согласно паспорту",
+                            info: "Например Московская область, Свердловская область",
+                            parsing_data: null,
+                            _id: "sob_region"
+                        },
+                        {
+                            type: "string",
+                            name: "Серия паспорта",
+                            info: "",
+                            parsing_data: null,
+                            _id: "sob_serion"
+                        },
+                        {
+                            type: "string",
+                            name: "Номер паспорта",
+                            info: "",
+                            parsing_data: null,
+                            _id: "sob_number"
+                        },
+                        {
+                            type: "string",
+                            name: "ИНН физ лица",
+                            info: "",
+                            parsing_data: null,
+                            _id: "sob_inn"
+                        },
+                    ]
+                },
                 "+5": {
                     header: "5. Контакты",
                     body: [
@@ -233,12 +287,6 @@
                             info: "Введите ФИО кирилицей",
                             _id: "initials"
                         },
-                        // {
-                        //     type: "string",
-                        //     name: "Должность",
-                        //     info: "Должность которую вы занимаете в компании",
-                        //     _id: "position"
-                        // },
                         {
                             type: "string",
                             name: "Телефон",
