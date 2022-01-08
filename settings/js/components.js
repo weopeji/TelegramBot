@@ -187,28 +187,7 @@
                 </div>
             `);
 
-            var _status = "Подан первый раз";
-
-            if(_project.signature)
-            {
-                if(_project.signature.status == "wait")
-                {
-                    _status = "Запрошены дополнительные документы";
-                } else {
-                    _status = "Получены дополнительные документы";
-                }
-            }
-
-            if(_project.signature_document)
-            {
-                if(_project.signature_document.status == "wait")
-                {
-                    _status = "Запрошена подпись бизнеса";
-                } else
-                {
-                    _status = "Получена подпись бизнеса";
-                }
-            }
+            var _status = "Ожидает модерации";
 
             if(_project.type == "correction") 
             {
@@ -1209,7 +1188,7 @@
                     <span data="6">Доля в объекте недвижимости</span>
                 </div>
                 <div class="index_page_more_menu_blocks">
-                    <h1>Получаемые данные</h1>
+                    <h1>Админка заявка от ИП</h1>
                     <div class="index_page_more_menu_blocks_need">
                         <p>
                             1. Устав <br>
