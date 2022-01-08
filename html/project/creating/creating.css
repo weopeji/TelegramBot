@@ -242,6 +242,10 @@ html, body {
   border: 0;
 }
 
+.body_point_line input[type=date]::-webkit-calendar-picker-indicator {
+  color: white;
+}
+
 .body_point_line_header {
   display: -webkit-box;
   display: -ms-flexbox;

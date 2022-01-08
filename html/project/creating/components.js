@@ -143,20 +143,20 @@
                             }
                         ],
                         2: [
-                            {
-                                type: "string",
-                                name: "Прописка как в паспорте",
-                                info: "Введите точные данные как в паспорте",
-                                parsing_data: null,
-                                _id: "registration"
-                            },
-                            {
-                                type: "string",
-                                name: "Регион согласно паспорту",
-                                info: "Например Московская область, Свердловская область",
-                                parsing_data: null,
-                                _id: "region"
-                            },
+                            // {
+                            //     type: "string",
+                            //     name: "Прописка как в паспорте",
+                            //     info: "Введите точные данные как в паспорте",
+                            //     parsing_data: null,
+                            //     _id: "registration"
+                            // },
+                            // {
+                            //     type: "string",
+                            //     name: "Регион согласно паспорту",
+                            //     info: "Например Московская область, Свердловская область",
+                            //     parsing_data: null,
+                            //     _id: "region"
+                            // },
                             {
                                 type: "string",
                                 name: "Основанная деятельность",
@@ -164,13 +164,13 @@
                                 parsing_data: null,
                                 _id: "activity"
                             },
-                            {
-                                type: "date",
-                                name: "Ваша дата рождения",
-                                info: "*",
-                                parsing_data: null,
-                                _id: "date_user"
-                            }
+                            // {
+                            //     type: "date",
+                            //     name: "Ваша дата рождения",
+                            //     info: "*",
+                            //     parsing_data: null,
+                            //     _id: "date_user"
+                            // }
                         ]
                     }
                 },
@@ -251,7 +251,7 @@
                         {
                             type: "string",
                             name: "Регион согласно паспорту",
-                            info: "Например Московская область, Свердловская область",
+                            info: "",
                             parsing_data: null,
                             _id: "sob_region"
                         },
@@ -281,12 +281,12 @@
                 "+5": {
                     header: "5. Контакты",
                     body: [
-                        {
-                            type: "string",
-                            name: "ФИО Представителя",
-                            info: "Введите ФИО кирилицей",
-                            _id: "initials"
-                        },
+                        // {
+                        //     type: "string",
+                        //     name: "ФИО Представителя",
+                        //     info: "Введите ФИО кирилицей",
+                        //     _id: "initials"
+                        // },
                         {
                             type: "string",
                             name: "Телефон",
@@ -1654,6 +1654,7 @@
             for(var key in correctArray)
             {
                 if(key == "rate") {correctArray[key] = (correctArray[key].replace(/,/, '.') * 12).toFixed(2)};
+                if(key == "syte") continue;
                 if(types[key] == 'file') continue;
                 var _data = correctArray[key];
                 if(_data.length == 0 || _data == null) {
