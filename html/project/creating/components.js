@@ -52,7 +52,7 @@
                             info: "Укажите срок заключения договора с инвестором в месяцах, например: 12, либо выберите 'бессрочно', если если это доля в проекте",
                             parsing_data: null,
                             _id: "date",
-                            number: true
+                            bess: true,
                         },
                         {
                             type: "string",
@@ -1019,6 +1019,20 @@
                     });
                 }
 
+                if(typeof data.bess != 'undefined') {
+                    _line.find(`#${data._id}`).keydown(function(e) {
+                        if(e.keyCode < 91 && e.keyCode > 64) 
+                        {
+                            $(this).val('Бессрочно');
+                        }
+
+                        if(e.keyCode < 8) 
+                        {
+                            $(this).val('');
+                        }
+                    });
+                }
+
                 if(typeof put != "undefined") {
                     _line.find(`#${data._id}`).val(put.data[data._id]);
                     _line.find('._yes').css('display', "block");
@@ -1293,7 +1307,9 @@
                     </div>
                 `);
 
-                
+                _line.click( function() {
+
+                })
 
                 return _line;
             }
