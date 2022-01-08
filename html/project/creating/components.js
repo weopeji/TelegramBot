@@ -1422,7 +1422,7 @@
         {
             var _uploadBlock = $(`
                 <div class="_uploadBlock">
-                    <span>Скачать документ</span>
+                    <span>Скачать договор</span>
                 </div>
             `);
 
@@ -1438,7 +1438,7 @@
                                 <span>Загрузите</span>
                                 <div class="download_buttons">
                                     <input class="file_load" id='signature_mass' type='file'>
-                                    <label for="signature_mass">Загрузить обратно <i class="fas fa-angle-double-down"></i></label>
+                                    <label for="signature_mass">Загрузить подписанный договор <i class="fas fa-angle-double-down"></i></label>
                                 </div>
                                 <div class="loader_input" id="signature_mass_block">
                                     <div class="lds-ring"><div></div><div></div><div></div><div></div></div>

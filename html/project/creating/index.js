@@ -73,8 +73,8 @@
                 {
                     global._typePage = 'registrationDocument';
 
-                    $('.index_page_body h1').html('Подписание документов');
-                    $('.index_page_body h2').html('Подпишите составленный документ и загрузите его');
+                    $('.index_page_body h1').html('Подписание договора с investER');
+                    $('.index_page_body h2').html('Скачайте документ, подпишите его и загрузите');
                     $('.index_page_body_button span').html('Отправить');
 
                     await _components.render_registration_document(_project);
