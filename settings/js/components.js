@@ -506,20 +506,23 @@
                 {
                     var _text = $(this).parent().parent().find("textarea").val();
 
-                    callApi({
-                        methodName: 'redactingLineSettingsPage',
-                        data: {
-                            projectId: _GET('id'),
-                            lineId: $(this).parent().parent().attr('data').split('_')[0],
-                            data: _text,
-                        },
-                    });
-
-                    $(this).parent().parent().fadeOut( function() 
+                    if(_text.length > 0)
                     {
-                        $(this).parent().find(".body_point_line_first p").html(_text);
-                        $(this).parent().find(".body_point_line_first").fadeIn();
-                    });
+                        callApi({
+                            methodName: 'redactingLineSettingsPage',
+                            data: {
+                                projectId: _GET('id'),
+                                lineId: $(this).parent().parent().attr('data').split('_')[0],
+                                data: _text,
+                            },
+                        });
+    
+                        $(this).parent().parent().fadeOut( function() 
+                        {
+                            $(this).parent().find(".body_point_line_first p").html(_text);
+                            $(this).parent().find(".body_point_line_first").fadeIn();
+                        });
+                    }
                 })
 
 
