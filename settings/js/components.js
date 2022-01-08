@@ -1370,6 +1370,8 @@
                     var _name = $('#upload_video_name').html();
                     var _description = $('#upload_video_description').html();
 
+                    alert('Видео отправленно на загрузку, дождитесь его публикации');
+
                     var setYouTubeVideo = await callApi({
                         methodName: "setYouTubeVideo",
                         data: {
@@ -1379,7 +1381,7 @@
                         },
                     });
 
-                    alert('Видео отправленно на загрузку, дождитесь его публикации');
+                    alert('Загруженно!');
 
                     location.reload();
                 })
