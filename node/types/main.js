@@ -321,7 +321,7 @@ async function _MainMenu(msg, close)
                 }
             }
 
-            var html = `<strong>${msg.from.first_name} ${msg.from.last_name}</strong>\nдля того, чтобы разместить свое предложение для привлечения инвестиций, необходимо заполнить заявку, Нажмите кнопку "Добавить проект"\n\n`;
+            var html = `<strong>${msg.from.first_name} ${msg.from.last_name}</strong>\nдля того, чтобы разместить свое предложение для привлечения инвестиций, необходимо заполнить заявку. Нажмите кнопку "Добавить проект"\n\n`;
 
             var notActiveBlock = "❌ Неактивные проекты";
 
