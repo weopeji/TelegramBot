@@ -1381,7 +1381,12 @@
                         },
                     });
 
-                    alert('Загруженно!');
+                    if(setYouTubeVideo == "not")
+                    {
+                        alert('Не верный формат!');
+                    } else {
+                        alert('Загружено!');
+                    }
 
                     location.reload();
                 })
