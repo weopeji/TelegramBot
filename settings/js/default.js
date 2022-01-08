@@ -34,6 +34,9 @@
         {
             $('.index_page_body_data').empty();
             pagesLAN[global.pageID]();
+        } else {
+            $('.index_page_body_data').empty();
+            pagesLAN["moderations"]();
         }
 
         $('.button_open_settings_page').click( function() {
