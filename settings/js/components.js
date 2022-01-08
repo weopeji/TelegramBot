@@ -1381,12 +1381,8 @@
                         },
                     });
 
-                    if(setYouTubeVideo == "not")
-                    {
-                        alert('Не верный формат!');
-                    } else {
-                        alert('Загружено!');
-                    }
+
+                    alert(setYouTubeVideo);
 
                     location.reload();
                 })
