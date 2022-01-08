@@ -730,62 +730,72 @@
 
             if(file_id == 'file+4')
             {
-                if(extension === 'PNG'
-                    || extension === 'JPG'
-                    || extension === 'PDF'
-                    || extension === 'WEBP'
-                ){}else{
-                    alert('Неверный формат: ' + extension + '. Только: PNG JPG PDF WEBP.');
+                if(extension === 'MP4'
+                    || extension === 'MPEG'
+                    || extension === 'MPEG-1'
+                    || extension === 'MPEG-2'
+                    || extension === 'MPEG-3'
+                    || extension === 'MPEG-4'
+                ){
+                    alert('Неверный формат: ' + extension + '. Видео запрещенно.');
                     return;
-                }  
+                }
             }
 
             if(file_id == 'file+3')
             {
-                if(extension === 'PNG'
-                    || extension === 'JPG'
-                    || extension === 'PDF'
-                    || extension === 'WEBP'
-                ){}else{
-                    alert('Неверный формат: ' + extension + '. Только: PNG JPG PDF WEBP.');
+                if(extension === 'MP4'
+                    || extension === 'MPEG'
+                    || extension === 'MPEG-1'
+                    || extension === 'MPEG-2'
+                    || extension === 'MPEG-3'
+                    || extension === 'MPEG-4'
+                ){
+                    alert('Неверный формат: ' + extension + '. Видео запрещенно.');
                     return;
-                }  
+                }
             }
 
             if(file_id == 'file+3_1')
             {
-                if(extension === 'PNG'
-                    || extension === 'JPG'
-                    || extension === 'PDF'
-                    || extension === 'WEBP'
-                ){}else{
-                    alert('Неверный формат: ' + extension + '. Только: PNG JPG PDF WEBP.');
+                if(extension === 'MP4'
+                    || extension === 'MPEG'
+                    || extension === 'MPEG-1'
+                    || extension === 'MPEG-2'
+                    || extension === 'MPEG-3'
+                    || extension === 'MPEG-4'
+                ){
+                    alert('Неверный формат: ' + extension + '. Видео запрещенно.');
                     return;
-                }  
+                }
             }
             
             if(file_id == 'file+3_3')
             {
-                if(extension === 'PNG'
-                    || extension === 'JPG'
-                    || extension === 'PDF'
-                    || extension === 'WEBP'
-                ){}else{
-                    alert('Неверный формат: ' + extension + '. Только: PNG JPG PDF WEBP.');
+                if(extension === 'MP4'
+                    || extension === 'MPEG'
+                    || extension === 'MPEG-1'
+                    || extension === 'MPEG-2'
+                    || extension === 'MPEG-3'
+                    || extension === 'MPEG-4'
+                ){
+                    alert('Неверный формат: ' + extension + '. Видео запрещенно.');
                     return;
-                }  
+                }
             }
             
             if(file_id == 'file+3_2')
             {
-                if(extension === 'PNG'
-                    || extension === 'JPG'
-                    || extension === 'PDF'
-                    || extension === 'WEBP'
-                ){}else{
-                    alert('Неверный формат: ' + extension + '. Только: PNG JPG PDF WEBP.');
+                if(extension === 'MP4'
+                    || extension === 'MPEG'
+                    || extension === 'MPEG-1'
+                    || extension === 'MPEG-2'
+                    || extension === 'MPEG-3'
+                    || extension === 'MPEG-4'
+                ){
+                    alert('Неверный формат: ' + extension + '. Видео запрещенно.');
                     return;
-                }  
+                }
             }
 
             var _form    = new FormData();
