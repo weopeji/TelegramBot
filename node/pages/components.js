@@ -1514,7 +1514,7 @@ async function getActive(socket,data,callback) {
 }
 
 async function getModerations(socket,data,callback) {
-    var _projects   = await Project.find({type: "moderation"});
+    var _projects   = await Project.find({ $or: [{type: "moderation"}, {type: "correction"}]});
     callback(_projects);
 }
 
