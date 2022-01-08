@@ -1024,14 +1024,15 @@
                         if(e.keyCode < 91 && e.keyCode > 64) 
                         {
                             $(this).val('Бессрочно');
-                            this.value = this.value.replace(/[^а-яА-Яa-zA-Z\s]/g, '');
                         }
 
                         if(e.keyCode == 8) 
                         {
                             $(this).val('');
                         }
+                    });
 
+                    _line.find(`#${data._id}`).keydown(function(e) {
                         if($(this).val() == "Бессрочно") {
                             $(this).val('Бессрочно');
                         }
