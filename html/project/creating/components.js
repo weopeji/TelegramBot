@@ -295,7 +295,6 @@
                             name: "Должность",
                             info: "Должность которую вы занимаете в компании",
                             _id: "doljnost",
-                            phone: true
                         },
                         {
                             type: "string",
@@ -1649,8 +1648,11 @@
                 {
                     _string: function(element) 
                     {
-                        correctArray[element._id] = $(`#${element._id}`).val();
-                        types[element._id] = "string";
+                        if($(`#${element._id}`).length)
+                        {
+                            correctArray[element._id] = $(`#${element._id}`).val();
+                            types[element._id] = "string";
+                        }
                     },
                     _file: function(element) 
                     {
