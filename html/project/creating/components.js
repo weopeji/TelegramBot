@@ -276,6 +276,9 @@
                             parsing_data: null,
                             _id: "sob_inn"
                         },
+                        {
+                            type: "add_more_sob",
+                        },
                     ]
                 },
                 "+5": {
@@ -1279,8 +1282,21 @@
                 }
                     
                 return _line;
+            },
+            "add_more_sob": function(data)
+            {
+                var _line = $(`
+                    <div class="body_point_line">
+                        <div class="body_point_line_add_more_sob">
+                            <span>Добавить собственника +</span>
+                        </div>
+                    </div>
+                `);
+
+                
+
+                return _line;
             }
-            
         }
 
         async render(param) 
