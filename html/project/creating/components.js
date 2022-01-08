@@ -1020,15 +1020,19 @@
                 }
 
                 if(typeof data.bess != 'undefined') {
-                    _line.find(`#${data._id}`).keydown(function(e) {
+                    _line.find(`#${data._id}`).keyup(function(e) {
                         if(e.keyCode < 91 && e.keyCode > 64) 
                         {
                             $(this).val('Бессрочно');
                         }
 
-                        if(e.keyCode < 8) 
+                        if(e.keyCode == 8) 
                         {
                             $(this).val('');
+                        }
+
+                        if($(this).val() == "Бессрочно") {
+                            $(this).val('Бессрочно');
                         }
                     });
                 }
