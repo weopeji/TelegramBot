@@ -123,7 +123,7 @@
                     this._append("Адрес юридический", need_project.parce.pr.address.value);
                     this._append("Адрес фактический", need_project.data.addr);
                     this._append("Сайт", need_project.data.syte, true);
-                    this._append("Цель займа", need_project.data.target);
+                    this._append("Цель", need_project.data.target);
                     this._append("Учредитель", need_project.parce.pr.management.name);
                     this._append("List.org", `https://www.list-org.com/search?type=inn&val=${need_project.parce.pr.inn}`, true);
 
@@ -136,7 +136,7 @@
                     this._append("Адрес юридический", need_project.parce.pr.address.value);
                     this._append("Адрес фактический", need_project.data.addr);
                     this._append("Сайт", need_project.data.syte, true);
-                    this._append("Цель займа", need_project.data.target);
+                    this._append("Цель", need_project.data.target);
 
                     if(typeof need_project.parce.pr.management != "undefined") {
                         this._append("Учредитель", need_project.parce.pr.management.name);
@@ -155,7 +155,7 @@
                 "3": function (params) {
                     $('.index_page_profil_data h1').html(_config.header());
                     this._append("Название компании", need_project.data.name);
-                    this._append("Цель займа", need_project.data.target);
+                    this._append("Цель", need_project.data.target);
 
                     $('h1[data="arbitr"]').remove();
                 }
