@@ -65,6 +65,8 @@ html, body {
 .index_page_profil .page_line a {
   overflow-wrap: anywhere;
   color: white;
+  width: 70px;
+  display: block;
 }
 
 .arbitr_add {
