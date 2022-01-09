@@ -1299,7 +1299,9 @@ var _AllParce =
     },
     "_ParceProjectIspo": function (_data) 
     {
-        return new Promise((resolve,reject) => {
+        return new Promise((resolve,reject) => 
+        {
+            
             var query           = _data.addr;
             var url             = "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address";
             var token           = "cd3a829357362fec55fc201c3f761002def9906f";
@@ -1320,10 +1322,17 @@ var _AllParce =
             .then(response => response.text())
             .then(result => 
             {
-                var _dataFirst = JSON.parse(result.toString()).suggestions[0].data.region_kladr_id;
+                var _dataFirst = null;
 
-                _dataFirst = _dataFirst.replace(/0/g, '');
+                if(_data.addr[0] == "1")
+                {
+                    _dataFirst = 50;
+                } else {
+                    _dataFirst = JSON.parse(result.toString()).suggestions[0].data.region_kladr_id;
 
+                    _dataFirst = _dataFirst.replace(/0/g, '');
+                }
+                
                 if(_dataFirst.length == 1)
                 {
                     _dataFirst = _dataFirst.toString() + "0";
