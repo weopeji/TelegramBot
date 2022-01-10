@@ -982,7 +982,7 @@
                 "fiz": function() {
                     return new Promise((resolve,reject) => 
                     {
-                        global.loadResources(['./JSON/ur.js'], () => {
+                        global.loadResources(['./JSON/fiz.js'], () => {
                             resolve();
                         });
                     });
