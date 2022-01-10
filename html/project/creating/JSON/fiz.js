@@ -76,7 +76,7 @@ window.structCreator =
                 _id: "activity"
             },
         ]
-    }
+    },
     {
         header: "4. Скан паспорта",
         body: [
