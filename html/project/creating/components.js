@@ -961,7 +961,7 @@
                     var _body       = $(`<div class="body_point"></div>`);
                     var _dataBlock  = _element.body;
 
-                    if(data.header.length > 0)
+                    if(_element.header.length > 0)
                     {
                         _body.append(`
                             <div class="body_point_header">
