@@ -954,8 +954,10 @@
                     </div>
                 `);
 
-                _line.click( function() {
-
+                _line.click( function() 
+                {
+                    var _element = window.structCreator.filter(function (obj) { return obj.header == "4. Данные собстевенника" });
+                    _body.append(_this.dataLines["file"](_element));
                 })
 
                 return _line;
@@ -1024,11 +1026,14 @@
                     _body.append(preloaderBlockBlock);
                 }
 
-                _body.append(`
-                    <div class="body_point_header">
-                        <span>${data.header}</span>
-                    </div>
-                `);
+                if(data.header.length > 0)
+                {
+                    _body.append(`
+                        <div class="body_point_header">
+                            <span>${data.header}</span>
+                        </div>
+                    `);
+                }
 
                 _dataBlock.forEach(element => 
                 {
