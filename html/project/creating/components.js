@@ -623,6 +623,11 @@
             });
         }
 
+        _getBlock(data)
+        {
+            return dataLines[data];
+        }
+
         dataLines = 
         {
             "string": function(data, put) 
@@ -958,7 +963,7 @@
                 _line.click( function() 
                 {
                     var _element = window.structCreator.filter(function (obj) { return obj.header == "4. Данные собстевенника" });
-                    $(_line.parent()).insertBefore(_this.dataLines["file"](_element));
+                    $(_line.parent()).insertBefore(_this._getBlock("file")(_element));
                 })
 
                 return _line;
