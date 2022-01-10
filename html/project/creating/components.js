@@ -961,27 +961,45 @@
 
                 _line.click( function() 
                 {
-                    var _element    = window.structCreator.filter(function (obj) { return obj.header == "4. Данные собстевенника" })[0];
+                    // FILE ===========================================
+                    var _element    = window.structCreator.filter(function (obj) { return obj.header == "4. Скан паспорта" })[0];
                     var _body       = $(`<div class="body_point"></div>`);
                     var _dataBlock  = _element.body;
-
-                    console.log(_element);
 
                     if(_element.header.length > 0)
                     {
                         _body.append(`
                             <div class="body_point_header">
-                                <span>${_element.header} Номер: ${global.add_blocks}</span>
+                                <span>Скан паспорта дополнительного собственника: ${global.add_blocks}</span>
                             </div>
                         `);
                     }
     
                     _dataBlock.forEach(element => 
                     {
-                        element._id = `${element._id}_${global.add_blocks}`;
+                        element._id = `BB_${element._id}_${global.add_blocks}`;
+                        _body.append(_this.file(element));
+                    });
+                    $(_line.parent()).before(_body);
+
+                    // BLOCK ========================================
+                    var _element    = window.structCreator.filter(function (obj) { return obj.header == "4. Данные собстевенника" })[0];
+                    var _body       = $(`<div class="body_point"></div>`);
+                    var _dataBlock  = _element.body;
+                    console.log(_element);
+                    if(_element.header.length > 0)
+                    {
+                        _body.append(`
+                            <div class="body_point_header">
+                                <span>Данные дополнительного собственника: ${global.add_blocks}</span>
+                            </div>
+                        `);
+                    }
+                    _dataBlock.forEach(element => 
+                    {
+                        element._id = `BB_${element._id}_${global.add_blocks}`;
                         _body.append(_this.string(element));
                     });
-
                     $(_line.parent()).before(_body);
 
                     global.add_blocks = global.add_blocks + 1;
