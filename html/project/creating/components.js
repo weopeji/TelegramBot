@@ -958,7 +958,7 @@
                 _line.click( function() 
                 {
                     var _element = window.structCreator.filter(function (obj) { return obj.header == "4. Данные собстевенника" });
-                    $(_line.parent()).prepend(_this.file(_element));
+                    $(_line.parent()).prepend(_this.string(_element));
                 })
 
                 return _line;
