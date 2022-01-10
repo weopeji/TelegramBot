@@ -957,8 +957,25 @@
 
                 _line.click( function() 
                 {
-                    var _element = window.structCreator.filter(function (obj) { return obj.header == "4. Данные собстевенника" });
-                    $(_line.parent()).prepend(_this.string(_element));
+                    var _element    = window.structCreator.filter(function (obj) { return obj.header == "4. Данные собстевенника" });
+                    var _body       = $(`<div class="body_point"></div>`);
+                    var _dataBlock  = _element.body;
+
+                    if(data.header.length > 0)
+                    {
+                        _body.append(`
+                            <div class="body_point_header">
+                                <span>${data.header}</span>
+                            </div>
+                        `);
+                    }
+    
+                    _dataBlock.forEach(element => 
+                    {
+                        _body.append(_this.string(element));
+                    });
+
+                    $(_line.parent()).prepend(_body);
                 })
 
                 return _line;
