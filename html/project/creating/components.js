@@ -18,6 +18,8 @@
 
         constructor() 
         {
+            this.add_blocks = 2;
+
             this.signature = {
                 "1": {
                     "+1_s": {
@@ -947,6 +949,7 @@
             "add_more_sob": function(data)
             {
                 var _this = this;
+
                 var _line = $(`
                     <div class="body_point_line">
                         <div class="body_point_line_add_more_sob">
@@ -967,17 +970,20 @@
                     {
                         _body.append(`
                             <div class="body_point_header">
-                                <span>${data.header}</span>
+                                <span>${_element.header} Номер: ${_this.add_blocks}</span>
                             </div>
                         `);
                     }
     
                     _dataBlock.forEach(element => 
                     {
+                        element._id = `${element._id}_${_this.add_blocks}`;
                         _body.append(_this.string(element));
                     });
 
                     $(_line.parent()).before(_body);
+
+                    _this.add_blocks = _this.add_blocks + 1;
                 })
 
                 return _line;
