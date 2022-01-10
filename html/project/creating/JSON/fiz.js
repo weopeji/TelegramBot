@@ -1,6 +1,6 @@
-global.structCreator = 
-{
-    "+1": {
+window.structCreator = 
+[
+    {
         header: "1. Описание предложения",
         body: [
             {
@@ -65,95 +65,19 @@ global.structCreator =
             }
         ]
     },
-    "+2": {
+    {
         header: "2. Данные о компании",
-        body: {
-            1: [
-                {
-                    type: "string",
-                    name: "Название компании",
-                    info: "",
-                    parsing_data: "name/short_with_opf",
-                    readonly: true,
-                    _id: "name_company"
-                },
-                {
-                    type: "string",
-                    name: "ИНН",
-                    info: "",
-                    _id: "inn",
-                    parsing_data: "inn",
-                    readonly: true,
-                    number: true
-                },
-                {
-                    type: "string",
-                    name: "ОГРН",
-                    info: "",
-                    parsing_data: "ogrn",
-                    _id: "ogrn",
-                    readonly: true,
-                    number: true
-                },
-                {
-                    type: "addr",
-                    name: "Юридический адрес",
-                    info: "",
-                    parsing_data: null,
-                    moreGet: true,
-                    readonly: true,
-                    _id: "addr"
-                },
-                {
-                    type: "addr",
-                    name: "Фактический адрес",
-                    info: "Введите Фактический адрес",
-                    parsing_data: null,
-                    moreGet: true,
-                    shower: "Ваш юридический адрес не совпадают с Фактическим",
-                    _id: "addr_fact"
-                },
-                {
-                    type: "string",
-                    name: "Сайт",
-                    info: "Введите название / ссылку на ваш сайт",
-                    parsing_data: null,
-                    _id: "syte"
-                }
-            ],
-            2: [
-                // {
-                //     type: "string",
-                //     name: "Прописка как в паспорте",
-                //     info: "Введите точные данные как в паспорте",
-                //     parsing_data: null,
-                //     _id: "registration"
-                // },
-                // {
-                //     type: "string",
-                //     name: "Регион согласно паспорту",
-                //     info: "Например Московская область, Свердловская область",
-                //     parsing_data: null,
-                //     _id: "region"
-                // },
-                {
-                    type: "string",
-                    name: "Основанная деятельность",
-                    info: "Например розничная торговля",
-                    parsing_data: null,
-                    _id: "activity"
-                },
-                // {
-                //     type: "date",
-                //     name: "Ваша дата рождения",
-                //     info: "*",
-                //     parsing_data: null,
-                //     _id: "date_user"
-                // }
-            ]
-        }
+        body: [
+            {
+                type: "string",
+                name: "Основанная деятельность",
+                info: "Например розничная торговля",
+                parsing_data: null,
+                _id: "activity"
+            },
+        ]
     },
-    "+3": {
+    {
         header: "3. Выписка из банка",
         body: [
             {
@@ -163,37 +87,7 @@ global.structCreator =
             },
         ]
     },
-    "+3_1": {
-        header: "3. Отчет о прибылях",
-        body: [
-            {
-                type: "file",
-                name: "Загрузите отчет о прибылях и убытках не менее чем за последние 6 месяцев.",
-                _id: "file+3_1"
-            },
-        ]
-    },
-    "+3_2": {
-        header: "3. Отчет о движении денежных средств",
-        body: [
-            {
-                type: "file",
-                name: "Загрузите отчет о движении денежных средств не менее чем за последние 6 месяцев.",
-                _id: "file+3_2"
-            },
-        ]
-    },
-    "+3_3": {
-        header: "3. Бухгалтерский баланс",
-        body: [
-            {
-                type: "file",
-                name: "Загрузите бухгалтерский баланс не старше 2 недель",
-                _id: "file+3_3"
-            },
-        ]
-    },
-    "+4": {
+    {
         header: "4. Скан паспорта",
         body: [
             {
@@ -203,7 +97,7 @@ global.structCreator =
             },
         ]
     },
-    "+4_1": {
+    {
         header: "4. Данные собстевенника",
         body: [
             {
@@ -255,20 +149,20 @@ global.structCreator =
                 parsing_data: null,
                 _id: "sob_inn"
             },
+            
+        ]
+    },
+    {
+        header: "",
+        body: [
             {
                 type: "add_more_sob",
             },
         ]
     },
-    "+5": {
+    {
         header: "5. Контакты",
         body: [
-            // {
-            //     type: "string",
-            //     name: "ФИО Представителя",
-            //     info: "Введите ФИО кирилицей",
-            //     _id: "initials"
-            // },
             {
                 type: "string",
                 name: "Должность",
@@ -298,7 +192,7 @@ global.structCreator =
             }
         ]
     },
-    "+6": {
+    {
         header: "6. Реквизиты",
         body: [
             {
@@ -343,7 +237,7 @@ global.structCreator =
             }
         ]
     },
-    "+7": {
+    {
         header: "7. Презентация",
         body: [
             {
@@ -353,7 +247,7 @@ global.structCreator =
             },
         ]
     },
-    "+8": {
+    {
         header: "8. Видео презентация",
         body: [
             {
@@ -362,5 +256,5 @@ global.structCreator =
                 _id: "file+8"
             },
         ]
-    }
-};
+    },
+];

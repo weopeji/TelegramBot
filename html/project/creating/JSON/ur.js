@@ -223,6 +223,11 @@ window.structCreator =
                 parsing_data: null,
                 _id: "sob_inn"
             },
+        ]
+    },
+    {
+        header: "",
+        body: [
             {
                 type: "add_more_sob",
             },
