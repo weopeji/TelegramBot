@@ -989,7 +989,7 @@
                 }
             }
 
-            if(param == 1)
+            if(param == 3)
             {
                 await uploadFile['fiz']();
             } else 
