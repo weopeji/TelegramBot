@@ -106,8 +106,8 @@
 
         } else 
         {
-            $('.index_page_header_user span').html(`${_User.first_name} ${_User.last_name}`);
-            $('.index_page_header_user_img').html(`<img src='${getURL()}/users_profile/${_User.user}/${_User.img}' alt></img>`)
+            // $('.index_page_header_user span').html(`${_User.first_name} ${_User.last_name}`);
+            // $('.index_page_header_user_img').html(`<img src='${getURL()}/users_profile/${_User.user}/${_User.img}' alt></img>`)
     
             $('.index_page_body_points').fadeOut( async function() 
             {

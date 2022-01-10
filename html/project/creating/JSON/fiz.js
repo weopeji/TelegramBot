@@ -143,14 +143,6 @@ window.structCreator =
         ]
     },
     {
-        header: "",
-        body: [
-            {
-                type: "add_more_sob",
-            },
-        ]
-    },
-    {
         header: "5. Контакты",
         body: [
             {
