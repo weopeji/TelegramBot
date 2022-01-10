@@ -977,7 +977,7 @@
                         _body.append(_this.string(element));
                     });
 
-                    $(_line.parent()).prepend(_body);
+                    $(_line.parent()).before(_body);
                 })
 
                 return _line;
