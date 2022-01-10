@@ -946,6 +946,7 @@
             },
             "add_more_sob": function(data)
             {
+                var _this = this;
                 var _line = $(`
                     <div class="body_point_line">
                         <div class="body_point_line_add_more_sob">
