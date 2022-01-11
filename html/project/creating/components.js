@@ -1082,6 +1082,7 @@
 
                 _dataBlock.forEach(element => 
                 {
+                    _body.attr('data', element.type);
                     _body.append(_this.dataLines[element.type](element));
                 });
                 
@@ -1332,12 +1333,11 @@
 
             for (var key in this.struct) 
             {
-                if(param != 1) 
-                {
-                    if(key == "+3_1" || key == "+3_2" || key == "+3_3") {
-                        continue;
-                    }
-                }
+
+                var globalBlock = $('.index_page_body_points');
+
+
+
 
                 var data = this.struct[key];
 
