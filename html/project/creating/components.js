@@ -1003,6 +1003,48 @@
                     $(_line.parent()).before(_body);
 
                     global.add_blocks = global.add_blocks + 1;
+
+                    $('.text_area').change( function() {
+                        _components.changeTextArea($(this));
+                    });
+
+                    $('.body_point_line_header_text input[type=file]').change( async function() 
+                    {
+                        if(_typePage == 'signature') 
+                        {
+                            await _components.load_file_signature(this, _id, $(this).attr('id'));
+                        } else if(_typePage == 'redacting') 
+                        {
+                            await _components.load_file_redacting(this, _id, $(this).attr('id'));
+                        }else if(_typePage == 'signature_document') 
+                        {
+                            await _components.load_file_redacting_signature_document(this, _id);
+                        }else if(_typePage == 'registrationDocument') 
+                        {
+                            await _components.load_file_redacting_registration_document(this, _id);
+                        } else
+                        {
+                            await _components.load_file(this, _id, $(this).attr('id'));
+                        }
+
+                        $(this).val('');
+                    });
+
+                    $('.all_good_cheack').click( async function() {
+                        var file_name = $(this).parent().parent().parent().find('.loader_input').attr('data');
+                        if(global._typePage == "signature" || global._typePage == "redacting") {
+                            global.open(`${getURL()}/projects/${_id}/${file_name}`, "_blank");
+                        } else {
+                            global.open(`${getURL()}/users/${_id}/${file_name}`, "_blank");
+                        }
+                    });
+
+                    $('.all_good_del').click( function() {
+                        $(this).parent().parent().parent().find('.loader_input').removeAttr('data');
+                        $(this).parent().parent().fadeOut( function() {
+                            $(this).parent().parent().parent().find('.download_buttons').fadeIn();
+                        })
+                    });
                 })
 
                 return _line;
