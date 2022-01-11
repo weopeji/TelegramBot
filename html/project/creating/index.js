@@ -44,7 +44,7 @@
                     });
                     
 
-                    changeTextArea();
+                    global.changeTextArea();
                 }
             }
 
@@ -62,7 +62,7 @@
 
                     $('.index_page_body_button').remove();
 
-                    changeTextArea();
+                    global.changeTextArea();
 
                 }
             }
@@ -81,7 +81,7 @@
 
                     $('.index_page_body_button').remove();
 
-                    changeTextArea();
+                    global.changeTextArea();
 
                 }
             }
@@ -101,7 +101,7 @@
                     _components.redactingAgain(_id);
                 });
 
-                changeTextArea();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+                global.changeTextArea();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
             }
 
         } else 
@@ -114,7 +114,7 @@
                 await _components.render(_User.creatingData.type);
 
                 $('.index_page_body_points').fadeIn();
-                changeTextArea();
+                global.changeTextArea();
             });
             
             $('.index_page_body_header_type span').click( function() {
@@ -123,7 +123,7 @@
                 $('.index_page_body_points').fadeOut( async function() {
                     await _components.render($('.index_page_body_header_type .selected').attr('data'));
                     $('.index_page_body_points').fadeIn();
-                    changeTextArea();
+                    global.changeTextArea();
                 });
             });
 
