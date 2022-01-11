@@ -1385,6 +1385,7 @@
             for(var key in correctArray)
             {
                 if(key == "syte") continue;
+                if(key == "organization") continue;
                 if(correctArray[key].type == 'file') continue;
                 if(typeof correctArray[key].data == "undefined")
                 {
