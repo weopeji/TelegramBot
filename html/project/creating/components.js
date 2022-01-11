@@ -1341,30 +1341,35 @@
                     {   
                         correctArray[$(element).find('input').attr('id')] = {
                             data: $(element).find('input').val(),
+                            type: "string"
                         };
                     },
                     file: function(element)
                     {
                         correctArray[$(element).find('input').attr('id')] = {
                             data: $(element).find('.loader_input').attr('data'),
+                            type: "file"
                         }
                     },
                     menu: function(element)
                     {
                         correctArray[$(element).find('input').attr('id')] = {
                             data: $(element).find('.menu_block span').text(),
+                            type: "menu"
                         }
                     },
                     addr: function(element)
                     {
                         correctArray[$(element).find('input').attr('id')] = {
                             data: $(element).find('input').val(),
+                            type: "addr"
                         }
                     },
                     date: function(element)
                     {
                         correctArray[$(element).find('input').attr('id')] = {
                             data: $(element).find('input').val(),
+                            type: "date"
                         }
                     }
                 };
@@ -1380,17 +1385,17 @@
             for(var key in correctArray)
             {
                 if(key == "syte") continue;
-                if(types[key] == 'file') continue;
-                if(typeof correctArray[key] == "undefined")
+                if(correctArray[key].type == 'file') continue;
+                if(typeof correctArray[key].data == "undefined")
                 {
                     alert('Введите все данные!');
                     return;
                 }
-                if(correctArray[key].length == 0 || correctArray[key] == null) {
+                if(correctArray[key].data.length == 0 || correctArray[key].data == null) {
                     alert('Введите все данные!');
                     return;
                 }
-                if(key == "rate") {correctArray[key] = (correctArray[key].replace(/,/, '.') * 12).toFixed(2)};
+                if(key == "rate") {correctArray[key].data = (correctArray[key].data.replace(/,/, '.') * 12).toFixed(2)};
             }
 
             $('.index_page').fadeOut();
