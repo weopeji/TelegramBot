@@ -1217,6 +1217,7 @@ var _AllParce =
 {
     "parceProject": async function(inn)
     {
+        consople.log(inn);
         return new Promise((resolve,reject) =>
         {   
             var options = 
@@ -1235,6 +1236,9 @@ var _AllParce =
             .then(response => response.text())
             .then(result => 
             {
+
+                consople.log(result);
+
                 var _dataFirst = JSON.parse(result.toString());
         
                 if(_dataFirst.suggestions.length == 0) 
@@ -1449,11 +1453,9 @@ async function setProject(socket,data,callback)
     {
         console.log("Not FIZ");
 
-        var _ParceProject       = await _AllParce.parceProject(data.data.inn);
-        if(_ParceProject == 'error') { callback('error'); return; };
         _DataProject.parce      = 
         {
-            "pr": _ParceProject,
+            "pr": await _AllParce.parceProject(data.data.inn),
             "ar": await _AllParce._ParcingArbitraj(data.data.inn),
             "fiz": null,
             "token": await _AllParce._ParceProjectIspo(data.data)
