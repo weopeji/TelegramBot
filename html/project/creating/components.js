@@ -631,7 +631,7 @@
             "string": function(data, put) 
             {
                 var _line = $(`
-                    <div class="body_point_line">
+                    <div class="body_point_line" data="string">
                         <div class="body_point_line_header">
                             <div class="body_point_line_header_text">
                                 <span>${data.name}</span>
@@ -762,7 +762,7 @@
                     
                 `;
                 var _line = $(`
-                    <div class="body_point_line _file">
+                    <div class="body_point_line _file" data="file">
                         <div class="body_point_line_header">
                             <div class="body_point_line_header_text">
                                 <span>${data.name}</span>
@@ -779,7 +779,7 @@
             },
             "menu": function(data) {
                 var _line = $(`
-                    <div class="body_point_line _menu">
+                    <div class="body_point_line _menu" data="menu">
                         <div class="body_point_line_header">
                             <div class="body_point_line_header_text">
                                 <span>${data.name}</span>
@@ -819,7 +819,7 @@
             {
                
                 var _line = $(`
-                    <div class="body_point_line">
+                    <div class="body_point_line" data="date">
                         <div class="body_point_line_header">
                             <div class="body_point_line_header_text">
                                 <span>${data.name}</span>
@@ -855,7 +855,7 @@
             },
             "addr": function(data) {
                 var _line = $(`
-                    <div class="body_point_line">
+                    <div class="body_point_line" data="addr">
                         <div class="body_point_line_header">
                             <div class="body_point_line_header_text">
                                 <span>${data.name}</span>
@@ -1082,7 +1082,6 @@
 
                 _dataBlock.forEach(element => 
                 {
-                    _body.attr('data', element.type);
                     _body.append(_this.dataLines[element.type](element));
                 });
                 
@@ -1327,142 +1326,117 @@
         async correct_next_load(param, user) 
         {
             var correctArray    = {};
-            var types           = {};
 
             correctArray.organization = param;
 
             for (var key in this.struct) 
             {
 
-                var globalBlock = $('.index_page_body_points');
+                $('.index_page_body_points .body_point .body_point_line').each((i, element) => {
 
+                    var _attr = $(element).attr('data');
 
-
-
-                var data = this.struct[key];
-
-                var FUN = 
-                {
-                    _string: function(element) 
+                    var FUN = 
                     {
-                        if($(`#${element._id}`).length)
+                        string: function(element) 
+                        {   
+                            correctArray[$(element).find('input').attr('id')] = {
+                                data: $(element).find('input').val(),
+                            };
+                        },
+                        file: function(element)
                         {
-                            correctArray[element._id] = $(`#${element._id}`).val();
-                            types[element._id] = "string";
+                            correctArray[$(element).find('input').attr('id')] = {
+                                data: $(element).find('.loader_input').attr('data'),
+                            }
+                        },
+                        menu: function(element)
+                        {
+                            correctArray[$(element).find('input').attr('id')] = {
+                                data: $(element).find('.menu_block span').text(),
+                            }
+                        },
+                        addr: function(element)
+                        {
+                            correctArray[$(element).find('input').attr('id')] = {
+                                data: $(element).find('input').val(),
+                            }
+                        },
+                        date: function(element)
+                        {
+                            correctArray[$(element).find('input').attr('id')] = {
+                                data: $(element).find('input').val(),
+                            }
                         }
-                    },
-                    _file: function(element) 
-                    {
-                        correctArray[element._id] = document.getElementById(`${element._id}_block`).getAttribute('data');
-                        types[element._id] = "file";
-                    },
-                    _menu: function(element)
-                    {
-                        correctArray[element._id] = $(`#${element._id}`).val();
-                        types[element._id] = "menu";
-                    },
-                    _addr: function(element)
-                    {
-                        correctArray[element._id] = $(`#${element._id}`).val();
-                        types[element._id] = "string";
-                    },
-                    _date: function(element)
-                    {
-                        console.log($(`#${element._id}`).val());
-                        correctArray[element._id] = $(`#${element._id}`).val();
-                        types[element._id] = "string";
-                    }
-                }
+                    };
 
-                function _el(element)
-                {
-                    if(element.type == "string") FUN._string(element);
-                    if(element.type == "file") FUN._file(element);
-                    if(element.type == "menu") FUN._menu(element);
-                    if(element.type == "addr") FUN._addr(element);
-                    if(element.type == "date") FUN._date(element);
-                }
-
-                if(key == "+2") {
-                    if(param == 1 || param == 2) {
-                        data.body[1].forEach(element => 
-                        {
-                            _el(element)
-                        });
-                    } else {
-                        data.body[2].forEach(element => 
-                        {
-                            _el(element)
-                        });
-                    }
-                } else {
-                    data.body.forEach(element => 
+                    if(_attr)
                     {
-                        _el(element)
-                    });
-                }
+                        FUN[_attr]();
+                    }
+                });
             }
 
             console.log(correctArray);
 
-            for(var key in correctArray)
-            {
-                if(key == "rate") {correctArray[key] = (correctArray[key].replace(/,/, '.') * 12).toFixed(2)};
-                if(key == "syte") continue;
-                if(types[key] == 'file') continue;
-                var _data = correctArray[key];
-                if(_data.length == 0 || _data == null) {
-                    alert('Введите все данные!');
-                    return;
-                }
-            }
+            // for(var key in correctArray)
+            // {
+            //     if(key == "rate") {correctArray[key] = (correctArray[key].replace(/,/, '.') * 12).toFixed(2)};
+            //     if(key == "syte") continue;
+            //     if(types[key] == 'file') continue;
+            //     var _data = correctArray[key];
+            //     if(_data.length == 0 || _data == null) {
+            //         alert('Введите все данные!');
+            //         return;
+            //     }
+            // }
 
-            $('.index_page').fadeOut();
-            $('.preloader').fadeIn();
+            // $('.index_page').fadeOut();
+            // $('.preloader').fadeIn();
 
-            var cheackInnCreator = "not error";
+            // var cheackInnCreator = "not error";
 
-            if(param != 3)
-            {
-                cheackInnCreator = await callApi({
-                    methodName: "cheackInnCreator",
-                    data: {
-                        data: correctArray,
-                        user: user,
-                    },
-                });
-            }
+            // if(param != 3)
+            // {
+            //     cheackInnCreator = await callApi({
+            //         methodName: "cheackInnCreator",
+            //         data: {
+            //             data: correctArray,
+            //             user: user,
+            //         },
+            //     });
+            // }
 
-            if(cheackInnCreator == "error") 
-            {
-                alert('Инн введен не верно!');
-                $('.preloader').fadeOut();
-                $('.index_page').fadeIn();
-            } else 
-            {
-                callApi({
-                    methodName: 'setProject',
-                    data: {
-                        data: correctArray,
-                        user: user,
-                    },
-                });
+            // if(cheackInnCreator == "error") 
+            // {
+            //     alert('Инн введен не верно!');
+            //     $('.preloader').fadeOut();
+            //     $('.index_page').fadeIn();
+            // } else 
+            // {
+            //     callApi({
+            //         methodName: 'setProject',
+            //         data: {
+            //             data: correctArray,
+            //             user: user,
+            //         },
+            //     });
 
-                if(global._User.member_b)
-                {
-                    callApi({
-                        methodName: 'tg_alert_user_numbers',
-                        data: {
-                            text: "Вы привели новый Проект! Вы можете посмотреть весь список у себя в кабинете",
-                            user: global._User.member_b,
-                        },
-                    });
-                }
+            //     if(global._User.member_b)
+            //     {
+            //         callApi({
+            //             methodName: 'tg_alert_user_numbers',
+            //             data: {
+            //                 text: "Вы привели новый Проект! Вы можете посмотреть весь список у себя в кабинете",
+            //                 user: global._User.member_b,
+            //             },
+            //         });
+            //     }
                 
-                $('.preloader').fadeOut( function() {
-                    $('.end_get_project').css('display', "flex"); 
-                });
-            }
+            //     $('.preloader').fadeOut( function() {
+            //         $('.end_get_project').css('display', "flex"); 
+            //     });
+            // }
         }
 
         async correct(param, user) 
