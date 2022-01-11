@@ -1004,8 +1004,7 @@
 
                     global.add_blocks = global.add_blocks + 1;
                     
-                    var adminFileIndex = require('./index.js');
-                    adminFileIndex.changeTextArea();
+                    global.changeTextArea();
                 })
 
                 return _line;
