@@ -44,7 +44,7 @@
                     });
                     
 
-                    global.changeTextArea();
+                    changeTextArea();
                 }
             }
 
@@ -62,7 +62,7 @@
 
                     $('.index_page_body_button').remove();
 
-                    global.changeTextArea();
+                    changeTextArea();
 
                 }
             }
@@ -81,7 +81,7 @@
 
                     $('.index_page_body_button').remove();
 
-                    global.changeTextArea();
+                    changeTextArea();
 
                 }
             }
@@ -101,7 +101,7 @@
                     _components.redactingAgain(_id);
                 });
 
-                global.changeTextArea();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+                changeTextArea();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
             }
 
         } else 
@@ -114,7 +114,7 @@
                 await _components.render(_User.creatingData.type);
 
                 $('.index_page_body_points').fadeIn();
-                global.changeTextArea();
+                changeTextArea();
             });
             
             $('.index_page_body_header_type span').click( function() {
@@ -123,7 +123,7 @@
                 $('.index_page_body_points').fadeOut( async function() {
                     await _components.render($('.index_page_body_header_type .selected').attr('data'));
                     $('.index_page_body_points').fadeIn();
-                    global.changeTextArea();
+                    changeTextArea();
                 });
             });
 
@@ -138,7 +138,7 @@
 
         // =============================================================================================
 
-        global.changeTextArea() 
+        function changeTextArea() 
         {
             $('.text_area').change( function() {
                 _components.changeTextArea($(this));
@@ -182,6 +182,8 @@
                 })
             });
         }
+
+        global.changeTextArea = changeTextArea;
         
     }
 
