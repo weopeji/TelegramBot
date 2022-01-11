@@ -1329,53 +1329,51 @@
 
             correctArray.organization = param;
 
-            for (var key in this.struct) 
-            {
+            
 
-                $('.index_page_body_points .body_point .body_point_line').each((i, element) => {
+            $('.index_page_body_points .body_point .body_point_line').each((i, element) => {
 
-                    var _attr = $(element).attr('data');
+                var _attr = $(element).attr('data');
 
-                    var FUN = 
+                var FUN = 
+                {
+                    string: function(element) 
+                    {   
+                        correctArray[$(element).find('input').attr('id')] = {
+                            data: $(element).find('input').val(),
+                        };
+                    },
+                    file: function(element)
                     {
-                        string: function(element) 
-                        {   
-                            correctArray[$(element).find('input').attr('id')] = {
-                                data: $(element).find('input').val(),
-                            };
-                        },
-                        file: function(element)
-                        {
-                            correctArray[$(element).find('input').attr('id')] = {
-                                data: $(element).find('.loader_input').attr('data'),
-                            }
-                        },
-                        menu: function(element)
-                        {
-                            correctArray[$(element).find('input').attr('id')] = {
-                                data: $(element).find('.menu_block span').text(),
-                            }
-                        },
-                        addr: function(element)
-                        {
-                            correctArray[$(element).find('input').attr('id')] = {
-                                data: $(element).find('input').val(),
-                            }
-                        },
-                        date: function(element)
-                        {
-                            correctArray[$(element).find('input').attr('id')] = {
-                                data: $(element).find('input').val(),
-                            }
+                        correctArray[$(element).find('input').attr('id')] = {
+                            data: $(element).find('.loader_input').attr('data'),
                         }
-                    };
-
-                    if(_attr)
+                    },
+                    menu: function(element)
                     {
-                        FUN[_attr]();
+                        correctArray[$(element).find('input').attr('id')] = {
+                            data: $(element).find('.menu_block span').text(),
+                        }
+                    },
+                    addr: function(element)
+                    {
+                        correctArray[$(element).find('input').attr('id')] = {
+                            data: $(element).find('input').val(),
+                        }
+                    },
+                    date: function(element)
+                    {
+                        correctArray[$(element).find('input').attr('id')] = {
+                            data: $(element).find('input').val(),
+                        }
                     }
-                });
-            }
+                };
+
+                if(_attr)
+                {
+                    FUN[_attr]();
+                }
+            });
 
             console.log(correctArray);
 
