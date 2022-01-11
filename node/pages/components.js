@@ -1217,7 +1217,7 @@ var _AllParce =
 {
     "parceProject": async function(inn)
     {
-        consople.log(inn);
+        console.log(inn);
         return new Promise((resolve,reject) =>
         {   
             var options = 
@@ -1237,7 +1237,7 @@ var _AllParce =
             .then(result => 
             {
 
-                consople.log(result);
+                console.log(result);
 
                 var _dataFirst = JSON.parse(result.toString());
         
