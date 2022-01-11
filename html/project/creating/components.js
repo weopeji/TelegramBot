@@ -1329,8 +1329,6 @@
 
             correctArray.organization = param;
 
-            
-
             $('.index_page_body_points .body_point .body_point_line').each((i, element) => {
 
                 var _attr = $(element).attr('data');
@@ -1377,64 +1375,47 @@
 
             console.log(correctArray);
 
-            // for(var key in correctArray)
-            // {
-            //     if(key == "rate") {correctArray[key] = (correctArray[key].replace(/,/, '.') * 12).toFixed(2)};
-            //     if(key == "syte") continue;
-            //     if(types[key] == 'file') continue;
-            //     var _data = correctArray[key];
-            //     if(_data.length == 0 || _data == null) {
-            //         alert('Введите все данные!');
-            //         return;
-            //     }
-            // }
+            for(var key in correctArray)
+            {
+                if(key == "syte") continue;
+                if(types[key] == 'file') continue;
+                if(typeof correctArray[key] == "undefined")
+                {
+                    alert('Введите все данные!');
+                    return;
+                }
+                if(correctArray[key].length == 0 || correctArray[key] == null) {
+                    alert('Введите все данные!');
+                    return;
+                }
+                if(key == "rate") {correctArray[key] = (correctArray[key].replace(/,/, '.') * 12).toFixed(2)};
+            }
 
-            // $('.index_page').fadeOut();
-            // $('.preloader').fadeIn();
+            $('.index_page').fadeOut();
+            $('.preloader').fadeIn();
 
-            // var cheackInnCreator = "not error";
+            callApi({
+                methodName: 'setProject',
+                data: {
+                    data: correctArray,
+                    user: user,
+                },
+            });
 
-            // if(param != 3)
-            // {
-            //     cheackInnCreator = await callApi({
-            //         methodName: "cheackInnCreator",
-            //         data: {
-            //             data: correctArray,
-            //             user: user,
-            //         },
-            //     });
-            // }
-
-            // if(cheackInnCreator == "error") 
-            // {
-            //     alert('Инн введен не верно!');
-            //     $('.preloader').fadeOut();
-            //     $('.index_page').fadeIn();
-            // } else 
-            // {
-            //     callApi({
-            //         methodName: 'setProject',
-            //         data: {
-            //             data: correctArray,
-            //             user: user,
-            //         },
-            //     });
-
-            //     if(global._User.member_b)
-            //     {
-            //         callApi({
-            //             methodName: 'tg_alert_user_numbers',
-            //             data: {
-            //                 text: "Вы привели новый Проект! Вы можете посмотреть весь список у себя в кабинете",
-            //                 user: global._User.member_b,
-            //             },
-            //         });
-            //     }
-                
-            //     $('.preloader').fadeOut( function() {
-            //         $('.end_get_project').css('display', "flex"); 
-            //     });
-            // }
+            if(global._User.member_b)
+            {
+                callApi({
+                    methodName: 'tg_alert_user_numbers',
+                    data: {
+                        text: "Вы привели новый Проект! Вы можете посмотреть весь список у себя в кабинете",
+                        user: global._User.member_b,
+                    },
+                });
+            }
+            
+            $('.preloader').fadeOut( function() {
+                $('.end_get_project').css('display', "flex"); 
+            });
         }
 
         async correct(param, user) 
