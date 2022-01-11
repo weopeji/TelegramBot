@@ -1371,7 +1371,7 @@
 
                 if(_attr)
                 {
-                    FUN[_attr]();
+                    FUN[_attr](element);
                 }
             });
 
