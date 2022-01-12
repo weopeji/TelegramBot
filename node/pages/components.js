@@ -19,6 +19,7 @@ const _app                  = require("../app");
 let {PythonShell}           = require('python-shell')
 const Instagram             = require('instagram-web-api');
 var axios                   = require('axios');
+const ParcingPage           = require('./parcing');
 
 
 module.exports = {
@@ -1431,11 +1432,12 @@ async function setProject(socket,data,callback)
 {
     var _User           = await User.findOne({user: data.user});
     var user_path       = `../users/${_User.user}`;
+    var _dataProject    = data.data;
     var _DataProject    = 
     {
         user: data.user,
         type: "moderation",
-        data: data.data,
+        data: null,
         parce: null,
         redacting: null,
         signature: null,
@@ -1450,51 +1452,62 @@ async function setProject(socket,data,callback)
         }
     };
 
-    if(data.data.organization != 3)
+    var redactinProject             = {}; // ParcingPage
+    var redactinMoreUsers           = {};
+
+    for(var _key in _dataProject)
     {
-        console.log("Not FIZ");
-
-        // _DataProject.parce      = 
-        // {
-        //     "pr": await _AllParce.parceProject(data.data.inn),
-        //     "ar": await _AllParce._ParcingArbitraj(data.data.inn),
-        //     "fiz": null,
-        //     "token": await _AllParce._ParceProjectIspo(data.data)
-        // };
-    } else {
-        console.log("FIZ");
-
-        // _DataProject.parce      = 
-        // {
-        //     "fiz": null,
-        //     "token": await _AllParce.parceProjectFiz(data.data),
-        // };
+        if(_key.split("#")[0] == "BB")
+        {
+            redactinMoreUsers[_key] = _dataProject[_key].data;
+        }
+        redactinProject[_key] = _dataProject[_key].data;
     }
 
-    var _Project        = await Project.create(_DataProject);
-    var _patch          = `/var/www/projects/${_Project._id}`;
+    console.log(redactinProject);
+    console.log(redactinMoreUsers);
 
-    await wrench.copyDirSyncRecursive(user_path, _patch);
+    // if(data.data.organization != 3)
+    // {
+    //     console.log("Not FIZ");
 
-    await fs.readdir(user_path, (err, files) => {
-        if (err) throw err;
+    //     // _DataProject.parce      = 
+    //     // {
+    //     //     "pr": await _AllParce.parceProject(data.data.inn),
+    //     //     "ar": await _AllParce._ParcingArbitraj(data.data.inn),
+    //     //     "fiz": null,
+    //     //     "token": await _AllParce._ParceProjectIspo(data.data)
+    //     // };
+    // } else {
+    //     console.log("FIZ");
+
+    //     // _DataProject.parce      = 
+    //     // {
+    //     //     "fiz": null,
+    //     //     "token": await _AllParce.parceProjectFiz(data.data),
+    //     // };
+    // }
+
+
+    // var _Project        = await Project.create(_DataProject);
+    // var _patch          = `/var/www/projects/${_Project._id}`;
+    // await wrench.copyDirSyncRecursive(user_path, _patch);
+    // await fs.readdir(user_path, (err, files) => {
+    //     if (err) throw err;
       
-        for (const file of files) {
-            fs.unlink(path.join(user_path, file), err => {
-                if (err) throw err;
-            });
-        }
-    }); 
-
-    await savePuppeter(_Project._id);
-
-    h.alertAdmin({
-        type: "creating_project",
-        text: "Новый проект подан на модерацию",
-        projectId: _Project._id,
-    })
-
-    callback({status: "ok"});    
+    //     for (const file of files) {
+    //         fs.unlink(path.join(user_path, file), err => {
+    //             if (err) throw err;
+    //         });
+    //     }
+    // }); 
+    // await savePuppeter(_Project._id);
+    // h.alertAdmin({
+    //     type: "creating_project",
+    //     text: "Новый проект подан на модерацию",
+    //     projectId: _Project._id,
+    // })
+    // callback({status: "ok"});    
 }
 
 async function savePuppeter(putProject)
