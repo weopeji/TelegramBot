@@ -1470,7 +1470,14 @@ async function setProject(socket,data,callback)
     for(var _key in redactinMoreUsers)
     {
         var _targetNumber = _key.split('_')[_key.split('_').length - 1];
-        sortMoreUsers["+" + _targetNumber.toString()] = redactinMoreUsers[_key];
+        if(typeof sortMoreUsers["+" + _targetNumber.toString()] == "undefined")
+        {
+            sortMoreUsers["+" + _targetNumber.toString()] = [];
+        }
+        sortMoreUsers["+" + _targetNumber.toString()].push({
+            id: _key,
+            data: redactinMoreUsers[_key],
+        });
     }
 
     console.log(redactinProject);
