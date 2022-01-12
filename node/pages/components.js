@@ -236,31 +236,63 @@ async function getProjectKey(socket,data,callback)
 async function getR_F(socket,data,callback)
 {
     var _project            = await Project.findOne({_id: data});
-    var _projectFizBlock    = _project.parce.fiz;
-    var globalUserData      = _projectFizBlock.globalUserData;
-    var moreUsersData       = _projectFizBlock.moreUsersData;
-
+    var _projectFizBlock    = _project.parce;
+    var globalUserData      = _projectFizBlock.fiz.globalUserData;
+    var moreUsersData       = _projectFizBlock.fiz.moreUsersData;
 
     if(Array.isArray(globalUserData.arBi))
     {
-        callback("ok");
+        if(moreUsersData.length > 0)
+        {
+            var moreUsersDataRedacting      = [];
+            var moreUsersDataRedactingError = false;
+
+            for(var moreUsersDataBlock of moreUsersData)
+            {
+                if(Array.isArray(moreUsersDataBlock.arBi))
+                {
+                    moreUsersDataRedacting.push(moreUsersDataBlock);
+                } else 
+                {
+                    var moreUsersDataBlockParce = await ParcingPage.cheackArbitrFizUser(moreUsersDataBlock.arBi);
+
+                    if(moreUsersDataBlockParce[0].status == 0)
+                    {
+                        moreUsersDataBlock.arBi = moreUsersDataBlockParce;
+                    } else
+                    {
+                        moreUsersDataRedactingError = true;
+                    }
+
+                    moreUsersDataRedacting.push(moreUsersDataBlock);
+                }
+            }
+
+            moreUsersData = moreUsersDataRedacting;
+
+            await Project.findOneAndUpdate({_id: data}, {parce: _projectFizBlock});
+
+            if(!moreUsersDataRedactingError)
+            {
+                callback('ok');
+            }
+        } else 
+        {
+            callback('ok');
+        }
     } else 
     {
-        console.log(await ParcingPage.cheackArbitrFizUser(globalUserData.arBi));
+        var globalUserDataParce = await ParcingPage.cheackArbitrFizUser(globalUserData.arBi);
+
+        if(globalUserDataParce[0].status == 0)
+        {
+            globalUserData.arBi = globalUserDataParce;
+            await Project.findOneAndUpdate({_id: data}, {parce: _projectFizBlock});
+            callback('error');
+        } else {
+            callback('error');
+        }
     }
-
-
-
-
-
-
-
-    // if(!_project.parce.fiz)
-    // {
-        
-    // } else {
-    //     callback("ok");
-    // }
 }
 
 async function clearAlertMsg(socket,data,callback)
