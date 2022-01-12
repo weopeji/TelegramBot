@@ -27,14 +27,13 @@
             data: _id,
         });
 
-        console.log(getR_F);
-
         var need_project = await callApi({
             methodName: 'getProject',
             data: _id,
         });
 
         console.log(need_project);
+        console.log(getR_F);
 
         function startArbitr()
         {
@@ -119,9 +118,9 @@
                 {
                     $('.index_page_profil_data h1').html(_config.header());
                     this._append("Название компании", need_project.parce.pr.name.full);
-                    this._append("ИНН/ОГРН", need_project.parce.pr.inn + "/" + need_project.parce.pr.ogrn);
+                    this._append("ИНН/ОГРН", need_project.parce.pr.inn + " / " + need_project.parce.pr.ogrn);
                     this._append("Адрес юридический", need_project.parce.pr.address.value);
-                    this._append("Адрес фактический", need_project.data.addr);
+                    this._append("Адрес фактический", need_project.data.addr_fact);
                     this._append("Сайт", need_project.data.syte, true);
                     this._append("Цель", need_project.data.target);
                     this._append("Учредитель", need_project.parce.pr.management.name);
@@ -129,12 +128,12 @@
 
                     startArbitr();
                 },
-                "2": function (params) {
+                "2": function () {
                     $('.index_page_profil_data h1').html(_config.header());
                     this._append("Название компании", need_project.parce.pr.name.full);
                     this._append("ИНН/ОГРН", need_project.parce.pr.inn + " / " + need_project.parce.pr.ogrn);
                     this._append("Адрес юридический", need_project.parce.pr.address.value);
-                    this._append("Адрес фактический", need_project.data.addr);
+                    this._append("Адрес фактический", need_project.data.addr_fact);
                     this._append("Сайт", need_project.data.syte, true);
                     this._append("Цель", need_project.data.target);
 
@@ -146,7 +145,6 @@
                             this._append("Учредитель", `${need_project.parce.pr.name.full}`);
                         }   
                     }
-                    
                     
                     this._append("List.org", `https://www.list-org.com/search?type=inn&val=${need_project.parce.pr.inn}`, true);
 
@@ -183,32 +181,88 @@
 
         if(getR_F == "ok")
         {
-            var _error = true;
 
-            need_project.parce.fiz[0].result.forEach((el, i) => {
-                _error = false;
-                var _block = $(`
-                    <h1>${i + 1}</h1>
-                        <div class="page_line">
-                        <span>${el.exe_production}</span>
-                        <p>${el.subject}</p>
-                    </div>
-                `);
+            var _allArbitrFizData   = [];
 
-                $('.ispo_line').append(_block);
+            _allArbitrFizData.push(need_project.parce.fiz.globalUserData);
+
+            need_project.parce.fiz.moreUsersData.forEach(elementFiz => {
+                _allArbitrFizData.push(elementFiz);
             });
 
-            if(_error)
+            _allArbitrFizData.forEach((el, i) => 
             {
-                var _block = $(`
-                        <div class="page_line">
-                        <span>Подробная информация</span>
-                        <p>Отсутствует</p>
-                    </div>
-                `);
+                var _HEADER = $(`<h1>Cобстевенник ${i + 1}</h1>`);
 
-                $('.ispo_line').append(_block);
-            }
+                $('.ispo_line').append(_HEADER);
+
+                var deistvitelnost  = "Не действителен или не правельно введен";
+                var jsonObj         = $.parseJSON('[' + el.dePa + ']');
+
+                if(jsonObj[0].qc == 0)
+                {
+                    deistvitelnost = "Паспорт действителен";
+                }
+
+                $('.ispo_line').append($(`
+                    <div class='page_line'>
+                        <span>Действительность паспорта</span>
+                        <p>${deistvitelnost}</p>
+                    </div>
+                `));
+
+                var smozanyatiy = "Не является налого плательшиком или не правильно введены данные";
+
+                if(el.saMo.ok)
+                {
+                    smozanyatiy = "Является налого плательшиком";
+                }
+
+                $('.ispo_line').append($(`
+                    <div class='page_line'>
+                        <span>Статус налогоплательщика</span>
+                        <p>${smozanyatiy}</p>
+                    </div>
+                `));
+
+                $('.ispo_line').append($(`
+                    <div class='page_line'>
+                        <span>Статус розыска</span>
+                        <p>Не находится в розыске</p>
+                    </div>
+                `));
+
+                var _HEADER         = $(`<h1>Исполнительное производств Cобстевенника ${i + 1}</h1>`);
+                var ispoErrorBlock  = true;
+                
+                $('.ispo_line').append(_HEADER);
+
+                el.arBi[0].result.forEach(elementArBi => 
+                {
+                    ispoErrorBlock  = false;
+
+                    var _block = $(`
+                        <div class="page_line">
+                            <span>${elementArBi.exe_production}</span>
+                            <p>${elementArBi.subject}</p>
+                        </div>
+                    `);
+
+                    $('.ispo_line').append(_block);
+                })
+
+                if(_error)
+                {
+                    var _block = $(`
+                        <div class="page_line">
+                            <span>Подробная информация</span>
+                            <p>Отсутствует</p>
+                        </div>
+                    `);
+
+                    $('.ispo_line').append(_block);
+                }
+            })
         } else {
             var _preloader = $(`
                 <div class="loader_input">

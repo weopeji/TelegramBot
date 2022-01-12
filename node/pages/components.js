@@ -1498,7 +1498,7 @@ async function setProject(socket,data,callback)
 
     var ParceUsersBlock = await ParcingPage.ParceUsersBlock(redactinProject, sortMoreUsers);
 
-    if(redactinProject.organization != 3)
+    if(_dataProject.organization != 3)
     {
         _DataProject.parce = 
         {
@@ -1513,7 +1513,8 @@ async function setProject(socket,data,callback)
         };
     }
 
-    _DataProject.data   = redactinProject;
+    _DataProject.data               = redactinProject;
+    _DataProject.data.organization  = _dataProject.organization;
 
     var _Project        = await Project.create(_DataProject);
     var _patch          = `/var/www/projects/${_Project._id}`;
