@@ -1387,15 +1387,15 @@
                 if(key == "syte") continue;
                 if(key == "organization") continue;
                 if(correctArray[key].type == 'file') continue;
-                if(typeof correctArray[key].data == "undefined")
-                {
-                    alert('Введите все данные!');
-                    return;
-                }
-                if(correctArray[key].data.length == 0 || correctArray[key].data == null) {
-                    alert('Введите все данные!');
-                    return;
-                }
+                // if(typeof correctArray[key].data == "undefined")
+                // {
+                //     alert('Введите все данные!');
+                //     return;
+                // }
+                // if(correctArray[key].data.length == 0 || correctArray[key].data == null) {
+                //     alert('Введите все данные!');
+                //     return;
+                // }
                 if(key == "rate") {correctArray[key].data = (correctArray[key].data.replace(/,/, '.') * 12).toFixed(2)};
             }
 
@@ -1475,11 +1475,11 @@
 
             for(var key in correctArray) 
             {
-                // var _data = correctArray[key];
-                // if(_data == null) {
-                //     alert('Введите все данные!');
-                //     return;
-                // }
+                var _data = correctArray[key];
+                if(_data == null) {
+                    alert('Введите все данные!');
+                    return;
+                }
             }
 
             $('.index_page').empty();
