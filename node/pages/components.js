@@ -1430,9 +1430,12 @@ async function cheackInnCreator(socket,data,callback)
 
 async function setProject(socket,data,callback) 
 {
-    var _User           = await User.findOne({user: data.user});
-    var user_path       = `../users/${_User.user}`;
-    var _dataProject    = data.data;
+    var _User                       = await User.findOne({user: data.user});
+    var user_path                   = `../users/${_User.user}`;
+    var _dataProject                = data.data;
+    var redactinProject             = {}; // ParcingPage
+    var redactinMoreUsers           = {};
+    var sortMoreUsers               = {};
     var _DataProject    = 
     {
         user: data.user,
@@ -1451,10 +1454,6 @@ async function setProject(socket,data,callback)
             business_commission: 30,
         }
     };
-
-    var redactinProject             = {}; // ParcingPage
-    var redactinMoreUsers           = {};
-    var sortMoreUsers               = {};
 
     for(var _key in _dataProject)
     {
@@ -1479,49 +1478,40 @@ async function setProject(socket,data,callback)
 
     var ParceUsersBlock = await ParcingPage.ParceUsersBlock(redactinProject, sortMoreUsers);
 
-    console.log(ParceUsersBlock);
+    if(redactinProject.organization != 3)
+    {
+        _DataProject.parce = 
+        {
+            "pr": await ParcingPage.ParceProject(redactinProject.inn),
+            "ar": await ParcingPage.ParcingArbitrage(redactinProject.inn),
+            "fiz": ParceUsersBlock,
+        };
+    } else {
+        _DataProject.parce = 
+        {
+            "fiz": ParceUsersBlock,
+        };
+    }
 
-    // if(data.data.organization != 3)
-    // {
-    //     console.log("Not FIZ");
-
-    //     // _DataProject.parce      = 
-    //     // {
-    //     //     "pr": await _AllParce.parceProject(data.data.inn),
-    //     //     "ar": await _AllParce._ParcingArbitraj(data.data.inn),
-    //     //     "fiz": null,
-    //     //     "token": await _AllParce._ParceProjectIspo(data.data)
-    //     // };
-    // } else {
-    //     console.log("FIZ");
-
-    //     // _DataProject.parce      = 
-    //     // {
-    //     //     "fiz": null,
-    //     //     "token": await _AllParce.parceProjectFiz(data.data),
-    //     // };
-    // }
-
-
-    // var _Project        = await Project.create(_DataProject);
-    // var _patch          = `/var/www/projects/${_Project._id}`;
-    // await wrench.copyDirSyncRecursive(user_path, _patch);
-    // await fs.readdir(user_path, (err, files) => {
-    //     if (err) throw err;
+    var _Project        = await Project.create(_DataProject);
+    var _patch          = `/var/www/projects/${_Project._id}`;
+    await wrench.copyDirSyncRecursive(user_path, _patch);
+    await fs.readdir(user_path, (err, files) => {
+        if (err) throw err;
       
-    //     for (const file of files) {
-    //         fs.unlink(path.join(user_path, file), err => {
-    //             if (err) throw err;
-    //         });
-    //     }
-    // }); 
-    // await savePuppeter(_Project._id);
+        for (const file of files) {
+            fs.unlink(path.join(user_path, file), err => {
+                if (err) throw err;
+            });
+        }
+    }); 
+    await savePuppeter(_Project._id);
     // h.alertAdmin({
     //     type: "creating_project",
     //     text: "Новый проект подан на модерацию",
     //     projectId: _Project._id,
     // })
-    // callback({status: "ok"});    
+    callback({status: "ok"});    
 }
 
 async function savePuppeter(putProject)

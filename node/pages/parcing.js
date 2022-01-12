@@ -1,9 +1,12 @@
-const fetch                 = require("node-fetch");
+var fetch                   = require("node-fetch");
 var axios                   = require('axios');
+var { PythonShell }         = require('python-shell');
 
 
 module.exports = {
     ParceUsersBlock,
+    ParceProject,
+    ParcingArbitrage,
 }
 
 async function deistvitelenLiPaspport(_query)
@@ -109,8 +112,6 @@ async function arbitrajnayaPraktikaFizLica(_initials, _region, date_user)
 
 async function ParceUsersBlock(_project, MoreUsers)
 {
-    console.log(MoreUsers);
-
     return new Promise(async (resolve,reject) => 
     {
         var _data = 
@@ -137,4 +138,62 @@ async function ParceUsersBlock(_project, MoreUsers)
     
         resolve(_data);
     });
+}
+
+async function ParceProject(inn)
+{
+    return new Promise((resolve,reject) =>
+    {   
+        var options = 
+        {
+            method: "POST",
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "Authorization": "Token " + "cd3a829357362fec55fc201c3f761002def9906f"
+            },
+            body: JSON.stringify({query: inn})
+        }
+        
+        fetch("https://suggestions.dadata.ru/suggestions/api/4_1/rs/findById/party", options)
+        .then(response => response.text())
+        .then(result => 
+        {
+
+            console.log(result);
+
+            var _dataFirst = JSON.parse(result.toString());
+    
+            if(_dataFirst.suggestions.length == 0) 
+            {
+                resolve('error');
+            } else 
+            {
+                resolve(_dataFirst.suggestions[0].data);
+            }
+        });
+    });
+}
+
+async function ParcingArbitrage(inn)
+{
+    let options = 
+    {
+        mode: 'text',
+        scriptPath: '../python/parcingArbitraj',
+        args: inn,
+    };
+
+    return new Promise((resolve,reject) => {
+        try {
+            PythonShell.run('main.py', options, function (err, results) {
+                if (err) throw err;
+                resolve(JSON.parse(results));  
+            });
+        }
+        catch{
+            reject();  
+        }
+    })
 }
