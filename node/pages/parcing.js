@@ -204,7 +204,7 @@ async function ParcingArbitrage(inn)
 
 async function cheackArbitrFizUser(token)
 {
-    return new Promise((resolve,reject) =>
+    return new Promise(async (resolve,reject) =>
     {
         var _token  = token;
         var _getR_F = await R_F.findOne({_id: _token});
@@ -224,12 +224,6 @@ async function cheackArbitrFizUser(token)
     
             if(_last.length > 0)
             {
-                // var _fiz = _project.parce;
-                // _fiz.fiz = _last;
-    
-                // await Project.findOneAndUpdate({_id: projectId}, {parce: _fiz});
-                // await R_F.remove({_id: _token});
-    
                 resolve(_last);
             } else {
                 resolve("error");
