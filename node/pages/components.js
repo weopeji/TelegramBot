@@ -1493,6 +1493,8 @@ async function setProject(socket,data,callback)
         };
     }
 
+    _DataProject.data   = redactinProject;
+
     var _Project        = await Project.create(_DataProject);
     var _patch          = `/var/www/projects/${_Project._id}`;
     await wrench.copyDirSyncRecursive(user_path, _patch);
