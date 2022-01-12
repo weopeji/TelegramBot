@@ -1475,11 +1475,11 @@
 
             for(var key in correctArray) 
             {
-                var _data = correctArray[key];
-                if(_data == null) {
-                    alert('Введите все данные!');
-                    return;
-                }
+                // var _data = correctArray[key];
+                // if(_data == null) {
+                //     alert('Введите все данные!');
+                //     return;
+                // }
             }
 
             $('.index_page').empty();

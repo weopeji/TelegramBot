@@ -57,10 +57,6 @@ async function yavlaetcaLiSamozanyatim(_inn)
 
 async function arbitrajnayaPraktikaFizLica(_initials, _region, date_user)
 {
-    console.log(_initials);
-    console.log(_region);
-    console.log(date_user);
-
     return new Promise((resolve,reject) =>
     {
         var fio             = _initials.split(' ');
@@ -113,6 +109,8 @@ async function arbitrajnayaPraktikaFizLica(_initials, _region, date_user)
 
 async function ParceUsersBlock(_project, MoreUsers)
 {
+    console.log(MoreUsers);
+    
     return new Promise(async (resolve,reject) => 
     {
         var _data = 
@@ -125,17 +123,17 @@ async function ParceUsersBlock(_project, MoreUsers)
         _data.globalUserData.saMo = await yavlaetcaLiSamozanyatim(_project.sob_inn);
         _data.globalUserData.arBi = await arbitrajnayaPraktikaFizLica(_project.sob_fio, _project.sob_region, _project.sob_date);
     
-        for(var _key in MoreUsers)
-        {
-            var _UserParce = 
-            {
-                dePa: await deistvitelenLiPaspport(`${MoreUsers[_key][`BB#sob_serion_${_key.split("+")[1]}`]} ${MoreUsers[_key][`BB#sob_number_${_key.split("+")[1]}`]}`),
-                saMo: await yavlaetcaLiSamozanyatim(MoreUsers[_key][`BB#sob_inn_${_key.split("+")[1]}`]),
-                arBi: await arbitrajnayaPraktikaFizLica(MoreUsers[_key][`BB#sob_fio_${_key.split("+")[1]}`], MoreUsers[_key][`BB#sob_region_${_key.split("+")[1]}`], MoreUsers[_key][`BB#sob_date_${_key.split("+")[1]}`]),
-            }
+        // for(var _key in MoreUsers)
+        // {
+        //     var _UserParce = 
+        //     {
+        //         dePa: await deistvitelenLiPaspport(`${MoreUsers[_key][`BB#sob_serion_${_key.split("+")[1]}`]} ${MoreUsers[_key][`BB#sob_number_${_key.split("+")[1]}`]}`),
+        //         saMo: await yavlaetcaLiSamozanyatim(MoreUsers[_key][`BB#sob_inn_${_key.split("+")[1]}`]),
+        //         arBi: await arbitrajnayaPraktikaFizLica(MoreUsers[_key][`BB#sob_fio_${_key.split("+")[1]}`], MoreUsers[_key][`BB#sob_region_${_key.split("+")[1]}`], MoreUsers[_key][`BB#sob_date_${_key.split("+")[1]}`]),
+        //     }
     
-            _data.moreUsersData.push(_UserParce);
-        }
+        //     _data.moreUsersData.push(_UserParce);
+        // }
     
         resolve(_data);
     });
