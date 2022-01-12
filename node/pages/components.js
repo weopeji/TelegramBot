@@ -1454,18 +1454,27 @@ async function setProject(socket,data,callback)
 
     var redactinProject             = {}; // ParcingPage
     var redactinMoreUsers           = {};
+    var sortMoreUsers               = {};
 
     for(var _key in _dataProject)
     {
         if(_key.split("#")[0] == "BB")
         {
             redactinMoreUsers[_key] = _dataProject[_key].data;
+        } else
+        {
+            redactinProject[_key]   = _dataProject[_key].data;
         }
-        redactinProject[_key] = _dataProject[_key].data;
+    }
+
+    for(var _key in redactinMoreUsers)
+    {
+        var _targetNumber = _key.split('_')[_key.split('_').length - 1];
+        sortMoreUsers["+" + _targetNumber.toString()] = redactinMoreUsers[_key];
     }
 
     console.log(redactinProject);
-    console.log(redactinMoreUsers);
+    console.log(sortMoreUsers);
 
     // if(data.data.organization != 3)
     // {

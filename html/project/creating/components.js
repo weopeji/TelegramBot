@@ -977,7 +977,7 @@
     
                     _dataBlock.forEach(element => 
                     {
-                        element._id = `BB#${element._id}_${global.add_blocks}#file`;
+                        element._id = `BB#${element._id}_${global.add_blocks}`;
                         _body.append(_this.file(element));
                     });
                     $(_line.parent()).before(_body);
