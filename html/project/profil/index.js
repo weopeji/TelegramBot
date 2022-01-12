@@ -251,7 +251,7 @@
                     $('.ispo_line').append(_block);
                 })
 
-                if(_error)
+                if(ispoErrorBlock)
                 {
                     var _block = $(`
                         <div class="page_line">
