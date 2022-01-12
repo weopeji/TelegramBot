@@ -181,7 +181,6 @@
 
         if(getR_F == "ok")
         {
-
             var _allArbitrFizData   = [];
 
             _allArbitrFizData.push(need_project.parce.fiz.globalUserData);
@@ -232,7 +231,7 @@
                     </div>
                 `));
 
-                var _HEADER         = $(`<h1>Исполнительное производств Cобстевенника ${i + 1}</h1>`);
+                var _HEADER         = $(`<h1>Исполнительное производство Cобстевенника ${i + 1}</h1>`);
                 var ispoErrorBlock  = true;
                 
                 $('.ispo_line').append(_HEADER);
