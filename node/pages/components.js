@@ -1474,7 +1474,7 @@ async function setProject(socket,data,callback)
         {
             sortMoreUsers["+" + _targetNumber.toString()] = {};
         }
-        sortMoreUsers["+" + _targetNumber.toString()]._key = redactinMoreUsers[_key];
+        sortMoreUsers["+" + _targetNumber.toString()][_key] = redactinMoreUsers[_key];
     }
 
     var ParceUsersBlock = await ParcingPage.ParceUsersBlock(redactinProject, sortMoreUsers);
