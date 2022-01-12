@@ -231,6 +231,13 @@
                     </div>
                 `));
 
+                $('.ispo_line').append($(`
+                    <div class='page_line'>
+                        <span>Банкротство</span>
+                        <p>Не имеет Банкротства</p>
+                    </div>
+                `));
+
                 var _HEADER         = $(`<h1>Исполнительное производство Cобстевенника ${i + 1}</h1>`);
                 var ispoErrorBlock  = true;
                 
