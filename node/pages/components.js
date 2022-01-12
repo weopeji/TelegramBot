@@ -235,44 +235,32 @@ async function getProjectKey(socket,data,callback)
 
 async function getR_F(socket,data,callback)
 {
-    var _project = await Project.findOne({_id: data});
+    var _project            = await Project.findOne({_id: data});
+    var _projectFizBlock    = _project.parce.fiz;
+    var globalUserData      = _projectFizBlock.globalUserData;
+    var moreUsersData       = _projectFizBlock.moreUsersData;
 
-    if(!_project.parce.fiz)
+
+    if(Array.isArray(globalUserData.arBi))
     {
-        var _token = _project.parce.token;
-        var _getR_F = await R_F.findOne({_id: _token});
-        var _data = JSON.parse(_getR_F.data).response.task;
-       
-        var config = {
-            method: 'get',
-            url: `https://api-ip.fssp.gov.ru/api/v1.0/result?token=er77gLcQvTO5&task=${_data}`,
-            headers: {}
-        };
-        
-        axios(config)
-        .then(async function (response) {
-            var _dataLast   = JSON.stringify(response.data);
-            var _last       = JSON.parse(_dataLast.toString()).response.result
-
-            if(_last.length > 0)
-            {
-                var _fiz = _project.parce;
-                _fiz.fiz = _last;
-
-                await Project.findOneAndUpdate({_id: data}, {parce: _fiz});
-                await R_F.remove({_id: _token});
-
-                callback("ok");
-            } else {
-                callback("error");
-            }
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
-    } else {
         callback("ok");
+    } else 
+    {
+        console.log(await ParcingPage.cheackArbitrFizUser(globalUserData.arBi));
     }
+
+
+
+
+
+
+
+    // if(!_project.parce.fiz)
+    // {
+        
+    // } else {
+    //     callback("ok");
+    // }
 }
 
 async function clearAlertMsg(socket,data,callback)
