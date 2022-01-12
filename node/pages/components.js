@@ -1472,16 +1472,14 @@ async function setProject(socket,data,callback)
         var _targetNumber = _key.split('_')[_key.split('_').length - 1];
         if(typeof sortMoreUsers["+" + _targetNumber.toString()] == "undefined")
         {
-            sortMoreUsers["+" + _targetNumber.toString()] = [];
+            sortMoreUsers["+" + _targetNumber.toString()] = {};
         }
-        sortMoreUsers["+" + _targetNumber.toString()].push({
-            id: _key,
-            data: redactinMoreUsers[_key],
-        });
+        sortMoreUsers["+" + _targetNumber.toString()]._key = redactinMoreUsers[_key];
     }
 
-    console.log(redactinProject);
-    console.log(sortMoreUsers);
+    var ParceUsersBlock = await ParcingPage.ParceUsersBlock(redactinProject, sortMoreUsers);
+
+    console.log(ParceUsersBlock);
 
     // if(data.data.organization != 3)
     // {
