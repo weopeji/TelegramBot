@@ -6,6 +6,10 @@ html, body {
   background-color: #0E1122;
 }
 
+input[type="date"]::-webkit-calendar-picker-indicator {
+  color: white;
+}
+
 .index_page {
   width: 100%;
 }
