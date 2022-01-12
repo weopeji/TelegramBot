@@ -109,7 +109,7 @@ async function ParceUsersBlock(_project, MoreUsers)
         });
     };
 
-    return new Promise((resolve,reject) => 
+    return new Promise(async (resolve,reject) => 
     {
         var _data = 
         {
