@@ -53,7 +53,7 @@ async function ParceUsersBlock(_project, MoreUsers)
                 body: JSON.stringify(data),
             });
 
-            resolve(resp.json());
+            resolve(resp);
         });
     }
 
