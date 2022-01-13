@@ -20,8 +20,8 @@ html, body {
 }
 
 .alert {
-  width: 500px;
-  height: 80px;
+  width: 810px;
+  height: 95px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -36,6 +36,34 @@ html, body {
 .alert p {
   margin: 0;
   padding: 0;
-  margin-top: 20px;
+  margin-top: 10px;
+  font-size: 24px;
+}
+
+.alert span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: white;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  width: 190px;
+  height: 38px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 58px;
+  position: relative;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.alert_row {
+  position: relative;
+  left: 35px;
 }
 /*# sourceMappingURL=index.css.map */
