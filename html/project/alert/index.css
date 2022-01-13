@@ -29,6 +29,8 @@ html, body {
       -ms-flex-align: center;
           align-items: center;
   padding: 20px;
+  background-image: url("logo.jpg");
+  background-size: cover;
 }
 
 .alert p {
