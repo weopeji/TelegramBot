@@ -26,15 +26,15 @@
             {
                 if(organization == 3)
                 {
-                    global.loadResources(['../html/creating/JSON/fiz.js'], () => {
+                    global.loadResources(['../html/project/creating/JSON/fiz.js'], () => {
                         resolve();
                     });
                 } else if(organization == 2) {
-                    global.loadResources(['../html/creating/JSON/ur.js'], () => {
+                    global.loadResources(['../html/project/creating/JSON/ur.js'], () => {
                         resolve();
                     });
                 } else if(organization == 1) {
-                    global.loadResources(['../html/creating/JSON/ur.js'], () => {
+                    global.loadResources(['../html/project/creating/JSON/ur.js'], () => {
                         resolve();
                     });
                 }
