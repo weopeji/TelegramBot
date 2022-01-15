@@ -525,6 +525,25 @@
   height: 60px;
   border-radius: 15px;
   background-color: #182037;
+  margin: 10px 0;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.structCreator_new_block span {
+  color: #8394C8;
+}
+
+.structCreator_new_block a {
+  color: white;
 }
 
 @media (max-width: 1500px) {
