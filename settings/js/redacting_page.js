@@ -57,11 +57,18 @@
 
             for(var DataBlock of _strucBocks)
             {
+                var nameBLock = DataBlock.name;
+
+                if(DataBlock.type == "file")
+                {
+                    nameBLock = DataBlock.name_redacting;
+                }
+
                 var _block = 
                 $(`
                     <div class="structCreator_new_block">
                         <div class="structCreator_new_block_row">
-                            <span>${DataBlock.name}</span>
+                            <span>${nameBLock}</span>
                             <a>${_project.data[DataBlock._id]}</a>
                             <div class="structCreator_new_block_buttons">
                                 <div class="structCreator_new_block_buttons_row">
@@ -70,6 +77,9 @@
                                     </div>
                                     <div class="structCreator_new_block_buttons_block">
                                         <i class="fal fa-pencil-ruler"></i>
+                                    </div>
+                                    <div class="structCreator_new_block_buttons_block">
+                                        <input type="checkbox">
                                     </div>
                                 </div>
                             </div>
