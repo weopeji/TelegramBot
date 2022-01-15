@@ -80,13 +80,16 @@
                     <div class="structCreator_new_block">
                         <div class="structCreator_new_block_row">
                             <span>${nameBLock}</span>
-                            <a>${dataNameBlock}</a>
+                            <a>
+                                <input type="text">
+                                <BB>${dataNameBlock}</BB>
+                            </a>
                             <div class="structCreator_new_block_buttons">
                                 <div class="structCreator_new_block_buttons_row">
                                     <div class="structCreator_new_block_buttons_block">
                                         <i class="fal fa-plus-square"></i>
                                     </div>
-                                    <div class="structCreator_new_block_buttons_block">
+                                    <div class="structCreator_new_block_buttons_block" data="input">
                                         <i class="fal fa-pencil-ruler"></i>
                                     </div>
                                     <div class="structCreator_new_block_buttons_block">
@@ -97,6 +100,11 @@
                         </div>
                     </div>
                 `);
+
+                _block.find(".structCreator_new_block_buttons_block[data="input"]").click( function()
+                {
+                    $(this).parent().parent().parent().toogleClass("structCreator_new_block_input_text");
+                })
     
                 global_block.append(_block);
             }
