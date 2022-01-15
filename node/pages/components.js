@@ -906,8 +906,11 @@ async function acceptInvestor(socket,data,callback)
     callback(_InvDocNeed);
 }
 
-async function getUserForId(socket,data,callback) {
+async function getUserForId(socket,data,callback) 
+{
     var _User = await User.findOne({_id: data});
+    var _idPhoto = await bot.getUserProfilePhotos(_User.user);
+    console.log(_idPhoto);
     callback(_User);
 }
 
