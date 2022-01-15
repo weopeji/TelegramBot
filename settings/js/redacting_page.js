@@ -102,6 +102,14 @@
                     </div>
                 `);
 
+                if(typeof _project.data[DataBlock._id] != "undefined")
+                {
+                    _block.find('span').click( function() {
+                        var _url = getURL() + "/projects/" + _project._id + "/" + _project.data[DataBlock._id];
+                        window.open(_url);
+                    })
+                }
+
                 _block.find(`.structCreator_new_block_buttons_block[data="input"]`).click( function()
                 {
                     if($(this).parent().parent().parent().parent().attr('type') == "file")
