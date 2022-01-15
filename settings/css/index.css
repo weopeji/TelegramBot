@@ -641,7 +641,9 @@
 }
 
 .structCreator_new_block .structCreator_new_block_input_text .structCreatorinputIcon {
-  display: block;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 @media (max-width: 1500px) {
