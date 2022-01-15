@@ -51,17 +51,26 @@
             for(var _struc of _structCreator)
             {
                 _struc.body.forEach(element => {
-                    _strucBocks.push(element);
+                    if(element.type != "add_more_sob")
+                    {
+                        _strucBocks.push(element);
+                    }
                 })
             }
 
             for(var DataBlock of _strucBocks)
             {
-                var nameBLock = DataBlock.name;
+                var nameBLock       = DataBlock.name;
+                var dataNameBlock   = _project.data[DataBlock._id];
 
                 if(DataBlock.type == "file")
                 {
                     nameBLock = DataBlock.name_redacting;
+                }
+
+                if(typeof dataNameBlock == "undefined")
+                {
+                    dataNameBlock = "Пусто";
                 }
 
                 var _block = 
@@ -69,7 +78,7 @@
                     <div class="structCreator_new_block">
                         <div class="structCreator_new_block_row">
                             <span>${nameBLock}</span>
-                            <a>${_project.data[DataBlock._id]}</a>
+                            <a>${}</a>
                             <div class="structCreator_new_block_buttons">
                                 <div class="structCreator_new_block_buttons_row">
                                     <div class="structCreator_new_block_buttons_block">
