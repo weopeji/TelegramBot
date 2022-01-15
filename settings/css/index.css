@@ -539,6 +539,10 @@
   overflow: hidden;
 }
 
+.structCreator_new_block input[type="file"] {
+  display: none;
+}
+
 .structCreator_new_block span {
   color: #8394C8;
   -webkit-box-flex: 2;

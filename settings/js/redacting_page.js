@@ -78,6 +78,7 @@
                 var _block = 
                 $(`
                     <div class="structCreator_new_block" data="${DataBlock._id}">
+                        <input type="file">
                         <div class="structCreator_new_block_row">
                             <span>${nameBLock}</span>
                             <a>
@@ -103,7 +104,12 @@
 
                 _block.find(`.structCreator_new_block_buttons_block[data="input"]`).click( function()
                 {
-                    $(this).parent().parent().parent().toggleClass("structCreator_new_block_input_text");
+                    if(DataBlock.type == "file")
+                    {
+                        $(this).parent().parent().parent().parent().find('input[type="file"]').trigger('click');
+                    } else {
+                        $(this).parent().parent().parent().toggleClass("structCreator_new_block_input_text");
+                    }
                 });
 
                 _block.find('.structCreatorinputIcon').click( function()
