@@ -63,9 +63,14 @@
                         <div class="structCreator_new_block_row">
                             <span>${DataBlock.name}</span>
                             <a>${_project.data[DataBlock._id]}</a>
-                        </div>
-                        <div class="structCreator_new_block_menu">
-                            
+                            <div class="structCreator_new_block_buttons">
+                                <div class="structCreator_new_block_buttons_block">
+                                    <i class="fal fa-plus-square"></i>
+                                </div>
+                                <div class="structCreator_new_block_buttons_block">
+                                    <i class="fal fa-pencil-ruler"></i>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 `);

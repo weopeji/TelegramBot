@@ -545,6 +545,7 @@
 
 .structCreator_new_block a {
   color: white;
+  text-align: right;
 }
 
 .structCreator_new_block_row {
@@ -557,17 +558,10 @@
           justify-content: space-between;
 }
 
-.structCreator_new_block_menu {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 0;
-  background-color: #182037;
-}
-
-.structCreator_new_block:hover .structCreator_new_block_menu {
-  height: 100%;
+.structCreator_new_block_buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 @media (max-width: 1500px) {
