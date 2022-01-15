@@ -60,8 +60,13 @@
                 var _block = 
                 $(`
                     <div class="structCreator_new_block">
-                        <span>${DataBlock.name}</span>
-                        <a>${_project.data[DataBlock._id]}</a>
+                        <div class="structCreator_new_block_row">
+                            <span>${DataBlock.name}</span>
+                            <a>${_project.data[DataBlock._id]}</a>
+                        </div>
+                        <div class="structCreator_new_block_menu">
+                            
+                        </div>
                     </div>
                 `);
     
