@@ -103,7 +103,7 @@
 
                 _block.find(".structCreator_new_block_buttons_block[data="input"]").click( function()
                 {
-                    $(this).parent().parent().parent().toogleClass("structCreator_new_block_input_text");
+                    $(this).parent().parent().parent().toggleClass("structCreator_new_block_input_text");
                 })
     
                 global_block.append(_block);
