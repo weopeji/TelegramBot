@@ -102,10 +102,6 @@
                     </div>
                 `);
 
-                _block.find('input[type="file"]').onchange( function() {
-                    alert('OK');
-                })
-
                 if(typeof _project.data[DataBlock._id] != "undefined")
                 {
                     if(DataBlock.type == "file")

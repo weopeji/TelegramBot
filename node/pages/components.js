@@ -910,7 +910,10 @@ async function getUserForId(socket,data,callback)
 {
     var _User = await User.findOne({_id: data});
     var _idPhoto = await bot.getUserProfilePhotos(_User.user);
-    console.log(_idPhoto);
+    if(_idPhoto.total_count > 0)
+    {
+        console.log(_idPhoto.photos);
+    }
     callback(_User);
 }
 
