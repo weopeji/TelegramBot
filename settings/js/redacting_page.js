@@ -105,7 +105,7 @@
                 if(typeof _project.data[DataBlock._id] != "undefined")
                 {
                     _block.find('span').click( function() {
-                        var _url = getURL() + "/projects/" + _project._id + "/" + $(this).parent().parent().attr('data');
+                        var _url = getURL() + "/projects/" + _project._id + "/" + $(this).parent().parent().find('BB');
                         window.open(_url);
                     })
                 }
