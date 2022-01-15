@@ -1101,6 +1101,8 @@
                 data: _id,
             });
 
+            console.log(_User);
+
             $('.index_page_body_header_user_avatar_name span').html(_User.first_name + " " + _User.last_name);
             $('.index_page_body_header_user_avatar_name p').html(_User.type);
 
