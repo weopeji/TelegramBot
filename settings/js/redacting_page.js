@@ -77,7 +77,7 @@
 
                 var _block = 
                 $(`
-                    <div class="structCreator_new_block">
+                    <div class="structCreator_new_block" data="${DataBlock._id}">
                         <div class="structCreator_new_block_row">
                             <span>${nameBLock}</span>
                             <a>
@@ -96,7 +96,7 @@
                                         <i class="fal fa-pencil-ruler"></i>
                                     </div>
                                     <div class="structCreator_new_block_buttons_block">
-                                        <input type="checkbox">
+                                        <input type="checkbox" val="${dataNameBlock}">
                                     </div>
                                 </div>
                             </div>
@@ -107,7 +107,26 @@
                 _block.find(`.structCreator_new_block_buttons_block[data="input"]`).click( function()
                 {
                     $(this).parent().parent().parent().toggleClass("structCreator_new_block_input_text");
-                })
+                });
+
+                _block.find('.structCreatorinputIcon').click( function()
+                {
+                    var _value = $(this).parent().parent().parent().find('input[type="text"]').val();
+
+                    if(_value.length > 0)
+                    {
+                        callApi({
+                            methodName: 'redactingLineSettingsPage',
+                            data: {
+                                projectId: _GET('id'),
+                                lineId: $(this).parent().parent().parent().parent().attr('data'),
+                                data: _value,
+                            },
+                        });
+
+                        location.reload();
+                    }
+                });
     
                 global_block.append(_block);
             }
