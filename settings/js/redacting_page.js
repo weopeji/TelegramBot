@@ -46,16 +46,24 @@
             var _data           = _project.data;
             var _page           = await this.getPAgeOfData(_data.organization);
             var _structCreator  = global.structCreator;
+            var _strucBocks     = [];
 
-            for(var _key in _structCreator)
+            for(var _struc of _structCreator)
+            {
+                _struc.body.forEach(element => {
+                    _strucBocks.push(element);
+                })
+            }
+
+            for(var DataBlock of _strucBocks)
             {
                 var _block = 
                 $(`
                     <div class="structCreator_new_block">
-
+    
                     </div>
                 `);
-
+    
                 global_block.append(_block);
             }
         }
