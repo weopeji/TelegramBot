@@ -3,7 +3,9 @@
     io_connect( function() 
     {
         global.loadResources(['./js/components.js'], () => {
-            Main();
+            global.loadResources(['./js/redacting_page.js'], () => {
+                Main();
+            });
         });    
     });
 
