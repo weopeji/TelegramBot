@@ -86,6 +86,9 @@
                             </a>
                             <div class="structCreator_new_block_buttons">
                                 <div class="structCreator_new_block_buttons_row">
+                                    <div class="structCreator_new_block_buttons_block structCreatorinputIcon">
+                                        <i class="fal fa-check-square"></i>
+                                    </div>
                                     <div class="structCreator_new_block_buttons_block">
                                         <i class="fal fa-plus-square"></i>
                                     </div>
