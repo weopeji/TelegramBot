@@ -101,7 +101,7 @@
                     </div>
                 `);
 
-                _block.find(".structCreator_new_block_buttons_block[data="input"]").click( function()
+                _block.find(`.structCreator_new_block_buttons_block[data="input"]`).click( function()
                 {
                     $(this).parent().parent().parent().toggleClass("structCreator_new_block_input_text");
                 })
