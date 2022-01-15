@@ -218,7 +218,7 @@
 
         async renderData(_project)
         {
-            new global.redacting_page_more().render(_project, this.global_block)
+            new global.Components.redacting_page_more().render(_project, this.global_block)
         }
 
         not_accept(data) {
