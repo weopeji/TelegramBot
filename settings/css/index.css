@@ -630,6 +630,10 @@
   height: 30px;
 }
 
+.structCreator_new_block .structCreator_new_block_input_text a {
+  display: none;
+}
+
 @media (max-width: 1500px) {
   .index_page_menu {
     -webkit-box-flex: 1.5;
