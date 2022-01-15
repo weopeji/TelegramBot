@@ -104,10 +104,13 @@
 
                 if(typeof _project.data[DataBlock._id] != "undefined")
                 {
-                    _block.find('span').click( function() {
-                        var _url = getURL() + "/projects/" + _project._id + "/" + $(this).parent().parent().find('BB');
-                        window.open(_url);
-                    })
+                    if(DataBlock.type == "file")
+                    {
+                        _block.find('span').click( function() {
+                            var _url = getURL() + "/projects/" + _project._id + "/" + $(this).parent().parent().find('BB');
+                            window.open(_url);
+                        })
+                    }
                 }
 
                 _block.find(`.structCreator_new_block_buttons_block[data="input"]`).click( function()
