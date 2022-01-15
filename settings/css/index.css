@@ -626,7 +626,7 @@
   height: 25px;
 }
 
-.structCreator_new_block_input_text input[type="text"] {
+.structCreator_new_block .structCreator_new_block_input_text input[type="text"] {
   height: 30px;
 }
 
