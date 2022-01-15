@@ -61,7 +61,7 @@
             for(var DataBlock of _strucBocks)
             {
                 var nameBLock       = DataBlock.name;
-                var dataNameBlock   = _project.data[DataBlock._id];
+                var dataNameBlock   = null;
 
                 if(DataBlock.type == "file")
                 {
@@ -71,6 +71,8 @@
                 if(typeof dataNameBlock == "undefined")
                 {
                     dataNameBlock = "Пусто";
+                } else {
+                    dataNameBlock = _project.data[DataBlock._id]
                 }
 
                 var _block = 
