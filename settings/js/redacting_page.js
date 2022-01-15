@@ -80,7 +80,7 @@
                     <div class="structCreator_new_block">
                         <div class="structCreator_new_block_row">
                             <span>${nameBLock}</span>
-                            <a>${}</a>
+                            <a>${dataNameBlock}</a>
                             <div class="structCreator_new_block_buttons">
                                 <div class="structCreator_new_block_buttons_row">
                                     <div class="structCreator_new_block_buttons_block">
