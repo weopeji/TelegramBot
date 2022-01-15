@@ -68,11 +68,11 @@
                     nameBLock = DataBlock.name_redacting;
                 }
 
-                if(typeof dataNameBlock == "undefined")
+                if(typeof _project.data[DataBlock._id] == "undefined")
                 {
                     dataNameBlock = "Пусто";
                 } else {
-                    dataNameBlock = _project.data[DataBlock._id]
+                    dataNameBlock = _project.data[DataBlock._id];
                 }
 
                 var _block = 
