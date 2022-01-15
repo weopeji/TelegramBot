@@ -571,6 +571,23 @@
   -webkit-box-flex: 0.5;
       -ms-flex: 0.5;
           flex: 0.5;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.structCreator_new_block_buttons_row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.structCreator_new_block_buttons_row i {
+  margin: 0 10px;
+  font-size: 20px;
 }
 
 @media (max-width: 1500px) {
