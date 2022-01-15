@@ -44,7 +44,7 @@
         async render(_project, global_block)
         {
             var _data           = _project.data;
-            var _page           = await getPAgeOfData(_data.organization);
+            var _page           = await this.getPAgeOfData(_data.organization);
             var _structCreator  = global.structCreator;
 
             for(var _key in _structCreator)
@@ -52,7 +52,7 @@
                 var _block = 
                 $(`
                     <div class="structCreator_new_block">
-                        
+
                     </div>
                 `);
 
