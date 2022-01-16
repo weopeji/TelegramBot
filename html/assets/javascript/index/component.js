@@ -402,6 +402,7 @@
                             <div class="settingBlock_header_line">
                                 <span>#</span>
                                 <span>Номер проекта</span>
+                                <span>Название проекта</span>
                                 <span>Статус</span>
                             </div>
                         </div>
@@ -411,7 +412,15 @@
                     </div>
                 `);
 
-                _data.forEach(function(element, i) {
+                var i = 0;
+
+                for(var element of _data)
+                {
+                    var _progetInfor = await callApi({
+                        methodName: "getProjectInvfgty",
+                        data: element.projectId,
+                    });
+
                     var _status = {
                         "wait": `
                             <span class="settingBlock_wait settingBlock_block">Ожидает подтверждения</span>
@@ -423,13 +432,16 @@
                     var template_text = `
                         <div class="settingBlock_body_line" data="${element.invester}" data-more="${element.projectId}">
                             <span>${i + 1}</span>
+                            <span>${_progetInfor.data.name}</span>
                             <span>${element.projectId}</span>
                             <span>${_status[element.status]}</span>
                         </div>
                     `;
 
                     settingBlock.find('.settingBlock_body').append(template_text);
-                })
+
+                    i++;
+                };
 
                 $('.index_page_body_data').append(settingBlock);
 
