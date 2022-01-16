@@ -351,6 +351,7 @@
                             <div class="settingBlock_header_line">
                                 <span>#</span>
                                 <span>Номер проекта</span>
+                                <span>Номер Инвестора</span>
                                 <span>Статус</span>
                             </div>
                         </div>
@@ -373,6 +374,7 @@
                         <div class="settingBlock_body_line" data="${element.invester}" data-more="${element.projectId}">
                             <span>${i + 1}</span>
                             <span>${element.projectId}</span>
+                            <span>${element.invester}</span>
                             <span>${_status[element.status]}</span>
                         </div>
                     `;
