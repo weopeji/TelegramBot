@@ -267,7 +267,7 @@
                         }
                     })
 
-                    _block.find(`.creating_page_input_div[data="cpecial"]`).mask('9999 999999');
+                    _block.find(`.creating_page_input_div[data="cpecial"] span`).mask('9999 999999');
 
                     $('.creating_page').append(_block);
                 },
