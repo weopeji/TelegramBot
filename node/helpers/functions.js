@@ -91,13 +91,7 @@ async function full_alert_user(_id, _text, _type)
             parse_mode: "HTML",
         });
 
-        var nMsg = {
-            chat: {
-                id: _user.user,
-            }
-        }
-
-        await MA(nMsg, _array);
+        await MA_U(_user.user, _array);
     }
 
     mkdirp(`/var/www/users_alerts/${_User.user}`, err => {
@@ -200,6 +194,21 @@ async function DM(msg, how)
     };
     return;
 } 
+
+async function MA_U(_id, array)
+{
+    var _User       = await User.findOne({user: _id});
+    var deleteMsgs  = _User.deleteMsgs;
+
+    array.forEach(function(element)
+    {
+        deleteMsgs.push(element);
+    });
+
+    await User.findOneAndUpdate({user: msg.from.id}, {deleteMsgs: deleteMsgs});
+
+    return;
+}
 
 async function MA(msg, array)
 {
