@@ -1096,7 +1096,7 @@
 
         async render(_id) 
         {
-            var _User, photoImg = await callApi({
+            var {_User, photoImg} = await callApi({
                 methodName: "getUserForId",
                 data: _id,
             });
