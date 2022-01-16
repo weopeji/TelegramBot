@@ -994,10 +994,4 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   font-size: 20px;
   color: white;
 }
-
-.page_line_block {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-}
 /*# sourceMappingURL=creating.css.map */
