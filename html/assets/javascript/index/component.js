@@ -226,6 +226,11 @@
                 },
             });
 
+            var blockProject = await callApi({
+                methodName: "getProjectInvfgty",
+                data: _data.InvDoc.projectId,
+            });
+
             console.log(_data);
 
             var _dateText = "Ожидание";
@@ -251,6 +256,10 @@
                         <p class="info_active_block_left_header">Информация по платежу</p>
                         <div class="info_active_block_left_info">
                             <div class="info_active_block_left_info_line">
+                                <span>Название:</span>
+                                <a>${blockProject.data.name}</a>
+                            </div>
+                            <div class="info_active_block_left_info_line">
                                 <span>Номер проекта:</span>
                                 <a>${_data.InvDoc.projectId}</a>
                             </div>
@@ -262,12 +271,12 @@
                                 <span>Дата:</span>
                                 <a>${_dateText}</a>
                             </div>
+                        </div>
+                        <div class="info_active_block_left_info">
                             <div class="info_active_block_left_info_line">
                                 <span>Статус:</span>
                                 <a>${_status[_data.InvDoc.status]}</a>
                             </div>
-                        </div>
-                        <div class="info_active_block_left_info">
                             <div class="info_active_block_left_info_line">
                                 <span>Сумма инвестиции:</span>
                                 <a>${_data.InvDoc.data.pay.replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')} руб</a>
@@ -292,11 +301,11 @@
             }
 
             $('.info_active_block_massage_button').click(function() {
-                location.href = `./?user=${allData.User._id}&page=chats&id=${_data.InvDoc.projectId}`;
+                window.open(`./?user=${allData.User._id}&page=chats&id=${_data.InvDoc.projectId}`, '_blank');
             });
 
             $('.show_block').click( function() {
-                location.href = `./projects/${_data.InvDoc.projectId}/${_data.InvDoc.data.document}`;
+                window.open(`./projects/${_data.InvDoc.projectId}/${_data.InvDoc.data.document}`, '_blank');
             });
 
             $('.show_document').click( async function() {
