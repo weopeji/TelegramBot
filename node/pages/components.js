@@ -913,7 +913,7 @@ async function getUserForId(socket,data,callback)
     if(_idPhoto.total_count > 0)
     {
         var file_id         = _idPhoto.photos[0][0].file_id;
-        _User.Photo_path    = await bot.getFile(file_id);
+        _User.img           = await bot.getFile(file_id);
     }
     callback(_User);
 }

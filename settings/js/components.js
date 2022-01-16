@@ -195,6 +195,12 @@
                 _status = 'На редактировании';
             }
 
+            if(_project.type == "active")
+            {
+                header_info.find('.global_block_header_status span').css('background', "#50C878");
+                _status = 'Активно';
+            }
+
             header_info.find('.global_block_header_status span').html(_status);
 
             header_info.find('.global_block_header_accept_button').click( function () {
