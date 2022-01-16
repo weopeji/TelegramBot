@@ -626,7 +626,7 @@ async function goInvesting(msg)
                     needUrl = `https://${_project.urlLocation}/`;
                 }
             
-                var html = `Перейдите в личный кабинет, чтобы произвести иевестицию`;
+                var html = `Нажмите на кнопку "Перейти", чтобы проинвестировать`;
                 var fat = await bot.sendMessage(msg.chat.id, toEscapeMSg(html), {
                     parse_mode: "html",
                     reply_markup: {                                                                     
