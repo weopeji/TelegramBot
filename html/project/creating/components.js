@@ -1184,7 +1184,7 @@
             $('.index_page_body_points').append(_uploadBlock);
             $('.index_page_body_points').append(_body);
 
-            _block = $(`
+            var _block = $(`
                 <div class="body_point_adder_document_block">
                     <div class="body_point_adder_document_block_logo">
                         <img src="./imgs/Google_Docs_logo.png" alt="">
@@ -1251,7 +1251,7 @@
             $('.index_page_body_points').append(_uploadBlock);
             $('.index_page_body_points').append(_body);
 
-            _block = $(`
+            var _block = $(`
                 <div class="body_point_adder_document_block">
                     <div class="body_point_adder_document_block_logo">
                         <img src="./imgs/Google_Docs_logo.png" alt="">
