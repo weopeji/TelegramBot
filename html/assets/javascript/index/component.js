@@ -209,7 +209,7 @@
                 });
 
                 headerPaysBlock.find('.headerPaysBlock_body_line_inv').click( function() {
-                    location.href = `/projects/${_GET('project')}/${$(this).attr('data')}`;
+                    window.open(`/projects/${_GET('project')}/${$(this).attr('data')}` , '_blank');
                 })
 
                 $('.index_page_body_data').append(headerPaysBlock);
