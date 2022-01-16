@@ -970,6 +970,9 @@
                     {
                         _body.append(`
                             <div class="body_point_header">
+                                <div class="body_point_header_close_two_block">
+                                    <i class="fal fa-times"></i>
+                                </div>
                                 <span>Скан паспорта дополнительного собственника: ${global.add_blocks}</span>
                             </div>
                         `);
@@ -1035,15 +1038,25 @@
                             resolve();
                         });
                     });
+                },
+                "ip": function() {
+                    return new Promise((resolve,reject) => 
+                    {
+                        global.loadResources(['./JSON/ip.js'], () => {
+                            resolve();
+                        });
+                    });
                 }
             }
 
             if(param == 3)
             {
                 await uploadFile['fiz']();
-            } else 
+            } else if(param == 1)
             {
                 await uploadFile['ur']();
+            } else {
+                await uploadFile['ip']();
             }
 
             for (var key in window.structCreator) 

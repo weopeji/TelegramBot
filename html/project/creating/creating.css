@@ -183,12 +183,20 @@ input[type="date"]::-webkit-calendar-picker-indicator {
           align-items: center;
   margin-bottom: 20px;
   color: white;
+  position: relative;
 }
 
 .body_point_header span {
   font-weight: 400;
   font-size: 1.25rem;
   margin-left: 1.5rem;
+}
+
+.body_point_header_close_two_block {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  color: white;
 }
 
 .body_point_line {
