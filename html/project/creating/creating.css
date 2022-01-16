@@ -1040,7 +1040,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   width: 75%;
 }
 
-.body_point_adder_document_block_buttons_row input {
+.body_point_adder_document_block_buttons_row .body_point_line_header_text {
   display: none;
 }
 

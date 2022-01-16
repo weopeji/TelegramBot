@@ -1148,7 +1148,9 @@
                     </div>
                     <div class="body_point_adder_document_block_buttons">
                         <div class="body_point_adder_document_block_buttons_row">
-                            <input class="file_load" id='signature_mass' type='file'>
+                            <div class="body_point_line_header_text">
+                                <input class="file_load" id='signature_mass' type='file'>
+                            </div>
                             <div class="body_point_adder_document_block_buttons_button" data="download">
                                 <span>Скачать договор</span>
                             </div>
@@ -1180,7 +1182,9 @@
                     </div>
                     <div class="body_point_adder_document_block_buttons">
                         <div class="body_point_adder_document_block_buttons_row">
-                            <input class="file_load" id='signature_mass' type='file'>
+                            <div class="body_point_line_header_text">
+                                <input class="file_load" id='signature_mass' type='file'>
+                            </div>
                             <div class="body_point_adder_document_block_buttons_button" data="download">
                                 <span>Скачать договор</span>
                             </div>
