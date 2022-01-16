@@ -150,6 +150,7 @@ var action_linker =
     "getProjectForInvesterPage": getProjectForInvesterPage,
     "setInvesterDataProjectForInvesterPage": setInvesterDataProjectForInvesterPage,
     "getProjectInvfgty": getProjectInvfgty,
+    "Business_status_projects": Business_status_projects,
 }
 
 async function getProjectInvfgty(socket,data,callback)
@@ -962,6 +963,23 @@ async function notAcceptInvesting(socket,data,callback)
 async function getInvestorsProject(socket,data,callback) {
     var _InvDoc = await InvDoc.find({projectId: data});
     callback(_InvDoc);
+}
+
+async function Business_status_projects(socket, data, callback)
+{
+    var _User           = await User.findOne({_id: data._id});
+    var _allProjects    = await Project.find({user: _User.user});
+    var _allInvdocks    = [];
+
+    for(var _project of _allProjects)
+    {
+        var InvDocs = await InvDoc.find({projectId: _project._id});
+        InvDocs.forEach(element => {
+            _allInvdocks.push(element);
+        })
+    }
+
+    callback(_all);
 }
 
 async function invester_status_projects(socket,data,callback)

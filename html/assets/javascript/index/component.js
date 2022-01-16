@@ -335,54 +335,106 @@
 
         async render(allData) 
         {
-            var _data = await callApi({
-                methodName: "invester_status_projects",
-                data: allData,
-            });
+            if(allData.User.type == "business")
+            {
+                var _data = await callApi({
+                    methodName: "Business_status_projects",
+                    data: allData,
+                });
 
-            console.log(_data);
+                console.log(_data);
 
-            var settingBlock = $(`
-                <div class="settingBlock">
-                    <div class="settingBlock_header">
-                        <p>История оплат</p>
-                        <div class="settingBlock_header_line">
-                            <span>#</span>
-                            <span>Номер проекта</span>
-                            <span>Статус</span>
+                var settingBlock = $(`
+                    <div class="settingBlock">
+                        <div class="settingBlock_header">
+                            <p>История оплат</p>
+                            <div class="settingBlock_header_line">
+                                <span>#</span>
+                                <span>Номер проекта</span>
+                                <span>Статус</span>
+                            </div>
+                        </div>
+                        <div class="settingBlock_body">
+
                         </div>
                     </div>
-                    <div class="settingBlock_body">
+                `);
 
+                _data.forEach(function(element, i) {
+                    var _status = {
+                        "wait": `
+                            <span class="settingBlock_wait settingBlock_block">Ожидает подтверждения</span>
+                        `,
+                        "accept": `
+                            <span class="settingBlock_accept_color settingBlock_block">Оплата подтверждена</span>
+                        `,
+                    }
+                    var template_text = `
+                        <div class="settingBlock_body_line" data="${element.invester}" data-more="${element.projectId}">
+                            <span>${i + 1}</span>
+                            <span>${element.projectId}</span>
+                            <span>${_status[element.status]}</span>
+                        </div>
+                    `;
+
+                    settingBlock.find('.settingBlock_body').append(template_text);
+                })
+
+                $('.index_page_body_data').append(settingBlock);
+
+                $('.settingBlock_body_line').click( function () {
+                    location.href = window.location.href + `&id=${$(this).attr('data')}&project=${$(this).attr('data-more')}`;
+                })
+            } else {
+                var _data = await callApi({
+                    methodName: "invester_status_projects",
+                    data: allData,
+                });
+
+                console.log(_data);
+
+                var settingBlock = $(`
+                    <div class="settingBlock">
+                        <div class="settingBlock_header">
+                            <p>История оплат</p>
+                            <div class="settingBlock_header_line">
+                                <span>#</span>
+                                <span>Номер проекта</span>
+                                <span>Статус</span>
+                            </div>
+                        </div>
+                        <div class="settingBlock_body">
+
+                        </div>
                     </div>
-                </div>
-            `);
+                `);
 
-            _data.forEach(function(element, i) {
-                var _status = {
-                    "wait": `
-                        <span class="settingBlock_wait settingBlock_block">Ожидает подтверждения</span>
-                    `,
-                    "accept": `
-                        <span class="settingBlock_accept_color settingBlock_block">Оплата подтверждена</span>
-                    `,
-                }
-                var template_text = `
-                    <div class="settingBlock_body_line" data="${element.invester}" data-more="${element.projectId}">
-                        <span>${i + 1}</span>
-                        <span>${element.projectId}</span>
-                        <span>${_status[element.status]}</span>
-                    </div>
-                `;
+                _data.forEach(function(element, i) {
+                    var _status = {
+                        "wait": `
+                            <span class="settingBlock_wait settingBlock_block">Ожидает подтверждения</span>
+                        `,
+                        "accept": `
+                            <span class="settingBlock_accept_color settingBlock_block">Оплата подтверждена</span>
+                        `,
+                    }
+                    var template_text = `
+                        <div class="settingBlock_body_line" data="${element.invester}" data-more="${element.projectId}">
+                            <span>${i + 1}</span>
+                            <span>${element.projectId}</span>
+                            <span>${_status[element.status]}</span>
+                        </div>
+                    `;
 
-                settingBlock.find('.settingBlock_body').append(template_text);
-            })
+                    settingBlock.find('.settingBlock_body').append(template_text);
+                })
 
-            $('.index_page_body_data').append(settingBlock);
+                $('.index_page_body_data').append(settingBlock);
 
-            $('.settingBlock_body_line').click( function () {
-                location.href = window.location.href + `&id=${$(this).attr('data')}&project=${$(this).attr('data-more')}`;
-            })
+                $('.settingBlock_body_line').click( function () {
+                    location.href = window.location.href + `&id=${$(this).attr('data')}&project=${$(this).attr('data-more')}`;
+                })
+            } 
         }
     }
 
