@@ -981,6 +981,8 @@
                             var _inexBlock = $(this).parent().parent().index();
                             $('.body_point').eq(_inexBlock).remove();
                             $('.body_point').eq(_inexBlock).remove();
+
+                            global.add_blocks = global.add_blocks - 1;
                         })
                     }
     
