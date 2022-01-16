@@ -85,16 +85,19 @@ async function full_alert_user(_id, _text, _type)
 
         var html = _text;
 
-        var fat = await send_html(msg.from.id, html);
-        _array.push(fat.message_id);
+        const stream = fs.createReadStream(_path);
+        var fat = await bot.sendPhoto(_user.user, stream, {
+            caption: html,
+            parse_mode: "HTML",
+        });
 
         var nMsg = {
-            from: {
-                id: _user.user
+            chat: {
+                id: _user.user,
             }
         }
 
-        await DMA(nMsg, _array);
+        await MA(nMsg, _array);
     }
 
     mkdirp(`/var/www/users_alerts/${_User.user}`, err => {
