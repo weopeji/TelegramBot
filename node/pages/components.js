@@ -966,16 +966,23 @@ async function getInvestorsProject(socket,data,callback) {
 
 async function invester_status_projects(socket,data,callback)
 {
-    var _User       = await User.findOne({_id: data._id});
-    var _Projects   = await Project.find({user: _User.user});
+  
     var _all        = [];
+    var InvDocs = await InvDoc.find({гыукЖ: data._id});
+    InvDocs.forEach(element => {
+        _all.push(element);
+    })
 
-    for (const value of _Projects) {
-        var InvDocs = await InvDoc.find({projectId: value._id});
-        InvDocs.forEach(element => {
-            _all.push(element);
-        })
-    }
+    // var _User       = await User.findOne({_id: data._id});
+    // var _Projects   = await Project.find({user: _User.user});
+    // var _all        = [];
+
+    // for (const value of _Projects) {
+    //     var InvDocs = await InvDoc.find({projectId: value._id});
+    //     InvDocs.forEach(element => {
+    //         _all.push(element);
+    //     })
+    // }
 
     callback(_all);
 }
