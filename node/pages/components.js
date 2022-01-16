@@ -966,9 +966,9 @@ async function getInvestorsProject(socket,data,callback) {
 
 async function invester_status_projects(socket,data,callback)
 {
-  
+    var _User       = await User.findOne({_id: data._id});
     var _all        = [];
-    var InvDocs = await InvDoc.find({гыукЖ: data._id});
+    var InvDocs = await InvDoc.find({invester: _User.user});
     InvDocs.forEach(element => {
         _all.push(element);
     })
