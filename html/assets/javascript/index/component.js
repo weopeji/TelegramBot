@@ -196,7 +196,7 @@
                         <div class="headerPaysBlock_body_line">
                             <span>${i + 1}</span>
                             <span>${maxDateFormatted}</span>
-                            <span>${Math.ceil(el.pay)} руб ${morePay}</span>
+                            <span>${Math.ceil(el.pay).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')} руб ${morePay.replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')}</span>
                             <span class="headerPaysBlock_body_line_inv" data="${el.receipt}">
                                 <span>
                                     ${_status[el.status]}
