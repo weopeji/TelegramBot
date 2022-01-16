@@ -1176,10 +1176,10 @@
                     </div>
                     <div class="body_point_adder_document_block_buttons">
                         <div class="body_point_adder_document_block_buttons_row">
-                            <div class="body_point_adder_document_block_buttons_button">
+                            <div class="body_point_adder_document_block_buttons_button" data="download">
                                 <span>Скачать договор</span>
                             </div>
-                            <div class="body_point_adder_document_block_buttons_button">
+                            <div class="body_point_adder_document_block_buttons_button" data="upload">
                                 <span>Загрузить подписаный</span>
                             </div>
                         </div>
