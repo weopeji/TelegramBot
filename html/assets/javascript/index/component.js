@@ -267,10 +267,6 @@
                                 <span>Номер инвестора:</span>
                                 <a>1</a>
                             </div>
-                            <div class="info_active_block_left_info_line">
-                                <span>Дата:</span>
-                                <a>${_dateText}</a>
-                            </div>
                         </div>
                         <div class="info_active_block_left_info">
                             <div class="info_active_block_left_info_line">
@@ -280,6 +276,10 @@
                             <div class="info_active_block_left_info_line">
                                 <span>Сумма инвестиции:</span>
                                 <a>${_data.InvDoc.data.pay.replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')} руб</a>
+                            </div>
+                            <div class="info_active_block_left_info_line">
+                                <span>Дата:</span>
+                                <a>${_dateText}</a>
                             </div>
                         </div>
                         <div class="info_active_block_left_buttons">
