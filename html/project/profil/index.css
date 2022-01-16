@@ -112,6 +112,14 @@ html, body {
       flex-wrap: wrap;
 }
 
+.page_line_block span {
+  width: 100%;
+}
+
+.page_line_block span a {
+  float: right;
+}
+
 @media (max-width: 900px) {
   .index_page_profil {
     width: 95vw;
