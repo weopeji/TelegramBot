@@ -908,14 +908,15 @@ async function acceptInvestor(socket,data,callback)
 
 async function getUserForId(socket,data,callback) 
 {
-    var _User = await User.findOne({_id: data});
-    var _idPhoto = await bot.getUserProfilePhotos(_User.user);
+    var _User       = await User.findOne({_id: data});
+    var _idPhoto    = await bot.getUserProfilePhotos(_User.user);
+    var Path_im     = null;
     if(_idPhoto.total_count > 0)
     {
         var file_id         = _idPhoto.photos[0][0].file_id;
-        _User.img           = await bot.getFile(file_id);
+        Path_im             = await bot.getFile(file_id);
     }
-    callback(_User);
+    callback(_User, Path_im);
 }
 
 async function notAcceptInvesting(socket,data,callback) 

@@ -1096,12 +1096,13 @@
 
         async render(_id) 
         {
-            var _User = await callApi({
+            var _User, photoImg = await callApi({
                 methodName: "getUserForId",
                 data: _id,
             });
 
             console.log(_User);
+            console.log(photoImg);
 
             $('.index_page_body_header_user_avatar_name span').html(_User.first_name + " " + _User.last_name);
             $('.index_page_body_header_user_avatar_name p').html(_User.type);
