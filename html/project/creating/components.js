@@ -510,34 +510,29 @@
             _form.append('_id', _id);
             _form.append('_pts', $(_this.files)[0].type);
 
+            var _url = `${getURL()}/file_signature_document.io/files`;
 
-            this.start_preloader($(_this), async function() 
-            {
-                var _url = `${getURL()}/file_signature_document.io/files`;
+            var _file = _form;
 
-                var _file = _form;
-
-                axios.post(_url, _file, {
-                    headers: {
-                      'Content-Type': 'multipart/form-data'
-                    }
-                }).then(data => {
-                    if(data.data.status == "ok") {
-                        $(_this).parent().parent().find('.loader_input').attr('data', data.data.file_name);
-                        $(_this).parent().parent().find('.loader_input').fadeOut( function() {
-                            $(_this).parent().parent().find('.all_good').fadeIn( function() {
-                                $('.index_page').empty();
-                                $('.preloader').fadeIn( function() {
-                                    $('.preloader').fadeOut( function() {
-                                        $('.end_get_project').css('display', "flex");
-                                    });
+            axios.post(_url, _file, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            }).then(data => {
+                if(data.data.status == "ok") {
+                    $(_this).parent().parent().find('.loader_input').attr('data', data.data.file_name);
+                    $(_this).parent().parent().find('.loader_input').fadeOut( function() {
+                        $(_this).parent().parent().find('.all_good').fadeIn( function() {
+                            $('.index_page').empty();
+                            $('.preloader').fadeIn( function() {
+                                $('.preloader').fadeOut( function() {
+                                    $('.end_get_project').css('display', "flex");
                                 });
                             });
                         });
-                    }
-                })
-
-            });
+                    });
+                }
+            })
         }
 
         async load_file_redacting_registration_document(_this, _id)
