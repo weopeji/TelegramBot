@@ -980,7 +980,7 @@
                         _body.find('.body_point_header_close_two_block').click( function() {
                             var _inexBlock = $(this).parent().parent().index();
                             $('.body_point').eq(_inexBlock).remove();
-                            $('.body_point').eq(_inexBlock + 1).remove();
+                            $('.body_point').eq(_inexBlock).remove();
                         })
                     }
     
