@@ -144,7 +144,7 @@
                 _components.changeTextArea($(this));
             });
 
-            $('.body_point_line_header_text input[type=file]').change( async function() 
+            $('input[type=file]').change( async function() 
             {
                 if(_typePage == 'signature') 
                 {
