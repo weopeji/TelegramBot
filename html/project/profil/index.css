@@ -101,6 +101,17 @@ html, body {
   height: 150px;
 }
 
+.page_line_block {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
 @media (max-width: 900px) {
   .index_page_profil {
     width: 95vw;
