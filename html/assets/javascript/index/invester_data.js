@@ -363,8 +363,10 @@
                 }
             })
 
-            $(`.creating_page_input_div[data="cpecial"] span`).mask('9999 999999');
-
+            $(`.creating_page_input_div[data="cpecial"] span`).bind("DOMSubtreeModified",function(){
+                var _text = $(this).text();
+                $(this).val($.inputmask.format(_text, { mask: '(999) 999-9999' }))
+            });
 
 
             var _this = this;
