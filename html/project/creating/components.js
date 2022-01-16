@@ -1164,6 +1164,10 @@
                 window.open(`https://invester-relocation.site/projects/${_project._id}/${_project.signature_document.document}`, "_blank");
             })
 
+            _block.find('.body_point_adder_document_block_buttons_button[data="upload"]').click( function() {
+                $(this).parent().find('input').trigger('click');
+            })
+
             $('.index_page_body_points').append(_block);
         }
 
@@ -1176,6 +1180,7 @@
                     </div>
                     <div class="body_point_adder_document_block_buttons">
                         <div class="body_point_adder_document_block_buttons_row">
+                            <input class="file_load" id='signature_mass' type='file'>
                             <div class="body_point_adder_document_block_buttons_button" data="download">
                                 <span>Скачать договор</span>
                             </div>
@@ -1189,6 +1194,10 @@
 
             _block.find('.body_point_adder_document_block_buttons_button[data="download"]').click( function() {
                 window.open(`https://invester-relocation.site/projects/${_project._id}/${_project.registrationDocument.document}`, "_blank");
+            })
+
+            _block.find('.body_point_adder_document_block_buttons_button[data="upload"]').click( function() {
+                $(this).parent().find('input').trigger('click');
             })
 
             $('.index_page_body_points').append(_block);
