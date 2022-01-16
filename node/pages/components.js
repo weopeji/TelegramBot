@@ -919,7 +919,7 @@ async function getUserForId(socket,data,callback)
         var file_id         = _idPhoto.photos[0][0].file_id;
         needUser.Path_im    = await bot.getFile(file_id);
     }
-    callback(_User);
+    callback(needUser);
 }
 
 async function notAcceptInvesting(socket,data,callback) 
