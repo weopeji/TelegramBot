@@ -270,7 +270,7 @@
                         <div class="info_active_block_left_info">
                             <div class="info_active_block_left_info_line">
                                 <span>Сумма инвестиции:</span>
-                                <a>${_data.InvDoc.data.pay} руб</a>
+                                <a>${_data.InvDoc.data.pay.replace(/[^0-9\.]/g, '')} руб</a>
                             </div>
                         </div>
                         <div class="info_active_block_left_buttons">
