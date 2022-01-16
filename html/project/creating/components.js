@@ -1140,49 +1140,6 @@
 
         render_signature_document(_project) 
         {
-            var _uploadBlock = $(`
-                <div class="_uploadBlock">
-                    <span>Скачать договор</span>
-                </div>
-            `);
-
-            _uploadBlock.click( function () {
-                window.open(`https://invester-relocation.site/projects/${_project._id}/${_project.signature_document.document}`, "_blank");
-            })
-
-            var _body = $(`
-                <div class="body_point">
-                    <div class="body_point_line _file">
-                        <div class="body_point_line_header">
-                            <div class="body_point_line_header_text">
-                                <span>Загрузите</span>
-                                <div class="download_buttons">
-                                    <input class="file_load" id='signature_mass' type='file'>
-                                    <label for="signature_mass">Загрузить подписанный договор <i class="fas fa-angle-double-down"></i></label>
-                                </div>
-                                <div class="loader_input" id="signature_mass_block">
-                                    <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
-                                    <span></span>
-                                </div>
-                                <div class="all_good">
-                                    <div class="all_good_row">
-                                        <span class="all_good_cheack">Посмотреть</span>
-                                        <span class="all_good_del">Удалить</span>
-                                    </div>
-                                </div>  
-                            </div>
-                            <div class="body_point_line_header_info">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `);
-
-            _body.find('.body_point_line_header').css('margin-top', '30px');
-
-            $('.index_page_body_points').append(_uploadBlock);
-            $('.index_page_body_points').append(_body);
 
             var _block = $(`
                 <div class="body_point_adder_document_block">
@@ -1191,66 +1148,27 @@
                     </div>
                     <div class="body_point_adder_document_block_buttons">
                         <div class="body_point_adder_document_block_buttons_row">
-                            <div class="body_point_adder_document_block_buttons_button">
+                            <input class="file_load" id='signature_mass' type='file'>
+                            <div class="body_point_adder_document_block_buttons_button" data="download">
                                 <span>Скачать договор</span>
                             </div>
-                            <div class="body_point_adder_document_block_buttons_button">
+                            <div class="body_point_adder_document_block_buttons_button" data="upload">
                                 <span>Загрузить подписаный</span>
                             </div>
                         </div>
                     </div>
                 </div>
             `);
+
+            _block.find('.body_point_adder_document_block_buttons_button[data="download"]').click( function() {
+                window.open(`https://invester-relocation.site/projects/${_project._id}/${_project.signature_document.document}`, "_blank");
+            })
 
             $('.index_page_body_points').append(_block);
         }
 
         render_registration_document(_project) 
         {
-            var _uploadBlock = $(`
-                <div class="_uploadBlock">
-                    <span>Скачать договор</span>
-                </div>
-            `);
-
-            _uploadBlock.click( function () {
-                window.open(`https://invester-relocation.site/projects/${_project._id}/${_project.registrationDocument.document}`, "_blank");
-            })
-
-            var _body = $(`
-                <div class="body_point">
-                    <div class="body_point_line _file">
-                        <div class="body_point_line_header">
-                            <div class="body_point_line_header_text">
-                                <span>Загрузите</span>
-                                <div class="download_buttons">
-                                    <input class="file_load" id='signature_mass' type='file'>
-                                    <label for="signature_mass">Загрузить подписанный договор <i class="fas fa-angle-double-down"></i></label>
-                                </div>
-                                <div class="loader_input" id="signature_mass_block">
-                                    <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
-                                    <span></span>
-                                </div>
-                                <div class="all_good">
-                                    <div class="all_good_row">
-                                        <span class="all_good_cheack">Посмотреть</span>
-                                        <span class="all_good_del">Удалить</span>
-                                    </div>
-                                </div>  
-                            </div>
-                            <div class="body_point_line_header_info">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `);
-
-            _body.find('.body_point_line_header').css('margin-top', '30px');
-
-            $('.index_page_body_points').append(_uploadBlock);
-            $('.index_page_body_points').append(_body);
-
             var _block = $(`
                 <div class="body_point_adder_document_block">
                     <div class="body_point_adder_document_block_logo">
@@ -1268,6 +1186,10 @@
                     </div>
                 </div>
             `);
+
+            _block.find('.body_point_adder_document_block_buttons_button[data="download"]').click( function() {
+                window.open(`https://invester-relocation.site/projects/${_project._id}/${_project.registrationDocument.document}`, "_blank");
+            })
 
             $('.index_page_body_points').append(_block);
         }
