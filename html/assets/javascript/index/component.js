@@ -1106,7 +1106,7 @@
 
             console.log(_User);
 
-            $('.index_page_body_header_user_avatar_img').attr('src', `https://api.telegram.org/file/bot2062839693:AAE0hzj8SVXyexq29s5x7aRLC5x8O77c-pQ/${_ImgPath.file_path}`);
+            $('.index_page_body_header_user_avatar_img img').attr('src', `https://api.telegram.org/file/bot2062839693:AAE0hzj8SVXyexq29s5x7aRLC5x8O77c-pQ/${_ImgPath.file_path}`);
             $('.index_page_body_header_user_avatar_name span').html(_User.first_name + " " + _User.last_name);
             $('.index_page_body_header_user_avatar_name p').html(_User.type);
 
