@@ -1183,6 +1183,26 @@
 
             $('.index_page_body_points').append(_uploadBlock);
             $('.index_page_body_points').append(_body);
+
+            _block = $(`
+                <div class="body_point_adder_document_block">
+                    <div class="body_point_adder_document_block_logo">
+                        <img src="./imgs/Google_Docs_logo.png" alt="">
+                    </div>
+                    <div class="body_point_adder_document_block_buttons">
+                        <div class="body_point_adder_document_block_buttons_row">
+                            <div class="body_point_adder_document_block_buttons_button">
+                                <span>Скачать договор</span>
+                            </div>
+                            <div class="body_point_adder_document_block_buttons_button">
+                                <span>Загрузить подписаный</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `);
+
+            $('.index_page_body_points').append(_block);
         }
 
         render_registration_document(_project) 
