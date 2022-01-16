@@ -267,6 +267,8 @@
                         }
                     })
 
+                    _block.find(`.creating_page_input_div[data="cpecial"]`).mask('9999 999999');
+
                     $('.creating_page').append(_block);
                 },
                 "IP": function()
