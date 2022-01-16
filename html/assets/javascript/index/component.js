@@ -76,7 +76,7 @@
                         <div class="headerPaysBlock_body_line">
                             <span>${i + 1}</span>
                             <span>${maxDateFormatted}</span>
-                            <span>${_pay} руб ${morePay}</span>
+                            <span>${_pay.replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')} руб ${morePay.replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')}</span>
                             <span class="headerPaysBlock_button" data="${el.status}">
                                 <input type="file" name="" id='${i}'>
                                 <label for="${i}">${_status[el.status]}</label>
