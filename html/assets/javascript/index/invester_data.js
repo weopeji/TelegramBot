@@ -260,10 +260,10 @@
                     `);
 
                     _block.find('.creating_page_input_div').click( function() {
-                        if(!$(this).attr('data'))
+                        if(!$(this).attr('data_redacting'))
                         {
                             $(this).children('span').empty();
-                            $(this).attr('data', "true");
+                            $(this).attr('data_redacting', "true");
                         }
                     })
 
