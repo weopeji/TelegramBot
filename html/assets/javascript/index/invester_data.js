@@ -38,12 +38,11 @@
                 "justify-content": "center",
             });
 
-            $('.index_page_body_header_info span').html("ЗАЯВКА НА ИНВЕСТИРОВАНИЕ ПРОЕКТА");
+            $('.index_page_body_header_info span').html(`Инвестирование в проект "${this.project.data.name}"`);
         }
 
         async render() 
         {
-            this.defaultCSS();
             var _this = this;
 
             var _project = await callApi({
@@ -53,11 +52,13 @@
 
             this.project = _project;
 
+            this.defaultCSS();
+
             var msgsBlock = $(`
                 <div class="creating_page_block">
                     <div class="creating_page_start" style="margin-bottom: 20px">
                         <span>
-                            Уважаемый Инвестор ${global.allData.User.first_name} вводя данные вы подтверждаете, что <br> ознакомились и принимаете все условия <a href="https://google.com">"Пользовательского соглашения"</a>.
+                            Уважаемый Инвестор ${global.allData.User.first_name} вводя данные вы подтверждаете, что <br> ознакомились и принимаете все условия <a href="https://google.com" target="_blank">"Пользовательского соглашения"</a>.
                         </span>
                     </div>
                     <div class="creating_page_start">
