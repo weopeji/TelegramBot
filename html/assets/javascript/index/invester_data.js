@@ -259,16 +259,6 @@
                         </div>
                     `);
 
-                    _block.find('.creating_page_input_div').click( function() {
-                        if(!$(this).attr('data_redacting'))
-                        {
-                            $(this).children('span').empty();
-                            $(this).attr('data_redacting', "true");
-                        }
-                    })
-
-                    _block.find(`.creating_page_input_div[data="cpecial"] span`).mask('9999 999999');
-
                     $('.creating_page').append(_block);
                 },
                 "IP": function()
@@ -363,6 +353,20 @@
 
             $('.creating_page').empty();
             render_nextfuns[DT]();
+
+
+            _block.find('.creating_page_input_div').click( function() {
+                if(!$(this).attr('data_redacting'))
+                {
+                    $(this).children('span').empty();
+                    $(this).attr('data_redacting', "true");
+                }
+            })
+
+            _block.find(`.creating_page_input_div[data="cpecial"] span`).mask('9999 999999');
+
+            
+
             var _this = this;
 
             $('.creating_page_input_button').click( function() 
