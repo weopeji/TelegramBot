@@ -979,7 +979,7 @@ async function Business_status_projects(socket, data, callback)
         })
     }
 
-    callback(_all);
+    callback(_allInvdocks);
 }
 
 async function invester_status_projects(socket,data,callback)
