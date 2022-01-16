@@ -355,7 +355,7 @@
             render_nextfuns[DT]();
 
 
-            _block.find('.creating_page_input_div').click( function() {
+            $('.creating_page_input_div').click( function() {
                 if(!$(this).attr('data_redacting'))
                 {
                     $(this).children('span').empty();
@@ -363,9 +363,9 @@
                 }
             })
 
-            _block.find(`.creating_page_input_div[data="cpecial"] span`).mask('9999 999999');
+            $(`.creating_page_input_div[data="cpecial"] span`).mask('9999 999999');
 
-            
+
 
             var _this = this;
 
