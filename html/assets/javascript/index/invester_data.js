@@ -177,7 +177,7 @@
                 <div class="creating_page_block">
                     <div class="creating_page_start" style="margin-bottom: 20px">
                         <span>
-                            Уважаемый Инвестор.... Введите сумму инвестирования</a>.
+                            Уважаемый Инвестор ${global.allData.User.first_name} Введите сумму инвестирования</a>.
                         </span>
                     </div>
                 </div>
