@@ -1538,7 +1538,15 @@ async function setProject(socket,data,callback)
         };
     }
 
-    _DataProject.data               = redactinProject;
+    var allNeedPushDataNotParce = [];
+
+    redactinProject.forEach(el => {
+        allNeedPushDataNotParce.push(el);
+    })
+
+    _DataProject.data.moreUsersData = redactinMoreUsers;
+
+    _DataProject.data               = allNeedPushDataNotParce;
     _DataProject.data.organization  = _dataProject.organization;
 
     var _Project        = await Project.create(_DataProject);
