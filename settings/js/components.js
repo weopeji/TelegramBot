@@ -250,7 +250,7 @@
                 var _content = _iframe.contents();
                 var _height = _content.find('.index_page_profil')[0];
                 _iframe.css({
-                    'height': '1934px',
+                    'height': '7000px',
                     'width': '100%',
                     'margin': 0,
                     "margin-top": "20px",
