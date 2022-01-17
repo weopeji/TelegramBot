@@ -219,6 +219,10 @@
                 </div>
             `);
 
+            buttons_block.click( function() {
+                alert('Модуль находится на обновлении, пожалуйста подождите');
+            })
+
             global_block.append(buttons_block);
         }
     }
