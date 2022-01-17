@@ -208,6 +208,15 @@
                 <div class="structCreator_new_block_buttons_block">
                     <span>Запросить редактирование</span>
                 </div>
+                <div class="structCreator_new_block_buttons_block">
+                    <span>Отказать в инвестировании</span>
+                </div>
+                <div class="structCreator_new_block_buttons_block">
+                    <span>Скрыть проект</span>
+                </div>
+                <div class="structCreator_new_block_buttons_block">
+                    <span>Удалить проект</span>
+                </div>
             `);
 
             global_block.append(buttons_block);
