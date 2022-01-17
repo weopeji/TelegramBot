@@ -1315,6 +1315,9 @@
                 </div>
             `);
 
+            templateText.css('width', 'calc(92% - 40px');
+            templateText.css('margin', '0 auto');
+
             allUsers.forEach( function (user, i) {
                 var userLine = $(`
                     <div class="settingBlock_body_line" data="${user._id}" data-more="41">
