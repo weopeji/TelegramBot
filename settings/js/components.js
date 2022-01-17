@@ -779,11 +779,13 @@
             var templateText = $(`
                 <div class="index_page_body_project_body_type">
                     <span class="selected" data="1">Займ</span>
+                    <!--
                     <span data="2">Займ с залогом</span>
                     <span data="3">Займ с поручительством</span>
                     <span data="4">Доля в ООО</span>
                     <span data="5">Займ с залогом доли в ООО</span>
                     <span data="6">Доля в объекте недвижимости</span>
+                    -->
                 </div>
                 <div class="index_page_more_menu_blocks">
                     <h1>Зпрашиваемые данные</h1>
