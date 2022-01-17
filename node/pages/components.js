@@ -1540,14 +1540,13 @@ async function setProject(socket,data,callback)
 
     var allNeedPushDataNotParce = [];
 
-    redactinProject.forEach(el => {
+    redactinMoreUsers.forEach(el => {
         allNeedPushDataNotParce.push(el);
     })
 
-    _DataProject.data.moreUsersData = redactinMoreUsers;
-
-    _DataProject.data               = allNeedPushDataNotParce;
-    _DataProject.data.organization  = _dataProject.organization;
+    _DataProject.data                   = redactinProject;
+    _DataProject.data.moreUsersNotParce = allNeedPushDataNotParce;
+    _DataProject.data.organization      = _dataProject.organization;
 
     var _Project        = await Project.create(_DataProject);
     var _patch          = `/var/www/projects/${_Project._id}`;
