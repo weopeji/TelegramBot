@@ -108,7 +108,7 @@
                 <div class="creating_page_block">
                     <div class="creating_page_start" style="margin-bottom: 20px">
                         <span>
-                            Уважаемый Инвестор.... Пришлите чек оплаты для окончания инвестирования</a>.
+                            Уважаемый Инвестор ${global.allData.User.first_name} Пришлите чек оплаты для окончания инвестирования</a>.
                         </span>
                     </div>
                 </div>
@@ -185,7 +185,7 @@
 
             var _block = $(`
                 <div class="creating_page_input">
-                    <div class="creating_page_input_div" data="pay">
+                    <div class="creating_page_input_div" data="pay" data-number="true">
                         <span contenteditable="true"></span>
                     </div>
                     <div class="creating_page_input_button">
@@ -213,6 +213,11 @@
 
             $('.creating_page').append(msgsBlock);
             $('.creating_page').append(_block);
+
+            $(`.creating_page_input_div[data-number="true"] span`).bind("DOMSubtreeModified",function(){
+                var _text = $(this).text();
+                $(this).html(_text.toString().replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 '));
+            });
         }
 
         async render_next(DT) 
@@ -361,13 +366,7 @@
                     $(this).children('span').empty();
                     $(this).attr('data_redacting', "true");
                 }
-            })
-
-            // $(`.creating_page_input_div[data="cpecial"] span`).bind("DOMSubtreeModified",function(){
-            //     var _text = $(this).text();
-            //     $(this).val($.inputmask.format(_text, { mask: '(999) 999-9999' }))
-            // });
-
+            });
 
             var _this = this;
 
