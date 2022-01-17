@@ -214,10 +214,16 @@
             $('.creating_page').append(msgsBlock);
             $('.creating_page').append(_block);
 
-            $(`.creating_page_input_div[data-number="true"] span`).bind("DOMSubtreeModified",function(){
-                var _text = $(this).text();
-                $(this).html(_text.toString().replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 '));
-            });
+            var funGetBBDAta = () => {
+                $(`.creating_page_input_div[data-number="true"] span`).bind("DOMSubtreeModified",function(){
+                    $(this).removeEventListener("DOMSubtreeModified", LocalMain, false);
+                    var _text = $(this).text();
+                    $(this).html(_text.toString().replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 '));
+                    funGetBBDAta();
+                });
+            }
+
+            funGetBBDAta();
         }
 
         async render_next(DT) 
