@@ -104,6 +104,8 @@
         {
             $('.creating_page').empty();
 
+            var _this = this;
+
             var msgsBlock = $(`
                 <div class="creating_page_block">
                     <div class="creating_page_start" style="margin-bottom: 20px">
