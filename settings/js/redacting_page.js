@@ -58,6 +58,8 @@
                 })
             }
 
+            global_block.append($(`<h1>Первичная информация</h1>`));
+
             for(var DataBlock of _strucBocks)
             {
                 var nameBLock       = DataBlock.name;
@@ -151,7 +153,45 @@
 
             for(var _key in moreuSersData)
             {
-                global_block.append($(`<h1>Информация собственникa ${_key.split("+")[1]}</h1>`));
+                global_block.append($(`<h1>Собственник ${_key.split("+")[1]}</h1>`));
+
+                for(var _keyBlock in moreuSersData[_key])
+                {
+                    var _idBlock    = _keyBlock.split('BB#')[1].split(`_${_key.split("+")[1]}`)[0];
+                    var _type       = "string";
+
+                    if(_idBlock == "file+4")
+                    {
+                        _type = "file";
+                    }
+
+                    var _block = 
+                    $(`
+                        <div class="structCreator_new_block" data="${_keyBlock}" type="${DataBlock.type}">
+                            <input type="file">
+                            <div class="structCreator_new_block_row">
+                                <span>${nameBLock}</span>
+                                <a>
+                                    <input type="text">
+                                    <BB>${dataNameBlock}</BB>
+                                </a>
+                                <div class="structCreator_new_block_buttons">
+                                    <div class="structCreator_new_block_buttons_row">
+                                        <div class="structCreator_new_block_buttons_block structCreatorinputIcon">
+                                            <i class="fal fa-check-square"></i>
+                                        </div>
+                                        <div class="structCreator_new_block_buttons_block" data="input">
+                                            <i class="fal fa-pencil-ruler"></i>
+                                        </div>
+                                        <div class="structCreator_new_block_buttons_block">
+                                            <input type="checkbox" val="${dataNameBlock}">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `);
+                }
             }
         }
     }
