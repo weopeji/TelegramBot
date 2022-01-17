@@ -200,6 +200,16 @@
                     global_block.append(_block);
                 }
             }
+
+            global_block.append($(`<h1>Действия</h1>`));
+
+            var buttons_block = $(`
+                <div class="structCreator_new_block_buttons_block">
+                    <span>Запросить редактирование</span>
+                </div>
+            `);
+
+            global_block.append(buttons_block);
         }
     }
 
