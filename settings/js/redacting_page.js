@@ -147,8 +147,6 @@
                 global_block.append(_block);                
             }
 
-            global_block.append($(`<h1>Информация собственников</h1>`));
-
             var moreuSersData = _data.moreUsersNotParce;
 
             for(var _key in moreuSersData)
@@ -157,8 +155,21 @@
 
                 for(var _keyBlock in moreuSersData[_key])
                 {
-                    var _idBlock    = _keyBlock.split('BB#')[1].split(`_${_key.split("+")[1]}`)[0];
-                    var _type       = "string";
+                    var _idBlock            = _keyBlock.split('BB#')[1].split(`_${_key.split("+")[1]}`)[0];
+                    var _type               = "string";
+                    var _element            = window.structCreator.filter(function (obj) { return obj.header == "4. Данные собстевенника" })[0];
+                    var _needElementSort    = null;
+
+                    _element.body.forEach(elKO => {
+                        if(elKO._id == _idBlock)
+                        {
+                            _needElementSort = elKO;
+                        }
+                    })
+
+                    var dataNameBlock   = moreuSersData[_key][_keyBlock];
+                    var nameBLock       = _needElementSort.name;
+                    
 
                     if(_idBlock == "file+4")
                     {
@@ -191,6 +202,8 @@
                             </div>
                         </div>
                     `);
+
+                    global_block.append(_block);
                 }
             }
         }
