@@ -108,7 +108,15 @@
                 <div class="creating_page_block">
                     <div class="creating_page_start" style="margin-bottom: 20px">
                         <span>
-                            Уважаемый Инвестор ${global.allData.User.first_name} Пришлите чек оплаты для окончания инвестирования</a>.
+                            Уважаемый Инвестор ${global.allData.User.first_name} Пришлите чек оплаты для окончания инвестирования. <br><br>
+
+                            Реквезиты перечисления: <br><br>
+                            Банк-получатель: ${this.project.data.bank} <br>
+                            Корр. счет: ${this.project.data.account_correct} <br>
+                            БИК: ${this.project.data.bik} <br>
+                            КПП: ${this.project.data.kpp} <br>
+                            Получатель: ${this.project.data.recipient} <br>
+                            Счет получателя: ${this.project.data.account_get} <br>
                         </span>
                     </div>
                 </div>
@@ -214,15 +222,15 @@
             $('.creating_page').append(msgsBlock);
             $('.creating_page').append(_block);
 
-            var funGetBBDAta = () => {
-                $(`.creating_page_input_div[data-number="true"] span`).bind("DOMSubtreeModified",function(){
-                    $(this).removeEventListener("DOMSubtreeModified", funGetBBDAta(), false);
-                    var _text = $(this).text();
-                    $(this).html(_text.toString().replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 '));
-                });
-            }
+            // var funGetBBDAta = () => {
+            //     $(`.creating_page_input_div[data-number="true"] span`).bind("DOMSubtreeModified",function(){
+            //         $(this).removeEventListener("DOMSubtreeModified", funGetBBDAta(), false);
+            //         var _text = $(this).text();
+            //         $(this).html(_text.toString().replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 '));
+            //     });
+            // }
 
-            funGetBBDAta();
+            // funGetBBDAta();
         }
 
         async render_next(DT) 
