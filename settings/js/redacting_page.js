@@ -143,6 +143,19 @@
                 });
     
                 global_block.append(_block);
+
+
+
+
+                global_block.append($(`<h1>Информация собственников</h1>`));
+
+                var moreuSersData = _data.moreUsersNotParce;
+
+                for(var _key in moreuSersData)
+                {
+                    global_block.append($(`<h1>Информация собственникa ${_key.split("+")[1]}</h1>`));
+                }
+                
             }
         }
     }
