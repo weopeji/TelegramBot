@@ -42,7 +42,30 @@
                 if(need_project.parce.ar.response.length > 0 && need_project.parce.ar.response != "Null")
                 {
                     $('.arbitr_add').append(`<span class="arbitr_arbitr_add">${need_project.parce.ar.many}</span>`);
-                    need_project.parce.ar.response.forEach(el => {
+
+                    var initNumber = 0;
+
+                    need_project.parce.ar.response.forEach(el => 
+                    {
+                        if(initNumber == 2)
+                        {
+                            var _block = 
+                            $(`
+                                <div class="arbitr_add_more_data_button">
+                                    <span>Показать больше</span>
+                                </div>
+                                <div class="arbitr_add_more_data">
+
+                                </div>
+                            `);
+
+                            _block.eq(0).click( function() {
+                                $('.arbitr_add').toggleClass('selected');
+                            })
+
+                            $('.arbitr_add').append(_block);
+                        }
+
                         var _text = $(`
                             <div class="page_line">
                                 <div class="page_line_block">
@@ -66,8 +89,16 @@
 
                         _text.css('margin-top','20px');
                         _text.css('margin-bottom','20px');
-    
-                        $('.arbitr_add').append(_text);
+
+                        if(initNumber < 2)
+                        {
+                            $('.arbitr_add').append(_text);
+                        } else 
+                        {
+                            $('.arbitr_add_more_data').append(_text);
+                        }
+
+                        initNumber = initNumber + 1;
                     })
                 } else {
                     var _default = $(`
