@@ -122,7 +122,7 @@
                         $(this).parent().parent().parent().parent().find('input[type="file"]').trigger('click');
                     } else {
                         $(this).parent().parent().parent().toggleClass("structCreator_new_block_input_text");
-                        $(this).parent().parent().parent().parent().find('input[type="string"]').val($(this).parent().parent().parent().parent().find('BB').text())
+                        $(this).parent().parent().parent().parent().find('input[type="text"]').val($(this).parent().parent().parent().parent().find('BB').text())
                     }
                 });
 
