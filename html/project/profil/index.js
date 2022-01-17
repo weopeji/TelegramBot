@@ -227,7 +227,7 @@
                 $('.ispo_line').append(_HEADER);
 
                 var deistvitelnost  = "Не действителен или не правельно введен";
-                var jsonObj         = $.parseJSON('[' + el.dePa + ']');
+                var jsonObj         = $.parseJSON(el.dePa);
 
                 if(jsonObj[0].qc == 0)
                 {
