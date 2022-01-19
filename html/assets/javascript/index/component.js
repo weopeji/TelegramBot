@@ -398,6 +398,63 @@
                 })
             } else 
             {
+
+                var _data = await callApi({
+                    methodName: "invester_status_projects_status",
+                    data: global.allData.User._id,
+                });
+
+                console.log(_data);
+
+                var settingBlock = $(`
+                    <div class="settingBlock">
+                        <div class="settingBlock_header">
+                            <div class="invester_status_projects_status_first">
+                                <div class="invester_status_projects_status_first_line">
+                                    <span>Проинвестировано</span>
+                                    <a>Пусто</a>
+                                    <span>Выплачено</span>
+                                    <a>Пусто</a>
+                                </div>
+                                <div class="invester_status_projects_status_first_line">
+                                    <span>Ближайшие поступления</span>
+                                    <a>Пусто</a>
+                                    <span>Денежный поток в год</span>
+                                    <a>Пусто</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `);
+
+                $('.index_page_body_data').append(settingBlock);
+
+                var settingBlock = $(`
+                    <div class="settingBlock">
+                        <div class="settingBlock_header">
+                            <div class="invester_status_projects_status_first">
+                                <div class="invester_status_projects_status_first_line">
+                                    <span>Привлечено инвесторов</span>
+                                    <a>Пусто</a>
+                                    <span>Бонус</span>
+                                    <a>Пусто</a>
+                                </div>
+                                <div class="invester_status_projects_status_first_line">
+                                    <span>Привлечено бизнес проектов</span>
+                                    <a>Пусто</a>
+                                    <span>Бонус</span>
+                                    <a>Пусто</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `);
+
+                $('.index_page_body_data').append(settingBlock);
+
+
+
+
                 var _data = await callApi({
                     methodName: "invester_status_projects",
                     data: allData,
@@ -433,7 +490,7 @@
                         data: element.projectId,
                     });
 
-                    var template_text = `
+                    var template_text = $(`
                         <div class="settingBlock_body_line" data="${element.invester}" data-more="${element.projectId}">
                             <span>${i + 1}</span>
                             <span>${_progetInfor._id}</span>
@@ -442,7 +499,11 @@
                             <span>${_progetInfor.data.attraction_amount}</span>
                             <span>Пусто</span>
                         </div>
-                    `;
+                    `);
+
+                    template_text.click( function () {
+                        location.href = window.location.href + `&id=${$(this).attr('data')}&project=${$(this).attr('data-more')}`;
+                    })
 
                     settingBlock.find('.settingBlock_body').append(template_text);
 
@@ -451,9 +512,7 @@
 
                 $('.index_page_body_data').append(settingBlock);
 
-                $('.settingBlock_body_line').click( function () {
-                    location.href = window.location.href + `&id=${$(this).attr('data')}&project=${$(this).attr('data-more')}`;
-                })
+                
             } 
         }
     }
