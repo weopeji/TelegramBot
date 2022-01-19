@@ -408,7 +408,7 @@
                 var settingBlock = $(`
                     <div class="settingBlock">
                         <div class="settingBlock_header">
-                            <p>История оплат</p>
+                            <p>Активные проекты</p>
                             <div class="settingBlock_header_line">
                                 <span>№</span>
                                 <span>№ Проекта</span>
@@ -440,6 +440,7 @@
                             <span>${_progetInfor.data.name}</span>
                             <span>Пусто</span>
                             <span>${_progetInfor.data.attraction_amount}</span>
+                            <span>Пусто</span>
                         </div>
                     `;
 
