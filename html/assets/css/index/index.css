@@ -1470,6 +1470,8 @@ html, body {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+  color: #8592C6;
+  text-align: center;
 }
 
 @media (max-width: 1600px) {
