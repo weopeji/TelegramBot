@@ -399,9 +399,16 @@
             } else 
             {
 
-                var _data = await callApi({
+                var _dataMore = await callApi({
                     methodName: "invester_status_projects_status",
                     data: global.allData.User._id,
+                });
+
+                console.log(_dataMore);
+
+                var _data = await callApi({
+                    methodName: "invester_status_projects",
+                    data: allData,
                 });
 
                 console.log(_data);
@@ -452,17 +459,26 @@
                     </div>
                 `);
 
+                settingBlock.css('margin-bottom', "20px");
+
                 $('.index_page_body_data').append(settingBlock);
+
+                var settingBlock = $(`
+                    <div class="settingBlock">
+                        <div class="settingBlock_header">
+                            <div class="invester_status_projects_status_first">
+                                <div class="invester_status_projects_status_first_line">
+                                    <span>Проивестировано в проекты</span>
+                                    <a>${_data.length}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `);
 
                 settingBlock.css('margin-bottom', "20px");
 
-
-                var _data = await callApi({
-                    methodName: "invester_status_projects",
-                    data: allData,
-                });
-
-                console.log(_data);
+                $('.index_page_body_data').append(settingBlock);
 
                 var settingBlock = $(`
                     <div class="settingBlock">

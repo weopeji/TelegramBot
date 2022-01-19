@@ -1474,6 +1474,10 @@ html, body {
   text-align: center;
 }
 
+.invester_status_projects_status_first_line a {
+  color: white;
+}
+
 .invester_status_projects_status_first_line {
   padding: 15px 0;
   font-size: 18px;
