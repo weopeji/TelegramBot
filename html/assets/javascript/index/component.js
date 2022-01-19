@@ -427,6 +427,8 @@
                     </div>
                 `);
 
+                settingBlock.css('margin-bottom', "20px");
+
                 $('.index_page_body_data').append(settingBlock);
 
                 var settingBlock = $(`
@@ -452,7 +454,7 @@
 
                 $('.index_page_body_data').append(settingBlock);
 
-
+                settingBlock.css('margin-bottom', "20px");
 
 
                 var _data = await callApi({
