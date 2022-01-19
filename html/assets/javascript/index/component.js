@@ -396,7 +396,8 @@
                 $('.settingBlock_body_line').click( function () {
                     location.href = window.location.href + `&id=${$(this).attr('data')}&project=${$(this).attr('data-more')}`;
                 })
-            } else {
+            } else 
+            {
                 var _data = await callApi({
                     methodName: "invester_status_projects",
                     data: allData,
@@ -409,10 +410,12 @@
                         <div class="settingBlock_header">
                             <p>История оплат</p>
                             <div class="settingBlock_header_line">
-                                <span>#</span>
-                                <span>Номер проекта</span>
-                                <span>Название проекта</span>
-                                <span>Статус</span>
+                                <span>№</span>
+                                <span>№ Проекта</span>
+                                <span>Название</span>
+                                <span>Договор</span>
+                                <span>Сумма входа</span>
+                                <span>Сумма платежа</span>
                             </div>
                         </div>
                         <div class="settingBlock_body">
@@ -430,20 +433,13 @@
                         data: element.projectId,
                     });
 
-                    var _status = {
-                        "wait": `
-                            <span class="settingBlock_wait settingBlock_block">Ожидает подтверждения</span>
-                        `,
-                        "accept": `
-                            <span class="settingBlock_accept_color settingBlock_block">Оплата подтверждена</span>
-                        `,
-                    }
                     var template_text = `
                         <div class="settingBlock_body_line" data="${element.invester}" data-more="${element.projectId}">
                             <span>${i + 1}</span>
+                            <span>${_progetInfor._id}</span>
                             <span>${_progetInfor.data.name}</span>
-                            <span>${element.projectId}</span>
-                            <span>${_status[element.status]}</span>
+                            <span>Пусто</span>
+                            <span>${_progetInfor.data.attraction_amount}</span>
                         </div>
                     `;
 
@@ -1194,10 +1190,10 @@
                         <i class="fal fa-chart-line"></i>
                         <span>Активные проекты</span>
                     </div>
-                    <!-- <div class="index_page_menu_block_line" data="reward">
-                        <i class="fal fa-money-check-alt"></i>
-                        <span>Вознаграждение</span>
-                    </div> -->
+                    <div class="index_page_menu_block_line" data="wait_projects">
+                        <i class="fal fa-chart-line"></i>
+                        <span>Ожидают подтверждения</span>
+                    </div>
                     <div class="index_page_menu_block_line" data="Attracted_by_me">
                         <i class="fal fa-users"></i>
                         <span>Мной привлечено</span>
