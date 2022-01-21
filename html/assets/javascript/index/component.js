@@ -477,16 +477,16 @@
 
                 var i = 0;
 
-                for(var element of _data.invester_data.acceptInvs)
+                for(var element of _data.invester_data.activeInvs)
                 {
                     var template_text = $(`
-                        <div class="settingBlock_body_line" data="${element.invester}" data-more="${element.projectId}">
+                        <div class="settingBlock_body_line" data="${element.Inv.invester}" data-more="${element.Inv.projectId}">
                             <span>${i + 1}</span>
-                            <span>${_progetInfor._id}</span>
-                            <span>${_progetInfor.data.name}</span>
-                            <span>Пусто</span>
-                            <span>${_progetInfor.data.attraction_amount}</span>
-                            <span>Пусто</span>
+                            <span>${element._id}</span>
+                            <span>${element.project.data.name}</span>
+                            <span>${element.project._id}/${element.number}</span>
+                            <span>${element.project.data.attraction_amount}</span>
+                            <span>${element.Inv.data.pay}</span>
                         </div>
                     `);
 

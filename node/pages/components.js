@@ -186,6 +186,7 @@ async function ALL_DATA(socket, data, callback)
                 var _acceptInvBlock = 
                 {
                     Inv: _acceptInv,
+                    project: await Project.findOne({_id: _acceptInv.projectId}),
                     number: null,
                 }
 
