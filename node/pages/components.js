@@ -158,6 +158,31 @@ async function ALL_DATA(socket, data, callback)
 {
     var _User = await User.findOne().or([{ _id: data }, { user: data }]);
 
+    var AllData = 
+    {
+        User: _User,
+        invester_data: await investerData(),
+    }
+
+    async function investerData()
+    {
+        return new Promise(async (resolve,reject) =>
+        {
+            var _Invs       = await InvDoc.find({invester: _User.user});
+            var _blockData  = {
+                Invs: _Invs,
+                invested: 0,
+            };
+
+            for(var _Inv in _Invs)
+            {
+                _blockData.invested = _blockData.invested + Number(_Invs.data.pay);
+            }
+
+            resolve(_blockData);
+        })
+    }
+
     callback(_User);
 }
 
