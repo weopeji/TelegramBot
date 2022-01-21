@@ -67,6 +67,7 @@
             const get_money_abstraction = new global.Components.get_money_abstraction();
             const invester_data         = new global.Components.invester_data();
             const creating_page         = new global.Components.creating_page();
+            const wait_projects         = new global.Components.wait_projects();
 
             var _User = await user_block.render(_id);
 
@@ -99,7 +100,8 @@
                 "ref_url": function() {ref_url.render(global.allData)},
                 "invester_data": function() {invester_data.render(global.allData)},
                 "show_all_projects": function() {show_all_projects.render(global.allData)},
-                "get_money_abstraction": function() {get_money_abstraction.render(global.all)},
+                "get_money_abstraction": function() {get_money_abstraction.render(global.allData)},
+                "wait_projects": function() {wait_projects.render(global.allData)}
             }
 
             if(pageID)

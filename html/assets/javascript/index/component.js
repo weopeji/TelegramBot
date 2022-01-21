@@ -411,7 +411,7 @@
                             <div class="invester_status_projects_status_first">
                                 <div class="invester_status_projects_status_first_line">
                                     <span>Проинвестировано</span>
-                                    <a>${_data.invester_data.invested}</a>
+                                    <a>${_data.invester_data.invested} руб.</a>
                                     <span>Выплачено</span>
                                     <a>Пусто</a>
                                 </div>
@@ -482,7 +482,7 @@
                     var template_text = $(`
                         <div class="settingBlock_body_line" data="${element.Inv.invester}" data-more="${element.Inv.projectId}">
                             <span>${i + 1}</span>
-                            <span>${element._id}</span>
+                            <span>${element.project._id}</span>
                             <span>${element.project.data.name}</span>
                             <span>${element.project._id}/${element.number}</span>
                             <span>${element.project.data.attraction_amount}</span>
@@ -2007,6 +2007,16 @@
         }
     }
 
+    class wait_projects
+    {
+        constructor() {};
+
+        async render()
+        {
+            
+        }
+    }
+
     var components = {
         Attracted_by_me,
         activ_projects,
@@ -2020,6 +2030,7 @@
         reward,
         process_status,
         ref_url,
+        wait_projects,
     };
 
     if(!global.Components) { global.Components = components; } 
