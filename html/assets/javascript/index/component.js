@@ -344,6 +344,13 @@
 
         async render(allData) 
         {
+            var _data = await callApi({
+                methodName: "ALL_DATA",
+                data: global.allData.User._id,
+            });
+
+            console.log(_data);
+
             if(allData.User.type == "business")
             {
                 var _data = await callApi({
@@ -398,13 +405,6 @@
                 })
             } else 
             {
-                var _data = await callApi({
-                    methodName: "ALL_DATA",
-                    data: global.allData.User._id,
-                });
-
-                console.log(_data);
-
                 var settingBlock = $(`
                     <div class="settingBlock" style="margin-bottom: 20px">
                         <div class="settingBlock_header">
@@ -447,7 +447,7 @@
                             <div class="invester_status_projects_status_first">
                                 <div class="invester_status_projects_status_first_line">
                                     <span>Проивестировано в проекты</span>
-                                    <a>${_data.length}</a>
+                                    <a>${_data.invester_data.acceptInvs.length}</a>
                                 </div>
                             </div>
                         </div>
@@ -2023,6 +2023,7 @@
             var settingBlock = $(`
                 <div class="settingBlock">
                     <div class="settingBlock_header">
+                        <p>Ожидают подтверждания</p>
                         <div class="settingBlock_header_line">
                             <span>№</span>
                             <span>№ Проекта</span>
