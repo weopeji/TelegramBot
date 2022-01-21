@@ -174,7 +174,7 @@ async function ALL_DATA(socket, data, callback)
                 invested: 0,
             };
 
-            for(var _Inv in _Invs)
+            for(var _Inv of _Invs)
             {
                 _blockData.invested = _blockData.invested + Number(_Inv.data.pay);
             }
