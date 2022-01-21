@@ -1648,8 +1648,24 @@
             this.allAttracted       = null;
         };
 
-        async renderHeader() 
+        async renderHeader(_data) 
         {
+            var headerRefUrlsBlock = $(`
+                <div class="Attracted_by_me_headerRefUrlsBlock">
+                    <h1>Ваша персональная реферальная ссылка</h1>
+                    <div class="Attracted_by_me_headerRefUrlsBlock_blocks">
+                        <div class="Attracted_by_me_headerRefUrlsBlock_blocks_line">
+                            <span>Инвесторов</span>
+                            <span>https://t.me/invester_official_bot?start=adder_${_data.User.user}</span>
+                        </div>
+                        <div class="Attracted_by_me_headerRefUrlsBlock_blocks_line">
+                            <span>Бизнеса</span>
+                            <span>https://t.me/invester_official_bot?start=adder-b_${_data.User.user}</span>
+                        </div>
+                    </div>
+                </div>
+            `);
+
             var headerInfoBlock1 = 
             $(`
                 <div class="Attracted_headerInfoBlock">
@@ -1715,6 +1731,7 @@
                 location.href = "./?page=show_all_projects"
             })
 
+            $('.index_page_body_data').append(headerRefUrlsBlock);
             $('.index_page_body_data').append(headerInfoBlock1);
             $('.index_page_body_data').append(headerInfoBlock2);
             $('.index_page_body_data').append(moreGetButtons);
@@ -1905,6 +1922,11 @@
 
         async render(data) 
         {
+            var _data = await callApi({
+                methodName: "ALL_DATA",
+                data: global.allData.User._id,
+            });
+
             var _pays       = await callApi({
                 methodName: "Attracted_by_pays",
                 data: data._id,
@@ -1931,7 +1953,7 @@
                 }
             })
 
-            await this.renderHeader();
+            await this.renderHeader(_data);
             await this.renderAllPayments();
             await this.renderInvesters();
             await this.renderBussnes()
