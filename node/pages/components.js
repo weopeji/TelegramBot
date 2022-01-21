@@ -160,7 +160,7 @@ async function ALL_DATA(socket, data, callback)
     var AllData = 
     {
         User: _User,
-        allAcceptProjects: await Project.find({type: active}),
+        allAcceptProjects: await Project.find({type: "active"}),
         invester_data: await investerData(),
     }
 
