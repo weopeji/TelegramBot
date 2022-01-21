@@ -176,14 +176,14 @@ async function ALL_DATA(socket, data, callback)
 
             for(var _Inv in _Invs)
             {
-                _blockData.invested = _blockData.invested + Number(_Invs.data.pay);
+                _blockData.invested = _blockData.invested + Number(_Inv.data.pay);
             }
 
             resolve(_blockData);
         })
     }
 
-    callback(_User);
+    callback(AllData);
 }
 
 async function getProjectInvfgty(socket,data,callback)
