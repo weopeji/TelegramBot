@@ -2013,7 +2013,57 @@
 
         async render()
         {
-            
+            var _data = await callApi({
+                methodName: "ALL_DATA",
+                data: global.allData.User._id,
+            });
+
+            console.log(_data);
+
+            var settingBlock = $(`
+                <div class="settingBlock">
+                    <div class="settingBlock_header">
+                        <p>Активные проекты</p>
+                        <div class="settingBlock_header_line">
+                            <span>№</span>
+                            <span>№ Проекта</span>
+                            <span>Название</span>
+                            <span>Договор</span>
+                            <span>Сумма</span>
+                            <span>Статус</span>
+                        </div>
+                    </div>
+                    <div class="settingBlock_body">
+
+                    </div>
+                </div>
+            `);
+
+            var i = 0;
+
+            for(var element of _data.invester_data.activeInvs)
+            {
+                var template_text = $(`
+                    <div class="settingBlock_body_line" data="${element.Inv.invester}" data-more="${element.Inv.projectId}">
+                        <span>${i + 1}</span>
+                        <span>${element.project._id}</span>
+                        <span>${element.project.data.name}</span>
+                        <span>${element.project._id}/${element.number}</span>
+                        <span>${element.Inv.data.pay}</span>
+                        <span>Ожидает подтверждения</span>
+                    </div>
+                `);
+
+                template_text.click( function () {
+                    location.href = window.location.href + `&id=${$(this).attr('data')}&project=${$(this).attr('data-more')}`;
+                })
+
+                settingBlock.find('.settingBlock_body').append(template_text);
+
+                i++;
+            };
+
+            $('.index_page_body_data').append(settingBlock);
         }
     }
 

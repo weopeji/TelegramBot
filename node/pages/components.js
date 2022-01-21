@@ -169,10 +169,13 @@ async function ALL_DATA(socket, data, callback)
         {
             var _Invs       = await InvDoc.find({invester: _User.user});
             var _acceptInvs = await InvDoc.find({invester: _User.user, status: "accept"});
+            var _waitInvs   = await InvDoc.find({invester: _User.user, status: "wait"});
+
             var _blockData  = {
                 Invs: _Invs,
                 acceptInvs: _acceptInvs,
                 activeInvs: [],
+                waitInvs: [],
                 invested: 0,
             };
 
@@ -200,6 +203,27 @@ async function ALL_DATA(socket, data, callback)
                 });
 
                 _blockData.activeInvs.push(_acceptInvBlock);
+            }
+
+            for(var _waitInv of _waitInvs)
+            {
+                var _waitInvBlock = 
+                {
+                    Inv: _waitInv,
+                    project: await Project.findOne({_id: _waitInv.projectId}),
+                    number: null,
+                }
+
+                var allWaitInvInBlock = await InvDoc.find({status: "accept", projectId: _waitInv.projectId});
+
+                allWaitInvInBlock.forEach((element, i) => {
+                    if(element.invester == _User.user)
+                    {
+                        _waitInvBlock.number = i + 1;
+                    }
+                });
+
+                _blockData.waitInvs.push(_waitInvBlock);
             }
 
             resolve(_blockData);
