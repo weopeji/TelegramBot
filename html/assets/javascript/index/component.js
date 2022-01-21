@@ -450,7 +450,7 @@
                                     <a>${_data.invester_data.acceptInvs.length}</a>
                                 </div>
                             </div>
-                        </div>
+                        </div> 
                     </div>
                 `);
 
