@@ -243,7 +243,14 @@
                 {
                     var _block = $(`
                         <div class="creating_page_input">
-                            <div class="creating_page_input_div" data="inn">
+                            <input type="text" class="creating_page_input_div" data="inn">
+                            <input type="text" class="creating_page_input_div" data="inn">
+                            <input type="text" class="creating_page_input_div" data="inn">
+                            <input type="text" class="creating_page_input_div" data="inn">
+                            <input type="text" class="creating_page_input_div" data="inn">
+                            <input type="text" class="creating_page_input_div" data="inn">
+                            <input type="text" class="creating_page_input_div" data="inn">
+                            <!-- <div class="creating_page_input_div" data="inn">
                                 <span contenteditable="true">ИНН</span>
                             </div>
                             <div class="creating_page_input_div" data="kpp">
@@ -272,7 +279,7 @@
                             </div>
                             <div class="creating_page_input_div" data="nomer_kor">
                                 <span contenteditable="true">Номер корреспондентского  счета</span>
-                            </div>
+                            </div> -->
                             <div class="creating_page_input_button">
                                 <span>Отправить</span>
                             </div>
