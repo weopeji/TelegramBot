@@ -2023,7 +2023,6 @@
             var settingBlock = $(`
                 <div class="settingBlock">
                     <div class="settingBlock_header">
-                        <p>Активные проекты</p>
                         <div class="settingBlock_header_line">
                             <span>№</span>
                             <span>№ Проекта</span>
