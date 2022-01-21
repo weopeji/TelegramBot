@@ -60,7 +60,7 @@
                                 <span>Сумма</span><p>${element.data.attraction_amount} руб.</p>
                             </div>
                             <div class="index_page_body_info_line">
-                                <span>На срок</span><p>${element.data.collection_period.split('-')[2]}.${element.data.collection_period.split('-')[1]}.${element.data.collection_period.split('-')[0]}</p>
+                                <span>На срок</span><p>${element.data.date} мес</p>
                             </div>
                             <div class="index_page_body_info_line">
                                 <span>Ставка % в год</span><p>${element.data.rate}%</p>
