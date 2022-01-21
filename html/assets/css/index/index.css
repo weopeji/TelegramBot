@@ -1483,6 +1483,32 @@ html, body {
   font-size: 18px;
 }
 
+.Attracted_by_me_headerRefUrlsBlock h1 {
+  text-align: center;
+}
+
+.Attracted_by_me_headerRefUrlsBlock_blocks {
+  width: 100%;
+}
+
+.Attracted_by_me_headerRefUrlsBlock_blocks_line {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #182037;
+  height: 60px;
+}
+
+.Attracted_by_me_headerRefUrlsBlock_blocks_line span {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
 @media (max-width: 1600px) {
   .creating_page {
     width: 50%;
