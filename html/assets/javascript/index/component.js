@@ -400,7 +400,7 @@
             {
 
                 var _dataMore = await callApi({
-                    methodName: "invester_status_projects_status",
+                    methodName: "ALL_DATA",
                     data: global.allData.User._id,
                 });
 

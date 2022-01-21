@@ -76,6 +76,7 @@ var action_linker =
     "tg_alert": tg_alert,
     "tg_alert_user": tg_alert_user,
     "tg_alert_user_numbers": tg_alert_user_numbers,
+    "ALL_DATA": ALL_DATA,
 
 
     //  funs
@@ -151,6 +152,13 @@ var action_linker =
     "setInvesterDataProjectForInvesterPage": setInvesterDataProjectForInvesterPage,
     "getProjectInvfgty": getProjectInvfgty,
     "Business_status_projects": Business_status_projects,
+};
+
+async function ALL_DATA(socket, data, callback)
+{
+    var _User = await User.findOne().or([{ _id: data }, { user: data }]);
+
+    callback(_User);
 }
 
 async function getProjectInvfgty(socket,data,callback)
