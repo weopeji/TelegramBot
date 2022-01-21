@@ -254,7 +254,7 @@
                             <input type="text" class="creating_page_input_div" data="nomer" placeholder="Номер расчетного счета">
                             <input type="text" class="creating_page_input_div" data="nomer_kor" placeholder="Номер корреспондентского счета">
                             <div class="creating_page_input_button">
-                                <span>Отправить</span>
+                                <span>Отправить</span> 
                             </div>
                         </div>
                     `);
