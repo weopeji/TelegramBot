@@ -243,43 +243,16 @@
                 {
                     var _block = $(`
                         <div class="creating_page_input">
-                            <input type="text" class="creating_page_input_div" data="inn">
-                            <input type="text" class="creating_page_input_div" data="inn">
-                            <input type="text" class="creating_page_input_div" data="inn">
-                            <input type="text" class="creating_page_input_div" data="inn">
-                            <input type="text" class="creating_page_input_div" data="inn">
-                            <input type="text" class="creating_page_input_div" data="inn">
-                            <input type="text" class="creating_page_input_div" data="inn">
-                            <!-- <div class="creating_page_input_div" data="inn">
-                                <span contenteditable="true">ИНН</span>
-                            </div>
-                            <div class="creating_page_input_div" data="kpp">
-                                <span contenteditable="true">КПП</span>
-                            </div>
-                            <div class="creating_page_input_div" data="ogrnip">
-                                <span contenteditable="true">ОГРН</span>
-                            </div>
-                            <div class="creating_page_input_div" data="cpecial">
-                                <span contenteditable="true">Должность</span>
-                            </div>
-                            <div class="creating_page_input_div" data="fio">
-                                <span contenteditable="true">ФИО должностного лица</span>
-                            </div>
-                            <div class="creating_page_input_div" data="addr">
-                                <span contenteditable="true">Юридический адрес</span>
-                            </div>
-                            <div class="creating_page_input_div" data="bank">
-                                <span contenteditable="true">Банк получателя</span>
-                            </div>
-                            <div class="creating_page_input_div" data="bik">
-                                <span contenteditable="true">БИК</span>
-                            </div>
-                            <div class="creating_page_input_div" data="nomer">
-                                <span contenteditable="true">Номер расчетного счета</span>
-                            </div>
-                            <div class="creating_page_input_div" data="nomer_kor">
-                                <span contenteditable="true">Номер корреспондентского  счета</span>
-                            </div> -->
+                            <input type="text" class="creating_page_input_div" data="inn" placeholder="ИНН">
+                            <input type="text" class="creating_page_input_div" data="kpp" placeholder="КПП">
+                            <input type="text" class="creating_page_input_div" data="ogrnip" placeholder="ОГРН">
+                            <input type="text" class="creating_page_input_div" data="cpecial" placeholder="Должность">
+                            <input type="text" class="creating_page_input_div" data="fio" placeholder="ФИО должностного лица">
+                            <input type="text" class="creating_page_input_div" data="addr" placeholder="Юридический адрес">
+                            <input type="text" class="creating_page_input_div" data="bank" placeholder="Банк получателя">
+                            <input type="text" class="creating_page_input_div" data="bik" placeholder="БИК">
+                            <input type="text" class="creating_page_input_div" data="nomer" placeholder="Номер расчетного счета">
+                            <input type="text" class="creating_page_input_div" data="nomer_kor" placeholder="Номер корреспондентского счета">
                             <div class="creating_page_input_button">
                                 <span>Отправить</span>
                             </div>
