@@ -101,7 +101,6 @@ var action_linker =
     "correct_signature_document": correct_signature_document,
     "getAddr": getAddr,
     "alertProject": alertProject,
-    "invester_status_projects": invester_status_projects,
     "getInvestorsProject": getInvestorsProject,
     "notAcceptInvesting": notAcceptInvesting,
     "getUserForId": getUserForId,
@@ -150,7 +149,7 @@ var action_linker =
     "redactingLineSettingsPageGlobalMultiplicity": redactingLineSettingsPageGlobalMultiplicity,
     "getProjectForInvesterPage": getProjectForInvesterPage,
     "setInvesterDataProjectForInvesterPage": setInvesterDataProjectForInvesterPage,
-    "getProjectInvfgty": getProjectInvfgty,
+    "getProjectById": getProjectById,
     "Business_status_projects": Business_status_projects,
 };
 
@@ -169,14 +168,37 @@ async function ALL_DATA(socket, data, callback)
         return new Promise(async (resolve,reject) =>
         {
             var _Invs       = await InvDoc.find({invester: _User.user});
+            var _acceptInvs = await InvDoc.find({invester: _User.user, status: "accept"});
             var _blockData  = {
                 Invs: _Invs,
+                acceptInvs: _acceptInvs,
+                activeInvs: [],
                 invested: 0,
             };
 
             for(var _Inv of _Invs)
             {
                 _blockData.invested = _blockData.invested + Number(_Inv.data.pay);
+            }
+
+            for(var _acceptInv of _acceptInvs)
+            {
+                var _acceptInvBlock = 
+                {
+                    Inv: _acceptInv,
+                    number: null,
+                }
+
+                var allAceptInvInBlock = await InvDoc.find({status: "accept", projectId: _acceptInv.projectId});
+
+                allAceptInvInBlock.forEach((element, i) => {
+                    if(element.invester == _User.user)
+                    {
+                        _acceptInvBlock.number = i + 1;
+                    }
+                });
+
+                _blockData.activeInvs.push(_acceptInvBlock);
             }
 
             resolve(_blockData);
@@ -186,7 +208,7 @@ async function ALL_DATA(socket, data, callback)
     callback(AllData);
 }
 
-async function getProjectInvfgty(socket,data,callback)
+async function getProjectById(socket,data,callback)
 {
     callback(await Project.findOne({_id: data}));
 }
@@ -1013,19 +1035,6 @@ async function Business_status_projects(socket, data, callback)
     }
 
     callback(_allInvdocks);
-}
-
-async function invester_status_projects(socket,data,callback)
-{
-    var _User       = await User.findOne({_id: data._id});
-    var _all        = [];
-    var InvDocs     = await InvDoc.find({invester: _User.user, status: "accept"});
-
-    InvDocs.forEach(element => {
-        _all.push(element);
-    })
-
-    callback(_all);
 }
 
 function alertProject(socket,data,callback) 

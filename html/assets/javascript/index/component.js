@@ -398,28 +398,20 @@
                 })
             } else 
             {
-
-                var _dataMore = await callApi({
+                var _data = await callApi({
                     methodName: "ALL_DATA",
                     data: global.allData.User._id,
-                });
-
-                console.log(_dataMore);
-
-                var _data = await callApi({
-                    methodName: "invester_status_projects",
-                    data: allData,
                 });
 
                 console.log(_data);
 
                 var settingBlock = $(`
-                    <div class="settingBlock">
+                    <div class="settingBlock" style="margin-bottom: 20px">
                         <div class="settingBlock_header">
                             <div class="invester_status_projects_status_first">
                                 <div class="invester_status_projects_status_first_line">
                                     <span>Проинвестировано</span>
-                                    <a>Пусто</a>
+                                    <a>${_data.invester_data.invested}</a>
                                     <span>Выплачено</span>
                                     <a>Пусто</a>
                                 </div>
@@ -432,14 +424,7 @@
                             </div>
                         </div>
                     </div>
-                `);
-
-                settingBlock.css('margin-bottom', "20px");
-
-                $('.index_page_body_data').append(settingBlock);
-
-                var settingBlock = $(`
-                    <div class="settingBlock">
+                    <div class="settingBlock" style="margin-bottom: 20px">
                         <div class="settingBlock_header">
                             <div class="invester_status_projects_status_first">
                                 <div class="invester_status_projects_status_first_line">
@@ -457,14 +442,7 @@
                             </div>
                         </div>
                     </div>
-                `);
-
-                settingBlock.css('margin-bottom', "20px");
-
-                $('.index_page_body_data').append(settingBlock);
-
-                var settingBlock = $(`
-                    <div class="settingBlock">
+                    <div class="settingBlock" style="margin-bottom: 20px">
                         <div class="settingBlock_header">
                             <div class="invester_status_projects_status_first">
                                 <div class="invester_status_projects_status_first_line">
@@ -475,8 +453,6 @@
                         </div>
                     </div>
                 `);
-
-                settingBlock.css('margin-bottom', "20px");
 
                 $('.index_page_body_data').append(settingBlock);
 
@@ -501,13 +477,8 @@
 
                 var i = 0;
 
-                for(var element of _data)
+                for(var element of _data.invester_data.acceptInvs)
                 {
-                    var _progetInfor = await callApi({
-                        methodName: "getProjectInvfgty",
-                        data: element.projectId,
-                    });
-
                     var template_text = $(`
                         <div class="settingBlock_body_line" data="${element.invester}" data-more="${element.projectId}">
                             <span>${i + 1}</span>
