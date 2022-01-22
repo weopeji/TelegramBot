@@ -199,6 +199,8 @@
             {
                 header_info.find('.global_block_header_status span').css('background', "#50C878");
                 _status = 'Активно';
+
+                header_info.find('.global_block_header_accept_button').css('display', "none");
             }
 
             header_info.find('.global_block_header_status span').html(_status);
