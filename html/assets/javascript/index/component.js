@@ -491,12 +491,15 @@
 
                 for(var element of _data.invester_data.activeInvs)
                 {
+                    var maxDate             = new Date(element.Inv.date);
+                    var maxDateFormatted    =  this.pad(maxDate.getDate(), 2, '0') + '.' + this.pad(maxDate.getMonth() + 1, 2, '0') + '.' + maxDate.getFullYear();
+
                     var template_text = $(`
                         <div class="settingBlock_body_line" data="${element.Inv.invester}" data-more="${element.Inv.projectId}">
                             <span>${i + 1}</span>
                             <span>${element.project._id}</span>
                             <span>${element.project.data.name}</span>
-                            <span>${element.project._id}/${element.number} от ${new Date(element.Inv.date).customFormat("#DD#/#MM#/#YYYY#")}.${new Date(element.Inv.date).customFormat("#DD#/#MM#/#YYYY#")}.${new Date(element.Inv.date).customFormat("#DD#/#MM#/#YYYY#")}</span>
+                            <span>${element.project._id}/${element.number} от ${maxDate}</span>
                             <span>${element.project.data.attraction_amount}</span>
                             <span>${element.Inv.data.pay}</span>
                         </div>
