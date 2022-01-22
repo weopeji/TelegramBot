@@ -1346,7 +1346,17 @@
                         correct_structure.push(element);
                     })
                 } 
-            })
+            });
+
+            var _body = $(`<div class="body_point"></div>`);
+
+            _body.append(`
+                <div class="body_point_header_info_red">
+                    <span>${_project.redacting.input}</span>
+                </div>
+            `);
+
+            $('.index_page_body_points').append(_body);
 
             _project.redacting.body.forEach(element => 
             {
