@@ -301,7 +301,7 @@
                         </div>
                     `);
 
-                    _block.find('input[date="cpecial"]').mask('9999 999999');
+                    _block.find('input[data="cpecial"]').mask('9999 999999');
 
                     $('.creating_page').append(_block);
                 }
