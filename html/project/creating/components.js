@@ -1327,7 +1327,7 @@
             if(_project.data.organization == 3)
             {
                 await uploadFile['fiz']();
-            } else if(param == 1)
+            } else if(_project.data.organization == 1)
             {
                 await uploadFile['ur']();
             } else {
