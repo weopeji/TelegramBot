@@ -1,5 +1,3 @@
-const { type } = require("os");
-
 (function (global) {
     "use strict";
 
