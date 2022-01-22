@@ -1324,7 +1324,7 @@
                 }
             }
 
-            if(param == 3)
+            if(_project.data.organization == 3)
             {
                 await uploadFile['fiz']();
             } else if(param == 1)
