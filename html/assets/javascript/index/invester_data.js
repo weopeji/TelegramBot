@@ -195,7 +195,7 @@
 
             var _block = $(`
                 <div class="creating_page_input">
-                    <input type="text" class="creating_page_input_div" data="pay" placeholder="ИНН">
+                    <input type="text" class="creating_page_input_div" data="pay" placeholder="Сумма">
                     <div class="creating_page_input_button">
                         <span>Отправить</span>
                     </div>
@@ -214,7 +214,7 @@
             var _this = this;
 
             _block.find('.creating_page_input_button span').click( function() {
-                var money = $('.creating_page_input_div span').text();
+                var money = $('.creating_page_input input').val();
                 var _projectMoney = _this.project.data.minimal_amount.toString().trim().replace(/\s/g, '');
 
                 console.log(_this.project.data.minimal_amount.toString().trim());
