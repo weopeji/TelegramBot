@@ -1085,7 +1085,7 @@
                     `);
 
                     preloaderBlockBlock.find('.preloaderBlockBlock_button').click( function () {
-                        $(this).parent().parent().remove();
+                        $(".preloaderBlockBlock").remove();
                     })
 
                     _body.append(preloaderBlockBlock);
