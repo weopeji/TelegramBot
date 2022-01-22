@@ -213,25 +213,60 @@
             global_block.append($(`<h1>Действия</h1>`));
 
             var buttons_block = $(`
-                <div class="structCreator_new_block_buttons_block">
+                <div class="structCreator_new_block_buttons_block" data="redacting">
                     <span>Запросить редактирование</span>
                 </div>
-                <div class="structCreator_new_block_buttons_block">
-                    <span>Отказать в инвестировании</span>
-                </div>
-                <div class="structCreator_new_block_buttons_block">
+                <div class="structCreator_new_block_buttons_block" data="hover">
                     <span>Скрыть проект</span>
                 </div>
-                <div class="structCreator_new_block_buttons_block">
+                <div class="structCreator_new_block_buttons_block" data="delete">
                     <span>Удалить проект</span>
                 </div>
             `);
 
+            var _this = this;
+
             buttons_block.click( function() {
-                alert('Модуль находится на обновлении, пожалуйста подождите');
-            })
+                var funs = {
+                    "redacting": function() 
+                    {
+                        _this.startRedacting();
+                    },
+                    "hover": function() 
+                    {
+
+                    },
+                    "delete": function() 
+                    {
+
+                    },
+                }
+
+                funs[$(this).attr('data')]()
+            });
 
             global_block.append(buttons_block);
+        }
+
+        async startRedacting()
+        {
+            var redactingData = [];
+
+            $('.global_block').find('.structCreator_new_block').each((i, element) => {
+                if($(element).find(`input[type="checkbox"]`).prop('checked'))
+                {
+                    var _block = 
+                    {
+                        _id: $(element).attr('data'),
+                        type: $(element).attr('type'),
+                        name: $(element).find('span').text(),
+                    };
+
+                    redactingData.push(_block)
+                }
+            });
+
+            console.log(redactingData);
         }
     }
 
