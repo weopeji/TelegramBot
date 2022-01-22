@@ -233,12 +233,12 @@ window.structCreator =
     {
         header: "5. Контакты",
         body: [
-            {
-                type: "string",
-                name: "Должность",
-                info: "Должность которую вы занимаете в компании",
-                _id: "doljnost",
-            },
+            // {
+            //     type: "string",
+            //     name: "Должность",
+            //     info: "Должность которую вы занимаете в компании",
+            //     _id: "doljnost",
+            // },
             {
                 type: "string",
                 name: "Телефон",
