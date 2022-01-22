@@ -138,7 +138,7 @@
                         _id: global.allData._id,
                     },
                 });
-                location.reload();
+                location.href = "/?page=chats";
             })
         })()    
     }

@@ -249,6 +249,33 @@
                         </div>
                     `);
 
+                    _block.find('input[data="inn"]').bind("change keyup input click", function() {
+                        if (this.value.match(/[^0-9]/g)) {
+                            this.value = this.value.replace(/[^0-9]/g, '');
+                        }
+                    });
+                    _block.find('input[data="ogrnip"]').bind("change keyup input click", function() {
+                        if (this.value.match(/[^0-9]/g)) {
+                            this.value = this.value.replace(/[^0-9]/g, '');
+                        }
+                    });
+
+                    _block.find('input[data="nomer"]').bind("change keyup input click", function() {
+                        if (this.value.match(/[^0-9]/g)) {
+                            this.value = this.value.replace(/[^0-9]/g, '');
+                        }
+                    });
+                    _block.find('input[data="bik"]').bind("change keyup input click", function() {
+                        if (this.value.match(/[^0-9]/g)) {
+                            this.value = this.value.replace(/[^0-9]/g, '');
+                        }
+                    });
+                    _block.find('input[data="nomer_kor"]').bind("change keyup input click", function() {
+                        if (this.value.match(/[^0-9]/g)) {
+                            this.value = this.value.replace(/[^0-9]/g, '');
+                        }
+                    });
+
                     $('.creating_page').append(_block);
                 },
                 "IP": function()
@@ -269,6 +296,34 @@
                             </div>
                         </div>
                     `);
+
+                    _block.find('input[data="inn"]').bind("change keyup input click", function() {
+                        if (this.value.match(/[^0-9]/g)) {
+                            this.value = this.value.replace(/[^0-9]/g, '');
+                        }
+                    });
+                    _block.find('input[data="ogrnip"]').bind("change keyup input click", function() {
+                        if (this.value.match(/[^0-9]/g)) {
+                            this.value = this.value.replace(/[^0-9]/g, '');
+                        }
+                    });
+
+
+                    _block.find('input[data="nomer"]').bind("change keyup input click", function() {
+                        if (this.value.match(/[^0-9]/g)) {
+                            this.value = this.value.replace(/[^0-9]/g, '');
+                        }
+                    });
+                    _block.find('input[data="bik"]').bind("change keyup input click", function() {
+                        if (this.value.match(/[^0-9]/g)) {
+                            this.value = this.value.replace(/[^0-9]/g, '');
+                        }
+                    });
+                    _block.find('input[data="nomer_kor"]').bind("change keyup input click", function() {
+                        if (this.value.match(/[^0-9]/g)) {
+                            this.value = this.value.replace(/[^0-9]/g, '');
+                        }
+                    });
 
                     $('.creating_page').append(_block);
                 },
@@ -292,6 +347,23 @@
                     `);
 
                     _block.find('input[data="cpecial"]').mask('9999 999999');
+
+
+                    _block.find('input[data="nomer"]').bind("change keyup input click", function() {
+                        if (this.value.match(/[^0-9]/g)) {
+                            this.value = this.value.replace(/[^0-9]/g, '');
+                        }
+                    });
+                    _block.find('input[data="bik"]').bind("change keyup input click", function() {
+                        if (this.value.match(/[^0-9]/g)) {
+                            this.value = this.value.replace(/[^0-9]/g, '');
+                        }
+                    });
+                    _block.find('input[data="nomer_kor"]').bind("change keyup input click", function() {
+                        if (this.value.match(/[^0-9]/g)) {
+                            this.value = this.value.replace(/[^0-9]/g, '');
+                        }
+                    });
 
                     $('.creating_page').append(_block);
                 }
