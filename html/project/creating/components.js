@@ -800,8 +800,8 @@
                     _line.find('.menu_block span').html($(this).html());
                     _line.find('input').val($(this).html());
                     
-                    _line.find('.body_point_line_header_info _not').fadeOut( function() {
-                        _line.find('.body_point_line_header_info _yes').fadeIn();
+                    _line.find('.body_point_line_header_info ._not').fadeOut( function() {
+                        _line.find('.body_point_line_header_info ._yes').fadeIn();
                     })
                 })
 
