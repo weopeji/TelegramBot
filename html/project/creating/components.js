@@ -770,6 +770,10 @@
                                 <span>${data.name}</span>
                                 <p>${data.info}</p>
                             </div>
+                            <div class="body_point_line_header_info">
+                                <span class="_not">Не заполнено</span>
+                                <span class="_yes">Готово</span>
+                            </div>
                         </div>
                         <input id="${data._id}" class="text_area" placeholder="Введите значение">
                         <div class="menu_block">
