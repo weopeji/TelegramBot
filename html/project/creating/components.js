@@ -799,7 +799,10 @@
                 _line.find('.menu_block p').click( function() {
                     _line.find('.menu_block span').html($(this).html());
                     _line.find('input').val($(this).html());
-                    console.log(_line.find('input').val());
+                    
+                    _line.find('.body_point_line_header_info _not').fadeOut( function() {
+                        _line.find('.body_point_line_header_info _yes').fadeIn();
+                    })
                 })
 
                 return _line;
