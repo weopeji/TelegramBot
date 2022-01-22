@@ -31,7 +31,7 @@
                 <span>${_data.invester.first_name} ${_data.invester.last_name}</span>
                 <p>Invester</p>
                 <div class="info_active_block_massage_button">
-                    <span>Перейти к диалогу</span>
+                    <span>Открыть спор и перейти к диалогу</span>
                 </div>
             `);
 
@@ -148,7 +148,7 @@
                 <span>${_data.project.data.name}</span>
                 <p>business</p>
                 <div class="info_active_block_massage_button">
-                    <span>Перейти к диалогу</span>
+                    <span>Открыть спор и перейти к диалогу</span>
                 </div>
             `);
 
@@ -366,6 +366,7 @@
                             <p>История оплат</p>
                             <div class="settingBlock_header_line">
                                 <span>#</span>
+                                <span>Название проекта</span>
                                 <span>Номер проекта</span>
                                 <span>Номер Инвестора</span>
                                 <span>Статус</span>
@@ -377,7 +378,15 @@
                     </div>
                 `);
 
-                _data.forEach(function(element, i) {
+                var i = 0;
+
+                for(var element of _data)
+                {
+                    var _projectGet = await callApi({
+                        methodName: "getProjectById",
+                        data: element.projectId,
+                    });
+
                     var _status = {
                         "wait": `
                             <span class="settingBlock_wait settingBlock_block">Ожидает подтверждения</span>
@@ -389,6 +398,7 @@
                     var template_text = `
                         <div class="settingBlock_body_line" data="${element.invester}" data-more="${element.projectId}">
                             <span>${i + 1}</span>
+                            <span>${_projectGet.data.name}</span>
                             <span>${element.projectId}</span>
                             <span>${element.invester}</span>
                             <span>${_status[element.status]}</span>
@@ -396,7 +406,9 @@
                     `;
 
                     settingBlock.find('.settingBlock_body').append(template_text);
-                })
+
+                    i++;
+                }
 
                 $('.index_page_body_data').append(settingBlock);
 
