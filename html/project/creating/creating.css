@@ -1054,4 +1054,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   font-size: 20px;
   cursor: pointer;
 }
+
+input[type="date"] {
+  -webkit-filter: invert(1);
+          filter: invert(1);
+}
 /*# sourceMappingURL=creating.css.map */
