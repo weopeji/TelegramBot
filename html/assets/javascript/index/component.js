@@ -2092,7 +2092,7 @@
                 `);
 
                 template_text.click( function () {
-                    location.href = window.location.href + `&id=${$(this).attr('data')}&project=${$(this).attr('data-more')}`;
+                    location.href = `/?page=activ_projects&id=${$(this).attr('data')}&project=${$(this).attr('data-more')}`;
                 })
 
                 settingBlock.find('.settingBlock_body').append(template_text);
