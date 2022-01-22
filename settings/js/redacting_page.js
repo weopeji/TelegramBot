@@ -166,7 +166,7 @@
                         _type = "file";
 
                         _needElementSort = {
-                            name: "Скан паспорта дополнительyого собственника";
+                            name: "Скан паспорта дополнительyого собственника",
                         }
                     } else {
                         _element.body.forEach(elKO => {
