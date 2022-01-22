@@ -1,3 +1,5 @@
+const { type } = require("os");
+
 (function (global) {
     "use strict";
 
@@ -1296,11 +1298,61 @@
 
         async render_redacting(_project) 
         {
+            var uploadFile = 
+            {
+                "ur": function() {
+                    return new Promise((resolve,reject) => 
+                    {
+                        global.loadResources(['./JSON/ur.js'], () => {
+                            resolve();
+                        });
+                    });
+                },
+                "fiz": function() {
+                    return new Promise((resolve,reject) => 
+                    {
+                        global.loadResources(['./JSON/fiz.js'], () => {
+                            resolve();
+                        });
+                    });
+                },
+                "ip": function() {
+                    return new Promise((resolve,reject) => 
+                    {
+                        global.loadResources(['./JSON/ip.js'], () => {
+                            resolve();
+                        });
+                    });
+                }
+            }
+
+            if(param == 3)
+            {
+                await uploadFile['fiz']();
+            } else if(param == 1)
+            {
+                await uploadFile['ur']();
+            } else {
+                await uploadFile['ip']();
+            }
+            
             $('.index_page_body_points').empty();
+
+
+            var correct_structure = [];
+
+            window.structCreator.forEach(elementStructure => {
+                if(typeof elementStructure.body != "undefined")
+                {
+                    elementStructure.body.forEach(element => {
+                        correct_structure.push(element);
+                    })
+                } 
+            })
 
             _project.redacting.body.forEach(element => 
             {
-                var data = this.struct[element.type];
+                var data = correct_structure.filter(function (obj) { return obj._id == element._id })[0];
 
                 var _body = $(`<div class="body_point"></div>`);
 
