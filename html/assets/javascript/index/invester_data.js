@@ -265,43 +265,20 @@
                 {
                     var _block = $(`
                         <div class="creating_page_input">
-                            <div class="creating_page_input_div" data="fio">
-                                <span contenteditable="true">ФИО</span>
-                            </div>
-                            <div class="creating_page_input_div" data="cpecial">
-                                <span contenteditable="true">ИНН</span>
-                            </div>
-                            <div class="creating_page_input_div" data="fio">
-                                <span contenteditable="true">ОГРНИП</span>
-                            </div>
-                            <div class="creating_page_input_div" data="addr">
-                                <span contenteditable="true">адрес</span>
-                            </div>
-                            <div class="creating_page_input_div" data="bank">
-                                <span contenteditable="true">Банк получателя</span>
-                            </div>
-                            <div class="creating_page_input_div" data="bik">
-                                <span contenteditable="true">БИК</span>
-                            </div>
-                            <div class="creating_page_input_div" data="nomer">
-                                <span contenteditable="true">Номер расчетного счета</span>
-                            </div>
-                            <div class="creating_page_input_div" data="nomer_kor">
-                                <span contenteditable="true">Номер корреспондентского  счета</span>
-                            </div>
+                            <input type="text" class="creating_page_input_div" data="fio" placeholder="ФИО">
+                            <input type="text" class="creating_page_input_div" data="inn" placeholder="ИНН">
+                            <input type="text" class="creating_page_input_div" data="ogrnip" placeholder="ОГРНИП">
+                            <input type="text" class="creating_page_input_div" data="addr" placeholder="адрес">
+                            <input type="text" class="creating_page_input_div" data="bank" placeholder="Банк получателя">
+                            <input type="text" class="creating_page_input_div" data="bik" placeholder="БИК">
+                            <input type="text" class="creating_page_input_div" data="nomer" placeholder="Номер расчетного счета">
+                            <input type="text" class="creating_page_input_div" data="nomer_kor" placeholder="Номер корреспондентского счета">
+
                             <div class="creating_page_input_button">
                                 <span>Отправить</span>
                             </div>
                         </div>
                     `);
-
-                    _block.find('.creating_page_input_div').click( function() {
-                        if(!$(this).attr('data'))
-                        {
-                            $(this).children('span').empty();
-                            $(this).attr('data', "true");
-                        }
-                    })
 
                     $('.creating_page').append(_block);
                 },
@@ -309,43 +286,20 @@
                 {
                     var _block = $(`
                         <div class="creating_page_input">
-                            <div class="creating_page_input_div" data="ogrnip">
-                                <span contenteditable="true">Фио полностью</span>
-                            </div>
-                            <div class="creating_page_input_div" data="cpecial">
-                                <span contenteditable="true">Номер паспорта и Серия паспорта</span>
-                            </div>
-                            <div class="creating_page_input_div" data="fio">
-                                <span contenteditable="true">Кем выдан</span>
-                            </div>
-                            <div class="creating_page_input_div" data="addr">
-                                <span contenteditable="true">Прописка</span>
-                            </div>
-                            <div class="creating_page_input_div" data="bank">
-                                <span contenteditable="true">Банк получателя</span>
-                            </div>
-                            <div class="creating_page_input_div" data="bik">
-                                <span contenteditable="true">БИК</span>
-                            </div>
-                            <div class="creating_page_input_div" data="nomer">
-                                <span contenteditable="true">Номер расчетного счета</span>
-                            </div>
-                            <div class="creating_page_input_div" data="nomer_kor">
-                                <span contenteditable="true">Номер корреспондентского  счета</span>
-                            </div>
+                            <input type="text" class="creating_page_input_div" data="fio" placeholder="Фио полностью">
+                            <input type="text" class="creating_page_input_div" data="cpecial" placeholder="Номер паспорта и Серия паспорта">
+                            <input type="text" class="creating_page_input_div" data="how_get" placeholder="Кем выдан">
+                            <input type="text" class="creating_page_input_div" data="propiska" placeholder="Прописка">
+                            <input type="text" class="creating_page_input_div" data="bank" placeholder="Банк получателя">
+                            <input type="text" class="creating_page_input_div" data="bik" placeholder="БИК">
+                            <input type="text" class="creating_page_input_div" data="nomer" placeholder="Номер расчетного счета">
+                            <input type="text" class="creating_page_input_div" data="nomer_kor" placeholder="Номер корреспондентского счета">
+
                             <div class="creating_page_input_button">
                                 <span>Отправить</span>
                             </div>
                         </div>
                     `);
-
-                    _block.find('.creating_page_input_div').click( function() {
-                        if(!$(this).attr('data'))
-                        {
-                            $(this).children('span').empty();
-                            $(this).attr('data', "true");
-                        }
-                    })
 
                     $('.creating_page').append(_block);
                 }
