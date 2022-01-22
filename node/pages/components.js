@@ -151,6 +151,7 @@ var action_linker =
     "setInvesterDataProjectForInvesterPage": setInvesterDataProjectForInvesterPage,
     "getProjectById": getProjectById,
     "Business_status_projects": Business_status_projects,
+    "setRedactingProject": setRedactingProject,
 };
 
 async function ALL_DATA(socket, data, callback)
@@ -232,6 +233,11 @@ async function ALL_DATA(socket, data, callback)
     }
 
     callback(AllData);
+}
+
+async function setRedactingProject(socket, data, callback)
+{
+    
 }
 
 async function getProjectById(socket,data,callback)
