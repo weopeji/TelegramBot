@@ -1,3 +1,5 @@
+const { _GET } = require("../../node/helpers/functions");
+
 (function (global) {
     "use strict";
 
@@ -270,6 +272,7 @@
             await callApi({
                 methodName: "setRedactingProject",
                 data: {
+                    projectId: _GET("id"),
                     input: $('#redacting_input').val(),
                     redactingData: redactingData,
                 },

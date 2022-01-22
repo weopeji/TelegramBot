@@ -237,7 +237,13 @@ async function ALL_DATA(socket, data, callback)
 
 async function setRedactingProject(socket, data, callback)
 {
-    
+    callback(await Project.findOneAndUpdate({_id: data.projectId}, {
+        type: "correction",
+        redacting: {
+            body: data.redactingData,
+            input: data.input,
+        }
+    }))
 }
 
 async function getProjectById(socket,data,callback)
