@@ -1367,7 +1367,12 @@
 
                 var _body = $(`<div class="body_point"></div>`);
                
-                _body.append(_this.dataLines[element.type](data));
+                if(typeof data != "undefined")
+                {
+                    _body.append(_this.dataLines[element.type](data));
+                } else {
+                    _body.append(_this.dataLines[element.type](element));
+                }
                 
                 _body.css('padding-top', "20px");
 
