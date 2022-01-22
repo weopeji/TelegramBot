@@ -161,21 +161,29 @@
                     var _element            = window.structCreator.filter(function (obj) { return obj.header == "4. Данные собстевенника" })[0];
                     var _needElementSort    = null;
 
-                    _element.body.forEach(elKO => {
-                        if(elKO._id == _idBlock)
-                        {
-                            _needElementSort = elKO;
+                    if(_idBlock == "file+4")
+                    {
+                        _type = "file";
+
+                        _needElementSort = {
+                            name: "Скан паспорта дополнительyого собственника";
                         }
-                    })
+                    } else {
+                        _element.body.forEach(elKO => {
+                            if(elKO._id == _idBlock)
+                            {
+                                _needElementSort = elKO;
+                            }
+                        })
+                    }
+
+                    
 
                     var dataNameBlock   = moreuSersData[_key][_keyBlock];
                     var nameBLock       = _needElementSort.name;
                     
 
-                    if(_idBlock == "file+4")
-                    {
-                        _type = "file";
-                    }
+                    
 
                     var _block = 
                     $(`
