@@ -986,7 +986,7 @@
                     $(_line.parent()).before(_body);
 
                     // BLOCK ========================================
-                    var _element    = window.structCreator.filter(function (obj) { return obj.header == "4. Данные собстевенника" })[0];
+                    var _element    = window.structCreator.filter(function (obj) { return obj.header == "4. Данные собственника" })[0];
                     var _body       = $(`<div class="body_point"></div>`);
                     var _dataBlock  = _element.body;
                     console.log(_element);
