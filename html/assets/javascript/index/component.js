@@ -491,7 +491,7 @@
 
                 for(var element of _data.invester_data.activeInvs)
                 {
-                    var maxDate             = new Date(element.Inv.date);
+                    var maxDate             = new Date(Number(element.Inv.date));
                     var maxDateFormatted    =  this.pad(maxDate.getDate(), 2, '0') + '.' + this.pad(maxDate.getMonth() + 1, 2, '0') + '.' + maxDate.getFullYear();
 
                     var template_text = $(`
