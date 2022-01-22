@@ -195,14 +195,21 @@
 
             var _block = $(`
                 <div class="creating_page_input">
-                    <div class="creating_page_input_div" data="pay" data-number="true">
-                        <span contenteditable="true"></span>
-                    </div>
+                    <input type="text" class="creating_page_input_div" data="pay" placeholder="ИНН">
                     <div class="creating_page_input_button">
                         <span>Отправить</span>
                     </div>
                 </div>
             `);
+
+            _block.find(`input`).on('keyup input', function() 
+            {
+                var _val = $(this).val();
+                _val = _val.replace(/[^\d;]/g, '')
+                _val = _val.replace(/\s/g, '');
+                var format = String(_val).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
+                $(this).val(format);
+            });
 
             var _this = this;
 
@@ -223,16 +230,6 @@
 
             $('.creating_page').append(msgsBlock);
             $('.creating_page').append(_block);
-
-            // var funGetBBDAta = () => {
-            //     $(`.creating_page_input_div[data-number="true"] span`).bind("DOMSubtreeModified",function(){
-            //         $(this).removeEventListener("DOMSubtreeModified", funGetBBDAta(), false);
-            //         var _text = $(this).text();
-            //         $(this).html(_text.toString().replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 '));
-            //     });
-            // }
-
-            // funGetBBDAta();
         }
 
         async render_next(DT) 
