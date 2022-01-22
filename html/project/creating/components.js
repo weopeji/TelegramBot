@@ -1068,7 +1068,10 @@
                 var _this       = this;
                 var _dataBlock  = data.body;
 
-                if(key == "+5")
+                if(
+                    data.header == "4. Данные собственника" || 
+                    data.header == "5. Контакты"
+                )
                 {
                     var preloaderBlockBlock = $(`
                         <div class="preloaderBlockBlock">

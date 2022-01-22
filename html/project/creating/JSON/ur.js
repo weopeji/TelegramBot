@@ -177,7 +177,7 @@ window.structCreator =
         ]
     },
     {
-        header: "4. Данные собстевенника",
+        header: "4. Данные собственника",
         body: [
             {
                 type: "string",
@@ -196,7 +196,7 @@ window.structCreator =
             {
                 type: "string",
                 name: "Прописка как в паспорте",
-                info: "",
+                info: "например Московская область",
                 parsing_data: null,
                 _id: "sob_prop"
             },
