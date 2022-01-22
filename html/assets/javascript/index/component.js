@@ -227,7 +227,7 @@
             });
 
             var blockProject = await callApi({
-                methodName: "getProjectInvfgty",
+                methodName: "getProjectById",
                 data: _data.InvDoc.projectId,
             });
 
