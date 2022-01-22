@@ -496,7 +496,7 @@
                             <span>${i + 1}</span>
                             <span>${element.project._id}</span>
                             <span>${element.project.data.name}</span>
-                            <span>${element.project._id}/${element.number}</span>
+                            <span>${element.project._id}/${element.number} от ${new Date(element.Inv.date).getDay()}.${new Date(element.Inv.date).getMonth()}.${new Date(element.Inv.date).getFullYear()}</span>
                             <span>${element.project.data.attraction_amount}</span>
                             <span>${element.Inv.data.pay}</span>
                         </div>
