@@ -1357,6 +1357,8 @@
                 </div>
             `);
 
+            _body.css('padding-top', "20px");
+
             $('.index_page_body_points').append(_body);
 
             _project.redacting.body.forEach(element => 
@@ -1365,8 +1367,9 @@
 
                 var _body = $(`<div class="body_point"></div>`);
                
-                _body.append(_this.dataLines[element.type](element));
+                _body.append(_this.dataLines[element.type](data));
                 
+                _body.css('padding-top', "20px");
 
                 $('.index_page_body_points').append(_body);
             })
