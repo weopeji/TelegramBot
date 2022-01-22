@@ -531,6 +531,7 @@ app.post('/file_cheack_get.io/files', (req, res) => {
                         data: _arrayData,
                         receipt: null,
                         pays: null,
+                        date: new Date().getTime(),
                     });
                 
                 });
