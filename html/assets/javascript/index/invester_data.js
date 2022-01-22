@@ -309,14 +309,6 @@
             render_nextfuns[DT]();
 
 
-            $('.creating_page_input_div').click( function() {
-                if(!$(this).attr('data_redacting'))
-                {
-                    $(this).children('span').empty();
-                    $(this).attr('data_redacting', "true");
-                }
-            });
-
             var _this = this;
 
             $('.creating_page_input_button').click( function() 
@@ -325,19 +317,28 @@
                     type: DT,
                     data: [],
                 };
+                var _error = false;
         
-                $('.creating_page_input').children().each((i, element) => {
-                    if(typeof $(element).attr('data') != 'undefined')
+                $('.creating_page_input').children("input").each((i, element) => {
+                    if($(element).val().length == 0)
                     {
-                        _array.data.push({
-                            _id: $(element).attr('data'),
-                            data: $(element).find('span').text(),
-                        });
+                        _error = true;
                     }
+                    _array.data.push({
+                        _id: $(element).attr('data'),
+                        data: $(element).val(),
+                    });
                 });
 
-                _this.inv = _array;
-                _this.renderOldBlock();
+                if(_error)
+                {
+                    alert('Введите все данные!');
+                } else {
+                    _this.inv = _array;
+                    _this.renderOldBlock();
+                }
+
+                
             })
         }
     }
