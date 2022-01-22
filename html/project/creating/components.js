@@ -1349,6 +1349,7 @@
             });
 
             var _body = $(`<div class="body_point"></div>`);
+            var _this = this;
 
             _body.append(`
                 <div class="body_point_header_info_red">
@@ -1363,39 +1364,8 @@
                 var data = correct_structure.filter(function (obj) { return obj._id == element._id })[0];
 
                 var _body = $(`<div class="body_point"></div>`);
-
-                _body.append(`
-                    <div class="body_point_header">
-                        <span>${data.header}</span>
-                    </div>
-                    <div class="body_point_header_info_red">
-                        <span>${element.value}</span>
-                    </div>
-                `);
-
-                var _this = this;
-
-                var param = _project.data.organization;
-                if(element.type == "+2") {
-                    if(param == "1" || param == "2") {
-                        
-                        data.body[1].forEach(element => 
-                        {
-                            _body.append(_this.dataLines[element.type](element));
-                        });
-
-                    } else {
-                        data.body[2].forEach(element => 
-                        {
-                            _body.append(_this.dataLines[element.type](element));
-                        });
-                    }
-                } else {
-                    data.body.forEach(element => 
-                    {
-                        _body.append(_this.dataLines[element.type](element));
-                    });
-                }
+               
+                _body.append(_this.dataLines[element.type](element));
                 
 
                 $('.index_page_body_points').append(_body);
