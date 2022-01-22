@@ -1298,7 +1298,7 @@
         {
             $('.index_page_body_points').empty();
 
-            _project.redacting.forEach(element => 
+            _project.redacting.body.forEach(element => 
             {
                 var data = this.struct[element.type];
 

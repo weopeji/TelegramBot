@@ -277,6 +277,10 @@
                     redactingData: redactingData,
                 },
             });
+
+            alert('Успешно!');
+
+            location.reload();
         }
     }
 
