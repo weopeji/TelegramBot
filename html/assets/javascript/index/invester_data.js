@@ -223,7 +223,7 @@
                 {
                     alert('Сумма недостаточна!');
                 } else {
-                    _this.money = Number(money);
+                    _this.money = money;
                     _this.cheackGet();
                 }
             });
