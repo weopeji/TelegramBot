@@ -425,13 +425,13 @@
                                     <span>Проинвестировано</span>
                                     <a>${_data.invester_data.invested} руб.</a>
                                     <span>Выплачено</span>
-                                    <a>Пусто</a>
+                                    <a>0 руб</a>
                                 </div>
                                 <div class="invester_status_projects_status_first_line">
                                     <span>Ближайшие поступления</span>
-                                    <a>Пусто</a>
+                                    <a>0</a>
                                     <span>Денежный поток в год</span>
-                                    <a>Пусто</a>
+                                    <a>0 руб</a>
                                 </div>
                             </div>
                         </div>
@@ -441,15 +441,15 @@
                             <div class="invester_status_projects_status_first">
                                 <div class="invester_status_projects_status_first_line">
                                     <span>Привлечено инвесторов</span>
-                                    <a>Пусто</a>
+                                    <a>0</a>
                                     <span>Бонус</span>
-                                    <a>Пусто</a>
+                                    <a>0 руб</a>
                                 </div>
                                 <div class="invester_status_projects_status_first_line">
                                     <span>Привлечено бизнес проектов</span>
-                                    <a>Пусто</a>
+                                    <a>0</a>
                                     <span>Бонус</span>
-                                    <a>Пусто</a>
+                                    <a>0 руб</a>
                                 </div>
                             </div>
                         </div>
@@ -499,7 +499,7 @@
                             <span>${i + 1}</span>
                             <span>${element.project._id}</span>
                             <span>${element.project.data.name}</span>
-                            <span>${element.project._id}/${element.number} от ${maxDate}</span>
+                            <span>${element.project._id}/${element.number} от ${maxDateFormatted}</span>
                             <span>${element.project.data.attraction_amount}</span>
                             <span>${element.Inv.data.pay}</span>
                         </div>
