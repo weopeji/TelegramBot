@@ -216,7 +216,7 @@ async function ALL_DATA(socket, data, callback)
                     number: null,
                 }
 
-                var allWaitInvInBlock = await InvDoc.find({status: "accept", projectId: _waitInv.projectId});
+                var allWaitInvInBlock = await InvDoc.find({status: "wait", projectId: _waitInv.projectId});
 
                 allWaitInvInBlock.forEach((element, i) => {
                     if(element.invester == _User.user)

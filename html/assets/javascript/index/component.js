@@ -2078,7 +2078,7 @@
 
             var i = 0;
 
-            for(var element of _data.invester_data.activeInvs)
+            for(var element of _data.invester_data.waitInvs)
             {
                 var template_text = $(`
                     <div class="settingBlock_body_line" data="${element.Inv.invester}" data-more="${element.Inv.projectId}">
