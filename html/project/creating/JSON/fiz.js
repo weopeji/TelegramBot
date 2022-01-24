@@ -98,7 +98,7 @@ window.structCreator =
                 _id: "sob_fio"
             },
             {
-                type: "string",
+                type: "date",
                 name: "Дата рождения",
                 info: "",
                 parsing_data: null,
