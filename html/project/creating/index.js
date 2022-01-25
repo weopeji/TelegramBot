@@ -21,7 +21,7 @@
         global._User        = _User;
 
         
-        if(_id.length < 7) 
+        if(_id.length < 7)  
         {
             var _project = await _components.getProject(_id);
 
