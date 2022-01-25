@@ -58,7 +58,7 @@ window.structCreator =
             },
             {
                 type: "date",
-                name: "Период сбора",
+                name: "Период сбора до",
                 info: "Выберите дату окончания приема средств",
                 _id: "collection_period",
                 ogranit_day: true,
