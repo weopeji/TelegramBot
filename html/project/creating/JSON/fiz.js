@@ -114,7 +114,7 @@ window.structCreator =
             {
                 type: "string",
                 name: "Регион согласно паспорту",
-                info: "",
+                info: "например Московская область",
                 parsing_data: null,
                 _id: "sob_region"
             },
