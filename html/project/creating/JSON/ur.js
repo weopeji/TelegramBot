@@ -196,14 +196,14 @@ window.structCreator =
             {
                 type: "string",
                 name: "Прописка как в паспорте",
-                info: "например Московская область",
+                info: "",
                 parsing_data: null,
                 _id: "sob_prop"
             },
             {
                 type: "string",
                 name: "Регион согласно паспорту",
-                info: "",
+                info: "например Московская область",
                 parsing_data: null,
                 _id: "sob_region"
             },
