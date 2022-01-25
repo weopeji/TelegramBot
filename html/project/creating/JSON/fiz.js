@@ -154,12 +154,6 @@ window.structCreator =
             },
             {
                 type: "string",
-                name: "Должность",
-                info: "Должность которую вы занимаете в компании",
-                _id: "doljnost",
-            },
-            {
-                type: "string",
                 name: "Телефон",
                 info: "Ваш номер телефона",
                 _id: "phone",
