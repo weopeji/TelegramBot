@@ -1002,7 +1002,7 @@
                     {
                         var needId  = element._id;
                         element._id = `BB#${element._id}_${global.add_blocks}`;
-                        _body.append(_this.string(element));
+                        _body.append(_this[element.type](element));
                         element._id = needId;
                     });
                     $(_line.parent()).before(_body);
