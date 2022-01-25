@@ -241,7 +241,7 @@ window.structCreator =
     {
         header: "5. Контакты",
         body: [
-            {
+            { 
                 type: "string",
                 name: "Ф.И.О Представителя",
                 info: "",
