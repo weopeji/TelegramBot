@@ -244,7 +244,7 @@
                     alert('Сумма недостаточна!');
                 } else {
                     _this.money = money;
-                    _this.cheackGet();
+                    _this.cheackGetDocuments();
                 }
             });
 
