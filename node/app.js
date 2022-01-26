@@ -435,7 +435,7 @@ app.post('/file_urist.io/files', (req, res) => {
                     if (err) throw err
                     console.log('Successfully renamed - AKA moved!');
                     
-                    mammoth.convertToHtml({path: `/var/www/projects/${_data._id}/signature_document.${_data._pts.split('/')[1]}`})
+                    mammoth.convertToHtml({path: `/var/www/projects/${_data._id}/signature_document.${_data._pts}`})
                         .then(async function(result) {
                             var html = result.value;
                             var need_html = html.replace(/ /g,"&nbsp;");
