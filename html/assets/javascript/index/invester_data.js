@@ -111,7 +111,20 @@
                         <span>Ознакомится с договором</span>
                     </div>
                 </div>
+                <div class="creating_page_input">
+                    <div class="creating_page_input_div" data="pay">
+                        <span style="text-align: center">Оплатить</span>
+                    </div>
+                </div>
             `);
+
+            documentBlock.eq(0).find("span").click( function() {
+                window.open(`/projects/${this.project}/signature_document.pdf` , '_blank');
+            })
+
+            documentBlock.eq(2).find("span").click( function() {
+                _this.cheackGet();
+            })
 
             $('.creating_page').append(documentBlock);
         }
