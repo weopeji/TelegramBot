@@ -122,7 +122,7 @@
                 window.open(`/projects/${_this.project._id}/signature_document.pdf` , '_blank');
             })
 
-            documentBlock.eq(2).find("span").click( function() {
+            documentBlock.find(".creating_page_input_div").click( function() {
                 _this.cheackGet();
             })
 
