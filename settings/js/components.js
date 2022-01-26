@@ -644,7 +644,7 @@
                                     <i class="fad fa-file-download"></i>
                                 </div>
                                 <div class="Attracted_headerInfoBlock_block_text">
-                                    <span>Загрузите документ</span>
+                                    <span>Загрузите</span>
                                     <p>Загрузить</p>
                                 </div>
                             </div>

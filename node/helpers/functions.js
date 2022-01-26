@@ -205,7 +205,7 @@ async function MA_U(_id, array)
         deleteMsgs.push(element);
     });
 
-    await User.findOneAndUpdate({user: msg.from.id}, {deleteMsgs: deleteMsgs});
+    await User.findOneAndUpdate({user: _User.user}, {deleteMsgs: deleteMsgs});
 
     return;
 }
