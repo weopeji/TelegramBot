@@ -92,6 +92,33 @@
 
             $('.index_page_body_data').append(this.global);
         }
+        async cheackGetDocuments()
+        {
+            $('.creating_page').empty();
+
+            var _this = this;
+
+            var documentBlock = $(`
+                <div class="creating_page_input creating_page_input_document_img">
+                    <img src="./html/assets/images/documentPNG.png" alt="">
+                </div>
+                <div class="creating_page_input">
+                    <div class="creating_page_input_div" data="pay">
+                        <span style="text-align: center">Ознакомится с договором</span>
+                    </div>
+                </div>
+                <div class="creating_page_input creating_page_input_document_img">
+                    <img src="./html/assets/images/documentPNG.png" alt="">
+                </div>
+                <div class="creating_page_input">
+                    <div class="creating_page_input_div" data="pay">
+                        <span style="text-align: center">Ознакомится с договором</span>
+                    </div>
+                </div>
+            `);
+
+            $('.creating_page').append(documentBlock);
+        }
 
         async cheackGet()
         {
