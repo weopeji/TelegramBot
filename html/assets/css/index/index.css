@@ -1545,6 +1545,14 @@ html, body {
   color: white;
 }
 
+.creating_page_input_document_img_hover span {
+  display: block;
+  background-color: #182037;
+  padding: 10px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
 @media (max-width: 1600px) {
   .creating_page {
     width: 50%;
