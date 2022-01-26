@@ -636,6 +636,14 @@
                     var _val = $(this).val();
                     Cookies.set(data._id, _val);
                 });
+
+                if(typeof data._id == 'sob_serion') {
+                    _line.find(`#${data._id}`).mask("9999");
+                }
+
+                if(typeof data._id == 'sob_number') {
+                    _line.find(`#${data._id}`).mask("999999");
+                }
                 
                 if(typeof data.redacting != 'undefined') {
                     _line.find(`#${data._id}`).on('keyup input', function() 

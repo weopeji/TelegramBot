@@ -637,18 +637,6 @@
                 if(_lenth > 1)
                 {
                     var putDocumentToSignature = $(`
-                        <!-- <div class="body_point putDocumentToSignature_doc">
-                            <div class="body_point_header">
-                                <span>Загрузите документ на подписание</span>
-                            </div>
-                        </div>
-                        <div class="putDocumentToSignature">
-                            <input type="file" name="" id="DocumentToSignature">
-                            <label for="DocumentToSignature" class="putDocumentToSignature_open">
-                                <span>Загрузить документ</span>
-                            </label>
-                        </div> -->
-
                         <div class="Attracted_headerInfoBlock">
                             <input type="file" name="" id="DocumentToSignature">
                             <div class="Attracted_headerInfoBlock_block" data="loader">
@@ -656,8 +644,8 @@
                                     <i class="fad fa-file-download"></i>
                                 </div>
                                 <div class="Attracted_headerInfoBlock_block_text">
-                                    <span>Загрузите документ на подписание</span>
-                                    <p>Загрузить документ</p>
+                                    <span>Загрузите документ</span>
+                                    <p>Загрузить</p>
                                 </div>
                             </div>
                             <div class="Attracted_headerInfoBlock_block" data="dell">
@@ -705,7 +693,7 @@
                             this.global_block.find('.Attracted_headerInfoBlock_block[data="loader"]').click( function() {
                                 window.open(`https://invester-relocation.site/projects/${_project._id}/${_project.signature_document.document}`, '_blank');
                             })
-                            this.global_block.find('.Attracted_headerInfoBlock_block[data="dell"]').find('p').html(`Удалить документ`);
+                            this.global_block.find('.Attracted_headerInfoBlock_block[data="dell"]').find('p').html(`Удалить`);
                             this.global_block.find('.Attracted_headerInfoBlock_block[data="dell"]').click( function() {
                                 _this.dellSignatureFile(_project._id);
                                 alert("Успешно");

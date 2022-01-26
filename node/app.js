@@ -423,28 +423,6 @@ app.post('/file_urist.io/files', (req, res) => {
         _data[name] = value;
     });
 
-    // var redactingDocument = async () => 
-    // {
-    //     mammoth.convertToHtml({path: `/var/www/projects/${_data._id}/signature_document.${_data._pts.split('/')[1]}`})
-    //         .then(async function(result) {
-    //             var html = result.value;
-    //             var need_html = html.replace(/ /g,"&nbsp;");
-
-    //             var _project = await Project.findOneAndUpdate({_id: _data._id}, {type: "correction",signature_document: {
-    //                 status: "wait",
-    //                 document: `signature_document.${_data._pts}`,
-    //                 document_html: need_html,
-    //             }});
-
-    //             helper_functions.full_alert_user(_project.user, `Нужно подписание документа в проекте под номером ${_project._id}`, "file_urist");
-
-    //             res.json({
-    //                 status: 'ok',
-    //             });
-    //         })
-    //         .done();
-    // }
-
     var cheack_file = (_path) => 
     {
         try {
@@ -457,12 +435,20 @@ app.post('/file_urist.io/files', (req, res) => {
                     if (err) throw err
                     console.log('Successfully renamed - AKA moved!');
                     
-                    var _project = await Project.findOneAndUpdate({_id: _data._id}, {type: "correction",signature_document: {
-                        status: "wait",
-                        document: `signature_document.${_data._pts}`,
-                    }});
+                    mammoth.convertToHtml({path: `/var/www/projects/${_data._id}/signature_document.${_data._pts.split('/')[1]}`})
+                        .then(async function(result) {
+                            var html = result.value;
+                            var need_html = html.replace(/ /g,"&nbsp;");
 
-                    helper_functions.full_alert_user(_project.user, `Нужно подписание документа в проекте под номером ${_project._id}`, "file_urist");
+                            var _project = await Project.findOneAndUpdate({_id: _data._id}, {type: "correction", signature_document: {
+                                status: "wait",
+                                document: `signature_document.${_data._pts}`,
+                                document_html: need_html,
+                            }});
+
+                            helper_functions.full_alert_user(_project.user, `Нужно подписание документа в проекте под номером ${_project._id}`, "file_urist");
+                        })
+                        .done();
                 });
             } else {
                 console.log('Файл не найден');
