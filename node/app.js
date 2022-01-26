@@ -454,7 +454,7 @@ app.post('/file_urist.io/files', (req, res) => {
                             await page.goto(`https://invester-relocation.site/html/project/document/#${_project._id}`);
                             await page.emulateMedia('screen');
                             await page.waitForSelector('.all_good')
-                            await page.pdf({path: '`/var/www/projects/${_data._id}/signature_document.pdf`'});
+                            await page.pdf({path: `/var/www/projects/${_data._id}/signature_document.pdf`});
                             await browser.close();
 
                             helper_functions.full_alert_user(_project.user, `Нужно подписание документа в проекте под номером ${_project._id}`, "file_urist");
