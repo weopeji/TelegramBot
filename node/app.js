@@ -450,11 +450,12 @@ app.post('/file_urist.io/files', (req, res) => {
                             phantom.create().then(function(ph) {
                                 ph.createPage().then(function(page) {
                                     page.open(`https://invester-relocation.site/html/project/document/#${_project._id}`).then(function(status) {
-                                        page.render(`/var/www/projects/${_data._id}/signature_document.pdf`).then(function() {
-                                            console.log('Page Rendered');
-                                            ph.exit();
-
-                                            helper_functions.full_alert_user(_project.user, `Нужно подписание документа в проекте под номером ${_project._id}`, "file_urist");
+                                        setTimeout(function() {
+                                            page.render(`/var/www/projects/${_data._id}/signature_document.pdf`).then(function() {
+                                                console.log('Page Rendered');
+                                                ph.exit();
+                                                helper_functions.full_alert_user(_project.user, `Нужно подписание документа в проекте под номером ${_project._id}`, "file_urist");
+                                            }, 5000);
                                         });
                                     });
                                 });
