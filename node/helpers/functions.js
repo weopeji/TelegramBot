@@ -83,12 +83,10 @@ async function full_alert_user(_id, _text, _type)
 
         var _array      = [];
 
-        var html = _text;
-
         // const stream = fs.createReadStream(_path);
 
         _array.push(await bot.sendPhoto(_user.user, fs.createReadStream(_path), {
-            caption: html,
+            caption: _text,
             parse_mode: "HTML",
         }).message_id);
         // var fat = await bot.sendPhoto(_user.user, stream, {
@@ -97,6 +95,8 @@ async function full_alert_user(_id, _text, _type)
         // });
 
         // _array.push(fat.message_id);
+
+        console.log(_array);
 
         await MA_U(_user.user, _array);
     }
