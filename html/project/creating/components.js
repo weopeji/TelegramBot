@@ -1259,7 +1259,7 @@
             `);
 
             _block.find('.body_point_adder_document_block_buttons_button[data="download"]').click( function() {
-                window.open(`https://invester-relocation.site/projects/${_project._id}/${_project.signature_document.document}`, "_blank");
+                window.open(`https://invester-relocation.site/projects/${_project._id}/signature_document.pdf`, "_blank");
             })
 
             _block.find('.body_point_adder_document_block_buttons_button[data="upload"]').click( function() {
