@@ -90,7 +90,7 @@ async function full_alert_user(_id, _text, _type)
         //     parse_mode: "HTML",
         // }).message_id);
         var fat = await bot.sendPhoto(_user.user, stream, {
-            caption: html,
+            caption: _text,
             parse_mode: "HTML",
         });
 
