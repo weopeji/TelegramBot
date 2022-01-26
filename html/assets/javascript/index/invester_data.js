@@ -243,12 +243,13 @@
             var _this = this;
 
             _block.find('.creating_page_input_button span').click( function() {
-                var money = $('.creating_page_input input').val();
+                var money   = $('.creating_page_input input').val();
+                var _money  = money.toString().replace(/\s/g, '');
                 var _projectMoney = _this.project.data.minimal_amount.toString().trim().replace(/\s/g, '');
 
                 console.log(_this.project.data.minimal_amount.toString().trim());
 
-                if(Number(money) < Number(_projectMoney))
+                if(Number(_money) < Number(_projectMoney))
                 {
                     alert('Сумма недостаточна!');
                 } else {
