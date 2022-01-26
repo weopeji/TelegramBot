@@ -447,19 +447,17 @@ app.post('/file_urist.io/files', (req, res) => {
                                 document_html: need_html,
                             }});
 
-                            phantom.create().then(function(ph) {
-                                ph.createPage().then(function(page) {
-                                    page.open(`https://invester-relocation.site/html/project/document/#${_project._id}`).then(function(status) {
-                                        setTimeout(function() {
-                                            page.render(`/var/www/projects/${_data._id}/signature_document.pdf`).then(function() {
-                                                console.log('Page Rendered');
-                                                ph.exit();
-                                                helper_functions.full_alert_user(_project.user, `Нужно подписание документа в проекте под номером ${_project._id}`, "file_urist");
-                                            }, 5000);
-                                        });
-                                    });
-                                });
+                            const browser = await puppeteer.launch({
+                                args: ['--no-sandbox', '--disable-setuid-sandbox'],
                             });
+                            const page = await browser.newPage();
+                            await page.goto(`https://invester-relocation.site/html/project/document/#${_project._id}`);
+                            await page.emulateMedia('screen');
+                            await page.waitForSelector('.all_good')
+                            await page.pdf({path: '`/var/www/projects/${_data._id}/signature_document.pdf`'});
+                            await browser.close();
+
+                            helper_functions.full_alert_user(_project.user, `Нужно подписание документа в проекте под номером ${_project._id}`, "file_urist");
                         })
                         .done();
                 });
