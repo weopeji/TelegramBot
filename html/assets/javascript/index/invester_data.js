@@ -119,7 +119,7 @@
             `);
 
             documentBlock.eq(0).find("span").click( function() {
-                window.open(`/projects/${this.project}/signature_document.pdf` , '_blank');
+                window.open(`/projects/${_this.project._id}/signature_document.pdf` , '_blank');
             })
 
             documentBlock.eq(2).find("span").click( function() {
