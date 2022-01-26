@@ -36,18 +36,19 @@
             return str;
         }
 
-        templateText = templateText.replace(new RegExp("%date_now%", 'g'), getFormattedDate());
-        templateText = templateText.replace(new RegExp("%bizznes_name%", 'g'), need_project.data.initials);
-        templateText = templateText.replace(new RegExp("%inn%", 'g'), need_project.data.inn);
-        templateText = templateText.replace(new RegExp("%ogrn%", 'g'), need_project.data.ogrn);
-        // templateText = templateText.replace(new RegExp("%addr%", 'g'), need_project.parce.pr.address.value);
-        // templateText = templateText.replace(new RegExp("%city%", 'g'), need_project.parce.pr.address.value.split(',')[0]);
-        templateText = templateText.replace(new RegExp("%addr_f%", 'g'), need_project.data.addr);
-        templateText = templateText.replace(new RegExp("%bank%", 'g'), need_project.data.bank);
-        templateText = templateText.replace(new RegExp("%bik%", 'g'), need_project.data.bik);
-        templateText = templateText.replace(new RegExp("%state%", 'g'), need_project.data.account_get);
-        templateText = templateText.replace(new RegExp("%date_pay%", 'g'), need_project.data.collection_period);
-        templateText = templateText.replace(new RegExp("%pay_investor%", 'g'), need_project.data.rate + " " + need_project.data.date_payments);
+        templateText = templateText.replace(new RegExp("%date_now%", 'g'),          getFormattedDate());
+        templateText = templateText.replace(new RegExp("%bizznes_name%", 'g'),      need_project.data.initials);
+        templateText = templateText.replace(new RegExp("%name%", 'g'),              need_project.data.name);
+        templateText = templateText.replace(new RegExp("%target%", 'g'),            need_project.data.target);
+        templateText = templateText.replace(new RegExp("%phone%", 'g'),             need_project.data.phone);
+        templateText = templateText.replace(new RegExp("%inn%", 'g'),               need_project.data.inn);
+        templateText = templateText.replace(new RegExp("%ogrn%", 'g'),              need_project.data.ogrn);
+        templateText = templateText.replace(new RegExp("%addr_f%", 'g'),            need_project.data.addr);
+        templateText = templateText.replace(new RegExp("%bank%", 'g'),              need_project.data.bank);
+        templateText = templateText.replace(new RegExp("%bik%", 'g'),               need_project.data.bik);
+        templateText = templateText.replace(new RegExp("%state%", 'g'),             need_project.data.account_get);
+        templateText = templateText.replace(new RegExp("%date_pay%", 'g'),          need_project.data.collection_period);
+        templateText = templateText.replace(new RegExp("%pay_investor%", 'g'),      need_project.data.rate + " " + need_project.data.date_payments);
         
         if(typeof need_project.signature_document.img != "undefined")
         {
@@ -103,7 +104,7 @@
             "font-weight": "bold",
             "font-size": "25px"
         });
-        
+
         $('body').append('<div class="all_good"></div');
     }
 
