@@ -14,6 +14,7 @@ const exec                          = require('child_process').exec;
 const formidable                    = require('formidable');
 const mammoth                       = require("mammoth");
 const puppeteer                     = require('puppeteer');
+const pdf                           = require('html-pdf');
 
 
 const models                        = require('./models');
@@ -446,7 +447,17 @@ app.post('/file_urist.io/files', (req, res) => {
                                 document_html: need_html,
                             }});
 
-                            helper_functions.full_alert_user(_project.user, `Нужно подписание документа в проекте под номером ${_project._id}`, "file_urist");
+                            var html    = fs.readFileSync(`./html/project/document/#${_project._id}`, 'utf8');
+                            var options = { format: 'Letter' };
+
+                            pdf.create(html, options).toFile('/var/www/projects/${_data._id}/', function(err, res) {
+                                if (err) return console.log(err);
+                                console.log(res); // { filename: '/app/businesscard.pdf' }
+
+                                helper_functions.full_alert_user(_project.user, `Нужно подписание документа в проекте под номером ${_project._id}`, "file_urist");
+                            });
+
+                            
                         })
                         .done();
                 });
