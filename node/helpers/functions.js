@@ -90,11 +90,14 @@ async function full_alert_user(_id, _text, _type)
         //     parse_mode: "HTML",
         // }).message_id);
 
-        _array.push( async function() {
-            return await bot.sendPhoto(_user.user, fs.createReadStream(_path), {
-                caption: _text,
-                parse_mode: "HTML",
-            }).message_id;
+        _array.push(function() {
+            return new Promise(async (resolve,reject) =>
+            {  
+                resolve(await bot.sendPhoto(_user.user, fs.createReadStream(_path), {
+                    caption: _text,
+                    parse_mode: "HTML",
+                }).message_id);
+            });
         })
 
 
