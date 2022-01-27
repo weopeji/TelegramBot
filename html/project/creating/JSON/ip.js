@@ -223,7 +223,7 @@ window.structCreator =
             },
             {
                 type: "string",
-                name: "ИНН физ лица",
+                name: "ИНН",
                 info: "",
                 parsing_data: null,
                 _id: "sob_inn"
