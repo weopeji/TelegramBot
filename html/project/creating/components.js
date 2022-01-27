@@ -891,7 +891,7 @@
             var _type = _project.signature.type;
 
             
-            var data = _dataNEedPutNew["+" + _project.data.organization];
+            var data = _dataNEedPutNew["+" + _type];
 
             var _body = $(`<div class="body_point"></div>`);
             _body.append(`
