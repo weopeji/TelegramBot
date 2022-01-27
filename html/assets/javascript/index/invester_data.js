@@ -238,8 +238,8 @@
     
                     $('.creating_page_input span[data="first"]').html('Перезаписать');
     
-                    $('.creating_page_input_div span[data="show"]').remove();
-                    $('.creating_page_input_div span[data="accept"]').remove();
+                    $('.creating_page_input_div[data="show"]').remove();
+                    $('.creating_page_input_div[data="accept"]').remove();
     
                     var moreBlock = $(`
                         <div class="creating_page_input_div_row">
