@@ -214,6 +214,14 @@
             {
                 if($(this.files).length > 0)
                 {
+                    await callApi({
+                        methodName: "setInvesterDataProjectForInvesterPage",
+                        data: {
+                            user:  _GET('user'),
+                            data: _this.inv,
+                        },
+                    });
+                    
                     var filename    = $(this.files)[0].name;
                     var aux         = filename.split('.');
                     var extension   = aux[aux.length -1].toUpperCase();
@@ -257,14 +265,6 @@
                     })
     
                     moreBlock.find(`[data="accept"]`).click( async function() {
-                        await callApi({
-                            methodName: "setInvesterDataProjectForInvesterPage",
-                            data: {
-                                user:  _GET('user'),
-                                data: _this.inv,
-                            },
-                        });
-
                         location.href = `https://t.me/invester_official_bot?start=project_${_this.project._id}`; 
                     })
     

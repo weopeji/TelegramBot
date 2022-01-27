@@ -520,16 +520,21 @@ app.post('/file_cheack_get.io/files', (req, res) => {
                 
                     _arrayData.document = `file_cheack_get_${_User.user}.${_data._pts}`;
                     _arrayData.pay = _data._pay;
-                
-                    await InvDoc.create({
-                        projectId: _User.putProject,
-                        invester: _User.user,
-                        status: "wait",
-                        data: _arrayData,
-                        receipt: null,
-                        pays: null,
-                        date: new Date().getTime(),
-                    });
+
+                    var showInvDoc = await InvDoc.findOne({invester: _User.user, projectId: _User.putProject});
+
+                    if(!showInvDoc)
+                    {
+                        await InvDoc.create({
+                            projectId: _User.putProject,
+                            invester: _User.user,
+                            status: "wait",
+                            data: _arrayData,
+                            receipt: null,
+                            pays: null,
+                            date: new Date().getTime(),
+                        });
+                    }
                 
                 });
             } else {
