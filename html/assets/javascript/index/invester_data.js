@@ -18,7 +18,7 @@
     function findOfArrayOn_id(arr, value) {
         for (var i = 0; i < arr.length; i++)
             if (arr[i]["_id"] == value)
-                return arr[i];
+                return arr[i].data;
     }
 
     class invester_data
