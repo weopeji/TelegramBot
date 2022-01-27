@@ -19,4 +19,14 @@
         $(`data[type="${_key}"]`).html(params[_key]);
     }
 
+    var _type = params["type"];
+
+    var funsType = {
+        "UR": "Юр. Лицо",
+        "IP": "ИП",
+        "FIZ": "Физ. лицо",
+    }
+
+    $('data[type="typeinv"]').html(funsType[_type]);
+
 })(window);
