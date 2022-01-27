@@ -171,6 +171,11 @@
             $('.creating_page').append(documentBlock);
         }
 
+        async cheackGetInputChange()
+        {
+
+        }
+
         async cheackGet()
         {
             $('.creating_page').empty();
@@ -199,7 +204,7 @@
                 <div class="creating_page_input">
                     <div class="creating_page_input_div" data="pay">
                         <input type="file">
-                        <span style="text-align: center">Загрузить</span>
+                        <span data="first" style="text-align: center">Загрузить</span>
                     </div>
                 </div>
             `);
@@ -220,9 +225,9 @@
                     },
                 });
 
-                var filename = $(this.files)[0].name;
-                var aux = filename.split('.');
-                var extension = aux[aux.length -1].toUpperCase();
+                var filename    = $(this.files)[0].name;
+                var aux         = filename.split('.');
+                var extension   = aux[aux.length -1].toUpperCase();
 
                 var _form    = new FormData();
 
@@ -242,8 +247,27 @@
                     }
                 });
 
-                alert('Успешно!');
-                location.href = `https://t.me/invester_official_bot?start=project_${_this.project._id}`; 
+
+
+                $('.creating_page_input span[data="first"]').html('Перезаписать');
+
+                $('.creating_page_input_div span[data="show"]').remove();
+                $('.creating_page_input_div span[data="accept"]').remove();
+
+                var moreBlock = $(`
+                    <span data="show" style="text-align: center">Посмотреть</span>
+                    <span data="accept" style="text-align: center">Подтвердить</span>
+                `);
+
+                moreBlock.eq(0).click( function() {
+                    window.open(`https://invester-relocation.site/projects/${_this.project._id}/file_cheack_get_${global.allData.User.user}.${extension}`, '_blank');
+                })
+
+                moreBlock.eq(1).click( function() {
+                    location.href = `https://t.me/invester_official_bot?start=project_${_this.project._id}`; 
+                })
+
+                $('.creating_page_input_div').append(moreBlock);
             });
 
             $('.creating_page').append(msgsBlock);
