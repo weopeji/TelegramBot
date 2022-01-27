@@ -279,6 +279,7 @@
 
         async renderOldBlock()
         {
+            var _this = this;
             var _projectMoney = _this.project.data.minimal_amount.toString().trim().replace(/\s/g, '');
 
             $('.creating_page').empty();
