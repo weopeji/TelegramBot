@@ -119,8 +119,27 @@
                 window.open(`/projects/${_this.project._id}/${_this.project.signature_document.user_document}` , '_blank');
             })
 
-            documentBlock.eq(0).find("span").eq(1).click( function() {
-                window.open(`/projects/${_this.project._id}/signature_document.pdf` , '_blank');
+            documentBlock.eq(0).find("span").eq(1).click( function() 
+            {
+                var html = `/html/project/application_number_2/?`;
+
+                html += `fio=${window.allData.User.first_name}&`;
+                html += `number=2&`;
+                html += `summ=${_this.money}&`;
+                html += `bank=${_this.project.data.bank} ${_this.project.data.account_correct} ${_this.project.data.bik} ${_this.project.data.kpp} ${_this.project.data.recipient} ${_this.project.data.account_get}&`;
+                
+                if(_this.inv.type == "UR")
+                {
+                    html += `inn=${_this.inv.data.inn}&`;
+                    html += `ogrn=${_this.inv.data.ogrnip}`;
+                    html += `do=${_this.inv.data.cpecial}`;
+                } else if (_this.inv.type == "IP")
+                {
+                    html += `inn=${_this.inv.data.inn}&`;
+                    html += `ogrn=${_this.inv.data.ogrnip}`;
+                }
+                
+                window.open(html, '_blank');
             })
 
             documentBlock.find(".creating_page_input_div").click( function() {
