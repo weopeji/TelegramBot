@@ -79,6 +79,11 @@
                     dataNameBlock = _project.data[DataBlock._id];
                 }
 
+                if(DataBlock._id == "rate")
+                {
+                    dataNameBlock = dataNameBlock / 12;
+                }
+
                 var _block = 
                 $(`
                     <div class="structCreator_new_block" data="${DataBlock._id}" type="${DataBlock.type}">
