@@ -102,13 +102,10 @@
                 <div class="creating_page_input creating_page_input_document_img">
                     <img src="./html/assets/images/documentPNG.png" alt="">
                     <div class="creating_page_input_document_img_hover">
-                        <span>Ознакомится с договором</span>
-                    </div>
-                </div>
-                <div class="creating_page_input creating_page_input_document_img">
-                    <img src="./html/assets/images/documentPNG.png" alt="">
-                    <div class="creating_page_input_document_img_hover">
-                        <span>Ознакомится с договором</span>
+                        <div class="creating_page_input_document_img_hover_row">
+                            <span>Ознакомится с договором</span>
+                            <span>Ознакомится с приложением №2</span>
+                        </div>
                     </div>
                 </div>
                 <div class="creating_page_input">
@@ -118,7 +115,11 @@
                 </div>
             `);
 
-            documentBlock.eq(0).find("span").click( function() {
+            documentBlock.eq(0).find("span").eq(0).click( function() {
+                window.open(`/projects/${_this.project._id}/signature_document.pdf` , '_blank');
+            })
+
+            documentBlock.eq(0).find("span").eq(1).click( function() {
                 window.open(`/projects/${_this.project._id}/signature_document.pdf` , '_blank');
             })
 

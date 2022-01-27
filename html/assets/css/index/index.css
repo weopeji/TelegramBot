@@ -1551,6 +1551,7 @@ html, body {
   padding: 10px 20px;
   border-radius: 12px;
   cursor: pointer;
+  margin-bottom: 20px;
 }
 
 @media (max-width: 1600px) {
