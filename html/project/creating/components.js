@@ -21,93 +21,7 @@
         constructor() 
         {
 
-            this.signature = {
-                "1": {
-                    header: "Загрузите документы",
-                    body: [
-                        {
-                            type: "file",
-                            name: `Устав`,
-                            _id: "file+1_s"
-                        },
-                        {
-                            type: "file",
-                            name: `Решение об избрании руководителя`,
-                            _id: "file+2_s"
-                        },
-                        {
-                            type: "file",
-                            name: `Приказ о назначении руководителя`,
-                            _id: "file+3_s"
-                        },
-                        {
-                            type: "file",
-                            name: `Свидетельство ИНН`,
-                            _id: "file+4_s"
-                        },
-                        {
-                            type: "file",
-                            name: `ОГРН`,
-                            _id: "file+5_s"
-                        },
-                        {
-                            type: "file",
-                            name: `Карточка с банковскими реквизитами`,
-                            _id: "file+6_s"
-                        },
-                        {
-                            type: "file",
-                            name: `Бух.отчетность за последний год`,
-                            _id: "file+7_s"
-                        },
-                    ]
-                },
-                "2": {
-                    header: "Загрузите документы",
-                    body: [
-                        {
-                            type: "file",
-                            name: `Приказ о назначении руководителя`,
-                            _id: "file+3_s"
-                        },
-                        {
-                            type: "file",
-                            name: `Свидетельство ИНН`,
-                            _id: "file+4_s"
-                        },
-                        {
-                            type: "file",
-                            name: `ОГРН`,
-                            _id: "file+5_s"
-                        },
-                        {
-                            type: "file",
-                            name: `Карточка с банковскими реквизитами`,
-                            _id: "file+6_s"
-                        },
-                        {
-                            type: "file",
-                            name: `Бух.отчетность за последний год`,
-                            _id: "file+7_s"
-                        },
-                    ]
-                },
-                "3": {
-                    header: "Загрузите документы",
-                    body: [
-                        {
-                            type: "file",
-                            name: `Карточка с банковскими реквизитами`,
-                            _id: "file+6_s"
-                        },
-                        {
-                            type: "file",
-                            name: `Бух.отчетность за последний год`,
-                            _id: "file+7_s"
-                        },
-                    ]
-                },
-            }
+            this.signature = null;
         };
 
         start_preloader(_this, callback) {
@@ -884,37 +798,7 @@
         {
 
             var _dataNEedPutNew = {
-                "1": {
-                    header: "Загрузите документы",
-                    body: [
-                        {
-                            type: "file",
-                            name: `Приказ о назначении руководителя`,
-                            _id: "file+3_s"
-                        },
-                        {
-                            type: "file",
-                            name: `Свидетельство ИНН`,
-                            _id: "file+4_s"
-                        },
-                        {
-                            type: "file",
-                            name: `ОГРН`,
-                            _id: "file+5_s"
-                        },
-                        {
-                            type: "file",
-                            name: `Карточка с банковскими реквизитами`,
-                            _id: "file+6_s"
-                        },
-                        {
-                            type: "file",
-                            name: `Бух.отчетность за последний год`,
-                            _id: "file+7_s"
-                        },
-                    ]
-                },
-                "2": {
+                "+1": {
                     header: "Загрузите документы",
                     body: [
                         {
@@ -954,7 +838,37 @@
                         },
                     ]
                 },
-                "3": {
+                "+2": {
+                    header: "Загрузите документы",
+                    body: [
+                        {
+                            type: "file",
+                            name: `Приказ о назначении руководителя`,
+                            _id: "file+3_s"
+                        },
+                        {
+                            type: "file",
+                            name: `Свидетельство ИНН`,
+                            _id: "file+4_s"
+                        },
+                        {
+                            type: "file",
+                            name: `ОГРН`,
+                            _id: "file+5_s"
+                        },
+                        {
+                            type: "file",
+                            name: `Карточка с банковскими реквизитами`,
+                            _id: "file+6_s"
+                        },
+                        {
+                            type: "file",
+                            name: `Бух.отчетность за последний год`,
+                            _id: "file+7_s"
+                        },
+                    ]
+                },
+                "+3": {
                     header: "Загрузите документы",
                     body: [
                         {
@@ -971,29 +885,29 @@
                 },
             }
 
+            this.signature = _dataNEedPutNew;
 
 
             var _type = _project.signature.type;
 
-            // for (var key in _dataNEedPutNew[_project.data.organization]) 
-            // {
-                var data = _dataNEedPutNew[_project.data.organization];
+            
+            var data = _dataNEedPutNew["+", _project.data.organization];
 
-                var _body = $(`<div class="body_point"></div>`);
-                _body.append(`
-                    <div class="body_point_header">
-                        <span>${data.header}</span>
-                    </div>
-                `);
+            var _body = $(`<div class="body_point"></div>`);
+            _body.append(`
+                <div class="body_point_header">
+                    <span>${data.header}</span>
+                </div>
+            `);
 
-                data.body.forEach(element => 
-                {
-                    var _string = this.dataLines["file"](element);
-                    _body.append(_string);
-                });
+            data.body.forEach(element => 
+            {
+                var _string = this.dataLines["file"](element);
+                _body.append(_string);
+            });
 
-                $('.index_page_body_points').append(_body);
-            // }
+            $('.index_page_body_points').append(_body);
+            
             
         }
 
@@ -1357,7 +1271,7 @@
             var correctArray = {};
 
             
-            var data = this.signature[_type];
+            var data = this.signature["+", _type];
 
             data.body.forEach(element => 
             {
