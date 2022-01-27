@@ -530,12 +530,12 @@ app.post('/file_cheack_get.io/files', (req, res) => {
                             invester: _User.user,
                             status: "wait",
                             data: _arrayData,
-                            receipt: _data._pts,
+                            receipt: null,
                             pays: null,
                             date: new Date().getTime(),
                         });
                     } else {
-                        await InvDoc.findOneAndUpdate({invester: _User.user, projectId: _User.putProject}, {receipt: _data._pts});
+                        await InvDoc.findOneAndUpdate({invester: _User.user, data: _arrayData})
                     }
                 
                 });

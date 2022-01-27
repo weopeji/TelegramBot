@@ -309,11 +309,11 @@
             });
 
             $('.show_document').click( async function() {
-                var getProjectInvfgty = await callApi({
-                    methodName: "getProjectInvfgty",
+                var getProjectById = await callApi({
+                    methodName: "getProjectById",
                     data: _GET('project'),
                 });
-                window.open(`https://invester-relocation.site/projects/${_data.InvDoc.projectId}/${getProjectInvfgty.signature_document.user_document}`, '_blank');
+                window.open(`https://invester-relocation.site/projects/${_data.InvDoc.projectId}/${getProjectById.signature_document.user_document}`, '_blank');
             });
 
             $('.accept_block_tap').click( async function () 
