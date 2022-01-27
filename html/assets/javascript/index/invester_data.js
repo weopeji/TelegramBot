@@ -171,11 +171,6 @@
             $('.creating_page').append(documentBlock);
         }
 
-        async cheackGetInputChange()
-        {
-
-        }
-
         async cheackGet()
         {
             $('.creating_page').empty();
@@ -217,57 +212,60 @@
 
             _block.find('input[type=file]').change( async function() 
             {
-                await callApi({
-                    methodName: "setInvesterDataProjectForInvesterPage",
-                    data: {
-                        user:  _GET('user'),
-                        data: _this.inv,
-                    },
-                });
-
-                var filename    = $(this.files)[0].name;
-                var aux         = filename.split('.');
-                var extension   = aux[aux.length -1].toUpperCase();
-
-                var _form    = new FormData();
-
-                _form.append('files', $(this.files)[0]);
-                _form.append('_User', _GET('user'));
-                _form.append('_id', _this.project._id);
-                _form.append('_pts', extension);
-                _form.append('_pay', _this.money);
-                
-                var _url = `${getURL()}/file_cheack_get.io/files`;
-
-                var _file = _form;
+                if(typeof $(this.files)[0].name != "undefined")
+                {
+                    await callApi({
+                        methodName: "setInvesterDataProjectForInvesterPage",
+                        data: {
+                            user:  _GET('user'),
+                            data: _this.inv,
+                        },
+                    });
     
-                axios.post(_url, _file, {
-                    headers: {
-                        'Content-Type': 'multipart/form-data'
-                    }
-                });
-
-
-
-                $('.creating_page_input span[data="first"]').html('Перезаписать');
-
-                $('.creating_page_input_div span[data="show"]').remove();
-                $('.creating_page_input_div span[data="accept"]').remove();
-
-                var moreBlock = $(`
-                    <span data="show" style="text-align: center">Посмотреть</span>
-                    <span data="accept" style="text-align: center">Подтвердить</span>
-                `);
-
-                moreBlock.eq(0).click( function() {
-                    window.open(`https://invester-relocation.site/projects/${_this.project._id}/file_cheack_get_${global.allData.User.user}.${extension}`, '_blank');
-                })
-
-                moreBlock.eq(1).click( function() {
-                    location.href = `https://t.me/invester_official_bot?start=project_${_this.project._id}`; 
-                })
-
-                $('.creating_page_input_div').append(moreBlock);
+                    var filename    = $(this.files)[0].name;
+                    var aux         = filename.split('.');
+                    var extension   = aux[aux.length -1].toUpperCase();
+    
+                    var _form    = new FormData();
+    
+                    _form.append('files', $(this.files)[0]);
+                    _form.append('_User', _GET('user'));
+                    _form.append('_id', _this.project._id);
+                    _form.append('_pts', extension);
+                    _form.append('_pay', _this.money);
+                    
+                    var _url = `${getURL()}/file_cheack_get.io/files`;
+    
+                    var _file = _form;
+        
+                    axios.post(_url, _file, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data'
+                        }
+                    });
+    
+    
+    
+                    $('.creating_page_input span[data="first"]').html('Перезаписать');
+    
+                    $('.creating_page_input_div span[data="show"]').remove();
+                    $('.creating_page_input_div span[data="accept"]').remove();
+    
+                    var moreBlock = $(`
+                        <span data="show" style="text-align: center">Посмотреть</span>
+                        <span data="accept" style="text-align: center">Подтвердить</span>
+                    `);
+    
+                    moreBlock.eq(0).click( function() {
+                        window.open(`https://invester-relocation.site/projects/${_this.project._id}/file_cheack_get_${global.allData.User.user}.${extension}`, '_blank');
+                    })
+    
+                    moreBlock.eq(1).click( function() {
+                        location.href = `https://t.me/invester_official_bot?start=project_${_this.project._id}`; 
+                    })
+    
+                    $('.creating_page_input_div').append(moreBlock);
+                }
             });
 
             $('.creating_page').append(msgsBlock);
