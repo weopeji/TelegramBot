@@ -14,6 +14,9 @@
             {}
         );
 
-    console.log(params);
+    for(var _key in params)
+    {
+        $(`data[type="${_key}"]`).html(params[_key]);
+    }
 
 })(window);
