@@ -891,7 +891,7 @@
             var _type = _project.signature.type;
 
             
-            var data = _dataNEedPutNew["+", _project.data.organization];
+            var data = _dataNEedPutNew["+" + _project.data.organization];
 
             var _body = $(`<div class="body_point"></div>`);
             _body.append(`
@@ -1271,7 +1271,7 @@
             var correctArray = {};
 
             
-            var data = this.signature["+", _type];
+            var data = this.signature["+" + _type];
 
             data.body.forEach(element => 
             {
