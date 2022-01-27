@@ -214,14 +214,6 @@
             {
                 if($(this.files).length > 0)
                 {
-                    await callApi({
-                        methodName: "setInvesterDataProjectForInvesterPage",
-                        data: {
-                            user:  _GET('user'),
-                            data: _this.inv,
-                        },
-                    });
-    
                     var filename    = $(this.files)[0].name;
                     var aux         = filename.split('.');
                     var extension   = aux[aux.length -1].toUpperCase();
@@ -250,19 +242,29 @@
                     $('.creating_page_input_div span[data="accept"]').remove();
     
                     var moreBlock = $(`
-                        <div class="creating_page_input_div">
-                            <span data="show" style="text-align: center">Посмотреть</span>
-                        </div>
-                        <div class="creating_page_input_div">
-                            <span data="accept" style="text-align: center">Подтвердить</span>
+                        <div class="creating_page_input_div_row">
+                            <div class="creating_page_input_div" data="show">
+                                <span style="text-align: center">Посмотреть</span>
+                            </div>
+                            <div class="creating_page_input_div" data="accept">
+                                <span style="text-align: center">Подтвердить</span>
+                            </div>
                         </div>
                     `);
     
-                    moreBlock.eq(0).click( function() {
+                    moreBlock.find(`[data="show"]`).click( function() {
                         window.open(`https://invester-relocation.site/projects/${_this.project._id}/file_cheack_get_${global.allData.User.user}.${extension}`, '_blank');
                     })
     
-                    moreBlock.eq(1).click( function() {
+                    moreBlock.find(`[data="accept"]`).click( function() {
+                        await callApi({
+                            methodName: "setInvesterDataProjectForInvesterPage",
+                            data: {
+                                user:  _GET('user'),
+                                data: _this.inv,
+                            },
+                        });
+
                         location.href = `https://t.me/invester_official_bot?start=project_${_this.project._id}`; 
                     })
     
