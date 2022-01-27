@@ -212,7 +212,7 @@
 
             _block.find('input[type=file]').change( async function() 
             {
-                if(typeof $(this.files)[0].name != "undefined")
+                if($(this.files).length > 0)
                 {
                     await callApi({
                         methodName: "setInvesterDataProjectForInvesterPage",
