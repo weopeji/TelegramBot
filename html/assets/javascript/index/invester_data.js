@@ -107,6 +107,7 @@
             })
 
             this.global.append(msgsBlock);
+            this.global.append(documentBlock);
             this.global.append(inputText);
 
             $('.index_page_body_data').append(this.global);
