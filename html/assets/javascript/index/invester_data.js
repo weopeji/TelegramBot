@@ -110,12 +110,12 @@
                 </div>
                 <div class="creating_page_input">
                     <div class="creating_page_input_div" data="pay">
-                        <span style="text-align: center">Оплатить</span>
+                        <span style="text-align: center">Оплатить</span> 
                     </div>
                 </div>
             `);
 
-            documentBlock.eq(0).find("span").eq(0).click( function() {
+            documentBlock.eq(0).find("span").eq(0).click( function() { 
                 window.open(`/projects/${_this.project._id}/signature_document.pdf` , '_blank');
             })
 
