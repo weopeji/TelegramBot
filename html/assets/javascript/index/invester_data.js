@@ -76,6 +76,18 @@
                 </div>
             `);
 
+            var documentBlock = $(`
+                <div class="creating_page_input">
+                    <div class="creating_page_input_div">
+                        <span>Ознакомится с договором</span>
+                    </div>
+                </div>
+            `);
+
+            documentBlock.find('span').click( function() {
+                window.open(`/projects/${_project._id}/${_project.signature_document.user_document}` , '_blank');
+            })
+
             var inputText = $(`
                 <div class="creating_page_input">
                     <div class="creating_page_input_div" data="UR" data-type="Юр. Лицо">

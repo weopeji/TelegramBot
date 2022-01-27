@@ -28,5 +28,6 @@
     }
 
     $('data[type="typeinv"]').html(funsType[_type]);
+    $('data[type="date"]').html(new Date());
 
 })(window);
