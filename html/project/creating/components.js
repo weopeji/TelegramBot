@@ -1356,15 +1356,14 @@
         {
             var correctArray = {};
 
-            for (var key in this.signature[_type]) 
-            {
-                var data = this.signature[_type][key];
+            
+            var data = this.signature[_type];
 
-                data.body.forEach(element => 
-                {
-                    correctArray[element._id] = document.getElementById(`${element._id}_block`).getAttribute('data');
-                });
-            }
+            data.body.forEach(element => 
+            {
+                correctArray[element._id] = document.getElementById(`${element._id}_block`).getAttribute('data');
+            });
+            
 
             for(var key in correctArray) 
             {
