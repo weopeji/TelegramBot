@@ -14,6 +14,13 @@
         });
     }
 
+    
+    function findOfArrayOn_id(arr, value) {
+        for (var i = 0; i < arr.length; i++)
+            if (arr[i]["_id"] == value)
+                return arr[i];
+    }
+
     class invester_data
     {
         constructor() 
@@ -126,18 +133,19 @@
                 html += `fio=${window.allData.User.first_name}&`;
                 html += `number=2&`;
                 html += `summ=${_this.money}&`;
-                html += `bank=${_this.project.data.bank} ${_this.project.data.account_correct} ${_this.project.data.bik} ${_this.project.data.kpp} ${_this.project.data.recipient} ${_this.project.data.account_get}&`;
                 
                 if(_this.inv.type == "UR")
                 {
-                    html += `inn=${_this.inv.data.inn}&`;
-                    html += `ogrn=${_this.inv.data.ogrnip}`;
-                    html += `do=${_this.inv.data.cpecial}`;
+                    html += `inn=${findOfArrayOn_id(_this.inv.data, "inn"}&`;
+                    html += `ogrn=${findOfArrayOn_id(_this.inv.data, "ogrnip")}&`;
+                    html += `do=${findOfArrayOn_id(_this.inv.data, "cpecial")}&`;
                 } else if (_this.inv.type == "IP")
                 {
-                    html += `inn=${_this.inv.data.inn}&`;
-                    html += `ogrn=${_this.inv.data.ogrnip}`;
+                    html += `inn=${findOfArrayOn_id(_this.inv.data, "inn")}&`;
+                    html += `ogrn=${findOfArrayOn_id(_this.inv.data, "ogrnip")}&`;
                 }
+
+                html += `bank=${_this.project.data.bank} ${_this.project.data.account_correct} ${_this.project.data.bik} ${_this.project.data.kpp} ${_this.project.data.recipient} ${_this.project.data.account_get}`;
                 
                 window.open(html, '_blank');
             })
