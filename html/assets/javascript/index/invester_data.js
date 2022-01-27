@@ -256,7 +256,7 @@
                         window.open(`https://invester-relocation.site/projects/${_this.project._id}/file_cheack_get_${global.allData.User.user}.${extension}`, '_blank');
                     })
     
-                    moreBlock.find(`[data="accept"]`).click( function() {
+                    moreBlock.find(`[data="accept"]`).click( async function() {
                         await callApi({
                             methodName: "setInvesterDataProjectForInvesterPage",
                             data: {
