@@ -244,16 +244,18 @@
                         }
                     });
     
-    
-    
                     $('.creating_page_input span[data="first"]').html('Перезаписать');
     
                     $('.creating_page_input_div span[data="show"]').remove();
                     $('.creating_page_input_div span[data="accept"]').remove();
     
                     var moreBlock = $(`
-                        <span data="show" style="text-align: center">Посмотреть</span>
-                        <span data="accept" style="text-align: center">Подтвердить</span>
+                        <div class="creating_page_input_div">
+                            <span data="show" style="text-align: center">Посмотреть</span>
+                        </div>
+                        <div class="creating_page_input_div">
+                            <span data="accept" style="text-align: center">Подтвердить</span>
+                        </div>
                     `);
     
                     moreBlock.eq(0).click( function() {
@@ -264,7 +266,7 @@
                         location.href = `https://t.me/invester_official_bot?start=project_${_this.project._id}`; 
                     })
     
-                    $('.creating_page_input_div').append(moreBlock);
+                    $('.creating_page_input').append(moreBlock);
                 }
             });
 
