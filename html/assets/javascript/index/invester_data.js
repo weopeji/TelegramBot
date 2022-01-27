@@ -136,7 +136,7 @@
                 
                 if(_this.inv.type == "UR")
                 {
-                    html += `inn=${findOfArrayOn_id(_this.inv.data, "inn"}&`;
+                    html += `inn=${findOfArrayOn_id(_this.inv.data, "inn")}&`;
                     html += `ogrn=${findOfArrayOn_id(_this.inv.data, "ogrnip")}&`;
                     html += `do=${findOfArrayOn_id(_this.inv.data, "cpecial")}&`;
                 } else if (_this.inv.type == "IP")
