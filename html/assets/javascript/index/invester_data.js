@@ -190,6 +190,7 @@
                             КПП: ${this.project.data.kpp} <br>
                             Получатель: ${this.project.data.recipient} <br>
                             Счет получателя: ${this.project.data.account_get} <br>
+                            Назначение платежа: Номер Проекта ${this.project._id}, Имя проекта ${this.project.data.name} <br>
                         </span>
                     </div>
                 </div>
@@ -221,7 +222,7 @@
                             data: _this.inv,
                         },
                     });
-                    
+
                     var filename    = $(this.files)[0].name;
                     var aux         = filename.split('.');
                     var extension   = aux[aux.length -1].toUpperCase();
@@ -278,13 +279,16 @@
 
         async renderOldBlock()
         {
+            var _projectMoney = _this.project.data.minimal_amount.toString().trim().replace(/\s/g, '');
+
             $('.creating_page').empty();
 
             var msgsBlock = $(`
                 <div class="creating_page_block">
                     <div class="creating_page_start" style="margin-bottom: 20px">
                         <span>
-                            Уважаемый Инвестор ${global.allData.User.first_name} Введите сумму инвестирования</a>.
+                            Уважаемый Инвестор ${global.allData.User.first_name} Введите сумму инвестирования</a>.<br>
+                            Минимальная сумма входа: ${_projectMoney} руб.
                         </span>
                     </div>
                 </div>
@@ -313,7 +317,6 @@
             _block.find('.creating_page_input_button span').click( function() {
                 var money   = $('.creating_page_input input').val();
                 var _money  = money.toString().replace(/\s/g, '');
-                var _projectMoney = _this.project.data.minimal_amount.toString().trim().replace(/\s/g, '');
 
                 console.log(_this.project.data.minimal_amount.toString().trim());
 
