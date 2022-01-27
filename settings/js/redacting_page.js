@@ -81,7 +81,7 @@
 
                 if(DataBlock._id == "rate")
                 {
-                    dataNameBlock = dataNameBlock / 12;
+                    dataNameBlock = (dataNameBlock / 12).tofixed(2);
                 }
 
                 var _block = 
