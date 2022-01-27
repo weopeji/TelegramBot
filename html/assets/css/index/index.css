@@ -1552,6 +1552,7 @@ html, body {
   border-radius: 12px;
   cursor: pointer;
   margin-bottom: 20px;
+  text-align: center;
 }
 
 @media (max-width: 1600px) {
