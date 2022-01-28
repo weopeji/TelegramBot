@@ -1096,14 +1096,14 @@
 
             $('.body_point').each((i, element) => {
                 $(element).find('.body_point_line').each((i, _element) => {
-                    if($(_element).find("input").length) {
+                    if(!$(_element).hasClass('_file')) {
                         _array.push({
                             name: $(_element).find("input").attr('id'),
                             val: $(_element).find("input").val()
                         });
                     } else {
                         _array.push({
-                            name: $(_element).find(".loader_input").attr('id').split('_')[0],
+                            name: $(_element).find("input").attr('id'),
                             val: $(_element).find(".loader_input").attr('data')
                         });
                     }
