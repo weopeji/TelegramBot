@@ -924,7 +924,9 @@
                     </div>
                 </div>
                 <div class="creating_page_input">
-                    <input class="file_load" id='signature_mass' type='file'>
+                    <div class="body_point_line_header_text">
+                        <input class="file_load" id='signature_mass' type='file'>
+                    </div>
                     <div class="creating_page_input_div" data="pay">
                         <span style="text-align: center">Загрузить подписаный</span> 
                     </div>
@@ -954,7 +956,9 @@
                     </div>
                 </div>
                 <div class="creating_page_input">
-                    <input class="file_load" id='signature_mass' type='file'>
+                    <div class="body_point_line_header_text">
+                        <input class="file_load" id='signature_mass' type='file'>
+                    </div>
                     <div class="creating_page_input_div" data="pay">
                         <span style="text-align: center">Загрузить подписаный</span> 
                     </div>

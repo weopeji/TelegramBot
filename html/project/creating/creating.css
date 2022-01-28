@@ -1083,6 +1083,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   padding: 0 10px;
 }
 
+.creating_page_input .body_point_line_header_text {
+  display: none;
+}
+
 .creating_page_input_document_img {
   display: -webkit-box;
   display: -ms-flexbox;
