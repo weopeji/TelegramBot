@@ -304,297 +304,91 @@
         async renderMore(_project)
         {
             var signature = {
-                "1": {
-                    "+1_s": {
-                        header: "Загрузите не достающие документы",
-                        body: [
-                            {
-                                type: "file",
-                                name: `Устав`,
-                                _id: "file+1_s"
-                            },
-                            {
-                                type: "file",
-                                name: `Решение об избрании руководителя`,
-                                _id: "file+2_s"
-                            },
-                            {
-                                type: "file",
-                                name: `Приказ о назначении руководителя`,
-                                _id: "file+3_s"
-                            },
-                            {
-                                type: "file",
-                                name: `Свидетельство ИНН`,
-                                _id: "file+4_s"
-                            },
-                            {
-                                type: "file",
-                                name: `ОГРН`,
-                                _id: "file+5_s"
-                            },
-                            {
-                                type: "file",
-                                name: `Карточка с банковскими реквизитами`,
-                                _id: "file+6_s"
-                            },
-                            {
-                                type: "file",
-                                name: `Бух.отчетность за последний год`,
-                                _id: "file+7_s"
-                            },
-                        ]
-                    },
+                "+1": {
+                    header: "Загрузите документы",
+                    body: [
+                        {
+                            type: "file",
+                            name: `Приказ о назначении руководителя`,
+                            _id: "file+3_s"
+                        },
+                        {
+                            type: "file",
+                            name: `Свидетельство ИНН`,
+                            _id: "file+4_s"
+                        },
+                        {
+                            type: "file",
+                            name: `ОГРН`,
+                            _id: "file+5_s"
+                        },
+                        {
+                            type: "file",
+                            name: `Карточка с банковскими реквизитами`,
+                            _id: "file+6_s"
+                        },
+                        {
+                            type: "file",
+                            name: `Бух.отчетность за последний год`,
+                            _id: "file+7_s"
+                        },
+                    ]
                 },
-                "2": {
-                    "+1_s": {
-                        header: "Загрузите не достающие документы",
-                        body: [
-                            {
-                                type: "file",
-                                name: `Приказ о назначении руководителя`,
-                                _id: "file+3_s"
-                            },
-                            {
-                                type: "file",
-                                name: `Свидетельство ИНН`,
-                                _id: "file+4_s"
-                            },
-                            {
-                                type: "file",
-                                name: `ОГРН`,
-                                _id: "file+5_s"
-                            },
-                            {
-                                type: "file",
-                                name: `Карточка с банковскими реквизитами`,
-                                _id: "file+6_s"
-                            },
-                            {
-                                type: "file",
-                                name: `Бух.отчетность за последний год`,
-                                _id: "file+7_s"
-                            },
-                        ]
-                    }
+                "+2": {
+                    header: "Загрузите документы",
+                    body: [
+                        {
+                            type: "file",
+                            name: `Устав`,
+                            _id: "file+1_s"
+                        },
+                        {
+                            type: "file",
+                            name: `Решение об избрании руководителя`,
+                            _id: "file+2_s"
+                        },
+                        {
+                            type: "file",
+                            name: `Приказ о назначении руководителя`,
+                            _id: "file+3_s"
+                        },
+                        {
+                            type: "file",
+                            name: `Свидетельство ИНН`,
+                            _id: "file+4_s"
+                        },
+                        {
+                            type: "file",
+                            name: `ОГРН`,
+                            _id: "file+5_s"
+                        },
+                        {
+                            type: "file",
+                            name: `Карточка с банковскими реквизитами`,
+                            _id: "file+6_s"
+                        },
+                        {
+                            type: "file",
+                            name: `Бух.отчетность за последний год`,
+                            _id: "file+7_s"
+                        },
+                        
+                    ]
                 },
-                "3": {
-                    "+1_s": {
-                        header: "Загрузите не достающие документы",
-                        body: [
-                            {
-                                type: "file",
-                                name: `Устав`,
-                                _id: "file+1_s"
-                            },
-                            {
-                                type: "file",
-                                name: `Решение об избрании руководителя`,
-                                _id: "file+2_s"
-                            },
-                            {
-                                type: "file",
-                                name: `Приказ о назначении руководителя`,
-                                _id: "file+3_s"
-                            },
-                            {
-                                type: "file",
-                                name: `Свидетельство ИНН`,
-                                _id: "file+4_s"
-                            },
-                            {
-                                type: "file",
-                                name: `ОГРН`,
-                                _id: "file+5_s"
-                            },
-                            {
-                                type: "file",
-                                name: `Карточка с банковскими реквизитами`,
-                                _id: "file+6_s"
-                            },
-                            {
-                                type: "file",
-                                name: `Бух.отчетность за последний год`,
-                                _id: "file+7_s"
-                            },
-                            {
-                                type: "file",
-                                name: `Паспорт поручителя`,
-                                _id: "file+8_s"
-                            },
-                            {
-                                type: "file",
-                                name: `Cогласие поручителя на обработку персональных данных`,
-                                _id: "file+9_s"
-                            },
-                        ]
-                    },
-                },
-                "4": {
-                    "+1_s": {
-                        header: "Загрузите не достающие документы",
-                        body: [
-                            {
-                                type: "file",
-                                name: `Устав`,
-                                _id: "file+1_s"
-                            },
-                            {
-                                type: "file",
-                                name: `Решение об избрании руководителя`,
-                                _id: "file+2_s"
-                            },
-                            {
-                                type: "file",
-                                name: `Приказ о назначении руководителя`,
-                                _id: "file+3_s"
-                            },
-                            {
-                                type: "file",
-                                name: `Свидетельство ИНН`,
-                                _id: "file+4_s"
-                            },
-                            {
-                                type: "file",
-                                name: `ОГРН`,
-                                _id: "file+5_s"
-                            },
-                            {
-                                type: "file",
-                                name: `Карточка с банковскими реквизитами`,
-                                _id: "file+6_s"
-                            },
-                            {
-                                type: "file",
-                                name: `Бух.отчетность за последний год`,
-                                _id: "file+7_s"
-                            },
-                            {
-                                type: "file",
-                                name: `Паспорт поручителя`,
-                                _id: "file+8_s"
-                            },
-                            {
-                                type: "file",
-                                name: `Согласие супруга на купли-продажу доли`,
-                                _id: "file+9_s"
-                            },
-                        ]
-                    },
-                },
-                "5": {
-                    "+1_s": {
-                        header: "Загрузите не достающие документы",
-                        body: [
-                            {
-                                type: "file",
-                                name: `Устав`,
-                                _id: "file+1_s"
-                            },
-                            {
-                                type: "file",
-                                name: `Решение об избрании руководителя`,
-                                _id: "file+2_s"
-                            },
-                            {
-                                type: "file",
-                                name: `Приказ о назначении руководителя`,
-                                _id: "file+3_s"
-                            },
-                            {
-                                type: "file",
-                                name: `Свидетельство ИНН`,
-                                _id: "file+4_s"
-                            },
-                            {
-                                type: "file",
-                                name: `ОГРН`,
-                                _id: "file+5_s"
-                            },
-                            {
-                                type: "file",
-                                name: `Карточка с банковскими реквизитами`,
-                                _id: "file+6_s"
-                            },
-                            {
-                                type: "file",
-                                name: `Бух.отчетность за последний год`,
-                                _id: "file+7_s"
-                            },
-                            {
-                                type: "file",
-                                name: `Выписку из ЕГРН на недвижимость (+свидетельство о собственности, если есть), предоставляемую в залог`,
-                                _id: "file+8_s"
-                            },
-                            {
-                                type: "file",
-                                name: `Договор купли-продажи недвижимости (основание приобретение недвижимости)`,
-                                _id: "file+9_s"
-                            },
-                            {
-                                type: "file",
-                                name: `Согласие супруга на залог доли`,
-                                _id: "file+10_s"
-                            },
-                        ]
-                    },
-                },
-                "6": {
-                    "+1_s": {
-                        header: "Загрузите не достающие документы",
-                        body: [
-                            {
-                                type: "file",
-                                name: `Устав`,
-                                _id: "file+1_s"
-                            },
-                            {
-                                type: "file",
-                                name: `Решение об избрании руководителя`,
-                                _id: "file+2_s"
-                            },
-                            {
-                                type: "file",
-                                name: `Приказ о назначении руководителя`,
-                                _id: "file+3_s"
-                            },
-                            {
-                                type: "file",
-                                name: `Свидетельство ИНН`,
-                                _id: "file+4_s"
-                            },
-                            {
-                                type: "file",
-                                name: `ОГРН`,
-                                _id: "file+5_s"
-                            },
-                            {
-                                type: "file",
-                                name: `Карточка с банковскими реквизитами`,
-                                _id: "file+6_s"
-                            },
-                            {
-                                type: "file",
-                                name: `Бух.отчетность за последний год`,
-                                _id: "file+7_s"
-                            },
-                            {
-                                type: "file",
-                                name: `Выписку из ЕГРН на недвижимость (+свидетельство о собственности, если есть), предоставляемую в залог`,
-                                _id: "file+8_s"
-                            },
-                            {
-                                type: "file",
-                                name: `Договор купли-продажи недвижимости (основание приобретение недвижимости)`,
-                                _id: "file+9_s"
-                            },
-                            {
-                                type: "file",
-                                name: `Согласие супруга на залог доли`,
-                                _id: "file+10_s"
-                            },
-                        ]
-                    }
+                "+3": {
+                    header: "Загрузите документы",
+                    body: [
+                        {
+                            type: "file",
+                            name: `Карточка с банковскими реквизитами`,
+                            _id: "file+6_s"
+                        },
+                        {
+                            type: "file",
+                            name: `Бух.отчетность за последний год`,
+                            _id: "file+7_s"
+                        },
+                    ]
                 },
             };
 
@@ -687,35 +481,32 @@
 
                     _header.append(headerButton);
                     
-                    var _type = _project.signature.type;
+                    var _type = "+" + _project.signature.type;
 
-                    for(var key in signature) 
-                    {
-                        if(key == _type) {
-                            signature[key]['+1_s'].body.forEach(element => {
-                                var _file = `
-                                    <div class="download_buttons">
-                                        <a target="_blank" href="${getURL()}/projects/${_project._id}/${_project.signature.data[element._id]}">Посмотреть <i class='fas fa-download'></i></a>
-                                    </div>  
-                                `;
-                                var _line = $(`
-                                    <div class="body_point_line _file">
-                                        <div class="body_point_line_header">
-                                            <div class="body_point_line_header_text">
-                                                <span>${element.name}</span>
-                                                ${_file}
-                                            </div>
-                                            <div class="body_point_line_header_info">
-
-                                            </div>
-                                        </div>
+                    signature[_type].body.forEach( function(element) {
+                        
+                        var _file = `
+                            <div class="download_buttons">
+                                <a target="_blank" href="${getURL()}/projects/${_project._id}/${_project.signature.data[element._id]}">Посмотреть <i class='fas fa-download'></i></a>
+                            </div>  
+                        `;
+                        var _line = $(`
+                            <div class="body_point_line _file">
+                                <div class="body_point_line_header">
+                                    <div class="body_point_line_header_text">
+                                        <span>${element.name}</span>
+                                        ${_file}
                                     </div>
-                                `);
+                                    <div class="body_point_line_header_info">
 
-                                _header.append(_line);
-                            }) 
-                        }
-                    }
+                                    </div>
+                                </div>
+                            </div>
+                        `);
+
+                        _header.append(_line);
+                        
+                    })
 
                     this.global_block.append(_header);
 
