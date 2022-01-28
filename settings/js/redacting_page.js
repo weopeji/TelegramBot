@@ -116,6 +116,35 @@
                     </div>
                 `);
 
+                _block.find('input[type="file"]').change( async function() {
+
+                    alert('Загрузка началась!');
+
+                    var _form    = new FormData();
+
+                    _form.append('files', $(_this.files)[0]);
+                    _form.append('file_id', $(this).parent().attr('data'));
+                    _form.append('_id', _GET('id'));
+                    _form.append('_pts', $(_this.files)[0].type);
+
+                    var _url = `https://invester-relocation.site/file_redacting.io/files`;
+
+                    var _file = _form;
+
+                    axios.post(_url, _file, {
+                        headers: {
+                        'Content-Type': 'multipart/form-data'
+                        }
+                    }).then(data => {
+                        if(data.data.status == "ok") {
+                            alert('Загрузка завершена');
+                        }
+                    })
+
+
+                    $(this).val('');
+                })
+
                 if(typeof _project.data[DataBlock._id] != "undefined")
                 {
                     if(DataBlock.type == "file")
