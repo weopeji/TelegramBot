@@ -1058,7 +1058,7 @@
                 </div>
             `);
 
-            _body.css('padding-top', "20px");
+            _body.css('padding-top', "30px");
 
             $('.index_page_body_points').append(_body);
 

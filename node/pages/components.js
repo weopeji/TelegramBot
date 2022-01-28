@@ -1188,19 +1188,37 @@ async function getID(socket,data,callback) {
 }
 
 async function putRedacting(socket,data,callback) {
-    var _project = await Project.findOne({_id: data._id});
-    var _data = _project.data;
-    data.array.forEach(element => {
-        for (var key in _data) {
+
+    var _project    = await Project.findOne({_id: data._id});
+    var _data       = _project.data;
+    
+
+    data.array.forEach(element => 
+    {
+        var _error      = true;
+
+        for (var key in _data) 
+        {
             if(key == element.name) {
                 _data[key] = element.val;
+
+                _error = false;
+            }
+        }
+
+        if(_error)
+        {
+            var _name = element.name;
+
+            if(_name.split('#')[0] != "BB")
+            {
+                _data[_name] = element.val;
             }
         }
     });
+
+    
     await Project.findOneAndUpdate({_id: data._id}, {data: _data, type: "moderation", redacting: null});
-    var need_string = `"♦️ Проект исправлен №${_project._id} Название: ${_project.data.name} Сумма: ${_project.data.attraction_amount} Cтавка: ${_project.data.rate} Необходимо промодерировать"`;
-    console.log(need_string);
-    await exec(`python "../python/app.py" ${need_string}`);
     callback('ok');
 }
 
