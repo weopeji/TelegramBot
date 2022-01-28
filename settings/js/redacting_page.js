@@ -194,7 +194,7 @@
 
                     var _block = 
                     $(`
-                        <div class="structCreator_new_block" data="${_keyBlock}" type="${DataBlock.type}">
+                        <div class="structCreator_new_block" data="${_keyBlock}" type="${_needElementSort.type}">
                             <input type="file">
                             <div class="structCreator_new_block_row">
                                 <span>${nameBLock}</span>

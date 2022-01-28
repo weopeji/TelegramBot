@@ -197,15 +197,10 @@
                 }
             }).then(data => {
                 if(data.data.status == "ok") {
-                    $(_this).parent().parent().find('.loader_input').attr('data', data.data.file_name);
-                    $(_this).parent().parent().find('.loader_input').fadeOut( function() {
-                        $(_this).parent().parent().find('.all_good').fadeIn( function() {
-                            $('.index_page').empty();
-                            $('.preloader').fadeIn( function() {
-                                $('.preloader').fadeOut( function() {
-                                    $('.end_get_project').css('display', "flex");
-                                });
-                            });
+                    $('.index_page').empty();
+                    $('.preloader').fadeIn( function() {
+                        $('.preloader').fadeOut( function() {
+                            $('.end_get_project').css('display', "flex");
                         });
                     });
                 }
