@@ -122,10 +122,10 @@
 
                     var _form    = new FormData();
 
-                    _form.append('files', $(_this.files)[0]);
+                    _form.append('files', $(this.files)[0]);
                     _form.append('file_id', $(this).parent().attr('data'));
                     _form.append('_id', _GET('id'));
-                    _form.append('_pts', $(_this.files)[0].type);
+                    _form.append('_pts', $(this.files)[0].type);
 
                     var _url = `https://invester-relocation.site/file_redacting.io/files`;
 
