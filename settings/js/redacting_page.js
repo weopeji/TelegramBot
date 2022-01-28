@@ -118,12 +118,14 @@
 
                 _block.find('input[type="file"]').change( async function() {
 
+                    var attrId = $(this).parent().attr('data');
+
                     alert('Загрузка началась!');
 
                     var _form    = new FormData();
 
                     _form.append('files', $(this.files)[0]);
-                    _form.append('file_id', $(this).parent().attr('data'));
+                    _form.append('file_id', attrId);
                     _form.append('_id', _GET('id'));
                     _form.append('_pts', $(this.files)[0].type);
 
@@ -137,7 +139,17 @@
                         }
                     }).then(data => {
                         if(data.data.status == "ok") {
-                            alert('Загрузка завершена');
+                            callApi({
+                                methodName: 'redactingProjectByAdmin',
+                                data: {
+                                    projectid: _GET("id"),
+                                    lineId: attrId,
+                                    data: data.data.file_name
+                                },
+                            }).then((data) => {
+                                alert('Загрузка завершена');
+                                location.reload();
+                            });
                         }
                     })
 

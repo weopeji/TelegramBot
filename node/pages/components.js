@@ -152,7 +152,20 @@ var action_linker =
     "getProjectById": getProjectById,
     "Business_status_projects": Business_status_projects,
     "setRedactingProject": setRedactingProject,
+    "redactingProjectByAdmin": redactingProjectByAdmin,
 };
+
+async function redactingProjectByAdmin(socket, data, callback)
+{
+    var _Project    = await Project.findOne({_id: data.projectid});
+    var _data       = _Project.data;
+
+    _data[data.lineId] = data.data;
+
+    await Project.findOneAndUpdate({_id: data.projectid}, {data: _data});
+
+    callback();
+}
 
 async function ALL_DATA(socket, data, callback)
 {
