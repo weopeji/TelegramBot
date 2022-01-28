@@ -84,6 +84,11 @@
                     dataNameBlock = Number(dataNameBlock / 12).toFixed(2);
                 }
 
+                if(DataBlock.type == "date")
+                {
+                    dataNameBlock = dataNameBlock.split('-')[2] + "." + dataNameBlock.split('-')[1] + "." + dataNameBlock.split('-')[0];
+                }
+
                 var _block = 
                 $(`
                     <div class="structCreator_new_block" data="${DataBlock._id}" type="${DataBlock.type}">
@@ -139,11 +144,22 @@
 
                     if(_value.length > 0)
                     {
+
+                        var _IdBlock = $(this).parent().parent().parent().parent().attr('data');
+
+                        if(_IdBlock == "rate")
+                        {
+                            _value = Number(_value * 12).toFixed(2);
+                        }
+
+
+
+
                         callApi({
                             methodName: 'redactingLineSettingsPage',
                             data: {
                                 projectId: _GET('id'),
-                                lineId: $(this).parent().parent().parent().parent().attr('data'),
+                                lineId: _IdBlock,
                                 data: _value,
                             },
                         });
@@ -184,13 +200,8 @@
                         })
                     }
 
-                    
-
                     var dataNameBlock   = moreuSersData[_key][_keyBlock];
                     var nameBLock       = _needElementSort.name;
-                    
-
-                    
 
                     var _block = 
                     $(`
