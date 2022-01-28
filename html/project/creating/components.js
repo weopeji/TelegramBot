@@ -970,7 +970,7 @@
             })
 
             newBlock.find('.creating_page_input_div[data="open"]').click( function() {
-                window.open(`/projects/${_project._id}/file_registration_document.${global.fileRegMorePts}` , '_blank');
+                window.open(`/projects/${_project._id}/file_signature_document.${global.fileRegMorePts}` , '_blank');
             })
 
             newBlock.find('.creating_page_input_div[data="relocation"]').click( function() {
