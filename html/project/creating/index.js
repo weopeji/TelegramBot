@@ -40,7 +40,7 @@
                     await _components.render_signature(_project);
 
                     $('.index_page_body_button').click( function() {
-                        _components.correct_signature(_project.signature.type, _id);
+                        _components.correct_signature(_project.data.organization, _id);
                     });
                     
 
