@@ -143,7 +143,7 @@
             {
                 var html = `/html/project/application_number_2/?`;
 
-                html += `fio=${window.allData.User.first_name}&`;
+                html += `fio=${findOfArrayOn_id(_this.inv.data, "fio")}&`;
                 html += `number=2&`;
                 html += `summ=${_this.money}&`;
                 
@@ -159,7 +159,7 @@
                 }
 
                 html += `type=${_this.inv.type}&`;
-                html += `bank=${_this.project.data.bank} ${_this.project.data.account_correct} ${_this.project.data.bik} ${_this.project.data.kpp} ${_this.project.data.recipient} ${_this.project.data.account_get}`;
+                html += `bank=${_this.project.data.bank}`;
                 
                 window.open(html, '_blank');
             })
