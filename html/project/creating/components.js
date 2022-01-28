@@ -957,7 +957,7 @@
         {
             var newBlock = $(`
                 <div class="creating_page_input creating_page_input_document_img">
-                    <img src="./html/assets/images/documentPNG.png" alt="">
+                    <img src="/html/assets/images/documentPNG.png" alt="">
                     <div class="creating_page_input_document_img_hover">
                         <div class="creating_page_input_document_img_hover_row">
                             <span>Скачать договор</span>
