@@ -145,15 +145,18 @@
                     if(_value.length > 0)
                     {
 
-                        var _IdBlock = $(this).parent().parent().parent().parent().attr('data');
+                        var _IdBlock    = $(this).parent().parent().parent().parent().attr('data');
+                        var _typeBlock  = $(this).parent().parent().parent().parent().attr('type');
 
                         if(_IdBlock == "rate")
                         {
                             _value = Number(_value * 12).toFixed(2);
                         }
 
-
-
+                        if(_typeBlock == "date")
+                        {
+                            _value = _value.split('.')[2] + '-' + _value.split('.')[1] + '-' + _value.split('.')[0];
+                        }
 
                         callApi({
                             methodName: 'redactingLineSettingsPage',
