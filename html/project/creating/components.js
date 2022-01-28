@@ -211,6 +211,8 @@
         {
             var _form    = new FormData();
 
+            var _ptsNeed = $(_this.files)[0].type;
+
             _form.append('files', $(_this.files)[0]);
             _form.append('_id', _id);
             _form.append('_pts', $(_this.files)[0].type);
