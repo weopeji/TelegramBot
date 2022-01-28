@@ -1213,6 +1213,20 @@ async function putRedacting(socket,data,callback) {
             if(_name.split('#')[0] != "BB")
             {
                 _data[_name] = element.val;
+            } else 
+            {
+                var allBlackMoreUsers           = _data.moreUsersNotParce;
+                var numberBlock                 = "+" + _name.split('_')[_name.split('_').length - 1];
+
+                for(var _key in allBlackMoreUsers)
+                {
+                    if(_key == numberBlock)
+                    {
+                        allBlackMoreUsers[_name] = element.val;
+                    }
+                }
+
+                _data.moreUsersNotParce = allBlackMoreUsers;
             }
         }
     });
