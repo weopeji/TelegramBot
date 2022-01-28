@@ -1163,4 +1163,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .creating_page_input_div span {
   width: 100%;
 }
+
+.creating_page_input_div_more_inMore_documents {
+  display: none;
+}
 /*# sourceMappingURL=creating.css.map */

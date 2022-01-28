@@ -183,6 +183,8 @@
         {
             var _form    = new FormData();
 
+            var _ptsNeed = $(_this.files)[0].type;
+
             _form.append('files', $(_this.files)[0]);
             _form.append('_id', _id);
             _form.append('_pts', $(_this.files)[0].type);
@@ -197,12 +199,10 @@
                 }
             }).then(data => {
                 if(data.data.status == "ok") {
-                    $('.index_page').empty();
-                    $('.preloader').fadeIn( function() {
-                        $('.preloader').fadeOut( function() {
-                            $('.end_get_project').css('display', "flex");
-                        });
-                    });
+                    global.fileRegMorePts = _ptsNeed;
+
+                    $('.creating_page_input_div[data="pay"]').css('display', 'none');
+                    $('.creating_page_input_div_more_inMore_documents').css('display', 'block');
                 }
             })
         }
@@ -225,12 +225,10 @@
                 }
             }).then(data => {
                 if(data.data.status == "ok") {
-                    $('.index_page').empty();
-                    $('.preloader').fadeIn( function() {
-                        $('.preloader').fadeOut( function() {
-                            $('.end_get_project').css('display', "flex");
-                        });
-                    });
+                    global.fileRegMorePts = _ptsNeed;
+
+                    $('.creating_page_input_div[data="pay"]').css('display', 'none');
+                    $('.creating_page_input_div_more_inMore_documents').css('display', 'block');
                 }
             })
         }
@@ -939,6 +937,17 @@
                     <div class="creating_page_input_div" data="pay">
                         <span style="text-align: center">Загрузить подписаный</span> 
                     </div>
+                    <div class="creating_page_input_div_more_inMore_documents">
+                        <div class="creating_page_input_div" data="pay_more">
+                            <span style="text-align: center">Перезаписать файл</span> 
+                        </div>
+                        <div class="creating_page_input_div" data="open">
+                            <span style="text-align: center">Посмотреть</span> 
+                        </div>
+                        <div class="creating_page_input_div" data="relocation">
+                            <span style="text-align: center">Отправить</span> 
+                        </div>
+                    </div>
                 </div>
             `);
 
@@ -948,6 +957,23 @@
 
             newBlock.find('.creating_page_input_div[data="pay"]').click( function() {
                 $(this).parent().find('input').trigger('click');
+            })
+
+            newBlock.find('.creating_page_input_div[data="pay_more"]').click( function() {
+                $(this).parent().parent().find('input').trigger('click');
+            })
+
+            newBlock.find('.creating_page_input_div[data="open"]').click( function() {
+                window.open(`/projects/${_project._id}/file_signature_document.${global.fileRegMorePts}` , '_blank');
+            })
+
+            newBlock.find('.creating_page_input_div[data="relocation"]').click( function() {
+                $('.index_page').empty();
+                $('.preloader').fadeIn( function() {
+                    $('.preloader').fadeOut( function() {
+                        $('.end_get_project').css('display', "flex");
+                    });
+                });
             })
 
             $('.index_page_body_points').append(newBlock);
@@ -972,13 +998,13 @@
                         <span style="text-align: center">Загрузить подписаный</span> 
                     </div>
                     <div class="creating_page_input_div_more_inMore_documents">
-                        <div class="creating_page_input_div" data="pay">
+                        <div class="creating_page_input_div" data="pay_more">
                             <span style="text-align: center">Перезаписать файл</span> 
                         </div>
-                        <div class="creating_page_input_div" data="pay">
+                        <div class="creating_page_input_div" data="open">
                             <span style="text-align: center">Посмотреть</span> 
                         </div>
-                        <div class="creating_page_input_div" data="pay">
+                        <div class="creating_page_input_div" data="relocation">
                             <span style="text-align: center">Отправить</span> 
                         </div>
                     </div>
@@ -991,6 +1017,23 @@
 
             newBlock.find('.creating_page_input_div[data="pay"]').click( function() {
                 $(this).parent().find('input').trigger('click');
+            })
+
+            newBlock.find('.creating_page_input_div[data="pay_more"]').click( function() {
+                $(this).parent().parent().find('input').trigger('click');
+            })
+
+            newBlock.find('.creating_page_input_div[data="open"]').click( function() {
+                window.open(`/projects/${_project._id}/file_signature_document.${global.fileRegMorePts}` , '_blank');
+            })
+
+            newBlock.find('.creating_page_input_div[data="relocation"]').click( function() {
+                $('.index_page').empty();
+                $('.preloader').fadeIn( function() {
+                    $('.preloader').fadeOut( function() {
+                        $('.end_get_project').css('display', "flex");
+                    });
+                });
             })
 
             $('.index_page_body_points').append(newBlock);
