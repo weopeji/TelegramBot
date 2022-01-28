@@ -971,6 +971,17 @@
                     <div class="creating_page_input_div" data="pay">
                         <span style="text-align: center">Загрузить подписаный</span> 
                     </div>
+                    <div class="creating_page_input_div_more_inMore_documents">
+                        <div class="creating_page_input_div" data="pay">
+                            <span style="text-align: center">Перезаписать файл</span> 
+                        </div>
+                        <div class="creating_page_input_div" data="pay">
+                            <span style="text-align: center">Посмотреть</span> 
+                        </div>
+                        <div class="creating_page_input_div" data="pay">
+                            <span style="text-align: center">Отправить</span> 
+                        </div>
+                    </div>
                 </div>
             `);
 
