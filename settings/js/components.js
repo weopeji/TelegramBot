@@ -481,7 +481,7 @@
 
                     _header.append(headerButton);
                     
-                    var _type = "+" + _project.signature.type;
+                    var _type = "+" + _project.data.organization;
 
                     signature[_type].body.forEach( function(element) {
                         
