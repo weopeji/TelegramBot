@@ -288,7 +288,12 @@
             "string": function(data, put) 
             {
                 if(typeof put != "undefined") {
-                    data.name = data.name + data._id.split("_")[data._id.split("_").length - 1];
+                    data.name = data.name + " Cобственник номер: " + data._id.split("_")[data._id.split("_").length - 1];
+                }
+
+                if(typeof data.info == "undefined")
+                {
+                    data.info = "";
                 }
 
                 var _line = $(`
@@ -405,8 +410,12 @@
 
                 return _line;
             },
-            "file": function(data) 
+            "file": function(data, put) 
             {
+                if(typeof put != "undefined") {
+                    data.name = data.name + " Cобственник номер: " + data._id.split("_")[data._id.split("_").length - 1];
+                }
+
                 var _file = `
                     <div class="download_buttons">
                         <input class="file_load" id='${data._id}' type='file'>
@@ -485,9 +494,17 @@
 
                 return _line;
             },
-            "date": function(data) 
+            "date": function(data, put) 
             {
-               
+                if(typeof put != "undefined") {
+                    data.name = data.name + " Cобственник номер: " + data._id.split("_")[data._id.split("_").length - 1];
+                }
+
+                if(typeof data.info == "undefined")
+                {
+                    data.info = "";
+                }
+
                 var _line = $(`
                     <div class="body_point_line" data="date">
                         <div class="body_point_line_header">
