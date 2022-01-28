@@ -914,28 +914,6 @@
 
         render_signature_document(_project) 
         {
-
-            var _block = $(`
-                <div class="body_point_adder_document_block">
-                    <div class="body_point_adder_document_block_logo">
-                        <img src="./imgs/Google_Docs_logo.png" alt="">
-                    </div>
-                    <div class="body_point_adder_document_block_buttons">
-                        <div class="body_point_adder_document_block_buttons_row">
-                            <div class="body_point_line_header_text">
-                                <input class="file_load" id='signature_mass' type='file'>
-                            </div>
-                            <div class="body_point_adder_document_block_buttons_button" data="download">
-                                <span>Скачать договор</span>
-                            </div>
-                            <div class="body_point_adder_document_block_buttons_button" data="upload">
-                                <span>Загрузить подписаный</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `);
-
             var newBlock = $(`
                 <div class="creating_page_input creating_page_input_document_img">
                     <img src="/html/assets/images/documentPNG.png" alt="">
@@ -952,11 +930,11 @@
                 </div>
             `);
 
-            _block.find('.body_point_adder_document_block_buttons_button[data="download"]').click( function() {
+            newBlock.find('.creating_page_input_document_img_hover_row span').click( function() {
                 window.open(`https://invester-relocation.site/projects/${_project._id}/signature_document.pdf`, "_blank");
             })
 
-            _block.find('.body_point_adder_document_block_buttons_button[data="upload"]').click( function() {
+            newBlock.find('.creating_page_input_div[data="pay"]').click( function() {
                 $(this).parent().find('input').trigger('click');
             })
 
@@ -965,27 +943,6 @@
 
         render_registration_document(_project) 
         {
-            var _block = $(`
-                <div class="body_point_adder_document_block">
-                    <div class="body_point_adder_document_block_logo">
-                        <img src="./imgs/Google_Docs_logo.png" alt="">
-                    </div>
-                    <div class="body_point_adder_document_block_buttons">
-                        <div class="body_point_adder_document_block_buttons_row">
-                            <div class="body_point_line_header_text">
-                                <input class="file_load" id='signature_mass' type='file'>
-                            </div>
-                            <div class="body_point_adder_document_block_buttons_button" data="download">
-                                <span>Скачать договор</span>
-                            </div>
-                            <div class="body_point_adder_document_block_buttons_button" data="upload">
-                                <span>Загрузить подписаный</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `);
-
             var newBlock = $(`
                 <div class="creating_page_input creating_page_input_document_img">
                     <img src="./html/assets/images/documentPNG.png" alt="">
@@ -1002,11 +959,11 @@
                 </div>
             `);
 
-            _block.find('.body_point_adder_document_block_buttons_button[data="download"]').click( function() {
+            newBlock.find('.creating_page_input_document_img_hover_row span').click( function() {
                 window.open(`https://invester-relocation.site/projects/${_project._id}/${_project.registrationDocument.document}`, "_blank");
             })
 
-            _block.find('.body_point_adder_document_block_buttons_button[data="upload"]').click( function() {
+            newBlock.find('.creating_page_input_div[data="pay"]').click( function() {
                 $(this).parent().find('input').trigger('click');
             })
 
