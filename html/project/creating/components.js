@@ -201,6 +201,8 @@
                 if(data.data.status == "ok") {
                     global.fileRegMorePts = _ptsNeed.split('/')[1];
 
+                    alert('Успешно!');
+
                     $('.creating_page_input_div[data="pay"]').css('display', 'none');
                     $('.creating_page_input_div_more_inMore_documents').css('display', 'block');
                 }
@@ -228,6 +230,8 @@
             }).then(data => {
                 if(data.data.status == "ok") {
                     global.fileRegMorePts = _ptsNeed.split('/')[1];
+
+                    alert('Успешно!');
 
                     $('.creating_page_input_div[data="pay"]').css('display', 'none');
                     $('.creating_page_input_div_more_inMore_documents').css('display', 'block');

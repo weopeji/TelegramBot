@@ -790,11 +790,11 @@ app.post('/file_registration_document.io/files', (req, res) => {
 
                     await Project.findOneAndUpdate({_id: _data._id}, {type: "moderation", registrationDocument: sign});
 
-                    helper_functions.alertAdmin({
-                        type: "correct_signature",
-                        text: "Был подписан документ в проекте!",
-                        projectId: _data._id,
-                    })
+                    // helper_functions.alertAdmin({
+                    //     type: "correct_signature",
+                    //     text: "Был подписан документ в проекте!",
+                    //     projectId: _data._id,
+                    // })
                 });
             } else {
                 console.log('Файл не найден');
