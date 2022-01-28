@@ -287,6 +287,10 @@
         {
             "string": function(data, put) 
             {
+                if(typeof put != "undefined") {
+                    data.name = data.name + data._id.split("_")[data._id.split("_").length - 1];
+                }
+
                 var _line = $(`
                     <div class="body_point_line" data="string">
                         <div class="body_point_line_header">
@@ -346,12 +350,6 @@
                             $(this).val('Бессрочно');
                         }
                     });
-                }
-
-                if(typeof put != "undefined") {
-                    _line.find(`#${data._id}`).val(put.data[data._id]);
-                    _line.find('._yes').css('display', "block");
-                    _line.find('._not').css('display', "none");
                 }
 
                 if(typeof data.phone != "undefined") {
@@ -1057,7 +1055,7 @@
                 {
                     _body.append(_this.dataLines[element.type](data));
                 } else {
-                    _body.append(_this.dataLines[element.type](element));
+                    _body.append(_this.dataLines[element.type](element, true));
                 }
                 
                 _body.css('padding-top', "20px");
