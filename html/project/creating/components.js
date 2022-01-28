@@ -986,6 +986,22 @@
                 </div>
             `);
 
+            var newBlock = $(`
+                <div class="creating_page_input creating_page_input_document_img">
+                    <img src="./html/assets/images/documentPNG.png" alt="">
+                    <div class="creating_page_input_document_img_hover">
+                        <div class="creating_page_input_document_img_hover_row">
+                            <span>Скачать договор</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="creating_page_input">
+                    <div class="creating_page_input_div" data="pay">
+                        <span style="text-align: center">Загрузить подписаный</span> 
+                    </div>
+                </div>
+            `);
+
             _block.find('.body_point_adder_document_block_buttons_button[data="download"]').click( function() {
                 window.open(`https://invester-relocation.site/projects/${_project._id}/${_project.registrationDocument.document}`, "_blank");
             })
@@ -994,7 +1010,7 @@
                 $(this).parent().find('input').trigger('click');
             })
 
-            $('.index_page_body_points').append(_block);
+            $('.index_page_body_points').append(newBlock);
         }
 
         getId(_id) {
