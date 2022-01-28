@@ -813,36 +813,6 @@
                     body: [
                         {
                             type: "file",
-                            name: `Приказ о назначении руководителя`,
-                            _id: "file+3_s"
-                        },
-                        {
-                            type: "file",
-                            name: `Свидетельство ИНН`,
-                            _id: "file+4_s"
-                        },
-                        {
-                            type: "file",
-                            name: `ОГРН`,
-                            _id: "file+5_s"
-                        },
-                        {
-                            type: "file",
-                            name: `Карточка с банковскими реквизитами`,
-                            _id: "file+6_s"
-                        },
-                        {
-                            type: "file",
-                            name: `Бух.отчетность за последний год`,
-                            _id: "file+7_s"
-                        },
-                    ]
-                },
-                "+2": {
-                    header: "Загрузите документы",
-                    body: [
-                        {
-                            type: "file",
                             name: `Устав`,
                             _id: "file+1_s"
                         },
@@ -876,7 +846,36 @@
                             name: `Бух.отчетность за последний год`,
                             _id: "file+7_s"
                         },
-                        
+                    ]
+                },
+                "+2": {
+                    header: "Загрузите документы",
+                    body: [
+                        {
+                            type: "file",
+                            name: `Приказ о назначении руководителя`,
+                            _id: "file+3_s"
+                        },
+                        {
+                            type: "file",
+                            name: `Свидетельство ИНН`,
+                            _id: "file+4_s"
+                        },
+                        {
+                            type: "file",
+                            name: `ОГРН`,
+                            _id: "file+5_s"
+                        },
+                        {
+                            type: "file",
+                            name: `Карточка с банковскими реквизитами`,
+                            _id: "file+6_s"
+                        },
+                        {
+                            type: "file",
+                            name: `Бух.отчетность за последний год`,
+                            _id: "file+7_s"
+                        },
                     ]
                 },
                 "+3": {
@@ -899,7 +898,7 @@
             this.signature = _dataNEedPutNew;
 
 
-            var _type = _project.signature.type;
+            var _type = _project.data.organization;
 
             
             var data = _dataNEedPutNew["+" + _type];
