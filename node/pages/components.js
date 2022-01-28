@@ -1222,7 +1222,7 @@ async function putRedacting(socket,data,callback) {
                 {
                     if(_key == numberBlock)
                     {
-                        allBlackMoreUsers[_name] = element.val;
+                        allBlackMoreUsers[_key][_name] = element.val;
                     }
                 }
 
