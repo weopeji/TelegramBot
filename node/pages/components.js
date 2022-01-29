@@ -960,13 +960,8 @@ async function acceptInvestor(socket,data,callback)
         {
             var RateBlock       = Number(_Project.data.rate / 12 / 30);
             var LastData        = NowToday.plus({ months: ProjectDate });
-            var HowManyDays     = Interval.fromDateTimes(NowToday, LastData);
+            var HowManyDays     = Interval.fromDateTimes(NowToday, LastData).length('days');
             var EveryDayPayment = Number(InvPay / 100 * RateBlock).toFixed(0);
-
-            console.log(RateBlock);
-            console.log(LastData);
-            console.log(HowManyDays);
-            console.log(EveryDayPayment);
 
             for(var i = 0; i < HowManyDays; i++)
             {
