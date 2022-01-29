@@ -193,6 +193,7 @@ async function ALL_DATA(socket, data, callback)
                 activeInvs: [],
                 waitInvs: [],
                 invested: 0,
+                paid: 0,
             };
 
             for(var _Inv of _Invs)
@@ -240,6 +241,17 @@ async function ALL_DATA(socket, data, callback)
                 });
 
                 _blockData.waitInvs.push(_waitInvBlock);
+            }
+
+            for(var _Inv of _Invs)
+            {
+                for(var pay of _Inv.pays)
+                {
+                    if(pay.status == "accept")
+                    {
+                        _blockData.paid = _blockData.paid + Number(pay.pay);
+                    }
+                }
             }
 
             resolve(_blockData);
