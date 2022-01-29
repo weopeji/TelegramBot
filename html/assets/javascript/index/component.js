@@ -494,14 +494,25 @@
                     var maxDate             = new Date(Number(element.Inv.date));
                     var maxDateFormatted    =  this.pad(maxDate.getDate(), 2, '0') + '.' + this.pad(maxDate.getMonth() + 1, 2, '0') + '.' + maxDate.getFullYear();
 
+                    var lastPay = 0;
+
+                    for(var payInv of element.Inv.pays)
+                    {
+                        if(payInv.status == "wait")
+                        {
+                            lastPay = payInv.pay;
+                            break;
+                        }
+                    }
+
                     var template_text = $(`
                         <div class="settingBlock_body_line" data="${element.Inv.invester}" data-more="${element.Inv.projectId}">
                             <span>${i + 1}</span>
                             <span>${element.project._id}</span>
                             <span>${element.project.data.name}</span>
                             <span>${element.project._id}/${element.number} от ${maxDateFormatted}</span>
-                            <span>${element.project.data.attraction_amount}</span>
-                            <span>${element.Inv.data.pay}</span>
+                            <span>${element.Inv.data.pay} руб</span>
+                            <span>${lastPay}</span>
                         </div>
                     `);
 
