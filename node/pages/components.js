@@ -992,7 +992,9 @@ async function acceptInvestor(socket,data,callback)
         },
         "Ежеквартально": async function()
         {
-
+            var RateBlock       = Number(_Project.data.rate / 12 * 3);
+            var LastData        = NowToday.plus({ months: ProjectDate });
+            var HowManyDays     = Interval.fromDateTimes(NowToday, LastData).length('month');
         },
         "Ежегодно": async function()
         {

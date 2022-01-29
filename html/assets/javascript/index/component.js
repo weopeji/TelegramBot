@@ -423,7 +423,7 @@
                             <div class="invester_status_projects_status_first">
                                 <div class="invester_status_projects_status_first_line">
                                     <span>Проинвестировано</span>
-                                    <a>${_data.invester_data.invested} руб.</a>
+                                    <a>${_data.invester_data.invested.replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')} руб.</a>
                                     <span>Выплачено</span>
                                     <a>0 руб</a>
                                 </div>
