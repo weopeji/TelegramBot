@@ -945,70 +945,90 @@ async function invester_status_project(socket,data,callback)
 
 async function acceptInvestor(socket,data,callback) 
 {
-    var _Project        = await Project.findOne({_id: data.projectId});
-    var _InvDoc         = await InvDoc.findOne({invester: data.id, projectId: data.projectId});
-    var _User           = await User.findOne({user: _Project.user});
-    var moneyPay        = _InvDoc.data.pay;
-    var mouncePay       = _Project.data.date;
-    var payments        = 
-    {
-        "Ежедневно": 1,
-        "Ежемесячно": 30,
-        "Ежеквартально": 90,
-        "Ежегодно": 360,
-    };
-    var date_payments   = payments[_Project.data.date_payments];
-    var _rate           = (_Project.data.rate / 12 / 30) * date_payments;
-    var manyPays        = (mouncePay * 30) / date_payments;
-    var needPayment     = moneyPay * (_rate / 100);
+    var _Project            = await Project.findOne({_id: data.projectId});
+    var _InvDoc             = await InvDoc.findOne({invester: data.id, projectId: data.projectId});
+    var _User               = await User.findOne({user: _Project.user});
 
-    var pays = [];
+    var InvPay              = Number(_InvDoc.data.pay.toString().replace(/\s/g, ''));
+    var ProjectDate         = Number(_Project.data.date.toString().replace(/\s/g, ''));
+    var InvDayrate          = Number(_Project.data.rate / 12 / 30);
+    var InvPays             = [];
     
-    for(var i = 0; i < manyPays; i++)
+    var paymentsFunction    = 
     {
-        var needDate = new Date(new Date().getTime() + (date_payments * (i + 1) * 86400000)).getTime();
+        "Ежедневно": async function()
+        {
 
-        pays.push({
-            pay: needPayment,
-            date: needDate,
-            receipt: null,
-            status: "wait",
-        });
-    }
+        },
+        "Ежемесячно": async function()
+        {
 
-    h.full_alert_user(data.id, `Ваша инвестиция была подтверждена! Номер проекта ${_Project._id}`, "acceptInvestor");
+        },
+        "Ежеквартально": async function()
+        {
 
-    var _InvDocNeed = await InvDoc.findOneAndUpdate({invester: data.id, projectId: data.projectId}, {status: "accept", pays: pays, date: new Date().getTime()});
+        },
+        "Ежегодно": async function()
+        {
 
-    var _UserInv = await User.findOne({user: _InvDoc.invester});
+        },
+        "Раз в 6 месяцев": async function()
+        {
 
-    if(_UserInv.member)
-    {
-        console.log("MEMBER!");
-        await Payments.create({
-            user: _UserInv.member,
-            type: "investing",
-            pay: _InvDoc.data.pay,
-            status: "wait",
-            data: {
-                _id: _InvDoc.invester
-            },
-        })
-    }
+        },
+        "В конце срока": async function()
+        {
 
-    if(_UserInv.member_b)
-    {
-        console.log("MEMBER_B!");
-        await Payments.create({
-            user: _UserInv.member_b,
-            type: "business",
-            pay: _InvDoc.data.pay,
-            status: "wait",
-            data: {
-                _id: _Project._id
-            },
-        })
-    }
+        },
+    };
+
+    paymentsFunction[_Project.data.date_payments]();
+    
+    // for(var i = 0; i < manyPays; i++)
+    // {
+    //     var needDate = new Date(new Date().getTime() + (date_payments * (i + 1) * 86400000)).getTime();
+
+    //     pays.push({
+    //         pay: needPayment,
+    //         date: needDate,
+    //         receipt: null,
+    //         status: "wait",
+    //     });
+    // }
+
+    // h.full_alert_user(data.id, `Ваша инвестиция была подтверждена! Номер проекта ${_Project._id}`, "acceptInvestor");
+
+    // var _InvDocNeed = await InvDoc.findOneAndUpdate({invester: data.id, projectId: data.projectId}, {status: "accept", pays: pays, date: new Date().getTime()});
+
+    // var _UserInv = await User.findOne({user: _InvDoc.invester});
+
+    // if(_UserInv.member)
+    // {
+    //     console.log("MEMBER!");
+    //     await Payments.create({
+    //         user: _UserInv.member,
+    //         type: "investing",
+    //         pay: _InvDoc.data.pay,
+    //         status: "wait",
+    //         data: {
+    //             _id: _InvDoc.invester
+    //         },
+    //     })
+    // }
+
+    // if(_UserInv.member_b)
+    // {
+    //     console.log("MEMBER_B!");
+    //     await Payments.create({
+    //         user: _UserInv.member_b,
+    //         type: "business",
+    //         pay: _InvDoc.data.pay,
+    //         status: "wait",
+    //         data: {
+    //             _id: _Project._id
+    //         },
+    //     })
+    // }
 
     callback(_InvDocNeed);
 }
