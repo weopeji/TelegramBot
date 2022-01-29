@@ -958,6 +958,7 @@ async function acceptInvestor(socket,data,callback)
     {
         "Ежедневно": async function()
         {
+            console.log('ok');
             var RateBlock       = Number(_Project.data.rate / 12 / 30);
             var LastData        = NowToday.plus({ months: ProjectDate });
             var HowManyDays     = Interval.fromDateTimes(NowToday, LastData);
@@ -997,7 +998,7 @@ async function acceptInvestor(socket,data,callback)
 
     paymentsFunction[_Project.data.date_payments]();
 
-    console.log(InvPays);
+    console.log(_Project.data.date_payments);
     
     // for(var i = 0; i < manyPays; i++)
     // {
