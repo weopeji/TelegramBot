@@ -996,6 +996,8 @@ async function acceptInvestor(socket,data,callback)
     };
 
     paymentsFunction[_Project.data.date_payments]();
+
+    console.log(InvPays);
     
     // for(var i = 0; i < manyPays; i++)
     // {
