@@ -961,12 +961,12 @@ async function acceptInvestor(socket,data,callback)
             var RateBlock       = Number(_Project.data.rate / 12 / 30);
             var LastData        = NowToday.plus({ months: ProjectDate });
             var HowManyDays     = Interval.fromDateTimes(NowToday, LastData).length('days');
-            var EveryDayPayment = Number(InvPay / 100 * RateBlock).toFixed(0);
+            var EveryPayment    = Number(InvPay / 100 * RateBlock).toFixed(0);
 
             for(var i = 0; i < HowManyDays; i++)
             {
                 InvPays.push({
-                    pay: EveryDayPayment,
+                    pay: EveryPayment,
                     date: NowToday.plus({ days: i + 1 }),
                     receipt: null,
                     status: "wait",
@@ -975,7 +975,20 @@ async function acceptInvestor(socket,data,callback)
         },
         "Ежемесячно": async function()
         {
+            var RateBlock       = Number(_Project.data.rate / 12);
+            var LastData        = NowToday.plus({ months: ProjectDate });
+            var HowManyDays     = Interval.fromDateTimes(NowToday, LastData).length('month');
+            var EveryPayment    = Number(InvPay / 100 * RateBlock).toFixed(0);
 
+            for(var i = 0; i < HowManyDays; i++)
+            {
+                InvPays.push({
+                    pay: EveryPayment,
+                    date: NowToday.plus({ months: i + 1 }),
+                    receipt: null,
+                    status: "wait",
+                });
+            }
         },
         "Ежеквартально": async function()
         {
