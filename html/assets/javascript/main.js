@@ -278,6 +278,10 @@ Number.prototype.toDivide = function() {
     return number;
 }
 
+String.prototype.ReplaceNumber = () {
+    return this.replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')
+}
+
 Date.prototype.customFormat = function(formatString) {
     var YYYY,YY,MMMM,MMM,MM,M,DDDD,DDD,DD,D,hhhh,hhh,hh,h,mm,m,ss,s,ampm,AMPM,dMod,th;
     YY = ((YYYY=this.getFullYear())+"").slice(-2);
