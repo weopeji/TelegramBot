@@ -1011,7 +1011,7 @@ async function acceptInvestor(socket,data,callback)
 
     // h.full_alert_user(data.id, `Ваша инвестиция была подтверждена! Номер проекта ${_Project._id}`, "acceptInvestor");
 
-    var _InvDocNeed = await InvDoc.findOneAndUpdate({invester: data.id, projectId: data.projectId}, {status: "accept", pays: pays, date: new Date().getTime()});
+    var _InvDocNeed = await InvDoc.findOneAndUpdate({invester: data.id, projectId: data.projectId}, {status: "accept", pays: InvPays, date: new Date().getTime()});
 
     // var _UserInv = await User.findOne({user: _InvDoc.invester});
 
