@@ -278,8 +278,7 @@ Number.prototype.toDivide = function() {
     return number;
 }
 
-String.prototype.ReplaceNumber = () => {
-    console.log(this);
+String.prototype.ReplaceNumber = function () {
     return this.replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')
 }
 
