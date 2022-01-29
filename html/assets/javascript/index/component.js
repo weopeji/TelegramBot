@@ -512,7 +512,7 @@
                             <span>${element.project.data.name}</span>
                             <span>${element.project._id}/${element.number} от ${maxDateFormatted}</span>
                             <span>${element.Inv.data.pay} руб</span>
-                            <span>${lastPay}</span>
+                            <span>${lastPay} руб</span>
                         </div>
                     `);
 
@@ -1266,7 +1266,7 @@
                         <span>Активные проекты</span>
                     </div>
                     <div class="index_page_menu_block_line" data="wait_projects">
-                        <i class="fal fa-chart-line"></i>
+                        <i class="fal fa-inventory"></i>
                         <span>Ожидают подтверждения</span>
                     </div>
                     <div class="index_page_menu_block_line" data="Attracted_by_me">
