@@ -429,7 +429,7 @@
                                 </div>
                                 <div class="invester_status_projects_status_first_line">
                                     <span>Ближайшие поступления</span>
-                                    <a>0</a>
+                                    <a>${_data.invester_data.receipts.toString().ReplaceNumber()} руб</a>
                                     <span>Денежный поток в год</span>
                                     <a>0 руб</a>
                                 </div>
