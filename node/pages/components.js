@@ -20,6 +20,7 @@ let {PythonShell}           = require('python-shell')
 const Instagram             = require('instagram-web-api');
 var axios                   = require('axios');
 const ParcingPage           = require('./parcing');
+var { DateTime, Interval }  = require("luxon");
 
 
 module.exports = {
@@ -947,18 +948,30 @@ async function acceptInvestor(socket,data,callback)
 {
     var _Project            = await Project.findOne({_id: data.projectId});
     var _InvDoc             = await InvDoc.findOne({invester: data.id, projectId: data.projectId});
-    var _User               = await User.findOne({user: _Project.user});
 
-    var InvPay              = Number(_InvDoc.data.pay.toString().replace(/\s/g, ''));
-    var ProjectDate         = Number(_Project.data.date.toString().replace(/\s/g, ''));
-    var InvDayrate          = Number(_Project.data.rate / 12 / 30);
+    var InvPay              = Number(_InvDoc.data.pay.toString().replace(/\s/g, ''));       // 100 000
+    var ProjectDate         = Number(_Project.data.date.toString().replace(/\s/g, ''));     // 2 мес \ Бессрочно
+    var NowToday            = DateTime.now().setZone("Europe/Moscow");
     var InvPays             = [];
     
     var paymentsFunction    = 
     {
         "Ежедневно": async function()
         {
+            var RateBlock       = Number(_Project.data.rate / 12 / 30);
+            var LastData        = NowToday.plus({ months: ProjectDate });
+            var HowManyDays     = Interval.fromDateTimes(NowToday, LastData);
+            var EveryDayPayment = Number(InvPay / 100 * RateBlock).toFixed(0);
 
+            for(var i = 0; i < HowManyDays; i++)
+            {
+                InvPays.push({
+                    pay: EveryDayPayment,
+                    date: NowToday.plus({ days: i + 1 }),
+                    receipt: null,
+                    status: "wait",
+                });
+            }
         },
         "Ежемесячно": async function()
         {
@@ -998,7 +1011,7 @@ async function acceptInvestor(socket,data,callback)
 
     // h.full_alert_user(data.id, `Ваша инвестиция была подтверждена! Номер проекта ${_Project._id}`, "acceptInvestor");
 
-    // var _InvDocNeed = await InvDoc.findOneAndUpdate({invester: data.id, projectId: data.projectId}, {status: "accept", pays: pays, date: new Date().getTime()});
+    var _InvDocNeed = await InvDoc.findOneAndUpdate({invester: data.id, projectId: data.projectId}, {status: "accept", pays: pays, date: new Date().getTime()});
 
     // var _UserInv = await User.findOne({user: _InvDoc.invester});
 
