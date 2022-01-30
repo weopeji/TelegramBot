@@ -792,11 +792,11 @@
                                 <span>Проинвестировано</span>
                                 <a>${Project_data.data.attraction_amount} руб.</a>
                                 <span>Выплачено</span>
-                                <a>${_data.invester_data.paid.toString().ReplaceNumber()} руб</a>
+                                <a>0 руб</a>
                             </div>
                             <div class="invester_status_projects_status_first_line">
                                 <span>Выплачено</span>
-                                <a>${_data.invester_data.receipts.toString().ReplaceNumber()} руб</a>
+                                <a>0 руб</a>
                                 <span>Денежный поток в год</span>
                                 <a>0 руб</a>
                             </div>
