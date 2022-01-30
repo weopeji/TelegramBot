@@ -47,6 +47,56 @@
             `);
 
             $('.index_page_body_data').append(settingBlock);
+
+            var settingBlock = $(`
+                <div class="obligations_block">
+
+                </div>
+            `);
+
+            _data.obligations_data.showBlocks.forEach(element => {
+                var elementBlock = $(`
+                    <div class="obligations_block_element">
+                        <h1>Проект № ${element.project._id}</h1>
+                        <h2>${element.project.data.name}</h2>
+                        <div class="obligations_block_element_line">
+                            <span>Привлечено</span>
+                            <p>${element.attracted.toString().ReplaceNumber()} руб</p>
+                        </div>
+                        <div class="obligations_block_element_line">
+                            <span>Коммисия investER</span>
+                            <p>${element.project.payersData.commission} %</p>
+                        </div>
+                        <div class="obligations_block_element_line">
+                            <span>Коммисия investER</span>
+                            <p>${element.accrued.toString().ReplaceNumber()} руб</p>
+                        </div>
+                        <div class="obligations_block_element_line">
+                            <span>Выплачено</span>
+                            <p>0 руб</p>
+                        </div>
+                        <div class="obligations_block_element_line">
+                            <span>Задолженость</span>
+                            <p>0 руб</p>
+                        </div>
+                        <div class="obligations_block_element_line">
+                            <span>Погаисть до</span>
+                            <p>0</p>
+                        </div>
+                        <div class="obligations_block_element_line">
+                            <span>Договор реквезиты</span>
+                            <a>Открыть</a>
+                        </div>
+                        <div class="obligations_block_element_button">
+                            <span>Написать investER</span>
+                        </div>
+                    </div>
+                `);
+
+                settingBlock.append(elementBlock);
+            });
+
+            $('.index_page_body_data').append(settingBlock);
         }
     }
 
