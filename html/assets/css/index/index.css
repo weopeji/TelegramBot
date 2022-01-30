@@ -1562,21 +1562,27 @@ html, body {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  background-color: #182037;
 }
 
-.obligations_block h1, .obligations_block h2 {
+.obligations_block .obligations_block_element {
+  background-color: #182037;
+  width: calc(33% - 20px);
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.obligations_block .obligations_block_element h1, .obligations_block .obligations_block_element h2 {
   text-align: center;
 }
 
-.obligations_block .obligations_block_element_line {
+.obligations_block .obligations_block_element .obligations_block_element_line {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.obligations_block .obligations_block_element_line span {
+.obligations_block .obligations_block_element .obligations_block_element_line span {
   color: #8592C6;
 }
 
