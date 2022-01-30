@@ -767,7 +767,6 @@
 
         async render(data_rt) 
         {
-
             var _data = await callApi({
                 methodName: "getAllProjectsBusiness",
                 data: data_rt._id,
@@ -818,32 +817,6 @@
                 methodName: "getProject",
                 data: _GET('id'),
             });
-
-            var _Invs = await callApi({
-                methodName: "getInvestorsProject",
-                data: _GET('id'),
-            });
-
-            var _getPaysProject = await callApi({
-                methodName: "getPaysProject",
-                data: _GET('id'),
-            })
-
-            var _attraction_amount  = Project_data.data.attraction_amount;
-            _attraction_amount      = _attraction_amount.replace(/\s/g, '');
-            var _procent             = (_getPaysProject / _attraction_amount) * 100;
-
-            console.log(Project_data);
-            console.log(_Invs);
-
-            var initialDate = Project_data.data.collection_period;
-            var now = Date.now();
-            var difference = now - initialDate;
-            var millisecondsPerDay = 24 * 60 * 60 * 1000;
-            var daysSince = Math.floor(difference / millisecondsPerDay);
-
-            console.log(daysSince);
-
 
             var _header = $(`
                 <div class="info_block_project">
