@@ -1784,9 +1784,7 @@ async function getUser(socket,data,callback) {
 
 async function getProject(socket,data,callback) 
 {
-    var needProject = await Project.findOne({_id: data});
-
-    var _project    = needProject;
+    var _project = await Project.findOne({_id: data});
 
     _project.moreGetData = {
         acceptInvs: await InvDoc.find({projectId: _project._id, status: "accept"}),
@@ -1800,7 +1798,9 @@ async function getProject(socket,data,callback)
                 _project.moreGetData.paysAcceptInvs = _project.moreGetData.paysAcceptInvs + payElement.pay;
             }
         })
-    })
+    });
+
+    console.log(_project.moreGetData);
 
     callback(_project);
 }
