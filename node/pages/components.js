@@ -1819,6 +1819,7 @@ async function getProjectNew(socket, data, callback)
         moreGetData: {
             acceptInvs: await InvDoc.find({projectId: _project._id, status: "accept"}),
             paysAcceptInvs: 0,
+            paysInvesters: 0,
         }
     }
 
@@ -1826,9 +1827,13 @@ async function getProjectNew(socket, data, callback)
         acceptInv.pays.forEach(payElement => {
             if(payElement.status == "accept")
             {
-                _project.moreGetData.paysAcceptInvs = _project.moreGetData.paysAcceptInvs + payElement.pay;
+                all_data.moreGetData.paysAcceptInvs = all_data.moreGetData.paysAcceptInvs + payElement.pay;
             }
         })
+    });
+
+    all_data.moreGetData.acceptInvs.forEach(acceptInv => {
+        all_data.moreGetData.paysInvesters = all_data.moreGetData.paysInvesters + Number(acceptInv.data.pay.toString().replace(/\s/g, ''));
     });
 
     callback(all_data);

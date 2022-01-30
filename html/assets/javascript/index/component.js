@@ -791,12 +791,12 @@
                             <div class="invester_status_projects_status_first_line">
                                 <span>Проинвестировано</span>
                                 <a>${Project_data.project.data.attraction_amount} руб.</a>
-                                <span>Выплачено</span>
-                                <a>0 руб</a>
+                                <span>Собрано</span>
+                                <a>${Project_data.moreGetData.paysInvesters} руб</a>
                             </div>
                             <div class="invester_status_projects_status_first_line">
                                 <span>Выплачено</span>
-                                <a>0 руб</a>
+                                <a>${Project_data.moreGetData.paysAcceptInvs} руб</a>
                                 <span>Денежный поток в год</span>
                                 <a>0 руб</a>
                             </div>
