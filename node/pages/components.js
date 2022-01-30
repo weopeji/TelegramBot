@@ -1787,7 +1787,7 @@ async function getProject(socket,data,callback)
     var _project = await Project.findOne({_id: data});
 
     _project.moreGetData = {
-        acceptInvs: await Inv.find({projectId: _project._id, status: "accept"}),
+        acceptInvs: await InvDoc.find({projectId: _project._id, status: "accept"}),
         paysAcceptInvs: 0,
     };
 
