@@ -320,7 +320,7 @@ async function statusProjects(msg) {
     var _array  = [];
     var _User   = await User.findOne({user: msg.from.id});
 
-    var html = `Инвестор ${_User.first_name}\nВы находитесь в меню "Статус получения денег бизнесом"`;
+    var html = `Инвестор ${_User.first_name}\nВы находитесь в меню "Ожидают подтверждения"`;
     var fat = await bot.sendMessage(msg.chat.id, toEscapeMSg(html), {
         parse_mode: "html",
         reply_markup: {  
