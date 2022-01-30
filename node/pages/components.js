@@ -1804,7 +1804,7 @@ async function getProject(socket,data,callback)
                 _project.moreGetData.paysAcceptInvs = _project.moreGetData.paysAcceptInvs + payElement.pay;
             }
         })
-    });
+    }); 
 
     _dataPush.moreGetData = moreGetData; 
 
