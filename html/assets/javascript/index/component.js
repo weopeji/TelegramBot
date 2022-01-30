@@ -770,15 +770,15 @@
         async renderType()
         {
             var Project_data = await callApi({
-                methodName: "getProject",
+                methodName: "getProjectNew",
                 data: _GET('id'),
             });
 
             var _header = $(`
                 <div class="info_block_project">
-                    <span>№ ${Project_data._id}</span>
-                    <span>${Project_data.data.name}</span>
-                    <span>${Project_data.type}</span>
+                    <span>№ ${Project_data.project._id}</span>
+                    <span>${Project_data.project.data.name}</span>
+                    <span>${Project_data.project.type}</span>
                 </div>
             `);
 
@@ -790,7 +790,7 @@
                         <div class="invester_status_projects_status_first">
                             <div class="invester_status_projects_status_first_line">
                                 <span>Проинвестировано</span>
-                                <a>${Project_data.data.attraction_amount} руб.</a>
+                                <a>${Project_data.project.data.attraction_amount} руб.</a>
                                 <span>Выплачено</span>
                                 <a>0 руб</a>
                             </div>

@@ -84,6 +84,7 @@ var action_linker =
     "getModerations": getModerations,
     "getActive": getActive,
     "getProject": getProject,
+    "getProjectNew": getProjectNew,
     "getUser": getUser,
     "setProject": setProject,
     "getСorrection": getСorrection,
@@ -1787,28 +1788,50 @@ async function getProject(socket,data,callback)
     var _project    = await Project.findOne({_id: data});
     var _dataPush   = null;
 
-    for(var _key in _project)
-    {
-        _dataPush[_key] = _project[_key];
+    // for(var datainProject of)
+
+    // var moreGetData = {
+    //     acceptInvs: await InvDoc.find({projectId: _project._id, status: "accept"}),
+    //     paysAcceptInvs: 0,
+    // };
+
+    // moreGetData.acceptInvs.forEach(acceptInv => {
+    //     acceptInv.pays.forEach(payElement => {
+    //         if(payElement.status == "accept")
+    //         {
+    //             _project.moreGetData.paysAcceptInvs = _project.moreGetData.paysAcceptInvs + payElement.pay;
+    //         }
+    //     })
+    // });
+
+    // _project.moreGetData = moreGetData; 
+
+    // console.log(_project);
+
+    callback(_project);
+}
+
+async function getProjectNew(socket, data, callback)
+{
+    var _project    = await Project.findOne({_id: data});
+    var all_data = {
+        project: _project,
+        moreGetData: {
+            acceptInvs: await InvDoc.find({projectId: _project._id, status: "accept"}),
+            paysAcceptInvs: 0,
+        }
     }
 
-    var moreGetData = {
-        acceptInvs: await InvDoc.find({projectId: _project._id, status: "accept"}),
-        paysAcceptInvs: 0,
-    };
-
-    moreGetData.acceptInvs.forEach(acceptInv => {
+    all_data.moreGetData.acceptInvs.forEach(acceptInv => {
         acceptInv.pays.forEach(payElement => {
             if(payElement.status == "accept")
             {
                 _project.moreGetData.paysAcceptInvs = _project.moreGetData.paysAcceptInvs + payElement.pay;
             }
         })
-    }); 
+    });
 
-    _dataPush.moreGetData = moreGetData; 
-
-    callback(_dataPush);
+    callback(all_data);
 }
 
 async function getActive(socket,data,callback) {
