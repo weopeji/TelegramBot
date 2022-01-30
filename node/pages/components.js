@@ -1802,6 +1802,8 @@ async function getProject(socket,data,callback)
 
     _project.moreGetData = moreGetData; 
 
+    console.log(_project);
+
     callback(_project);
 }
 
