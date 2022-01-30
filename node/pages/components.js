@@ -1800,7 +1800,7 @@ async function getProject(socket,data,callback)
         })
     });
 
-    console.log(moreGetData);
+    _project.moreGetData = moreGetData; 
 
     callback(_project);
 }
