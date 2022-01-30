@@ -1786,12 +1786,12 @@ async function getProject(socket,data,callback)
 {
     var _project = await Project.findOne({_id: data});
 
-    _project.moreGetData = {
+    var moreGetData = {
         acceptInvs: await InvDoc.find({projectId: _project._id, status: "accept"}),
         paysAcceptInvs: 0,
     };
 
-    _project.moreGetData.acceptInvs.forEach(acceptInv => {
+    moreGetData.acceptInvs.forEach(acceptInv => {
         acceptInv.pays.forEach(payElement => {
             if(payElement.status == "accept")
             {
@@ -1800,7 +1800,7 @@ async function getProject(socket,data,callback)
         })
     });
 
-    console.log(_project.moreGetData);
+    console.log(moreGetData);
 
     callback(_project);
 }
