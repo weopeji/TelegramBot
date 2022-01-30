@@ -155,7 +155,17 @@ var action_linker =
     "Business_status_projects": Business_status_projects,
     "setRedactingProject": setRedactingProject,
     "redactingProjectByAdmin": redactingProjectByAdmin,
+    "obligationsProjectData": obligationsProjectData,
 };
+
+async function obligationsProjectData(socket, data, callback)
+{
+    var _data = {
+        project: await Project.findOne({_id: data}),
+        Invs: await InvDoc.find({projectId: _Project._id}),
+    }
+    callback(_data);
+}
 
 async function redactingProjectByAdmin(socket, data, callback)
 {

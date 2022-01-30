@@ -1,3 +1,5 @@
+const { _GET } = require("../../../../node/helpers/functions");
+
 (function (global) {
     "use strict";
 
@@ -18,7 +20,7 @@
     {
         constructor() {};
 
-        async render()
+        async renderGlobal()
         {
             var _data = await callApi({
                 methodName: "ALL_DATA",
@@ -101,6 +103,65 @@
             });
 
             $('.index_page_body_data').append(settingBlock);
+        }
+
+        async renderType()
+        {
+            var _data = await callApi({
+                methodName: "obligationsProjectData",
+                data: _GET('id'),
+            });
+
+            var settingBlock = $(`
+                <div class="settingBlock">
+                    <div class="settingBlock_header">
+                        <p>Инвестора</p>
+                        <div class="settingBlock_header_line">
+                            <span>№</span>
+                            <span>Привлечено</span>
+                            <span>№ Договора от</span>
+                            <span>Комиссия</span>
+                            <span>Оплатить до</span>
+                            <span>Чек об оплате</span>
+                            <span>Статус</span>
+                        </div>
+                    </div>
+                    <div class="settingBlock_body">
+
+                    </div>
+                </div>
+            `);
+
+            _data.Invs.forEach(function(element, i) 
+            {
+                var d = new Date(element.date);
+
+                var template_text = `
+                    <div class="settingBlock_body_line" data="${element._id}">
+                        <span>${i + 1}</span>
+                        <span>${element.data.pay}</span>
+                        <span>${_data.project._id}/${i + 1} от ${d.toLocaleTimeString()}</span>
+                        <span>${element.data.pay.toString().replace(/\s/g, '') / 100 * _data.project.payersData.commission}</span>
+                        <span>${i + 1}</span>
+                        <span>Прикрепить</span>
+                        <span>Не оплачено</span>
+                    </div>
+                `;
+
+                settingBlock.find('.settingBlock_body').append(template_text);
+            })
+
+            $('.index_page_body_data').append(settingBlock);
+        }
+
+        async render()
+        {
+            if(_GET('id'))
+            {
+                this.renderGlobal();
+            } else {
+                this.renderType();
+            }
         }
     }
 
