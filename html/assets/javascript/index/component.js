@@ -552,8 +552,7 @@
                 </div>
             `;
 
-            $('.content').append(text);
-            
+            $('.content').append(text);   
         }
     }
 
@@ -637,69 +636,26 @@
                 }
             });
 
-            // if(_needData.length == 0) 
-            // {
-                var settingBlock = $(`
-                    <div class="settingBlock">
-                        <div class="settingBlock_header">
-                            <p>Не выплачено</p>
-                            <div class="settingBlock_header_line">
-                                <span>#</span>
-                                <span>ID</span>
-                                <span>Инвестор ID</span>
-                                <span>Кнопка</span>
-                            </div>
-                        </div>
-                        <div class="settingBlock_body">
-
+        
+            var settingBlock = $(`
+                <div class="settingBlock">
+                    <div class="settingBlock_header">
+                        <p>Не выплачено</p>
+                        <div class="settingBlock_header_line">
+                            <span>#</span>
+                            <span>ID</span>
+                            <span>Инвестор ID</span>
+                            <span>Кнопка</span>
                         </div>
                     </div>
-                `);
+                    <div class="settingBlock_body">
 
-                $('.index_page_body_data').append(settingBlock);
-            // } else {
+                    </div>
+                </div>
+            `);
 
-            //     var _this = this;
-
-            //     var settingBlock = $(`
-            //         <div class="settingBlock">
-            //             <div class="settingBlock_header">
-            //                 <p>Не подтвержденные инвесторы</p>
-            //                 <div class="settingBlock_header_line">
-            //                     <span>#</span>
-            //                     <span>ID</span>
-            //                     <span>Инвестор ID</span>
-            //                     <span>Написать</span>
-            //                     <span>Кнопка</span>
-            //                 </div>
-            //             </div>
-            //             <div class="settingBlock_body">
-
-            //             </div>
-            //         </div>
-            //     `);
-
-            //     _needData.forEach(el => {
-            //         var statusBlock = "invester_status_project_red";
-
-            //         var text = `
-            //             <div class="invester_status_project ${statusBlock} cheackInvestingUser">
-            //                 <p>Не оплачен инвестор</p>
-            //                 <p>${el.data.fio}</p>
-            //             </div>
-            //         `;
-
-            //         $('.content').append(text);
-
-                   
-
-            //         $('.cheackInvestingUser').click( function () {
-            //             _this.rednderCheackInvesting(el.invester);
-            //         })
-            //     });
-            // }
-
-            // console.log(_data);
+            $('.index_page_body_data').append(settingBlock);
+        
         }
     }
 
@@ -827,6 +783,39 @@
             `);
 
             $('.index_page_body_data').append(_header);
+
+            var settingBlock = $(`
+                <div class="settingBlock" style="margin-bottom: 20px">
+                    <div class="settingBlock_header">
+                        <div class="invester_status_projects_status_first">
+                            <div class="invester_status_projects_status_first_line">
+                                <span>Проинвестировано</span>
+                                <a>${Project_data.data.attraction_amount} руб.</a>
+                                <span>Выплачено</span>
+                                <a>${_data.invester_data.paid.toString().ReplaceNumber()} руб</a>
+                            </div>
+                            <div class="invester_status_projects_status_first_line">
+                                <span>Выплачено</span>
+                                <a>${_data.invester_data.receipts.toString().ReplaceNumber()} руб</a>
+                                <span>Денежный поток в год</span>
+                                <a>0 руб</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="settingBlock" style="margin-bottom: 20px">
+                    <div class="settingBlock_header">
+                        <div class="invester_status_projects_status_first">
+                            <div class="invester_status_projects_status_first_line">
+                                <span>Количество инвесторов</span>
+                                <a>${Project_data.moreGetData.acceptInvs.length}</a>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            `);
+
+            $('.index_page_body_data').append(settingBlock);
         }
     }
 

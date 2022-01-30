@@ -1782,8 +1782,24 @@ async function getUser(socket,data,callback) {
     callback(_user);
 }
 
-async function getProject(socket,data,callback) {
+async function getProject(socket,data,callback) 
+{
     var _project = await Project.findOne({_id: data});
+
+    _project.moreGetData = {
+        acceptInvs: await Inv.find({projectId: _project._id, status: "accept"}),
+        paysAcceptInvs: 0,
+    };
+
+    _project.moreGetData.acceptInvs.forEach(acceptInv => {
+        acceptInv.pays.forEach(payElement => {
+            if(payElement.status == "accept")
+            {
+                _project.moreGetData.paysAcceptInvs = _project.moreGetData.paysAcceptInvs + payElement.pay;
+            }
+        })
+    })
+
     callback(_project);
 }
 
