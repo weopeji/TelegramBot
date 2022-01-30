@@ -178,6 +178,29 @@ async function ALL_DATA(socket, data, callback)
         User: _User,
         allAcceptProjects: await Project.find({type: "active"}),
         invester_data: await investerData(),
+        obligations_data: await obligationsData(),
+    }
+
+    async function obligationsData()
+    {
+        return new Promise(async (resolve,reject) =>
+        {
+            var _blockData  = {
+                attracted: 0,
+            }
+
+            for(var project of AllData.allAcceptProjects)
+            {
+                var InvsOfProject = await InvDoc.find({projectId: project._id});
+
+                for(var invPush of InvsOfProject)
+                {
+                    _blockData.attracted = _blockData.attracted + Number(invPush.data.pay.toString().replace(/\s/g, ''));
+                }
+            }
+
+            resolve(_blockData);
+        });
     }
 
     async function investerData()
@@ -1786,28 +1809,6 @@ async function getUser(socket,data,callback) {
 async function getProject(socket,data,callback) 
 {
     var _project    = await Project.findOne({_id: data});
-    var _dataPush   = null;
-
-    // for(var datainProject of)
-
-    // var moreGetData = {
-    //     acceptInvs: await InvDoc.find({projectId: _project._id, status: "accept"}),
-    //     paysAcceptInvs: 0,
-    // };
-
-    // moreGetData.acceptInvs.forEach(acceptInv => {
-    //     acceptInv.pays.forEach(payElement => {
-    //         if(payElement.status == "accept")
-    //         {
-    //             _project.moreGetData.paysAcceptInvs = _project.moreGetData.paysAcceptInvs + payElement.pay;
-    //         }
-    //     })
-    // });
-
-    // _project.moreGetData = moreGetData; 
-
-    // console.log(_project);
-
     callback(_project);
 }
 
