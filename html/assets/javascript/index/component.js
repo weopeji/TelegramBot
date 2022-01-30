@@ -797,7 +797,7 @@
                             <div class="invester_status_projects_status_first_line">
                                 <span>Выплачено</span>
                                 <a>${Project_data.moreGetData.paysAcceptInvs} руб</a>
-                                <span>Денежный поток в год</span>
+                                <span>Долг</span>
                                 <a>0 руб</a>
                             </div>
                         </div>
@@ -897,20 +897,20 @@
                 `,
                 "business": `
                     <div class="index_page_menu_block_line" data="myProjects">
-                    <i class="fal fa-project-diagram"></i>
+                        <i class="fal fa-project-diagram"></i>
                         <span>Мои проекты</span>
+                    </div>
+                    <div class="index_page_menu_block_line" data="payments_new">
+                        <i class="fal fa-check-square"></i>
+                        <span>Выплаты</span>
+                    </div>
+                    <div class="index_page_menu_block_line" data="obligations">
+                        <i class="fal fa-check-square"></i>
+                        <span>Обязательства</span>
                     </div>
                     <div class="index_page_menu_block_line" data="acceptPays">
                         <i class="fal fa-check-square"></i>
-                        <span>Получение</span>
-                    </div> <!--
-                    <div class="index_page_menu_block_line" data="pay_investors">
-                        <i class="fal fa-money-check-alt"></i>
-                        <span>Не выплачено</span>
-                    </div> -->
-                    <div class="index_page_menu_block_line" data="activ_projects">
-                        <i class="fal fa-chart-line"></i>
-                        <span>История</span>
+                        <span>Поступления</span>
                     </div>
                 `,
                 "attraction": `
