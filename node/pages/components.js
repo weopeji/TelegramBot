@@ -198,13 +198,15 @@ async function ALL_DATA(socket, data, callback)
             {
                 var InvsOfProject   = await InvDoc.find({projectId: project._id});
                 var commissionData  = project.payersData.commission;
-                var attractedData   = Number(invPush.data.pay.toString().replace(/\s/g, ''));
-                var accruedData     = Number(invPush.data.pay.toString().replace(/\s/g, '')) / 100 * commissionData;
+                var attractedData   = 0;
+                var accruedData     = 0;
 
                 for(var invPush of InvsOfProject)
                 {
-                    _blockData.attracted    = _blockData.attracted + attractedData;
-                    _blockData.commission   = _blockData.commission + accruedData;
+                    attractedData           = attractedData + Number(invPush.data.pay.toString().replace(/\s/g, ''));
+                    accruedData             =  accruedData + Number(invPush.data.pay.toString().replace(/\s/g, '')) / 100 * commissionData;
+                    _blockData.attracted    = _blockData.attracted + Number(invPush.data.pay.toString().replace(/\s/g, ''));
+                    _blockData.commission   = _blockData.commission + Number(invPush.data.pay.toString().replace(/\s/g, '')) / 100 * commissionData;
                 }
 
                 _blockData.showBlocks.push({
