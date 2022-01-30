@@ -1576,14 +1576,26 @@ html, body {
 }
 
 .obligations_block .obligations_block_element .obligations_block_element_line {
-  width: 100%;
+  width: 85%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 auto;
 }
 
 .obligations_block .obligations_block_element .obligations_block_element_line span {
   color: #8592C6;
+}
+
+.obligations_block_element_button {
+  text-align: center;
+  padding: 20px 0;
 }
 
 @media (max-width: 1600px) {

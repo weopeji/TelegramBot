@@ -56,7 +56,7 @@
 
             _data.obligations_data.showBlocks.forEach(element => {
                 var elementBlock = $(`
-                    <div class="obligations_block_element">
+                    <div class="obligations_block_element" data="${element.project._id}">
                         <h1>Проект № ${element.project._id}</h1>
                         <h2>${element.project.data.name}</h2>
                         <div class="obligations_block_element_line">
@@ -85,13 +85,17 @@
                         </div>
                         <div class="obligations_block_element_line">
                             <span>Договор реквезиты</span>
-                            <a>Открыть</a>
+                            <p>Открыть</p>
                         </div>
                         <div class="obligations_block_element_button">
                             <span>Написать investER</span>
                         </div>
                     </div>
                 `);
+
+                elementBlock.click( function() {
+                    location.href = "./?id=" + $(this).attr('data');
+                })
 
                 settingBlock.append(elementBlock);
             });
