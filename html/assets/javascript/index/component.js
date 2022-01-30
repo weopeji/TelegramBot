@@ -816,6 +816,42 @@
             `);
 
             $('.index_page_body_data').append(settingBlock);
+
+            var settingBlock = $(`
+                <div class="settingBlock">
+                    <div class="settingBlock_header">
+                        <p>Инвестора</p>
+                        <div class="settingBlock_header_line">
+                            <span>№</span>
+                            <span>Номер договора</span>
+                            <span>Инвестор</span>
+                            <span>Дата договора</span>
+                            <span>Сумма</span>
+                            <span>Договор</span>
+                            <span>Реквизиты</span>
+                            <span>Сообщение</span>
+                        </div>
+                    </div>
+                    <div class="settingBlock_body">
+
+                    </div>
+                </div>
+            `);
+
+            // _data.forEach(function(element, i) {
+            //     var template_text = `
+            //         <div class="settingBlock_body_line" data="${element._id}">
+            //             <span>${i + 1}</span>
+            //             <span>${element._id}</span>
+            //             <span>${element.data.name}</span>
+            //             <span><span class="settingBlock_wait settingBlock_block settingBlock_accept" data="${element._id}">Открыть</span></span>
+            //         </div>
+            //     `;
+
+            //     settingBlock.find('.settingBlock_body').append(template_text);
+            // })
+
+            $('.index_page_body_data').append(settingBlock);
         }
     }
 
