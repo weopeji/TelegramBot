@@ -185,7 +185,7 @@ async function ALL_DATA(socket, data, callback)
     {
         return new Promise(async (resolve,reject) =>
         {
-            var allUserProjects = await Project.find({type: "active", user: _User.user});
+            var allUserProjects = await Project.find({user: _User.user});
 
             var _blockData  = {
                 attracted: 0,
