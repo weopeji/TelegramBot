@@ -195,6 +195,8 @@ async function ALL_DATA(socket, data, callback)
             {
                 var InvsOfProject = await InvDoc.find({projectId: project._id});
 
+                console.log(InvsOfProject);
+
                 for(var invPush of InvsOfProject)
                 {
                     _blockData.attracted = _blockData.attracted + Number(invPush.data.pay.toString().replace(/\s/g, ''));
