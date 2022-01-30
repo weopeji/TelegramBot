@@ -94,8 +94,8 @@
                 `);
 
                 elementBlock.click( function() {
-                    location.href = "./?id=" + $(this).attr('data');
-                })
+                    location.href = "./?page=obligations&id=" + $(this).attr('data');
+                });
 
                 settingBlock.append(elementBlock);
             });
