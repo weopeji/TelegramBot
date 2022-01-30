@@ -113,7 +113,7 @@
             var settingBlock = $(`
                 <div class="settingBlock">
                     <div class="settingBlock_header">
-                        <p>Инвестора</p>
+                        <p>Проект № ${_data.project._id} ${_data.project.data.name}</p>
                         <div class="settingBlock_header_line">
                             <span>№</span>
                             <span>Привлечено</span>
@@ -132,7 +132,7 @@
 
             _data.Invs.forEach(function(element, i) 
             {
-                var d = new Date(element.date);
+                var d = new Date(Number(element.date));
 
                 var template_text = `
                     <div class="settingBlock_body_line" data="${element._id}">
