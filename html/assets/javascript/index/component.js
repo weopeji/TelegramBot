@@ -901,11 +901,11 @@
                         <span>Мои проекты</span>
                     </div>
                     <div class="index_page_menu_block_line" data="payments_new">
-                        <i class="fal fa-check-square"></i>
+                        <i class="fal fa-money-check"></i>
                         <span>Выплаты</span>
                     </div>
                     <div class="index_page_menu_block_line" data="obligations">
-                        <i class="fal fa-check-square"></i>
+                        <i class="fal fa-file-import"></i>
                         <span>Обязательства</span>
                     </div>
                     <div class="index_page_menu_block_line" data="acceptPays">
