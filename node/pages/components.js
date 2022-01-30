@@ -185,11 +185,13 @@ async function ALL_DATA(socket, data, callback)
     {
         return new Promise(async (resolve,reject) =>
         {
+            var allUserProjects = await Project.find({type: "active", user: _User.user});
+
             var _blockData  = {
                 attracted: 0,
             }
 
-            for(var project of AllData.allAcceptProjects)
+            for(var project of allUserProjects)
             {
                 var InvsOfProject = await InvDoc.find({projectId: project._id});
 
