@@ -23,7 +23,6 @@ module.exports = {
     recomendations,
     actionWhere,
     startInvestingMsgOld,
-    inProcess,
     statusProjects,
     payerBonus,
     myPeoples,
@@ -352,27 +351,6 @@ async function statusProjects(msg) {
     await h.DMA(msg, _array);
 }
 
-async function inProcess(msg) 
-{
-    var _array  = [];
-    var _User   = await User.findOne({user: msg.from.id});
-
-    var html = `Инвестор ${_User.first_name}\nВы находитесь в меню "В процессе"`;
-    var fat = await bot.sendMessage(msg.chat.id, toEscapeMSg(html), {
-        parse_mode: "html",
-        reply_markup: {                                                                     
-            "resize_keyboard": true, 
-            "keyboard": [
-                ["📜 Статус получения денег бизнесом"],
-                ["Черновики", "⬅️ Назад"]
-            ],
-        }
-    });
-    _array.push(fat.message_id);
-
-    await h.DMA(msg, _array);
-}
-
 function toEscapeMSg(str) {
     return str
         .replace(/_/gi, "\\_")
@@ -669,7 +647,7 @@ async function my_investment(msg)
     var html = "Вы находитесь в меню:\n<strong>Мои инвестиции</strong>";
     var fat = await h.send_html(msg.chat.id, html, {
         "resize_keyboard": true,
-        "keyboard": [[activeProjects, "⌛ В процессе"], ["⬅️ Назад"]],
+        "keyboard": [[activeProjects, "⌛ Ожидают подтверждения"], ["⬅️ Назад"]],
         "one_time_keyboard": true,
     });
 
