@@ -162,7 +162,7 @@ async function obligationsProjectData(socket, data, callback)
 {
     var _data = {
         project: await Project.findOne({_id: data}),
-        Invs: await InvDoc.find({projectId: _Project._id}),
+        Invs: await InvDoc.find({projectId: data}),
     }
     callback(_data);
 }
