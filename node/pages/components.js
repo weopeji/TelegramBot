@@ -187,19 +187,21 @@ async function ALL_DATA(socket, data, callback)
         {
             var allUserProjects = await Project.find({user: _User.user});
 
-            var _blockData  = {
+            var _blockData  = 
+            {
                 attracted: 0,
+                commission: 0,
             }
 
             for(var project of allUserProjects)
             {
-                var InvsOfProject = await InvDoc.find({projectId: project._id});
-
-                console.log(InvsOfProject);
+                var InvsOfProject   = await InvDoc.find({projectId: project._id});
+                var commissionData  = project.payersData.commission;
 
                 for(var invPush of InvsOfProject)
                 {
-                    _blockData.attracted = _blockData.attracted + Number(invPush.data.pay.toString().replace(/\s/g, ''));
+                    _blockData.attracted    = _blockData.attracted + Number(invPush.data.pay.toString().replace(/\s/g, ''));
+                    _blockData.commission   = _blockData.commission + Number(invPush.data.pay.toString().replace(/\s/g, '')) / 100 * commissionData;
                 }
             }
 

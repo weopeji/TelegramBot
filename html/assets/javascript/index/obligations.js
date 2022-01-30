@@ -31,9 +31,9 @@
                         <div class="invester_status_projects_status_first">
                             <div class="invester_status_projects_status_first_line">
                                 <span>Привлечено</span>
-                                <a>${_data.obligations_data.attracted} руб.</a>
+                                <a>${_data.obligations_data.attracted} руб</a>
                                 <span>Коммисия investER</span>
-                                <a>0 руб</a>
+                                <a>${_data.obligations_data.commission} руб</a>
                             </div>
                             <div class="invester_status_projects_status_first_line">
                                 <span>Выплачено</span>
