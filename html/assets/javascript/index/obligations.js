@@ -134,6 +134,8 @@
             {
                 var d = new Date(Number(element.date));
 
+                d = d.toLocaleDateString().replace(new RegExp("/", 'g'), ".");
+
                 var template_text = `
                     <div class="settingBlock_body_line" data="${element._id}">
                         <span>${i + 1}</span>
