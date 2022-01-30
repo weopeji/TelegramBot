@@ -156,9 +156,9 @@
         {
             if(_GET('id'))
             {
-                this.renderGlobal();
-            } else {
                 this.renderType();
+            } else {
+                this.renderGlobal();
             }
         }
     }
