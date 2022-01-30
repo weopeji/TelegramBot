@@ -20,7 +20,9 @@
                 global.loadResources(['./html/assets/javascript/index/invester_data.js'], () => {
                     global.loadResources(['./html/assets/javascript/index/show_all_projects.js'], () => {
                         global.loadResources(['./html/assets/javascript/index/get_money_abstraction.js'], () => {
-                            Main();
+                            global.loadResources(['./html/assets/javascript/index/obligations.js'], () => {
+                                Main();
+                            });
                         });
                     });
                 }); 
@@ -68,6 +70,7 @@
             const invester_data         = new global.Components.invester_data();
             const creating_page         = new global.Components.creating_page();
             const wait_projects         = new global.Components.wait_projects();
+            const obligations           = new global.Components.obligations();
 
             var _User = await user_block.render(_id);
 
@@ -101,7 +104,8 @@
                 "invester_data": function() {invester_data.render(global.allData)},
                 "show_all_projects": function() {show_all_projects.render(global.allData)},
                 "get_money_abstraction": function() {get_money_abstraction.render(global.allData)},
-                "wait_projects": function() {wait_projects.render(global.allData)}
+                "wait_projects": function() {wait_projects.render(global.allData)},
+                "obligations": function() {obligations.render(global.allData)},
             }
 
             if(pageID)
