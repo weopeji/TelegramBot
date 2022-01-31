@@ -189,6 +189,49 @@ async function ALL_DATA(socket, data, callback)
         allAcceptProjects: await Project.find({type: "active"}),
         invester_data: await investerData(),
         obligations_data: await obligationsData(),
+        payments_new: await payments_new(),
+    }
+
+    async function payments_new()
+    {
+        return new Promise(async (resolve,reject) =>
+        {
+            var allUserProjects = await Project.find({user: _User.user});
+            var dateNow         = new Date().getTime();
+            var _blockData      =
+            {
+                showBlocks: [],
+            }
+
+            for(var project of allUserProjects)
+            {
+                var InvsOfProject   = await InvDoc.find({projectId: project._id});
+
+                for(var invPush of InvsOfProject)
+                {
+                    for(var invPushPay of invPush.pays)
+                    {
+                        if(Number(dateNow) - Number(invPushPay.date) < 7889400000)
+                        {
+                            _blockData.showBlocks.push({
+                                date: Number(invPushPay.date),
+                                inv: invPush,
+                                invPay: invPushPay,
+                            });
+                        }
+                    }
+                }
+            }
+
+            _blockData.showBlocks.sort(function(a, b) {
+                if (a.date > b.date) {
+                    return 1;
+                };
+                return 0;
+            })
+
+            resolve(_blockData);
+        });
     }
 
     async function obligationsData()

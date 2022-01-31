@@ -25,6 +25,8 @@
                 data: global.allData.User._id,
             });
 
+            console.log(_data);
+
             var settingBlock = $(`
                 <div class="settingBlock">
                     <div class="settingBlock_header">
