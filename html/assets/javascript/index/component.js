@@ -838,18 +838,28 @@
                 </div>
             `);
 
-            // _data.forEach(function(element, i) {
-            //     var template_text = `
-            //         <div class="settingBlock_body_line" data="${element._id}">
-            //             <span>${i + 1}</span>
-            //             <span>${element._id}</span>
-            //             <span>${element.data.name}</span>
-            //             <span><span class="settingBlock_wait settingBlock_block settingBlock_accept" data="${element._id}">Открыть</span></span>
-            //         </div>
-            //     `;
+            Project_data.moreGetData.invsPush.forEach(function(element, i) 
+            {
+                var UserNameInvester = null;
 
-            //     settingBlock.find('.settingBlock_body').append(template_text);
-            // })
+                element.inv.data.data.forEach(elementMoreData => {
+                    if(elementMoreData._id == "fio")
+                    {
+                        UserNameInvester = elementMoreData.data;
+                    }
+                })
+
+                var template_text = `
+                    <div class="settingBlock_body_line" data="${element._id}">
+                        <span>${i + 1}</span>
+                        <span>${element.inv.projectId}/${i + 1}</span>
+                        <span>${UserNameInvester}</span>
+                        <span>${DateFormatted(element.inv.date)}</span>
+                    </div>
+                `;
+
+                settingBlock.find('.settingBlock_body').append(template_text);
+            })
 
             $('.index_page_body_data').append(settingBlock);
         }

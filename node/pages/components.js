@@ -1849,6 +1849,7 @@ async function getProjectNew(socket, data, callback)
             acceptInvs: await InvDoc.find({projectId: _project._id, status: "accept"}),
             paysAcceptInvs: 0,
             paysInvesters: 0,
+            invsPush: [],
         }
     }
 
@@ -1864,6 +1865,17 @@ async function getProjectNew(socket, data, callback)
     all_data.moreGetData.acceptInvs.forEach(acceptInv => {
         all_data.moreGetData.paysInvesters = all_data.moreGetData.paysInvesters + Number(acceptInv.data.pay.toString().replace(/\s/g, ''));
     });
+
+    for(var aceptInv in all_data.moreGetData.acceptInvs)
+    {
+        var _dataBlock = 
+        {
+            invester: await User.findOne({user: aceptInv.invester}),
+            inv: aceptInv,
+        }
+
+        all_data.moreGetData.invsPush.push(_dataBlock);
+    }
 
     callback(all_data);
 }
