@@ -1867,7 +1867,7 @@ async function getProjectNew(socket, data, callback)
         all_data.moreGetData.paysInvesters = all_data.moreGetData.paysInvesters + Number(acceptInv.data.pay.toString().replace(/\s/g, ''));
     });
 
-    for(var aceptInv in acceptInvsPush)
+    for(var aceptInv of acceptInvsPush)
     {
         var _dataBlock = 
         {
