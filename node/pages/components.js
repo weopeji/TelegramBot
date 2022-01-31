@@ -1842,11 +1842,12 @@ async function getProject(socket,data,callback)
 
 async function getProjectNew(socket, data, callback)
 {
-    var _project    = await Project.findOne({_id: data});
+    var _project        = await Project.findOne({_id: data});
+    var acceptInvsPush  = await InvDoc.find({projectId: _project._id, status: "accept"})
     var all_data = {
         project: _project,
         moreGetData: {
-            acceptInvs: await InvDoc.find({projectId: _project._id, status: "accept"}),
+            acceptInvs: acceptInvsPush,
             paysAcceptInvs: 0,
             paysInvesters: 0,
             invsPush: [],
@@ -1866,7 +1867,7 @@ async function getProjectNew(socket, data, callback)
         all_data.moreGetData.paysInvesters = all_data.moreGetData.paysInvesters + Number(acceptInv.data.pay.toString().replace(/\s/g, ''));
     });
 
-    for(var aceptInv in all_data.moreGetData.acceptInvs)
+    for(var aceptInv in acceptInvsPush)
     {
         var _dataBlock = 
         {
