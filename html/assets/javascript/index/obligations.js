@@ -138,7 +138,7 @@
                         <span>${element.data.pay}</span>
                         <span>${_data.project._id}/${i + 1} от ${DateFormatted(element.date)}</span>
                         <span>${element.data.pay.toString().replace(/\s/g, '') / 100 * _data.project.payersData.commission}</span>
-                        <span>${i + 1}</span>
+                        <span>${DateFormatted(element.date + 864000000)}</span>
                         <span>Прикрепить</span>
                         <span>Не оплачено</span>
                     </div>
