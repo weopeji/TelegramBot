@@ -1856,7 +1856,7 @@ async function getProjectNew(socket, data, callback)
         acceptInv.pays.forEach(payElement => {
             if(payElement.status == "accept")
             {
-                all_data.moreGetData.paysAcceptInvs = all_data.moreGetData.paysAcceptInvs + payElement.pay;
+                all_data.moreGetData.paysAcceptInvs = all_data.moreGetData.paysAcceptInvs + Number(payElement.pay.toString().replace(/\s/g, ''));
             }
         })
     });
