@@ -231,9 +231,12 @@ async function ALL_DATA(socket, data, callback)
             }
 
             _blockData.showBlocks.sort(function(a, b) {
-                if (a.date > b.date) {
+                if (Number(a.date) > Number(b.date)) {
                     return 1;
                 };
+                if (Number(a.date) < Number(b.date)) {
+                    return -1;
+                }
                 return 0;
             })
 
