@@ -205,21 +205,28 @@ async function ALL_DATA(socket, data, callback)
 
             for(var project of allUserProjects)
             {
-                var InvsOfProject   = await InvDoc.find({projectId: project._id});
+                var InvsOfProject       = await InvDoc.find({projectId: project._id});
+                var initNumberProject   = 1;
 
                 for(var invPush of InvsOfProject)
                 {
+                    var InvesterOfInvs = await User.findOne({user: invPush.invester});
+
                     for(var invPushPay of invPush.pays)
                     {
-                        if(Number(dateNow) - Number(invPushPay.date) < 7889400000)
+                        if(Number(dateNow) - Number(invPushPay.date) < 7889400000 && invPushPay.status == "wait")
                         {
                             _blockData.showBlocks.push({
                                 date: Number(invPushPay.date),
                                 inv: invPush,
                                 invPay: invPushPay,
+                                initNumberProject: initNumberProject,
+                                InvesterOfInvs: InvesterOfInvs,
                             });
                         }
                     }
+
+                    initNumberProject++;
                 }
             }
 
