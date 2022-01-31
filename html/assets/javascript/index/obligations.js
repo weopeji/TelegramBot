@@ -132,14 +132,11 @@
 
             _data.Invs.forEach(function(element, i) 
             {
-                var maxDate             = new Date(element.date);
-                var maxDateFormatted    = this.pad(maxDate.getDate(), 2, '0') + '.' + this.pad(maxDate.getMonth() + 1, 2, '0') + '.' + maxDate.getFullYear();
-
                 var template_text = `
                     <div class="settingBlock_body_line" data="${element._id}">
                         <span>${i + 1}</span>
                         <span>${element.data.pay}</span>
-                        <span>${_data.project._id}/${i + 1} от ${d.toLocaleTimeString()}</span>
+                        <span>${_data.project._id}/${i + 1} от ${DateFormatted(element.date)}</span>
                         <span>${element.data.pay.toString().replace(/\s/g, '') / 100 * _data.project.payersData.commission}</span>
                         <span>${i + 1}</span>
                         <span>Прикрепить</span>

@@ -278,13 +278,13 @@ Number.prototype.toDivide = function() {
     return number;
 }
 
-String.prototype.DateFormatted = function()
+function DateFormatted(data)
 {
     function pad(s, width, character) {
         return new Array(width - s.toString().length + 1).join(character) + s;
     }
-    
-    var maxDate             = new Date(this);
+
+    var maxDate             = new Date(data);
     return pad(maxDate.getDate(), 2, '0') + '.' + pad(maxDate.getMonth() + 1, 2, '0') + '.' + maxDate.getFullYear();
 }
 
