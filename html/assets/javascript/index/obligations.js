@@ -132,9 +132,8 @@
 
             _data.Invs.forEach(function(element, i) 
             {
-                var d = new Date(Number(element.date));
-
-                d = d.toLocaleDateString().replace(new RegExp("/", 'g'), ".");
+                var maxDate             = new Date(element.date);
+                var maxDateFormatted    = this.pad(maxDate.getDate(), 2, '0') + '.' + this.pad(maxDate.getMonth() + 1, 2, '0') + '.' + maxDate.getFullYear();
 
                 var template_text = `
                     <div class="settingBlock_body_line" data="${element._id}">
