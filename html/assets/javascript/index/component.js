@@ -855,6 +855,7 @@
                         <span>${element.inv.projectId}/${i + 1}</span>
                         <span>${UserNameInvester}</span>
                         <span>${DateFormatted(element.inv.date)}</span>
+                        <span>${element.inv.data.pay} руб</span>
                         <span><i class="fal fa-cloud-download"></i></span>
                         <span><i class="fal fa-cloud-download"></i></span>
                         <span><i class="fal fa-comments-alt"></i></span>
