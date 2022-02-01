@@ -134,7 +134,7 @@
             {
                 var template_text = $(`
                     <div class="settingBlock_body_line settingBlock_body_line_obligations" data="${element._id}">
-                        <input type="file" name="" id="${element._id}">
+                        <input type="file" name="" id="${element._id}" data-project="${_data.project._id}">
                         <span>${i + 1}</span>
                         <span>${element.data.pay}</span>
                         <span>${_data.project._id}/${i + 1} от ${DateFormatted(element.date)}</span>
@@ -148,6 +148,29 @@
                 `);
 
                 settingBlock.find('.settingBlock_body').append(template_text);
+            });
+
+            settingBlock.find('input[type="file"]').change( async function() 
+            {
+                var _form    = new FormData();
+            
+                _form.append('invId', $(this).attr('id'));
+                _form.append('_id', $(this).attr('data-project'));
+                _form.append('_pts', $(this.files)[0].type);
+                _form.append('files', $(this.files)[0]);
+
+                var _url = `${getURL()}/file_commission.io/files`;
+
+                axios.post(_url, _form, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    },
+                }).then(data => {
+                    if(data.data.status == "ok") {
+                        alert("Чек прикоеплен!");
+                        location.reload();
+                    }
+                });
             })
 
             $('.index_page_body_data').append(settingBlock);
