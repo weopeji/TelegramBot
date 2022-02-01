@@ -789,7 +789,7 @@
                     <div class="settingBlock_header">
                         <div class="invester_status_projects_status_first">
                             <div class="invester_status_projects_status_first_line">
-                                <span>Проинвестировано</span>
+                                <span>Сумма сбора</span>
                                 <a>${Project_data.project.data.attraction_amount} руб.</a>
                                 <span>Собрано</span>
                                 <a>${Project_data.moreGetData.paysInvesters} руб</a>
