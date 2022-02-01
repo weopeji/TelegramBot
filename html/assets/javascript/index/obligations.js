@@ -134,7 +134,7 @@
             {
                 var template_text = $(`
                     <div class="settingBlock_body_line settingBlock_body_line_obligations" data="${element._id}">
-                        <input type="file">
+                        <input type="file" id="${element._id}">
                         <span>${i + 1}</span>
                         <span>${element.data.pay}</span>
                         <span>${_data.project._id}/${i + 1} от ${DateFormatted(element.date)}</span>
@@ -146,7 +146,7 @@
                 `);
 
                 template_text.click( function() {
-                    $(this).find('input[type="file"]').trigger('click');
+                    $(this).find(`#${$(this).attr('data')}`).trigger('click');
                 });
 
                 settingBlock.find('.settingBlock_body').append(template_text);
