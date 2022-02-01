@@ -401,11 +401,14 @@ async function ALL_DATA(socket, data, callback)
 
             for(var _Inv of _Invs)
             {
-                for(var pay of _Inv.pays)
+                if(_Inv.pays)
                 {
-                    if(pay.status == "accept")
+                    for(var pay of _Inv.pays)
                     {
-                        _blockData.paid = _blockData.paid + Number(pay.pay);
+                        if(pay.status == "accept")
+                        {
+                            _blockData.paid = _blockData.paid + Number(pay.pay);
+                        }
                     }
                 }
             }
