@@ -81,7 +81,7 @@
                         </div>
                         <div class="obligations_block_element_line">
                             <span>Погаисть до</span>
-                            <p>0</p>
+                            <p>${DateFormatted(Number(element.repayData) + 864000000)}</p>
                         </div>
                         <div class="obligations_block_element_line">
                             <span>Договор реквезиты</span>

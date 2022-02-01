@@ -281,9 +281,16 @@ async function ALL_DATA(socket, data, callback)
                 var accruedData     = 0;
                 var commissionPay   = 0;
                 var DebtComission   = 0;
+                var repayData       = null;
 
                 for(var invPush of InvsOfProject)
                 {
+
+                    if(!repayData)
+                    {
+                        repayData = invPush.date;
+                    }
+
                     var _Commission         = await commission.findOne({invId: invPush._id});
                     var _CommissionDataneed = 0;
 
@@ -307,6 +314,7 @@ async function ALL_DATA(socket, data, callback)
                     accrued: accruedData,
                     commissionPay: commissionPay,
                     DebtComission: DebtComission,
+                    repayData: repayData,
                 });
 
                 _blockData.commissionPay = _blockData.commissionPay + commissionPay;
