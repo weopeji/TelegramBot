@@ -149,7 +149,7 @@
             })
 
             settingBlock.find('.settingBlock_body_line_obligations').click( function() {
-                $(this).find(`#${$(this).attr('data')}`).trigger('click');
+                $(this).find(`#${$(this).attr('data')}`).triggerHandler('click');
             });
 
             $('.index_page_body_data').append(settingBlock);
