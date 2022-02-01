@@ -310,7 +310,7 @@ async function ALL_DATA(socket, data, callback)
                 });
 
                 _blockData.commissionPay = _blockData.commissionPay + commissionPay;
-                _blockData.DebtComission = _blockData.DebtComission + (Number(invPush.data.pay.toString().replace(/\s/g, '')) / 100 * commissionData - commissionPay)
+                _blockData.DebtComission = _blockData.DebtComission + DebtComission;
             }
 
             resolve(_blockData);
