@@ -140,7 +140,7 @@
 
             _data.Invs.forEach(function(element, i) 
             {
-                var buttonPut = `<label for="${element._id}">Прикрепить</label>`;
+                var buttonPut = `<label for="${element.Inv._id}">Прикрепить</label>`;
 
                 if(element.commission)
                 {
