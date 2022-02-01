@@ -55,6 +55,14 @@
             `);
 
             _data.obligations_data.showBlocks.forEach(element => {
+                var _data = element.repayData;
+
+                if(_data)
+                {
+                    _data = DateFormatted(Number(element.repayData) + 864000000);
+                } else {
+                    _data = 0;
+                }
                 var elementBlock = $(`
                     <div class="obligations_block_element" data="${element.project._id}">
                         <h1>Проект № ${element.project._id}</h1>
@@ -81,7 +89,7 @@
                         </div>
                         <div class="obligations_block_element_line">
                             <span>Погаисть до</span>
-                            <p>${DateFormatted(Number(element.repayData) + 864000000)}</p>
+                            <p>${_data}</p>
                         </div>
                         <div class="obligations_block_element_line">
                             <span>Договор реквезиты</span>
