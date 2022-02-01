@@ -849,8 +849,8 @@
                     }
                 })
 
-                var template_text = `
-                    <div class="settingBlock_body_line" data="${element._id}">
+                var template_text = $(`
+                    <div class="settingBlock_body_line" data="${element.inv.invester}" data-project="${element.inv.projectId}">
                         <span>${i + 1}</span>
                         <span>${element.inv.projectId}/${i + 1}</span>
                         <span>${UserNameInvester}</span>
@@ -860,7 +860,11 @@
                         <span><i class="fal fa-cloud-download"></i></span>
                         <span><i class="fal fa-comments-alt"></i></span>
                     </div>
-                `;
+                `);
+
+                template_text.click( function() {
+                    location.href = `./?page=activ_projects&id=${$(this).attr('data')}&project=${$(this).attr('data-project')}`;
+                })
 
                 settingBlock.find('.settingBlock_body').append(template_text);
             })

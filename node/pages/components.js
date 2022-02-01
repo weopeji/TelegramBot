@@ -185,11 +185,11 @@ async function ALL_DATA(socket, data, callback)
 
     var AllData = 
     {
-        User: _User,
-        allAcceptProjects: await Project.find({type: "active"}),
-        invester_data: await investerData(),
-        obligations_data: await obligationsData(),
-        payments_new: await payments_new(),
+        User:               _User,
+        allAcceptProjects:  await Project.find({type: "active"}),
+        invester_data:      await investerData(),
+        obligations_data:   await obligationsData(),
+        payments_new:       await payments_new(),
     }
 
     async function payments_new()
