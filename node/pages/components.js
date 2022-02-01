@@ -52,6 +52,7 @@ function privateInit(initPlagins)
     bPaysAccept = initPlagins.bPaysAccept;
     R_F         = initPlagins.R_F;
     project_key = initPlagins.project_key;
+    commission  = initPlagins.commission;
 }
 
 var privat_index_page = function(socket,data,callback) {

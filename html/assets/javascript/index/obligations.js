@@ -132,17 +132,22 @@
 
             _data.Invs.forEach(function(element, i) 
             {
-                var template_text = `
-                    <div class="settingBlock_body_line" data="${element._id}">
+                var template_text = $(`
+                    <div class="settingBlock_body_line settingBlock_body_line_obligations" data="${element._id}">
+                        <input type="file">
                         <span>${i + 1}</span>
                         <span>${element.data.pay}</span>
                         <span>${_data.project._id}/${i + 1} от ${DateFormatted(element.date)}</span>
                         <span>${element.data.pay.toString().replace(/\s/g, '') / 100 * _data.project.payersData.commission}</span>
                         <span>${DateFormatted(Number(element.date) + 864000000)}</span>
-                        <span>Прикрепить</span>
+                        <span clas="settingBlock_body_line_obligations_put">Прикрепить</span>
                         <span>Не оплачено</span>
                     </div>
-                `;
+                `);
+
+                template_text.find('.settingBlock_body_line_obligations_put').click( function() {
+                    $(this).parent().find('input[type="file"]').trigger('click');
+                });
 
                 settingBlock.find('.settingBlock_body').append(template_text);
             })

@@ -31,6 +31,7 @@ const Payments                      = mongoose.model('Payments');
 const bPaysAccept                   = mongoose.model('bPaysAccept');
 const R_F                           = mongoose.model('R_F');
 const project_key                   = mongoose.model('project_key');
+const commission                    = mongoose.model('commission');
 
 var bot                             = null;
 var helper_functions                = null;
@@ -164,6 +165,7 @@ var load_helpers = () =>
             bPaysAccept: bPaysAccept,
             R_F: R_F,
             project_key: project_key,
+            commission: commission,
         });
     };
 }
