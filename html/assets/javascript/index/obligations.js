@@ -146,7 +146,7 @@
                 `);
 
                 template_text.on("click", function() {
-                    $(this).children("input").get(0).trigger("click");
+                    $(this).children("input").trigger("click");
                 }).on('click', function(e) {
                     e.stopPropagation();
                 });
