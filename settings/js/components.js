@@ -732,7 +732,7 @@
                         <video controls="controls" src="https://invester-relocation.site/projects/${_project._id}/${_project.data['file+8']}"></video>
                         <div class="upload_video_block_unputs">
                             <div class="upload_video_block_unputs_text" id="upload_video_name" contenteditable="true" style="white-space: pre-line">${_project.data.name} № ${_project._id}</div>
-                            <div class="upload_video_block_unputs_text" id="upload_video_description" contenteditable="true" style="white-space: pre-line">${_description}</div>
+                            <textarea class="upload_video_block_unputs_text" id="upload_video_description" contenteditable="true" style="white-space: pre-line">${_description}</textarea>
                         </div>
                     </div>
                     <div class="upload_video_block_button_row">
