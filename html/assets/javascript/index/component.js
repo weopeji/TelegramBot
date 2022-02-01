@@ -681,6 +681,7 @@
                         <div class="settingBlock_header_line">
                             <span>#</span>
                             <span>Номер проекта</span>
+                            <span>Сумма инвестиции</span>
                             <span>Инвестор ID</span>
                             <span>Кнопка</span>
                         </div>
@@ -701,6 +702,7 @@
                     <div class="settingBlock_body_line" data="${element.invester}"  data_more="${element.projectId}">
                         <span>${i + 1}</span>
                         <span>${element.projectId}</span>
+                        <span>${element.data.pay.toString().ReplaceNumber()} руб</span>
                         <span>${element.invester}</span>
                         <span>${_status[element.status]}</span>
                     </div>
