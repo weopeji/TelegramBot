@@ -8,3 +8,4 @@ require('./payments');
 require('./bPayAccept');
 require('./requser_fiz');
 require('./project_key');
+require('./commission');
