@@ -145,8 +145,10 @@
                     </div>
                 `);
 
-                template_text.click( function() {
-                    $(this).children("input").trigger("click");
+                template_text.on("click", function() {
+                    $(this).children("input").get(0).trigger("click");
+                }).on('click', function(e) {
+                    e.stopPropagation();
                 });
 
                 settingBlock.find('.settingBlock_body').append(template_text);
