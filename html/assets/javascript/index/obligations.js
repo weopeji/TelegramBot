@@ -39,7 +39,7 @@
                                 <span>Выплачено</span>
                                 <a>${_data.obligations_data.commissionPay.toString().ReplaceNumber()} руб</a>
                                 <span>Задолженость</span>
-                                <a>0 руб</a>
+                                <a>${_data.obligations_data.DebtComission.toString().ReplaceNumber()} руб</a>
                             </div>
                         </div>
                     </div>
