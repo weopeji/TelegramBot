@@ -346,7 +346,7 @@ async function ALL_DATA(socket, data, callback)
                 receipts: 0,
             };
 
-            for(var _Inv of _Invs)
+            for(var _Inv of _acceptInvs)
             {
                 _blockData.invested = _blockData.invested + Number(_Inv.data.pay.toString().replace(/\s/g, ''));
             }

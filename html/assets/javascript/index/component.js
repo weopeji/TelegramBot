@@ -694,7 +694,7 @@
 
             _data.forEach(function(element, i) {
                 var _status = {
-                    "wait": `
+                    "wait": `F
                         <span class="settingBlock_wait settingBlock_block settingBlock_accept" data="${element.invester}">Открыть</span>
                     `,
                 }
