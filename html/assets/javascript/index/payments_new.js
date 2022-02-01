@@ -46,7 +46,7 @@
 
             _data.payments_new.showBlocks.forEach(function(element, i) 
             {
-                var template_text = `
+                var template_text = $(`
                     <div class="settingBlock_body_line" data="${element.inv.invester}" data-project="${element.inv.projectId}">
                         <span>${i + 1}</span>
                         <span>${DateFormatted(element.date)}</span>
@@ -55,7 +55,7 @@
                         <span>${element.InvesterOfInvs.first_name}</span>
                         <span>Посмотреть</span>
                     </div>
-                `;
+                `);
 
                 template_text.click( function() {
                     location.href = `./?page=active_projects&id="${$(this).attr('data')}"&project="${(this).attr('data-project')}"`;
