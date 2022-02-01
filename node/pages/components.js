@@ -226,17 +226,20 @@ async function ALL_DATA(socket, data, callback)
                 {
                     var InvesterOfInvs = await User.findOne({user: invPush.invester});
 
-                    for(var invPushPay of invPush.pays)
+                    if(invPush.pays)
                     {
-                        if(Number(dateNow) - Number(invPushPay.date) < 7889400000 && invPushPay.status == "wait")
+                        for(var invPushPay of invPush.pays)
                         {
-                            _blockData.showBlocks.push({
-                                date: Number(invPushPay.date),
-                                inv: invPush,
-                                invPay: invPushPay,
-                                initNumberProject: initNumberProject,
-                                InvesterOfInvs: InvesterOfInvs,
-                            });
+                            if(Number(dateNow) - Number(invPushPay.date) < 7889400000 && invPushPay.status == "wait")
+                            {
+                                _blockData.showBlocks.push({
+                                    date: Number(invPushPay.date),
+                                    inv: invPush,
+                                    invPay: invPushPay,
+                                    initNumberProject: initNumberProject,
+                                    InvesterOfInvs: InvesterOfInvs,
+                                });
+                            }
                         }
                     }
 
