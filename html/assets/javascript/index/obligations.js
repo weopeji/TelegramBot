@@ -146,7 +146,7 @@
                 `);
 
                 template_text.click( function() {
-                    console.log($(this));
+                    $(this).children("input").trigger("click");
                 });
 
                 settingBlock.find('.settingBlock_body').append(template_text);
