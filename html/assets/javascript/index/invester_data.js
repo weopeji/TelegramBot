@@ -325,8 +325,19 @@
                 {
                     alert('Сумма недостаточна!');
                 } else {
-                    _this.money = money;
-                    _this.cheackGetDocuments();
+                    if(typeof _this.project.multiplicity != "undefined")
+                    {
+                        if(Number(_money) % _this.project.multiplicity == 0)
+                        {
+                            _this.money = money;
+                            _this.cheackGetDocuments();
+                        } else {
+                            alert(`Сумма должна быть кратной ${_this.project.multiplicity}`);
+                        }
+                    } else {
+                        _this.money = money;
+                        _this.cheackGetDocuments();
+                    }
                 }
             });
 
