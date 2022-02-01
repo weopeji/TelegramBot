@@ -269,6 +269,7 @@ async function ALL_DATA(socket, data, callback)
                 attracted: 0,
                 commission: 0,
                 commissionPay: 0,
+                DebtComission: 0,
                 showBlocks: [],
             }
 
@@ -279,6 +280,7 @@ async function ALL_DATA(socket, data, callback)
                 var attractedData   = 0;
                 var accruedData     = 0;
                 var commissionPay   = 0;
+                var DebtComission   = 0;
 
                 for(var invPush of InvsOfProject)
                 {
@@ -287,12 +289,15 @@ async function ALL_DATA(socket, data, callback)
                     if(_Commission)
                     {
                         commissionPay = Number(invPush.data.pay.toString().replace(/\s/g, '')) / 100 * commissionData;
+                    } else {
+                        commissionPay = 0;
                     }
 
                     attractedData           = attractedData + Number(invPush.data.pay.toString().replace(/\s/g, ''));
                     accruedData             =  accruedData + Number(invPush.data.pay.toString().replace(/\s/g, '')) / 100 * commissionData;
                     _blockData.attracted    = _blockData.attracted + Number(invPush.data.pay.toString().replace(/\s/g, ''));
                     _blockData.commission   = _blockData.commission + Number(invPush.data.pay.toString().replace(/\s/g, '')) / 100 * commissionData;
+                    DebtComission           = DebtComission + ((Number(invPush.data.pay.toString().replace(/\s/g, '')) / 100 * commissionData) - commissionPay);
                 }
 
                 _blockData.showBlocks.push({
@@ -301,9 +306,11 @@ async function ALL_DATA(socket, data, callback)
                     attracted: attractedData,
                     accrued: accruedData,
                     commissionPay: commissionPay,
+                    DebtComission: DebtComission,
                 });
 
                 _blockData.commissionPay = _blockData.commissionPay + commissionPay;
+                _blockData.DebtComission = _blockData.DebtComission + (Number(invPush.data.pay.toString().replace(/\s/g, '')) / 100 * commissionData - commissionPay)
             }
 
             resolve(_blockData);
