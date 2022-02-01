@@ -147,12 +147,6 @@
                     </div>
                 `);
 
-                template_text.on("click", function() {
-                    $(this).children("input").trigger("click");
-                }).on('click', function(e) {
-                    e.stopPropagation();
-                });
-
                 settingBlock.find('.settingBlock_body').append(template_text);
             })
 
