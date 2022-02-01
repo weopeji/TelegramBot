@@ -1573,6 +1573,7 @@ html, body {
   width: calc(33% - 20px);
   margin-right: 10px;
   margin-left: 10px;
+  margin-bottom: 20px;
 }
 
 .obligations_block .obligations_block_element h1, .obligations_block .obligations_block_element h2 {
