@@ -169,13 +169,13 @@ async function obligationsProjectData(socket, data, callback)
 
     for(var Inv of AllInvs)
     {
-        var _data = 
+        var _dataBLock = 
         {
             Inv: Inv,
             commission: await commission.findOne({invId: Inv._id}),
         }
 
-        _data.Invs.push(_data);
+        _data.Invs.push(_dataBLock);
     }
 
     callback(_data);
