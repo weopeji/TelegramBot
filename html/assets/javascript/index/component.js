@@ -265,7 +265,7 @@
                             </div>
                             <div class="info_active_block_left_info_line">
                                 <span>Номер инвестора:</span>
-                                <a>1</a>
+                                <a>${_data.initNumber}</a>
                             </div>
                         </div>
                         <div class="info_active_block_left_info">
@@ -694,7 +694,7 @@
 
             _data.forEach(function(element, i) {
                 var _status = {
-                    "wait": `F
+                    "wait": `
                         <span class="settingBlock_wait settingBlock_block settingBlock_accept" data="${element.invester}">Открыть</span>
                     `,
                 }

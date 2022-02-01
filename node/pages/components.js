@@ -1110,11 +1110,22 @@ async function invester_status_project(socket,data,callback)
     var _InvDoc     = await InvDoc.findOne({invester: data.id, projectId: data.project});
     var _User       = await User.findOne({user: data.id});
     var _Project    = await Project.findOne({_id: data.project});
+    var AllInvs     = InvDoc.find({projectId: data.project});
+    var initNumber  = 0;
+
+    for(var i = 0; i < AllInvs.length; i++)
+    {
+        if(InvDoc._id == AllInvs[i]._id)
+        {
+            initNumber = i + 1;
+        }
+    }
 
     callback({
         invester: _User,
         InvDoc: _InvDoc,
         project: _Project,
+        initNumber: initNumber,
     });
 }
 
