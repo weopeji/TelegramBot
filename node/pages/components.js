@@ -161,10 +161,23 @@ var action_linker =
 
 async function obligationsProjectData(socket, data, callback)
 {
-    var _data = {
+    var AllInvs = await InvDoc.find({projectId: data});
+    var _data   = {
         project: await Project.findOne({_id: data}),
-        Invs: await InvDoc.find({projectId: data}),
+        Invs: [],
     }
+
+    for(var Inv of AllInvs)
+    {
+        var _data = 
+        {
+            Inv: Inv,
+            commission: await commission.findOne({invId: Inv._id}),
+        }
+
+        _data.Invs.push(_data);
+    }
+
     callback(_data);
 }
 

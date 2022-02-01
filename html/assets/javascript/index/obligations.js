@@ -132,16 +132,23 @@
 
             _data.Invs.forEach(function(element, i) 
             {
+                var buttonPut = `<label for="${element._id}">Прикрепить</label>`;
+
+                if(element.commission)
+                {
+                    buttonPut = `<a href="https://invester-relocation.site/projects/${_data.project._id}/${element.commission.recipient}">Посмотреть</a>`;
+                }
+
                 var template_text = $(`
                     <div class="settingBlock_body_line settingBlock_body_line_obligations" data="${element._id}">
-                        <input type="file" name="" id="${element._id}" data-project="${_data.project._id}">
+                        <input type="file" name="" id="${element.Inv._id}" data-project="${_data.project._id}">
                         <span>${i + 1}</span>
-                        <span>${element.data.pay}</span>
-                        <span>${_data.project._id}/${i + 1} от ${DateFormatted(element.date)}</span>
-                        <span>${element.data.pay.toString().replace(/\s/g, '') / 100 * _data.project.payersData.commission}</span>
-                        <span>${DateFormatted(Number(element.date) + 864000000)}</span>
+                        <span>${element.Inv.data.pay}</span>
+                        <span>${_data.project._id}/${i + 1} от ${DateFormatted(element.Inv.date)}</span>
+                        <span>${element.Inv.data.pay.toString().replace(/\s/g, '') / 100 * _data.project.payersData.commission}</span>
+                        <span>${DateFormatted(Number(element.Inv.date) + 864000000)}</span>
                         <span clas="settingBlock_body_line_obligations_put">
-                            <label for="${element._id}">Прикрепить</label>
+                            ${buttonPut}
                         </span>
                         <span>Не оплачено</span>
                     </div>

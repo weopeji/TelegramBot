@@ -1098,6 +1098,10 @@ app.post('/file_commission.io/files', (req, res) => {
                         status: "wait",
                         recipient: `file_commission_${_data.invId}.${_data._pts.split('/')[1]}`,
                     });
+
+                    res.json({
+                        status: 'ok',
+                    });
                 });
             } else {
                 console.log('Файл не найден');
