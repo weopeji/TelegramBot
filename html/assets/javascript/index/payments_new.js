@@ -58,7 +58,7 @@
                 `);
 
                 template_text.click( function() {
-                    location.href = `./?page=active_projects&id="${$(this).attr('data')}"&project="${(this).attr('data-project')}"`;
+                    location.href = `./?page=active_projects&id="${$(this).attr('data')}"&project="${$(this).attr('data-project')}"`;
                 })
 
                 settingBlock.find('.settingBlock_body').append(template_text);
