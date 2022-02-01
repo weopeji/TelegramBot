@@ -106,10 +106,9 @@
                     }).then(data => {
                         if(data.data.status == "ok") {
                             alert("Чек прикоеплен!");
+                            location.reload();
                         }
-                    });
-
-                    location.reload();
+                    });    
                 });
 
                 $('.index_page_body_data').append(headerPaysBlock);
