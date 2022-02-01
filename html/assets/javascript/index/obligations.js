@@ -134,7 +134,7 @@
             {
                 var template_text = $(`
                     <div class="settingBlock_body_line settingBlock_body_line_obligations" data="${element._id}">
-                        <input type="file" id="${element._id}">
+                        <input type="file" name="" id="${element._id}">
                         <span>${i + 1}</span>
                         <span>${element.data.pay}</span>
                         <span>${_data.project._id}/${i + 1} от ${DateFormatted(element.date)}</span>
