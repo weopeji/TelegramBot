@@ -136,7 +136,7 @@
 
                 if(element.commission)
                 {
-                    buttonPut = `<a href="https://invester-relocation.site/projects/${_data.project._id}/${element.commission.recipient}">Посмотреть</a>`;
+                    buttonPut = `<a href="https://invester-relocation.site/projects/${_data.project._id}/${element.commission.recipient}" target="_blank">Посмотреть</a>`;
                 }
 
                 var template_text = $(`
