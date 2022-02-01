@@ -47,7 +47,7 @@
             _data.payments_new.showBlocks.forEach(function(element, i) 
             {
                 var template_text = `
-                    <div class="settingBlock_body_line" data="${element._id}">
+                    <div class="settingBlock_body_line" data="${element.inv.invester}" data-project="${element.inv.projectId}">
                         <span>${i + 1}</span>
                         <span>${DateFormatted(element.date)}</span>
                         <span>${element.invPay.pay.toString().ReplaceNumber()} руб</span>
@@ -57,29 +57,14 @@
                     </div>
                 `;
 
+                template_text.click( function() {
+                    location.href = `./?page=active_projects&id="${$(this).attr('data')}"&project="${(this).attr('data-project')}"`;
+                })
+
                 settingBlock.find('.settingBlock_body').append(template_text);
             })
 
             $('.index_page_body_data').append(settingBlock);
-
-            var items = [
-                { name: 'Edward', value: 21 },
-                { name: 'Sharpe', value: 37 },
-                { name: 'And', value: 45 },
-                { name: 'The', value: -12 },
-                { name: 'Magnetic' },
-                { name: 'Zeros', value: 37 }
-            ];
-            items.sort(function (a, b) {
-                if (a.value > b.value) {
-                  return 1;
-                }
-                if (a.value < b.value) {
-                  return -1;
-                }
-                // a должно быть равным b
-                return 0;
-            });
         }
     }
 
