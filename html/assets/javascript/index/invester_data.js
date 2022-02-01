@@ -152,6 +152,7 @@
                     html += `inn=${findOfArrayOn_id(_this.inv.data, "inn")}&`;
                     html += `ogrn=${findOfArrayOn_id(_this.inv.data, "ogrnip")}&`;
                     html += `do=${findOfArrayOn_id(_this.inv.data, "cpecial")}&`;
+                    html += `fio_dolg=${findOfArrayOn_id(_this.inv.data, "fio_dolg")}&`
                 } else if (_this.inv.type == "IP")
                 {
                     html += `inn=${findOfArrayOn_id(_this.inv.data, "inn")}&`;
