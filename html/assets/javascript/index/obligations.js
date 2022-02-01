@@ -73,11 +73,11 @@
                         </div>
                         <div class="obligations_block_element_line">
                             <span>Выплачено</span>
-                            <p>0 руб</p>
+                            <p>${element.commissionPay.toString().ReplaceNumber()} руб</p>
                         </div>
                         <div class="obligations_block_element_line">
                             <span>Задолженость</span>
-                            <p>0 руб</p>
+                            <p>${element.DebtComission.toString().ReplaceNumber()} руб</p>
                         </div>
                         <div class="obligations_block_element_line">
                             <span>Погаисть до</span>
