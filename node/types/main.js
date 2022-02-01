@@ -251,7 +251,7 @@ async function _MainMenu(msg, close)
                     "parse_mode": "MarkdownV2",
                     "reply_markup": {
                         "resize_keyboard": true,
-                        "keyboard": [['💁🏻 Написать в Поддержку'], [myInvestingText, InvestingText, rekomendationText], ["💳 Реквезиты","🔁 Сменить роль"]],
+                        "keyboard": [['*'], [myInvestingText, InvestingText, rekomendationText], ["💁🏻 Написать в Поддержку","🔁 Сменить роль"]],
                     }
                 });
                 _array.push(fat.message_id);
