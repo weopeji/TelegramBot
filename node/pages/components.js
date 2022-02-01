@@ -268,6 +268,7 @@ async function ALL_DATA(socket, data, callback)
             {
                 attracted: 0,
                 commission: 0,
+                commissionPay: 0,
                 showBlocks: [],
             }
 
@@ -277,9 +278,17 @@ async function ALL_DATA(socket, data, callback)
                 var commissionData  = project.payersData.commission;
                 var attractedData   = 0;
                 var accruedData     = 0;
+                var commissionPay   = 0;
 
                 for(var invPush of InvsOfProject)
                 {
+                    var _Commission         = await commission.findOne({invId: invPush._id});
+
+                    if(_Commission)
+                    {
+                        commissionPay = commissionPay + Number(invPush.data.pay.toString().replace(/\s/g, ''));
+                    }
+
                     attractedData           = attractedData + Number(invPush.data.pay.toString().replace(/\s/g, ''));
                     accruedData             =  accruedData + Number(invPush.data.pay.toString().replace(/\s/g, '')) / 100 * commissionData;
                     _blockData.attracted    = _blockData.attracted + Number(invPush.data.pay.toString().replace(/\s/g, ''));
@@ -291,7 +300,10 @@ async function ALL_DATA(socket, data, callback)
                     invs: InvsOfProject,
                     attracted: attractedData,
                     accrued: accruedData,
-                })
+                    commissionPay: commissionPay,
+                });
+
+                _blockData.commissionPay = _blockData.commissionPay + commissionPay;
             }
 
             resolve(_blockData);
