@@ -717,13 +717,7 @@
                 this.global_block.append(tamplateText);
             } else 
             {
-                var _description = `
-                    ${_project.data.name} № ${_project._id}
-                    ${_project.data.target}
-                    Ставка ${_project.data.rate}% годовых
-                    Выплаты ${_project.data.date_payments}
-                    Вход от ${_project.data.minimal_amount} руб.
-                    Подробнее о предложении в телеграм канале - https://t.me/invester_official
+                var _description = `${_project.data.name} № ${_project._id}\n${_project.data.target}\nСтавка ${_project.data.rate}% годовых\nВыплаты ${_project.data.date_payments}\nВход от ${_project.data.minimal_amount} руб.\nПодробнее о предложении в телеграм канале - https://t.me/invester_official
                 `.toString().trim();
 
                 var tamplateText = $(`
@@ -732,7 +726,7 @@
                         <video controls="controls" src="https://invester-relocation.site/projects/${_project._id}/${_project.data['file+8']}"></video>
                         <div class="upload_video_block_unputs">
                             <div class="upload_video_block_unputs_text" id="upload_video_name" contenteditable="true" style="white-space: pre-line">${_project.data.name} № ${_project._id}</div>
-                            <textarea class="upload_video_block_unputs_text" id="upload_video_description" contenteditable="true" style="white-space: pre-line">${_description}</textarea>
+                            <textarea class="upload_video_block_unputs_text" id="upload_video_description">${_description}</textarea>
                         </div>
                     </div>
                     <div class="upload_video_block_button_row">
