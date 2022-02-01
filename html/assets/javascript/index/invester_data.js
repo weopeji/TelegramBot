@@ -353,11 +353,12 @@
                 {
                     var _block = $(`
                         <div class="creating_page_input">
+                            <input type="text" class="creating_page_input_div" data="fio" placeholder="Название Юр. Лица">
                             <input type="text" class="creating_page_input_div" data="inn" placeholder="ИНН">
                             <input type="text" class="creating_page_input_div" data="kpp" placeholder="КПП">
                             <input type="text" class="creating_page_input_div" data="ogrnip" placeholder="ОГРН">
                             <input type="text" class="creating_page_input_div" data="cpecial" placeholder="Должность">
-                            <input type="text" class="creating_page_input_div" data="fio" placeholder="ФИО должностного лица">
+                            <input type="text" class="creating_page_input_div" data="fio_dolg" placeholder="ФИО должностного лица">
                             <input type="text" class="creating_page_input_div" data="addr" placeholder="Юридический адрес">
                             <input type="text" class="creating_page_input_div" data="bank" placeholder="Банк получателя">
                             <input type="text" class="creating_page_input_div" data="bik" placeholder="БИК">
