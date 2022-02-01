@@ -1086,17 +1086,17 @@ app.post('/file_commission.io/files', (req, res) => {
         try {
             if (fs.existsSync(_path)) { 
                 console.log('Файл найден');
-                if(fs.existsSync(`/var/www/projects/${_data._id}/file_commission_${_data.invId}.${_data._pts}`)) {
-                    fs.unlinkSync(`/var/www/projects/${_data._id}/file_commission_${_data.invId}.${_data._pts}`);
+                if(fs.existsSync(`/var/www/projects/${_data._id}/file_commission_${_data.invId}.${_data._pts.split('/')[1]}`)) {
+                    fs.unlinkSync(`/var/www/projects/${_data._id}/file_commission_${_data.invId}.${_data._pts.split('/')[1]}`);
                 }
-                fs.rename(_data.path, `/var/www/projects/${_data._id}/file_commission_${_data.invId}.${_data._pts}`, async function (err) {
+                fs.rename(_data.path, `/var/www/projects/${_data._id}/file_commission_${_data.invId}.${_data._pts.split('/')[1]}`, async function (err) {
                     if (err) throw err
                     console.log('Successfully renamed - AKA moved!');
                     
                     await commission.create({
                         invId: _data.invId,
                         status: "wait",
-                        recipient: `file_commission_${_data.invId}.${_data._pts}`,
+                        recipient: `file_commission_${_data.invId}.${_data._pts.split('/')[1]}`,
                     });
                 });
             } else {
