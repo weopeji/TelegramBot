@@ -182,7 +182,7 @@
                 <div class="creating_page_block">
                     <div class="creating_page_start" style="margin-bottom: 20px">
                         <span>
-                            Уважаемый Инвестор ${_this.inv.data.fio} переведите ${_this.money} руб. По реквезитам ниже и Пришлите чек оплаты для окончания инвестирования. <br><br>
+                            Уважаемый Инвестор ${findOfArrayOn_id(_this.inv.data, "fio")} переведите ${_this.money} руб. По реквезитам ниже и Пришлите чек оплаты для окончания инвестирования. <br><br>
 
                             Реквезиты перечисления: <br><br>
                             Банк-получатель: ${this.project.data.bank} <br>
