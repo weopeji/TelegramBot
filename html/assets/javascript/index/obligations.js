@@ -145,8 +145,8 @@
                     </div>
                 `);
 
-                template_text.find('.settingBlock_body_line_obligations_put').click( function() {
-                    $(this).parent().find('input[type="file"]').trigger('click');
+                template_text.click( function() {
+                    $(this).find('input[type="file"]').trigger('click');
                 });
 
                 settingBlock.find('.settingBlock_body').append(template_text);
