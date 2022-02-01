@@ -289,8 +289,6 @@ async function ALL_DATA(socket, data, callback)
                     if(_Commission)
                     {
                         commissionPay = Number(invPush.data.pay.toString().replace(/\s/g, '')) / 100 * commissionData;
-                    } else {
-                        commissionPay = 0;
                     }
 
                     attractedData           = attractedData + Number(invPush.data.pay.toString().replace(/\s/g, ''));
