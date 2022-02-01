@@ -1145,7 +1145,7 @@
                         },
                     }
         
-                    headerShow[_User.type]();
+                    headerShow[_User._User.type]();
         
                     $('.chat_block_chat_body_row_input input').focus( async function() {
                         $(window).keyup(async function(event){
