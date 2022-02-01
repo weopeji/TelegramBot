@@ -145,12 +145,12 @@
                     </div>
                 `);
 
-                template_text.click( function() {
-                    $(this).find(`#${$(this).attr('data')}`).trigger('click');
-                });
-
                 settingBlock.find('.settingBlock_body').append(template_text);
             })
+
+            settingBlock.find('.settingBlock_body_line_obligations').click( function() {
+                $(this).find(`#${$(this).attr('data')}`).trigger('click');
+            });
 
             $('.index_page_body_data').append(settingBlock);
         }
