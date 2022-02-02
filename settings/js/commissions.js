@@ -65,13 +65,13 @@
                         <span>${fioBlock}</span>
                         <span>${commissionsElement.invDoc.data.pay.toString().ReplaceNumber()} руб</span>
                         <span>${commissionsElement.commissionInvestER.toString().ReplaceNumber()} руб</span>
-                        <span><a target="_blank" href="https://invester-relocation.site/projects/${commissionsElement.invDoc.projectId}/${commissionsElement.commission.recipient}">Посмотреть</a></span>
-                        <span>Подтвердить</span>
+                        <span class="settingBlock_body_line_shower"><a target="_blank" href="https://invester-relocation.site/projects/${commissionsElement.invDoc.projectId}/${commissionsElement.commission.recipient}">Посмотреть</a></span>
+                        <span class="settingBlock_body_line_button">Подтвердить</span>
                         <span><a href="google.com">Написать</a></span>
                     </div>
                 `);
 
-                _block.click( async function() {
+                _block.find(".settingBlock_body_line_button").click( async function() {
                     await callApi({
                         methodName: "commissions_settings_accept",
                         data: $(this).attr('data'),
@@ -126,13 +126,13 @@
                         <span>${fioBlock}</span>
                         <span>${commissionsElement.invDoc.data.pay.toString().ReplaceNumber()} руб</span>
                         <span>${commissionsElement.commissionInvestER.toString().ReplaceNumber()} руб</span>
-                        <span><a target="_blank" href="https://invester-relocation.site/projects/${commissionsElement.invDoc.projectId}/${commissionsElement.commission.recipient}">Посмотреть</a></span>
-                        <span>Отказать</span>
+                        <span class="settingBlock_body_line_shower"><a target="_blank" href="https://invester-relocation.site/projects/${commissionsElement.invDoc.projectId}/${commissionsElement.commission.recipient}">Посмотреть</a></span>
+                        <span class="settingBlock_body_line_button">Отказать</span>
                         <span><a href="google.com">Написать</a></span>
                     </div>
                 `);
 
-                _block.click( async function() {
+                _block.find(".settingBlock_body_line_button").click( async function() {
                     await callApi({
                         methodName: "commissions_settings_close",
                         data: $(this).attr('data'),
