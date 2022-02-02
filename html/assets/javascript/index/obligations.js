@@ -140,11 +140,17 @@
 
             _data.Invs.forEach(function(element, i) 
             {
-                var buttonPut = `<label for="${element.Inv._id}">Прикрепить</label>`;
+                var buttonPut   = `<label for="${element.Inv._id}">Прикрепить</label>`;
+                var statusText  = `Не оплачено`;
 
                 if(element.commission)
                 {
                     buttonPut = `<a href="https://invester-relocation.site/projects/${_data.project._id}/${element.commission.recipient}" target="_blank">Посмотреть</a>`;
+
+                    if(element.commission.status == "accept")
+                    {
+                        statusText = "Оплачено";
+                    }
                 }
 
                 var template_text = $(`
@@ -158,7 +164,7 @@
                         <span clas="settingBlock_body_line_obligations_put">
                             ${buttonPut}
                         </span>
-                        <span>Не оплачено</span>
+                        <span>${statusText}</span>
                     </div>
                 `);
 
