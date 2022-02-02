@@ -74,7 +74,7 @@
                 _block.find(".settingBlock_body_line_button").click( async function() {
                     await callApi({
                         methodName: "commissions_settings_accept",
-                        data: $(this).attr('data'),
+                        data: $(this).parent().attr('data'),
                     });
                     alert('Успешно!');
                     location.reload();
@@ -135,7 +135,7 @@
                 _block.find(".settingBlock_body_line_button").click( async function() {
                     await callApi({
                         methodName: "commissions_settings_close",
-                        data: $(this).attr('data'),
+                        data: $(this).parent().attr('data'),
                     });
                     alert('Успешно!');
                     location.reload();
