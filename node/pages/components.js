@@ -195,12 +195,30 @@ async function redactingProjectByAdmin(socket, data, callback)
 
 async function ALL_DATA(socket, data, callback)
 {
-    var _User = await User.findOne().or([{ _id: data }, { user: data }]);
+    var _User           = await User.findOne().or([{ _id: data }, { user: data }]);
+    var _Projects       = await Project.find({user: _User.user});
+    var _ProjectsActive = [];
+    var _allInvdocks    = [];
+
+    for(var _Project of _Projects)
+    {
+        var _ProjectInvs = await InvDoc.find({projectId: _Project._id});
+
+        for(_ProjectInv of _ProjectInvs)
+        {
+            _allInvdocks.push(_ProjectInv);
+        };
+
+        if(_Project.type == "active")
+        {
+            _ProjectsActive.push(_Project);
+        };
+    }
 
     var AllData = 
     {
         User:               _User,
-        allAcceptProjects:  await Project.find({type: "active"}),
+        allAcceptProjects:  _ProjectsActive,
         invester_data:      await investerData(),
         obligations_data:   await obligationsData(),
         payments_new:       await payments_new(),
@@ -210,7 +228,7 @@ async function ALL_DATA(socket, data, callback)
     {
         return new Promise(async (resolve,reject) =>
         {
-            var allUserProjects = await Project.find({user: _User.user});
+            var allUserProjects = _Projects;
             var dateNow         = new Date().getTime();
             var _blockData      =
             {
@@ -265,7 +283,7 @@ async function ALL_DATA(socket, data, callback)
     {
         return new Promise(async (resolve,reject) =>
         {
-            var allUserProjects = await Project.find({user: _User.user});
+            var allUserProjects = _Projects;
 
             var _blockData  = 
             {
