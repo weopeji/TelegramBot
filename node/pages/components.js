@@ -361,7 +361,7 @@ async function ALL_DATA(socket, data, callback)
                         repayData = invPush.date;
                     }
 
-                    var _Commission         = await commission.findOne({invId: invPush._id});
+                    var _Commission         = await commission.findOne({invId: invPush._id, status: "accept"});
                     var _CommissionDataneed = 0;
 
                     if(_Commission)
