@@ -132,6 +132,15 @@
                     </div>
                 `);
 
+                _block.click( async function() {
+                    await callApi({
+                        methodName: "commissions_settings_close",
+                        data: $(this).attr('data'),
+                    });
+                    alert('Успешно!');
+                    location.reload();
+                })
+
                 templateText.find('.settingBlock_body').append(_block); 
             })
 

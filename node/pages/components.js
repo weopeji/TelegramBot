@@ -159,7 +159,13 @@ var action_linker =
     "obligationsProjectData": obligationsProjectData,
     "commissions_settings": commissions_settings,
     "commissions_settings_accept": commissions_settings_accept,
+    "commissions_settings_close": commissions_settings_close,
 };
+
+async function commissions_settings_close(socket, data, callback)
+{
+    callback(await commission.findOneAndUpdate({_id: data}, {status: "wait"}))
+}
 
 async function commissions_settings_accept(socket, data, callback)
 {
