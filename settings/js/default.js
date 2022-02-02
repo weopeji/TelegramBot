@@ -4,7 +4,9 @@
     {
         global.loadResources(['./js/components.js'], () => {
             global.loadResources(['./js/redacting_page.js'], () => {
-                Main();
+                global.loadResources(['./js/commissions.js'], () => {
+                    Main();
+                });
             });
         });    
     });
