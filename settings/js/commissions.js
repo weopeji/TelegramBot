@@ -120,10 +120,10 @@
                         <span>${commissionsElement.commissionInvestER}</span>
                         <span>Подтвердить</span>
                         <a href="google.com">Написать</a>
-                    </div>
+                    </div> 
                 `);
 
-                templateText.find('.settingBlock_body').append(_block);
+                templateText.find('.settingBlock_body').append(_block); 
             })
 
             $('.index_page_body_data').append(templateText);
