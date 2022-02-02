@@ -157,7 +157,44 @@ var action_linker =
     "setRedactingProject": setRedactingProject,
     "redactingProjectByAdmin": redactingProjectByAdmin,
     "obligationsProjectData": obligationsProjectData,
+    "commissions_settings": commissions_settings,
 };
+
+async function commissions_settings(socket, data, callbak)
+{
+    var _Commissions        = await commission.find({});
+    var _CommissionsData    = {
+        wait: [],
+        accept: [],
+    };
+
+    for(var _Commission of _Commissions)
+    {
+        var invCommission       = await InvDoc.findOne({_id: _Commission.invId});
+        var projectCommission   = await Project.findOne({_id: invCommission.projectId});
+
+        var _blockCommission = {
+            commission: _Commission,
+            invDoc: invCommission,
+            project: projectCommission,
+            commissionInvestER: 0,
+        };
+
+        _blockCommission.commissionInvestER = Number(invCommission.data.pay.toString().replace(/\s/g, '')) / 100 * projectCommission.payersData.commission;
+
+        if(_Commission.status == "wait")
+        {
+            _CommissionsData.wait.push(_blockCommission);
+        };
+
+        if(_Commission.status == "accept")
+        {
+            _CommissionsData.accept.push(_blockCommission);
+        };
+    };
+
+    callbak(_CommissionsData);
+}
 
 async function obligationsProjectData(socket, data, callback)
 {
