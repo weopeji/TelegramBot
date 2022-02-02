@@ -112,6 +112,7 @@ async function getMoney(msg)
     var allProjects     = await Project.find({user: msg.from.id});
     var notPays         = 0;
     var allPays         = 0;
+    var falseInvs       = [];
 
     var html = `Вы находитесь в меню: "Получение денег от инвестора"`;
 
@@ -129,6 +130,7 @@ async function getMoney(msg)
             if(_Inv.status == "wait")
             {
                 notPays = notPays + 1;
+                falseInvs.push(_Inv);
             }
 
             allPays = allPays + 1;
