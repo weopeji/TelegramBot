@@ -65,7 +65,7 @@
                         <span>${fioBlock}</span>
                         <span>${commissionsElement.invDoc.data.pay.toString().ReplaceNumber()} руб</span>
                         <span>${commissionsElement.commissionInvestER.toString().ReplaceNumber()} руб</span>
-                        <span><a href="https://invester-relocation.site/projects/${commissionsElement.invDoc.projectId}/${commissionsElement.commission.recipient}">Посмотреть</a></span>
+                        <span><a target="_blank" href="https://invester-relocation.site/projects/${commissionsElement.invDoc.projectId}/${commissionsElement.commission.recipient}">Посмотреть</a></span>
                         <span>Подтвердить</span>
                         <span><a href="google.com">Написать</a></span>
                     </div>
@@ -126,7 +126,7 @@
                         <span>${fioBlock}</span>
                         <span>${commissionsElement.invDoc.data.pay.toString().ReplaceNumber()} руб</span>
                         <span>${commissionsElement.commissionInvestER.toString().ReplaceNumber()} руб</span>
-                        <span><a href="https://invester-relocation.site/projects/${commissionsElement.invDoc.projectId}/${commissionsElement.commission.recipient}">Посмотреть</a></span>
+                        <span><a target="_blank" href="https://invester-relocation.site/projects/${commissionsElement.invDoc.projectId}/${commissionsElement.commission.recipient}">Посмотреть</a></span>
                         <span>Отказать</span>
                         <span><a href="google.com">Написать</a></span>
                     </div>
