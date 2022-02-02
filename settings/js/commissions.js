@@ -67,7 +67,7 @@
                         <span>${commissionsElement.invDoc.data.pay.toString().ReplaceNumber()}</span>
                         <span>${commissionsElement.commissionInvestER}</span>
                         <span>Подтвердить</span>
-                        <span>Написать</span>
+                        <a href="google.com">Написать</a>
                     </div>
                 `);
 
