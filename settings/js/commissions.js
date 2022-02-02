@@ -71,13 +71,12 @@
                     </div>
                 `);
 
-                _block.click( function() {
+                _block.click( async function() {
                     await callApi({
                         methodName: "commissions_settings_accept",
-                        data: null,
+                        data: $(this).attr('data'),
                     });
                     alert('Успешно!');
-                    
                 })
 
                 templateText.find('.settingBlock_body').append(_block);

@@ -158,9 +158,15 @@ var action_linker =
     "redactingProjectByAdmin": redactingProjectByAdmin,
     "obligationsProjectData": obligationsProjectData,
     "commissions_settings": commissions_settings,
+    "commissions_settings_accept": commissions_settings_accept,
 };
 
-async function commissions_settings(socket, data, callbak)
+async function commissions_settings_accept(socket, data, callback)
+{
+    callback(await commission.findOneAndUpdate({_id: data}, {status: "accept"}))
+}
+
+async function commissions_settings(socket, data, callback)
 {
     var _Commissions        = await commission.find({});
     var _CommissionsData    = {
@@ -193,7 +199,7 @@ async function commissions_settings(socket, data, callbak)
         };
     };
 
-    callbak(_CommissionsData);
+    callback(_CommissionsData);
 }
 
 async function obligationsProjectData(socket, data, callback)
