@@ -98,6 +98,7 @@
 
             templateText.css('width', 'calc(92% - 40px');
             templateText.css('margin', '0 auto');
+            templateText.css('margin-top', '20px');
 
             commissionsData.accept.forEach( function (commissionsElement, i) 
             {
@@ -118,7 +119,7 @@
                         <span>${commissionsElement.invDoc.data.pay.toString().ReplaceNumber()}</span>
                         <span>${commissionsElement.commissionInvestER}</span>
                         <span>Подтвердить</span>
-                        <span>Написать</span>
+                        <a href="google.com">Написать</a>
                     </div>
                 `);
 
