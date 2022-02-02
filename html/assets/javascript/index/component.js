@@ -423,14 +423,14 @@
                                 <div class="invester_status_projects_status_first_line">
                                     <span>Проинвестировано</span>
                                     <a>${_data.invester_data.invested.toString().ReplaceNumber()} руб.</a>
-                                    <span>Выплачено</span>
-                                    <a>${_data.invester_data.paid.toString().ReplaceNumber()} руб</a>
-                                </div>
-                                <div class="invester_status_projects_status_first_line">
                                     <span>Ближайшие поступления на</span>
                                     <a>${_data.invester_data.receipts.toString().ReplaceNumber()} руб</a>
-                                    <span>Денежный поток в год</span>
+                                </div>
+                                <div class="invester_status_projects_status_first_line">
+                                    <span>Получено</span>
                                     <a>${_data.invester_data.paid.toString().ReplaceNumber()} руб</a>
+                                    <span>Ожидают подтверждения</span>
+                                    <a>${_data.invester_data.investedWait.toString().ReplaceNumber()} руб</a>
                                 </div>
                             </div>
                         </div>

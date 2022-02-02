@@ -342,6 +342,7 @@ async function ALL_DATA(socket, data, callback)
                 activeInvs: [],
                 waitInvs: [],
                 invested: 0,
+                investedWait: 0,
                 paid: 0,
                 receipts: 0,
             };
@@ -400,6 +401,7 @@ async function ALL_DATA(socket, data, callback)
                 });
 
                 _blockData.waitInvs.push(_waitInvBlock);
+                _blockData.investedWait = _blockData.investedWait + Number(_waitInv.data.pay.toString().replace(/\s/g, ''))
             }
 
             for(var _Inv of _Invs)
