@@ -110,6 +110,8 @@ async function getMoney(msg)
     var _array          = [];
     var _User           = await User.findOne({user: msg.from.id});
     var allProjects     = await Project.find({user: msg.from.id});
+    var notPays         = 0;
+    var allPays         = 0;
 
     var html = `Вы находитесь в меню: "Получение денег от инвестора"`;
 
@@ -119,68 +121,41 @@ async function getMoney(msg)
     });
     _array.push(fat.message_id);
 
-    var _arrayProjects  = [];
-
-    allProjects.forEach(function(project) {
-        _arrayProjects.push(project._id);
-    });
-
-    var allInv = [];
-
-    var bar = new Promise((resolve, reject) => {
-        _arrayProjects.forEach(async (value, index, array) => {
-            var InvDocs = await InvDoc.find({projectId: value});
-            console.log(InvDocs);
-            if(InvDocs.length > 0) {
-                allInv.push(InvDocs);
+    for(var _project of allProjects)
+    {
+        var AllInvOfProject = await InvDoc.find({projectId: _project._id});
+        for(_Inv of AllInvOfProject)
+        {
+            if(_Inv.status == "wait")
+            {
+                notPays = notPays + 1;
             }
-            if (index === array.length -1) resolve();
-        })
-    });
+
+            allPays = allPays + 1;
+        }
+    }
+
+    var html = `Бизнес ${_User.first_name}\n\nОплачено инвесторами ${allPays}\nНе подтверждено получение денег Бизнесом ${notPays}\n\n`;
     
-    bar.then(async () => {
-        
-        var _arrayAllInvs = [];
+    falseInvs.forEach((el, i) => {
+        html = html + `№${el.projectId}/${i + 1}  `;
+    })
 
-        allInv.forEach(el => {
-            el.forEach(el2 => {
-                _arrayAllInvs.push(el2);
-            })
-        });
-
-        var falseInvs   = [];
-        var trueInvs    = [];
-
-        _arrayAllInvs.forEach(element => {
-            if(element.receipt) {
-                trueInvs.push(element);
-            } 
-            if(element.status == "wait") {
-                falseInvs.push(element);
-            }
-        });
-
-        var html = `Бизнес ${_User.first_name}\n\nОплачено инвесторами ${trueInvs.length}\nНе подтверждено получение денег Бизнесом ${falseInvs.length}\n\n`;
-        
-        falseInvs.forEach((el, i) => {
-            html = html + `№${el.projectId}/${i + 1}  `;
-        })
-
-        var fat = await h.send_html(msg.chat.id, html, {
-            "resize_keyboard": true,
-            "inline_keyboard": [
-                [
-                    {
-                        text: "Подтвердить",
-                        url: `${h.getURL()}?user=${_User._id}&page=acceptPays`
-                    }
-                ]
-            ],
-        });
-        _array.push(fat.message_id);
-
-        await h.DMA(msg, _array);
+    var fat = await h.send_html(msg.chat.id, html, {
+        "resize_keyboard": true,
+        "inline_keyboard": [
+            [
+                {
+                    text: "Подтвердить",
+                    url: `${h.getURL()}?user=${_User._id}&page=acceptPays`
+                }
+            ]
+        ],
     });
+    _array.push(fat.message_id);
+
+    await h.DMA(msg, _array);
+  
 }
 
 async function how_add(msg)
