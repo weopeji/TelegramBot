@@ -20,6 +20,7 @@
         const investings        = new global.Components.investings();
         const pays_business     = new global.Components.pays_business();
         const pays_attract      = new global.Components.pays_attract();
+        const commissions       = new global.Components.commissions();
 
         var pagesLAN = 
         {
@@ -30,6 +31,7 @@
             "investings": function() {investings.render()},
             "pays_business": function() {pays_business.render()},
             "pays_attract": function() {pays_attract.render()},
+            "commissions": function() {commissions.render()},
         }
 
         if(global.pageID)
