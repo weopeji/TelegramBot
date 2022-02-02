@@ -63,13 +63,22 @@
                     <div class="settingBlock_body_line" data="${commissionsElement.commission._id}">
                         <span>${commissionsElement.project._id}</span>
                         <span>${fioBlock}</span>
-                        <span>${commissionsElement.invDoc.data.pay.toString().ReplaceNumber()}</span>
-                        <span>${commissionsElement.commissionInvestER}</span>
+                        <span>${commissionsElement.invDoc.data.pay.toString().ReplaceNumber()} руб</span>
+                        <span>${commissionsElement.commissionInvestER.toString().ReplaceNumber()} руб</span>
                         <span><a href="https://invester-relocation.site/projects/${commissionsElement.invDoc.projectId}/${commissionsElement.commission.recipient}">Посмотреть</a></span>
                         <span>Подтвердить</span>
                         <span><a href="google.com">Написать</a></span>
                     </div>
                 `);
+
+                _block.click( function() {
+                    await callApi({
+                        methodName: "commissions_settings_accept",
+                        data: null,
+                    });
+                    alert('Успешно!');
+                    
+                })
 
                 templateText.find('.settingBlock_body').append(_block);
             })
@@ -115,8 +124,8 @@
                     <div class="settingBlock_body_line" data="${commissionsElement.commission._id}">
                         <span>${commissionsElement.project._id}</span>
                         <span>${fioBlock}</span>
-                        <span>${commissionsElement.invDoc.data.pay.toString().ReplaceNumber()}</span>
-                        <span>${commissionsElement.commissionInvestER}</span>
+                        <span>${commissionsElement.invDoc.data.pay.toString().ReplaceNumber()} руб</span>
+                        <span>${commissionsElement.commissionInvestER.toString().ReplaceNumber()} руб</span>
                         <span><a href="https://invester-relocation.site/projects/${commissionsElement.invDoc.projectId}/${commissionsElement.commission.recipient}">Посмотреть</a></span>
                         <span>Подтвердить</span>
                         <span><a href="google.com">Написать</a></span>
