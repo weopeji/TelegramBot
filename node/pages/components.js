@@ -358,7 +358,10 @@ async function ALL_DATA(socket, data, callback)
 
                     if(!repayData)
                     {
-                        repayData = invPush.date;
+                        if(invPush.status == "wait")
+                        {
+                            repayData = invPush.date;
+                        }
                     }
 
                     var _Commission         = await commission.findOne({invId: invPush._id, status: "accept"});
