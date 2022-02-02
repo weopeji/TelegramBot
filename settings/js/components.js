@@ -42,8 +42,7 @@
 
         getBlocks(_array, name) 
         {
-            
-
+        
             _array.forEach(element => {
 
                 var _date = element.data.collection_period.split('-');
