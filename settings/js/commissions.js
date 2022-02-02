@@ -30,11 +30,11 @@
                     <div class="settingBlock_header">
                         <p>Ожидают подтверждения</p>
                         <div class="settingBlock_header_line">
-                            <span>#</span>
                             <span>Номер проекта</span>
                             <span>Инвестор</span>
                             <span>Сумма Инвестиции</span>
                             <span>Комиссия InvestER</span>
+                            <span>Чек</span>
                             <span>Действие</span>
                             <span>Сообщение</span>
                         </div>
@@ -61,11 +61,11 @@
 
                 var _block = $(`
                     <div class="settingBlock_body_line" data="${commissionsElement.commission._id}">
-                        <span>${i + 1}</span>
                         <span>${commissionsElement.project._id}</span>
                         <span>${fioBlock}</span>
                         <span>${commissionsElement.invDoc.data.pay.toString().ReplaceNumber()}</span>
                         <span>${commissionsElement.commissionInvestER}</span>
+                        <span><a href="https://invester-relocation.site/projects/${commissionsElement.invDoc.projectId}/${commissionsElement.commission.recipient}">Посмотреть</a></span>
                         <span>Подтвердить</span>
                         <span><a href="google.com">Написать</a></span>
                     </div>
@@ -81,11 +81,11 @@
                     <div class="settingBlock_header">
                         <p>Подтвержденные</p>
                         <div class="settingBlock_header_line">
-                            <span>#</span>
                             <span>Номер проекта</span>
                             <span>Инвестор</span>
                             <span>Сумма Инвестиции</span>
                             <span>Комиссия InvestER</span>
+                            <span>Чек</span>
                             <span>Действие</span>
                             <span>Сообщение</span>
                         </div>
@@ -113,14 +113,14 @@
 
                 var _block = $(`
                     <div class="settingBlock_body_line" data="${commissionsElement.commission._id}">
-                        <span>${i + 1}</span>
                         <span>${commissionsElement.project._id}</span>
                         <span>${fioBlock}</span>
                         <span>${commissionsElement.invDoc.data.pay.toString().ReplaceNumber()}</span>
                         <span>${commissionsElement.commissionInvestER}</span>
+                        <span><a href="https://invester-relocation.site/projects/${commissionsElement.invDoc.projectId}/${commissionsElement.commission.recipient}">Посмотреть</a></span>
                         <span>Подтвердить</span>
                         <span><a href="google.com">Написать</a></span>
-                    </div> 
+                    </div>
                 `);
 
                 templateText.find('.settingBlock_body').append(_block); 
