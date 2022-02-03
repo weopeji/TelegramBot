@@ -53,9 +53,26 @@
             });
         }
 
+        async renderBody()
+        {
+            var bodyBlock = 
+            $(`
+                <div class="telegram_authorization">
+                    <div class="telegram_authorization_row">
+                        <div class="telegram_authorization_image">
+                            <i class="fab fa-telegram-plane"></i>
+                        </div>
+                    </div>
+                </div>
+            `);
+
+            $('.index_page_body_data').append(bodyBlock);
+        }
+
         async render()
         {
             await this.renderStyles();
+            await this.renderBody();
             await this.addScript();
         }
     }
