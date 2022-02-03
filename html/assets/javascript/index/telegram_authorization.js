@@ -45,11 +45,11 @@
                 script.setAttribute("data-onauth", "onTelegramAuth(user)");
                 script.setAttribute("data-request-access", "write");
 
-                document.body.getElementsByClassName(".telegram_authorization_buttons").appendChild(script);
-    
                 script.onload = function() {
                     resolve();
                 }
+
+                document.body.getElementsByClassName(".telegram_authorization_buttons").appendChild(script);
             });
         }
 
