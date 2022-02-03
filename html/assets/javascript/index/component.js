@@ -1599,8 +1599,8 @@
                 }
             }
 
-            $('.Attracted_headerInfoBlock_block_text_moneys[data="wait"] p').html(_WaitMoneys);
-            $('.Attracted_headerInfoBlock_block_text_moneys[data="accept"] p').html(_AcceptMoneys);
+            $('.Attracted_headerInfoBlock_block_text_moneys[data="wait"] p').html(_WaitMoneys.toString().ReplaceNumber() + " руб");
+            $('.Attracted_headerInfoBlock_block_text_moneys[data="accept"] p').html(_AcceptMoneys.toString().ReplaceNumber() + " руб");
 
             $('.index_page_body_data').append(settingBlock);
         }
