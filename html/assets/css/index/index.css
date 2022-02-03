@@ -1659,6 +1659,9 @@ html, body {
   display: -ms-flexbox;
   display: flex;
   margin-top: 65px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 @media (max-width: 1600px) {
