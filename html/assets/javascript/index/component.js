@@ -1316,9 +1316,9 @@
 
         async renderHeader(_data) 
         {
-            var headerRefUrlsBlock = $(`
+            var headerInfoBlock = 
+            $(`
                 <div class="Attracted_by_me_headerRefUrlsBlock">
-                    <h1>Ваша персональная реферальная ссылка</h1>
                     <div class="Attracted_by_me_headerRefUrlsBlock_blocks">
                         <div class="Attracted_by_me_headerRefUrlsBlock_blocks_line">
                             <span>Инвесторов</span>
@@ -1330,10 +1330,6 @@
                         </div>
                     </div>
                 </div>
-            `);
-
-            var headerInfoBlock1 = 
-            $(`
                 <div class="Attracted_headerInfoBlock">
                     <div class="Attracted_headerInfoBlock_block">
                         <div class="Attracted_headerInfoBlock_block_i">
@@ -1354,10 +1350,6 @@
                         </div>
                     </div>
                 </div>
-            `);
-
-            var headerInfoBlock2 = 
-            $(`
                 <div class="Attracted_headerInfoBlock">
                     <div class="Attracted_headerInfoBlock_block">
                         <div class="Attracted_headerInfoBlock_block_i">
@@ -1397,9 +1389,7 @@
                 location.href = "./?page=show_all_projects"
             })
 
-            $('.index_page_body_data').append(headerRefUrlsBlock);
-            $('.index_page_body_data').append(headerInfoBlock1);
-            $('.index_page_body_data').append(headerInfoBlock2);
+            $('.index_page_body_data').append(headerInfoBlock);
             $('.index_page_body_data').append(moreGetButtons);
         }
 
@@ -1410,7 +1400,7 @@
                     <div class="settingBlock_header">
                         <p>Привлеченные инвестора</p>
                         <div class="settingBlock_header_line">
-                            <span>ID Инвестора</span>
+                            <span>#</span>
                             <span>username</span>
                             <span>Имя</span>
                         </div>
@@ -1423,15 +1413,19 @@
 
             settingBlock.css("margin-top", "20px");
 
+            var initNumber = 0;
+
             for(var element of this.allAttracted.investors)
             {
                 var template_text = `
                     <div class="settingBlock_body_line">
-                        <span>${element.user}</span>
+                        <span>${initNumber}</span>
                         <span>${element.username}</span>
                         <span>${element.first_name}</span>
                     </div>
                 `;
+
+                initNumber++;
 
                 settingBlock.find('.settingBlock_body').append(template_text);
             }
@@ -1541,8 +1535,9 @@
                     <div class="settingBlock_header">
                         <p>Статистика ваших выплат</p>
                         <div class="settingBlock_header_line">
-                            <span>Номер</span>
-                            <span>ID Проекта/Инвестора</span>
+                            <span>№</span>
+                            <spanТип привлечения</span>
+                            <span>Номер Проекта/Инвестора</span>
                             <span>Сумма выплаты</span>
                         </div>
                     </div>
@@ -1554,23 +1549,38 @@
 
             settingBlock.css("margin-top", "20px");
 
-            var i = 1;
+            var initNumber = 1;
+
             for(var element of allPayments)
             {
-                var _pay = 0;
+
+                var investerPay                     = Number(element.pay.toString().replace(/\s/g, ''));
+                var commissionMoneys                = Number(investerPay / 100 * element.data.ProjectData.commission);
+                var commissionCompany               = Number(commissionMoneys / 100 * element.data.ProjectData.company_commission);
+                var commissionAttraction            = Number(commissionMoneys - commissionCompany);
+                var commissionAttractionInvester    = Number(commissionAttraction / 100 * element.data.ProjectData.investors_commission);
+                var commissionAttractionBusiness    = Number(commissionAttraction / 100 * element.data.ProjectData.business_commission);
+                var commissionAttractionNeedPay     = 0;
+                var AttractionType                  = "Инвестор";
+                var AttractionId                    = null;
 
                 if(element.type == "investing")
                 {
-                    _pay = element.pay * 0.0875;
-                } else {
-                    _pay = element.pay * 0.0375;
+                    commissionAttractionNeedPay = commissionAttractionInvester;
+                    AttractionId                =  element.data._InvInvester.invester;
+                } else 
+                {
+                    commissionAttractionNeedPay = commissionAttractionBusiness;
+                    AttractionType              = "Бизнес";
+                    AttractionId                =  element.data._id;
                 }
 
                 var template_text = $(`
                     <div class="settingBlock_body_line">
-                        <span>${i}</span>
+                        <span>${initNumber}</span>
+                        <span>${AttractionType}</span>
                         <span>${element.data._id}</span>
-                        <span>${_pay}</span>
+                        <span>${commissionAttractionNeedPay} руб</span>
                     </div>
                 `);
 
@@ -1580,7 +1590,7 @@
 
                 settingBlock.find('.settingBlock_body').append(template_text);
 
-                i++;
+                initNumber++;
             }
 
             $('.index_page_body_data').append(settingBlock);

@@ -1283,6 +1283,7 @@ async function acceptInvestor(socket,data,callback)
             status: "wait",
             data: {
                 _id: _InvDoc._id,
+                _InvInvester: _InvDoc.invester,
                 ProjectData: _Project.payersData,
             },
         })
