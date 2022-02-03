@@ -49,7 +49,7 @@
                     resolve();
                 }
 
-                document.body.getElementsByClassName(".telegram_authorization_buttons").appendChild(script);
+                document.body.getElementsByClassName(".telegram_authorization_buttons")[0].appendChild(script);
             });
         }
 
