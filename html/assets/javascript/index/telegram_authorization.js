@@ -35,18 +35,15 @@
 
         async addScript()
         {
-            return new Promise((resolve,reject) =>
-            {
-                var script = document.createElement('script');
-                script.src = "https://telegram.org/js/telegram-widget.js?15"
-                script.setAttribute("data-telegram-login", "invester_official_bot");
-                script.setAttribute("data-size", "large");
-                script.setAttribute("data-radius", "20");
-                script.setAttribute("data-onauth", "onTelegramAuth(user)");
-                script.setAttribute("data-request-access", "write");
+            var script = document.createElement('script');
+            script.src = "https://telegram.org/js/telegram-widget.js?15"
+            script.setAttribute("data-telegram-login", "invester_official_bot");
+            script.setAttribute("data-size", "large");
+            script.setAttribute("data-radius", "20");
+            script.setAttribute("data-onauth", "onTelegramAuth(user)");
+            script.setAttribute("data-request-access", "write");
 
-                $(".telegram_authorization_buttons").append(script);
-            });
+            $(".telegram_authorization_buttons").append(script);
         }
 
         async renderBody()
