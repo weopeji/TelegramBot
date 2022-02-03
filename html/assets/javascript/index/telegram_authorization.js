@@ -33,9 +33,30 @@
             $('.index_page_body_header_info span').html("Telegram Авторизация");
         }
 
+        async addScript()
+        {
+            return new Promise((resolve,reject) =>
+            {
+                var script                      = document.createElement('script');
+                script.src                      = "https://telegram.org/js/telegram-widget.js?15"
+                script["data-telegram-login"]   = "invester_official_bot";
+                script["data-size"]             = "large";
+                script["data-radius"]           = "20";
+                script["data-onauth"]           = "onTelegramAuth(user)";
+                script["data-request-access"]   = "write";
+
+                document.head.append(script);
+    
+                script.onload = function() {
+                    resolve();
+                }
+            });
+        }
+
         async render()
         {
-
+            await this.renderStyles();
+            await this.addScript();
         }
     }
 
