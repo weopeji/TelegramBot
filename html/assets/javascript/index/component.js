@@ -1567,12 +1567,12 @@
                 if(element.type == "investing")
                 {
                     commissionAttractionNeedPay = commissionAttractionInvester;
-                    AttractionId                =  element.data._InvInvester.invester;
+                    AttractionId                = element.data._InvInvester;
                 } else 
                 {
                     commissionAttractionNeedPay = commissionAttractionBusiness;
                     AttractionType              = "Бизнес";
-                    AttractionId                =  element.data._id;
+                    AttractionId                = element.data._id;
                 }
 
                 var template_text = $(`
