@@ -1501,13 +1501,16 @@
             
             for(var element of _data)
             {
+                var procentAttraction   = Number(element.payersData.commission / 100 * attraction_commission);
+                var procentInvester     = Number(procentAttraction / 100 * element.payersData.investors_commission);
+                var procentBusiness     = Number(procentAttraction / 100 * element.payersData.business_commission);
 
                 var template_text = $(`
                     <div class="settingBlock_body_line">
                         <span>${element._id}</span>
                         <span>${element.data.name}</span>
-                        <span>70%</span>
-                        <span>30%</span>
+                        <span>${procentInvester}%</span>
+                        <span>${procentBusiness}%</span>
                     </div>
                 `);
 
@@ -1643,8 +1646,6 @@
             await this.renderInvesters();
             await this.renderBussnes()
             await this.allProjectsRender();
-
-            // $('.Attracted_headerInfoBlock_block_text_moneys[data="wait"] p').html(this.allMoneyMembers);
         }
     }
 
