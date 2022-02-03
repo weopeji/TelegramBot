@@ -1643,9 +1643,9 @@
 
             await this.renderHeader(_data);
             await this.allProjectsRender();
-            await this.renderAllPayments();
             await this.renderInvesters();
-            await this.renderBussnes()
+            await this.renderBussnes();
+            await this.renderAllPayments();
         }
     }
 
