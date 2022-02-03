@@ -45,7 +45,7 @@
                 script.setAttribute("data-onauth", "onTelegramAuth(user)");
                 script.setAttribute("data-request-access", "write");
 
-                document.head.append(script);
+                $('.telegram_authorization_buttons').append(script);
     
                 script.onload = function() {
                     resolve();
@@ -61,6 +61,13 @@
                     <div class="telegram_authorization_row">
                         <div class="telegram_authorization_image">
                             <i class="fab fa-telegram-plane"></i>
+                        </div>
+                        <div class="telegram_authorization_text">
+                            <h1>investER запрашивает доступ через Telegram</h1>
+                            <p>Нам будут известны Ваши имя, публичная ссылка и фотография.</p>
+                        </div>
+                        <div class="telegram_authorization_buttons">
+
                         </div>
                     </div>
                 </div>

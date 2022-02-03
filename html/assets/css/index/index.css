@@ -1633,8 +1633,24 @@ html, body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  ont-size: 30px;
+  font-size: 30px;
   color: white;
+}
+
+.telegram_authorization_text {
+  text-align: center;
+}
+
+.telegram_authorization_text h1 {
+  color: #9BAAD9;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.telegram_authorization_text p {
+  color: #9BAAD9;
+  font-size: 18px;
+  font-weight: 400;
 }
 
 @media (max-width: 1600px) {
