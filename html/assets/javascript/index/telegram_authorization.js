@@ -37,13 +37,13 @@
         {
             return new Promise((resolve,reject) =>
             {
-                var script                      = document.createElement('script');
-                script.src                      = "https://telegram.org/js/telegram-widget.js?15"
-                script["data-telegram-login"]   = "invester_official_bot";
-                script["data-size"]             = "large";
-                script["data-radius"]           = "20";
-                script["data-onauth"]           = "onTelegramAuth(user)";
-                script["data-request-access"]   = "write";
+                var script = document.createElement('script');
+                script.src = "https://telegram.org/js/telegram-widget.js?15"
+                script.setAttribute("data-telegram-login", "invester_official_bot");
+                script.setAttribute("data-size", "large");
+                script.setAttribute("data-radius", "20");
+                script.setAttribute("data-onauth", "onTelegramAuth(user)");
+                script.setAttribute("data-request-access", "write");
 
                 document.head.append(script);
     
