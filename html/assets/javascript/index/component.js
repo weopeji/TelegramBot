@@ -1482,7 +1482,7 @@
             var settingBlock = $(`
                 <div class="settingBlock">
                     <div class="settingBlock_header">
-                        <p>Все предложения для инвестиций</p>
+                        <p>Вознаграждения по проектам</p>
                         <div class="settingBlock_header_line">
                             <span>ID Предложения</span>
                             <span>Имя предложения</span>
@@ -1642,10 +1642,10 @@
             })
 
             await this.renderHeader(_data);
+            await this.allProjectsRender();
             await this.renderAllPayments();
             await this.renderInvesters();
             await this.renderBussnes()
-            await this.allProjectsRender();
         }
     }
 
