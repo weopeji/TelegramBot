@@ -222,7 +222,7 @@ bot.onText(/\/start (.+)/, async (msg, match) =>
         var html = `[Профиль компании](${helper_functions.getURL()}html/project/profil/#${needProject._id})\n[Презентация](${helper_functions.getURL()}/projects/${needProject._id}/${needProject.data["file+7"]})\n[Видео презентация](${helper_functions.getURL()}/projects/${needProject._id}/${needProject.data["file+8"]})`;
         const stream    = fs.createReadStream(`../projects/${_idProject}/logo.png`);
     
-        var _url = `https://t.me/invester_official_bot?start=adder_${needProject._id}_user_${msg.from.id}`;
+        var _url = `https://t.me/invester_official_bot?start=adderBot_${needProject._id}_user_${msg.from.id}`;
 
         var fat = await bot.sendPhoto(msg.chat.id, stream, {
             "caption": html,
@@ -254,6 +254,17 @@ bot.onText(/\/start (.+)/, async (msg, match) =>
             }
         }
         main_page._CreatorFUN(msg)
+    }
+    else if(resp.split('_')[0] == "adderBot") 
+    {
+        if(typeof _User.member == "undefined")
+        {
+            if(resp.split('_')[3] != _User.user)
+            {
+                await User.findOneAndUpdate({user: msg.from.id}, {member: resp.split('_')[3]});
+            }
+        }
+        defaultShowProject();
     }
     else if(resp.split('_')[0] == "adder-b") 
     {
