@@ -22,7 +22,7 @@
                         global.loadResources(['./html/assets/javascript/index/get_money_abstraction.js'], () => {
                             global.loadResources(['./html/assets/javascript/index/obligations.js'], () => {
                                 global.loadResources(['./html/assets/javascript/index/payments_new.js'], () => {
-                                    global.loadResources(['./html/assets/javascript/index/telegram_authorization.js.js'], () => {
+                                    global.loadResources(['./html/assets/javascript/index/telegram_authorization.js'], () => {
                                         Main();
                                     });
                                 });
