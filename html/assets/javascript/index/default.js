@@ -22,7 +22,9 @@
                         global.loadResources(['./html/assets/javascript/index/get_money_abstraction.js'], () => {
                             global.loadResources(['./html/assets/javascript/index/obligations.js'], () => {
                                 global.loadResources(['./html/assets/javascript/index/payments_new.js'], () => {
-                                    Main();
+                                    global.loadResources(['./html/assets/javascript/index/telegram_authorization.js.js'], () => {
+                                        Main();
+                                    });
                                 });
                             });
                         });
@@ -57,23 +59,24 @@
 
         if(_id) 
         {
-            const user_block            = new global.Components.user_block();
-            const activ_projects        = new global.Components.activ_projects();
-            const acceptPays            = new global.Components.acceptPays();
-            const chats                 = new global.Components.chats();
-            const pay_investors         = new global.Components.pay_investors();
-            const myProjects            = new global.Components.myProjects();
-            const signature             = new global.Components.signature();
-            const Attracted_by_me       = new global.Components.Attracted_by_me();
-            const reward                = new global.Components.reward();
-            const ref_url               = new global.Components.ref_url();
-            const show_all_projects     = new global.Components.show_all_projects();
-            const get_money_abstraction = new global.Components.get_money_abstraction();
-            const invester_data         = new global.Components.invester_data();
-            const creating_page         = new global.Components.creating_page();
-            const wait_projects         = new global.Components.wait_projects();
-            const obligations           = new global.Components.obligations();
-            const payments_new          = new global.Components.payments_new();
+            const user_block                = new global.Components.user_block();
+            const activ_projects            = new global.Components.activ_projects();
+            const acceptPays                = new global.Components.acceptPays();
+            const chats                     = new global.Components.chats();
+            const pay_investors             = new global.Components.pay_investors();
+            const myProjects                = new global.Components.myProjects();
+            const signature                 = new global.Components.signature();
+            const Attracted_by_me           = new global.Components.Attracted_by_me();
+            const reward                    = new global.Components.reward();
+            const ref_url                   = new global.Components.ref_url();
+            const show_all_projects         = new global.Components.show_all_projects();
+            const get_money_abstraction     = new global.Components.get_money_abstraction();
+            const invester_data             = new global.Components.invester_data();
+            const creating_page             = new global.Components.creating_page();
+            const wait_projects             = new global.Components.wait_projects();
+            const obligations               = new global.Components.obligations();
+            const payments_new              = new global.Components.payments_new();
+            const telegram_authorization    = new global.Components.telegram_authorization();
 
             var _User = await user_block.render(_id);
 
@@ -109,7 +112,8 @@
                 "get_money_abstraction": function() {get_money_abstraction.render(global.allData)},
                 "wait_projects": function() {wait_projects.render(global.allData)},
                 "obligations": function() {obligations.render(global.allData)},
-                "payments_new": function() {payments_new.render(global.allData)}
+                "payments_new": function() {payments_new.render(global.allData)},
+                "telegram_authorization": function() {telegram_authorization.render(global.allData)},
             }
 
             if(pageID)
