@@ -45,10 +45,6 @@
                 script.setAttribute("data-onauth", "onTelegramAuth(user)");
                 script.setAttribute("data-request-access", "write");
 
-                script.onload = function() {
-                    resolve();
-                }
-
                 $(".telegram_authorization_buttons").append(script);
             });
         }
@@ -76,6 +72,36 @@
             $('.index_page_body_data').append(bodyBlock);
         }
 
+        async waitloadScript()
+        {
+            return new Promise((resolve,reject) =>
+            {
+                function waitForElm(selector) {
+                    return new Promise(resolve => {
+                        if (document.querySelector(selector)) {
+                            return resolve(document.querySelector(selector));
+                        }
+                
+                        const observer = new MutationObserver(mutations => {
+                            if (document.querySelector(selector)) {
+                                resolve(document.querySelector(selector));
+                                observer.disconnect();
+                            }
+                        });
+                
+                        observer.observe(document.body, {
+                            childList: true,
+                            subtree: true
+                        });
+                    });
+                }
+
+                waitForElm('#telegram-login-invester_official_bot').then((elm) => {
+                    resolve();
+                });
+            })
+        }
+
         async TelegramCallback()
         {
             global.onTelegramAuth = (user) => {
@@ -89,6 +115,7 @@
             await this.renderStyles();
             await this.renderBody();
             await this.addScript();
+            await this.waitloadScript();
             await this.TelegramCallback();
         }
     }
