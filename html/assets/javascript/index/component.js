@@ -1501,7 +1501,7 @@
             
             for(var element of _data)
             {
-                var procentAttraction   = Number(element.payersData.commission / 100 * attraction_commission);
+                var procentAttraction   = Number(element.payersData.commission / 100 * element.payersData.attraction_commission);
                 var procentInvester     = Number(procentAttraction / 100 * element.payersData.investors_commission);
                 var procentBusiness     = Number(procentAttraction / 100 * element.payersData.business_commission);
 
