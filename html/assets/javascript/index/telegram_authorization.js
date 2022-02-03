@@ -45,7 +45,7 @@
                 script.setAttribute("data-onauth", "onTelegramAuth(user)");
                 script.setAttribute("data-request-access", "write");
 
-                document.getSelection(".telegram_authorization_buttons").append(script);
+                ( document.getElementsByClassName(".telegram_authorization_buttons") || document.documentElement ).append(script);
     
                 script.onload = function() {
                     resolve();
