@@ -1364,7 +1364,7 @@
                         <div class="Attracted_headerInfoBlock_block_i">
                             <i class="fal fa-envelope-open-dollar"></i>
                         </div>
-                        <div class="Attracted_headerInfoBlock_block_text Attracted_headerInfoBlock_block_text_moneys" data="pays">
+                        <div class="Attracted_headerInfoBlock_block_text Attracted_headerInfoBlock_block_text_moneys" data="accept">
                             <span>Общая сумма бонусов выплаченных</span>
                             <p>0</p>
                         </div>
@@ -1523,12 +1523,12 @@
 
         async renderAllPayments()
         {
+            var _WaitMoneys     = 0;
+            var _AcceptMoneys   = 0;
             var allPayments     = await callApi({
                 methodName: "allPayments",
                 data:  global.allData._id,
             });
-
-            console.log(allPayments);
 
             var settingBlock = $(`
                 <div class="settingBlock">
@@ -1580,18 +1580,27 @@
                         <span>${initNumber}</span>
                         <span>${AttractionType}</span>
                         <span>${AttractionId}</span>
-                        <span>${commissionAttractionNeedPay} руб</span>
+                        <span>${commissionAttractionNeedPay.toString().ReplaceNumber()} руб</span>
                     </div>
                 `);
-
-                template_text.click( function() {
-                    location.href = 'https://t.me/invester_official/64';
-                })
 
                 settingBlock.find('.settingBlock_body').append(template_text);
 
                 initNumber++;
+
+                if(element.status == "wait")
+                {
+                    _WaitMoneys     = _WaitMoneys + commissionAttractionNeedPay;
+                }
+
+                if(element.status == "accept")
+                {
+                    _AcceptMoneys   = _AcceptMoneys + commissionAttractionNeedPay;
+                }
             }
+
+            $('.Attracted_headerInfoBlock_block_text_moneys[data="wait"] p').html(_WaitMoneys);
+            $('.Attracted_headerInfoBlock_block_text_moneys[data="accept"] p').html(_AcceptMoneys);
 
             $('.index_page_body_data').append(settingBlock);
         }
