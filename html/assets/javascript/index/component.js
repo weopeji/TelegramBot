@@ -1579,7 +1579,7 @@
                     <div class="settingBlock_body_line">
                         <span>${initNumber}</span>
                         <span>${AttractionType}</span>
-                        <span>${element.data._id}</span>
+                        <span>${AttractionId}</span>
                         <span>${commissionAttractionNeedPay} руб</span>
                     </div>
                 `);
