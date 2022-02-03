@@ -1639,6 +1639,7 @@ html, body {
 
 .telegram_authorization_text {
   text-align: center;
+  margin: 45px 0;
 }
 
 .telegram_authorization_text h1 {
@@ -1651,6 +1652,13 @@ html, body {
   color: #9BAAD9;
   font-size: 18px;
   font-weight: 400;
+}
+
+.telegram_authorization_buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 65px;
 }
 
 @media (max-width: 1600px) {

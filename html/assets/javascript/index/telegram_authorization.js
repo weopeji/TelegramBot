@@ -76,11 +76,19 @@
             $('.index_page_body_data').append(bodyBlock);
         }
 
+        async TelegramCallback()
+        {
+            global.onTelegramAuth(user) {
+                alert('Logged in as ' + user.first_name + ' ' + user.last_name + ' (' + user.id + (user.username ? ', @' + user.username : '') + ')');
+            }
+        }
+
         async render()
         {
             await this.renderStyles();
             await this.renderBody();
             await this.addScript();
+            await this.TelegramCallback();
         }
     }
 
