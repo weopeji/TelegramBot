@@ -1268,52 +1268,39 @@ async function acceptInvestor(socket,data,callback)
     };
 
     paymentsFunction[_Project.data.date_payments]();
-    
-    // for(var i = 0; i < manyPays; i++)
-    // {
-    //     var needDate = new Date(new Date().getTime() + (date_payments * (i + 1) * 86400000)).getTime();
-
-    //     pays.push({
-    //         pay: needPayment,
-    //         date: needDate,
-    //         receipt: null,
-    //         status: "wait",
-    //     });
-    // }
 
     // h.full_alert_user(data.id, `Ваша инвестиция была подтверждена! Номер проекта ${_Project._id}`, "acceptInvestor");
 
     var _InvDocNeed = await InvDoc.findOneAndUpdate({invester: data.id, projectId: data.projectId}, {status: "accept", pays: InvPays});
+    var _UserInv    = await User.findOne({user: _InvDoc.invester});
 
-    // var _UserInv = await User.findOne({user: _InvDoc.invester});
+    if(_UserInv.member)
+    {
+        await Payments.create({
+            user: _UserInv.member,
+            type: "investing",
+            pay: _InvDoc.data.pay,
+            status: "wait",
+            data: {
+                _id: _InvDoc.invester,
+                ProjectData: _Project.payersData,
+            },
+        })
+    }
 
-    // if(_UserInv.member)
-    // {
-    //     console.log("MEMBER!");
-    //     await Payments.create({
-    //         user: _UserInv.member,
-    //         type: "investing",
-    //         pay: _InvDoc.data.pay,
-    //         status: "wait",
-    //         data: {
-    //             _id: _InvDoc.invester
-    //         },
-    //     })
-    // }
-
-    // if(_UserInv.member_b)
-    // {
-    //     console.log("MEMBER_B!");
-    //     await Payments.create({
-    //         user: _UserInv.member_b,
-    //         type: "business",
-    //         pay: _InvDoc.data.pay,
-    //         status: "wait",
-    //         data: {
-    //             _id: _Project._id
-    //         },
-    //     })
-    // }
+    if(_UserInv.member_b)
+    {
+        await Payments.create({
+            user: _UserInv.member_b,
+            type: "business",
+            pay: _InvDoc.data.pay,
+            status: "wait",
+            data: {
+                _id: _Project._id,
+                ProjectData: _Project.payersData,
+            },
+        })
+    }
 
     callback(_InvDocNeed);
 }
