@@ -1536,7 +1536,7 @@
                         <p>Статистика ваших выплат</p>
                         <div class="settingBlock_header_line">
                             <span>№</span>
-                            <spanТип привлечения</span>
+                            <span>Тип привлечения</span>
                             <span>Номер Проекта/Инвестора</span>
                             <span>Сумма выплаты</span>
                         </div>
