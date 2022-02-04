@@ -155,14 +155,13 @@
 
         async render()
         {
+            await this.renderStyles();
+            await this.renderBody();
+
             var _User       = await this.getUser();
             var _PageType   = _GET("type");
 
             console.log(_User);
-
-
-            await this.renderStyles();
-            await this.renderBody();
         }
     }
 
