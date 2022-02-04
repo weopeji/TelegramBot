@@ -114,10 +114,6 @@
                     }
                 );
             });
-            // global.onTelegramAuth = (user) => {
-            //     console.log(user);
-            //     alert('Logged in as ' + user.first_name + ' ' + user.last_name + ' (' + user.id + (user.username ? ', @' + user.username : '') + ')');
-            // };
         }
 
         async getUserFun(callback)
