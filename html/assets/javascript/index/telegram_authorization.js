@@ -30,6 +30,8 @@
                 "justify-content": "center",
             });
 
+            $('.index_page_body_header_user_avatar').remove();
+
             $('.index_page_body_header_info span').html("Telegram Авторизация");
         }
 
@@ -101,28 +103,64 @@
 
         async TelegramCallback()
         {
-            global.onTelegramAuth = (user) => {
-                console.log(user);
-                alert('Logged in as ' + user.first_name + ' ' + user.last_name + ' (' + user.id + (user.username ? ', @' + user.username : '') + ')');
+            return new Promise(async (resolve,reject) =>
+            {
+                global.Telegram.Login.auth(
+                    { bot_id: '2062839693', request_access: true },
+                    (data) => {
+                        resolve(data);
+                    }
+                );
+            });
+            // global.onTelegramAuth = (user) => {
+            //     console.log(user);
+            //     alert('Logged in as ' + user.first_name + ' ' + user.last_name + ' (' + user.id + (user.username ? ', @' + user.username : '') + ')');
+            // };
+        }
+
+        async getUser()
+        {
+            function getUserFun(callback)
+            {
+                var statusCheack = await this.TelegramCallback();
+
+                if(statusCheack)
+                {
+                    callback(true);
+                } else {
+                    alert('Чтобы продолжить, вы должны авторизоваться');
+                    getUserFun(callback);
+                }
             };
 
-            global.Telegram.Login.auth(
-                { bot_id: '2062839693', request_access: true },
-                (data) => {
-                    console.log(data);
+            return new Promise(async (resolve,reject) =>
+            {
+                var _token = _getCookie('token');
+
+                if(typeof _token != "undefined")
+                {
+                    resolve(true);
+                } else 
+                {
+                    await this.addScript();
+                    await this.waitloadScript();
+                    getUserFun( function() {
+                        resolve(true);
+                    })   
                 }
-            );
+            });
         }
 
         async render()
         {
-            var _User = _getCookie('token');
+            var _User       = await this.getUser();
+            var _PageType   = _GET("type");
+
             console.log(_User);
+
+
             await this.renderStyles();
             await this.renderBody();
-            // await this.addScript();
-            // await this.waitloadScript();
-            // await this.TelegramCallback();
         }
     }
 
