@@ -37,19 +37,6 @@
             $('.index_page_body_header_info span').html("Telegram Авторизация");
         }
 
-        async addScript()
-        {
-            var script = document.createElement('script');
-            script.src = "https://telegram.org/js/telegram-widget.js"
-            script.setAttribute("data-telegram-login", "invester_official_bot");
-            script.setAttribute("data-size", "large");
-            script.setAttribute("data-radius", "20");
-            script.setAttribute("data-onauth", "onTelegramAuth(user)");
-            script.setAttribute("data-request-access", "write");
-
-            $(".telegram_authorization_buttons").append(script);
-        }
-
         async renderBody()
         {
             var bodyBlock = 
@@ -73,63 +60,6 @@
             $('.index_page_body_data').append(bodyBlock);
         }
 
-        async waitloadScript()
-        {
-            return new Promise((resolve,reject) =>
-            {
-                function waitForElm(selector) {
-                    return new Promise(resolve => {
-                        if (document.querySelector(selector)) {
-                            return resolve(document.querySelector(selector));
-                        }
-                
-                        const observer = new MutationObserver(mutations => {
-                            if (document.querySelector(selector)) {
-                                resolve(document.querySelector(selector));
-                                observer.disconnect();
-                            }
-                        });
-                
-                        observer.observe(document.body, {
-                            childList: true,
-                            subtree: true
-                        });
-                    });
-                }
-
-                waitForElm('#telegram-login-invester_official_bot').then((elm) => {
-                    resolve();
-                });
-            })
-        }
-
-        async TelegramCallback()
-        {
-            return new Promise(async (resolve,reject) =>
-            {
-                global.Telegram.Login.auth(
-                    { bot_id: '2062839693', request_access: true },
-                    (data) => {
-                        resolve(data);
-                    }
-                );
-            });
-        }
-
-        async getUserFun(callback)
-        {
-            var statusCheack = await this.TelegramCallback();
-
-            if(statusCheack)
-            {
-                this.telegramData = statusCheack;
-                callback(true);
-            } else {
-                alert('Чтобы продолжить, вы должны авторизоваться');
-                this.getUserFun(callback);
-            }
-        };
-
         async getUser()
         {
             var _this = this;
@@ -140,21 +70,10 @@
 
                 if(typeof _token != "undefined")
                 {
-                    resolve(_token);
+                    resolve(true);
                 } else
                 {
-                    await _this.addScript();
-                    await _this.waitloadScript();
-
-                    _this.getUserFun( async function() {
-
-                        var _token = await callApi({
-                            methodName: "telegram_auth",
-                            data: _this.telegramData,
-                        });
-
-                        resolve(_token);
-                    })   
+                    resolve(false);
                 }
             });
         }
@@ -170,15 +89,19 @@
             var funsType = {
                 "recomendation": async function()
                 {
-                    await callApi({
-                        methodName: "telegram_auth_recomendation",
-                        data: {
-                            projectId: _GET("userId"),
-                            userId: _User,
-                        },
-                    });
-
-                    location.href = "tg://t.me/invester_official_bot";
+                    if(_User)
+                    {
+                        location.href = "tg://resolve?domain=invester_official_bot";
+                    } else {
+                        await callApi({
+                            methodName: "telegram_auth_recomendation",
+                            data: {
+                                projectId: _GET("userId"),
+                                userId: _User,
+                            },
+                        });
+                        location.href = "tg://resolve?domain=invester_official_bot";
+                    }
                 },
             }
 
