@@ -116,16 +116,16 @@
 
         async render()
         {
-            var User = _getCookie('token');
+            var _User = _getCookie('token');
 
 
 
 
-            await this.renderStyles();
-            await this.renderBody();
-            await this.addScript();
-            await this.waitloadScript();
-            await this.TelegramCallback();
+            // await this.renderStyles();
+            // await this.renderBody();
+            // await this.addScript();
+            // await this.waitloadScript();
+            // await this.TelegramCallback();
         }
     }
 
