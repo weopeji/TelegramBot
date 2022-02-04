@@ -120,9 +120,11 @@
 
         async getUser()
         {
+            var _this = this;
+
             function getUserFun(callback)
             {
-                var statusCheack = await this.TelegramCallback();
+                var statusCheack = await _this.TelegramCallback();
 
                 if(statusCheack)
                 {
@@ -142,8 +144,8 @@
                     resolve(true);
                 } else 
                 {
-                    await this.addScript();
-                    await this.waitloadScript();
+                    await _this.addScript();
+                    await _this.waitloadScript();
                     getUserFun( function() {
                         resolve(true);
                     })   
