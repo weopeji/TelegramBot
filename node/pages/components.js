@@ -1629,7 +1629,7 @@ async function acceptProject(socket,data,callback)
                 [
                     {
                         text: "Рекомендовать",
-                        url: `https://t.me/invester_official_bot?start=member_${data}`,
+                        url: `https://invester-relocation.site/?page=telegram_authorization&type=recomendation&user=${data}`,
                     }
                 ],
                 [
