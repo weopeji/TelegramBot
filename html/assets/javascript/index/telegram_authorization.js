@@ -117,12 +117,9 @@
         async render()
         {
             var _User = _getCookie('token');
-
-
-
-
-            // await this.renderStyles();
-            // await this.renderBody();
+            console.log(_User);
+            await this.renderStyles();
+            await this.renderBody();
             // await this.addScript();
             // await this.waitloadScript();
             // await this.TelegramCallback();

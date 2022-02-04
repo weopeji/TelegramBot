@@ -47,6 +47,10 @@
                 {
                     location.href = "https://invester-relocation.site/?page=telegram_authorization";
                     return;
+                } else {
+                    const telegram_authorization = new global.Components.telegram_authorization();
+                    telegram_authorization.render();
+                    return;
                 }
             }
         } else {
@@ -80,17 +84,10 @@
             const wait_projects             = new global.Components.wait_projects();
             const obligations               = new global.Components.obligations();
             const payments_new              = new global.Components.payments_new();
-            const telegram_authorization    = new global.Components.telegram_authorization();
-
-            var _User = null;
-
-            if(!userID) {
-                if(!token) 
-                {
-                    _User = await user_block.render(_id);
-                }
-            }
             
+
+            var _User = await user_block.render(_id);
+
             global.allData.User = _User;
 
             var renderPage = 
@@ -124,7 +121,6 @@
                 "wait_projects": function() {wait_projects.render(global.allData)},
                 "obligations": function() {obligations.render(global.allData)},
                 "payments_new": function() {payments_new.render(global.allData)},
-                "telegram_authorization": function() {telegram_authorization.render(global.allData)},
             }
 
             if(pageID)
