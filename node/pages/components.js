@@ -170,7 +170,7 @@ async function telegram_auth_recomendation(socket, data, callback)
 
     for(var _msg of _User.deleteMsgs)
     {
-        await bot.deleteMessage(msg.from.id, _msg); 
+        await bot.deleteMessage(_User.user, _msg); 
     }
 }
 
