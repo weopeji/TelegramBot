@@ -91,7 +91,7 @@
                 {
                     if(_User)
                     {
-                        location.href = "tg://resolve?domain=invester_official_bot";
+                        window.location = "tg://resolve?domain=invester_official_bot";
                     } else {
                         await callApi({
                             methodName: "telegram_auth_recomendation",
@@ -100,7 +100,7 @@
                                 userId: _User,
                             },
                         });
-                        location.href = "tg://resolve?domain=invester_official_bot";
+                        window.location = "tg://resolve?domain=invester_official_bot";
                     }
                 },
             }
