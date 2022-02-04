@@ -1,5 +1,5 @@
 window.Telegram.Login.auth(
-    { bot_id: 'invester_official_bot', request_access: true },
+    { bot_id: '2062839693', request_access: true },
     (data) => {
         console.log('data');
     }
