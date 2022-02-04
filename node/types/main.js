@@ -42,38 +42,6 @@ const MF =
 
             async function _start_profil() 
             {
-                var user_profile    = await bot.getUserProfilePhotos(msg.from.id);
-                var file_id         = null;
-                var file            = null;
-                var file_path       = null;
-                var photo_url       = null;
-                var name_photo      = null;
-
-                // if(typeof user_profile.photos[0] != 'undefined') {
-                //     file_id = user_profile.photos[0][0].file_id;
-                //     file            = await bot.getFile(file_id);
-                //     file_path       = file.file_path;
-                //     photo_url       = `https://api.telegram.org/file/bot${config.token}/${file_path}`;
-                //     name_photo      = `avatar-${file_path.split('/')[1]}`;
-                //     const _file      = fs.createWriteStream(`../users_profile/${msg.from.id}/${name_photo}`);
-                //     const request   = https.get(photo_url, async function(response) {
-                //         response.pipe(_file);
-        
-                //         return User.create({
-                //             user: msg.from.id, 
-                //             first_name: msg.from.first_name, 
-                //             last_name: msg.from.last_name,
-                //             username: msg.from.username,
-                //             language_code: msg.from.language_code,
-                //             is_bot: msg.from.is_bot,
-                //             type: null,
-                //             img: name_photo,
-                //             googleAuth: null,
-                //             alerts: null,
-                //         });
-                //     });
-                // } else {
-                
                 var ttpL = null;
 
                 if(ttp) {
@@ -94,7 +62,7 @@ const MF =
                     investor_data: null,
                     where: null,
                 });
-                // }
+
                 if(callback) {callback();};    
             }
 

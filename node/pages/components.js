@@ -79,6 +79,7 @@ var action_linker =
     "tg_alert_user": tg_alert_user,
     "tg_alert_user_numbers": tg_alert_user_numbers,
     "ALL_DATA": ALL_DATA,
+    "telegram_auth": telegram_auth,
 
 
     //  funs
@@ -160,7 +161,74 @@ var action_linker =
     "commissions_settings": commissions_settings,
     "commissions_settings_accept": commissions_settings_accept,
     "commissions_settings_close": commissions_settings_close,
+    "telegram_auth_recomendation": telegram_auth_recomendation,
 };
+
+async function telegram_auth_recomendation(socket, data, callback)
+{
+    var _User = await User.findOne({_id: data.userId});
+
+    for(var _msg of _User.deleteMsgs)
+    {
+        await bot.deleteMessage(msg.from.id, _msg); 
+    }
+}
+
+async function telegram_auth(socket, data, callback)
+{
+    var _User = await User.findOne({user: data.id});
+
+    if(_User) {
+        callback(_User._id);
+    } else {
+        var _patch = `../users/${data.id}`;
+
+        async function _start() 
+        {
+            var _path_profile = `../users_profile/${data.id}`;
+
+            async function _start_profil() 
+            {
+                var newUser = await User.create({
+                    user: data.id, 
+                    first_name: data.first_name, 
+                    last_name: data.last_name,
+                    username: data.username,
+                    language_code: "ru",
+                    is_bot: "false",
+                    type: "investor",
+                    img: null,
+                    googleAuth: null,
+                    alerts: null,
+                    investor_data: null,
+                    where: null,
+                });
+
+                if(callback) {callback(newUser._id);};    
+            }
+
+            fs.stat(_path_profile, async function(err) {
+                if (!err) {_start_profil();}
+                else if (err.code === 'ENOENT') {
+                    await fs.mkdir(_path_profile, function() {
+                        _start_profil();
+                    });
+                }
+            })
+        }
+
+        fs.stat(_patch, async function(err) {
+            if (!err) {
+                _start();
+            }
+            else if (err.code === 'ENOENT') {
+                await fs.mkdir(_patch, function() {
+                    _start();
+                });
+            }
+        });
+    }
+}
 
 async function commissions_settings_close(socket, data, callback)
 {

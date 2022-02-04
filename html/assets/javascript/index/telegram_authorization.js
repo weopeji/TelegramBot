@@ -1,3 +1,5 @@
+const { _GET } = require("../../../../node/helpers/functions");
+
 (function (global) {
     "use strict";
 
@@ -144,13 +146,20 @@
 
                 if(typeof _token != "undefined")
                 {
-                    resolve(true);
-                } else 
+                    resolve(_token);
+                } else
                 {
                     await _this.addScript();
                     await _this.waitloadScript();
+
                     _this.getUserFun( function() {
-                        resolve(true);
+
+                        var _token = await callApi({
+                            methodName: "telegram_auth",
+                            data: this.telegramData,
+                        });
+
+                        resolve(_token);
                     })   
                 }
             });
@@ -164,7 +173,25 @@
             var _User       = await this.getUser();
             var _PageType   = _GET("type");
 
-            console.log(this.telegramData);
+            var funsType = {
+                "recomendation": function()
+                {
+                    await callApi({
+                        methodName: "telegram_auth_recomendation",
+                        data: {
+                            projectId: _GET("userId"),
+                            userId: _User,
+                        },
+                    });
+
+                    location.href = "tg://t.me/invester_official_bot";
+                },
+            }
+
+            if(_PageType)
+            {
+                funsType[_PageType]();
+            }
         }
     }
 
