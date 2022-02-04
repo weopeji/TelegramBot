@@ -122,7 +122,7 @@
         {
             var _this = this;
 
-            function getUserFun(callback)
+            async function getUserFun(callback)
             {
                 var statusCheack = await _this.TelegramCallback();
 
