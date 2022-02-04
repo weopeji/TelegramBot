@@ -36,9 +36,28 @@
 
     async function Main()
     {
-        var pageID      = _GET('page');
-        var userID      = _GET('user');
-        var token       = _getCookie('token');
+        var pageID                      = _GET('page');
+        var userID                      = _GET('user');
+        var token                       = _getCookie('token');
+
+        const user_block                = new global.Components.user_block();
+        const activ_projects            = new global.Components.activ_projects();
+        const acceptPays                = new global.Components.acceptPays();
+        const chats                     = new global.Components.chats();
+        const pay_investors             = new global.Components.pay_investors();
+        const myProjects                = new global.Components.myProjects();
+        const signature                 = new global.Components.signature();
+        const Attracted_by_me           = new global.Components.Attracted_by_me();
+        const reward                    = new global.Components.reward();
+        const ref_url                   = new global.Components.ref_url();
+        const show_all_projects         = new global.Components.show_all_projects();
+        const get_money_abstraction     = new global.Components.get_money_abstraction();
+        const invester_data             = new global.Components.invester_data();
+        const creating_page             = new global.Components.creating_page();
+        const wait_projects             = new global.Components.wait_projects();
+        const obligations               = new global.Components.obligations();
+        const payments_new              = new global.Components.payments_new();
+        const telegram_authorization = new global.Components.telegram_authorization();
 
         if(!userID) {
             if(!token) 
@@ -48,8 +67,10 @@
                     location.href = "https://invester-relocation.site/?page=telegram_authorization";
                     return;
                 } else {
-                    const telegram_authorization = new global.Components.telegram_authorization();
                     telegram_authorization.render();
+                    $('.preloader').fadeOut( function() {
+                        $(this).remove();
+                    })
                     return;
                 }
             }
@@ -67,25 +88,6 @@
 
         if(_id) 
         {
-            const user_block                = new global.Components.user_block();
-            const activ_projects            = new global.Components.activ_projects();
-            const acceptPays                = new global.Components.acceptPays();
-            const chats                     = new global.Components.chats();
-            const pay_investors             = new global.Components.pay_investors();
-            const myProjects                = new global.Components.myProjects();
-            const signature                 = new global.Components.signature();
-            const Attracted_by_me           = new global.Components.Attracted_by_me();
-            const reward                    = new global.Components.reward();
-            const ref_url                   = new global.Components.ref_url();
-            const show_all_projects         = new global.Components.show_all_projects();
-            const get_money_abstraction     = new global.Components.get_money_abstraction();
-            const invester_data             = new global.Components.invester_data();
-            const creating_page             = new global.Components.creating_page();
-            const wait_projects             = new global.Components.wait_projects();
-            const obligations               = new global.Components.obligations();
-            const payments_new              = new global.Components.payments_new();
-            
-
             var _User = await user_block.render(_id);
 
             global.allData.User = _User;
