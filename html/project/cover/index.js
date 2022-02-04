@@ -32,7 +32,8 @@
             data: _id,
         });
 
-        getPays = getPays.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1 ');
+        // getPays = getPays.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1 ');
+        getPays = 0;
 
         var _attraction_amount  = need_project.data.attraction_amount;
         _attraction_amount      = _attraction_amount.replace(/\s/g, '');
