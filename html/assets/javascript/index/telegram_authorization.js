@@ -90,16 +90,16 @@
                 {
                     if(_User)
                     {
-                        window.location = "tg://resolve?domain=invester_official_bot";
+                        window.open("tg://resolve?domain=invester_official_bot");
                     } else {
-                        await callApi({
-                            methodName: "telegram_auth_recomendation",
-                            data: {
-                                projectId: _GET("userId"),
-                                userId: _User,
-                            },
-                        });
-                        window.location = "tg://resolve?domain=invester_official_bot";
+                        // await callApi({
+                        //     methodName: "telegram_auth_recomendation",
+                        //     data: {
+                        //         projectId: _GET("userId"),
+                        //         userId: _User,
+                        //     },
+                        // });
+                        window.open("tg://resolve?domain=invester_official_bot");
                     }
                 },
             }
