@@ -118,22 +118,22 @@
             // };
         }
 
+        async getUserFun(callback)
+        {
+            var statusCheack = await this.TelegramCallback();
+
+            if(statusCheack)
+            {
+                callback(true);
+            } else {
+                alert('Чтобы продолжить, вы должны авторизоваться');
+                this.getUserFun(callback);
+            }
+        };
+
         async getUser()
         {
             var _this = this;
-
-            async function getUserFun(callback)
-            {
-                var statusCheack = await _this.TelegramCallback();
-
-                if(statusCheack)
-                {
-                    callback(true);
-                } else {
-                    alert('Чтобы продолжить, вы должны авторизоваться');
-                    getUserFun(callback);
-                }
-            };
 
             return new Promise(async (resolve,reject) =>
             {
