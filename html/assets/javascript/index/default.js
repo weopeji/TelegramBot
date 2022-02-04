@@ -82,8 +82,15 @@
             const payments_new              = new global.Components.payments_new();
             const telegram_authorization    = new global.Components.telegram_authorization();
 
-            var _User = await user_block.render(_id);
+            var _User = null;
 
+            if(!userID) {
+                if(!token) 
+                {
+                    _User = await user_block.render(_id);
+                }
+            }
+            
             global.allData.User = _User;
 
             var renderPage = 
