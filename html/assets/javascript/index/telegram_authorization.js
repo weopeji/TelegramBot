@@ -116,6 +116,11 @@
 
         async render()
         {
+            var User = 
+
+
+
+
             await this.renderStyles();
             await this.renderBody();
             await this.addScript();

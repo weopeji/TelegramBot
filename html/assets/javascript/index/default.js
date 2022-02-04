@@ -41,9 +41,13 @@
         var token       = _getCookie('token');
 
         if(!userID) {
-            if(!token) {
-                alert("Войдите на сайт!"); 
-                return;
+            if(!token) 
+            {
+                if(pageID != "telegram_authorization")
+                {
+                    location.href = "https://invester-relocation.site/?page=telegram_authorization";
+                    return;
+                }
             }
         } else {
             setCookie('token', userID);
