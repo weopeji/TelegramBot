@@ -88,19 +88,23 @@
             var funsType = {
                 "recomendation": async function()
                 {
-                    if(_User)
-                    {
-                        window.open("tg://resolve?domain=invester_official_bot");
-                    } else {
-                        // await callApi({
-                        //     methodName: "telegram_auth_recomendation",
-                        //     data: {
-                        //         projectId: _GET("userId"),
-                        //         userId: _User,
-                        //     },
-                        // });
-                        window.open("tg://resolve?domain=invester_official_bot");
-                    }
+                    var protoUrl = "tg:\/\/resolve?domain=invester_official_bot";
+
+                    window.location = protoUrl;
+
+                    // if(_User)
+                    // {
+                    //     window.open("tg://resolve?domain=invester_official_bot");
+                    // } else {
+                    //     // await callApi({
+                    //     //     methodName: "telegram_auth_recomendation",
+                    //     //     data: {
+                    //     //         projectId: _GET("userId"),
+                    //     //         userId: _User,
+                    //     //     },
+                    //     // });
+                    //     window.open("tg://resolve?domain=invester_official_bot");
+                    // }
                 },
             }
 
