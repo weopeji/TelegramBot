@@ -174,7 +174,7 @@ const { _GET } = require("../../../../node/helpers/functions");
             var _PageType   = _GET("type");
 
             var funsType = {
-                "recomendation": function()
+                "recomendation": async function()
                 {
                     await callApi({
                         methodName: "telegram_auth_recomendation",
