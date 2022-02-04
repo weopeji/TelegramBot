@@ -43,12 +43,11 @@
             $(`
                 <div class="telegram_authorization">
                     <div class="telegram_authorization_row">
-                        <div class="telegram_authorization_image">
+                        <a href="tg://resolve?domain=invester_official_bot" class="telegram_authorization_image">
                             <i class="fab fa-telegram-plane"></i>
-                        </div>
+                        </a>
                         <div class="telegram_authorization_text">
                             <h1>investER запрашивает доступ через Telegram</h1>
-                            <p>Нам будут известны Ваши имя, публичная ссылка и фотография.</p>
                         </div>
                         <div class="telegram_authorization_buttons">
 
