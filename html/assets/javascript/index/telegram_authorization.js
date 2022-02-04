@@ -150,7 +150,7 @@
 
                         var _token = await callApi({
                             methodName: "telegram_auth",
-                            data: this.telegramData,
+                            data: _this.telegramData,
                         });
 
                         resolve(_token);
