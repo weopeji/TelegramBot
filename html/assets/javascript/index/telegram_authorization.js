@@ -90,7 +90,9 @@
                 {
                     var protoUrl = "tg:\/\/resolve?domain=invester_official_bot";
 
-                    window.location = protoUrl;
+                    setTimeout( function() {
+                        window.location = protoUrl;
+                    }, 2000);
 
                     // if(_User)
                     // {
