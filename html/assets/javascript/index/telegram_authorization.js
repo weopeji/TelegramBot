@@ -16,7 +16,9 @@
 
     class telegram_authorization
     {
-        constructor() {};
+        constructor() {
+            this.telegramData = null;
+        };
 
         async renderStyles()
         {
@@ -124,6 +126,7 @@
 
             if(statusCheack)
             {
+                this.telegramData = statusCheack;
                 callback(true);
             } else {
                 alert('Чтобы продолжить, вы должны авторизоваться');
@@ -161,7 +164,7 @@
             var _User       = await this.getUser();
             var _PageType   = _GET("type");
 
-            console.log(_User);
+            console.log(this.telegramData);
         }
     }
 
