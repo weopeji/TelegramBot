@@ -106,7 +106,7 @@
                 alert('Logged in as ' + user.first_name + ' ' + user.last_name + ' (' + user.id + (user.username ? ', @' + user.username : '') + ')');
             };
 
-            window.Telegram.Login.auth(
+            global.Telegram.Login.auth(
                 { bot_id: '2062839693', request_access: true },
                 (data) => {
                     console.log(data);
