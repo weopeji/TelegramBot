@@ -146,7 +146,7 @@
                 {
                     await _this.addScript();
                     await _this.waitloadScript();
-                    getUserFun( function() {
+                    _this.getUserFun( function() {
                         resolve(true);
                     })   
                 }
