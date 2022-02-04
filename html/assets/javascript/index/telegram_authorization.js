@@ -36,7 +36,7 @@
         async addScript()
         {
             var script = document.createElement('script');
-            script.src = "https://telegram.org/js/telegram-widget.js?15"
+            script.src = "https://telegram.org/js/telegram-widget.js"
             script.setAttribute("data-telegram-login", "invester_official_bot");
             script.setAttribute("data-size", "large");
             script.setAttribute("data-radius", "20");
