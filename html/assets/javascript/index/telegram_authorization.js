@@ -116,7 +116,7 @@
 
         async render()
         {
-            var User = 
+            var User = _getCookie('token');
 
 
 
