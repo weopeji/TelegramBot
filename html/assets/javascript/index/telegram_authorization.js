@@ -152,7 +152,7 @@ const { _GET } = require("../../../../node/helpers/functions");
                     await _this.addScript();
                     await _this.waitloadScript();
 
-                    _this.getUserFun( function() {
+                    _this.getUserFun( async function() {
 
                         var _token = await callApi({
                             methodName: "telegram_auth",
