@@ -101,7 +101,7 @@
         };
         
         token() {
-            return rand() + rand();
+            return this.rand() + this.rand();
         };
 
         async render()

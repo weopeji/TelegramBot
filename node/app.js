@@ -211,7 +211,7 @@ bot.onText(/\/start (.+)/, async (msg, match) =>
         await authToken.create({
             token: resp.split('_')[resp.split('_').length - 1],
             user: msg.from.id,
-        })
+        });
     }
 
     if(resp.split('_')[0] == "member") 
