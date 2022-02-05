@@ -43,6 +43,7 @@
                             <span>Номер</span>
                             <span>ID Проекта/Инвестора</span>
                             <span>Сумма выплаты</span>
+                            <span>Запрос</span>
                         </div>
                     </div>
                     <div class="settingBlock_body">
@@ -70,6 +71,7 @@
                         <span class="get_money_abstraction_span_cheackbox"><input type="checkbox">${i}</span>
                         <span>${element.data._id}</span>
                         <span>${_pay}</span>
+                        <span><input type="checkbox" name="" id="${element._id}"></span>
                     </div>
                 `);
 
