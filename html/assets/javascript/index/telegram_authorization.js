@@ -92,7 +92,7 @@
                 {
                     var protoUrl = "tg:\/\/resolve?domain=invester_official_bot";
 
-                    setTimeout( function() {
+                    setTimeout( async function() {
                         if(_User)
                         {
                             await callApi({
