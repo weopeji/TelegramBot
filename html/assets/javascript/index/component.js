@@ -1480,7 +1480,6 @@
                             <span>ID Предложения</span>
                             <span>Имя предложения</span>
                             <span>Сумма выплаты за инвестора</span>
-                            <span>Сумма выплаты за бизнес</span>
                         </div>
                     </div>
                     <div class="settingBlock_body">
@@ -1503,7 +1502,6 @@
                         <span>${element._id}</span>
                         <span>${element.data.name}</span>
                         <span>${procentInvester}%</span>
-                        <span>${procentBusiness}%</span>
                     </div>
                 `);
 

@@ -40,10 +40,10 @@
                     <div class="settingBlock_header">
                         <p>Статистика ваших выплат</p>
                         <div class="settingBlock_header_line">
-                            <span>Номер</span>
-                            <span>ID Проекта/Инвестора</span>
+                            <span>№</span>
+                            <span>Тип привлечения</span>
+                            <span>Номер Проекта/Инвестора</span>
                             <span>Сумма выплаты</span>
-                            <span>Запрос</span>
                         </div>
                     </div>
                     <div class="settingBlock_body">
@@ -54,30 +54,43 @@
 
             settingBlock.css("margin-top", "20px");
 
-            var i = 1;
+            var initNumber = 1;
+
             for(var element of allPayments)
             {
-                var _pay = 0;
+                var investerPay                     = Number(element.pay.toString().replace(/\s/g, ''));
+                var commissionMoneys                = Number(investerPay / 100 * element.data.ProjectData.commission);
+                var commissionCompany               = Number(commissionMoneys / 100 * element.data.ProjectData.company_commission);
+                var commissionAttraction            = Number(commissionMoneys - commissionCompany);
+                var commissionAttractionInvester    = Number(commissionAttraction / 100 * element.data.ProjectData.investors_commission);
+                var commissionAttractionBusiness    = Number(commissionAttraction / 100 * element.data.ProjectData.business_commission);
+                var commissionAttractionNeedPay     = 0;
+                var AttractionType                  = "Инвестор";
+                var AttractionId                    = null;
 
                 if(element.type == "investing")
                 {
-                    _pay = element.pay * 0.0875;
-                } else {
-                    _pay = element.pay * 0.0375;
+                    commissionAttractionNeedPay = commissionAttractionInvester;
+                    AttractionId                = element.data._InvInvester;
+                } else 
+                {
+                    commissionAttractionNeedPay = commissionAttractionBusiness;
+                    AttractionType              = "Бизнес";
+                    AttractionId                = element.data._id;
                 }
 
                 var template_text = $(`
                     <div class="settingBlock_body_line">
-                        <span class="get_money_abstraction_span_cheackbox">${i}</span>
-                        <span>${element.data._id}</span>
-                        <span>${_pay}</span>
-                        <span><input type="checkbox" name="" id="${element._id}"></span>
+                        <span>${initNumber}</span>
+                        <span>${AttractionType}</span>
+                        <span>${AttractionId}</span>
+                        <span>${commissionAttractionNeedPay.toString().ReplaceNumber()} руб</span>
                     </div>
                 `);
 
                 settingBlock.find('.settingBlock_body').append(template_text);
 
-                i++;
+                initNumber++;
             }
 
             $('.index_page_body_data').append(settingBlock);
