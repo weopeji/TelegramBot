@@ -72,10 +72,37 @@
                     resolve(true);
                 } else
                 {
-                    resolve(false);
+                    var athTokenget = _getCookie("auth_token");
+
+                    if(typeof athTokenget != "undefined")
+                    {
+                        var NeedToken = await callApi({
+                            methodName: "telegram_auth_getToken",
+                            data: athTokenget,
+                        });
+
+                        if(NeedToken)
+                        {
+                            setCookie("token", NeedToken);
+                            resolve(true);
+                        } else {
+                            resolve(false);
+                        }                        
+                    } else 
+                    {
+                        resolve(false);
+                    }
                 }
             });
         }
+
+        rand() {
+            return Math.random().toString(36).substr(2);
+        };
+        
+        token() {
+            return rand() + rand();
+        };
 
         async render()
         {
@@ -85,7 +112,13 @@
             var _User       = await this.getUser();
             var _PageType   = _GET("type");
             var _token      = _getCookie('token');
+            var randomToken = this.token();
             var timeRender  = 1000;
+
+            if(!_User)
+            {
+                setCookie("auth_token", randomToken);
+            }
 
             var funsType = {
                 "recomendation": async function()
@@ -106,7 +139,7 @@
                                 });
                                 window.location = protoUrl;
                             } else {
-                                window.location = protoUrl + `&start=member_${_GET("userId")}`;
+                                window.location = protoUrl + `&start=member_${_GET("userId")}_auth_${randomToken}`;
                             }
                             resolve();
                         }, timeRender);
@@ -130,7 +163,7 @@
                                 });
                                 window.location = protoUrl;
                             } else {
-                                window.location = protoUrl + `&start=project_${_GET("userId")}`;
+                                window.location = protoUrl + `&start=project_${_GET("userId")}_auth_${randomToken}`;
                             }
                             resolve();
                         }, timeRender);

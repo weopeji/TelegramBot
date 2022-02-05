@@ -54,6 +54,7 @@ function privateInit(initPlagins)
     R_F         = initPlagins.R_F;
     project_key = initPlagins.project_key;
     commission  = initPlagins.commission;
+    authToken   = initPlagins.authToken;
 }
 
 var privat_index_page = function(socket,data,callback) {
@@ -82,6 +83,7 @@ var action_linker =
     "ALL_DATA": ALL_DATA,
     "telegram_auth": telegram_auth,
     "telegram_auth_more": telegram_auth_more,
+    "telegram_auth_getToken": telegram_auth_getToken,
 
 
     //  funs
@@ -165,6 +167,20 @@ var action_linker =
     "commissions_settings_close": commissions_settings_close,
     "telegram_auth_recomendation": telegram_auth_recomendation,
 };
+
+async function telegram_auth_getToken(socket, data, callback)
+{
+    var _authToken = await authToken.findOne({token: data});
+
+    if(_authToken)
+    {
+        var _User = await User.findOne({user: _authToken.user});
+        callback(_User._id);
+    } else
+    {
+        callback(false);
+    }
+}
 
 async function telegram_auth_more(socket, data, callback)
 {

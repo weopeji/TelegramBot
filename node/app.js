@@ -32,6 +32,7 @@ const bPaysAccept                   = mongoose.model('bPaysAccept');
 const R_F                           = mongoose.model('R_F');
 const project_key                   = mongoose.model('project_key');
 const commission                    = mongoose.model('commission');
+const authToken                     = mongoose.model('authToken');
 
 var bot                             = null;
 var helper_functions                = null;
@@ -166,6 +167,7 @@ var load_helpers = () =>
             R_F: R_F,
             project_key: project_key,
             commission: commission,
+            authToken: authToken,
         });
     };
 }
@@ -202,6 +204,14 @@ bot.onText(/\/start (.+)/, async (msg, match) =>
     if(!_User) {
         await main_page.onlyCreate(msg);
         _User = await User.findOne({user: msg.from.id});
+    }
+
+    if(resp.split('_')[resp.split('_').length - 2] == "auth")
+    {
+        await authToken.create({
+            token: resp.split('_')[resp.split('_').length - 1],
+            user: msg.from.id,
+        })
     }
 
     if(resp.split('_')[0] == "member") 

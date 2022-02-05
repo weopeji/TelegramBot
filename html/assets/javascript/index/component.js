@@ -1490,7 +1490,6 @@
 
             settingBlock.css("margin-top", "20px");
 
-            
             for(var element of _data)
             {
                 var procentAttraction   = Number(element.payersData.commission / 100 * element.payersData.attraction_commission);
