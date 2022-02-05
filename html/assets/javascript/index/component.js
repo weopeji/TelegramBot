@@ -1376,18 +1376,11 @@
                 <div class="moreGetButtons" data="get">
                     <span data="get"><i class="fad fa-money-check-edit-alt"></i> Запросить выплату</span>
                 </div>
-                <div class="moreGetButtons" data="all">
-                    <span data="get"><i class="fal fa-pager"></i> Инвестировать в проект</span>
-                </div>
             `);
 
             moreGetButtons.find('span[data="get"]').click( function () {
                 location.href = "./?page=get_money_abstraction"
-            })
-
-            moreGetButtons.find('span[data="all"]').click( function () {
-                location.href = "./?page=show_all_projects"
-            })
+            });
 
             $('.index_page_body_data').append(headerInfoBlock);
             $('.index_page_body_data').append(moreGetButtons);
