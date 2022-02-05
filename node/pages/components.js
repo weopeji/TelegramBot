@@ -168,6 +168,7 @@ var action_linker =
 async function telegram_auth_recomendation(socket, data, callback)
 {
     var _User       = await User.findOne({_id: data.userId});
+    var msg         = {from: {id: _User.user}};
     var _array      = [];
     var userId      = _User.user;
     var _idProject  = data.projectId;
