@@ -112,6 +112,30 @@
                         }, timeRender);
                     })
                 },
+                "more": async function()
+                {
+                    return new Promise(async (resolve,reject) =>
+                    {
+                        var protoUrl = "tg:\/\/resolve?domain=invester_official_bot";
+
+                        setTimeout( async function() {
+                            if(_User)
+                            {
+                                callApi({
+                                    methodName: "telegram_auth_more",
+                                    data: {
+                                        projectId: _GET("userId"),
+                                        userId: _token,
+                                    },
+                                });
+                                window.location = protoUrl;
+                            } else {
+                                window.location = protoUrl + `&start=project_${_GET("userId")}`;
+                            }
+                            resolve();
+                        }, timeRender);
+                    })
+                },
             }
 
             if(_PageType)
