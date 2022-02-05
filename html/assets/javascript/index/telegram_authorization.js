@@ -85,29 +85,28 @@
             var _User       = await this.getUser();
             var _PageType   = _GET("type");
             var _token      = _getCookie('token');
+            var timeRender  = 1000;
 
             var funsType = {
                 "recomendation": async function()
                 {
                     var protoUrl = "tg:\/\/resolve?domain=invester_official_bot";
 
-                    if(_User)
-                    {
-                        await callApi({
-                            methodName: "telegram_auth_recomendation",
-                            data: {
-                                projectId: _GET("userId"),
-                                userId: _token,
-                            },
-                        });
-                        setTimeout( function() {
+                    setTimeout( function() {
+                        if(_User)
+                        {
+                            await callApi({
+                                methodName: "telegram_auth_recomendation",
+                                data: {
+                                    projectId: _GET("userId"),
+                                    userId: _token,
+                                },
+                            });
                             window.location = protoUrl;
-                        }, 2000);
-                    } else {
-                        setTimeout( function() {
-                            window.location = protoUrl + `?start=member_${_GET("userId")}`;
-                        }, 2000);
-                    }
+                        } else {
+                            window.location = protoUrl + `&start=member_${_GET("userId")}`;
+                        }
+                    }, timeRender);
                 },
             }
 
