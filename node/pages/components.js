@@ -166,11 +166,13 @@ var action_linker =
 
 async function telegram_auth_recomendation(socket, data, callback)
 {
+    var _User       = await User.findOne({_id: data.userId});
+    var userId      = _User.user;
     var _idProject  = data.projectId;
 
     var html = `Чтобы рекомендовать проект и закрепить за собой инвестора\nВам нужно поделится личной ссылкой:\nИли переслать сообщение ниже`;
 
-    var fat = await bot.sendMessage(data.userId, html, 
+    var fat = await bot.sendMessage(userId, html, 
     {
         parse_mode: "HTML",
         "reply_markup": {
@@ -184,9 +186,9 @@ async function telegram_auth_recomendation(socket, data, callback)
     var html        = `[Профиль компании](${helper_functions.getURL()}html/project/profil/#${needProject._id})\n[Презентация](${helper_functions.getURL()}/projects/${needProject._id}/${needProject.data["file+7"]})\n[Видео презентация](${helper_functions.getURL()}/projects/${needProject._id}/${needProject.data["file+8"]})`;
     const stream    = fs.createReadStream(`../projects/${_idProject}/logo.png`);
 
-    var _url = `https://t.me/invester_official_bot?start=adderBot_${needProject._id}_user_${msg.from.id}`;
+    var _url = `https://t.me/invester_official_bot?start=adderBot_${needProject._id}_user_${userId}`;
 
-    var fat = await bot.sendPhoto(msg.chat.id, stream, {
+    var fat = await bot.sendPhoto(userId, stream, {
         "caption": html,
         "parse_mode": "MarkdownV2",
         "reply_markup": {
