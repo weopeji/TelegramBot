@@ -21,6 +21,7 @@ const Instagram             = require('instagram-web-api');
 var axios                   = require('axios');
 const ParcingPage           = require('./parcing');
 var { DateTime, Interval }  = require("luxon");
+const { hkdf } = require("crypto");
 
 
 module.exports = {
@@ -170,10 +171,8 @@ async function telegram_auth_recomendation(socket, data, callback)
     var _array      = [];
     var userId      = _User.user;
     var _idProject  = data.projectId;
-
-    var html = `Чтобы рекомендовать проект и закрепить за собой инвестора\nВам нужно поделится личной ссылкой:\nИли переслать сообщение ниже`;
-
-    var fat = await bot.sendMessage(userId, html, 
+    var html        = `Чтобы рекомендовать проект и закрепить за собой инвестора\nВам нужно поделится личной ссылкой:\nИли переслать сообщение ниже`;
+    var fat         = await bot.sendMessage(userId, html, 
     {
         parse_mode: "HTML",
         "reply_markup": {
@@ -184,10 +183,9 @@ async function telegram_auth_recomendation(socket, data, callback)
     _array.push(fat.message_id);
 
     var needProject = await Project.findOne({_id: _idProject});
-    var html        = `[Профиль компании](${helper_functions.getURL()}html/project/profil/#${needProject._id})\n[Презентация](${helper_functions.getURL()}/projects/${needProject._id}/${needProject.data["file+7"]})\n[Видео презентация](${helper_functions.getURL()}/projects/${needProject._id}/${needProject.data["file+8"]})`;
+    var html        = `[Профиль компании](${h.getURL()}html/project/profil/#${needProject._id})\n[Презентация](${h.getURL()}/projects/${needProject._id}/${needProject.data["file+7"]})\n[Видео презентация](${h.getURL()}/projects/${needProject._id}/${needProject.data["file+8"]})`;
     const stream    = fs.createReadStream(`../projects/${_idProject}/logo.png`);
-
-    var _url = `https://t.me/invester_official_bot?start=adderBot_${needProject._id}_user_${userId}`;
+    var _url        = `https://t.me/invester_official_bot?start=adderBot_${needProject._id}_user_${userId}`;
 
     var fat = await bot.sendPhoto(userId, stream, {
         "caption": html,
@@ -205,7 +203,7 @@ async function telegram_auth_recomendation(socket, data, callback)
     });
     _array.push(fat.message_id);
 
-    await helper_functions.DMA(msg, _array);
+    await h.DMA(msg, _array);
 
     callback('ok');
 }
