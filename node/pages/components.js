@@ -1400,10 +1400,6 @@ async function acceptInvestor(socket,data,callback)
 
     var _InvDocNeed             = await InvDoc.findOneAndUpdate({invester: data.id, projectId: data.projectId}, {status: "accept", pays: InvPays});
     var _UserInv                = await User.findOne({user: _InvDoc.invester});
-    var commissionProject       = Number(_InvDoc.data.pay.toString().replace(/\s/g, '')) / 100 * Number(_Project.payersData.commission);
-    var commissionAttraction    = Number(commissionProject / 100 * Number(_Project.payersData.attraction_commission));
-    var payCommissionInvester   = Number(commissionAttraction / 100 * Number(_Project.payersData.investors_commission));
-    var payCommissionBusiness   = Number(commissionAttraction / 100 * Number(_Project.payersData.business_commission));
 
     if(_UserInv.member)
     {
@@ -1411,7 +1407,6 @@ async function acceptInvestor(socket,data,callback)
             user: _UserInv.member,
             type: "investing",
             pay: _InvDoc.data.pay,
-            payCommission: payCommissionInvester,
             status: "wait",
             data: {
                 _id: _InvDoc._id,
@@ -1427,7 +1422,6 @@ async function acceptInvestor(socket,data,callback)
             user: _UserInv.member_b,
             type: "business",
             pay: _InvDoc.data.pay,
-            payCommission: payCommissionBusiness,
             status: "wait",
             data: {
                 _id: _Project._id,
