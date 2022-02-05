@@ -166,12 +166,43 @@ var action_linker =
 
 async function telegram_auth_recomendation(socket, data, callback)
 {
-    var _User = await User.findOne({_id: data.userId});
+    var _idProject  = data.projectId;
 
-    for(var _msg of _User.deleteMsgs)
+    var html = `Чтобы рекомендовать проект и закрепить за собой инвестора\nВам нужно поделится личной ссылкой:\nИли переслать сообщение ниже`;
+
+    var fat = await bot.sendMessage(data.userId, html, 
     {
-        await bot.deleteMessage(_User.user, _msg); 
-    };
+        parse_mode: "HTML",
+        "reply_markup": {
+            "resize_keyboard": true,
+            "keyboard": [["💰 Мои инвестиции", "📈 Инвестировать", "💳 Реквезиты"], ["👨‍💼 Рекомендовать","🔁 Сменить роль"]],
+        }
+    });
+    _array.push(fat.message_id);
+
+    var needProject = await Project.findOne({_id: _idProject});
+    var html        = `[Профиль компании](${helper_functions.getURL()}html/project/profil/#${needProject._id})\n[Презентация](${helper_functions.getURL()}/projects/${needProject._id}/${needProject.data["file+7"]})\n[Видео презентация](${helper_functions.getURL()}/projects/${needProject._id}/${needProject.data["file+8"]})`;
+    const stream    = fs.createReadStream(`../projects/${_idProject}/logo.png`);
+
+    var _url = `https://t.me/invester_official_bot?start=adderBot_${needProject._id}_user_${msg.from.id}`;
+
+    var fat = await bot.sendPhoto(msg.chat.id, stream, {
+        "caption": html,
+        "parse_mode": "MarkdownV2",
+        "reply_markup": {
+            "inline_keyboard": [
+                [
+                    {
+                        text: "Инвестровать",
+                        url: _url,
+                    }
+                ]
+            ],
+        }
+    });
+    _array.push(fat.message_id);
+
+    await helper_functions.DMA(msg, _array);
 
     callback('ok');
 }
