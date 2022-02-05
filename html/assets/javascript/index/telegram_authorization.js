@@ -90,30 +90,35 @@
             var funsType = {
                 "recomendation": async function()
                 {
-                    var protoUrl = "tg:\/\/resolve?domain=invester_official_bot";
+                    return new Promise(async (resolve,reject) =>
+                    {
+                        var protoUrl = "tg:\/\/resolve?domain=invester_official_bot";
 
-                    setTimeout( async function() {
-                        if(_User)
-                        {
-                            await callApi({
-                                methodName: "telegram_auth_recomendation",
-                                data: {
-                                    projectId: _GET("userId"),
-                                    userId: _token,
-                                },
-                            });
-                            window.location = protoUrl;
-                        } else {
-                            window.location = protoUrl + `&start=member_${_GET("userId")}`;
-                        }
-                    }, timeRender);
+                        setTimeout( async function() {
+                            if(_User)
+                            {
+                                callApi({
+                                    methodName: "telegram_auth_recomendation",
+                                    data: {
+                                        projectId: _GET("userId"),
+                                        userId: _token,
+                                    },
+                                });
+                                window.location = protoUrl;
+                            } else {
+                                window.location = protoUrl + `&start=member_${_GET("userId")}`;
+                            }
+                            resolve();
+                        }, timeRender);
+                    })
                 },
             }
 
             if(_PageType)
             {
-                funsType[_PageType]();
-            }
+                await funsType[_PageType]();
+                window.close();
+            };
         }
     }
 
