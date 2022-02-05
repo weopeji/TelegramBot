@@ -21,7 +21,7 @@ const Instagram             = require('instagram-web-api');
 var axios                   = require('axios');
 const ParcingPage           = require('./parcing');
 var { DateTime, Interval }  = require("luxon");
-const { hkdf } = require("crypto");
+const { hkdf }              = require("crypto");
 
 
 module.exports = {
@@ -173,7 +173,6 @@ async function telegram_auth_more(socket, data, callback)
     var needProject     = await Project.findOne({_id: _idProject});
     var html            = `Выбран проект: ${_idProject}\n[Профиль компании](${h.getURL()}html/project/profil/#${needProject._id})\n[Презентация](${h.getURL()}/projects/${needProject._id}/${needProject.data["file+7"]})\n[Видео презентация](${h.getURL()}/projects/${needProject._id}/${needProject.data["file+8"]})`;
     const stream        = fs.createReadStream(`../projects/${_idProject}/logo.png`);
-
     var fat = await bot.sendPhoto(data.userId, stream, {
         "caption": html,
         "parse_mode": "MarkdownV2",
@@ -183,12 +182,11 @@ async function telegram_auth_more(socket, data, callback)
         }
     });
     _array.push(fat.message_id);
-
     await h.DMA(msg, _array);
-
     await User.findOneAndUpdate({user: data.userId}, {putProject: _idProject});
-
     await h.DM(msg, 1);
+
+    callback('ok');
 }
 
 async function telegram_auth_recomendation(socket, data, callback)
@@ -208,12 +206,10 @@ async function telegram_auth_recomendation(socket, data, callback)
         }
     });
     _array.push(fat.message_id);
-
     var needProject = await Project.findOne({_id: _idProject});
     var html        = `[Профиль компании](${h.getURL()}html/project/profil/#${needProject._id})\n[Презентация](${h.getURL()}/projects/${needProject._id}/${needProject.data["file+7"]})\n[Видео презентация](${h.getURL()}/projects/${needProject._id}/${needProject.data["file+8"]})`;
     const stream    = fs.createReadStream(`../projects/${_idProject}/logo.png`);
     var _url        = `https://t.me/invester_official_bot?start=adderBot_${needProject._id}_user_${userId}`;
-
     var fat = await bot.sendPhoto(userId, stream, {
         "caption": html,
         "parse_mode": "MarkdownV2",
@@ -229,7 +225,6 @@ async function telegram_auth_recomendation(socket, data, callback)
         }
     });
     _array.push(fat.message_id);
-
     await h.DMA(msg, _array);
 
     callback('ok');
@@ -1764,7 +1759,7 @@ async function acceptProject(socket,data,callback)
                 [
                     {
                         text: "Подробнее",
-                        url: `https://t.me/invester_official_bot?start=project_${data}`,
+                        url: `https://invester-relocation.site/?page=telegram_authorization&type=more&userId=${data}`,
                     }
                 ]
             ],
