@@ -1129,40 +1129,21 @@
                 data: null,
             });
 
-            var templateText = $(`
-                <div class="settingBlock">
-                    <div class="settingBlock_header">
-                        <p>Пользавтели</p>
-                        <div class="settingBlock_header_line">
-                            <span>#</span>
-                            <span>ID Инвестора</span>
-                            <span>ID Проекта</span>
-                            <span>Сумма</span>
+            for(var invData of allInvestings)
+            {
+                var templateText = $(`
+                    <div class="settingBlock_opener">
+                        <div class="settingBlock_opener_row">
+                            <span>${invData.project._id}</span>
                         </div>
-                    </div>
-                    <div class="settingBlock_body">
-                       
-                    </div>
-                </div>
-            `);
-
-            templateText.css('width', 'calc(92% - 40px');
-            templateText.css('margin', '0 auto');
-
-            allInvestings.forEach( function (user, i) {
-                var userLine = $(`
-                    <div class="settingBlock_body_line" data="1062688870" data-more="41">
-                        <span>${i + 1}</span>
-                        <span>${user.invester}</span>
-                        <span>${user.projectId}</span>
-                        <span>${user.data.pay} руб</span>
                     </div>
                 `);
 
-                templateText.find('.settingBlock_body').append(userLine);
-            })
+                templateText.css('width', 'calc(92% - 40px');
+                templateText.css('margin', '0 auto');
 
-            $('.index_page_body_data').append(templateText);
+                $('.index_page_body_data').append(templateText);
+            }
         }
     }
 

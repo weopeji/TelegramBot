@@ -1057,8 +1057,28 @@ async function getAllProjectsInvesting(socket,data,callback)
 
 async function allInvestings(socket,data,callback)
 {
-    var _Inestings = await InvDoc.find({});
-    callback(_Inestings);
+    var allProjects     = await Project.find({});
+    var allData         = [];
+
+    for(_project of allProjects)
+    {
+        var InvsOfProject   = await InvDoc.find({projectId: _project._id});
+        var addBlock        = {
+            project: _project,
+            invs: [],
+        };
+
+        if(InvsOfProject.length > 0)
+        {
+            InvsOfProject.forEach(invElement => {
+                addBlock.invs.push(invElement);
+            });
+
+            allData.push(addBlock);
+        }
+    }
+
+    callback(allData);
 }
 
 async function allUsers(socket,data,callback)
