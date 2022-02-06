@@ -120,12 +120,21 @@
                 setCookie("auth_token", randomToken);
             }
 
+            function checkChrome(runlink, callback) 
+            {
+                window.location = runlink;
+                setTimeout(function(){
+                    if ( window.isFocused ) callback();
+                }, 1000);
+            }
+
             var funsType = {
                 "recomendation": async function()
                 {
                     return new Promise(async (resolve,reject) =>
                     {
-                        var protoUrl = "tg:\/\/resolve?domain=invester_official_bot";
+                        var protoUrl    = "tg:\/\/resolve?domain=invester_official_bot";
+                        var protocolWeb = "https://t.me/invester_official_bot";
 
                         setTimeout( async function() {
                             if(_User)
@@ -137,9 +146,13 @@
                                         userId: _token,
                                     },
                                 });
-                                window.location = protoUrl;
+                                checkChrome(protoUrl, function() {
+                                    window.location = protocolWeb;
+                                })
                             } else {
-                                window.location = protoUrl + `&start=member_${_GET("userId")}_auth_${randomToken}`;
+                                checkChrome(protoUrl + `&start=member_${_GET("userId")}_auth_${randomToken}`, function() {
+                                    window.location = protocolWeb + `?start=member_${_GET("userId")}_auth_${randomToken}`;
+                                })
                             }
                             resolve();
                         }, timeRender);
@@ -149,7 +162,8 @@
                 {
                     return new Promise(async (resolve,reject) =>
                     {
-                        var protoUrl = "tg:\/\/resolve?domain=invester_official_bot";
+                        var protoUrl    = "tg:\/\/resolve?domain=invester_official_bot";
+                        var protocolWeb = "https://t.me/invester_official_bot";
 
                         setTimeout( async function() {
                             if(_User)
@@ -161,9 +175,13 @@
                                         userId: _token,
                                     },
                                 });
-                                window.location = protoUrl;
+                                checkChrome(protoUrl, function() {
+                                    window.location = protocolWeb;
+                                });
                             } else {
-                                window.location = protoUrl + `&start=project_${_GET("userId")}_auth_${randomToken}`;
+                                checkChrome(protoUrl + `&start=project_${_GET("userId")}_auth_${randomToken}`, function() {
+                                    window.location = protocolWeb + `?start=project_${_GET("userId")}_auth_${randomToken}`;
+                                });
                             }
                             resolve();
                         }, timeRender);
