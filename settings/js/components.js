@@ -1147,6 +1147,10 @@
                 templateText.css('width', 'calc(92% - 40px');
                 templateText.css('margin', '0 auto');
 
+                templateText.click( function() {
+                    $(this).find('.settingBlock_opener_menu').slideToggle();
+                })
+
                 for(var invInvester of invData.invs)
                 {
                     var menuBlock = $(`

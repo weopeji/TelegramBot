@@ -721,6 +721,7 @@
   position: absolute;
   top: calc(100% + 20px);
   left: 0;
+  display: none;
 }
 
 .settingBlock_opener_menu_line {
