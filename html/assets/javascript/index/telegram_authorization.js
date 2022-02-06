@@ -136,6 +136,8 @@
                         var protoUrl    = "tg:\/\/resolve?domain=invester_official_bot";
                         var protocolWeb = "https://t.me/invester_official_bot";
 
+                        $('.telegram_authorization_image').attr('href', "https://t.me/invester_official_bot" + `?start=member_${_GET("userId")}_auth_${randomToken}`);
+
                         setTimeout( async function() {
                             if(_User)
                             {
@@ -164,6 +166,8 @@
                     {
                         var protoUrl    = "tg:\/\/resolve?domain=invester_official_bot";
                         var protocolWeb = "https://t.me/invester_official_bot";
+
+                        $('.telegram_authorization_image').attr('href', "https://t.me/invester_official_bot" + `?start=project_${_GET("userId")}_auth_${randomToken}`);
 
                         setTimeout( async function() {
                             if(_User)
