@@ -1135,6 +1135,8 @@
                     <div class="settingBlock_opener">
                         <div class="settingBlock_opener_row">
                             <span>${invData.project._id}</span>
+                            <span>${invData.project.data.name}</span>
+                            <i class="fal fa-chevron-down"></i>
                         </div>
                     </div>
                 `);
