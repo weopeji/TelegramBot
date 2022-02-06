@@ -5,7 +5,9 @@
         global.loadResources(['./js/components.js'], () => {
             global.loadResources(['./js/redacting_page.js'], () => {
                 global.loadResources(['./js/commissions.js'], () => {
-                    Main();
+                    global.loadResources(['./js/Chats.js'], () => {
+                        Main();
+                    });
                 });
             });
         });    
@@ -23,6 +25,7 @@
         const pays_business     = new global.Components.pays_business();
         const pays_attract      = new global.Components.pays_attract();
         const commissions       = new global.Components.commissions();
+        const Chats             = new global.Components.Chats();
 
         var pagesLAN = 
         {
@@ -34,6 +37,7 @@
             "pays_business": function() {pays_business.render()},
             "pays_attract": function() {pays_attract.render()},
             "commissions": function() {commissions.render()},
+            "Chats": function() {Chats.render()},
         }
 
         if(global.pageID)
