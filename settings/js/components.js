@@ -1138,11 +1138,26 @@
                             <span>${invData.project.data.name}</span>
                             <i class="fal fa-chevron-down"></i>
                         </div>
+                        <div class="settingBlock_opener_menu">
+
+                        </div>
                     </div>
                 `);
 
                 templateText.css('width', 'calc(92% - 40px');
                 templateText.css('margin', '0 auto');
+
+                for(var invInvester of invData.invs)
+                {
+                    var menuBlock = $(`
+                        <div class="settingBlock_opener_menu_line">
+                            <span>${invInvester.invester}</span>
+                            <span>${invInvester.status}</span>
+                            <span>${invInvester.data.type}</span>
+                            <span>${invInvester.data.pay} руб</span>
+                        </div>
+                    `);
+                }
 
                 $('.index_page_body_data').append(templateText);
             }

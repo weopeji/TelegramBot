@@ -691,6 +691,8 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  cursor: pointer;
+  position: relative;
 }
 
 .settingBlock_opener_row {
@@ -711,6 +713,21 @@
 .settingBlock_opener_row i {
   position: absolute;
   right: 0;
+}
+
+.settingBlock_opener_menu {
+  background-color: #182037;
+  width: 100%;
+}
+
+.settingBlock_opener_menu_line {
+  width: 100%;
+  height: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
 @media (max-width: 1500px) {
