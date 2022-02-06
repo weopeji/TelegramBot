@@ -122,17 +122,19 @@ async function url(msg)
         var html = `При добавлении проекта по этой ссылке все проекты в админке маркируются как поступившие от бизнес-брокера и закрепляются за конкретным человеком.`;
         var _url = `${h.getURL()}?user=${_User._id}&page=ref_url`;
     
-        var fat = await h.send_html(msg.from.id, html, {
-            "inline_keyboard": [
-                [
-                    {
-                        text: "Получить ссылку 📝",
-                        url: _url
-                    }
-                ]
-            ],
+        var fat = await h.send_html(msg.from.id, html);
+        _array.push(fat.message_id);
+
+        var _url = `https://t.me/invester_official_bot?start=adder-b_${msg.from.id}`;
+        var html = `${_url}`;
+        var fat = await h.send_html(msg.chat.id, html, 
+        {
+            "resize_keyboard": true,
+            inline_keyboard: [
+                [{ text: 'Поделитесь с друзьями', switch_inline_query: _url}]
+            ]
         });
-        _array.push(fat.message_id)
+        _array.push(fat.message_id);
     
         await h.DMA(msg, _array);
     }
