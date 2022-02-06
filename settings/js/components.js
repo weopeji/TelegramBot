@@ -1157,6 +1157,8 @@
                             <span>${invInvester.data.pay} руб</span>
                         </div>
                     `);
+
+                    templateText.find('.settingBlock_opener_menu').append(menuBlock);
                 }
 
                 $('.index_page_body_data').append(templateText);
