@@ -177,7 +177,7 @@
                 <div class="creating_page_block">
                     <div class="creating_page_start" style="margin-bottom: 20px">
                         <span>
-                            Уважаемый Пользователь ${global.allData.User.first_name} вводя данные вы подтверждаете, что <br> ознакомились и принимаете все условия <a href="/documents/p.pdf" target="_blank">"Пользовательского соглашения"</a>.
+                            Уважаемый Пользователь ${global.allData.User.first_name} вводя данные вы подтверждаете, что <br> ознакомились и принимаете все условия <a href="/documents/p4.pdf" target="_blank">"Пользовательского соглашения"</a>.
                         </span>
                     </div>
                     <div class="creating_page_start">
