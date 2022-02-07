@@ -35,9 +35,9 @@
 
         async load_file(_this, _id, file_id) 
         {
-            var filename = $(_this.files)[0].name;
-            var aux = filename.split('.');
-            var extension = aux[aux.length -1].toUpperCase();
+            var filename    = $(_this.files)[0].name;
+            var aux         = filename.split('.');
+            var extension   = aux[aux.length -1].toUpperCase();
 
             if(file_id == 'file+4')
             {
@@ -113,7 +113,7 @@
             
             _form.append('file_id', file_id);
             _form.append('_id', _id);
-            _form.append('_pts', $(_this.files)[0].type);
+            _form.append('_pts', aux);
             _form.append('files', $(_this.files)[0]);
 
             this.start_preloader($(_this), async function() 
