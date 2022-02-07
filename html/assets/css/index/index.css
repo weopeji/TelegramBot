@@ -940,6 +940,10 @@ html, body {
   transition: all .5s;
 }
 
+.creating_page_start a {
+  color: #13a2ef;
+}
+
 .creating_page_start_user_block {
   padding: 20px 50px;
   background-color: #252C46;
