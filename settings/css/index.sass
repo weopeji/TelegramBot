@@ -535,10 +535,26 @@
     align-items: center
 
 
+.index_page_menu
+    flex: none
+    width: 100px
 
+    .index_page_menu_block_line
+        display: flex
 
+        span
+            display: none
+        i
+            font-size: 30px
+            margin: 0 auto
 
+.index_page_menu::hoevr
+    flex: 1.2
+    width: auto
 
+    .index_page_menu_block_line
+        span
+            display: flex
 
 
 @media (max-width: 1500px)     

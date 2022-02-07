@@ -737,6 +737,41 @@
           align-items: center;
 }
 
+.index_page_menu {
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
+  width: 100px;
+}
+
+.index_page_menu .index_page_menu_block_line {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.index_page_menu .index_page_menu_block_line span {
+  display: none;
+}
+
+.index_page_menu .index_page_menu_block_line i {
+  font-size: 30px;
+  margin: 0 auto;
+}
+
+.index_page_menu::hoevr {
+  -webkit-box-flex: 1.2;
+      -ms-flex: 1.2;
+          flex: 1.2;
+  width: auto;
+}
+
+.index_page_menu::hoevr .index_page_menu_block_line span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 @media (max-width: 1500px) {
   .index_page_menu {
     -webkit-box-flex: 1.5;
