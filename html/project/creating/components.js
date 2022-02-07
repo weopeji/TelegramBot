@@ -113,7 +113,7 @@
             
             _form.append('file_id', file_id);
             _form.append('_id', _id);
-            _form.append('_pts', `extension/${extension}`);
+            _form.append('_pts', `extension/${extension.toLowerCase()}`);
             _form.append('files', $(_this.files)[0]);
 
             this.start_preloader($(_this), async function() 
@@ -147,12 +147,18 @@
         }
 
         async load_file_redacting(_this, _id, file_id) {
+
+            var filename    = $(_this.files)[0].name;
+            var aux         = filename.split('.');
+            var extension   = aux[aux.length -1].toUpperCase();
+
+
             var _form    = new FormData();
 
             _form.append('files', $(_this.files)[0]);
             _form.append('file_id', file_id);
             _form.append('_id', _id);
-            _form.append('_pts', $(_this.files)[0].type);
+            _form.append('_pts', `extension/${extension.toLowerCase()}`);
 
 
             this.start_preloader($(_this), async function() 
@@ -181,13 +187,17 @@
 
         async load_file_redacting_signature_document(_this, _id)
         {
+            var filename    = $(_this.files)[0].name;
+            var aux         = filename.split('.');
+            var extension   = aux[aux.length -1].toUpperCase();
+
             var _form    = new FormData();
 
             var _ptsNeed = $(_this.files)[0].type;
 
             _form.append('files', $(_this.files)[0]);
             _form.append('_id', _id);
-            _form.append('_pts', $(_this.files)[0].type);
+            _form.append('_pts', `extension/${extension.toLowerCase()}`);
 
             var _url = `${getURL()}/file_signature_document.io/files`;
 
@@ -211,13 +221,17 @@
 
         async load_file_redacting_registration_document(_this, _id)
         {
+            var filename    = $(_this.files)[0].name;
+            var aux         = filename.split('.');
+            var extension   = aux[aux.length -1].toUpperCase();
+
             var _form    = new FormData();
 
             var _ptsNeed = $(_this.files)[0].type;
 
             _form.append('files', $(_this.files)[0]);
             _form.append('_id', _id);
-            _form.append('_pts', $(_this.files)[0].type);
+            _form.append('_pts', `extension/${extension.toLowerCase()}`);
 
             var _url = `${getURL()}/file_registration_document.io/files`;
 
@@ -241,12 +255,16 @@
 
         async load_file_signature(_this, _id, file_id) 
         {
+            var filename    = $(_this.files)[0].name;
+            var aux         = filename.split('.');
+            var extension   = aux[aux.length -1].toUpperCase();
+
             var _form    = new FormData();
 
             _form.append('files', $(_this.files)[0]);
             _form.append('file_id', file_id);
             _form.append('_id', _id);
-            _form.append('_pts', $(_this.files)[0].type);
+            _form.append('_pts', `extension/${extension.toLowerCase()}`);
 
             this.start_preloader($(_this), function() {
                 var _url = `${getURL()}/file_signature.io/files`;
