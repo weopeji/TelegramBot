@@ -113,7 +113,7 @@
             
             _form.append('file_id', file_id);
             _form.append('_id', _id);
-            _form.append('_pts', `aux/${aux}`);
+            _form.append('_pts', `extension/${extension}`);
             _form.append('files', $(_this.files)[0]);
 
             this.start_preloader($(_this), async function() 
