@@ -36,66 +36,18 @@
             return str;
         }
 
-        templateText = templateText.replace(new RegExp("%date_now%", 'g'),          getFormattedDate());
-        templateText = templateText.replace(new RegExp("%bizznes_name%", 'g'),      need_project.data.initials);
-        templateText = templateText.replace(new RegExp("%name%", 'g'),              need_project.data.name);
-        templateText = templateText.replace(new RegExp("%target%", 'g'),            need_project.data.target);
-        templateText = templateText.replace(new RegExp("%phone%", 'g'),             need_project.data.phone);
-        templateText = templateText.replace(new RegExp("%inn%", 'g'),               need_project.data.inn);
-        templateText = templateText.replace(new RegExp("%ogrn%", 'g'),              need_project.data.ogrn);
-        templateText = templateText.replace(new RegExp("%addr_f%", 'g'),            need_project.data.addr);
-        templateText = templateText.replace(new RegExp("%bank%", 'g'),              need_project.data.bank);
-        templateText = templateText.replace(new RegExp("%bik%", 'g'),               need_project.data.bik);
-        templateText = templateText.replace(new RegExp("%state%", 'g'),             need_project.data.account_get);
-        templateText = templateText.replace(new RegExp("%date_pay%", 'g'),          need_project.data.collection_period);
-        templateText = templateText.replace(new RegExp("%pay_investor%", 'g'),      need_project.data.rate + " " + need_project.data.date_payments);
-        
-        if(typeof need_project.signature_document.img != "undefined")
-        {
-            templateText = templateText.replace(new RegExp("%document%", 'g'), `<img src="${need_project.signature_document.img}" alt>`);
-        } else {
-            templateText = templateText.replace(new RegExp("%document%", 'g'), "_______________");
-        }
 
-        if(_GET__('id'))
-        {
-            var getInvestorDocument = await callApi({
-                methodName: 'getInvestorDocument',
-                data: 
-                {
-                    id: _GET__('id'),
-                    projectId: _id,
-                },
-            });
-
-            console.log(getInvestorDocument);
-
-            var getInv = await callApi({
-                methodName: 'getInv',
-                data: 
-                {
-                    _id: _GET__('id'),
-                    projectId: _id,
-                },
-            });
-
-            console.log(getInvestorDocument);
-
-            templateText = templateText.replace(new RegExp("%invester_name%", 'g'), getInvestorDocument.investor_data.fio);
-            templateText = templateText.replace(new RegExp("%pay%", 'g'), getInvestorDocument.investor_data.pay + " руб");
-
-            if(_GET__('accept'))
-            {
-                templateText = templateText.replace(new RegExp("%document_more%", 'g'), `<img src="${getInv.data.document}" alt>`);
-            }
-        } else {
-            templateText = templateText.replace(new RegExp("%pay%", 'g'), "_______________");
-            templateText = templateText.replace(new RegExp("%invester_name%", 'g'), "_______________");
-            templateText = templateText.replace(new RegExp("%document_more%", 'g'), "_______________");
-
-        }
-
-        
+        templateText = templateText.replace(new RegExp("%date_open%", 'g'),         getFormattedDate()); // redacting
+        templateText = templateText.replace(new RegExp("%name_company%", 'g'),      need_project.data.name_company); // fio - ip / ooo - name -  / fiz - fio собствениика
+        templateText = templateText.replace(new RegExp("%opf%", 'g'),               need_project.parce.pr.opf.full);
+        templateText = templateText.replace(new RegExp("%position%", 'g'),          need_project.parce.pr.management.post);
+        templateText = templateText.replace(new RegExp("%position_name%", 'g'),     need_project.parce.pr.management.name);
+        templateText = templateText.replace(new RegExp("%company_data%", 'g'),      `(Инн: ${need_project.data.inn} Огрн: ${need_project.data.ogrn})`); // fiz номер и серия
+        templateText = templateText.replace(new RegExp("%pay_need%", 'g'),          need_project.data.attraction_amount);
+        templateText = templateText.replace(new RegExp("%rate%", 'g'),              need_project.data.rate + "%");
+        templateText = templateText.replace(new RegExp("%site_name%", 'g'),         "undefined"); // input of site name
+        templateText = templateText.replace(new RegExp("%date%", 'g'),              need_project.data.date);
+        templateText = templateText.replace(new RegExp("%full_reqvesits%", 'g'),    `Огрн: ${need_project.data.ogrn}\n Инн: ${need_project.data.inn} \n Кпп: ${need_project.data.kpp} \n Адрес Юридический: ${need_project.data.addr}\n Адрес Фактический: ${need_project.data.addr_fact} \n Название банка: ${need_project.data.bank} \n __________________________`); // ogrn inn kpp addres fiz addres ur bank bikBank Fio - proherk
 
         $('.index_page').append(templateText);
 
