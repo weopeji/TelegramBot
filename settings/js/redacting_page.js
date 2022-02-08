@@ -85,7 +85,7 @@
 
         async render(_project, global_block)
         {
-            if(_project.type.active)
+            if(_project.type = "active")
             {
                 this.renderActive();
             }
