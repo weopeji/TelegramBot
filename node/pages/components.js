@@ -166,7 +166,13 @@ var action_linker =
     "commissions_settings_accept": commissions_settings_accept,
     "commissions_settings_close": commissions_settings_close,
     "telegram_auth_recomendation": telegram_auth_recomendation,
+    "setCorrectionForProject": setCorrectionForProject,
 };
+
+async function setCorrectionForProject(socket, data, callback)
+{
+    callback(await Project.findOneAndUpdate({_id: data}, {status: "moderation"}));
+}
 
 async function telegram_auth_getToken(socket, data, callback)
 {

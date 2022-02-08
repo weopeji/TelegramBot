@@ -436,6 +436,14 @@
                         </div>
                     `);
 
+                    putDocumentToSignatureAddMore.click( async function() {
+                        await callApi({
+                            methodName: 'setCorrectionForProject',
+                            data: _project._id,
+                        });
+                        alert('Успешно');
+                    })
+
                     putDocumentToSignature.find('input[type=file]').change( async function() 
                     {
                         var filename = $(this.files)[0].name;
@@ -478,7 +486,7 @@
                             
                             if(_project.type = "moderation")
                             {
-                                $('.Attracted_headerInfoBlock_moreDataNoShow').css('display', "flex");
+                                this.global_block.find('.Attracted_headerInfoBlock_moreDataNoShow').css('display', "flex");
                             }
                         }
                     } else {
@@ -523,8 +531,7 @@
                         `);
 
                         _header.append(_line);
-                        
-                    })
+                    });
 
                     this.global_block.append(_header);
 
