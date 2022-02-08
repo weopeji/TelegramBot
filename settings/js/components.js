@@ -466,13 +466,15 @@
                     this.global_block.append(putDocumentToSignatureAddMore);
 
                     if(_project.signature_document) {
-                        if(_project.signature_document.status == 'on') {
+                        if(_project.signature_document.status == 'on') 
+                        {
                             this.global_block.find('.Attracted_headerInfoBlock_block[data="loader"]').find('span').html('Документ подписан бизнесом');
                             this.global_block.find('.Attracted_headerInfoBlock_block[data="loader"]').find('p').html(`Посмотреть`);
                             this.global_block.find('.Attracted_headerInfoBlock_block[data="loader"]').click( function() {
                                 window.open(`https://invester-relocation.site/projects/${_project._id}/${_project.signature_document.user_document}`, '_blank');
                             })
-                        } else {
+                        } else 
+                        {
                             this.global_block.find('.Attracted_headerInfoBlock_block[data="loader"]').find('span').html('Документ отправлен бизнесу');
                             this.global_block.find('.Attracted_headerInfoBlock_block[data="loader"]').find('p').html(`Посмотреть`);
                             this.global_block.find('.Attracted_headerInfoBlock_block[data="loader"]').click( function() {
@@ -488,6 +490,11 @@
                             if(_project.type = "moderation")
                             {
                                 this.global_block.find('.Attracted_headerInfoBlock_moreDataNoShow').css('display', "flex");
+                            };
+
+                            if(_project.type = "correction")
+                            {
+                                this.global_block.find('.Attracted_headerInfoBlock').css('display', "none");
                             }
                         }
                     } else {
