@@ -43,7 +43,7 @@
             });
         }
 
-        async renderActive()
+        async renderActive(global_block)
         {
             var activeData = await callApi({
                 methodName: "activeDataProject",
@@ -89,7 +89,7 @@
         {
             if(_project.type = "active")
             {
-                this.renderActive();
+                this.renderActive(global_block);
             }
 
             var _data           = _project.data;
