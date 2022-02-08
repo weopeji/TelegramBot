@@ -82,7 +82,7 @@
                 templateText.find('.settingBlock_body').append(_block);
             }
 
-            $('.index_page_body_data').append(templateText);
+            global_block.append(templateText);   
         }
 
         async render(_project, global_block)
