@@ -1174,11 +1174,6 @@
             $('.body_point').each((i, element) => {
                 $(element).find('.body_point_line').each((i, _element) => {
                     if(!$(_element).hasClass('_file')) {
-                        _array.push({
-                            name: $(_element).find("input").attr('id'),
-                            val: $(_element).find("input").val()
-                        });
-                    } else {
                         var needVal = $(_element).find(".loader_input").attr('data');
 
                         if($(_element).find("input").attr('id') == "rate")
@@ -1187,7 +1182,12 @@
                         }
                         _array.push({
                             name: $(_element).find("input").attr('id'),
-                            val: needVal,
+                            val: needVal
+                        });
+                    } else {
+                        _array.push({
+                            name: $(_element).find("input").attr('id'),
+                            val: $(_element).find(".loader_input").attr('data'),
                         });
                     }
                 });
