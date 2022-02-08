@@ -172,12 +172,21 @@ var action_linker =
 
 async function activeDataProject(socket, data, callback)
 {
-    var _Invs       = await InvDoc.find({projectId: data});
+    var _Invs           = await InvDoc.find({projectId: data});
+    var _Project        = await Project.findOne({_id: data});
+    var adminProject    = await User.findOne({user: _Project.user});
+    var whoGet          = null;
+
+    if(typeof adminProject.member_b != "undefined")
+    {
+        whoGet = adminProject.member_b;
+    }
 
     var _data = {
         investers: {
             invs: _Invs,
         },
+        whoGet: whoGet,
     };
 
     callback(_data);
