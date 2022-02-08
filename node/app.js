@@ -459,11 +459,12 @@ app.post('/file_urist.io/files', (req, res) => {
                     console.log('Successfully renamed - AKA moved!');
                     
                     mammoth.convertToHtml({path: `/var/www/projects/${_data._id}/signature_document.${_data._pts}`})
-                        .then(async function(result) {
+                        .then(async function(result) 
+                        {
                             var html = result.value;
                             var need_html = html.replace(/ /g,"&nbsp;");
 
-                            var _project = await Project.findOneAndUpdate({_id: _data._id}, {type: "correction", signature_document: {
+                            var _project = await Project.findOneAndUpdate({_id: _data._id}, {signature_document: {
                                 status: "wait",
                                 document: `signature_document.${_data._pts}`,
                                 document_html: need_html,
@@ -479,7 +480,7 @@ app.post('/file_urist.io/files', (req, res) => {
                             await page.pdf({path: `/var/www/projects/${_data._id}/signature_document.pdf`});
                             await browser.close();
 
-                            helper_functions.full_alert_user(_project.user, `Нужно подписание документа в проекте под номером ${_project._id}`, "file_urist");
+                            // helper_functions.full_alert_user(_project.user, `Нужно подписание документа в проекте под номером ${_project._id}`, "file_urist");
                         })
                         .done();
                 });
