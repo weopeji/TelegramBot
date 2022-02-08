@@ -761,10 +761,7 @@
 }
 
 .index_page_menu:hover {
-  -webkit-box-flex: 1.2;
-      -ms-flex: 1.2;
-          flex: 1.2;
-  width: auto;
+  width: 400px;
   z-index: 10000;
 }
 

@@ -119,6 +119,9 @@
                 _block.find('input[type="file"]').change( async function() {
 
                     var attrId = $(this).parent().attr('data');
+                    var filename    = $(_this.files)[0].name;
+                    var aux         = filename.split('.');
+                    var extension   = aux[aux.length -1].toUpperCase();
 
                     alert('Загрузка началась!');
 
@@ -127,7 +130,7 @@
                     _form.append('files', $(this.files)[0]);
                     _form.append('file_id', attrId);
                     _form.append('_id', _GET('id'));
-                    _form.append('_pts', $(this.files)[0].type);
+                    _form.append('_pts', `extension/${extension.toLowerCase()}`);
 
                     var _url = `https://invester-relocation.site/file_redacting.io/files`;
 
