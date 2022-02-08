@@ -184,6 +184,13 @@
                     </div>
                 `);
 
+                if(DataBlock._id == "rate")
+                {
+                    _block.find('a').append($(`
+                        <BBB>${Number(dataNameBlock) * 12}</BBB>
+                    `))
+                }
+
                 _block.find('input[type="file"]').change( async function() {
 
                     var attrId = $(this).parent().attr('data');
