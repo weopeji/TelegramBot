@@ -476,7 +476,7 @@
                                 location.reload();
                             });
                             
-                            if(_project.status = "moderation")
+                            if(_project.type = "moderation")
                             {
                                 $('.Attracted_headerInfoBlock_moreDataNoShow').css('display', "flex");
                             }
