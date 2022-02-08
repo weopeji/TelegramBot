@@ -50,6 +50,24 @@
                 data: _GET("id"),
             });
 
+            global_block.append($(`<h1>Кто привлек проект</h1>`));
+
+            var _block = 
+            $(`
+                <div class="structCreator_new_block" data="${DataBlock._id}" type="${DataBlock.type}">
+                    <div class="structCreator_new_block_row">
+                        <span>ID</span>
+                        <a>
+                            <BB>${activeData.whoGet}</BB>
+                        </a>
+                    </div>
+                </div>
+            `);
+
+            global_block.append(_block);   
+
+            global_block.append($(`<h1>Инвестиции</h1>`));
+
             var templateText = $(`
                 <div class="settingBlock">
                     <div class="settingBlock_header">
@@ -66,8 +84,7 @@
                 </div>
             `);
 
-            templateText.css('width', 'calc(92% - 40px');
-            templateText.css('margin', '0 auto');
+            templateText.css('margin', '35px 0');
 
             for(var _Inv of activeData.investers.invs)
             {
