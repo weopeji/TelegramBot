@@ -505,8 +505,8 @@ async function startInvestingMsgOld(msg, button)
         var smile           = '❌';
 
         if(i == need_button) {
-            strong          = '\n<strong> «';
-            strong_second   = '» </strong>\n';
+            strong          = '\n<strong> »';
+            strong_second   = '« </strong>\n';
         }
 
         if(_User.investor_data)
