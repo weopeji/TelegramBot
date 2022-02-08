@@ -970,19 +970,56 @@
                 });
             })
 
-            firstBlockMore.find(".body_point_line_input_accept").click( function() 
+            firstBlockMore.find(".body_point_line_input_accept").click( async function() 
             {
-                var _text = $(this).parent().find("textarea").val();
+                var _text   = $(this).parent().find("textarea").val();
+                var _lineId = $(this).parent().attr('data');
 
-                callApi({
-                    methodName: 'redactingLineSettingsPageGlobal',
-                    data: {
-                        projectId: _GET('id'),
-                        lineId: $(this).parent().attr('data'),
-                        data: _text,
-                    },
-                });
+                if(_lineId == "business_commission" || "investors_commission")
+                {
+                    var needData = Number(_text);
+                    var moreData = null;
+                    var moreLineId = null;
 
+                    if(_lineId == "business_commission")
+                    {
+                        moreData    = Number($('.body_point_line_input[data="investors_commission"]').find('p').text());
+                        moreLineId  = "investors_commission";
+                    } else
+                    {
+                        moreData    = Number($('.body_point_line_input[data="business_commission"]').find('p').text());
+                        moreLineId  = "business_commission";
+                    };
+
+                    await callApi({
+                        methodName: 'redactingLineSettingsPageGlobal',
+                        data: {
+                            projectId: _GET('id'),
+                            lineId: _lineId,
+                            data: _text,
+                        },
+                    });
+
+                    await callApi({
+                        methodName: 'redactingLineSettingsPageGlobal',
+                        data: {
+                            projectId: _GET('id'),
+                            lineId: moreLineId,
+                            data: 100 - needData,
+                        },
+                    });
+                } else 
+                {
+                    await callApi({
+                        methodName: 'redactingLineSettingsPageGlobal',
+                        data: {
+                            projectId: _GET('id'),
+                            lineId: _lineId,
+                            data: _text,
+                        },
+                    });
+                }
+                
                 $(this).parent().fadeOut( function() 
                 {
                     $(this).parent().find(".body_point_line_first p").html(_text);
