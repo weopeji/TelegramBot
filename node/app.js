@@ -282,7 +282,7 @@ bot.onText(/\/start (.+)/, async (msg, match) =>
         {
             if(resp.split('_')[1] != _User.user)
             {
-                await User.findOneAndUpdate({user: msg.from.id}, {member_b: resp.split('_')[1]});
+                await User.findOneAndUpdate({user: msg.from.id}, {member_b: resp.split('_')[1], type: "business"});
             }
         }
         main_page._CreatorFUN(msg)
