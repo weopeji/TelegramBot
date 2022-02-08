@@ -440,6 +440,7 @@ async function actionWhere(msg)
         var _array              = _User.investor_data;
         var _Where              = _User.where;
         if(!_array) _array      = {};  
+        _array[buttons_2[_User.where.page.button].id] = msg.text;
 
         _Where.page.button = _Where.page.button + 1;
 
@@ -447,8 +448,6 @@ async function actionWhere(msg)
         {
             _Where.page.button = 0;
         }
-
-        _array[buttons_2[_User.where.page.button].id] = msg.text;
 
         await User.findOneAndUpdate({user: msg.from.id}, {investor_data: _array, where: _Where});
 
