@@ -517,7 +517,7 @@ async function startInvestingMsgOld(msg, button)
             }
         }
 
-        html = html + `${smile} ${strong} ${element.name}:   ${dataBlock} ${strong_second}\n`;
+        html = html + `${strong} ${smile} ${element.name}:   ${dataBlock} ${strong_second}\n`;
     })
 
     var fat = await h.send_html(msg.from.id, html, {
