@@ -202,6 +202,11 @@ bot.onText(/\/start (.+)/, async (msg, match) =>
     var _array      = [];
 
     if(!_User) {
+        var dataBusiness = "not";
+        if(resp.split('_')[0] == "adder-b") 
+        {
+            dataBusiness = "yes";
+        }
         await main_page.onlyCreate(msg);
         _User = await User.findOne({user: msg.from.id});
     }

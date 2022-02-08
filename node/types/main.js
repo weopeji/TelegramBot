@@ -45,7 +45,15 @@ const MF =
                 var ttpL = null;
 
                 if(ttp) {
-                    ttpL = "investor";
+                    {
+                        if(ttp == "not")
+                        {
+                            ttpL = "investor";
+                        } else {
+                            ttpL = "business";
+                        }
+                    }
+                    
                 }
 
                 await User.create({
@@ -92,11 +100,11 @@ const MF =
     },
 }
 
-async function onlyCreate(msg)
+async function onlyCreate(msg, businessType)
 {
     return new Promise(async (resolve,reject) =>
     {
-        MF.create_user(msg, true, function() {
+        MF.create_user(msg, businessType, function() {
             resolve();
         })
     })
