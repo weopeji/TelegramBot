@@ -784,6 +784,7 @@
 
 .index_page_menu:hover .index_page_menu_block_line i {
   font-size: 20px;
+  margin: 0;
 }
 
 .index_page_menu:hover .index_page_menu_block_logo {
