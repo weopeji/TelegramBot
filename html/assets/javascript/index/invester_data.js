@@ -207,9 +207,7 @@
             `);
 
             _block.find('span').click( function () {
-                var evt = document.createEvent("HTMLEvents");
-                evt.initEvent("click", true, true); 
-                document.getElementById("triggerClick").dispatchEvent(evt);
+                $('#triggerClick').trigger("click");
             })
 
             var _this = this;
