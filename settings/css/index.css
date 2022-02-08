@@ -792,6 +792,10 @@
   display: none;
 }
 
+.Attracted_headerInfoBlock_moreDataNoShow .Attracted_headerInfoBlock_block {
+  width: 100%;
+}
+
 .index_page_body {
   padding-left: 90px;
 }
