@@ -487,12 +487,12 @@
                                 location.reload();
                             });
                             
-                            if(_project.type = "moderation")
+                            if(_project.type == "moderation")
                             {
                                 this.global_block.find('.Attracted_headerInfoBlock_moreDataNoShow').css('display', "flex");
                             };
 
-                            if(_project.type = "correction")
+                            if(_project.type == "correction")
                             {
                                 this.global_block.find('.Attracted_headerInfoBlock').css('display', "none");
                             }
