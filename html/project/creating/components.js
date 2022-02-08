@@ -1174,7 +1174,7 @@
             $('.body_point').each((i, element) => {
                 $(element).find('.body_point_line').each((i, _element) => {
                     if(!$(_element).hasClass('_file')) {
-                        var needVal = $(_element).find(".loader_input").attr('data');
+                        var needVal = $(_element).find(".loader_input").val();
 
                         if($(_element).find("input").attr('id') == "rate")
                         {
@@ -1182,7 +1182,7 @@
                         }
                         _array.push({
                             name: $(_element).find("input").attr('id'),
-                            val: needVal
+                            val: $(_element).find("input").val()
                         });
                     } else {
                         _array.push({
