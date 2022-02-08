@@ -760,14 +760,14 @@
   margin: 0 auto;
 }
 
-.index_page_menu:hoevr {
+.index_page_menu:hover {
   -webkit-box-flex: 1.2;
       -ms-flex: 1.2;
           flex: 1.2;
   width: auto;
 }
 
-.index_page_menu:hoevr .index_page_menu_block_line span {
+.index_page_menu:hover .index_page_menu_block_line span {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
