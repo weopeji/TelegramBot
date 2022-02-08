@@ -1,3 +1,5 @@
+const { _GET } = require("../../node/helpers/functions");
+
 (function (global) {
     "use strict";
 
@@ -439,9 +441,10 @@
                     putDocumentToSignatureAddMore.click( async function() {
                         await callApi({
                             methodName: 'setCorrectionForProject',
-                            data: _project._id,
+                            data: _GET("id"),
                         });
                         alert('Успешно');
+                        location.reload();
                     })
 
                     putDocumentToSignature.find('input[type=file]').change( async function() 
