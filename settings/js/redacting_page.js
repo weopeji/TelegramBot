@@ -353,7 +353,7 @@
             global_block.append($(`<h1>Действия</h1>`));
 
             var buttons_block = $(`
-                <input type="text" id="redacting_input">
+                <input type="text" id="redacting_input" preloader="Коментарий">
                 <div class="structCreator_new_block_buttons_block" data="redacting">
                     <span>Запросить редактирование</span>
                 </div>

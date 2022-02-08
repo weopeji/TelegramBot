@@ -1179,9 +1179,15 @@
                             val: $(_element).find("input").val()
                         });
                     } else {
+                        var needVal = $(_element).find(".loader_input").attr('data');
+
+                        if($(_element).find("input").attr('id') == "rate")
+                        {
+                            needVal = Number(needVal) * 12;
+                        }
                         _array.push({
                             name: $(_element).find("input").attr('id'),
-                            val: $(_element).find(".loader_input").attr('data')
+                            val: needVal,
                         });
                     }
                 });
