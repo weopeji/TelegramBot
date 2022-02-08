@@ -435,20 +435,22 @@ async function actionWhere(msg)
             }, investor_data: null});
             goInvesting(msg);
         };
-    } else {
-        var _array      = _User.investor_data;
-        if(!_array) _array = {};  
-        _array[buttons_2[_User.where.page.button].id] = msg.text;
-        await User.findOneAndUpdate({user: msg.from.id}, {investor_data: _array});
-        var _buttonWhere = _User.where;
-        _buttonWhere.page.button = _buttonWhere.page.button + 1;
+    } else 
+    {
+        var _array              = _User.investor_data;
+        var _Where              = _User.where;
+        if(!_array) _array      = {};  
 
-        if(_buttonWhere.page.button == 3)
+        _Where.page.button = _Where.page.button + 1;
+
+        if(_Where.page.button == 3)
         {
-            _buttonWhere.page.button = 0;
+            _Where.page.button = 0;
         }
 
-        await User.findOneAndUpdate({user: msg.from.id}, {where: _buttonWhere});
+        _array[buttons_2[_User.where.page.button].id] = msg.text;
+
+        await User.findOneAndUpdate({user: msg.from.id}, {investor_data: _array, where: _Where});
 
         startInvestingMsgOld(msg, _User.where.page.button);
     }
