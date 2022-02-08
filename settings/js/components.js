@@ -437,10 +437,11 @@
                     `);
 
                     putDocumentToSignatureAddMore.click( async function() {
-                        await callApi({
+                        var _data = await callApi({
                             methodName: 'setCorrectionForProject',
                             data: _GET("id"),
                         });
+                        console.log(_data);
                         alert('Успешно');
                         location.reload();
                     })
