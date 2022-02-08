@@ -765,12 +765,21 @@
       -ms-flex: 1.2;
           flex: 1.2;
   width: auto;
+  z-index: 10000;
+}
+
+.index_page_menu:hover .index_page_menu_block_line {
+  display: block;
 }
 
 .index_page_menu:hover .index_page_menu_block_line span {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+.index_page_menu:hover .index_page_menu_block_line i {
+  font-size: 20px;
 }
 
 .index_page_body {
