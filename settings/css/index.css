@@ -540,6 +540,10 @@
   overflow: hidden;
 }
 
+.structCreator_new_block BBB {
+  margin-left: 25px;
+}
+
 .structCreator_new_block input[type="file"] {
   display: none;
 }

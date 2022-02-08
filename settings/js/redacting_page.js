@@ -187,7 +187,7 @@
                 if(DataBlock._id == "rate")
                 {
                     _block.find('a').append($(`
-                        <BBB>${Number(dataNameBlock) * 12}</BBB>
+                        <BBB>(${Number(dataNameBlock) * 12} в год)</BBB>
                     `))
                 }
 
