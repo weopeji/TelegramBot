@@ -119,7 +119,7 @@
                 _block.find('input[type="file"]').change( async function() {
 
                     var attrId = $(this).parent().attr('data');
-                    var filename    = $(_this.files)[0].name;
+                    var filename    = $(this.files)[0].name;
                     var aux         = filename.split('.');
                     var extension   = aux[aux.length -1].toUpperCase();
 
