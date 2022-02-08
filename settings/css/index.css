@@ -737,6 +737,11 @@
           align-items: center;
 }
 
+.index_page_menu_block_logo {
+  position: relative;
+  left: 30px;
+}
+
 .index_page_menu {
   -webkit-box-flex: 0;
       -ms-flex: none;
@@ -777,6 +782,10 @@
 
 .index_page_menu:hover .index_page_menu_block_line i {
   font-size: 20px;
+}
+
+.index_page_menu:hover .index_page_menu_block_logo {
+  left: auto;
 }
 
 .index_page_body {
