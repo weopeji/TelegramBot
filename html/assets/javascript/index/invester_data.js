@@ -200,14 +200,16 @@
             var _block = $(`
                 <div class="creating_page_input">
                     <div class="creating_page_input_div" data="pay">
-                        <input type="file">
+                        <input type="file" id="triggerClick">
                         <span data="first" style="text-align: center">Загрузить</span>
                     </div>
                 </div>
             `);
 
             _block.find('span').click( function () {
-                _block.find('input').trigger("click");
+                var evt = document.createEvent("HTMLEvents");
+                evt.initEvent("click", true, true); 
+                document.getElementById("triggerClick").dispatchEvent(evt);
             })
 
             var _this = this;
