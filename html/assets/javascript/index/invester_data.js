@@ -207,7 +207,7 @@
             `);
 
             _block.find('span').click( function () {
-                _block.find('input').click();
+                _block.find('input').trigger("click");
             })
 
             var _this = this;
