@@ -209,7 +209,7 @@
                 }
             }).then(data => {
                 if(data.data.status == "ok") {
-                    global.fileRegMorePts = _ptsNeed.split('/')[1];
+                    global.fileRegMorePts = extension.toLowerCase();
 
                     alert('Успешно!');
 
@@ -243,7 +243,7 @@
                 }
             }).then(data => {
                 if(data.data.status == "ok") {
-                    global.fileRegMorePts = _ptsNeed.split('/')[1];
+                    global.fileRegMorePts = extension.toLowerCase();
 
                     alert('Успешно!');
 
