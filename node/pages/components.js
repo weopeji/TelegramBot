@@ -171,7 +171,7 @@ var action_linker =
 
 async function setCorrectionForProject(socket, data, callback)
 {
-    callback(await Project.findOneAndUpdate({_id: data}, {status: "correction"}));
+    callback(await Project.findOneAndUpdate({_id: data}, {type: "correction"}));
 }
 
 async function telegram_auth_getToken(socket, data, callback)
