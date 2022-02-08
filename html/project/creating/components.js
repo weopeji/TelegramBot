@@ -1182,7 +1182,7 @@
                         }
                         _array.push({
                             name: $(_element).find("input").attr('id'),
-                            val: $(_element).find("input").val()
+                            val: needVal
                         });
                     } else {
                         _array.push({
