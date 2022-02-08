@@ -207,7 +207,7 @@ bot.onText(/\/start (.+)/, async (msg, match) =>
         {
             dataBusiness = "yes";
         }
-        await main_page.onlyCreate(msg);
+        await main_page.onlyCreate(msg, dataBusiness);
         _User = await User.findOne({user: msg.from.id});
     }
 
