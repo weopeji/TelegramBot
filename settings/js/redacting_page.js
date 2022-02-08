@@ -43,8 +43,53 @@
             });
         }
 
+        async renderActive()
+        {
+            var activeData = await callApi({
+                methodName: "activeDataProject",
+                data: _GET("id"),
+            });
+
+            var templateText = $(`
+                <div class="settingBlock">
+                    <div class="settingBlock_header">
+                        <p>Инвестиции в проект</p>
+                        <div class="settingBlock_header_line">
+                            <span>Инвестор</span>
+                            <span>Сумма Инвестиции</span>
+                            <span>Чек</span>
+                        </div>
+                    </div>
+                    <div class="settingBlock_body">
+                       
+                    </div>
+                </div>
+            `);
+
+            templateText.css('width', 'calc(92% - 40px');
+            templateText.css('margin', '0 auto');
+
+            for(var _Inv of activeData.investers.invs)
+            {
+                var _block = $(`
+                    <div class="settingBlock_body_line">
+                        <span>${_Inv.invester}</span>
+                        <span>${_Inv.data.pay} руб</span>
+                        <span><a href="https://invester-relocation.site/projects/${_Inv.projectId}/${_Inv.data.document}">Открыть</a></span>
+                    </div>
+                `);
+
+                templateText.find('.settingBlock_body').append(_block);
+            }
+        }
+
         async render(_project, global_block)
         {
+            if(_project.type.active)
+            {
+                this.renderActive();
+            }
+
             var _data           = _project.data;
             var _page           = await this.getPAgeOfData(_data.organization);
             var _structCreator  = global.structCreator;

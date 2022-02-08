@@ -167,7 +167,21 @@ var action_linker =
     "commissions_settings_close": commissions_settings_close,
     "telegram_auth_recomendation": telegram_auth_recomendation,
     "setCorrectionForProject": setCorrectionForProject,
+    "activeDataProject": activeDataProject,
 };
+
+async function activeDataProject(socket, data, callback)
+{
+    var _Invs       = await InvDoc.find({projectId: data});
+
+    var _data = {
+        investers: {
+            invs: _Invs,
+        },
+    };
+
+    callback(_data);
+}
 
 async function setCorrectionForProject(socket, data, callback)
 {
