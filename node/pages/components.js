@@ -707,6 +707,7 @@ async function redactingLineSettingsPageGlobal(socket,data,callback)
     var needData = _project.payersData;
     needData[data.lineId] = data.data;
     await Project.findOneAndUpdate({_id: data.projectId}, {payersData: needData});
+    callback();
 }
 
 async function redactingLineSettingsPage(socket,data,callback)
