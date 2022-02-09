@@ -1462,11 +1462,11 @@ async function acceptInvestor(socket,data,callback)
             var HowManyDays     = Interval.fromDateTimes(NowToday, LastData).length('month');
             var EveryPayment    = Number(InvPay / 100 * RateBlock).toFixed(0);
 
-            for(var i = 0; i < HowManyDays / 3; i++)
+            for(var i = 1; i <= HowManyDays / 3; i++)
             {
                 InvPays.push({
                     pay: EveryPayment,
-                    date: NowToday.plus({ months: i + 1 }),
+                    date: NowToday.plus({ months: i * 3 }),
                     receipt: null,
                     status: "wait",
                 });
