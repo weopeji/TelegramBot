@@ -443,6 +443,21 @@ async function ALL_DATA(socket, data, callback)
         invester_data:      await investerData(),
         obligations_data:   await obligationsData(),
         payments_new:       await payments_new(),
+        attracted:          await Attracted(),
+    }
+
+    async function Attracted()
+    {
+        return new Promise(async (resolve,reject) =>
+        {
+            var _blockData      =
+            {
+                investers: await Payments.find({type: "investing", user: _User.user}),
+                business: await Payments.find({type: "business", user: _User.user}),
+            };
+
+            resolve(_blockData);
+        });
     }
 
     async function payments_new()
