@@ -1491,7 +1491,20 @@ async function acceptInvestor(socket,data,callback)
         },
         "Раз в 6 месяцев": async function()
         {
+            var RateBlock       = Number(_Project.data.rate / 12 * 6);
+            var LastData        = NowToday.plus({ months: ProjectDate });
+            var HowManyDays     = Interval.fromDateTimes(NowToday, LastData).length('month');
+            var EveryPayment    = Number(InvPay / 100 * RateBlock).toFixed(0);
 
+            for(var i = 1; i <= HowManyDays / 3; i++)
+            {
+                InvPays.push({
+                    pay: EveryPayment,
+                    date: NowToday.plus({ months: i * 6 }),
+                    receipt: null,
+                    status: "wait",
+                });
+            }
         },
         "В конце срока": async function()
         {
