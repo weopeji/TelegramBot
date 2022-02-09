@@ -440,13 +440,13 @@
                             <div class="invester_status_projects_status_first">
                                 <div class="invester_status_projects_status_first_line">
                                     <span>Привлечено инвесторов</span>
-                                    <a>${_data.Attracted.investers.length}</a>
+                                    <a>${_data.attracted.investers.length}</a>
                                     <span>Бонус</span>
                                     <a>0 руб</a>
                                 </div>
                                 <div class="invester_status_projects_status_first_line">
                                     <span>Привлечено бизнес проектов</span>
-                                    <a>${_data.Attracted.business.length}</a>
+                                    <a>${_data.attracted.business.length}</a>
                                     <span>Бонус</span>
                                     <a>0 руб</a>
                                 </div>
