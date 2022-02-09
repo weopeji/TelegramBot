@@ -1508,8 +1508,7 @@ async function acceptInvestor(socket,data,callback)
         },
         "В конце срока": async function()
         {
-            var RateBlock       = Number(_Project.data.rate / 12);
-            var LastData        = NowToday.plus({ months: ProjectDate });
+            var RateBlock       = Number(_Project.data.rate / 12 * ProjectDate);
             var EveryPayment    = Number(InvPay / 100 * RateBlock).toFixed(0);
 
             InvPays.push({
