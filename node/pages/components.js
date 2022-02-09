@@ -1508,7 +1508,16 @@ async function acceptInvestor(socket,data,callback)
         },
         "В конце срока": async function()
         {
+            var RateBlock       = Number(_Project.data.rate / 12);
+            var LastData        = NowToday.plus({ months: ProjectDate });
+            var EveryPayment    = Number(InvPay / 100 * RateBlock).toFixed(0);
 
+            InvPays.push({
+                pay: EveryPayment,
+                date: NowToday.plus({ months: ProjectDate }),
+                receipt: null,
+                status: "wait",
+            });
         },
     };
 
@@ -1518,6 +1527,7 @@ async function acceptInvestor(socket,data,callback)
 
     var _InvDocNeed             = await InvDoc.findOneAndUpdate({invester: data.id, projectId: data.projectId}, {status: "accept", pays: InvPays});
     var _UserInv                = await User.findOne({user: _InvDoc.invester});
+    var _UserProject            = await User.findOne({user: _Project.user});
 
     if(_UserInv.member)
     {
@@ -1534,10 +1544,10 @@ async function acceptInvestor(socket,data,callback)
         })
     }
 
-    if(_UserInv.member_b)
+    if(_UserProject.member_b)
     {
         await Payments.create({
-            user: _UserInv.member_b,
+            user: _UserProject.member_b,
             type: "business",
             pay: _InvDoc.data.pay,
             status: "wait",
