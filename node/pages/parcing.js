@@ -197,7 +197,7 @@ async function ParcingArbitrage(inn)
             });
         }
         catch{
-            reject();  
+            resolve([]);  
         }
     })
 }
