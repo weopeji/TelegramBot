@@ -697,8 +697,10 @@
     
                     _dataBlock.forEach(element => 
                     {
+                        var needId  = element._id;
                         element._id = `BB*${element._id}_${global.add_blocks}`;
                         _body.append(_this.file(element));
+                        element._id = needId;
                     });
                     $(_line.parent()).before(_body);
 
