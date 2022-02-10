@@ -208,15 +208,14 @@ async function ParcingArbitrage(inn)
     };
 
     return new Promise((resolve,reject) => {
-        try {
-            PythonShell.run('main.py', options, function (err, results) {
-                if (err) throw err;
+        PythonShell.run('main.py', options, function (err, results) {
+            if (err) {
+                resolve('sourse error')
+            } else 
+            {
                 resolve(JSON.parse(results));  
-            });
-        }
-        catch{
-            resolve([]);  
-        }
+            }
+        });
     })
 }
 
