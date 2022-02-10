@@ -234,7 +234,7 @@
                             <div class="autch_block_row">
                                 <p>Выберите дату инвестирования:</p>
                                 <div class="autch_block_row_input_date">
-                                    <input type="text" placeholder="Дата" id='needDateNow'>
+                                    <input type="date" placeholder="Дата" id='needDateNow'>
                                 </div>
                                 <div class="autch_block_buttons">
                                     <div class="autch_block_buttons_block autch_block_buttons_block_close">
