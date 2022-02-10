@@ -1031,16 +1031,16 @@ async function tg_alert_user_numbers(socket,data,callback)
 
 async function tg_alert_user(socket,data,callback)
 {
-    let options = 
-    {
-        mode: 'text',
-        scriptPath: '../python/system_alerts_user',
-        args: [data.user, data.text]
-    };
+    // let options = 
+    // {
+    //     mode: 'text',
+    //     scriptPath: '../python/system_alerts_user',
+    //     args: [data.user, data.text]
+    // };
 
-    await PythonShell.run('main.py', options, function (err, results) {
-        if (err) throw err;
-    })
+    // await PythonShell.run('main.py', options, function (err, results) {
+    //     if (err) throw err;
+    // })
 }
 
 async function tg_alert(socket,data,callback)
@@ -1055,8 +1055,6 @@ async function tg_alert(socket,data,callback)
     // await PythonShell.run('main.py', options, function (err, results) {
     //     if (err) throw err;
     // })
-
-    
 }
 
 async function getBitsFile(socket,data,callback)
