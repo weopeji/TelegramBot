@@ -248,7 +248,7 @@ async function _MainMenu(msg, close)
                     });
                     _array.push(fat.message_id);
 
-                    await User.findOneAndUpdate({user: msg.from.id}, {putProject: null});
+                    await User.findOneAndUpdate({user: msg.from.id}, {putProject: null, lastProject: _idProject});
                 }
         
             } else {

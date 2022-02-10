@@ -15,6 +15,7 @@ const UserShema = new mongoose.Schema({
     investor_data: JSON,
     where: JSON,
     putProject: String,
+    lastProject: String,
     member: String,
     member_b: String,
     creatingData: JSON,

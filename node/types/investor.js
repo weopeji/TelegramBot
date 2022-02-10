@@ -592,6 +592,14 @@ async function goInvesting(msg)
     {
         var investingBlock = await InvDoc.findOne({projectId: _User.putProject, invester: msg.from.id});
 
+        if(!investingBlock)
+        {
+            if(typeof _User.lastProject != "undefined")
+            {
+                investingBlock = await InvDoc.findOne({projectId: _User.lastProject, invester: msg.from.id});
+            }   
+        }
+
         
         if(typeof _User.first_parse != 'undefined')
         {
