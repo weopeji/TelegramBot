@@ -2175,7 +2175,7 @@ async function setProject(socket,data,callback)
 
     for(var _key in _dataProject)
     {
-        if(_key.split("#")[0] == "BB")
+        if(_key.split("*")[0] == "BB")
         {
             redactinMoreUsers[_key] = _dataProject[_key].data;
         } else
