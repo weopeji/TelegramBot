@@ -201,7 +201,7 @@
                             if(_User)
                             {
                                 callApi({
-                                    methodName: "telegram_auth_invester",
+                                    methodName: "telegram_auth_more",
                                     data: {
                                         projectId: _GET("projectId"),
                                         userId: _token,
