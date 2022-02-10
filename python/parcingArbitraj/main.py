@@ -44,6 +44,7 @@ def main(argv):
     driver.find_element(By.CSS_SELECTOR, 'textarea[class="g-ph"]').send_keys(argv)
     driver.find_element(By.CLASS_NAME, "js-promo_notification-popup-close").click()
     driver.find_element(By.ID, "b-form-submit").click()
+    
 
     try:
         _array["many"] = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, '.b-found-total'))).get_attribute("innerHTML")
