@@ -606,10 +606,13 @@ async function goInvesting(msg)
                     _array.push(fat.message_id);
                     
                     var needUrl = "https://invester-relocation.site/";
-                
-                    if(_project.urlLocation)
+
+                    if(typeof _project.urlLocation != "undefined")
                     {
-                        needUrl = `https://${_project.urlLocation}/`;
+                        if(_project.urlLocation)
+                        {
+                            needUrl = `https://${_project.urlLocation}/`;
+                        }
                     }
                 
                     var html = `Нажмите на кнопку "Перейти", чтобы проинвестировать`;
@@ -665,10 +668,14 @@ async function goInvesting(msg)
                 
                 var needUrl = "https://invester-relocation.site/";
             
-                if(_project.urlLocation)
+                if(typeof _project.urlLocation != "undefined")
                 {
-                    needUrl = `https://${_project.urlLocation}/`;
+                    if(_project.urlLocation)
+                    {
+                        needUrl = `https://${_project.urlLocation}/`;
+                    }
                 }
+                
             
                 var html = `Нажмите на кнопку "Перейти", чтобы проинвестировать`;
                 var fat = await bot.sendMessage(msg.chat.id, toEscapeMSg(html), {
