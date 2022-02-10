@@ -975,7 +975,7 @@
                 var _text   = $(this).parent().find("textarea").val();
                 var _lineId = $(this).parent().attr('data');
 
-                if(_lineId == "business_commission" || "investors_commission")
+                if(_lineId == "business_commission" || _lineId == "investors_commission")
                 {
                     var needData = Number(_text);
                     var moreData = null;
