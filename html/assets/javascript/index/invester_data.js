@@ -496,10 +496,17 @@
 
             $('input.creating_page_input_div').keydown(function(e) {
                 if(e.keyCode === 13) {
-                    console.log($(this).index())
+                    var indexInput      = $(this).index();
+                    var indexInteger    = indexInput + 1;
+
+                    if(indexInteger > $('input.creating_page_input_div').length - 1)
+                    {
+                        indexInteger = 0;
+                    }
+
+                    $('input.creating_page_input_div').eq(indexInteger).focus();
                 }
             });
-
 
             var _this = this;
 
