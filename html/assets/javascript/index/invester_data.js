@@ -290,7 +290,7 @@
                     <div class="creating_page_start" style="margin-bottom: 20px">
                         <span>
                             Уважаемый Инвестор ${global.allData.User.first_name} Введите сумму инвестирования</a>.<br>
-                            Минимальная сумма входа: ${_projectMoney} руб.
+                            Минимальная сумма входа: ${_projectMoney.toString().ReplaceNumber()} руб.
                         </span>
                     </div>
                 </div>
