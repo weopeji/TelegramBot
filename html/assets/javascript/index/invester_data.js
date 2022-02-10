@@ -225,18 +225,25 @@
                 `);
 
                 autch_block.find('.autch_block_buttons_block_close').click( function() {
-                    
+                    $('.autch_block').find("autch_block_row").remove();
+                    var _blockAppend = 
+                    $(`
+                        <div class="autch_block_row">
+                            <p>Выберите дату инвестирования:</p>
+                            <div class="autch_block_row_input_date">
+                                <input type="text" placeholder="Дата">
+                            </div>
+                        </div>
+                    `);
+                    $('.autch_block').find("autch_block_row").append(_blockAppend);
                 });
 
                 autch_block.find('.autch_block_buttons_block_accept').click( async function() {
-                    
+                    $('.autch_block').remove();
+                    $('#triggerClick').trigger("click");
                 })
 
                 $('body').append(autch_block);
-
-
-
-                // $('#triggerClick').trigger("click");
             })
 
             var _this = this;
