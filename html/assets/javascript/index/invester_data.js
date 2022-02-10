@@ -31,6 +31,7 @@
             this.project    = null;
             this.inv        = null;
             this.money      = null;
+            this.date       = null;
         };
 
         defaultCSS()
@@ -208,42 +209,74 @@
 
             _block.find('span').click( function () 
             {
-                var autch_block = $(`
-                    <div class="autch_block">
-                        <div class="autch_block_row">
-                            <p>Дата вашей инвестиции совпадает с текущей датой?</p>
-                            <div class="autch_block_buttons">
-                                <div class="autch_block_buttons_block autch_block_buttons_block_close">
-                                    <span>Не совпадает</span>
+                if(!_this.date)
+                {
+                    var autch_block = $(`
+                        <div class="autch_block">
+                            <div class="autch_block_row">
+                                <p>Дата вашей инвестиции совпадает с текущей датой?</p>
+                                <div class="autch_block_buttons">
+                                    <div class="autch_block_buttons_block autch_block_buttons_block_close">
+                                        <span>Не совпадает</span>
+                                    </div>
+                                    <div class="autch_block_buttons_block autch_block_buttons_block_accept">
+                                        <span>Совпадает</span>
+                                    </div>
                                 </div>
-                                <div class="autch_block_buttons_block autch_block_buttons_block_accept">
-                                    <span>Совпадает</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `);
-
-                autch_block.find('.autch_block_buttons_block_close').click( function() {
-                    $('.autch_block').find("autch_block_row").remove();
-                    var _blockAppend = 
-                    $(`
-                        <div class="autch_block_row">
-                            <p>Выберите дату инвестирования:</p>
-                            <div class="autch_block_row_input_date">
-                                <input type="text" placeholder="Дата">
                             </div>
                         </div>
                     `);
-                    $('.autch_block').find("autch_block_row").append(_blockAppend);
-                });
 
-                autch_block.find('.autch_block_buttons_block_accept').click( async function() {
-                    $('.autch_block').remove();
+                    autch_block.find('.autch_block_buttons_block_close').click( function() {
+                        $('.autch_block').find(".autch_block_row").remove();
+                        var _blockAppend = 
+                        $(`
+                            <div class="autch_block_row">
+                                <p>Выберите дату инвестирования:</p>
+                                <div class="autch_block_row_input_date">
+                                    <input type="text" placeholder="Дата" id='needDateNow'>
+                                </div>
+                                <div class="autch_block_buttons">
+                                    <div class="autch_block_buttons_block autch_block_buttons_block_close">
+                                        <span>Назад</span>
+                                    </div>
+                                    <div class="autch_block_buttons_block autch_block_buttons_block_accept">
+                                        <span>Подтвердить</span>
+                                    </div>
+                                </div>
+                            </div>
+                        `);
+
+                        _blockAppend.find('.autch_block_buttons_block_close').click( function() {
+                            $('.autch_block').remove();
+                        })
+
+                        _blockAppend.find('.autch_block_buttons_block_accept').click( function() {
+                            var valueNeed = $('#needDateNow').val();
+
+                            if(valueNeed.length > 0)
+                            {
+                                _this.date = valueNeed;
+                                $('#triggerClick').trigger("click");
+                            } else 
+                            {
+                                alert('Выберите дату!');
+                            }
+                        })
+
+                        $('.autch_block').find(".autch_block_row").append(_blockAppend);
+                    });
+
+                    autch_block.find('.autch_block_buttons_block_accept').click( async function() {
+                        $('.autch_block').remove();
+                        $('#triggerClick').trigger("click");
+                    })
+
+                    $('body').append(autch_block);
+                } else 
+                {
                     $('#triggerClick').trigger("click");
-                })
-
-                $('body').append(autch_block);
+                }
             })
 
             var _this = this;
@@ -256,7 +289,10 @@
                         methodName: "setInvesterDataProjectForInvesterPage",
                         data: {
                             user:  _GET('user'),
-                            data: _this.inv,
+                            data: {
+                                inv: _this.inv,
+                                date: _this.date,
+                            },
                         },
                     });
 

@@ -532,7 +532,13 @@ app.post('/file_cheack_get.io/files', (req, res) => {
                     console.log('Successfully renamed - AKA moved!');
                     
                     
-                    var _arrayData = _User.investor_data;
+                    var _arrayData = _User.investor_data.inv;
+                    var _dateNeed = _User.investor_data.date;
+
+                    if(!_dateNeed)
+                    {
+                        _dateNeed = new Date().getTime();
+                    }
                 
                     _arrayData.document = `file_cheack_get_${_User.user}.${_data._pts}`;
                     _arrayData.pay = _data._pay;
@@ -548,7 +554,7 @@ app.post('/file_cheack_get.io/files', (req, res) => {
                             data: _arrayData,
                             receipt: null,
                             pays: null,
-                            date: new Date().getTime(),
+                            date: _dateNeed,
                         });
                     } else {
                         await InvDoc.findOneAndUpdate({invester: _User.user, data: _arrayData})
