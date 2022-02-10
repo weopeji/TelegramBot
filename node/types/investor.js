@@ -614,7 +614,7 @@ async function goInvesting(msg)
                     ],                                                                   
                 }
             });
-            _array.push(fat.message_id);
+            _array.push(fat.message_id); 
             
             var needUrl = "https://invester-relocation.site/";
         
