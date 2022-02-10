@@ -67,50 +67,68 @@ async function arbitrajnayaPraktikaFizLica(_initials, _region, date_user)
     return new Promise((resolve,reject) =>
     {
         var fio             = _initials.split(' ');
-        var query           = _region;
-        var url             = "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address";
-        var token           = "cd3a829357362fec55fc201c3f761002def9906f";
-        var first_name      = fio[1];
-        var second_name     = fio[2];
-        var last_name       = fio[0];
-        var birth_date      = date_user;
 
-        var options = {
-            method: "POST",
-            mode: "cors",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json",
-                "Authorization": "Token " + token
-            },
-            body: JSON.stringify({query: query})
-        }
-
-        fetch(url, options)
-        .then(response => response.text())
-        .then(result => 
+        if(fio.length < 3)
         {
-            var _dataFirst = JSON.parse(result.toString()).suggestions[0].data.region_kladr_id;
-
-            _dataFirst = _dataFirst.replace(/0/g, '');
-
-            var config = {
-                method: 'get',
-                url: `https://api-ip.fssp.gov.ru/api/v1.0/search/physical?token=er77gLcQvTO5&firstname=${encodeURI(first_name)}&secondname=${encodeURI(second_name)}&lastname=${encodeURI(last_name)}&birthdate=${birth_date}&region=${_dataFirst}`,
-                headers: { }
-            };    
-            
-            axios(config)
-            .then(async function (response) {
-                var adaw = await R_F.create({
-                    data: JSON.stringify(response.data),
+            resolve('error');
+        } else
+        {
+            var query           = _region;
+            var url             = "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address";
+            var token           = "cd3a829357362fec55fc201c3f761002def9906f";
+            var first_name      = fio[1];
+            var second_name     = fio[2];
+            var last_name       = fio[0];
+    
+            var birth_date      = date_user;
+    
+            var options = {
+                method: "POST",
+                mode: "cors",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                    "Authorization": "Token " + token
+                },
+                body: JSON.stringify({query: query})
+            }
+    
+            fetch(url, options)
+            .then(response => response.text())
+            .then(result => 
+            {
+                var _dataFirst = "77";
+    
+                if(typeof JSON.parse(result.toString()).suggestions[0] != "undefined")
+                {
+                    if(typeof JSON.parse(result.toString()).suggestions[0].data != "undefined")
+                    {
+                        if(typeof JSON.parse(result.toString()).suggestions[0].data.region_kladr_id != "undefined")
+                        {
+                            _dataFirst = JSON.parse(result.toString()).suggestions[0].data.region_kladr_id
+                            _dataFirst = _dataFirst.replace(/0/g, '');
+                        }
+                    }
+                }
+    
+                var config = {
+                    method: 'get',
+                    url: `https://api-ip.fssp.gov.ru/api/v1.0/search/physical?token=er77gLcQvTO5&firstname=${encodeURI(first_name)}&secondname=${encodeURI(second_name)}&lastname=${encodeURI(last_name)}&birthdate=${birth_date}&region=${_dataFirst}`,
+                    headers: { }
+                };    
+                
+                axios(config)
+                .then(async function (response) {
+                    var adaw = await R_F.create({
+                        data: JSON.stringify(response.data),
+                    })
+                    resolve(adaw._id);
                 })
-                resolve(adaw._id);
-            })
-            .catch(function (error) {
-                console.log(error);
+                .catch(function (error) {
+                    console.log(error);
+                });
             });
-        });
+        }
     });
 };
 
