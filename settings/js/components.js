@@ -953,7 +953,7 @@
                         </div>
                     </div>
                     <div class="body_point_line_block_more">
-                        <div class="body_point_line body_point_line_first" data="business_commission">
+                        <div class="body_point_line body_point_line_first" data="show">
                             <span>Абсолют Инвестора:</span>
                             <span>${(_project.payersData.commission * (_project.payersData.attraction_commission / 100)) * (_project.payersData.investors_commission / 100)} %</span>
                             <span>Абсолют бизнеса:</span>
@@ -966,9 +966,12 @@
             firstBlockMore.css("padding-bottom", "20px");
 
             firstBlockMore.find('.body_point_line_first').click( function () {
-                $(this).fadeOut( function() {
-                    $(this).parent().find(".body_point_line_input").css("display", "flex");
-                });
+                if($(this).attr('data') != "show")
+                {
+                    $(this).fadeOut( function() {
+                        $(this).parent().find(".body_point_line_input").css("display", "flex");
+                    });
+                }
             })
 
             firstBlockMore.find(".body_point_line_input_close").click( function() {
