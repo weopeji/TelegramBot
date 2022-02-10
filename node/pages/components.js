@@ -214,26 +214,14 @@ async function telegram_auth_getToken(socket, data, callback)
 async function telegram_auth_more(socket, data, callback)
 {
     var _User           = await User.findOne({_id: data.userId});
-    var _array          = [];
     var _idProject      = data.projectId;
     var userId          = _User.user;
-    var msg             = {from: {id: _User.user}};
-    var needProject     = await Project.findOne({_id: _idProject});
-    var html            = `Выбран проект: ${_idProject}\n[Профиль компании](${h.getURL()}html/project/profil/#${needProject._id})\n[Презентация](${h.getURL()}/projects/${needProject._id}/${needProject.data["file+7"]})\n[Видео презентация](${h.getURL()}/projects/${needProject._id}/${needProject.data["file+8"]})`;
-    const stream        = fs.createReadStream(`../projects/${_idProject}/logo.png`);
-    var fat = await bot.sendPhoto(userId, stream, {
-        "caption": html,
-        "parse_mode": "MarkdownV2",
-        "reply_markup": {
-            "resize_keyboard": true,
-            "keyboard": [["💰 Мои инвестиции", "📈 Инвестировать", "💳 Реквезиты"], ["👨‍💼 Рекомендовать","🔁 Сменить роль"]],
-        }
-    });
-    _array.push(fat.message_id);
-    await h.DMA(msg, _array);
+    var msg             = {
+        from: {id: _User.user},
+        chat: {id: _User.user},
+    };
     await User.findOneAndUpdate({user: userId}, {putProject: _idProject});
-    await h.DM(msg, 1);
-
+    _app.defaultShowProject(msg, _idProject);
     callback('ok');
 }
 

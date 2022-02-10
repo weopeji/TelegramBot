@@ -185,7 +185,6 @@ async function _MainMenu(msg, close)
     {
         investor: async function(msg) 
         {
-            console.log('ok');
             if(alertsMain)
             {
                 var html =`Оповещения: ⠀ `;

@@ -279,7 +279,7 @@ bot.onText(/\/start (.+)/, async (msg, match) =>
                 await User.findOneAndUpdate({user: msg.from.id}, {member: resp.split('_')[3]});
             }
         }
-        defaultShowProject();
+        defaultShowProject(msg, _idProject);
     }
     else if(resp.split('_')[0] == "adder-b") 
     {
@@ -298,34 +298,19 @@ bot.onText(/\/start (.+)/, async (msg, match) =>
     } 
     else 
     {
-        defaultShowProject();
-    }
-
-    async function defaultShowProject()
-    {
-        await User.findOneAndUpdate({user: msg.from.id}, {putProject: _idProject});
-        main_page._CreatorFUN(msg);
-        // var needProject     = await Project.findOne({_id: _idProject});
-        // var html            = `Выбран проект: ${_idProject}\n[Профиль компании](${helper_functions.getURL()}html/project/profil/#${needProject._id})\n[Презентация](${helper_functions.getURL()}/projects/${needProject._id}/${needProject.data["file+7"]})\n[Видео презентация](${helper_functions.getURL()}/projects/${needProject._id}/${needProject.data["file+8"]})`;
-        // const stream        = fs.createReadStream(`../projects/${_idProject}/logo.png`);
-    
-        // var fat = await bot.sendPhoto(msg.chat.id, stream, {
-        //     "caption": html,
-        //     "parse_mode": "MarkdownV2",
-        //     "reply_markup": {
-        //         "resize_keyboard": true,
-        //         "keyboard": [["💰 Мои инвестиции", "📈 Инвестировать", "💳 Реквезиты"], ["👨‍💼 Рекомендовать","🔁 Сменить роль"]],
-        //     }
-        // });
-        // _array.push(fat.message_id);
-    
-        // await helper_functions.DMA(msg, _array);
-    
-        // await User.findOneAndUpdate({user: msg.from.id}, {putProject: _idProject});
-
-        // await helper_functions.DM(msg, 1);
+        defaultShowProject(msg, _idProject);
     }
 });
+
+async function defaultShowProject(msg, _idProject)
+{
+    await User.findOneAndUpdate({user: msg.from.id}, {putProject: _idProject});
+    main_page._CreatorFUN(msg);
+};
+
+module.exports = {
+    defaultShowProject,
+}
 
 bot.on('message', async (msg) => 
 {
