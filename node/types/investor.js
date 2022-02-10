@@ -591,6 +591,8 @@ async function goInvesting(msg)
         {
             if(_User.lastProject)
             {
+                var _project    = await Project.findOne({_id: _User.lastProject});
+
                 if(typeof _User.first_parse != 'undefined')
                 {
                     var html = `Инвестор ${_User.first_name}\nВы находитесь в меню "Инвестиции в проект"\n Вы уже инвестировали в этот проект, вы можете проинвестировать еще раз`;
