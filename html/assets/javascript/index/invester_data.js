@@ -494,6 +494,12 @@
             $('.creating_page').empty();
             render_nextfuns[DT]();
 
+            $('input.creating_page_input_div').keydown(function(e) {
+                if(e.keyCode === 13) {
+                    console.log($(this).eq())
+                }
+            });
+
 
             var _this = this;
 
