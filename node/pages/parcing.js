@@ -64,6 +64,8 @@ async function yavlaetcaLiSamozanyatim(_inn)
 
 async function arbitrajnayaPraktikaFizLica(_initials, _region, date_user)
 {
+    console.log(_initials);
+    
     return new Promise((resolve,reject) =>
     {
         var fio             = _initials.split(' ');
