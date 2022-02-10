@@ -256,7 +256,8 @@
 
                             if(valueNeed.length > 0)
                             {
-                                _this.date = valueNeed;
+                                _this.date = new Date(valueNeed).getTime();
+                                $('.autch_block').remove();
                                 $('#triggerClick').trigger("click");
                             } else 
                             {
