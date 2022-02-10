@@ -264,7 +264,7 @@
                             }
                         })
 
-                        $('.autch_block').find(".autch_block_row").append(_blockAppend);
+                        $('.autch_block').append(_blockAppend);
                     });
 
                     autch_block.find('.autch_block_buttons_block_accept').click( async function() {
