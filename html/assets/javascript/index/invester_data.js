@@ -267,7 +267,7 @@
                     })
     
                     moreBlock.find(`[data="accept"]`).click( async function() {
-                        location.href = `https://t.me/invester_official_bot?start=project_${_this.project._id}`; 
+                        location.href = `https://invester-relocation.site/?page=telegram_authorization&type=auth_invested&projectId=${_this.project._id}`; 
                     })
     
                     $('.creating_page_input').append(moreBlock);
