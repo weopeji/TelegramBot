@@ -190,34 +190,6 @@
                             resolve();
                         }, timeRender);
                     })
-                },
-                "auth_invested": async function() {
-                    return new Promise(async (resolve,reject) =>
-                    {
-                        var protoUrl    = "tg:\/\/resolve?domain=invester_official_bot";
-                        var protocolWeb = "https://t.me/invester_official_bot";
-
-                        setTimeout( async function() {
-                            if(_User)
-                            {
-                                callApi({
-                                    methodName: "telegram_auth_more",
-                                    data: {
-                                        projectId: _GET("projectId"),
-                                        userId: _token,
-                                    },
-                                });
-                                checkChrome(protoUrl, function() {
-                                    window.location = protocolWeb;
-                                });
-                            } else {
-                                checkChrome(protoUrl + `&start=project_${_GET("projectId")}_auth_${randomToken}`, function() {
-                                    window.location = protocolWeb + `?start=project_${_GET("projectId")}_auth_${randomToken}`;
-                                });
-                            }
-                            resolve();
-                        }, timeRender);
-                    });
                 }
             }
 

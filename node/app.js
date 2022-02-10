@@ -172,6 +172,11 @@ var load_helpers = () =>
     };
 }
 
+
+module.exports = {
+    defaultShowProject,
+}
+
 bot.on("polling_error", console.log);
 
 bot.on("callback_query", function(callbackQuery) 
@@ -307,10 +312,6 @@ async function defaultShowProject(msg, _idProject)
     await User.findOneAndUpdate({user: msg.from.id}, {putProject: _idProject});
     main_page._CreatorFUN(msg);
 };
-
-module.exports = {
-    defaultShowProject,
-}
 
 bot.on('message', async (msg) => 
 {
