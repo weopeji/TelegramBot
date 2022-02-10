@@ -1180,7 +1180,7 @@
                         if($(_element).find("input").attr('id') == "rate")
                         {
                             needVal = Number(needVal.toString().replace(/\s/g, '')) * 12;
-                        }
+                        };
                         _array.push({
                             name: $(_element).find("input").attr('id'),
                             val: needVal

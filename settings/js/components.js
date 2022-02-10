@@ -171,6 +171,10 @@
                         <i class="fal fa-database"></i>
                         <p>О компании</p>
                     </span>
+                    <span data="redacting">
+                        <i class="fal fa-sliders-v"></i>
+                        <p>Проект</p>
+                    </span>
                     <span data="more">
                         <i class="fal fa-info-square"></i>
                         <p>Юридические данные</p>
@@ -178,10 +182,6 @@
                     <span data="settings">
                         <i class="fal fa-video"></i>
                         <p>Видео</p>
-                    </span>
-                    <span data="redacting">
-                        <i class="fal fa-sliders-v"></i>
-                        <p>Проект</p>
                     </span>
                 </div>
             `);
