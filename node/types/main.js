@@ -178,7 +178,6 @@ async function notType(msg)
 async function _MainMenu(msg, close)
 {
     var _User       = await MF.find_user(msg);
-    var _projects   = await Project.find({user: msg.from.id});
     var alertsMain  = _User.alerts_main;
     var _array = [];
 
@@ -186,6 +185,7 @@ async function _MainMenu(msg, close)
     {
         investor: async function(msg) 
         {
+            console.log('ok');
             if(alertsMain)
             {
                 var html =`Оповещения: ⠀ `;
