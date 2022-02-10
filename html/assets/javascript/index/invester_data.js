@@ -206,8 +206,37 @@
                 </div>
             `);
 
-            _block.find('span').click( function () {
-                $('#triggerClick').trigger("click");
+            _block.find('span').click( function () 
+            {
+                var autch_block = $(`
+                    <div class="autch_block">
+                        <div class="autch_block_row">
+                            <p>Дата вашей инвестиции совпадает с текущей датой?</p>
+                            <div class="autch_block_buttons">
+                                <div class="autch_block_buttons_block autch_block_buttons_block_close">
+                                    <span>Не совпадает</span>
+                                </div>
+                                <div class="autch_block_buttons_block autch_block_buttons_block_accept">
+                                    <span>Совпадает</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `);
+
+                autch_block.find('.autch_block_buttons_block_close').click( function() {
+                    
+                });
+
+                autch_block.find('.autch_block_buttons_block_accept').click( async function() {
+                    
+                })
+
+                $('body').append(autch_block);
+
+
+
+                // $('#triggerClick').trigger("click");
             })
 
             var _this = this;
@@ -228,17 +257,14 @@
                     var aux         = filename.split('.');
                     var extension   = aux[aux.length -1].toUpperCase();
     
-                    var _form    = new FormData();
-    
+                    var _form       = new FormData();
+                    var _url        = `${getURL()}/file_cheack_get.io/files`;
                     _form.append('files', $(this.files)[0]);
                     _form.append('_User', _GET('user'));
                     _form.append('_id', _this.project._id);
                     _form.append('_pts', extension);
                     _form.append('_pay', _this.money);
-                    
-                    var _url = `${getURL()}/file_cheack_get.io/files`;
-    
-                    var _file = _form;
+                    var _file       = _form;
         
                     axios.post(_url, _file, {
                         headers: {
@@ -268,7 +294,7 @@
     
                     moreBlock.find(`[data="accept"]`).click( async function() {
                         location.href = `https://invester-relocation.site/?page=telegram_authorization&type=more&userId=${_this.project._id}`; 
-                    })
+                    });
     
                     $('.creating_page_input').append(moreBlock);
                 }
