@@ -49,7 +49,7 @@
         $('.cover_block_liner k').html(cover_block_liner_k_numer.toDivide() + " ₽");
         $('#name').html(need_project.data.name || "Null");
         $('#target').html(need_project.data.target || "Null");
-        $('.money').html(need_project.data.attraction_amount || "Null");
+        $('.money').html(need_project.data.attraction_amount + " ₽" || "Null");
         $('.collection_period').html(`${_data[2]}.${_data[1]}.${_data[0]}` || "Null");
         $('.minimal_amount').html(need_project.data.minimal_amount + " ₽" || "Null");
         $('.rate').html(need_project.data.rate + "%" || "Null");
