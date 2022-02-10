@@ -697,7 +697,7 @@
     
                     _dataBlock.forEach(element => 
                     {
-                        element._id = `BB$${element._id}_${global.add_blocks}`;
+                        element._id = `BB=${element._id}_${global.add_blocks}`;
                         _body.append(_this.file(element));
                     });
                     $(_line.parent()).before(_body);
@@ -718,7 +718,7 @@
                     _dataBlock.forEach(element => 
                     {
                         var needId  = element._id;
-                        element._id = `BB$${element._id}_${global.add_blocks}`;
+                        element._id = `BB=${element._id}_${global.add_blocks}`;
                         _body.append(_this[element.type](element));
                         element._id = needId;
                     });
