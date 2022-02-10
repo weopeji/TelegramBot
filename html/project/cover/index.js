@@ -54,7 +54,7 @@
         $('.minimal_amount').html(need_project.data.minimal_amount + " ₽" || "Null");
         $('.rate').html(need_project.data.rate + "%" || "Null");
         $('.date_payments').html(need_project.data.date_payments || "Null");
-        $('.date').html(need_project.data.date || "Null");
+        $('.date').html(need_project.data.date + "мес" || "Null");
 
         if(_GET('liner'))
         {
