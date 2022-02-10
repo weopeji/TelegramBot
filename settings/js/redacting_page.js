@@ -241,7 +241,8 @@
                     {
                         _block.find('span').click( function() {
                             var _url = getURL() + "/projects/" + _project._id + "/" + $(this).parent().parent().find('BB').text();
-                            window.open(_url);
+                            window.open(_url); 
+                            
                         })
                     }
                 }
