@@ -129,6 +129,7 @@
             }
 
             window.addEventListener("beforeunload", function(event) {
+                console.log(event);
                 window.close();
             });
 
