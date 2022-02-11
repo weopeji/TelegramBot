@@ -156,7 +156,7 @@ async function _CreatorFUN(msg)
         notType(msg);
     } else
     {
-        if(!_user.type) { notType(msg); } else { _MainMenu(msg); };
+        if(!_user.type) { await notType(msg); } else { await _MainMenu(msg); };
     }
     
     return;
