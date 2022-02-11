@@ -346,7 +346,7 @@
                         </div>
                     `);
 
-                    if(_type == "file")
+                    if(_needElementSort._type == "file")
                     {
                         _block.find('span').click( function() {
                             var _url = getURL() + "/projects/" + _project._id + "/" + $(this).parent().parent().find('BB').text();
