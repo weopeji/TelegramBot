@@ -1764,7 +1764,7 @@ async function putRedacting(socket,data,callback) {
 
                 for(var _key in allBlackMoreUsers)
                 {
-                    if(_key == numberBlock)
+                    if(_key == numberBlock.toString())
                     {
                         allBlackMoreUsers[_key][_name] = element.val;
                     }
