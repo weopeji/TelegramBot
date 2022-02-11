@@ -370,7 +370,7 @@
                     {
                         if($(this).parent().parent().parent().parent().attr('type') == "file")
                         {
-                            $(this).parent().parent().parent().parent().find('input[type="file"]').trigger('click');
+                            // $(this).parent().parent().parent().parent().find('input[type="file"]').trigger('click');
                         } 
                         else 
                         {

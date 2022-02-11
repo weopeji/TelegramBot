@@ -726,10 +726,8 @@ async function redactingLineSettingsPage(socket,data,callback)
     else
     {
         var projectData     = _project.data;
-        var needData        = projectData.moreUsersNotParce;
         var idNumber        = "+" + data.lineId.split("_")[data.lineId.split("_").length - 1];
-        needData[idNumber.toString()][data.lineId] = data.data;
-        projectData = needData;
+        projectData.moreUsersNotParce[idNumber.toString()][data.lineId] = data.data;
         await Project.findOneAndUpdate({_id: data.projectId}, {data: projectData});
     }
 }
