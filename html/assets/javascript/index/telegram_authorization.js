@@ -122,11 +122,15 @@
 
             function checkChrome(runlink, callback) 
             {
-                console.log(window.location = runlink);
+                window.location = runlink;
                 setTimeout(function(){
                     if ( window.isFocused ) callback();
                 }, 1000);
             }
+
+            window.onbeforeunload = function(event) {
+                console.log(event);
+            };
 
             var funsType = {
                 "recomendation": async function()
