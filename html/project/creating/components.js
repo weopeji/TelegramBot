@@ -1174,24 +1174,56 @@
             var _array = [];
 
             $('.body_point').each((i, element) => {
-                $(element).find('.body_point_line').each((i, _element) => {
-                    if(!$(_element).hasClass('_file')) 
-                    {
-                        var needVal = $(_element).find("input").val();
+                $(element).find('.body_point_line').each((i, _element) => 
+                {
+                    var idData      = $(_element).find("input").attr('id');
 
-                        if($(_element).find("input").attr('id') == "rate")
+                    if(idData.toString().trim().slice('*')[0] != "BB")
+                    {
+                        if(!$(_element).hasClass('_file')) 
                         {
-                            needVal = Number(needVal.toString().replace(/\s/g, '')) * 12;
-                        };
-                        _array.push({
-                            name: $(_element).find("input").attr('id'),
-                            val: needVal
-                        });
-                    } else {
-                        _array.push({
-                            name: $(_element).find("input").attr('id'),
-                            val: $(_element).find(".loader_input").attr('data'),
-                        });
+                            var needVal = $(_element).find("input").val();
+
+                            if(idData == "rate")
+                            {
+                                needVal = Number(needVal.toString().replace(/\s/g, '')) * 12;
+                            };
+
+                            _array.push({
+                                name: $(_element).find("input").attr('id'),
+                                val: needVal,
+                                type: null,
+                            });
+                        }
+                        else
+                        {
+                            _array.push({
+                                name: $(_element).find("input").attr('id'),
+                                val: $(_element).find(".loader_input").attr('data'),
+                                type: null,
+                            });
+                        }
+                    }
+                    else
+                    {
+                        if(!$(_element).hasClass('_file')) 
+                        {
+                            var needVal = $(_element).find("input").val();
+
+                            _array.push({
+                                name: $(_element).find("input").attr('id'),
+                                val: needVal,
+                                type: idData.slice('_')[idData.slice('_').length - 1],
+                            });
+                        }
+                        else
+                        {
+                            _array.push({
+                                name: $(_element).find("input").attr('id'),
+                                val: $(_element).find(".loader_input").attr('data'),
+                                type: idData.slice('_')[idData.slice('_').length - 1],
+                            });
+                        }
                     }
                 });
             });
