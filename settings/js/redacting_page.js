@@ -184,6 +184,14 @@
                     </div>
                 `);
 
+                if(typeof DataBlock.parsing_data != "undefined")
+                {
+                    if(DataBlock.parsing_data)
+                    {
+                        _block.find('input[type="checkbox"]').remove();
+                    }
+                }
+
                 if(DataBlock._id == "rate")
                 {
                     _block.find('a').append($(`
