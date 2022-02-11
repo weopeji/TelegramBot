@@ -543,10 +543,10 @@ async function startInvestingMsgOld(msg, button, first)
 
         _where.msgGoNow = fat.message_id;
     } else {
-        await bot.editMessageText({
+        await bot.editMessageText(html, {
             chat_id: msg.from.id,
             message_id: _where.msgGoNow,
-            text: html,
+            parse_mode: "html"
         });
     }
 
