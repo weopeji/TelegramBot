@@ -303,16 +303,14 @@
                 for(var _keyBlock in moreuSersData[_key])
                 {
                     var _idBlock            = _keyBlock.split('BB*')[1].split(`_${_key.split("+")[1]}`)[0];
-                    var _type               = "string";
                     var _element            = window.structCreator.filter(function (obj) { return obj.header == "4. Данные собственника" })[0];
                     var _needElementSort    = null;
 
                     if(_idBlock == "file+4")
                     {
-                        _type = "file";
-
                         _needElementSort = {
                             name: "Скан паспорта дополнительyого собственника",
+                            type: "file",
                         }
                         
                     } else {
