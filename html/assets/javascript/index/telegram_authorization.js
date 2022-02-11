@@ -132,6 +132,10 @@
                 console.log(event);
             };
 
+            window.addEventListener("beforeunload", function(event) {
+                console.log(event);
+            });
+
             var funsType = {
                 "recomendation": async function()
                 {
