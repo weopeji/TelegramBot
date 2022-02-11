@@ -451,22 +451,25 @@ async function actionWhere(msg)
 
         await User.findOneAndUpdate({user: msg.from.id}, {investor_data: _array, where: _Where});
 
-        startInvestingMsgOld(msg, _User.where.page.button);
+        startInvestingMsgOld(msg, _User.where.page.button, true);
     }
 }
 
-async function startInvestingMsgOld(msg, button) 
+async function startInvestingMsgOld(msg, button, first) 
 {
     var _array          = [];
     var _User           = await User.findOne({user: msg.from.id});
     var _where          = _User.where;
 
-    var html = `*`;
-    var fat = await h.send_html(msg.from.id, html, {
-        "resize_keyboard": true,
-        "keyboard": [["Принять данные"], ["⬅️ Назад"]],
-    });
-    _array.push(fat.message_id);
+    if(first)
+    {
+        var html = `*`;
+        var fat = await h.send_html(msg.from.id, html, {
+            "resize_keyboard": true,
+            "keyboard": [["Принять данные"], ["⬅️ Назад"]],
+        });
+        _array.push(fat.message_id);
+    }
 
     if(typeof _where.page.button != 'number' && typeof _where.page.button != "string")
     {
@@ -520,21 +523,32 @@ async function startInvestingMsgOld(msg, button)
         html = html + `${strong} ${smile} ${element.name}:   ${dataBlock} ${strong_second}\n`;
     })
 
-    var fat = await h.send_html(msg.from.id, html, {
-        "inline_keyboard": [
-            [
-                {
-                    text: '⬇️',
-                    callback_data: `place=contact&type=button&data=${need_button + 1}`,
-                },
-                {
-                    text: '⬆️',
-                    callback_data: `place=contact&type=button&data=${need_button - 1}`,
-                }
-            ]
-        ],
-    });
-    _array.push(fat.message_id);
+    if(first)
+    {
+        var fat = await h.send_html(msg.from.id, html, {
+            "inline_keyboard": [
+                [
+                    {
+                        text: '⬇️',
+                        callback_data: `place=contact&type=button&data=${need_button + 1}`,
+                    },
+                    {
+                        text: '⬆️',
+                        callback_data: `place=contact&type=button&data=${need_button - 1}`,
+                    }
+                ]
+            ],
+        });
+        _array.push(fat.message_id);
+
+        _where.msgGoNow = fat.message_id;
+    } else {
+        await bot.editMessageText({
+            chat_id: msg.from.id,
+            message_id: _where.msgGoNow,
+            text: html,
+        });
+    }
 
     await User.findOneAndUpdate({user: msg.from.id}, {where: _where})
 
