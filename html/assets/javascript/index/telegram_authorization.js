@@ -128,12 +128,8 @@
                 }, 1000);
             }
 
-            // window.onbeforeunload = function(event) {
-            //     console.log(event);
-            // };
-
             window.addEventListener("beforeunload", function(event) {
-                this.window.close();
+                window.close();
             });
 
             var funsType = {
