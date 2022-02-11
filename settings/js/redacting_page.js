@@ -250,8 +250,7 @@
                         _block.find('span').click( function() {
                             var _url = getURL() + "/projects/" + _project._id + "/" + $(this).parent().parent().find('BB').text();
                             window.open(_url); 
-
-                        })
+                        });
                     }
                 }
 
@@ -260,7 +259,9 @@
                     if($(this).parent().parent().parent().parent().attr('type') == "file")
                     {
                         $(this).parent().parent().parent().parent().find('input[type="file"]').trigger('click');
-                    } else {
+                    } 
+                    else 
+                    {
                         $(this).parent().parent().parent().toggleClass("structCreator_new_block_input_text");
                         $(this).parent().parent().parent().parent().find('input[type="text"]').val($(this).parent().parent().parent().parent().find('BB').text())
                     }
@@ -364,6 +365,19 @@
                             </div>
                         </div>
                     `);
+
+                    _block.find(`.structCreator_new_block_buttons_block[data="input"]`).click( function()
+                    {
+                        if($(this).parent().parent().parent().parent().attr('type') == "file")
+                        {
+                            $(this).parent().parent().parent().parent().find('input[type="file"]').trigger('click');
+                        } 
+                        else 
+                        {
+                            $(this).parent().parent().parent().toggleClass("structCreator_new_block_input_text");
+                            $(this).parent().parent().parent().parent().find('input[type="text"]').val($(this).parent().parent().parent().parent().find('BB').text())
+                        }
+                    });
 
                     if(_needElementSort.type == "file")
                     {
