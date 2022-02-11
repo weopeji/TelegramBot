@@ -548,7 +548,21 @@ async function startInvestingMsgOld(msg, button, first)
         await bot.editMessageText(html, {
             chat_id: msg.from.id,
             message_id: _where.msgGoNow,
-            parse_mode: "html"
+            parse_mode: "html",
+            reply_markup: {
+                "inline_keyboard": [
+                    [
+                        {
+                            text: '⬇️',
+                            callback_data: `place=contact&type=button&data=${need_button + 1}`,
+                        },
+                        {
+                            text: '⬆️',
+                            callback_data: `place=contact&type=button&data=${need_button - 1}`,
+                        }
+                    ]
+                ],
+            }
         });
     }
 
