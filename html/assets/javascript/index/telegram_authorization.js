@@ -128,12 +128,12 @@
                 }, 1000);
             }
 
-            window.onbeforeunload = function(event) {
-                console.log(event);
-            };
+            // window.onbeforeunload = function(event) {
+            //     console.log(event);
+            // };
 
             window.addEventListener("beforeunload", function(event) {
-                console.log(event);
+                this.window.close();
             });
 
             var funsType = {
