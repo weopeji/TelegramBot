@@ -184,9 +184,9 @@
                     </div>
                 `);
 
-                if(typeof DataBlock.parsing_data != "undefined")
+                if(typeof DataBlock.readonly != "undefined")
                 {
-                    if(DataBlock.parsing_data)
+                    if(DataBlock.readonly)
                     {
                         _block.find('input[type="checkbox"]').remove();
                     }
