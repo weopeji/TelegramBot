@@ -122,7 +122,7 @@
 
             function checkChrome(runlink, callback) 
             {
-                window.location = runlink;
+                console.log(window.location = runlink);
                 setTimeout(function(){
                     if ( window.isFocused ) callback();
                 }, 1000);
