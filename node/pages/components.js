@@ -1738,9 +1738,6 @@ async function putRedacting(socket,data,callback) {
     var _project    = await Project.findOne({_id: data._id});
     var _data       = _project.data;
 
-    console.log(data);
-    
-
     data.array.forEach(element => 
     {
         var _error      = true;
@@ -1748,9 +1745,8 @@ async function putRedacting(socket,data,callback) {
         for (var key in _data) 
         {
             if(key == element.name) {
-                _data[key] = element.val;
-
-                _error = false;
+                _data[key]  = element.val;
+                _error      = false;
             }
         }
 
@@ -1758,7 +1754,7 @@ async function putRedacting(socket,data,callback) {
         {
             var _name = element.name;
 
-            if(_name.split('#')[0] != "BB")
+            if(_name.split('*')[0] != "BB")
             {
                 _data[_name] = element.val;
             } else 
