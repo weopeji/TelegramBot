@@ -716,9 +716,22 @@ async function redactingLineSettingsPageGlobal(socket,data,callback)
 async function redactingLineSettingsPage(socket,data,callback)
 {
     var _project = await Project.findOne({_id: data.projectId});
-    var needData = _project.data;
-    needData[data.lineId] = data.data;
-    await Project.findOneAndUpdate({_id: data.projectId}, {data: needData});
+
+    if(typeof data.type == "undefined")
+    {
+        var needData = _project.data;
+        needData[data.lineId] = data.data;
+        await Project.findOneAndUpdate({_id: data.projectId}, {data: needData});
+    } 
+    else
+    {
+        var projectData     = _project.data;
+        var needData        = projectData.moreUsersNotParce;
+        var idNumber        = "+" + data.lineId.split("_")[data.lineId.split("_").length - 1];
+        needData[idNumber.toString()][data.lineId] = data.data;
+        projectData = needData;
+        await Project.findOneAndUpdate({_id: data.projectId}, {data: projectData});
+    }
 }
 
 async function gettAllProjects(socket,data,callback)

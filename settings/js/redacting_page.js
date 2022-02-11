@@ -379,6 +379,40 @@
                         }
                     });
 
+                    _block.find('.structCreatorinputIcon').click( function()
+                    {
+                        var _value = $(this).parent().parent().parent().find('input[type="text"]').val();
+
+                        if(_value.length > 0)
+                        {
+
+                            var _IdBlock    = $(this).parent().parent().parent().parent().attr('data');
+                            var _typeBlock  = $(this).parent().parent().parent().parent().attr('type');
+
+                            if(_IdBlock == "rate")
+                            {
+                                _value = Number(_value * 12).toFixed(2);
+                            }
+
+                            if(_typeBlock == "date")
+                            {
+                                _value = _value.split('.')[2] + '-' + _value.split('.')[1] + '-' + _value.split('.')[0];
+                            }
+
+                            callApi({
+                                methodName: 'redactingLineSettingsPage',
+                                data: {
+                                    projectId: _GET('id'),
+                                    lineId: _IdBlock,
+                                    data: _value,
+                                    type: true,
+                                },
+                            });
+
+                            location.reload();
+                        }
+                    });
+
                     if(_needElementSort.type == "file")
                     {
                         _block.find('span').click( function() {
