@@ -350,6 +350,12 @@
                                 </a>
                                 <div class="structCreator_new_block_buttons">
                                     <div class="structCreator_new_block_buttons_row">
+                                        <div class="structCreator_new_block_buttons_block structCreatorinputIcon">
+                                            <i class="fal fa-check-square"></i>
+                                        </div>
+                                        <div class="structCreator_new_block_buttons_block" data="input">
+                                            <i class="fal fa-pencil-ruler"></i>
+                                        </div>
                                         <div class="structCreator_new_block_buttons_block">
                                             <input type="checkbox" val="${dataNameBlock}">
                                         </div>
