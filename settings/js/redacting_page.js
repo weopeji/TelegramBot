@@ -311,19 +311,24 @@
                         _needElementSort = {
                             name: "Скан паспорта дополнительyого собственника",
                             type: "file",
-                        }
+                        };
                         
                     } else {
                         _element.body.forEach(elKO => {
                             if(elKO._id == _idBlock)
                             {
                                 _needElementSort = elKO;
-                            }
-                        })
+                            };
+                        });
                     }
 
                     var dataNameBlock   = moreuSersData[_key][_keyBlock];
                     var nameBLock       = _needElementSort.name;
+
+                    if(_needElementSort.type == "date")
+                    {
+                        dataNameBlock = dataNameBlock.split('-')[2] + "." + dataNameBlock.split('-')[1] + "." + dataNameBlock.split('-')[0];
+                    }
 
                     var _block = 
                     $(`
@@ -365,9 +370,6 @@
                 <div class="structCreator_new_block_buttons_block" data="redacting">
                     <span>Запросить редактирование</span>
                 </div>
-                <div class="structCreator_new_block_buttons_block" data="hover">
-                    <span>Скрыть проект</span>
-                </div>
                 <div class="structCreator_new_block_buttons_block" data="delete">
                     <span>Удалить проект</span>
                 </div>
@@ -381,13 +383,9 @@
                     {
                         _this.startRedacting();
                     },
-                    "hover": function() 
-                    {
-
-                    },
                     "delete": function() 
                     {
-
+                        alert("Кнопка не доступна");
                     },
                 }
 
