@@ -542,6 +542,7 @@ async function startInvestingMsgOld(msg, button, first)
         _array.push(fat.message_id);
 
         _where.msgGoNow = fat.message_id;
+        await h.DMA(msg, _array);
     } else 
     {
         await bot.editMessageText(html, {
@@ -552,8 +553,6 @@ async function startInvestingMsgOld(msg, button, first)
     }
 
     await User.findOneAndUpdate({user: msg.from.id}, {where: _where})
-
-    await h.DMA(msg, _array);
 }
 
 async function startInvestingMsg(msg, num, array, more, project)
