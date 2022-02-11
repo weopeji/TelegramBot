@@ -1178,52 +1178,26 @@
                 {
                     var idData      = $(_element).find("input").attr('id');
 
-                    if(idData.toString().trim().slice('*')[0] != "BB")
+                    if(!$(_element).hasClass('_file')) 
                     {
-                        if(!$(_element).hasClass('_file')) 
-                        {
-                            var needVal = $(_element).find("input").val();
+                        var needVal = $(_element).find("input").val();
 
-                            if(idData == "rate")
-                            {
-                                needVal = Number(needVal.toString().replace(/\s/g, '')) * 12;
-                            };
-
-                            _array.push({
-                                name: $(_element).find("input").attr('id'),
-                                val: needVal,
-                                type: null,
-                            });
-                        }
-                        else
+                        if(idData == "rate")
                         {
-                            _array.push({
-                                name: $(_element).find("input").attr('id'),
-                                val: $(_element).find(".loader_input").attr('data'),
-                                type: null,
-                            });
-                        }
+                            needVal = Number(needVal.toString().replace(/\s/g, '')) * 12;
+                        };
+
+                        _array.push({
+                            name: $(_element).find("input").attr('id'),
+                            val: needVal,
+                        });
                     }
                     else
                     {
-                        if(!$(_element).hasClass('_file')) 
-                        {
-                            var needVal = $(_element).find("input").val();
-
-                            _array.push({
-                                name: $(_element).find("input").attr('id'),
-                                val: needVal,
-                                type: idData.slice('_')[idData.slice('_').length - 1],
-                            });
-                        }
-                        else
-                        {
-                            _array.push({
-                                name: $(_element).find("input").attr('id'),
-                                val: $(_element).find(".loader_input").attr('data'),
-                                type: idData.slice('_')[idData.slice('_').length - 1],
-                            });
-                        }
+                        _array.push({
+                            name: $(_element).find("input").attr('id'),
+                            val: $(_element).find(".loader_input").attr('data'),
+                        });
                     }
                 });
             });

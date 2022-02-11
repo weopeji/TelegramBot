@@ -1737,6 +1737,8 @@ async function putRedacting(socket,data,callback) {
 
     var _project    = await Project.findOne({_id: data._id});
     var _data       = _project.data;
+
+    console.log(data);
     
 
     data.array.forEach(element => 
