@@ -150,8 +150,6 @@ async function _CreatorFUN(msg)
 {
     var _user = await MF.find_user(msg);
 
-    console.log(_user);
-
     if(!_user)
     {
         await MF.create_user(msg);
@@ -161,6 +159,7 @@ async function _CreatorFUN(msg)
         if(!_user.type) { notType(msg); } else { _MainMenu(msg); };
     }
     
+    return;
 }
 
 async function notType(msg)

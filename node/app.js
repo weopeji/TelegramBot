@@ -366,7 +366,7 @@ bot.on('message', async (msg) =>
 
     if(typeof action_linker[msg.text] != "undefined") 
     {
-        action_linker[msg.text](msg);
+        await action_linker[msg.text](msg);
         await h.DM(msg, 1);
     } else 
     {
