@@ -1007,37 +1007,37 @@ async function getUserID(socket,data,callback)
 
 async function test_fun(socket,data,callback)
 {
-    let options = 
-    {
-        mode: 'text',
-        scriptPath: '../python/parcingArbitraj',
-        args: "5029069967",
-    };
+    // let options = 
+    // {
+    //     mode: 'text',
+    //     scriptPath: '../python/parcingArbitraj',
+    //     args: "5029069967",
+    // };
 
-    await PythonShell.run('main.py', options, function (err, results) {
-        if (err) throw err;
+    // await PythonShell.run('main.py', options, function (err, results) {
+    //     if (err) throw err;
 
-        console.log(JSON.parse(results));
-        console.log(results);
-    })
+    //     console.log(JSON.parse(results));
+    //     console.log(results);
+    // })
 }
 
 async function tg_alert_user_numbers(socket,data,callback)
 {
-    var _User       = await User.findOne({user: data.user});
+    // var _User       = await User.findOne({user: data.user});
 
-    let options = 
-    {
-        mode: 'text',
-        scriptPath: '../python/system_alerts_user',
-        args: [_User.username, data.text]
-    };
+    // let options = 
+    // {
+    //     mode: 'text',
+    //     scriptPath: '../python/system_alerts_user',
+    //     args: [_User.username, data.text]
+    // };
 
-    console.log(options);
+    // console.log(options);
 
-    await PythonShell.run('main.py', options, function (err, results) {
-        if (err) throw err;
-    })
+    // await PythonShell.run('main.py', options, function (err, results) {
+    //     if (err) throw err;
+    // })
 }
 
 async function tg_alert_user(socket,data,callback)

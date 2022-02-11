@@ -119,18 +119,18 @@ async function savePuppeter(putProject)
 
 async function alertUser(msg, text) 
 {
-    var _User       = await User.findOne({user: msg.from.id});
+    // var _User       = await User.findOne({user: msg.from.id});
 
-    let options = 
-    {
-        mode: 'text',
-        scriptPath: '../python/system_alerts_user',
-        args: [_User.username, text]
-    };
+    // let options = 
+    // {
+    //     mode: 'text',
+    //     scriptPath: '../python/system_alerts_user',
+    //     args: [_User.username, text]
+    // };
 
-    await PythonShell.run('main.py', options, function (err, results) {
-        if (err) throw err;
-    })
+    // await PythonShell.run('main.py', options, function (err, results) {
+    //     if (err) throw err;
+    // })
 }
 
 async function alertAdmin(data) 
