@@ -451,7 +451,7 @@ async function actionWhere(msg)
 
         await User.findOneAndUpdate({user: msg.from.id}, {investor_data: _array, where: _Where});
 
-        startInvestingMsgOld(msg, _User.where.page.button, true);
+        startInvestingMsgOld(msg, _User.where.page.button);
     }
 }
 
@@ -542,7 +542,8 @@ async function startInvestingMsgOld(msg, button, first)
         _array.push(fat.message_id);
 
         _where.msgGoNow = fat.message_id;
-    } else {
+    } else 
+    {
         await bot.editMessageText(html, {
             chat_id: msg.from.id,
             message_id: _where.msgGoNow,
@@ -565,7 +566,7 @@ async function startInvestingMsg(msg, num, array, more, project)
         project: project,
     }})
 
-    startInvestingMsgOld(msg, 1);
+    startInvestingMsgOld(msg, 1, true);
 }
 
 async function goInvesting(msg)
