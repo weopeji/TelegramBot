@@ -1885,7 +1885,7 @@ async function acceptProject(socket,data,callback)
     
     const stream = fs.createReadStream(`../projects/${data}/logo_instagram.jpg`);
 
-    bot.sendPhoto(-1001205415519, stream, {
+    var dataPhotoPush = await bot.sendPhoto(-1001205415519, stream, {
         "caption": html,
         "parse_mode": "MarkdownV2",
         "reply_markup": {
@@ -1905,6 +1905,8 @@ async function acceptProject(socket,data,callback)
             ],
         }
     });
+
+    console.log(dataPhotoPush);
 
     const client = new Instagram({ username: "investER_official", password: "e<<@H&_ArB~5ef7" });
 
