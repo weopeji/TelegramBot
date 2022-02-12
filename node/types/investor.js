@@ -316,7 +316,8 @@ async function payerBonus(msg) {
     await h.DMA(msg, _array);
 }
 
-async function statusProjects(msg) {
+async function statusProjects(msg) 
+{
     var _array  = [];
     var _User   = await User.findOne({user: msg.from.id});
 

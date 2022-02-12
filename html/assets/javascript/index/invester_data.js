@@ -361,6 +361,7 @@
                         <span>
                             Уважаемый Инвестор ${global.allData.User.first_name} Введите сумму инвестирования</a>.<br>
                             Минимальная сумма входа: ${_projectMoney.toString().ReplaceNumber()} руб.
+                            Сумма должна быть кратна: ${_this.project.multiplicity} руб.
                         </span>
                     </div>
                 </div>
