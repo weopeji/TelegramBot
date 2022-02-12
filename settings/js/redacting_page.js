@@ -366,11 +366,6 @@
                         </div>
                     `);
 
-                    if(_needElementSort.type == "file")
-                    {
-                        _block.find('input[type="checkbox"]').remove();
-                    }
-
                     _block.find(`.structCreator_new_block_buttons_block[data="input"]`).click( function()
                     {
                         if($(this).parent().parent().parent().parent().attr('type') == "file")
