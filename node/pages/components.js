@@ -22,6 +22,7 @@ var axios                   = require('axios');
 const ParcingPage           = require('./parcing');
 var { DateTime, Interval }  = require("luxon");
 const { hkdf }              = require("crypto");
+const e = require("express");
 
 
 module.exports = {
@@ -1390,12 +1391,14 @@ async function invester_status_project(socket,data,callback)
     var AllInvs     = await InvDoc.find({projectId: data.project});
     var initNumber  = 0;
 
-    for(var i = 0; i < AllInvs.length; i++)
+    for(var _invData of AllInvs)
     {
-        if(_InvDoc._id == AllInvs[i]._id)
+        if(_invData._id == _InvDoc._id)
         {
-            initNumber = i + 1;
+            initNumber = initNumber + 1;
+            break;
         }
+        initNumber = initNumber + 1;
     }
 
     callback({
