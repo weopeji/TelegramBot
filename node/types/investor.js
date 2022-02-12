@@ -340,7 +340,7 @@ async function statusProjects(msg) {
                 [
                     {
                         text: 'Перейти',
-                        url: `${h.getURL()}?user=${_User.id}&page=process_status`,
+                        url: `${h.getURL()}?user=${_User.id}&page=wait_projects`,
                     },
                 ]
             ],
