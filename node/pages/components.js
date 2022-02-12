@@ -1392,7 +1392,7 @@ async function invester_status_project(socket,data,callback)
 
     for(var i = 0; i < AllInvs.length; i++)
     {
-        if(InvDoc._id == AllInvs[i]._id)
+        if(_InvDoc._id == AllInvs[i]._id)
         {
             initNumber = i + 1;
         }
