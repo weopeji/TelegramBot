@@ -540,8 +540,8 @@ app.post('/file_cheack_get.io/files', (req, res) => {
                     console.log('Successfully renamed - AKA moved!');
                     
                     
-                    var _arrayData = _User.investor_data.inv;
-                    var _dateNeed = _User.investor_data.date;
+                    var _arrayData  = _User.investor_data.inv;
+                    var _dateNeed   = _data._date;
 
                     if(!_dateNeed)
                     {

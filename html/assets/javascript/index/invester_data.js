@@ -308,6 +308,7 @@
                     _form.append('_id', _this.project._id);
                     _form.append('_pts', extension);
                     _form.append('_pay', _this.money);
+                    _form.append('_date', _this.date);
                     var _file       = _form;
         
                     axios.post(_url, _file, {
