@@ -259,6 +259,17 @@
             var aux         = filename.split('.');
             var extension   = aux[aux.length -1].toUpperCase();
 
+            if(extension === 'MP4'
+                || extension === 'MPEG'
+                || extension === 'MPEG-1'
+                || extension === 'MPEG-2'
+                || extension === 'MPEG-3'
+                || extension === 'MPEG-4'
+            ){
+                alert('Неверный формат: ' + extension + '. Видео запрещенно.');
+                return;
+            }
+
             var _form    = new FormData();
 
             _form.append('files', $(_this.files)[0]);
@@ -965,7 +976,7 @@
                     </div>
                     <div class="creating_page_input_div_more_inMore_documents">
                         <div class="creating_page_input_div" data="pay_more">
-                            <span style="text-align: center">Перезаписать файл</span> 
+                            <span style="text-align: center">Заменить файл</span> 
                         </div>
                         <div class="creating_page_input_div" data="open">
                             <span style="text-align: center">Посмотреть</span> 
@@ -1025,7 +1036,7 @@
                     </div>
                     <div class="creating_page_input_div_more_inMore_documents">
                         <div class="creating_page_input_div" data="pay_more">
-                            <span style="text-align: center">Перезаписать файл</span> 
+                            <span style="text-align: center">Заменить файл</span> 
                         </div>
                         <div class="creating_page_input_div" data="open">
                             <span style="text-align: center">Посмотреть</span> 
