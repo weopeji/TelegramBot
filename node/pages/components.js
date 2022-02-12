@@ -85,6 +85,7 @@ var action_linker =
     "telegram_auth": telegram_auth,
     "telegram_auth_more": telegram_auth_more,
     "telegram_auth_getToken": telegram_auth_getToken,
+    "telegram_auth_recomendation": telegram_auth_recomendation,
 
 
     //  funs
@@ -166,7 +167,6 @@ var action_linker =
     "commissions_settings": commissions_settings,
     "commissions_settings_accept": commissions_settings_accept,
     "commissions_settings_close": commissions_settings_close,
-    "telegram_auth_recomendation": telegram_auth_recomendation,
     "setCorrectionForProject": setCorrectionForProject,
     "activeDataProject": activeDataProject,
 };
@@ -215,6 +215,7 @@ async function telegram_auth_getToken(socket, data, callback)
 async function telegram_auth_more(socket, data, callback)
 {
     var _User           = await User.findOne({_id: data.userId});
+    await User.findOneAndUpdate({_id: data.userId}, {type: "investor"});
     var _idProject      = data.projectId;
     var userId          = _User.user;
     var msg             = {
@@ -229,6 +230,7 @@ async function telegram_auth_more(socket, data, callback)
 async function telegram_auth_recomendation(socket, data, callback)
 {
     var _User       = await User.findOne({_id: data.userId});
+    await User.findOneAndUpdate({_id: data.userId}, {type: "investor"});
     var msg         = {from: {id: _User.user}};
     var _array      = [];
     var userId      = _User.user;
@@ -244,7 +246,17 @@ async function telegram_auth_recomendation(socket, data, callback)
     });
     _array.push(fat.message_id);
     var needProject = await Project.findOne({_id: _idProject});
-    var html        = `[Профиль компании](${h.getURL()}html/project/profil/#${needProject._id})\n[Презентация](${h.getURL()}/projects/${needProject._id}/${needProject.data["file+7"]})\n[Видео презентация](${h.getURL()}/projects/${needProject._id}/${needProject.data["file+8"]})`;
+
+    var videoPresentationPath = `${h.getURL()}/projects/${needProject._id}/${needProject.data["file+8"]}`;
+    
+    if(needProject.YT_VIDEO)
+    {
+        var yt_data = JSON.parse(needProject.YT_VIDEO[3]);
+        videoPresentationPath = `https://www.youtube.com/watch?v=${yt_data.id}`;
+    }
+
+
+    var html        = `[Профиль компании](${h.getURL()}html/project/profil/#${needProject._id})\n[Презентация](${h.getURL()}/projects/${needProject._id}/${needProject.data["file+7"]})\n[Видео презентация](${videoPresentationPath})`;
     const stream    = fs.createReadStream(`../projects/${_idProject}/logo.png`);
     var _url        = `https://t.me/invester_official_bot?start=adderBot_${needProject._id}_user_${userId}`;
     var fat = await bot.sendPhoto(userId, stream, {

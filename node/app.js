@@ -238,8 +238,16 @@ bot.onText(/\/start (.+)/, async (msg, match) =>
         });
         _array.push(fat.message_id);
 
+        var videoPresentationPath = `${helper_functions.getURL()}/projects/${needProject._id}/${needProject.data["file+8"]}`;
+    
+        if(needProject.YT_VIDEO)
+        {
+            var yt_data = JSON.parse(needProject.YT_VIDEO[3]);
+            videoPresentationPath = `https://www.youtube.com/watch?v=${yt_data.id}`;
+        }
+
         var needProject = await Project.findOne({_id: _idProject});
-        var html = `[Профиль компании](${helper_functions.getURL()}html/project/profil/#${needProject._id})\n[Презентация](${helper_functions.getURL()}/projects/${needProject._id}/${needProject.data["file+7"]})\n[Видео презентация](${helper_functions.getURL()}/projects/${needProject._id}/${needProject.data["file+8"]})`;
+        var html = `[Профиль компании](${helper_functions.getURL()}html/project/profil/#${needProject._id})\n[Презентация](${helper_functions.getURL()}/projects/${needProject._id}/${needProject.data["file+7"]})\n[Видео презентация](${videoPresentationPath})`;
         const stream    = fs.createReadStream(`../projects/${_idProject}/logo.png`);
     
         var _url = `https://t.me/invester_official_bot?start=adderBot_${needProject._id}_user_${msg.from.id}`;
