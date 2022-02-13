@@ -198,10 +198,6 @@
                 </div>
             `);
 
-            function pad(s, width, character) {
-                return new Array(width - s.toString().length + 1).join(character) + s;
-            }
-
             var _block = $(`
                 <div class="creating_page_input">
                     <div class="creating_page_input_div" data="pay">
@@ -233,7 +229,13 @@
 
                     autch_block.find('.autch_block_buttons_block_close').click( function() {
                         $('.autch_block').find(".autch_block_row").remove();
-                        var maxDate = new Date(Number(this.project.data_creating.toString()));
+
+                        function pad(s, width, character) {
+                            return new Array(width - s.toString().length + 1).join(character) + s;
+                        }
+
+                        var maxDate = new Date(Number(_this.project.data_creating.toString()));
+
                         var _blockAppend = 
                         $(`
                             <div class="autch_block_row">
