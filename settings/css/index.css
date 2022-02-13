@@ -743,6 +743,7 @@
 
 .index_page_menu_block_logo {
   width: 100%;
+  display: none;
 }
 
 .index_page_menu_block_logo img {

@@ -955,9 +955,9 @@
                     <div class="body_point_line_block_more">
                         <div class="body_point_line body_point_line_first" data="show">
                             <span>Абсолют Инвестора:</span>
-                            <span>${(_project.payersData.commission * (_project.payersData.attraction_commission / 100)) * (_project.payersData.investors_commission / 100)} %</span>
+                            <span>${((_project.payersData.commission * (_project.payersData.attraction_commission / 100)) * (_project.payersData.investors_commission / 100)).toFixed(2)} %</span>
                             <span>Абсолют бизнеса:</span>
-                            <span>${(_project.payersData.commission * (_project.payersData.attraction_commission / 100)) * (_project.payersData.business_commission / 100)} %</span>
+                            <span>${((_project.payersData.commission * (_project.payersData.attraction_commission / 100)) * (_project.payersData.business_commission / 100)).toFixed(2)} %</span>
                         </div>
                     </div>
                 </div>
