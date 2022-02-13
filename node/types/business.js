@@ -148,7 +148,7 @@ async function getMoney(msg)
         "inline_keyboard": [
             [
                 {
-                    text: "Подтвердить",
+                    text: "Перейти в личный кабинет",
                     url: `${h.getURL()}?user=${_User._id}&page=acceptPays`
                 }
             ]

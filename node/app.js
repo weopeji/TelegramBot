@@ -226,51 +226,13 @@ bot.onText(/\/start (.+)/, async (msg, match) =>
 
     if(resp.split('_')[0] == "member") 
     {
-        var html = `Чтобы рекомендовать проект и закрепить за собой инвестора\nВам нужно поделится личной ссылкой:\nИли переслать сообщение ниже`;
-
-        var fat = await bot.sendMessage(msg.chat.id, html, 
-        {
-            parse_mode: "HTML",
-            "reply_markup": {
-                "resize_keyboard": true,
-                "keyboard": [["💰 Мои инвестиции", "📈 Инвестировать", "💳 Реквезиты"], ["👨‍💼 Рекомендовать","🔁 Сменить роль"]],
-            }
-        });
-        _array.push(fat.message_id);
-
-        var videoPresentationPath = `${helper_functions.getURL()}/projects/${needProject._id}/${needProject.data["file+8"]}`;
-    
-        if(needProject.YT_VIDEO)
-        {
-            var yt_data = JSON.parse(needProject.YT_VIDEO[3]);
-            videoPresentationPath = `https://www.youtube.com/watch?v=${yt_data.id}`;
-        }
-
-        var needProject = await Project.findOne({_id: _idProject});
-        var html = `[Профиль компании](${helper_functions.getURL()}html/project/profil/?id=${needProject._id})\n[Презентация](${helper_functions.getURL()}/projects/${needProject._id}/${needProject.data["file+7"]})\n[Видео презентация](${videoPresentationPath})`;
-        const stream    = fs.createReadStream(`../projects/${_idProject}/logo.png`);
-    
-        var _url = `https://t.me/invester_official_bot?start=adderBot_${needProject._id}_user_${msg.from.id}`;
-
-        var fat = await bot.sendPhoto(msg.chat.id, stream, {
-            "caption": html,
-            "parse_mode": "MarkdownV2",
-            "reply_markup": {
-                "inline_keyboard": [
-                    [
-                        {
-                            text: "Инвестровать",
-                            url: _url,
-                        }
-                    ]
-                ],
-            }
-        });
-        _array.push(fat.message_id);
-    
-        await helper_functions.DMA(msg, _array);
-
-        await helper_functions.DM(msg, 1);
+        components_page(null, {
+            action: "telegram_auth_recomendation",
+            data: {
+                userId: msg.from.id,
+                projectId: _idProject,
+            },
+        }, (() => {}));
     } 
     else if(resp.split('_')[0] == "adder") 
     {
