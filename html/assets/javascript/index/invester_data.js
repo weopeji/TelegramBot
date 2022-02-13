@@ -202,12 +202,10 @@
                 return new Array(width - s.toString().length + 1).join(character) + s;
             }
 
-            var maxDate = new Date(Number(this.project.data_creating.toString()));
-
             var _block = $(`
                 <div class="creating_page_input">
                     <div class="creating_page_input_div" data="pay">
-                        <input type="file" id="triggerClick" min="${maxDate.getFullYear()}-${pad(maxDate.getMonth() + 1, 2, '0')}-${pad(maxDate.getDate(), 2, '0')}">
+                        <input type="file" id="triggerClick">
                         <span data="first" style="text-align: center">Загрузить</span>
                     </div>
                 </div>
@@ -235,12 +233,13 @@
 
                     autch_block.find('.autch_block_buttons_block_close').click( function() {
                         $('.autch_block').find(".autch_block_row").remove();
+                        var maxDate = new Date(Number(this.project.data_creating.toString()));
                         var _blockAppend = 
                         $(`
                             <div class="autch_block_row">
                                 <p>Выберите дату инвестирования:</p>
                                 <div class="autch_block_row_input_date">
-                                    <input type="date" placeholder="Дата" id='needDateNow'>
+                                    <input type="date" placeholder="Дата" id='needDateNow' min="${maxDate.getFullYear()}-${pad(maxDate.getMonth() + 1, 2, '0')}-${pad(maxDate.getDate(), 2, '0')}">
                                 </div>
                                 <div class="autch_block_buttons">
                                     <div class="autch_block_buttons_block autch_block_buttons_block_close">
