@@ -18,6 +18,7 @@ const ProjectShema = new mongoose.Schema({
     registrationDocument: JSON,
     multiplicity: String,
     channel_id: String,
+    data_creating: String,
 });
 
 autoIncrement.initialize(mongoose.connection);

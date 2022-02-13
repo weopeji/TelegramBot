@@ -1983,6 +1983,7 @@ async function acceptProject(socket,data,callback)
     {
         type: "active", 
         channel_id: dataPhotoPush.message_id,
+        data_creating: new Date().getTime(),
     });
 }
 
