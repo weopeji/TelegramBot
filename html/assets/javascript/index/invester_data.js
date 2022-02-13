@@ -313,8 +313,21 @@
                     _form.append('_date', _this.date);
                     var _file       = _form;
 
+                    var uploadBlock = 
+                    $(`
+                        <div class="process_upload_block">
+                            <div class="process_upload_block_row">
+                                <div class="process_upload_block_line"></div>
+                            </div>
+                        </div>
+                    `);
+
+                    $('.index_page_body_header').append(uploadBlock);
+
                     const config = {
-                        onUploadProgress: progressEvent => {
+                        onUploadProgress: function(progressEvent) 
+                        {
+                            $('.process_upload_block_line').css("width", progressEvent.loaded + "%");
                             console.log(progressEvent.loaded)
                         }
                     }
