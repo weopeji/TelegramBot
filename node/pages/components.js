@@ -1905,9 +1905,7 @@ async function acceptProject(socket,data,callback)
             ],
         }
     });
-
-    console.log(dataPhotoPush);
-
+    
     const client = new Instagram({ username: "investER_official", password: "e<<@H&_ArB~5ef7" });
 
     ;(async () => 
@@ -1940,7 +1938,11 @@ async function acceptProject(socket,data,callback)
             })
     })();
 
-    await Project.findOneAndUpdate({_id: data}, {type: "active"});
+    await Project.findOneAndUpdate({_id: data}, 
+    {
+        type: "active", 
+        channel_id: dataPhotoPush.message_id,
+    });
 }
 
 
