@@ -2216,7 +2216,13 @@ async function setProject(socket,data,callback)
         {
             "pr": await ParcingPage.ParceProject(redactinProject.inn),
             "ar": await ParcingPage.ParcingArbitrage(redactinProject.inn),
+            "ispo": null,
             "fiz": ParceUsersBlock,
+        };
+
+        if(_dataProject.organization == 1)
+        {
+            _DataProject.parce.ispo = await _AllParce._ParceProjectIspo(_dataProject);
         };
     } else {
         _DataProject.parce = 
