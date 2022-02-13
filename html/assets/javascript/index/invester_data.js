@@ -312,12 +312,18 @@
                     _form.append('_pay', _this.money);
                     _form.append('_date', _this.date);
                     var _file       = _form;
+
+                    const config = {
+                        onUploadProgress: progressEvent => {
+                            console.log(progressEvent.loaded)
+                        }
+                    }
         
                     axios.post(_url, _file, {
                         headers: {
                             'Content-Type': 'multipart/form-data'
                         }
-                    }).then(data => {
+                    }, config).then(data => {
                         if(data.data.status == "ok") {
                             alert("Чек прикоеплен!");
                             $('.creating_page_input span[data="first"]').html('Перезаписать');
