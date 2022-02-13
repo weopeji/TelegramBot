@@ -1462,7 +1462,7 @@
                     <div class="settingBlock_body_line">
                         <span>${element._id}</span>
                         <span>${element.data.name}</span>
-                        <span>${(element.payersData.commission) * (element.payersData.attraction_commission / 100) * (element.payersData.business_commission / 100)}</span>
+                        <span>${((element.payersData.commission) * (element.payersData.attraction_commission / 100) * (element.payersData.business_commission / 100)).toString().toFixed(3)} %</span>
                     </div>
                 `;
 
