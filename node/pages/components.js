@@ -1459,6 +1459,7 @@ async function acceptInvestor(socket,data,callback)
     var jsDate              = new Date(_InvDoc.date);
     var NowToday            = DateTime.fromJSDate(jsDate).setZone("Europe/Moscow");
 
+    console.log(_InvDoc.date);
     console.log(jsDate);
     console.log(NowToday);
 
