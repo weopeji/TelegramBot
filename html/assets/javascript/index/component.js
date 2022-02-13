@@ -935,7 +935,7 @@
                     </div>
                     <div class="index_page_menu_block_line" data="obligations">
                         <i class="fal fa-file-import"></i>
-                        <span>Обязательства</span>
+                        <span>Обязательства перед investER</span>
                     </div>
                     <div class="index_page_menu_block_line" data="acceptPays">
                         <i class="fal fa-check-square"></i>
