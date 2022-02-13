@@ -20,7 +20,7 @@
 
     async function Main()
     {
-        var _id = global.location.href.split("#")[1];
+        var _id = _GET("id");
 
         var getR_F = await callApi({
             methodName: 'getR_F',
