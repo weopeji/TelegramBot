@@ -567,6 +567,10 @@ app.post('/file_cheack_get.io/files', (req, res) => {
                     } else {
                         await InvDoc.findOneAndUpdate({invester: _User.user, data: _arrayData})
                     }
+
+                    res.json({
+                        status: 'ok',
+                    });
                 
                 });
             } else {
