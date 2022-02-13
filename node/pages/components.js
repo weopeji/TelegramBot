@@ -794,6 +794,17 @@ async function getR_F(socket,data,callback)
     var globalUserData      = _projectFizBlock.fiz.globalUserData;
     var moreUsersData       = _projectFizBlock.fiz.moreUsersData;
 
+    if(!Array.isArray(globalUserData.ispo))
+    {
+        var globalUserDataParce = await ParcingPage.cheackArbitrFizUser(globalUserData.arBi);
+
+        if(globalUserDataParce[0].status == 0)
+        {
+            globalUserData.ispo = globalUserDataParce;
+            await Project.findOneAndUpdate({_id: data}, {parce: _projectFizBlock});
+        }
+    }
+
     if(Array.isArray(globalUserData.arBi))
     {
         if(moreUsersData.length > 0)
