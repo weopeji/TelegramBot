@@ -241,7 +241,7 @@
         {
             var _body = $(`
                 <div class="index_page_profil">
-                    <iframe id="profil" src="../html/project/profil#${_project._id}" frameborder="0"></iframe>
+                    <iframe id="profil" src="../html/project/profil/?id=${_project._id}&administator=true" frameborder="0"></iframe>
                 </div>
             `);
 
