@@ -1329,11 +1329,11 @@
                 <div class="Attracted_by_me_headerRefUrlsBlock">
                     <div class="Attracted_by_me_headerRefUrlsBlock_blocks">
                         <div class="Attracted_by_me_headerRefUrlsBlock_blocks_line">
-                            <span>Инвесторов</span>
+                            <span>Ваша реферальная ссылка для Инвесторов</span>
                             <span>https://t.me/invester_official_bot?start=adder_${_data.User.user}</span>
                         </div>
                         <div class="Attracted_by_me_headerRefUrlsBlock_blocks_line">
-                            <span>Бизнеса</span>
+                            <span>Ваша реферальная ссылка для Бизнеса</span>
                             <span>https://t.me/invester_official_bot?start=adder-b_${_data.User.user}</span>
                         </div>
                     </div>
