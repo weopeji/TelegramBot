@@ -210,105 +210,111 @@
         _config.data[need_project.data.organization]();
         _config.credit_story._push();
 
-        if(getR_F == "ok")
+        if(_GET("administator"))
         {
-            var _allArbitrFizData   = [];
-
-            _allArbitrFizData.push(need_project.parce.fiz.globalUserData);
-
-            need_project.parce.fiz.moreUsersData.forEach(elementFiz => {
-                _allArbitrFizData.push(elementFiz);
-            });
-
-            _allArbitrFizData.forEach((el, i) => 
+            if(getR_F == "ok")
             {
-                var _HEADER = $(`<h1>Cобстевенник ${i + 1}</h1>`);
-
-                $('.ispo_line').append(_HEADER);
-
-                var deistvitelnost  = "Не действителен или не правельно введен";
-                var jsonObj         = $.parseJSON(el.dePa);
-
-                if(jsonObj[0].qc == 0)
+                var _allArbitrFizData   = [];
+    
+                _allArbitrFizData.push(need_project.parce.fiz.globalUserData);
+    
+                need_project.parce.fiz.moreUsersData.forEach(elementFiz => {
+                    _allArbitrFizData.push(elementFiz);
+                });
+    
+                _allArbitrFizData.forEach((el, i) => 
                 {
-                    deistvitelnost = "Паспорт действителен";
-                }
-
-                $('.ispo_line').append($(`
-                    <div class='page_line'>
-                        <span>Действительность паспорта</span>
-                        <p>${deistvitelnost}</p>
-                    </div>
-                `));
-
-                var smozanyatiy = "Не является налого плательшиком или не правильно введены данные (Требуется ручная перепроверка)";
-
-                if(el.saMo.ok)
-                {
-                    smozanyatiy = "Является налого плательшиком";
-                }
-
-                $('.ispo_line').append($(`
-                    <div class='page_line'>
-                        <span>Статус налогоплательщика</span>
-                        <p>${smozanyatiy}</p>
-                    </div>
-                `));
-
-                $('.ispo_line').append($(`
-                    <div class='page_line'>
-                        <span>Статус розыска</span>
-                        <p>Не находится в розыске</p>
-                    </div>
-                `));
-
-                $('.ispo_line').append($(`
-                    <div class='page_line'>
-                        <span>Банкротство</span>
-                        <p>Не имеет Банкротства</p>
-                    </div>
-                `));
-
-                var _HEADER         = $(`<h1>Исполнительное производство Cобстевенника ${i + 1}</h1>`);
-                var ispoErrorBlock  = true;
-                
-                $('.ispo_line').append(_HEADER);
-
-                el.arBi[0].result.forEach(elementArBi => 
-                {
-                    ispoErrorBlock  = false;
-
-                    var _block = $(`
-                        <div class="page_line">
-                            <span>${elementArBi.exe_production}</span>
-                            <p>${elementArBi.subject}</p>
+                    var _HEADER = $(`<h1>Cобстевенник ${i + 1}</h1>`);
+    
+                    $('.ispo_line').append(_HEADER);
+    
+                    var deistvitelnost  = "Не действителен или не правельно введен";
+                    var jsonObj         = $.parseJSON(el.dePa);
+    
+                    if(jsonObj[0].qc == 0)
+                    {
+                        deistvitelnost = "Паспорт действителен";
+                    }
+    
+                    $('.ispo_line').append($(`
+                        <div class='page_line'>
+                            <span>Действительность паспорта</span>
+                            <p>${deistvitelnost}</p>
                         </div>
-                    `);
-
-                    $('.ispo_line').append(_block);
+                    `));
+    
+                    var smozanyatiy = "Не является налого плательшиком или не правильно введены данные (Требуется ручная перепроверка)";
+    
+                    if(el.saMo.ok)
+                    {
+                        smozanyatiy = "Является налого плательшиком";
+                    }
+    
+                    $('.ispo_line').append($(`
+                        <div class='page_line'>
+                            <span>Статус налогоплательщика</span>
+                            <p>${smozanyatiy}</p>
+                        </div>
+                    `));
+    
+                    $('.ispo_line').append($(`
+                        <div class='page_line'>
+                            <span>Статус розыска</span>
+                            <p>Не находится в розыске</p>
+                        </div>
+                    `));
+    
+                    $('.ispo_line').append($(`
+                        <div class='page_line'>
+                            <span>Банкротство</span>
+                            <p>Не имеет Банкротства</p>
+                        </div>
+                    `));
+    
+                    var _HEADER         = $(`<h1>Исполнительное производство Cобстевенника ${i + 1}</h1>`);
+                    var ispoErrorBlock  = true;
+                    
+                    $('.ispo_line').append(_HEADER);
+    
+                    el.arBi[0].result.forEach(elementArBi => 
+                    {
+                        ispoErrorBlock  = false;
+    
+                        var _block = $(`
+                            <div class="page_line">
+                                <span>${elementArBi.exe_production}</span>
+                                <p>${elementArBi.subject}</p>
+                            </div>
+                        `);
+    
+                        $('.ispo_line').append(_block);
+                    })
+    
+                    if(ispoErrorBlock)
+                    {
+                        var _block = $(`
+                            <div class="page_line">
+                                <span>Подробная информация</span>
+                                <p>Отсутствует</p>
+                            </div>
+                        `);
+    
+                        $('.ispo_line').append(_block);
+                    }
                 })
-
-                if(ispoErrorBlock)
-                {
-                    var _block = $(`
-                        <div class="page_line">
-                            <span>Подробная информация</span>
-                            <p>Отсутствует</p>
-                        </div>
-                    `);
-
-                    $('.ispo_line').append(_block);
-                }
-            })
-        } else {
-            var _preloader = $(`
-                <div class="loader_input">
-                    <img src="../../assets/images/ispo_preloader.png" alt="">
-                </div>
-            `);
-
-            $('.ispo_line').append(_preloader);
-        };
+            } else {
+                var _preloader = $(`
+                    <div class="loader_input">
+                        <img src="../../assets/images/ispo_preloader.png" alt="">
+                    </div>
+                `);
+    
+                $('.ispo_line').append(_preloader);
+            };
+        } else
+        {
+            $('.h1_sob').remove();
+        }
 
         $('body').append('<div class="iframe_ready"></div>')
     }
