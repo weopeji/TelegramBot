@@ -1445,6 +1445,7 @@
                         <div class="settingBlock_header_line">
                             <span>Номер проекта</span>
                             <span>Название проекта</span>
+                            <span>Сумма выплаты</span>
                         </div>
                     </div>
                     <div class="settingBlock_body">
@@ -1461,6 +1462,7 @@
                     <div class="settingBlock_body_line">
                         <span>${element._id}</span>
                         <span>${element.data.name}</span>
+                        <span>${(element.payersData.commission) * (element.payersData.attraction_commission / 100) * (element.payersData.business_commission / 100)}</span>
                     </div>
                 `;
 
@@ -1502,7 +1504,6 @@
             {
                 var procentAttraction   = Number(element.payersData.commission / 100 * element.payersData.attraction_commission);
                 var procentInvester     = Number(procentAttraction / 100 * element.payersData.investors_commission);
-                var procentBusiness     = Number(procentAttraction / 100 * element.payersData.business_commission);
 
                 var template_text = $(`
                     <div class="settingBlock_body_line">
