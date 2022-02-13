@@ -24,9 +24,14 @@
 
         async business_render(_data) 
         {
+            var _dataPhoto = await callApi({
+                methodName: "getPhotoByUser",
+                data: _data.invester.user,
+            });
+
             $('.info_active_block_right').append(`
                 <div class="info_active_block_photo">
-                        
+                    <img src="${_dataPhoto}" alt="">
                 </div>
                 <span>${_data.invester.first_name} ${_data.invester.last_name}</span>
                 <p>Invester</p>

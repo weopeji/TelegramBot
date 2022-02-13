@@ -169,7 +169,21 @@ var action_linker =
     "commissions_settings_close": commissions_settings_close,
     "setCorrectionForProject": setCorrectionForProject,
     "activeDataProject": activeDataProject,
+    "getPhotoByUser": getPhotoByUser,
 };
+
+async function getPhotoByUser(socket, data, callback)
+{
+    var _User           = await User.findOne({user: data});
+    var needUserPhoto   = null;
+    var _idPhoto        = await bot.getUserProfilePhotos(_User.user);
+    if(_idPhoto.total_count > 0)
+    {
+        var file_id         = _idPhoto.photos[0][0].file_id;
+        needUserPhoto       = await bot.getFile(file_id);
+    }
+    callback(needUser);
+}
 
 async function activeDataProject(socket, data, callback)
 {

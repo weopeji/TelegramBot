@@ -386,8 +386,8 @@
                     <div class="creating_page_start" style="margin-bottom: 20px">
                         <span>
                             Уважаемый Инвестор ${global.allData.User.first_name} Введите сумму инвестирования</a>.<br>
-                            Минимальная сумма входа: ${_projectMoney.toString().ReplaceNumber()} руб.
-                            Сумма должна быть кратна: ${_this.project.multiplicity} руб.
+                            Минимальная сумма входа: ${_projectMoney.toString().ReplaceNumber()} руб. <br>
+                            Сумма должна быть кратна: ${_this.project.multiplicity.toString().ReplaceNumber()} руб.
                         </span>
                     </div>
                 </div>
