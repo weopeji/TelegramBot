@@ -757,6 +757,9 @@
           flex: none;
   width: 100px;
   position: absolute;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .index_page_menu .index_page_menu_block_line {
