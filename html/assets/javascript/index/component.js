@@ -1554,11 +1554,8 @@
 
             for(var element of allPayments)
             {
-
                 var investerPay                     = Number(element.pay.toString().replace(/\s/g, ''));
-                var commissionMoneys                = Number(investerPay / 100 * element.data.ProjectData.commission);
-                var commissionCompany               = Number(commissionMoneys / 100 * element.data.ProjectData.company_commission);
-                var commissionAttraction            = Number(commissionMoneys - commissionCompany);
+                var commissionAttraction            = Number(investerPay / 100 * Number(element.data.ProjectData.commission));
                 var commissionAttractionInvester    = Number(commissionAttraction / 100 * element.data.ProjectData.investors_commission);
                 var commissionAttractionBusiness    = Number(commissionAttraction / 100 * element.data.ProjectData.business_commission);
                 var commissionAttractionNeedPay     = 0;
