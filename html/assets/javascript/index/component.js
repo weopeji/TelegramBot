@@ -1505,7 +1505,7 @@
                 `);
 
                 template_text.click( function() {
-                    location.open = `tg://resolve?domain=invester_official&post=${element.channel_id}`;
+                    window.location = `tg://resolve?domain=invester_official&post=${element.channel_id}`;
                 })
 
                 settingBlock.find('.settingBlock_body').append(template_text);
