@@ -801,13 +801,13 @@
                         <div class="invester_status_projects_status_first">
                             <div class="invester_status_projects_status_first_line">
                                 <span>Сумма сбора</span>
-                                <a>${Project_data.project.data.attraction_amount} руб.</a>
+                                <a>${Project_data.project.data.attraction_amount.toString().ReplaceNumber()} руб.</a>
                                 <span>Собрано</span>
-                                <a>${Project_data.moreGetData.paysInvesters} руб</a>
+                                <a>${Project_data.moreGetData.paysInvesters.toString().ReplaceNumber()} руб</a>
                             </div>
                             <div class="invester_status_projects_status_first_line">
                                 <span>Выплачено</span>
-                                <a>${Project_data.moreGetData.paysAcceptInvs} руб</a>
+                                <a>${Project_data.moreGetData.paysAcceptInvs.toString().ReplaceNumber()} руб</a>
                                 <span>Долг</span>
                                 <a>0 руб</a>
                             </div>
