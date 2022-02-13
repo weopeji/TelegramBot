@@ -317,33 +317,36 @@
                         headers: {
                             'Content-Type': 'multipart/form-data'
                         }
+                    }).then(data => {
+                        if(data.data.status == "ok") {
+                            alert("Чек прикоеплен!");
+                            $('.creating_page_input span[data="first"]').html('Перезаписать');
+    
+                            $('.creating_page_input_div[data="show"]').remove();
+                            $('.creating_page_input_div[data="accept"]').remove();
+            
+                            var moreBlock = $(`
+                                <div class="creating_page_input_div_row">
+                                    <div class="creating_page_input_div" data="show">
+                                        <span style="text-align: center">Посмотреть</span>
+                                    </div>
+                                    <div class="creating_page_input_div" data="accept">
+                                        <span style="text-align: center">Подтвердить</span>
+                                    </div>
+                                </div>
+                            `);
+            
+                            moreBlock.find(`[data="show"]`).click( function() {
+                                window.open(`https://invester-relocation.site/projects/${_this.project._id}/file_cheack_get_${global.allData.User.user}.${extension}`, '_blank');
+                            })
+            
+                            moreBlock.find(`[data="accept"]`).click( async function() {
+                                location.href = `https://invester-relocation.site/?page=telegram_authorization&type=more&userId=${_this.project._id}`; 
+                            });
+            
+                            $('.creating_page_input').append(moreBlock);
+                        }
                     });
-    
-                    $('.creating_page_input span[data="first"]').html('Перезаписать');
-    
-                    $('.creating_page_input_div[data="show"]').remove();
-                    $('.creating_page_input_div[data="accept"]').remove();
-    
-                    var moreBlock = $(`
-                        <div class="creating_page_input_div_row">
-                            <div class="creating_page_input_div" data="show">
-                                <span style="text-align: center">Посмотреть</span>
-                            </div>
-                            <div class="creating_page_input_div" data="accept">
-                                <span style="text-align: center">Подтвердить</span>
-                            </div>
-                        </div>
-                    `);
-    
-                    moreBlock.find(`[data="show"]`).click( function() {
-                        window.open(`https://invester-relocation.site/projects/${_this.project._id}/file_cheack_get_${global.allData.User.user}.${extension}`, '_blank');
-                    })
-    
-                    moreBlock.find(`[data="accept"]`).click( async function() {
-                        location.href = `https://invester-relocation.site/?page=telegram_authorization&type=more&userId=${_this.project._id}`; 
-                    });
-    
-                    $('.creating_page_input').append(moreBlock);
                 }
             });
 
