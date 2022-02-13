@@ -119,13 +119,16 @@
                 $('.index_page_body_data').append(headerPaysBlock);
             } else {
                 $('.index_page_body_data').append(`
+                    <div class="Attracted_headerInfoBlock_info_data_alert">
+                        <span>Нажимая кнопку подтвердить, вы подтверждаете, что сумма и дата платежа верна</span>
+                    </div>
                     <div class="Attracted_headerInfoBlock">
                         <div class="Attracted_headerInfoBlock_block accept_block_tap">
                             <div class="Attracted_headerInfoBlock_block_i">
                                 <i class="fad fa-check"></i>
                             </div>
                             <div class="Attracted_headerInfoBlock_block_text">
-                                <p>Подтвердить оплату</p>
+                                <p>Подтвердить</p>
                             </div>
                         </div>
                         <div class="Attracted_headerInfoBlock_block remove_block_tap">
