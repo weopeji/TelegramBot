@@ -301,10 +301,10 @@
 
             if(allData.User.type == "business")
             {
-                this.business_render(_data);
+                await this.business_render(_data);
             } else 
             {
-                this.invester_render(_data);
+                await this.invester_render(_data);
             }
 
             $('.info_active_block_massage_button').click(function() {
