@@ -324,19 +324,23 @@
 
                     $('.index_page_body_header').append(uploadBlock);
 
-                    const config = {
-                        onUploadProgress: function(progressEvent) 
-                        {
-                            $('.process_upload_block_line').css("width", progressEvent.loaded + "%");
-                            console.log(progressEvent.loaded)
-                        }
+                    // const configData = {
+                    //     onUploadProgress: function(progressEvent) 
+                    //     {
+                    //         $('.process_upload_block_line').css("width", progressEvent.loaded + "%");
+                    //         console.log(progressEvent.loaded)
+                    //     }
+                    // }
+
+                    const configData = {
+                        onUploadProgress: progressEvent => console.log(progressEvent.loaded)
                     }
         
                     axios.post(_url, _file, {
                         headers: {
                             'Content-Type': 'multipart/form-data'
                         }
-                    }, config).then(data => {
+                    }, configData).then(data => {
                         if(data.data.status == "ok") {
                             alert("Чек прикоеплен!");
                             $('.creating_page_input span[data="first"]').html('Перезаписать');
