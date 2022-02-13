@@ -31,7 +31,7 @@
 
             $('.info_active_block_right').append(`
                 <div class="info_active_block_photo">
-                    <img src="${_dataPhoto}" alt="">
+                    <img src="https://api.telegram.org/file/bot2062839693:AAE0hzj8SVXyexq29s5x7aRLC5x8O77c-pQ/${_dataPhoto.file_path}" alt="">
                 </div>
                 <span>${_data.invester.first_name} ${_data.invester.last_name}</span>
                 <p>Invester</p>
