@@ -794,14 +794,17 @@ async function getR_F(socket,data,callback)
     var globalUserData      = _projectFizBlock.fiz.globalUserData;
     var moreUsersData       = _projectFizBlock.fiz.moreUsersData;
 
-    if(!Array.isArray(globalUserData.ispo))
+    if(_project.data.organization == 1)
     {
-        var globalUserDataParce = await ParcingPage.cheackArbitrFizUser(globalUserData.ispo);
-
-        if(globalUserDataParce[0].status == 0)
+        if(!Array.isArray(_project.parce.ispo))
         {
-            globalUserData.ispo = globalUserDataParce;
-            await Project.findOneAndUpdate({_id: data}, {parce: _projectFizBlock});
+            var globalUserDataParce = await ParcingPage.cheackArbitrFizUser(_project.parce.ispo);
+    
+            if(globalUserDataParce[0].status == 0)
+            {
+                _projectFizBlock.ispo = globalUserDataParce;
+                await Project.findOneAndUpdate({_id: data}, {parce: _projectFizBlock});
+            }
         }
     }
 
