@@ -78,6 +78,10 @@
                                 <span>Инвестор</span>
                                 <span>Сумма Инвестиции</span>
                                 <span>Чек</span>
+                                <span>Задолженость</span>
+                                <span>Статус оплаты</span>
+                                <span>Подтверждение</span>
+                                <span>Чек</span>
                             </div>
                         </div>
                         <div class="settingBlock_body">
@@ -90,11 +94,28 @@
     
                 for(var _Inv of activeData.investers.invs)
                 {
+                    var zadoljenost         = "Имеется";
+                    var statusOplaty        = "Не оплачено";
+                    var podtvergdenie       = "Не подтвержденно";
+                    var check               = null;
+                    var textCheack          = 'Отсутствует';
+
+                    if(_Inv.commission)
+                    {
+                        statusOplaty = "Оплачено";
+                        if(_Inv.commission.status = "accept") { podtvergdenie = "Отсутствует"; podtvergdenie = "Подтверждено"};
+                        if(_Inv.commission.recipient) { textCheack = "Открыть"; check = _Inv.commission.recipient };
+                    }
+
                     var _block = $(`
                         <div class="settingBlock_body_line">
-                            <span>${_Inv.invester}</span>
-                            <span>${_Inv.data.pay} руб</span>
-                            <span><a href="https://invester-relocation.site/projects/${_Inv.projectId}/${_Inv.data.document}">Открыть</a></span>
+                            <span>${_Inv.inv.invester}</span>
+                            <span>${_Inv.inv.data.pay} руб</span>
+                            <span><a href="https://invester-relocation.site/projects/${_Inv.inv.projectId}/${_Inv.inv.data.document}">Открыть</a></span>
+                            <span>${zadoljenost}</span>
+                            <span>${statusOplaty}</span>
+                            <span>${podtvergdenie}</span>
+                            <span><a href="https://invester-relocation.site/projects/${_Inv.inv.projectId}/${check}">${textCheack}</a></span>
                         </div>
                     `);
     

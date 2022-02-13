@@ -199,10 +199,21 @@ async function activeDataProject(socket, data, callback)
 
     var _data = {
         investers: {
-            invs: _Invs,
+            invs: [],
         },
         whoGet: whoGet,
     };
+
+    for(var _invData of _Invs)
+    {
+        var _blockData = 
+        {
+            inv: _invData,
+            commission: await commission.findOne({invId: _invData._id}),
+        }
+
+        _data.investers.invs.push(_blockData);
+    }
 
     callback(_data);
 }
