@@ -339,6 +339,7 @@
                     }).then(data => {
                         if(data.data.status == "ok") {
                             alert("Чек прикоеплен!");
+                            $('.process_upload_block').remove();
                             $('.creating_page_input span[data="first"]').html('Перезаписать');
     
                             $('.creating_page_input_div[data="show"]').remove();
