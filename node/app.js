@@ -338,8 +338,8 @@ bot.on('message', async (msg) =>
         // ИНВЕСТОР ===========================================
         "💰 Мои инвестиции": investor_page.my_investment,
         "💰 Мои инвестиции ♦️": investor_page.my_investment,
-        "🧮 Активные проекты": investor_page.getMoney,
-        "🧮 Активные проекты ♦️": investor_page.getMoney,
+        "🧮 Активные проекты": investor_page.active_projects,
+        "🧮 Активные проекты ♦️": investor_page.active_projects,
         "📈 Инвестировать": investor_page.goInvesting,
         "👨‍💼 Рекомендовать": investor_page.recomendations,
         "👨‍💼 Рекомендовать ♦️": investor_page.recomendations,
@@ -352,7 +352,7 @@ bot.on('message', async (msg) =>
         "Оплатил": investor_page.payerInBissness,
         "Черновики": investor_page.drafts,
         // БИЗНЕС =============================================
-        "✅ Активные проекты": business_page.active,
+        "✅ Активные проекты": business_page.getMoney,
         "❓ Как добавить проект": business_page.how_add,
         "✍ Добавить проект": business_page.addProject,
         "❌ Неактивные проекты": business_page.not_active,
