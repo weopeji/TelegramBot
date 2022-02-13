@@ -1505,7 +1505,7 @@
                 `);
 
                 template_text.click( function() {
-                    location.href = 'https://t.me/invester_official/64';
+                    location.href = 'https://t.me/invester_official/' + element.channel_id;
                 })
 
                 settingBlock.find('.settingBlock_body').append(template_text);
