@@ -796,7 +796,7 @@ async function getR_F(socket,data,callback)
 
     if(!Array.isArray(globalUserData.ispo))
     {
-        var globalUserDataParce = await ParcingPage.cheackArbitrFizUser(globalUserData.arBi);
+        var globalUserDataParce = await ParcingPage.cheackArbitrFizUser(globalUserData.ispo);
 
         if(globalUserDataParce[0].status == 0)
         {
