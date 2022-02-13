@@ -247,6 +247,8 @@
                             </div>
                         `);
 
+                        _blockAppend.find('.autch_block_buttons').css('margin-top', "25px");
+
                         _blockAppend.find('.autch_block_buttons_block_close').click( function() {
                             $('.autch_block').remove();
                         })
