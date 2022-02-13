@@ -1723,6 +1723,16 @@ html, body {
   transition: all .2s;
 }
 
+.Attracted_headerInfoBlock_info_data_alert {
+  width: calc(100% - 80px);
+  padding: 40px;
+  text-align: center;
+  background-color: #182037;
+  color: white;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 @media (max-width: 1600px) {
   .creating_page {
     width: 50%;
