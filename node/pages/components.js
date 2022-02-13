@@ -2066,6 +2066,7 @@ var _AllParce =
                 {
                     _dataFirst = 50;
                 } else {
+                    console.log(JSON.parse(result.toString()));
                     if(typeof JSON.parse(result.toString()) != "undefined")
                     {
                         if(typeof JSON.parse(result.toString()).suggestions != "undefined")
