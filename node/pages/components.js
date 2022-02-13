@@ -1457,6 +1457,7 @@ async function acceptInvestor(socket,data,callback)
     var InvPay              = Number(_InvDoc.data.pay.toString().replace(/\s/g, ''));       // 100 000
     var ProjectDate         = Number(_Project.data.date.toString().replace(/\s/g, ''));     // 2 мес \ Бессрочно
     var jsDate              = new Date(InvPay.date);
+    console.log(jsDate);
     var NowToday            = DateTime.fromJSDate(jsDate);
     console.log(NowToday);
     var InvPays             = [];
