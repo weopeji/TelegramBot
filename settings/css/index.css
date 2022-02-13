@@ -742,8 +742,12 @@
 }
 
 .index_page_menu_block_logo {
-  position: relative;
-  left: 30px;
+  width: 100%;
+}
+
+.index_page_menu_block_logo img {
+  width: 90%;
+  margin: 0 auto;
 }
 
 .index_page_menu {
