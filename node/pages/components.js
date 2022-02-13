@@ -2039,6 +2039,7 @@ var _AllParce =
     {
         return new Promise((resolve,reject) => 
         {
+            console.log(_data.addr);
             
             var query           = _data.addr;
             var url             = "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address";
