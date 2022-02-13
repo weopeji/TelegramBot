@@ -182,7 +182,7 @@ async function getPhotoByUser(socket, data, callback)
         var file_id         = _idPhoto.photos[0][0].file_id;
         needUserPhoto       = await bot.getFile(file_id);
     }
-    callback(needUser);
+    callback(needUserPhoto);
 }
 
 async function activeDataProject(socket, data, callback)
