@@ -113,6 +113,56 @@
             }
         }
 
+        function startArbitrIspo()
+        {
+            if(getR_F == "ok")
+            {
+                if(Array.isArray(need_project.parce.ispo))
+                {
+                    if(need_project.parce.ispo.length > 0)
+                    {
+                        if(need_project.parce.ispo[0].result.length > 0)
+                        {
+                            var appendBlock = $(`
+                                <h1 class="h1_sob">ИСПОЛНИТЕЛЬНОЕ ПРОИЗВОДСТВО</h1>
+
+                                <div class="ispo_line_more_data">
+                                    
+                                </div>
+                            `);
+
+                            need_project.parce.ispo[0].result.forEach(element => {
+                                var _text = $(`
+                                    <div class="page_line">
+                                        <div class="page_line_block">
+                                            <span>${el.name}</span><br>
+                                            <span>${el.exe_production}</span><br>
+                                        </div>
+                                        <div class="page_line_block">
+                                            <span>${el.details}</span><br>
+                                            <span>${el.subject}</span><br>
+                                        </div>
+                                        <div class="page_line_block">
+                                            <span>${el.department}</span><br>
+                                            <span>${el.bailiff}</span><br>
+                                        </div>
+                                    </div>
+                                    <div class="page_line_line"></div>
+                                `);
+
+                                _text.css('margin-top','20px');
+                                _text.css('margin-bottom','20px');
+
+                                $(appendBlock).eq(1).append(_text);
+                            });
+
+                            $('.index_page_profil').append(appendBlock);
+                        }
+                    }
+                }
+            }
+        }
+
         var _config = 
         {
             header: function() 
@@ -158,6 +208,7 @@
                     this._append("List.org", `https://www.list-org.com/search?type=inn&val=${need_project.parce.pr.inn}`, true);
 
                     startArbitr();
+                    startArbitrIspo();
                 },
                 "2": function () {
                     $('.index_page_profil_data h1').html(_config.header());
