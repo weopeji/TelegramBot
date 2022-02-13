@@ -198,10 +198,16 @@
                 </div>
             `);
 
+            function pad(s, width, character) {
+                return new Array(width - s.toString().length + 1).join(character) + s;
+            }
+
+            var maxDate = new Date(Number(this.project.data_creating.toString()));
+
             var _block = $(`
                 <div class="creating_page_input">
                     <div class="creating_page_input_div" data="pay">
-                        <input type="file" id="triggerClick">
+                        <input type="file" id="triggerClick" min="${maxDate.getFullYear()}-${pad(maxDate.getMonth() + 1, 2, '0')}-${pad(maxDate.getDate(), 2, '0')}">
                         <span data="first" style="text-align: center">Загрузить</span>
                     </div>
                 </div>
