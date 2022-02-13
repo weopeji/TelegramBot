@@ -330,8 +330,11 @@
                         },
                         onUploadProgress: function(progressEvent) 
                         {
-                            $('.process_upload_block_line').css("width", progressEvent.loaded + "%");
-                            console.log(progressEvent.loaded)
+                            const totalLength = progressEvent.lengthComputable ? progressEvent.total : progressEvent.target.getResponseHeader('content-length') || progressEvent.target.getResponseHeader('x-decompressed-content-length');
+                            if (totalLength !== null) {
+                                var progressBarData = Math.round( (progressEvent.loaded * 100) / totalLength );
+                                $('.process_upload_block_line').css("width", progressBarData + "%");
+                            }
                         }
                     }).then(data => {
                         if(data.data.status == "ok") {
