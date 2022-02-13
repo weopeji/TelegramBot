@@ -2066,9 +2066,20 @@ var _AllParce =
                 {
                     _dataFirst = 50;
                 } else {
-                    _dataFirst = JSON.parse(result.toString()).suggestions[0].data.region_kladr_id;
-
-                    _dataFirst = _dataFirst.replace(/0/g, '');
+                    if(typeof JSON.parse(result.toString()) != "undefined")
+                    {
+                        if(typeof JSON.parse(result.toString()).suggestions != "undefined")
+                        {
+                            _dataFirst = JSON.parse(result.toString()).suggestions[0].data.region_kladr_id;
+                            _dataFirst = _dataFirst.replace(/0/g, '');
+                        } else
+                        {
+                            _dataFirst = 50;
+                        }
+                    } else
+                    {
+                        _dataFirst = 50;
+                    }
                 }
                 
                 if(_dataFirst.length == 1)
