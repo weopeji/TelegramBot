@@ -22,6 +22,11 @@
     {
         var _id = _GET("id");
 
+        if(!_id)
+        {
+            _id = window.location.href.split('#')[1].split('/')[0];
+        }
+
         var getR_F = await callApi({
             methodName: 'getR_F',
             data: _id,
