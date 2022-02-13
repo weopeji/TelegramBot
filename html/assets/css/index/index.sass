@@ -1231,7 +1231,24 @@ html, body
     margin-top: 65px
     justify-content: center
     
+.autch_block_row_input_date
+    display: flex
 
+    input[type="date"]
+        width: calc(85% - 20px)
+        margin: 0 auto
+        margin-top: 20px
+        padding: 10px
+        border: 0
+        background-color: #0E1122
+        color: white
+
+    input[type="date"]::-webkit-calendar-picker-indicator
+        color: white
+        filter: invert(1)
+        position: absolute
+        padding-left: calc(100% - 10px)
+        right: 10px
 
 
 
