@@ -2040,7 +2040,7 @@ var _AllParce =
         return new Promise((resolve,reject) => 
         {
             console.log(_data.addr);
-            
+
             var query           = _data.addr;
             var url             = "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address";
             var token           = "cd3a829357362fec55fc201c3f761002def9906f";
@@ -2068,6 +2068,7 @@ var _AllParce =
                     _dataFirst = 50;
                 } else {
                     console.log(JSON.parse(result.toString()));
+
                     if(typeof JSON.parse(result.toString()) != "undefined")
                     {
                         if(typeof JSON.parse(result.toString()).suggestions != "undefined")
@@ -2235,7 +2236,7 @@ async function setProject(socket,data,callback)
 
         if(_dataProject.organization == 1)
         {
-            _DataProject.parce.ispo = await _AllParce._ParceProjectIspo(_dataProject);
+            _DataProject.parce.ispo = await _AllParce._ParceProjectIspo(redactinProject);
         };
     } else {
         _DataProject.parce = 
