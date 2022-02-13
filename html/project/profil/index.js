@@ -131,7 +131,7 @@
                                 </div>
                             `);
 
-                            need_project.parce.ispo[0].result.forEach(element => {
+                            need_project.parce.ispo[0].result.forEach(el => {
                                 var _text = $(`
                                     <div class="page_line">
                                         <div class="page_line_block">
