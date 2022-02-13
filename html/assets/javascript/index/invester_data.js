@@ -333,7 +333,7 @@
                             $('.process_upload_block_line').css("width", progressEvent.loaded + "%");
                             console.log(progressEvent.loaded)
                         }
-                    }, configData).then(data => {
+                    }).then(data => {
                         if(data.data.status == "ok") {
                             alert("Чек прикоеплен!");
                             $('.creating_page_input span[data="first"]').html('Перезаписать');
