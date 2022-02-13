@@ -127,7 +127,9 @@
                                 <h1 class="h1_sob">ИСПОЛНИТЕЛЬНОЕ ПРОИЗВОДСТВО</h1>
 
                                 <div class="ispo_line_more_data">
-                                    
+                                    <div class="ispo_line_more_data_data">
+
+                                    </div>
                                 </div>
                             `);
 
@@ -153,7 +155,7 @@
                                 _text.css('margin-top','20px');
                                 _text.css('margin-bottom','20px');
 
-                                $(appendBlock).eq(1).append(_text);
+                                $(appendBlock).find('.ispo_line_more_data_data').append(_text);
                             });
 
                             $('.index_page_profil').append(appendBlock);
