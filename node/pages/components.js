@@ -209,7 +209,7 @@ async function getChats(socket, data, callback)
 
     for(var _msgBlock of _UserMsgs)
     {
-        var _ProjectMsgBlock  = await Project.find({_id: _msgBlock.business});
+        var _ProjectMsgBlock  = await Project.findOne({_id: _msgBlock.business});
 
         var _dataBlock = {
             msgBlock: _msgBlock,
