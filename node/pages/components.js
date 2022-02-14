@@ -225,9 +225,9 @@ async function getChats(socket, data, callback)
 
 async function getPhotoByUser(socket, data, callback)
 {
-    var _User           = await User.findOne({user: data});
-    var needUserPhoto   = null;
-    var _idPhoto        = await bot.getUserProfilePhotos(_User.user);
+    var _User               = await User.findOne({user: data});
+    var needUserPhoto       = null;
+    var _idPhoto            = await bot.getUserProfilePhotos(_User.user);
     if(_idPhoto.total_count > 0)
     {
         var file_id         = _idPhoto.photos[0][0].file_id;
@@ -1565,6 +1565,8 @@ async function acceptInvestor(socket,data,callback)
             var LastData        = NowToday.plus({ months: ProjectDate });
             var HowManyDays     = Interval.fromDateTimes(NowToday, LastData).length('month');
             var EveryPayment    = Number(InvPay / 100 * RateBlock).toFixed(0);
+
+            console.log(HowManyDays);
 
             for(var i = 1; i <= HowManyDays / 3; i++)
             {
