@@ -31,11 +31,18 @@
 
             getChats.forEach(element => {
 
+                var _PathUrl = null;
+
+                if(typeof element.img.file_path != "undefined")
+                {
+                    _PathUrl = element.img.file_path
+                }
+
                 var template_text = $(`
                     <div class="msg_block_getting_line">
                         <div class="msg_block_getting_line_img">
                             <div class="msg_block_getting_line_img_block">
-                                <img src="${element.img.file_path}" alt="">
+                                <img src="${_PathUrl}" alt="">
                             </div>
                         </div>
                         <div class="msg_block_getting_line_text">
