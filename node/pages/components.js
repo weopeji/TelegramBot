@@ -87,6 +87,8 @@ var action_linker =
     "telegram_auth_getToken": telegram_auth_getToken,
     "telegram_auth_recomendation": telegram_auth_recomendation,
 
+    // chats
+    "getChats": getChats,
 
     //  funs
     "getModerations": getModerations,
@@ -171,6 +173,55 @@ var action_linker =
     "activeDataProject": activeDataProject,
     "getPhotoByUser": getPhotoByUser,
 };
+
+async function getChats(socket, data, callback)
+{
+    var _User               = await User.findOne({_id: data});
+    var _ProjectsUser       = await Project.find({user: _User.user});
+    var _UserMsgs           = await MsgDB.find({investor: _User._id});
+    var _dataMsgs           = [];
+
+    for(var _Project of _ProjectsUser)
+    {
+        var _ProjectMsgs = await MsgDB.find({business: _Project._id});
+
+        for(var _msgBlock of _ProjectMsgs)
+        {
+            var _UserDataBlock      = await User.findOne({user: _msgBlock.investor});
+            var needUserPhoto       = null;
+            var _idPhoto            = await bot.getUserProfilePhotos(_UserDataBlock.user);
+
+            if(_idPhoto.total_count > 0)
+            {
+                var file_id         = _idPhoto.photos[0][0].file_id;
+                needUserPhoto       = await bot.getFile(file_id);
+            };
+
+            var _dataBlock = {
+                msgBlock: _msgBlock,
+                name: `${_UserDataBlock.first_name} ${_UserDataBlock.last_name}`,
+                img: needUserPhoto,
+            };
+
+            _dataMsgs.push(_dataBlock);
+        };
+    };
+
+    for(var _msgBlock of _UserMsgs)
+    {
+        var _ProjectMsgBlock  = await Project.find({_id: _msgBlock.business});
+
+        var _dataBlock = {
+            msgBlock: _msgBlock,
+            name: `${_ProjectMsgBlock.data.name}`,
+            img: null,
+        };
+
+        _dataMsgs.push(_dataBlock);
+    };
+
+    callback(_dataMsgs);
+}
 
 async function getPhotoByUser(socket, data, callback)
 {

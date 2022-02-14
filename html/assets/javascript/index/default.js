@@ -23,7 +23,9 @@
                             global.loadResources(['./html/assets/javascript/index/obligations.js'], () => {
                                 global.loadResources(['./html/assets/javascript/index/payments_new.js'], () => {
                                     global.loadResources(['./html/assets/javascript/index/telegram_authorization.js'], () => {
-                                        Main();
+                                        global.loadResources(['./html/assets/javascript/index/chat.js'], () => {
+                                            Main();
+                                        });
                                     });
                                 });
                             });
@@ -43,7 +45,7 @@
         const user_block                = new global.Components.user_block();
         const activ_projects            = new global.Components.activ_projects();
         const acceptPays                = new global.Components.acceptPays();
-        const chats                     = new global.Components.chats();
+        const chat                      = new global.Components.chat();
         const pay_investors             = new global.Components.pay_investors();
         const myProjects                = new global.Components.myProjects();
         const signature                 = new global.Components.signature();
@@ -57,7 +59,7 @@
         const wait_projects             = new global.Components.wait_projects();
         const obligations               = new global.Components.obligations();
         const payments_new              = new global.Components.payments_new();
-        const telegram_authorization = new global.Components.telegram_authorization();
+        const telegram_authorization    = new global.Components.telegram_authorization();
 
         if(!userID) {
             if(!token) 
@@ -103,7 +105,7 @@
                     }
                 },
                 "acceptPays": function() {acceptPays.render(global.allData)},
-                "chats": function() {chats.render(global.allData)},
+                "chat": function() {chat.render(global.allData)},
                 "pay_investors": function() {pay_investors.render(global.allData)},
                 "myProjects": function() {
                     if(!_GET('id')) {
