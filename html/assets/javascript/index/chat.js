@@ -33,7 +33,7 @@
 
                 var _PathUrl = null;
 
-                if(typeof element.img.file_path != "undefined")
+                if(element.img)
                 {
                     _PathUrl = element.img.file_path
                 }
