@@ -187,7 +187,7 @@ async function getChats(socket, data, callback)
 
         for(var _msgBlock of _ProjectMsgs)
         {
-            var _UserDataBlock      = await User.findOne({user: _msgBlock.investor});
+            var _UserDataBlock      = await User.findOne({_id: _msgBlock.investor});
             var needUserPhoto       = null;
             var _idPhoto            = await bot.getUserProfilePhotos(_UserDataBlock.user);
 
