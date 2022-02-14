@@ -35,7 +35,7 @@
                     <div class="msg_block_getting_line">
                         <div class="msg_block_getting_line_img">
                             <div class="msg_block_getting_line_img_block">
-                                <img src="${element.img}" alt="">
+                                <img src="${element.img.file_path}" alt="">
                             </div>
                         </div>
                         <div class="msg_block_getting_line_text">
