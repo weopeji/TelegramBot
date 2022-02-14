@@ -105,7 +105,7 @@
                     }
                 },
                 "acceptPays": function() {acceptPays.render(global.allData)},
-                "chat": function() {chat.render(global.allData)},
+                "chats": function() {chat.render(global.allData)},
                 "pay_investors": function() {pay_investors.render(global.allData)},
                 "myProjects": function() {
                     if(!_GET('id')) {
