@@ -1561,18 +1561,29 @@ async function acceptInvestor(socket,data,callback)
         },
         "Ежеквартально": async function()
         {
-            var RateBlock       = Number(_Project.data.rate / 12 * 3);
-            var LastData        = NowToday.plus({ months: ProjectDate });
-            var HowManyDays     = Interval.fromDateTimes(NowToday, LastData).length('month');
-            var EveryPayment    = Number(InvPay / 100 * RateBlock).toFixed(0);
+            var RateBlock               = Number(_Project.data.rate / 12 * 3);
+            var LastData                = NowToday.plus({ months: ProjectDate });
+            var HowManyDays             = Interval.fromDateTimes(NowToday, LastData).length('month');
+            var EveryPayment            = Number(InvPay / 100 * RateBlock).toFixed(0);
+            var HowManyDaysRedacting    = Number(HowManyDays / 3);
 
-            console.log(HowManyDays);
-
-            for(var i = 1; i <= HowManyDays / 3; i++)
+            for(var i = 1; i <= HowManyDaysRedacting; i++)
             {
                 InvPays.push({
                     pay: EveryPayment,
                     date: NowToday.plus({ months: i * 3 }),
+                    receipt: null,
+                    status: "wait",
+                });
+            };
+
+            if(!HowManyDaysRedacting.isInteger(HowManyDaysRedacting))
+            {
+                var drobNumber = HowManyDaysRedacting % 1;
+
+                InvPays.push({
+                    pay: EveryPayment * drobNumber,
+                    date: LastData,
                     receipt: null,
                     status: "wait",
                 });
