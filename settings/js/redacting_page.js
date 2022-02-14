@@ -103,7 +103,7 @@
                     if(_Inv.commission)
                     {
                         statusOplaty = "Оплачено";
-                        if(_Inv.commission.status = "accept") { podtvergdenie = "Отсутствует"; podtvergdenie = "Подтверждено"};
+                        if(_Inv.commission.status == "accept") { podtvergdenie = "Отсутствует"; podtvergdenie = "Подтверждено"};
                         if(_Inv.commission.recipient) { textCheack = "Открыть"; check = _Inv.commission.recipient };
                     }
 
