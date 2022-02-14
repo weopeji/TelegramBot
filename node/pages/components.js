@@ -1605,19 +1605,44 @@ async function acceptInvestor(socket,data,callback)
                     status: "wait",
                 });
             }
+
+            if(!Number.isInteger(HowManyDays))
+            {
+                var drobNumber = HowManyDays % 1;
+
+                InvPays.push({
+                    pay: EveryPayment * drobNumber,
+                    date: LastData,
+                    receipt: null,
+                    status: "wait",
+                });
+            }
         },
         "Раз в 6 месяцев": async function()
         {
-            var RateBlock       = Number(_Project.data.rate / 12 * 6);
-            var LastData        = NowToday.plus({ months: ProjectDate });
-            var HowManyDays     = Interval.fromDateTimes(NowToday, LastData).length('month');
-            var EveryPayment    = Number(InvPay / 100 * RateBlock).toFixed(0);
+            var RateBlock               = Number(_Project.data.rate / 12 * 6);
+            var LastData                = NowToday.plus({ months: ProjectDate });
+            var HowManyDays             = Interval.fromDateTimes(NowToday, LastData).length('month');
+            var EveryPayment            = Number(InvPay / 100 * RateBlock).toFixed(0);
+            var HowManyDaysRedacting    = Number(HowManyDays / 6);
 
-            for(var i = 1; i <= HowManyDays / 6; i++)
+            for(var i = 1; i <= HowManyDaysRedacting; i++)
             {
                 InvPays.push({
                     pay: EveryPayment,
                     date: NowToday.plus({ months: i * 6 }),
+                    receipt: null,
+                    status: "wait",
+                });
+            }
+
+            if(!Number.isInteger(HowManyDaysRedacting))
+            {
+                var drobNumber = HowManyDaysRedacting % 1;
+
+                InvPays.push({
+                    pay: EveryPayment * drobNumber,
+                    date: LastData,
                     receipt: null,
                     status: "wait",
                 });
