@@ -1577,7 +1577,7 @@ async function acceptInvestor(socket,data,callback)
                 });
             };
 
-            if(!HowManyDaysRedacting.isInteger(HowManyDaysRedacting))
+            if(!Number.isInteger(HowManyDaysRedacting))
             {
                 var drobNumber = HowManyDaysRedacting % 1;
 
