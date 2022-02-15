@@ -370,14 +370,15 @@
                     });
                 }
 
-                if(typeof data.form != 'undefined') {
+                if(typeof data.form != 'undefined') 
+                {
                     if(data.form == "four_number")
                     {
-                        _line.find(`#${data._id}`).mask("9999");
+                        _line.find(`input[type="text"]`).mask("9999");
                     }
                     if(data.form == "six_number")
                     {
-                        _line.find(`#${data._id}`).mask("999999");
+                        _line.find(`input[type="text"]`).mask("999999");
                     }
                 }
 
