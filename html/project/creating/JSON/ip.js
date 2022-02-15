@@ -212,11 +212,13 @@ window.structCreator =
                 name: "Серия паспорта",
                 info: "",
                 parsing_data: null,
+                form: "four_number",
                 _id: "sob_serion"
             },
             {
                 type: "string",
                 name: "Номер паспорта",
+                form: "six_number",
                 info: "",
                 parsing_data: null,
                 _id: "sob_number"

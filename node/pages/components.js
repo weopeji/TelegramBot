@@ -2324,7 +2324,7 @@ async function setProject(socket,data,callback)
         signature_document: null,
         payersData: 
         {
-            commission: 25,
+            commission: 0,
             company_commission: 5,
             attraction_commission: 50,
             investors_commission: 70,
