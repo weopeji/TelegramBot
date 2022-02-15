@@ -1119,6 +1119,7 @@ async function test_fun(socket,data,callback)
                     text: "Инвестровать",
                     login_url: {
                         'url': 'https://invester-relocation.site/',
+                        'request_write_access': true,
                     },
                 }
             ]
