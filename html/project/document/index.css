@@ -6,6 +6,7 @@ html, body {
 .index_page {
   width: 80%;
   margin: 0 auto;
+  position: relative;
 }
 
 .index_page p {
