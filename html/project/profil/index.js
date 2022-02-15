@@ -290,7 +290,7 @@
                         userDataFio = `${need_project.data.sob_fio}`;
                     } else
                     {
-                        userDataFio = need_project.moreUsersNotParce[`+${initNumber}`][`BB*sob_fio_${initNumber}`];
+                        userDataFio = need_project.data.moreUsersNotParce[`+${initNumber}`][`BB*sob_fio_${initNumber}`];
                     }
 
                     var _HEADER = $(`<h1>Cобстевенник ${initNumber} ФИО: ${userDataFio}</h1>`);
