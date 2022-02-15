@@ -282,7 +282,18 @@
     
                 _allArbitrFizData.forEach((el, i) => 
                 {
-                    var _HEADER = $(`<h1>Cобстевенник ${i + 1}</h1>`);
+                    var userDataFio = null;
+                    var initNumber  = i + 1;
+
+                    if(initNumber == 1)
+                    {
+                        userDataFio = `${need_project.data.sob_fio}`;
+                    } else
+                    {
+                        userDataFio = need_project.moreUsersNotParce[`+${initNumber}`][`BB*sob_fio_${initNumber}`];
+                    }
+
+                    var _HEADER = $(`<h1>Cобстевенник ${} ФИО: ${userDataFio}</h1>`);
     
                     $('.ispo_line').append(_HEADER);
     
