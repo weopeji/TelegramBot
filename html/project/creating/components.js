@@ -370,6 +370,17 @@
                     });
                 }
 
+                if(typeof data.form != 'undefined') {
+                    if(data.form == "four_number")
+                    {
+                        _line.find(`#${data._id}`).mask("9999");
+                    }
+                    if(data.form == "six_number")
+                    {
+                        _line.find(`#${data._id}`).mask("999999");
+                    }
+                }
+
                 if(typeof data.bess != 'undefined') {
                     _line.find(`#${data._id}`).keyup(function(e) {
                         if(e.keyCode < 91 && e.keyCode > 64) 

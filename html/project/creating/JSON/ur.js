@@ -212,6 +212,7 @@ window.structCreator =
                 name: "Серия паспорта",
                 info: "",
                 parsing_data: null,
+                form: "four_number",
                 _id: "sob_serion"
             },
             {
@@ -219,6 +220,7 @@ window.structCreator =
                 name: "Номер паспорта",
                 info: "",
                 parsing_data: null,
+                form: "six_number",
                 _id: "sob_number"
             },
             {

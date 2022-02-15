@@ -505,7 +505,7 @@ app.post('/file_cheack_get.io/files', (req, res) => {
                     var _arrayData  = _User.investor_data.inv;
                     var _dateNeed   = _data._date;
 
-                    if(!_dateNeed)
+                    if(!_dateNeed || _dateNeed == "null")
                     {
                         _dateNeed = new Date().getTime();
                     }
