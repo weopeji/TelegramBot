@@ -1117,7 +1117,7 @@ async function test_fun(socket,data,callback)
             [
                 {
                     text: "Инвестровать",
-                    url: "https://invester-relocation.site/",
+                    // url: "https://invester-relocation.site/",
                     login_url: "invester-relocation.site",
                 }
             ]
