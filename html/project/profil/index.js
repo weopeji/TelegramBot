@@ -375,6 +375,7 @@
         }
 
         $('body').append('<div class="iframe_ready"></div>')
+        $('.index_page_hover_preloader_dor_document').remove();
     }
 
 }(window))
