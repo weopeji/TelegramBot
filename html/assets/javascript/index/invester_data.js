@@ -246,7 +246,7 @@
                                 </div>
                                 <div class="autch_block_buttons">
                                     <div class="autch_block_buttons_block autch_block_buttons_block_close">
-                                        <span>Назад</span>
+                                        <span>Назад</span> 
                                     </div>
                                     <div class="autch_block_buttons_block autch_block_buttons_block_accept">
                                         <span>Подтвердить</span>
