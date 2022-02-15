@@ -1118,10 +1118,7 @@ async function test_fun(socket,data,callback)
                 { // ""
                     text: "Инвестровать",
                     login_url: {
-                        url: "invester-relocation.site",
-                        forward_text: "test",
-                        bot_username: "invester_official_bot",
-                        request_write_access: true,
+                        'url': 'https://web-wost.ru',
                     },
                 }
             ]
