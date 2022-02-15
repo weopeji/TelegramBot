@@ -1110,7 +1110,7 @@
                 data: _GET("id"),
             });
 
-            global_block.append($(`<h1>Кто привлек проект</h1>`));
+            this.global_block.append($(`<h1>Кто привлек проект</h1>`));
 
             var _block = 
             $(`
@@ -1124,9 +1124,9 @@
                 </div>
             `);
 
-            global_block.append(_block);   
+            this.global_block.append(_block);   
 
-            global_block.append($(`<h1>Инвестиции</h1>`));
+            this.global_block.append($(`<h1>Инвестиции</h1>`));
 
             var templateText = $(`
                 <div class="settingBlock">
@@ -1180,7 +1180,7 @@
                 templateText.find('.settingBlock_body').append(_block);
             }
 
-            global_block.append(templateText); 
+            this.global_block.append(templateText); 
         }
 
         async render()
