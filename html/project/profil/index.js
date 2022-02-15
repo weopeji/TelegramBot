@@ -293,7 +293,7 @@
                         userDataFio = need_project.moreUsersNotParce[`+${initNumber}`][`BB*sob_fio_${initNumber}`];
                     }
 
-                    var _HEADER = $(`<h1>Cобстевенник ${} ФИО: ${userDataFio}</h1>`);
+                    var _HEADER = $(`<h1>Cобстевенник ${initNumber} ФИО: ${userDataFio}</h1>`);
     
                     $('.ispo_line').append(_HEADER);
     
