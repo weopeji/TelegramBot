@@ -21,6 +21,7 @@ html, body {
   margin-top: 80px;
   border-radius: 2px;
   margin-bottom: 80px;
+  position: relative;
 }
 
 .index_page_profil h1 {
