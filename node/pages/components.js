@@ -1110,19 +1110,19 @@ async function getUserID(socket,data,callback)
 
 async function test_fun(socket,data,callback)
 {
-    // let options = 
-    // {
-    //     mode: 'text',
-    //     scriptPath: '../python/parcingArbitraj',
-    //     args: "5029069967",
-    // };
+    var html = `Тестовая функция авторизации! Не использовать!`;
 
-    // await PythonShell.run('main.py', options, function (err, results) {
-    //     if (err) throw err;
-
-    //     console.log(JSON.parse(results));
-    //     console.log(results);
-    // })
+    var fat = await h.send_html( -1001205415519, html, {
+        "inline_keyboard": [
+            [
+                {
+                    text: "Инвестровать",
+                    url: "https://invester-relocation.site/",
+                    login_url: "invester-relocation.site",
+                }
+            ]
+        ],
+    });
 }
 
 async function tg_alert_user_numbers(socket,data,callback)
