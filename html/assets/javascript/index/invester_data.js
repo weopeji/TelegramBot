@@ -234,14 +234,15 @@
                             return new Array(width - s.toString().length + 1).join(character) + s;
                         }
 
-                        var maxDate = new Date(Number(_this.project.data_creating.toString()));
+                        var maxDate     = new Date(Number(_this.project.data_creating.toString()));
+                        var maxmaxDate  = new Date();
 
                         var _blockAppend = 
                         $(`
                             <div class="autch_block_row">
                                 <p>Выберите дату инвестирования:</p>
                                 <div class="autch_block_row_input_date">
-                                    <input type="date" placeholder="Дата" id='needDateNow' min="${maxDate.getFullYear()}-${pad(maxDate.getMonth() + 1, 2, '0')}-${pad(maxDate.getDate(), 2, '0')}">
+                                    <input type="date" placeholder="Дата" id='needDateNow' max="${maxmaxDate.getFullYear()}-${pad(maxmaxDate.getMonth() + 1, 2, '0')}-${pad(maxmaxDate.getDate(), 2, '0')}" min="${maxDate.getFullYear()}-${pad(maxDate.getMonth() + 1, 2, '0')}-${pad(maxDate.getDate(), 2, '0')}">
                                 </div>
                                 <div class="autch_block_buttons">
                                     <div class="autch_block_buttons_block autch_block_buttons_block_close">
