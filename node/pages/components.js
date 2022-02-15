@@ -1115,10 +1115,14 @@ async function test_fun(socket,data,callback)
     var fat = await h.send_html( -1001205415519, html, {
         "inline_keyboard": [
             [
-                {
+                { // ""
                     text: "Инвестровать",
-                    // url: "https://invester-relocation.site/",
-                    login_url: "invester-relocation.site",
+                    login_url: {
+                        url: "invester-relocation.site",
+                        forward_text: "test",
+                        bot_username: "invester_official_bot",
+                        request_write_access: true,
+                    },
                 }
             ]
         ],
