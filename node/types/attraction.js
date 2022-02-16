@@ -99,7 +99,6 @@ async function url(msg)
         // 2 ===
         const stream = fs.createReadStream(`../html/assets/images/logo_print.jpeg`);
         await bot.sendPhoto(msg.from.id, stream, {
-            "caption": html,
             "parse_mode": "html",
             "reply_markup": {
                 "inline_keyboard": [
@@ -116,13 +115,7 @@ async function url(msg)
             }
         });
 
-        // var fat = await h.send_html(msg.chat.id, html, 
-        // {
-        //     "resize_keyboard": true,
-        //     inline_keyboard: [
-        //         [{ text: 'Поделитесь с друзьями', switch_inline_query: _url}]
-        //     ]
-        // });
+        // 3
         var html = "Либо нажмите на ссылку чтобы скопировать и отпрватье ее друзьям\n\n`https://t.me/invester_official_bot?start=adder_" + msg.from.id.toString() + "`";
         var fat = await bot.sendMessage(msg.from.id, html, 
         {
