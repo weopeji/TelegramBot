@@ -98,7 +98,7 @@ async function url(msg)
 
         // 2 ===
         const stream = fs.createReadStream(`../html/assets/images/logo_print.jpeg`);
-        await bot.sendPhoto(msg.from.id, stream, {
+        var fat = await await bot.sendPhoto(msg.from.id, stream, {
             "parse_mode": "html",
             "reply_markup": {
                 "inline_keyboard": [
@@ -114,6 +114,7 @@ async function url(msg)
                 ],
             }
         });
+        _array.push(fat.message_id);
 
         // 3
         var html = "Либо нажмите на ссылку чтобы скопировать и отпрватье ее друзьям\n\n`https://t.me/invester_official_bot?start=adder_" + msg.from.id.toString() + "`";
