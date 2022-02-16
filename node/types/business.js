@@ -149,7 +149,9 @@ async function getMoney(msg)
             [
                 {
                     text: "Перейти в личный кабинет",
-                    url: `${h.getURL()}?user=${_User._id}&page=acceptPays`
+                    login_url: {
+                        'url': `${h.getURL()}?user=${_User._id}&page=acceptPays`,
+                    },
                 }
             ]
         ],
@@ -366,7 +368,9 @@ async function not_active_callback(msg)
                     },
                     {
                         text: `№${needProject._id}`,
-                        url: `${h.getURL()}html/project/creating/#${needProject._id}`,
+                        login_url: {
+                            'url': `${h.getURL()}html/project/creating/#${needProject._id}`,
+                        },
                     },
                     {
                         text: "➡️",
@@ -377,7 +381,9 @@ async function not_active_callback(msg)
                 _keyboard.push([
                     {
                         text: "Перейти",
-                        url: `${h.getURL()}html/project/creating/#${needProject._id}`,
+                        login_url: {
+                            'url': `${h.getURL()}html/project/creating/#${needProject._id}`,
+                        },
                     }
                 ])
             }
@@ -455,7 +461,9 @@ async function addProject(msg)
             [
                 {
                     text: "Заполнить данные 📝",
-                    url: _url
+                    login_url: {
+                        'url': _url,
+                    },
                 }
             ]
         ],

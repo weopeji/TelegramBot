@@ -231,7 +231,9 @@ async function active_projects(msg)
                 [
                     {
                         text: 'Перейти',
-                        url: `${h.getURL()}?user=${_User.id}&page=activ_projects`,
+                        login_url: {
+                            'url': `${h.getURL()}?user=${_User.id}&page=activ_projects`,
+                        },
                     },
                 ]
             ],
@@ -341,7 +343,9 @@ async function statusProjects(msg)
                 [
                     {
                         text: 'Перейти',
-                        url: `${h.getURL()}?user=${_User.id}&page=wait_projects`,
+                        login_url: {
+                            'url': `${h.getURL()}?user=${_User.id}&page=wait_projects`,
+                        },
                     },
                 ]
             ],

@@ -135,7 +135,9 @@ async function help_user(msg)
                 [
                     {
                         text: 'Перейти',
-                        url: `${h.getURL()}?user=${_User.id}&page=chats&owner=true`,
+                        login_url: {
+                            'url': `${h.getURL()}?user=${_User.id}&page=chats&owner=true`,
+                        },
                     },
                 ]
             ],
