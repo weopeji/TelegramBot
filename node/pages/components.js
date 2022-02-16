@@ -2025,13 +2025,19 @@ async function acceptProject(socket,data,callback)
                 [
                     {
                         text: "Рекомендовать",
-                        url: `https://invester-relocation.site/?page=telegram_authorization&type=recomendation&userId=${data}`,
+                        login_url: {
+                            'url': `https://invester-relocation.site/?page=telegram_authorization&type=recomendation&userId=${data}`,
+                            'request_write_access': true,
+                        },
                     }
                 ],
                 [
                     {
                         text: "Подробнее",
-                        url: `https://invester-relocation.site/?page=telegram_authorization&type=more&userId=${data}`,
+                        login_url: {
+                            'url': `https://invester-relocation.site/?page=telegram_authorization&type=more&userId=${data}`,
+                            'request_write_access': true,
+                        },
                     }
                 ]
             ],
@@ -2042,7 +2048,6 @@ async function acceptProject(socket,data,callback)
 
     ;(async () => 
     {
-        // URL or path of photo
         const photo = `https://invester-relocation.site/projects/${data}/logo_instagram.jpg`;
 
         var _caption = `
