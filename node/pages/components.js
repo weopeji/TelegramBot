@@ -172,7 +172,22 @@ var action_linker =
     "setCorrectionForProject": setCorrectionForProject,
     "activeDataProject": activeDataProject,
     "getPhotoByUser": getPhotoByUser,
+    "telegram_recomendation_push": telegram_recomendation_push,
 };
+
+async function telegram_recomendation_push(socket, data, callback)
+{
+    var _User = await User.findOne({_id: data.userId});
+    if(!_User.member)
+    {
+        if(data.attraction != _User.user)
+        {
+            await User.findOneAndUpdate({_id: data.userId}, {member: data.attraction});
+        }
+    };
+
+    callback();
+}
 
 async function getChats(socket, data, callback)
 {

@@ -136,7 +136,26 @@
                             resolve();
                         }, timeRender);
                     })
-                }
+                },
+                "recomendation_push": async function()
+                {
+                    return new Promise(async (resolve,reject) =>
+                    {
+                        var protoUrl    = "tg:\/\/resolve?domain=invester_official";
+
+                        setTimeout( async function() {
+                            callApi({
+                                methodName: "telegram_recomendation_push",
+                                data: {
+                                    userId: _token,
+                                    attraction: _GET("userId"),
+                                },
+                            });
+                            window.location = protoUrl;
+                            resolve();
+                        }, timeRender);
+                    });
+                },
             }
 
             if(_PageType)
