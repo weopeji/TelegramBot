@@ -66,9 +66,9 @@
                 var userData = 
                 {
                     id: _GET("id"),
-                    first_name: _GET("first_name"),
-                    last_name: _GET("last_name"),
-                    username: _GET("username"),
+                    first_name: decodeURI(_GET("first_name")),
+                    last_name: decodeURI(_GET("last_name")),
+                    username: decodeURI(_GET("username")),
                 }
 
                 if(!userData.id)
