@@ -895,107 +895,110 @@
                 data: _id,
             });
 
-            var _ImgPath    = _User.Path_im;
-            _User           = _User._User;
-
-            console.log(_User);
-
-            if(_ImgPath)
+            if(_User != "error")
             {
-                $('.index_page_body_header_user_avatar_img img').attr('src', `https://api.telegram.org/file/bot2062839693:AAE0hzj8SVXyexq29s5x7aRLC5x8O77c-pQ/${_ImgPath.file_path}`);
-            }
-            
-            $('.index_page_body_header_user_avatar_name span').html(_User.first_name + " " + _User.last_name);
-            $('.index_page_body_header_user_avatar_name p').html(_User.type);
-
-            var buttons = {
-                "investor": 
-                `
-                    <div class="index_page_menu_block_line" data="activ_projects">
-                        <i class="fal fa-chart-line"></i>
-                        <span>Активные проекты</span>
-                    </div>
-                    <div class="index_page_menu_block_line" data="wait_projects">
-                        <i class="fal fa-inventory"></i>
-                        <span>Ожидают подтверждения</span>
-                    </div>
-                    <div class="index_page_menu_block_line" data="Attracted_by_me">
-                        <i class="fal fa-users"></i>
-                        <span>Мной привлечено</span>
-                    </div>
-                `,
-                "business": `
-                    <div class="index_page_menu_block_line" data="myProjects">
-                        <i class="fal fa-project-diagram"></i>
-                        <span>Мои проекты</span>
-                    </div>
-                    <div class="index_page_menu_block_line" data="payments_new">
-                        <i class="fal fa-money-check"></i>
-                        <span>Выплаты</span>
-                    </div>
-                    <div class="index_page_menu_block_line" data="obligations">
-                        <i class="fal fa-file-import"></i>
-                        <span>Обязательства перед investER</span>
-                    </div>
-                    <div class="index_page_menu_block_line" data="acceptPays">
-                        <i class="fal fa-check-square"></i>
-                        <span>Поступления</span>
-                    </div>
-                `,
-                "attraction": `
-                    <!-- <div class="index_page_menu_block_line" data="reward">
-                        <i class="fal fa-money-check-alt"></i>
-                        <span>Вознаграждение</span>
-                    </div> -->
-                    <div class="index_page_menu_block_line" data="Attracted_by_me">
-                        <i class="fal fa-users"></i>
-                        <span>Мной привлечено</span>
-                    </div>
-                `,
-            }
-
-            var button = buttons[_User.type];
-
-            console.log(button);
-
-            $('.index_page_menu_block').append(button);
-
-            $(`.index_page_menu_block_line[data="${global.allData.pageID}"]`).addClass('selected');
-            $('.index_page_body_header_info span').html($('.index_page_menu_block_line.selected').text());
-
-            $('.index_page_menu_block_line').click( function() {
-                location.href = `/?page=${$(this).attr('data')}`;
-            });
-
-            if(_User.type == "business")
-            {
-                $('.add_project_button').click( function() {
-                    location.href = `/?page=creating`;
+                var _ImgPath    = _User.Path_im;
+                _User           = _User._User;
+    
+                console.log(_User);
+    
+                if(_ImgPath)
+                {
+                    $('.index_page_body_header_user_avatar_img img').attr('src', `https://api.telegram.org/file/bot2062839693:AAE0hzj8SVXyexq29s5x7aRLC5x8O77c-pQ/${_ImgPath.file_path}`);
+                }
+                
+                $('.index_page_body_header_user_avatar_name span').html(_User.first_name + " " + _User.last_name);
+                $('.index_page_body_header_user_avatar_name p').html(_User.type);
+    
+                var buttons = {
+                    "investor": 
+                    `
+                        <div class="index_page_menu_block_line" data="activ_projects">
+                            <i class="fal fa-chart-line"></i>
+                            <span>Активные проекты</span>
+                        </div>
+                        <div class="index_page_menu_block_line" data="wait_projects">
+                            <i class="fal fa-inventory"></i>
+                            <span>Ожидают подтверждения</span>
+                        </div>
+                        <div class="index_page_menu_block_line" data="Attracted_by_me">
+                            <i class="fal fa-users"></i>
+                            <span>Мной привлечено</span>
+                        </div>
+                    `,
+                    "business": `
+                        <div class="index_page_menu_block_line" data="myProjects">
+                            <i class="fal fa-project-diagram"></i>
+                            <span>Мои проекты</span>
+                        </div>
+                        <div class="index_page_menu_block_line" data="payments_new">
+                            <i class="fal fa-money-check"></i>
+                            <span>Выплаты</span>
+                        </div>
+                        <div class="index_page_menu_block_line" data="obligations">
+                            <i class="fal fa-file-import"></i>
+                            <span>Обязательства перед investER</span>
+                        </div>
+                        <div class="index_page_menu_block_line" data="acceptPays">
+                            <i class="fal fa-check-square"></i>
+                            <span>Поступления</span>
+                        </div>
+                    `,
+                    "attraction": `
+                        <!-- <div class="index_page_menu_block_line" data="reward">
+                            <i class="fal fa-money-check-alt"></i>
+                            <span>Вознаграждение</span>
+                        </div> -->
+                        <div class="index_page_menu_block_line" data="Attracted_by_me">
+                            <i class="fal fa-users"></i>
+                            <span>Мной привлечено</span>
+                        </div>
+                    `,
+                }
+    
+                var button = buttons[_User.type];
+    
+                console.log(button);
+    
+                $('.index_page_menu_block').append(button);
+    
+                $(`.index_page_menu_block_line[data="${global.allData.pageID}"]`).addClass('selected');
+                $('.index_page_body_header_info span').html($('.index_page_menu_block_line.selected').text());
+    
+                $('.index_page_menu_block_line').click( function() {
+                    location.href = `/?page=${$(this).attr('data')}`;
                 });
-            } else 
-            {
-                $('.add_project_button span').html("Инвестировать");
-
-                $('.add_project_button').click( function() {
-                    location.href = `https://t.me/invester_official`;
-                });
+    
+                if(_User.type == "business")
+                {
+                    $('.add_project_button').click( function() {
+                        location.href = `/?page=creating`;
+                    });
+                } else 
+                {
+                    $('.add_project_button span').html("Инвестировать");
+    
+                    $('.add_project_button').click( function() {
+                        location.href = `https://t.me/invester_official`;
+                    });
+                }
+    
+                if(_User.alerts)
+                {
+                    _User.alerts.forEach(function(alert) {
+                        if(alert.type == "Attracted_by_me")
+                        {
+                            $('.index_page_menu_block_line[data="Attracted_by_me"]').addClass('alerts');
+                        }
+                    })
+                }
+    
+                if(_User.alert_msgs)
+                {
+                    $('.index_page_menu_block_line[data="chats"] .index_page_menu_block_line_alert i').css('display', 'flex');
+                }
             }
 
-            if(_User.alerts)
-            {
-                _User.alerts.forEach(function(alert) {
-                    if(alert.type == "Attracted_by_me")
-                    {
-                        $('.index_page_menu_block_line[data="Attracted_by_me"]').addClass('alerts');
-                    }
-                })
-            }
-
-            if(_User.alert_msgs)
-            {
-                $('.index_page_menu_block_line[data="chats"] .index_page_menu_block_line_alert i').css('display', 'flex');
-            }
- 
             return _User;
         }
     }
