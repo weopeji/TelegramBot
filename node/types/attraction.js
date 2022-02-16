@@ -86,21 +86,47 @@ async function url(msg)
     if(_User.attractType == 1)
     {
         var _array  = [];
-        var html = `<strong>${msg.from.first_name} ${msg.from.last_name}</strong> делитесь с друзьями вашей реферальной ссылкой`;
+
+        // 1 ===
+        var html = `<strong>${msg.from.first_name}</strong> Чтобы рекомендовать проект и закрепить за собой инвестора\nВам нужно поделится личной ссылкой\nИли переслать сообщение ниже`;
         var fat = await h.send_html(msg.chat.id, html, 
         {
             "resize_keyboard": true,
             "keyboard": [["⬅️ Назад"]],
         });
         _array.push(fat.message_id);
-        var _url = `https://t.me/invester_official_bot?start=adder_${msg.from.id}`;
-        var html = `${_url}`;
-        var fat = await h.send_html(msg.chat.id, html, 
+
+        // 2 ===
+        const stream = fs.createReadStream(`../html/assets/images/logo_print.jpeg`);
+        await bot.sendPhoto(msg.from.id, stream, {
+            "caption": html,
+            "parse_mode": "html",
+            "reply_markup": {
+                "inline_keyboard": [
+                    [
+                        {
+                            text: "Инвестиционные предложения",
+                            login_url: {
+                                'url': `https://invester-relocation.site/?page=telegram_authorization&type=recomendation_push&userId=${msg.from.id}`,
+                                'request_write_access': true,
+                            },
+                        }
+                    ]
+                ],
+            }
+        });
+
+        // var fat = await h.send_html(msg.chat.id, html, 
+        // {
+        //     "resize_keyboard": true,
+        //     inline_keyboard: [
+        //         [{ text: 'Поделитесь с друзьями', switch_inline_query: _url}]
+        //     ]
+        // });
+        var html = "Либо нажмите на ссылку чтобы скопировать и отпрватье ее друзьям\n\n`https://t.me/invester_official_bot?start=adder_" + msg.from.id.toString() + "`";
+        var fat = await bot.sendMessage(msg.from.id, html, 
         {
-            "resize_keyboard": true,
-            inline_keyboard: [
-                [{ text: 'Поделитесь с друзьями', switch_inline_query: _url}]
-            ]
+            parse_mode: "Markdown",
         });
         _array.push(fat.message_id);
         await h.DMA(msg, _array);
