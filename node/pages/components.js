@@ -276,15 +276,60 @@ async function setCorrectionForProject(socket, data, callback)
 
 async function telegram_auth_getToken(socket, data, callback)
 {
-    var _authToken = await authToken.findOne({token: data});
+    var _User = await User.findOne({user: data.id});
 
-    if(_authToken)
+    if(_User) 
     {
-        var _User = await User.findOne({user: _authToken.user});
         callback(_User._id);
-    } else
+    } 
+    else 
     {
-        callback(false);
+        var _patch = `../users/${data.id}`;
+
+        async function _start() 
+        {
+            var _path_profile = `../users_profile/${data.id}`;
+
+            async function _start_profil() 
+            {
+                var newUser = await User.create({
+                    user: data.id, 
+                    first_name: data.first_name, 
+                    last_name: data.last_name,
+                    username: data.username,
+                    language_code: "ru",
+                    is_bot: "false",
+                    type: "investor",
+                    img: null,
+                    googleAuth: null,
+                    alerts: null,
+                    investor_data: null,
+                    where: null,
+                });
+
+                if(callback) {callback(newUser._id);};    
+            }
+
+            fs.stat(_path_profile, async function(err) {
+                if (!err) {_start_profil();}
+                else if (err.code === 'ENOENT') {
+                    await fs.mkdir(_path_profile, function() {
+                        _start_profil();
+                    });
+                }
+            })
+        }
+
+        fs.stat(_patch, async function(err) {
+            if (!err) {
+                _start();
+            }
+            else if (err.code === 'ENOENT') {
+                await fs.mkdir(_patch, function() {
+                    _start();
+                });
+            }
+        });
     }
 }
 

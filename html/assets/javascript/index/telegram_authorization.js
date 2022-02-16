@@ -61,77 +61,41 @@
 
         async getUser()
         {
-            var _this = this;
-
             return new Promise(async (resolve,reject) =>
             {
-                var _token = _getCookie('token');
-
-                if(typeof _token != "undefined")
+                var userData = 
                 {
-                    resolve(true);
-                } else
+                    id: _GET("id"),
+                    first_name: _GET("first_name"),
+                    last_name: _GET("last_name"),
+                    username: _GET("username"),
+                }
+
+                if(!userData.id)
                 {
-                    var athTokenget = _getCookie("auth_token");
-
-                    if(typeof athTokenget != "undefined")
-                    {
-                        var NeedToken = await callApi({
-                            methodName: "telegram_auth_getToken",
-                            data: athTokenget,
-                        });
-
-                        if(NeedToken)
-                        {
-                            setCookie("token", NeedToken);
-                            resolve(true);
-                        } else {
-                            resolve(false);
-                        }                        
-                    } else 
-                    {
-                        resolve(false);
-                    }
+                    window.close();
+                    return;
+                }
+                else
+                {
+                    var NeedToken = await callApi({
+                        methodName: "telegram_auth_getToken",
+                        data: userData,
+                    });
+                    setCookie("token", NeedToken);
+                    resolve(NeedToken);
                 }
             });
         }
-
-        rand() {
-            return Math.random().toString(36).substr(2);
-        };
-        
-        token() {
-            return this.rand() + this.rand();
-        };
 
         async render()
         {
             await this.renderStyles();
             await this.renderBody();
 
-            var _User       = await this.getUser();
             var _PageType   = _GET("type");
-            var _token      = _getCookie('token');
-            var randomToken = this.token();
+            var _token      = await this.getUser();
             var timeRender  = 1000;
-
-            if(!_User)
-            {
-                setCookie("auth_token", randomToken);
-            }
-
-            function checkChrome(runlink, callback) 
-            {
-                window.location = runlink;
-                setTimeout(function(){
-                    if ( window.isFocused ) callback();
-                }, 1000);
-            }
-
-            window.addEventListener("beforeunload", function(event) {
-                console.log(event);
-                window.close();
-            });
 
             var funsType = {
                 "recomendation": async function()
@@ -139,28 +103,17 @@
                     return new Promise(async (resolve,reject) =>
                     {
                         var protoUrl    = "tg:\/\/resolve?domain=invester_official_bot";
-                        var protocolWeb = "https://t.me/invester_official_bot";
-
-                        $('.telegram_authorization_image').attr('href', "https://t.me/invester_official_bot" + `?start=member_${_GET("userId")}_auth_${randomToken}`);
 
                         setTimeout( async function() {
-                            if(_User)
-                            {
-                                callApi({
-                                    methodName: "telegram_auth_recomendation",
-                                    data: {
-                                        projectId: _GET("userId"),
-                                        userId: _token,
-                                    },
-                                });
-                                checkChrome(protoUrl, function() {
-                                    window.location = protocolWeb;
-                                })
-                            } else {
-                                checkChrome(protoUrl + `&start=member_${_GET("userId")}_auth_${randomToken}`, function() {
-                                    window.location = protocolWeb + `?start=member_${_GET("userId")}_auth_${randomToken}`;
-                                })
-                            }
+                            callApi({
+                                methodName: "telegram_auth_recomendation",
+                                data: {
+                                    projectId: _GET("userId"),
+                                    userId: _token,
+                                },
+                            });
+                            window.location = protoUrl;
+                            
                             resolve();
                         }, timeRender);
                     })
@@ -170,28 +123,16 @@
                     return new Promise(async (resolve,reject) =>
                     {
                         var protoUrl    = "tg:\/\/resolve?domain=invester_official_bot";
-                        var protocolWeb = "https://t.me/invester_official_bot";
-
-                        $('.telegram_authorization_image').attr('href', "https://t.me/invester_official_bot" + `?start=project_${_GET("userId")}_auth_${randomToken}`);
 
                         setTimeout( async function() {
-                            if(_User)
-                            {
-                                callApi({
-                                    methodName: "telegram_auth_more",
-                                    data: {
-                                        projectId: _GET("userId"),
-                                        userId: _token,
-                                    },
-                                });
-                                checkChrome(protoUrl, function() {
-                                    window.location = protocolWeb;
-                                });
-                            } else {
-                                checkChrome(protoUrl + `&start=project_${_GET("userId")}_auth_${randomToken}`, function() {
-                                    window.location = protocolWeb + `?start=project_${_GET("userId")}_auth_${randomToken}`;
-                                });
-                            }
+                            callApi({
+                                methodName: "telegram_auth_more",
+                                data: {
+                                    projectId: _GET("userId"),
+                                    userId: _token,
+                                },
+                            });
+                            window.location = protoUrl;
                             resolve();
                         }, timeRender);
                     })
