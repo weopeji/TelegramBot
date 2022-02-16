@@ -173,7 +173,22 @@ var action_linker =
     "activeDataProject": activeDataProject,
     "getPhotoByUser": getPhotoByUser,
     "telegram_recomendation_push": telegram_recomendation_push,
+    "telegram_recomendation_push_b": telegram_recomendation_push_b,
 };
+
+async function telegram_recomendation_push_b(socket, data, callback)
+{
+    var _User = await User.findOne({_id: data.userId});
+    if(!_User.member_b)
+    {
+        if(data.attraction != _User.user)
+        {
+            await User.findOneAndUpdate({_id: data.userId}, {member_b: data.attraction});
+        }
+    };
+
+    callback();
+}
 
 async function telegram_recomendation_push(socket, data, callback)
 {
