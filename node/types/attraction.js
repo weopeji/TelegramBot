@@ -88,7 +88,7 @@ async function url(msg)
         var _array  = [];
 
         // 1 ===
-        var html = `<strong>${msg.from.first_name}</strong> Чтобы рекомендовать проект и закрепить за собой инвестора\nВам нужно поделится личной ссылкой\nИли переслать сообщение ниже`;
+        var html = `<strong>${msg.from.first_name}</strong> Чтобы рекомендовать закрепить за собой инвестора\nВам нужно поделится личной ссылкой\nИли переслать сообщение ниже`;
         var fat = await h.send_html(msg.chat.id, html, 
         {
             "resize_keyboard": true,
@@ -127,35 +127,43 @@ async function url(msg)
     } else 
     {
         var _array  = [];
-        var _User   = await User.findOne({user: msg.from.id});
-    
-        var html = "Делитесь с бизнес-проектами вашей реферальной ссылкой. Все проекты, прошедшие проверку и размещенные на канале investER, будут закреплены за вами";
-        var fat = await h.send_html(msg.from.id, html, {
-            "resize_keyboard": true,
-            "keyboard": [
-                ["⬅️ Назад"]
-            ],
-        });
-    
-        _array.push(fat.message_id)
-    
-        var html = `При добавлении проекта по этой ссылке все проекты в админке маркируются как поступившие от бизнес-брокера и закрепляются за конкретным человеком.`;
-        var _url = `${h.getURL()}?user=${_User._id}&page=ref_url`;
-    
-        var fat = await h.send_html(msg.from.id, html);
-        _array.push(fat.message_id);
 
-        var _url = `https://t.me/invester_official_bot?start=adder-b_${msg.from.id}`;
-        var html = `${_url}`;
+        // 1 ===
+        var html = `<strong>${msg.from.first_name}</strong> Чтобы закрепить за собой проект Вам нужно поделится личной сссылкой или переслать сообщеноие ниже`;
         var fat = await h.send_html(msg.chat.id, html, 
         {
             "resize_keyboard": true,
-            inline_keyboard: [
-                [{ text: 'Поделитесь с друзьями', switch_inline_query: _url}]
-            ]
+            "keyboard": [["⬅️ Назад"]],
         });
         _array.push(fat.message_id);
-    
+
+        // 2 ===
+        const stream = fs.createReadStream(`../html/assets/images/logo_print.jpeg`);
+        var fat = await await bot.sendPhoto(msg.from.id, stream, {
+            "parse_mode": "html",
+            "reply_markup": {
+                "inline_keyboard": [
+                    [
+                        {
+                            text: "Получить финансирование",
+                            login_url: {
+                                'url': `https://invester-relocation.site/?page=telegram_authorization&type=recomendation_push_b&userId=${msg.from.id}`,
+                                'request_write_access': true,
+                            },
+                        }
+                    ]
+                ],
+            }
+        });
+        _array.push(fat.message_id);
+
+        // 3
+        var html = "Либо нажмите на ссылку чтобы скопировать и отпрватье ее бизнесу\n\n`https://t.me/invester_official_bot?start=adder_" + msg.from.id.toString() + "`";
+        var fat = await bot.sendMessage(msg.from.id, html, 
+        {
+            parse_mode: "Markdown",
+        });
+        _array.push(fat.message_id);
         await h.DMA(msg, _array);
     }
 }
