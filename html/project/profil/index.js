@@ -115,6 +115,15 @@
     
                     $('.arbitr_add').append(_default);
                 }
+            } else {
+                var _default = $(`
+                    <div class="page_line">
+                        <span>Подробная информация</span>
+                        <p>Проблемы парсера</p>
+                    </div>
+                `);
+
+                $('.arbitr_add').append(_default);
             }
         }
 
