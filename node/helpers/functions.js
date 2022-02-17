@@ -152,7 +152,7 @@ async function alertAdmin(data)
                         [
                             {
                                 text: "Перейти к модерации",
-                                url: `https://invester-relocation.site/settings/?page=block&id=${_project._id}`,
+                                url: `https://invester-relocation.site/settings/?page=block&id=${_project._id}&more=data`,
                             }
                         ]
                     ],
@@ -172,7 +172,7 @@ async function alertAdmin(data)
                         [
                             {
                                 text: "Перейти к модерации",
-                                url: `https://invester-relocation.site/settings/?page=block&id=${_project._id}`,
+                                url: `https://invester-relocation.site/settings/?page=block&id=${_project._id}&more=more`,
                             }
                         ]
                     ],

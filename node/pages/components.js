@@ -2480,11 +2480,13 @@ async function setProject(socket,data,callback)
         }
     }); 
     await savePuppeter(_Project._id);
+
     h.alertAdmin({
         type: "creating_project",
         text: "Новый проект подан на модерацию",
         projectId: _Project._id,
     });
+
     callback({status: "ok"});    
 }
 
