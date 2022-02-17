@@ -1467,16 +1467,6 @@
             {
                 correctArray[element._id] = document.getElementById(`${element._id}_block`).getAttribute('data');
             });
-            
-
-            for(var key in correctArray) 
-            {
-                var _data = correctArray[key];
-                if(_data == null) {
-                    alert('Введите все данные!');
-                    return;
-                }
-            }
 
             $('.index_page').empty();
             $('.preloader').fadeIn( function() {
