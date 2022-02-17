@@ -1064,6 +1064,15 @@
                 </div>
             `);
 
+            firstBlockMore.find('textarea').on('keyup input', function() 
+            {
+                var _val = $(this).val();
+                _val = _val.replace(/[^\d;]/g, '')
+                _val = _val.replace(/\s/g, '');
+                var format = String(_val).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
+                $(this).val(format);
+            });
+
             if(typeof _project.multiplicity != 'undefined')
             {
                 firstBlockMore.find('.body_point_line_first p').html(Number(_project.multiplicity).toDivide());
