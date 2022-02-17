@@ -197,13 +197,10 @@
                 </div>
             `);
 
-            inputText.find('input').on('keyup input', function() 
-            {
-                var _val = $(this).val();
-                _val = _val.replace(/[^\d;]/g, '')
-                _val = _val.replace(/\s/g, '');
-                var format = String(_val).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
-                $(this).val(format);
+            inputText.find('input').bind("change keyup input click", function() {
+                if (this.value.match(/[^0-9]/g)) {
+                    this.value = this.value.replace(/[^0-9]/g, '');
+                }
             });
 
             var _this = this;
