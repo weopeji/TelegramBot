@@ -197,6 +197,15 @@
                 </div>
             `);
 
+            inputText.find('input').on('keyup input', function() 
+            {
+                var _val = $(this).val();
+                _val = _val.replace(/[^\d;]/g, '')
+                _val = _val.replace(/\s/g, '');
+                var format = String(_val).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
+                $(this).val(format);
+            });
+
             var _this = this;
 
             inputText.find('.creating_page_input_button span').click( function (event) {
