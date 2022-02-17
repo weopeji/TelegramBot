@@ -1052,7 +1052,7 @@
                             <p>0</p>
                         </div>
                         <div class="body_point_line body_point_line_input" data="multiplicity">
-                            <textarea rows="1" id="investings_pay_textarea" class="text_area"></textarea>
+                            <input id="investings_pay_textarea" class="text_area"></textarea>
                             <span class="body_point_line_input_close">
                                 <i class="fal fa-minus-square"></i>
                             </span>
@@ -1064,7 +1064,7 @@
                 </div>
             `);
 
-            firstBlockMore.find('textarea').on('keyup input', function() 
+            firstBlockMore.find('input').on('keyup input', function() 
             {
                 var _val = $(this).val();
                 _val = _val.replace(/[^\d;]/g, '')
@@ -1095,7 +1095,7 @@
 
             firstBlockMore.find(".body_point_line_input_accept").click( function() 
             {
-                var _text = $(this).parent().find("textarea").val();
+                var _text = $(this).parent().find("input").val();
 
                 callApi({
                     methodName: 'redactingLineSettingsPageGlobalMultiplicity',
