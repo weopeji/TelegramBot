@@ -152,15 +152,74 @@
             var aux         = filename.split('.');
             var extension   = aux[aux.length -1].toUpperCase();
 
-            if(extension === 'MP4'
-                || extension === 'MPEG'
-                || extension === 'MPEG-1'
-                || extension === 'MPEG-2'
-                || extension === 'MPEG-3'
-                || extension === 'MPEG-4'
-            ){
-                alert('Неверный формат: ' + extension + '. Видео запрещенно.');
-                return;
+            if(file_id == 'file+4')
+            {
+                if(extension === 'MP4'
+                    || extension === 'MPEG'
+                    || extension === 'MPEG-1'
+                    || extension === 'MPEG-2'
+                    || extension === 'MPEG-3'
+                    || extension === 'MPEG-4'
+                ){
+                    alert('Неверный формат: ' + extension + '. Видео запрещенно.');
+                    return;
+                }
+            }
+
+            if(file_id == 'file+3')
+            {
+                if(extension === 'MP4'
+                    || extension === 'MPEG'
+                    || extension === 'MPEG-1'
+                    || extension === 'MPEG-2'
+                    || extension === 'MPEG-3'
+                    || extension === 'MPEG-4'
+                ){
+                    alert('Неверный формат: ' + extension + '. Видео запрещенно.');
+                    return;
+                }
+            }
+
+            if(file_id == 'file+3_1')
+            {
+                if(extension === 'MP4'
+                    || extension === 'MPEG'
+                    || extension === 'MPEG-1'
+                    || extension === 'MPEG-2'
+                    || extension === 'MPEG-3'
+                    || extension === 'MPEG-4'
+                ){
+                    alert('Неверный формат: ' + extension + '. Видео запрещенно.');
+                    return;
+                }
+            }
+            
+            if(file_id == 'file+3_3')
+            {
+                if(extension === 'MP4'
+                    || extension === 'MPEG'
+                    || extension === 'MPEG-1'
+                    || extension === 'MPEG-2'
+                    || extension === 'MPEG-3'
+                    || extension === 'MPEG-4'
+                ){
+                    alert('Неверный формат: ' + extension + '. Видео запрещенно.');
+                    return;
+                }
+            }
+            
+            if(file_id == 'file+3_2')
+            {
+                if(extension === 'MP4'
+                    || extension === 'MPEG'
+                    || extension === 'MPEG-1'
+                    || extension === 'MPEG-2'
+                    || extension === 'MPEG-3'
+                    || extension === 'MPEG-4'
+                ){
+                    alert('Неверный формат: ' + extension + '. Видео запрещенно.');
+                    return;
+                }
             }
 
             var _form    = new FormData();
