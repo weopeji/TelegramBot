@@ -273,6 +273,11 @@ bot.onText(/\/start (.+)/, async (msg, match) =>
     }
 });
 
+async function defaultShow(msg)
+{
+    main_page._CreatorFUN(msg);
+};
+
 async function defaultShowProject(msg, _idProject)
 {
     await User.findOneAndUpdate({user: msg.from.id}, {putProject: _idProject});
@@ -361,7 +366,7 @@ bot.on('message', async (msg) =>
 
 module.exports = {
     defaultShowProject,
-    main_page,
+    defaultShow,
 }
 
 var components_page = function components_page(socket,data,callback)

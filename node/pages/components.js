@@ -2401,7 +2401,7 @@ async function setProject(socket,data,callback)
         chat: {id: _User.user},
     };
 
-    await _app.main_page._CreatorFUN(msg);
+    await _app.main_page.defaultShow(msg);
 
 
     var user_path                   = `../users/${_User.user}`;
