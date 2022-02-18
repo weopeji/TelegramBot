@@ -520,7 +520,7 @@
                     signature[_type].body.forEach( function(element) 
                     {
                         var dataBlockUrlAppend  = _project.signature.data[element._id];
-                        var dataBlockUrlText    = "Посмотреть";
+                        var dataBlockUrlText    = "Посмотреть <i class='fas fa-download'></i>";
                         
                         if(!dataBlockUrlAppend)
                         {
@@ -529,7 +529,7 @@
                         
                         var _file = `
                             <div class="download_buttons">
-                                <a target="_blank" href="${getURL()}/projects/${_project._id}/${dataBlockUrlAppend}">${dataBlockUrlText} <i class='fas fa-download'></i></a>
+                                <a target="_blank" href="${getURL()}/projects/${_project._id}/${dataBlockUrlAppend}">${dataBlockUrlText}</a>
                             </div>  
                         `;
                         var _line = $(`
