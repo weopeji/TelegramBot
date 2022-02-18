@@ -190,6 +190,8 @@ async function setInvestERDocumentLoadOfInvester(socket, data, callback)
     });
 
     h.alertDeleteOfUserOnbot("Договор с инвестором успешно подписан, модерация продолжается, ожидайте публикации проекта", _Project.user);
+
+    callback();
 }
 
 async function setInvestERDocumentLoad(socket, data, callback)
