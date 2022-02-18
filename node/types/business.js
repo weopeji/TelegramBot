@@ -232,7 +232,7 @@ async function not_active(msg)
         }]);
     }
 
-    var html = `У вас неактивных проектов - ${_moderation.length + _correction.length}\n\n<strong>Ожидают модерацию: ${_moderation.length} ${romb1}</strong>\n<strong>Ожидают исправления: ${_correction.length} ${romb2}</strong>`;
+    var html = `У вас неактивных проектов: ${_moderation.length + _correction.length}\n\n<strong>Ожидают модерацию: ${_moderation.length} ${romb1}</strong>\n<strong>Ожидают исправления: ${_correction.length} ${romb2}</strong>`;
     var globalMsg = await h.send_html(msg.chat.id, html, {
         "inline_keyboard": keyboard,
     });

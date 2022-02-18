@@ -41,6 +41,7 @@ def main(argv):
 
     driver.get("https://kad.arbitr.ru/")
 
+    driver.find_element(By.CLASS_NAME, "b-promo_notification-popup-close").click()
     driver.find_element(By.CSS_SELECTOR, 'textarea[class="g-ph"]').send_keys(argv)
     driver.find_element(By.ID, "b-form-submit").click()
     
