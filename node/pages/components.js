@@ -177,7 +177,17 @@ var action_linker =
     "registrationDocumentAcceptAdmin": registrationDocumentAcceptAdmin,
     "setInvestERDocumentLoad": setInvestERDocumentLoad,
     "setInvestERDocumentLoadOfInvester": setInvestERDocumentLoadOfInvester,
+    "endInvestingDataPush": endInvestingDataPush,
 };
+
+async function endInvestingDataPush(socket, data, callback)
+{
+    var _User       = await User.findOne({_id: data.user});
+    var _Project    = await Project.findOne({_id: data.project});
+
+    h.alertDeleteOfUserOnbot(`${_User.first_name} вы успешно проинвестировали в проект ${_Project._id} "${_Project.data.name}" с ковычками сумму ${data.money} руб. ${data.date} Ожидайте подтверждения бизнесом получения денег. Так как сумма идет банковским платежом, поступление на расчетный счет бизнеса может занять до 3х банковских дней`, _User.user);
+    callback();
+}
 
 async function setInvestERDocumentLoadOfInvester(socket, data, callback)
 {

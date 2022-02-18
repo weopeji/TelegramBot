@@ -368,8 +368,20 @@
                                 window.open(`https://invester-relocation.site/projects/${_this.project._id}/file_cheack_get_${global.allData.User.user}.${extension}`, '_blank');
                             })
             
-                            moreBlock.find(`[data="accept"]`).click( async function() {
-                                location.href = `https://invester-relocation.site/?page=telegram_authorization&type=more&userId=${_this.project._id}`; 
+                            moreBlock.find(`[data="accept"]`).click( async function() 
+                            {
+                                await callApi({
+                                    methodName: "endInvestingDataPush",
+                                    data: {
+                                        user: _GET('user'),
+                                        project: _this.project._id,
+                                        money: _this.money.toString().ReplaceNumber(),
+                                        date: _this.date,
+                                    },
+                                });
+
+                                var protoUrl    = "tg:\/\/resolve?domain=invester_official_bot";
+                                window.location = protoUrl;
                             });
             
                             $('.creating_page_input').append(moreBlock);
@@ -394,7 +406,7 @@
 
             if(typeof multiplicityData != "undefined")
             {
-                multiplicityText = `Сумма должна быть кратна: ${multiplicityData.toString().ReplaceNumber()} руб.`;
+                multiplicityText = `<br>Сумма должна быть кратна: ${multiplicityData.toString().ReplaceNumber()} руб.`;
             };
 
             var msgsBlock = $(`
@@ -402,8 +414,8 @@
                     <div class="creating_page_start" style="margin-bottom: 20px">
                         <span>
                             Уважаемый Инвестор ${global.allData.User.first_name} Введите сумму инвестирования</a>.<br>
-                            Минимальная сумма входа: ${_projectMoney.toString().ReplaceNumber()} руб. <br>
-                            ${multiplicityText};
+                            Минимальная сумма входа: ${_projectMoney.toString().ReplaceNumber()} руб.
+                            ${multiplicityText}
                         </span>
                     </div>
                 </div>
