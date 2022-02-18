@@ -547,7 +547,7 @@
                                 <div class="body_point_line_header">
                                     <div class="body_point_line_header_text">
                                         <span>${element.name}</span>
-                                        ${_file}
+                                        
                                     </div>
                                     <div class="body_point_line_header_info">
 
@@ -555,6 +555,8 @@
                                 </div>
                             </div>
                         `);
+
+                        _line.find(".body_point_line_header_text").prepend(_file);
 
                         _header.append(_line);
                     });
