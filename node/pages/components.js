@@ -189,6 +189,8 @@ async function setInvestERDocumentLoad(socket, data, callback)
     });
 
     h.alertDeleteOfUserOnbot("Вы подписали договор с investER, ожидайте дальнейшей модерации проекта, о ее результатах сообщим здесь", _Project.user);
+
+    callback();
 }
 
 async function registrationDocumentAcceptAdmin(socket, data, callback)
