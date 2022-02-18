@@ -176,7 +176,21 @@ var action_linker =
     "telegram_recomendation_push_b": telegram_recomendation_push_b,
     "registrationDocumentAcceptAdmin": registrationDocumentAcceptAdmin,
     "setInvestERDocumentLoad": setInvestERDocumentLoad,
+    "setInvestERDocumentLoadOfInvester": setInvestERDocumentLoadOfInvester,
 };
+
+async function setInvestERDocumentLoadOfInvester(socket, data, callback)
+{
+    var _Project = await Project.findOne({_id: data});
+
+    h.alertAdmin({
+        type: "correct_signature",
+        text: "Договор бизнеса с инвестором был подписан",
+        projectId: data,
+    });
+
+    h.alertDeleteOfUserOnbot("Договор с инвестором успешно подписан, модерация продолжается, ожидайте публикации проекта", _Project.user);
+}
 
 async function setInvestERDocumentLoad(socket, data, callback)
 {
