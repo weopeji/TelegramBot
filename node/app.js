@@ -591,7 +591,7 @@ app.post('/file_registration.io/files', (req, res) => {
                     }});
                 });
             } else {
-                console.log('Файл не найден');
+                console.log('Файл не найден'); 
                 cheack_file();
             }
         } catch(err) {
