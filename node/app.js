@@ -710,12 +710,6 @@ app.post('/file_signature_document.io/files', (req, res) => {
                     sign.status = "on";
 
                     await Project.findOneAndUpdate({_id: _data._id}, {type: "moderation", signature_document: sign});
-
-                    helper_functions.alertAdmin({
-                        type: "correct_signature",
-                        text: "Был подписан документ в проекте!",
-                        projectId: _data._id,
-                    })
                 });
             } else {
                 console.log('Файл не найден');
