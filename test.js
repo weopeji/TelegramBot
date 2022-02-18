@@ -27,3 +27,5 @@ h.alertAdmin({
 });
 
 h.full_alert_user(_project.user, `В проекте под номером ${_project._id} нужно исправить данные!`, "redactingSettings");
+
+h.alertDeleteOfUserOnbot(html, _User.user);

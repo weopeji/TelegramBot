@@ -175,7 +175,21 @@ var action_linker =
     "telegram_recomendation_push": telegram_recomendation_push,
     "telegram_recomendation_push_b": telegram_recomendation_push_b,
     "registrationDocumentAcceptAdmin": registrationDocumentAcceptAdmin,
+    "setInvestERDocumentLoad": setInvestERDocumentLoad,
 };
+
+async function setInvestERDocumentLoad(socket, data, callback)
+{
+    var _Project = await Project.findOne({_id: data});
+
+    h.alertAdmin({
+        type: "correct_signature",
+        text: "Был подписан документ c investER в проекте!",
+        projectId: data,
+    });
+
+    h.alertDeleteOfUserOnbot("Вы подписали договор с investER, ожидайте дальнейшей модерации проекта, о ее результатах сообщим здесь", _Project.user);
+}
 
 async function registrationDocumentAcceptAdmin(socket, data, callback)
 {

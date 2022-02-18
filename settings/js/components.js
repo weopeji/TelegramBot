@@ -869,7 +869,7 @@
                     });
 
                     this.global_block.append(firstBlockMore);
-                } else
+                } else if(_project.registrationDocument.status = "wait_admin")
                 {
                     var firstBlockMore = $(`
                         <div class="body_point">
@@ -898,6 +898,8 @@
                             methodName: 'registrationDocumentAcceptAdmin',
                             data: _GET("id"),
                         });
+                        alert('Успешно!');
+                        location.reload(); 
                     });
 
                     firstBlockMore.find('input[type=file]').change( async function() 

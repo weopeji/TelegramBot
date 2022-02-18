@@ -98,7 +98,6 @@ async function full_alert_user(_id, _text, _type)
         const stream = fs.createReadStream(_path);
 
         var fat = await bot.sendPhoto(_user.user, stream, {
-            caption: _text,
             parse_mode: "HTML",
         });
 

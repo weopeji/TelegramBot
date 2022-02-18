@@ -1147,10 +1147,14 @@
 
             newBlock.find('.creating_page_input_div[data="relocation"]').click( function() {
                 $('.index_page').empty();
-                $('.preloader').fadeIn( function() {
-                    $('.preloader').fadeOut( function() {
-                        $('.end_get_project').css('display', "flex");
+                $('.preloader').fadeIn( function() 
+                {
+                    await callApi({
+                        methodName: 'setInvestERDocumentLoad',
+                        data: _project._id,
                     });
+                    var protoUrl    = "tg:\/\/resolve?domain=invester_official_bot";
+                    window.location = protoUrl;
                 });
             })
 
