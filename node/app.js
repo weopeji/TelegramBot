@@ -276,7 +276,7 @@ bot.onText(/\/start (.+)/, async (msg, match) =>
 async function defaultShowProject(msg, _idProject)
 {
     await User.findOneAndUpdate({user: msg.from.id}, {putProject: _idProject});
-    main_page._CreatorFUN(msg);
+    await main_page._CreatorFUN(msg);
 };
 
 bot.on('message', async (msg) => 
