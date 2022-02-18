@@ -1087,7 +1087,7 @@
 
             newBlock.find('.creating_page_input_div[data="relocation"]').click( function() {
                 $('.index_page').empty();
-                $('.preloader').fadeIn( function() {
+                $('.preloader').fadeIn( async function() {
                     await callApi({
                         methodName: 'setInvestERDocumentLoadOfInvester',
                         data: _project._id,
