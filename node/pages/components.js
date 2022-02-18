@@ -2080,7 +2080,7 @@ async function putRedacting(socket,data,callback) {
         projectId: _Project._id,
     });
 
-    h.full_alert_user(_project.user, `Данные проекта были успешно изменены! Ожидайте дальнейшей модерации`, "redactingProject");
+    h.alertDeleteOfUserOnbot("Данные проекта были успешно изменены! Ожидайте дальнейшей модерации", _project.user);
 
     callback('ok');
 }
