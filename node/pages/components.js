@@ -199,7 +199,7 @@ async function setInvestERDocumentLoad(socket, data, callback)
     var _Project = await Project.findOne({_id: data});
 
     h.alertAdmin({
-        type: "correct_signature",
+        type: "correct_investerDocument",
         text: "Был подписан документ c investER в проекте!",
         projectId: data,
     });
@@ -216,7 +216,7 @@ async function registrationDocumentAcceptAdmin(socket, data, callback)
 
     _RegistrationDoc.status = "wait";
 
-    h.full_alert_user(_Project.user, `Нужно подписание документа в проекте ${_Project.data.name}`, "file_urist");
+    h.full_alert_user(_Project.user, `Вам поступил договор с ООО "ИНВЕСТИР" Необходимо ознакомится, подписать и отправить`, "file_urist");
 
     callback(await Project.findOneAndUpdate({_id: data}, {
         registrationDocument: _RegistrationDoc,
