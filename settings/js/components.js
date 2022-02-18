@@ -521,17 +521,27 @@
                     {
                         var dataBlockUrlAppend  = _project.signature.data[element._id];
                         var dataBlockUrlText    = "Посмотреть <i class='fas fa-download'></i>";
+                        var clearCssForAhref    = false;
                         
                         if(!dataBlockUrlAppend)
                         {
                             dataBlockUrlText = "Документ не был добавлен пользователем";
+                            clearCssForAhref = true;
                         }
                         
-                        var _file = `
+                        var _file = $(`
                             <div class="download_buttons">
                                 <a target="_blank" href="${getURL()}/projects/${_project._id}/${dataBlockUrlAppend}">${dataBlockUrlText}</a>
                             </div>  
-                        `;
+                        `);
+
+                        if(clearCssForAhref)
+                        {
+                            _file.find('a').css('text-decoration', "none");
+                        }
+
+                        _file.find('a').css('color', "white");
+
                         var _line = $(`
                             <div class="body_point_line _file">
                                 <div class="body_point_line_header">
