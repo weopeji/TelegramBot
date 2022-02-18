@@ -467,7 +467,10 @@ async function telegram_auth_recomendation(socket, data, callback)
                 [
                     {
                         text: "Инвестровать",
-                        url: _url,
+                        login_url: {
+                            'url': _url,
+                            'request_write_access': true,
+                        },
                     }
                 ]
             ],
