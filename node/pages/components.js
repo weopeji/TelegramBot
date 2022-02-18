@@ -2585,8 +2585,13 @@ async function savePuppeter(putProject)
     return true;
 }
 
-async function getUser(socket,data,callback) {
+async function getUser(socket,data,callback) 
+{
     var _user = await User.findOne({_id: data});
+    if(_user)
+    {
+        await User.findOneAndUpdate({_id: data}, {type: "business"});
+    }
     callback(_user);
 }
 
