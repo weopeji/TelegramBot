@@ -869,7 +869,7 @@
                     });
 
                     this.global_block.append(firstBlockMore);
-                } else if(_project.registrationDocument.status == "wait_admin")
+                } else if(_project.registrationDocument.status == "wait_admin") 
                 {
                     var firstBlockMore = $(`
                         <div class="body_point">
