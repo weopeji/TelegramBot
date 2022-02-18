@@ -2230,7 +2230,7 @@ async function acceptProject(socket,data,callback)
     });
 
 
-    h.full_alert_user(_project.user, `Ваш проект номер ${_project._id} ${_project.data.name} был опубликован в investER!`, "acceptProject");
+    h.full_alert_user(_project.user, `Ваш проект номер ${_project._id} "${_project.data.name}" был опубликован в investER!`, "acceptProject");
 
     h.alertAdmin({
         type: "creating_project",

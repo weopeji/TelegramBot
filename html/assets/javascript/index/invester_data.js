@@ -389,13 +389,21 @@
 
             $('.creating_page').empty();
 
+            var multiplicityData = _this.project.multiplicity;
+            var multiplicityText = "";
+
+            if(multiplicityData != 0 || multiplicityData != "0")
+            {
+                multiplicityText = `Сумма должна быть кратна: ${multiplicityData.toString().ReplaceNumber()} руб.`;
+            };
+
             var msgsBlock = $(`
                 <div class="creating_page_block">
                     <div class="creating_page_start" style="margin-bottom: 20px">
                         <span>
                             Уважаемый Инвестор ${global.allData.User.first_name} Введите сумму инвестирования</a>.<br>
                             Минимальная сумма входа: ${_projectMoney.toString().ReplaceNumber()} руб. <br>
-                            Сумма должна быть кратна: ${_this.project.multiplicity.toString().ReplaceNumber()} руб.
+                            ${multiplicityText};
                         </span>
                     </div>
                 </div>

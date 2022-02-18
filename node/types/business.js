@@ -114,7 +114,7 @@ async function getMoney(msg)
     var allPays         = 0;
     var falseInvs       = [];
 
-    var html = `Вы находитесь в меню: "Получение денег от инвестора"`;
+    var html = `Вы находитесь в меню: "Активные проекты"`;
 
     var fat = await h.send_html(msg.chat.id, html, {
         "resize_keyboard": true,
