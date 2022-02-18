@@ -2015,8 +2015,8 @@ async function correct_signature(socket,data,callback)
     _array.status = "on";
 
     h.alertAdmin({
-        type: "correct_signature",
-        text: "Юр данные проекта были добавлены!",
+        type: "correct_investerDocument",
+        text: "Дополнительные документы проекта были добавленны",
         projectId: _project._id,
     });
     
