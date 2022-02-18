@@ -84,7 +84,7 @@ async function full_alert_user(_id, _text, _type)
 
         var _array      = [];
 
-        var fat = await bot.sendMessage(id, "Новое оповещение", 
+        var fat = await bot.sendMessage(_user.user, "Новое оповещение", 
         {
             parse_mode: "HTML",
             reply_markup: {
