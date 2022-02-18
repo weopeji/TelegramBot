@@ -104,7 +104,12 @@ async function full_alert_user(_id, _text, _type)
 
         _array.push(fat.message_id);
 
-        await MA_U(_user.user, _array);
+        var msg     = {
+            from: {id: _user.user},
+            chat: {id: _user.user},
+        };
+
+        await DMA(msg, _array);
     }
 
     mkdirp(`/var/www/users_alerts/${_User.user}`, err => {
