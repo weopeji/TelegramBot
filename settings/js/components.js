@@ -879,7 +879,10 @@
                             <div class="body_point_line_block_more_registration_business">
                                 <st>Посмотреть</st>
                                 <st>Подтвердить</st>
-                                <st>Заменить</st>
+                                <input type="file" name="" id="DocumentToRegistration">
+                                <label for="DocumentToRegistration">
+                                    <span>Заменить</span>
+                                </label>
                             </div>
                         </div>
                     `);
@@ -895,6 +898,23 @@
                             methodName: 'registrationDocumentAcceptAdmin',
                             data: _GET("id"),
                         });
+                    });
+
+                    firstBlockMore.find('input[type=file]').change( async function() 
+                    {
+                        var filename = $(this.files)[0].name;
+                        var aux = filename.split('.');
+                        var extension = aux[aux.length -1].toUpperCase();
+
+                        var _form    = new FormData();
+
+                        _form.append('files', $(this.files)[0]);
+                        _form.append('_id', _project._id);
+                        _form.append('_pts', extension);
+                        _this.setRegistrationFile(_project._id, _form);
+
+                        alert('Успешно!');
+                        location.reload(); 
                     });
 
                     this.global_block.append(firstBlockMore);
