@@ -2019,8 +2019,14 @@ async function putRedacting(socket,data,callback) {
         }
     });
 
-    
     await Project.findOneAndUpdate({_id: data._id}, {data: _data, type: "moderation", redacting: null});
+
+    h.alertAdmin({
+        type: "creating_project",
+        text: "Проект был отредактирован пользователем",
+        projectId: _Project._id,
+    });
+
     callback('ok');
 }
 

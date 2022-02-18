@@ -19,3 +19,9 @@ var keyboard = [
         },
     }
 ];
+
+h.alertAdmin({
+    type: "creating_project",
+    text: "Новый проект подан на модерацию",
+    projectId: _Project._id,
+});
