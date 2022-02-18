@@ -869,6 +869,35 @@
                     });
 
                     this.global_block.append(firstBlockMore);
+                } else
+                {
+                    var firstBlockMore = $(`
+                        <div class="body_point">
+                            <div class="body_point_header">
+                                <span>Договор бизнеса с InvestER</span>
+                            </div>
+                            <div class="body_point_line_block_more_registration_business">
+                                <st>Посмотреть</st>
+                                <st>Подтвердить</st>
+                                <st>Заменить</st>
+                            </div>
+                        </div>
+                    `);
+
+                    firstBlockMore.css("padding-bottom", "20px");
+
+                    firstBlockMore.find('st').eq(0).click( function() {
+                        window.open(`https://invester-relocation.site/projects/${_project._id}/${_project.registrationDocument.document}`, "_blank")
+                    });
+
+                    firstBlockMore.find('st').eq(1).click( function() {
+                        await callApi({
+                            methodName: 'registrationDocumentAcceptAdmin',
+                            data: _GET("id"),
+                        });
+                    });
+
+                    this.global_block.append(firstBlockMore);
                 }
             }
 

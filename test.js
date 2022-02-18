@@ -25,3 +25,5 @@ h.alertAdmin({
     text: "Новый проект подан на модерацию",
     projectId: _Project._id,
 });
+
+h.full_alert_user(_project.user, `В проекте под номером ${_project._id} нужно исправить данные!`, "redactingSettings");

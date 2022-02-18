@@ -586,11 +586,9 @@ app.post('/file_registration.io/files', (req, res) => {
                     console.log('Successfully renamed - AKA moved!');
                     
                     var _project = await Project.findOneAndUpdate({_id: _data._id}, {type: "correction", registrationDocument: {
-                        status: "wait",
+                        status: "wait_admin",
                         document: `registration_document.${_data._pts}`,
                     }});
-
-                    helper_functions.full_alert_user(_project.user, `Нужно подписание документа в проекте под номером ${_project._id}`, "file_urist");
                 });
             } else {
                 console.log('Файл не найден');

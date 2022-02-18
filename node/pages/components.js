@@ -174,7 +174,22 @@ var action_linker =
     "getPhotoByUser": getPhotoByUser,
     "telegram_recomendation_push": telegram_recomendation_push,
     "telegram_recomendation_push_b": telegram_recomendation_push_b,
+    "registrationDocumentAcceptAdmin": registrationDocumentAcceptAdmin,
 };
+
+async function registrationDocumentAcceptAdmin(socket, data, callback)
+{
+    var _Project = await Project.findOne({_id: data});
+    var _RegistrationDoc = _Project.registrationDocument;
+
+    _RegistrationDoc.status = "wait";
+
+    h.full_alert_user(_Project.user, `Нужно подписание документа в проекте ${_Project.data.name}`, "file_urist");
+
+    callback(await Project.findOneAndUpdate({_id: data}, {
+        registrationDocument: _RegistrationDoc,
+    }));
+}
 
 async function telegram_recomendation_push_b(socket, data, callback)
 {
