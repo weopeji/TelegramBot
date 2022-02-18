@@ -1311,7 +1311,8 @@
                 _id: _id,
             }).then(() => {
                 $('.preloader').fadeOut( function() {
-                    $('.end_get_project').css('display', "flex");
+                    var protoUrl    = "tg:\/\/resolve?domain=invester_official_bot";
+                    window.location = protoUrl;
                 });
             });
             
