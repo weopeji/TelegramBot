@@ -244,7 +244,7 @@
                         }   
                     }
                     
-                    this._append("List.org", `https://www.list-org.com/search?type=fio&val=${need_project.parce.pr.inn}`, true);
+                    this._append("List.org", `https://www.list-org.com/search?type=fio&val=${need_project.parce.pr.inn}`, true); 
 
                     startArbitr();
                 },
