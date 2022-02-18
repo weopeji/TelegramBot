@@ -332,6 +332,8 @@ async function activeDataProject(socket, data, callback)
 
 async function setCorrectionForProject(socket, data, callback)
 {
+    var _Project = await Project.findOne({_id: data});
+    h.full_alert_user(_Project.user, `Поступил договор - оферта с Инвестором. Необходимо ознакомится подписать и отправить`, "redactingSettings");
     callback(await Project.findOneAndUpdate({_id: data}, {type: "correction"}));
 }
 
