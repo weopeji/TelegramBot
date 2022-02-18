@@ -2226,6 +2226,10 @@ async function acceptProject(socket,data,callback)
         channel_id: dataPhotoPush.message_id,
         data_creating: new Date().getTime(),
     });
+
+
+    h.full_alert_user(_project.user, `Проект ${_project.data.name} был опубликован в канале!`, "redactingSettings");
+    h.alertDeleteOfUserOnbot(`Ваш проект номер ${_project._id} ${_project.data.name} был опубликован в investER!`, _project.user);
 }
 
 
