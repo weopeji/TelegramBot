@@ -2234,8 +2234,8 @@ async function acceptProject(socket,data,callback)
 
     h.alertAdmin({
         type: "creating_project",
-        text: "Проект ${_project.data.name} был опубликован в канале!",
-        projectId: _Project._id,
+        text: `Проект ${_project.data.name} был опубликован в канале!`,
+        projectId: _project._id,
     });
 }
 
