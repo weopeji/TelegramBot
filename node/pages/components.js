@@ -186,6 +186,9 @@ async function endInvestingDataPush(socket, data, callback)
     var _Project    = await Project.findOne({_id: data.project});
 
     h.alertDeleteOfUserOnbot(`${_User.first_name} вы успешно проинвестировали в проект\n ${_Project._id}\n "${_Project.data.name}"\n на сумму ${data.money} руб.\n ${data.date}\n Ожидайте подтверждения бизнесом получения денег. Так как сумма идет банковским платежом, поступление на расчетный счет бизнеса может занять до 3х банковских дней`, _User.user);
+
+    h.full_alert_user(_Project.user, `Поступила оплата по договору номер ${_Project._id}/1 на сумму ${data.money} руб. по договору от ${data.date}, требуется подтверждение`, "put_investring");
+
     callback();
 }
 
