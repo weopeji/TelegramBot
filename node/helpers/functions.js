@@ -23,6 +23,7 @@ module.exports = {
     savePuppeter,
     full_alert_user,
     alertAdmin,
+    alertDeleteOfUserOnbot,
 }
 
 function privateInit(initPlagins) {
@@ -320,4 +321,21 @@ async function alertBot(msg, type)
     }
 
     await User.findOneAndUpdate({user: msg.from.id}, { alerts: alerts });
+}
+
+async function alertDeleteOfUserOnbot(html, id)
+{
+    var _array  = [];
+    var msg     = {
+        from: {id: id},
+        chat: {id: id},
+    };
+
+    var fat  = await h.send_html(id, html, {
+        "resize_keyboard": true,
+        "keyboard": [["⬅️ Назад"]],
+    });
+
+    _array.push(fat.message_id);
+    await h.DMA(msg, _array);
 }

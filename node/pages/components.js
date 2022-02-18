@@ -2395,13 +2395,7 @@ async function cheackInnCreator(socket,data,callback)
 async function setProject(socket,data,callback) 
 {
     var _User                       = await User.findOne({user: data.user});
-    var _array                      = [];
     var html                        = _User.first_name + '\nПроект успешно подан на модерацию.\nВы получите уведомление в боте о ее результатах.';
-    var fat                         = await h.send_html(_User.user, html);
-
-    _array.push(fat.message_id);
-    await h.DMA(msg, _array);
-
     var user_path                   = `../users/${_User.user}`;
     var _dataProject                = data.data;
     var redactinProject             = {}; // ParcingPage
@@ -2425,6 +2419,8 @@ async function setProject(socket,data,callback)
             business_commission: 30,
         }
     };
+
+    h.alertDeleteOfUserOnbot(html, _User.user);
 
     for(var _key in _dataProject)
     {
