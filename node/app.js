@@ -273,11 +273,6 @@ bot.onText(/\/start (.+)/, async (msg, match) =>
     }
 });
 
-async function defaultShow(msg)
-{
-    main_page._CreatorFUN(msg);
-};
-
 async function defaultShowProject(msg, _idProject)
 {
     await User.findOneAndUpdate({user: msg.from.id}, {putProject: _idProject});
