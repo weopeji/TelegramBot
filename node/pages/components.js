@@ -2228,8 +2228,13 @@ async function acceptProject(socket,data,callback)
     });
 
 
-    h.full_alert_user(_project.user, `Проект ${_project.data.name} был опубликован в канале!`, "redactingSettings");
-    h.alertDeleteOfUserOnbot(`Ваш проект номер ${_project._id} ${_project.data.name} был опубликован в investER!`, _project.user);
+    h.full_alert_user(_project.user, `Ваш проект номер ${_project._id} ${_project.data.name} был опубликован в investER!`, "redactingSettings");
+
+    h.alertAdmin({
+        type: "creating_project",
+        text: "Проект ${_project.data.name} был опубликован в канале!",
+        projectId: _Project._id,
+    });
 }
 
 
