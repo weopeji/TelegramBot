@@ -1997,8 +1997,9 @@ async function correct_signature(socket,data,callback)
         type: "correct_signature",
         text: "Юр данные проекта были добавлены!",
         projectId: _project._id,
-    })
+    });
     
+    h.alertDeleteOfUserOnbot("Дополнительные документы проекта успешно загружены, ождайте результатов модерации", _Project.user);
 
     await Project.findOneAndUpdate({_id: data}, {signature: _array, type: "moderation"});
 }

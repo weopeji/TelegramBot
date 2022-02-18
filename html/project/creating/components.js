@@ -1462,9 +1462,8 @@
 
             $('.index_page').empty();
             $('.preloader').fadeIn( function() {
-                $('.preloader').fadeOut( function() {
-                    $('.end_get_project').css('display', "flex");
-                });
+                var protoUrl    = "tg:\/\/resolve?domain=invester_official_bot";
+                window.location = protoUrl;
             });
 
             return callApi({
