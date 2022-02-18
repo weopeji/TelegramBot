@@ -173,10 +173,6 @@ var load_helpers = () =>
 }
 
 
-module.exports = {
-    defaultShowProject,
-}
-
 bot.on("polling_error", console.log);
 
 bot.on("callback_query", function(callbackQuery) 
@@ -363,7 +359,10 @@ bot.on('message', async (msg) =>
     }
 });
 
-
+module.exports = {
+    defaultShowProject,
+    main_page,
+}
 
 var components_page = function components_page(socket,data,callback)
 {

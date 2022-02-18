@@ -2487,6 +2487,13 @@ async function setProject(socket,data,callback)
         projectId: _Project._id,
     });
 
+    var msg             = {
+        from: {id: _User.user},
+        chat: {id: _User.user},
+    };
+
+    await _app.main_page._CreatorFUN(msg);
+
     callback({status: "ok"});    
 }
 

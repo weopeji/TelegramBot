@@ -1407,20 +1407,8 @@
                 },
             });
 
-            if(global._User.member_b)
-            {
-                callApi({
-                    methodName: 'tg_alert_user_numbers',
-                    data: {
-                        text: "Вы привели новый Проект! Вы можете посмотреть весь список у себя в кабинете",
-                        user: global._User.member_b,
-                    },
-                });
-            }
-            
-            $('.preloader').fadeOut( function() {
-                $('.end_get_project').css('display', "flex"); 
-            });
+            var protoUrl    = "tg:\/\/resolve?domain=invester_official_bot";
+            window.location = protoUrl;
         }
 
         async correct(param, user) 
