@@ -556,7 +556,7 @@
                             </div>
                         `);
 
-                        _line.find(".body_point_line_header_text").prepend(_file);
+                        _line.find(".body_point_line_header_text").append(_file);
 
                         _header.append(_line);
                     });
