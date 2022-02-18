@@ -2395,6 +2395,15 @@ async function cheackInnCreator(socket,data,callback)
 async function setProject(socket,data,callback) 
 {
     var _User                       = await User.findOne({user: data.user});
+
+    var msg             = {
+        from: {id: _User.user},
+        chat: {id: _User.user},
+    };
+
+    await _app.main_page._CreatorFUN(msg);
+
+
     var user_path                   = `../users/${_User.user}`;
     var _dataProject                = data.data;
     var redactinProject             = {}; // ParcingPage
@@ -2486,13 +2495,6 @@ async function setProject(socket,data,callback)
         text: "Новый проект подан на модерацию",
         projectId: _Project._id,
     });
-
-    var msg             = {
-        from: {id: _User.user},
-        chat: {id: _User.user},
-    };
-
-    await _app.main_page._CreatorFUN(msg);
 
     callback({status: "ok"});    
 }
