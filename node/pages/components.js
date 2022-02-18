@@ -1999,7 +1999,7 @@ async function correct_signature(socket,data,callback)
         projectId: _project._id,
     });
     
-    h.alertDeleteOfUserOnbot("Дополнительные документы проекта успешно загружены, ождайте результатов модерации", _Project.user);
+    h.alertDeleteOfUserOnbot("Дополнительные документы проекта успешно загружены, ождайте результатов модерации", _project.user);
 
     await Project.findOneAndUpdate({_id: data}, {signature: _array, type: "moderation"});
 }
