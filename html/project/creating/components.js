@@ -1145,7 +1145,7 @@
                 window.open(`/projects/${_project._id}/file_registration_document.${global.fileRegMorePts}` , '_blank');
             })
 
-            newBlock.find('.creating_page_input_div[data="relocation"]').click( async function() {
+            newBlock.find('.creating_page_input_div[data="relocation"]').click( async function() { 
                 $('.index_page').empty();
                 $('.preloader').fadeIn( function() 
                 {
