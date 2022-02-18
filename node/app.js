@@ -361,7 +361,6 @@ bot.on('message', async (msg) =>
 
 module.exports = {
     defaultShowProject,
-    defaultShow,
 }
 
 var components_page = function components_page(socket,data,callback)
