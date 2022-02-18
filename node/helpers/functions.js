@@ -84,6 +84,17 @@ async function full_alert_user(_id, _text, _type)
 
         var _array      = [];
 
+        var fat = await bot.sendMessage(id, "Новое оповещение", 
+        {
+            parse_mode: "HTML",
+            reply_markup: {
+                "resize_keyboard": true,
+                "keyboard": [["⬅️ Назад"]],
+            },
+        });
+
+        _array.push(fat.message_id);
+
         const stream = fs.createReadStream(_path);
 
         var fat = await bot.sendPhoto(_user.user, stream, {
@@ -120,18 +131,7 @@ async function savePuppeter(putProject)
 
 async function alertUser(msg, text) 
 {
-    // var _User       = await User.findOne({user: msg.from.id});
-
-    // let options = 
-    // {
-    //     mode: 'text',
-    //     scriptPath: '../python/system_alerts_user',
-    //     args: [_User.username, text]
-    // };
-
-    // await PythonShell.run('main.py', options, function (err, results) {
-    //     if (err) throw err;
-    // })
+   
 }
 
 async function alertAdmin(data) 

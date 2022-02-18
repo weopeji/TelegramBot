@@ -836,13 +836,19 @@ async function ALL_DATA(socket, data, callback)
 
 async function setRedactingProject(socket, data, callback)
 {
-    callback(await Project.findOneAndUpdate({_id: data.projectId}, {
+    var _Project = await Project.findOneAndUpdate({_id: data.projectId}, {
         type: "correction",
         redacting: {
             body: data.redactingData,
             input: data.input,
         }
-    }))
+    });
+    
+    var _User = await User.findOne({user: _Project.user});
+
+    h.full_alert_user(_User.user, `В проекте: ${_Project.data.name} запрошены дополнительные документы`, "project_redacting");
+
+    callback(_Project);
 }
 
 async function getProjectById(socket,data,callback)
