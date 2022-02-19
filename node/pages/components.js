@@ -2528,7 +2528,7 @@ async function setYouTubeVideo(socket,data,callback)
 {
     var _project        = await Project.findOne({_id: data.projectId});
     var _patch          = `/var/www/projects/${_project._id}`;
-    var YT_VIDEO        = await _AllParce.uploadVideo(_patch, _project.data["file+8"], data.name, data.description);
+    var YT_VIDEO        = await _AllParce.uploadVideo(_patch, "default_video_project.mp4", data.name, data.description);
 
     if(YT_VIDEO != null) {
         await Project.findOneAndUpdate({_id: _project._id}, {YT_VIDEO: YT_VIDEO});
