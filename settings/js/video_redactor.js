@@ -67,7 +67,7 @@
 
                 tamplateText.find('.upload_video_block_button').click( async function() {
                     alert("Успешно! Дождитесь обработки видео!");
-                    callApi({
+                    await callApi({
                         methodName: "dataOfVideoAccept",
                         data: _this.project._id,
                     });
