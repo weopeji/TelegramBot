@@ -24,6 +24,7 @@
 
         async renderFirst() 
         {
+            var _this       = this;
             var dataOfVideo = await callApi({
                 methodName: "dataOfVideo",
                 data: this.project._id,
@@ -68,7 +69,7 @@
                     alert("Успешно! Дождитесь обработки видео!");
                     await callApi({
                         methodName: "dataOfVideoAccept",
-                        data: this.project._id,
+                        data: _this.project._id,
                     });
                     alert("Успешно!");
                 });
