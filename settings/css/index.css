@@ -839,6 +839,21 @@
   color: white;
 }
 
+.upload_video_block_info_row {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: white;
+  font-size: 23px;
+}
+
 @media (max-width: 1500px) {
   .index_page_menu {
     -webkit-box-flex: 1.5;

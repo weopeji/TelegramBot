@@ -67,16 +67,31 @@
 
                 tamplateText.find('.upload_video_block_button').click( async function() {
                     alert("Успешно! Дождитесь обработки видео!");
-                    await callApi({
+                    callApi({
                         methodName: "dataOfVideoAccept",
                         data: _this.project._id,
                     });
-                    alert("Успешно!");
+                    setTimeout(() => {
+                        location.reload();
+                    }, 1000)
                 });
             } else
             {
                 tamplateText.find('.upload_video_block_button span').html('ОШИБКА');
             }
+
+            this.global_block.append(tamplateText);
+        }
+
+        async renderWait()
+        {
+            var tamplateText = $(`
+                <div class="upload_video_block_info">
+                    <div class="upload_video_block_info_row">
+                        <span>Ожидайте форматирования видео и добавление прелоадера</span>
+                    </div>
+                </div>
+            `);
 
             this.global_block.append(tamplateText);
         }
@@ -88,7 +103,21 @@
 
             if(!_project.YT_VIDEO)
             {
-                await this.renderFirst();
+                if(typeof _project.video_redacting == "undefined")
+                {
+                    await this.renderFirst();
+                } 
+                else
+                {
+                    if(_project.video_redacting == "wait")
+                    {
+                        await this.renderWait();
+                    }
+                    else
+                    {
+                        
+                    }
+                }
             };
         }
     }

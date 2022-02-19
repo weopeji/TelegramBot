@@ -190,44 +190,33 @@ async function dataOfVideoAccept(socket, data, callback)
 {
     var _Project = await Project.findOne({_id: data});
 
-    function execPushOfFFMPEG(urlPush)
+    if(_Project)
     {
-        return new Promise(async (resolve,reject) =>
+        Project.findOneAndUpdate({_id: data}, {video_redacting: "wait"});
+
+        function execPushOfFFMPEG(urlPush)
         {
-            exec(urlPush, (error, stdout, stderr) => {
-                resolve('ok');
-            });
-        })
-    }
-    
-    try {
-		new ffmpeg(`/var/www/projects/${_Project._id}/${_Project.data["file+8"]}`, async function (err, video) {
-			if (!err) 
+            return new Promise(async (resolve,reject) =>
             {
-                var formatVideo = video.metadata.filename.split('.')[video.metadata.filename.split('.').length - 1];
-                
-                var pushDoesVideos = [
-                    `ffmpeg -y -i "/var/www/projects/${_Project._id}/${_Project.data["file+8"]}" -c:v libx264 -b:v 17000K -aspect 16:9 -r 25 -b:a 256K "/var/www/projects/${_Project._id}/output_ffmpeg.mp4"`,
-                    `ffmpeg -i "/var/www/projects/${_Project._id}/output_ffmpeg.mp4" -c copy -bsf:v h264_mp4toannexb -f mpegts "/var/www/projects/${_Project._id}/intermediate_video.ts"`,
-                    `ffmpeg -i "concat:/var/www/node/assets/videos/intermediate_print.ts|/var/www/projects/${_Project._id}/intermediate_video.ts" -c copy -bsf:a aac_adtstoasc "/var/www/projects/${_Project._id}/default_video_project.mp4"`
-                ];
-
-                for(var i = 0; i < pushDoesVideos.length; i++)
-                {
-                    await execPushOfFFMPEG(pushDoesVideos[i]);
-                }
-
-			} else {
-				callback({
-                    status: "error",
+                exec(urlPush, (error, stdout, stderr) => {
+                    resolve('ok');
                 });
-			}
-		});
-	} catch (e) {
-		callback({
-            status: "error",
-        });
-	};
+            });
+        };
+            
+        var pushDoesVideos = [
+            `ffmpeg -y -i "/var/www/projects/${_Project._id}/${_Project.data["file+8"]}" -c:v libx264 -b:v 17000K -aspect 16:9 -r 25 -b:a 256K "/var/www/projects/${_Project._id}/output_ffmpeg.mp4"`,
+            `ffmpeg -y -i "/var/www/projects/${_Project._id}/output_ffmpeg.mp4" -c copy -bsf:v h264_mp4toannexb -f mpegts "/var/www/projects/${_Project._id}/intermediate_video.ts"`,
+            `ffmpeg -y -i "concat:/var/www/node/assets/videos/intermediate_print.ts|/var/www/projects/${_Project._id}/intermediate_video.ts" -c copy -bsf:a aac_adtstoasc "/var/www/projects/${_Project._id}/default_video_project.mp4"`
+        ];
+    
+        for(var i = 0; i < pushDoesVideos.length; i++)
+        {
+            await execPushOfFFMPEG(pushDoesVideos[i]); console.log(pushDoesVideos[i] + " ACCEPT");    
+        };
+
+        Project.findOneAndUpdate({_id: data}, {video_redacting: "accept"});
+    };
 }
 
 async function dataOfVideo(socket, data, callback)
