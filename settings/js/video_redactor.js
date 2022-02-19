@@ -57,12 +57,12 @@
                     _volue = "Есть звуковая дорожка";
                 }
 
-                tamplateText.find('.upload_video_block_info_long').html(dataOfVideo.duration);
-                tamplateText.find('.upload_video_block_info_px').html(`${dataOfVideo.video.resolution.w} на ${dataOfVideo.video.resolution.h}`);
-                tamplateText.find('.upload_video_block_info_fomr').html(dataOfVideo.filename.split('.')[dataOfVideo.filename.split('.').length - 1]);
-                tamplateText.find('.upload_video_block_info_soot').html(dataOfVideo.video.aspect.string);
-                tamplateText.find('.upload_video_block_info_cadr').html(dataOfVideo.video.aspect.fps);
-                tamplateText.find('.upload_video_block_info_volue').html(dataOfVideo.video.aspect.fps);
+                tamplateText.find('.upload_video_block_info_long').html(dataOfVideo.data.duration);
+                tamplateText.find('.upload_video_block_info_px').html(`${dataOfVideo.data.video.resolution.w} на ${dataOfVideo.data.video.resolution.h}`);
+                tamplateText.find('.upload_video_block_info_fomr').html(dataOfVideo.data.filename.split('.')[dataOfVideo.data.filename.split('.').length - 1]);
+                tamplateText.find('.upload_video_block_info_soot').html(dataOfVideo.data.video.aspect.string);
+                tamplateText.find('.upload_video_block_info_cadr').html(dataOfVideo.data.video.aspect.fps);
+                tamplateText.find('.upload_video_block_info_volue').html(dataOfVideo.data.video.aspect.fps);
             }
 
             this.global_block.append(tamplateText);
