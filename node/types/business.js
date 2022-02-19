@@ -138,7 +138,7 @@ async function getMoney(msg)
         }
     }
 
-    var html = `Бизнес ${_User.first_name}\n\nУ вас активных проектов: ${allProjects.length}\nОплачено инвесторами ${allPays}\nНе подтверждено получение денег Бизнесом ${notPays}\nПросроченно: Пусто\n\n`;
+    var html = `Бизнес ${_User.first_name}\n\nУ вас активных проектов: ${allProjects.length}\n\nОплачено инвесторами ${allPays}\n\nНе подтверждено получение денег Бизнесом ${notPays}\n\nПросроченно: Пусто\n\n`;
     
     falseInvs.forEach((el, i) => {
         html = html + `№${el.projectId}/${i + 1}  `;
