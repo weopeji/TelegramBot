@@ -758,7 +758,7 @@
         async renderSettings(_project)
         {
             const video_redactor    = new global.Components.video_redactor();
-            video_redactor.render(_project);
+            await video_redactor.render(this.global_block, _project);
 
             // if(_project.YT_VIDEO)
             // {

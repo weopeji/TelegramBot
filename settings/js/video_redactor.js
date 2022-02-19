@@ -19,9 +19,7 @@
         constructor() 
         {
             this.project        = null;
-            this.global_block   = $(`
-                <div class="global_block"></div>
-            `);
+            this.global_block   = null;
         };
 
         async renderFirst() 
@@ -40,9 +38,10 @@
             this.global_block.append(tamplateText);
         }
         
-        async render(_project)
+        async render(global_block, _project)
         {
-            this.project = _project;
+            this.project        = _project;
+            this.global_block   = global_block;
 
             if(!_project.YT_VIDEO)
             {
