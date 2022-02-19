@@ -195,11 +195,6 @@ async function dataOfVideoAccept(socket, data, callback)
         return new Promise(async (resolve,reject) =>
         {
             exec(urlPush, (error, stdout, stderr) => {
-                if (error) {
-                    resolve('error');
-                    return;
-                };
-
                 resolve('ok');
             });
         })
@@ -212,13 +207,14 @@ async function dataOfVideoAccept(socket, data, callback)
                 var formatVideo = video.metadata.filename.split('.')[video.metadata.filename.split('.').length - 1];
                 
                 var pushDoesVideos = [
-                    `ffmpeg -y -i /var/www/projects/${_Project._id}/${_Project.data["file+8"]} -c:v libx264 -b:v 17000K -aspect 16:9 -r 25 -b:a 256K /var/www/projects/${_Project._id}/output_ffmpeg.mp4`
+                    `ffmpeg -y -i "/var/www/projects/${_Project._id}/${_Project.data["file+8"]}" -c:v libx264 -b:v 17000K -aspect 16:9 -r 25 -b:a 256K "/var/www/projects/${_Project._id}/output_ffmpeg.mp4"`,
+                    `ffmpeg -i "/var/www/projects/${_Project._id}/output_ffmpeg.mp4" -c copy -bsf:v h264_mp4toannexb -f mpegts "/var/www/projects/${_Project._id}/intermediate_video.ts"`,
+                    `ffmpeg -i "concat:/var/www/node/assets/videos/intermediate_print.ts|/var/www/projects/${_Project._id}/intermediate_video.ts" -c copy -bsf:a aac_adtstoasc "/var/www/projects/${_Project._id}/default_video_project.mp4"`
                 ];
 
                 for(var i = 0; i < pushDoesVideos.length; i++)
                 {
-                    var dataEndExec = await execPushOfFFMPEG(pushDoesVideos[i]);
-                    console.log(dataEndExec);
+                    await execPushOfFFMPEG(pushDoesVideos[i]);
                 }
 
 			} else {
