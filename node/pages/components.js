@@ -199,11 +199,6 @@ async function dataOfVideoAccept(socket, data, callback)
                     resolve('error');
                     return;
                 };
-                
-                if (stderr) {
-                    resolve('error');
-                    return;
-                };
 
                 resolve('ok');
             });
