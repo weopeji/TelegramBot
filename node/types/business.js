@@ -109,7 +109,7 @@ async function getMoney(msg)
 {
     var _array          = [];
     var _User           = await User.findOne({user: msg.from.id});
-    var allProjects     = await Project.find({user: msg.from.id});
+    var allProjects     = await Project.find({user: msg.from.id, type: "active"});
     var notPays         = 0;
     var allPays         = 0;
     var falseInvs       = [];
@@ -125,6 +125,7 @@ async function getMoney(msg)
     for(var _project of allProjects)
     {
         var AllInvOfProject = await InvDoc.find({projectId: _project._id});
+
         for(_Inv of AllInvOfProject)
         {
             if(_Inv.status == "wait")
@@ -137,7 +138,7 @@ async function getMoney(msg)
         }
     }
 
-    var html = `Бизнес ${_User.first_name}\n\nОплачено инвесторами ${allPays}\nНе подтверждено получение денег Бизнесом ${notPays}\n\n`;
+    var html = `Бизнес ${_User.first_name}\n\nУ вас активных проектов: ${allProjects.length}\nОплачено инвесторами ${allPays}\nНе подтверждено получение денег Бизнесом ${notPays}\nПросроченно: Пусто\n\n`;
     
     falseInvs.forEach((el, i) => {
         html = html + `№${el.projectId}/${i + 1}  `;
