@@ -180,7 +180,10 @@
                         await this.renderAccept();
                     }
                 }
-            };
+            } else
+            {
+                await this.renderAccept();
+            }
         }
     }
 
