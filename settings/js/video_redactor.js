@@ -98,7 +98,9 @@
 
         async renderAccept()
         {
-            if(this.project.YT_VIDEO)
+            var _project = this.project;
+
+            if(_project.YT_VIDEO)
             {
                 var yt_data = JSON.parse(_project.YT_VIDEO[3])
 
@@ -112,8 +114,6 @@
                 this.global_block.append(tamplateText);
             } else 
             {
-                var _project = this.project;
-
                 var _description = `${_project.data.name} № ${_project._id}\n${_project.data.target}\nСтавка ${_project.data.rate}% годовых\nВыплаты ${_project.data.date_payments}\nВход от ${_project.data.minimal_amount} руб.\nПодробнее о предложении в телеграм канале - https://t.me/invester_official
                 `.toString().trim();
 
