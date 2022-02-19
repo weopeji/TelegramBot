@@ -192,7 +192,7 @@ async function dataOfVideoAccept(socket, data, callback)
 
     if(_Project)
     {
-        Project.findOneAndUpdate({_id: data}, {video_redacting: "wait"});
+        await Project.findOneAndUpdate({_id: data}, {video_redacting: "wait"});
 
         function execPushOfFFMPEG(urlPush)
         {
@@ -215,7 +215,7 @@ async function dataOfVideoAccept(socket, data, callback)
             await execPushOfFFMPEG(pushDoesVideos[i]); console.log(pushDoesVideos[i] + " ACCEPT");    
         };
 
-        Project.findOneAndUpdate({_id: data}, {video_redacting: "accept"});
+        await Project.findOneAndUpdate({_id: data}, {video_redacting: "accept"});
     };
 }
 
