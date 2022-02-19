@@ -211,7 +211,7 @@ async function dataOfVideoAccept(socket, data, callback)
     }
     
     try {
-		new ffmpeg(`/var/www/projects/${_Project._id}/${_Project.data["file+8"]}`, function (err, video) {
+		new ffmpeg(`/var/www/projects/${_Project._id}/${_Project.data["file+8"]}`, async function (err, video) {
 			if (!err) 
             {
                 var formatVideo = video.metadata.filename.split('.')[video.metadata.filename.split('.').length - 1];
