@@ -12,11 +12,10 @@ html, body
     align-items: center
 
 .alert
-    width: 810px
-    height: 95px
+    width: 500px
+    height: 80px
     display: flex
     align-items: center
-    padding: 20px
     background-image: url('logo.jpg')
     background-size: cover
 
@@ -25,19 +24,34 @@ html, body
         padding: 0
         margin-top: 10px
         font-size: 24px
+        width: 92%
+        margin: 0
+        padding: 0
+        margin-top: 10px
+        font-size: 15px
 
     span
+        display: -webkit-box
+        display: -ms-flexbox
         display: flex
         background-color: white
+        width: -webkit-fit-content
+        width: -moz-fit-content
         width: fit-content
-        width: 190px
-        height: 38px
+        width: 95px
+        height: 20px
+        -webkit-box-pack: center
+        -ms-flex-pack: center
         justify-content: center
+        -webkit-box-align: center
+        -ms-flex-align: center
         align-items: center
         border-radius: 58px
         position: relative
         font-weight: bold
-        font-size: 24px
+        font-size: 13px
+        top: 5px
+        line-height: 0
 
 
 .alert_row
