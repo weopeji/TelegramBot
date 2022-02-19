@@ -757,62 +757,65 @@
 
         async renderSettings(_project)
         {
-            if(_project.YT_VIDEO)
-            {
-                var yt_data = JSON.parse(_project.YT_VIDEO[3])
+            const video_redactor    = new global.Components.video_redactor();
+            video_redactor.render(_project);
 
-                var tamplateText = $(`
-                    <div class="upload_video_block">
-                        <h1>Загруженное видео</h1>
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/${yt_data.id}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                `);
+            // if(_project.YT_VIDEO)
+            // {
+            //     var yt_data = JSON.parse(_project.YT_VIDEO[3])
 
-                this.global_block.append(tamplateText);
-            } else 
-            {
-                var _description = `${_project.data.name} № ${_project._id}\n${_project.data.target}\nСтавка ${_project.data.rate}% годовых\nВыплаты ${_project.data.date_payments}\nВход от ${_project.data.minimal_amount} руб.\nПодробнее о предложении в телеграм канале - https://t.me/invester_official
-                `.toString().trim();
+            //     var tamplateText = $(`
+            //         <div class="upload_video_block">
+            //             <h1>Загруженное видео</h1>
+            //             <iframe width="560" height="315" src="https://www.youtube.com/embed/${yt_data.id}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            //         </div>
+            //     `);
 
-                var tamplateText = $(`
-                    <div class="upload_video_block">
-                        <h1>Загрузка видео на YouTube</h1>
-                        <video controls="controls" src="https://invester-relocation.site/projects/${_project._id}/${_project.data['file+8']}"></video>
-                        <div class="upload_video_block_unputs">
-                            <div class="upload_video_block_unputs_text" id="upload_video_name" contenteditable="true" style="white-space: pre-line">${_project.data.name} № ${_project._id}</div>
-                            <textarea class="upload_video_block_unputs_text" id="upload_video_description">${_description}</textarea>
-                        </div>
-                    </div>
-                    <div class="upload_video_block_button_row">
-                        <div class="upload_video_block_button">
-                            <span>Загрузить видео</span>
-                        </div>
-                    </div>
-                `);
+            //     this.global_block.append(tamplateText);
+            // } else 
+            // {
+            //     var _description = `${_project.data.name} № ${_project._id}\n${_project.data.target}\nСтавка ${_project.data.rate}% годовых\nВыплаты ${_project.data.date_payments}\nВход от ${_project.data.minimal_amount} руб.\nПодробнее о предложении в телеграм канале - https://t.me/invester_official
+            //     `.toString().trim();
 
-                tamplateText.find('.upload_video_block_button').click( async function () {
-                    var _name = $('#upload_video_name').html();
-                    var _description = $('#upload_video_description').val();
+            //     var tamplateText = $(`
+            //         <div class="upload_video_block">
+            //             <h1>Загрузка видео на YouTube</h1>
+            //             <video controls="controls" src="https://invester-relocation.site/projects/${_project._id}/${_project.data['file+8']}"></video>
+            //             <div class="upload_video_block_unputs">
+            //                 <div class="upload_video_block_unputs_text" id="upload_video_name" contenteditable="true" style="white-space: pre-line">${_project.data.name} № ${_project._id}</div>
+            //                 <textarea class="upload_video_block_unputs_text" id="upload_video_description">${_description}</textarea>
+            //             </div>
+            //         </div>
+            //         <div class="upload_video_block_button_row">
+            //             <div class="upload_video_block_button">
+            //                 <span>Загрузить видео</span>
+            //             </div>
+            //         </div>
+            //     `);
 
-                    alert('Видео отправленно на загрузку, дождитесь его публикации');
+            //     tamplateText.find('.upload_video_block_button').click( async function () {
+            //         var _name = $('#upload_video_name').html();
+            //         var _description = $('#upload_video_description').val();
 
-                    var setYouTubeVideo = await callApi({
-                        methodName: "setYouTubeVideo",
-                        data: {
-                            projectId: _project._id,
-                            name: _name,
-                            description: _description,
-                        },
-                    });
+            //         alert('Видео отправленно на загрузку, дождитесь его публикации');
+
+            //         var setYouTubeVideo = await callApi({
+            //             methodName: "setYouTubeVideo",
+            //             data: {
+            //                 projectId: _project._id,
+            //                 name: _name,
+            //                 description: _description,
+            //             },
+            //         });
 
 
-                    alert(setYouTubeVideo);
+            //         alert(setYouTubeVideo);
 
-                    location.reload();
-                })
+            //         location.reload();
+            //     })
 
-                this.global_block.append(tamplateText);
-            }
+            //     this.global_block.append(tamplateText);
+            // }
         }
 
         setRegistrationFile(_id, _form) {

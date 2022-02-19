@@ -6,7 +6,9 @@
             global.loadResources(['./js/redacting_page.js'], () => {
                 global.loadResources(['./js/commissions.js'], () => {
                     global.loadResources(['./js/Chats.js'], () => {
-                        Main();
+                        global.loadResources(['./js/video_redactor.js'], () => {
+                            Main();
+                        });
                     });
                 });
             });
@@ -26,6 +28,7 @@
         const pays_attract      = new global.Components.pays_attract();
         const commissions       = new global.Components.commissions();
         const Chats             = new global.Components.Chats();
+        
 
         var pagesLAN = 
         {
