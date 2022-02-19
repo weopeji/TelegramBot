@@ -22,7 +22,9 @@ var axios                   = require('axios');
 const ParcingPage           = require('./parcing');
 var { DateTime, Interval }  = require("luxon");
 const { hkdf }              = require("crypto");
-const e = require("express");
+const e                     = require("express");
+var ffmpeg                  = require('ffmpeg');
+const { resolve } = require("path");
 
 
 module.exports = {
@@ -89,6 +91,9 @@ var action_linker =
 
     // chats
     "getChats": getChats,
+
+    // video
+    "dataOfVideo": dataOfVideo,
 
     //  funs
     "getModerations": getModerations,
@@ -178,6 +183,31 @@ var action_linker =
     "setInvestERDocumentLoad": setInvestERDocumentLoad,
     "setInvestERDocumentLoadOfInvester": setInvestERDocumentLoadOfInvester,
     "endInvestingDataPush": endInvestingDataPush,
+};
+
+async function dataOfVideo(socket, data, callback)
+{
+    var _Project = await Project.findOne({_id: data});
+
+    try {
+		new ffmpeg(`/var/www/projects/${_Project._id}/${_Project.data["file+8"]}`, function (err, video) {
+			if (!err) 
+            {
+                callback({
+                    status: "ok",
+                    data: video.metadata,
+                });
+			} else {
+				callback({
+                    status: "error",
+                });
+			}
+		});
+	} catch (e) {
+		callback({
+            status: "error",
+        });
+	};
 };
 
 async function endInvestingDataPush(socket, data, callback)
