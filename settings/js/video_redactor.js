@@ -52,7 +52,7 @@
             {
                 var _volue = "Нет звуковой дорожки";
 
-                if(typeof dataOfVideo.audio != "undefined")
+                if(typeof dataOfVideo.data.audio != "undefined")
                 {
                     _volue = "Есть звуковая дорожка";
                 }
@@ -61,8 +61,8 @@
                 tamplateText.find('.upload_video_block_info_px').html(`${dataOfVideo.data.video.resolution.w} на ${dataOfVideo.data.video.resolution.h}`);
                 tamplateText.find('.upload_video_block_info_fomr').html(dataOfVideo.data.filename.split('.')[dataOfVideo.data.filename.split('.').length - 1]);
                 tamplateText.find('.upload_video_block_info_soot').html(dataOfVideo.data.video.aspect.string);
-                tamplateText.find('.upload_video_block_info_cadr').html(dataOfVideo.data.video.aspect.fps);
-                tamplateText.find('.upload_video_block_info_volue').html(dataOfVideo.data.video.aspect.fps);
+                tamplateText.find('.upload_video_block_info_cadr').html(dataOfVideo.data.video.fps);
+                tamplateText.find('.upload_video_block_info_volue').html(_volue);
             }
 
             this.global_block.append(tamplateText);
