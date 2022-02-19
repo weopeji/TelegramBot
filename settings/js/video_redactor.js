@@ -43,7 +43,7 @@
                 </div>
                 <div class="upload_video_block_button_row">
                     <div class="upload_video_block_button">
-                        <span>Загрузить видео</span>
+                        <span>Подтвердить видео и отправить на обработку</span>
                     </div>
                 </div>
             `);
@@ -57,8 +57,8 @@
                     _volue = "Есть звуковая дорожка";
                 }
 
-                tamplateText.find('.upload_video_block_info_long').html(dataOfVideo.data.duration);
-                tamplateText.find('.upload_video_block_info_px').html(`${dataOfVideo.data.video.resolution.w} на ${dataOfVideo.data.video.resolution.h}`);
+                tamplateText.find('.upload_video_block_info_long').html(dataOfVideo.data.duration.raw);
+                tamplateText.find('.upload_video_block_info_px').html(`${dataOfVideo.data.video.resolution.w}:${dataOfVideo.data.video.resolution.h}`);
                 tamplateText.find('.upload_video_block_info_fomr').html(dataOfVideo.data.filename.split('.')[dataOfVideo.data.filename.split('.').length - 1]);
                 tamplateText.find('.upload_video_block_info_soot').html(dataOfVideo.data.video.aspect.string);
                 tamplateText.find('.upload_video_block_info_cadr').html(dataOfVideo.data.video.fps);
