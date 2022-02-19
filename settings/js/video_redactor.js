@@ -63,6 +63,18 @@
                 tamplateText.find('.upload_video_block_info_soot').html(dataOfVideo.data.video.aspect.string);
                 tamplateText.find('.upload_video_block_info_cadr').html(dataOfVideo.data.video.fps);
                 tamplateText.find('.upload_video_block_info_volue').html(_volue);
+
+                tamplateText.find('.upload_video_block_button').click( async function() {
+                    alert("Успешно! Дождитесь обработки видео!");
+                    await callApi({
+                        methodName: "dataOfVideoAccept",
+                        data: this.project._id,
+                    });
+                    alert("Успешно!");
+                });
+            } else
+            {
+                tamplateText.find('.upload_video_block_button span').html('ОШИБКА');
             }
 
             this.global_block.append(tamplateText);

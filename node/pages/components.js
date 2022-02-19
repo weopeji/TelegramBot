@@ -94,6 +94,7 @@ var action_linker =
 
     // video
     "dataOfVideo": dataOfVideo,
+    "dataOfVideoAccept": dataOfVideoAccept,
 
     //  funs
     "getModerations": getModerations,
@@ -184,6 +185,59 @@ var action_linker =
     "setInvestERDocumentLoadOfInvester": setInvestERDocumentLoadOfInvester,
     "endInvestingDataPush": endInvestingDataPush,
 };
+
+async function dataOfVideoAccept(socket, data, callback)
+{
+    var _Project = await Project.findOne({_id: data});
+
+    function execPushOfFFMPEG(urlPush)
+    {
+        return new Promise(async (resolve,reject) =>
+        {
+            exec(urlPush, (error, stdout, stderr) => {
+                if (error) {
+                    resolve('error');
+                    return;
+                };
+                
+                if (stderr) {
+                    resolve('error');
+                    return;
+                };
+
+                resolve('ok');
+            });
+        })
+    }
+    
+    try {
+		new ffmpeg(`/var/www/projects/${_Project._id}/${_Project.data["file+8"]}`, function (err, video) {
+			if (!err) 
+            {
+                var formatVideo = video.metadata.filename.split('.')[video.metadata.filename.split('.').length - 1];
+                
+                var pushDoesVideos = [
+                    `ffmpeg -y -i /var/www/projects/${_Project._id}/${_Project.data["file+8"]} -c:v libx264 -b:v 17000K -aspect 16:9 -r 25 -b:a 256K /var/www/projects/${_Project._id}/output_ffmpeg.mp4`
+                ];
+
+                for(var i = 0; i < pushDoesVideos.length; i++)
+                {
+                    var dataEndExec = await execPushOfFFMPEG(pushDoesVideos[i]);
+                    console.log(dataEndExec);
+                }
+
+			} else {
+				callback({
+                    status: "error",
+                });
+			}
+		});
+	} catch (e) {
+		callback({
+            status: "error",
+        });
+	};
+}
 
 async function dataOfVideo(socket, data, callback)
 {
