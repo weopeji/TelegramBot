@@ -2660,7 +2660,7 @@ async function redactingParcingProject(socket, data, callback)
 
     var ParceUsersBlock = await ParcingPage.ParceUsersBlock(_Project.data, _ProjectMoreUsers);
 
-    if(_dataProject.organization != 3)
+    if(_Project.data.organization != 3)
     {
         _ProjectParce = 
         {
@@ -2670,9 +2670,9 @@ async function redactingParcingProject(socket, data, callback)
             "fiz": ParceUsersBlock,
         };
 
-        if(_dataProject.organization == 1)
+        if(_Project.data.organization == 1)
         {
-            _ProjectParce.ispo = await _AllParce._ParceProjectIspo(redactinProject);
+            _ProjectParce.ispo = await _AllParce._ParceProjectIspo(_Project.data);
         };
     } else {
         _ProjectParce =
