@@ -43,19 +43,32 @@
             });
         }
 
-        async renderActive(global_block)
+        async renderRedacting(global_block)
         {
             return new Promise(async (resolve,reject) =>
             {
+                var _block = 
+                $(`
+                    <div class="parcing_again_block">
+                        <div class="parcing_again_block_row">
+                            <span>Запросить перепарсинг данных</span>
+                            <div class="parcing_again_block_curcule">
+                                <i class="fa-solid fa-arrow-rotate-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                `);
+
                 resolve();
             })
         }
 
         async render(_project, global_block)
         {
-            if(_project.type = "active")
+
+            if(typeof _project.last_redacting != "undefined")
             {
-                await this.renderActive(global_block);
+                await this.renderRedacting();
             }
 
             var _data           = _project.data;
