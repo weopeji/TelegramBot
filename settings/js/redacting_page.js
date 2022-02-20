@@ -130,7 +130,7 @@
                     </div>
                 `);
 
-                if(typeof _project.last_last_redacting != "undefined")
+                if(typeof _project.last_redacting != "undefined")
                     {
                         if(_project.last_last_redacting.length > 0)
                         {
@@ -138,7 +138,7 @@
                             {
                                 if(redactingLastData.name == DataBlock._id)
                                 {
-                                    _block.find("nn").html("Отредактировано пользователем");
+                                    _block.find("nn").html(`<i class="fal fa-calendar-lines-pen"></i>`);
                                 }
                             }
                         }
@@ -329,13 +329,13 @@
 
                     if(typeof _project.last_last_redacting != "undefined")
                     {
-                        if(_project.last_last_redacting.length > 0)
+                        if(_project.last_redacting.length > 0)
                         {
                             for(var redactingLastData of _project.last_last_redacting)
                             {
                                 if(redactingLastData.name == _keyBlock)
                                 {
-                                    _block.find("NN").html("Отредактировано пользователем");
+                                    _block.find("NN").html(`<i class="fal fa-calendar-lines-pen"></i>`);
                                 }
                             }
                         }

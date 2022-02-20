@@ -593,6 +593,13 @@
           justify-content: space-between;
 }
 
+.structCreator_new_block_row nn {
+  position: absolute;
+  left: 28%;
+  top: 20px;
+  color: #b32b2b;
+}
+
 .structCreator_new_block_buttons {
   display: -webkit-box;
   display: -ms-flexbox;
