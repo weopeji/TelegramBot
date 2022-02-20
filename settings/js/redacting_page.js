@@ -134,7 +134,7 @@
                     {
                         if(_project.last_redacting.length > 0)
                         {
-                            for(var redactingLastData of _project.last_last_redacting)
+                            for(var redactingLastData of _project.last_redacting)
                             {
                                 if(redactingLastData.name == DataBlock._id)
                                 {
@@ -331,7 +331,7 @@
                     {
                         if(_project.last_redacting.length > 0)
                         {
-                            for(var redactingLastData of _project.last_last_redacting)
+                            for(var redactingLastData of _project.last_redacting)
                             {
                                 if(redactingLastData.name == _keyBlock)
                                 {
