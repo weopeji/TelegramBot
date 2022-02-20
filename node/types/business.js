@@ -216,7 +216,7 @@ async function getMoney(msg)
     var fat = await h.send_html(msg.chat.id, html, {
         "resize_keyboard": true,
         "inline_keyboard": [
-            
+            keyboard
         ],
     });
     _array.push(fat.message_id);
