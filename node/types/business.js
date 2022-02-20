@@ -157,7 +157,7 @@ async function getMoney(msg)
         };
     }
 
-    var html        = `Бизнес ${_User.first_name}\n\n<code>У вас активных проектов:</code> ${allProjects.length}\n`;
+    var html        = `Бизнес ${_User.first_name}\n\n<pre>У вас активных проектов:</pre> ${allProjects.length}\n`;
     var keyboard    = 
     [
         [
@@ -172,7 +172,7 @@ async function getMoney(msg)
 
     if(allPays > 0)
     {
-        html += `<code>Оплачено инвесторами:</code> ${allPays}\n`;
+        html += `<pre>Оплачено инвесторами:</pre> ${allPays}\n`;
         keyboard.push([
             {
                 text: "Оплачено инвесторами",
@@ -185,7 +185,7 @@ async function getMoney(msg)
 
     if(notPays > 0)
     {
-        html += `<code>Не подтверждено получение денег:</code> ${notPays}\n`;
+        html += `<pre>Не подтверждено получение денег:</pre> ${notPays}\n`;
         keyboard.push([
             {
                 text: "Не подтверждено",
@@ -198,7 +198,7 @@ async function getMoney(msg)
 
     if(deptComiisssion > 0)
     {
-        html += `<code>Обязательста перед investER:</code> ${deptComiisssion} ₽\n`;
+        html += `<pre>Обязательста перед investER:</pre> ${deptComiisssion} ₽\n`;
         keyboard.push([
             {
                 text: "Оплачено инвесторами",
