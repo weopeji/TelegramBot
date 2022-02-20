@@ -348,7 +348,8 @@
                             }
                         }
                     }).then(data => {
-                        if(data.data.status == "ok") {
+                        if(data.data.status == "ok") 
+                        {
                             alert("Чек прикоеплен!");
                             $('.process_upload_block').remove();
                             $('.creating_page_input span[data="first"]').html('Перезаписать');
@@ -381,6 +382,7 @@
                                         money: _this.money.toString().ReplaceNumber(),
                                         date: _this.date,
                                         url: this.urlForDocument,
+                                        invId: data.data.inv,
                                     },
                                 });
 

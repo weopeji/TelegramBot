@@ -8,6 +8,7 @@ const UserShema = new mongoose.Schema({
     data: JSON,
     pays: JSON,
     date: String,
+    urlToLastDocument: String,
 });
 
 mongoose.model('InvDoc', UserShema);

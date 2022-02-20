@@ -29,5 +29,6 @@
 
     $('data[type="typeinv"]').html(funsType[_type]);
     $('data[type="date"]').html(new Date());
+    $('body').append(`<div class="all_good"></div>`);
 
 })(window);

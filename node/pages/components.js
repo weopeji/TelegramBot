@@ -24,7 +24,9 @@ var { DateTime, Interval }  = require("luxon");
 const { hkdf }              = require("crypto");
 const e                     = require("express");
 var ffmpeg                  = require('ffmpeg');
-const { resolve } = require("path");
+const { resolve }           = require("path");
+const PDFMerger             = require('pdf-merger-js');
+var merger                  = new PDFMerger();
 
 
 module.exports = {
@@ -247,11 +249,32 @@ async function dataOfVideo(socket, data, callback)
 
 async function endInvestingDataPush(socket, data, callback)
 {
-    var _User       = await User.findOne({_id: data.user});
-    var _Project    = await Project.findOne({_id: data.project});
+    var _User               = await User.findOne({_id: data.user});
+    var _Project            = await Project.findOne({_id: data.project});
+    var pathToLastDocument  = `documentLast_${new Date().getTime()}_${data.user}.pdf`;
+
+
+    var html        = "https://invester-relocation.site/" + data.url;
+    const browser = await puppeteer.launch({
+        args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    });
+    const page = await browser.newPage();
+    await page.goto(html);
+    await page.emulateMedia('screen');
+    await page.waitForSelector('.all_good')
+    await page.pdf({path: `/var/www/projects/${_Project._id}/application_number_2_document_${data.user}.pdf`});
+    await browser.close();
+
+
+
+    merger.add(`/var/www/projects/${_Project._id}/file_signature_document.pdf`);
+    merger.add(`/var/www/projects/${_Project._id}/application_number_2_document_${data.user}.pdf`); 
+    await merger.save(`/var/www/projects/${_Project._id}/` + pathToLastDocument);
+
+    await InvDoc.findOneAndUpdate({_id: data.invId}, {urlToLastDocument: pathToLastDocument});
+
 
     h.alertDeleteOfUserOnbot(`${_User.first_name} вы успешно проинвестировали в проект\n ${_Project._id}\n "${_Project.data.name}"\n на сумму ${data.money} руб.\n ${data.date}\n Ожидайте подтверждения бизнесом получения денег. Так как сумма идет банковским платежом, поступление на расчетный счет бизнеса может занять до 3х банковских дней`, _User.user);
-
     h.full_alert_user(_Project.user, `Поступила оплата по договору номер ${_Project._id}/1 на сумму ${data.money} руб. по договору от ${data.date}, требуется подтверждение`, "put_investring");
 
     callback();
