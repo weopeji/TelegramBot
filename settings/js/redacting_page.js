@@ -97,7 +97,13 @@
                 })
             }
 
-            global_block.append($(`<h1>Первичная информация</h1>`));
+            global_block.append($(`<h1>Первичная информация</h1>`).css({
+                "background-color": "#182037",
+                "padding": "20px 30px",
+                "border-radius": "8px",
+                "font-weight": "600",
+                "font-family": "Circe , sans-serif",
+            }));
 
             for(var DataBlock of _strucBocks)
             {
@@ -296,6 +302,7 @@
                     "padding": "20px 30px", 
                     "border-radius": "8px",
                     "font-weight": "600",
+                    "font-family": "Circe , sans-serif",
                 }));
 
                 for(var _keyBlock in moreuSersData[_key])
@@ -434,6 +441,7 @@
                 "padding": "20px 30px",
                 "border-radius": "8px",
                 "font-weight": "600",
+                "font-family": "Circe , sans-serif",
             }));
 
             var buttons_block = $(`
