@@ -600,6 +600,10 @@
   color: #19BD88;
 }
 
+.structCreator_new_block_row nn i {
+  margin-left: 10px;
+}
+
 .structCreator_new_block_buttons {
   display: -webkit-box;
   display: -ms-flexbox;
