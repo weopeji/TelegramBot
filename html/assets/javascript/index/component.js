@@ -31,7 +31,7 @@
 
             var photoPathPut = "null";
 
-            if(_dataPhoto.file_path)
+            if(_dataPhoto)
             {
                 photoPathPut = _dataPhoto.file_path;
             }
