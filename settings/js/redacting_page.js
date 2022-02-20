@@ -53,7 +53,7 @@
                         <div class="parcing_again_block_row">
                             <span>Запросить перепарсинг данных</span>
                             <div class="parcing_again_block_curcule">
-                                <i class="fa-solid fa-arrow-rotate-right"></i>
+                                <i class="fas fa-bullseye"></i>
                             </div>
                         </div>
                     </div>
