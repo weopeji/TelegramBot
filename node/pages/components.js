@@ -184,6 +184,7 @@ var action_linker =
     "setInvestERDocumentLoad": setInvestERDocumentLoad,
     "setInvestERDocumentLoadOfInvester": setInvestERDocumentLoadOfInvester,
     "endInvestingDataPush": endInvestingDataPush,
+    "redactingParcingProject": redactingParcingProject,
 };
 
 async function dataOfVideoAccept(socket, data, callback)
@@ -2644,6 +2645,43 @@ async function setProject(socket,data,callback)
     });
 
     callback({status: "ok"});    
+}
+
+async function redactingParcingProject(socket, data, callback)
+{
+    var _Project            = await Project.findOne({_id: data});
+    var _ProjectParce       = _Project.parce;
+    var _ProjectMoreUsers   = {};
+
+    if(typeof _Project.data.moreUsersData != "undefined")
+    {
+        _ProjectMoreUsers = _Project.data.moreUsersData;
+    }
+
+    var ParceUsersBlock = await ParcingPage.ParceUsersBlock(_Project.data, _ProjectMoreUsers);
+
+    if(_dataProject.organization != 3)
+    {
+        _ProjectParce = 
+        {
+            "pr": await ParcingPage.ParceProject(_Project.data.inn),
+            "ar": await ParcingPage.ParcingArbitrage(_Project.data.inn),
+            "ispo": null,
+            "fiz": ParceUsersBlock,
+        };
+
+        if(_dataProject.organization == 1)
+        {
+            _ProjectParce.ispo = await _AllParce._ParceProjectIspo(redactinProject);
+        };
+    } else {
+        _ProjectParce =
+        {
+            "fiz": ParceUsersBlock,
+        };
+    };
+
+    await Project.findOneAndUpdate({_id: data}, {parce: _ProjectParce});
 }
 
 async function savePuppeter(putProject)

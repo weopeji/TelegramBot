@@ -65,10 +65,9 @@
                         data: {
                             projectid: _GET("id"),
                         },
-                    }).then((data) => {
-                        alert('Загрузка завершена');
-                        location.reload();
                     });
+
+                    alert('Успешно!');
                 })
 
                 global_block.append(_block);
