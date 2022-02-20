@@ -507,7 +507,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   margin: 0;
   background-color: white;
   position: fixed;
-  display: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .preloader_row {
