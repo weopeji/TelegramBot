@@ -59,6 +59,8 @@
                     </div>
                 `);
 
+                global_block.append(_block);
+
                 resolve();
             })
         }
