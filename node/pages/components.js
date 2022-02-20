@@ -2149,7 +2149,7 @@ async function putRedacting(socket,data,callback) {
         }
     });
 
-    var _Project = await Project.findOneAndUpdate({_id: data._id}, {data: _data, type: "moderation", redacting: null});
+    var _Project = await Project.findOneAndUpdate({_id: data._id}, {data: _data, type: "moderation", redacting: null, last_redacting: data.array});
 
     h.alertAdmin({
         type: "creating_project",

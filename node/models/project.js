@@ -20,6 +20,7 @@ const ProjectShema = new mongoose.Schema({
     channel_id: String,
     data_creating: String,
     video_redacting: String,
+    last_redacting: JSON,
 });
 
 autoIncrement.initialize(mongoose.connection);
