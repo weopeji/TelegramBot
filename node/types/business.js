@@ -157,7 +157,7 @@ async function getMoney(msg)
         };
     }
 
-    var html        = `Бизнес ${_User.first_name}\n\n<code>У вас активных проектов:</code> ${allProjects.length}\n`;
+    var html        = `Бизнес ${_User.first_name}\n\n<code>У вас активных проектов:</code> ${allProjects.length}\n\n`;
     var keyboard    = 
     [
         [
