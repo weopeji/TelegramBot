@@ -53,11 +53,23 @@
                         <div class="parcing_again_block_row">
                             <span>Запросить перепарсинг данных</span>
                             <div class="parcing_again_block_curcule">
-                                <i class="fas fa-bullseye"></i>
+                                <i class="fal fa-bullseye"></i>
                             </div>
                         </div>
                     </div>
                 `);
+
+                _block.find(".parcing_again_block_row").click( function() {
+                    callApi({
+                        methodName: 'redactingParcingProject',
+                        data: {
+                            projectid: _GET("id"),
+                        },
+                    }).then((data) => {
+                        alert('Загрузка завершена');
+                        location.reload();
+                    });
+                })
 
                 global_block.append(_block);
 

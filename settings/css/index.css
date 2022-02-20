@@ -883,6 +883,11 @@
       -ms-flex-align: center;
           align-items: center;
   color: white;
+  cursor: pointer;
+}
+
+.parcing_again_block_row span {
+  font-size: 20px;
 }
 
 .parcing_again_block_curcule {
