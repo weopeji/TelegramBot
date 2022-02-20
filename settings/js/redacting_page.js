@@ -132,7 +132,7 @@
 
                 if(typeof _project.last_redacting != "undefined")
                     {
-                        if(_project.last_last_redacting.length > 0)
+                        if(_project.last_redacting.length > 0)
                         {
                             for(var redactingLastData of _project.last_last_redacting)
                             {
@@ -327,7 +327,7 @@
                         </div>
                     `);
 
-                    if(typeof _project.last_last_redacting != "undefined")
+                    if(typeof _project.last_redacting != "undefined")
                     {
                         if(_project.last_redacting.length > 0)
                         {
