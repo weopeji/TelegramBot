@@ -43,7 +43,7 @@
             });
         }
 
-        async renderRedacting(global_block)
+        async renderRedacting(_project, global_block)
         {
             return new Promise(async (resolve,reject) =>
             {
@@ -70,7 +70,7 @@
 
             if(typeof _project.last_redacting != "undefined")
             {
-                await this.renderRedacting();
+                await this.renderRedacting(_project, global_block);
             }
 
             var _data           = _project.data;
