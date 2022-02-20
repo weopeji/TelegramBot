@@ -62,9 +62,7 @@
                 _block.find(".parcing_again_block_row").click( function() {
                     callApi({
                         methodName: 'redactingParcingProject',
-                        data: {
-                            projectid: _GET("id"),
-                        },
+                        data: _GET("id"),
                     });
 
                     alert('Успешно!');
