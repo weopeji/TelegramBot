@@ -157,21 +157,56 @@ async function getMoney(msg)
         };
     }
 
-    var html = `Бизнес ${_User.first_name}\n\n<code>У вас активных проектов:</code> ${allProjects.length}\n`;
+    var html        = `Бизнес ${_User.first_name}\n\n<code>У вас активных проектов:</code> ${allProjects.length}\n`;
+    var keyboard    = 
+    [
+        [
+            {
+                text: "Перейти в личный кабинет",
+                login_url: {
+                    'url': `${h.getURL()}?user=${_User._id}&page=myProjects`,
+                },
+            }
+        ],
+    ]
 
     if(allPays > 0)
     {
         html += `<code>Оплачено инвесторами:</code> ${allPays}\n`;
+        keyboard.push([
+            {
+                text: "Оплачено инвесторами",
+                login_url: {
+                    'url': `${h.getURL()}?user=${_User._id}&page=payments_new`,
+                },
+            }
+        ])
     }
 
     if(notPays > 0)
     {
-        html += `<code>Не подтверждено получение денег Бизнесом:</code> ${notPays}\n`;
+        html += `<code>Не подтверждено получение денег:</code> ${notPays}\n`;
+        keyboard.push([
+            {
+                text: "Не подтверждено",
+                login_url: {
+                    'url': `${h.getURL()}?user=${_User._id}&page=acceptPays`,
+                },
+            }
+        ])
     }
 
     if(deptComiisssion > 0)
     {
         html += `<code>Обязательста перед investER:</code> ${deptComiisssion} ₽\n`;
+        keyboard.push([
+            {
+                text: "Оплачено инвесторами",
+                login_url: {
+                    'url': `${h.getURL()}?user=${_User._id}&page=obligations`,
+                },
+            }
+        ])
     }
     
     falseInvs.forEach((el, i) => {
@@ -181,14 +216,7 @@ async function getMoney(msg)
     var fat = await h.send_html(msg.chat.id, html, {
         "resize_keyboard": true,
         "inline_keyboard": [
-            [
-                {
-                    text: "Перейти в личный кабинет",
-                    login_url: {
-                        'url': `${h.getURL()}?user=${_User._id}&page=acceptPays`,
-                    },
-                }
-            ]
+            
         ],
     });
     _array.push(fat.message_id);
