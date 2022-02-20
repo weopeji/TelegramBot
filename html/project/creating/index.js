@@ -182,6 +182,8 @@
         }
 
         global.changeTextArea = changeTextArea;
+
+        $('.preloader').fadeOut('fast');
         
     }
 
