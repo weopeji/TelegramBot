@@ -29,7 +29,7 @@
                 data: _data.invester.user,
             });
 
-            if(_dataPhoto.file_path)
+            if(!_dataPhoto.file_path)
             {
                 _dataPhoto.file_path = "null";
             }
