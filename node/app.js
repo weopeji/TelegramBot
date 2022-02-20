@@ -512,11 +512,12 @@ app.post('/file_cheack_get.io/files', (req, res) => {
                     _arrayData.document = `file_cheack_get_${_User.user}.${_data._pts}`;
                     _arrayData.pay = _data._pay;
 
-                    var showInvDoc = await InvDoc.findOne({invester: _User.user, projectId: _User.putProject});
+                    var showInvDoc  = await InvDoc.findOne({invester: _User.user, projectId: _User.putProject});
+                    var invId       = null;
 
                     if(!showInvDoc)
                     {
-                        await InvDoc.create({
+                        var invCreate = await InvDoc.create({
                             projectId: _User.putProject,
                             invester: _User.user,
                             status: "wait",
@@ -525,12 +526,16 @@ app.post('/file_cheack_get.io/files', (req, res) => {
                             pays: null,
                             date: _dateNeed,
                         });
+
+                        invId = invCreate._id;
                     } else {
-                        await InvDoc.findOneAndUpdate({invester: _User.user, data: _arrayData})
+                        var invCreate = await InvDoc.findOneAndUpdate({invester: _User.user, data: _arrayData})
+                        invId = invCreate._id;
                     }
 
                     res.json({
                         status: 'ok',
+                        inv: invId,
                     });
                 
                 });

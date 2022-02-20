@@ -28,10 +28,11 @@
             this.global = $(`
                 <div class="creating_page"></div>
             `);
-            this.project    = null;
-            this.inv        = null;
-            this.money      = null;
-            this.date       = null;
+            this.project        = null;
+            this.inv            = null;
+            this.money          = null;
+            this.date           = null;
+            this.urlForDocument = null;
         };
 
         defaultCSS()
@@ -140,29 +141,31 @@
                 window.open(`/projects/${_this.project._id}/${_this.project.signature_document.user_document}` , '_blank');
             })
 
+            var html = `/html/project/application_number_2/?`;
+
+            html += `fio=${findOfArrayOn_id(_this.inv.data, "fio")}&`;
+            html += `number=2&`;
+            html += `summ=${_this.money}&`;
+            
+            if(_this.inv.type == "UR")
+            {
+                html += `inn=${findOfArrayOn_id(_this.inv.data, "inn")}&`;
+                html += `ogrn=${findOfArrayOn_id(_this.inv.data, "ogrnip")}&`;
+                html += `do=${findOfArrayOn_id(_this.inv.data, "cpecial")}&`;
+                html += `fio_dolg=${findOfArrayOn_id(_this.inv.data, "fio_dolg")}&`
+            } else if (_this.inv.type == "IP")
+            {
+                html += `inn=${findOfArrayOn_id(_this.inv.data, "inn")}&`;
+                html += `ogrn=${findOfArrayOn_id(_this.inv.data, "ogrnip")}&`;
+            }
+
+            html += `type=${_this.inv.type}&`;
+            html += `bank=${_this.project.data.bank}`;
+
+            this.urlForDocument = html;
+
             documentBlock.eq(0).find("span").eq(1).click( function() 
             {
-                var html = `/html/project/application_number_2/?`;
-
-                html += `fio=${findOfArrayOn_id(_this.inv.data, "fio")}&`;
-                html += `number=2&`;
-                html += `summ=${_this.money}&`;
-                
-                if(_this.inv.type == "UR")
-                {
-                    html += `inn=${findOfArrayOn_id(_this.inv.data, "inn")}&`;
-                    html += `ogrn=${findOfArrayOn_id(_this.inv.data, "ogrnip")}&`;
-                    html += `do=${findOfArrayOn_id(_this.inv.data, "cpecial")}&`;
-                    html += `fio_dolg=${findOfArrayOn_id(_this.inv.data, "fio_dolg")}&`
-                } else if (_this.inv.type == "IP")
-                {
-                    html += `inn=${findOfArrayOn_id(_this.inv.data, "inn")}&`;
-                    html += `ogrn=${findOfArrayOn_id(_this.inv.data, "ogrnip")}&`;
-                }
-
-                html += `type=${_this.inv.type}&`;
-                html += `bank=${_this.project.data.bank}`;
-                
                 window.open(html, '_blank');
             })
 
@@ -377,6 +380,7 @@
                                         project: _this.project._id,
                                         money: _this.money.toString().ReplaceNumber(),
                                         date: _this.date,
+                                        url: this.urlForDocument,
                                     },
                                 });
 
