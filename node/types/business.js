@@ -157,7 +157,22 @@ async function getMoney(msg)
         };
     }
 
-    var html = `Бизнес ${_User.first_name}\n\nУ вас активных проектов: ${allProjects.length}\nОплачено инвесторами ${allPays}\nНе подтверждено получение денег Бизнесом ${notPays}\nобязательста перед investER: ${deptComiisssion} ₽\nПросрочено: 0\n\n`;
+    var html = `Бизнес ${_User.first_name}\n\n<code>У вас активных проектов:</code> ${allProjects.length}\n`;
+
+    if(allPays > 0)
+    {
+        html += `<code>Оплачено инвесторами:</code> ${allPays}\n`;
+    }
+
+    if(notPays > 0)
+    {
+        html += `<code>Не подтверждено получение денег Бизнесом:</code> ${notPays}\n`;
+    }
+
+    if(deptComiisssion > 0)
+    {
+        html += `<code>Обязательста перед investER:</code> ${deptComiisssion} ₽\n`;
+    }
     
     falseInvs.forEach((el, i) => {
         html = html + `№${el.projectId}/${i + 1}  `;
