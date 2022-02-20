@@ -157,7 +157,7 @@ async function getMoney(msg)
         };
     }
 
-    var html        = `Бизнес ${_User.first_name}\n\n<pre>У вас активных проектов:</pre> ${allProjects.length}\n`;
+    var html        = `Бизнес ${_User.first_name}\n\n<code>У вас активных проектов:</code> ${allProjects.length}\n`;
     var keyboard    = 
     [
         [
@@ -172,7 +172,7 @@ async function getMoney(msg)
 
     if(allPays > 0)
     {
-        html += `<pre>Оплачено инвесторами:</pre> ${allPays}\n`;
+        html += `<code>Оплачено инвесторами:</code> ${allPays}\n`;
         keyboard.push([
             {
                 text: "Оплачено инвесторами",
@@ -185,7 +185,7 @@ async function getMoney(msg)
 
     if(notPays > 0)
     {
-        html += `<pre>Не подтверждено получение денег:</pre> ${notPays}\n`;
+        html += `<code>Не подтверждено получение денег:</code> ${notPays}\n`;
         keyboard.push([
             {
                 text: "Не подтверждено",
@@ -198,7 +198,7 @@ async function getMoney(msg)
 
     if(deptComiisssion > 0)
     {
-        html += `<pre>Обязательста перед investER:</pre> ${deptComiisssion} ₽\n`;
+        html += `<code>Обязательста перед investER:</code> ${deptComiisssion} ₽\n`;
         keyboard.push([
             {
                 text: "Оплачено инвесторами",
@@ -210,7 +210,7 @@ async function getMoney(msg)
     }
     
     falseInvs.forEach((el, i) => {
-        html = html + `\n\n№${el.projectId}/${i + 1}  `;
+        html = html + `\n№${el.projectId}/${i + 1}  `;
     })
 
     var fat = await h.send_html(msg.chat.id, html, {
