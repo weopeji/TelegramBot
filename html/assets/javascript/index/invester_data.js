@@ -381,7 +381,7 @@
                                         project: _this.project._id,
                                         money: _this.money.toString().ReplaceNumber(),
                                         date: _this.date,
-                                        url: this.urlForDocument,
+                                        url: _this.urlForDocument,
                                         invId: data.data.inv,
                                     },
                                 });
