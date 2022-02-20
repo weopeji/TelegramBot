@@ -255,6 +255,9 @@ async function endInvestingDataPush(socket, data, callback)
 
 
     var html        = "https://invester-relocation.site/" + data.url;
+
+    console.log(html);
+
     const browser = await puppeteer.launch({
         args: ['--no-sandbox', '--disable-setuid-sandbox'],
     });
