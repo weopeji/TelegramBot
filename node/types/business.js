@@ -6,6 +6,7 @@ var config      = null;
 var _data       = null;
 var Project     = null;
 var puppeteer   = require('puppeteer');
+const components = require('../pages/components');
 
 module.exports = {
     init:function(initPlagins)
@@ -32,6 +33,7 @@ function privateInit(initPlagins) {
     _data       = initPlagins._data;
     Project     = initPlagins.Project;
     InvDoc      = initPlagins.InvDoc;
+    commission  = initPlagins.commission;
 }
 
 async function viplati_call(msg) {
@@ -108,19 +110,21 @@ async function viplati(msg) {
 async function getMoney(msg) 
 {
     var _array          = [];
-    var _User           = await User.findOne({user: msg.from.id});
-    var allProjects     = await Project.find({user: msg.from.id, type: "active"});
-    var notPays         = 0;
-    var allPays         = 0;
-    var falseInvs       = [];
 
     var html = `Вы находитесь в меню: "Активные проекты"`;
-
     var fat = await h.send_html(msg.chat.id, html, {
         "resize_keyboard": true,
         "keyboard": [["⬅️ Назад"]],
     });
     _array.push(fat.message_id);
+
+
+    var _User           = await User.findOne({user: msg.from.id});
+    var allProjects     = await Project.find({user: msg.from.id, type: "active"});
+    var deptComiisssion = 0;
+    var notPays         = 0;
+    var allPays         = 0;
+    var falseInvs       = [];
 
     for(var _project of allProjects)
     {
@@ -132,13 +136,28 @@ async function getMoney(msg)
             {
                 notPays = notPays + 1;
                 falseInvs.push(_Inv);
+            } 
+            else if(_Inv.status == "accept")
+            {
+                var commissionBlock = await commission.findOne({invId: _Inv._id});
+
+                if(!commissionBlock)
+                {
+                    deptComiisssion = deptComiisssion + (Number(_Inv.data.pay.toString().replace(/\s/g, '')) / 100 * Number(_project.payersData.commission));
+                } else 
+                {
+                    if(commissionBlock.status == "wait")
+                    {
+                        deptComiisssion = deptComiisssion + (Number(_Inv.data.pay.toString().replace(/\s/g, '')) / 100 * Number(_project.payersData.commission));
+                    };
+                }
             }
 
             allPays = allPays + 1;
-        }
+        };
     }
 
-    var html = `Бизнес ${_User.first_name}\n\nУ вас активных проектов: ${allProjects.length}\n\nОплачено инвесторами ${allPays}\n\nНе подтверждено получение денег Бизнесом ${notPays}\n\nПросроченно: Пусто\n\n`;
+    var html = `Бизнес ${_User.first_name}\n\nУ вас активных проектов: ${allProjects.length}\n\nОплачено инвесторами ${allPays}\n\nНе подтверждено получение денег Бизнесом ${notPays}\n\nобязательста перед investER: ${deptComiisssion} ₽\nПросрочено: 0\n\n`;
     
     falseInvs.forEach((el, i) => {
         html = html + `№${el.projectId}/${i + 1}  `;

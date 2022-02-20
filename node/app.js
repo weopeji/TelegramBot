@@ -136,6 +136,7 @@ var load_helpers = () =>
             _data : _data,
             Project: Project,
             InvDoc: InvDoc,
+            commission: commission,
         });
     }
     if(attraction_page == null) 
