@@ -138,7 +138,7 @@
                             {
                                 if(redactingLastData.name == DataBlock._id)
                                 {
-                                    _block.find("nn").html(`<i class="fal fa-calendar-lines-pen"></i>`);
+                                    _block.find("nn").html(`<i class="fal fa-file-pen"></i>`);
                                 }
                             }
                         }
@@ -335,7 +335,7 @@
                             {
                                 if(redactingLastData.name == _keyBlock)
                                 {
-                                    _block.find("NN").html(`<i class="fal fa-calendar-lines-pen"></i>`);
+                                    _block.find("NN").html(`<i class="fal fa-file-pen"></i>`);
                                 }
                             }
                         }
