@@ -290,6 +290,7 @@
                             <input type="file">
                             <div class="structCreator_new_block_row">
                                 <span>${nameBLock}</span>
+                                <NN></NN>
                                 <a>
                                     <input type="text">
                                     <BB>${dataNameBlock}</BB>
@@ -310,6 +311,20 @@
                             </div>
                         </div>
                     `);
+
+                    if(typeof _project.last_last_redacting != "undefined")
+                    {
+                        if(_project.last_last_redacting.length > 0)
+                        {
+                            for(var redactingLastData of _project.last_last_redacting)
+                            {
+                                if(redactingLastData.name == _keyBlock)
+                                {
+                                    _block.find("NN").html("Отредактировано пользователем");
+                                }
+                            }
+                        }
+                    }
 
                     _block.find(`.structCreator_new_block_buttons_block[data="input"]`).click( function()
                     {
