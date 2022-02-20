@@ -109,6 +109,7 @@
                         <div class="structCreator_new_block_row">
                             <span>${nameBLock}</span>
                             <a>
+                                <NN></NN>
                                 <input type="text">
                                 <BB>${dataNameBlock}</BB>
                             </a>
@@ -128,6 +129,20 @@
                         </div>
                     </div>
                 `);
+
+                if(typeof _project.last_last_redacting != "undefined")
+                    {
+                        if(_project.last_last_redacting.length > 0)
+                        {
+                            for(var redactingLastData of _project.last_last_redacting)
+                            {
+                                if(redactingLastData.name == DataBlock._id)
+                                {
+                                    _block.find("NN").html("Отредактировано пользователем");
+                                }
+                            }
+                        }
+                    }
 
                 if(typeof DataBlock.readonly != "undefined")
                 {
