@@ -291,7 +291,12 @@
 
             for(var _key in moreuSersData)
             {
-                global_block.append($(`<h1>Собственник ${_key.split("+")[1]}</h1>`));
+                global_block.append($(`<h1>Собственник ${_key.split("+")[1]}</h1>`).css({
+                    "background-color": "#182037",
+                    "padding": "20px 30px",
+                    "border-radius": "8px",
+                    "font-weight": "600",
+                }));
 
                 for(var _keyBlock in moreuSersData[_key])
                 {
@@ -424,7 +429,12 @@
                 }
             }
 
-            global_block.append($(`<h1>Действия</h1>`));
+            global_block.append($(`<h1>Действия</h1>`).css({
+                "background-color": "#182037",
+                "padding": "20px 30px",
+                "border-radius": "8px",
+                "font-weight": "600",
+            }));
 
             var buttons_block = $(`
                 <input type="text" id="redacting_input" placeholder="Коментарий">
