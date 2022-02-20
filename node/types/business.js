@@ -208,20 +208,16 @@ async function getMoney(msg)
             }
         ])
     }
-
-    console.log(keyboard);
     
     falseInvs.forEach((el, i) => {
         html = html + `№${el.projectId}/${i + 1}  `;
     })
 
-    // var fat = await h.send_html(msg.chat.id, html, {
-    //     "resize_keyboard": true,
-    //     "inline_keyboard": [
-    //         keyboard
-    //     ],
-    // });
-    // _array.push(fat.message_id);
+    var fat = await h.send_html(msg.chat.id, html, {
+        "resize_keyboard": true,
+        "inline_keyboard": keyboard,
+    });
+    _array.push(fat.message_id);
 
     await h.DMA(msg, _array);
   
