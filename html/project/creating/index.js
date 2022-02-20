@@ -183,8 +183,9 @@
 
         global.changeTextArea = changeTextArea;
 
-        $('.preloader').fadeOut('fast');
-        
+        setTimeout( function() {
+            $('.preloader').fadeOut('fast');
+        }, 1000);
     }
 
 }(window))
