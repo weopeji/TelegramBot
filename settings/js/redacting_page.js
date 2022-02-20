@@ -291,7 +291,7 @@
                             <div class="structCreator_new_block_row">
                                 <span>${nameBLock}</span>
                                 <NN></NN>
-                                <a>
+                                <a> 
                                     <input type="text">
                                     <BB>${dataNameBlock}</BB>
                                 </a>
