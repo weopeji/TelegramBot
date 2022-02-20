@@ -428,12 +428,20 @@ async function activeDataProject(socket, data, callback)
         whoGet = adminProject.member_b;
     }
 
+    var _UserGet = await User.findOne({user: whoGet});
+
     var _data = {
         investers: {
             invs: [],
         },
         whoGet: whoGet,
+        nameGet: null,
     };
+
+    if(_UserGet)
+    {
+        _data.nameGet = _UserGet.first_name;
+    }
 
     for(var _invData of _Invs)
     {

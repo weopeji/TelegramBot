@@ -1145,6 +1145,7 @@
                         <span>ID</span>
                         <a>
                             <BB>${activeData.whoGet}</BB>
+                            <BB>${activeData.nameGet}</BB>
                         </a>
                     </div>
                 </div>
