@@ -1001,7 +1001,7 @@ async function setRedactingProject(socket, data, callback)
     
     var _User = await User.findOne({user: _Project.user});
 
-    h.full_alert_user(_User.user, `В проекте ${_Project.data.name} запрошены дополнительные документы`, "project_redacting");
+    h.full_alert_user(_User.user, `В проекте номер ${_Project._id} "${_Project.data.name}" запрошено редактирование данных`, "project_redacting");
 
     callback(_Project);
 }
