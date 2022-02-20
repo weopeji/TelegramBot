@@ -293,7 +293,7 @@
             {
                 global_block.append($(`<h1>Собственник ${_key.split("+")[1]}</h1>`).css({
                     "background-color": "#182037",
-                    "padding": "20px 30px",
+                    "padding": "20px 30px", 
                     "border-radius": "8px",
                     "font-weight": "600",
                 }));
