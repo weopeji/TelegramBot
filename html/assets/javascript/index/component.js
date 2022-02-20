@@ -29,6 +29,11 @@
                 data: _data.invester.user,
             });
 
+            if(typeof _dataPhoto.file_path == "undefined")
+            {
+                _dataPhoto.file_path = "null";
+            }
+
             $('.info_active_block_right').append(`
                 <div class="info_active_block_photo">
                     <img src="https://api.telegram.org/file/bot2062839693:AAE0hzj8SVXyexq29s5x7aRLC5x8O77c-pQ/${_dataPhoto.file_path}" alt="">
@@ -322,7 +327,7 @@
                     methodName: "getProjectById",
                     data: _GET('project'),
                 });
-                window.open(`https://invester-relocation.site/projects/${_data.InvDoc.projectId}/${getProjectById.signature_document.user_document}`, '_blank');
+                window.open(`https://invester-relocation.site/projects/${_data.InvDoc.projectId}/${_data.InvDoc.urlToLastDocument}`, '_blank');
             });
 
             $('.accept_block_tap').click( async function () 
