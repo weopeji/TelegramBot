@@ -206,7 +206,7 @@ async function dataOfVideoAccept(socket, data, callback)
         };
             
         var pushDoesVideos = [
-            `ffmpeg -y -i "/var/www/projects/${_Project._id}/${_Project.data["file+8"]}" -c:v libx264 -b:v 17000K -aspect 16:9 -r 25 -b:a 256K "/var/www/projects/${_Project._id}/output_ffmpeg.mp4"`,
+            `ffmpeg -y -i "/var/www/projects/${_Project._id}/${_Project.data["file+8"]}" -vf scale=1920:1080 -c:v libx264 -b:v 17000K -aspect 16:9 -r 25 -b:a 256K "/var/www/projects/${_Project._id}/output_ffmpeg.mp4"`,
             `ffmpeg -y -i "/var/www/projects/${_Project._id}/output_ffmpeg.mp4" -c copy -bsf:v h264_mp4toannexb -f mpegts "/var/www/projects/${_Project._id}/intermediate_video.ts"`,
             `ffmpeg -y -i "concat:/var/www/node/assets/videos/intermediate_print.ts|/var/www/projects/${_Project._id}/intermediate_video.ts" -c copy -bsf:a aac_adtstoasc "/var/www/projects/${_Project._id}/default_video_project.mp4"`
         ];
