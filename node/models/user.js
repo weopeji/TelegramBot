@@ -25,6 +25,7 @@ const UserShema = new mongoose.Schema({
     alerts_main: JSON,
     alert_msgs: String,
     first_parse: JSON,
+    business_msgPut: String,
 });
 
 mongoose.model('User', UserShema);

@@ -301,6 +301,14 @@ async function _MainMenu(msg, close)
 
             var html = `<strong>${msg.from.first_name} ${msg.from.last_name}</strong>\nдля того, чтобы разместить свое предложение для привлечения инвестиций, необходимо заполнить заявку. Нажмите кнопку "Добавить проект"\n\n`;
 
+            if(typeof _User.business_msgPut != "undefined")
+            {
+                html = `<strong>${msg.from.first_name} ${msg.from.last_name}</strong>\nВы находитесь в главном меню бизнеса!`;
+            } else
+            {
+                await User.findOneAndUpdate({_id: _User._id}, {business_msgPut: "true"});
+            }
+
             var notActiveBlock = "❌ Неактивные проекты";
 
             if(_User.alerts) 

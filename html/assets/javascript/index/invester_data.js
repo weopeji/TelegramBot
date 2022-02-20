@@ -162,7 +162,7 @@
             html += `type=${_this.inv.type}&`;
             html += `bank=${_this.project.data.bank}`;
 
-            this.urlForDocument = html;
+            _this.urlForDocument = html;
 
             documentBlock.eq(0).find("span").eq(1).click( function() 
             {
