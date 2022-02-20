@@ -108,8 +108,8 @@
                         <input type="file">
                         <div class="structCreator_new_block_row">
                             <span>${nameBLock}</span>
-                            <a>
-                                <NN></NN> 
+                            <nn></nn>
+                            <a> 
                                 <input type="text">
                                 <BB>${dataNameBlock}</BB>
                             </a>
@@ -138,7 +138,7 @@
                             {
                                 if(redactingLastData.name == DataBlock._id)
                                 {
-                                    _block.find("NN").html("Отредактировано пользователем");
+                                    _block.find("nn").html("Отредактировано пользователем");
                                 }
                             }
                         }
