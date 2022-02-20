@@ -261,7 +261,6 @@ async function endInvestingDataPush(socket, data, callback)
     const page = await browser.newPage();
     await page.goto(html);
     await page.emulateMedia('screen');
-    await page.waitForSelector('.all_good')
     await page.pdf({path: `/var/www/projects/${_Project._id}/application_number_2_document_${data.user}.pdf`});
     await browser.close();
 
