@@ -157,7 +157,7 @@ async function getMoney(msg)
         };
     }
 
-    var html        = `Бизнес ${_User.first_name}\n\n<code>У вас активных проектов:</code> ${allProjects.length}\n\n`;
+    var html        = `Бизнес ${_User.first_name}\n\n<code>У вас активных проектов:</code> ${allProjects.length}\n`;
     var keyboard    = 
     [
         [
@@ -210,7 +210,7 @@ async function getMoney(msg)
     }
     
     falseInvs.forEach((el, i) => {
-        html = html + `№${el.projectId}/${i + 1}  `;
+        html = html + `\n\n№${el.projectId}/${i + 1}  `;
     })
 
     var fat = await h.send_html(msg.chat.id, html, {
