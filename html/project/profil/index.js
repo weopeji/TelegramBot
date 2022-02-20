@@ -42,7 +42,7 @@
 
         function startArbitr()
         {
-            if(Array.isArray(need_project.parce.ar))
+            if(typeof need_project.parce.ar === "object")
             {
                 if(need_project.parce.ar.response.length > 0 && need_project.parce.ar.response != "Null")
                 {
