@@ -187,7 +187,13 @@ var action_linker =
     "setInvestERDocumentLoadOfInvester": setInvestERDocumentLoadOfInvester,
     "endInvestingDataPush": endInvestingDataPush,
     "redactingParcingProject": redactingParcingProject,
+    "registrationDocumentClearAdmin": registrationDocumentClearAdmin,
 };
+
+async function registrationDocumentClearAdmin(socket, data, callback)
+{
+    callback(await Project.findOneAndUpdate({_id: data}, {$unset: {registrationDocument:1}}));
+}
 
 async function dataOfVideoAccept(socket, data, callback)
 {

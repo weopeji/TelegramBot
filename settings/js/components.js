@@ -823,18 +823,29 @@
                                 <span>Договор бизнеса с InvestER</span>
                             </div>
                             <div class="body_point_line_block_more_registration_business">
-                                <st>Посмотреть</st>
+                                <st data="show">Посмотреть</st>
                             </div>
                             <div class="body_point_line_block_more_registration_business">
-                                <st>Очистить</st>
+                                <st data="clear">Очистить</st>
                             </div>
                         </div>
                     `);
 
+                    firstBlockMore.find('.body_point_line_block_more_registration_business').eq(`1`).css('margint-top', "20px");
+
                     firstBlockMore.css("padding-bottom", "20px");
 
-                    firstBlockMore.find('st').click( function() {
+                    firstBlockMore.find('st[data="show"]').click( function() {
                         window.open(`https://invester-relocation.site/projects/${_project._id}/${_project.registrationDocument.user_document}`, "_blank")
+                    });
+
+                    firstBlockMore.find('st[data="clear"]').click( function() {
+                        await callApi({
+                            methodName: 'registrationDocumentClearAdmin',
+                            data: _GET("id"),
+                        });
+                        alert('Успешно!');
+                        location.reload(); 
                     });
 
                     this.global_block.append(firstBlockMore);
