@@ -839,7 +839,7 @@
                         window.open(`https://invester-relocation.site/projects/${_project._id}/${_project.registrationDocument.user_document}`, "_blank")
                     });
 
-                    firstBlockMore.find('st[data="clear"]').click( function() {
+                    firstBlockMore.find('st[data="clear"]').click( async function() {
                         await callApi({
                             methodName: 'registrationDocumentClearAdmin',
                             data: _GET("id"),
