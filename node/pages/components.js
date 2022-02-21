@@ -2682,6 +2682,12 @@ async function setProject(socket,data,callback)
 
 async function redactingParcingProject(socket, data, callback)
 {
+    h.alertAdmin({
+        type: "creating_project",
+        text: `К проекту номер ${data} запрошен перепарсинг данных, ожидайте оповещения об его окончании`,
+        projectId: _Project._id,
+    });
+
     var _Project            = await Project.findOne({_id: data});
     var _ProjectParce       = _Project.parce;
     var _ProjectMoreUsers   = {};
@@ -2715,6 +2721,12 @@ async function redactingParcingProject(socket, data, callback)
     };
 
     await Project.findOneAndUpdate({_id: data}, {parce: _ProjectParce});
+
+    h.alertAdmin({
+        type: "creating_project",
+        text: `В проекте номер ${data} перепарсинг прошел успешно!`,
+        projectId: _Project._id,
+    });
 }
 
 async function savePuppeter(putProject)

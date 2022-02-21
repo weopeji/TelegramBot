@@ -1151,6 +1151,8 @@
                 </div>
             `);
 
+            _block.find('BB').css("margin-right", "20px");
+
             this.global_block.append(_block);   
 
             this.global_block.append($(`<h1>Инвестиции</h1>`));
