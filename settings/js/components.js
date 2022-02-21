@@ -825,6 +825,9 @@
                             <div class="body_point_line_block_more_registration_business">
                                 <st>Посмотреть</st>
                             </div>
+                            <div class="body_point_line_block_more_registration_business">
+                                <st>Очистить</st>
+                            </div>
                         </div>
                     `);
 
