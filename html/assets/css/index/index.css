@@ -1770,6 +1770,7 @@ html, body {
   background: -webkit-gradient(linear, left top, right top, from(#14b6ff), color-stop(61%, #1387ff));
   background: linear-gradient(90deg, #14b6ff 0%, #1387ff 61%);
   border-radius: 10px;
+  cursor: pointer;
 }
 
 @media (max-width: 1600px) {
