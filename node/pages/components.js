@@ -2688,13 +2688,15 @@ async function setProject(socket,data,callback)
 
 async function redactingParcingProject(socket, data, callback)
 {
+    var _Project            = await Project.findOne({_id: data});
+    
     h.alertAdmin({
         type: "creating_project",
         text: `К проекту номер ${data} запрошен перепарсинг данных, ожидайте оповещения об его окончании`,
         projectId: _Project._id,
     });
 
-    var _Project            = await Project.findOne({_id: data});
+    
     var _ProjectParce       = _Project.parce;
     var _ProjectMoreUsers   = {};
 
