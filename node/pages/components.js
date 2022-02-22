@@ -575,7 +575,7 @@ async function telegram_auth_recomendation(socket, data, callback)
 
     var html        = `[Профиль компании](${h.getURL()}html/project/profil/?id=${needProject._id})\n[Презентация](${h.getURL()}/projects/${needProject._id}/${needProject.data["file+7"]})\n[Видео презентация](${videoPresentationPath})`;
     const stream    = fs.createReadStream(`../projects/${_idProject}/logo.png`);
-    var _url        = `https://invester-relocation.site/?page=telegram_authorization&type=more&userId=${needProject._id}`;
+    var _url        = `https://invester-relocation.site/?page=telegram_authorization&type=recomendation_push&userId=${needProject._id}`;
     var fat = await bot.sendPhoto(userId, stream, {
         "caption": html,
         "parse_mode": "MarkdownV2",

@@ -129,7 +129,7 @@ async function url(msg)
         });
         _array.push(fat.message_id);
 
-        // 3
+        // 3 ===
         var html = "Либо нажмите на ссылку чтобы скопировать и отпрватье ее друзьям\n\n`https://t.me/invester_official_bot?start=adder_" + msg.from.id.toString() + "`";
         var fat = await bot.sendMessage(msg.from.id, html, 
         {
