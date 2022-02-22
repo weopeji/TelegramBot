@@ -1754,6 +1754,24 @@ html, body {
   width: 100%;
 }
 
+.Attracted_by_me_headerRefUrlsBlock_blocks_line_copy {
+  width: 45px;
+  height: 45px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-right: 40px;
+  background: -webkit-gradient(linear, left top, right top, from(#14b6ff), color-stop(61%, #1387ff));
+  background: linear-gradient(90deg, #14b6ff 0%, #1387ff 61%);
+  border-radius: 10px;
+}
+
 @media (max-width: 1600px) {
   .creating_page {
     width: 50%;
