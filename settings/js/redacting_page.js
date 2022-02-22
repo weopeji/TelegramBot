@@ -105,6 +105,7 @@
             {
                 var nameBLock       = DataBlock.name;
                 var dataNameBlock   = null;
+                var dataFoRate      = null;
 
                 if(DataBlock.type == "file")
                 {
@@ -120,6 +121,7 @@
 
                 if(DataBlock._id == "rate")
                 {
+                    dataFoRate = dataNameBlock;
                     dataNameBlock = Number(dataNameBlock / 12).toFixed(2);
                 }
 
@@ -181,7 +183,7 @@
                 if(DataBlock._id == "rate")
                 {
                     _block.find('a').append($(`
-                        <BBB>(${Math.ceil(Number(dataNameBlock) * 12)} в год)</BBB>
+                        <BBB>(${dataFoRate} в год)</BBB>
                     `))
                 }
 
