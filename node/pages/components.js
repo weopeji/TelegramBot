@@ -439,6 +439,7 @@ async function activeDataProject(socket, data, callback)
     var _data = {
         investers: {
             invs: [],
+            invsWait: [],
         },
         whoGet: whoGet,
         nameGet: null,
@@ -455,9 +456,16 @@ async function activeDataProject(socket, data, callback)
         {
             inv: _invData,
             commission: await commission.findOne({invId: _invData._id}),
-        }
+        };
 
-        _data.investers.invs.push(_blockData);
+        if(_invData.status == "accept")
+        {
+            _data.investers.invs.push(_blockData);
+        }
+        else
+        {
+            _data.investers.invsWait.push(_blockData);
+        }
     }
 
     callback(_data);
