@@ -1751,16 +1751,17 @@ async function invester_status_project(socket,data,callback)
     var _User       = await User.findOne({user: data.id});
     var _Project    = await Project.findOne({_id: data.project});
     var AllInvs     = await InvDoc.find({projectId: data.project});
-    var initNumber  = 0;
+    var initNumber  = 1;
 
     for(var _invData of AllInvs)
     {
         if(_invData._id == _InvDoc._id)
         {
-            initNumber = initNumber + 1;
             break;
-        }
-        initNumber = initNumber + 1;
+        } else
+        {
+            initNumber = initNumber + 1;
+        };
     }
 
     callback({
