@@ -208,9 +208,11 @@ async function getMoney(msg)
             }
         ])
     }
+
+    html = html + "\n";
     
     falseInvs.forEach((el, i) => {
-        html = html + `\n№${el.projectId}/${i + 1}  `;
+        html = html + `№${el.projectId}/${i + 1}  `;
     })
 
     var fat = await h.send_html(msg.chat.id, html, {
