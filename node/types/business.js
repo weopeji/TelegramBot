@@ -170,50 +170,37 @@ async function getMoney(msg)
         ],
     ]
 
-    if(allPays > 0)
-    {
-        html += `<code>Оплачено инвесторами:</code> ${allPays}\n`;
-        keyboard.push([
-            {
-                text: "Оплачено инвесторами",
-                login_url: {
-                    'url': `${h.getURL()}?user=${_User._id}&page=payments_new`,
-                },
-            }
-        ])
-    }
-
-    if(notPays > 0)
-    {
-        html += `<code>Не подтверждено получение денег:</code> ${notPays}\n`;
-        keyboard.push([
-            {
-                text: "Не подтверждено",
-                login_url: {
-                    'url': `${h.getURL()}?user=${_User._id}&page=acceptPays`,
-                },
-            }
-        ])
-    }
-
-    if(deptComiisssion > 0)
-    {
-        html += `<code>Обязательста перед investER:</code> ${deptComiisssion} ₽\n`;
-        keyboard.push([
-            {
-                text: "Оплачено инвесторами",
-                login_url: {
-                    'url': `${h.getURL()}?user=${_User._id}&page=obligations`,
-                },
-            }
-        ])
-    }
-
-    html = html + "\n";
     
-    falseInvs.forEach((el, i) => {
-        html = html + `№${el.projectId}/${i + 1}  `;
-    })
+    html += `Оплачено инвесторами: ${allPays}\n`;
+    keyboard.push([
+        {
+            text: "Оплачено инвесторами",
+            login_url: {
+                'url': `${h.getURL()}?user=${_User._id}&page=payments_new`,
+            },
+        }
+    ])
+
+
+    html += `Не подтверждено получение денег: ${notPays}\n`;
+    keyboard.push([
+        {
+            text: "Не подтверждено",
+            login_url: {
+                'url': `${h.getURL()}?user=${_User._id}&page=acceptPays`,
+            },
+        }
+    ])
+
+    html += `Обязательста перед investER: ${deptComiisssion} ₽\n`;
+    keyboard.push([
+        {
+            text: "Оплачено инвесторами",
+            login_url: {
+                'url': `${h.getURL()}?user=${_User._id}&page=obligations`,
+            },
+        }
+    ])
 
     var fat = await h.send_html(msg.chat.id, html, {
         "resize_keyboard": true,
