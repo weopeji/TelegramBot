@@ -1165,6 +1165,8 @@
 
             _block.find('BB').css("margin-right", "20px");
 
+            _block.css('margin-top', '20px');
+
             this.global_block.append(_block);   
 
             var templateText = $(`
@@ -1187,7 +1189,7 @@
                 </div>
             `);
 
-            templateText.css('margin', '35px 0');
+            templateText.css('margin-top', '20px');
 
             for(var _Inv of activeData.investers.invs)
             {
