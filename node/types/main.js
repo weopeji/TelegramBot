@@ -299,7 +299,7 @@ async function _MainMenu(msg, close)
                 }
             }
 
-            var html = `<strong>${msg.from.first_name} ${msg.from.last_name}</strong>\nдля того, чтобы разместить свое предложение для привлечения инвестиций, необходимо заполнить заявку. Нажмите кнопку "Добавить проект"\n\n`;
+            var html = `<strong>${msg.from.first_name}</strong>\nдля того, чтобы разместить свое предложение для привлечения инвестиций, необходимо заполнить заявку. Нажмите кнопку "Добавить проект"\n\n`;
 
             if(typeof _User.business_msgPut != "undefined")
             {
@@ -332,7 +332,7 @@ async function _MainMenu(msg, close)
             if(!close)
             {
                 var _array          = [];
-                var html = `<strong>${msg.from.first_name} ${msg.from.last_name}</strong> добро пожаловать на investER. Вы можете стать нашим партнером по привлечению инвесторов`;
+                var html = `<strong>${msg.from.first_name}</strong> добро пожаловать на investER. Вы можете стать нашим партнером по привлечению инвесторов`;
                 var fat = await bot.sendMessage(msg.chat.id, html, {
                     parse_mode: "HTML",
                     reply_markup: {
