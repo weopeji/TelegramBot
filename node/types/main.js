@@ -264,7 +264,7 @@ async function _MainMenu(msg, close)
                 });
                 _array.push(fat.message_id);
     
-                var html = `<strong>${msg.from.first_name} ${msg.from.last_name}</strong>\nВы можете ознакомится с предложениями на данной платформе.`;
+                var html = `<strong>${msg.from.first_name}</strong>\nВы можете ознакомится с предложениями на данной платформе.`;
                 var fat = await bot.sendMessage(msg.chat.id, html, {
                     parse_mode: "HTML",
                     reply_markup: {
