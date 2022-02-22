@@ -1150,13 +1150,11 @@
                 data: _GET("id"),
             });
 
-            this.global_block.append($(`<h1>Кто привлек проект</h1>`));
-
             var _block = 
             $(`
                 <div class="structCreator_new_block"">
                     <div class="structCreator_new_block_row">
-                        <span>ID</span>
+                        <span>Кто привлек проект</span>
                         <a>
                             <BB>${activeData.whoGet}</BB>
                             <BB>${activeData.nameGet}</BB>
@@ -1168,8 +1166,6 @@
             _block.find('BB').css("margin-right", "20px");
 
             this.global_block.append(_block);   
-
-            this.global_block.append($(`<h1>Инвестиции</h1>`));
 
             var templateText = $(`
                 <div class="settingBlock">
