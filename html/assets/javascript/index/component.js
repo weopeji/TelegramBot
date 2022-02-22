@@ -881,22 +881,22 @@
                 `);
 
                 template_text.children('span').eq(0).click( function() {
-                    location.href = `./?page=activ_projects&id=${$(this).attr('data')}&project=${$(this).attr('data-project')}`;
+                    location.href = `./?page=activ_projects&id=${$(this).parent().attr('data')}&project=${$(this).parent().attr('data-project')}`;
                 })
                 template_text.children('span').eq(1).click( function() {
-                    location.href = `./?page=activ_projects&id=${$(this).attr('data')}&project=${$(this).attr('data-project')}`;
+                    location.href = `./?page=activ_projects&id=${$(this).parent().attr('data')}&project=${$(this).parent().attr('data-project')}`;
                 })
                 template_text.children('span').eq(2).click( function() {
-                    location.href = `./?page=activ_projects&id=${$(this).attr('data')}&project=${$(this).attr('data-project')}`;
+                    location.href = `./?page=activ_projects&id=${$(this).parent().attr('data')}&project=${$(this).parent().attr('data-project')}`;
                 })
                 template_text.children('span').eq(3).click( function() {
-                    location.href = `./?page=activ_projects&id=${$(this).attr('data')}&project=${$(this).attr('data-project')}`;
+                    location.href = `./?page=activ_projects&id=${$(this).parent().attr('data')}&project=${$(this).parent().attr('data-project')}`;
                 })
                 template_text.children('span').eq(4).click( function() {
-                    location.href = `./?page=activ_projects&id=${$(this).attr('data')}&project=${$(this).attr('data-project')}`;
+                    location.href = `./?page=activ_projects&id=${$(this).parent().attr('data')}&project=${$(this).parent().attr('data-project')}`;
                 })
                 template_text.children('span').eq(5).click( function() {
-                    window.open(`./projects/${$(this).attr('data-project')}/${$(this).attr('data-document')}`, "_blank");
+                    window.open(`./projects/${$(this).parent().attr('data-project')}/${$(this).parent().attr('data-document')}`, "_blank");
                 })
 
                 settingBlock.find('.settingBlock_body').append(template_text);
