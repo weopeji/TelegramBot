@@ -286,7 +286,7 @@
                             },
                         });
 
-                        location.reload();
+                        $(this).parent().parent().parent().parent().find("bb").html(_value);
                     }
                 });
     
