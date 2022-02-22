@@ -45,14 +45,14 @@
             `);
 
             console.log(_data);
-            
+
             _data.payments_new.showBlocks.forEach(function(element, i) 
             {
                 var template_text = $(`
                     <div class="settingBlock_body_line" data="${element.inv.invester}" data-project="${element.inv.projectId}">
                         <span>${i + 1}</span>
                         <span>${DateFormatted(element.date)}</span>
-                        <span>${element.invPay.pay.toString().ReplaceNumber()} руб</span>
+                        <span>${Math.ceil(element.invPay.pay).toString().ReplaceNumber()} руб</span>
                         <span>${element.inv.projectId}/${element.initNumberProject} от ${DateFormatted(element.inv.date)}</span>
                         <span>${element.InvesterOfInvs.first_name}</span>
                         <span>Посмотреть</span>
