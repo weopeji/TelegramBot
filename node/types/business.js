@@ -158,29 +158,18 @@ async function getMoney(msg)
     }
 
     var html        = `Бизнес ${_User.first_name}\n\nУ вас активных проектов: ${allProjects.length}\n`;
+    html            += `Оплачено инвесторами: ${allPays}\n`;
     var keyboard    = 
     [
         [
             {
                 text: "Оплачено инвесторами",
                 login_url: {
-                    'url': `${h.getURL()}?user=${_User._id}&page=obligations`,
+                    'url': `${h.getURL()}?user=${_User._id}&page=payments_new`,
                 },
-            }            
+            }       
         ],
     ]
-
-    
-    html += `Оплачено инвесторами: ${allPays}\n`;
-    keyboard.push([
-        {
-            text: "Оплачено инвесторами",
-            login_url: {
-                'url': `${h.getURL()}?user=${_User._id}&page=payments_new`,
-            },
-        }
-    ])
-
 
     html += `Не подтверждено получение денег: ${notPays}\n`;
     keyboard.push([
@@ -193,6 +182,14 @@ async function getMoney(msg)
     ])
 
     html += `Обязательста перед investER: ${deptComiisssion} ₽\n`;
+    keyboard.push([
+        {
+            text: "Обязательства",
+            login_url: {
+                'url': `${h.getURL()}?user=${_User._id}&page=obligations`,
+            },
+        }    
+    ])
     keyboard.push([
         {
             text: "Перейти в личный кабинет",
