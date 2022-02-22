@@ -1757,7 +1757,7 @@ async function invester_status_project(socket,data,callback)
     {
         if(_invData._id == _InvDoc._id)
         {
-            break;
+            return;
         } else
         {
             initNumber = initNumber + 1;
