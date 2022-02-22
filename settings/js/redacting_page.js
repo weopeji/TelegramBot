@@ -76,11 +76,7 @@
 
         async render(_project, global_block)
         {
-
-            if(typeof _project.last_redacting != "undefined")
-            {
-                await this.renderRedacting(_project, global_block);
-            }
+            await this.renderRedacting(_project, global_block);
 
             var _data           = _project.data;
             var _page           = await this.getPAgeOfData(_data.organization);
