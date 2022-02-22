@@ -217,7 +217,7 @@ async function active_projects(msg)
         reply_markup: {  
             "resize_keyboard": true, 
             "keyboard": [
-                ["⬅️ Назад"]
+                ["⬅️ Hазад"]
             ],                                                                   
         }
     });
@@ -329,7 +329,7 @@ async function statusProjects(msg)
         reply_markup: {  
             "resize_keyboard": true, 
             "keyboard": [
-                ["⬅️ Назад"]
+                ["⬅️ Hазад"]
             ],                                                                   
         }
     });
