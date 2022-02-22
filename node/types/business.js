@@ -157,16 +157,16 @@ async function getMoney(msg)
         };
     }
 
-    var html        = `Бизнес ${_User.first_name}\n\n<code>У вас активных проектов:</code> ${allProjects.length}\n`;
+    var html        = `Бизнес ${_User.first_name}\n\nУ вас активных проектов: ${allProjects.length}\n`;
     var keyboard    = 
     [
         [
             {
-                text: "Перейти в личный кабинет",
+                text: "Оплачено инвесторами",
                 login_url: {
-                    'url': `${h.getURL()}?user=${_User._id}&page=myProjects`,
+                    'url': `${h.getURL()}?user=${_User._id}&page=obligations`,
                 },
-            }
+            }            
         ],
     ]
 
@@ -195,9 +195,9 @@ async function getMoney(msg)
     html += `Обязательста перед investER: ${deptComiisssion} ₽\n`;
     keyboard.push([
         {
-            text: "Оплачено инвесторами",
+            text: "Перейти в личный кабинет",
             login_url: {
-                'url': `${h.getURL()}?user=${_User._id}&page=obligations`,
+                'url': `${h.getURL()}?user=${_User._id}&page=myProjects`,
             },
         }
     ])
