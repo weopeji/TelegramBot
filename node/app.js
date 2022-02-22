@@ -336,11 +336,14 @@ bot.on('message', async (msg) =>
         await action_linker[msg.text](msg);
         await h.DM(msg, 1);
 
-        if(_User.type == "investor")
+        if(msg.text != "📈 Инвестировать")
         {
-            if(_User.putProject)
+            if(_User.type == "investor")
             {
-                await User.findOne({_id: _User._id}, {$unset: {putProject: 1}});
+                if(_User.putProject)
+                {
+                    await User.findOne({_id: _User._id}, {$unset: {putProject: 1}});
+                };
             };
         };
     } else 
