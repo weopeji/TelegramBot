@@ -898,6 +898,12 @@
                 template_text.children('span').eq(5).click( function() {
                     window.open(`./projects/${$(this).parent().attr('data-project')}/${$(this).parent().attr('data-document')}`, "_blank");
                 })
+                template_text.children('span').eq(6).click( function() {
+                    location.href = `./?page=activ_projects&id=${$(this).parent().attr('data')}&project=${$(this).parent().attr('data-project')}`;
+                })
+                template_text.children('span').eq(7).click( function() {
+                    location.href = `./?page=activ_projects&id=${$(this).parent().attr('data')}&project=${$(this).parent().attr('data-project')}`;
+                })
 
                 settingBlock.find('.settingBlock_body').append(template_text);
             })
