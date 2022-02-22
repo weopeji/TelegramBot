@@ -44,6 +44,8 @@
                 </div>
             `);
 
+            console.log(_data);
+            
             _data.payments_new.showBlocks.forEach(function(element, i) 
             {
                 var template_text = $(`
