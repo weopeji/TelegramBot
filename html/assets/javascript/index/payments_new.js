@@ -50,7 +50,7 @@
             {
                 var fio = null;
 
-                element.inv.forEach(elementInv => {
+                element.inv.data.forEach(elementInv => {
                     if(elementInv._id == "fio")
                     {
                         fio = elementInv.data;
