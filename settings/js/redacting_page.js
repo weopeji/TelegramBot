@@ -287,6 +287,7 @@
                         });
 
                         $(this).parent().parent().parent().parent().find("bb").html(_value);
+                        $(this).parent().parent().parent().toggleClass("structCreator_new_block_input_text");
                     }
                 });
     
