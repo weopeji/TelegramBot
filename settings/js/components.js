@@ -1172,7 +1172,7 @@
             var templateText = $(`
                 <div class="settingBlock">
                     <div class="settingBlock_header">
-                        <pПодтвержденные инвестиции в проект</p>
+                        <p>Подтвержденные инвестиции в проект</p>
                         <div class="settingBlock_header_line">
                             <span>Инвестор</span>
                             <span>Сумма Инвестиции</span>
@@ -1226,7 +1226,7 @@
             var templateText = $(`
                 <div class="settingBlock">
                     <div class="settingBlock_header">
-                        <pПоступления</p>
+                        <p>Поступления</p>
                         <div class="settingBlock_header_line">
                             <span>Инвестор</span>
                             <span>Сумма Инвестиции</span>
