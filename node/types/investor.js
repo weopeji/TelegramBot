@@ -43,7 +43,7 @@ async function investShow(msg)
         parse_mode: "HTML",
         reply_markup: {
             "resize_keyboard": true, 
-            "keyboard": [["⬅️ Hазад"]],
+            "keyboard": [["⬅️ Назад"]],
             "one_time_keyboard": true,
         }
     });
