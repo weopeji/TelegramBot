@@ -138,21 +138,8 @@ async function url(msg)
         _array.push(fat.message_id);
 
         var stream = fs.createReadStream(`./assets/videos/recomendation_more.gif`);
-        var fat = await await bot.sendPhoto(msg.from.id, stream, {
+        var fat = await await bot.sendAnimation(msg.from.id, stream, {
             "parse_mode": "html",
-            "reply_markup": {
-                "inline_keyboard": [
-                    [
-                        {
-                            text: "🏦 Инвестиционные предложения",
-                            login_url: {
-                                'url': `https://invester-relocation.site/?page=telegram_authorization&type=recomendation_push&userId=${msg.from.id}`,
-                                'request_write_access': true,
-                            },
-                        }
-                    ]
-                ],
-            }
         });
         _array.push(fat.message_id);
 
