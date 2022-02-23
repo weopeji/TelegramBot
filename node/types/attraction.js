@@ -117,7 +117,7 @@ async function url(msg)
                 "inline_keyboard": [
                     [
                         {
-                            text: "Инвестиционные предложения",
+                            text: "🏦 Инвестиционные предложения",
                             login_url: {
                                 'url': `https://invester-relocation.site/?page=telegram_authorization&type=recomendation_push&userId=${msg.from.id}`,
                                 'request_write_access': true,

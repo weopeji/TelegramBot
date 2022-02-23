@@ -1453,7 +1453,7 @@
 
             settingBlock.css("margin-top", "20px");
 
-            var initNumber = 0;
+            var initNumber = 1;
 
             for(var element of this.allAttracted.investors)
             {
