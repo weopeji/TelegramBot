@@ -2817,12 +2817,12 @@ async function getProjectNew(socket, data, callback)
 
         if(!commissionForProject)
         {
-            all_data.moreGetData.commissionForPtoject = all_data.moreGetData.commissionForPtoject + Number(Number(acceptInv.data.pay.toString().replace(/\s/g, ''))/ 100 * Number(_project.payersData.commission));
+            all_data.moreGetData.commissionForPtoject = all_data.moreGetData.commissionForPtoject + Number(Number(aceptInv.data.pay.toString().replace(/\s/g, ''))/ 100 * Number(_project.payersData.commission));
         } else
         {
             if(commissionForProject.status != "accept")
             {
-                all_data.moreGetData.commissionForPtoject = all_data.moreGetData.commissionForPtoject + Number(Number(acceptInv.data.pay.toString().replace(/\s/g, ''))/ 100 * Number(_project.payersData.commission));
+                all_data.moreGetData.commissionForPtoject = all_data.moreGetData.commissionForPtoject + Number(Number(aceptInv.data.pay.toString().replace(/\s/g, ''))/ 100 * Number(_project.payersData.commission));
             }
         }
 
