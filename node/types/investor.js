@@ -32,6 +32,38 @@ module.exports = {
     payerInBissnessDocument,
     drafts,
     drafts_block,
+    investShow,
+}
+
+async function investShow(msg)
+{
+    var _array      = [];
+    var html = `Вы находитесь в меню "Инвестиционные предложения"`;
+    var fat = await bot.sendMessage(msg.chat.id, html, {
+        parse_mode: "HTML",
+        reply_markup: {
+            "resize_keyboard": true, 
+            "keyboard": [['🏦 Инвестиционные предложения'], ["💰 Мои инвестиции", "📈 Инвестировать", "👨‍💼 Рекомендовать"], ["💁🏻 Написать в Поддержку","🔁 Сменить роль"]],
+            "one_time_keyboard": true,
+        }
+    });
+    _array.push(fat.message_id);
+
+    var html = `<strong>${msg.from.first_name}</strong>\nВы можете ознакомится с предложениями на данной платформе.`;
+    var fat = await bot.sendMessage(msg.chat.id, html, {
+        parse_mode: "HTML",
+        reply_markup: {
+            "inline_keyboard": [
+                [
+                    {
+                        text: "ОЗНАКОМИТСЯ С ПРЕДЛОЖЕНИЯМИ",
+                        url: "https://t.me/invester_official",
+                    }
+                ]
+            ],
+        }
+    });
+    _array.push(fat.message_id);
 }
 
 async function drafts_block(msg) 

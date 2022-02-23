@@ -310,6 +310,7 @@ bot.on('message', async (msg) =>
         "Проекты": investor_page.active_projects_stat,
         "Оплатил": investor_page.payerInBissness,
         "Черновики": investor_page.drafts,
+        "🏦 Инвестиционные предложения": investor_page.investShow,
         "⬅️ Hазад": investor_page.my_investment,
         // БИЗНЕС =============================================
         "✅ Активные проекты": business_page.getMoney,
