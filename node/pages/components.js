@@ -1755,7 +1755,6 @@ async function invester_status_project(socket,data,callback)
 
     console.log(_InvDoc._id);
     
-
     for(var i = 0; i < AllInvs.length; i++)
     {
         console.log(AllInvs[i]._id);
