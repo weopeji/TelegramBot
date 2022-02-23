@@ -290,7 +290,7 @@
             {
                 alert('Не верный формат: ' + extension + " Вы должны отправить в формате PDF");
                 return;
-            }
+            };
 
             axios.post(_url, _file, {
                 headers: {

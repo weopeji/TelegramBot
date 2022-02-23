@@ -163,7 +163,7 @@ async function getMoney(msg)
     [
         [
             {
-                text: "Оплачено инвесторами",
+                text: "Поступления",
                 login_url: {
                     'url': `${h.getURL()}?user=${_User._id}&page=payments_new`,
                 },
