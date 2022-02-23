@@ -184,7 +184,7 @@ async function getMoney(msg)
     html += `Обязательста перед investER: ${deptComiisssion} ₽\n`;
     keyboard.push([
         {
-            text: "Обязательства",
+            text: "Обязательства перед investER",
             login_url: {
                 'url': `${h.getURL()}?user=${_User._id}&page=obligations`,
             },
