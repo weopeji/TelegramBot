@@ -64,6 +64,7 @@ async function investShow(msg)
         }
     });
     _array.push(fat.message_id);
+    await h.DMA(msg, _array);
 }
 
 async function drafts_block(msg) 
