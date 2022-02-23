@@ -1752,12 +1752,10 @@ async function invester_status_project(socket,data,callback)
     var _Project    = await Project.findOne({_id: data.project});
     var AllInvs     = await InvDoc.find({projectId: data.project});
     var initNumber  = 0;
-
-    console.log(_InvDoc._id);
     
     for(var i = 0; i < AllInvs.length; i++)
     {
-        console.log(AllInvs[i]._id);
+        console.log(AllInvs[i]._id == _InvDoc._id);
         if(AllInvs[i]._id == _InvDoc._id)
         {
             initNumber = i + 1;
