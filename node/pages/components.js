@@ -1756,6 +1756,7 @@ async function invester_status_project(socket,data,callback)
     for(var i = 0; i < AllInvs.length; i++)
     {
         console.log(AllInvs[i]._id == _InvDoc._id);
+        console.log(AllInvs[i]._id + " " + _InvDoc._id + " ==============");
         if(AllInvs[i]._id == _InvDoc._id)
         {
             initNumber = i + 1;
