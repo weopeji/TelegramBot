@@ -1419,6 +1419,15 @@
                 </div>
             `);
 
+            headerInfoBlock.find(".Attracted_by_me_headerRefUrlsBlock_blocks_line_copy").click( function() {
+                var $tmp = $("<textarea>");
+                $("body").append($tmp);
+                $tmp.val($(this).parent().find('span').eq(1).text()).select();
+                document.execCommand("copy");
+                $tmp.remove();
+                alert('Ваша ссылка скопирована в буфер обмена!');
+            });
+
             var moreGetButtons = $(`
                 <div class="moreGetButtons" data="get">
                     <span data="get"><i class="fad fa-money-check-edit-alt"></i> Запросить выплату</span>
