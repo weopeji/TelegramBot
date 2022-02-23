@@ -203,6 +203,26 @@ async function alertAdmin(data)
                     ],
                 }
             });
+        },
+        "video": function()
+        {
+            var html = `<a href="https://invester-relocation.site/html/project/profil/#${_project._id}">Профиль компании</a>\n<a href="https://invester-relocation.site/projects/${_project._id}/${_project.data["file+7"]}">Презентация</a>\n<a href="https://invester-relocation.site/projects/${_project._id}/${_project.data["file+8"]}">Видео презентация</a>\n\n`;
+            html += data.text;
+            const stream = fs.createReadStream(`../projects/${data.projectId}/logo.png`);
+            bot.sendPhoto(-1001693050369, stream, {
+                "caption": html,
+                "parse_mode": "html",
+                "reply_markup": {
+                    "inline_keyboard": [
+                        [
+                            {
+                                text: "Посмотреть результаты",
+                                url: `https://invester-relocation.site/settings/?page=block&id=${_project._id}&more=settings`,
+                            }
+                        ]
+                    ],
+                }
+            });
         }
     };
     _funs[data.type]();

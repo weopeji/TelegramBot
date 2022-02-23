@@ -110,7 +110,7 @@ async function url(msg)
         _array.push(fat.message_id);
 
         // 2 ===
-        const stream = fs.createReadStream(`../html/assets/images/logo_print.jpeg`);
+        var stream = fs.createReadStream(`../html/assets/images/logo_print.jpeg`);
         var fat = await await bot.sendPhoto(msg.from.id, stream, {
             "parse_mode": "html",
             "reply_markup": {
@@ -136,6 +136,26 @@ async function url(msg)
             parse_mode: "Markdown",
         });
         _array.push(fat.message_id);
+
+        var stream = fs.createReadStream(`./assets/videos/recomendation_more.gif`);
+        var fat = await await bot.sendPhoto(msg.from.id, stream, {
+            "parse_mode": "html",
+            "reply_markup": {
+                "inline_keyboard": [
+                    [
+                        {
+                            text: "🏦 Инвестиционные предложения",
+                            login_url: {
+                                'url': `https://invester-relocation.site/?page=telegram_authorization&type=recomendation_push&userId=${msg.from.id}`,
+                                'request_write_access': true,
+                            },
+                        }
+                    ]
+                ],
+            }
+        });
+        _array.push(fat.message_id);
+
         await h.DMA(msg, _array);
     } else 
     {

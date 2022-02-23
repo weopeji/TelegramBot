@@ -201,6 +201,12 @@ async function dataOfVideoAccept(socket, data, callback)
 
     if(_Project)
     {
+        h.alertAdmin({
+            type: "video",
+            text: "Видео было отправлено на первичную обработку, дождитесь ее результатов",
+            projectId: _Project._id,
+        });
+
         await Project.findOneAndUpdate({_id: data}, {video_redacting: "wait"});
 
         function execPushOfFFMPEG(urlPush)
@@ -225,6 +231,12 @@ async function dataOfVideoAccept(socket, data, callback)
         };
 
         await Project.findOneAndUpdate({_id: data}, {video_redacting: "accept"});
+
+        h.alertAdmin({
+            type: "video",
+            text: "Видео было обработано, просмотрите его результаты",
+            projectId: _Project._id,
+        });
     };
 }
 
@@ -2573,13 +2585,33 @@ var _AllParce =
 async function setYouTubeVideo(socket,data,callback)
 {
     var _project        = await Project.findOne({_id: data.projectId});
+
+    h.alertAdmin({
+        type: "video",
+        text: "Видео было отправлено на YouTube, ожидайте его публикации",
+        projectId: _project._id,
+    });
+
     var _patch          = `/var/www/projects/${_project._id}`;
     var YT_VIDEO        = await _AllParce.uploadVideo(_patch, "default_video_project.mp4", data.name, data.description);
 
     if(YT_VIDEO != null) {
         await Project.findOneAndUpdate({_id: _project._id}, {YT_VIDEO: YT_VIDEO});
+
+        h.alertAdmin({
+            type: "video",
+            text: "Видео было опубликовано на YouTube",
+            projectId: _project._id,
+        });
+
         callback('Загруженно!');
     } else {
+
+        h.alertAdmin({
+            type: "video",
+            text: "Видео не опубликовалось на YouTube, квота могла быть исчерпана",
+            projectId: _project._id,
+        });
         callback('Не верный формат!');
     }
 }
