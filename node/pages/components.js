@@ -2787,17 +2787,18 @@ async function getProjectNew(socket, data, callback)
             acceptInvs: acceptInvsPush,
             paysAcceptInvs: 0,
             paysInvesters: 0,
+            commissionForPtoject: 0,
             invsPush: [],
-        }
-    }
+        },
+    };
 
     all_data.moreGetData.acceptInvs.forEach(acceptInv => {
         acceptInv.pays.forEach(payElement => {
             if(payElement.status == "accept")
             {
                 all_data.moreGetData.paysAcceptInvs = all_data.moreGetData.paysAcceptInvs + Number(payElement.pay.toString().replace(/\s/g, ''));
-            }
-        })
+            };
+        });
     });
 
     all_data.moreGetData.acceptInvs.forEach(acceptInv => {
@@ -2806,14 +2807,27 @@ async function getProjectNew(socket, data, callback)
 
     for(var aceptInv of acceptInvsPush)
     {
+        var commissionForProject = await commission.findOne({invId: aceptInv._id});
+
         var _dataBlock = 
         {
             invester: await User.findOne({user: aceptInv.invester}),
             inv: aceptInv,
+        };
+
+        if(!commissionForProject)
+        {
+            all_data.moreGetData.commissionForPtoject = all_data.moreGetData.commissionForPtoject + Number(Number(acceptInv.data.pay.toString().replace(/\s/g, ''))/ 100 * Number(_project.payersData.commission));
+        } else
+        {
+            if(commissionForProject.status != "accept")
+            {
+                all_data.moreGetData.commissionForPtoject = all_data.moreGetData.commissionForPtoject + Number(Number(acceptInv.data.pay.toString().replace(/\s/g, ''))/ 100 * Number(_project.payersData.commission));
+            }
         }
 
         all_data.moreGetData.invsPush.push(_dataBlock);
-    }
+    };
 
     callback(all_data);
 }
