@@ -139,7 +139,8 @@ async function url(msg)
 
         var stream = fs.createReadStream(`./assets/videos/recomendation_more.gif`);
         var fat = await await bot.sendAnimation(msg.from.id, stream, {
-            "parse_mode": "html",
+            width: 900,
+            height: 1920,
         });
         _array.push(fat.message_id);
 
