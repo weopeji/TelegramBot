@@ -286,6 +286,12 @@
 
             var _file = _form;
 
+            if(extension != "PDF")
+            {
+                alert('Не верный формат: ' + extension + " Вы должны отправить в формате PDF");
+                return;
+            }
+
             axios.post(_url, _file, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
