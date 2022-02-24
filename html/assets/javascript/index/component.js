@@ -120,7 +120,7 @@
                             })
 
                             blockMore.css('margin-bottom', '10px');
-                            _block.children("span").eq(3).find('label').css('margin-bottom', '10px');
+                            _block.children("span").eq(3).find('label').find('span').css('margin-bottom', '10px');
                             _block.children("span").eq(3).find('label').html('<span>Заменить</span>');
                             _block.children("span").eq(3).append(blockMore);
                         }
