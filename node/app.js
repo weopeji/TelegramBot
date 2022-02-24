@@ -346,7 +346,7 @@ bot.on('message', async (msg) =>
                 {
                     if(_User.putProject)
                     {
-                        await User.findOne({_id: _User._id}, {$unset: {putProject: 1}});
+                        await User.findOneAndUpdate({_id: _User._id}, {$unset: {putProject: 1}});
                     };
                 };
             };
