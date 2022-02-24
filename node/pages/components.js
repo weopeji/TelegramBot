@@ -618,7 +618,7 @@ async function telegram_auth_recomendation(socket, data, callback)
 
 
     var html        = `[Профиль компании](${h.getURL()}html/project/profil/?id=${needProject._id})\n[Презентация](${h.getURL()}/projects/${needProject._id}/${needProject.data["file+7"]})\n[Видео презентация](${videoPresentationPath})`;
-    const stream    = fs.createReadStream(`../projects/${_idProject}/logo.png`);
+    var stream    = fs.createReadStream(`../projects/${_idProject}/logo.png`);
     var _url        = `https://invester-relocation.site/?page=telegram_authorization&type=recomendation_push&userId=${needProject._id}`;
     var fat = await bot.sendPhoto(userId, stream, {
         "caption": html,
@@ -638,6 +638,14 @@ async function telegram_auth_recomendation(socket, data, callback)
         }
     });
     _array.push(fat.message_id);
+
+    var stream = fs.createReadStream(`./assets/videos/recomendation_first.gif`);
+    var fat = await await bot.sendAnimation(userId, stream, {
+        width: 900,
+        height: 1920,
+    });
+    _array.push(fat.message_id);
+
     await h.DMA(msg, _array);
 
     callback('ok');
