@@ -96,6 +96,20 @@
                         </div>
                     `);
 
+                    if(typeof el.statusAccept != "undefined")
+                    {
+                        if(el.statusAccept == "push")
+                        {
+                            var blockMore = $(`
+                                <span>Подтвердить</span>
+                                <span>Посмотреть</span>
+                                <span>Заменить</span>
+                            `);
+
+                            _block.children("span").eq(3).html(blockMore);
+                        }
+                    }
+
                     headerPaysBlock.find('.headerPaysBlock_body').append(_block);
                 });
 
