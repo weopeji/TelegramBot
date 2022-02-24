@@ -188,7 +188,30 @@ var action_linker =
     "endInvestingDataPush": endInvestingDataPush,
     "redactingParcingProject": redactingParcingProject,
     "registrationDocumentClearAdmin": registrationDocumentClearAdmin,
+    "business_cheack_accept_in_cabinet": business_cheack_accept_in_cabinet,
 };
+
+async function business_cheack_accept_in_cabinet(socket, data, callback)
+{
+    var _InvDoc = await InvDoc.findOne({projectId: data.project, invester: data.id});
+
+    if(_InvDoc)
+    {
+        var _Pays = _InvDoc.pays;
+
+        for(var i = 0; i < _Pays.length; i++)
+        {
+            if(i == data.number)
+            {
+                _Pays[i].status == "accept";
+            };
+        };
+
+        await InvDoc.findOneAndUpdate({projectId: data.project, invester: data.id}, {pays: _Pays});
+    };
+
+    callback();
+}
 
 async function registrationDocumentClearAdmin(socket, data, callback)
 {

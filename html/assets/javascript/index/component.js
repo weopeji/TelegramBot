@@ -105,12 +105,19 @@
                                 <span>Посмотреть</span>
                             `);
 
-                            blockMore.eq(2).click( function() {
-                                $(this).parent().find('input').trigger('clock');
+                            blockMore.eq(0).click( function() {
+                                await callApi({
+                                    methodName: "business_cheack_accept_in_cabinet",
+                                    data: {
+                                        id: _GET('id'),
+                                        project: _GET('project'),
+                                        number: $(this).parent().find('input').attr('id'),
+                                    },
+                                });
                             })
 
                             blockMore.css('margin-bottom', '10px');
-
+                            _block.children("span").eq(3).find('label').css('margin-bottom', '10px');
                             _block.children("span").eq(3).find('label').html('<span>Заменить</span>');
                             _block.children("span").eq(3).append(blockMore);
                         }
