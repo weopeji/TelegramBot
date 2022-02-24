@@ -116,7 +116,11 @@
                     location.href = `./?page=activ_projects&id=${$(this).attr('data')}&project=${$(this).attr('data-project')}`;
                 });
 
-
+                template_text.children("span").eq(5).find('.settingBlock_body_line_drop_menu').css({
+                    "right": "calc(100% + 40px)",
+                    "top": "0px",
+                    "height": "fit-content",
+                });
                 template_text.children("span").eq(5).css("position", "relative");
                 template_text.children("span").eq(5).click( function() {
                     $(".settingBlock_body_line_drop_menu").fadeOut();
