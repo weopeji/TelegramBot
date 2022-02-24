@@ -2871,24 +2871,20 @@ async function getProjectNew(socket, data, callback)
 
     for(var aceptInv of acceptInvsPush)
     {
-        var commissionForProject = await commission.findOne({invId: aceptInv._id});
-
         var _dataBlock = 
         {
             invester: await User.findOne({user: aceptInv.invester}),
             inv: aceptInv,
         };
 
-        if(!commissionForProject)
-        {
-            all_data.moreGetData.commissionForPtoject = all_data.moreGetData.commissionForPtoject + Number(Number(aceptInv.data.pay.toString().replace(/\s/g, ''))/ 100 * Number(_project.payersData.commission));
-        } else
-        {
-            if(commissionForProject.status != "accept")
+        var summOfPush = 0;
+
+        aceptInv.pays.forEach(pushSumm => {
+            if(pushSumm.status == "wait")
             {
-                all_data.moreGetData.commissionForPtoject = all_data.moreGetData.commissionForPtoject + Number(Number(aceptInv.data.pay.toString().replace(/\s/g, ''))/ 100 * Number(_project.payersData.commission));
-            }
-        }
+                all_data.moreGetData.commissionForPtoject = all_data.moreGetData.commissionForPtoject + Number(pushSumm.pay);
+            };
+        });
 
         all_data.moreGetData.invsPush.push(_dataBlock);
     };
