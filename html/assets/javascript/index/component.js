@@ -877,7 +877,7 @@
                         <span><i class="fal fa-cloud-download"></i></span>
                         <span>
                             <div class="settingBlock_body_line_drop_menu">
-                                
+
                             </div>
                             <i class="fal fa-cloud-download"></i>
                         </span>
@@ -890,7 +890,7 @@
                 })
                 template_text.children('span').eq(1).click( function() {
                     location.href = `./?page=activ_projects&id=${$(this).parent().attr('data')}&project=${$(this).parent().attr('data-project')}`;
-                })
+                }) 
                 template_text.children('span').eq(2).click( function() {
                     location.href = `./?page=activ_projects&id=${$(this).parent().attr('data')}&project=${$(this).parent().attr('data-project')}`;
                 })
