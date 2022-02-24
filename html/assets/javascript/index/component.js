@@ -89,7 +89,7 @@
                             <span>${i + 1}</span>
                             <span>${maxDateFormatted}</span>
                             <span>${_pay.toString().replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')} руб ${morePay.toString().replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')}</span>
-                            <span class="headerPaysBlock_button" data="${el.status}">
+                            <span class="headerPaysBlock_button" data="${el.status}" data-rec="${el.receipt}">
                                 <input type="file" name="" id='${i}'>
                                 <label for="${i}">${_status[el.status]}</label>
                             </span>
@@ -117,6 +117,10 @@
 
                                 alert('Успешно!');
                                 location.reload();
+                            });
+
+                            blockMore.eq(1).click( async function() {
+                                window.open(`/projects/${_GET('project')}/${$(this).parent().attr('data-rec')}` , '_blank');
                             })
 
                             blockMore.css('margin-bottom', '10px');
