@@ -113,7 +113,7 @@
                                     data: {
                                         id: _GET('id'),
                                         project: _GET('project'),
-                                        number: $(this).parent().find('input').attr('id'),
+                                        number: $(this).parent().parent().find('input').attr('id'),
                                     },
                                 });
 
@@ -122,7 +122,7 @@
                             });
 
                             blockMore.find('span').eq(1).click( async function() {
-                                window.open(`/projects/${_GET('project')}/${$(this).parent().attr('data-rec')}` , '_blank');
+                                window.open(`/projects/${_GET('project')}/${$(this).parent().parent().attr('data-rec')}` , '_blank');
                             })
 
                             blockMore.find('span').css('margin-bottom', '10px');
