@@ -105,7 +105,7 @@
                                 <span>Посмотреть</span>
                             `);
 
-                            blockMore.eq(0).click( function() {
+                            blockMore.eq(0).click( async function() {
                                 await callApi({
                                     methodName: "business_cheack_accept_in_cabinet",
                                     data: {
@@ -114,6 +114,9 @@
                                         number: $(this).parent().find('input').attr('id'),
                                     },
                                 });
+
+                                alert('Успешно!');
+                                location.reload();
                             })
 
                             blockMore.css('margin-bottom', '10px');
