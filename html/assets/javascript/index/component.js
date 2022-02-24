@@ -49,10 +49,49 @@
 
             if(_data.InvDoc.status == "accept")
             {
+                var bank        = null;
+                var bik         = null;
+                var nomer       = null;
+                var nomer_kor   = null;
+
+                _data.InvDoc.data.data.forEach(elementInv => {
+
+                    if(elementInv._id == "bank")
+                    {
+                        bank = elementInv.data;
+                    };
+
+                    if(elementInv._id == "bik")
+                    {
+                        bik = elementInv.data;
+                    };
+
+                    if(elementInv._id == "nomer")
+                    {
+                        nomer = elementInv.data;
+                    };
+
+                    if(elementInv._id == "nomer_kor")
+                    {
+                        nomer_kor = elementInv.data;
+                    };
+                })
+                
                 var headerPaysBlock = $(`
                     <div class="headerPaysBlock">
                         <div class="headerPaysBlock_header">
-                            <span class="headerPaysBlock_header_span">Выплаты по проекту</span>
+                            <span class="headerPaysBlock_header_span">
+                                Выплаты по проекту
+                                <div class="headerPaysBlock_header_span_button_reqvesits">
+                                    <span>Посмотреть реквезиты</span>
+                                    <div class="settingBlock_body_line_drop_menu">
+                                        <p>Банк получателя: <span>${bank}</span></p>
+                                        <p>БИК: <span>${bik}</span></p>
+                                        <p>Номер расчетного счета: <span>${nomer}</span></p>
+                                        <p>Номер кор счета: <span>${nomer_kor}</span></p>
+                                    </div>
+                                </div>
+                            </span>
                             <div class="headerPaysBlock_header_line">
                                 <span>#</span>
                                 <span>Дата</span>
@@ -65,6 +104,17 @@
                         </div>
                     </div>
                 `);
+
+                headerPaysBlock.find('.headerPaysBlock_header_span_button_reqvesits').click( function() {
+                    $(this).find('.settingBlock_body_line_drop_menu').fadeToggle();
+                })
+
+                headerPaysBlock.find('.headerPaysBlock_header_span').css({
+                    'display': "flex",
+                    "position": "relative",
+                    "align-items": "center",
+                });
+
 
                 var _status = {
                     "wait": "Прикрепить чек",

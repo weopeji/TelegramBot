@@ -1812,7 +1812,6 @@ html, body {
 }
 
 .headerPaysBlock_header_span_button_reqvesits .settingBlock_body_line_drop_menu {
-  display: block;
   left: 0;
   bottom: calc(100% + 20px);
 }
