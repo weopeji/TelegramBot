@@ -1804,10 +1804,17 @@ html, body {
   display: -ms-flexbox;
   display: flex;
   padding: 10px 15px;
-  margin-left: 20p;
+  margin-left: 20px;
   border: 1px solid;
   border-radius: 8px;
   cursor: pointer;
+  position: relative;
+}
+
+.headerPaysBlock_header_span_button_reqvesits .settingBlock_body_line_drop_menu {
+  display: block;
+  left: 0;
+  bottom: calc(100% + 20px);
 }
 
 @media (max-width: 1600px) {
