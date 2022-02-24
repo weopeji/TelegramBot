@@ -905,7 +905,7 @@
                                 <p>Банк получателя: <span>${bank}</span></p>
                                 <p>БИК: <span>${bik}</span></p>
                                 <p>Номер расчетного счета: <span>${nomer}</span></p>
-                                <p>Номер корреспондентского счета: <span>${nomer_kor}</span></p>
+                                <p>Номер кор счета: <span>${nomer_kor}</span></p>
                             </div>
                             <i class="fal fa-cloud-download"></i>
                         </span>

@@ -49,12 +49,36 @@
             _data.payments_new.showBlocks.forEach(function(element, i) 
             {
                 var fio = null;
+                var bank        = null;
+                var bik         = null;
+                var nomer       = null;
+                var nomer_kor   = null;
 
                 element.inv.data.data.forEach(elementInv => {
                     if(elementInv._id == "fio")
                     {
                         fio = elementInv.data;
                     }
+
+                    if(elementInv._id == "bank")
+                    {
+                        bank = elementInv.data;
+                    };
+
+                    if(elementInv._id == "bik")
+                    {
+                        bik = elementInv.data;
+                    };
+
+                    if(elementInv._id == "nomer")
+                    {
+                        nomer = elementInv.data;
+                    };
+
+                    if(elementInv._id == "nomer_kor")
+                    {
+                        nomer_kor = elementInv.data;
+                    };
                 })
 
                 var template_text = $(`
@@ -64,13 +88,45 @@
                         <span>${Math.ceil(element.invPay.pay).toString().ReplaceNumber()} руб</span>
                         <span>${element.inv.projectId}/${element.initNumberProject} от ${DateFormatted(element.inv.date)}</span>
                         <span>${fio}</span>
-                        <span>Посмотреть</span>
+                        <span>
+                            <div class="settingBlock_body_line_drop_menu">
+                                <p>Банк получателя: <span>${bank}</span></p>
+                                <p>БИК: <span>${bik}</span></p>
+                                <p>Номер расчетного счета: <span>${nomer}</span></p>
+                                <p>Номер кор счета: <span>${nomer_kor}</span></p>
+                            </div>
+                            Посмотреть
+                        </span>
                     </div>
                 `);
 
-                template_text.click( function() {
+                template_text.children("span").eq(0).click( function() {
                     location.href = `./?page=activ_projects&id=${$(this).attr('data')}&project=${$(this).attr('data-project')}`;
-                })
+                });
+                template_text.children("span").eq(1).click( function() {
+                    location.href = `./?page=activ_projects&id=${$(this).attr('data')}&project=${$(this).attr('data-project')}`;
+                });
+                template_text.children("span").eq(2).click( function() {
+                    location.href = `./?page=activ_projects&id=${$(this).attr('data')}&project=${$(this).attr('data-project')}`;
+                });
+                template_text.children("span").eq(3).click( function() {
+                    location.href = `./?page=activ_projects&id=${$(this).attr('data')}&project=${$(this).attr('data-project')}`;
+                });
+                template_text.children("span").eq(4).click( function() {
+                    location.href = `./?page=activ_projects&id=${$(this).attr('data')}&project=${$(this).attr('data-project')}`;
+                });
+
+
+                template_text.children("span").eq(5).click( function() {
+                    $(".settingBlock_body_line_drop_menu").fadeOut();
+                    if($(this).find('.settingBlock_body_line_drop_menu').css('display') == "block")
+                    {
+                        (this).find('.settingBlock_body_line_drop_menu').fadeOut();
+                    } else
+                    {
+                        $(this).find('.settingBlock_body_line_drop_menu').fadeIn();
+                    }
+                });
 
                 settingBlock.find('.settingBlock_body').append(template_text);
             })
