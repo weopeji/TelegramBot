@@ -906,6 +906,7 @@
 
                 template_text.children('span').eq(6).css("position", "relative");
                 template_text.children('span').eq(6).click( function() {
+                    $(".settingBlock_body_line_drop_menu").fadeOut();
                     $(this).find('.settingBlock_body_line_drop_menu').fadeToggle();
                 })
 
