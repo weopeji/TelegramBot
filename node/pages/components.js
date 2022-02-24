@@ -2879,10 +2879,15 @@ async function getProjectNew(socket, data, callback)
 
         var summOfPush = 0;
 
-        aceptInv.pays.forEach(pushSumm => {
+        aceptInv.pays.forEach((pushSumm, init) => {
             if(pushSumm.status == "wait")
             {
                 all_data.moreGetData.commissionForPtoject = all_data.moreGetData.commissionForPtoject + Number(pushSumm.pay);
+
+                if(init == aceptInv.pays.length - 1)
+                {
+                    all_data.moreGetData.commissionForPtoject = all_data.moreGetData.commissionForPtoject + Number(aceptInv.data.pay.toString().replace(/\s/g, ''));
+                }
             };
         });
 
