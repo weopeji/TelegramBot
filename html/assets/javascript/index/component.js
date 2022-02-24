@@ -262,6 +262,16 @@
                     </div>
                 `);
 
+                headerPaysBlock.find('.headerPaysBlock_header_span_button_reqvesits').click( function() {
+                    $(this).find('.settingBlock_body_line_drop_menu').fadeToggle();
+                })
+
+                headerPaysBlock.find('.headerPaysBlock_header_span').css({
+                    'display': "flex",
+                    "position": "relative",
+                    "align-items": "center",
+                });
+
                 var _status = {
                     "wait": "Ожидает оплату",
                     "accept": "Посмотреть чек",
