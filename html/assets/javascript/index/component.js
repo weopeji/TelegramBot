@@ -101,10 +101,8 @@
                         if(el.statusAccept == "push")
                         {
                             var blockMore = $(`
-                                <input type="file" name="" id='${i}'>
                                 <span>Подтвердить</span>
                                 <span>Посмотреть</span>
-                                <span>Заменить</span>
                             `);
 
                             blockMore.eq(2).click( function() {
@@ -113,7 +111,8 @@
 
                             blockMore.css('margin-bottom', '10px');
 
-                            _block.children("span").eq(3).html(blockMore);
+                            _block.children("span").eq(3).find('label').html('Заменить');
+                            _block.children("span").eq(3).append(blockMore);
                         }
                     }
 
