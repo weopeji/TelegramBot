@@ -906,7 +906,7 @@
 
                 template_text.children('span').eq(6).css("position", "relative");
                 template_text.children('span').eq(6).click( function() {
-                    location.href = `./?page=activ_projects&id=${$(this).parent().attr('data')}&project=${$(this).parent().attr('data-project')}`;
+                    $(this).find('.settingBlock_body_line_drop_menu').fadeToggle();
                 })
 
 
