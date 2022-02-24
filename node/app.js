@@ -964,6 +964,7 @@ app.post('/file_chart.io/files', (req, res) =>
                     var _Pays = _InvDoc.pays;
 
                     _Pays[_data.file_id].status = "accept";
+                    _Pays[_data.file_id].statusAccept = "wait";
                     _Pays[_data.file_id].receipt = `${_data._user}_${_data.file_id}.${_data._pts.split('/')[1]}`;
 
                     await InvDoc.findOneAndUpdate({invester: _data._user, projectId: _data._project}, {pays: _Pays});
