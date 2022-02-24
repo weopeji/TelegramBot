@@ -101,11 +101,13 @@
                         if(el.statusAccept == "push")
                         {
                             var blockMore = $(`
-                                <span>Подтвердить</span>
-                                <span>Посмотреть</span>
+                                <div class="mgshjtokj">
+                                    <span>Подтвердить</span>
+                                    <span>Посмотреть</span>
+                                </div>
                             `);
 
-                            blockMore.eq(0).click( async function() {
+                            blockMore.find('span').eq(0).click( async function() {
                                 await callApi({
                                     methodName: "business_cheack_accept_in_cabinet",
                                     data: {
@@ -119,13 +121,13 @@
                                 location.reload();
                             });
 
-                            blockMore.eq(1).click( async function() {
+                            blockMore.find('span').eq(1).click( async function() {
                                 window.open(`/projects/${_GET('project')}/${$(this).parent().attr('data-rec')}` , '_blank');
                             })
 
-                            blockMore.css('margin-bottom', '10px');
-                            blockMore.eq(0).css('margin-top', '10px');
-                            _block.children("span").eq(3).find('label').html('<span>Заменить</span>');
+                            blockMore.find('span').css('margin-bottom', '10px');
+                            blockMore.find('span').eq(0).css('margin-top', '10px');
+                            _block.find('label').html('<span>Заменить</span>');
                             _block.children("span").eq(3).append(blockMore);
                         }
                     }
