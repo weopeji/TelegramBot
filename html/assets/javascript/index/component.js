@@ -111,7 +111,7 @@
 
                             blockMore.css('margin-bottom', '10px');
 
-                            _block.children("span").eq(3).find('label').html('Заменить');
+                            _block.children("span").eq(3).find('label').html('<span>Заменить</span>');
                             _block.children("span").eq(3).append(blockMore);
                         }
                     }
