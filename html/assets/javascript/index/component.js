@@ -859,13 +859,38 @@
             Project_data.moreGetData.invsPush.forEach(function(element, i) 
             {
                 var UserNameInvester = null;
+                var bank        = null;
+                var bik         = null;
+                var nomer       = null;
+                var nomer_kor   = null;
+
 
                 element.inv.data.data.forEach(elementMoreData => {
                     if(elementMoreData._id == "fio")
                     {
                         UserNameInvester = elementMoreData.data;
-                    }
-                })
+                    };
+
+                    if(elementMoreData._id == "bank")
+                    {
+                        bank = elementMoreData.data;
+                    };
+
+                    if(elementMoreData._id == "bik")
+                    {
+                        bik = elementMoreData.data;
+                    };
+
+                    if(elementMoreData._id == "nomer")
+                    {
+                        nomer = elementMoreData.data;
+                    };
+
+                    if(elementMoreData._id == "nomer_kor")
+                    {
+                        nomer_kor = elementMoreData.data;
+                    };
+                });
 
                 var template_text = $(`
                     <div class="settingBlock_body_line" data="${element.inv.invester}" data-project="${element.inv.projectId}" data-document="${element.inv.urlToLastDocument}">
@@ -877,7 +902,10 @@
                         <span><i class="fal fa-cloud-download"></i></span>
                         <span>
                             <div class="settingBlock_body_line_drop_menu">
-
+                                <p>Банк получателя: <span>${bank}</span></p>
+                                <p>БИК: <span>${bik}</span></p>
+                                <p>Номер расчетного счета: <span>${nomer}</span></p>
+                                <p>Номер корреспондентского счета: <span>${nomer_kor}</span></p>
                             </div>
                             <i class="fal fa-cloud-download"></i>
                         </span>
