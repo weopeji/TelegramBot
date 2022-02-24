@@ -204,6 +204,7 @@ async function business_cheack_accept_in_cabinet(socket, data, callback)
             if(i == data.number)
             {
                 _Pays[i].status == "accept";
+                delete _Pays[i].statusAccept;
             };
         };
 
