@@ -212,9 +212,7 @@ async function getChatsOfId(socket, data, callback)
             return;
         };
 
-        var _UserDataBlock      = await User.findOne({user: _FindBlock.investor});
-        var needUserPhoto       = null;
-        var _idPhoto            = await bot.getUserProfilePhotos(_UserDataBlock.user);
+        var _idPhoto            = await bot.getUserProfilePhotos(_FindBlock.invester);
 
         if(_idPhoto.total_count > 0)
         {
