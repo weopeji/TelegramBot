@@ -218,7 +218,7 @@ async function getChatsOfId(socket, data, callback)
         {
             var file_id         = _idPhoto.photos[0][0].file_id;
             returnBlock.photo   = await bot.getFile(file_id);
-            returnBlock.photo   = returnBlock.photo.Path_im;
+            returnBlock.photo   = `https://api.telegram.org/file/bot2062839693:AAE0hzj8SVXyexq29s5x7aRLC5x8O77c-pQ/` + returnBlock.photo.file_path;
         };
 
         for(var findOfInv of _FindBlock.data.data)
