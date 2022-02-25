@@ -203,7 +203,7 @@ async function getChatsOfId(socket, data, callback)
 
     if(_User.type == "business")
     {
-        var _FindBlock = await InvDoc.findOne({user: data.id});
+        var _FindBlock = await InvDoc.findOne({_id: data.id});
 
         if(!_FindBlock)
         {
