@@ -446,14 +446,18 @@
             if(allData.User.type == "business")
             {
                 await this.business_render(_data);
+
+                $('.info_active_block_massage_button').click(function() {
+                    window.open(`./?page=chats&id=${_data.InvDoc._id}`, '_blank');
+                });
             } else 
             {
                 await this.invester_render(_data);
-            }
 
-            $('.info_active_block_massage_button').click(function() {
-                window.open(`./?page=chats&id=${_data.InvDoc.projectId}`, '_blank');
-            });
+                $('.info_active_block_massage_button').click(function() {
+                    window.open(`./?page=chats&id=${_data.InvDoc.projectId}`, '_blank');
+                });
+            }
 
             $('.show_block').click( function() {
                 window.open(`./projects/${_data.InvDoc.projectId}/${_data.InvDoc.data.document}`, '_blank');

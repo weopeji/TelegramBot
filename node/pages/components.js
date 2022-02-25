@@ -93,6 +93,7 @@ var action_linker =
 
     // chats
     "getChats": getChats,
+    "getChatsOfId": getChatsOfId,
 
     // video
     "dataOfVideo": dataOfVideo,
@@ -190,6 +191,51 @@ var action_linker =
     "registrationDocumentClearAdmin": registrationDocumentClearAdmin,
     "business_cheack_accept_in_cabinet": business_cheack_accept_in_cabinet,
 };
+
+async function getChatsOfId(socket, data, callback)
+{
+    var _User       = await User.findOne({_id: data.user});
+    var returnBlock = 
+    {
+        name: null,
+        type: null,
+    };
+
+    if(_User.type == "business")
+    {
+        var _FindBlock = await InvDoc.findOne({user: data.id});
+
+        if(!_FindBlock)
+        {
+            callback('error');
+            return;
+        };
+
+        for(var findOfInv of _FindBlock.data.data)
+        {
+            if(findOfInv._id == "fio")
+            {
+                returnBlock.name = findOfInv.data;
+            }
+        }
+
+        returnBlock.type = "Инвестор";
+    }
+    else
+    {
+        var _FindBlock = await Project.findOne({_id: data.id});
+
+        if(!_FindBlock)
+        {
+            callback('error');
+            return;
+        };
+
+
+    };
+
+    callback(returnBlock);
+}
 
 async function business_cheack_accept_in_cabinet(socket, data, callback)
 {
