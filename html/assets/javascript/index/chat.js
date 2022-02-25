@@ -84,7 +84,7 @@
 
             if(getChat.msgs)
             {
-                for(msgBlock of getChat.msgs)
+                for(var msgBlock of getChat.msgs)
                 {
                     var myBlock = $(`
                         <div class="chat_block_chat_body_msgs_line">
