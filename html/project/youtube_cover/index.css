@@ -45,12 +45,13 @@ html, body {
 }
 
 .index_page_block_body h1 {
-  font-size: 70px;
+  font-size: 100px;
   width: 38%;
   display: block;
   margin-left: 57px;
   position: relative;
   top: -20px;
+  line-height: 0.8;
 }
 
 .index_page_block_target {
