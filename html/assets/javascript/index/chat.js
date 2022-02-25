@@ -27,36 +27,36 @@
             });
 
             var templateText = $(`
-                    <div class="chat_block">
-                        <div class="chat_block_chat">
-                            <div class="chat_block_chat_header">
-                                <span>Чат</span>
-                            </div>
-                            <div class="chat_block_chat_body">
-                                <div class="chat_block_chat_body_row">
+                <div class="chat_block">
+                    <div class="chat_block_chat">
+                        <div class="chat_block_chat_header">
+                            <span>Чат</span>
+                        </div>
+                        <div class="chat_block_chat_body">
+                            <div class="chat_block_chat_body_row">
 
-                                    <div class="chat_block_chat_body_msgs">
+                                <div class="chat_block_chat_body_msgs">
 
-                                    </div>
+                                </div>
 
-                                    <div class="chat_block_chat_body_row_input">
-                                        <input type="text">
-                                        <span>Отправить</span>
-                                    </div>
+                                <div class="chat_block_chat_body_row_input">
+                                    <input type="text">
+                                    <span>Отправить</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="chat_block_info">
-                            <div class="info_active_block_photo">
-                            
-                            </div>
-                            <span>Тех поддержка</span>
-                            <p>Администрация</p>
-                        </div>
                     </div>
-                `);
+                    <div class="chat_block_info">
+                        <div class="info_active_block_photo">
+                        
+                        </div>
+                        <span>${getChat.name}</span>
+                        <p>${getChat.type}</p>
+                    </div>
+                </div>
+            `);
 
-                $('.index_page_body_data').append(templateText);
+            $('.index_page_body_data').append(templateText);
         };
 
         async render()
