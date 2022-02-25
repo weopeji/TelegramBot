@@ -1,3 +1,5 @@
+const { _GET } = require("../../../../node/helpers/functions");
+
 (function (global) {
     "use strict";
 
@@ -55,6 +57,32 @@
                     </div>
                 </div>
             `);
+
+            templateText.find('.chat_block_chat_body_row_input span').click( async function() {
+        
+                var myBlock = $(`
+                    <div class="chat_block_chat_body_msgs_line">
+                        <div class="chat_block_chat_body_msgs_line_my">
+                            <span>${$('.chat_block_chat_body_row_input input').val()}</span>
+                        </div>
+                    </div>
+                `);
+
+                $('.chat_block_chat_body_msgs').append(myBlock);
+                $('.chat_block_chat_body_msgs').animate({scrollTop: $('.chat_block_chat_body_msgs').height()}, 'fast');
+
+                await callApi({
+                    methodName: "msgUP",
+                    data: {
+                        user: global.allData._id,
+                        type: global.allData.User.type,
+                        id: _GET("id"),
+                        msg: $('.chat_block_chat_body_row_input input').val(),
+                    },
+                });
+
+                $('.chat_block_chat_body_row_input input').val('');
+            });
 
             $('.index_page_body_data').append(templateText);
         };

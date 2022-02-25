@@ -1797,39 +1797,30 @@ async function all_msgs(socket,data,callback)
 
 async function msgUP(socket,data,callback)
 {
-    var _MsgDB = await MsgDB.findOne({investor: data.user, business: data.to});
+    var _User       = await User.findOne({_id: data.user});
+    var _InvDoc     = await InvDoc.findOne({_id: data.id});
+    var _MsgDB      = await MsgDB.findOne({invDoc: _InvDoc._id});
+    var _array      = [];
 
-    await User.findOneAndUpdate({_id: data.user}, {alert_msgs: "true"});
-
-    var _Project        = await Project.findOne({_id: data.to});
-
-    await User.findOneAndUpdate({user: _Project.user}, {alert_msgs: "true"});
-
-    if(!_MsgDB) {
-        var _array  = [];
-        _array.push({
-            text: data.msg,
-            type: data.type,
-        })
-        await MsgDB.create(
+    if(!_MsgDB)
+    {
+        _MsgDB = await MsgDB.create(
         {
-            investor: data.user,
-            business: data.to,
-            msgs: _array,
+            invDoc: _InvDoc._id,
+            msgs: [],
         });
-    } else {
-        var _array = _MsgDB.msgs;
-        _array.push({
-            text: data.msg,
-            type: data.type,
-        }) 
-        await MsgDB.findOneAndUpdate({
-            _id: _MsgDB._id,
-        },
-        {
-            msgs: _array,
-        });
+    } 
+    else
+    {
+        _array = _MsgDB.msgs;
     }
+
+    _array.push({
+        text: data.msg,
+        type: _User.type,
+    });
+
+    callback(await MsgDB.findOneAndUpdate({_id: _MsgDB._id,},{msgs: _array}));
 }
 
 async function removePayInvestor(socket,data,callback)

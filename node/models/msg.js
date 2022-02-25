@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
 
 const UserShema = new mongoose.Schema({
-    investor: String,
-    business: String,
+    invDoc: String,
     msgs: JSON,
 });
 
