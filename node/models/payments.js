@@ -7,6 +7,7 @@ const UserShema = new mongoose.Schema({
     payCommission: String,
     status: String,
     data: JSON,
+    date: String,
 });
 
 mongoose.model('Payments', UserShema);

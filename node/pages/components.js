@@ -1984,6 +1984,7 @@ async function acceptInvestor(socket,data,callback)
                 _InvInvester: _InvDoc.invester,
                 ProjectData: _Project.payersData,
             },
+            date: new Date().getTime().toString(),
         })
     }
 
@@ -1998,6 +1999,7 @@ async function acceptInvestor(socket,data,callback)
                 _id: _Project._id,
                 ProjectData: _Project.payersData,
             },
+            date: new Date().getTime().toString(),
         })
     }
 
