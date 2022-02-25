@@ -125,6 +125,7 @@ async function getMoney(msg)
     var notPays         = 0;
     var allPays         = 0;
     var falseInvs       = [];
+    var procroheno      = 0;
 
     for(var _project of allProjects)
     {
@@ -150,7 +151,17 @@ async function getMoney(msg)
                     {
                         deptComiisssion = deptComiisssion + (Number(_Inv.data.pay.toString().replace(/\s/g, '')) / 100 * Number(_project.payersData.commission));
                     };
-                }
+                };
+
+                _Inv.pays.forEach(elementOfPayLoad => {
+                    if(elementOfPayLoad.status == "wait")
+                    {
+                        if(elementOfPayLoad.date.toString() <= new Date().getTime().toString())
+                        {
+                            procroheno = procroheno + 1;
+                        }
+                    }
+                });
             }
 
             allPays = allPays + 1;
@@ -161,7 +172,7 @@ async function getMoney(msg)
     html            += `У вас активных проектов: ${allProjects.length}\n`;
     html            += `Оплачено инвесторами: ${allPays}\n`;
     html            += `Не подтверждено получение денег: ${notPays}\n`;
-    html            += `Просрочено: ${notPays}\n`;
+    html            += `Просрочено: ${procroheno}\n`;
     html            += `Обязательста перед investER: ${deptComiisssion} ₽\n`;
 
 
