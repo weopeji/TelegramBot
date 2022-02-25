@@ -267,7 +267,7 @@ async function dataOfVideoAccept(socket, data, callback)
         await page.emulateMedia('screen');
         await page.$('.all_good');
         const element = await page.$('.index_page_block');   
-        await element.screenshot({path: `../projects/${putProject}/logoYouTube.png`});
+        await element.screenshot({path: `../projects/${UpdateProject._id}/logoYouTube.png`});
         await browser.close();
 
         h.alertAdmin({
