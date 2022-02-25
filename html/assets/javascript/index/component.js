@@ -452,7 +452,7 @@
             }
 
             $('.info_active_block_massage_button').click(function() {
-                window.open(`./?user=${allData.User._id}&page=chats&id=${_data.InvDoc.projectId}`, '_blank');
+                window.open(`./?page=chats&id=${_data.InvDoc.projectId}`, '_blank');
             });
 
             $('.show_block').click( function() {

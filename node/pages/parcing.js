@@ -111,7 +111,8 @@ async function arbitrajnayaPraktikaFizLica(_initials, _region, date_user)
                     }
                 }
     
-                var config = {
+                var config = 
+                {
                     method: 'get',
                     url: `https://api-ip.fssp.gov.ru/api/v1.0/search/physical?token=er77gLcQvTO5&firstname=${encodeURI(first_name)}&secondname=${encodeURI(second_name)}&lastname=${encodeURI(last_name)}&birthdate=${birth_date}&region=${_dataFirst}`,
                     headers: { }
