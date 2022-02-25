@@ -82,6 +82,30 @@
                 $('.chat_block_chat_body_row_input input').val('');
             });
 
+            if(getChat.msgs)
+            {
+                for(msgBlock of getChat.msgs)
+                {
+                    var myBlock = $(`
+                        <div class="chat_block_chat_body_msgs_line">
+                            <div class="chat_block_chat_body_msgs_line_my">
+                                <span>${msgBlock.text}</span>
+                            </div>
+                        </div>
+                    `);
+
+                    if(msgBlock.type == global.allData.User.type)
+                    {
+                        $('.chat_block_chat_body_msgs').append(myBlock);
+                    }
+                    else
+                    {
+                        myBlock.addClass("chat_block_chat_body_msgs_line_left");
+                        $('.chat_block_chat_body_msgs').append(myBlock);
+                    };
+                };
+            };
+
             $('.index_page_body_data').append(templateText);
         };
 

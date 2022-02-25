@@ -195,23 +195,24 @@ var action_linker =
 async function getChatsOfId(socket, data, callback)
 {
     var _User       = await User.findOne({_id: data.user});
+    var _FindBlock  = await InvDoc.findOne({_id: data.id});
+
+    if(!_FindBlock)
+    {
+        callback('error');
+        return;
+    };
+
     var returnBlock = 
     {
         name: null,
         type: null,
         photo: null,
+        msgs: null,
     };
 
     if(_User.type == "business")
     {
-        var _FindBlock = await InvDoc.findOne({_id: data.id});
-
-        if(!_FindBlock)
-        {
-            callback('error');
-            return;
-        };
-
         var _idPhoto            = await bot.getUserProfilePhotos(_FindBlock.invester);
 
         if(_idPhoto.total_count > 0)
@@ -233,16 +234,15 @@ async function getChatsOfId(socket, data, callback)
     }
     else
     {
-        var _FindBlock = await Project.findOne({_id: data.id});
-
-        if(!_FindBlock)
-        {
-            callback('error');
-            return;
-        };
-
-
+        returnBlock.type = "Бизнес";
     };
+
+    var _MsgDB = await MsgDB.findOne({invDoc: _FindBlock._id});
+
+    if(_MsgDB)
+    {
+        returnBlock.msgs = _MsgDB.msgs;
+    }
 
     callback(returnBlock);
 }
