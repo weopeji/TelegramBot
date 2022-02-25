@@ -96,12 +96,12 @@
 
                     if(msgBlock.type == global.allData.User.type)
                     {
-                        $('.chat_block_chat_body_msgs').append(myBlock);
+                        templateText.find('.chat_block_chat_body_msgs').append(myBlock);
                     }
                     else
                     {
                         myBlock.addClass("chat_block_chat_body_msgs_line_left");
-                        $('.chat_block_chat_body_msgs').append(myBlock);
+                        templateText.find('.chat_block_chat_body_msgs').append(myBlock);
                     };
                 };
             };
