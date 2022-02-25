@@ -1770,6 +1770,7 @@
                             <span>Тип привлечения</span>
                             <span>Номер Проекта/Инвестора</span>
                             <span>Сумма выплаты</span>
+                            <span>Дата</span>
                         </div>
                     </div>
                     <div class="settingBlock_body">
@@ -1810,6 +1811,7 @@
                         <span>${AttractionType}</span>
                         <span>${AttractionId}</span>
                         <span>${commissionAttractionNeedPay.toString().ReplaceNumber()} руб</span>
+                        <span>${DateFormatted(element.date)}</span>
                     </div>
                 `);
 
