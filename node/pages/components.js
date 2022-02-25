@@ -199,6 +199,7 @@ async function getChatsOfId(socket, data, callback)
     {
         name: null,
         type: null,
+        photo: null,
     };
 
     if(_User.type == "business")
@@ -211,13 +212,23 @@ async function getChatsOfId(socket, data, callback)
             return;
         };
 
+        var _UserDataBlock      = await User.findOne({user: _FindBlock.investor});
+        var needUserPhoto       = null;
+        var _idPhoto            = await bot.getUserProfilePhotos(_UserDataBlock.user);
+
+        if(_idPhoto.total_count > 0)
+        {
+            var file_id         = _idPhoto.photos[0][0].file_id;
+            returnBlock.photo   = await bot.getFile(file_id);
+        };
+
         for(var findOfInv of _FindBlock.data.data)
         {
             if(findOfInv._id == "fio")
             {
                 returnBlock.name = findOfInv.data;
-            }
-        }
+            };
+        };
 
         returnBlock.type = "Инвестор";
     }
