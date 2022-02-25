@@ -18,6 +18,7 @@ const UserShema = new mongoose.Schema({
     lastProject: String,
     member: String,
     member_b: String,
+    member_b_project: String,
     creatingData: JSON,
     attractType: String,
     reqvesits: JSON,

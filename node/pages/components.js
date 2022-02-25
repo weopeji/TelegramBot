@@ -1985,23 +1985,29 @@ async function acceptInvestor(socket,data,callback)
                 ProjectData: _Project.payersData,
             },
             date: new Date().getTime().toString(),
-        })
-    }
+        });
+    };
 
     if(_UserProject.member_b)
     {
-        await Payments.create({
-            user: _UserProject.member_b,
-            type: "business",
-            pay: _InvDoc.data.pay,
-            status: "wait",
-            data: {
-                _id: _Project._id,
-                ProjectData: _Project.payersData,
-            },
-            date: new Date().getTime().toString(),
-        })
-    }
+        if(typeof _UserProject.member_b_project != "undefined")
+        {
+            if(_UserProject.member_b_project == _Project._id)
+            {
+                await Payments.create({
+                    user: _UserProject.member_b,
+                    type: "business",
+                    pay: _InvDoc.data.pay,
+                    status: "wait",
+                    data: {
+                        _id: _Project._id,
+                        ProjectData: _Project.payersData,
+                    },
+                    date: new Date().getTime().toString(),
+                });
+            };
+        };
+    };
 
     callback(_InvDocNeed);
 }
@@ -2390,6 +2396,13 @@ async function acceptProject(socket,data,callback)
                 
             })
     })();
+
+    var UserProject     = await User.findOne({user: _project.user});
+
+    if(typeof UserProject.member_b_project == "undefined")
+    {
+        await User.findOneAndUpdate({user: _project.user}, {member_b_project: _project._id});
+    };
 
     await Project.findOneAndUpdate({_id: data}, 
     {
