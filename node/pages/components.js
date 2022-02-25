@@ -254,7 +254,21 @@ async function dataOfVideoAccept(socket, data, callback)
             await execPushOfFFMPEG(pushDoesVideos[i]); console.log(pushDoesVideos[i] + " ACCEPT");    
         };
 
-        await Project.findOneAndUpdate({_id: data}, {video_redacting: "accept"});
+        var UpdateProject = await Project.findOneAndUpdate({_id: data}, {video_redacting: "accept"});
+
+        var _urlImgProject = `${h.getURL()}html/project/youtube_cover/?id=${UpdateProject._id}`;
+        console.log(_urlImgProject);
+        const browser = await puppeteer.launch({
+            defaultViewport: {width: 1920, height: 1080},
+            args: ['--no-sandbox', '--disable-setuid-sandbox'],
+        });
+        const page = await browser.newPage();
+        await page.goto(_urlImgProject); 
+        await page.emulateMedia('screen');
+        await page.$('.all_good');
+        const element = await page.$('.index_page_block');   
+        await element.screenshot({path: `../projects/${putProject}/logoYouTube.png`});
+        await browser.close();
 
         h.alertAdmin({
             type: "video",

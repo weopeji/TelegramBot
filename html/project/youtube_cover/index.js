@@ -45,6 +45,8 @@
        $('.index_page_block_data_line_second').find('span').eq(1).html(need_project.data.date_payments);
        $('.index_page_block_data_line_second').find('span').eq(2).html(need_project.data.date + " мес");
        $('.index_page_block_data_line_second').find('span').eq(3).html(`${_data[2]}.${_data[1]}.${_data[0]}`);
+
+       $('body').append('<div class="all_good"></div>');
     }
 
 })(window)
