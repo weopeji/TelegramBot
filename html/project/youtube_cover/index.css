@@ -41,7 +41,7 @@ html, body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-family: 'Circe Bold';
+  font-family: 'Circe ExtraBold';
 }
 
 .index_page_block_body h1 {
@@ -58,7 +58,7 @@ html, body {
   position: absolute;
   width: 100%;
   top: 324px;
-  font-family: 'Circe Bold';
+  font-family: 'Circe';
 }
 
 .index_page_block_target span {
@@ -66,5 +66,43 @@ html, body {
   position: relative;
   left: 40px;
   top: 16px;
+}
+
+.index_page_blockMoneys {
+  position: absolute;
+  top: 450px;
+  width: 100%;
+}
+
+.index_page_blockMoneys_line_first {
+  width: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin: 0 auto;
+  font-size: 25px;
+  font-family: 'Circe';
+}
+
+.index_page_blockMoneys_line_second {
+  width: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 68px;
+  margin: 0 auto;
+  text-align: center;
+  font-family: 'Circe ExtraBold';
+  color: white;
+  position: relative;
+  top: -10px;
+}
+
+.index_page_blockMoneys_line_second span {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 /*# sourceMappingURL=index.css.map */
