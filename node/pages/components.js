@@ -2620,13 +2620,13 @@ var _AllParce =
             }
         })
     },
-    "uploadVideo": async function(_patch, _projectPath, name, target)
+    "uploadVideo": async function(_patch, _projectPath, name, target, projectId)
     {
         let options = 
         {
             mode: 'text',
             scriptPath: '../python/YouTube_Upload',
-            args: [_patch + '/' + _projectPath, name, target],
+            args: [_patch + '/' + _projectPath, name, target, projectId],
         };
 
         return new Promise((resolve,reject) => {
@@ -2654,7 +2654,7 @@ async function setYouTubeVideo(socket,data,callback)
     });
 
     var _patch          = `/var/www/projects/${_project._id}`;
-    var YT_VIDEO        = await _AllParce.uploadVideo(_patch, "default_video_project.mp4", data.name, data.description);
+    var YT_VIDEO        = await _AllParce.uploadVideo(_patch, "default_video_project.mp4", data.name, data.description, _project._id);
 
     if(YT_VIDEO != null) {
         await Project.findOneAndUpdate({_id: _project._id}, {YT_VIDEO: YT_VIDEO});
