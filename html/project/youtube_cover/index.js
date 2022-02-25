@@ -35,6 +35,9 @@
     
         $('.index_page_block_body h1').html(need_project.data.name);
         $('.index_page_block_target span').html(need_project.data.target);
+
+        $('.index_page_blockMoneys_line_second').find('span').eq(0).html(need_project.data.rate + "%");
+        $('.index_page_blockMoneys_line_second').find('span').eq(1).html(need_project.data.minimal_amount + " ₽");
     }
 
 })(window)
