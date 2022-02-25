@@ -68,6 +68,12 @@ html, body {
   top: 16px;
 }
 
+.index_page_block_data {
+  position: absolute;
+  top: 490px;
+  width: 100%;
+}
+
 .index_page_blockMoneys {
   position: absolute;
   top: 450px;
@@ -101,6 +107,36 @@ html, body {
 }
 
 .index_page_blockMoneys_line_second span {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.index_page_block_data_line_first {
+  width: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.index_page_block_data_line_first span {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.index_page_block_data_line_second {
+  width: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.index_page_block_data_line_second span {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
