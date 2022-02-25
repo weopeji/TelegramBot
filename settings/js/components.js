@@ -1353,7 +1353,7 @@
                     <div class="settingBlock_body_line" data="${user._id}" data-more="41">
                         <span>${i + 1}</span>
                         <span>${user.user}</span>
-                        <span>${user.first_name + " " + user.last_name}</span>
+                        <span>${user.first_name}</span>
                         <span>${user.type}</span>
                     </div>
                 `);

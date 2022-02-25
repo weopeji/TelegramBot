@@ -40,7 +40,7 @@
                 <div class="info_active_block_photo">
                     <img src="https://api.telegram.org/file/bot2062839693:AAE0hzj8SVXyexq29s5x7aRLC5x8O77c-pQ/${photoPathPut}" alt="">
                 </div>
-                <span>${_data.invester.first_name} ${_data.invester.last_name}</span>
+                <span>${_data.invester.first_name}</span>
                 <p>Invester</p>
                 <div class="info_active_block_massage_button">
                     <span>Открыть спор и перейти к диалогу</span>
@@ -1361,7 +1361,7 @@
                             $('.chat_block_info p').html("business");
                         },
                         "business": function() {
-                            $('.chat_block_info span').html(_User.first_name + " " + _User.last_name);
+                            $('.chat_block_info span').html(_User.first_name);
                             $('.chat_block_info p').html("investor");
                         },
                     }
