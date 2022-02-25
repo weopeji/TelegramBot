@@ -157,8 +157,15 @@ async function getMoney(msg)
         };
     }
 
-    var html        = `Бизнес ${_User.first_name}\n\nУ вас активных проектов: ${allProjects.length}\n`;
+    var html        = `Бизнес ${_User.first_name}\n\n`;
+    html            += `У вас активных проектов: ${allProjects.length}\n`;
     html            += `Оплачено инвесторами: ${allPays}\n`;
+    html            += `Не подтверждено получение денег: ${notPays}\n`;
+    html            += `Просрочено: ${notPays}\n`;
+    html            += `Обязательста перед investER: ${deptComiisssion} ₽\n`;
+
+
+
     var keyboard    = 
     [
         [
@@ -170,8 +177,7 @@ async function getMoney(msg)
             }       
         ],
     ]
-
-    html += `Не подтверждено получение денег: ${notPays}\n`;
+    
     keyboard.push([
         {
             text: "Не подтверждено",
@@ -181,7 +187,15 @@ async function getMoney(msg)
         }
     ])
 
-    html += `Обязательста перед investER: ${deptComiisssion} ₽\n`;
+    keyboard.push([
+        {
+            text: "Поступоления",
+            login_url: {
+                'url': `${h.getURL()}?user=${_User._id}&page=payments_new`,
+            },
+        }
+    ])
+
     keyboard.push([
         {
             text: "Обязательства перед investER",

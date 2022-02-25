@@ -79,7 +79,7 @@
                     {
                         nomer_kor = elementInv.data;
                     };
-                })
+                });
 
                 var template_text = $(`
                     <div class="settingBlock_body_line" data="${element.inv.invester}" data-project="${element.inv.projectId}">
@@ -99,6 +99,11 @@
                         </span>
                     </div>
                 `);
+
+                if(element.date <= new Date().getTime().toString())
+                {
+                    template_text.css('color', "red");
+                }
 
                 template_text.children("span").eq(0).click( function() {
                     location.href = `./?page=activ_projects&id=${$(this).parent().attr('data')}&project=${$(this).parent().attr('data-project')}`;
