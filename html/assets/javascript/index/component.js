@@ -371,10 +371,7 @@
         {
             var _data = await callApi({
                 methodName: "invester_status_project",
-                data: {
-                    id: _GET('id'),
-                    project: _GET('project'),
-                },
+                data: _GET('id'),
             });
 
             var blockProject = await callApi({

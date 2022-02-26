@@ -1883,10 +1883,10 @@ async function getAllProjectsBusiness(socket, data, callback)
 
 async function invester_status_project(socket,data,callback)
 {
-    var _InvDoc     = await InvDoc.findOne({invester: data.id, projectId: data.project});
-    var _User       = await User.findOne({user: data.id});
-    var _Project    = await Project.findOne({_id: data.project});
-    var AllInvs     = await InvDoc.find({projectId: data.project});
+    var _InvDoc     = await InvDoc.findOne({_id: data});
+    var _User       = await User.findOne({user: _InvDoc.invester});
+    var _Project    = await Project.findOne({_id: _InvDoc.projectId});
+    var AllInvs     = await InvDoc.find({projectId: _InvDoc.projectId});
     var initNumber  = 0;
     
     for(var i = 0; i < AllInvs.length; i++)
