@@ -341,7 +341,7 @@
                             <span>${i + 1}</span>
                             <span>${maxDateFormatted}</span>
                             <span>${Math.ceil(el.pay).toString().replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')} руб ${morePay.replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')}</span>
-                            <span class="headerPaysBlock_body_line_inv" data="${el.receipt}">
+                            <span class="headerPaysBlock_body_line_inv" data="${el.receipt}" data-project="${_data.InvDoc.projectId}">
                                 <span>
                                     ${_status[el.status]}
                                 </span>
@@ -358,7 +358,7 @@
                 });
 
                 headerPaysBlock.find('.headerPaysBlock_body_line_inv').click( function() {
-                    window.open(`/projects/${_GET('project')}/${$(this).attr('data')}` , '_blank');
+                    window.open(`/projects/${$(this).attr('data-project')}/${$(this).attr('data')}` , '_blank');
                 })
 
                 $('.index_page_body_data').append(headerPaysBlock);
