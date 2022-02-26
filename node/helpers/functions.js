@@ -100,7 +100,7 @@ async function full_alert_user(_id, _text, _type, moreId)
         {
             "project_redacting": function()
             {
-                if(moreId)
+                if(moreId || moreId == 0)
                 {
                     keyboardPush.push([
                         {
@@ -119,8 +119,6 @@ async function full_alert_user(_id, _text, _type, moreId)
         {
             funsForSecondMSG[_type]();
         };
-
-        console.log(keyboardPush);
 
         var fat = await bot.sendPhoto(_user.user, stream, {
             parse_mode: "HTML",
