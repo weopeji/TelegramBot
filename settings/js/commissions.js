@@ -31,6 +31,7 @@
                         <p>Ожидают подтверждения</p>
                         <div class="settingBlock_header_line">
                             <span>Номер проекта</span>
+                            <span>Название проекта</span>
                             <span>Инвестор</span>
                             <span>Сумма Инвестиции</span>
                             <span>Комиссия InvestER</span>
@@ -62,6 +63,7 @@
                 var _block = $(`
                     <div class="settingBlock_body_line" data="${commissionsElement.commission._id}">
                         <span>${commissionsElement.project._id}</span>
+                        <span>${commissionsElement.project.data.name}</span>
                         <span>${fioBlock}</span>
                         <span>${commissionsElement.invDoc.data.pay.toString().ReplaceNumber()} руб</span>
                         <span>${commissionsElement.commissionInvestER.toString().ReplaceNumber()} руб</span>
