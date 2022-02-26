@@ -61,7 +61,7 @@
                 })
 
                 var _block = $(`
-                    <div class="settingBlock_body_line" data="${commissionsElement.commission._id}">
+                    <div class="settingBlock_body_line" data="${commissionsElement.commission._id}" data-project="${commissionsElement.project._id}">
                         <span>${commissionsElement.project._id}</span>
                         <span>${commissionsElement.project.data.name}</span>
                         <span>${fioBlock}</span>
@@ -72,6 +72,10 @@
                         <span><a href="google.com">Написать</a></span>
                     </div>
                 `);
+
+                _block.children('span').eq(1).clicK( function() {
+                    location.href = `/settings/?page=block&id=${$(this).parent().attr('data-project')}&more=data`;
+                });
 
                 _block.find(".settingBlock_body_line_button").click( async function() {
                     await callApi({
