@@ -1907,14 +1907,9 @@ async function invester_status_project(socket,data,callback)
 
 async function acceptInvestor(socket,data,callback) 
 {
-    console.log(data);
-
     var _InvDoc             = await InvDoc.findOne({_id: data.toString()});
     var _Project            = await Project.findOne({_id: _InvDoc.projectId});
 
-    console.log(_InvDoc);
-    console.log(_Project);
-    
 
     var InvPay              = Number(_InvDoc.data.pay.toString().replace(/\s/g, ''));       // 100 000
     var ProjectDate         = Number(_Project.data.date.toString().replace(/\s/g, ''));     // 2 мес \ Бессрочно
@@ -2064,9 +2059,7 @@ async function acceptInvestor(socket,data,callback)
 
     paymentsFunction[_Project.data.date_payments]();
 
-    // h.full_alert_user(data.id, `Ваша инвестиция была подтверждена! Номер проекта ${_Project._id}`, "acceptInvestor");
-
-    var _InvDocNeed             = await InvDoc.findOneAndUpdate({invester: data.id, projectId: data.projectId}, {status: "accept", pays: InvPays});
+    var _InvDocNeed             = await InvDoc.findOneAndUpdate({_id: _InvDoc._id}, {status: "accept", pays: InvPays});
     var _UserInv                = await User.findOne({user: _InvDoc.invester});
     var _UserProject            = await User.findOne({user: _Project.user});
 
