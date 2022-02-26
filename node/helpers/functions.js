@@ -134,6 +134,21 @@ async function full_alert_user(_id, _text, _type, moreId)
                 {
                     keyboardPush.push([
                         {
+                            text: "Добавить документы",
+                            login_url: {
+                                'url': `https://invester-relocation.site/html/project/creating/#${moreId}`,
+                                'request_write_access': true,
+                            },
+                        },
+                    ]);
+                }
+            },
+            "moreInvesterDocument": function()
+            {
+                if(moreId || moreId == 0)
+                {
+                    keyboardPush.push([
+                        {
                             text: "Перейти к подписанию",
                             login_url: {
                                 'url': `https://invester-relocation.site/html/project/creating/#${moreId}`,
@@ -142,7 +157,7 @@ async function full_alert_user(_id, _text, _type, moreId)
                         },
                     ]);
                 }
-            }
+            },
         }
 
         if(typeof funsForSecondMSG[_type] != "undefined")
@@ -279,7 +294,8 @@ async function alertAdmin(data)
                     ],
                 }
             });
-        }
+        },
+
     };
     _funs[data.type]();
 }
