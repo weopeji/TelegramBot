@@ -164,29 +164,29 @@ async function getMoney(msg)
                         }
                     }
                 });
-            };
 
-            var _CommissionBlock = await commission.findOne({invId: _Inv._id});
+                var _CommissionBlock = await commission.findOne({invId: _Inv._id});
 
-            if(!_CommissionBlock)
-            {
-                if(_Inv.date < lastPay || lastPay == 0)
-                {
-                    lastPay = _Inv.date;
-                };
-            }
-            else
-            {
-                if(_CommissionBlock.status != "accept")
+                if(!_CommissionBlock)
                 {
                     if(_Inv.date < lastPay || lastPay == 0)
                     {
                         lastPay = _Inv.date;
                     };
                 }
-            };
+                else
+                {
+                    if(_CommissionBlock.status != "accept")
+                    {
+                        if(_Inv.date < lastPay || lastPay == 0)
+                        {
+                            lastPay = _Inv.date;
+                        };
+                    }
+                };
 
-            allPays = allPays + 1;
+                allPays = allPays + 1;
+            };
         };
     }
 
