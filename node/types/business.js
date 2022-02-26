@@ -195,7 +195,7 @@ async function getMoney(msg)
     html            += `Оплачено инвесторами: ${allPays}\n`;
     html            += `Не подтверждено получение денег: ${notPays}\n`;
     html            += `Просрочено: ${procroheno}\n`;
-    html            += `Обязательста перед investER:\n ${deptComiisssion} ₽ оплатить до ${DateTime.fromSeconds(Number(lastPay)).plus({day: 10}).toFormat('dd.MM.yyyy')}\n`;
+    html            += `Обязательста перед investER:\n ${deptComiisssion} ₽ оплатить до ${DateTime.local(1970, 1, 1).fromMillis(Number(lastPay)).plus({day: 10}).toFormat('dd.MM.yyyy')}\n`;
 
 
 
