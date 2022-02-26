@@ -82,7 +82,7 @@
                 });
 
                 var template_text = $(`
-                    <div class="settingBlock_body_line" data="${element.inv.invester}" data-project="${element.inv.projectId}">
+                    <div class="settingBlock_body_line" data="${element.inv.invester}" data-project="${element.inv._id}">
                         <span>${i + 1}</span>
                         <span>${DateFormatted(element.date)}</span>
                         <span>${Math.ceil(element.invPay.pay).toString().ReplaceNumber()} руб</span>
@@ -106,19 +106,19 @@
                 }
 
                 template_text.children("span").eq(0).click( function() {
-                    location.href = `./?page=activ_projects&id=${$(this).parent().attr('data')}&project=${$(this).parent().attr('data-project')}`;
+                    location.href = `./?page=activ_projects&id=${$(this).parent().attr('data-project')}`;
                 });
                 template_text.children("span").eq(1).click( function() {
-                    location.href = `./?page=activ_projects&id=${$(this).parent().attr('data')}&project=${$(this).parent().attr('data-project')}`;
+                    location.href = `./?page=activ_projects&id=${$(this).parent().attr('data-project')}`;
                 });
                 template_text.children("span").eq(2).click( function() {
-                    location.href = `./?page=activ_projects&id=${$(this).parent().attr('data')}&project=${$(this).parent().attr('data-project')}`;
+                    location.href = `./?page=activ_projects&id=${$(this).parent().attr('data-project')}`;
                 });
                 template_text.children("span").eq(3).click( function() {
-                    location.href = `./?page=activ_projects&id=${$(this).parent().attr('data')}&project=${$(this).parent().attr('data-project')}`;
+                    location.href = `./?page=activ_projects&id=${$(this).parent().attr('data-project')}`;
                 });
                 template_text.children("span").eq(4).click( function() {
-                    location.href = `./?page=activ_projects&id=${$(this).parent().attr('data')}&project=${$(this).parent().attr('data-project')}`;
+                    location.href = `./?page=activ_projects&id=${$(this).parent().attr('data-project')}`;
                 });
 
                 template_text.children("span").eq(5).find('.settingBlock_body_line_drop_menu').css({
