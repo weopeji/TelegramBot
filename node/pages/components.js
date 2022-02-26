@@ -473,19 +473,64 @@ async function getChats(socket, data, callback)
     var _InvsDocs           = await InvDoc.find({invester: _User.user});
     var AllMsgs             = [];
 
-    for(var _Project of _ProjectsUser)
+    if(_User.type == "business")
     {
-        var InvsOfProject = await InvDoc.find({projectId: _Project._id});
-
-        for(var InvDocOfInv of InvsOfProject)
+        for(var _Project of _ProjectsUser)
+        {
+            var InvsOfProject = await InvDoc.find({projectId: _Project._id});
+    
+            for(var InvDocOfInv of InvsOfProject)
+            {
+                var FindMsgs = await MsgDB.find({invDoc: InvDocOfInv._id});
+    
+                for(var _msgBlock of FindMsgs)
+                {
+                    var needUserPhoto   = null;
+                    var nameBlock       = _Project.data.name;
+    
+                    if(_User.type == "business")
+                    {
+                        var _UserDataBlock      = await User.findOne({user: InvDocOfInv.invester});
+                        var _idPhoto            = await bot.getUserProfilePhotos(_UserDataBlock.user);
+            
+                        if(_idPhoto.total_count > 0)
+                        {
+                            var file_id         = _idPhoto.photos[0][0].file_id;
+                            needUserPhoto       = await bot.getFile(file_id);
+                        };
+    
+                        for(var searchFio of InvDocOfInv.data.data)
+                        {
+                            if(searchFio._id == "fio")
+                            {
+                                nameBlock = searchFio.data;
+                            };
+                        };
+                    };
+                    
+                    var _dataBlock = {
+                        invId: InvDocOfInv._id,
+                        msgBlock: _msgBlock,
+                        name: nameBlock,
+                        img: needUserPhoto,
+                    };
+        
+                    AllMsgs.push(_dataBlock);
+                };
+            };
+        };
+    }
+    else
+    {
+        for(var InvDocOfInv of _InvsDocs)
         {
             var FindMsgs = await MsgDB.find({invDoc: InvDocOfInv._id});
-
+    
             for(var _msgBlock of FindMsgs)
             {
                 var needUserPhoto   = null;
                 var nameBlock       = _Project.data.name;
-
+    
                 if(_User.type == "business")
                 {
                     var _UserDataBlock      = await User.findOne({user: InvDocOfInv.invester});
@@ -496,7 +541,7 @@ async function getChats(socket, data, callback)
                         var file_id         = _idPhoto.photos[0][0].file_id;
                         needUserPhoto       = await bot.getFile(file_id);
                     };
-
+    
                     for(var searchFio of InvDocOfInv.data.data)
                     {
                         if(searchFio._id == "fio")
@@ -516,47 +561,7 @@ async function getChats(socket, data, callback)
                 AllMsgs.push(_dataBlock);
             };
         };
-    };
-
-    for(var InvDocOfInv of _InvsDocs)
-    {
-        var FindMsgs = await MsgDB.find({invDoc: InvDocOfInv._id});
-
-        for(var _msgBlock of FindMsgs)
-        {
-            var needUserPhoto   = null;
-            var nameBlock       = _Project.data.name;
-
-            if(_User.type == "business")
-            {
-                var _UserDataBlock      = await User.findOne({user: InvDocOfInv.invester});
-                var _idPhoto            = await bot.getUserProfilePhotos(_UserDataBlock.user);
-    
-                if(_idPhoto.total_count > 0)
-                {
-                    var file_id         = _idPhoto.photos[0][0].file_id;
-                    needUserPhoto       = await bot.getFile(file_id);
-                };
-
-                for(var searchFio of InvDocOfInv.data.data)
-                {
-                    if(searchFio._id == "fio")
-                    {
-                        nameBlock = searchFio.data;
-                    };
-                };
-            };
-            
-            var _dataBlock = {
-                invId: InvDocOfInv._id,
-                msgBlock: _msgBlock,
-                name: nameBlock,
-                img: needUserPhoto,
-            };
-
-            AllMsgs.push(_dataBlock);
-        };
-    };
+    }
 
     callback(AllMsgs);
 }
