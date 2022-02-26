@@ -266,7 +266,7 @@ async function business_cheack_accept_in_cabinet(socket, data, callback)
             };
         };
 
-        await InvDoc.findOneAndUpdate({projectId: data.project, invester: data.id}, {pays: _Pays});
+        await InvDoc.findOneAndUpdate({_id: _InvDoc._id}, {pays: _Pays});
     };
 
     callback();
