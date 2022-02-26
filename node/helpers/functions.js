@@ -43,7 +43,7 @@ var token = function()
     return rand() + rand();
 };
 
-async function full_alert_user(_id, _text, _type) 
+async function full_alert_user(_id, _text, _type, moreId) 
 {
     var _User           = await User.findOne({user: _id});
     var _tokenAlert     = token();
@@ -51,8 +51,6 @@ async function full_alert_user(_id, _text, _type)
     var _path           = `../users_alerts/${_User.user}/${_tokenAlert}.png`;
     var _urlImgAlert    = `https://invester-relocation.site/html/project/alert/?text=${_textDecoded}`;
     var _Alerts         = _User.alerts_main;
-
-    console.log(_urlImgAlert);
 
     if(!_Alerts)
     {
@@ -95,11 +93,39 @@ async function full_alert_user(_id, _text, _type)
 
         _array.push(fat.message_id);
 
-        const stream = fs.createReadStream(_path);
+        const stream        = fs.createReadStream(_path);
+        var keyboardPush    = [];
 
         var fat = await bot.sendPhoto(_user.user, stream, {
             parse_mode: "HTML",
+            "reply_markup": {
+                "inline_keyboard": keyboardPush,
+            }
         });
+
+        var funsForSecondMSG =
+        {
+            "project_redacting": function()
+            {
+                if(moreId)
+                {
+                    keyboardPush.push([
+                        {
+                            text: "Перейти к редактированию",
+                            login_url: {
+                                'url': `https://invester-relocation.site/html/project/creating/#${moreId}`,
+                                'request_write_access': true,
+                            },
+                        },
+                    ]);
+                }
+            }
+        }
+
+        if(typeof funsForSecondMSG[_type] != "undefined")
+        {
+            funsForSecondMSG[_type]();
+        }
 
         _array.push(fat.message_id);
 
