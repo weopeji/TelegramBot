@@ -1907,8 +1907,13 @@ async function invester_status_project(socket,data,callback)
 
 async function acceptInvestor(socket,data,callback) 
 {
+    console.log(data);
+
     var _InvDoc             = await InvDoc.findOne({_id: data.toString()});
     var _Project            = await Project.findOne({_id: _InvDoc.projectId});
+
+    console.log(_InvDoc);
+    console.log(_Project);
     
 
     var InvPay              = Number(_InvDoc.data.pay.toString().replace(/\s/g, ''));       // 100 000
