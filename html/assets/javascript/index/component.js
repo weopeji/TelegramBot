@@ -385,9 +385,9 @@
 
             if(_data.InvDoc.date)
             {
-                var maxDate = new Date(Number(_data.InvDoc.date));
-                var needDate = `${this.pad(maxDate.getDate(), 2, '0')}.${this.pad(maxDate.getMonth() + 1, 2, '0')}.${maxDate.getFullYear()}`;
-                _dateText = needDate;
+                var maxDate     = new Date(Number(_data.InvDoc.date));
+                var needDate    = `${this.pad(maxDate.getDate(), 2, '0')}.${this.pad(maxDate.getMonth() + 1, 2, '0')}.${maxDate.getFullYear()}`;
+                _dateText       = needDate;
             }
 
             var _status = {
@@ -541,7 +541,7 @@
                         `,
                     }
                     var template_text = `
-                        <div class="settingBlock_body_line" data="${element.invester}" data-more="${element.projectId}">
+                        <div class="settingBlock_body_line" data="${element.invester}" data-more="${element._id}">
                             <span>${i + 1}</span>
                             <span>${_projectGet.data.name}</span>
                             <span>${element.projectId}</span>
@@ -558,7 +558,7 @@
                 $('.index_page_body_data').append(settingBlock);
 
                 $('.settingBlock_body_line').click( function () {
-                    location.href = window.location.href + `&id=${$(this).attr('data')}&project=${$(this).attr('data-more')}`;
+                    location.href = window.location.href + `&id=${$(this).attr('data-more')}`;
                 })
             } else 
             {
