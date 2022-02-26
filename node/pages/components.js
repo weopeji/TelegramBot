@@ -829,6 +829,7 @@ async function commissions_settings(socket, data, callback)
     for(var _Commission of _Commissions)
     {
         var invCommission       = await InvDoc.findOne({_id: _Commission.invId});
+        console.log(invCommission.projectId);
         var projectCommission   = await Project.findOne({_id: invCommission.projectId});
 
         var _blockCommission = {
