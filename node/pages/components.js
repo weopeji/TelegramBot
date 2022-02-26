@@ -507,6 +507,7 @@ async function getChats(socket, data, callback)
                 };
                 
                 var _dataBlock = {
+                    invId: InvDocOfInv._id,
                     msgBlock: _msgBlock,
                     name: nameBlock,
                     img: needUserPhoto,
@@ -547,6 +548,7 @@ async function getChats(socket, data, callback)
             };
             
             var _dataBlock = {
+                invId: InvDocOfInv._id,
                 msgBlock: _msgBlock,
                 name: nameBlock,
                 img: needUserPhoto,

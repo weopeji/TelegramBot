@@ -132,7 +132,7 @@
                 }
 
                 var template_text = $(`
-                    <div class="msg_block_getting_line">
+                    <div class="msg_block_getting_line" data="${element.invId}">
                         <div class="msg_block_getting_line_img">
                             <div class="msg_block_getting_line_img_block">
                                 <img src="${_PathUrl}" alt="">
@@ -144,6 +144,10 @@
                         </div>
                     </div>
                 `);
+
+                template_text.click( function() {
+                    location.href = `./?page=chats&id=${$(this).attr('data')}`;
+                });
                 
                 block.append(template_text);
             })
