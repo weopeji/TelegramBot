@@ -847,7 +847,7 @@
                     `,
                 }
                 var template_text = `
-                    <div class="settingBlock_body_line" data="${element.invester}"  data_more="${element.projectId}">
+                    <div class="settingBlock_body_line" data="${element.invester}"  data_more="${element._id}">
                         <span>${i + 1}</span>
                         <span>${element.projectId}</span>
                         <span>${element.data.pay.toString().ReplaceNumber()} руб</span>
@@ -862,7 +862,7 @@
             $('.index_page_body_data').append(settingBlock);
 
             $('.settingBlock_body_line').click( function () {
-                location.href = `/?page=activ_projects&id=${$(this).attr('data')}&project=${$(this).attr('data_more')}`;
+                location.href = `/?page=activ_projects&id=${$(this).attr('data_more')}`;
             })
         }
     }
