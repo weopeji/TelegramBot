@@ -73,7 +73,7 @@
                     </div>
                 `);
 
-                _block.children('span').eq(1).clicK( function() {
+                _block.children('span').eq(1).click( function() {
                     location.href = `/settings/?page=block&id=${$(this).parent().attr('data-project')}&more=data`;
                 });
 
