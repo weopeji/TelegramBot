@@ -1728,7 +1728,7 @@
                 var procentInvester     = Number(procentAttraction / 100 * element.payersData.investors_commission);
 
                 var template_text = $(`
-                    <div class="settingBlock_body_line">
+                    <div class="settingBlock_body_line" data="${element.channel_id}">
                         <span>${element._id}</span>
                         <span>${element.data.name}</span>
                         <span>${procentInvester}%</span>
@@ -1736,8 +1736,8 @@
                 `);
 
                 template_text.click( function() {
-                    window.location = `tg://resolve?domain=invester_official&post=${element.channel_id}`;
-                })
+                    window.location = `tg://resolve?domain=invester_official&post=${$(this).attr('data')}`;
+                });
 
                 settingBlock.find('.settingBlock_body').append(template_text);
             }
