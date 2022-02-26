@@ -234,7 +234,7 @@ async function getChatsOfId(socket, data, callback)
     }
     else
     {
-        var _Project = await Project.findOne({_id: _FindBlock._id});
+        var _Project = await Project.findOne({_id: _FindBlock.projectId});
         returnBlock.name = _Project.data.name;
         returnBlock.type = "Бизнес";
     };
