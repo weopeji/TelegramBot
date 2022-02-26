@@ -190,14 +190,12 @@ async function getMoney(msg)
         };
     }
 
-    console.log(lastPay);
-
     var html        = `Бизнес ${_User.first_name}\n\n`;
     html            += `У вас активных проектов: ${allProjects.length}\n`;
     html            += `Оплачено инвесторами: ${allPays}\n`;
     html            += `Не подтверждено получение денег: ${notPays}\n`;
     html            += `Просрочено: ${procroheno}\n`;
-    html            += `Обязательста перед investER:\n ${deptComiisssion} ₽ оплатить до ${Duration.fromMillis(lastPay).toFormat("hh MM yyyy")}\n`;
+    html            += `Обязательста перед investER:\n ${deptComiisssion} ₽ оплатить до ${Duration.fromMillis(lastPay).toFormat("yyyy")}\n`;
 
 
 
