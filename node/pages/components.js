@@ -820,38 +820,38 @@ async function commissions_settings_accept(socket, data, callback)
 
 async function commissions_settings(socket, data, callback)
 {
-    // var _Commissions        = await commission.find({});
-    // var _CommissionsData    = {
-    //     wait: [],
-    //     accept: [],
-    // };
+    var _Commissions        = await commission.find({});
+    var _CommissionsData    = {
+        wait: [],
+        accept: [],
+    };
 
-    // for(var _Commission of _Commissions)
-    // {
-    //     var invCommission       = await InvDoc.findOne({_id: _Commission.invId});
-    //     var projectCommission   = await Project.findOne({_id: invCommission.projectId});
+    for(var _Commission of _Commissions)
+    {
+        var invCommission       = await InvDoc.findOne({_id: _Commission.invId});
+        var projectCommission   = await Project.findOne({_id: invCommission.projectId});
 
-    //     var _blockCommission = {
-    //         commission: _Commission,
-    //         invDoc: invCommission,
-    //         project: projectCommission,
-    //         commissionInvestER: 0,
-    //     };
+        var _blockCommission = {
+            commission: _Commission,
+            invDoc: invCommission,
+            project: projectCommission,
+            commissionInvestER: 0,
+        };
 
-    //     _blockCommission.commissionInvestER = Number(invCommission.data.pay.toString().replace(/\s/g, '')) / 100 * projectCommission.payersData.commission;
+        _blockCommission.commissionInvestER = Number(invCommission.data.pay.toString().replace(/\s/g, '')) / 100 * projectCommission.payersData.commission;
 
-    //     if(_Commission.status == "wait")
-    //     {
-    //         _CommissionsData.wait.push(_blockCommission);
-    //     };
+        if(_Commission.status == "wait")
+        {
+            _CommissionsData.wait.push(_blockCommission);
+        };
 
-    //     if(_Commission.status == "accept")
-    //     {
-    //         _CommissionsData.accept.push(_blockCommission);
-    //     };
-    // };
+        if(_Commission.status == "accept")
+        {
+            _CommissionsData.accept.push(_blockCommission);
+        };
+    };
 
-    callback(null);
+    callback(_CommissionsData);
 }
 
 async function obligationsProjectData(socket, data, callback)
