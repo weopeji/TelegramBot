@@ -190,6 +190,8 @@ async function getMoney(msg)
         };
     }
 
+    console.log(lastPay);
+
     var html        = `Бизнес ${_User.first_name}\n\n`;
     html            += `У вас активных проектов: ${allProjects.length}\n`;
     html            += `Оплачено инвесторами: ${allPays}\n`;
