@@ -118,7 +118,9 @@ async function full_alert_user(_id, _text, _type, moreId)
         if(typeof funsForSecondMSG[_type] != "undefined")
         {
             funsForSecondMSG[_type]();
-        }
+        };
+
+        console.log(keyboardPush);
 
         var fat = await bot.sendPhoto(_user.user, stream, {
             parse_mode: "HTML",
