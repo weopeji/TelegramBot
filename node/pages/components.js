@@ -488,7 +488,7 @@ async function getChats(socket, data, callback)
 
                 if(_User.type == "business")
                 {
-                    var _UserDataBlock      = await User.findOne({_id: InvDocOfInv.invester});
+                    var _UserDataBlock      = await User.findOne({user: InvDocOfInv.invester});
                     var _idPhoto            = await bot.getUserProfilePhotos(_UserDataBlock.user);
         
                     if(_idPhoto.total_count > 0)
@@ -528,7 +528,7 @@ async function getChats(socket, data, callback)
 
             if(_User.type == "business")
             {
-                var _UserDataBlock      = await User.findOne({_id: InvDocOfInv.invester});
+                var _UserDataBlock      = await User.findOne({user: InvDocOfInv.invester});
                 var _idPhoto            = await bot.getUserProfilePhotos(_UserDataBlock.user);
     
                 if(_idPhoto.total_count > 0)
