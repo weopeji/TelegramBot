@@ -954,20 +954,20 @@ app.post('/file_chart.io/files', (req, res) =>
         try {
             if (fs.existsSync(_path)) 
             { 
+                var _InvDoc = await InvDoc.findOne({_id: _data._Inv});
+
                 console.log('Файл найден');
-                fs.rename(_data.path, `/var/www/projects/${_data._project}/${_data._user}_${_data.file_id}.${_data._pts.split('/')[1]}`, async function (err) {
+                fs.rename(_data.path, `/var/www/projects/${_InvDoc.projectId}/${_InvDoc.invester}_${_data.file_id}.${_data._pts.split('/')[1]}`, async function (err) {
                     if (err) throw err
                     console.log('Successfully renamed - AKA moved!');
-
-                    var _InvDoc = await InvDoc.findOne({invester: _data._user, projectId: _data._project});
 
                     var _Pays = _InvDoc.pays;
 
                     _Pays[_data.file_id].status = "wait";
                     _Pays[_data.file_id].statusAccept = "push";
-                    _Pays[_data.file_id].receipt = `${_data._user}_${_data.file_id}.${_data._pts.split('/')[1]}`;
+                    _Pays[_data.file_id].receipt = `${_InvDoc.invester}_${_data.file_id}.${_data._pts.split('/')[1]}`;
 
-                    await InvDoc.findOneAndUpdate({invester: _data._user, projectId: _data._project}, {pays: _Pays});
+                    await InvDoc.findOneAndUpdate({_id: _InvDoc._id}, {pays: _Pays});
 
                     res.json({
                         status: 'ok',
