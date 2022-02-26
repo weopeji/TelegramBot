@@ -468,10 +468,7 @@
             {
                 var acceptInvestor = await callApi({
                     methodName: "acceptInvestor",
-                    data: {
-                        id: _GET('id'),
-                        projectId: _GET('project'),
-                    },
+                    data: _GET('id'),
                 });
 
                 alert('Оплата подтвержденна!');

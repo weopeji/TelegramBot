@@ -1907,8 +1907,9 @@ async function invester_status_project(socket,data,callback)
 
 async function acceptInvestor(socket,data,callback) 
 {
-    var _Project            = await Project.findOne({_id: data.projectId});
-    var _InvDoc             = await InvDoc.findOne({invester: data.id, projectId: data.projectId});
+    var _InvDoc             = await InvDoc.findOne({_id: data});
+    var _Project            = await Project.findOne({_id: _InvDoc.projectId});
+    
 
     var InvPay              = Number(_InvDoc.data.pay.toString().replace(/\s/g, ''));       // 100 000
     var ProjectDate         = Number(_Project.data.date.toString().replace(/\s/g, ''));     // 2 мес \ Бессрочно
