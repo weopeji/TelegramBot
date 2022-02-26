@@ -109,6 +109,48 @@
             $('.index_page_body_data').append(templateText);
         };
 
+        async renderType()
+        {
+            var getChats     = await callApi({
+                methodName: "getChats",
+                data:  global.allData._id,
+            });
+
+            var block = $(`
+                <div class="msg_block_getting">
+
+                </div>
+            `);
+
+            getChats.forEach(element => {
+
+                var _PathUrl = null;
+
+                if(element.img)
+                {
+                    _PathUrl = `https://api.telegram.org/file/bot2062839693:AAE0hzj8SVXyexq29s5x7aRLC5x8O77c-pQ/` + element.img.file_path;
+                }
+
+                var template_text = $(`
+                    <div class="msg_block_getting_line">
+                        <div class="msg_block_getting_line_img">
+                            <div class="msg_block_getting_line_img_block">
+                                <img src="${_PathUrl}" alt="">
+                            </div>
+                        </div>
+                        <div class="msg_block_getting_line_text">
+                            <span>${element.name}</span>
+                            <p>${element.msgBlock.msgs[element.msgBlock.msgs.length - 1].text}</p>
+                        </div>
+                    </div>
+                `);
+                
+                block.append(template_text);
+            })
+
+            $('.index_page_body_data').append(block);
+        }
+
         async render()
         {
             var _idBlock = _GET("id");
@@ -119,44 +161,7 @@
             }
             else
             {
-                var getChats     = await callApi({
-                    methodName: "getChats",
-                    data:  global.allData._id,
-                });
-    
-                var block = $(`
-                    <div class="msg_block_getting">
-    
-                    </div>
-                `);
-    
-                getChats.forEach(element => {
-    
-                    var _PathUrl = null;
-    
-                    if(element.img)
-                    {
-                        _PathUrl = `https://api.telegram.org/file/bot2062839693:AAE0hzj8SVXyexq29s5x7aRLC5x8O77c-pQ/` + element.img.file_path;
-                    }
-    
-                    var template_text = $(`
-                        <div class="msg_block_getting_line">
-                            <div class="msg_block_getting_line_img">
-                                <div class="msg_block_getting_line_img_block">
-                                    <img src="${_PathUrl}" alt="">
-                                </div>
-                            </div>
-                            <div class="msg_block_getting_line_text">
-                                <span>${element.name}</span>
-                                <p>${element.msgBlock.msgs[element.msgBlock.msgs.length - 1].text}</p>
-                            </div>
-                        </div>
-                    `);
-                    
-                    block.append(template_text);
-                })
-    
-                $('.index_page_body_data').append(block);
+                this.renderType();
             }
         }
     }

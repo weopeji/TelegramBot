@@ -470,46 +470,90 @@ async function getChats(socket, data, callback)
 {
     var _User               = await User.findOne({_id: data});
     var _ProjectsUser       = await Project.find({user: _User.user});
-    var _UserMsgs           = await MsgDB.find({investor: _User._id});
-    var _dataMsgs           = [];
+    var _InvsDocs           = await InvDoc.find({invester: _User.user});
+    var AllMsgs             = [];
 
     for(var _Project of _ProjectsUser)
     {
-        var _ProjectMsgs = await MsgDB.find({business: _Project._id});
+        var InvsOfProject = await InvDoc.find({projectId: _Project._id});
 
-        for(var _msgBlock of _ProjectMsgs)
+        for(var InvDocOfInv of InvsOfProject)
         {
-            var _UserDataBlock      = await User.findOne({_id: _msgBlock.investor});
-            var needUserPhoto       = null;
-            var _idPhoto            = await bot.getUserProfilePhotos(_UserDataBlock.user);
+            var FindMsgs = await MsgDB.find({invDoc: InvDocOfInv._id});
 
-            if(_idPhoto.total_count > 0)
+            for(var _msgBlock of FindMsgs)
             {
-                var file_id         = _idPhoto.photos[0][0].file_id;
-                needUserPhoto       = await bot.getFile(file_id);
-            };
+                var needUserPhoto   = null;
+                var nameBlock       = _Project.data.name;
 
-            var _dataBlock = {
-                msgBlock: _msgBlock,
-                name: `${_UserDataBlock.first_name} ${_UserDataBlock.last_name}`,
-                img: needUserPhoto,
-            };
+                if(_User.type == "business")
+                {
+                    var _UserDataBlock      = await User.findOne({_id: InvDocOfInv.invester});
+                    var _idPhoto            = await bot.getUserProfilePhotos(_UserDataBlock.user);
+        
+                    if(_idPhoto.total_count > 0)
+                    {
+                        var file_id         = _idPhoto.photos[0][0].file_id;
+                        needUserPhoto       = await bot.getFile(file_id);
+                    };
 
-            _dataMsgs.push(_dataBlock);
+                    for(var searchFio of InvDocOfInv.data.data)
+                    {
+                        if(searchFio._id == "fio")
+                        {
+                            nameBlock = searchFio.data;
+                        };
+                    };
+                };
+                
+                var _dataBlock = {
+                    msgBlock: _msgBlock,
+                    name: nameBlock,
+                    img: needUserPhoto,
+                };
+    
+                AllMsgs.push(_dataBlock);
+            };
         };
     };
 
-    for(var _msgBlock of _UserMsgs)
+    for(var invOfUser of _InvsDocs)
     {
-        var _ProjectMsgBlock  = await Project.findOne({_id: _msgBlock.business});
+        var FindMsgs = await MsgDB.find({invDoc: InvDocOfInv._id});
 
-        var _dataBlock = {
-            msgBlock: _msgBlock,
-            name: `${_ProjectMsgBlock.data.name}`,
-            img: null,
+        for(var _msgBlock of FindMsgs)
+        {
+            var needUserPhoto   = null;
+            var nameBlock       = _Project.data.name;
+
+            if(_User.type == "business")
+            {
+                var _UserDataBlock      = await User.findOne({_id: InvDocOfInv.invester});
+                var _idPhoto            = await bot.getUserProfilePhotos(_UserDataBlock.user);
+    
+                if(_idPhoto.total_count > 0)
+                {
+                    var file_id         = _idPhoto.photos[0][0].file_id;
+                    needUserPhoto       = await bot.getFile(file_id);
+                };
+
+                for(var searchFio of InvDocOfInv.data.data)
+                {
+                    if(searchFio._id == "fio")
+                    {
+                        nameBlock = searchFio.data;
+                    };
+                };
+            };
+            
+            var _dataBlock = {
+                msgBlock: _msgBlock,
+                name: nameBlock,
+                img: needUserPhoto,
+            };
+
+            AllMsgs.push(_dataBlock);
         };
-
-        _dataMsgs.push(_dataBlock);
     };
 
     callback(_dataMsgs);
