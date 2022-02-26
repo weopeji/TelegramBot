@@ -517,7 +517,7 @@ async function getChats(socket, data, callback)
         };
     };
 
-    for(var invOfUser of _InvsDocs)
+    for(var InvDocOfInv of _InvsDocs)
     {
         var FindMsgs = await MsgDB.find({invDoc: InvDocOfInv._id});
 
