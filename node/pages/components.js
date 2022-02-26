@@ -251,7 +251,7 @@ async function getChatsOfId(socket, data, callback)
 
 async function business_cheack_accept_in_cabinet(socket, data, callback)
 {
-    var _InvDoc = await InvDoc.findOne({projectId: data.project, invester: data.id});
+    var _InvDoc = await InvDoc.findOne({_id: data.id});
 
     if(_InvDoc)
     {

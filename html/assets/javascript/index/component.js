@@ -162,7 +162,6 @@
                                     methodName: "business_cheack_accept_in_cabinet",
                                     data: {
                                         id: _GET('id'),
-                                        project: _GET('project'),
                                         number: $(this).parent().parent().find('input').attr('id'),
                                     },
                                 });
