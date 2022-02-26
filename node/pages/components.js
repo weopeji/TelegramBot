@@ -234,6 +234,8 @@ async function getChatsOfId(socket, data, callback)
     }
     else
     {
+        var _Project = await Project.findOne({_id: _FindBlock._id});
+        returnBlock.name = _Project.data.name;
         returnBlock.type = "Бизнес";
     };
 
@@ -523,8 +525,6 @@ async function getChats(socket, data, callback)
         {
             var FindMsgs = await MsgDB.find({invDoc: InvDocOfInv._id});
             var _Project = await Project.findOne({_id: InvDocOfInv.projectId});
-
-            console.log(InvDocOfInv);
     
             for(var _msgBlock of FindMsgs)
             {
