@@ -433,7 +433,7 @@ async function registrationDocumentAcceptAdmin(socket, data, callback)
 
     _RegistrationDoc.status = "wait";
 
-    h.full_alert_user(_Project.user, `Вам поступил договор с ООО "ИНВЕСТИР" Необходимо ознакомится, подписать и отправить`, "file_urist");
+    h.full_alert_user(_Project.user, `Вам поступил договор с ООО "ИНВЕСТИР" Необходимо ознакомится, подписать и отправить`, "file_urist", _Project._id);
 
     callback(await Project.findOneAndUpdate({_id: data}, {
         registrationDocument: _RegistrationDoc,
