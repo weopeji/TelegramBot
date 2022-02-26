@@ -488,23 +488,20 @@ async function getChats(socket, data, callback)
                     var needUserPhoto   = null;
                     var nameBlock       = _Project.data.name;
     
-                    if(_User.type == "business")
+                    var _UserDataBlock      = await User.findOne({user: InvDocOfInv.invester});
+                    var _idPhoto            = await bot.getUserProfilePhotos(_UserDataBlock.user);
+        
+                    if(_idPhoto.total_count > 0)
                     {
-                        var _UserDataBlock      = await User.findOne({user: InvDocOfInv.invester});
-                        var _idPhoto            = await bot.getUserProfilePhotos(_UserDataBlock.user);
-            
-                        if(_idPhoto.total_count > 0)
+                        var file_id         = _idPhoto.photos[0][0].file_id;
+                        needUserPhoto       = await bot.getFile(file_id);
+                    };
+
+                    for(var searchFio of InvDocOfInv.data.data)
+                    {
+                        if(searchFio._id == "fio")
                         {
-                            var file_id         = _idPhoto.photos[0][0].file_id;
-                            needUserPhoto       = await bot.getFile(file_id);
-                        };
-    
-                        for(var searchFio of InvDocOfInv.data.data)
-                        {
-                            if(searchFio._id == "fio")
-                            {
-                                nameBlock = searchFio.data;
-                            };
+                            nameBlock = searchFio.data;
                         };
                     };
                     
@@ -531,26 +528,6 @@ async function getChats(socket, data, callback)
             {
                 var needUserPhoto   = null;
                 var nameBlock       = _Project.data.name;
-    
-                if(_User.type == "business")
-                {
-                    var _UserDataBlock      = await User.findOne({user: InvDocOfInv.invester});
-                    var _idPhoto            = await bot.getUserProfilePhotos(_UserDataBlock.user);
-        
-                    if(_idPhoto.total_count > 0)
-                    {
-                        var file_id         = _idPhoto.photos[0][0].file_id;
-                        needUserPhoto       = await bot.getFile(file_id);
-                    };
-    
-                    for(var searchFio of InvDocOfInv.data.data)
-                    {
-                        if(searchFio._id == "fio")
-                        {
-                            nameBlock = searchFio.data;
-                        };
-                    };
-                };
                 
                 var _dataBlock = {
                     invId: InvDocOfInv._id,
