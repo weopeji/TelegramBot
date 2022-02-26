@@ -522,12 +522,10 @@ async function getChats(socket, data, callback)
     }
     else
     {
-        
         for(var InvDocOfInv of _InvsDocs)
         {
             var FindMsgs = await MsgDB.find({invDoc: InvDocOfInv._id});
-
-            console.log(FindMsgs.length);
+            var _Project = await Project.findOne({_id: InvDocOfInv.projectId});
     
             for(var _msgBlock of FindMsgs)
             {
