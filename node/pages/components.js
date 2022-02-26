@@ -2817,28 +2817,33 @@ async function setProject(socket,data,callback)
         sortMoreUsers["+" + _targetNumber.toString()][_key] = redactinMoreUsers[_key];
     }
 
-    var ParceUsersBlock = await ParcingPage.ParceUsersBlock(redactinProject, sortMoreUsers);
-
-    if(_dataProject.organization != 3)
+    try
     {
-        _DataProject.parce = 
-        {
-            "pr": await ParcingPage.ParceProject(redactinProject.inn),
-            "ar": await ParcingPage.ParcingArbitrage(redactinProject.inn),
-            "ispo": null,
-            "fiz": ParceUsersBlock,
-        };
+        var ParceUsersBlock = await ParcingPage.ParceUsersBlock(redactinProject, sortMoreUsers);
 
-        if(_dataProject.organization == 1)
+        if(_dataProject.organization != 3)
         {
-            _DataProject.parce.ispo = await _AllParce._ParceProjectIspo(redactinProject);
-        };
-    } else {
-        _DataProject.parce = 
-        {
-            "fiz": ParceUsersBlock,
-        };
+            _DataProject.parce = 
+            {
+                "pr": await ParcingPage.ParceProject(redactinProject.inn),
+                "ar": await ParcingPage.ParcingArbitrage(redactinProject.inn),
+                "ispo": null,
+                "fiz": ParceUsersBlock,
+            };
+    
+            if(_dataProject.organization == 1)
+            {
+                _DataProject.parce.ispo = await _AllParce._ParceProjectIspo(redactinProject);
+            };
+        } else {
+            _DataProject.parce = 
+            {
+                "fiz": ParceUsersBlock,
+            };
+        }
     }
+    catch(e)
+    {};
 
     _DataProject.data                   = redactinProject;
     _DataProject.data.moreUsersNotParce = sortMoreUsers;
