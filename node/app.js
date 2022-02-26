@@ -949,7 +949,7 @@ app.post('/file_chart.io/files', (req, res) =>
         _data[name] = value;
     });
 
-    var cheack_file = (_path) => 
+    var cheack_file = async (_path) => 
     {
         try {
             if (fs.existsSync(_path)) 
