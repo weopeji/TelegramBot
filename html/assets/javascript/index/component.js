@@ -139,7 +139,7 @@
                             <span>${i + 1}</span>
                             <span>${maxDateFormatted}</span>
                             <span>${_pay.toString().replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')} руб ${morePay.toString().replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')}</span>
-                            <span class="headerPaysBlock_button" data="${el.status}" data-rec="${el.receipt}">
+                            <span class="headerPaysBlock_button" data="${el.status}" data-rec="${el.receipt}" data-project="${_data.InvDoc.projectId}">
                                 <input type="file" name="" id='${i}'>
                                 <label for="${i}">${_status[el.status]}</label>
                             </span>
@@ -171,7 +171,7 @@
                             });
 
                             blockMore.find('span').eq(1).click( async function() {
-                                window.open(`/projects/${_GET('project')}/${$(this).parent().parent().attr('data-rec')}` , '_blank');
+                                window.open(`/projects/${$(this).parent().parent().attr('data-project')}/${$(this).parent().parent().attr('data-rec')}` , '_blank');
                             })
 
                             blockMore.find('span').css('margin-bottom', '10px');
