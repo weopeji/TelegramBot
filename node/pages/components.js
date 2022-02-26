@@ -556,7 +556,7 @@ async function getChats(socket, data, callback)
         };
     };
 
-    callback(_dataMsgs);
+    callback(AllMsgs);
 }
 
 async function getPhotoByUser(socket, data, callback)
