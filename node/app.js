@@ -335,9 +335,6 @@ bot.on('message', async (msg) =>
 
     if(typeof action_linker[msg.text] != "undefined") 
     {
-        await action_linker[msg.text](msg);
-        await h.DM(msg, 1);
-
         if(_User)
         {
             if(msg.text != "📈 Инвестировать")
@@ -350,7 +347,10 @@ bot.on('message', async (msg) =>
                     };
                 };
             };
-        }
+        };
+
+        await action_linker[msg.text](msg);
+        await h.DM(msg, 1);
     } else 
     {
         if(_User)
