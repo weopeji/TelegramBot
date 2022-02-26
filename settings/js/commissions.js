@@ -74,7 +74,7 @@
                 `);
 
                 _block.children('span').eq(1).click( function() {
-                    location.href = `/settings/?page=block&id=${$(this).parent().attr('data-project')}&more=data`;
+                    location.href = `/settings/?page=block&id=${$(this).parent().attr('data-project')}&more=redacting`;
                 });
 
                 _block.find(".settingBlock_body_line_button").click( async function() {
@@ -97,6 +97,7 @@
                         <p>Подтвержденные</p>
                         <div class="settingBlock_header_line">
                             <span>Номер проекта</span>
+                            <span>Название проекта</span>
                             <span>Инвестор</span>
                             <span>Сумма Инвестиции</span>
                             <span>Комиссия InvestER</span>
@@ -129,6 +130,7 @@
                 var _block = $(`
                     <div class="settingBlock_body_line" data="${commissionsElement.commission._id}">
                         <span>${commissionsElement.project._id}</span>
+                        <span>${commissionsElement.project.data.name}</span>
                         <span>${fioBlock}</span>
                         <span>${commissionsElement.invDoc.data.pay.toString().ReplaceNumber()} руб</span>
                         <span>${commissionsElement.commissionInvestER.toString().ReplaceNumber()} руб</span>
@@ -137,6 +139,10 @@
                         <span><a href="google.com">Написать</a></span>
                     </div>
                 `);
+
+                _block.children('span').eq(1).click( function() {
+                    location.href = `/settings/?page=block&id=${$(this).parent().attr('data-project')}&more=redacting`;
+                });
 
                 _block.find(".settingBlock_body_line_button").click( async function() {
                     await callApi({
