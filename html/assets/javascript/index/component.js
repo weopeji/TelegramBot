@@ -651,7 +651,7 @@
                     }
 
                     var template_text = $(`
-                        <div class="settingBlock_body_line" data="${element.Inv.invester}" data-more="${element.Inv.projectId}">
+                        <div class="settingBlock_body_line" data="${element.Inv.invester}" data-more="${element.Inv._id}">
                             <span>${i + 1}</span>
                             <span>${element.project._id}</span>
                             <span>${element.project.data.name}</span>
@@ -662,7 +662,7 @@
                     `);
 
                     template_text.click( function () {
-                        location.href = window.location.href + `&id=${$(this).attr('data')}&project=${$(this).attr('data-more')}`;
+                        location.href = window.location.href + `&id=${$(this).attr('data-more')}`;
                     })
 
                     settingBlock.find('.settingBlock_body').append(template_text);
