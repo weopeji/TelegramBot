@@ -128,7 +128,7 @@
                 })
 
                 var _block = $(`
-                    <div class="settingBlock_body_line" data="${commissionsElement.commission._id}">
+                    <div class="settingBlock_body_line" data="${commissionsElement.commission._id}" data-project="${commissionsElement.project._id}">
                         <span>${commissionsElement.project._id}</span>
                         <span>${commissionsElement.project.data.name}</span>
                         <span>${fioBlock}</span>
