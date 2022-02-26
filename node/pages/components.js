@@ -2607,74 +2607,78 @@ var _AllParce =
     {
         return new Promise((resolve,reject) => 
         {
-            console.log(_data.addr);
-
-            var query           = _data.addr;
-            var url             = "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address";
-            var token           = "cd3a829357362fec55fc201c3f761002def9906f";
-            var _name           = _data.name_company;
-
-            var options = {
-                method: "POST",
-                mode: "cors",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "application/json",
-                    "Authorization": "Token " + token
-                },
-                body: JSON.stringify({query: query})
-            }
-
-            fetch(url, options)
-            .then(response => response.text())
-            .then(result => 
+            try
             {
-                var _dataFirst = null;
-
-                if(_data.addr[0] == "1")
+                var query           = _data.addr;
+                var url             = "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address";
+                var token           = "cd3a829357362fec55fc201c3f761002def9906f";
+                var _name           = _data.name_company;
+    
+                var options = {
+                    method: "POST",
+                    mode: "cors",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Accept": "application/json",
+                        "Authorization": "Token " + token
+                    },
+                    body: JSON.stringify({query: query})
+                }
+    
+                fetch(url, options)
+                .then(response => response.text())
+                .then(result => 
                 {
-                    _dataFirst = 50;
-                } else {
-                    console.log(JSON.parse(result.toString()));
-
-                    if(typeof JSON.parse(result.toString()) != "undefined")
+                    var _dataFirst = null;
+    
+                    if(_data.addr[0] == "1")
                     {
-                        if(typeof JSON.parse(result.toString()).suggestions != "undefined")
+                        _dataFirst = 50;
+                    } else {
+                        console.log(JSON.parse(result.toString()));
+    
+                        if(typeof JSON.parse(result.toString()) != "undefined")
                         {
-                            _dataFirst = JSON.parse(result.toString()).suggestions[0].data.region_kladr_id;
-                            _dataFirst = _dataFirst.replace(/0/g, '');
+                            if(typeof JSON.parse(result.toString()).suggestions != "undefined")
+                            {
+                                _dataFirst = JSON.parse(result.toString()).suggestions[0].data.region_kladr_id;
+                                _dataFirst = _dataFirst.replace(/0/g, '');
+                            } else
+                            {
+                                _dataFirst = 50;
+                            }
                         } else
                         {
                             _dataFirst = 50;
                         }
-                    } else
-                    {
-                        _dataFirst = 50;
                     }
-                }
-                
-                if(_dataFirst.length == 1)
-                {
-                    _dataFirst = _dataFirst.toString() + "0";
-                }
-
-                var config = {
-                    method: 'get',
-                    url: `https://api-ip.fssp.gov.ru/api/v1.0/search/legal?token=er77gLcQvTO5&name=${encodeURI(_name)}&region=${_dataFirst}`,
-                    headers: {}
-                };    
-                
-                axios(config)
-                .then(async function (response) {
-                    var adaw = await R_F.create({
-                        data: JSON.stringify(response.data),
+                    
+                    if(_dataFirst.length == 1)
+                    {
+                        _dataFirst = _dataFirst.toString() + "0";
+                    }
+    
+                    var config = {
+                        method: 'get',
+                        url: `https://api-ip.fssp.gov.ru/api/v1.0/search/legal?token=er77gLcQvTO5&name=${encodeURI(_name)}&region=${_dataFirst}`,
+                        headers: {}
+                    };    
+                    
+                    axios(config)
+                    .then(async function (response) {
+                        var adaw = await R_F.create({
+                            data: JSON.stringify(response.data),
+                        })
+                        resolve(adaw._id);
                     })
-                    resolve(adaw._id);
-                })
-                .catch(function (error) {
-                    console.log(error);
+                    .catch(function (error) {
+                        resolve("error");
+                    });
                 });
-            });
+            } catch(e)
+            {
+                resolve("error");
+            }
         });
     },
     "_ParcingArbitraj": async function(inn)
