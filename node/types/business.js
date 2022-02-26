@@ -5,8 +5,9 @@ var https       = null;
 var config      = null;
 var _data       = null;
 var Project     = null;
-var puppeteer   = require('puppeteer');
-const components = require('../pages/components');
+var puppeteer               = require('puppeteer');
+const components            = require('../pages/components');
+var { DateTime, Interval, Duration }  = require("luxon");
 
 module.exports = {
     init:function(initPlagins)
@@ -126,6 +127,7 @@ async function getMoney(msg)
     var allPays         = 0;
     var falseInvs       = [];
     var procroheno      = 0;
+    var lastPay         = 0;
 
     for(var _project of allProjects)
     {
@@ -162,7 +164,27 @@ async function getMoney(msg)
                         }
                     }
                 });
+            };
+
+            var _CommissionBlock = await commission.findOne({invId: _Inv._id});
+
+            if(!_CommissionBlock)
+            {
+                if(_Inv.date < lastPay || lastPay == 0)
+                {
+                    lastPay = _Inv.date;
+                };
             }
+            else
+            {
+                if(_CommissionBlock.status != "accept")
+                {
+                    if(_Inv.date < lastPay || lastPay == 0)
+                    {
+                        lastPay = _Inv.date;
+                    };
+                }
+            };
 
             allPays = allPays + 1;
         };
@@ -173,7 +195,7 @@ async function getMoney(msg)
     html            += `Оплачено инвесторами: ${allPays}\n`;
     html            += `Не подтверждено получение денег: ${notPays}\n`;
     html            += `Просрочено: ${procroheno}\n`;
-    html            += `Обязательста перед investER: ${deptComiisssion} ₽\n`;
+    html            += `Обязательста перед investER:\n ${deptComiisssion} ₽ оплатить до ${Duration.fromMillis(150000).toFormat("mm'm' ss's'")}\n`;
 
 
 
