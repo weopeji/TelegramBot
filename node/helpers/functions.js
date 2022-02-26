@@ -96,13 +96,6 @@ async function full_alert_user(_id, _text, _type, moreId)
         const stream        = fs.createReadStream(_path);
         var keyboardPush    = [];
 
-        var fat = await bot.sendPhoto(_user.user, stream, {
-            parse_mode: "HTML",
-            "reply_markup": {
-                "inline_keyboard": keyboardPush,
-            }
-        });
-
         var funsForSecondMSG =
         {
             "project_redacting": function()
@@ -126,6 +119,13 @@ async function full_alert_user(_id, _text, _type, moreId)
         {
             funsForSecondMSG[_type]();
         }
+
+        var fat = await bot.sendPhoto(_user.user, stream, {
+            parse_mode: "HTML",
+            "reply_markup": {
+                "inline_keyboard": keyboardPush,
+            }
+        });
 
         _array.push(fat.message_id);
 
