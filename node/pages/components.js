@@ -2882,45 +2882,55 @@ async function redactingParcingProject(socket, data, callback)
         projectId: _Project._id,
     });
 
+    try {
+        var _ProjectParce       = _Project.parce;
+        var _ProjectMoreUsers   = {};
     
-    var _ProjectParce       = _Project.parce;
-    var _ProjectMoreUsers   = {};
-
-    if(typeof _Project.data.moreUsersData != "undefined")
-    {
-        _ProjectMoreUsers = _Project.data.moreUsersData;
+        if(typeof _Project.data.moreUsersData != "undefined")
+        {
+            _ProjectMoreUsers = _Project.data.moreUsersData;
+        }
+    
+        var ParceUsersBlock = await ParcingPage.ParceUsersBlock(_Project.data, _ProjectMoreUsers);
+    
+        if(_Project.data.organization != 3)
+        {
+            _ProjectParce = 
+            {
+                "pr": await ParcingPage.ParceProject(_Project.data.inn),
+                "ar": await ParcingPage.ParcingArbitrage(_Project.data.inn),
+                "ispo": null,
+                "fiz": ParceUsersBlock,
+            };
+    
+            if(_Project.data.organization == 1)
+            {
+                _ProjectParce.ispo = await _AllParce._ParceProjectIspo(_Project.data);
+            };
+        } else {
+            _ProjectParce =
+            {
+                "fiz": ParceUsersBlock,
+            };
+        };
+    
+        await Project.findOneAndUpdate({_id: data}, {parce: _ProjectParce});
+    
+        h.alertAdmin({
+            type: "creating_project",
+            text: `В проекте номер ${data} перепарсинг прошел успешно!`,
+            projectId: _Project._id,
+        });
     }
-
-    var ParceUsersBlock = await ParcingPage.ParceUsersBlock(_Project.data, _ProjectMoreUsers);
-
-    if(_Project.data.organization != 3)
+    catch(e)
     {
-        _ProjectParce = 
-        {
-            "pr": await ParcingPage.ParceProject(_Project.data.inn),
-            "ar": await ParcingPage.ParcingArbitrage(_Project.data.inn),
-            "ispo": null,
-            "fiz": ParceUsersBlock,
-        };
-
-        if(_Project.data.organization == 1)
-        {
-            _ProjectParce.ispo = await _AllParce._ParceProjectIspo(_Project.data);
-        };
-    } else {
-        _ProjectParce =
-        {
-            "fiz": ParceUsersBlock,
-        };
-    };
-
-    await Project.findOneAndUpdate({_id: data}, {parce: _ProjectParce});
-
-    h.alertAdmin({
-        type: "creating_project",
-        text: `В проекте номер ${data} перепарсинг прошел успешно!`,
-        projectId: _Project._id,
-    });
+        h.alertAdmin({
+            type: "creating_project",
+            text: `В проекте номер ${data} перепарсинг прошел c ошибками, отправьте его обратно!`,
+            projectId: _Project._id,
+        });
+    }
+    
 }
 
 async function savePuppeter(putProject)
