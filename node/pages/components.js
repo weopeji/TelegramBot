@@ -2367,7 +2367,7 @@ async function getNewDataProjects(socket,data,callback)
 {
     var _project = await Project.findOne({_id: data._id});
 
-    h.full_alert_user(_project.user, `К проекту номер ${_project._id} "${_project.data.name}" запрошенны дополнительные документы`, `correction_signature`);
+    h.full_alert_user(_project.user, `К проекту номер ${_project._id} "${_project.data.name}" запрошенны дополнительные документы`, `correction_signature`, _project._id);
 
     var _project = await Project.findOneAndUpdate({_id: data._id}, 
     {
