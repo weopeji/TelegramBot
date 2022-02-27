@@ -967,7 +967,7 @@
                     <div class="settingBlock_header">
                         <p>Инвестора</p>
                         <div class="settingBlock_header_line">
-                            <span>№</span>
+                            <span>№</span> 
                             <span>Номер договора</span>
                             <span>Инвестор</span>
                             <span>Дата договора</span>
