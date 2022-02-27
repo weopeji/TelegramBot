@@ -164,11 +164,23 @@ async function full_alert_user(_id, _text, _type, moreId)
                 {
                     keyboardPush.push([
                         {
-                            text: "Перейти к подписанию",
+                            text: "Посмотреть проект",
                             url: `https://t.me/invester_official/${moreId}`
                         },
                     ]);
                 }
+            },
+            "put_investring": function()
+            {
+                keyboardPush.push([
+                    {
+                        text: "Посмотреть инвестиции",
+                        login_url: {
+                            'url': `https://invester-relocation.site/?page=wait_projects`,
+                            'request_write_access': true,
+                        },
+                    },
+                ]);
             }
         }
 
