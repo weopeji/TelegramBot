@@ -194,6 +194,19 @@ async function full_alert_user(_id, _text, _type, moreId)
                         },
                     ]);
                 }
+            },
+            "accept_business_investring": async function()
+            {
+                await User.findOneAndUpdate({user: _id}, {type: "investor"});
+                if(moreId || moreId == 0)
+                {
+                    keyboardPush.push([
+                        {
+                            text: "Перейти к инвестиции",
+                            url: `https://invester-relocation.site/?page=activ_projects&id=${moreId}`
+                        },
+                    ]);
+                }
             }
         }
 
