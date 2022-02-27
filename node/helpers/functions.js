@@ -207,6 +207,18 @@ async function full_alert_user(_id, _text, _type, moreId)
                         },
                     ]);
                 }
+            },
+            "accept_commission_investring": function()
+            {
+                if(moreId || moreId == 0)
+                {
+                    keyboardPush.push([
+                        {
+                            text: "Посмотреть результаты",
+                            url: `https://invester-relocation.site/?page=obligations&id=${moreId}`
+                        },
+                    ]);
+                }
             }
         }
 
