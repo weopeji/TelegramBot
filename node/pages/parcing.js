@@ -46,21 +46,29 @@ async function yavlaetcaLiSamozanyatim(_inn)
     {
         try
         {
-            const dateStr = new Date().toISOString().substring(0, 10);
-            const url = "https://statusnpd.nalog.ru/api/v1/tracker/taxpayer_status";
-            const data = {
-                inn: _inn,
-                requestDate: dateStr,
-            };
-            resp = fetch(url, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(data),
-            });
+            const dateStr   = new Date().toISOString().substring(0, 10);
+            const url       = "https://statusnpd.nalog.ru/api/v1/tracker/taxpayer_status";
 
-            resolve(resp);
+            async function checkStatus() 
+            {
+                resp = await fetch(url, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        inn: _inn,
+                        requestDate: dateStr,
+                    }),
+                });
+                return resp;
+            }
+
+            checkStatus()
+            .then((response) => {
+                resolve(response);
+            })
+            .catch(error => resolve("error"));
         }
         catch(e)
         {
