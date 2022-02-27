@@ -1074,8 +1074,8 @@
 
 
                 template_text.children('span').eq(7).click( function() {
-                    location.href = `./?page=activ_projects&id=${$(this).parent().attr('data-project')}`;
-                })
+                    location.href = `https://invester-relocation.site/?page=chats&id=${$(this).parent().attr('data-project')}`;
+                });
 
                 settingBlock.find('.settingBlock_body').append(template_text);
             })
