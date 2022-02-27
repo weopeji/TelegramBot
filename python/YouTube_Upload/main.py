@@ -40,7 +40,7 @@ response_upload = service.videos().insert(
 
 service.thumbnails().set(
     videoId=response_upload.get('id'),
-    media_body=MediaFileUpload('/var/www/html/projects/' + sys.argv[4] + '/logoYouTube.png')
+    media_body=MediaFileUpload('/var/www/projects/' + sys.argv[4] + '/logoYouTube.png')
 ).execute()
 
 print(json.dumps(response_upload, ensure_ascii=False).encode('utf8').decode())
