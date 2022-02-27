@@ -1138,7 +1138,7 @@
 
                 $(this).parent().fadeOut( function() 
                 {
-                    $(this).parent().find(".body_point_line_first p").html(Number(_text).toDivide());
+                    $(this).parent().find(".body_point_line_first p").html(Number(_text.toString().trim().replace(/\s/g, '')).toDivide());
                     $(this).parent().find(".body_point_line_first").fadeIn();
                 });
             })
