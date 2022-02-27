@@ -1020,7 +1020,7 @@
                 });
 
                 var template_text = $(`
-                    <div class="settingBlock_body_line" data="${element.inv.invester}" data-project="${element.inv._id}" data-document="${element.inv.urlToLastDocument}">
+                    <div class="settingBlock_body_line" data-id="${element.inv.projectId}" data="${element.inv.invester}" data-project="${element.inv._id}" data-document="${element.inv.urlToLastDocument}">
                         <span>${i + 1}</span>
                         <span>${element.inv.projectId}/${i + 1}</span>
                         <span>${UserNameInvester}</span>
@@ -1056,7 +1056,7 @@
                     location.href = `./?page=activ_projects&id=${$(this).parent().attr('data-project')}`;
                 })
                 template_text.children('span').eq(5).click( function() {
-                    window.open(`./projects/${$(this).parent().attr('data-project')}/${$(this).parent().attr('data-document')}`, "_blank");
+                    window.open(`./projects/${$(this).parent().attr('data-id')}/${$(this).parent().attr('data-document')}`, "_blank");
                 })
 
                 template_text.children('span').eq(6).css("position", "relative");
