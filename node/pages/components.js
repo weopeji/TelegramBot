@@ -2100,7 +2100,7 @@ async function acceptInvestor(socket,data,callback)
         };
     };
 
-    h.full_alert_user(_InvDoc.invester, `В проекте под номером ${_project._id} "${_project.data.name}" Ваша инвестиция была подтверждена!`, "accept_investing", _InvDoc._id);
+    h.full_alert_user(_InvDoc.invester, `В проекте под номером ${_Project._id} "${_Project.data.name}" Ваша инвестиция была подтверждена!`, "accept_investing", _InvDoc._id);
 
     callback(_InvDocNeed);
 }
