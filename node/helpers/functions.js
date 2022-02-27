@@ -158,6 +158,18 @@ async function full_alert_user(_id, _text, _type, moreId)
                     ]);
                 }
             },
+            "acceptProject": function()
+            {
+                if(moreId || moreId == 0)
+                {
+                    keyboardPush.push([
+                        {
+                            text: "Перейти к подписанию",
+                            url: `https://t.me/invester_official/${moreId}`
+                        },
+                    ]);
+                }
+            }
         }
 
         if(typeof funsForSecondMSG[_type] != "undefined")
