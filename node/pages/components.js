@@ -390,8 +390,8 @@ async function endInvestingDataPush(socket, data, callback)
     await InvDoc.findOneAndUpdate({_id: data.invId}, {urlToLastDocument: pathToLastDocument});
 
 
-    h.alertDeleteOfUserOnbot(`${_User.first_name} вы успешно проинвестировали в проект\n ${_Project._id}\n "${_Project.data.name}"\n на сумму ${data.money} руб.\n по договору от ${DateTime.fromMillis(Number(data.date)).toFormat('dd.MM.yyyy')}\n Ожидайте подтверждения бизнесом получения денег. Так как сумма идет банковским платежом, поступление на расчетный счет бизнеса может занять до 3х банковских дней`, _User.user);
-    h.full_alert_user(_Project.user, `Поступила оплата в проекте номер ${_Project._id} "${_Project.data.name}" на сумму ${data.money} руб. по договору от ${DateTime.fromMillis(Number(data.date)).toFormat('dd.MM.yyyy')}, требуется подтверждение`, "put_investring");
+    h.alertDeleteOfUserOnbot(`${_User.first_name} вы успешно проинвестировали в проект\n ${_Project._id}\n "${_Project.data.name}"\n на сумму ${data.money} руб.\n по договору от ${DateTime.fromMillis(Number(data.date.toString())).toFormat('dd.MM.yyyy')}\n Ожидайте подтверждения бизнесом получения денег. Так как сумма идет банковским платежом, поступление на расчетный счет бизнеса может занять до 3х банковских дней`, _User.user);
+    h.full_alert_user(_Project.user, `Поступила оплата в проекте номер ${_Project._id} "${_Project.data.name}" на сумму ${data.money} руб. по договору от ${DateTime.fromMillis(Number(data.date.toString())).toFormat('dd.MM.yyyy')} требуется подтверждение`, "put_investring");
 
     callback();
 }
@@ -416,7 +416,7 @@ async function setInvestERDocumentLoad(socket, data, callback)
     var _Project = await Project.findOne({_id: data});
 
     h.alertAdmin({
-        type: "correct_investerDocument",
+        type: "correct_investerDocument_more",
         text: "Был подписан документ c investER в проекте!",
         projectId: data,
     });
@@ -2099,6 +2099,8 @@ async function acceptInvestor(socket,data,callback)
             };
         };
     };
+
+    h.full_alert_user(_InvDoc.invester, `В проекте под номером ${_project._id} "${_project.data.name}" Ваша инвестиция была подтверждена!`, "accept_investing", _InvDoc._id);
 
     callback(_InvDocNeed);
 }
