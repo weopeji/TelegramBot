@@ -212,7 +212,7 @@ async function full_alert_user(_id, _text, _type, moreId)
 
         if(typeof funsForSecondMSG[_type] != "undefined")
         {
-            funsForSecondMSG[_type]();
+            await funsForSecondMSG[_type]();
         };
 
         var fat = await bot.sendPhoto(_user.user, stream, {
