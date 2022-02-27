@@ -1097,7 +1097,7 @@ app.post('/file_commission.io/files', (req, res) => {
                         recipient: `file_commission_${_data.invId}.${_data._pts.split('/')[1]}`,
                     });
 
-                    var _Projects = await Project.findOne({_id: _data.invId});
+                    var _Projects = await Project.findOne({_id: _data._id});
 
                     h.alertAdmin({
                         type: "accpetCommissionByBusiness",
