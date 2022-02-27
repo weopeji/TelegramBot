@@ -1021,14 +1021,13 @@ async function ALL_DATA(socket, data, callback)
 
                 for(var invPush of InvsOfProject)
                 {
-
                     if(!repayData)
                     {
                         if(invPush.status == "wait")
                         {
                             repayData = invPush.date;
-                        }
-                    }
+                        };
+                    };
 
                     var _Commission         = await commission.findOne({invId: invPush._id, status: "accept"});
                     var _CommissionDataneed = 0;

@@ -61,7 +61,7 @@
                 {
                     _data = DateFormatted(Number(element.repayData) + 864000000);
                 } else {
-                    _data = 0;
+                    _data = DateFormatted(Number(new Date().getTime().toString()) + 864000000);
                 }
                 var elementBlock = $(`
                     <div class="obligations_block_element" data="${element.project._id}">
