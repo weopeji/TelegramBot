@@ -1097,6 +1097,14 @@ app.post('/file_commission.io/files', (req, res) => {
                         recipient: `file_commission_${_data.invId}.${_data._pts.split('/')[1]}`,
                     });
 
+                    var _Projects = await Project.findOne({_id: _data.invId});
+
+                    h.alertAdmin({
+                        type: "accpetCommissionByBusiness",
+                        text: `Проект ${_Projects._id} "${_Projects.data.name}" произвел оплату комисиии в пользу invester`,
+                        projectId: _Projects._id,
+                    });
+
                     res.json({
                         status: 'ok',
                     });
