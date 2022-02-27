@@ -251,8 +251,9 @@ async function getChatsOfId(socket, data, callback)
 
 async function business_cheack_accept_in_cabinet(socket, data, callback)
 {
-    var _InvDoc = await InvDoc.findOne({_id: data.id});
-    var dataPay = 0;
+    var _InvDoc     = await InvDoc.findOne({_id: data.id});
+    var _Project    = await Project.findOne({_id: _InvDoc.projectId});
+    var dataPay     = 0;
 
     if(_InvDoc)
     {
@@ -271,7 +272,7 @@ async function business_cheack_accept_in_cabinet(socket, data, callback)
         await InvDoc.findOneAndUpdate({_id: _InvDoc._id}, {pays: _Pays});
     };
 
-    h.full_alert_user(_Project.user, `Поступила выплата в проекте номер ${_Project._id} "${_Project.data.name}" на сумму ${dataPay} руб.`, "accept_business_investring", _InvDoc._id);
+    h.full_alert_user(_InvDoc.invester, `Поступила выплата в проекте номер ${_Project._id} "${_Project.data.name}" на сумму ${dataPay} руб.`, "accept_business_investring", _InvDoc._id);
 
     callback();
 }
