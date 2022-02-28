@@ -2852,7 +2852,7 @@ async function setProject(socket,data,callback)
     {
         await h.alertAdmin({
             type: "creating_project",
-            text: `Новый проект подан на модерацию, c ошибкой парсинга: ${}`,
+            text: `Новый проект подан на модерацию, c ошибкой парсинга: ${data}`,
             projectId: _Project._id,
         });
 
