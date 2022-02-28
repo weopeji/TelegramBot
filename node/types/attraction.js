@@ -159,7 +159,7 @@ async function url(msg)
         _array.push(fat.message_id);
 
         // 2 ===
-        const stream = fs.createReadStream(`../html/assets/images/logo_print.jpeg`);
+        var stream = fs.createReadStream(`../html/assets/images/logo_print.jpeg`);
         var fat = await await bot.sendPhoto(msg.from.id, stream, {
             "parse_mode": "html",
             "reply_markup": {
