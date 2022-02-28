@@ -1355,10 +1355,14 @@
         {
             var templateText = $(`
                 <div class="usersAdminBlock_user">
-                    <div class="usersAdminBlock_user_img">
-                        <img src="" alt="">
+                    <div class="usersAdminBlock_user_row">
+                        <div class="usersAdminBlock_user_img">
+                            <div class="usersAdminBlock_user_img_row">
+                                <img src="" alt="">
+                            </div>
+                        </div>
+                        <span>Выберите пользователя</span>
                     </div>
-                    <span>Выберите пользователя</span>
                 </div>
             `);
 
@@ -1375,7 +1379,7 @@
             var templateText = $(`
                 <div class="settingBlock">
                     <div class="settingBlock_header">
-                        <p>Пользавтели (Нажмите на пользователя чтобы просмотреть его кабинет)</p>
+                        <p>Пользавтели</p>
                         <div class="settingBlock_header_line">
                             <span>#</span>
                             <span>ID Инвестора</span>
