@@ -1384,7 +1384,8 @@
 
         async renderBody()
         {
-            var allUsers = await callApi({
+            var _this       = this;
+            var allUsers    = await callApi({
                 methodName: "allUsers",
                 data: null,
             });
@@ -1427,7 +1428,7 @@
 
                 userLine.children('span').eq(4).click(async function() {
                     var _id = $(this).attr('data');
-                    await this.showUser(_id);
+                    await _this.showUser(_id);
                 });
 
                 userLine.children('span').eq(5).click(async function() {
