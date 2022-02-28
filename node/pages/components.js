@@ -2780,8 +2780,8 @@ async function cheackInnCreator(socket,data,callback)
 async function setProject(socket,data,callback) 
 {
     var _User                       = await User.findOne({user: data.user});
-    var alertForUser                = h.alertDeleteOfUserOnbot(html, _User.user);
     var html                        = _User.first_name + '\nПроект успешно подан на модерацию.\nВы получите уведомление в боте о ее результатах.';
+    var alertForUser                = h.alertDeleteOfUserOnbot(html, _User.user);
     var user_path                   = `../users/${_User.user}`;
     var _dataProject                = data.data;
     var redactinProject             = {}; // ParcingPage
@@ -2834,7 +2834,6 @@ async function setProject(socket,data,callback)
     // ======================================================================================
 
     var _Project = await Project.create(_DataProject);  console.log("create Project");
-    await savePuppeter(_Project._id);                   console.log("save puppeter");
 
     await wrench.copyDirSyncRecursive(user_path, `/var/www/projects/${_Project._id}`);
     await fs.readdir(user_path, (err, files) => {
@@ -2845,6 +2844,8 @@ async function setProject(socket,data,callback)
             });
         }
     }); 
+
+    await savePuppeter(_Project._id);                   console.log("save puppeter");
 
     // ======================================================================================
 
