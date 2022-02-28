@@ -102,7 +102,7 @@
                 `);
 
                 elementBlock.click( function() {
-                    location.href = "./?page=obligations&id=" + $(this).attr('data');
+                    location.href = "./?page=obligations&ProjectId=" + $(this).attr('data');
                 });
 
                 settingBlock.append(elementBlock);
@@ -115,7 +115,7 @@
         {
             var _data = await callApi({
                 methodName: "obligationsProjectData",
-                data: _GET('id'),
+                data: _GET('ProjectId'),
             });
 
             var settingBlock = $(`

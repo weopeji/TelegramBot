@@ -202,15 +202,12 @@ async function getMoney(msg)
     if(lastPay != 0)
     {
         timeFormat  = DateTime.fromMillis(Number(lastPay)).plus({day: 10}).toFormat('dd.MM.yyyy');
-        html        += `Обязательста перед investER:\n${deptComiisssion} ₽ оплатить до ${timeFormat}\n`;
+        html        += `Обязательста перед investER: ${deptComiisssion} ₽ оплатить до ${timeFormat}\n`;
     } 
     else
     {
         html        += `Обязательста перед investER: Задолжености нет\n`;
     }
-
-
-    
 
     var keyboard    = 
     [
