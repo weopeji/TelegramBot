@@ -137,7 +137,7 @@ async function url(msg)
         });
         _array.push(fat.message_id);
 
-        var stream = fs.createReadStream(`./assets/videos/recomendation_more.gif`);
+        var stream = fs.createReadStream(`./assets/videos/how_rec.gif`);
         var fat = await await bot.sendAnimation(msg.from.id, stream, {
             width: 900,
             height: 1920,
@@ -185,6 +185,14 @@ async function url(msg)
             parse_mode: "Markdown",
         });
         _array.push(fat.message_id);
+
+        var stream = fs.createReadStream(`./assets/videos/how_rec.gif`);
+        var fat = await await bot.sendAnimation(msg.from.id, stream, {
+            width: 900,
+            height: 1920,
+        });
+        _array.push(fat.message_id);
+
         await h.DMA(msg, _array);
     }
 }
