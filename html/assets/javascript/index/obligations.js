@@ -199,7 +199,7 @@
 
         async render()
         {
-            if(_GET('id'))
+            if(_GET('ProjectId'))
             {
                 this.renderType();
             } else {
