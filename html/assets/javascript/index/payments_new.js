@@ -132,7 +132,7 @@
                     $(".settingBlock_body_line_drop_menu").fadeOut();
                     if($(this).find('.settingBlock_body_line_drop_menu').css('display') == "block")
                     {
-                        (this).find('.settingBlock_body_line_drop_menu').fadeOut();
+                        $(this).find('.settingBlock_body_line_drop_menu').fadeOut();
                     } else
                     {
                         $(this).find('.settingBlock_body_line_drop_menu').fadeIn();
