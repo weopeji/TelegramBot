@@ -53,8 +53,14 @@
                 var bik         = null;
                 var nomer       = null;
                 var nomer_kor   = null;
+                var fio         = null;
 
                 _data.InvDoc.data.data.forEach(elementInv => {
+
+                    if(elementInv._id == "fio")
+                    {
+                        fio = elementInv.data;
+                    };
 
                     if(elementInv._id == "bank")
                     {
@@ -89,6 +95,7 @@
                                         <p>БИК: <span>${bik}</span></p>
                                         <p>Номер расчетного счета: <span>${nomer}</span></p>
                                         <p>Номер кор счета: <span>${nomer_kor}</span></p>
+                                        <p>Имя получателя: <span>${fio}</span></p>
                                     </div>
                                 </div>
                             </span>
@@ -1033,6 +1040,7 @@
                                 <p>БИК: <span>${bik}</span></p>
                                 <p>Номер расчетного счета: <span>${nomer}</span></p>
                                 <p>Номер кор счета: <span>${nomer_kor}</span></p>
+                                <p>Имя получателя: <span>${UserNameInvester}</span></p>
                             </div>
                             <i class="fal fa-cloud-download"></i>
                         </span>

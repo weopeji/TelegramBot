@@ -48,7 +48,7 @@
 
             _data.payments_new.showBlocks.forEach(function(element, i) 
             {
-                var fio = null;
+                var fio         = null;
                 var bank        = null;
                 var bik         = null;
                 var nomer       = null;
@@ -94,6 +94,7 @@
                                 <p>БИК: <span>${bik}</span></p>
                                 <p>Номер расчетного счета: <span>${nomer}</span></p>
                                 <p>Номер кор счета: <span>${nomer_kor}</span></p>
+                                <p>Имя получателя: <span>${fio}</span></p>
                             </div>
                             Посмотреть
                         </span>
