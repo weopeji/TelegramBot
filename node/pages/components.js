@@ -2869,16 +2869,12 @@ async function setProject(socket,data,callback)
         {
             try
             {
-                ParceDataProject["pr"]  = await ParcingPage.ParceProject(redactinProject.inn);
-
-                if(_ActionParce == "error")
+                ParceDataProject["pr"] = await ParcingPage.ParceProject(redactinProject.inn);
+                if(ParceDataProject["pr"] == "error")
                 {
-                    await alertErrorOfParcing("Первичный парсинг"); return;
+                    await alertErrorOfParcing("Первичный парсинг");
                 }
-                else
-                {
-                    await Project.findOneAndUpdate({_id: _Project._id}, {parce: ParceDataProject});
-                }
+                await Project.findOneAndUpdate({_id: _Project._id}, {parce: ParceDataProject});
             } catch(e) {
                 await alertErrorOfParcing("Первичный парсинг");
                 console.log(e);
@@ -2888,14 +2884,11 @@ async function setProject(socket,data,callback)
             {
                 ParceDataProject["ar"]  = await ParcingPage.ParcingArbitrage(redactinProject.inn);
 
-                if(_ActionParce == "error")
+                if(ParceDataProject["ar"] == "error")
                 {
-                    await alertErrorOfParcing("Арбитражная практика"); return;
+                    await alertErrorOfParcing("Арбитражная практика");
                 }
-                else
-                {
-                    await Project.findOneAndUpdate({_id: _Project._id}, {parce: ParceDataProject});
-                }
+                await Project.findOneAndUpdate({_id: _Project._id}, {parce: ParceDataProject});
             } catch(e) {
                 await alertErrorOfParcing("Арбитражная практика");
                 console.log(e);
@@ -2905,14 +2898,11 @@ async function setProject(socket,data,callback)
             {
                 ParceDataProject["ispo"]  = await _AllParce._ParceProjectIspo(redactinProject)
 
-                if(_ActionParce == "error")
+                if(ParceDataProject["ispo"] == "error")
                 {
-                    await alertErrorOfParcing("Исполнительное производство"); return;
+                    await alertErrorOfParcing("Исполнительное производство");
                 }
-                else
-                {
-                    await Project.findOneAndUpdate({_id: _Project._id}, {parce: ParceDataProject});
-                }
+                await Project.findOneAndUpdate({_id: _Project._id}, {parce: ParceDataProject});
             } catch(e) {
                 await alertErrorOfParcing("Исполнительное производство");
                 console.log(e);
@@ -2922,14 +2912,11 @@ async function setProject(socket,data,callback)
             {
                 ParceDataProject["fiz"]  = await ParcingPage.ParceUsersBlock(redactinProject, sortMoreUsers);
 
-                if(_ActionParce == "error")
+                if(ParceDataProject["fiz"] == "error")
                 {
-                    await alertErrorOfParcing("Данные собственников"); return;
+                    await alertErrorOfParcing("Данные собственников");
                 }
-                else
-                {
-                    await Project.findOneAndUpdate({_id: _Project._id}, {parce: ParceDataProject});
-                }
+                await Project.findOneAndUpdate({_id: _Project._id}, {parce: ParceDataProject});
             } catch(e) {
                 await alertErrorOfParcing("Данные собственников");
                 console.log(e);
@@ -2941,14 +2928,11 @@ async function setProject(socket,data,callback)
             {
                 ParceDataProject["pr"]  = await ParcingPage.ParceProject(redactinProject.inn);
 
-                if(_ActionParce == "error")
+                if(ParceDataProject["pr"] == "error")
                 {
-                    await alertErrorOfParcing("Первичный парсинг"); return;
+                    await alertErrorOfParcing("Первичный парсинг");
                 }
-                else
-                {
-                    await Project.findOneAndUpdate({_id: _Project._id}, {parce: ParceDataProject});
-                }
+                await Project.findOneAndUpdate({_id: _Project._id}, {parce: ParceDataProject});
             } catch(e) {
                 await alertErrorOfParcing("Первичный парсинг");
                 console.log(e);
@@ -2958,14 +2942,11 @@ async function setProject(socket,data,callback)
             {
                 ParceDataProject["ar"]  = await ParcingPage.ParcingArbitrage(redactinProject.inn);
 
-                if(_ActionParce == "error")
+                if(ParceDataProject["ar"] == "error")
                 {
-                    await alertErrorOfParcing("Арбитражная практика"); return;
+                    await alertErrorOfParcing("Арбитражная практика");
                 }
-                else
-                {
-                    await Project.findOneAndUpdate({_id: _Project._id}, {parce: ParceDataProject});
-                }
+                await Project.findOneAndUpdate({_id: _Project._id}, {parce: ParceDataProject});
             } catch(e) {
                 await alertErrorOfParcing("Арбитражная практика");
                 console.log(e);
@@ -2975,14 +2956,11 @@ async function setProject(socket,data,callback)
             {
                 ParceDataProject["fiz"]  = await ParcingPage.ParceUsersBlock(redactinProject, sortMoreUsers);
 
-                if(_ActionParce == "error")
+                if(ParceDataProject["fiz"] == "error")
                 {
-                    await alertErrorOfParcing("Данные собственников"); return;
+                    await alertErrorOfParcing("Данные собственников");
                 }
-                else
-                {
-                    await Project.findOneAndUpdate({_id: _Project._id}, {parce: ParceDataProject});
-                }
+                await Project.findOneAndUpdate({_id: _Project._id}, {parce: ParceDataProject});
             } catch(e) {
                 await alertErrorOfParcing("Данные собственников");
                 console.log(e);
@@ -2994,14 +2972,11 @@ async function setProject(socket,data,callback)
             {
                 ParceDataProject["fiz"]  = await ParcingPage.ParceUsersBlock(redactinProject, sortMoreUsers);
 
-                if(_ActionParce == "error")
+                if(ParceDataProject["fiz"] == "error")
                 {
-                    await alertErrorOfParcing("Данные собственников"); return;
+                    await alertErrorOfParcing("Данные собственников");
                 }
-                else
-                {
-                    await Project.findOneAndUpdate({_id: _Project._id}, {parce: ParceDataProject});
-                }
+                await Project.findOneAndUpdate({_id: _Project._id}, {parce: ParceDataProject});
             } catch(e) {
                 await alertErrorOfParcing("Данные собственников");
                 console.log(e);
