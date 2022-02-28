@@ -2854,7 +2854,7 @@ async function setProject(socket,data,callback)
     {
         await h.alertAdmin({
             type: "creating_project",
-            text: `Новый проект подан на модерацию, c ошибкой парсинга: ${data}`,
+            text: `Новый проект подан, c ошибкой парсинга: ${data}\n\nНомер проекта: ${_Project._id}`,
             projectId: _Project._id,
         });
 
@@ -2864,6 +2864,8 @@ async function setProject(socket,data,callback)
     try
     {
         var ParceDataProject    = _Project.parce;
+
+        if(!ParceDataProject) {_Project.parce = {}};
 
         if(_dataProject.organization == 1)
         {
@@ -3015,7 +3017,7 @@ async function setProject(socket,data,callback)
 
     h.alertAdmin({
         type: "creating_project",
-        text: "Новый проект подан на модерацию",
+        text: "Новый проект подан на модерацию\n\nНомер проекта: ${_Project._id}",
         projectId: _Project._id,
     });
 
