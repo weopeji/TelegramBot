@@ -26,6 +26,7 @@ const e                     = require("express");
 var ffmpeg                  = require('ffmpeg');
 const { resolve }           = require("path");
 const PDFMerger             = require('pdf-merger-js');
+const { Console } = require("console");
 var merger                  = new PDFMerger();
 
 
@@ -2870,8 +2871,6 @@ async function setProject(socket,data,callback)
             {
                 ParceDataProject["pr"]  = await ParcingPage.ParceProject(redactinProject.inn);
 
-                console.log(ParceDataProject["pr"]);
-
                 if(_ActionParce == "error")
                 {
                     await alertErrorOfParcing("Первичный парсинг"); return;
@@ -2880,7 +2879,10 @@ async function setProject(socket,data,callback)
                 {
                     await Project.findOneAndUpdate({_id: _Project._id}, {parce: ParceDataProject});
                 }
-            } catch(e) {await alertErrorOfParcing("Первичный парсинг")};
+            } catch(e) {
+                await alertErrorOfParcing("Первичный парсинг");
+                console.log(e);
+            };
 
             try
             {
@@ -2894,7 +2896,10 @@ async function setProject(socket,data,callback)
                 {
                     await Project.findOneAndUpdate({_id: _Project._id}, {parce: ParceDataProject});
                 }
-            } catch(e) {await alertErrorOfParcing("Арбитражная практика")};
+            } catch(e) {
+                await alertErrorOfParcing("Арбитражная практика");
+                console.log(e);
+            };
 
             try
             {
@@ -2908,7 +2913,10 @@ async function setProject(socket,data,callback)
                 {
                     await Project.findOneAndUpdate({_id: _Project._id}, {parce: ParceDataProject});
                 }
-            } catch(e) {await alertErrorOfParcing("Исполнительное производство")};
+            } catch(e) {
+                await alertErrorOfParcing("Исполнительное производство");
+                console.log(e);
+            };
 
             try
             {
@@ -2922,7 +2930,10 @@ async function setProject(socket,data,callback)
                 {
                     await Project.findOneAndUpdate({_id: _Project._id}, {parce: ParceDataProject});
                 }
-            } catch(e) {await alertErrorOfParcing("Данные собственников")};
+            } catch(e) {
+                await alertErrorOfParcing("Данные собственников");
+                console.log(e);
+            };
         }
         else if(_dataProject.organization == 2)
         {
@@ -2938,7 +2949,10 @@ async function setProject(socket,data,callback)
                 {
                     await Project.findOneAndUpdate({_id: _Project._id}, {parce: ParceDataProject});
                 }
-            } catch(e) {await alertErrorOfParcing("Первичный парсинг")};
+            } catch(e) {
+                await alertErrorOfParcing("Первичный парсинг");
+                console.log(e);
+            };
 
             try
             {
@@ -2952,7 +2966,10 @@ async function setProject(socket,data,callback)
                 {
                     await Project.findOneAndUpdate({_id: _Project._id}, {parce: ParceDataProject});
                 }
-            } catch(e) {await alertErrorOfParcing("Арбитражная практика")};
+            } catch(e) {
+                await alertErrorOfParcing("Арбитражная практика");
+                console.log(e);
+            };
 
             try
             {
@@ -2966,7 +2983,10 @@ async function setProject(socket,data,callback)
                 {
                     await Project.findOneAndUpdate({_id: _Project._id}, {parce: ParceDataProject});
                 }
-            } catch(e) {await alertErrorOfParcing("Данные собственников")};
+            } catch(e) {
+                await alertErrorOfParcing("Данные собственников");
+                console.log(e);
+            };
         } 
         else if(_dataProject.organization == 3)
         {
@@ -2982,7 +3002,10 @@ async function setProject(socket,data,callback)
                 {
                     await Project.findOneAndUpdate({_id: _Project._id}, {parce: ParceDataProject});
                 }
-            } catch(e) {await alertErrorOfParcing("Данные собственников")};
+            } catch(e) {
+                await alertErrorOfParcing("Данные собственников");
+                console.log(e);
+            };
         };
     }
     catch(e)
