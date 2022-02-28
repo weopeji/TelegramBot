@@ -2870,6 +2870,8 @@ async function setProject(socket,data,callback)
             {
                 ParceDataProject["pr"]  = await ParcingPage.ParceProject(redactinProject.inn);
 
+                console.log(ParceDataProject["pr"]);
+
                 if(_ActionParce == "error")
                 {
                     await alertErrorOfParcing("Первичный парсинг"); return;
