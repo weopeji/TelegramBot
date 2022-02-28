@@ -1381,7 +1381,7 @@
                             <span>ID Инвестора</span>
                             <span>ФИО</span>
                             <span>Тип</span>
-                            <span>Данные инвестора</span>
+                            <span>Данные</span>
                             <span>Стать пользователем</span>
                         </div>
                     </div>
@@ -1419,8 +1419,8 @@
 
         async render()
         {
-            await this.renderBody();
             await this.renderUser();
+            await this.renderBody();
 
             $('.index_page_body_data').append(this.globalBlock);
         }
