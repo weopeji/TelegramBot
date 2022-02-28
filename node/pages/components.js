@@ -191,7 +191,19 @@ var action_linker =
     "redactingParcingProject": redactingParcingProject,
     "registrationDocumentClearAdmin": registrationDocumentClearAdmin,
     "business_cheack_accept_in_cabinet": business_cheack_accept_in_cabinet,
+    "getUserByProjectOfId": getUserByProjectOfId,
 };
+
+async function getUserByProjectOfId(socket, data, callback)
+{
+    var _Project    = await Project.findOne({_id: data});
+    var _User       = await User.findOne({user: _Project.user});
+
+    callback({
+        whoGet: _User.user,
+        nameGet: _User.first_name,
+    });
+}
 
 async function getChatsOfId(socket, data, callback)
 {

@@ -1145,6 +1145,30 @@
 
             this.global_block.append(firstBlockMore);
 
+            var getUserByProjectOfId = await callApi({
+                methodName: "getUserByProjectOfId",
+                data: _GET("id"),
+            });
+
+            var _block = 
+            $(`
+                <div class="structCreator_new_block"">
+                    <div class="structCreator_new_block_row">
+                        <span>Кто создал проект</span>
+                        <a>
+                            <BB>${getUserByProjectOfId.whoGet}</BB>
+                            <BB>${getUserByProjectOfId.nameGet}</BB>
+                        </a>
+                    </div>
+                </div>
+            `);
+
+            _block.find('BB').css("margin-right", "20px");
+
+            _block.css('margin-top', '20px');
+
+            this.global_block.append(_block);   
+
             var activeData = await callApi({
                 methodName: "activeDataProject",
                 data: _GET("id"),
