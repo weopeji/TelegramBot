@@ -184,9 +184,9 @@ async function getMoney(msg)
                         };
                     }
                 };
-
-                allPays = allPays + 1;
             };
+
+            allPays = allPays + 1;
         };
     }
 
