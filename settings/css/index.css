@@ -925,11 +925,39 @@
           flex: 1;
 }
 
-.usersAdminBlock_user_img {
-  -webkit-box-flex: 3;
-      -ms-flex: 3;
-          flex: 3;
-  margin-right: 20px;
+.usersAdminBlock_user_row {
+  width: calc(85% - 40px);
+  margin: 0 auto;
+  background-color: #182037;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.usersAdminBlock_user_h1 {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.usersAdminBlock_user_img_row {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: #9BAAD9;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 auto;
+}
+
+.usersAdminBlock_user_img_row img {
+  width: 110%;
 }
 
 @media (max-width: 1500px) {

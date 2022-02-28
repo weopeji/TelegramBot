@@ -1361,7 +1361,7 @@
                                 <img src="" alt="">
                             </div>
                         </div>
-                        <span>Выберите пользователя</span>
+                        <span class="usersAdminBlock_user_h1">Выберите пользователя</span>
                     </div>
                 </div>
             `);
@@ -1397,6 +1397,8 @@
 
             templateText.css('width', 'calc(92% - 40px');
             templateText.css('margin', '0 auto');
+            templateText.css('flex', '3');
+            templateText.css('margin-right', '20px');
 
             allUsers.forEach( function (user, i) {
                 var userLine = $(`
