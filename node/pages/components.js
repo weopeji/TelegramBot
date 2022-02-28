@@ -2863,9 +2863,7 @@ async function setProject(socket,data,callback)
 
     try
     {
-        var ParceDataProject    = _Project.parce;
-
-        if(!ParceDataProject) {_Project.parce = {}};
+        var ParceDataProject    = {};
 
         if(_dataProject.organization == 1)
         {
@@ -3017,7 +3015,7 @@ async function setProject(socket,data,callback)
 
     h.alertAdmin({
         type: "creating_project",
-        text: "Новый проект подан на модерацию\n\nНомер проекта: ${_Project._id}",
+        text: `Новый проект подан на модерацию\n\nНомер проекта: ${_Project._id}`,
         projectId: _Project._id,
     });
 
