@@ -1367,6 +1367,19 @@
             `);
 
             this.globalBlock.append(templateText);
+        };
+
+        async showUser(_id)
+        {
+            var allUsersGetOne = await callApi({
+                methodName: "allUsersGetOne",
+                data: _id,
+            });
+
+            $('.usersAdminBlock_user_img_row img').attr('src', allUsersGetOne.Photo);
+            $('.usersAdminBlock_user_h1').html(allUsersGetOne.User.first_name);
+
+            
         }
 
         async renderBody()
@@ -1411,6 +1424,11 @@
                         <span>Открыть</span>
                     </div>
                 `);
+
+                userLine.children('span').eq(4).click(async function() {
+                    var _id = $(this).attr('data');
+                    await this.showUser(_id);
+                });
 
                 userLine.children('span').eq(5).click(async function() {
                     var _id = $(this).attr('data');

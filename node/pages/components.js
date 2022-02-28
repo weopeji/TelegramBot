@@ -192,7 +192,26 @@ var action_linker =
     "registrationDocumentClearAdmin": registrationDocumentClearAdmin,
     "business_cheack_accept_in_cabinet": business_cheack_accept_in_cabinet,
     "getUserByProjectOfId": getUserByProjectOfId,
+    "allUsersGetOne": allUsersGetOne,
 };
+
+async function allUsersGetOne(socket, data, callback)
+{
+    var _User = await User.findOne({_id: data});
+    var _Photo = null;
+    var _idPhoto            = await bot.getUserProfilePhotos(_User.user);
+    if(_idPhoto.total_count > 0)
+    {
+        var file_id         = _idPhoto.photos[0][0].file_id;
+        _Photo              = await bot.getFile(file_id);
+        _Photo              = `https://api.telegram.org/file/bot2062839693:AAE0hzj8SVXyexq29s5x7aRLC5x8O77c-pQ/` + returnBlock.photo.file_path;
+    };
+
+    callback({
+        User: _User,
+        Photo: _Photo,
+    });
+}
 
 async function getUserByProjectOfId(socket, data, callback)
 {
