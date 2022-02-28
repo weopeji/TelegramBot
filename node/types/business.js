@@ -210,7 +210,7 @@ async function getMoney(msg)
             {
                 text: "Поступления",
                 login_url: {
-                    'url': `${h.getURL()}?user=${_User._id}&page=payments_new`,
+                    'url': `${h.getURL()}?user=${_User._id}&page=acceptPays`,
                 },
             }       
         ],
@@ -218,16 +218,7 @@ async function getMoney(msg)
     
     keyboard.push([
         {
-            text: "Не подтверждено",
-            login_url: {
-                'url': `${h.getURL()}?user=${_User._id}&page=acceptPays`,
-            },
-        }
-    ])
-
-    keyboard.push([
-        {
-            text: "Поступоления",
+            text: "Просрочено",
             login_url: {
                 'url': `${h.getURL()}?user=${_User._id}&page=payments_new`,
             },
