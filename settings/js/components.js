@@ -1343,9 +1343,29 @@
 
     class all_users
     {
-        constructor() {};
+        constructor() {
+            this.globalBlock = $(`
+                <div class="usersAdminBlock">
 
-        async render()
+                </div>
+            `)
+        };
+
+        async renderUser()
+        {
+            var templateText = $(`
+                <div class="usersAdminBlock_user">
+                    <div class="usersAdminBlock_user_img">
+                        <img src="" alt="">
+                    </div>
+                    <span>Выберите пользователя</span>
+                </div>
+            `);
+
+            this.globalBlock.append(templateText);
+        }
+
+        async renderBody()
         {
             var allUsers = await callApi({
                 methodName: "allUsers",
@@ -1361,6 +1381,8 @@
                             <span>ID Инвестора</span>
                             <span>ФИО</span>
                             <span>Тип</span>
+                            <span>Данные инвестора</span>
+                            <span>Стать пользователем</span>
                         </div>
                     </div>
                     <div class="settingBlock_body">
@@ -1379,22 +1401,28 @@
                         <span>${user.user}</span>
                         <span>${user.first_name}</span>
                         <span>${user.type}</span>
+                        <span>Посотреть</span>
+                        <span>Открыть</span>
                     </div>
                 `);
 
+                userLine.children('span').eq(5).click(async function() {
+                    var _id = $(this).attr('data');
+                    location.href = `/?user=${_id}`;
+                });
+
                 templateText.find('.settingBlock_body').append(userLine);
-            })
+            });
 
-            $('.index_page_body_data').append(templateText);
+            this.globalBlock.append(templateText);
+        }
 
-            $('.settingBlock_body_line').click(async function() {
-                var _id = $(this).attr('data');
-                // var getUserID = await callApi({
-                //     methodName: "getUserID",
-                //     data: _id,
-                // });
-                location.href = `/?user=${_id}`;
-            })
+        async render()
+        {
+            await this.renderBody();
+            await this.renderUser();
+
+            $('.index_page_body_data').append(this.globalBlock);
         }
     }
 
