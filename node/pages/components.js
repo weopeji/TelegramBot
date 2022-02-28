@@ -2780,6 +2780,7 @@ async function cheackInnCreator(socket,data,callback)
 async function setProject(socket,data,callback) 
 {
     var _User                       = await User.findOne({user: data.user});
+    var alertForUser                = h.alertDeleteOfUserOnbot(html, _User.user);
     var html                        = _User.first_name + '\nПроект успешно подан на модерацию.\nВы получите уведомление в боте о ее результатах.';
     var user_path                   = `../users/${_User.user}`;
     var _dataProject                = data.data;
@@ -2805,8 +2806,6 @@ async function setProject(socket,data,callback)
         }
     };
 
-    h.alertDeleteOfUserOnbot(html, _User.user);
-
     for(var _key in _dataProject)
     {
         if(_key.split("*")[0] == "BB")
@@ -2828,51 +2827,165 @@ async function setProject(socket,data,callback)
         sortMoreUsers["+" + _targetNumber.toString()][_key] = redactinMoreUsers[_key];
     }
 
-    try
-    {
-        var ParceUsersBlock = await ParcingPage.ParceUsersBlock(redactinProject, sortMoreUsers);
-
-        if(_dataProject.organization != 3)
-        {
-            _DataProject.parce = 
-            {
-                "pr": await ParcingPage.ParceProject(redactinProject.inn),
-                "ar": await ParcingPage.ParcingArbitrage(redactinProject.inn),
-                "ispo": null,
-                "fiz": ParceUsersBlock,
-            };
-    
-            if(_dataProject.organization == 1)
-            {
-                _DataProject.parce.ispo = await _AllParce._ParceProjectIspo(redactinProject);
-            };
-        } else {
-            _DataProject.parce = 
-            {
-                "fiz": ParceUsersBlock,
-            };
-        }
-    }
-    catch(e)
-    {};
-
     _DataProject.data                   = redactinProject;
     _DataProject.data.moreUsersNotParce = sortMoreUsers;
     _DataProject.data.organization      = _dataProject.organization;
 
-    var _Project        = await Project.create(_DataProject);
-    var _patch          = `/var/www/projects/${_Project._id}`;
-    await wrench.copyDirSyncRecursive(user_path, _patch);
+    // ======================================================================================
+
+    var _Project = await Project.create(_DataProject);  console.log("create Project");
+    await savePuppeter(_Project._id);                   console.log("save puppeter");
+
+    await wrench.copyDirSyncRecursive(user_path, `/var/www/projects/${_Project._id}`);
     await fs.readdir(user_path, (err, files) => {
         if (err) throw err;
-      
         for (const file of files) {
             fs.unlink(path.join(user_path, file), err => {
                 if (err) throw err;
             });
         }
     }); 
-    await savePuppeter(_Project._id);
+
+    // ======================================================================================
+
+    async function alertErrorOfParcing(data)
+    {
+        await h.alertAdmin({
+            type: "creating_project",
+            text: `Новый проект подан на модерацию, c ошибкой парсинга: ${}`,
+            projectId: _Project._id,
+        });
+
+        return;
+    }
+
+    try
+    {
+        var ParceDataProject    = _Project.parce;
+
+        if(_dataProject.organization == 1)
+        {
+            try
+            {
+                ParceDataProject["pr"]  = await ParcingPage.ParceProject(redactinProject.inn);
+
+                if(_ActionParce == "error")
+                {
+                    await alertErrorOfParcing("Первичный парсинг"); return;
+                }
+                else
+                {
+                    await Project.findOneAndUpdate({_id: _Project._id}, {parce: ParceDataProject});
+                }
+            } catch(e) {await alertErrorOfParcing("Первичный парсинг")};
+
+            try
+            {
+                ParceDataProject["ar"]  = await ParcingPage.ParcingArbitrage(redactinProject.inn);
+
+                if(_ActionParce == "error")
+                {
+                    await alertErrorOfParcing("Арбитражная практика"); return;
+                }
+                else
+                {
+                    await Project.findOneAndUpdate({_id: _Project._id}, {parce: ParceDataProject});
+                }
+            } catch(e) {await alertErrorOfParcing("Арбитражная практика")};
+
+            try
+            {
+                ParceDataProject["ispo"]  = await _AllParce._ParceProjectIspo(redactinProject)
+
+                if(_ActionParce == "error")
+                {
+                    await alertErrorOfParcing("Исполнительное производство"); return;
+                }
+                else
+                {
+                    await Project.findOneAndUpdate({_id: _Project._id}, {parce: ParceDataProject});
+                }
+            } catch(e) {await alertErrorOfParcing("Исполнительное производство")};
+
+            try
+            {
+                ParceDataProject["fiz"]  = await ParcingPage.ParceUsersBlock(redactinProject, sortMoreUsers);
+
+                if(_ActionParce == "error")
+                {
+                    await alertErrorOfParcing("Данные собственников"); return;
+                }
+                else
+                {
+                    await Project.findOneAndUpdate({_id: _Project._id}, {parce: ParceDataProject});
+                }
+            } catch(e) {await alertErrorOfParcing("Данные собственников")};
+        }
+        else if(_dataProject.organization == 2)
+        {
+            try
+            {
+                ParceDataProject["pr"]  = await ParcingPage.ParceProject(redactinProject.inn);
+
+                if(_ActionParce == "error")
+                {
+                    await alertErrorOfParcing("Первичный парсинг"); return;
+                }
+                else
+                {
+                    await Project.findOneAndUpdate({_id: _Project._id}, {parce: ParceDataProject});
+                }
+            } catch(e) {await alertErrorOfParcing("Первичный парсинг")};
+
+            try
+            {
+                ParceDataProject["ar"]  = await ParcingPage.ParcingArbitrage(redactinProject.inn);
+
+                if(_ActionParce == "error")
+                {
+                    await alertErrorOfParcing("Арбитражная практика"); return;
+                }
+                else
+                {
+                    await Project.findOneAndUpdate({_id: _Project._id}, {parce: ParceDataProject});
+                }
+            } catch(e) {await alertErrorOfParcing("Арбитражная практика")};
+
+            try
+            {
+                ParceDataProject["fiz"]  = await ParcingPage.ParceUsersBlock(redactinProject, sortMoreUsers);
+
+                if(_ActionParce == "error")
+                {
+                    await alertErrorOfParcing("Данные собственников"); return;
+                }
+                else
+                {
+                    await Project.findOneAndUpdate({_id: _Project._id}, {parce: ParceDataProject});
+                }
+            } catch(e) {await alertErrorOfParcing("Данные собственников")};
+        } 
+        else if(_dataProject.organization == 3)
+        {
+            try
+            {
+                ParceDataProject["fiz"]  = await ParcingPage.ParceUsersBlock(redactinProject, sortMoreUsers);
+
+                if(_ActionParce == "error")
+                {
+                    await alertErrorOfParcing("Данные собственников"); return;
+                }
+                else
+                {
+                    await Project.findOneAndUpdate({_id: _Project._id}, {parce: ParceDataProject});
+                }
+            } catch(e) {await alertErrorOfParcing("Данные собственников")};
+        };
+    }
+    catch(e)
+    {
+        alertErrorOfParcing("Неизвестная ошибка парсинга");
+    };
 
     h.alertAdmin({
         type: "creating_project",

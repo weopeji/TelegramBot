@@ -170,29 +170,35 @@ async function ParceUsersBlock(_project, MoreUsers)
 {
     return new Promise(async (resolve,reject) => 
     {
-        var _data = 
+        try
         {
-            globalUserData: {},
-            moreUsersData: [],
-        }
-    
-        _data.globalUserData.dePa = await deistvitelenLiPaspport(`${_project.sob_serion} ${_project.sob_number}`);
-        _data.globalUserData.saMo = await yavlaetcaLiSamozanyatim(_project.sob_inn);
-        _data.globalUserData.arBi = await arbitrajnayaPraktikaFizLica(_project.sob_fio, _project.sob_region, _project.sob_date);
-    
-        for(var _key in MoreUsers)
-        {
-            var _UserParce = 
+            var _data = 
             {
-                dePa: await deistvitelenLiPaspport(`${MoreUsers[_key][`BB*sob_serion_${_key.split("+")[1]}`]} ${MoreUsers[_key][`BB*sob_number_${_key.split("+")[1]}`]}`),
-                saMo: await yavlaetcaLiSamozanyatim(MoreUsers[_key][`BB*sob_inn_${_key.split("+")[1]}`]),
-                arBi: await arbitrajnayaPraktikaFizLica(MoreUsers[_key][`BB*sob_fio_${_key.split("+")[1]}`], MoreUsers[_key][`BB*sob_region_${_key.split("+")[1]}`], MoreUsers[_key][`BB*sob_date_${_key.split("+")[1]}`]),
+                globalUserData: {},
+                moreUsersData: [],
             }
-    
-            _data.moreUsersData.push(_UserParce);
+        
+            _data.globalUserData.dePa = await deistvitelenLiPaspport(`${_project.sob_serion} ${_project.sob_number}`);
+            _data.globalUserData.saMo = await yavlaetcaLiSamozanyatim(_project.sob_inn);
+            _data.globalUserData.arBi = await arbitrajnayaPraktikaFizLica(_project.sob_fio, _project.sob_region, _project.sob_date);
+        
+            for(var _key in MoreUsers)
+            {
+                var _UserParce = 
+                {
+                    dePa: await deistvitelenLiPaspport(`${MoreUsers[_key][`BB*sob_serion_${_key.split("+")[1]}`]} ${MoreUsers[_key][`BB*sob_number_${_key.split("+")[1]}`]}`),
+                    saMo: await yavlaetcaLiSamozanyatim(MoreUsers[_key][`BB*sob_inn_${_key.split("+")[1]}`]),
+                    arBi: await arbitrajnayaPraktikaFizLica(MoreUsers[_key][`BB*sob_fio_${_key.split("+")[1]}`], MoreUsers[_key][`BB*sob_region_${_key.split("+")[1]}`], MoreUsers[_key][`BB*sob_date_${_key.split("+")[1]}`]),
+                }
+        
+                _data.moreUsersData.push(_UserParce);
+            }
+
+            resolve(_data);
+        } catch(e)
+        {
+            resolve("error");
         }
-    
-        resolve(_data);
     });
 }
 
@@ -218,9 +224,6 @@ async function ParceProject(inn)
             .then(response => response.text())
             .then(result => 
             {
-    
-                console.log(result);
-    
                 var _dataFirst = JSON.parse(result.toString());
     
                 if(typeof _dataFirst.suggestions != "undefined")
@@ -237,6 +240,9 @@ async function ParceProject(inn)
                 {
                     resolve('error');
                 }
+            })
+            .catch(function (error) {
+                resolve("error");
             });
         } catch(e)
         {
@@ -259,7 +265,7 @@ async function ParcingArbitrage(inn)
         {
             PythonShell.run('main.py', options, function (err, results) {
                 if (err) {
-                    resolve('sourse error')
+                    resolve('error')
                 } else 
                 {
                     resolve(JSON.parse(results));  
@@ -267,7 +273,7 @@ async function ParcingArbitrage(inn)
             });
         } catch(e)
         {
-            resolve('sourse error');
+            resolve('error');
         }
     })
 }
