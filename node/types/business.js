@@ -144,7 +144,7 @@ async function getMoney(msg)
             {
                 var commissionBlock = await commission.findOne({invId: _Inv._id});
 
-                if(!commissionBlock)
+                if(!commissionBlock) 
                 {
                     deptComiisssion = deptComiisssion + (Number(_Inv.data.pay.toString().replace(/\s/g, '')) / 100 * Number(_project.payersData.commission));
                 } else 
