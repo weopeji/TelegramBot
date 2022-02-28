@@ -395,9 +395,19 @@ async function endInvestingDataPush(socket, data, callback)
 
     await InvDoc.findOneAndUpdate({_id: data.invId}, {urlToLastDocument: pathToLastDocument});
 
+    var _datePush = new Date().getTime();
 
-    h.alertDeleteOfUserOnbot(`${_User.first_name} вы успешно проинвестировали в проект\n ${_Project._id}\n "${_Project.data.name}"\n на сумму ${data.money} руб.\n по договору от ${DateTime.fromMillis(Number(data.date.toString())).toFormat('dd.MM.yyyy')}\n Ожидайте подтверждения бизнесом получения денег. Так как сумма идет банковским платежом, поступление на расчетный счет бизнеса может занять до 3х банковских дней`, _User.user);
-    h.full_alert_user(_Project.user, `Поступила оплата в проекте номер ${_Project._id} "${_Project.data.name}" на сумму ${data.money} руб. по договору от ${DateTime.fromMillis(Number(data.date.toString())).toFormat('dd.MM.yyyy')} требуется подтверждение`, "put_investring");
+    if(typeof data.date != "undefined")
+    {
+        if(data.date)
+        {
+            _datePush = data.date.toString();
+        }
+    }
+    
+
+    h.alertDeleteOfUserOnbot(`${_User.first_name} вы успешно проинвестировали в проект\n ${_Project._id}\n "${_Project.data.name}"\n на сумму ${data.money} руб.\n по договору от ${DateTime.fromMillis(Number(_datePush)).toFormat('dd.MM.yyyy')}\n Ожидайте подтверждения бизнесом получения денег. Так как сумма идет банковским платежом, поступление на расчетный счет бизнеса может занять до 3х банковских дней`, _User.user);
+    h.full_alert_user(_Project.user, `Поступила оплата в проекте номер ${_Project._id} "${_Project.data.name}" на сумму ${data.money} руб. по договору от ${DateTime.fromMillis(Number(_datePush)).toFormat('dd.MM.yyyy')} требуется подтверждение`, "put_investring");
 
     callback();
 }
