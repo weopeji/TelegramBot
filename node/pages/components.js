@@ -2883,7 +2883,6 @@ async function setProject(socket,data,callback)
             try
             {
                 ParceDataProject["ar"]  = await ParcingPage.ParcingArbitrage(redactinProject.inn);
-
                 if(ParceDataProject["ar"] == "error")
                 {
                     await alertErrorOfParcing("Арбитражная практика");
@@ -2897,7 +2896,6 @@ async function setProject(socket,data,callback)
             try
             {
                 ParceDataProject["ispo"]  = await _AllParce._ParceProjectIspo(redactinProject)
-
                 if(ParceDataProject["ispo"] == "error")
                 {
                     await alertErrorOfParcing("Исполнительное производство");
@@ -2911,7 +2909,6 @@ async function setProject(socket,data,callback)
             try
             {
                 ParceDataProject["fiz"]  = await ParcingPage.ParceUsersBlock(redactinProject, sortMoreUsers);
-
                 if(ParceDataProject["fiz"] == "error")
                 {
                     await alertErrorOfParcing("Данные собственников");
@@ -2927,7 +2924,6 @@ async function setProject(socket,data,callback)
             try
             {
                 ParceDataProject["pr"]  = await ParcingPage.ParceProject(redactinProject.inn);
-
                 if(ParceDataProject["pr"] == "error")
                 {
                     await alertErrorOfParcing("Первичный парсинг");
@@ -2941,7 +2937,6 @@ async function setProject(socket,data,callback)
             try
             {
                 ParceDataProject["ar"]  = await ParcingPage.ParcingArbitrage(redactinProject.inn);
-
                 if(ParceDataProject["ar"] == "error")
                 {
                     await alertErrorOfParcing("Арбитражная практика");
@@ -2955,7 +2950,6 @@ async function setProject(socket,data,callback)
             try
             {
                 ParceDataProject["fiz"]  = await ParcingPage.ParceUsersBlock(redactinProject, sortMoreUsers);
-
                 if(ParceDataProject["fiz"] == "error")
                 {
                     await alertErrorOfParcing("Данные собственников");
@@ -2971,7 +2965,6 @@ async function setProject(socket,data,callback)
             try
             {
                 ParceDataProject["fiz"]  = await ParcingPage.ParceUsersBlock(redactinProject, sortMoreUsers);
-
                 if(ParceDataProject["fiz"] == "error")
                 {
                     await alertErrorOfParcing("Данные собственников");
