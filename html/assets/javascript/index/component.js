@@ -943,7 +943,7 @@
                                 <span>Выплачено</span>
                                 <a>${Project_data.moreGetData.paysAcceptInvs.toString().ReplaceNumber()} руб</a>
                                 <span>Долг</span>
-                                <a>${Project_data.moreGetData.commissionForPtoject.toString().ReplaceNumber()} руб</a>
+                                <a>${Number(Project_data.moreGetData.commissionForPtoject).toFixed(0).toString().ReplaceNumber()} руб</a>
                             </div>
                         </div>
                     </div>
