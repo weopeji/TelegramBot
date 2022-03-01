@@ -95,7 +95,7 @@
 
             var _PageType   = _GET("type");
             var _token      = await this.getUser();
-            var timeRender  = 1000;
+            var timeRender  = 500;
 
             var funsType = {
                 "recomendation": async function()
@@ -124,17 +124,25 @@
                     {
                         var protoUrl    = "tg:\/\/resolve?domain=invester_official_bot";
 
-                        setTimeout( async function() {
-                            callApi({
-                                methodName: "telegram_auth_more",
-                                data: {
-                                    projectId: _GET("userId"),
-                                    userId: _token,
-                                },
-                            });
-                            window.location = protoUrl;
-                            resolve();
-                        }, timeRender);
+                        var moreData = await callApi({
+                            methodName: "telegram_auth_more",
+                            data: {
+                                projectId: _GET("userId"),
+                                userId: _token,
+                            },
+                        });
+
+                        if("error")
+                        {
+                            setTimeout( async function() {
+                                window.location = protoUrl;
+                                resolve();
+                            }, timeRender);
+                        }
+                        else
+                        {
+                            location.href = `/?user=${moreData}&page=invester_data`;
+                        };
                     })
                 },
                 "recomendation_push": async function()

@@ -719,17 +719,22 @@ async function telegram_auth_getToken(socket, data, callback)
 
 async function telegram_auth_more(socket, data, callback)
 {
-    var _User           = await User.findOne({_id: data.userId});
-    await User.findOneAndUpdate({_id: data.userId}, {type: "investor"});
     var _idProject      = data.projectId;
-    var userId          = _User.user;
-    var msg             = {
-        from: {id: _User.user},
-        chat: {id: _User.user},
-    };
-    await User.findOneAndUpdate({user: userId}, {putProject: _idProject});
-    _app.defaultShowProject(msg, _idProject);
-    callback('ok');
+    var _User           = await User.findOneAndUpdate({_id: data.userId}, {type: "investor", putProject: _idProject});
+    
+    if(_User.investor_data)
+    {
+        callback(_User._id);
+    } 
+    else
+    {
+        _app.defaultShowProject({
+            from: {id: _User.user},
+            chat: {id: _User.user},
+        });
+        
+        callback('error');
+    }
 }
 
 async function telegram_auth_recomendation(socket, data, callback)

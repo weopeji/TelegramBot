@@ -276,8 +276,7 @@ bot.onText(/\/start (.+)/, async (msg, match) =>
 
 async function defaultShowProject(msg, _idProject)
 {
-    await User.findOneAndUpdate({user: msg.from.id}, {putProject: _idProject});
-    await main_page._CreatorFUN(msg);
+    await main_page.goInvesting(msg);
 };
 
 async function recomendationFunctionPush(msg, userId)
