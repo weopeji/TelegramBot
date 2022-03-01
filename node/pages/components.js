@@ -722,6 +722,8 @@ async function telegram_auth_more(socket, data, callback)
     var _idProject      = data.projectId;
     var _User           = await User.findOneAndUpdate({_id: data.userId}, {type: "investor", putProject: _idProject});
     
+    console.log(_User.investor_data);
+
     if(_User.investor_data)
     {
         callback(_User._id);
