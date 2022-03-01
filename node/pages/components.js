@@ -206,7 +206,7 @@ async function allUsersGetOne(socket, data, callback)
     {
         var file_id         = _idPhoto.photos[0][0].file_id;
         _Photo              = await bot.getFile(file_id);
-        _Photo              = `https://api.telegram.org/file/bot2062839693:AAE0hzj8SVXyexq29s5x7aRLC5x8O77c-pQ/` + returnBlock.photo.file_path;
+        _Photo              = `https://api.telegram.org/file/bot2062839693:AAE0hzj8SVXyexq29s5x7aRLC5x8O77c-pQ/` + _Photo.file_path;
     };
 
     callback({
