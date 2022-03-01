@@ -283,7 +283,7 @@ async function defaultShowProject(msg, _idProject)
 async function recomendationFunctionPush(msg, userId)
 {
     await User.findOneAndUpdate({user: userId}, {type: "investor", attractType: "1"});
-    await attraction_page.startFun(msg);
+    await attraction_page.url(msg);
 }
 
 module.exports = {
