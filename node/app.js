@@ -280,6 +280,17 @@ async function defaultShowProject(msg, _idProject)
     await main_page._CreatorFUN(msg);
 };
 
+async function recomendationFunctionPush(msg, userId)
+{
+    await User.findOneAndUpdate({user: userId}, {type: "investor", attractType: "1"});
+    await attraction_page.startFun(msg);
+}
+
+module.exports = {
+    defaultShowProject,
+    recomendationFunctionPush,
+}
+
 bot.on('message', async (msg) => 
 {
     var _User = await User.findOne({user: msg.from.id});
@@ -373,10 +384,6 @@ bot.on('message', async (msg) =>
         }
     }
 });
-
-module.exports = {
-    defaultShowProject,
-}
 
 var components_page = function components_page(socket,data,callback)
 {

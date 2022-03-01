@@ -743,62 +743,13 @@ async function telegram_auth_more(socket, data, callback)
 async function telegram_auth_recomendation(socket, data, callback)
 {
     var _User       = await User.findOne({_id: data.userId});
-    await User.findOneAndUpdate({_id: data.userId}, {type: "investor"});
-    var msg         = {from: {id: _User.user}};
-    var _array      = [];
-    var userId      = _User.user;
-    var _idProject  = data.projectId;
-    var html        = `Чтобы рекомендовать проект и закрепить за собой инвестора\nВам нужно поделится личной ссылкой:\nИли переслать сообщение ниже`;
-    var fat         = await bot.sendMessage(userId, html, 
-    {
-        parse_mode: "HTML",
-        "reply_markup": {
-            "resize_keyboard": true,
-            "keyboard": [["🏦 Инвестиционные предложения"],["💰 Мои инвестиции", "📈 Инвестировать", "💳 Реквезиты"], ["👨‍💼 Рекомендовать","🔁 Сменить роль"]],
-        }
-    });
-    _array.push(fat.message_id);
-    var needProject = await Project.findOne({_id: _idProject});
-
-    var videoPresentationPath = `${h.getURL()}/projects/${needProject._id}/${needProject.data["file+8"]}`;
     
-    if(needProject.YT_VIDEO)
-    {
-        var yt_data = JSON.parse(needProject.YT_VIDEO[3]);
-        videoPresentationPath = `https://www.youtube.com/watch?v=${yt_data.id}`;
-    }
+    var msg             = {
+        from: {id: _User.user},
+        chat: {id: _User.user},
+    };
 
-
-    var html        = `[Профиль компании](${h.getURL()}html/project/profil/?id=${needProject._id})\n[Презентация](${h.getURL()}/projects/${needProject._id}/${needProject.data["file+7"]})\n[Видео презентация](${videoPresentationPath})`;
-    var stream    = fs.createReadStream(`../projects/${_idProject}/logo.png`);
-    var _url        = `https://invester-relocation.site/?page=telegram_authorization&type=recomendation_push&userId=${needProject._id}`;
-    var fat = await bot.sendPhoto(userId, stream, {
-        "caption": html,
-        "parse_mode": "MarkdownV2",
-        "reply_markup": {
-            "inline_keyboard": [
-                [
-                    {
-                        text: "Инвестровать",
-                        login_url: {
-                            'url': _url,
-                            'request_write_access': true,
-                        },
-                    }
-                ]
-            ],
-        }
-    });
-    _array.push(fat.message_id);
-
-    var stream = fs.createReadStream(`./assets/videos/recomendation_first.gif`);
-    var fat = await await bot.sendAnimation(userId, stream, {
-        width: 900,
-        height: 1920,
-    });
-    _array.push(fat.message_id);
-
-    await h.DMA(msg, _array);
+    await _app.recomendationFunctionPush(msg, _User.user);
 
     callback('ok');
 }
