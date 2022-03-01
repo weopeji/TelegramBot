@@ -26,7 +26,7 @@ const e                     = require("express");
 var ffmpeg                  = require('ffmpeg');
 const { resolve }           = require("path");
 const PDFMerger             = require('pdf-merger-js');
-const { Console } = require("console");
+const { Console }           = require("console");
 var merger                  = new PDFMerger();
 
 
@@ -2400,11 +2400,9 @@ async function setActive(socket,data,callback) {
 
 async function acceptProject(socket,data,callback) 
 {
-    var _project = await Project.findOne({_id: data});
-
-    var _urlImgProject = `${h.getURL()}html/project/cover/?id=${data}&liner=true`;
-    console.log(_urlImgProject);
-    const browser = await puppeteer.launch({
+    var _project        = await Project.findOne({_id: data});
+    var _urlImgProject  = `${h.getURL()}html/project/cover/?id=${data}&liner=true`;
+    const browser       = await puppeteer.launch({
         args: ['--no-sandbox', '--disable-setuid-sandbox', '--window-size=3840,3840'],
         defaultViewport: null,
     });
@@ -2425,11 +2423,10 @@ async function acceptProject(socket,data,callback)
     {
         var yt_data = JSON.parse(_project.YT_VIDEO[3]);
         videoPresentationPath = `https://www.youtube.com/watch?v=${yt_data.id}`;
-    }
+    };
 
-    var html = `[Профиль компании](${h.getURL()}html/project/profil/#${_project._id}/)\n[Презентация](${h.getURL()}/projects/${_project._id}/${_project.data["file+7"]})\n[Видео презентация](${videoPresentationPath})`;
-    
-    const stream = fs.createReadStream(`../projects/${data}/logo_instagram.jpg`);
+    var html        = `[Профиль компании](${h.getURL()}html/project/profil/#${_project._id}/)\n[Презентация](${h.getURL()}/projects/${_project._id}/${_project.data["file+7"]})\n[Видео презентация](${videoPresentationPath})`;
+    var stream      = fs.createReadStream(`../projects/${data}/logo_instagram.jpg`);
 
     var dataPhotoPush = await bot.sendPhoto(-1001205415519, stream, {
         "caption": html,
@@ -2441,6 +2438,13 @@ async function acceptProject(socket,data,callback)
                         text: "Рекомендовать",
                         login_url: {
                             'url': `https://invester-relocation.site/?page=telegram_authorization&type=recomendation&userId=${data}`,
+                            'request_write_access': true,
+                        },
+                    },
+                    {
+                        text: "Личный кабинет",
+                        login_url: {
+                            'url': `https://invester-relocation.site/?page=telegram_authorization&type=cabinet`,
                             'request_write_access': true,
                         },
                     }
