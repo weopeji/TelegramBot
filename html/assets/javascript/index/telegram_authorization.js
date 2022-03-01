@@ -132,7 +132,7 @@
                             },
                         });
 
-                        if("error")
+                        if(moreData == "error")
                         {
                             setTimeout( async function() {
                                 window.location = protoUrl;
