@@ -407,12 +407,7 @@ async function endInvestingDataPush(socket, data, callback)
     var _User               = await User.findOne({_id: data.user});
     var _Project            = await Project.findOne({_id: data.project});
     var pathToLastDocument  = `documentLast_${new Date().getTime()}_${data.user}.pdf`;
-
-
-    var html        = "https://invester-relocation.site/" + data.url;
-
-    console.log(html);
-
+    var html                = "https://invester-relocation.site/" + data.url;
     const browser = await puppeteer.launch({
         args: ['--no-sandbox', '--disable-setuid-sandbox'],
     });
@@ -422,13 +417,11 @@ async function endInvestingDataPush(socket, data, callback)
     await page.pdf({path: `/var/www/projects/${_Project._id}/application_number_2_document_${data.user}.pdf`});
     await browser.close();
 
-
-
     merger.add(`/var/www/projects/${_Project._id}/file_signature_document.pdf`);
     merger.add(`/var/www/projects/${_Project._id}/application_number_2_document_${data.user}.pdf`); 
     await merger.save(`/var/www/projects/${_Project._id}/` + pathToLastDocument);
 
-    await InvDoc.findOneAndUpdate({_id: data.invId}, {urlToLastDocument: pathToLastDocument});
+    await InvDoc.findOneAndUpdate({_id: data.invId}, {status: "wait", urlToLastDocument: pathToLastDocument});
 
     var _datePush = new Date().getTime();
 
@@ -439,7 +432,6 @@ async function endInvestingDataPush(socket, data, callback)
             _datePush = data.date.toString();
         }
     }
-    
 
     h.alertDeleteOfUserOnbot(`${_User.first_name} вы успешно проинвестировали в проект\n ${_Project._id}\n "${_Project.data.name}"\n на сумму ${data.money} руб.\n по договору от ${DateTime.fromMillis(Number(_datePush)).toFormat('dd.MM.yyyy')}\n Ожидайте подтверждения бизнесом получения денег. Так как сумма идет банковским платежом, поступление на расчетный счет бизнеса может занять до 3х банковских дней`, _User.user);
     h.full_alert_user(_Project.user, `Поступила оплата в проекте номер ${_Project._id} "${_Project.data.name}" на сумму ${data.money} руб. по договору от ${DateTime.fromMillis(Number(_datePush)).toFormat('dd.MM.yyyy')} требуется подтверждение`, "put_investring");

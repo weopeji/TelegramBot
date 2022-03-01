@@ -538,7 +538,7 @@ app.post('/file_cheack_get.io/files', (req, res) =>
                     var invCreate = await InvDoc.create({
                         projectId: _User.putProject,
                         invester: _User.user,
-                        status: "wait",
+                        status: "not_accept",
                         data: _arrayData,
                         receipt: null,
                         pays: null,
