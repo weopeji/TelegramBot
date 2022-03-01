@@ -197,8 +197,10 @@ var action_linker =
 
 async function allUsersGetOne(socket, data, callback)
 {
-    var _User = await User.findOne({_id: data});
-    var _Photo = null;
+    var _User   = await User.findOne({_id: data});
+    var InvsGet = await InvDoc.find({invester: _User.user});
+    var ProjectsGet = await Project.find({user: _User.user});
+    var _Photo  = null;
     var _idPhoto            = await bot.getUserProfilePhotos(_User.user);
     if(_idPhoto.total_count > 0)
     {
@@ -210,6 +212,8 @@ async function allUsersGetOne(socket, data, callback)
     callback({
         User: _User,
         Photo: _Photo,
+        InvsGet: InvsGet.length,
+        ProjectsGet: ProjectsGet.length,
     });
 }
 

@@ -1379,7 +1379,46 @@
             $('.usersAdminBlock_user_img_row img').attr('src', allUsersGetOne.Photo);
             $('.usersAdminBlock_user_h1').html(allUsersGetOne.User.first_name);
 
-            
+            var first_parseBlock = $(`
+                <div class="usersAdminBlock_user_first_parse">
+                    <div class="usersAdminBlock_user_first_parse_line">
+                        <span>Кол-во инвестиций:</span>
+                        <a>${allUsersGetOne.InvsGet}</a>
+                    </div>
+                    <div class="usersAdminBlock_user_first_parse_line">
+                        <span>Кол-во проектов:</span>
+                        <a>${allUsersGetOne.ProjectsGet}</a>
+                    </div>
+                </div>
+            `);
+
+            $('.usersAdminBlock_user_row').append(first_parseBlock);
+
+            if(typeof allUsersGetOne.User.first_parse != "undefined")
+            {
+                var phone   = allUsersGetOne.User.first_parse.phone;
+                var watsapp = allUsersGetOne.User.first_parse.watsapp;
+                var mail    = allUsersGetOne.User.first_parse.mail;
+
+                var first_parseBlock = $(`
+                    <div class="usersAdminBlock_user_first_parse">
+                        <div class="usersAdminBlock_user_first_parse_line">
+                            <span>Телефон:</span>
+                            <a>${phone}</a>
+                        </div>
+                        <div class="usersAdminBlock_user_first_parse_line">
+                            <span>WatsApp:</span>
+                            <a>${watsapp}</a>
+                        </div>
+                        <div class="usersAdminBlock_user_first_parse_line">
+                            <span>e-mail</span>
+                            <a>${mail}</a>
+                        </div>
+                    </div>
+                `);
+
+                $('.usersAdminBlock_user_row').append(first_parseBlock);
+            }
         }
 
         async renderBody()
@@ -1427,12 +1466,12 @@
                 `);
 
                 userLine.children('span').eq(4).click(async function() {
-                    var _id = $(this).attr('data');
+                    var _id = $(this).parent().attr('data');
                     await _this.showUser(_id);
                 });
 
                 userLine.children('span').eq(5).click(async function() {
-                    var _id = $(this).attr('data');
+                    var _id = $(this).parent().attr('data');
                     location.href = `/?user=${_id}`;
                 });
 
