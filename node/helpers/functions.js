@@ -24,6 +24,7 @@ module.exports = {
     full_alert_user,
     alertAdmin,
     alertDeleteOfUserOnbot,
+    token,
 }
 
 function privateInit(initPlagins) {

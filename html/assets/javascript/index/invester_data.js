@@ -347,7 +347,8 @@
                                 $('.process_upload_block_line').css("width", progressBarData + "%");
                             }
                         }
-                    }).then(data => {
+                    }).then(data => 
+                    {
                         if(data.data.status == "ok") 
                         {
                             alert("Чек прикоеплен!");

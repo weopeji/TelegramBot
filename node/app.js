@@ -483,7 +483,8 @@ app.post('/file_urist.io/files', (req, res) => {
     form.parse(req);
 });
 
-app.post('/file_cheack_get.io/files', (req, res) => {
+app.post('/file_cheack_get.io/files', (req, res) => 
+{
 
     var form    = new multiparty.Form({
         maxFilesSize: 2 * 1024 * 1024 * 1024 
@@ -507,56 +508,55 @@ app.post('/file_cheack_get.io/files', (req, res) => {
 
     var cheack_file = async (_path) => 
     {
-        var _User   = await User.findOne({_id: _data._User});
+        try 
+        {
+            if (fs.existsSync(_path)) 
+            {
+                var _User       = await User.findOne({_id: _data._User});
+                var _Token      = null;
+                var _arrayData  = _User.investor_data.inv;
+                var _dateNeed   = _data._date;
+                _arrayData.pay  = _data._pay;
 
-        try {
-            if (fs.existsSync(_path)) { 
-                console.log('Файл найден');
-                if(fs.existsSync(`/var/www/projects/${_data._id}/file_cheack_get_${_User.user}.${_data._pts}`)) {
-                    fs.unlinkSync(`/var/www/projects/${_data._id}/file_cheack_get_${_User.user}.${_data._pts}`);
-                }
-                fs.rename(_data.path, `/var/www/projects/${_data._id}/file_cheack_get_${_User.user}.${_data._pts}`, async function (err) {
-                    if (err) throw err
-                    console.log('Successfully renamed - AKA moved!');
-                    
-                    
-                    var _arrayData  = _User.investor_data.inv;
-                    var _dateNeed   = _data._date;
-
-                    if(!_dateNeed || _dateNeed == "null")
-                    {
-                        _dateNeed = new Date().getTime();
-                    }
+                if(!_dateNeed || _dateNeed == "null")
+                {
+                    _dateNeed = new Date().getTime();
+                };
                 
-                    _arrayData.document = `file_cheack_get_${_User.user}.${_data._pts}`;
-                    _arrayData.pay = _data._pay;
+                if(typeof _data.token != "undefined")
+                {
+                    _Token = _data.token;
+                }
+                else
+                {
+                    var invCreate = await InvDoc.create({
+                        projectId: _User.putProject,
+                        invester: _User.user,
+                        status: "wait",
+                        data: _arrayData,
+                        receipt: null,
+                        pays: null,
+                        date: _dateNeed,
+                    });
 
-                    var showInvDoc  = await InvDoc.findOne({invester: _User.user, projectId: _User.putProject});
-                    var invId       = null;
+                    _Token = invCreate._id;
+                };
 
-                    if(!showInvDoc)
-                    {
-                        var invCreate = await InvDoc.create({
-                            projectId: _User.putProject,
-                            invester: _User.user,
-                            status: "wait",
-                            data: _arrayData,
-                            receipt: null,
-                            pays: null,
-                            date: _dateNeed,
-                        });
+                var pathToFile = `/var/www/projects/${_data._id}/${_Token}_investment.${_data._pts}`;
+                
+                if(fs.existsSync(pathToFile)) 
+                {
+                    fs.unlinkSync(pathToFile);
+                };
 
-                        invId = invCreate._id;
-                    } else {
-                        var invCreate = await InvDoc.findOneAndUpdate({invester: _User.user, data: _arrayData})
-                        invId = invCreate._id;
-                    }
+                fs.rename(_data.path, pathToFile, async function (err) 
+                {
+                    if (err) throw err;
 
                     res.json({
                         status: 'ok',
-                        inv: invId,
+                        inv: _Token,
                     });
-                
                 });
             } else {
                 console.log('Файл не найден');
