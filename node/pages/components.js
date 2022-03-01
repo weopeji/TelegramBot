@@ -724,7 +724,7 @@ async function telegram_auth_more(socket, data, callback)
     
     console.log(_User.investor_data);
 
-    if(_User.investor_data)
+    if(typeof _User.first_parse != "undefined")
     {
         callback(_User._id);
     } 
