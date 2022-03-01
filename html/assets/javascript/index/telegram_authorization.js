@@ -182,6 +182,18 @@
                             resolve();
                         }, timeRender);
                     });
+                },
+                "cabinet": async function()
+                {
+                    return new Promise(async (resolve,reject) =>
+                    {
+                        var protoUrl    = "tg:\/\/resolve?domain=invester_official";
+
+                        setTimeout( async function() {
+                            window.location = protoUrl;
+                            resolve();
+                        }, timeRender);
+                    });
                 }
             }
 
