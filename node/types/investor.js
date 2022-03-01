@@ -454,17 +454,28 @@ async function actionWhere(msg)
         var _Where              = _User.where;
         if(!_array) _array      = {};  
         _array[buttons_2[_User.where.page.button].id] = msg.text;
-
         _Where.page.button = _Where.page.button + 1;
-
         if(_Where.page.button == 3)
         {
             _Where.page.button = 0;
         }
-
         await User.findOneAndUpdate({user: msg.from.id}, {investor_data: _array, where: _Where});
-
         startInvestingMsgOld(msg, _User.where.page.button);
+
+        if(
+            _User.investor_data.phone &&
+            _User.investor_data.watsapp &&
+            _User.investor_data.mail
+        ) {
+            var _array = [];
+            var html = `Нажмите на микшер "🎚",чтобы принять данные`;
+            var fat = await h.send_html(msg.from.id, html, {
+                "resize_keyboard": true,
+                "keyboard": [["Принять данные"], ["⬅️ Назад"]],
+            });
+            _array.push(fat.message_id);
+            await h.DMA(msg, _array);
+        }
     }
 }
 
