@@ -931,6 +931,9 @@
   background-color: #182037;
   border-radius: 8px;
   padding: 20px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
 .usersAdminBlock_user_h1 {

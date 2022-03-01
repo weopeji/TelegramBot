@@ -1453,6 +1453,7 @@
             templateText.css('margin', '0 auto');
             templateText.css('flex', '3');
             templateText.css('margin-right', '20px');
+            templateText.css('height', 'fit-content');
 
             allUsers.forEach( function (user, i) {
                 var userLine = $(`
