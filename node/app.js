@@ -517,6 +517,7 @@ app.post('/file_cheack_get.io/files', (req, res) =>
                 var _arrayData  = _User.investor_data.inv;
                 var _dateNeed   = _data._date;
                 _arrayData.pay  = _data._pay;
+                _arrayData.pts  = _data._pts;
 
                 if(!_dateNeed || _dateNeed == "null")
                 {

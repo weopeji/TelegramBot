@@ -297,6 +297,8 @@
 
             _block.find('input[type=file]').change( async function() 
             {
+                var _thisFile = $(this);
+
                 if($(this.files).length > 0)
                 {
                     await callApi({
@@ -322,6 +324,12 @@
                     _form.append('_pts', extension);
                     _form.append('_pay', _this.money);
                     _form.append('_date', _this.date);
+
+                    if($(this).attr('token')) 
+                    {
+                        _form.append('token', $(this).attr('token'));
+                    }
+
                     var _file       = _form;
 
                     var uploadBlock = 
@@ -351,6 +359,8 @@
                     {
                         if(data.data.status == "ok") 
                         {
+                            _thisFile.attr('token', data.data.inv);
+                            
                             alert("Чек прикоеплен!");
                             $('.process_upload_block').remove();
                             $('.creating_page_input span[data="first"]').html('Перезаписать');
@@ -370,8 +380,8 @@
                             `);
             
                             moreBlock.find(`[data="show"]`).click( function() {
-                                window.open(`https://invester-relocation.site/projects/${_this.project._id}/file_cheack_get_${global.allData.User.user}.${extension}`, '_blank');
-                            })
+                                window.open(`https://invester-relocation.site/projects/${_this.project._id}/${data.data.inv}.${extension}`, '_blank');
+                            });
             
                             moreBlock.find(`[data="accept"]`).click( async function() 
                             {
@@ -392,9 +402,9 @@
                             });
             
                             $('.creating_page_input').append(moreBlock);
-                        }
+                        };
                     });
-                }
+                };
             });
 
             $('.creating_page').append(msgsBlock);
