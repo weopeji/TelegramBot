@@ -961,6 +961,26 @@
   width: 110%;
 }
 
+.usersAdminBlock_user_first_parse {
+  margin: 20px 0;
+}
+
+.usersAdminBlock_user_first_parse_line {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 90%;
+  margin: 0 auto;
+  font-size: 18px;
+}
+
+.usersAdminBlock_user_first_parse_line span {
+  color: #7792BD;
+}
+
 @media (max-width: 1500px) {
   .index_page_menu {
     -webkit-box-flex: 1.5;

@@ -1378,6 +1378,7 @@
 
             $('.usersAdminBlock_user_img_row img').attr('src', allUsersGetOne.Photo);
             $('.usersAdminBlock_user_h1').html(allUsersGetOne.User.first_name);
+            $('.usersAdminBlock_user_first_parse').remove();
 
             var first_parseBlock = $(`
                 <div class="usersAdminBlock_user_first_parse">
