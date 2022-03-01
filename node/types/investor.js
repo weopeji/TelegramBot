@@ -462,6 +462,8 @@ async function actionWhere(msg)
         await User.findOneAndUpdate({user: msg.from.id}, {investor_data: _array, where: _Where});
         startInvestingMsgOld(msg, _User.where.page.button);
 
+        var _User = await User.findOne({user: msg.from.id});
+
         if(
             _User.investor_data.phone &&
             _User.investor_data.watsapp &&
@@ -474,7 +476,7 @@ async function actionWhere(msg)
                 "keyboard": [["Принять данные"], ["⬅️ Назад"]],
             });
             _array.push(fat.message_id);
-            await h.DMA(msg, _array);
+            await h.MA(msg, _array);
         }
     }
 }
