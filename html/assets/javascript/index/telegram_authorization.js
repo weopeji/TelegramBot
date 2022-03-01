@@ -187,7 +187,7 @@
                 {
                     return new Promise(async (resolve,reject) =>
                     {
-                        var protoUrl    = "tg:\/\/resolve?domain=invester_official";
+                        var protoUrl    = "tg:\/\/resolve?domain=invester_official_bot";
 
                         setTimeout( async function() {
                             window.location = protoUrl;
