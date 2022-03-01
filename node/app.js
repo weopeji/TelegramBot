@@ -276,7 +276,7 @@ bot.onText(/\/start (.+)/, async (msg, match) =>
 
 async function defaultShowProject(msg, _idProject)
 {
-    await main_page.goInvesting(msg);
+    await investor_page.goInvesting(msg);
 };
 
 async function recomendationFunctionPush(msg, userId)
