@@ -526,7 +526,12 @@ app.post('/file_cheack_get.io/files', (req, res) =>
                 
                 if(typeof _data.token != "undefined")
                 {
-                    _Token = _data.token;
+                    var invCreate = await InvDoc.findOneAndUpdate({_id: _data.token}, {
+                        data: _arrayData,
+                        date: _dateNeed,
+                    });
+
+                    _Token = invCreate._id;
                 }
                 else
                 {

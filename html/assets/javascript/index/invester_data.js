@@ -360,7 +360,7 @@
                         if(data.data.status == "ok") 
                         {
                             _thisFile.attr('token', data.data.inv);
-                            
+
                             alert("Чек прикоеплен!");
                             $('.process_upload_block').remove();
                             $('.creating_page_input span[data="first"]').html('Перезаписать');
@@ -380,7 +380,7 @@
                             `);
             
                             moreBlock.find(`[data="show"]`).click( function() {
-                                window.open(`https://invester-relocation.site/projects/${_this.project._id}/${data.data.inv}.${extension}`, '_blank');
+                                window.open(`https://invester-relocation.site/projects/${_this.project._id}/${data.data.inv}_investment.${extension}`, '_blank');
                             });
             
                             moreBlock.find(`[data="accept"]`).click( async function() 
