@@ -137,11 +137,25 @@
                         <span>${i + 1}</span>
                         <span>${invDoc.inv.projectId}</span>
                         <span${invDoc.inv.data.pay} руб</span>
-                        <span>${needMiliseconds}</span>
+                        <span class="timerForwaitInvestingsData"></span>
                         <span>Посотреть</span>
                         <span>Открыть</span>
                     </div>
                 `);
+
+                if(needMiliseconds.hours >= 24)
+                {
+                    userLine.find('.timerForwaitInvestingsData').html(`осталось ${needMiliseconds.hours} часа`);
+                }
+                else if(needMiliseconds.hours < 24 && needMiliseconds.hours >= 1)
+                {
+                    userLine.find('.timerForwaitInvestingsData').html(`осталось ${needMiliseconds.hours} часа`);
+                    userLine.find('.timerForwaitInvestingsData').css('color', 'red');
+
+                    setInterval( function() {
+
+                    }, 1000);
+                }
 
                 // userLine.children('span').eq(4).click(async function() {
                 //     var _id = $(this).parent().attr('data');
