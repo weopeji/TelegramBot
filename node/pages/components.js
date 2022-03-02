@@ -1948,6 +1948,16 @@ async function msgUP(socket,data,callback)
         type: _User.type,
     });
 
+    var neeuserAlertId = _InvDoc.invester;
+
+    if(neeuserAlertId == _User.user)
+    {
+        var _ProjectOfAlert = await Project.findOne({_id: _InvDoc.projectId});
+        neeuserAlertId      = _ProjectOfAlert.user;
+    };
+
+    h.full_alert_user(neeuserAlertId, `У вас новое сообщение в месенджере!`, "new_msg");
+
     callback(await MsgDB.findOneAndUpdate({_id: _MsgDB._id,},{msgs: _array}));
 }
 
