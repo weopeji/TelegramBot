@@ -150,25 +150,6 @@
                         buttonPut = `<a href="https://invester-relocation.site/projects/${_data.project._id}/${element.commission.recipient}" target="_blank">Посмотреть</a>`;
                         statusText = "Оплачено";
                     }
-                    else if(element.commission.status == "wait_accept")
-                    {
-                        statusText = "Ожидает подтверждения";
-                        buttonPut = $(`
-                            <div class="settingBlock_body_line_obligations_btn">
-                                <label for="${element.Inv._id}">Заменить</label>
-                            </div>
-                            <div class="settingBlock_body_line_obligations_btn">
-                                <span>Посмотерть</span>
-                            </div>
-                            <div class="settingBlock_body_line_obligations_btn">
-                                <span>Подтвердить</span>
-                            </div>
-                        `);
-
-                        buttonPut.eq(2).click( function() {
-                            alert('ok');
-                        });
-                    };
                 } 
 
                 var template_text = $(`
@@ -185,6 +166,28 @@
                         <span>${statusText}</span>
                     </div>
                 `);
+
+                if(element.commission.status == "wait_accept")
+                {
+                    statusText = "Ожидает подтверждения";
+                    buttonPut = $(`
+                        <div class="settingBlock_body_line_obligations_btn">
+                            <label for="${element.Inv._id}">Заменить</label>
+                        </div>
+                        <div class="settingBlock_body_line_obligations_btn">
+                            <span>Посмотерть</span>
+                        </div>
+                        <div class="settingBlock_body_line_obligations_btn">
+                            <span>Подтвердить</span>
+                        </div>
+                    `);
+
+                    buttonPut.eq(2).click( function() {
+                        alert('ok');
+                    });
+
+                    template_text.find('.settingBlock_body_line_obligations_put').append(buttonPut);
+                };
 
                 settingBlock.find('.settingBlock_body').append(template_text);
             });
