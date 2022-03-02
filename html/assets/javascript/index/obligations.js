@@ -150,7 +150,7 @@
                         <span>${Number(element.Inv.data.pay.toString().replace(/\s/g, '') / 100 * _data.project.payersData.commission).toString().ReplaceNumber()} руб</span>
                         <span>${DateFormatted(Number(element.Inv.date) + 864000000)}</span>
                         <span clas="settingBlock_body_line_obligations_put">
-                            ${buttonPut}
+                            <label for="${element.Inv._id}">Прикрепить</label>
                         </span>
                         <span>Не оплачено</span>
                     </div>
@@ -186,11 +186,6 @@
 
                         template_text.find('.settingBlock_body_line_obligations_put').append(buttonPut);
                     };  
-                } 
-                else
-                {
-                    var buttonPut   = $(`<label for="${element.Inv._id}">Прикрепить</label>`);
-                    template_text.find('.settingBlock_body_line_obligations_put').append(buttonPut);
                 }
 
                 settingBlock.find('.settingBlock_body').append(template_text);
