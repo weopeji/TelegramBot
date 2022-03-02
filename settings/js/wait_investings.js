@@ -34,7 +34,7 @@
                                 <img src="" alt="">
                             </div>
                         </div>
-                        <span class="usersAdminBlock_user_h1">Выберите пользователя</span>
+                        <span class="usersAdminBlock_user_h1">Выберите инвестицию</span>
                     </div>
                 </div>
             `);
