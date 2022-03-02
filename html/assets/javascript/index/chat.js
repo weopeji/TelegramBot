@@ -157,18 +157,26 @@
 
         async render()
         {
-            var _idBlock = _GET("id");
+            var _idBlock    = _GET("id");
+            var _authData   = _GET("auth_date");
 
             if(_idBlock)
             {
-                this.renderChat();
+                if(_authData)
+                {
+                    this.renderType();
+                } 
+                else
+                {
+                    this.renderChat();
+                };
             }
             else
             {
                 this.renderType();
-            }
-        }
-    }
+            };
+        };
+    };
 
     var components = {
         chat,
