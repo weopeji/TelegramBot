@@ -1863,7 +1863,7 @@ html, body {
   font-size: 15px;
 }
 
-.appendPayBlock_line input[type="data"] {
+.appendPayBlock_line input[type="date"] {
   width: 45%;
   padding: 10px;
   margin-top: 20px;
