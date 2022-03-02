@@ -74,7 +74,7 @@
 
             $('.usersAdminBlock_user_row').eq(0).append(first_parseBlock);
 
-            if(typeof allUsersGetOne.User.first_parse != "undefined")
+            if(typeof allUserGetOneSetting.User.first_parse != "undefined")
             {
                 var phone   = allUsersGetOne.User.first_parse.phone;
                 var watsapp = allUsersGetOne.User.first_parse.watsapp;
