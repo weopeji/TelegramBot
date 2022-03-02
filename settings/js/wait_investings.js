@@ -56,7 +56,7 @@
 
             $('.usersAdminBlock_user_row').eq(0).find('.usersAdminBlock_user_img_row img').attr('src', allUserGetOneSetting.Photo);
             $('.usersAdminBlock_user_row').eq(0).find('.usersAdminBlock_user_h1').html(allUserGetOneSetting.User.first_name);
-            $('.usersAdminBlock_user_row').eq(0).find('.usersAdminBlock_user_first_parse').remove();
+            $('.usersAdminBlock_user_row').find('.usersAdminBlock_user_first_parse').remove();
             $('.usersAdminBlock_user_row').eq(1).find('.usersAdminBlock_user_h1').html(allUserGetOneSetting.Project.Project.data.name);
 
             var first_parseBlock = $(`
@@ -72,7 +72,7 @@
                 </div>
             `);
 
-            $('.usersAdminBlock_user_row').append(first_parseBlock);
+            $('.usersAdminBlock_user_row').eq(0).append(first_parseBlock);
 
             if(typeof allUsersGetOne.User.first_parse != "undefined")
             {
@@ -116,6 +116,8 @@
                     </div>
                 </div>
             `);
+
+            $('.usersAdminBlock_user_row').eq(1).append(first_parseBlock);
         }
 
         async renderBody()
