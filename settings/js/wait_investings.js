@@ -105,12 +105,20 @@
                     <div class="usersAdminBlock_user_first_parse_line">
                         <span>Общее кол-во инвестиций:</span>
                         <a>${allUserGetOneSetting.Project.howPays}</a>
+                    </div>
+                    <div class="usersAdminBlock_user_first_parse_line">
                         <span>Кол-во просроченых:</span>
                         <a>${allUserGetOneSetting.Project.howPaysNeed}</a>
+                    </div>
+                    <div class="usersAdminBlock_user_first_parse_line">
                         <span>Кол-во ожидающих подтверждения:</span>
                         <a>${allUserGetOneSetting.Project.howPaysWait}</a>
+                    </div>
+                    <div class="usersAdminBlock_user_first_parse_line">
                         <span>Кол-во подтвержденных:</span>
                         <a>${allUserGetOneSetting.Project.howPaysAccept}</a>
+                    </div>
+                    <div class="usersAdminBlock_user_first_parse_line">
                         <span>Кол-во обработанных не до конца:</span>
                         <a>${allUserGetOneSetting.Project.howPaysnot_accept}</a>
                     </div>
