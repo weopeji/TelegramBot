@@ -103,24 +103,27 @@
             var first_parseBlock = $(`
                 <div class="usersAdminBlock_user_first_parse">
                     <div class="usersAdminBlock_user_first_parse_line">
-                        <span>Общее кол-во инвестиций:</span> 
+                        <span>Все инвестиций:</span> 
                         <a>${allUserGetOneSetting.Project.howPays}</a>
                     </div>
                     <div class="usersAdminBlock_user_first_parse_line">
-                        <span>Кол-во просроченых:</span>
+                        <span>Просроченых:</span>
                         <a>${allUserGetOneSetting.Project.howPaysNeed}</a>
                     </div>
                     <div class="usersAdminBlock_user_first_parse_line">
-                        <span>Кол-во ожидающих подтверждения:</span>
+                        <span>Ожидающих:</span>
                         <a>${allUserGetOneSetting.Project.howPaysWait}</a>
                     </div>
                     <div class="usersAdminBlock_user_first_parse_line">
-                        <span>Кол-во подтвержденных:</span>
+                        <span>Подтвержденные:</span>
                         <a>${allUserGetOneSetting.Project.howPaysAccept}</a>
                     </div>
                     <div class="usersAdminBlock_user_first_parse_line">
-                        <span>Кол-во обработанных не до конца:</span>
+                        <span>Обработанных не до конца:</span>
                         <a>${allUserGetOneSetting.Project.howPaysnot_accept}</a>
+                    </div>
+                    <div class="usersAdminBlock_user_first_parse_button">
+                        <span>Перейти к проекту</span>
                     </div>
                 </div>
             `);

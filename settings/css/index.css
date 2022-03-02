@@ -984,6 +984,13 @@
   color: #7792BD;
 }
 
+.usersAdminBlock_user_first_parse_button {
+  width: calc(100% - 20px);
+  padding: 20px;
+  background: -webkit-gradient(linear, left top, right top, from(#14b3ff), to(#1282fa));
+  background: linear-gradient(90deg, #14b3ff 0%, #1282fa 100%);
+}
+
 @media (max-width: 1500px) {
   .index_page_menu {
     -webkit-box-flex: 1.5;
