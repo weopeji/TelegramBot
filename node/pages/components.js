@@ -2180,7 +2180,10 @@ async function acceptInvestor(socket,data,callback)
         },
     };
 
-    paymentsFunction[_Project.data.date_payments]();
+    if(_Project.data.date != "Бессрочно")
+    {
+        paymentsFunction[_Project.data.date_payments]();
+    };
 
     var _InvDocNeed             = await InvDoc.findOneAndUpdate({_id: _InvDoc._id}, {status: "accept", pays: InvPays});
     var _UserInv                = await User.findOne({user: _InvDoc.invester});
