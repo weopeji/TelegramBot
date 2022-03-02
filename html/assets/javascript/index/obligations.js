@@ -149,7 +149,7 @@
                         <span>${_data.project._id}/${i + 1} от ${DateFormatted(element.Inv.date)}</span>
                         <span>${Number(element.Inv.data.pay.toString().replace(/\s/g, '') / 100 * _data.project.payersData.commission).toString().ReplaceNumber()} руб</span>
                         <span>${DateFormatted(Number(element.Inv.date) + 864000000)}</span>
-                        <span clas="settingBlock_body_line_obligations_put">
+                        <span class="settingBlock_body_line_obligations_put">
                             <label for="${element.Inv._id}">Прикрепить</label>
                         </span>
                         <span>Не оплачено</span>
