@@ -139,7 +139,6 @@
                         <span>${invDoc.inv.data.pay} руб</span>
                         <span class="timerForwaitInvestingsData"></span>
                         <span>Посотреть</span>
-                        <span>Открыть</span>
                     </div>
                 `);
 
