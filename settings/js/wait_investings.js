@@ -16,8 +16,6 @@
 
     class wait_investings
     {
-        constructor() {};
-
         constructor() {
             this.globalBlock = $(`
                 <div class="usersAdminBlock">
