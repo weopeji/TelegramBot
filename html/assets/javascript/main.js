@@ -316,9 +316,9 @@ function pad(s, width, character) {
     return new Array(width - s.toString().length + 1).join(character) + s;
 }
 
-function getTimeRemaining(startTime, endtime) 
+function getTimeRemaining(endtime) 
 {
-	var t = Date.parse(endtime) - startTime;
+	var t = Date.parse(endtime) - Date.now();
 	var total = t;
 	var miliSeconds = t % 1000; 
 	t = t / 1000 | 0;
