@@ -177,7 +177,7 @@
                         <span>${i + 1}</span>
                         <span>${element.Inv.data.pay} руб</span>
                         <span>${_data.project._id}/${i + 1} от ${DateFormatted(element.Inv.date)}</span>
-                        <span>${Number(element.Inv.data.pay.toString().replace(/\s/g, '') / 100 * _data.project.payersData.commission).toString().ReplaceNumber())} руб</span>
+                        <span>${Number(element.Inv.data.pay.toString().replace(/\s/g, '') / 100 * _data.project.payersData.commission).toString().ReplaceNumber()} руб</span>
                         <span>${DateFormatted(Number(element.Inv.date) + 864000000)}</span>
                         <span clas="settingBlock_body_line_obligations_put">
                             ${buttonPut}
