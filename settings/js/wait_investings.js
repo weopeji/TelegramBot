@@ -76,9 +76,9 @@
 
             if(typeof allUserGetOneSetting.User.first_parse != "undefined")
             {
-                var phone   = allUsersGetOne.User.first_parse.phone;
-                var watsapp = allUsersGetOne.User.first_parse.watsapp;
-                var mail    = allUsersGetOne.User.first_parse.mail;
+                var phone   = allUserGetOneSetting.User.first_parse.phone;
+                var watsapp = allUserGetOneSetting.User.first_parse.watsapp;
+                var mail    = allUserGetOneSetting.User.first_parse.mail;
 
                 var first_parseBlock = $(`
                     <div class="usersAdminBlock_user_first_parse">
