@@ -911,7 +911,7 @@ async function commissions_settings_accept(socket, data, callback)
     var _InvDoc     = await InvDoc.findOne({_id: _Commission.invId});
     var _Project    = await Project.findOne({_id: _InvDoc.projectId});
 
-    h.full_alert_user(_Project.user, `Оплата комиссина подтверждена invester в проекте ${_Project._id} "${_Project.data.name}"`, "accept_commission_investring", _Project._id);
+    h.full_alert_user(_Project.user, `Оплата комисси investER подтверждена в проекте ${_Project._id} "${_Project.data.name}"`, "accept_commission_investring", _Project._id);
 
     callback()
 }

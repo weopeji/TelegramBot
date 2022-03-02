@@ -191,7 +191,10 @@ async function full_alert_user(_id, _text, _type, moreId)
                     keyboardPush.push([
                         {
                             text: "Перейти к инвестиции",
-                            url: `https://invester-relocation.site/?page=activ_projects&id=${moreId}`
+                            login_url: {
+                                'url': `https://invester-relocation.site/?page=activ_projects&id=${moreId}`,
+                                'request_write_access': true,
+                            },
                         },
                     ]);
                 }
@@ -204,7 +207,10 @@ async function full_alert_user(_id, _text, _type, moreId)
                     keyboardPush.push([
                         {
                             text: "Перейти к инвестиции",
-                            url: `https://invester-relocation.site/?page=activ_projects&id=${moreId}`
+                            login_url: {
+                                'url': `https://invester-relocation.site/?page=activ_projects&id=${moreId}`,
+                                'request_write_access': true,
+                            },
                         },
                     ]);
                 }
@@ -216,7 +222,10 @@ async function full_alert_user(_id, _text, _type, moreId)
                     keyboardPush.push([
                         {
                             text: "Посмотреть результаты",
-                            url: `https://invester-relocation.site/?page=obligations&id=${moreId}`
+                            login_url: {
+                                'url': `https://invester-relocation.site/?page=obligations&id=${moreId}`,
+                                'request_write_access': true,
+                            },
                         },
                     ]);
                 }
