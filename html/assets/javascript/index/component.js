@@ -458,7 +458,7 @@
             });
 
             $('.show_block').click( function() {
-                window.open(`./projects/${_data.InvDoc.projectId}/${_data.InvDoc.data.document}`, '_blank');
+                window.open(`./projects/${_data.InvDoc.projectId}/${_data.InvDoc._id}_investment.${_data.InvDoc.data.pts}`, '_blank');
             });
 
             $('.show_document').click( async function() {
