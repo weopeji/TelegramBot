@@ -1827,6 +1827,11 @@ html, body {
   background: -webkit-gradient(linear, left top, right top, from(#8c80fe), color-stop(61%, #594bd3));
   background: linear-gradient(90deg, #8c80fe 0%, #594bd3 61%);
   color: white;
+  margin-bottom: 10px;
+}
+
+.settingBlock_body_line_obligations_btn span {
+  color: white;
 }
 
 @media (max-width: 1600px) {
