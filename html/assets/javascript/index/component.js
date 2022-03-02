@@ -238,6 +238,20 @@
 
                     appendPayBlock.find('button').eq(0).click( function() {
                         $(this).parent().parent().find('input[type="date"]').val(new Date().toDateInputValue());
+                    });
+
+                    appendPayBlock.find('button').eq(1).click( function() {
+                        var _date       = $(this).parent().parent().find('input[type="date"]').val();
+                        var _payment    = $(this).parent().parent().find('input[type="text"]').val();
+
+                        if(_date.length > 0 && _payment.length > 0)
+                        {
+
+                        } 
+                        else
+                        {
+                            alert('Введите все данные!');
+                        }
                     })
 
                     appendPayBlock.find('button').eq(1).css('margin-left', 0);
