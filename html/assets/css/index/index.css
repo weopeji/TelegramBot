@@ -1834,6 +1834,59 @@ html, body {
   color: white;
 }
 
+.appendPayBlock {
+  width: calc(100% - 40px);
+  background-color: #182037;
+  padding: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.appendPayBlock_line {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.appendPayBlock_line span {
+  display: block;
+}
+
+.appendPayBlock_line input[type="text"] {
+  width: calc(90% - 20px);
+  padding: 13px;
+  margin-top: 20px;
+  color: white;
+  background-color: #0E1122;
+  border: 0;
+  font-size: 15px;
+}
+
+.appendPayBlock_line input[type="data"] {
+  width: 45%;
+  padding: 10px;
+  margin-top: 20px;
+  color: white;
+  border: 0;
+  background-color: #0E1122;
+  font-size: 15px;
+}
+
+.appendPayBlock_line button {
+  padding: 10px 20px;
+  border-radius: 3px;
+  margin-right: 20px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+  background: -webkit-gradient(linear, left top, right top, from(#8c80fe), color-stop(61%, #594bd3));
+  background: linear-gradient(90deg, #8c80fe 0%, #594bd3 61%);
+  color: white;
+  border: 0;
+  margin-left: 20px;
+}
+
 @media (max-width: 1600px) {
   .creating_page {
     width: 50%;
