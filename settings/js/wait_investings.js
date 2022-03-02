@@ -136,7 +136,7 @@
                     <div class="settingBlock_body_line" data="${invDoc.inv._id}">
                         <span>${i + 1}</span>
                         <span>${invDoc.inv.projectId}</span>
-                        <span${invDoc.inv.data.pay} руб</span>
+                        <span>${invDoc.inv.data.pay} руб</span>
                         <span class="timerForwaitInvestingsData"></span>
                         <span>Посотреть</span>
                         <span>Открыть</span>
@@ -145,11 +145,11 @@
 
                 if(needMiliseconds.hours >= 24)
                 {
-                    userLine.find('.timerForwaitInvestingsData').html(`осталось ${needMiliseconds.hours} часа`);
+                    userLine.find('.timerForwaitInvestingsData').html(`осталось ${Number(needMiliseconds.hours / 24).toFixed(0)} дня и ${Number(needMiliseconds.hours)} ч`);
                 }
                 else if(needMiliseconds.hours < 24 && needMiliseconds.hours >= 1)
                 {
-                    userLine.find('.timerForwaitInvestingsData').html(`осталось ${needMiliseconds.hours} часа`);
+                    userLine.find('.timerForwaitInvestingsData').html(`осталось ${needMiliseconds.hours} ч`);
                     userLine.find('.timerForwaitInvestingsData').css('color', 'red');
 
                     setInterval( function() {
