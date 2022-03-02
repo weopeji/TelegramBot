@@ -179,8 +179,8 @@
                             </div>
                         `);
 
-                        buttonPut.eq(2).click( function() {
-                            alert('ok');
+                        buttonPut.eq(1).click( function() {
+                            window.open(`https://invester-relocation.site/projects/${_data.project._id}/${element.commission.recipient}`, '_blank')
                         });
 
                         template_text.find('.settingBlock_body_line_obligations_put').empty().append(buttonPut);
