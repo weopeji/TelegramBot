@@ -193,7 +193,33 @@ var action_linker =
     "business_cheack_accept_in_cabinet": business_cheack_accept_in_cabinet,
     "getUserByProjectOfId": getUserByProjectOfId,
     "allUsersGetOne": allUsersGetOne,
+    "waitInvestingsData": waitInvestingsData,
 };
+
+async function waitInvestingsData(socket, data, callback)
+{
+    var _InvDocs        = await InvDoc.find({status: "wait"});
+    var _AllInvDocks    = [];
+
+    for(var _InvDoc of _InvDocs)
+    {
+        _AllInvDocks.push({
+            inv: _InvDoc,
+        });
+    };
+
+    _AllInvDocks.sort(function(a, b) {
+        if (Number(a.inv.date_append) > Number(b.inv.date_append)) {
+            return 1;
+        };
+        if (Number(a.inv.date_append) < Number(b.inv.date_append)) {
+            return -1;
+        }
+        return 0;
+    });
+
+    callback(_InvDocs);
+}
 
 async function allUsersGetOne(socket, data, callback)
 {
