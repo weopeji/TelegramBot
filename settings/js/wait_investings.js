@@ -144,7 +144,7 @@
 
                 if(needMiliseconds.hours >= 24)
                 {
-                    userLine.find('.timerForwaitInvestingsData').html(`осталось ${Number(needMiliseconds.hours / 24).toFixed(0)} дня и ${Number(needMiliseconds.hours)} ч`);
+                    userLine.find('.timerForwaitInvestingsData').html(`осталось ${Number(needMiliseconds.hours / 24).toFixed(0)} дня и ${Number(needMiliseconds.hours % 24)} ч`);
                 }
                 else if(needMiliseconds.hours < 24 && needMiliseconds.hours >= 1)
                 {
