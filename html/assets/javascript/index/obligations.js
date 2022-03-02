@@ -142,7 +142,7 @@
             {
 
                 var template_text = $(`
-                    <div class="settingBlock_body_line settingBlock_body_line_obligations" data="${element._id}">
+                    <div class="settingBlock_body_line settingBlock_body_line_obligations" data="${element._id}" dataInv="${element.Inv._id}">
                         <input type="file" name="" id="${element.Inv._id}" data-project="${_data.project._id}">
                         <span>${i + 1}</span>
                         <span>${element.Inv.data.pay} руб</span>
@@ -181,6 +181,15 @@
 
                         buttonPut.eq(2).click( function() {
                             window.open(`https://invester-relocation.site/projects/${_data.project._id}/${element.commission.recipient}`, '_blank')
+                        });
+
+                        buttonPut.eq(3).click( function() {
+                            await callApi({
+                                methodName: "obligations_accept_commission_put",
+                                data: $(this).parent().parent().attr('id'),
+                            });
+                            alert('Успешно!');
+                            location.reload();
                         });
 
                         template_text.find('.settingBlock_body_line_obligations_put').empty().append(buttonPut);

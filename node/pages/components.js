@@ -27,6 +27,7 @@ var ffmpeg                  = require('ffmpeg');
 const { resolve }           = require("path");
 const PDFMerger             = require('pdf-merger-js');
 const { Console }           = require("console");
+const { viplati_call } = require("../types/business");
 var merger                  = new PDFMerger();
 
 
@@ -195,7 +196,13 @@ var action_linker =
     "allUsersGetOne": allUsersGetOne,
     "waitInvestingsData": waitInvestingsData,
     "allUserGetOneSetting": allUserGetOneSetting,
+    "obligations_accept_commission_put": obligations_accept_commission_put,
 };
+
+async function obligations_accept_commission_put(socket, data, callback)
+{
+    callback(await commission.findOne({invId: data}, {status: accept}));
+}
 
 async function waitInvestingsData(socket, data, callback)
 {
