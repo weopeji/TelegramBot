@@ -369,8 +369,31 @@
                 })
 
                 $('.index_page_body_data').append(headerPaysBlock);
-            }
-        }
+
+                if(_data.project.data.date == "Бессрочно")
+                {
+                    var appendPayBlock = $(`
+                        <div class="appendPayBlock">
+                            <div class="appendPayBlock_line">
+                                <span>Сумма инвестиции</span>
+                                <input type="text">
+                            </div>
+                            <div class="appendPayBlock_line">
+                                <span>Дата инвестиции</span>
+                                <input type="date">
+                                <button>Выбрать сегодня</button>
+                            </div>
+                            <div class="appendPayBlock_line">
+                                <span>Действие</span>
+                                <button>Принять</button>
+                            </div>
+                        </div>
+                    `);
+
+                    $('.index_page_body_data').append(headerPaysBlock);
+                };
+            };
+        };
 
         async renderType(allData)
         {
