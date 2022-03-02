@@ -167,7 +167,7 @@
 
                     if(element.commission.status == "wait_accept")
                     {
-                        template_text.css('display', 'block');
+                        template_text.find('.settingBlock_body_line_obligations_put').css('display', 'block');
                         template_text.children('span').eq(6).html("Ожидает подтверждения");
                         var buttonPut = $(`
                             <label class="settingBlock_body_line_obligations_btn" for="${element.Inv._id}">Заменить</label>
