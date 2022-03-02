@@ -183,7 +183,7 @@
                             window.open(`https://invester-relocation.site/projects/${_data.project._id}/${element.commission.recipient}`, '_blank')
                         });
 
-                        buttonPut.eq(3).click( function() {
+                        buttonPut.eq(3).click( async function() {
                             await callApi({
                                 methodName: "obligations_accept_commission_put",
                                 data: $(this).parent().parent().attr('id'),
