@@ -179,7 +179,7 @@
                             </div>
                         `);
 
-                        buttonPut.eq(1).click( function() {
+                        buttonPut.eq(2).click( function() {
                             window.open(`https://invester-relocation.site/projects/${_data.project._id}/${element.commission.recipient}`, '_blank')
                         });
 
