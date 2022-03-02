@@ -145,10 +145,9 @@
 
                 if(element.commission)
                 {
-                    buttonPut = `<a href="https://invester-relocation.site/projects/${_data.project._id}/${element.commission.recipient}" target="_blank">Посмотреть</a>`;
-
                     if(element.commission.status == "accept")
                     {
+                        buttonPut = `<a href="https://invester-relocation.site/projects/${_data.project._id}/${element.commission.recipient}" target="_blank">Посмотреть</a>`;
                         statusText = "Оплачено";
                     }
                     else if(element.commission.status == "wait_accept")
