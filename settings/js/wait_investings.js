@@ -103,7 +103,7 @@
             var first_parseBlock = $(`
                 <div class="usersAdminBlock_user_first_parse">
                     <div class="usersAdminBlock_user_first_parse_line">
-                        <span>Общее кол-во инвестиций:</span>
+                        <span>Общее кол-во инвестиций:</span> 
                         <a>${allUserGetOneSetting.Project.howPays}</a>
                     </div>
                     <div class="usersAdminBlock_user_first_parse_line">
