@@ -130,7 +130,7 @@
 
             waitInvestingsData.forEach( function (invDoc, i) 
             {                    
-                var needMiliseconds = getTimeRemaining(Number(invDoc.inv.date_append))
+                var needMiliseconds = getTimeRemaining(invDoc.inv.date_append.toString())
 
                 var userLine = $(`
                     <div class="settingBlock_body_line" data="${invDoc.inv._id}">
