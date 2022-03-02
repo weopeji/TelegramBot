@@ -34,3 +34,10 @@ login_url: {
     'url': _url,
     'request_write_access': true,
 },
+
+var HowManyDays     = Number(4.838356164383562);
+
+for(var i = 0; i < Number(HowManyDays); i++)
+{
+   console.log(i);
+}

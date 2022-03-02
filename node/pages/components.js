@@ -2024,7 +2024,7 @@ async function acceptInvestor(socket,data,callback)
             var HowManyDays     = Interval.fromDateTimes(NowToday, LastData).length('days');
             var EveryPayment    = Number(InvPay / 100 * RateBlock).toFixed(0);
 
-            for(var i = 0; i < HowManyDays; i++)
+            for(var i = 0; i < Math.trunc(HowManyDays); i++)
             {
                 InvPays.push({
                     pay: EveryPayment,
@@ -2041,7 +2041,7 @@ async function acceptInvestor(socket,data,callback)
             var HowManyDays     = Interval.fromDateTimes(NowToday, LastData).length('month');
             var EveryPayment    = Number(InvPay / 100 * RateBlock).toFixed(0);
 
-            for(var i = 0; i < HowManyDays; i++)
+            for(var i = 0; i < Math.trunc(HowManyDays); i++)
             {
                 InvPays.push({
                     pay: EveryPayment,
@@ -2059,7 +2059,7 @@ async function acceptInvestor(socket,data,callback)
             var EveryPayment            = Number(InvPay / 100 * RateBlock).toFixed(0);
             var HowManyDaysRedacting    = Number(HowManyDays / 3);
 
-            for(var i = 1; i <= HowManyDaysRedacting; i++)
+            for(var i = 1; i <= Math.trunc(HowManyDaysRedacting); i++)
             {
                 InvPays.push({
                     pay: EveryPayment,
@@ -2088,11 +2088,7 @@ async function acceptInvestor(socket,data,callback)
             var HowManyDays     = Interval.fromDateTimes(NowToday, LastData).length('year');
             var EveryPayment    = Number(InvPay / 100 * RateBlock).toFixed(0);
 
-            console.log(HowManyDays);
-
-            var initCheack = 0;
-
-            for(var i = 0; i < Number(HowManyDays); i++)
+            for(var i = 0; i < Math.trunc(HowManyDays); i++)
             {
                 InvPays.push({
                     pay: EveryPayment,
@@ -2100,11 +2096,7 @@ async function acceptInvestor(socket,data,callback)
                     receipt: null,
                     status: "wait",
                 });
-
-                initCheack++;
-            }
-
-            console.log(initCheack);
+            };
 
             if(!Number.isInteger(HowManyDays))
             {
