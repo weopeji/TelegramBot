@@ -2090,7 +2090,7 @@ async function acceptInvestor(socket,data,callback)
 
             console.log(HowManyDays);
 
-            for(var i = 0; i < HowManyDays; i++)
+            for(var i = 0; i < Number(HowManyDays); i++)
             {
                 InvPays.push({
                     pay: EveryPayment,
