@@ -1106,7 +1106,7 @@ app.post('/file_commission.io/files', (req, res) => {
                     
                     await commission.create({
                         invId: _data.invId,
-                        status: "wait",
+                        status: "wait_accept",
                         recipient: `file_commission_${_data.invId}.${_data._pts.split('/')[1]}`,
                     });
 

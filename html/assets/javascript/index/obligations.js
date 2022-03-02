@@ -140,7 +140,7 @@
 
             _data.Invs.forEach(function(element, i) 
             {
-                var buttonPut   = `<label for="${element.Inv._id}">Прикрепить</label>`;
+                var buttonPut   = $(`<label for="${element.Inv._id}">Прикрепить</label>`);
                 var statusText  = `Не оплачено`;
 
                 if(element.commission)
@@ -151,7 +151,29 @@
                     {
                         statusText = "Оплачено";
                     }
-                }
+                } 
+                else
+                {
+                    if(element.commission.status == "wait_accept")
+                    {
+                        statusText = "Ожидает подтверждения";
+                        buttonPut = $(`
+                            <div class="settingBlock_body_line_obligations_btn">
+                                <label for="${element.Inv._id}">Заменить</label>
+                            </div>
+                            <div class="settingBlock_body_line_obligations_btn">
+                                <span>Посмотерть</span>
+                            </div>
+                            <div class="settingBlock_body_line_obligations_btn">
+                                <span>Подтвердить</span>
+                            </div>
+                        `);
+
+                        buttonPut.eq(2).click( function() {
+                            alert('ok');
+                        });
+                    };
+                };
 
                 var template_text = $(`
                     <div class="settingBlock_body_line settingBlock_body_line_obligations" data="${element._id}">
