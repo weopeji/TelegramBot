@@ -318,7 +318,7 @@ function pad(s, width, character) {
 
 function getTimeRemaining(endtime) 
 {
-	var t = Number(new Date().getTime().toString()) - Number(endtime.toString());
+	var t = 259200000 - (Number(new Date().getTime().toString()) - Number(endtime.toString()));
 	var total = t;
 	var miliSeconds = t % 1000; 
 	t = t / 1000 | 0;
