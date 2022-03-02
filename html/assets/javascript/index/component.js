@@ -231,10 +231,12 @@
                             </div>
                             <div class="appendPayBlock_line">
                                 <span>Действие</span>
-                                <button>Принять</button>
+                                <button>Принять выплату</button>
                             </div>
                         </div>
                     `);
+
+                    appendPayBlock.find('button').eq(1).css('margin-left', 0);
 
                     $('.index_page_body_data').append(appendPayBlock);
                 };
