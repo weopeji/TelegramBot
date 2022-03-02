@@ -143,15 +143,6 @@
                 var buttonPut   = $(`<label for="${element.Inv._id}">Прикрепить</label>`);
                 var statusText  = `Не оплачено`;
 
-                if(element.commission)
-                {
-                    if(element.commission.status == "accept")
-                    {
-                        buttonPut = `<a href="https://invester-relocation.site/projects/${_data.project._id}/${element.commission.recipient}" target="_blank">Посмотреть</a>`;
-                        statusText = "Оплачено";
-                    }
-                } 
-
                 var template_text = $(`
                     <div class="settingBlock_body_line settingBlock_body_line_obligations" data="${element._id}">
                         <input type="file" name="" id="${element.Inv._id}" data-project="${_data.project._id}">
@@ -167,27 +158,36 @@
                     </div>
                 `);
 
-                if(element.commission.status == "wait_accept")
+                if(element.commission)
                 {
-                    statusText = "Ожидает подтверждения";
-                    buttonPut = $(`
-                        <div class="settingBlock_body_line_obligations_btn">
-                            <label for="${element.Inv._id}">Заменить</label>
-                        </div>
-                        <div class="settingBlock_body_line_obligations_btn">
-                            <span>Посмотерть</span>
-                        </div>
-                        <div class="settingBlock_body_line_obligations_btn">
-                            <span>Подтвердить</span>
-                        </div>
-                    `);
+                    if(element.commission.status == "accept")
+                    {
+                        buttonPut = `<a href="https://invester-relocation.site/projects/${_data.project._id}/${element.commission.recipient}" target="_blank">Посмотреть</a>`;
+                        template_text.children('span').eq(6).html("Оплачено");
+                    }
 
-                    buttonPut.eq(2).click( function() {
-                        alert('ok');
-                    });
+                    if(element.commission.status == "wait_accept")
+                    {
+                        template_text.children('span').eq(6).html("Ожидает подтверждения");
+                        buttonPut = $(`
+                            <div class="settingBlock_body_line_obligations_btn">
+                                <label for="${element.Inv._id}">Заменить</label>
+                            </div>
+                            <div class="settingBlock_body_line_obligations_btn">
+                                <span>Посмотерть</span>
+                            </div>
+                            <div class="settingBlock_body_line_obligations_btn">
+                                <span>Подтвердить</span>
+                            </div>
+                        `);
 
-                    template_text.find('.settingBlock_body_line_obligations_put').append(buttonPut);
-                };
+                        buttonPut.eq(2).click( function() {
+                            alert('ok');
+                        });
+
+                        template_text.find('.settingBlock_body_line_obligations_put').append(buttonPut);
+                    };  
+                } 
 
                 settingBlock.find('.settingBlock_body').append(template_text);
             });
