@@ -161,17 +161,16 @@
                     if(element.commission.status == "accept")
                     {
                         var buttonPut = $(`<a href="https://invester-relocation.site/projects/${_data.project._id}/${element.commission.recipient}" target="_blank">Посмотреть</a>`);
-                        template_text.find('.settingBlock_body_line_obligations_put').append(buttonPut);
+                        template_text.find('.settingBlock_body_line_obligations_put').empty().append(buttonPut);
                         template_text.children('span').eq(6).html("Оплачено");
                     }
 
                     if(element.commission.status == "wait_accept")
                     {
+                        template_text.css('display', 'block');
                         template_text.children('span').eq(6).html("Ожидает подтверждения");
                         var buttonPut = $(`
-                            <div class="settingBlock_body_line_obligations_btn">
-                                <label for="${element.Inv._id}">Заменить</label>
-                            </div>
+                            <label class="settingBlock_body_line_obligations_btn" for="${element.Inv._id}">Заменить</label>
                             <div class="settingBlock_body_line_obligations_btn">
                                 <span>Посмотерть</span>
                             </div>
@@ -184,7 +183,7 @@
                             alert('ok');
                         });
 
-                        template_text.find('.settingBlock_body_line_obligations_put').append(buttonPut);
+                        template_text.find('.settingBlock_body_line_obligations_put').empty().append(buttonPut);
                     };  
                 }
 
