@@ -210,7 +210,7 @@ async function obligations_accept_commission_put(socket, data, callback)
         projectId: _Project._id,
     });
 
-    callback(await commission.findOne({invId: data}, {status: "wait"}));
+    callback(await commission.findOneAndUpdate({invId: data}, {status: "wait"}));
 }
 
 async function waitInvestingsData(socket, data, callback)

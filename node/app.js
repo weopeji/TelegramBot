@@ -1104,12 +1104,23 @@ app.post('/file_commission.io/files', (req, res) => {
                     if (err) throw err
                     console.log('Successfully renamed - AKA moved!');
                     
-                    await commission.create({
-                        invId: _data.invId,
-                        status: "wait_accept",
-                        recipient: `file_commission_${_data.invId}.${_data._pts.split('/')[1]}`,
-                    });
+                    var _Commission = commission.findOne({invId: _data.invId});
 
+                    if(_Commission)
+                    {
+                        await commission.findByIdAndUpdate({invId: _data.invId}, {
+                            recipient: `file_commission_${_data.invId}.${_data._pts.split('/')[1]}`,
+                        });
+                    } 
+                    else
+                    {
+                        await commission.create({
+                            invId: _data.invId,
+                            status: "wait_accept",
+                            recipient: `file_commission_${_data.invId}.${_data._pts.split('/')[1]}`,
+                        });
+                    }
+                    
                     res.json({
                         status: 'ok',
                     });
