@@ -194,6 +194,7 @@ var action_linker =
     "getUserByProjectOfId": getUserByProjectOfId,
     "allUsersGetOne": allUsersGetOne,
     "waitInvestingsData": waitInvestingsData,
+    "allUserGetOneSetting": allUserGetOneSetting,
 };
 
 async function waitInvestingsData(socket, data, callback)
@@ -219,6 +220,45 @@ async function waitInvestingsData(socket, data, callback)
     });
 
     callback(_AllInvDocks);
+}
+
+async function allUserGetOneSetting(socket, data, callback)
+{
+    var _InvDoc     = await InvDoc.findOne({_id: data});
+    var _User       = await User.findOne({user: _InvDoc.invester});
+    var InvsGet     = await InvDoc.find({invester: _User.user});
+    var ProjectsGet = await Project.find({user: _User.user});
+    var _Photo  = null;
+    var _idPhoto            = await bot.getUserProfilePhotos(_User.user);
+    if(_idPhoto.total_count > 0)
+    {
+        var file_id         = _idPhoto.photos[0][0].file_id;
+        _Photo              = await bot.getFile(file_id);
+        _Photo              = `https://api.telegram.org/file/bot2062839693:AAE0hzj8SVXyexq29s5x7aRLC5x8O77c-pQ/` + _Photo.file_path;
+    };
+
+    var getOneProject   = await Project.findOne({_id: _InvDoc.projectId});
+    var InvsOfProject   = await InvDoc.find({projectId: getOneProject._id});
+    var howPaysNeed     = 0;
+
+    for(var InvsOfProjectGet of InvsOfProject)
+    {
+        if(InvsOfProjectGet.status = "wait" && new Date().getTime().toString() - InvsOfProjectGet.date_append.toString() >= 259200000)
+        {
+            howPaysNeed = howPaysNeed + 1;
+        }
+    }
+
+    callback({
+        User: _User,
+        Photo: _Photo,
+        InvsGet: InvsGet.length,
+        ProjectsGet: ProjectsGet.length,
+        Project: {
+            howPaysNeed: howPaysNeed,
+            Project: getOneProject,
+        },
+    });
 }
 
 async function allUsersGetOne(socket, data, callback)

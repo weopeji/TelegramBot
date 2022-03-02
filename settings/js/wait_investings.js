@@ -37,7 +37,7 @@
                         <span class="usersAdminBlock_user_h1">Выберите инвестицию</span>
                     </div>
                     <div class="usersAdminBlock_user_row">
-                        
+                        <span class="usersAdminBlock_user_h1">Выберите проект</span>
                     </div>
                 </div>
             `);
@@ -49,14 +49,15 @@
 
         async showUser(_id)
         {
-            var allUsersGetOne = await callApi({
-                methodName: "allUsersGetOne",
+            var allUserGetOneSetting = await callApi({
+                methodName: "allUserGetOneSetting",
                 data: _id,
             });
 
-            $('.usersAdminBlock_user_img_row img').attr('src', allUsersGetOne.Photo);
-            $('.usersAdminBlock_user_h1').html(allUsersGetOne.User.first_name);
-            $('.usersAdminBlock_user_first_parse').remove();
+            $('.usersAdminBlock_user_row').eq(0).find('.usersAdminBlock_user_img_row img').attr('src', allUsersGetOne.Photo);
+            $('.usersAdminBlock_user_row').eq(0).find('.usersAdminBlock_user_h1').html(allUsersGetOne.User.first_name);
+            $('.usersAdminBlock_user_row').eq(0).find('.usersAdminBlock_user_first_parse').remove();
+            $('.usersAdminBlock_user_row').eq(1).find('.usersAdminBlock_user_h1').html(allUserGetOneSetting.Project.Project.data.name);
 
             var first_parseBlock = $(`
                 <div class="usersAdminBlock_user_first_parse">
@@ -96,8 +97,17 @@
                     </div>
                 `);
 
-                $('.usersAdminBlock_user_row').append(first_parseBlock);
-            }
+                $('.usersAdminBlock_user_row').eq(0).append(first_parseBlock);
+            };
+
+            var first_parseBlock = $(`
+                <div class="usersAdminBlock_user_first_parse">
+                    <div class="usersAdminBlock_user_first_parse_line">
+                        <span>Кол-во просроченых:</span>
+                        <a>${allUserGetOneSetting.Project.howPaysNeed}</a>
+                    </div>
+                </div>
+            `);
         }
 
         async renderBody()
@@ -161,15 +171,10 @@
                     }, 1000);
                 }
 
-                // userLine.children('span').eq(4).click(async function() {
-                //     var _id = $(this).parent().attr('data');
-                //     await _this.showUser(_id);
-                // });
-
-                // userLine.children('span').eq(5).click(async function() {
-                //     var _id = $(this).parent().attr('data');
-                //     location.href = `/?user=${_id}`;
-                // });
+                userLine.children('span').eq(4).click(async function() {
+                    var _id = $(this).parent().attr('data');
+                    await _this.showUser(_id);
+                });
 
                 templateText.find('.settingBlock_body').append(userLine);
             });
