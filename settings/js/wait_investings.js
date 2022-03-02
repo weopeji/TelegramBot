@@ -63,11 +63,11 @@
                 <div class="usersAdminBlock_user_first_parse">
                     <div class="usersAdminBlock_user_first_parse_line">
                         <span>Кол-во инвестиций:</span>
-                        <a>${allUsersGetOne.InvsGet}</a>
+                        <a>${allUserGetOneSetting.InvsGet}</a>
                     </div>
                     <div class="usersAdminBlock_user_first_parse_line">
                         <span>Кол-во проектов:</span>
-                        <a>${allUsersGetOne.ProjectsGet}</a>
+                        <a>${allUserGetOneSetting.ProjectsGet}</a>
                     </div>
                 </div>
             `);
@@ -103,8 +103,16 @@
             var first_parseBlock = $(`
                 <div class="usersAdminBlock_user_first_parse">
                     <div class="usersAdminBlock_user_first_parse_line">
+                        <span>Общее кол-во инвестиций:</span>
+                        <a>${allUserGetOneSetting.Project.howPays}</a>
                         <span>Кол-во просроченых:</span>
                         <a>${allUserGetOneSetting.Project.howPaysNeed}</a>
+                        <span>Кол-во ожидающих подтверждения:</span>
+                        <a>${allUserGetOneSetting.Project.howPaysWait}</a>
+                        <span>Кол-во подтвержденных:</span>
+                        <a>${allUserGetOneSetting.Project.howPaysAccept}</a>
+                        <span>Кол-во обработанных не до конца:</span>
+                        <a>${allUserGetOneSetting.Project.howPaysnot_accept}</a>
                     </div>
                 </div>
             `);

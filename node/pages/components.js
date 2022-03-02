@@ -237,16 +237,37 @@ async function allUserGetOneSetting(socket, data, callback)
         _Photo              = `https://api.telegram.org/file/bot2062839693:AAE0hzj8SVXyexq29s5x7aRLC5x8O77c-pQ/` + _Photo.file_path;
     };
 
-    var getOneProject   = await Project.findOne({_id: _InvDoc.projectId});
-    var InvsOfProject   = await InvDoc.find({projectId: getOneProject._id});
-    var howPaysNeed     = 0;
+    var getOneProject       = await Project.findOne({_id: _InvDoc.projectId});
+    var InvsOfProject       = await InvDoc.find({projectId: getOneProject._id});
+    var howPaysNeed         = 0;
+    var howPaysWait         = 0;
+    var howPaysAccept       = 0;
+    var howPaysnot_accept   = 0;
+    var howPays             = 0;
 
     for(var InvsOfProjectGet of InvsOfProject)
     {
         if(InvsOfProjectGet.status = "wait" && new Date().getTime().toString() - InvsOfProjectGet.date_append.toString() >= 259200000)
         {
             howPaysNeed = howPaysNeed + 1;
-        }
+        };
+
+        if(InvsOfProjectGet.status = "wait")
+        {
+            howPaysWait = howPaysWait + 1;
+        };
+
+        if(InvsOfProjectGet.status = "accept")
+        {
+            howPaysAccept = howPaysAccept + 1;
+        };
+
+        if(InvsOfProjectGet.status = "not_accept")
+        {
+            howPaysnot_accept = howPaysnot_accept + 1;
+        };
+
+        howPays = howPays + 1;
     }
 
     callback({
@@ -256,6 +277,10 @@ async function allUserGetOneSetting(socket, data, callback)
         ProjectsGet: ProjectsGet.length,
         Project: {
             howPaysNeed: howPaysNeed,
+            howPaysWait: howPaysWait,
+            howPaysAccept: howPaysAccept,
+            howPaysnot_accept: howPaysnot_accept,
+            howPays: howPays,
             Project: getOneProject,
         },
     });
