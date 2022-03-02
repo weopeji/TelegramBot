@@ -1104,11 +1104,11 @@ app.post('/file_commission.io/files', (req, res) => {
                     if (err) throw err
                     console.log('Successfully renamed - AKA moved!');
                     
-                    var _Commission = commission.findOne({invId: _data.invId.toString()});
+                    var _Commission = commission.findOne({invId: _data.invId});
 
                     if(_Commission)
                     {
-                        await commission.findByIdAndUpdate({invId: _data.invId.toString()}, {
+                        await commission.findOneAndUpdate({invId: _data.invId}, {
                             recipient: `file_commission_${_data.invId}.${_data._pts.split('/')[1]}`,
                         });
                     } 
