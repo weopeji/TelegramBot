@@ -37,7 +37,7 @@
                         <span class="usersAdminBlock_user_h1">Выберите инвестицию</span>
                     </div>
                     <div class="usersAdminBlock_user_row">
-                        <span class="usersAdminBlock_user_h1">Выберите проект</span>
+                        <span class="usersAdminBlock_user_h1"></span>
                     </div>
                 </div>
             `);
@@ -54,8 +54,8 @@
                 data: _id,
             });
 
-            $('.usersAdminBlock_user_row').eq(0).find('.usersAdminBlock_user_img_row img').attr('src', allUsersGetOne.Photo);
-            $('.usersAdminBlock_user_row').eq(0).find('.usersAdminBlock_user_h1').html(allUsersGetOne.User.first_name);
+            $('.usersAdminBlock_user_row').eq(0).find('.usersAdminBlock_user_img_row img').attr('src', allUserGetOneSetting.Photo);
+            $('.usersAdminBlock_user_row').eq(0).find('.usersAdminBlock_user_h1').html(allUserGetOneSetting.User.first_name);
             $('.usersAdminBlock_user_row').eq(0).find('.usersAdminBlock_user_first_parse').remove();
             $('.usersAdminBlock_user_row').eq(1).find('.usersAdminBlock_user_h1').html(allUserGetOneSetting.Project.Project.data.name);
 
