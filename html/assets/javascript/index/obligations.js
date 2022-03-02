@@ -140,8 +140,6 @@
 
             _data.Invs.forEach(function(element, i) 
             {
-                var buttonPut   = $(`<label for="${element.Inv._id}">Прикрепить</label>`);
-                var statusText  = `Не оплачено`;
 
                 var template_text = $(`
                     <div class="settingBlock_body_line settingBlock_body_line_obligations" data="${element._id}">
@@ -154,7 +152,7 @@
                         <span clas="settingBlock_body_line_obligations_put">
                             ${buttonPut}
                         </span>
-                        <span>${statusText}</span>
+                        <span>Не оплачено</span>
                     </div>
                 `);
 
@@ -162,7 +160,8 @@
                 {
                     if(element.commission.status == "accept")
                     {
-                        buttonPut = `<a href="https://invester-relocation.site/projects/${_data.project._id}/${element.commission.recipient}" target="_blank">Посмотреть</a>`;
+                        buttonPut = $(`<a href="https://invester-relocation.site/projects/${_data.project._id}/${element.commission.recipient}" target="_blank">Посмотреть</a>`);
+                        template_text.find('.settingBlock_body_line_obligations_put').append(buttonPut);
                         template_text.children('span').eq(6).html("Оплачено");
                     }
 
@@ -188,6 +187,11 @@
                         template_text.find('.settingBlock_body_line_obligations_put').append(buttonPut);
                     };  
                 } 
+                else
+                {
+                    var buttonPut   = $(`<label for="${element.Inv._id}">Прикрепить</label>`);
+                    template_text.find('.settingBlock_body_line_obligations_put').append(buttonPut);
+                }
 
                 settingBlock.find('.settingBlock_body').append(template_text);
             });
