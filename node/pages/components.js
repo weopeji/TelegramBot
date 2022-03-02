@@ -201,6 +201,15 @@ var action_linker =
 
 async function obligations_accept_commission_put(socket, data, callback)
 {
+    var _InvDoc     = await InvDoc.findOne({_id: data});
+    var _Project    = await Project.findOne({_id: _InvDoc.projectId});
+
+    h.alertAdmin({
+        type: "accpetCommissionByBusiness",
+        text: `Проект ${_Project._id} "${_Project.data.name}" произвел оплату комисиии в пользу invester`,
+        projectId: _Project._id,
+    });
+
     callback(await commission.findOne({invId: data}, {status: "wait"}));
 }
 
