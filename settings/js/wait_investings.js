@@ -128,6 +128,10 @@
                 </div>
             `);
 
+            first_parseBlock.find('.usersAdminBlock_user_first_parse_button').click( function() {
+                location.href = `/settings/?page=block&id=${allUserGetOneSetting.Project.Project._id}&more=redacting`;
+            })
+
             $('.usersAdminBlock_user_row').eq(1).append(first_parseBlock);
         }
 
