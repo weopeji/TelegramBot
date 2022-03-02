@@ -2085,12 +2085,14 @@ async function acceptInvestor(socket,data,callback)
         {
             var RateBlock       = Number(_Project.data.rate);
             var LastData        = NowToday.plus({ months: ProjectDate });
-            var HowManyDays     = Number(Interval.fromDateTimes(NowToday, LastData).length('month') / 12);
+            var HowManyDays     = Interval.fromDateTimes(NowToday, LastData).length('year');
             var EveryPayment    = Number(InvPay / 100 * RateBlock).toFixed(0);
 
             console.log(HowManyDays);
 
-            for(var i = 0; i < HowManyDays; i++)
+            var initCheack = 0;
+
+            for(var i = 0; i < Number(HowManyDays); i++)
             {
                 InvPays.push({
                     pay: EveryPayment,
@@ -2098,7 +2100,11 @@ async function acceptInvestor(socket,data,callback)
                     receipt: null,
                     status: "wait",
                 });
+
+                initCheack++;
             }
+
+            console.log(initCheack);
 
             if(!Number.isInteger(HowManyDays))
             {
