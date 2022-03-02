@@ -218,7 +218,7 @@ async function waitInvestingsData(socket, data, callback)
         return 0;
     });
 
-    callback(_InvDocs);
+    callback(_AllInvDocks);
 }
 
 async function allUsersGetOne(socket, data, callback)
