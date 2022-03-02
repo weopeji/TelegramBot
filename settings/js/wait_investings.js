@@ -36,6 +36,14 @@
                         </div>
                         <span class="usersAdminBlock_user_h1">Выберите инвестицию</span>
                     </div>
+                    <div class="usersAdminBlock_user_row">
+                        <div class="usersAdminBlock_user_img">
+                            <div class="usersAdminBlock_user_img_row">
+                                <img src="" alt="">
+                            </div>
+                        </div>
+                        <span class="usersAdminBlock_user_h1">Выберите инвестицию</span>
+                    </div>
                 </div>
             `);
 
