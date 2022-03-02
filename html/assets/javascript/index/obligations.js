@@ -151,10 +151,7 @@
                     {
                         statusText = "Оплачено";
                     }
-                } 
-                else
-                {
-                    if(element.commission.status == "wait_accept")
+                    else if(element.commission.status == "wait_accept")
                     {
                         statusText = "Ожидает подтверждения";
                         buttonPut = $(`
@@ -173,15 +170,15 @@
                             alert('ok');
                         });
                     };
-                };
+                } 
 
                 var template_text = $(`
                     <div class="settingBlock_body_line settingBlock_body_line_obligations" data="${element._id}">
                         <input type="file" name="" id="${element.Inv._id}" data-project="${_data.project._id}">
                         <span>${i + 1}</span>
-                        <span>${element.Inv.data.pay}</span>
+                        <span>${element.Inv.data.pay} руб</span>
                         <span>${_data.project._id}/${i + 1} от ${DateFormatted(element.Inv.date)}</span>
-                        <span>${element.Inv.data.pay.toString().replace(/\s/g, '') / 100 * _data.project.payersData.commission}</span>
+                        <span>${Number(element.Inv.data.pay.toString().replace(/\s/g, '') / 100 * _data.project.payersData.commission).toString().ReplaceNumber() руб}</span>
                         <span>${DateFormatted(Number(element.Inv.date) + 864000000)}</span>
                         <span clas="settingBlock_body_line_obligations_put">
                             ${buttonPut}
