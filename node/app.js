@@ -1109,6 +1109,7 @@ app.post('/file_commission.io/files', (req, res) => {
                     if(_Commission)
                     {
                         await commission.findOneAndUpdate({invId: _data.invId}, {
+                            status: "wait_accept",
                             recipient: `file_commission_${_data.invId}.${_data._pts.split('/')[1]}`,
                         });
                     } 
