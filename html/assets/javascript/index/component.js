@@ -236,6 +236,10 @@
                         </div>
                     `);
 
+                    appendPayBlock.find('button').eq(0).click( function() {
+                        $(this).parent().parent().find('input[type="date"]').val(new Date().toDateInputValue());
+                    })
+
                     appendPayBlock.find('button').eq(1).css('margin-left', 0);
 
                     $('.index_page_body_data').append(appendPayBlock);
