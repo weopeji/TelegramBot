@@ -201,7 +201,7 @@ var action_linker =
 
 async function obligations_accept_commission_put(socket, data, callback)
 {
-    callback(await commission.findOne({invId: data}, {status: accept}));
+    callback(await commission.findOne({invId: data}, {status: "wait"}));
 }
 
 async function waitInvestingsData(socket, data, callback)
