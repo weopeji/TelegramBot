@@ -315,3 +315,23 @@ Date.prototype.customFormat = function(formatString) {
 function pad(s, width, character) {
     return new Array(width - s.toString().length + 1).join(character) + s;
 }
+
+function getTimeRemaining(startTime, endtime) 
+{
+	var t = Date.parse(endtime) - startTime;
+	var total = t;
+	var miliSeconds = t % 1000; 
+	t = t / 1000 | 0;
+	var seconds = t % 60; 
+	t = t / 60 | 0;
+	var minutes = t  % 60;
+	t = t / 60 | 0;
+	var hours = t ;
+	return {
+		'total': total,
+		'hours': hours,
+		'minutes': minutes,
+		'seconds': seconds,
+		'miliSeconds' : miliSeconds
+	};
+}
