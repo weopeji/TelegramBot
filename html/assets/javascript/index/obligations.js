@@ -186,7 +186,7 @@
                         buttonPut.eq(4).click( async function() {
                             await callApi({
                                 methodName: "obligations_accept_commission_put",
-                                data: $(this).parent().parent().attr('id'),
+                                data: $(this).parent().parent().attr('dataInv'),
                             });
                             alert('Успешно!');
                             location.reload();
