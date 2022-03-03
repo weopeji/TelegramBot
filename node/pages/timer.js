@@ -41,6 +41,8 @@ async function alertsOfWaitAcceptInvesting()
         };
     };
 
+    console.log(allAlertsProjectsIdBlock);
+
     for(var allAlertsProjectsIdBlock of allAlertsProjectsId)
     {
         var _Project    = await Project.findOne({_id: allAlertsProjectsIdBlock});
@@ -57,7 +59,7 @@ function startTimer()
     //     alertsOfWaitAcceptInvesting();
     // });
 
-    CronJob.schedule('*/3 * * * *', async function() {
+    CronJob.schedule('*/30 * * * * *', async function() {
         alertsOfWaitAcceptInvesting();
     });
 };
