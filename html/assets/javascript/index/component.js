@@ -535,10 +535,14 @@
 
                     var morePay = "";
 
-                    if((i + 1) == _data.InvDoc.pays.length)
+                    if(_data.project.data.date != "Бессрочно")
                     {
-                        morePay = ` + ${_data.InvDoc.data.pay} руб.`
+                        if((i + 1) == _data.InvDoc.pays.length)
+                        {
+                            morePay = ` + ${_data.InvDoc.data.pay} руб.`
+                        }
                     }
+                    
                 
                     var _block = $(`
                         <div class="headerPaysBlock_body_line">
@@ -849,7 +853,7 @@
                         {
                             if(payInv.status == "wait")
                             {
-                                lastPay = payInv.pay.toString().ReplaceNumber();
+                                lastPay = payInv.pay.toString().ReplaceNumber() + " руб";
                                 break;
                             }
                         }
@@ -866,7 +870,7 @@
                             <span>${element.project.data.name}</span>
                             <span>${element.project._id}/${element.number} от ${maxDateFormatted}</span>
                             <span>${element.Inv.data.pay} руб</span>
-                            <span>${lastPay} руб</span>
+                            <span>${lastPay}</span>
                         </div>
                     `);
 
