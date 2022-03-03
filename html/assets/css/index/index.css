@@ -1873,6 +1873,10 @@ html, body {
   font-size: 15px;
 }
 
+.appendPayBlock_line input[type="file"] {
+  display: none;
+}
+
 .appendPayBlock_line button {
   padding: 10px 20px;
   border-radius: 3px;

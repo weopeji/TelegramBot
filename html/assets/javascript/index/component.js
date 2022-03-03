@@ -230,6 +230,11 @@
                                 <button>Выбрать сегодня</button>
                             </div>
                             <div class="appendPayBlock_line">
+                                <span>Чек</span>
+                                <input type="file">
+                                <button>Выбрать файл</button>
+                            </div>
+                            <div class="appendPayBlock_line">
                                 <span>Действие</span>
                                 <button>Принять выплату</button>
                             </div>
