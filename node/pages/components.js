@@ -2237,6 +2237,8 @@ async function acceptInvestor(socket,data,callback)
             },
             date: new Date().getTime().toString(),
         });
+
+        h.full_alert_user(_UserInv.member, `Вам поступил бонус за инвестора в размере ${Number(_InvDoc.data.pay) * Number(Number(_Project.payersData.commission) / 100) * Number(Number(_Project.payersData.investors_commission) / 100)}`, "payment_member");
     };
 
     if(_UserProject.member_b)
