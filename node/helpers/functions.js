@@ -254,7 +254,7 @@ async function full_alert_user(_id, _text, _type, moreId)
                     },
                 ]);
             },
-            "allert_of_invester": function()
+            "allert_of_invester": async function()
             {
                 await User.findOneAndUpdate({user: _id}, {type: "business"});
 
