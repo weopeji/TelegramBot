@@ -227,7 +227,7 @@
                             <div class="appendPayBlock_line">
                                 <span>Дата инвестиции</span>
                                 <input type="date">
-                                <button>Выбрать сегодня</button>
+                                <button>Cегодня</button>
                             </div>
                             <div class="appendPayBlock_line">
                                 <span>Чек</span>
@@ -236,7 +236,7 @@
                             </div>
                             <div class="appendPayBlock_line">
                                 <span>Действие</span> 
-                                <button>Принять выплату</button>
+                                <button>Принять</button>
                             </div>
                         </div>
                     `);
