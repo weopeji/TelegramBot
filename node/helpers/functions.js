@@ -47,21 +47,16 @@ var token = function()
 async function full_alert_user(_id, _text, _type, moreId) 
 {
     var _User           = await User.findOne({user: _id});
-    var _tokenAlert     = token();
-    var _textDecoded    = encodeURIComponent(_text);
-    var _path           = `../users_alerts/${_User.user}/${_tokenAlert}.png`;
-    var _urlImgAlert    = `https://invester-relocation.site/html/project/alert/?text=${_textDecoded}`;
+    var _textDecoded    = _text;
     var _Alerts         = _User.alerts_main;
 
-    if(!_Alerts)
-    {
-        _Alerts         = [];
-    }
+    if(!_Alerts)        { _Alerts = []; };
 
     _Alerts.push({
         type: _type,
-        img: `${_tokenAlert}.png`,
-    }) 
+        text: _text,
+        date: new Date().getTime().toString(),
+    });
 
     if(_Alerts.length > 3)
     {
@@ -70,15 +65,6 @@ async function full_alert_user(_id, _text, _type, moreId)
 
     var defaultCreate = async () => 
     {
-        const browser = await puppeteer.launch({
-            args: ['--no-sandbox', '--disable-setuid-sandbox'],
-        });
-        const page = await browser.newPage();
-        await page.goto(_urlImgAlert);
-        await page.emulateMedia('screen');
-        const element = await page.$('.alert');   
-        await element.screenshot({path: _path});
-        await browser.close(); 
         var _user = await User.findOneAndUpdate({user: _id}, {alerts_main: _Alerts});
 
         var _array      = [];
@@ -94,7 +80,6 @@ async function full_alert_user(_id, _text, _type, moreId)
 
         _array.push(fat.message_id);
 
-        const stream        = fs.createReadStream(_path);
         var keyboardPush    = [];
 
         var funsForSecondMSG =
@@ -278,7 +263,7 @@ async function full_alert_user(_id, _text, _type, moreId)
             await funsForSecondMSG[_type]();
         };
 
-        var fat = await bot.sendPhoto(_user.user, stream, {
+        var fat = await bot.sendMessage(_user.user, _textDecoded, {
             parse_mode: "HTML",
             "reply_markup": {
                 "inline_keyboard": keyboardPush,
