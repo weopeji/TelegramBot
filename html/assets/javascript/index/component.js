@@ -236,6 +236,21 @@
                         </div>
                     `);
 
+                    if(_data.InvDoc.pays.length > 0)
+                    {
+                        if(_data.InvDoc.pays[_data.InvDoc.pays.length - 1].status == "wait_data")
+                        {
+                            var moreButtonBlock = $(`
+                                <div class="appendPayBlock_line_button">
+                                    <span>Посмотреть</span>
+                                </div>
+                            `);
+
+                            appendPayBlock.find('.appendPayBlock_line').eq(2).find('button').html("Заменить");
+                            appendPayBlock.find('.appendPayBlock_line').eq(2).append(moreButtonBlock);
+                        };
+                    };
+
                     appendPayBlock.find('button').eq(0).css('margin-left', 0);
                     appendPayBlock.find('button').eq(1).css('margin-left', 0);
 
