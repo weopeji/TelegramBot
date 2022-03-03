@@ -864,7 +864,7 @@
                     `);
 
                     template_text.click( function () {
-                        location.href = window.location.href + `&id=${$(this).attr('data-more')}`;
+                        location.href = `/?id=${$(this).attr('data-more')}`;
                     })
 
                     settingBlock.find('.settingBlock_body').append(template_text);

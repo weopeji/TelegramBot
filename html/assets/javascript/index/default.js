@@ -61,47 +61,50 @@
         const payments_new              = new global.Components.payments_new();
         const telegram_authorization    = new global.Components.telegram_authorization();
 
-        if(_GET("hash"))
+        if(!userID) 
         {
-            if(_GET("id"))
+            if(_GET("hash"))
             {
-                var userData = 
+                if(_GET("id"))
                 {
-                    id: _GET("id"),
-                    first_name: decodeURI(_GET("first_name")),
-                    last_name: decodeURI(_GET("last_name")),
-                    username: decodeURI(_GET("username")),
-                }
+                    var userData = 
+                    {
+                        id: _GET("id"),
+                        first_name: decodeURI(_GET("first_name")),
+                        last_name: decodeURI(_GET("last_name")),
+                        username: decodeURI(_GET("username")),
+                    }
 
-                if(!userData.id)
-                {
-                    window.close();
-                    return;
-                }
-                else
-                {
-                    var NeedToken = await callApi({
-                        methodName: "telegram_auth_getToken",
-                        data: userData,
-                    });
-                    setCookie("token", NeedToken);
+                    if(!userData.id)
+                    {
+                        window.close();
+                        return;
+                    }
+                    else
+                    {
+                        var NeedToken = await callApi({
+                            methodName: "telegram_auth_getToken",
+                            data: userData,
+                        });
+                        setCookie("token", NeedToken);
+                    }
                 }
             }
-        }
-
-        if(!userID) {
-            if(!token) 
+            else
             {
-                if(pageID != "telegram_authorization")
+                if(!token) 
                 {
-                    location.href = "https://invester-relocation.site/?page=telegram_authorization";
-                    return;
-                } else {
-                    telegram_authorization.render();
-                    $('.preloader').fadeOut( function() {
-                        $(this).remove();
-                    })
-                    return;
+                    if(pageID != "telegram_authorization")
+                    {
+                        location.href = "https://invester-relocation.site/?page=telegram_authorization";
+                        return;
+                    } else {
+                        telegram_authorization.render();
+                        $('.preloader').fadeOut( function() {
+                            $(this).remove();
+                        })
+                        return;
+                    }
                 }
             }
         } else {
