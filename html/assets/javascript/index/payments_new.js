@@ -21,7 +21,7 @@
         async render()
         {
             var _data = await callApi({
-                methodName: "ALL_DATA",
+                methodName: "payments_new_get",
                 data: global.allData.User._id,
             });
 

@@ -198,6 +198,7 @@ var action_linker =
     "allUserGetOneSetting": allUserGetOneSetting,
     "obligations_accept_commission_put": obligations_accept_commission_put,
     "business_addpayment_for_inv": business_addpayment_for_inv,
+    "payments_new_get": payments_new_get,
 };
 
 async function business_addpayment_for_inv(socket, data, callback)
@@ -1027,52 +1028,11 @@ async function redactingProjectByAdmin(socket, data, callback)
     callback();
 }
 
-async function ALL_DATA(socket, data, callback)
+async function payments_new_get(socket, data, callback)
 {
     var _User           = await User.findOne().or([{ _id: data }, { user: data }]);
     var _Projects       = await Project.find({user: _User.user});
-    var _ProjectsActive = [];
-    var _allInvdocks    = [];
-
-    for(var _Project of _Projects)
-    {
-        var _ProjectInvs = await InvDoc.find({projectId: _Project._id});
-
-        for(_ProjectInv of _ProjectInvs)
-        {
-            _allInvdocks.push(_ProjectInv);
-        };
-
-        if(_Project.type == "active")
-        {
-            _ProjectsActive.push(_Project);
-        };
-    }
-
-    var AllData = 
-    {
-        User:               _User,
-        allAcceptProjects:  _ProjectsActive,
-        invester_data:      await investerData(),
-        obligations_data:   await obligationsData(),
-        payments_new:       await payments_new(),
-        attracted:          await Attracted(),
-    }
-
-    async function Attracted()
-    {
-        return new Promise(async (resolve,reject) =>
-        {
-            var _blockData      =
-            {
-                investers: await Payments.find({type: "investing", user: _User.user}),
-                business: await Payments.find({type: "business", user: _User.user}),
-            };
-
-            resolve(_blockData);
-        });
-    }
-
+    
     async function payments_new()
     {
         return new Promise(async (resolve,reject) =>
@@ -1123,6 +1083,56 @@ async function ALL_DATA(socket, data, callback)
                 }
                 return 0;
             })
+
+            resolve(_blockData);
+        });
+    }
+
+    callback({
+        payments_new: await payments_new(),
+    })
+}
+
+async function ALL_DATA(socket, data, callback)
+{
+    var _User           = await User.findOne().or([{ _id: data }, { user: data }]);
+    var _Projects       = await Project.find({user: _User.user});
+    var _ProjectsActive = [];
+    var _allInvdocks    = [];
+
+    for(var _Project of _Projects)
+    {
+        var _ProjectInvs = await InvDoc.find({projectId: _Project._id});
+
+        for(_ProjectInv of _ProjectInvs)
+        {
+            _allInvdocks.push(_ProjectInv);
+        };
+
+        if(_Project.type == "active")
+        {
+            _ProjectsActive.push(_Project);
+        };
+    }
+
+    var AllData = 
+    {
+        User:               _User,
+        allAcceptProjects:  _ProjectsActive,
+        invester_data:      await investerData(),
+        obligations_data:   await obligationsData(),
+        attracted:          await Attracted(),
+    }
+
+    async function Attracted()
+    {
+        return new Promise(async (resolve,reject) =>
+        {
+            var _blockData      =
+            {
+                investers: await Payments.find({type: "investing", user: _User.user}),
+                business: await Payments.find({type: "business", user: _User.user}),
+            };
 
             resolve(_blockData);
         });
