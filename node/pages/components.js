@@ -2082,7 +2082,7 @@ async function acceptInvestor(socket,data,callback)
             var RateBlock       = Number(_Project.data.rate / 365);
             var LastData        = NowToday.plus({ months: ProjectDate });
             var HowManyDays     = Interval.fromDateTimes(NowToday, LastData).length('days');
-            var EveryPayment    = Number(InvPay / 100 * RateBlock).toFixed(0);
+            var EveryPayment    = Number(InvPay / 100 * RateBlock).toFixed(2);
 
             for(var i = 0; i < Math.trunc(HowManyDays); i++)
             {
@@ -2116,7 +2116,7 @@ async function acceptInvestor(socket,data,callback)
             var RateBlock               = Number(_Project.data.rate / 12 * 3);
             var LastData                = NowToday.plus({ months: ProjectDate });
             var HowManyDays             = Interval.fromDateTimes(NowToday, LastData).length('month');
-            var EveryPayment            = Number(InvPay / 100 * RateBlock).toFixed(0);
+            var EveryPayment            = Number(InvPay / 100 * RateBlock).toFixed(2);
             var HowManyDaysRedacting    = Number(HowManyDays / 3);
 
             for(var i = 1; i <= Math.trunc(HowManyDaysRedacting); i++)
@@ -2146,7 +2146,7 @@ async function acceptInvestor(socket,data,callback)
             var RateBlock       = Number(_Project.data.rate);
             var LastData        = NowToday.plus({ months: ProjectDate });
             var HowManyDays     = Interval.fromDateTimes(NowToday, LastData).length('year');
-            var EveryPayment    = Number(InvPay / 100 * RateBlock).toFixed(0);
+            var EveryPayment    = Number(InvPay / 100 * RateBlock).toFixed(2);
 
             for(var i = 0; i < Math.trunc(HowManyDays); i++)
             {
@@ -2175,7 +2175,7 @@ async function acceptInvestor(socket,data,callback)
             var RateBlock               = Number(_Project.data.rate / 12 * 6);
             var LastData                = NowToday.plus({ months: ProjectDate });
             var HowManyDays             = Interval.fromDateTimes(NowToday, LastData).length('month');
-            var EveryPayment            = Number(InvPay / 100 * RateBlock).toFixed(0);
+            var EveryPayment            = Number(InvPay / 100 * RateBlock).toFixed(2);
             var HowManyDaysRedacting    = Number(HowManyDays / 6);
 
             for(var i = 1; i <= HowManyDaysRedacting; i++)
@@ -2203,7 +2203,7 @@ async function acceptInvestor(socket,data,callback)
         "В конце срока": async function()
         {
             var RateBlock       = Number(_Project.data.rate / 12 * ProjectDate);
-            var EveryPayment    = Number(InvPay / 100 * RateBlock).toFixed(0);
+            var EveryPayment    = Number(InvPay / 100 * RateBlock).toFixed(2);
 
             InvPays.push({
                 pay: EveryPayment,
