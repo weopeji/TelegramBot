@@ -208,6 +208,8 @@ async function alertForBusinesOfInvester(socket, data, callback)
     var _Project    = await Project.findOne({_id: _InvDoc.projectId});
     var _UserAlert  = await User.findOne({user: _Project.user});
 
+    await InvDoc.findOneAndUpdate({_id: data}, {date_alert: new Date().getTime().toString()});
+
     h.full_alert_user(_UserAlert.user, `Инвестер в проекте номер ${_Project._id} "${_Project.data.name}" напоминает вам об оплате долга за инвестицию`, "allert_of_invester", _InvDoc._id);
 }
 
