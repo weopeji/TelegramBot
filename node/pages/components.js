@@ -1032,7 +1032,7 @@ async function payments_new_get(socket, data, callback)
 {
     var _User           = await User.findOne().or([{ _id: data }, { user: data }]);
     var _Projects       = await Project.find({user: _User.user});
-    
+
     async function payments_new()
     {
         return new Promise(async (resolve,reject) =>
@@ -1057,7 +1057,7 @@ async function payments_new_get(socket, data, callback)
                     {
                         for(var invPushPay of invPush.pays)
                         {
-                            if(Number(dateNow) - Number(invPushPay.date) < 7889400000 && invPushPay.status == "wait")
+                            if(Number(invPushPay.date) < Number(dateNow) + 7889400000 && invPushPay.status == "wait")
                             {
                                 _blockData.showBlocks.push({
                                     date: Number(invPushPay.date),
