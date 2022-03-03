@@ -188,7 +188,17 @@
                         }
                     }
 
-                    headerPaysBlock.find('.headerPaysBlock_body').append(_block);
+                    if(_data.project.data.date != "Бессрочно")
+                    {
+                        headerPaysBlock.find('.headerPaysBlock_body').append(_block);
+                    }
+                    else
+                    {
+                        if(i != _data.InvDoc.pays.length - 1)
+                        {
+                            headerPaysBlock.find('.headerPaysBlock_body').append(_block);
+                        }
+                    }
                 });
 
                 headerPaysBlock.find('input[type=file]').change( async function() 
@@ -296,6 +306,7 @@
                             if(reqData == "ok")
                             {
                                 alert('Успешно!');
+                                delCookie('payment_money');
                                 location.reload();
                             }
                             else
