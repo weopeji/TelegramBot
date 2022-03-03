@@ -273,7 +273,7 @@ async function full_alert_user(_id, _text, _type, moreId)
             await funsForSecondMSG[_type]();
         };
 
-        var fat = await bot.sendMessage(_user.user, `<code>${DateFormatted(new Date().getTime().toString())}</code>\n<u><b>${_textDecoded}</b></u>`, {
+        var fat = await bot.sendMessage(_user.user, `<code>${DateFormatted(new Date().getTime().toString())}</code>\n<i><b>${_textDecoded}</b></i>`, {
             parse_mode: "HTML",
             "reply_markup": {
                 "inline_keyboard": keyboardPush,

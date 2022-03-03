@@ -188,16 +188,15 @@ async function _MainMenu(msg, close)
         {
             if(alertsMain)
             {
-                var html =`Оповещения: ⠀ `;
-                var fat = await h.send_html(msg.chat.id, html);
-                _array.push(fat.message_id);
+                var html =`Оповещения:\n\n`;
 
                 for(const element in alertsMain)
                 {
-                    const stream    = fs.createReadStream(`../users_alerts/${_User.user}/${alertsMain[element].img}`);
-                    var fat = await bot.sendPhoto(msg.from.id, stream);
-                    _array.push(fat.message_id);
-                }
+                    html += `<code>${DateFormatted(element.date)}</code>\n<i><b>${element.text}</b></i>`;
+                };
+                
+                var fat = await h.send_html(msg.chat.id, html);
+                _array.push(fat.message_id);
             }
             
             var myInvestingText     = "💰 Мои инвестиции";
