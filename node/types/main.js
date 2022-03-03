@@ -190,10 +190,8 @@ async function _MainMenu(msg, close)
             {
                 var html =`Оповещения:\n\n`;
 
-                for(const element in alertsMain)
+                for(var element of alertsMain)
                 {
-                    console.log(element);
-                    
                     html += `<code>${h.DateFormatted(element.date)}</code>\n<i><b>${element.text}</b></i>\n\n`;
                 };
                 
