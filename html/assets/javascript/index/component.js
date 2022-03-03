@@ -503,7 +503,7 @@
                 if(errorAlert)
                 {
                     headerPaysBlock.find(".headerPaysBlock_header_span_button_msg").css('display', 'flex');
-                    headerPaysBlock.find(".headerPaysBlock_header_span_button_msg").click( function() {
+                    headerPaysBlock.find(".headerPaysBlock_header_span_button_msg").click( async function() {
                         await callApi({
                             methodName: "alertForBusinesOfInvester",
                             data: _GET('id'),
