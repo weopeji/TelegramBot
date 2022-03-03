@@ -13,10 +13,7 @@ function startTimer()
 {
     console.log("Start");
 
-    const job = new CronJob('* 0-23 * * *', function() {
-        const d = new Date();
-        console.log('Every 30 minutes between 9-17:', d);
+    cron.schedule('*/1 * * * *', function(){
+        console.log('ok');
     });
-
-    job.start();
 };
