@@ -41,7 +41,7 @@ async function alertsOfWaitAcceptInvesting()
         };
     };
 
-    console.log(allAlertsProjectsId);
+    console.log(allWaitInvDocsNeed);
 
     for(var allAlertsProjectsIdBlock of allAlertsProjectsId)
     {
