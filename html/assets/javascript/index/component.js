@@ -544,7 +544,7 @@
                         <div class="headerPaysBlock_body_line">
                             <span>${i + 1}</span>
                             <span>${maxDateFormatted}</span>
-                            <span>${Math.ceil(el.pay).toString().replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')} руб ${morePay.replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')}</span>
+                            <span>${Number(el.pay).toString().replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')} руб ${morePay.replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')}</span>
                             <span class="headerPaysBlock_body_line_inv" data="${el.receipt}" data-project="${_data.InvDoc.projectId}">
                                 <span>
                                     ${_status[el.status]}
