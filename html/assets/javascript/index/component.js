@@ -204,6 +204,10 @@
                             {
                                 headerPaysBlock.find('.headerPaysBlock_body').append(_block);
                             };
+                        } 
+                        else
+                        {
+                            headerPaysBlock.find('.headerPaysBlock_body').append(_block);
                         }
                     }
                 });
