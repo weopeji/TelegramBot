@@ -1015,7 +1015,7 @@ app.post('/file_chart.io/files', (req, res) =>
                     }
                 };
 
-                fs.rename(_data.path, `/var/www/projects/${_InvDoc.projectId}/${_InvDoc.invester}_${_data.file_id}.${_data._pts.split('/')[1]}`, async function (err) {
+                fs.rename(_data.path, `/var/www/projects/${_InvDoc.projectId}/${_InvDoc.invester}_${fileIdOfCheak}.${_data._pts.split('/')[1]}`, async function (err) {
                     if (err) throw err
                     console.log('Successfully renamed - AKA moved!');
 
