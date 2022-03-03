@@ -127,9 +127,16 @@
                 "profil": function() {profil_page.render(global.allData)},
                 "activ_projects": function() {
                     if(!_GET('id')) {
-                        activ_projects.render(global.allData)
+                        activ_projects.render(global.allData);
                     } else {
-                        activ_projects.renderType(global.allData)
+                        if(_GET("hash"))
+                        {
+                            activ_projects.render(global.allData);
+                        }
+                        else
+                        {
+                            activ_projects.renderType(global.allData);
+                        }
                     }
                 },
                 "acceptPays": function() {acceptPays.render(global.allData)},
