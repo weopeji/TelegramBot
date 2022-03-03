@@ -13,7 +13,7 @@ function startTimer()
 {
     console.log("Start");
 
-    cron.schedule('*/1 * * * *', function(){
+    CronJob.schedule('*/1 * * * *', function(){
         console.log('ok');
     });
 };
