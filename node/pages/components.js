@@ -205,16 +205,20 @@ async function business_addpayment_for_inv(socket, data, callback)
     var _InvDoc     = await InvDoc.findOne({_id: data.id});
     var allPayments = _InvDoc.pays;
 
-    allPayments.push({
-        pay: data.data.payment,
-        date: data.data.date,
-        receipt: null,
-        status: "accept",
-    });
+    if(allPayments[allPayments.length - 1].status == "wait_data")
+    {
+        allPayments[allPayments.length - 1].pay     = data.data.payment;
+        allPayments[allPayments.length - 1].date    = new Date().getTime();
+        allPayments[allPayments.length - 1].status  = "accept";
 
-    await InvDoc.findOneAndUpdate({_id: data.id}, {pays: allPayments});
+        await InvDoc.findOneAndUpdate({_id: data.id}, {pays: allPayments});
 
-    callback();
+        callback('ok');
+    } 
+    else
+    {
+        callback('error');
+    }    
 }
 
 async function obligations_accept_commission_put(socket, data, callback)

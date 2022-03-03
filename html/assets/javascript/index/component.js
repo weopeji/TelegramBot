@@ -268,7 +268,7 @@
 
                         if(_payment.length > 0)
                         {
-                            await callApi({
+                            var reqData = await callApi({
                                 methodName: "business_addpayment_for_inv",
                                 data: {
                                     id: _GET('id'),
@@ -278,8 +278,15 @@
                                 },
                             });
 
-                            alert('Успешно!');
-                            location.reload();
+                            if(reqData == "ok")
+                            {
+                                alert('Успешно!');
+                                location.reload();
+                            }
+                            else
+                            {
+                                alert('Вы не добавили чек!');
+                            }
                         } 
                         else
                         {
