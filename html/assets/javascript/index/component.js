@@ -246,8 +246,8 @@
                                 </div>
                             `);
 
-                            appendPayBlock.find('.appendPayBlock_line').eq(2).find('button').html("Заменить");
-                            appendPayBlock.find('.appendPayBlock_line').eq(2).append(moreButtonBlock);
+                            appendPayBlock.find('.appendPayBlock_line').eq(1).find('button').html("Заменить");
+                            appendPayBlock.find('.appendPayBlock_line').eq(1).append(moreButtonBlock);
                         };
                     };
 
