@@ -1912,6 +1912,15 @@ html, body {
   margin-right: 20px;
 }
 
+.settingBlock_body_line.alertForLine {
+  -webkit-transition: all .5s;
+  transition: all .5s;
+}
+
+.settingBlock_body_line.alertForLine span {
+  color: red;
+}
+
 @media (max-width: 1600px) {
   .creating_page {
     width: 50%;

@@ -103,7 +103,7 @@
 
                 if(Number(element.date) <= Number(new Date().getTime().toString()))
                 {
-                    template_text.css('color', "red");
+                    template_text.attr('alertForLine', 'true');
                 }
 
                 template_text.children("span").eq(0).click( function() {
@@ -143,8 +143,13 @@
             })
 
             $('.index_page_body_data').append(settingBlock);
-        }
-    }
+
+            setInterval( function() 
+            {
+                $('.settingBlock_body_line[alertForLine="true"]').toggleClass('alertForLine');
+            }, 1000);
+        };
+    };
 
     var components = {
         payments_new,
