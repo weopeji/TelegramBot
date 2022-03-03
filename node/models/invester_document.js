@@ -10,6 +10,7 @@ const UserShema = new mongoose.Schema({
     date: String,
     urlToLastDocument: String,
     date_append: String,
+    date_alert: String,
 });
 
 mongoose.model('InvDoc', UserShema);

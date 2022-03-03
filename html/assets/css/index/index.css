@@ -1816,6 +1816,16 @@ html, body {
   bottom: calc(100% + 20px);
 }
 
+.headerPaysBlock_header_span_button_msg {
+  display: none;
+  padding: 10px 15px;
+  margin-left: 20px;
+  border: 1px solid;
+  border-radius: 8px;
+  cursor: pointer;
+  position: relative;
+}
+
 .settingBlock_body_line_obligations_btn {
   padding: 10px 20px;
   border-radius: 20px;

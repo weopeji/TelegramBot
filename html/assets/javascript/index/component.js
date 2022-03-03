@@ -443,6 +443,9 @@
                                         <p>Номер кор счета: <span>${nomer_kor}</span></p>
                                     </div>
                                 </div>
+                                <div class="headerPaysBlock_header_span_button_msg">
+                                    <span>Оповестить бизнес</span>
+                                </div>
                             </span>
                             <div class="headerPaysBlock_header_line">
                                 <span>#</span>
@@ -456,6 +459,51 @@
                         </div>
                     </div>
                 `);
+
+                var errorAlert = false;
+
+                if(typeof _data.InvDoc.date_alert != "undefined")
+                {
+                    var erroAlertPayData = true;
+
+                    for(var _payData of _data.InvDoc.pays)
+                    {
+                        if(Number(_payData.date) < Number(new Date().getTime().toString()))
+                        {
+                            erroAlertPayData = false;
+                        }
+                    }
+
+                    if(!erroAlertPayData)
+                    {
+                        if(Number(new Date().getTime().toString()) > Number(_data.InvDoc.date_alert) + 86400000)
+                        {
+                            errorAlert = true;
+                        }
+                    };
+                }
+                else
+                {
+                    var erroAlertPayData = true;
+
+                    for(var _payData of _data.InvDoc.pays)
+                    {
+                        if(Number(_payData.date) < Number(new Date().getTime().toString()))
+                        {
+                            erroAlertPayData = false;
+                        }
+                    }
+
+                    if(!erroAlertPayData)
+                    {
+                        errorAlert = true;
+                    };
+                }
+
+                if(errorAlert)
+                {
+                    headerPaysBlock.find(".headerPaysBlock_header_span_button_msg").css('display', 'flex');
+                }
 
                 headerPaysBlock.find('.headerPaysBlock_header_span_button_reqvesits').click( function() {
                     $(this).find('.settingBlock_body_line_drop_menu').fadeToggle();
