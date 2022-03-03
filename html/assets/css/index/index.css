@@ -1586,6 +1586,7 @@ html, body {
 
 .obligations_block .obligations_block_element h3 {
   color: red;
+  text-align: center;
 }
 
 .obligations_block .obligations_block_element .obligations_block_element_line {
