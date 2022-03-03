@@ -54,15 +54,21 @@
                 </div>
             `);
 
-            _data.obligations_data.showBlocks.forEach(element => {
-                var _data = element.repayData;
+            _data.obligations_data.showBlocks.forEach(element => 
+            {
+                var _data   = element.repayData;
+                var _error  = false;
 
                 if(_data)
                 {
                     _data = DateFormatted(Number(element.repayData) + 864000000);
-                } else {
-                    _data = DateFormatted(Number(new Date().getTime().toString()) + 864000000);
+                } 
+                else 
+                {
+                    _error = true;
+                    _data = "Отсутствует";
                 }
+
                 var elementBlock = $(`
                     <div class="obligations_block_element" data="${element.project._id}">
                         <h1>Проект № ${element.project._id}</h1>
@@ -89,7 +95,7 @@
                         </div>
                         <div class="obligations_block_element_line">
                             <span>Погаисть до</span>
-                            <p>${_data}</p>
+                            <p class="alert_p_alert">${_data}</p>
                         </div>
                         <div class="obligations_block_element_line">
                             <span>Договор реквезиты</span>
@@ -101,6 +107,14 @@
                     </div>
                 `);
 
+                if(!_error)
+                {
+                    if(Number(Number(element.repayData) + 864000000) < Number(new Date().getTime().toString()))
+                    {
+                        elementBlock.attr('alertForLine', 'true');
+                    }
+                }
+                
                 elementBlock.click( function() {
                     location.href = "./?page=obligations&ProjectId=" + $(this).attr('data');
                 });
@@ -109,6 +123,11 @@
             });
 
             $('.index_page_body_data').append(settingBlock);
+
+            setInterval( function() 
+            {
+                $('.obligations_block_element[alertForLine="true"]').toggleClass('alertForLine');
+            }, 1000);
         }
 
         async renderType()

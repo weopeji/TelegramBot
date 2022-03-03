@@ -1926,6 +1926,10 @@ html, body {
   color: red;
 }
 
+.obligations_block_element.alertForLine .alert_p_alert {
+  color: red;
+}
+
 @media (max-width: 1600px) {
   .creating_page {
     width: 50%;
