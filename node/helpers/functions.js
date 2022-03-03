@@ -253,6 +253,23 @@ async function full_alert_user(_id, _text, _type, moreId)
                         },
                     },
                 ]);
+            },
+            "allert_of_invester": function()
+            {
+                await User.findOneAndUpdate({user: _id}, {type: "business"});
+
+                if(moreId || moreId == 0)
+                {
+                    keyboardPush.push([
+                        {
+                            text: "Оплатить долг",
+                            login_url: {
+                                'url': `https://invester-relocation.site/?page=activ_projects&id=${moreId}`,
+                                'request_write_access': true,
+                            },
+                        },
+                    ]);
+                }
             }
         }
 

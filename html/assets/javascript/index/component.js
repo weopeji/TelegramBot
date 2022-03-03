@@ -503,6 +503,15 @@
                 if(errorAlert)
                 {
                     headerPaysBlock.find(".headerPaysBlock_header_span_button_msg").css('display', 'flex');
+                    headerPaysBlock.find(".headerPaysBlock_header_span_button_msg").click( function() {
+                        await callApi({
+                            methodName: "alertForBusinesOfInvester",
+                            data: _GET('id'),
+                        });
+
+                        alert('Успешно! Через 24 часа вы сможете оповестить бизнес еще раз!');
+                        location.reload();
+                    });
                 }
 
                 headerPaysBlock.find('.headerPaysBlock_header_span_button_reqvesits').click( function() {

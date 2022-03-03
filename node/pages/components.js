@@ -27,7 +27,7 @@ var ffmpeg                  = require('ffmpeg');
 const { resolve }           = require("path");
 const PDFMerger             = require('pdf-merger-js');
 const { Console }           = require("console");
-const { viplati_call } = require("../types/business");
+const { viplati_call }      = require("../types/business");
 var merger                  = new PDFMerger();
 
 
@@ -199,7 +199,17 @@ var action_linker =
     "obligations_accept_commission_put": obligations_accept_commission_put,
     "business_addpayment_for_inv": business_addpayment_for_inv,
     "payments_new_get": payments_new_get,
+    "alertForBusinesOfInvester": alertForBusinesOfInvester,
 };
+
+async function alertForBusinesOfInvester(socket, data, callback)
+{
+    var _InvDoc     = await InvDoc.findOne({_id: data});
+    var _Project    = await Project.findOne({_id: _InvDoc.projectId});
+    var _UserAlert  = await User.findOne({user: _Project.user});
+
+    h.full_alert_user(_UserAlert.user, `Инвестер в проекте номер ${_Project._id} "${_Project.data.name}" напоминает вам об оплате долга за инвестицию`, "allert_of_invester", _InvDoc._id);
+}
 
 async function business_addpayment_for_inv(socket, data, callback)
 {
