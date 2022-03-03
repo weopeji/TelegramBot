@@ -266,6 +266,18 @@ async function full_alert_user(_id, _text, _type, moreId)
                         },
                     ]);
                 }
+            },
+            "alertsOfWaitAcceptInvesting": async function()
+            {
+                keyboardPush.push([
+                    {
+                        text: "Поступления",
+                        login_url: {
+                            'url': `https://invester-relocation.site/?page=acceptPays`,
+                            'request_write_access': true,
+                        },
+                    },
+                ]);
             }
         }
 
