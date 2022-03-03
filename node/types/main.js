@@ -192,7 +192,7 @@ async function _MainMenu(msg, close)
 
                 for(const element in alertsMain)
                 {
-                    html += `<code>${DateFormatted(element.date)}</code>\n<i><b>${element.text}</b></i>`;
+                    html += `<code>${h.DateFormatted(element.date)}</code>\n<i><b>${element.text}</b></i>`;
                 };
                 
                 var fat = await h.send_html(msg.chat.id, html);

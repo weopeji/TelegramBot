@@ -25,6 +25,7 @@ module.exports = {
     alertAdmin,
     alertDeleteOfUserOnbot,
     token,
+    DateFormatted,
 }
 
 function privateInit(initPlagins) {
