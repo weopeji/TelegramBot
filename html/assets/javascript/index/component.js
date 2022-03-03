@@ -282,7 +282,7 @@
                                 data: {
                                     id: _GET('id'),
                                     data: {
-                                        payment: _payment,
+                                        payment: _payment.toString().replace(/\s/g, ''),
                                     },
                                 },
                             });
