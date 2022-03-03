@@ -101,7 +101,7 @@
                     </div>
                 `);
 
-                if(element.date <= new Date().getTime().toString())
+                if(Number(element.date) <= Number(new Date().getTime().toString()))
                 {
                     template_text.css('color', "red");
                 }
