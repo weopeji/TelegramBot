@@ -1,4 +1,4 @@
-var CronJob = require('cron');
+var CronJob = require('node-cron');
 
 module.exports = {
     startTimer,
