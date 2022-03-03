@@ -182,17 +182,20 @@ async function _MainMenu(msg, close)
     var alertsMain  = _User.alerts_main;
     var _array      = [];
 
-    if(alertsMain)
+    if(_User.type != "attraction")
     {
-        var html =`Оповещения:\n\n`;
-
-        for(var element of alertsMain)
+        if(alertsMain)
         {
-            html += `<code>${h.DateFormatted(element.date)}</code>\n<i><b>${element.text}</b></i>\n\n`;
-        };
-        
-        var fat = await h.send_html(msg.chat.id, html);
-        _array.push(fat.message_id);
+            var html =`Оповещения:\n\n`;
+    
+            for(var element of alertsMain)
+            {
+                html += `<code>${h.DateFormatted(element.date)}</code>\n<i><b>${element.text}</b></i>\n\n`;
+            };
+            
+            var fat = await h.send_html(msg.chat.id, html);
+            _array.push(fat.message_id);
+        }
     }
 
     var infoTypes = 
