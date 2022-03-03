@@ -180,25 +180,25 @@ async function _MainMenu(msg, close)
 {
     var _User       = await MF.find_user(msg);
     var alertsMain  = _User.alerts_main;
-    var _array = [];
+    var _array      = [];
+
+    if(alertsMain)
+    {
+        var html =`Оповещения:\n\n`;
+
+        for(var element of alertsMain)
+        {
+            html += `<code>${h.DateFormatted(element.date)}</code>\n<i><b>${element.text}</b></i>\n\n`;
+        };
+        
+        var fat = await h.send_html(msg.chat.id, html);
+        _array.push(fat.message_id);
+    }
 
     var infoTypes = 
     {
         investor: async function(msg) 
-        {
-            if(alertsMain)
-            {
-                var html =`Оповещения:\n\n`;
-
-                for(var element of alertsMain)
-                {
-                    html += `<code>${h.DateFormatted(element.date)}</code>\n<i><b>${element.text}</b></i>\n\n`;
-                };
-                
-                var fat = await h.send_html(msg.chat.id, html);
-                _array.push(fat.message_id);
-            }
-            
+        {   
             var myInvestingText     = "💰 Мои инвестиции";
             var InvestingText       = "📈 Инвестировать";
             var rekvexitionText     = "💳 Реквезиты";
@@ -282,20 +282,6 @@ async function _MainMenu(msg, close)
         },
         business: async function(msg) 
         {
-            if(alertsMain)
-            {
-                var html =`Оповещения: ⠀ `;
-                var fat = await h.send_html(msg.chat.id, html);
-                _array.push(fat.message_id);
-
-                for(const element in alertsMain)
-                {
-                    const stream    = fs.createReadStream(`../users_alerts/${_User.user}/${alertsMain[element].img}`);
-                    var fat = await bot.sendPhoto(msg.from.id, stream);
-                    _array.push(fat.message_id);
-                }
-            }
-
             var html = `<strong>${msg.from.first_name}</strong>\nдля того, чтобы разместить свое предложение для привлечения инвестиций, необходимо заполнить заявку. Нажмите кнопку "Добавить проект"\n\n`;
 
             if(typeof _User.business_msgPut != "undefined")
@@ -342,21 +328,6 @@ async function _MainMenu(msg, close)
             } else 
             {
                 var _array          = [];
-                if(alertsMain)
-                {
-                    var html =`Оповещения: ⠀ `;
-                    var fat = await h.send_html(msg.chat.id, html);
-                    _array.push(fat.message_id);
-
-                    for(const element in alertsMain)
-                    {
-                        const stream    = fs.createReadStream(`../users_alerts/${_User.user}/${alertsMain[element].img}`);
-                        var fat = await bot.sendPhoto(msg.from.id, stream);
-                        _array.push(fat.message_id);
-                    }
-
-                    await h.MA(msg, _array);
-                }
                 var reqAttraction = require("./attraction");
 
                 var funs = {
