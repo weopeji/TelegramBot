@@ -61,6 +61,34 @@
         const payments_new              = new global.Components.payments_new();
         const telegram_authorization    = new global.Components.telegram_authorization();
 
+        if(_GET("hash"))
+        {
+            if(_GET("id"))
+            {
+                var userData = 
+                {
+                    id: _GET("id"),
+                    first_name: decodeURI(_GET("first_name")),
+                    last_name: decodeURI(_GET("last_name")),
+                    username: decodeURI(_GET("username")),
+                }
+
+                if(!userData.id)
+                {
+                    window.close();
+                    return;
+                }
+                else
+                {
+                    var NeedToken = await callApi({
+                        methodName: "telegram_auth_getToken",
+                        data: userData,
+                    });
+                    setCookie("token", NeedToken);
+                }
+            }
+        }
+
         if(!userID) {
             if(!token) 
             {

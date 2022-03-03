@@ -470,7 +470,7 @@ async function actionWhere(msg)
             _User.investor_data.mail
         ) {
             var _array = [];
-            var html = `Нажмите на микшер "🎚",чтобы принять данные`;
+            var html = `Нажмите на микшер "🎛",чтобы принять данные`;
             var fat = await h.send_html(msg.from.id, html, {
                 "resize_keyboard": true,
                 "keyboard": [["Принять данные"], ["⬅️ Назад"]],
