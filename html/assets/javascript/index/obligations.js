@@ -202,6 +202,13 @@
                         template_text.find('.settingBlock_body_line_obligations_put').empty().append(buttonPut);
                     };  
                 }
+                else
+                {
+                    if(Number(Number(element.Inv.date) + 864000000) < Number(new Date().getTime().toString()))
+                    {
+                        template_text.attr('alertForLine', 'true');
+                    }
+                }
 
                 settingBlock.find('.settingBlock_body').append(template_text);
             });
@@ -230,6 +237,11 @@
             })
 
             $('.index_page_body_data').append(settingBlock);
+
+            setInterval( function() 
+            {
+                $('.settingBlock_body_line[alertForLine="true"]').toggleClass('alertForLine');
+            }, 1000);
         }
 
         async render()
