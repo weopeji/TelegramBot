@@ -211,6 +211,8 @@ async function alertForBusinesOfInvester(socket, data, callback)
     await InvDoc.findOneAndUpdate({_id: data}, {date_alert: new Date().getTime().toString()});
 
     h.full_alert_user(_UserAlert.user, `Инвестер в проекте номер ${_Project._id} "${_Project.data.name}" напоминает вам об оплате долга за инвестицию`, "allert_of_invester", _InvDoc._id);
+
+    callback();
 }
 
 async function business_addpayment_for_inv(socket, data, callback)
