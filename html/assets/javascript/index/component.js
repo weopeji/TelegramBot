@@ -241,18 +241,18 @@
                         </div>
                     `);
 
+                    appendPayBlock.find('button').eq(0).css('margin-left', 0);
                     appendPayBlock.find('button').eq(1).css('margin-left', 0);
-                    appendPayBlock.find('button').eq(2).css('margin-left', 0);
+
+                    // appendPayBlock.find('button').eq(0).click( function() {
+                    //     $(this).parent().parent().find('input[type="date"]').val(new Date().toDateInputValue());
+                    // });
 
                     appendPayBlock.find('button').eq(0).click( function() {
-                        $(this).parent().parent().find('input[type="date"]').val(new Date().toDateInputValue());
-                    });
-
-                    appendPayBlock.find('button').eq(1).click( function() {
                         $(this).parent().parent().find('input[type="file"]').trigger('click');
                     });
 
-                    appendPayBlock.find('button').eq(2).click( async function() {
+                    appendPayBlock.find('button').eq(1).click( async function() {
                         var _payment    = $(this).parent().parent().find('input[type="text"]').val();
 
                         if(_date.length > 0 && _payment.length > 0)
