@@ -2148,7 +2148,7 @@ async function acceptInvestor(socket,data,callback)
                 var drobNumber = HowManyDaysRedacting % 1;
 
                 InvPays.push({
-                    pay: EveryPayment * drobNumber,
+                    pay: Number(EveryPayment * drobNumber).toFixed(2),
                     date: LastData,
                     receipt: null,
                     status: "wait",
@@ -2177,7 +2177,7 @@ async function acceptInvestor(socket,data,callback)
                 var drobNumber = HowManyDays % 1;
 
                 InvPays.push({
-                    pay: EveryPayment * drobNumber,
+                    pay: Number(EveryPayment * drobNumber).toFixed(2),
                     date: LastData,
                     receipt: null,
                     status: "wait",
@@ -2207,7 +2207,7 @@ async function acceptInvestor(socket,data,callback)
                 var drobNumber = HowManyDaysRedacting % 1;
 
                 InvPays.push({
-                    pay: EveryPayment * drobNumber,
+                    pay: Number(EveryPayment * drobNumber).toFixed(2),
                     date: LastData,
                     receipt: null,
                     status: "wait",
