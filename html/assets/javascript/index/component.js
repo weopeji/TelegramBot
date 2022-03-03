@@ -224,11 +224,11 @@
                                 <span>Сумма инвестиции</span>
                                 <input type="text">
                             </div>
-                            <div class="appendPayBlock_line">
+                            <!--<div class="appendPayBlock_line">
                                 <span>Дата инвестиции</span>
                                 <input type="date">
                                 <button>Cегодня</button>
-                            </div>
+                            </div>-->
                             <div class="appendPayBlock_line">
                                 <span>Чек</span>
                                 <input type="file">
@@ -253,7 +253,6 @@
                     });
 
                     appendPayBlock.find('button').eq(2).click( async function() {
-                        var _date       = $(this).parent().parent().find('input[type="date"]').val();
                         var _payment    = $(this).parent().parent().find('input[type="text"]').val();
 
                         if(_date.length > 0 && _payment.length > 0)
