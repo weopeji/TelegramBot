@@ -843,13 +843,20 @@
 
                     var lastPay = 0;
 
-                    for(var payInv of element.Inv.pays)
+                    if(element.project.data.date != "Бессрочно")
                     {
-                        if(payInv.status == "wait")
+                        for(var payInv of element.Inv.pays)
                         {
-                            lastPay = payInv.pay;
-                            break;
+                            if(payInv.status == "wait")
+                            {
+                                lastPay = payInv.pay.toString().ReplaceNumber();
+                                break;
+                            }
                         }
+                    }
+                    else
+                    {
+                        lastPay = "Ожидайте выплаты";
                     }
 
                     var template_text = $(`
