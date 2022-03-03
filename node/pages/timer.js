@@ -17,6 +17,7 @@ async function alertsOfWaitAcceptInvesting()
 
     for(var allWaitInvDoc of allWaitInvDocs)
     {
+        console.log(`${Number(allWaitInvDoc.date_append) + 259200000 <= Number(new Date().getTime().toString())} ${Number(allWaitInvDoc.date_append) + 259200000} ${Number(new Date().getTime().toString())}`);
         if(Number(allWaitInvDoc.date_append) + 259200000 <= Number(new Date().getTime().toString()))
         {
             allWaitInvDocsNeed.push(allWaitInvDoc);
@@ -40,8 +41,6 @@ async function alertsOfWaitAcceptInvesting()
             allAlertsProjectsId.push(allWaitInvDocsNeedBlock.projectId);
         };
     };
-
-    console.log(allWaitInvDocsNeed);
 
     for(var allAlertsProjectsIdBlock of allAlertsProjectsId)
     {
