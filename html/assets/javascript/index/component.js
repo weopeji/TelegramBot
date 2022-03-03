@@ -236,6 +236,15 @@
                         </div>
                     `);
 
+                    appendPayBlock.find('input[type="text"]').on('keyup input', function() 
+                    {
+                        var _val = $(this).val();
+                        _val = _val.replace(/[^\d;]/g, '')
+                        _val = _val.replace(/\s/g, '');
+                        var format = String(_val).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
+                        $(this).val(format);
+                    });
+
                     if(_data.InvDoc.pays.length > 0)
                     {
                         if(_data.InvDoc.pays[_data.InvDoc.pays.length - 1].status == "wait_data")
