@@ -240,7 +240,7 @@
                         $(this).parent().parent().find('input[type="date"]').val(new Date().toDateInputValue());
                     });
 
-                    appendPayBlock.find('button').eq(1).click( function() {
+                    appendPayBlock.find('button').eq(1).click( async function() {
                         var _date       = $(this).parent().parent().find('input[type="date"]').val();
                         var _payment    = $(this).parent().parent().find('input[type="text"]').val();
 
