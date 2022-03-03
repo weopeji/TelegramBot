@@ -1892,6 +1892,26 @@ html, body {
   margin-top: 24px;
 }
 
+.appendPayBlock_line_button {
+  padding: 10px 20px;
+  border-radius: 3px;
+  cursor: pointer;
+  background: -webkit-gradient(linear, left top, right top, from(#8c80fe), color-stop(61%, #594bd3));
+  background: linear-gradient(90deg, #8c80fe 0%, #594bd3 61%);
+  color: white;
+  border: 0;
+  margin-left: 20px;
+  margin-top: 24px;
+  margin: 0;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  float: left;
+  font-size: 13px;
+  margin-top: 23px;
+  margin-right: 20px;
+}
+
 @media (max-width: 1600px) {
   .creating_page {
     width: 50%;

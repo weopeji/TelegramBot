@@ -246,6 +246,10 @@
                                 </div>
                             `);
 
+                            moreButtonBlock.click( function() {
+                                window.open(`/projects/${_data.InvDoc.projectId}/${_data.InvDoc.pays[_data.InvDoc.pays.length - 1].receipt}`, '_blank');
+                            });
+
                             appendPayBlock.find('.appendPayBlock_line').eq(1).find('button').html("Заменить");
                             appendPayBlock.find('.appendPayBlock_line').eq(1).append(moreButtonBlock);
                         };
