@@ -133,9 +133,13 @@
                     var _pay = Math.ceil(el.pay);
                     var morePay = "";
 
-                    if((i + 1) == _data.InvDoc.pays.length)
+                    if(_data.project.data.date != "Бессрочно")
                     {
-                        morePay = ` + ${_data.InvDoc.data.pay} руб.`
+                        if((i + 1) == _data.InvDoc.pays.length)
+                        {
+                            
+                            morePay = ` + ${_data.InvDoc.data.pay} руб.`
+                        }
                     }
 
                     var maxDate = new Date(el.date);
@@ -194,9 +198,12 @@
                     }
                     else
                     {
-                        if(i != _data.InvDoc.pays.length - 1)
+                        if(i == _data.InvDoc.pays.length - 1)
                         {
-                            headerPaysBlock.find('.headerPaysBlock_body').append(_block);
+                            if(_data.InvDoc.pays[i].status != "wait_data")
+                            {
+                                headerPaysBlock.find('.headerPaysBlock_body').append(_block);
+                            };
                         }
                     }
                 });
