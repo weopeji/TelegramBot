@@ -1057,17 +1057,13 @@ async function payments_new_get(socket, data, callback)
                     {
                         for(var invPushPay of invPush.pays)
                         {
-                            console.log(`${Number(invPushPay.date) < Number(dateNow) + 7889400000}  ${Number(invPushPay.date)} - ${Number(dateNow) + 7889400000}`)
-                            if(Number(invPushPay.date) < Number(dateNow) + 7889400000 && invPushPay.status == "wait")
-                            {
-                                _blockData.showBlocks.push({
-                                    date: Number(invPushPay.date),
-                                    inv: invPush,
-                                    invPay: invPushPay,
-                                    initNumberProject: initNumberProject,
-                                    InvesterOfInvs: InvesterOfInvs,
-                                });
-                            }
+                            _blockData.showBlocks.push({
+                                date: Number(invPushPay.date),
+                                inv: invPush,
+                                invPay: invPushPay,
+                                initNumberProject: initNumberProject,
+                                InvesterOfInvs: InvesterOfInvs,
+                            });
                         }
                     }
 
@@ -1084,6 +1080,8 @@ async function payments_new_get(socket, data, callback)
                 }
                 return 0;
             })
+
+            _blockData.showBlocks.slice(0, 30);
 
             resolve(_blockData);
         });
