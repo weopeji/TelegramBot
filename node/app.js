@@ -20,6 +20,7 @@ const phantom                       = require('phantom');
 const models                        = require('./models');
 const config                        = require('./config.json');
 const _data                         = require('./data.js');
+const timer                         = require('./pages/timer.js');
 
 const User                          = mongoose.model('User');
 const Project                       = mongoose.model('Project');
@@ -81,6 +82,7 @@ mongoose.connect(mongoURl, { useNewUrlParser: true, useUnifiedTopology: true })
             () => {
                 console.log(`Занят на сервере ${config.appPort} порт...`);
                 load_helpers(); 
+                timer.startTimer();
             }
         );
     })
