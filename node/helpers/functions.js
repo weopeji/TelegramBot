@@ -241,6 +241,18 @@ async function full_alert_user(_id, _text, _type, moreId)
                         },
                     },
                 ]);
+            },
+            "payment_member": function()
+            {
+                keyboardPush.push([
+                    {
+                        text: "Перейти",
+                        login_url: {
+                            'url': `https://invester-relocation.site/?page=Attracted_by_me`,
+                            'request_write_access': true,
+                        },
+                    },
+                ]);
             }
         }
 
