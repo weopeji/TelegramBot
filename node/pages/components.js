@@ -197,7 +197,25 @@ var action_linker =
     "waitInvestingsData": waitInvestingsData,
     "allUserGetOneSetting": allUserGetOneSetting,
     "obligations_accept_commission_put": obligations_accept_commission_put,
+    "business_addpayment_for_inv": business_addpayment_for_inv,
 };
+
+async function business_addpayment_for_inv(socket, data, callback)
+{
+    var _InvDoc     = await InvDoc.findOne({_id: data.id});
+    var allPayments = _InvDoc.pays;
+
+    allPayments.push({
+        pay: data.data.payment,
+        date: data.data.date,
+        receipt: null,
+        status: "accept",
+    });
+
+    await InvDoc.findOneAndUpdate({_id: data.id}, {pays: allPayments});
+
+    callback();
+}
 
 async function obligations_accept_commission_put(socket, data, callback)
 {

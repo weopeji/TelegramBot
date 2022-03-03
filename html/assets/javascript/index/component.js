@@ -246,7 +246,19 @@
 
                         if(_date.length > 0 && _payment.length > 0)
                         {
+                            await callApi({
+                                methodName: "business_addpayment_for_inv",
+                                data: {
+                                    id: _GET('id'),
+                                    data: {
+                                        date: new Date(_date).getTime().toString(),
+                                        payment: _payment,
+                                    },
+                                },
+                            });
 
+                            alert('Успешно!');
+                            location.reload();
                         } 
                         else
                         {
