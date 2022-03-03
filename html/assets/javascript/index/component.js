@@ -224,11 +224,6 @@
                                 <span>Сумма инвестиции</span>
                                 <input type="text">
                             </div>
-                            <!--<div class="appendPayBlock_line">
-                                <span>Дата инвестиции</span>
-                                <input type="date">
-                                <button>Cегодня</button>
-                            </div>-->
                             <div class="appendPayBlock_line">
                                 <span>Чек</span>
                                 <input type="file">
@@ -244,25 +239,21 @@
                     appendPayBlock.find('button').eq(0).css('margin-left', 0);
                     appendPayBlock.find('button').eq(1).css('margin-left', 0);
 
-                    // appendPayBlock.find('button').eq(0).click( function() {
-                    //     $(this).parent().parent().find('input[type="date"]').val(new Date().toDateInputValue());
-                    // });
-
                     appendPayBlock.find('button').eq(0).click( function() {
                         $(this).parent().parent().find('input[type="file"]').trigger('click');
                     });
 
-                    appendPayBlock.find('button').eq(1).click( async function() {
+                    appendPayBlock.find('button').eq(1).click( async function() 
+                    {
                         var _payment    = $(this).parent().parent().find('input[type="text"]').val();
 
-                        if(_date.length > 0 && _payment.length > 0)
+                        if(_payment.length > 0)
                         {
                             await callApi({
                                 methodName: "business_addpayment_for_inv",
                                 data: {
                                     id: _GET('id'),
                                     data: {
-                                        date: new Date(_date).getTime().toString(),
                                         payment: _payment,
                                     },
                                 },
@@ -274,8 +265,30 @@
                         else
                         {
                             alert('Введите все данные!');
-                        }
+                        };
                     });
+
+                    appendPayBlock.find('input[type="file"]').change( async function() 
+                    {
+                        var _form               = new FormData();
+                        var _url                = `${getURL()}/file_chart.io/files`;
+
+                        _form.append('_Inv',    _GET('id'));
+                        _form.append('_pts',    $(this.files)[0].type);
+                        _form.append('files',   $(this.files)[0]);
+        
+                        axios.post(_url, _form, {
+                            headers: {
+                                'Content-Type': 'multipart/form-data'
+                            },
+                        }).then(data => 
+                        {
+                            if(data.data.status == "ok") {
+                                alert("Чек прикоеплен!");
+                                location.reload();
+                            }
+                        });
+                    })
 
                     $('.index_page_body_data').append(appendPayBlock);
                 };
