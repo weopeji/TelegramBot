@@ -1584,6 +1584,10 @@ html, body {
   text-align: center;
 }
 
+.obligations_block .obligations_block_element h3 {
+  color: red;
+}
+
 .obligations_block .obligations_block_element .obligations_block_element_line {
   width: 85%;
   display: -webkit-box;

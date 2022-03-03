@@ -73,6 +73,7 @@
                     <div class="obligations_block_element" data="${element.project._id}">
                         <h1>Проект № ${element.project._id}</h1>
                         <h2>${element.project.data.name}</h2>
+                        <h3></h3>
                         <div class="obligations_block_element_line">
                             <span>Привлечено</span>
                             <p>${element.attracted.toString().ReplaceNumber()} руб</p>
@@ -112,6 +113,7 @@
                     if(Number(Number(element.repayData) + 864000000) < Number(new Date().getTime().toString()))
                     {
                         elementBlock.attr('alertForLine', 'true');
+                        elementBlock.find('h3').html('Имеется задолженость')
                     }
                 }
                 
