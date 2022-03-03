@@ -2258,6 +2258,8 @@ async function acceptInvestor(socket,data,callback)
                     },
                     date: new Date().getTime().toString(),
                 });
+
+                h.full_alert_user(_UserProject.member_b, `Вам поступил бонус за бизнес в размере ${Number(_InvDoc.data.pay) * Number(Number(_Project.payersData.commission) / 100) * Number(Number(_Project.payersData.business_commission) / 100)}`, "payment_member");
             };
         };
     };
