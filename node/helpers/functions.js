@@ -44,6 +44,16 @@ var token = function()
     return rand() + rand();
 };
 
+function DateFormatted(data)
+{
+    function pad(s, width, character) {
+        return new Array(width - s.toString().length + 1).join(character) + s;
+    }
+
+    var maxDate             = new Date(Number(data.toString()));
+    return pad(maxDate.getDate(), 2, '0') + '.' + pad(maxDate.getMonth() + 1, 2, '0') + '.' + maxDate.getFullYear();
+}
+
 async function full_alert_user(_id, _text, _type, moreId) 
 {
     var _User           = await User.findOne({user: _id});
@@ -263,7 +273,7 @@ async function full_alert_user(_id, _text, _type, moreId)
             await funsForSecondMSG[_type]();
         };
 
-        var fat = await bot.sendMessage(_user.user, _textDecoded, {
+        var fat = await bot.sendMessage(_user.user, `${DateFormatted(new Date().getTime().toString())}\n${_textDecoded}`, {
             parse_mode: "HTML",
             "reply_markup": {
                 "inline_keyboard": keyboardPush,
