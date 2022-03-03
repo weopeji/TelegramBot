@@ -995,6 +995,8 @@ app.post('/file_chart.io/files', (req, res) =>
                         else
                         {
                             _Pays.push({
+                                date: new Date().getTime().toString() + new Date().getTime().toString(),
+                                pay: 0,
                                 status: "wait_data",
                                 receipt: `${_InvDoc.invester}_${_Pays.length - 1}.${_data._pts.split('/')[1]}`,
                             });
