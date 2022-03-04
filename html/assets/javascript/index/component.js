@@ -754,7 +754,7 @@
                                         </div>
                                         <div class="renderCloseBlockBusiness_block_text_line_drop_menu_line">
                                             <input type="checkbox" name="" id="">
-                                            <span>Не верна cумма</span>
+                                            <span>Не верен чек</span>
                                         </div>
                                     </div>
                                 </div>
