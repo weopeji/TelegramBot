@@ -92,6 +92,7 @@ var action_linker =
     "telegram_auth_more": telegram_auth_more,
     "telegram_auth_getToken": telegram_auth_getToken,
     "telegram_auth_recomendation": telegram_auth_recomendation,
+    "telegram_recomendation_cabinet": telegram_recomendation_cabinet,
 
     // chats
     "getChats": getChats,
@@ -201,6 +202,18 @@ var action_linker =
     "payments_new_get": payments_new_get,
     "alertForBusinesOfInvester": alertForBusinesOfInvester,
 };
+
+async function telegram_recomendation_cabinet(socket, data, callback)
+{
+    var _User           = await User.findOne({_id: data.userId});
+
+    _app.defaultShow({
+        from: {id: _User.user},
+        chat: {id: _User.user},
+    });
+
+    callback();
+}
 
 async function alertForBusinesOfInvester(socket, data, callback)
 {

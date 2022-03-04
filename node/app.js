@@ -287,9 +287,15 @@ async function recomendationFunctionPush(msg, userId)
     await attraction_page.url(msg);
 }
 
+async function defaultShow(msg)
+{
+    main_page._CreatorFUN(msg);
+}
+
 module.exports = {
     defaultShowProject,
     recomendationFunctionPush,
+    defaultShow,
 }
 
 bot.on('message', async (msg) => 

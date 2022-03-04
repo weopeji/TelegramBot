@@ -2234,14 +2234,14 @@
                         <span>${element.project._id}</span>
                         <span>${element.project.data.name}</span>
                         <span>${element.project._id}/${element.number}</span>
-                        <span>${element.Inv.data.pay}</span>
+                        <span>${element.Inv.data.pay} ₽</span>
                         <span>Ожидает подтверждения</span>
                     </div>
                 `);
 
                 template_text.click( function () {
                     location.href = `/?page=activ_projects&id=${$(this).attr('data-more')}`;
-                })
+                });
 
                 settingBlock.find('.settingBlock_body').append(template_text);
 

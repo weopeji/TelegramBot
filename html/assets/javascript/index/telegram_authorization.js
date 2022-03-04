@@ -189,6 +189,13 @@
                     {
                         var protoUrl    = "tg:\/\/resolve?domain=invester_official_bot";
 
+                        callApi({
+                            methodName: "telegram_recomendation_cabinet",
+                            data: {
+                                userId: _token,
+                            },
+                        });
+
                         setTimeout( async function() {
                             window.location = protoUrl;
                             resolve();
