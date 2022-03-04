@@ -1979,6 +1979,7 @@ html, body {
   height: 400px;
   background-color: #182037;
   padding: 30px;
+  position: relative;
 }
 
 .renderCloseBlockBusiness_block h1 {
@@ -2062,6 +2063,39 @@ html, body {
 
 .renderCloseBlockBusiness_block_text_line.selected .renderCloseBlockBusiness_block_text_line_circule_block_row {
   display: block;
+}
+
+.renderCloseBlockBusiness_block_input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+}
+
+.renderCloseBlockBusiness_block_input input {
+  background-color: #0E1122;
+  border: 0;
+  width: calc(100% - 200px);
+  padding: 15px;
+  border-radius: 4px;
+  color: white;
+}
+
+.renderCloseBlockBusiness_block_input_button {
+  width: 115px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #bf3636;
+  cursor: pointer;
 }
 
 @media (max-width: 1600px) {
