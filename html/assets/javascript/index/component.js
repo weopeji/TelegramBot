@@ -159,7 +159,7 @@
 
                     if(Number(Number(el.date) + 864000000) < Number(new Date().getTime().toString()))
                     {
-                        template_text.attr('alertForLine', 'true');
+                        _block.attr('alertForLine', 'true');
                     };
 
                     if(typeof el.statusAccept != "undefined")
