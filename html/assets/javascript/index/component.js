@@ -727,7 +727,7 @@
                         <div class="renderCloseBlockBusiness_block">
                             <h1>Выберите причину отказа</h1>
                             <div class="renderCloseBlockBusiness_block_text">
-                                <div class="renderCloseBlockBusiness_block_text_line">
+                                <div class="renderCloseBlockBusiness_block_text_line" data="spam">
                                     <div class="renderCloseBlockBusiness_block_text_line_circule">
                                         <div class="renderCloseBlockBusiness_block_text_line_circule_block">
                                             <div class="renderCloseBlockBusiness_block_text_line_circule_block_row"></div>
@@ -736,7 +736,7 @@
                                     </div>
                                     
                                 </div>
-                                <div class="renderCloseBlockBusiness_block_text_line">
+                                <div class="renderCloseBlockBusiness_block_text_line" data="not_correct">
                                     <div class="renderCloseBlockBusiness_block_text_line_circule">
                                         <div class="renderCloseBlockBusiness_block_text_line_circule_block">
                                             <div class="renderCloseBlockBusiness_block_text_line_circule_block_row"></div>
@@ -745,15 +745,15 @@
                                     </div>
                                     <div class="renderCloseBlockBusiness_block_text_line_drop_menu">
                                         <div class="renderCloseBlockBusiness_block_text_line_drop_menu_line">
-                                            <input type="checkbox" name="" id="">
+                                            <input type="checkbox" name="" id="notCorrect_date">
                                             <span>Не верна дата</span>
                                         </div>
                                         <div class="renderCloseBlockBusiness_block_text_line_drop_menu_line">
-                                            <input type="checkbox" name="" id="">
+                                            <input type="checkbox" name="" id="notCorrect_pay">
                                             <span>Не верна cумма</span>
                                         </div>
                                         <div class="renderCloseBlockBusiness_block_text_line_drop_menu_line">
-                                            <input type="checkbox" name="" id="">
+                                            <input type="checkbox" name="" id="notCorrect_photo">
                                             <span>Не верен чек</span>
                                         </div>
                                     </div>
@@ -781,9 +781,28 @@
                     note({
                         content: "Вы должны выбрать одну из причин отказа",
                         type: "info",
-                        time: 15
+                        time: 5
                     });
-                }
+                } 
+                else
+                {
+                    if($('.renderCloseBlockBusiness_block_text_line.selected').attr('data') == "not_correct")
+                    {
+                        if(
+                            $('#notCorrect_date').attr("checked") != 'checked'  ||
+                            $('#notCorrect_pay').attr("checked") != 'checked'   ||
+                            $('#notCorrect_photo').attr("checked") != 'checked'
+                        ){
+                            note({
+                                content: "Вы должны выбрать хотябы один из вариантов",
+                                type: "info",
+                                time: 5
+                            });
+
+                            return;
+                        };
+                    };
+                };
             });
 
             $('body').append(template_text);
