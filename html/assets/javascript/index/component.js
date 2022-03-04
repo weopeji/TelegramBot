@@ -729,17 +729,34 @@
                             <div class="renderCloseBlockBusiness_block_text">
                                 <div class="renderCloseBlockBusiness_block_text_line">
                                     <div class="renderCloseBlockBusiness_block_text_line_circule">
-                                        <div class="renderCloseBlockBusiness_block_text_line_circule_block"></div>
+                                        <div class="renderCloseBlockBusiness_block_text_line_circule_block">
+                                            <div class="renderCloseBlockBusiness_block_text_line_circule_block_row"></div>
+                                        </div>
                                         <p>Данные инвестиции не действительны</p>
                                     </div>
                                     
                                 </div>
                                 <div class="renderCloseBlockBusiness_block_text_line">
                                     <div class="renderCloseBlockBusiness_block_text_line_circule">
-                                        <div class="renderCloseBlockBusiness_block_text_line_circule_block"></div>
+                                        <div class="renderCloseBlockBusiness_block_text_line_circule_block">
+                                            <div class="renderCloseBlockBusiness_block_text_line_circule_block_row"></div>
+                                        </div>
                                         <p>Данные инвестиции не верны</p>
                                     </div>
-                                    
+                                    <div class="renderCloseBlockBusiness_block_text_line_drop_menu">
+                                        <div class="renderCloseBlockBusiness_block_text_line_drop_menu_line">
+                                            <input type="checkbox" name="" id="">
+                                            <span>Не верна дата</span>
+                                        </div>
+                                        <div class="renderCloseBlockBusiness_block_text_line_drop_menu_line">
+                                            <input type="checkbox" name="" id="">
+                                            <span>Не верна cумма</span>
+                                        </div>
+                                        <div class="renderCloseBlockBusiness_block_text_line_drop_menu_line">
+                                            <input type="checkbox" name="" id="">
+                                            <span>Не верна cумма</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
