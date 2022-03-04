@@ -2052,6 +2052,18 @@ html, body {
   display: none;
 }
 
+.renderCloseBlockBusiness_block_text_line {
+  cursor: pointer;
+}
+
+.renderCloseBlockBusiness_block_text_line.selected .renderCloseBlockBusiness_block_text_line_drop_menu {
+  display: block;
+}
+
+.renderCloseBlockBusiness_block_text_line.selected .renderCloseBlockBusiness_block_text_line_circule_block_row {
+  display: block;
+}
+
 @media (max-width: 1600px) {
   .creating_page {
     width: 50%;
