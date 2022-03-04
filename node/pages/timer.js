@@ -53,8 +53,8 @@ async function alertsOfWaitAcceptInvesting()
 async function alertOfCommissionBusines()
 {
     var allAcceptInvDocs        = await InvDoc.find({status: "accept"});
-    var allWaitInvDocsNeed  = [];
-    var allAlertsProjectsId = [];
+    var allWaitInvDocsNeed      = [];
+    var allAlertsProjectsId     = [];
 
     for(var allAcceptInvDoc of allAcceptInvDocs)
     {
@@ -101,6 +101,55 @@ async function alertOfCommissionBusines()
     };
 };
 
+async function alertOfWaitPaynBusines()
+{
+    var allAcceptInvDocs        = await InvDoc.find({status: "accept"});
+    var allWaitInvDocsNeed      = [];
+
+    for(var allAcceptInvDoc of allAcceptInvDocs)
+    {
+        var _error = false;
+
+        for(var _PayOfInv of allAcceptInvDoc.pays)
+        {
+            if(Number(_PayOfInv.date) <= Number(new Date().getTime().toString()))
+            {
+                _error = true;
+            };
+        };
+
+        if(_error)
+        {
+            allWaitInvDocsNeed.push(allAcceptInvDoc);
+        };
+    };
+
+    for(var allWaitInvDocsNeedBlock of allWaitInvDocsNeed)
+    {
+        var _error = false;
+
+        for(var allAlertsProjectsIdBlock of allAlertsProjectsId)
+        {
+            if(allAlertsProjectsIdBlock == allWaitInvDocsNeedBlock.projectId)
+            {
+                _error = true;
+            };
+        };
+
+        if(!_error)
+        {
+            allAlertsProjectsId.push(allWaitInvDocsNeedBlock.projectId);
+        };
+    };
+
+    for(var allAlertsProjectsIdBlock of allAlertsProjectsId)
+    {
+        var _Project    = await Project.findOne({_id: allAlertsProjectsIdBlock});
+
+        h.full_alert_user(_Project.user, `Время оплаты выплаты прошло! Оплатите выплату за инвестицию по проекту ${_Project._id} "${_Project.data.name}"`, "alertOfWaitPaynBusines");
+    };
+};
+
 function startTimer()
 {
     console.log("Start");
@@ -116,4 +165,8 @@ function startTimer()
     // CronJob.schedule('*/20 * * * * *', async function() {
     //     alertOfCommissionBusines();
     // });
+
+    CronJob.schedule('*/20 * * * * *', async function() {
+        alertOfWaitPaynBusines();
+    });
 };
