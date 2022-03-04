@@ -1082,9 +1082,13 @@
                 {
                     timeText = `осталось ${Number(needMiliseconds.hours / 24).toFixed(0)} дня и ${Number(needMiliseconds.hours % 24)} ч`;
                 }
-                else if(needMiliseconds.hours < 24 && needMiliseconds.hours >= 1)
+                else if(needMiliseconds.hours < 24 && needMiliseconds.hours >= 0)
                 {
                     timeText = `осталось ${needMiliseconds.hours} ч`;
+                } 
+                else
+                {
+                    timeText = `Просрочено`;
                 }
 
                 var template_text = $(`
@@ -1094,7 +1098,7 @@
                         <span>${element.project.data.name}</span>
                         <span>${element.Inv.data.pay.toString().ReplaceNumber()} руб</span>
                         <span>${element.Inv.invester}</span>
-                        <span></span>
+                        <span>${timeText}</span>
                         <span>
                             <span class="settingBlock_wait settingBlock_block settingBlock_accept" data="${element.Inv.invester}">Открыть</span>
                         </span>
@@ -1442,19 +1446,20 @@
                             $('.index_page_menu_block_line[data="Attracted_by_me"]').addClass('alerts');
                         }
                     })
-                }
+                };
     
                 if(_User.alert_msgs)
                 {
                     $('.index_page_menu_block_line[data="chats"] .index_page_menu_block_line_alert i').css('display', 'flex');
-                }
-            }
+                };
+            };
 
             return _User;
         }
     }
 
-    class chats {
+    class chats 
+    {
         constructor() {};
 
         async render(data) 
