@@ -1080,7 +1080,7 @@
 
                 if(needMiliseconds.hours >= 24)
                 {
-                    timeText = `осталось ${Number(needMiliseconds.hours / 24).toFixed(0)} дня и ${Number(needMiliseconds.hours % 24)} ч`;
+                    timeText = `осталось ${parseInt(Number(needMiliseconds.hours / 24))} дня и ${Number(needMiliseconds.hours % 24)} ч`;
                 }
                 else if(needMiliseconds.hours < 24 && needMiliseconds.hours >= 0)
                 {
