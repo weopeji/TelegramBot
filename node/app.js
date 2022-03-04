@@ -289,7 +289,7 @@ async function recomendationFunctionPush(msg, userId)
 
 async function defaultShow(msg)
 {
-    main_page._CreatorFUN(msg);
+    await main_page._CreatorFUN(msg);
 }
 
 module.exports = {

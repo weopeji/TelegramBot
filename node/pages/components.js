@@ -207,7 +207,7 @@ async function telegram_recomendation_cabinet(socket, data, callback)
 {
     var _User           = await User.findOne({_id: data.userId});
 
-    _app.defaultShow({
+    await _app.defaultShow({
         from: {id: _User.user},
         chat: {id: _User.user},
     });
