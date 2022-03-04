@@ -163,11 +163,11 @@ function startTimer()
     //     alertsOfWaitAcceptInvesting();
     // });
 
-    CronJob.schedule('*/20 * * * * *', async function() {
-        alertOfCommissionBusines();
-    });
-
     // CronJob.schedule('*/20 * * * * *', async function() {
-    //     alertOfWaitPaynBusines();
+    //     alertOfCommissionBusines();
     // });
+
+    CronJob.schedule('*/20 * * * * *', async function() {
+        alertOfWaitPaynBusines();
+    });
 };
