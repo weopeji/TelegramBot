@@ -788,15 +788,18 @@
                 {
                     if($('.renderCloseBlockBusiness_block_text_line.selected').attr('data') == "not_correct")
                     {
-                        console.log($('#notCorrect_date').attr("checked"));
-                        console.log($('#notCorrect_pay').attr("checked"));
-                        console.log($('#notCorrect_photo').attr("checked"));
+                        var _errorCheacked = true;
 
                         if(
-                            $('#notCorrect_date').attr("checked") != 'checked'  ||
-                            $('#notCorrect_pay').attr("checked") != 'checked'   ||
-                            $('#notCorrect_photo').attr("checked") != 'checked'
+                            $('#notCorrect_date').is(':checked')  ||
+                            $('#notCorrect_pay').is(':checked')   ||
+                            $('#notCorrect_photo').is(':checked')
                         ){
+                            _errorCheacked = false;
+                        };
+
+                        if(_errorCheacked)
+                        {
                             note({
                                 content: "Вы должны выбрать хотябы один из вариантов",
                                 type: "info",
@@ -804,7 +807,7 @@
                             });
 
                             return;
-                        };
+                        }
                     };
                 };
             });
