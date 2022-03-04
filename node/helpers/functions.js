@@ -285,7 +285,7 @@ async function full_alert_user(_id, _text, _type, moreId)
                     {
                         text: "Перейти",
                         login_url: {
-                            'url': `https://invester-relocation.site/?page=acceptPays`,
+                            'url': `https://invester-relocation.site/?page=obligations`,
                             'request_write_access': true,
                         },
                     },
