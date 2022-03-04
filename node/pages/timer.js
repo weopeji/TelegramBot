@@ -105,6 +105,7 @@ async function alertOfWaitPaynBusines()
 {
     var allAcceptInvDocs        = await InvDoc.find({status: "accept"});
     var allWaitInvDocsNeed      = [];
+    var allAlertsProjectsId     = [];
 
     for(var allAcceptInvDoc of allAcceptInvDocs)
     {
