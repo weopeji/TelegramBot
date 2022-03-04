@@ -157,10 +157,13 @@
                         </div>
                     `);
 
-                    if(Number(el.date) <= Number(new Date().getTime().toString()))
+                    if(el.status != "accept")
                     {
-                        _block.attr('alertForLine', 'true');
-                    };
+                        if(Number(el.date) <= Number(new Date().getTime().toString()))
+                        {
+                            _block.attr('alertForLine', 'true');
+                        };
+                    }
 
                     if(typeof el.statusAccept != "undefined")
                     {
@@ -552,7 +555,6 @@
                             morePay = ` + ${_data.InvDoc.data.pay} руб.`
                         }
                     }
-                    
                 
                     var _block = $(`
                         <div class="headerPaysBlock_body_line">
@@ -567,14 +569,16 @@
                         </div>
                     `);
 
-                    if(Number(el.date) <= Number(new Date().getTime().toString()))
-                    {
-                        _block.addClass('alertForLineBlock');
-                    };
-
+                    
                     if(el.status == "accept")
                     {
                         _block.find(".headerPaysBlock_body_line_inv").children().css("background", "rgb(80, 200, 120)");
+                    } else
+                    {
+                        if(Number(el.date) <= Number(new Date().getTime().toString()))
+                        {
+                            _block.addClass('alertForLineBlock');
+                        };
                     }
 
                     headerPaysBlock.find('.headerPaysBlock_body').append(_block);
