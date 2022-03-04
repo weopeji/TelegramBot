@@ -41,3 +41,9 @@ for(var i = 0; i < Number(HowManyDays); i++)
 {
    console.log(i);
 }
+
+note({
+    content: "Something going <b>wrong</b>",
+    type: "info" "error",
+    time: 15
+});

@@ -775,6 +775,17 @@
                 $(this).addClass('selected');
             });
 
+            template_text.find('.renderCloseBlockBusiness_block_input_button').click( function() {
+                if(!$('.renderCloseBlockBusiness_block_text_line').hasClass('selected'))
+                {
+                    note({
+                        content: "Вы должны выбрать одну из причин отказа",
+                        type: "info",
+                        time: 15
+                    });
+                }
+            });
+
             $('body').append(template_text);
         }
 
