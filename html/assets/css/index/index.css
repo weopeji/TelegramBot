@@ -1978,10 +1978,39 @@ html, body {
   width: 600px;
   height: 400px;
   background-color: #182037;
+  padding: 30px;
+}
+
+.renderCloseBlockBusiness_block h1 {
+  color: #9BAAD9;
+  font-size: 20px;
+  padding: 0;
+  margin: 0;
+  font-weight: 400;
 }
 
 .renderCloseBlockBusiness_block_text {
   width: 100%;
+}
+
+.renderCloseBlockBusiness_block_text_line_circule_block {
+  width: 30px;
+  height: 30px;
+  border: 4px solid #4c51d6;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.renderCloseBlockBusiness_block_text_line_circule {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 20px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 18px;
+  color: #d9dff3;
 }
 
 @media (max-width: 1600px) {
