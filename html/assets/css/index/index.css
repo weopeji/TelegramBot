@@ -1963,11 +1963,20 @@ html, body {
   height: 100%;
   position: relative;
   background-color: rgba(0, 0, 0, 0.4);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .renderCloseBlockBusiness_block {
-  width: 400px;
-  height: 200px;
+  width: 600px;
+  height: 400px;
   background-color: #182037;
 }
 
