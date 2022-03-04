@@ -611,7 +611,8 @@
 
             console.log(_data);
 
-            var _dateText = "Ожидание";
+            var _dateText   = "Ожидание";
+            var _this       = this;
 
             if(_data.InvDoc.date)
             {
@@ -707,14 +708,30 @@
 
             $('.remove_block_tap').click( async function () 
             {
-                var acceptInvestor = await callApi({
-                    methodName: "removePayInvestor",
-                    data: _data.invester.user,
-                });
+                _this.renderCloseBlock();
+                // var acceptInvestor = await callApi({
+                //     methodName: "removePayInvestor",
+                //     data: _data.invester.user,
+                // });
 
-                alert('Отказано!');
-                location.reload();
+                // alert('Отказано!');
+                // location.reload();
             })
+        }
+
+        async renderCloseBlock()
+        {
+            var template_text = $(`
+                <div class="renderCloseBlockBusiness">
+                    <div class="renderCloseBlockBusiness_row">
+                        <div class="renderCloseBlockBusiness_block">
+                            
+                        </div>
+                    </div>
+                </div>
+            `);
+
+            $('body').append(template_text);
         }
 
         async render(allData) 
