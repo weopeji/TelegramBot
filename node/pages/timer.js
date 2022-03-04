@@ -167,7 +167,7 @@ function startTimer()
     //     alertOfCommissionBusines();
     // });
 
-    CronJob.schedule('*/20 * * * * *', async function() {
-        alertOfWaitPaynBusines();
-    });
+    // CronJob.schedule('*/20 * * * * *', async function() {
+    //     alertOfWaitPaynBusines();
+    // });
 };
