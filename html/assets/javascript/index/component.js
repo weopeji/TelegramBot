@@ -773,7 +773,7 @@
             template_text.find('.renderCloseBlockBusiness_block_text_line').click( function() {
                 $('.renderCloseBlockBusiness_block_text_line').removeClass('selected');
                 $(this).addClass('selected');
-            })
+            });
 
             $('body').append(template_text);
         }
