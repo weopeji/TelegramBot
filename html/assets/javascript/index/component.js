@@ -732,7 +732,7 @@
                                         <div class="renderCloseBlockBusiness_block_text_line_circule_block">
                                             <div class="renderCloseBlockBusiness_block_text_line_circule_block_row"></div>
                                         </div>
-                                        <p>Данные инвестиции не действительны</p>
+                                        <p>Спам</p>
                                     </div>
                                     
                                 </div>
