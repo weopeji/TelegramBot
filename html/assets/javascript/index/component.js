@@ -157,7 +157,7 @@
                         </div>
                     `);
 
-                    if(Number(Number(el.date) + 864000000) < Number(new Date().getTime().toString()))
+                    if(Number(el.date) <= Number(new Date().getTime().toString()))
                     {
                         _block.attr('alertForLine', 'true');
                     };
@@ -566,6 +566,11 @@
                             </span>
                         </div>
                     `);
+
+                    if(Number(el.date) <= Number(new Date().getTime().toString()))
+                    {
+                        _block.addClass('alertForLineBlock');
+                    };
 
                     if(el.status == "accept")
                     {
