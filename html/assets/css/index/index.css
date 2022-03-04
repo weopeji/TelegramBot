@@ -1980,6 +1980,10 @@ html, body {
   background-color: #182037;
 }
 
+.renderCloseBlockBusiness_block_text {
+  width: 100%;
+}
+
 @media (max-width: 1600px) {
   .creating_page {
     width: 50%;

@@ -725,7 +725,17 @@
                 <div class="renderCloseBlockBusiness">
                     <div class="renderCloseBlockBusiness_row">
                         <div class="renderCloseBlockBusiness_block">
-                            
+                            <h1>Выберите причину отказа</h1>
+                            <div class="renderCloseBlockBusiness_block_text">
+                                <div class="renderCloseBlockBusiness_block_text_line">
+                                    <div class="renderCloseBlockBusiness_block_text_line_circule"></div>
+                                    <p>Данные инвестиции не действительны</p>
+                                </div>
+                                <div class="renderCloseBlockBusiness_block_text_line">
+                                    <div class="renderCloseBlockBusiness_block_text_line_circule"></div>
+                                    <p>Данные инвестиции не верны</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
