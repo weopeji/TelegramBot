@@ -764,6 +764,10 @@
                 </div>
             `);
 
+            template_text.click( function() {
+                
+            })
+
             $('body').append(template_text);
         }
 
