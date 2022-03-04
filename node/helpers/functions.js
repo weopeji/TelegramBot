@@ -293,18 +293,15 @@ async function full_alert_user(_id, _text, _type, moreId)
             },
             "alertOfWaitPaynBusines": async function()
             {
-                if(moreId || moreId == 0)
-                {
-                    keyboardPush.push([
-                        {
-                            text: "Перейти",
-                            login_url: {
-                                'url': `https://invester-relocation.site/?page=activ_projects&id=${moreId}`,
-                                'request_write_access': true,
-                            },
+                keyboardPush.push([
+                    {
+                        text: "Перейти",
+                        login_url: {
+                            'url': `https://invester-relocation.site/?page=myProjects`,
+                            'request_write_access': true,
                         },
-                    ]);
-                }
+                    },
+                ]);
             },
         };
 
