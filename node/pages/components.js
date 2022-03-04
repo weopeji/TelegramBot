@@ -205,7 +205,7 @@ var action_linker =
 
 async function telegram_recomendation_cabinet(socket, data, callback)
 {
-    var _User           = await User.findOne({_id: data.userId});
+    var _User = await User.findOne({_id: data.userId});
 
     await _app.defaultShow({
         from: {id: _User.user},
