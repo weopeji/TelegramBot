@@ -788,6 +788,10 @@
                 {
                     if($('.renderCloseBlockBusiness_block_text_line.selected').attr('data') == "not_correct")
                     {
+                        console.log($('#notCorrect_date').attr("checked"));
+                        console.log($('#notCorrect_pay').attr("checked"));
+                        console.log($('#notCorrect_photo').attr("checked"));
+
                         if(
                             $('#notCorrect_date').attr("checked") != 'checked'  ||
                             $('#notCorrect_pay').attr("checked") != 'checked'   ||
