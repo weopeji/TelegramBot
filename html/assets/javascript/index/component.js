@@ -759,6 +759,12 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="renderCloseBlockBusiness_block_input">
+                                <input type="text">
+                                <div class="renderCloseBlockBusiness_block_input_button">
+                                    <span>Отказать</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
