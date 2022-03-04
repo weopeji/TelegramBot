@@ -406,7 +406,7 @@
                 <span>${_data.project.data.name}</span>
                 <p>business</p>
                 <div class="info_active_block_massage_button">
-                    <span>Открыть спор и перейти к диалогу</span>
+                    <span>Перейти к диалогу</span>
                 </div>
             `);
 
