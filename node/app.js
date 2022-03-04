@@ -289,6 +289,7 @@ async function recomendationFunctionPush(msg, userId)
 
 async function defaultShow(msg)
 {
+    console.log('ok');
     await main_page._CreatorFUN(msg);
 }
 
