@@ -586,10 +586,13 @@
                     headerPaysBlock.find('.headerPaysBlock_body').append(_block);
                 });
 
-                headerPaysBlock.find('.headerPaysBlock_body_line_inv').click( function() {
-                    window.open(`/projects/${$(this).attr('data-project')}/${$(this).attr('data')}` , '_blank');
-                })
-
+                if(el.status == "accept")
+                {
+                    headerPaysBlock.find('.headerPaysBlock_body_line_inv').click( function() {
+                        window.open(`/projects/${$(this).attr('data-project')}/${$(this).attr('data')}` , '_blank');
+                    })
+                }
+                
                 $('.index_page_body_data').append(headerPaysBlock);
             };
         };
