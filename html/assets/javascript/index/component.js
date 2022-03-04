@@ -1060,8 +1060,10 @@
                         <div class="settingBlock_header_line">
                             <span>#</span>
                             <span>Номер проекта</span>
+                            <span>Название проекта</span>
                             <span>Сумма инвестиции</span>
                             <span>Инвестор ID</span>
+                            <span>Оставшееся время</span>
                             <span>Кнопка</span>
                         </div>
                     </div>
@@ -1071,30 +1073,42 @@
                 </div>
             `);
 
-            _data.forEach(function(element, i) {
-                var _status = {
-                    "wait": `
-                        <span class="settingBlock_wait settingBlock_block settingBlock_accept" data="${element.invester}">Открыть</span>
-                    `,
+            _data.forEach(function(element, i) 
+            {
+                var needMiliseconds = getTimeRemaining(element.Inv.date_append.toString());
+                var timeText        = "";
+
+                if(needMiliseconds.hours >= 24)
+                {
+                    timeText = `осталось ${Number(needMiliseconds.hours / 24).toFixed(0)} дня и ${Number(needMiliseconds.hours % 24)} ч`;
                 }
-                var template_text = `
-                    <div class="settingBlock_body_line" data="${element.invester}"  data_more="${element._id}">
+                else if(needMiliseconds.hours < 24 && needMiliseconds.hours >= 1)
+                {
+                    timeText = `осталось ${needMiliseconds.hours} ч`;
+                }
+
+                var template_text = $(`
+                    <div class="settingBlock_body_line" data="${element.Inv.invester}"  data_more="${element.Inv._id}">
                         <span>${i + 1}</span>
-                        <span>${element.projectId}</span>
-                        <span>${element.data.pay.toString().ReplaceNumber()} руб</span>
-                        <span>${element.invester}</span>
-                        <span>${_status[element.status]}</span>
+                        <span>${element.Inv.projectId}</span>
+                        <span>${element.project.data.name}</span>
+                        <span>${element.Inv.data.pay.toString().ReplaceNumber()} руб</span>
+                        <span>${element.Inv.invester}</span>
+                        <span></span>
+                        <span>
+                            <span class="settingBlock_wait settingBlock_block settingBlock_accept" data="${element.Inv.invester}">Открыть</span>
+                        </span>
                     </div>
-                `;
+                `);
 
                 settingBlock.find('.settingBlock_body').append(template_text);
-            })
+            });
 
             $('.index_page_body_data').append(settingBlock);
 
             $('.settingBlock_body_line').click( function () {
                 location.href = `/?page=activ_projects&id=${$(this).attr('data_more')}`;
-            })
+            });
         }
     }
 

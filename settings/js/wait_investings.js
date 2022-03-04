@@ -190,10 +190,6 @@
                 {
                     userLine.find('.timerForwaitInvestingsData').html(`осталось ${needMiliseconds.hours} ч`);
                     userLine.find('.timerForwaitInvestingsData').css('color', 'red');
-
-                    setInterval( function() {
-
-                    }, 1000);
                 }
 
                 userLine.children('span').eq(4).click(async function() {

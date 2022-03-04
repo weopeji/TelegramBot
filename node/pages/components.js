@@ -2305,37 +2305,22 @@ async function notAcceptInvesting(socket,data,callback)
 {
     var _User           = await User.findOne({_id: data});
     var allProjects     = await Project.find({user: _User.user});
+    var allInvsOfPush   = [];
 
-    var _arrayProjects  = [];
-    var allInv          = [];
-    var _arrayAllInvs   = [];
-    var trueInvs        = [];
+    for(var _Project of allProjects) 
+    {
+        var InvDocs = await InvDoc.find({projectId: _Project._id, status: "wait"});
 
-    allProjects.forEach(function(project) {
-        _arrayProjects.push(project._id);
-    });
+        for(_InvOfFind of InvDocs)
+        {
+            allInvsOfPush.push({
+                Inv: _InvOfFind,
+                project: _Project,
+            });
+        };
+    };
 
-    for (const value of _arrayProjects) {
-        var InvDocs = await InvDoc.find({projectId: value});
-        if(InvDocs.length > 0) {
-            allInv.push(InvDocs);
-        }
-    }
-
-    allInv.forEach(el => {
-        el.forEach(el2 => {
-            _arrayAllInvs.push(el2);
-        })
-    });
-
-    _arrayAllInvs.forEach(element => {
-        if(element.status == "wait") {
-            trueInvs.push(element);
-        }
-    });
-
-    callback(trueInvs);
-   
+    callback(allInvsOfPush);
 }
 
 async function getInvestorsProject(socket,data,callback) {
