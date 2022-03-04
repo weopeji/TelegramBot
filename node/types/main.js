@@ -289,7 +289,7 @@ async function _MainMenu(msg, close)
 
             if(typeof _User.business_msgPut != "undefined")
             {
-                html = `<strong>${msg.from.first_name}</strong>\nВы находитесь в главном меню бизнеса!`;
+                html = `<strong>${_User.first_name}</strong>\nВы находитесь в главном меню бизнеса!`;
             } else
             {
                 await User.findOneAndUpdate({_id: _User._id}, {business_msgPut: "true"});
