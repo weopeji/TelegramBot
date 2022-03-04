@@ -1080,12 +1080,12 @@
 
                 if(needMiliseconds.hours >= 24)
                 {
-                    timeText = `осталось ${parseInt(Number(needMiliseconds.hours / 24))} дня и ${Number(needMiliseconds.hours % 24)} ч`;
+                    timeText = `${parseInt(Number(needMiliseconds.hours / 24))} дня и ${Number(needMiliseconds.hours % 24)} ч`;
                 }
                 else if(needMiliseconds.hours < 24 && needMiliseconds.hours >= 0)
                 {
-                    timeText = `осталось ${needMiliseconds.hours} ч`;
-                } 
+                    timeText = `${needMiliseconds.hours} ч`;
+                }
                 else
                 {
                     timeText = `Просрочено`;
