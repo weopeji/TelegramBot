@@ -149,7 +149,14 @@
                     if(!_GET('id')) {
                         myProjects.render(global.allData)
                     } else {
-                        myProjects.renderType(global.allData)
+                        if(_GET("hash"))
+                        {
+                            myProjects.render(global.allData)
+                        }
+                        else
+                        {
+                            myProjects.renderType(global.allData)
+                        }
                     }
                 },
                 "signature": function() {signature.render(global.allData)},
