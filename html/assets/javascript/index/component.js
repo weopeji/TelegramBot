@@ -481,7 +481,7 @@
 
                     for(var _payData of _data.InvDoc.pays)
                     {
-                        if(Number(_payData.date) < Number(new Date().getTime().toString()))
+                        if(Number(_payData.date) <= Number(new Date().getTime().toString()) && _payData.status != "accept")
                         {
                             erroAlertPayData = false;
                         }
