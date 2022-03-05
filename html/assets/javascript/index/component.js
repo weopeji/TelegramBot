@@ -1175,7 +1175,7 @@
                 <div class="Attracted_headerInfoBlock_info_data_alert">
                     <span>Поступившие инвестиции необходимо подтвердить в течении 3х банковских дней</span>
                 </div>
-            `);
+            `).css('font-size', '20px');
 
             var _id = global.allData._id;
 
