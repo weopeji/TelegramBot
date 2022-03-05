@@ -205,7 +205,18 @@ var action_linker =
     "not_correct_complaint": not_correct_complaint,
     "getComplaint": getComplaint,
     "removeInvOfComplaintAdministrator": removeInvOfComplaintAdministrator,
+    "acceptInvOfComplaintAdministrator": acceptInvOfComplaintAdministrator,
 };
+
+async function acceptInvOfComplaintAdministrator(socket, data, callback)
+{
+    var _InvDoc = await InvDoc.findOneAndUpdate({_id: data}, {$unset: {not_correct_complaint: 1, not_correct_complaint: 1}});
+
+    await acceptInvestor(socket, _InvDoc._id, function() {
+        h.full_alert_user(_InvDoc.invester, `Администрация подтвердила вашу инвестицию, по запросу жалобы, вы можете увидеть ее в своих активных инвестициях`, "acceptInvOfComplaintAdministrator");
+        callback();
+    });
+}
 
 async function removeInvOfComplaintAdministrator(socket, data, callback)
 {
