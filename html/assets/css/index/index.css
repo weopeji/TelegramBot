@@ -2102,7 +2102,7 @@ html, body {
   background: -webkit-gradient(linear, left top, right top, from(#14b6ff), color-stop(61%, #1387ff));
   background: linear-gradient(90deg, #14b6ff 0%, #1387ff 61%);
   padding: 10px 20px;
-  border-radius: 15px;
+  border-radius: 8px;
 }
 
 .settingBlock_body_line_not_correct_again span {
@@ -2112,7 +2112,7 @@ html, body {
 .settingBlock_body_line_not_correct_complaint {
   color: white;
   padding: 10px 20px;
-  border-radius: 15px;
+  border-radius: 8px;
   background-color: #c42020;
 }
 
