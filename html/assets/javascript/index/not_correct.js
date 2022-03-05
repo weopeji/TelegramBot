@@ -118,7 +118,7 @@
                         time: 2,
                         callback: function()
                         {
-                            // location.reload();
+                            location.reload();
                         },
                     });
 
