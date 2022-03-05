@@ -8,7 +8,9 @@
                     global.loadResources(['./js/Chats.js'], () => {
                         global.loadResources(['./js/video_redactor.js'], () => {
                             global.loadResources(['./js/wait_investings.js'], () => {
-                                Main();
+                                global.loadResources(['./js/complaint.js'], () => {
+                                    Main();
+                                });
                             });
                         });
                     });
@@ -31,8 +33,8 @@
         const commissions       = new global.Components.commissions();
         const Chats             = new global.Components.Chats();
         const wait_investings   = new global.Components.wait_investings();
+        const complaint         = new global.Components.complaint();
         
-
         var pagesLAN = 
         {
             "moderations": function() {projects.render("moderations");},
@@ -45,7 +47,8 @@
             "commissions": function() {commissions.render()},
             "Chats": function() {Chats.render()},
             "wait_investings": function() {wait_investings.render()},
-        }
+            "complaint": function() {complaint.render()},
+        };
 
         if(global.pageID)
         {
