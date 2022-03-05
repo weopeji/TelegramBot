@@ -88,22 +88,27 @@
                 template_text.find('.settingBlock_body_line_not_correct_complaint').click( async function() 
                 {
                     var IdInv = $(this).parent().parent().attr('data-id');
-                    console.log(IdInv);
 
                     note({
                         content: "Пожалуйста подождите!",
                         type: "info",
-                        time: 1,
-                        callback: async function()
-                        {
-                            await callApi({
-                                methodName: "not_correct_complaint",
-                                data: IdInv,
-                            });
-
-                            location.reload();
-                        },
+                        time: 2,
                     });
+
+                    await callApi({
+                        methodName: "not_correct_complaint",
+                        data: IdInv,
+                    });
+
+                    note({
+                        content: "Успешно!",
+                        type: "info",
+                        time: 2,
+                    });
+
+                    $(this).parent().parent().find('.settingBlock_body_line_not_correct_complaint').remove();
+                    $(this).parent().parent().find('.settingBlock_body_line_not_correct_again').remove();
+                    $(this).parent().parent().children('span').eq(3).html('<span style="color: green">Ожидает модерации</span>');
                 });
 
                 settingBlock.find('.settingBlock_body').append(template_text);
