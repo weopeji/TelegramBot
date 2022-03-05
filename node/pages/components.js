@@ -207,7 +207,7 @@ var action_linker =
 
 async function not_correct_complaint(socket, data, callback)
 {
-    callback(await InvDoc.findOne({_id: data}, {not_correct_complaint: true}));
+    callback(await InvDoc.findOneAndUpdate({_id: data}, {not_correct_complaint: true}));
 }
 
 async function not_correct(socket, data, callback)
