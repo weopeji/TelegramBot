@@ -84,7 +84,7 @@
                     </div>
                 `);
 
-                _block.find('.settingBlock_body_line_ComplaintSettings[data="ok"]').css('background', 'green').click( function() 
+                _block.find('.settingBlock_body_line_ComplaintSettings[data="ok"]').css('background', 'green').click( async function() 
                 {
                     var _IdInv      = $(this).parent().parent().attr('data-id');
                     var _thisBlock  = $(this).parent().parent();
@@ -109,7 +109,7 @@
                     _thisBlock.remove();
                 });
 
-                _block.find('.settingBlock_body_line_ComplaintSettings[data="not"]').css('margin-left', '10px').css('background', 'red').click( function() 
+                _block.find('.settingBlock_body_line_ComplaintSettings[data="not"]').css('margin-left', '10px').css('background', 'red').click( async function() 
                 {
                     var _IdInv      = $(this).parent().parent().attr('data-id');
                     var _thisBlock  = $(this).parent().parent();
