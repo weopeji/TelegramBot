@@ -699,6 +699,11 @@ async function setInvestERDocumentLoad(socket, data, callback)
 {
     var _Project = await Project.findOne({_id: data});
 
+    if(errorOfAlerts)
+    {
+        await User.findOneAndUpdate({user: _project.user}, {alerts_main: needsArrayAlerts});
+    };
+
     h.alertAdmin({
         type: "correct_investerDocument_more",
         text: "Был подписан документ c investER в проекте!",

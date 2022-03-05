@@ -147,13 +147,16 @@
                 if(_typePage == 'signature') 
                 {
                     await _components.load_file_signature(this, _id, $(this).attr('id'));
-                } else if(_typePage == 'redacting') 
+                } 
+                else if(_typePage == 'redacting') 
                 {
                     await _components.load_file_redacting(this, _id, $(this).attr('id'));
-                }else if(_typePage == 'signature_document') 
+                }
+                else if(_typePage == 'signature_document') 
                 {
                     await _components.load_file_redacting_signature_document(this, _id);
-                }else if(_typePage == 'registrationDocument') 
+                }
+                else if(_typePage == 'registrationDocument') 
                 {
                     await _components.load_file_redacting_registration_document(this, _id);
                 } else

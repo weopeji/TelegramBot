@@ -337,7 +337,7 @@ bot.on('message', async (msg) =>
         "✅ Подать на модерацию": business_page.put_project,
         "💸 Получение денег от инвестора": business_page.getMoney,
         "🏦 Выплаты": business_page.viplati,
-        
+
         // ПРИВЛЕЧЕНИЕ ========================================
         "🔗 Моя реферальная ссылка": attraction_page.url,
         "🙋‍♂️ Мною привлечено": investor_page.myPeoples,
@@ -814,11 +814,32 @@ app.post('/file_registration_document.io/files', (req, res) => {
                     var _project = await Project.findOne({_id: _data._id});
 
                     var sign = _project.registrationDocument;
-
                     sign.status = "on";
                     sign.user_document = `file_registration_document.${_data._pts.split('/')[1]}`;
 
                     await Project.findOneAndUpdate({_id: _data._id}, {type: "moderation", registrationDocument: sign});
+
+                    var _UserByAlerts       = await User.findOne({user: _project.user});
+                    var alertsOfUser        = _UserByAlerts.alerts_main;
+                    var needsArrayAlerts    = [];
+                    var errorOfAlerts       = false;
+
+                    for(var _key in alertsOfUser)
+                    {
+                        if(alertsOfUser[_key].type != "file_urist")
+                        {
+                            needsArrayAlerts.push(alertsOfUser[_key]);
+                        } 
+                        else
+                        {
+                            errorOfAlerts = true;
+                        }
+                    };
+
+                    if(errorOfAlerts)
+                    {
+                        await User.findOneAndUpdate({user: _project.user}, {alerts_main: needsArrayAlerts});
+                    };
                 });
             } else {
                 console.log('Файл не найден');

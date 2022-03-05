@@ -67,3 +67,27 @@ note({
 
     },
 });
+
+
+
+var _UserByAlerts       = await User.findOne({user: _project.user});
+var alertsOfUser        = _UserByAlerts.alerts_main;
+var needsArrayAlerts    = [];
+var errorOfAlerts       = false;
+
+for(var _key in alertsOfUser)
+{
+    if(alertsOfUser[_key].type != "project_redacting")
+    {
+        needsArrayAlerts.push(alertsOfUser[_key]);
+    } 
+    else
+    {
+        errorOfAlerts = true;
+    }
+};
+
+if(errorOfAlerts)
+{
+    await User.findOneAndUpdate({user: _project.user}, {alerts_main: needsArrayAlerts});
+};
