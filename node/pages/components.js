@@ -2608,9 +2608,9 @@ async function putRedacting(socket,data,callback) {
 
     for(var _key in alertsOfUser)
     {
-        if(alertOfFor[_key].type == "project_redacting")
+        if(alertsOfUser[_key].type == "project_redacting")
         {
-            delete alertOfFor[_key];
+            delete alertsOfUser[_key];
             errorOfAlerts = true;
         };
     };
