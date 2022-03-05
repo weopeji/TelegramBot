@@ -374,7 +374,7 @@ bot.on('message', async (msg) =>
             };
         };
 
-        await action_linker[msg.text](msg);
+        await action_linker[msgText](msg);
         await h.DM(msg, 1);
     } else 
     {
