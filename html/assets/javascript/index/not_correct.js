@@ -110,10 +110,10 @@
                     note({
                         content: "Успешно!",
                         type: "info",
-                        time: 3,
+                        time: 2,
                         callback: function()
                         {
-                            location.reload();
+                            // location.reload();
                         },
                     });
 
