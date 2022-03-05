@@ -827,7 +827,7 @@
                     });
 
                     note({
-                        content: "Отказано!",
+                        content: "Успешно!",
                         type: "info",
                         time: 2,
                         callback: function()
@@ -1538,11 +1538,7 @@
                     `,
                 }
     
-                var button = buttons[_User.type];
-    
-                console.log(button);
-    
-                $('.index_page_menu_block').append(button);
+                $('.index_page_menu_block').prepend(buttons[_User.type]);
     
                 $(`.index_page_menu_block_line[data="${global.allData.pageID}"]`).addClass('selected');
                 $('.index_page_body_header_info span').html($('.index_page_menu_block_line.selected').text());
