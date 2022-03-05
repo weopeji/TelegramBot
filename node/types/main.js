@@ -322,7 +322,7 @@ async function _MainMenu(msg, close)
                 "keyboard": [
                     ["💁🏻 Написать в Поддержку"], 
                     ["✍ Добавить проект", allBusinesButtons["active_projects"]], 
-                    [notActiveBlock, '🔁 Сменить роль']
+                    [allBusinesButtons["not_active"], '🔁 Сменить роль']
                 ]
             });
 
