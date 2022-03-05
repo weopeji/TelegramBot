@@ -209,7 +209,11 @@ var action_linker =
 
 async function removeInvOfComplaintAdministrator(socket, data, callback)
 {
-    callback(await InvDoc.findOneAndUpdate({_id: data}, {not_correct_complaint: false}));
+    var _InvDoc = await InvDoc.findOneAndUpdate({_id: data}, {not_correct_complaint: false});
+
+    h.full_alert_user(_InvDoc.invester, `Вы получили отказ по жалобе за инвестицию, проинвестируйте еще раз`, "removeInvOfComplaintAdministrator");
+
+    callback();
 };
 
 async function getComplaint(socket, data, callback)

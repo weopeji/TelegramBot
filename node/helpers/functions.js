@@ -314,6 +314,18 @@ async function full_alert_user(_id, _text, _type, moreId)
                         },
                     },
                 ]);
+            },
+            "removeInvOfComplaintAdministrator": async function()
+            {
+                keyboardPush.push([
+                    {
+                        text: "Перейти",
+                        login_url: {
+                            'url': `https://invester-relocation.site/?page=not_correct`,
+                            'request_write_access': true,
+                        },
+                    },
+                ]);
             }
         };
 
