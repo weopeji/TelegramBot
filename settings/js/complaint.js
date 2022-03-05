@@ -36,7 +36,6 @@
                             <span>*</span>
                             <span>Чат Биз-c/Инв-р</span>
                             <span>*</span>
-                            <span>*</span>
                         </div>
                     </div>
                     <div class="settingBlock_body">
@@ -78,8 +77,6 @@
                             <div class="settingBlock_body_line_ComplaintSettings" data="ok">
                                 <i class="far fa-check"></i>
                             </div>
-                        </span>
-                        <span>
                             <div class="settingBlock_body_line_ComplaintSettings" data="not">
                                 <i class="fal fa-times"></i>
                             </div>
@@ -91,7 +88,7 @@
 
                 });
 
-                _block.find('.settingBlock_body_line_ComplaintSettings[data="not"]').css('background', 'red').click( function() {
+                _block.find('.settingBlock_body_line_ComplaintSettings[data="not"]').css('margin-left', '10px').css('background', 'red').click( function() {
 
                 });
 
