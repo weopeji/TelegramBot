@@ -73,16 +73,16 @@
                 `);
 
                 template_text.children('span').eq(0).click( function() {
-                    location.href = `https://invester-relocation.site/?page=activ_projects&id=${$(this).attr('data-id')}`;
+                    location.href = `https://invester-relocation.site/?page=activ_projects&id=${$(this).parent().attr('data-id')}`;
                 });
                 template_text.children('span').eq(1).click( function() {
-                    location.href = `https://invester-relocation.site/?page=activ_projects&id=${$(this).attr('data-id')}`;
+                    location.href = `https://invester-relocation.site/?page=activ_projects&id=${$(this).parent().attr('data-id')}`;
                 });
                 template_text.children('span').eq(2).click( function() {
-                    location.href = `https://invester-relocation.site/?page=activ_projects&id=${$(this).attr('data-id')}`;
+                    location.href = `https://invester-relocation.site/?page=activ_projects&id=${$(this).parent().attr('data-id')}`;
                 });
                 template_text.children('span').eq(3).click( function() {
-                    location.href = `https://invester-relocation.site/?page=activ_projects&id=${$(this).attr('data-id')}`;
+                    location.href = `https://invester-relocation.site/?page=activ_projects&id=${$(this).parent().attr('data-id')}`;
                 });
 
                 settingBlock.find('.settingBlock_body').append(template_text);
