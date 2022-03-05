@@ -405,7 +405,10 @@ async function alertAdmin(data)
                         [
                             {
                                 text: "Перейти к модерации",
-                                url: `https://invester-relocation.site/settings/?page=block&id=${_project._id}&more=redacting`,
+                                login_url: {
+                                    'url': `https://invester-relocation.site/settings/?page=block&id=${_project._id}&more=redacting`,
+                                    'request_write_access': true,
+                                },
                             }
                         ]
                     ],
@@ -425,7 +428,10 @@ async function alertAdmin(data)
                         [
                             {
                                 text: "Перейти к модерации",
-                                url: `https://invester-relocation.site/settings/?page=block&id=${_project._id}&more=more`,
+                                login_url: {
+                                    'url': `https://invester-relocation.site/settings/?page=block&id=${_project._id}&more=more`,
+                                    'request_write_access': true,
+                                },
                             }
                         ]
                     ],
@@ -445,7 +451,10 @@ async function alertAdmin(data)
                         [
                             {
                                 text: "Перейти к модерации",
-                                url: `https://invester-relocation.site/settings/?page=block&id=${_project._id}&more=more`,
+                                login_url: {
+                                    'url': `https://invester-relocation.site/settings/?page=block&id=${_project._id}&more=more`,
+                                    'request_write_access': true,
+                                },
                             }
                         ]
                     ],
@@ -464,7 +473,10 @@ async function alertAdmin(data)
                         [
                             {
                                 text: "Перейти к модерации",
-                                url: `https://invester-relocation.site/settings/?page=block&id=${_project._id}&more=redacting`,
+                                login_url: {
+                                    'url': `https://invester-relocation.site/settings/?page=block&id=${_project._id}&more=redacting`,
+                                    'request_write_access': true,
+                                },
                             }
                         ]
                     ],
@@ -484,7 +496,10 @@ async function alertAdmin(data)
                         [
                             {
                                 text: "Посмотреть результаты",
-                                url: `https://invester-relocation.site/settings/?page=block&id=${_project._id}&more=settings`,
+                                login_url: {
+                                    'url': `https://invester-relocation.site/settings/?page=block&id=${_project._id}&more=settings`,
+                                    'request_write_access': true,
+                                },
                             }
                         ]
                     ],
@@ -504,7 +519,10 @@ async function alertAdmin(data)
                         [
                             {
                                 text: "Посмотреть",
-                                url: `https://invester-relocation.site/settings/?page=commissions`,
+                                login_url: {
+                                    'url': `https://invester-relocation.site/settings/?page=commissions`,
+                                    'request_write_access': true,
+                                },
                             }
                         ]
                     ],
