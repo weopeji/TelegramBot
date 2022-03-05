@@ -838,11 +838,6 @@
                         </div>
                     `);
 
-                    firstBlockMore.find('.body_point_line_block_more_registration_business').eq(0).css({
-                        "margin-left": "20px",
-                        "margin-right": "20px",
-                    });
-
                     firstBlockMore.find('.body_point_line_block_more_registration_business').eq(`1`).css('margint-top', "20px");
 
                     firstBlockMore.css("padding-bottom", "20px");
@@ -878,6 +873,11 @@
                             </div>
                         </div>
                     `);
+
+                    firstBlockMore.find('st').eq(1).css({
+                        "margin-left": "20px",
+                        "margin-right": "20px",
+                    });
 
                     firstBlockMore.css("padding-bottom", "20px");
 
