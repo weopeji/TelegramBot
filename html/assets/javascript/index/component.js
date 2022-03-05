@@ -704,11 +704,11 @@
 
             $('.remove_block_tap').click( async function () 
             {
-                _this.renderCloseBlock();
+                _this.renderCloseBlock(_data);
             })
         }
 
-        async renderCloseBlock()
+        async renderCloseBlock(_data)
         {
             var template_text = $(`
                 <div class="renderCloseBlockBusiness">
