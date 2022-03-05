@@ -2061,7 +2061,8 @@ async function msgUP(socket,data,callback)
 
 async function removePayInvestor(socket,data,callback)
 {
-    await InvDoc.findOneAndUpdate({_id: data.InvId}, {status: "not_correct", not_correct: data.data});
+    var _InvDoc = await InvDoc.findOneAndUpdate({_id: data.InvId}, {status: "not_correct", not_correct: data.data});
+    h.full_alert_user(_InvDoc.invester, `Бизнес отклонил вашу инвестицию, вы можете инвестировать заного или отправить жалобу!`, "removePayInvestor");
     callback();
 }
 
