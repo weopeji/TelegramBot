@@ -837,6 +837,7 @@
                     `);
 
                     firstBlockMore.find('.body_point_line_block_more_registration_business').css('margint-top', "20px");
+                    firstBlockMore.find('st[data="clear"]').css('margin-left', '20px');
 
                     firstBlockMore.css("padding-bottom", "20px");
 
@@ -844,13 +845,28 @@
                         window.open(`https://invester-relocation.site/projects/${_project._id}/${_project.registrationDocument.user_document}`, "_blank")
                     });
 
-                    firstBlockMore.find('st[data="clear"]').click( async function() {
+                    firstBlockMore.find('st[data="clear"]').click( async function() 
+                    {
+                        note({
+                            content: "Пожалуйста подождите!",
+                            type: "info",
+                            time: 2,
+                        });
+
                         await callApi({
                             methodName: 'registrationDocumentClearAdmin',
                             data: _GET("id"),
                         });
-                        alert('Успешно!');
-                        location.reload(); 
+
+                        note({
+                            content: "Успешно!",
+                            type: "info",
+                            time: 2,
+                            callback: function()
+                            {
+                                location.reload(); 
+                            },
+                        });
                     });
 
                     this.global_block.append(firstBlockMore);
