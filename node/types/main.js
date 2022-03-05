@@ -286,35 +286,52 @@ async function _MainMenu(msg, close)
         business: async function(msg) 
         {
             var html = `<strong>${_User.first_name}</strong>\nдля того, чтобы разместить свое предложение для привлечения инвестиций, необходимо заполнить заявку. Нажмите кнопку "Добавить проект"\n\n`;
-
-            if(typeof _User.business_msgPut != "undefined")
-            {
-                html = `<strong>${_User.first_name}</strong>\nВы находитесь в главном меню бизнеса!`;
-            } else
-            {
-                await User.findOneAndUpdate({_id: _User._id}, {business_msgPut: "true"});
-            }
-
-            var notActiveBlock = "❌ Неактивные проекты";
-
-            if(_User.alerts) 
-            {
-                if(typeof _User.alerts.NA_First != "undefined") 
-                {
-                    notActiveBlock = "❌ Неактивные проекты ♦️";
-                }
-            }
+            if(typeof _User.business_msgPut != "undefined") { html = `<strong>${_User.first_name}</strong>\nВы находитесь в главном меню бизнеса!`; } else { await User.findOneAndUpdate({_id: _User._id}, {business_msgPut: "true"}); };
             
+            var allBusinesButtons =
+            {
+                "active_projects": "✅ Активные проекты",
+                "not_active": "❌ Неактивные проекты",
+            };
+
+            if(typeof _User.alerts_main != "undefined")
+            {
+                if(_User.alerts_main.length > 0)
+                {
+                    var button_not_active = 0;
+
+                    for(alertUser of _User.alerts_main)
+                    {
+                        if(
+                            alertUser.type == "project_redacting"
+                        )
+                        {
+                            button_not_active++;
+                        };
+                    };
+
+                    if(button_not_active > 0)
+                    {
+                        allBusinesButtons["not_active"] = `❌ Неактивные проекты ♦️ ${button_not_active}`;
+                    };
+                };
+            };
+
             var fat = await h.send_html(msg.chat.id, html, {
                 "resize_keyboard": true,
-                "keyboard": [['💁🏻 Написать в Поддержку'], ["✍ Добавить проект", "✅ Активные проекты"], [notActiveBlock, '🔁 Сменить роль']]
+                "keyboard": [
+                    ["💁🏻 Написать в Поддержку"], 
+                    ["✍ Добавить проект", allBusinesButtons["active_projects"]], 
+                    [notActiveBlock, '🔁 Сменить роль']
+                ]
             });
 
             _array.push(fat.message_id);
 
             await h.DMA(msg, _array);
         },
-        attraction: async function(msg) {
+        attraction: async function(msg) 
+        {
             if(!close)
             {
                 var _array          = [];
