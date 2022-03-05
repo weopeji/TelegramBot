@@ -62,27 +62,30 @@
                         <span>${fio}</span>
                         <span>${element.Inv.data.pay} ₽</span>
                         <span>
-                            <div class="settingBlock_body_line_ComplaintSettings">
+                            <div class="settingBlock_body_line_ComplaintSettings" data="user">
                                 <i class="fal fa-user"></i>
                             </div>
                         </span>
                         <span>
-                            <div class="settingBlock_body_line_ComplaintSettings">
+                            <div class="settingBlock_body_line_ComplaintSettings" data="chat">
                                 <i class="fal fa-comment-alt-check"></i>
                             </div>
                         </span>
                         <span>
-                            <div class="settingBlock_body_line_ComplaintSettings">
+                            <div class="settingBlock_body_line_ComplaintSettings" data="ok">
                                 <i class="far fa-check"></i>
                             </div>
                         </span>
                         <span>
-                            <div class="settingBlock_body_line_ComplaintSettings">
+                            <div class="settingBlock_body_line_ComplaintSettings" data="not">
                                 <i class="fal fa-times"></i>
                             </div>
                         </span>
                     </div>
                 `);
+
+                _block.find('.settingBlock_body_line_ComplaintSettings[data="ok"]').css('background-color', 'green');
+                _block.find('.settingBlock_body_line_ComplaintSettings[data="not"]').css('background-color', 'red');
 
                 templateText.find('.settingBlock_body').append(_block);
             });
