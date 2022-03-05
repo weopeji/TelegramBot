@@ -92,7 +92,7 @@
                     note({
                         content: "Пожалуйста подождите!",
                         type: "info",
-                        time: 2,
+                        time: 3,
                     });
 
                     await callApi({
@@ -103,12 +103,12 @@
                     note({
                         content: "Успешно!",
                         type: "info",
-                        time: 2,
+                        time: 3,
                     });
 
-                    $(this).parent().parent().find('.settingBlock_body_line_not_correct_complaint').remove();
-                    $(this).parent().parent().find('.settingBlock_body_line_not_correct_again').remove();
-                    $(this).parent().parent().children('span').eq(3).html('<span style="color: green">Ожидает модерации</span>');
+                    $(this).parent().parent().parent().find('.settingBlock_body_line_not_correct_complaint').remove();
+                    $(this).parent().parent().parent().find('.settingBlock_body_line_not_correct_again').remove();
+                    $(this).parent().parent().parent().children('span').eq(3).html('<span style="color: green">Ожидает модерации</span>');
                 });
 
                 settingBlock.find('.settingBlock_body').append(template_text);
