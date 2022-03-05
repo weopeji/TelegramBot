@@ -2599,6 +2599,31 @@ async function putRedacting(socket,data,callback) {
         }
     });
 
+
+
+    
+    var _UserByAlerts   = await User.findOne({user: _project.user});
+    var alertsOfUser    = _UserByAlerts.alerts_main;
+    var errorOfAlerts   = false;
+
+    for(var alertOfFor of alertsOfUser)
+    {
+        if(alertOfFor.type == "project_redacting")
+        {
+            delete alertOfFor;
+            errorOfAlerts = true;
+        };
+    };
+
+    if(errorOfAlerts)
+    {
+        await User.findOneAndUpdate({user: _project.user}, {alerts_main: alertsOfUser});
+    };
+
+
+
+
+
     var _Project = await Project.findOneAndUpdate({_id: data._id}, {data: _data, type: "moderation", redacting: null, last_redacting: data.array});
 
     h.alertAdmin({
