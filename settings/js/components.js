@@ -1201,7 +1201,6 @@
                             <span>Инвестор</span>
                             <span>Сумма Инвестиции</span>
                             <span>Чек</span>
-                            <span>Задолженость</span>
                             <span>Статус оплаты</span>
                             <span>Подтверждение</span>
                             <span>Чек</span>
@@ -1235,7 +1234,6 @@
                         <span>${_Inv.inv.invester}</span>
                         <span>${_Inv.inv.data.pay} руб</span>
                         <span><a target="_blank" href="https://invester-relocation.site/projects/${_Inv.inv.projectId}/${_Inv.inv.data.document}">Открыть</a></span>
-                        <span>${zadoljenost}</span>
                         <span>${statusOplaty}</span>
                         <span>${podtvergdenie}</span>
                         <span><a target="_blank" href="https://invester-relocation.site/projects/${_Inv.inv.projectId}/${check}">${textCheack}</a></span>
@@ -1255,7 +1253,6 @@
                             <span>Инвестор</span>
                             <span>Сумма Инвестиции</span>
                             <span>Чек</span>
-                            <span>Задолженость</span>
                             <span>Статус оплаты</span>
                             <span>Подтверждение</span>
                             <span>Чек</span>
@@ -1289,7 +1286,6 @@
                         <span>${_Inv.inv.invester}</span>
                         <span>${_Inv.inv.data.pay} руб</span>
                         <span><a target="_blank" href="https://invester-relocation.site/projects/${_Inv.inv.projectId}/${_Inv.inv.data.document}">Открыть</a></span>
-                        <span>${zadoljenost}</span>
                         <span>${statusOplaty}</span>
                         <span>${podtvergdenie}</span>
                         <span><a target="_blank" href="https://invester-relocation.site/projects/${_Inv.inv.projectId}/${check}">${textCheack}</a></span>
