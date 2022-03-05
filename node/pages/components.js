@@ -208,7 +208,7 @@ var action_linker =
 
 async function getComplaint(socket, data, callback)
 {
-    var _InvDocs    = await InvDoc.findOne({not_correct_complaint: true});
+    var _InvDocs    = await InvDoc.find({not_correct_complaint: true});
     var allData     = [];
 
     for(_InvDoc of _InvDocs)
