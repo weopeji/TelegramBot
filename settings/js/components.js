@@ -831,14 +831,12 @@
                             </div>
                             <div class="body_point_line_block_more_registration_business">
                                 <st data="show">Посмотреть</st>
-                            </div>
-                            <div class="body_point_line_block_more_registration_business">
                                 <st data="clear">Очистить</st>
                             </div>
                         </div>
                     `);
 
-                    firstBlockMore.find('.body_point_line_block_more_registration_business').eq(`1`).css('margint-top', "20px");
+                    firstBlockMore.find('.body_point_line_block_more_registration_business').css('margint-top', "20px");
 
                     firstBlockMore.css("padding-bottom", "20px");
 
@@ -856,7 +854,8 @@
                     });
 
                     this.global_block.append(firstBlockMore);
-                } else if(_project.registrationDocument.status == "wait_admin") 
+                } 
+                else if(_project.registrationDocument.status == "wait_admin") 
                 {
                     var firstBlockMore = $(`
                         <div class="body_point">
