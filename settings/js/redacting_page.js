@@ -491,6 +491,12 @@
                 }
             });
 
+            note({
+                content: "Пожалуйста подождите",
+                type: "info",
+                time: 2,
+            });
+
             await callApi({
                 methodName: "setRedactingProject",
                 data: {
@@ -500,9 +506,15 @@
                 },
             });
 
-            alert('Успешно!');
-
-            location.reload();
+            note({
+                content: "Успешно",
+                type: "info",
+                time: 2,
+                callback: function()
+                {
+                    location.reload();
+                },
+            });
         }
     }
 

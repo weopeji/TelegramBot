@@ -51,3 +51,9 @@ note({
 
     },
 });
+
+note({
+    content: "",
+    type: "info",
+    time: 2,
+});
