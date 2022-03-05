@@ -809,9 +809,9 @@
                     _this.setRegistrationFile(_project._id, _form);
 
                     note({
-                        content: "Успешно отправлено бизнесу!",
+                        content: "Документ успешно загружен на сервер, перепроверьте его и отправьте бизнесу!",
                         type: "info",
-                        time: 2,
+                        time: 3,
                         callback: function()
                         {
                             location.reload(); 
@@ -837,6 +837,11 @@
                             </div>
                         </div>
                     `);
+
+                    firstBlockMore.find('.body_point_line_block_more_registration_business').eq(0).css({
+                        "margin-left": "20px",
+                        "margin-right": "20px",
+                    });
 
                     firstBlockMore.find('.body_point_line_block_more_registration_business').eq(`1`).css('margint-top', "20px");
 
