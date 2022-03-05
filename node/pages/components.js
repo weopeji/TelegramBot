@@ -249,9 +249,9 @@ async function getComplaint(socket, data, callback)
 
 async function not_correct_complaint_again(socket, data, callback)
 {
-    var _InvDoc = await InvDoc.findOne({_id: data});
+    var _InvDoc = await InvDoc.findOneAndUpdate({_id: data}, {status: "remove"});
     await User.findOneAndUpdate({user: _InvDoc.invester}, {putProject: _InvDoc.projectId});
-    callback(await InvDoc.remove({_id: data}));    
+    callback();    
 }
 
 async function not_correct_complaint(socket, data, callback)
