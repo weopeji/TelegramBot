@@ -406,7 +406,7 @@ async function alertAdmin(data)
                             {
                                 text: "Перейти к модерации",
                                 login_url: {
-                                    'url': `https://invester-relocation.site/settings/?page=block&id=${_project._id}&more=redacting`,
+                                    'url': `https://invester-relocation.site/settings/?page=block&id=${_project._id}&more=data`,
                                     'request_write_access': true,
                                 },
                             }
