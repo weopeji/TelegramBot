@@ -85,16 +85,20 @@
                     location.href = `https://invester-relocation.site/?page=activ_projects&id=${$(this).parent().attr('data-id')}`;
                 });
 
-                template_text.find('.settingBlock_body_line_not_correct_complaint').click( async function() {
+                template_text.find('.settingBlock_body_line_not_correct_complaint').click( async function() 
+                {
+                    var IdInv = $(this).parent().parent().attr('data-id');
+                    console.log(IdInv);
+
                     note({
                         content: "Пожалуйста подождите!",
                         type: "info",
-                        time: 2,
+                        time: 1,
                         callback: async function()
                         {
                             await callApi({
                                 methodName: "not_correct_complaint",
-                                data: $(this).parent().parent().attr('data-id'),
+                                data: IdInv,
                             });
 
                             location.reload();
