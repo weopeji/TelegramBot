@@ -1001,6 +1001,24 @@
   cursor: pointer;
 }
 
+.settingBlock_body_line_ComplaintSettings {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: white;
+  background: -webkit-gradient(linear, left top, right top, from(#14b3ff), to(#1282fa));
+  background: linear-gradient(90deg, #14b3ff 0%, #1282fa 100%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 @media (max-width: 1500px) {
   .index_page_menu {
     -webkit-box-flex: 1.5;
