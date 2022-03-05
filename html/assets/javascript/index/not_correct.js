@@ -125,6 +125,31 @@
                     $(this).parent().parent().children('span').eq(3).html('<span style="color: green; width: fit-content;">Ожидает модерации</span>');
                 });
 
+                template_text.find('.settingBlock_body_line_not_correct_again').click( async function() 
+                {
+                    var IdInv = $(this).parent().parent().attr('data-id');
+
+                    $(this).parent().parent().children('span').eq(4).children().remove();
+                    $(this).parent().parent().children('span').eq(5).children().remove();
+
+                    await callApi({
+                        methodName: "not_correct_complaint_again",
+                        data: IdInv,
+                    });
+
+                    note({
+                        content: "Успешно!",
+                        type: "info",
+                        time: 2,
+                        callback: function()
+                        {
+                            location.href = `https://invester-relocation.site/?page=invester_data`;
+                        },
+                    });
+
+                    $(this).parent().parent().children('span').eq(3).html('<span style="color: green; width: fit-content;">Ожидает модерации</span>');
+                });
+
                 settingBlock.find('.settingBlock_body').append(template_text);
             });
 

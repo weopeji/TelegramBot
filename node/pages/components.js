@@ -203,6 +203,7 @@ var action_linker =
     "alertForBusinesOfInvester": alertForBusinesOfInvester,
     "not_correct": not_correct,
     "not_correct_complaint": not_correct_complaint,
+    "not_correct_complaint_again": not_correct_complaint_again,
     "getComplaint": getComplaint,
     "removeInvOfComplaintAdministrator": removeInvOfComplaintAdministrator,
     "acceptInvOfComplaintAdministrator": acceptInvOfComplaintAdministrator,
@@ -244,6 +245,13 @@ async function getComplaint(socket, data, callback)
     };
 
     callback(allData);
+}
+
+async function not_correct_complaint_again(socket, data, callback)
+{
+    var _InvDoc = await InvDoc.findOne({_id: data});
+    await User.findOneAndUpdate({user: _InvDoc.invester}, {putProject: _InvDoc.projectId});
+    callback(await InvDoc.remove({_id: data}));    
 }
 
 async function not_correct_complaint(socket, data, callback)
