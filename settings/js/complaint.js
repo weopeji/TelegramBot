@@ -67,7 +67,10 @@
                             </div>
                         </span>
                         <span>
-                            <div class="settingBlock_body_line_ComplaintSettings" data="chat">
+                            <div class="settingBlock_body_line_ComplaintSettings" data="chat_invester">
+                                <i class="fal fa-comment-alt-check"></i>
+                            </div>
+                            <div class="settingBlock_body_line_ComplaintSettings" data="chat_busines">
                                 <i class="fal fa-comment-alt-check"></i>
                             </div>
                         </span>
@@ -84,15 +87,32 @@
                     </div>
                 `);
 
-                _block.find('.settingBlock_body_line_ComplaintSettings[data="ok"]').css('background', 'green');
-                _block.find('.settingBlock_body_line_ComplaintSettings[data="not"]').css('background', 'red');
+                _block.find('.settingBlock_body_line_ComplaintSettings[data="ok"]').css('background', 'green').click( function() {
+
+                });
+
+                _block.find('.settingBlock_body_line_ComplaintSettings[data="not"]').css('background', 'red').click( function() {
+
+                });
 
                 _block.find('.settingBlock_body_line_ComplaintSettings[data="user"]').click( function() {
                     window.open(`/?page=activ_projects&id=${$(this).parent().parent().attr('data-id')}`, '_blank');
                 });
 
-                _block.find('.settingBlock_body_line_ComplaintSettings[data="chat"]').click( function() {
-                    window.open(`/`, '_blank');
+                _block.find('.settingBlock_body_line_ComplaintSettings[data="chat_invester"]').click( function() {
+                    note({
+                        content: "Ошибка",
+                        type: "error",
+                        time: 5,
+                    });
+                });
+
+                _block.find('.settingBlock_body_line_ComplaintSettings[data="chat_busines"]').click( function() {
+                    note({
+                        content: "Ошибка",
+                        type: "error",
+                        time: 5,
+                    });
                 });
 
                 templateText.find('.settingBlock_body').append(_block);
