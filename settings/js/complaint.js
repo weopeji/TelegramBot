@@ -57,7 +57,7 @@
                 });
 
                 var _block = $(`
-                    <div class="settingBlock_body_line">
+                    <div class="settingBlock_body_line" data-id="${element.Inv._id}">
                         <span>${element.Project.data.name}</span>
                         <span>${fio}</span>
                         <span>${element.Inv.data.pay} ₽</span>
@@ -86,6 +86,14 @@
 
                 _block.find('.settingBlock_body_line_ComplaintSettings[data="ok"]').css('background', 'green');
                 _block.find('.settingBlock_body_line_ComplaintSettings[data="not"]').css('background', 'red');
+
+                _block.find('.settingBlock_body_line_ComplaintSettings[data="user"]').click( function() {
+                    window.open(`/?page=activ_projects&id=${$(this).parent().parent().attr('data-id')}`, '_blank');
+                });
+
+                _block.find('.settingBlock_body_line_ComplaintSettings[data="chat"]').click( function() {
+                    window.open(`/`, '_blank');
+                });
 
                 templateText.find('.settingBlock_body').append(_block);
             });
