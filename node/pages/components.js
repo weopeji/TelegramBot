@@ -207,7 +207,7 @@ var action_linker =
 async function not_correct(socket, data, callback)
 {
     var _User               = await User.findOne({_id: data});
-    var allNotCorrectInvs   = await InvDoc.findOne({status: "not_correct", invester: _User.user});
+    var allNotCorrectInvs   = await InvDoc.find({status: "not_correct", invester: _User.user});
     var allData             = [];
 
     for(var allNotCorrectInv of allNotCorrectInvs)
