@@ -99,9 +99,6 @@
                 {
                     var IdInv = $(this).parent().parent().attr('data-id');
 
-                    console.log($(this).parent().parent().children('span').eq(4).children())
-                    console.log($(this).parent().parent().children('span').eq(5).children())
-
                     $(this).parent().parent().children('span').eq(4).children().remove();
                     $(this).parent().parent().children('span').eq(5).children().remove();
 
