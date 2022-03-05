@@ -74,12 +74,17 @@
 
                 if(typeof element.Inv.not_correct_complaint != "undefined")
                 {
+                    template_text.children('span').eq(4).children().remove();
+                    template_text.children('span').eq(5).children().remove();
+
                     if(element.Inv.not_correct_complaint)
                     {
-                        template_text.children('span').eq(4).children().remove();
-                        template_text.children('span').eq(5).children().remove();
                         template_text.children('span').eq(3).html('<span style="color: green; width: fit-content;">Ожидает модерации</span>');
-                    };
+                    }
+                    else
+                    {
+                        template_text.children('span').eq(3).html('<span style="color: red; width: fit-content;">Отказано администрацией</span>');
+                    }
                 };
 
                 template_text.children('span').eq(0).click( function() {
