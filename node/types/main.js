@@ -179,22 +179,24 @@ async function notType(msg)
 async function _MainMenu(msg, close)
 {
     var _User       = await MF.find_user(msg);
-    var alertsMain  = _User.alerts_main;
     var _array      = [];
 
     if(_User.type != "attraction")
     {
-        if(alertsMain)
+        if(typeof _User.alerts_main != "undefined")
         {
-            var html =`Оповещения:\n\n`;
-    
-            for(var element of alertsMain)
+            if(_User.alerts_main.length > 0)
             {
-                html += `<code>${h.DateFormatted(element.date)}</code>\n<i><b>${element.text}</b></i>\n\n`;
-            };
-            
-            var fat = await h.send_html(msg.chat.id, html);
-            _array.push(fat.message_id);
+                var html =`Оповещения:\n\n`;
+    
+                for(var element of _User.alerts_main)
+                {
+                    html += `<code>${h.DateFormatted(element.date)}</code>\n<i><b>${element.text}</b></i>\n\n`;
+                };
+                
+                var fat = await h.send_html(msg.chat.id, html);
+                _array.push(fat.message_id);
+            }
         }
     }
 
