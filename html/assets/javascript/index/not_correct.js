@@ -68,7 +68,7 @@
                         </span>
                         <span>
                             <div class="settingBlock_body_line_not_correct_again">
-                                <span>Заполнить заявку заного</span>
+                                <span>Заполнить заного</span>
                             </div>
                         </span>
                     </div>
