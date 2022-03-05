@@ -1171,14 +1171,18 @@
 
         async render() 
         {
+            $('.index_page_body_data').append(`
+                <div class="Attracted_headerInfoBlock_info_data_alert">
+                    <span>Поступившие инвестиции необходимо подтвердить в течении 3х банковских дней</span>
+                </div>
+            `);
+
             var _id = global.allData._id;
 
             var _data = await callApi({
                 methodName: "notAcceptInvesting",
                 data: _id,
             });
-
-            console.log(_data);
 
             var settingBlock = $(`
                 <div class="settingBlock">
@@ -1508,6 +1512,10 @@
                             <i class="fal fa-users"></i>
                             <span>Мной привлечено</span>
                         </div>
+                        <div class="index_page_menu_block_line" data="not_correct">
+                            <i class="fal fa-times"></i>
+                            <span>Отказано</span>
+                        </div>
                         <div class="index_page_menu_block_line" data="chats">
                             <i class="fal fa-comments"></i>
                             <span>Мессенджер</span>
@@ -1532,10 +1540,6 @@
                         <div class="index_page_menu_block_line" data="acceptPays">
                             <i class="fal fa-check-square"></i>
                             <span>Поступления</span>
-                        </div>
-                        <div class="index_page_menu_block_line" data="not_correct">
-                            <i class="fal fa-times"></i>
-                            <span>Отказано</span>
                         </div>
                         <div class="index_page_menu_block_line" data="chats">
                             <i class="fal fa-comments"></i>
