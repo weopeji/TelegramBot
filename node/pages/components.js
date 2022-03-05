@@ -2601,16 +2601,16 @@ async function putRedacting(socket,data,callback) {
 
 
 
-    
+
     var _UserByAlerts   = await User.findOne({user: _project.user});
     var alertsOfUser    = _UserByAlerts.alerts_main;
     var errorOfAlerts   = false;
 
-    for(var alertOfFor of alertsOfUser)
+    for(var _key in alertsOfUser)
     {
-        if(alertOfFor.type == "project_redacting")
+        if(alertOfFor[_key].type == "project_redacting")
         {
-            delete alertOfFor;
+            delete alertOfFor[_key];
             errorOfAlerts = true;
         };
     };
