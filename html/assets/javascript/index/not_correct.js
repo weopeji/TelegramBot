@@ -85,7 +85,7 @@
                     location.href = `https://invester-relocation.site/?page=activ_projects&id=${$(this).parent().attr('data-id')}`;
                 });
 
-                template_text.find('.settingBlock_body_line_not_correct_complaint').click( function() {
+                template_text.find('.settingBlock_body_line_not_correct_complaint').click( async function() {
                     note({
                         content: "Пожалуйста подождите!",
                         type: "info",
