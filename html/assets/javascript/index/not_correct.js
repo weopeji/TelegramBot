@@ -54,7 +54,7 @@
                     otk = "Данные не верны";
                 }
 
-                var template_text = $(`
+                var template_text = $(` 
                     <div class="settingBlock_body_line">
                         <span>${i + 1}</span>
                         <span>${element.Project.data.name}</span>
