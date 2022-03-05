@@ -349,13 +349,20 @@ bot.on('message', async (msg) =>
         "✔️ Проверить статус": attraction_page.cheackUserStatus,
         "✔️ Принять реквезиты": attraction_page.acceptReqezitsData,
         "✏️ Заменить реквизиты": attraction_page.startReqezitsData_need,
-    }
+    };
 
-    if(typeof action_linker[msg.text] != "undefined") 
+    var msgText = msg.text;
+
+    if(msgText.toString().search('♦️'))
+    {
+        msgText = msgText.split(' ♦️')[0];
+    };
+
+    if(typeof action_linker[msgText] != "undefined") 
     {
         if(_User)
         {
-            if(msg.text != "📈 Инвестировать")
+            if(msgText != "📈 Инвестировать")
             {
                 if(_User.type == "investor")
                 {
