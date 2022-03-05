@@ -36,6 +36,7 @@
                             <span>*</span>
                             <span>*</span>
                             <span>*</span>
+                            <span>*</span>
                         </div>
                     </div>
                     <div class="settingBlock_body">
@@ -61,13 +62,24 @@
                         <span>${fio}</span>
                         <span>${element.Inv.data.pay} ₽</span>
                         <span>
-
+                            <div class="settingBlock_body_line_ComplaintSettings">
+                                <i class="fal fa-user"></i>
+                            </div>
                         </span>
                         <span>
-                            
+                            <div class="settingBlock_body_line_ComplaintSettings">
+                                <i class="fal fa-comment-alt-check"></i>
+                            </div>
                         </span>
                         <span>
-                            
+                            <div class="settingBlock_body_line_ComplaintSettings">
+                                <i class="far fa-check"></i>
+                            </div>
+                        </span>
+                        <span>
+                            <div class="settingBlock_body_line_ComplaintSettings">
+                                <i class="fal fa-times"></i>
+                            </div>
                         </span>
                     </div>
                 `);
