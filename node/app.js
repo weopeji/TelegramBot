@@ -312,34 +312,32 @@ bot.on('message', async (msg) =>
         "🔁 Сменить роль": main_page.notType,
         "⬅️ Назад": main_page.close,
         "💁🏻 Написать в Поддержку": main_page.help_user,
+
         // ИНВЕСТОР ===========================================
         "💰 Мои инвестиции": investor_page.my_investment,
-        "💰 Мои инвестиции ♦️": investor_page.my_investment,
         "🧮 Активные проекты": investor_page.active_projects,
-        "🧮 Активные проекты ♦️": investor_page.active_projects,
         "📈 Инвестировать": investor_page.goInvesting,
         "👨‍💼 Рекомендовать": investor_page.recomendations,
-        "👨‍💼 Рекомендовать ♦️": investor_page.recomendations,
         "⌛ Ожидают подтверждения": investor_page.statusProjects,
         "Вознаграждение по проектам": investor_page.payerBonus,
         "🙋‍♂️ Мной привлечено": investor_page.myPeoples,
-        "🙋‍♂️ Мной привлечено ♦️": investor_page.myPeoples,
         "💼 Статистика": investor_page.active_statistik,
         "Проекты": investor_page.active_projects_stat,
         "Оплатил": investor_page.payerInBissness,
         "Черновики": investor_page.drafts,
         "🏦 Инвестиционные предложения": investor_page.investShow,
         "⬅️ Hазад": investor_page.my_investment,
+
         // БИЗНЕС =============================================
         "✅ Активные проекты": business_page.getMoney,
         "❓ Как добавить проект": business_page.how_add,
         "✍ Добавить проект": business_page.addProject,
         "❌ Неактивные проекты": business_page.not_active,
-        "❌ Неактивные проекты ♦️": business_page.not_active,
         "🧹 Очистить проект": business_page.clean_project,
         "✅ Подать на модерацию": business_page.put_project,
         "💸 Получение денег от инвестора": business_page.getMoney,
         "🏦 Выплаты": business_page.viplati,
+        
         // ПРИВЛЕЧЕНИЕ ========================================
         "🔗 Моя реферальная ссылка": attraction_page.url,
         "🙋‍♂️ Мною привлечено": investor_page.myPeoples,

@@ -282,30 +282,37 @@ async function not_active(msg)
     var _projects   = await Project.find({user: msg.from.id});
     var _moderation = _projects.filter(el => el.type == "moderation");
     var _correction = _projects.filter(el => el.type == "correction");
-    var _User = await User.findOne({user: msg.from.id});
-    var htmlInfo = "Неактивные проекты";
+    var _User       = await User.findOne({user: msg.from.id});
+    var textButton  = "Ожидают исправления";
+    var romb1       = "";
 
-    var textButton = "Ожидают модерации";
-    var textButton2 = "Ожидают исправления";
-
-    var romb1 = "";
-    var romb2 = "";
-
-    if(_User.alerts) {
-        if(typeof _User.alerts.NA_First != "undefined")  
+    
+    if(typeof _User.alerts_main != "undefined")
+    {
+        if(_User.alerts_main.length > 0)
         {
-            if(_moderation.length > 0) {
-                textButton = "Ожидают модерации ♦️"
-                romb1 = "♦️ ";
-            }
-            if(_correction.length > 0) {
-                textButton2 = "Ожидают исправления ♦️";
-                romb2 = "♦️ ";
-            }
-        }
-    }
+            var button_not_active = 0;
 
-    var _again = await h.send_html(msg.chat.id, htmlInfo, {
+            for(alertUser of _User.alerts_main)
+            {
+                if(
+                    alertUser.type == "project_redacting"
+                )
+                {
+                    button_not_active++;
+                };
+            };
+
+            if(button_not_active > 0)
+            {
+                textButton  = `Ожидают исправления ♦️ ${button_not_active}`;
+                romb1       = `♦️ ${button_not_active}`;
+            };
+        };
+    };
+
+
+    var _again = await h.send_html(msg.chat.id, "Неактивные проекты", {
         "resize_keyboard": true,
         "keyboard": [["⬅️ Назад"]],
     });
@@ -316,18 +323,18 @@ async function not_active(msg)
 
     if(_moderation.length > 0) {
         keyboard.unshift([{
-            text: textButton,
+            text: "Ожидают модерации",
             callback_data: `place=not_active&type=moderation&data=first`,
         }]);
     }
     if(_correction.length > 0) {
         keyboard.unshift([{
-            text: textButton2,
+            text: textButton,
             callback_data: `place=not_active&type=correction&data=first`,
         }]);
     }
 
-    var html = `У вас неактивных проектов: ${_moderation.length + _correction.length}\n\n<strong>Ожидают модерацию: ${_moderation.length} ${romb1}</strong>\n<strong>Ожидают исправления: ${_correction.length} ${romb2}</strong>`;
+    var html = `У вас неактивных проектов: ${_moderation.length + _correction.length}\n\n<strong>Ожидают модерацию: ${_moderation.length} </strong>\n<strong>Ожидают исправления: ${_correction.length} ${romb1}</strong>`;
     var globalMsg = await h.send_html(msg.chat.id, html, {
         "inline_keyboard": keyboard,
     });
