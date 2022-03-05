@@ -111,6 +111,10 @@
                         content: "Успешно!",
                         type: "info",
                         time: 3,
+                        callback: function()
+                        {
+                            location.reload();
+                        },
                     });
 
                     $(this).parent().parent().children('span').eq(3).html('<span style="color: green; width: fit-content;">Ожидает модерации</span>');
