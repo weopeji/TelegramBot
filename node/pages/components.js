@@ -2602,17 +2602,21 @@ async function putRedacting(socket,data,callback) {
 
 
 
-    var _UserByAlerts   = await User.findOne({user: _project.user});
-    var alertsOfUser    = _UserByAlerts.alerts_main;
-    var errorOfAlerts   = false;
+    var _UserByAlerts       = await User.findOne({user: _project.user});
+    var alertsOfUser        = _UserByAlerts.alerts_main;
+    var needsArrayAlerts    = [];
+    var errorOfAlerts       = false;
 
     for(var _key in alertsOfUser)
     {
-        if(alertsOfUser[_key].type == "project_redacting")
+        if(alertsOfUser[_key].type != "project_redacting")
         {
-            delete alertsOfUser[_key];
+            needsArrayAlerts.push(alertsOfUser[_key]);
+        } 
+        else
+        {
             errorOfAlerts = true;
-        };
+        }
     };
 
     if(errorOfAlerts)
