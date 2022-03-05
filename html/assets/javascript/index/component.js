@@ -34,7 +34,7 @@
             if(_dataPhoto)
             {
                 photoPathPut = _dataPhoto.file_path;
-            }
+            };
 
             $('.info_active_block_right').append(`
                 <div class="info_active_block_photo">
@@ -369,29 +369,32 @@
                     $('.index_page_body_data').append(appendPayBlock);
                 };
             } else {
-                $('.index_page_body_data').append(`
-                    <div class="Attracted_headerInfoBlock_info_data_alert">
-                        <span>Нажимая кнопку подтвердить, вы подтверждаете, что сумма и дата платежа верна</span>
-                    </div>
-                    <div class="Attracted_headerInfoBlock">
-                        <div class="Attracted_headerInfoBlock_block accept_block_tap">
-                            <div class="Attracted_headerInfoBlock_block_i">
-                                <i class="fad fa-check"></i>
+                if(_data.InvDoc.status != "not_correct")
+                {
+                    $('.index_page_body_data').append(`
+                        <div class="Attracted_headerInfoBlock_info_data_alert">
+                            <span>Нажимая кнопку подтвердить, вы подтверждаете, что сумма и дата платежа верна</span>
+                        </div>
+                        <div class="Attracted_headerInfoBlock">
+                            <div class="Attracted_headerInfoBlock_block accept_block_tap">
+                                <div class="Attracted_headerInfoBlock_block_i">
+                                    <i class="fad fa-check"></i>
+                                </div>
+                                <div class="Attracted_headerInfoBlock_block_text">
+                                    <p>Подтвердить</p>
+                                </div>
                             </div>
-                            <div class="Attracted_headerInfoBlock_block_text">
-                                <p>Подтвердить</p>
+                            <div class="Attracted_headerInfoBlock_block remove_block_tap">
+                                <div class="Attracted_headerInfoBlock_block_i">
+                                    <i class="fad fa-times"></i>
+                                </div>
+                                <div class="Attracted_headerInfoBlock_block_text Attracted_headerInfoBlock_block_text_moneys">
+                                    <p>Отказать</p>
+                                </div>
                             </div>
                         </div>
-                        <div class="Attracted_headerInfoBlock_block remove_block_tap">
-                            <div class="Attracted_headerInfoBlock_block_i">
-                                <i class="fad fa-times"></i>
-                            </div>
-                            <div class="Attracted_headerInfoBlock_block_text Attracted_headerInfoBlock_block_text_moneys">
-                                <p>Отказать</p>
-                            </div>
-                        </div>
-                    </div>
-                `);
+                    `);
+                }
             }
         }
 
