@@ -26,6 +26,11 @@
                         <p>Отказанные инвестиции</p>
                         <div class="settingBlock_header_line">
                             <span>#</span>
+                            <span>Название проекта</span>
+                            <span>Причина отказа</span>
+                            <span>Коментарий</span>
+                            <span>Действие</span>
+                            <span>Действие</span>
                         </div>
                     </div>
                     <div class="settingBlock_body">
