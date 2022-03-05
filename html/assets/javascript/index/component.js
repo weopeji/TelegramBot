@@ -1507,6 +1507,13 @@
                             <i class="fal fa-users"></i>
                             <span>Мной привлечено</span>
                         </div>
+                        <div class="index_page_menu_block_line" data="chats">
+                            <i class="fal fa-comments"></i>
+                            <span>Мессенджер</span>
+                            <div class="index_page_menu_block_line_alert">
+                                <i class="fad fa-bell"></i>
+                            </div>
+                        </div>
                     `,
                     "business": `
                         <div class="index_page_menu_block_line" data="myProjects">
@@ -1525,20 +1532,30 @@
                             <i class="fal fa-check-square"></i>
                             <span>Поступления</span>
                         </div>
+                        <div class="index_page_menu_block_line" data="chats">
+                            <i class="fal fa-comments"></i>
+                            <span>Мессенджер</span>
+                            <div class="index_page_menu_block_line_alert">
+                                <i class="fad fa-bell"></i>
+                            </div>
+                        </div>
                     `,
                     "attraction": `
-                        <!-- <div class="index_page_menu_block_line" data="reward">
-                            <i class="fal fa-money-check-alt"></i>
-                            <span>Вознаграждение</span>
-                        </div> -->
                         <div class="index_page_menu_block_line" data="Attracted_by_me">
                             <i class="fal fa-users"></i>
                             <span>Мной привлечено</span>
                         </div>
+                        <div class="index_page_menu_block_line" data="chats">
+                            <i class="fal fa-comments"></i>
+                            <span>Мессенджер</span>
+                            <div class="index_page_menu_block_line_alert">
+                                <i class="fad fa-bell"></i>
+                            </div>
+                        </div>
                     `,
                 }
     
-                $('.index_page_menu_block').after(buttons[_User.type]);
+                $('.index_page_menu_block').append(buttons[_User.type]);
     
                 $(`.index_page_menu_block_line[data="${global.allData.pageID}"]`).addClass('selected');
                 $('.index_page_body_header_info span').html($('.index_page_menu_block_line.selected').text());
