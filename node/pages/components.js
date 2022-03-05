@@ -204,6 +204,12 @@ var action_linker =
     "not_correct": not_correct,
     "not_correct_complaint": not_correct_complaint,
     "getComplaint": getComplaint,
+    "removeInvOfComplaintAdministrator": removeInvOfComplaintAdministrator,
+};
+
+async function removeInvOfComplaintAdministrator(socket, data, callback)
+{
+    callback(await InvDoc.findOneAndUpdate({_id: data}, {not_correct_complaint: false}));
 };
 
 async function getComplaint(socket, data, callback)
