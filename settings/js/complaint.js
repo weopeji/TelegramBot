@@ -84,8 +84,8 @@
                     </div>
                 `);
 
-                _block.find('.settingBlock_body_line_ComplaintSettings[data="ok"]').css('background-color', 'green');
-                _block.find('.settingBlock_body_line_ComplaintSettings[data="not"]').css('background-color', 'red');
+                _block.find('.settingBlock_body_line_ComplaintSettings[data="ok"]').css('background', 'green');
+                _block.find('.settingBlock_body_line_ComplaintSettings[data="not"]').css('background', 'red');
 
                 templateText.find('.settingBlock_body').append(_block);
             });
