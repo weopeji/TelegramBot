@@ -90,7 +90,7 @@
                         content: "Пожалуйста подождите!",
                         type: "info",
                         time: 2,
-                        callback: function()
+                        callback: async function()
                         {
                             await callApi({
                                 methodName: "not_correct_complaint",
