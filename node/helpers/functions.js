@@ -181,7 +181,6 @@ async function full_alert_user(_id, _text, _type, moreId)
             },
             "accept_investing": async function()
             {
-                await User.findOneAndUpdate({user: _id}, {type: "investor"});
                 if(moreId || moreId == 0)
                 {
                     keyboardPush.push([
@@ -197,7 +196,6 @@ async function full_alert_user(_id, _text, _type, moreId)
             },
             "accept_business_investring": async function()
             {
-                await User.findOneAndUpdate({user: _id}, {type: "investor"});
                 if(moreId || moreId == 0)
                 {
                     keyboardPush.push([
@@ -252,8 +250,6 @@ async function full_alert_user(_id, _text, _type, moreId)
             },
             "allert_of_invester": async function()
             {
-                await User.findOneAndUpdate({user: _id}, {type: "business"});
-
                 if(moreId || moreId == 0)
                 {
                     keyboardPush.push([

@@ -210,10 +210,13 @@ var action_linker =
 
 async function acceptInvOfComplaintAdministrator(socket, data, callback)
 {
-    var _InvDoc = await InvDoc.findOneAndUpdate({_id: data}, {$unset: {not_correct_complaint: 1, not_correct_complaint: 1}});
+    var _InvDoc     = await InvDoc.findOneAndUpdate({_id: data}, {$unset: {not_correct_complaint: 1, not_correct_complaint: 1}});
+    var _Project    = await Project.findOne({_id: _InvDoc.projectId});
 
     await acceptInvestor(socket, _InvDoc._id, function() {
-        h.full_alert_user(_InvDoc.invester, `Администрация подтвердила вашу инвестицию, по запросу жалобы, вы можете увидеть ее в своих активных инвестициях`, "acceptInvOfComplaintAdministrator");
+
+        h.full_alert_user(_Project.user, `Администрация по жалобе за инвестицию приняла решение в пользу инвестора`, "acceptInvOfComplaintAdministrator");
+
         callback();
     });
 }
