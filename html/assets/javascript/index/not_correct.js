@@ -143,7 +143,7 @@
                         time: 2,
                         callback: function()
                         {
-                            location.href = `https://invester-relocation.site/?page=invester_data`;
+                            location.href = `https://invester-relocation.site/?user=${global.allData.User._id}&page=invester_data`;
                         },
                     });
 
