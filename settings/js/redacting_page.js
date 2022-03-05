@@ -56,13 +56,18 @@
                     </div>
                 `);
 
-                _block.find(".parcing_again_block_row").click( function() {
+                _block.find(".parcing_again_block_row").click( function() 
+                {
                     callApi({
                         methodName: 'redactingParcingProject',
                         data: _GET("id"),
                     });
 
-                    alert('Успешно!');
+                    note({
+                        content: "Успешно запрошен перепарсинг, ожидайте уведомления в боте о его окончании",
+                        type: "info",
+                        time: 2,
+                    });
                 })
 
                 global_block.append(_block);
