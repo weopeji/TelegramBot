@@ -2541,6 +2541,30 @@ async function correct_signature(socket,data,callback)
     _array.data = data.data;
     _array.status = "on";
 
+    await Project.findOneAndUpdate({_id: data}, {signature: _array, type: "moderation"});
+
+    var _UserByAlerts       = await User.findOne({user: _project.user});
+    var alertsOfUser        = _UserByAlerts.alerts_main;
+    var needsArrayAlerts    = [];
+    var errorOfAlerts       = false;
+    
+    for(var _key in alertsOfUser)
+    {
+        if(alertsOfUser[_key].type != "correction_signature")
+        {
+            needsArrayAlerts.push(alertsOfUser[_key]);
+        } 
+        else
+        {
+            errorOfAlerts = true;
+        }
+    };
+    
+    if(errorOfAlerts)
+    {
+        await User.findOneAndUpdate({user: _project.user}, {alerts_main: needsArrayAlerts});
+    };
+
     h.alertAdmin({
         type: "correct_investerDocument",
         text: "Дополнительные документы проекта были добавленны",
@@ -2548,8 +2572,6 @@ async function correct_signature(socket,data,callback)
     });
     
     h.alertDeleteOfUserOnbot("Дополнительные документы проекта успешно загружены, ождайте результатов модерации", _project.user);
-
-    await Project.findOneAndUpdate({_id: data}, {signature: _array, type: "moderation"});
 }
 
 async function getID(socket,data,callback) {
