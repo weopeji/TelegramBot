@@ -2103,6 +2103,7 @@ html, body {
   background: linear-gradient(90deg, #14b6ff 0%, #1387ff 61%);
   padding: 10px 20px;
   border-radius: 8px;
+  cursor: pointer;
 }
 
 .settingBlock_body_line_not_correct_again span {
@@ -2114,6 +2115,7 @@ html, body {
   padding: 10px 20px;
   border-radius: 8px;
   background-color: #c42020;
+  cursor: pointer;
 }
 
 .settingBlock_body_line_not_correct_complaint span {

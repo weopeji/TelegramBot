@@ -85,6 +85,20 @@
                     location.href = `https://invester-relocation.site/?page=activ_projects&id=${$(this).parent().attr('data-id')}`;
                 });
 
+                template_text.find('.settingBlock_body_line_not_correct_complaint').click( function() {
+                    note({
+                        content: "Пожалуйста подождите!",
+                        type: "info",
+                        time: 3,
+                    });
+                    await callApi({
+                        methodName: "not_correct_complaint",
+                        data: $(this).parent().parent().attr('data-id'),
+                    });
+
+                    location.reload();
+                });
+
                 settingBlock.find('.settingBlock_body').append(template_text);
             });
 

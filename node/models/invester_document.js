@@ -12,6 +12,7 @@ const UserShema = new mongoose.Schema({
     date_append: String,
     date_alert: String,
     not_correct: JSON,
+    not_correct_complaint: Boolean,
 });
 
 mongoose.model('InvDoc', UserShema);
