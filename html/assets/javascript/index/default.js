@@ -24,7 +24,9 @@
                                 global.loadResources(['./html/assets/javascript/index/payments_new.js'], () => {
                                     global.loadResources(['./html/assets/javascript/index/telegram_authorization.js'], () => {
                                         global.loadResources(['./html/assets/javascript/index/chat.js'], () => {
-                                            Main();
+                                            global.loadResources(['./html/assets/javascript/index/not_correct.js'], () => {
+                                                Main();
+                                            });
                                         });
                                     });
                                 });
@@ -60,6 +62,7 @@
         const obligations               = new global.Components.obligations();
         const payments_new              = new global.Components.payments_new();
         const telegram_authorization    = new global.Components.telegram_authorization();
+        const not_correct               = new global.Components.not_correct();
 
         if(!userID) 
         {
