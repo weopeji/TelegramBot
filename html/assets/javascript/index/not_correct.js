@@ -61,8 +61,16 @@
                         <span>${otk}</span>
                         <span>${element.Inv.not_correct.comment}</span>
                         <span>Ожидает действия</span>
-                        <span>Отправить жалобу</span>
-                        <span>Пройти инвестицию заного</span>
+                        <span>
+                            <div class="settingBlock_body_line_not_correct_complaint">
+                                <span>Оставить жалобу</span>
+                            </div>
+                        </span>
+                        <span>
+                            <div class="settingBlock_body_line_not_correct_again">
+                                <span>Оставить жалобу</span>
+                            </div>
+                        </span>
                     </div>
                 `);
 
