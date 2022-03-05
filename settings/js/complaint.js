@@ -34,7 +34,7 @@
                             <span>Инвестор</span>
                             <span>Сумма Инвестиции</span>
                             <span>*</span>
-                            <span>*</span>
+                            <span>Сообщение Бизнес/Инвестор</span>
                             <span>*</span>
                             <span>*</span>
                         </div>
