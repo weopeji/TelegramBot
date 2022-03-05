@@ -34,8 +34,8 @@
                             <span>Причина отказа</span>
                             <span>Коментарий</span>
                             <span>Статус</span>
-                            <span>Действие</span>
-                            <span>Действие</span>
+                            <span>*</span>
+                            <span>*</span>
                         </div>
                     </div>
                     <div class="settingBlock_body">
@@ -106,9 +106,7 @@
                         time: 3,
                     });
 
-                    $(this).parent().parent().parent().find('.settingBlock_body_line_not_correct_complaint').remove();
-                    $(this).parent().parent().parent().find('.settingBlock_body_line_not_correct_again').remove();
-                    $(this).parent().parent().parent().children('span').eq(3).html('<span style="color: green">Ожидает модерации</span>');
+                    $(this).parent().parent().children('span').eq(3).html('1');
                 });
 
                 settingBlock.find('.settingBlock_body').append(template_text);
