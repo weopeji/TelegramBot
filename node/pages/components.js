@@ -2621,7 +2621,7 @@ async function putRedacting(socket,data,callback) {
 
     if(errorOfAlerts)
     {
-        await User.findOneAndUpdate({user: _project.user}, {alerts_main: alertsOfUser});
+        await User.findOneAndUpdate({user: _project.user}, {alerts_main: needsArrayAlerts});
     };
 
 
