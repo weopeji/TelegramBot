@@ -624,6 +624,7 @@
             var _status = {
                 "wait": "Ожидает подтверждения",
                 "accept": "Подтверждено",
+                "not_accept": `<span style="color: red">Отказано</span>`
             }
 
             var settingBlock = $(`
