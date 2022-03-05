@@ -2037,7 +2037,7 @@ async function msgUP(socket,data,callback)
 
 async function removePayInvestor(socket,data,callback)
 {
-    await InvDoc.deleteOne({invester: data});
+    await InvDoc.findOneAndUpdate({_id: data.InvId}, {status: "not_correct", not_correct: data.data});
     callback();
 }
 

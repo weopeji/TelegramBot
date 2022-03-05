@@ -688,16 +688,12 @@
             });
 
             $('.show_document').click( async function() {
-                var getProjectById = await callApi({
-                    methodName: "getProjectById",
-                    data: _GET('project'),
-                });
                 window.open(`https://invester-relocation.site/projects/${_data.InvDoc.projectId}/${_data.InvDoc.urlToLastDocument}`, '_blank');
             });
 
             $('.accept_block_tap').click( async function () 
             {
-                var acceptInvestor = await callApi({
+                await callApi({
                     methodName: "acceptInvestor",
                     data: _GET('id'),
                 });
@@ -709,13 +705,6 @@
             $('.remove_block_tap').click( async function () 
             {
                 _this.renderCloseBlock();
-                // var acceptInvestor = await callApi({
-                //     methodName: "removePayInvestor",
-                //     data: _data.invester.user,
-                // });
-
-                // alert('Отказано!');
-                // location.reload();
             })
         }
 
@@ -820,7 +809,32 @@
                         });
 
                         return;
-                    }
+                    };
+
+                    callApi({
+                        methodName: "removePayInvestor",
+                        data: {
+                            InvId: _data.InvDoc,
+                            data: 
+                            {
+                                dataType: $('.renderCloseBlockBusiness_block_text_line.selected').attr('data'),
+                                comment: $('#notCorrect_value').val(),
+                                notCorrect_date: $('#notCorrect_date').is(':checked'),
+                                notCorrect_pay: $('#notCorrect_pay').is(':checked'),
+                                notCorrect_photo: $('#notCorrect_photo').is(':checked'),
+                            },
+                        },
+                    });
+
+                    note({
+                        content: "Отказано!",
+                        type: "info",
+                        time: 2,
+                        callback: function()
+                        {
+                            location.href = "/?page=acceptPays";
+                        },
+                    });
                 };
             });
 
