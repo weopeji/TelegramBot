@@ -90,19 +90,23 @@
                     var _thisBlock  = $(this).parent().parent();
 
                     note({
+                        content: "Пожалуйста подождите",
+                        type: "info",
+                        time: 2,
+                    });
+
+                    await callApi({
+                        methodName: "acceptInvOfComplaintAdministrator",
+                        data: _IdInv,
+                    });
+
+                    note({
                         content: "Успешно",
                         type: "info",
                         time: 2,
-                        callback: async function()
-                        {
-                            await callApi({
-                                methodName: "acceptInvOfComplaintAdministrator",
-                                data: _IdInv,
-                            });
-
-                            _thisBlock.remove();
-                        },
                     });
+
+                    _thisBlock.remove();
                 });
 
                 _block.find('.settingBlock_body_line_ComplaintSettings[data="not"]').css('margin-left', '10px').css('background', 'red').click( function() 
@@ -111,19 +115,23 @@
                     var _thisBlock  = $(this).parent().parent();
 
                     note({
+                        content: "Пожалуйста подождите",
+                        type: "info",
+                        time: 2,
+                    });
+
+                    await callApi({
+                        methodName: "removeInvOfComplaintAdministrator",
+                        data: _IdInv,
+                    });
+
+                    note({
                         content: "Успешно",
                         type: "info",
                         time: 2,
-                        callback: async function()
-                        {
-                            await callApi({
-                                methodName: "removeInvOfComplaintAdministrator",
-                                data: _IdInv,
-                            });
-
-                            _thisBlock.remove();
-                        },
                     });
+
+                    _thisBlock.remove();
                 });
 
                 _block.find('.settingBlock_body_line_ComplaintSettings[data="user"]').click( function() {
