@@ -922,8 +922,15 @@
                         _form.append('_pts', extension);
                         _this.setRegistrationFile(_project._id, _form);
 
-                        alert('Успешно!');
-                        location.reload(); 
+                        note({
+                            content: "Успешно!",
+                            type: "info",
+                            time: 2,
+                            callback: function()
+                            {
+                                location.reload(); 
+                            },
+                        }); 
                     });
 
                     this.global_block.append(firstBlockMore);
