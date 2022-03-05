@@ -34,7 +34,7 @@
                             <span>Инвестор</span>
                             <span>Сумма Инвестиции</span>
                             <span>*</span>
-                            <span>Сообщение Бизнес/Инвестор</span>
+                            <span>Чат Биз-c/Инв-р</span>
                             <span>*</span>
                             <span>*</span>
                         </div>
@@ -107,7 +107,7 @@
                     });
                 });
 
-                _block.find('.settingBlock_body_line_ComplaintSettings[data="chat_busines"]').click( function() {
+                _block.find('.settingBlock_body_line_ComplaintSettings[data="chat_busines"]').css('margin-left', '10px').click( function() {
                     note({
                         content: "Ошибка",
                         type: "error",
