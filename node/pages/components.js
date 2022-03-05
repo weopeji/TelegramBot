@@ -203,7 +203,24 @@ var action_linker =
     "alertForBusinesOfInvester": alertForBusinesOfInvester,
     "not_correct": not_correct,
     "not_correct_complaint": not_correct_complaint,
+    "getComplaint": getComplaint,
 };
+
+async function getComplaint(socket, data, callback)
+{
+    var _InvDocs    = await InvDoc.findOne({not_correct_complaint: true});
+    var allData     = [];
+
+    for(_InvDoc of _InvDocs)
+    {
+        allData.push({
+            Project: await Project.findOne({_id: _InvDoc.projectId}),
+            Inv: _InvDoc,
+        });
+    };
+
+    callback(allData);
+}
 
 async function not_correct_complaint(socket, data, callback)
 {
