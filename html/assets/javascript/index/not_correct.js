@@ -106,7 +106,9 @@
                         time: 3,
                     });
 
-                    $(this).parent().parent().children('span').eq(3).html('1');
+                    $(this).parent().parent().children('span').eq(3).html('<span style="color: green">Ожидает модерации</span>');
+                    $(this).parent().parent().children('span').eq(4).children().empty();
+                    $(this).parent().parent().children('span').eq(4).children().empty();
                 });
 
                 settingBlock.find('.settingBlock_body').append(template_text);
