@@ -1492,7 +1492,8 @@
                 $('.index_page_body_header_user_avatar_name span').html(_User.first_name);
                 $('.index_page_body_header_user_avatar_name p').html(_User.type);
     
-                var buttons = {
+                var buttons = 
+                {
                     "investor": 
                     `
                         <div class="index_page_menu_block_line" data="activ_projects">
@@ -1531,6 +1532,10 @@
                         <div class="index_page_menu_block_line" data="acceptPays">
                             <i class="fal fa-check-square"></i>
                             <span>Поступления</span>
+                        </div>
+                        <div class="index_page_menu_block_line" data="not_correct">
+                            <i class="fal fa-times"></i>
+                            <span>Отказано</span>
                         </div>
                         <div class="index_page_menu_block_line" data="chats">
                             <i class="fal fa-comments"></i>
