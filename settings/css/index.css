@@ -499,12 +499,14 @@
   padding: 10px 20px;
   border-radius: 4px;
   background-color: #1387FF;
+  cursor: pointer;
 }
 
 .body_point_line_block_more_registration_business st {
   padding: 10px 20px;
   border-radius: 4px;
   background-color: #1387FF;
+  cursor: pointer;
 }
 
 .button_open_settings_page {

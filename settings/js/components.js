@@ -885,13 +885,28 @@
                         window.open(`https://invester-relocation.site/projects/${_project._id}/${_project.registrationDocument.document}`, "_blank")
                     });
 
-                    firstBlockMore.find('st').eq(1).click( async function() {
+                    firstBlockMore.find('st').eq(1).click( async function() 
+                    {
+                        note({
+                            content: "Пожалуйста подождите!",
+                            type: "info",
+                            time: 2,
+                        });
+
                         await callApi({
                             methodName: 'registrationDocumentAcceptAdmin',
                             data: _GET("id"),
                         });
-                        alert('Успешно!');
-                        location.reload(); 
+
+                        note({
+                            content: "Успешно!",
+                            type: "info",
+                            time: 2,
+                            callback: function()
+                            {
+                                location.reload(); 
+                            },
+                        }); 
                     });
 
                     firstBlockMore.find('input[type=file]').change( async function() 
