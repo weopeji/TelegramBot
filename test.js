@@ -57,3 +57,13 @@ note({
     type: "info",
     time: 2,
 });
+
+note({
+    content: "",
+    type: "info",
+    time: 2,
+    callback: function()
+    {
+
+    },
+});
