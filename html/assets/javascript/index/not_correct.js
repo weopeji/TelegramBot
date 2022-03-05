@@ -72,6 +72,16 @@
                     </div>
                 `);
 
+                if(typeof element.Inv.not_correct_complaint != "undefined")
+                {
+                    if(element.Inv.not_correct_complaint)
+                    {
+                        template_text.children('span').eq(4).children().remove();
+                        template_text.children('span').eq(5).children().remove();
+                        template_text.children('span').eq(3).html('<span style="color: green; width: fit-content;">Ожидает модерации</span>');
+                    };
+                };
+
                 template_text.children('span').eq(0).click( function() {
                     location.href = `https://invester-relocation.site/?page=activ_projects&id=${$(this).parent().attr('data-id')}`;
                 });
@@ -89,11 +99,8 @@
                 {
                     var IdInv = $(this).parent().parent().attr('data-id');
 
-                    note({
-                        content: "Пожалуйста подождите!",
-                        type: "info",
-                        time: 3,
-                    });
+                    $(this).parent().parent().children('span').eq(4).children().remove();
+                    $(this).parent().parent().children('span').eq(5).children().remove();
 
                     await callApi({
                         methodName: "not_correct_complaint",
@@ -106,9 +113,7 @@
                         time: 3,
                     });
 
-                    $(this).parent().parent().children('span').eq(3).html('<span style="color: green">Ожидает модерации</span>');
-                    $(this).parent().parent().children('span').eq(4).children().remove();
-                    $(this).parent().parent().children('span').eq(4).children().remove();
+                    $(this).parent().parent().children('span').eq(3).html('<span style="color: green; width: fit-content;">Ожидает модерации</span>');
                 });
 
                 settingBlock.find('.settingBlock_body').append(template_text);
