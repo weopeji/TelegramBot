@@ -207,7 +207,10 @@ var action_linker =
 
 async function not_correct_complaint(socket, data, callback)
 {
-    callback(await InvDoc.findOneAndUpdate({_id: data}, {not_correct_complaint: true}));
+    var _InvDoc = await InvDoc.findOneAndUpdate({_id: data}, {not_correct_complaint: true});
+    var _Project = await Project.findOne({_id: _InvDoc.projectId});
+    h.full_alert_user(_Project.user, `По поданной инвестиции поступила жалоба, ожидайте решения администрации`, "not_correct_complaint");
+    callback();
 }
 
 async function not_correct(socket, data, callback)
