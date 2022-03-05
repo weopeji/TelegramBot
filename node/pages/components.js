@@ -201,7 +201,25 @@ var action_linker =
     "business_addpayment_for_inv": business_addpayment_for_inv,
     "payments_new_get": payments_new_get,
     "alertForBusinesOfInvester": alertForBusinesOfInvester,
+    "not_correct": not_correct,
 };
+
+async function not_correct(socket, data, callback)
+{
+    var _User               = await User.findOne({_id: data});
+    var allNotCorrectInvs   = await InvDoc.findOne({status: "not_correct", invester: _User.user});
+    var allData             = [];
+
+    for(var allNotCorrectInv of allNotCorrectInvs)
+    {
+        allData.push({
+            Project: await Project.findOne({_id: allNotCorrectInv.projectId}),
+            Inv: allNotCorrectInv,
+        });
+    };
+
+    callback(allData);
+}
 
 async function telegram_recomendation_cabinet(socket, data, callback)
 {
