@@ -173,7 +173,8 @@
                 "wait_projects": function() {wait_projects.render(global.allData)},
                 "obligations": function() {obligations.render(global.allData)},
                 "payments_new": function() {payments_new.render(global.allData)},
-                "telegram_authorization": function() {telegram_authorization.render(global.allData)}
+                "telegram_authorization": function() {telegram_authorization.render(global.allData)},
+                "not_correct": function() {not_correct.render(global.allData)}
             }
 
             if(pageID)
