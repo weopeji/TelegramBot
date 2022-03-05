@@ -251,6 +251,11 @@ async function not_correct_complaint(socket, data, callback)
     var _InvDoc = await InvDoc.findOneAndUpdate({_id: data}, {not_correct_complaint: true});
     var _Project = await Project.findOne({_id: _InvDoc.projectId});
     h.full_alert_user(_Project.user, `По поданной инвестиции поступила жалоба, ожидайте решения администрации`, "not_correct_complaint");
+    h.alertAdmin({
+        type: "not_correct_complaint",
+        text: `В проекте ${_Project._id} "${_Project.data.name}" инвестор подал жалобу за отказ бизнеса, примите решение`,
+        projectId: _Project._id,
+    });
     callback();
 }
 
