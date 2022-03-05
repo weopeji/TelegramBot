@@ -760,7 +760,7 @@
                                 </div>
                             </div>
                             <div class="renderCloseBlockBusiness_block_input">
-                                <input type="text" placeholder="Коментарий">
+                                <input type="text" placeholder="Коментарий" id="notCorrect_value">
                                 <div class="renderCloseBlockBusiness_block_input_button">
                                     <span>Отказать</span>
                                 </div>
@@ -775,7 +775,8 @@
                 $(this).addClass('selected');
             });
 
-            template_text.find('.renderCloseBlockBusiness_block_input_button').click( function() {
+            template_text.find('.renderCloseBlockBusiness_block_input_button').click( function() 
+            {
                 if(!$('.renderCloseBlockBusiness_block_text_line').hasClass('selected'))
                 {
                     note({
@@ -809,6 +810,17 @@
                             return;
                         }
                     };
+
+                    if($('#notCorrect_value').val().length <= 0)
+                    {
+                        note({
+                            content: "Вы должны ввести коментарий",
+                            type: "info",
+                            time: 5
+                        });
+
+                        return;
+                    }
                 };
             });
 
