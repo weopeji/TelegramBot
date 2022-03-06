@@ -522,8 +522,15 @@
                             this.global_block.find('.Attracted_headerInfoBlock_block[data="dell"]').find('p').html(`Удалить`);
                             this.global_block.find('.Attracted_headerInfoBlock_block[data="dell"]').click( function() {
                                 _this.dellSignatureFile(_project._id);
-                                alert("Успешно");
-                                location.reload();
+                                note({
+                                    content: "Успешно!",
+                                    type: "info",
+                                    time: 2,
+                                    callback: function()
+                                    {
+                                        location.reload();
+                                    },
+                                });
                             });
                             
                             if(_project.type == "moderation")
