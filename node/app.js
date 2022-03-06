@@ -758,6 +758,28 @@ app.post('/file_signature_document.io/files', (req, res) => {
                     sign.status = "on";
 
                     await Project.findOneAndUpdate({_id: _data._id}, {type: "moderation", signature_document: sign});
+
+                    var _UserByAlerts       = await User.findOne({user: _project.user});
+                    var alertsOfUser        = _UserByAlerts.alerts_main;
+                    var needsArrayAlerts    = [];
+                    var errorOfAlerts       = false;
+
+                    for(var _key in alertsOfUser)
+                    {
+                        if(alertsOfUser[_key].type != "moreInvesterDocument")
+                        {
+                            needsArrayAlerts.push(alertsOfUser[_key]);
+                        } 
+                        else
+                        {
+                            errorOfAlerts = true;
+                        }
+                    };
+
+                    if(errorOfAlerts)
+                    {
+                        await User.findOneAndUpdate({user: _project.user}, {alerts_main: needsArrayAlerts});
+                    };
                 });
             } else {
                 console.log('Файл не найден');
