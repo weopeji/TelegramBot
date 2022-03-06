@@ -46,17 +46,17 @@
 
             _data.forEach(function(element, i) 
             {
-                var otk = "Спам";
-
-                if(element.Inv.not_correct.dataType != "spam")
+                var typePush =
                 {
-                    otk = "Данные не верны";
+                    "spam": "Спам",
+                    "money": "Оплата не поступила",
+                    "not_correct": "Данные не верны"
                 };
 
                 var template_text = $(` 
                     <div class="settingBlock_body_line" data-id="${element.Inv._id}">
                         <span>${element.Project.data.name}</span>
-                        <span>${otk}</span>
+                        <span>${typePush[element.Inv.not_correct.dataType]}</span>
                         <span>${element.Inv.not_correct.comment}</span>
                         <span>Ожидает действия</span>
                         <span>
