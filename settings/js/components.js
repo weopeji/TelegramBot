@@ -287,6 +287,16 @@
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
+            }).then(data => {
+                note({
+                    content: "Успешно",
+                    type: "info",
+                    time: 2,
+                    callback: function()
+                    {
+                        location.reload();
+                    },
+                });
             });
         }
 
@@ -450,16 +460,31 @@
                         var filename = $(this.files)[0].name;
                         var aux = filename.split('.');
                         var extension = aux[aux.length -1].toUpperCase();
+
+                        if(extension != "DOCX")
+                        {
+                            note({
+                                content: `Не верный формат! ${extension}, вы должны загрузить word`,
+                                type: "info",
+                                time: 2,
+                            });
+
+                            return;
+                        }
    
                         var _form    = new FormData();
 
                         _form.append('files', $(this.files)[0]);
                         _form.append('_id', _project._id);
                         _form.append('_pts', extension);
-                        _this.setSignatureFile(_project._id, _form);
 
-                        alert('Успешно!');
-                        location.reload();
+                        note({
+                            content: "Загрузка началась, ожидайте",
+                            type: "info",
+                            time: 2,
+                        });
+
+                        await _this.setSignatureFile(_project._id, _form);
                     });
 
                     this.global_block.append(putDocumentToSignature);
@@ -625,10 +650,18 @@
                 </div>
             `);
 
-            templateText.find('.get_new_data').click( function() {
+            templateText.find('.get_new_data').click( function() 
+            {
                 _this.getNewDataProjects($('.index_page_body_project_body_type').find('span.selected').attr('data'), _project._id);
-                alert('Успешно!');
-                location.reload();
+                note({
+                    content: "Успешно",
+                    type: "info",
+                    time: 2,
+                    callback: function()
+                    {
+                        location.reload();
+                    },
+                });
             });
 
             var _doc = 

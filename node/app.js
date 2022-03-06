@@ -474,6 +474,10 @@ app.post('/file_urist.io/files', (req, res) => {
                             await page.waitForSelector('.all_good')
                             await page.pdf({path: `/var/www/projects/${_data._id}/signature_document.pdf`});
                             await browser.close();
+
+                            res.json({
+                                status: 'ok',
+                            });
                         })
                         .done();
                 });
