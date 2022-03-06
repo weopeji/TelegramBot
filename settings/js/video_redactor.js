@@ -65,15 +65,22 @@
                 tamplateText.find('.upload_video_block_info_cadr').html(dataOfVideo.data.video.fps);
                 tamplateText.find('.upload_video_block_info_volue').html(_volue);
 
-                tamplateText.find('.upload_video_block_button').click( async function() {
-                    alert("Успешно! Дождитесь обработки видео!");
+                tamplateText.find('.upload_video_block_button').click( async function() 
+                {
                     callApi({
                         methodName: "dataOfVideoAccept",
                         data: _this.project._id,
                     });
-                    setTimeout(() => {
-                        location.reload();
-                    }, 1000)
+
+                    note({
+                        content: "Вы успешно отправили видео на обработку, дождитесь уведомления в боте",
+                        type: "info",
+                        time: 2,
+                        callback: function()
+                        {
+                            location.reload();
+                        },
+                    });
                 });
             } else
             {
