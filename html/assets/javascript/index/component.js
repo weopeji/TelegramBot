@@ -727,14 +727,13 @@
                                         </div>
                                         <p>Спам</p>
                                     </div>
-                                    
                                 </div>
                                 <div class="renderCloseBlockBusiness_block_text_line" data="not_correct">
                                     <div class="renderCloseBlockBusiness_block_text_line_circule">
                                         <div class="renderCloseBlockBusiness_block_text_line_circule_block">
                                             <div class="renderCloseBlockBusiness_block_text_line_circule_block_row"></div>
                                         </div>
-                                        <p>Данные инвестиции не верны</p>
+                                        <p>Данные в договоре не верны</p>
                                     </div>
                                     <div class="renderCloseBlockBusiness_block_text_line_drop_menu">
                                         <div class="renderCloseBlockBusiness_block_text_line_drop_menu_line">
@@ -749,6 +748,14 @@
                                             <input type="checkbox" name="" id="notCorrect_photo">
                                             <span>Не верен чек</span>
                                         </div>
+                                    </div>
+                                </div>
+                                <div class="renderCloseBlockBusiness_block_text_line" data="spam">
+                                    <div class="renderCloseBlockBusiness_block_text_line_circule">
+                                        <div class="renderCloseBlockBusiness_block_text_line_circule_block">
+                                            <div class="renderCloseBlockBusiness_block_text_line_circule_block_row"></div>
+                                        </div>
+                                        <p>В течении 3х банковских дней деньги не посутпили</p>
                                     </div>
                                 </div>
                             </div>
