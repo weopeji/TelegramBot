@@ -2807,13 +2807,14 @@ async function acceptProject(socket,data,callback)
             client
                 .login()
                 .then(async () => {
-                    try {
+                    try 
+                    {
                         const { media } = await client.uploadPhoto({ photo: photo, caption: _caption, post: 'feed' });
                         console.log(`https://www.instagram.com/p/${media.code}/`);
-                    } catch (e) {
-                        console.log(e);
+                    } catch (e) 
+                    {
+                        console.log("instagram failed");
                     }
-                    
                 })
         })();
     
