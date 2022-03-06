@@ -750,7 +750,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="renderCloseBlockBusiness_block_text_line" data="spam">
+                                <div class="renderCloseBlockBusiness_block_text_line" data="money">
                                     <div class="renderCloseBlockBusiness_block_text_line_circule">
                                         <div class="renderCloseBlockBusiness_block_text_line_circule_block">
                                             <div class="renderCloseBlockBusiness_block_text_line_circule_block_row"></div>
