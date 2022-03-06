@@ -2716,7 +2716,7 @@ async function acceptProject(socket,data,callback)
     if(
         !_project.signature             ||
         !_project.signature_document    ||
-        !_project.registrationDocument
+        typeof _project.registrationDocument == "undefined"
     )
     {
         callback('error');
