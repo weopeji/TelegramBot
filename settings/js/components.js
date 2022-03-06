@@ -132,16 +132,6 @@
             `);
         };
 
-        accept(_id) 
-        {
-            callApi({
-                methodName: 'acceptProject',
-                data: _id,
-            }).then((data) => {
-                return data; 
-            });
-        }
-
         async render_header(_project)
         {
             var _this = this;
@@ -204,10 +194,59 @@
 
             header_info.find('.global_block_header_status span').html(_status);
 
-            header_info.find('.global_block_header_accept_button').click( function () {
-                _this.accept(_project._id);
-                alert('Успешно!');
-                location.reload();
+            header_info.find('.global_block_header_accept_button').click( function () 
+            {
+                note({
+                    content: "Пожалуйста подождите!",
+                    type: "info",
+                    time: 2,
+                });
+
+                var AcceptProjectData = await callApi({
+                    methodName: 'acceptProject',
+                    data: _project._id,
+                });
+
+                if(AcceptProjectData == "error")
+                {
+                    note({
+                        content: "Проект не заполнен полностью!",
+                        type: "info",
+                        time: 2,
+                    });
+
+                    return;
+                }
+
+                if(AcceptProjectData == "error_add")
+                {
+                    note({
+                        content: "Проект был добавлен с ошибкой!",
+                        type: "info",
+                        time: 2,
+                        callback: function()
+                        {
+                            location.reload();
+                        },
+                    });
+
+                    return;
+                };
+
+                if(AcceptProjectData == "ok")
+                {
+                    note({
+                        content: "Проект был успешно добавлен!",
+                        type: "info",
+                        time: 2,
+                        callback: function()
+                        {
+                            location.reload();
+                        },
+                    });
+
+                    return;
+                }
             });
 
             header_menu.find('span').click( function () {

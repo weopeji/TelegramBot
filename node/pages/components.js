@@ -2712,120 +2712,139 @@ async function setActive(socket,data,callback) {
 async function acceptProject(socket,data,callback) 
 {
     var _project        = await Project.findOne({_id: data});
-    var _urlImgProject  = `${h.getURL()}html/project/cover/?id=${data}&liner=true`;
-    const browser       = await puppeteer.launch({
-        args: ['--no-sandbox', '--disable-setuid-sandbox', '--window-size=3840,3840'],
-        defaultViewport: null,
-    });
-    const page = await browser.newPage();   
-    await page._client.send('Emulation.clearDeviceMetricsOverride');
-    await page.goto(_urlImgProject);
-    await page.emulateMedia('screen');
-    const element = await page.$('.cover_block');
-    await page.waitForSelector('.all_good');
-    await element.screenshot({
-        path: `../projects/${data}/logo_instagram.jpg`,
-    });
-    await browser.close();
 
-    var videoPresentationPath = `${h.getURL()}/projects/${_project._id}/${_project.data["file+8"]}`;
-    
-    if(_project.YT_VIDEO)
+    if(
+        !_project.signature             ||
+        !_project.signature_document    ||
+        !_project.registrationDocument
+    )
     {
-        var yt_data = JSON.parse(_project.YT_VIDEO[3]);
-        videoPresentationPath = `https://www.youtube.com/watch?v=${yt_data.id}`;
+        callback('error');
     };
 
-    var html        = `[Профиль компании](${h.getURL()}html/project/profil/#${_project._id}/)\n[Презентация](${h.getURL()}/projects/${_project._id}/${_project.data["file+7"]})\n[Видео презентация](${videoPresentationPath})`;
-    var stream      = fs.createReadStream(`../projects/${data}/logo_instagram.jpg`);
-
-    var dataPhotoPush = await bot.sendPhoto(-1001205415519, stream, {
-        "caption": html,
-        "parse_mode": "MarkdownV2",
-        "reply_markup": {
-            "inline_keyboard": [
-                [
-                    {
-                        text: "Рекомендовать",
-                        login_url: {
-                            'url': `https://invester-relocation.site/?page=telegram_authorization&type=recomendation&userId=${data}`,
-                            'request_write_access': true,
+    try
+    {
+        var _urlImgProject  = `${h.getURL()}html/project/cover/?id=${data}&liner=true`;
+        const browser       = await puppeteer.launch({
+            args: ['--no-sandbox', '--disable-setuid-sandbox', '--window-size=3840,3840'],
+            defaultViewport: null,
+        });
+        const page = await browser.newPage();   
+        await page._client.send('Emulation.clearDeviceMetricsOverride');
+        await page.goto(_urlImgProject);
+        await page.emulateMedia('screen');
+        const element = await page.$('.cover_block');
+        await page.waitForSelector('.all_good');
+        await element.screenshot({
+            path: `../projects/${data}/logo_instagram.jpg`,
+        });
+        await browser.close();
+    
+        var videoPresentationPath = `${h.getURL()}/projects/${_project._id}/${_project.data["file+8"]}`;
+        
+        if(_project.YT_VIDEO)
+        {
+            var yt_data = JSON.parse(_project.YT_VIDEO[3]);
+            videoPresentationPath = `https://www.youtube.com/watch?v=${yt_data.id}`;
+        };
+    
+        var html        = `[Профиль компании](${h.getURL()}html/project/profil/#${_project._id}/)\n[Презентация](${h.getURL()}/projects/${_project._id}/${_project.data["file+7"]})\n[Видео презентация](${videoPresentationPath})`;
+        var stream      = fs.createReadStream(`../projects/${data}/logo_instagram.jpg`);
+    
+        var dataPhotoPush = await bot.sendPhoto(-1001205415519, stream, {
+            "caption": html,
+            "parse_mode": "MarkdownV2",
+            "reply_markup": {
+                "inline_keyboard": [
+                    [
+                        {
+                            text: "Рекомендовать",
+                            login_url: {
+                                'url': `https://invester-relocation.site/?page=telegram_authorization&type=recomendation&userId=${data}`,
+                                'request_write_access': true,
+                            },
                         },
-                    },
-                    {
-                        text: "Личный кабинет",
-                        login_url: {
-                            'url': `https://invester-relocation.site/?page=telegram_authorization&type=cabinet`,
-                            'request_write_access': true,
-                        },
-                    }
+                        {
+                            text: "Личный кабинет",
+                            login_url: {
+                                'url': `https://invester-relocation.site/?page=telegram_authorization&type=cabinet`,
+                                'request_write_access': true,
+                            },
+                        }
+                    ],
+                    [
+                        {
+                            text: "Подробнее",
+                            login_url: {
+                                'url': `https://invester-relocation.site/?page=telegram_authorization&type=more&userId=${data}`,
+                                'request_write_access': true,
+                            },
+                        }
+                    ]
                 ],
-                [
-                    {
-                        text: "Подробнее",
-                        login_url: {
-                            'url': `https://invester-relocation.site/?page=telegram_authorization&type=more&userId=${data}`,
-                            'request_write_access': true,
-                        },
+            }
+        });
+        
+        const client = new Instagram({ username: "investER_official", password: "e<<@H&_ArB~5ef7" });
+    
+        ;(async () => 
+        {
+            const photo = `https://invester-relocation.site/projects/${data}/logo_instagram.jpg`;
+    
+            var _caption = `
+                *
+                ${_project.data.name}
+                ${_project.data.target}
+                Ставка: ${_project.data.rate}
+                Выплаты: ${_project.data.date_payments}
+                Вход от: ${_project.data.minimal_amount}
+                Сбор до: ${_project.data.date}
+                *
+                Подробнее по ссылке в шапке профиля
+            `;
+        
+            client
+                .login()
+                .then(async () => {
+                    try {
+                        const { media } = await client.uploadPhoto({ photo: photo, caption: _caption, post: 'feed' });
+                        console.log(`https://www.instagram.com/p/${media.code}/`);
+                    } catch (e) {
+                        console.log(e);
                     }
-                ]
-            ],
-        }
-    });
+                    
+                })
+        })();
     
-    const client = new Instagram({ username: "investER_official", password: "e<<@H&_ArB~5ef7" });
-
-    ;(async () => 
-    {
-        const photo = `https://invester-relocation.site/projects/${data}/logo_instagram.jpg`;
-
-        var _caption = `
-            *
-            ${_project.data.name}
-            ${_project.data.target}
-            Ставка: ${_project.data.rate}
-            Выплаты: ${_project.data.date_payments}
-            Вход от: ${_project.data.minimal_amount}
-            Сбор до: ${_project.data.date}
-            *
-            Подробнее по ссылке в шапке профиля
-        `;
+        var UserProject     = await User.findOne({user: _project.user});
     
-        client
-            .login()
-            .then(async () => {
-                try {
-                    const { media } = await client.uploadPhoto({ photo: photo, caption: _caption, post: 'feed' });
-                    console.log(`https://www.instagram.com/p/${media.code}/`);
-                } catch (e) {
-                    console.log(e);
-                }
-                
-            })
-    })();
+        if(typeof UserProject.member_b_project == "undefined")
+        {
+            await User.findOneAndUpdate({user: _project.user}, {member_b_project: _project._id});
+        };
+    
+        await Project.findOneAndUpdate({_id: data}, 
+        {
+            type: "active", 
+            channel_id: dataPhotoPush.message_id,
+            data_creating: new Date().getTime(),
+        });
+    
+    
+        h.full_alert_user(_project.user, `Ваш проект номер ${_project._id} "${_project.data.name}" был опубликован в investER!`, "acceptProject", dataPhotoPush.message_id);
+    
+        h.alertAdmin({
+            type: "creating_project",
+            text: `Проект ${_project.data.name} был опубликован в канале!`,
+            projectId: _project._id,
+        });
 
-    var UserProject     = await User.findOne({user: _project.user});
-
-    if(typeof UserProject.member_b_project == "undefined")
+        callback('ok');
+    }
+    catch(e)
     {
-        await User.findOneAndUpdate({user: _project.user}, {member_b_project: _project._id});
-    };
-
-    await Project.findOneAndUpdate({_id: data}, 
-    {
-        type: "active", 
-        channel_id: dataPhotoPush.message_id,
-        data_creating: new Date().getTime(),
-    });
-
-
-    h.full_alert_user(_project.user, `Ваш проект номер ${_project._id} "${_project.data.name}" был опубликован в investER!`, "acceptProject", dataPhotoPush.message_id);
-
-    h.alertAdmin({
-        type: "creating_project",
-        text: `Проект ${_project.data.name} был опубликован в канале!`,
-        projectId: _project._id,
-    });
+        callback('error_add');
+    }    
 }
 
 
