@@ -305,9 +305,10 @@ async function _MainMenu(msg, close)
                     for(alertUser of _User.alerts_main)
                     {
                         if(
-                            alertUser.type == "project_redacting"   ||
-                            alertUser.type == "file_urist"          ||
-                            alertUser.type == "correction_signature"
+                            alertUser.type == "project_redacting"       ||
+                            alertUser.type == "file_urist"              ||
+                            alertUser.type == "correction_signature"    ||
+                            alertUser.type == "moreInvesterDocument"
                         )
                         {
                             button_not_active++;
