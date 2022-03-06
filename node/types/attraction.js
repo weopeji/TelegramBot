@@ -137,7 +137,7 @@ async function url(msg)
         });
         _array.push(fat.message_id);
 
-        var stream = fs.createReadStream(`./assets/videos/how_rec.mp4`);
+        var stream = fs.createReadStream(`./assets/videos/GIF.mp4`);
         var fat = await await bot.sendAnimation(msg.from.id, stream, {
             width: 900,
             height: 1920,
@@ -186,7 +186,7 @@ async function url(msg)
         });
         _array.push(fat.message_id);
 
-        var stream = fs.createReadStream(`./assets/videos/how_rec.mp4`);
+        var stream = fs.createReadStream(`./assets/videos/GIF.mp4`);
         var fat = await await bot.sendAnimation(msg.from.id, stream, {
             width: 900,
             height: 1920,
