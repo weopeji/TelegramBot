@@ -2720,6 +2720,7 @@ async function acceptProject(socket,data,callback)
     )
     {
         callback('error');
+        return;
     };
 
     try
