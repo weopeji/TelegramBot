@@ -447,12 +447,26 @@
                     `);
 
                     putDocumentToSignatureAddMore.click( async function() {
+                        note({
+                            content: "Пожалуйста подождите!",
+                            type: "info",
+                            time: 2,
+                        });
+
                         await callApi({
                             methodName: 'setCorrectionForProject',
                             data: _GET("id"),
                         });
-                        alert('Успешно');
-                        location.reload();
+
+                        note({
+                            content: "Успешно",
+                            type: "info",
+                            time: 2,
+                            callback: function()
+                            {
+                                location.reload();
+                            },
+                        });
                     })
 
                     putDocumentToSignature.find('input[type=file]').change( async function() 
@@ -466,7 +480,7 @@
                             note({
                                 content: `Не верный формат! ${extension}, вы должны загрузить word`,
                                 type: "info",
-                                time: 2,
+                                time: 4,
                             });
 
                             return;
