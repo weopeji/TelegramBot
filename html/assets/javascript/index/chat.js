@@ -16,8 +16,35 @@
 
     class chat
     {
+        async pushMsgOfUser(msgText)
+        {
+            var myBlock = $(`
+                <div class="chat_block_chat_body_msgs_line">
+                    <div class="chat_block_chat_body_msgs_line_my">
+                        <span>${msgText}</span>
+                    </div>
+                </div>
+            `);
+
+            $('.chat_block_chat_body_msgs').append(myBlock);
+            $('.chat_block_chat_body_msgs').animate({scrollTop: $('.chat_block_chat_body_msgs').height()}, 'fast');
+
+            await callApi({
+                methodName: "msgUP",
+                data: {
+                    user: global.allData._id,
+                    type: global.allData.User.type,
+                    id: _GET("id"),
+                    msg: msgText,
+                },
+            });
+
+            $('.chat_block_chat_body_row_input input').val('');
+        };
+
         async renderChat()
         {
+            var _this   = this;
             var getChat = await callApi({
                 methodName: "getChatsOfId",
                 data: {
@@ -105,19 +132,23 @@
                                     theme: "dark",
                                     html: "",
                                     useTransparency: true,
-                                }).then(value => {
+                                }).then(async (value) => 
+                                {
                                     if(value)
                                     {
+                                        await callApi({
+                                            methodName: "not_correct_complaint",
+                                            data: _GET("id"),
+                                        });
+
+                                        _this.pushMsgOfUser(`Бизнес подал жалобу по этому проекту, ожидайте решения модерации`);
+
                                         SoloAlert.alert({
                                             title:"Успешно",
                                             body:"",
                                             icon: "success"
                                         });
-                                    } 
-                                    else
-                                    {
-
-                                    }
+                                    };
                                 })
                             })
 
