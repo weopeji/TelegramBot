@@ -106,7 +106,18 @@
                                     html: "",
                                     useTransparency: true,
                                 }).then(value => {
-                                    alert(value);
+                                    if(value)
+                                    {
+                                        SoloAlert.alert({
+                                            title:"Успешно",
+                                            body:"",
+                                            icon: "success"
+                                        });
+                                    } 
+                                    else
+                                    {
+
+                                    }
                                 })
                             })
 

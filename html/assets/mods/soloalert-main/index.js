@@ -762,11 +762,11 @@
       actions.classList.add("SoloAlert-actions");
       var cancelBtn = document.createElement("button");
       cancelBtn.classList.add("SoloAlert-action-button");
-      cancelBtn.textContent = "ОТМЕНА";
+      cancelBtn.textContent = "ОТМЕНИТЬ";
       cancelBtn.addEventListener("click", inp_onCancel);
       var okBtn = document.createElement("button");
       okBtn.classList.add("SoloAlert-action-button");
-      okBtn.textContent = "ПОДТВЕРДИТЬ";
+      okBtn.textContent = "OK";
       okBtn.addEventListener("click", inp_onOk);
 
 
