@@ -486,6 +486,7 @@ async function getChatsOfId(socket, data, callback)
         type: null,
         photo: null,
         msgs: null,
+        Inv: _FindBlock,
     };
 
     if(_User.type == "business")
@@ -521,7 +522,7 @@ async function getChatsOfId(socket, data, callback)
     if(_MsgDB)
     {
         returnBlock.msgs = _MsgDB.msgs;
-    }
+    };
 
     callback(returnBlock);
 }

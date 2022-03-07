@@ -53,6 +53,13 @@
                         <span>${getChat.name}</span>
                         <p>${getChat.type}</p>
                     </div>
+                    <div class="chat_block_info">
+                        <div class="info_active_block_photo">
+                            <img src="${getChat.photo}" alt="">
+                        </div>
+                        <span>${getChat.name}</span>
+                        <p>${getChat.type}</p>
+                    </div>
                 </div>
             `);
 
