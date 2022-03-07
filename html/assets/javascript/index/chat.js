@@ -53,6 +53,11 @@
             }
         };
 
+        async removeButtonsAll()
+        {
+            $('.chat_block_info_more_buttons').remove();
+        }
+
         async renderChat()
         {
             var _this   = this;
@@ -136,6 +141,35 @@
 
                                         _this.pushMsgOfUser(`Инвестор подал жалобу по этому проекту, ожидайте решения модерации`);
                                         _this.removeButtons();
+
+                                        SoloAlert.alert({
+                                            title:"Успешно",
+                                            body:"",
+                                            icon: "success"
+                                        });
+                                    };
+                                })
+                            });
+
+                            actionBlock.find('.chat_block_info_more_buttons_line[data="cancel"]').click( function() 
+                            {
+                                SoloAlert.confirm({
+                                    title: "Подтверждение",
+                                    body: "Вы уверены, что хотите отменить инвестицию?",
+                                    theme: "dark",
+                                    html: "",
+                                    useTransparency: true,
+                                }).then(async (value) => 
+                                {
+                                    if(value)
+                                    {
+                                        await callApi({
+                                            methodName: "not_correct_complaint_again",
+                                            data: _GET("id"),
+                                        });
+
+                                        _this.pushMsgOfUser(`Инвестиция была отменена инвестором`);
+                                        _this.removeButtonsAll();
 
                                         SoloAlert.alert({
                                             title:"Успешно",
