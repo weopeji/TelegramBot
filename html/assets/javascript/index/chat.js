@@ -105,8 +105,7 @@
                                     theme: "dark",
                                     html: "",
                                     useTransparency: false,
-                                    onOk: function () { },
-                                    onCancel: function () { },
+                                    background: "#182037",
                                 }).then(value => {
                                     alert(value);
                                 })

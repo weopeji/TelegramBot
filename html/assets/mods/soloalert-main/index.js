@@ -221,7 +221,6 @@
       position:fixed !important;
       top:0 !important;
       left:0 !important;
-      background-color:${wrapper_bg} !important;
       display:flex !important;
       align-items:center !important;
       justify-content:center !important;
