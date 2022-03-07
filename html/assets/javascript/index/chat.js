@@ -225,6 +225,35 @@
                                         });
                                     };
                                 })
+                            });
+
+                            actionBlock.find('.chat_block_info_more_buttons_line[data="accept_investing"]').click( function() 
+                            {
+                                SoloAlert.confirm({
+                                    title: "Подтверждение",
+                                    body: "Вы уверены, что хотите принять инвестицию?",
+                                    theme: "dark",
+                                    html: "",
+                                    useTransparency: true,
+                                }).then(async (value) => 
+                                {
+                                    if(value)
+                                    {
+                                        await callApi({
+                                            methodName: "acceptInvOfComplaintAdministrator",
+                                            data: _GET("id"),
+                                        });
+
+                                        _this.pushMsgOfUser(`Бизнес принял инвестицию`);
+                                        _this.removeButtonsAll();
+
+                                        SoloAlert.alert({
+                                            title:"Успешно",
+                                            body:"",
+                                            icon: "success"
+                                        });
+                                    };
+                                })
                             })
 
                             return actionBlock;
