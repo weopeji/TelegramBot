@@ -253,6 +253,35 @@
                                             icon: "success"
                                         });
                                     };
+                                });
+                            });
+
+                            actionBlock.find('.chat_block_info_more_buttons_line[data="request_again"]').click( function() 
+                            {
+                                SoloAlert.confirm({
+                                    title: "Подтверждение",
+                                    body: "Вы уверены, что хотите отправить запрос на оформление инвестиции повторно?",
+                                    theme: "dark",
+                                    html: "",
+                                    useTransparency: true,
+                                }).then(async (value) => 
+                                {
+                                    if(value)
+                                    {
+                                        await callApi({
+                                            methodName: "requestInvestingOfRemove",
+                                            data: _GET("id"),
+                                        });
+
+                                        _this.pushMsgOfUser(`Бизнес отправил запрос на перезаполнение инвестиции`);
+                                        _this.removeButtonsAll();
+
+                                        SoloAlert.alert({
+                                            title:"Успешно",
+                                            body:"",
+                                            icon: "success"
+                                        });
+                                    };
                                 })
                             })
 
@@ -320,7 +349,55 @@
             if(typeof getChat.Inv.not_correct_complaint != "undefined")
             {
                 _this.removeButtons();
-            }
+            };
+
+            if(global.allData.User.type == "investor")
+            {
+                if(typeof getChat.Inv.request_remove != "undefined")
+                {
+                    SoloAlert.confirm({
+                        title: "Подтверждение",
+                        body: "Бизнес отпрасил запрос на закрытие и перезаполнение инвестиции",
+                        theme: "dark",
+                        html: "",
+                        useTransparency: true,
+                    }).then(async (value) => 
+                    {
+                        if(value)
+                        {
+                            await callApi({
+                                methodName: "not_correct_complaint_again",
+                                data: _GET("id"),
+                            });
+
+                            _this.pushMsgOfUser(`Инвестиция была отменена инвестором`);
+                            _this.removeButtonsAll();
+
+                            SoloAlert.alert({
+                                title:"Успешно",
+                                body:"",
+                                icon: "success"
+                            });
+                        }
+                        else
+                        {
+                            await callApi({
+                                methodName: "requestInvestingOfRemoveCLOSE",
+                                data: _GET("id"),
+                            });
+
+                            _this.pushMsgOfUser(`Предложение было отклонено инвестором`);
+                            _this.removeButtonsAll();
+
+                            SoloAlert.alert({
+                                title:"Успешно",
+                                body:"",
+                                icon: "success"
+                            });
+                        }
+                    })
+                };
+            };
         };
 
         async renderType()

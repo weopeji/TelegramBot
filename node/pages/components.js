@@ -207,7 +207,19 @@ var action_linker =
     "getComplaint": getComplaint,
     "removeInvOfComplaintAdministrator": removeInvOfComplaintAdministrator,
     "acceptInvOfComplaintAdministrator": acceptInvOfComplaintAdministrator,
+    "requestInvestingOfRemove": requestInvestingOfRemove,
+    "requestInvestingOfRemoveCLOSE": requestInvestingOfRemoveCLOSE,
 };
+
+async function requestInvestingOfRemoveCLOSE(socket, data, callback)
+{
+    callback(await InvDoc.findOneAndUpdate({_id: data}, {$unset: {request_remove: 1}}));
+}
+
+async function requestInvestingOfRemove(socket, data, callback)
+{
+    callback(await InvDoc.findOneAndUpdate({_id: data}, {request_remove: true}));
+}
 
 async function acceptInvOfComplaintAdministrator(socket, data, callback)
 {
