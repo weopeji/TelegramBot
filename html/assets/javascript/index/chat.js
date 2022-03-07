@@ -97,6 +97,22 @@
                                 </div>
                             `);
 
+                            actionBlock.find('.chat_block_info_more_buttons_line[data="complaint"]').click( function() 
+                            {
+                                cuteAlert({
+                                    type: "question",
+                                    title: "Confirm Title",
+                                    message: "Confirm Message",
+                                    confirmText: "Okay",
+                                    cancelText: "Cancel"
+                                }).then((e)=>{
+                                    if ( e == ("Thanks")){
+                                } else {
+                                        alert(":-(");
+                                    }
+                                })
+                            })
+
                             return actionBlock;
                         },
                     };
