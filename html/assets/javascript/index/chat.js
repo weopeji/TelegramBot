@@ -42,6 +42,11 @@
             $('.chat_block_chat_body_row_input input').val('');
         };
 
+        async removeButtons() 
+        {
+            $('.chat_block_info_more_buttons').remove();
+        };
+
         async renderChat()
         {
             var _this   = this;
@@ -142,6 +147,7 @@
                                         });
 
                                         _this.pushMsgOfUser(`Бизнес подал жалобу по этому проекту, ожидайте решения модерации`);
+                                        _this.removeButtons();
 
                                         SoloAlert.alert({
                                             title:"Успешно",
@@ -212,6 +218,11 @@
             };
 
             $('.index_page_body_data').append(templateText);
+
+            if(typeof getChat.Inv.not_correct_complaint != "undefined")
+            {
+                _this.removeButtons();
+            }
         };
 
         async renderType()
