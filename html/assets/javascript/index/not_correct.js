@@ -62,7 +62,7 @@
                             </div>
                         `);
 
-                        actionBlock.click( function() 
+                        actionBlock.click( async function() 
                         {
                             var invId = $(this).parent().parent().attr('data-id');
 
