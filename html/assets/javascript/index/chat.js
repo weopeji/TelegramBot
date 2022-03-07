@@ -44,12 +44,13 @@
 
         async removeButtons() 
         {
-            $('.chat_block_info_more_buttons').remove();
-        };
-
-        async removeButtonsInvester()
-        {
-            $('.chat_block_info_more_buttons_line[data="complaint"]').remove();
+            if(global.allData.User.type == "business")
+            {
+                $('.chat_block_info_more_buttons').remove();
+            } else
+            {
+                $('.chat_block_info_more_buttons_line[data="complaint"]').remove();
+            }
         };
 
         async renderChat()
@@ -115,6 +116,35 @@
                                     </div>
                                 </div>
                             `);
+
+                            actionBlock.find('.chat_block_info_more_buttons_line[data="complaint"]').click( function() 
+                            {
+                                SoloAlert.confirm({
+                                    title: "Подтверждение",
+                                    body: "Вы уверены, что хотите отправить жалобу?",
+                                    theme: "dark",
+                                    html: "",
+                                    useTransparency: true,
+                                }).then(async (value) => 
+                                {
+                                    if(value)
+                                    {
+                                        await callApi({
+                                            methodName: "not_correct_complaint",
+                                            data: _GET("id"),
+                                        });
+
+                                        _this.pushMsgOfUser(`Инвестор подал жалобу по этому проекту, ожидайте решения модерации`);
+                                        _this.removeButtons();
+
+                                        SoloAlert.alert({
+                                            title:"Успешно",
+                                            body:"",
+                                            icon: "success"
+                                        });
+                                    };
+                                })
+                            })
 
                             return actionBlock;
                         },
@@ -226,13 +256,7 @@
 
             if(typeof getChat.Inv.not_correct_complaint != "undefined")
             {
-                if(global.allData.User.type == "business")
-                {
-                    _this.removeButtons();
-                } else
-                {
-                    _this.removeButtonsInvester();
-                }
+                _this.removeButtons();
             }
         };
 
