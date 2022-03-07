@@ -100,8 +100,8 @@
                             actionBlock.find('.chat_block_info_more_buttons_line[data="complaint"]').click( function() 
                             {
                                 SoloAlert.confirm({
-                                    title: "Title",
-                                    body: "",
+                                    title: "Подтверждение",
+                                    body: "Вы уверены, что хотите отправить жалобу?",
                                     theme: "dark",
                                     html: "",
                                     useTransparency: true,
