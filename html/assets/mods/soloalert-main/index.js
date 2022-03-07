@@ -215,6 +215,7 @@
   .SoloAlert-wrapper{
       width:100vw !important;
       height:100vh !important;
+      background-color: rgba(0,0,0, 0.3);
       z-index:99999999999 !important;
       margin:0 !important;
       padding:0 !important;

@@ -104,8 +104,7 @@
                                     body: "",
                                     theme: "dark",
                                     html: "",
-                                    useTransparency: false,
-                                    background: "#182037",
+                                    useTransparency: true,
                                 }).then(value => {
                                     alert(value);
                                 })
