@@ -115,8 +115,8 @@
                     "not_correct": function() 
                     {
                         var actionBlock = $(`
-                            <div class="settingBlock_body_line_not_correct_again">
-                                <span>Заполнить заного</span>
+                            <div class="settingBlock_body_line_not_correct_msg">
+                                <span>Перейти к диалогу</span>
                             </div>
                         `);
 
