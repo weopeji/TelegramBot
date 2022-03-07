@@ -99,17 +99,16 @@
 
                             actionBlock.find('.chat_block_info_more_buttons_line[data="complaint"]').click( function() 
                             {
-                                cuteAlert({
-                                    type: "question",
-                                    title: "Confirm Title",
-                                    message: "Confirm Message",
-                                    confirmText: "Okay",
-                                    cancelText: "Cancel"
-                                }).then((e)=>{
-                                    if ( e == ("Thanks")){
-                                } else {
-                                        alert(":-(");
-                                    }
+                                SoloAlert.confirm({
+                                    title: "Title",
+                                    body: "",
+                                    theme: "dark",
+                                    html: "",
+                                    useTransparency: false,
+                                    onOk: function () { },
+                                    onCancel: function () { },
+                                }).then(value => {
+                                    alert(value);
                                 })
                             })
 
