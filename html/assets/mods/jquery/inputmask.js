@@ -1317,17 +1317,17 @@
             },
             definitions: {
                 "9": {
-                    validator: "[0-9i?‘-i?™]",
+                    validator: "[0-9i?ï¿½-i?ï¿½]",
                     cardinality: 1,
                     definitionSymbol: "*"
                 },
                 a: {
-                    validator: "[A-Za-z??-N???N‘Aˆ-A?Aµ]",
+                    validator: "[A-Za-z??-N???Nï¿½Aï¿½-A?Aï¿½]",
                     cardinality: 1,
                     definitionSymbol: "*"
                 },
                 "*": {
-                    validator: "[0-9i?‘-i?™A-Za-z??-N???N‘Aˆ-A?Aµ]",
+                    validator: "[0-9i?ï¿½-i?ï¿½A-Za-z??-N???Nï¿½Aï¿½-A?Aï¿½]",
                     cardinality: 1
                 }
             },
@@ -2406,12 +2406,12 @@
     }(function($, Inputmask) {
         return Inputmask.extendDefinitions({
             A: {
-                validator: "[A-Za-z??-N???N‘Aˆ-A?Aµ]",
+                validator: "[A-Za-z??-N???Nï¿½Aï¿½-A?Aï¿½]",
                 cardinality: 1,
                 casing: "upper"
             },
             "&": {
-                validator: "[0-9A-Za-z??-N???N‘Aˆ-A?Aµ]",
+                validator: "[0-9A-Za-z??-N???Nï¿½Aï¿½-A?Aï¿½]",
                 cardinality: 1,
                 casing: "upper"
             },

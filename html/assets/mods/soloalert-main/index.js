@@ -215,13 +215,13 @@
   .SoloAlert-wrapper{
       width:100vw !important;
       height:100vh !important;
-      background-color: rgba(0,0,0, 0.3);
       z-index:99999999999 !important;
       margin:0 !important;
       padding:0 !important;
       position:fixed !important;
       top:0 !important;
       left:0 !important;
+      background-color: rgba(0,0,0, 0.3);
       display:flex !important;
       align-items:center !important;
       justify-content:center !important;
@@ -656,7 +656,7 @@
       actions.classList.add("SoloAlert-actions");
       var cancelBtn = document.createElement("button");
       cancelBtn.classList.add("SoloAlert-action-button");
-      cancelBtn.textContent = "CANCEL";
+      cancelBtn.textContent = "ОТМЕНИТЬ";
       cancelBtn.addEventListener("click", inp_onCancel);
       var okBtn = document.createElement("button");
       okBtn.classList.add("SoloAlert-action-button");
@@ -762,7 +762,7 @@
       actions.classList.add("SoloAlert-actions");
       var cancelBtn = document.createElement("button");
       cancelBtn.classList.add("SoloAlert-action-button");
-      cancelBtn.textContent = "ОТМЕНИТЬ";
+      cancelBtn.textContent = "CANCEL";
       cancelBtn.addEventListener("click", inp_onCancel);
       var okBtn = document.createElement("button");
       okBtn.classList.add("SoloAlert-action-button");
