@@ -467,7 +467,7 @@
       },
       dark: {
         color: "#FFFFFF",
-        background: "#3d474d",
+        background: "#182037",
         blue: "#6d81f2",
         wrapperBg: "#cccccc",
         transparentWrapperBg: "rgba(0, 0, 0, 0.2)",
