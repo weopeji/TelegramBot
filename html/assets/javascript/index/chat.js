@@ -47,6 +47,11 @@
             $('.chat_block_info_more_buttons').remove();
         };
 
+        async removeButtonsInvester()
+        {
+            $('.chat_block_info_more_buttons_line[data="complaint"]').remove();
+        };
+
         async renderChat()
         {
             var _this   = this;
@@ -221,7 +226,13 @@
 
             if(typeof getChat.Inv.not_correct_complaint != "undefined")
             {
-                _this.removeButtons();
+                if(global.allData.User.type == "business")
+                {
+                    _this.removeButtons();
+                } else
+                {
+                    _this.removeButtonsInvester();
+                }
             }
         };
 
