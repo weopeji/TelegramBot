@@ -52,16 +52,59 @@
                         </div>
                         <span>${getChat.name}</span>
                         <p>${getChat.type}</p>
-                    </div>
-                    <div class="chat_block_info">
-                        <div class="info_active_block_photo">
-                            <img src="${getChat.photo}" alt="">
+
+                        <div class="chat_block_info_more_buttons">
+                            
                         </div>
-                        <span>${getChat.name}</span>
-                        <p>${getChat.type}</p>
                     </div>
                 </div>
             `);
+
+            if(getChat.Inv.status == "not_correct")
+            {
+                if(getChat.Inv.not_correct.dataType == "money")
+                {
+                    var buttonsOfNot_correct = 
+                    {
+                        "investor": function() 
+                        {
+                            var actionBlock = $(`
+                                <div class="chat_block_info_more_buttons_line_row">
+                                    <div class="chat_block_info_more_buttons_line">
+                                        <span>Подать жалобу</span>
+                                    </div>
+                                    <div class="chat_block_info_more_buttons_line">
+                                        <span>Отменить и заполнить заного</span>
+                                    </div>
+                                </div>
+                            `);
+
+                            return actionBlock;
+                        },
+                        "business": function() 
+                        {
+                            var actionBlock = $(`
+                                <div class="chat_block_info_more_buttons_line_row">
+                                    <div class="chat_block_info_more_buttons_line">
+                                        <span>Принять инвестицию</span>
+                                    </div>
+                                    <div class="chat_block_info_more_buttons_line">
+                                        <span>Оформить инвестицию повторно</span>
+                                    </div>
+                                    <div class="chat_block_info_more_buttons_line">
+                                        <span>Подать жалобу</span>
+                                    </div>
+                                </div>
+                            `);
+
+                            return actionBlock;
+                        },
+                    };
+
+                    templateText.find('.chat_block_info_more_buttons').append(buttonsOfNot_correct[global.allData.User.type]());
+                    templateText.find('.chat_block_info_more_buttons').fadeIn();
+                };
+            };
 
             templateText.find('.chat_block_chat_body_row_input span').click( async function() {
         
