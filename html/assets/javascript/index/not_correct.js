@@ -121,7 +121,7 @@
                         `);
 
                         actionBlock.click( function() {
-
+                            window.open(`/?page=chats&id=${$(this).parent().parent().attr('data-id')}`, '_blank');
                         });
 
                         return actionBlock;

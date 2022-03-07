@@ -2128,6 +2128,11 @@ html, body {
   padding: 10px 20px;
   border-radius: 8px;
   cursor: pointer;
+  color: white;
+}
+
+.settingBlock_body_line_not_correct_msg span {
+  color: white;
 }
 
 @media (max-width: 1600px) {
