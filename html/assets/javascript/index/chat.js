@@ -70,10 +70,10 @@
                         {
                             var actionBlock = $(`
                                 <div class="chat_block_info_more_buttons_line_row">
-                                    <div class="chat_block_info_more_buttons_line">
+                                    <div class="chat_block_info_more_buttons_line" data="complaint">
                                         <span>Подать жалобу</span>
                                     </div>
-                                    <div class="chat_block_info_more_buttons_line">
+                                    <div class="chat_block_info_more_buttons_line" data="cancel">
                                         <span>Отменить и заполнить заного</span>
                                     </div>
                                 </div>
@@ -85,13 +85,13 @@
                         {
                             var actionBlock = $(`
                                 <div class="chat_block_info_more_buttons_line_row">
-                                    <div class="chat_block_info_more_buttons_line">
+                                    <div class="chat_block_info_more_buttons_line" data="accept_investing">
                                         <span>Принять инвестицию</span>
                                     </div>
-                                    <div class="chat_block_info_more_buttons_line">
+                                    <div class="chat_block_info_more_buttons_line" data="request_again">
                                         <span>Оформить инвестицию повторно</span>
                                     </div>
-                                    <div class="chat_block_info_more_buttons_line">
+                                    <div class="chat_block_info_more_buttons_line" data="complaint">
                                         <span>Подать жалобу</span>
                                     </div>
                                 </div>

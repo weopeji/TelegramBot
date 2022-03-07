@@ -2152,6 +2152,7 @@ html, body {
   background: linear-gradient(90deg, #14b6ff 0%, #1387ff 61%);
   color: white;
   border-radius: 6px;
+  cursor: pointer;
 }
 
 .chat_block_info_more_buttons_line span {
