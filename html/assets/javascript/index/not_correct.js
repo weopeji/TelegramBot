@@ -35,7 +35,6 @@
                             <span>Коментарий</span>
                             <span>Статус</span>
                             <span>*</span>
-                            <span>*</span>
                         </div>
                     </div>
                     <div class="settingBlock_body">
@@ -53,29 +52,40 @@
                     "not_correct": "Данные не верны"
                 };
 
+                var typeButtins =
+                {
+                    "spam": $(`
+                        <div class="settingBlock_body_line_not_correct_complaint">
+                            <span>Оставить жалобу</span>
+                        </div>
+                    `),
+                    "money": $(`
+                        <div class="settingBlock_body_line_not_correct_again">
+                            <span>Заполнить заного</span>
+                        </div>
+                    `),
+                    "not_correct": $(`
+                        <div class="settingBlock_body_line_not_correct_again">
+                            <span>Заполнить заного</span>
+                        </div>
+                    `),
+                };
+
                 var template_text = $(` 
                     <div class="settingBlock_body_line" data-id="${element.Inv._id}">
                         <span>${element.Project.data.name}</span>
                         <span>${typePush[element.Inv.not_correct.dataType]}</span>
                         <span>${element.Inv.not_correct.comment}</span>
                         <span>Ожидает действия</span>
-                        <span>
-                            <div class="settingBlock_body_line_not_correct_complaint">
-                                <span>Оставить жалобу</span>
-                            </div>
-                        </span>
-                        <span>
-                            <div class="settingBlock_body_line_not_correct_again">
-                                <span>Заполнить заного</span>
-                            </div>
-                        </span>
+                        <span></span>
                     </div>
                 `);
+
+                template_text.children('span').eq(4).append(typeButtins[element.Inv.not_correct.dataType]);
 
                 if(typeof element.Inv.not_correct_complaint != "undefined")
                 {
                     template_text.children('span').eq(4).children().remove();
-                    template_text.children('span').eq(5).children().remove();
 
                     if(element.Inv.not_correct_complaint)
                     {
@@ -84,7 +94,7 @@
                     else
                     {
                         template_text.children('span').eq(3).html('<span style="color: red; width: fit-content;">Отказано администрацией</span>');
-                    }
+                    };
                 };
 
                 template_text.children('span').eq(0).click( function() {
