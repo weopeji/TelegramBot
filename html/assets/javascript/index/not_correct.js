@@ -54,21 +54,66 @@
 
                 var typeButtins =
                 {
-                    "spam": $(`
-                        <div class="settingBlock_body_line_not_correct_complaint">
-                            <span>Оставить жалобу</span>
-                        </div>
-                    `),
-                    "money": $(`
-                        <div class="settingBlock_body_line_not_correct_again">
-                            <span>Заполнить заного</span>
-                        </div>
-                    `),
-                    "not_correct": $(`
-                        <div class="settingBlock_body_line_not_correct_again">
-                            <span>Заполнить заного</span>
-                        </div>
-                    `),
+                    "spam": function() 
+                    {
+                        var actionBlock = $(`
+                            <div class="settingBlock_body_line_not_correct_complaint">
+                                <span>Оставить жалобу</span>
+                            </div>
+                        `);
+
+                        actionBlock.click( function() 
+                        {
+                            var invId = $(this).parent().parent().attr('data-id');
+
+                            $(this).parent().parent().remove();
+        
+                            await callApi({
+                                methodName: "not_correct_complaint",
+                                data: invId,
+                            });
+        
+                            note({
+                                content: "Успешно!",
+                                type: "info",
+                                time: 2,
+                                callback: function()
+                                {
+                                    location.reload();
+                                },
+                            });
+                        });
+
+                        return actionBlock;
+                    },
+                    "money": function() 
+                    {
+                        var actionBlock = $(`
+                            <div class="settingBlock_body_line_not_correct_again">
+                                <span>Заполнить заного</span>
+                            </div>
+                        `);
+
+                        actionBlock.click( function() {
+
+                        });
+
+                        return actionBlock;
+                    },
+                    "not_correct": function() 
+                    {
+                        var actionBlock = $(`
+                            <div class="settingBlock_body_line_not_correct_again">
+                                <span>Заполнить заного</span>
+                            </div>
+                        `);
+
+                        actionBlock.click( function() {
+
+                        });
+
+                        return actionBlock;
+                    },
                 };
 
                 var template_text = $(` 
@@ -76,7 +121,7 @@
                         <span>${element.Project.data.name}</span>
                         <span>${typePush[element.Inv.not_correct.dataType]}</span>
                         <span>${element.Inv.not_correct.comment}</span>
-                        <span>Ожидает действия</span>
+                        <span>Ожидает действия инвестора</span>
                         <span></span>
                     </div>
                 `);
@@ -108,31 +153,6 @@
                 });
                 template_text.children('span').eq(3).click( function() {
                     location.href = `https://invester-relocation.site/?page=activ_projects&id=${$(this).parent().attr('data-id')}`;
-                });
-
-                template_text.find('.settingBlock_body_line_not_correct_complaint').click( async function() 
-                {
-                    var IdInv = $(this).parent().parent().attr('data-id');
-
-                    $(this).parent().parent().children('span').eq(4).children().remove();
-                    $(this).parent().parent().children('span').eq(5).children().remove();
-
-                    await callApi({
-                        methodName: "not_correct_complaint",
-                        data: IdInv,
-                    });
-
-                    note({
-                        content: "Успешно!",
-                        type: "info",
-                        time: 2,
-                        callback: function()
-                        {
-                            location.reload();
-                        },
-                    });
-
-                    $(this).parent().parent().children('span').eq(3).html('<span style="color: green; width: fit-content;">Ожидает модерации</span>');
                 });
 
                 template_text.find('.settingBlock_body_line_not_correct_again').click( async function() 
