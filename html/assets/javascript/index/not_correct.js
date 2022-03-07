@@ -83,7 +83,7 @@
 
                         return actionBlock;
                     },
-                    "money": function() 
+                    "not_correct": function() 
                     {
                         var actionBlock = $(`
                             <div class="settingBlock_body_line_not_correct_again">
@@ -112,7 +112,7 @@
 
                         return actionBlock;
                     },
-                    "not_correct": function() 
+                    "money": function() 
                     {
                         var actionBlock = $(`
                             <div class="settingBlock_body_line_not_correct_msg">
