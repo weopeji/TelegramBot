@@ -102,7 +102,7 @@
                     };
 
                     templateText.find('.chat_block_info_more_buttons').append(buttonsOfNot_correct[global.allData.User.type]());
-                    templateText.find('.chat_block_info_more_buttons').fadeIn();
+                    templateText.find('.chat_block_info_more_buttons').css('display', 'block');
                 };
             };
 

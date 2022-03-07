@@ -2144,6 +2144,20 @@ html, body {
   display: none;
 }
 
+.chat_block_info_more_buttons_line {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 20px;
+  background: -webkit-gradient(linear, left top, right top, from(#14b6ff), color-stop(61%, #1387ff));
+  background: linear-gradient(90deg, #14b6ff 0%, #1387ff 61%);
+  color: white;
+  border-radius: 6px;
+}
+
+.chat_block_info_more_buttons_line span {
+  color: white;
+}
+
 @media (max-width: 1600px) {
   .creating_page {
     width: 50%;
