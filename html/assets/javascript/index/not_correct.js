@@ -66,21 +66,18 @@
                         {
                             var invId = $(this).parent().parent().attr('data-id');
 
-                            $(this).parent().parent().remove();
-        
-                            await callApi({
-                                methodName: "not_correct_complaint",
-                                data: invId,
-                            });
-        
                             note({
                                 content: "Успешно!",
                                 type: "info",
                                 time: 2,
-                                callback: function()
-                                {
-                                    location.reload();
-                                },
+                            });
+
+                            $(this).parent().parent().children('span').eq(3).html('<span style="color: green; width: fit-content;">Ожидает модерации</span>');
+                            $(this).remove();
+        
+                            await callApi({
+                                methodName: "not_correct_complaint",
+                                data: invId,
                             });
                         });
 
