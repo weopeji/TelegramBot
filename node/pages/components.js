@@ -1604,9 +1604,14 @@ async function getR_F(socket,data,callback)
         }
     } else 
     {
-        var globalUserDataParce = await ParcingPage.cheackArbitrFizUser(globalUserData.arBi);
+        var globalUserDataParce = null;
 
-        if(globalUserDataParce[0].status == 0)
+        if(globalUserData.arBi != "error")
+        {
+            globalUserDataParce = await ParcingPage.cheackArbitrFizUser(globalUserData.arBi);
+        }
+
+        if(globalUserDataParce[0].status == 0 && globalUserDataParce)
         {
             globalUserData.arBi = globalUserDataParce;
             await Project.findOneAndUpdate({_id: data}, {parce: _projectFizBlock});
