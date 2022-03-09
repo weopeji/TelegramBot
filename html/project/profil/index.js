@@ -473,20 +473,24 @@
                         var ispoErrorBlock  = true;
                         
                         $('.ispo_line').append(_HEADER);
-        
-                        el.arBi[0].result.forEach(elementArBi => 
+
+                        if(el.arBi != "error")
                         {
-                            ispoErrorBlock  = false;
         
-                            var _block = $(`
-                                <div class="page_line">
-                                    <span>${elementArBi.exe_production}</span>
-                                    <p>${elementArBi.subject}</p>
-                                </div>
-                            `);
-        
-                            $('.ispo_line').append(_block);
-                        })
+                            el.arBi[0].result.forEach(elementArBi => 
+                            {
+                                ispoErrorBlock  = false;
+            
+                                var _block = $(`
+                                    <div class="page_line">
+                                        <span>${elementArBi.exe_production}</span>
+                                        <p>${elementArBi.subject}</p>
+                                    </div>
+                                `);
+            
+                                $('.ispo_line').append(_block);
+                            })
+                        }
         
                         if(ispoErrorBlock)
                         {
