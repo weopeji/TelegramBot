@@ -161,11 +161,11 @@ async function url(msg)
         // 1 ===
         var html = `<strong>${msg.from.first_name}</strong> Чтобы закрепить за собой проект Вам нужно поделится личной сссылкой или переслать сообщеноие ниже`;
 
-        var buttonPush = "⬅️ Назад";
+        var buttonPush = "⬅️ Назад"; 
 
         if(_User.type == "investor")
         {
-            buttonPush = "⬅️ Haзaд";
+            buttonPush = "⬅️ Hазaд";
         };
 
         var fat = await h.send_html(msg.chat.id, html, 

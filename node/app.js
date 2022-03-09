@@ -329,7 +329,7 @@ bot.on('message', async (msg) =>
         "⬅️ Hазад": investor_page.my_investment,
         "⬅️ Нaзад": investor_page.recomendations,
         "⬅️ Haзaд": attraction_page.startFun,
-        "⬅️ Haзaд": attraction_page.startFunMore,
+        "⬅️ Hазaд": attraction_page.startFunMore,
 
         // БИЗНЕС =============================================
         "✅ Активные проекты": business_page.getMoney,
