@@ -1542,9 +1542,14 @@ async function getR_F(socket,data,callback)
     {
         if(!Array.isArray(_project.parce.ispo))
         {
-            var globalUserDataParce = await ParcingPage.cheackArbitrFizUser(_project.parce.ispo);
-    
-            if(globalUserDataParce[0].status == 0)
+            var globalUserDataParce = null;
+
+            if(_project.parce.ispo)
+            {
+                globalUserDataParce = await ParcingPage.cheackArbitrFizUser(_project.parce.ispo);
+            }
+            
+            if(globalUserDataParce[0].status == 0 && globalUserDataParce)
             {
                 _projectFizBlock.ispo = globalUserDataParce;
                 await Project.findOneAndUpdate({_id: data}, {parce: _projectFizBlock});
