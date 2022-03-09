@@ -1611,14 +1611,21 @@ async function getR_F(socket,data,callback)
             globalUserDataParce = await ParcingPage.cheackArbitrFizUser(globalUserData.arBi);
         }
 
-        if(globalUserDataParce[0].status == 0 && globalUserDataParce)
+        if(globalUserDataParce)
         {
-            globalUserData.arBi = globalUserDataParce;
-            await Project.findOneAndUpdate({_id: data}, {parce: _projectFizBlock});
-            callback('error');
-        } else {
+            if(globalUserDataParce[0].status == 0)
+            {
+                globalUserData.arBi = globalUserDataParce;
+                await Project.findOneAndUpdate({_id: data}, {parce: _projectFizBlock});
+                callback('error');
+            } else {
+                callback('error');
+            }
+        } else
+        {
             callback('error');
         }
+        
     }
 }
 
