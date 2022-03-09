@@ -279,9 +279,23 @@ async function active_projects(msg)
     await User.findOneAndUpdate({user: msg.from.id}, {alerts: null});
 }
 
-async function myPeoples(msg) {
+async function myPeoples(msg) 
+{
     var _array  = [];
     var _User   = await User.findOne({user: msg.from.id});
+    var buttonPush = "⬅️ Назад"; 
+
+    if(_User.type == "investor")
+    {
+        if(_User.attractType == "1")
+        {
+            buttonPush = "⬅️ Haзaд";
+        }
+        else
+        {
+            buttonPush = "⬅️ Hазaд";
+        }
+    }
 
     var html = `Инвестор ${_User.first_name}\nВы находитесь в меню "Мной привлечено"`;
     var fat = await bot.sendMessage(msg.chat.id, toEscapeMSg(html), {
@@ -289,7 +303,7 @@ async function myPeoples(msg) {
         reply_markup: {  
             "resize_keyboard": true, 
             "keyboard": [
-                ["⬅️ Назад"]
+                [buttonPush]
             ],                                                                   
         }
     });
