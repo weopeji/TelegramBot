@@ -70,7 +70,7 @@ async function startFun(msg)
 
     if(_User.type == "investor")
     {
-        buttonPush = "⬅️ Назад";
+        buttonPush = "⬅️ Нaзад";
     }
 
     var fat = await bot.sendMessage(msg.chat.id, html, {

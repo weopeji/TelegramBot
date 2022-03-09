@@ -327,6 +327,7 @@ bot.on('message', async (msg) =>
         "Черновики": investor_page.drafts,
         "🏦 Инвестиционные предложения": investor_page.investShow,
         "⬅️ Hазад": investor_page.my_investment,
+        "⬅️ Нaзад": investor_page.recomendations,
 
         // БИЗНЕС =============================================
         "✅ Активные проекты": business_page.getMoney,
