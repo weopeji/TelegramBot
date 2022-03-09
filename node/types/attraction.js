@@ -46,7 +46,7 @@ async function startFunMore(msg)
 
     if(_User.type == "investor")
     {
-        buttonPush = "⬅️ Назaд";
+        buttonPush = "⬅️ Нaзад";
     }
 
     var fat = await bot.sendMessage(msg.chat.id, html, {
