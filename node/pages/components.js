@@ -1571,9 +1571,14 @@ async function getR_F(socket,data,callback)
                     moreUsersDataRedacting.push(moreUsersDataBlock);
                 } else 
                 {
-                    var moreUsersDataBlockParce = await ParcingPage.cheackArbitrFizUser(moreUsersDataBlock.arBi);
+                    var moreUsersDataBlockParce = null;
 
-                    if(moreUsersDataBlockParce[0].status == 0)
+                    if(moreUsersDataBlock.arBi != "error")
+                    {
+                        moreUsersDataBlockParce = await ParcingPage.cheackArbitrFizUser(moreUsersDataBlock.arBi);
+                    }
+
+                    if(moreUsersDataBlockParce[0].status == 0 && moreUsersDataBlockParce)
                     {
                         moreUsersDataBlock.arBi = moreUsersDataBlockParce;
                     } else
