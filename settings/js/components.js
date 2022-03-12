@@ -1052,10 +1052,13 @@
                     </div>
                     <div class="body_point_line_block_more_registration_business">
                         <st>Обычный</st>
-                        <st>Инвестиция с предоплатой</st>
+                        <st data="investing_not_pay">Инвестиция с предоплатой</st>
                     </div>
                 </div>
             `);
+
+            firstBlockMore.find('st[data="investing_not_pay"]').css('margin-left', '20px');
+            firstBlockMore.css("padding-bottom", "20px");
 
             this.global_block.append(firstBlockMore);
 
