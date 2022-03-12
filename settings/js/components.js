@@ -1048,6 +1048,20 @@
             var firstBlockMore = $(`
                 <div class="body_point">
                     <div class="body_point_header">
+                        <span>Выберите тип проетка</span>
+                    </div>
+                    <div class="body_point_line_block_more_registration_business">
+                        <st>Обычный</st>
+                        <st>Инвестиция с предоплатой</st>
+                    </div>
+                </div>
+            `);
+
+            this.global_block.append(firstBlockMore);
+
+            var firstBlockMore = $(`
+                <div class="body_point">
+                    <div class="body_point_header">
                         <span>Редактирование выплат</span>
                     </div>
                     <div class="body_point_line_block_more">
