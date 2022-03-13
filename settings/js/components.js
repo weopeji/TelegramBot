@@ -1065,8 +1065,7 @@
                     type: "number",
                 }).then(async (value) => 
                 {
-                    alert(value);
-                    if(value)
+                    if(value.length > 0 || value == 0)
                     {
                         SoloAlert.alert({
                             title:"Успешно",
