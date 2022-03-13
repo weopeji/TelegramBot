@@ -1066,8 +1066,8 @@
                 }).then(async (value) => 
                 {
                     alert(value.length);
-                    
-                    if(value.length > 0)
+
+                    if(value.length != 0)
                     {
                         SoloAlert.alert({
                             title:"Успешно",
