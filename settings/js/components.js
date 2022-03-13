@@ -1063,8 +1063,6 @@
                     body: `Вы уверены, что хотите сменить тип проекта на "Инвестиция с предоплатой"? Если да, введите первичный процент инвестиции`,
                     theme: "dark",
                     type: "number",
-                    html: "",
-                    useTransparency: true,
                 }).then(async (value) => 
                 {
                     alert(value);
