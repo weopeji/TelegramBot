@@ -1073,6 +1073,9 @@
                             body:"",
                             icon: "success"
                         });
+
+                        var valueUserBlock = $('.global_block_header_info h1').html();
+                        $('.global_block_header_info h1').html(valueUserBlock + " (Инвестиция с предоплатой)")
                     }
                 })
             });
