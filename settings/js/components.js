@@ -1053,7 +1053,6 @@
                     <div class="body_point_line_block_more_registration_business">
                         <st data="default">Обычный</st>
                         <st data="investing_not_pay">Инвестиция с предоплатой</st>
-                        <input type="text" class="stinvestingNotFull">
                     </div>
                 </div>
             `);
@@ -1061,12 +1060,14 @@
             firstBlockMore.find('st[data="investing_not_pay"]').click( function() {
                 SoloAlert.confirm({
                     title: "Подтверждение",
-                    body: `Вы уверены, что хотите сменить тип проекта на "Инвестиция с предоплатой"?`,
+                    body: `Вы уверены, что хотите сменить тип проекта на "Инвестиция с предоплатой"? Если да, введите первичный процент инвестиции`,
                     theme: "dark",
+                    type: "number",
                     html: "",
                     useTransparency: true,
                 }).then(async (value) => 
                 {
+                    alert(value);
                     if(value)
                     {
                         SoloAlert.alert({
