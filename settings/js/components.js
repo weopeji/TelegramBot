@@ -1053,6 +1053,7 @@
                     <div class="body_point_line_block_more_registration_business">
                         <st data="default">Обычный</st>
                         <st data="investing_not_pay">Инвестиция с предоплатой</st>
+                        <input type="text" class="stinvestingNotFull">
                     </div>
                 </div>
             `);
@@ -1075,7 +1076,7 @@
                         });
 
                         var valueUserBlock = $('.global_block_header_info h1').html();
-                        $('.global_block_header_info h1').html(valueUserBlock + " (Инвестиция с предоплатой)")
+                        $('.global_block_header_info h1').html(valueUserBlock + " (C предоплатой)")
                     }
                 })
             });
