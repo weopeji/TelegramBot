@@ -1058,7 +1058,7 @@
             `);
 
             firstBlockMore.find('st[data="investing_not_pay"]').click( function() {
-                SoloAlert.confirm({
+                SoloAlert.prompt({
                     title: "Подтверждение",
                     body: `Вы уверены, что хотите сменить тип проекта на "Инвестиция с предоплатой"? Если да, введите первичный процент инвестиции`,
                     theme: "dark",
