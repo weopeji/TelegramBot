@@ -1051,11 +1051,31 @@
                         <span>Выберите тип проетка</span>
                     </div>
                     <div class="body_point_line_block_more_registration_business">
-                        <st>Обычный</st>
+                        <st data="default">Обычный</st>
                         <st data="investing_not_pay">Инвестиция с предоплатой</st>
                     </div>
                 </div>
             `);
+
+            firstBlockMore.find('st[data="investing_not_pay"]').click( function() {
+                SoloAlert.confirm({
+                    title: "Подтверждение",
+                    body: `Вы уверены, что хотите сменить тип проекта на "Инвестиция с предоплатой"?`,
+                    theme: "dark",
+                    html: "",
+                    useTransparency: true,
+                }).then(async (value) => 
+                {
+                    if(value)
+                    {
+                        SoloAlert.alert({
+                            title:"Успешно",
+                            body:"",
+                            icon: "success"
+                        });
+                    }
+                })
+            });
 
             firstBlockMore.find('st[data="investing_not_pay"]').css('margin-left', '20px');
             firstBlockMore.css("padding-bottom", "20px");
