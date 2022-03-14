@@ -180,7 +180,13 @@
         {
             $('.creating_page').empty();
 
-            var _this = this;
+            var _this       = this;
+            var pushMoney   = _this.money;
+
+            if(typeof this.project.notFullpay != "undefined")
+            {
+                pushMoney = `${Number(pushMoney) / 100 * Number(this.project.notFullpay)} (${this.project.notFullpay}%)`;
+            };
 
             var msgsBlock = $(`
                 <div class="creating_page_block">
