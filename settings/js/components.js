@@ -870,52 +870,9 @@
         {
             var _this = this;
 
-            if(typeof _project.registrationDocument == 'undefined')
+            if(_project.type != "active")
             {
-                var firstBlockMore = $(`
-                    <div class="body_point">
-                        <div class="body_point_header">
-                            <span>Договор бизнеса с InvestER</span>
-                        </div>
-                        <div class="body_point_line_block_more_registration_business">
-                            <input type="file" name="" id="DocumentToRegistration">
-                            <label for="DocumentToRegistration">
-                                <span>Загрузить документ</span>
-                            </label>
-                        </div>
-                    </div>
-                `);
-
-                firstBlockMore.css("padding-bottom", "20px");
-
-                firstBlockMore.find('input[type=file]').change( async function() 
-                {
-                    var filename = $(this.files)[0].name;
-                    var aux = filename.split('.');
-                    var extension = aux[aux.length -1].toUpperCase();
-
-                    var _form    = new FormData();
-
-                    _form.append('files', $(this.files)[0]);
-                    _form.append('_id', _project._id);
-                    _form.append('_pts', extension);
-                    _this.setRegistrationFile(_project._id, _form);
-
-                    note({
-                        content: "Документ успешно загружен на сервер, перепроверьте его и отправьте бизнесу!",
-                        type: "info",
-                        time: 3,
-                        callback: function()
-                        {
-                            location.reload(); 
-                        },
-                    });
-                });
-
-                this.global_block.append(firstBlockMore);
-            } else 
-            {
-                if(_project.registrationDocument.status == "on")
+                if(typeof _project.registrationDocument == 'undefined')
                 {
                     var firstBlockMore = $(`
                         <div class="body_point">
@@ -923,99 +880,15 @@
                                 <span>Договор бизнеса с InvestER</span>
                             </div>
                             <div class="body_point_line_block_more_registration_business">
-                                <st data="show">Посмотреть</st>
-                                <st data="clear">Очистить</st>
-                            </div>
-                        </div>
-                    `);
-
-                    firstBlockMore.find('.body_point_line_block_more_registration_business').css('margint-top', "20px");
-                    firstBlockMore.find('st[data="clear"]').css('margin-left', '20px');
-
-                    firstBlockMore.css("padding-bottom", "20px");
-
-                    firstBlockMore.find('st[data="show"]').click( function() {
-                        window.open(`https://invester-relocation.site/projects/${_project._id}/${_project.registrationDocument.user_document}`, "_blank")
-                    });
-
-                    firstBlockMore.find('st[data="clear"]').click( async function() 
-                    {
-                        note({
-                            content: "Пожалуйста подождите!",
-                            type: "info",
-                            time: 2,
-                        });
-
-                        await callApi({
-                            methodName: 'registrationDocumentClearAdmin',
-                            data: _GET("id"),
-                        });
-
-                        note({
-                            content: "Успешно!",
-                            type: "info",
-                            time: 2,
-                            callback: function()
-                            {
-                                location.reload(); 
-                            },
-                        });
-                    });
-
-                    this.global_block.append(firstBlockMore);
-                } 
-                else if(_project.registrationDocument.status == "wait_admin") 
-                {
-                    var firstBlockMore = $(`
-                        <div class="body_point">
-                            <div class="body_point_header">
-                                <span>Договор бизнеса с InvestER</span>
-                            </div>
-                            <div class="body_point_line_block_more_registration_business">
-                                <st>Посмотреть</st>
-                                <st>Подтвердить</st>
                                 <input type="file" name="" id="DocumentToRegistration">
                                 <label for="DocumentToRegistration">
-                                    <span>Заменить</span>
+                                    <span>Загрузить документ</span>
                                 </label>
                             </div>
                         </div>
                     `);
 
-                    firstBlockMore.find('st').eq(1).css({
-                        "margin-left": "20px",
-                        "margin-right": "20px",
-                    });
-
                     firstBlockMore.css("padding-bottom", "20px");
-
-                    firstBlockMore.find('st').eq(0).click( function() {
-                        window.open(`https://invester-relocation.site/projects/${_project._id}/${_project.registrationDocument.document}`, "_blank")
-                    });
-
-                    firstBlockMore.find('st').eq(1).click( async function() 
-                    {
-                        note({
-                            content: "Пожалуйста подождите!",
-                            type: "info",
-                            time: 2,
-                        });
-
-                        await callApi({
-                            methodName: 'registrationDocumentAcceptAdmin',
-                            data: _GET("id"),
-                        });
-
-                        note({
-                            content: "Успешно!",
-                            type: "info",
-                            time: 2,
-                            callback: function()
-                            {
-                                location.reload(); 
-                            },
-                        }); 
-                    });
 
                     firstBlockMore.find('input[type=file]').change( async function() 
                     {
@@ -1031,22 +904,149 @@
                         _this.setRegistrationFile(_project._id, _form);
 
                         note({
-                            content: "Успешно!",
+                            content: "Документ успешно загружен на сервер, перепроверьте его и отправьте бизнесу!",
                             type: "info",
-                            time: 2,
+                            time: 3,
                             callback: function()
                             {
                                 location.reload(); 
                             },
-                        }); 
+                        });
                     });
 
                     this.global_block.append(firstBlockMore);
-                }
-            }
+                } else 
+                {
+                    if(_project.registrationDocument.status == "on")
+                    {
+                        var firstBlockMore = $(`
+                            <div class="body_point">
+                                <div class="body_point_header">
+                                    <span>Договор бизнеса с InvestER</span>
+                                </div>
+                                <div class="body_point_line_block_more_registration_business">
+                                    <st data="show">Посмотреть</st>
+                                    <st data="clear">Очистить</st>
+                                </div>
+                            </div>
+                        `);
 
-            if(_project.type != "active")
-            {
+                        firstBlockMore.find('.body_point_line_block_more_registration_business').css('margint-top', "20px");
+                        firstBlockMore.find('st[data="clear"]').css('margin-left', '20px');
+
+                        firstBlockMore.css("padding-bottom", "20px");
+
+                        firstBlockMore.find('st[data="show"]').click( function() {
+                            window.open(`https://invester-relocation.site/projects/${_project._id}/${_project.registrationDocument.user_document}`, "_blank")
+                        });
+
+                        firstBlockMore.find('st[data="clear"]').click( async function() 
+                        {
+                            note({
+                                content: "Пожалуйста подождите!",
+                                type: "info",
+                                time: 2,
+                            });
+
+                            await callApi({
+                                methodName: 'registrationDocumentClearAdmin',
+                                data: _GET("id"),
+                            });
+
+                            note({
+                                content: "Успешно!",
+                                type: "info",
+                                time: 2,
+                                callback: function()
+                                {
+                                    location.reload(); 
+                                },
+                            });
+                        });
+
+                        this.global_block.append(firstBlockMore);
+                    } 
+                    else if(_project.registrationDocument.status == "wait_admin") 
+                    {
+                        var firstBlockMore = $(`
+                            <div class="body_point">
+                                <div class="body_point_header">
+                                    <span>Договор бизнеса с InvestER</span>
+                                </div>
+                                <div class="body_point_line_block_more_registration_business">
+                                    <st>Посмотреть</st>
+                                    <st>Подтвердить</st>
+                                    <input type="file" name="" id="DocumentToRegistration">
+                                    <label for="DocumentToRegistration">
+                                        <span>Заменить</span>
+                                    </label>
+                                </div>
+                            </div>
+                        `);
+
+                        firstBlockMore.find('st').eq(1).css({
+                            "margin-left": "20px",
+                            "margin-right": "20px",
+                        });
+
+                        firstBlockMore.css("padding-bottom", "20px");
+
+                        firstBlockMore.find('st').eq(0).click( function() {
+                            window.open(`https://invester-relocation.site/projects/${_project._id}/${_project.registrationDocument.document}`, "_blank")
+                        });
+
+                        firstBlockMore.find('st').eq(1).click( async function() 
+                        {
+                            note({
+                                content: "Пожалуйста подождите!",
+                                type: "info",
+                                time: 2,
+                            });
+
+                            await callApi({
+                                methodName: 'registrationDocumentAcceptAdmin',
+                                data: _GET("id"),
+                            });
+
+                            note({
+                                content: "Успешно!",
+                                type: "info",
+                                time: 2,
+                                callback: function()
+                                {
+                                    location.reload(); 
+                                },
+                            }); 
+                        });
+
+                        firstBlockMore.find('input[type=file]').change( async function() 
+                        {
+                            var filename = $(this.files)[0].name;
+                            var aux = filename.split('.');
+                            var extension = aux[aux.length -1].toUpperCase();
+
+                            var _form    = new FormData();
+
+                            _form.append('files', $(this.files)[0]);
+                            _form.append('_id', _project._id);
+                            _form.append('_pts', extension);
+                            _this.setRegistrationFile(_project._id, _form);
+
+                            note({
+                                content: "Успешно!",
+                                type: "info",
+                                time: 2,
+                                callback: function()
+                                {
+                                    location.reload(); 
+                                },
+                            }); 
+                        });
+
+                        this.global_block.append(firstBlockMore);
+                    }
+                }
+
                 var firstBlockMore = $(`
                     <div class="body_point">
                         <div class="body_point_header" data="type_project">
