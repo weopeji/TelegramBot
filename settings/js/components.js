@@ -1045,57 +1045,60 @@
                 }
             }
 
-            var firstBlockMore = $(`
-                <div class="body_point">
-                    <div class="body_point_header" data="type_project">
-                        <span>Выберите тип проетка</span>
-                    </div>
-                    <div class="body_point_line_block_more_registration_business">
-                        <st data="default">Обычный</st>
-                        <st data="investing_not_pay">Инвестиция с предоплатой</st>
-                    </div>
-                </div>
-            `);
-
-            if(typeof _project.notFullpay != "undefined")
+            if(_project.type != "active")
             {
-                firstBlockMore.find('.body_point_header[data="type_project"] span').html(`Выбран тип: С предоплатой ${_project.notFullpay}%`);
-            }
+                var firstBlockMore = $(`
+                    <div class="body_point">
+                        <div class="body_point_header" data="type_project">
+                            <span>Выберите тип проетка</span>
+                        </div>
+                        <div class="body_point_line_block_more_registration_business">
+                            <st data="default">Обычный</st>
+                            <st data="investing_not_pay">Инвестиция с предоплатой</st>
+                        </div>
+                    </div>
+                `);
 
-            firstBlockMore.find('st[data="investing_not_pay"]').click( function() 
-            {
-                SoloAlert.prompt({
-                    title: "Подтверждение",
-                    body: `Вы уверены, что хотите сменить тип проекта на "Инвестиция с предоплатой"? Если да, введите первичный процент инвестиции`,
-                    theme: "dark",
-                    type: "number",
-                }).then(async (value) => 
+                if(typeof _project.notFullpay != "undefined")
                 {
-                    if(value.length != 0)
+                    firstBlockMore.find('.body_point_header[data="type_project"] span').html(`Выбран тип: С предоплатой ${_project.notFullpay}%`);
+                }
+
+                firstBlockMore.find('st[data="investing_not_pay"]').click( function() 
+                {
+                    SoloAlert.prompt({
+                        title: "Подтверждение",
+                        body: `Вы уверены, что хотите сменить тип проекта на "Инвестиция с предоплатой"? Если да, введите первичный процент инвестиции`,
+                        theme: "dark",
+                        type: "number",
+                    }).then(async (value) => 
                     {
-                        await callApi({
-                            methodName: 'setNewTypeProject',
-                            data: {
-                                id: _GET('id'),
-                                data: value,
-                            },
-                        });
+                        if(value.length != 0)
+                        {
+                            await callApi({
+                                methodName: 'setNewTypeProject',
+                                data: {
+                                    id: _GET('id'),
+                                    data: value,
+                                },
+                            });
 
-                        SoloAlert.alert({
-                            title:"Успешно",
-                            body:"",
-                            icon: "success"
-                        });
+                            SoloAlert.alert({
+                                title:"Успешно",
+                                body:"",
+                                icon: "success"
+                            });
 
-                        $('.body_point_header[data="type_project"] span').html(`Выбран тип: С предоплатой ${value}%`);
-                    }
-                })
-            });
+                            $('.body_point_header[data="type_project"] span').html(`Выбран тип: С предоплатой ${value}%`);
+                        }
+                    })
+                });
 
-            firstBlockMore.find('st[data="investing_not_pay"]').css('margin-left', '20px');
-            firstBlockMore.css("padding-bottom", "20px");
+                firstBlockMore.find('st[data="investing_not_pay"]').css('margin-left', '20px');
+                firstBlockMore.css("padding-bottom", "20px");
 
-            this.global_block.append(firstBlockMore);
+                this.global_block.append(firstBlockMore);
+            }
 
             var firstBlockMore = $(`
                 <div class="body_point">
