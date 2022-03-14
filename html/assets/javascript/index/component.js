@@ -375,7 +375,7 @@
 
                     if(typeof _data.project.notFullpay != "undefined")
                     {
-                        var textButtonPush = `Нажимая кнопку подтвердить, вы подтверждаете, что сумма и дата платежа верна, так же сумма должна быть равной ${_data.project.notFullpay}% от общей суммы`;
+                        textButtonPush = `Нажимая кнопку подтвердить, вы подтверждаете, что сумма и дата платежа верна, так же сумма должна быть равной ${_data.project.notFullpay}% от общей суммы`;
                     };
 
                     $('.index_page_body_data').append(`

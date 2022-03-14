@@ -2365,7 +2365,7 @@ async function acceptInvestor(socket,data,callback)
         },
     };
 
-    if(_Project.data.date != "Бессрочно")
+    if(_Project.data.date != "Бессрочно" && typeof _Project.notFullpay == "undefined")
     {
         paymentsFunction[_Project.data.date_payments]();
     };
