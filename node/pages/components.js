@@ -209,17 +209,23 @@ var action_linker =
     "acceptInvOfComplaintAdministrator": acceptInvOfComplaintAdministrator,
     "requestInvestingOfRemove": requestInvestingOfRemove,
     "requestInvestingOfRemoveCLOSE": requestInvestingOfRemoveCLOSE,
+    "setNewTypeProject": setNewTypeProject,
+};
+
+async function setNewTypeProject(socket, data, callback)
+{
+    callback(await Project.findOneAndUpdate({_id: data.id}, {notFullpay: data.data}));
 };
 
 async function requestInvestingOfRemoveCLOSE(socket, data, callback)
 {
     callback(await InvDoc.findOneAndUpdate({_id: data}, {$unset: {request_remove: 1}}));
-}
+};
 
 async function requestInvestingOfRemove(socket, data, callback)
 {
     callback(await InvDoc.findOneAndUpdate({_id: data}, {request_remove: true}));
-}
+};
 
 async function acceptInvOfComplaintAdministrator(socket, data, callback)
 {

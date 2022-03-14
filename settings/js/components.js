@@ -1047,7 +1047,7 @@
 
             var firstBlockMore = $(`
                 <div class="body_point">
-                    <div class="body_point_header">
+                    <div class="body_point_header" data="type_project">
                         <span>Выберите тип проетка</span>
                     </div>
                     <div class="body_point_line_block_more_registration_business">
@@ -1057,7 +1057,13 @@
                 </div>
             `);
 
-            firstBlockMore.find('st[data="investing_not_pay"]').click( function() {
+            if(typeof _project.notFullpay != "undefined")
+            {
+                $('.body_point_header[data="type_project"] span').html(`Выбран тип: С предоплатой ${_project.notFullpay}%`);
+            }
+
+            firstBlockMore.find('st[data="investing_not_pay"]').click( function() 
+            {
                 SoloAlert.prompt({
                     title: "Подтверждение",
                     body: `Вы уверены, что хотите сменить тип проекта на "Инвестиция с предоплатой"? Если да, введите первичный процент инвестиции`,
@@ -1069,14 +1075,21 @@
 
                     if(value.length != 0)
                     {
+                        await callApi({
+                            methodName: 'setNewTypeProject',
+                            data: {
+                                id: _GET('id'),
+                                data: value,
+                            },
+                        });
+
                         SoloAlert.alert({
                             title:"Успешно",
                             body:"",
                             icon: "success"
                         });
 
-                        var valueUserBlock = $('.global_block_header_info h1').html();
-                        $('.global_block_header_info h1').html(valueUserBlock + " (C предоплатой)")
+                        $('.body_point_header[data="type_project"] span').html(`Выбран тип: С предоплатой ${value}%`);
                     }
                 })
             });
