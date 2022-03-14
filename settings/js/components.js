@@ -1059,7 +1059,7 @@
 
             if(typeof _project.notFullpay != "undefined")
             {
-                $('.body_point_header[data="type_project"] span').html(`Выбран тип: С предоплатой ${_project.notFullpay}%`);
+                firstBlockMore.find('.body_point_header[data="type_project"] span').html(`Выбран тип: С предоплатой ${_project.notFullpay}%`);
             }
 
             firstBlockMore.find('st[data="investing_not_pay"]').click( function() 
@@ -1071,8 +1071,6 @@
                     type: "number",
                 }).then(async (value) => 
                 {
-                    alert(value.length);
-
                     if(value.length != 0)
                     {
                         await callApi({
