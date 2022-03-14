@@ -181,18 +181,18 @@
             $('.creating_page').empty();
 
             var _this       = this;
-            var pushMoney   = _this.money;
+            var pushMoney   = _this.money + " ₽";
 
             if(typeof this.project.notFullpay != "undefined")
             {
-                pushMoney = `${Number(pushMoney) / 100 * Number(this.project.notFullpay)} (${this.project.notFullpay}%)`;
+                pushMoney = `${Number(pushMoney) / 100 * Number(this.project.notFullpay)} ₽ (${this.project.notFullpay}%)`;
             };
 
             var msgsBlock = $(`
                 <div class="creating_page_block">
                     <div class="creating_page_start" style="margin-bottom: 20px">
                         <span>
-                            Уважаемый Инвестор ${findOfArrayOn_id(_this.inv.data, "fio")} переведите ${_this.money} руб. По реквезитам ниже и Пришлите чек оплаты для окончания инвестирования. <br><br>
+                            Уважаемый Инвестор ${findOfArrayOn_id(_this.inv.data, "fio")} переведите ${pushMoney} По реквезитам ниже и Пришлите чек оплаты для окончания инвестирования. <br><br>
 
                             Реквезиты перечисления: <br><br>
                             Банк-получатель: ${this.project.data.bank} <br>
