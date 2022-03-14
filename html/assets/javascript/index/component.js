@@ -371,9 +371,16 @@
             } else {
                 if(_data.InvDoc.status != "not_correct")
                 {
+                    var textButtonPush = "Нажимая кнопку подтвердить, вы подтверждаете, что сумма и дата платежа верна";
+
+                    if(typeof _data.project.notFullpay != "undefined")
+                    {
+                        var textButtonPush = `Нажимая кнопку подтвердить, вы подтверждаете, что сумма и дата платежа верна, так же сумма должна быть равной ${_data.project.notFullpay}% от общей суммы`;
+                    };
+
                     $('.index_page_body_data').append(`
                         <div class="Attracted_headerInfoBlock_info_data_alert">
-                            <span>Нажимая кнопку подтвердить, вы подтверждаете, что сумма и дата платежа верна</span>
+                            <span>${textButtonPush}</span>
                         </div>
                         <div class="Attracted_headerInfoBlock">
                             <div class="Attracted_headerInfoBlock_block accept_block_tap">

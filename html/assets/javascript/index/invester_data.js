@@ -185,7 +185,7 @@
 
             if(typeof this.project.notFullpay != "undefined")
             {
-                pushMoney = `${Number(_this.money.toString().trim().replace(/\s/g, '')) / 100 * Number(this.project.notFullpay)} ₽ (${this.project.notFullpay}%)`;
+                pushMoney = `${Number(Number(_this.money.toString().trim().replace(/\s/g, '')) / 100 * Number(this.project.notFullpay)).toString().ReplaceNumber()} ₽ (${this.project.notFullpay}%)`;
             };
 
             var msgsBlock = $(`
