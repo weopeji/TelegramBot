@@ -200,7 +200,7 @@
                         }
                     }
 
-                    if(_data.project.data.date != "Бессрочно")
+                    if(_data.project.data.date != "Бессрочно" || typeof _data.project.notFullpay == "undefined")
                     {
                         headerPaysBlock.find('.headerPaysBlock_body').append(_block);
                     }
@@ -250,7 +250,7 @@
                     $('.headerPaysBlock_body_line[alertForLine="true"]').toggleClass('alertForLine');
                 }, 1000);
 
-                if(_data.project.data.date == "Бессрочно")
+                if(_data.project.data.date == "Бессрочно" || typeof _data.project.notFullpay != "undefined")
                 {
                     var appendPayBlock = $(`
                         <div class="appendPayBlock">
