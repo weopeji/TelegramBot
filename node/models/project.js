@@ -22,6 +22,7 @@ const ProjectShema = new mongoose.Schema({
     video_redacting: String,
     last_redacting: JSON,
     notFullpay: Number,
+    closeMoney: Boolean,
 });
 
 autoIncrement.initialize(mongoose.connection);

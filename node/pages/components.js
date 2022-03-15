@@ -210,7 +210,21 @@ var action_linker =
     "requestInvestingOfRemove": requestInvestingOfRemove,
     "requestInvestingOfRemoveCLOSE": requestInvestingOfRemoveCLOSE,
     "setNewTypeProject": setNewTypeProject,
+    "requestLastMoneyInProject": requestLastMoneyInProject,
 };
+
+async function requestLastMoneyInProject(socket, data, callback)
+{
+    var AllInvsofProject    = await InvDoc.find({projectId: data});
+    var _Project            = await Project.findOneAndUpdate({_id: data}, {closeMoney: true});
+
+    for(var InvsofProject of AllInvsofProject)
+    {
+        h.full_alert_user(InvsofProject.invester, `Проект ${_Project._id} "${_Project.data.name}" завершил сбор заявок, вам нужно оплатить последнюю сумму в размере ${_Project.notFullpay}% от общей суммы`, "pushMoneyOfInvesting", InvsofProject._id);
+    };
+
+    callback();
+}
 
 async function setNewTypeProject(socket, data, callback)
 {

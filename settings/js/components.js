@@ -1126,21 +1126,16 @@
                         {
                             if(value.length != 0)
                             {
-                                // await callApi({
-                                //     methodName: 'setNewTypeProject',
-                                //     data: {
-                                //         id: _GET('id'),
-                                //         data: value,
-                                //     },
-                                // });
+                                await callApi({
+                                    methodName: 'requestLastMoneyInProject',
+                                    data: _GET('id'),
+                                });
     
                                 SoloAlert.alert({
                                     title:"Успешно",
                                     body:"",
                                     icon: "success"
                                 });
-    
-                                
                             }
                         })
                     });
