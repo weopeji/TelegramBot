@@ -1101,18 +1101,21 @@
             }
             else
             {
-                var firstBlockMore = $(`
-                    <div class="body_point">
-                        <div class="body_point_header" data="type_project">
-                            <span>Выберите тип проетка</span>
+                if(typeof _project.notFullpay != "undefined")
+                {
+                    var firstBlockMore = $(`
+                        <div class="body_point">
+                            <div class="body_point_header" data="type_project">
+                                <span>Выберите тип проетка</span>
+                            </div>
+                            <div class="body_point_line_block_more_registration_business">
+                                <st data="default">Запросить еще ${_project.notFullpay}% выплаты досрочно</st>
+                            </div>
                         </div>
-                        <div class="body_point_line_block_more_registration_business">
-                            <st data="default">Запросить 100% выплаты досрочно</st>
-                        </div>
-                    </div>
-                `);
+                    `);
 
-                this.global_block.append(firstBlockMore);
+                    this.global_block.append(firstBlockMore);
+                }
             }
 
             var firstBlockMore = $(`
