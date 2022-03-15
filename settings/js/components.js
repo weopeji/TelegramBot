@@ -1117,11 +1117,11 @@
 
                     firstBlockMore.find('st[data="request"]').click( function() 
                     {
-                        SoloAlert.prompt({
+                        SoloAlert.confirm({
                             title: "Подтверждение",
                             body: `Вы уверены, что хотите останосить инвестирования и запросить недостающую сумму?`,
                             theme: "dark",
-                            type: "number",
+                            useTransparency: true,
                         }).then(async (value) => 
                         {
                             if(value.length != 0)
