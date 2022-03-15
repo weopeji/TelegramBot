@@ -1106,13 +1106,46 @@
                     var firstBlockMore = $(`
                         <div class="body_point">
                             <div class="body_point_header" data="type_project">
-                                <span>Выберите тип проетка</span>
+                                <span>Действие</span>
                             </div>
                             <div class="body_point_line_block_more_registration_business">
-                                <st data="default">Запросить еще ${_project.notFullpay}% выплаты досрочно</st>
+                                <st data="request">Запросить еще ${100 - Number(_project.notFullpay)}% выплаты досрочно</st>
                             </div>
                         </div>
                     `);
+
+
+                    firstBlockMore.find('st[data="request"]').click( function() 
+                    {
+                        SoloAlert.prompt({
+                            title: "Подтверждение",
+                            body: `Вы уверены, что хотите останосить инвестирования и запросить недостающую сумму?`,
+                            theme: "dark",
+                            type: "number",
+                        }).then(async (value) => 
+                        {
+                            if(value.length != 0)
+                            {
+                                // await callApi({
+                                //     methodName: 'setNewTypeProject',
+                                //     data: {
+                                //         id: _GET('id'),
+                                //         data: value,
+                                //     },
+                                // });
+    
+                                SoloAlert.alert({
+                                    title:"Успешно",
+                                    body:"",
+                                    icon: "success"
+                                });
+    
+                                
+                            }
+                        })
+                    });
+
+                    firstBlockMore.css("padding-bottom", "20px");
 
                     this.global_block.append(firstBlockMore);
                 }
