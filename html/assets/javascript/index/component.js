@@ -217,7 +217,7 @@
                         {
                             headerPaysBlock.find('.headerPaysBlock_body').append(_block);
                         }
-                    }
+                    };
                 });
 
                 headerPaysBlock.find('input[type=file]').change( async function() 
@@ -364,7 +364,19 @@
                                 location.reload();
                             }
                         });
-                    })
+                    });
+
+                    if(typeof _data.project.notFullpay != "undefined")
+                    {
+                        if(typeof _data.project.acceptWaitFullPay == "undefined")
+                        {
+                            appendPayBlock = $(`
+                                <div class="Attracted_headerInfoBlock_info_data_alert">
+                                    <span>Ожидает полного сбора</span>
+                                </div>
+                            `);
+                        };
+                    };
 
                     $('.index_page_body_data').append(appendPayBlock);
                 };
