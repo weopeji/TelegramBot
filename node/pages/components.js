@@ -2433,7 +2433,6 @@ async function acceptInvestor(socket,data,callback)
 
 
 
-
     var attraction_amount   = Number(_Project.data.attraction_amount.toString().replace(/\s/g, ''));
     var allInvDosc          = await InvDoc.find({projectId: _Project._id, status: "accept"});
     var allMoneyOfProject   = 0;

@@ -169,9 +169,30 @@
                 window.open(html, '_blank');
             })
 
-            documentBlock.find(".creating_page_input_div").click( function() {
-                _this.cheackGet();
-            })
+            if(typeof _this.project.notFullpay == "undefined")
+            {
+                documentBlock.find(".creating_page_input_div").click( function() {
+                    _this.cheackGet();
+                })
+            }
+            else
+            {
+                if(Number(_this.project.notFullpay) != 0)
+                {
+                    documentBlock.find(".creating_page_input_div").click( function() {
+                        _this.cheackGet();
+                    })
+                }
+                else
+                {
+                    documentBlock.find(".creating_page_input_div").find('span').html('Подтвердить инвестицию');
+                    documentBlock.find(".creating_page_input_div").click( function() {
+                        
+                    })
+                }
+            }
+
+            
 
             $('.creating_page').append(documentBlock);
         }
