@@ -271,6 +271,7 @@
                             date: _this.date,
                             url: _this.urlForDocument,
                             invId: InvIdGet,
+                            accept: true,
                         },
                     });
 

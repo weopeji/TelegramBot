@@ -722,7 +722,13 @@ async function endInvestingDataPush(socket, data, callback)
     merger.add(`/var/www/projects/${_Project._id}/application_number_2_document_${data.user}.pdf`); 
     await merger.save(`/var/www/projects/${_Project._id}/` + pathToLastDocument);
 
-    await InvDoc.findOneAndUpdate({_id: data.invId}, {status: "wait", urlToLastDocument: pathToLastDocument});
+    if(typeof data.accept != "undefined")
+    {
+        await InvDoc.findOneAndUpdate({_id: data.invId}, {status: "accept", urlToLastDocument: pathToLastDocument});
+    }else
+    {
+        await InvDoc.findOneAndUpdate({_id: data.invId}, {status: "wait", urlToLastDocument: pathToLastDocument});
+    }
 
     var _datePush = new Date().getTime();
 
