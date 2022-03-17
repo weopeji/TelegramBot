@@ -215,18 +215,6 @@
                 </div>
             `);
 
-            if(typeof _this.project.notFullpay != "undefined")
-            {
-                if(Number(_this.project.notFullpay) == 0)
-                {
-                    msgsBlock.find('.creating_page_start span').html(`
-                        Уважаемый Инвестор ${findOfArrayOn_id(_this.inv.data, "fio")}
-                        Подтверждая инвестицию, вы подтверждаете, что по окончанию сбора средств вы выплатите зарезервированную вами сумму,
-                        Отказавшись вы получите запрет на использование платформы в будущем, на определенный срок
-                    `.toString().trim());
-                };
-            };
-
             var _block = $(`
                 <div class="creating_page_input">
                     <div class="creating_page_input_div" data="pay">
@@ -236,11 +224,63 @@
                 </div>
             `);
 
+            if(typeof _this.project.notFullpay != "undefined")
+            {
+                if(Number(_this.project.notFullpay) == 0)
+                {
+                    msgsBlock.find('.creating_page_start span').html(`
+                        Уважаемый Инвестор ${findOfArrayOn_id(_this.inv.data, "fio")}
+                        Подтверждая инвестицию, вы подтверждаете, что по окончанию сбора средств вы выплатите зарезервированную вами сумму,
+                        Отказавшись вы получите запрет на использование платформы в будущем, на определенный срок
+                    `.toString().trim());
+
+                    _block.find('span').html("Подтвердить");
+                };
+            };
+
             _block.find('span').click( function () 
             {
                 if(typeof _this.project.notFullpay != "undefined" && Number(_this.project.notFullpay) == 0)
                 {
+                    await callApi({
+                        methodName: "setInvesterDataProjectForInvesterPage",
+                        data: {
+                            user:  _GET('user'),
+                            data: {
+                                inv: _this.inv,
+                                date: _this.date,
+                            },
+                        },
+                    });
 
+                    var InvIdGet = await callApi({
+                        methodName: "setInvesterDataProjectForInvesterPageGetIdNullMoney",
+                        data: {
+                            idUser: _GET('user'),
+                            money: _this.money,
+                            date: _this.date,
+                        },
+                    });
+
+                    await callApi({
+                        methodName: "endInvestingDataPush",
+                        data: {
+                            user: _GET('user'),
+                            project: _this.project._id,
+                            money: _this.money.toString().ReplaceNumber(),
+                            date: _this.date,
+                            url: _this.urlForDocument,
+                            invId: InvIdGet,
+                        },
+                    });
+
+                    SoloAlert.alert({
+                        title:"Успешно",
+                        body:"",
+                        icon: "success"
+                    }).then(() => {
+                        location.reload();
+                    });
                 }
                 else
                 {

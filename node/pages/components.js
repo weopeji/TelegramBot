@@ -211,7 +211,34 @@ var action_linker =
     "requestInvestingOfRemoveCLOSE": requestInvestingOfRemoveCLOSE,
     "setNewTypeProject": setNewTypeProject,
     "requestLastMoneyInProject": requestLastMoneyInProject,
+    "setInvesterDataProjectForInvesterPageGetIdNullMoney": setInvesterDataProjectForInvesterPageGetIdNullMoney,
 };
+
+async function setInvesterDataProjectForInvesterPageGetIdNullMoney(socket, data, callback)
+{
+    var _User = await User.findOne({_id: data.idUser});
+    var _arrayData  = _User.investor_data.inv;
+    var _dateNeed   = data.date;
+    _arrayData.pay  = data.money;
+
+    if(!_dateNeed || _dateNeed == "null")
+    {
+        _dateNeed = new Date().getTime();
+    };
+
+    var invCreate = await InvDoc.create({
+        projectId: _User.putProject,
+        invester: _User.user,
+        status: "accept",
+        data: _arrayData,
+        receipt: null,
+        pays: null,
+        date: _dateNeed,
+        date_append: new Date().getTime().toString(),
+    });
+
+    callback(invCreate._id);
+}
 
 async function requestLastMoneyInProject(socket, data, callback)
 {
