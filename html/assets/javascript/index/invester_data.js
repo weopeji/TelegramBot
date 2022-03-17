@@ -238,7 +238,7 @@
                 };
             };
 
-            _block.find('span').click( function () 
+            _block.find('span').click( async function () 
             {
                 if(typeof _this.project.notFullpay != "undefined" && Number(_this.project.notFullpay) == 0)
                 {
