@@ -724,10 +724,10 @@ async function endInvestingDataPush(socket, data, callback)
 
     if(typeof data.accept != "undefined")
     {
-        await InvDoc.findOneAndUpdate({_id: data.invId}, {status: "accept", urlToLastDocument: pathToLastDocument});
+        await InvDoc.findOneAndUpdate({_id: data.invId}, {status: "accept", urlToLastDocument: pathToLastDocument, pays: []});
     }else
     {
-        await InvDoc.findOneAndUpdate({_id: data.invId}, {status: "wait", urlToLastDocument: pathToLastDocument, pays: []});
+        await InvDoc.findOneAndUpdate({_id: data.invId}, {status: "wait", urlToLastDocument: pathToLastDocument});
     };
 
     var _datePush = new Date().getTime();
