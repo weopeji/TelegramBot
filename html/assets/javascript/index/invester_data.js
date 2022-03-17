@@ -280,7 +280,8 @@
                         body:"",
                         icon: "success"
                     }).then(() => {
-                        location.reload();
+                        var protoUrl    = "tg:\/\/resolve?domain=invester_official_bot";
+                        window.location = protoUrl;
                     });
                 }
                 else
