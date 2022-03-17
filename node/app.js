@@ -560,7 +560,7 @@ app.post('/file_cheack_get.io/files', (req, res) =>
                         status: "not_accept",
                         data: _arrayData,
                         receipt: null,
-                        pays: null,
+                        pays: [],
                         date: _dateNeed,
                         date_append: new Date().getTime().toString(),
                     });
