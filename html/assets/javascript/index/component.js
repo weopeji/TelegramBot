@@ -635,46 +635,93 @@
                     }
                     else
                     {
-                        if(typeof _data.InvDoc.data.pts == "undefined")
+                        if(Number(_data.project.notFullpay) == 0)
                         {
-                            headerPaysBlock = $(`
-                                <div class="Attracted_headerInfoBlock_info_data_alert">
-                                    <input type="file" id="Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input">
-                                    <div class="Attracted_headerInfoBlock_info_data_alert_buttom_cheack">
-                                        <span>Прикрепить чек</span>
-                                    </div>
-                                </div>
-                            `);
-
-                            headerPaysBlock.find('.Attracted_headerInfoBlock_info_data_alert_buttom_cheack').click( function() {
-                                $('#Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input').trigger('click');
-                            });
-
-                            headerPaysBlock.find('#Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input').change( async function() 
+                            if(typeof _data.InvDoc.data.pts_2 == "undefined")
                             {
-                                var _form               = new FormData();
-                                var _url                = `${getURL()}/file_Action.io/files`;
+                                headerPaysBlock = $(`
+                                    <div class="Attracted_headerInfoBlock_info_data_alert">
+                                        <input type="file" id="Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input">
+                                        <div class="Attracted_headerInfoBlock_info_data_alert_buttom_cheack">
+                                            <span>Прикрепить чек</span>
+                                        </div>
+                                    </div>
+                                `);
 
-                                _form.append('file',   $(this.files)[0]);
-                                _form.append('data',    JSON.stringify({
-                                    Action: "activ_projects_NotFullPayNull",
-                                    InvDocId: _GET('id'), 
-                                }));
-
-                                axios.post(_url, _form, {
-                                    headers: {
-                                        'Content-Type': 'multipart/form-data'
-                                    },
-                                }).then(data => 
-                                {
-                                    if(data.data.status == "ok") {
-                                        alert("Чек прикоеплен!");
-                                        location.reload();
-                                    }
+                                headerPaysBlock.find('.Attracted_headerInfoBlock_info_data_alert_buttom_cheack').click( function() {
+                                    $('#Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input').trigger('click');
                                 });
-                            });
 
-                            $('.headerPaysBlock').remove();
+                                headerPaysBlock.find('#Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input').change( async function() 
+                                {
+                                    var _form               = new FormData();
+                                    var _url                = `${getURL()}/file_Action.io/files`;
+
+                                    _form.append('file',   $(this.files)[0]);
+                                    _form.append('data',    JSON.stringify({
+                                        Action: "activ_projects_NotFullPayNullPts2",
+                                        InvDocId: _GET('id'), 
+                                    }));
+
+                                    axios.post(_url, _form, {
+                                        headers: {
+                                            'Content-Type': 'multipart/form-data'
+                                        },
+                                    }).then(data => 
+                                    {
+                                        if(data.data.status == "ok") {
+                                            alert("Чек прикоеплен!");
+                                            location.reload();
+                                        }
+                                    });
+                                });
+
+                                $('.headerPaysBlock').remove();
+                            }
+                        }
+                        else
+                        {
+                            if(typeof _data.InvDoc.data.pts == "undefined")
+                            {
+                                headerPaysBlock = $(`
+                                    <div class="Attracted_headerInfoBlock_info_data_alert">
+                                        <input type="file" id="Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input">
+                                        <div class="Attracted_headerInfoBlock_info_data_alert_buttom_cheack">
+                                            <span>Прикрепить чек</span>
+                                        </div>
+                                    </div>
+                                `);
+    
+                                headerPaysBlock.find('.Attracted_headerInfoBlock_info_data_alert_buttom_cheack').click( function() {
+                                    $('#Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input').trigger('click');
+                                });
+    
+                                headerPaysBlock.find('#Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input').change( async function() 
+                                {
+                                    var _form               = new FormData();
+                                    var _url                = `${getURL()}/file_Action.io/files`;
+    
+                                    _form.append('file',   $(this.files)[0]);
+                                    _form.append('data',    JSON.stringify({
+                                        Action: "activ_projects_NotFullPayNull",
+                                        InvDocId: _GET('id'), 
+                                    }));
+    
+                                    axios.post(_url, _form, {
+                                        headers: {
+                                            'Content-Type': 'multipart/form-data'
+                                        },
+                                    }).then(data => 
+                                    {
+                                        if(data.data.status == "ok") {
+                                            alert("Чек прикоеплен!");
+                                            location.reload();
+                                        }
+                                    });
+                                });
+    
+                                $('.headerPaysBlock').remove();
+                            }
                         }
                     }
                 };
@@ -777,7 +824,7 @@
                                 <button type="button">Посмотреть</button>
                             `);
 
-                            buttonsTypeBlock.eq(2).click( function() {
+                            buttonsTypeBlock.eq(3).click( function() {
                                 window.open(`./projects/${_data.InvDoc.projectId}/${_data.InvDoc._id}_investment.${_data.InvDoc.data.pts}`, '_blank');
                             });
 
@@ -802,7 +849,7 @@
 
                             if(typeof _data.InvDoc.data.pts_2 != "undefined")
                             {
-                                buttonsTypeBlock.eq(2).click( function() {
+                                buttonsTypeBlock.eq(3).click( function() {
                                     window.open(`./projects/${_data.InvDoc.projectId}/${_data.InvDoc._id}_investment.${_data.InvDoc.data.pts}`, '_blank');
                                 });
                             }

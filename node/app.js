@@ -480,6 +480,31 @@ app.post('/file_Action.io/files', (req, res) => {
                             });
                         });
                     },
+                    "activ_projects_NotFullPayNullPts2": async function()
+                    {
+                        var _InvDoc         = await InvDoc.findOne({_id: FullData.InvDocId});
+                        var PathToFile      = `/var/www/projects/${_InvDoc.projectId}/${_InvDoc._id}_investment_2.${FilePts}`;
+                        var _InvDocData     = _InvDoc.data;
+                        _InvDocData.pts_2   = FilePts;
+
+                        await InvDoc.findOneAndUpdate({_id: _InvDoc._id}, {
+                            data: _InvDocData,
+                        });
+
+                        if(fs.existsSync(PathToFile)) 
+                        {
+                            fs.unlinkSync(PathToFile);
+                        };
+
+                        fs.rename(FirstPath, PathToFile, async function (err) 
+                        {
+                            if (err) throw err;
+
+                            res.json({
+                                status: 'ok',
+                            });
+                        });
+                    }
                 };
 
                 if(typeof FullData.Action != "undefined")
