@@ -2475,6 +2475,8 @@ async function acceptInvestor(socket,data,callback)
         allMoneyOfProject = allMoneyOfProject + Number(InvDocFind.data.pay.toString().replace(/\s/g, ''));
     }
 
+    console.log(attraction_amount <= allMoneyOfProject + " " + attraction_amount + " " + allMoneyOfProject);
+
     if(attraction_amount <= allMoneyOfProject)
     {
         await Project.findOneAndUpdate({_id: _Project._id}, {closeMoney: true});
