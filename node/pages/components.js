@@ -762,7 +762,6 @@ async function endInvestingDataPush(socket, data, callback)
     if(typeof data.accept != "undefined")
     {
         await InvDoc.findOneAndUpdate({_id: data.invId}, {status: "accept", urlToLastDocument: pathToLastDocument, pays: []});
-        pushMsgsForInvesorsByLastInvesting(_Project);
     }else
     {
         await InvDoc.findOneAndUpdate({_id: data.invId}, {status: "wait", urlToLastDocument: pathToLastDocument});
@@ -781,6 +780,8 @@ async function endInvestingDataPush(socket, data, callback)
     h.alertDeleteOfUserOnbot(`${_User.first_name} вы успешно проинвестировали в проект\n ${_Project._id}\n "${_Project.data.name}"\n на сумму ${data.money} руб.\n по договору от ${DateTime.fromMillis(Number(_datePush)).toFormat('dd.MM.yyyy')}\n Ожидайте подтверждения бизнесом получения денег. Так как сумма идет банковским платежом, поступление на расчетный счет бизнеса может занять до 3х банковских дней`, _User.user);
     h.full_alert_user(_Project.user, `Поступила оплата в проекте номер ${_Project._id} "${_Project.data.name}" на сумму ${data.money} руб. по договору от ${DateTime.fromMillis(Number(_datePush)).toFormat('dd.MM.yyyy')} требуется подтверждение`, "put_investring");
 
+    pushMsgsForInvesorsByLastInvesting(_Project);
+    
     callback();
 }
 

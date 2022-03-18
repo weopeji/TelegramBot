@@ -486,7 +486,7 @@
 
                             alert("Чек прикоеплен!");
                             $('.process_upload_block').remove();
-                            $('.creating_page_input span[data="first"]').html('Перезаписать');
+                            $('.creating_page_input span[data="first"]').html('Заменить');
     
                             $('.creating_page_input_div[data="show"]').remove();
                             $('.creating_page_input_div[data="accept"]').remove();
