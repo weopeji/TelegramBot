@@ -635,7 +635,7 @@
                     }
                     else
                     {
-                        if(Number(_data.project.notFullpay) == 0)
+                        if(Number(_data.project.notFullpay) != 0)
                         {
                             if(typeof _data.InvDoc.data.pts_2 == "undefined")
                             {
