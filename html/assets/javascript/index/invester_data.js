@@ -556,7 +556,7 @@
                         fullMoneysInvs = fullMoneysInvs + Number(InvPushMoney.data.pay.toString().replace(/\s/g, ''));
                     };
 
-                    if(Number(fullMoneysInvs) + Number(fullMoneyCheack) < Number(fullMoneysInvs) + Number(_money))
+                    if(Number(fullMoneyCheack) < Number(fullMoneysInvs) + Number(_money))
                     {
                         alert(`Сумма превышает на ${Number(fullMoneysInvs) + Number(fullMoneyCheack) - Number(fullMoneysInvs) + Number(_money)}`);
                         return;
