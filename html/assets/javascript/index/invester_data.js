@@ -558,7 +558,7 @@
 
                     if(Number(fullMoneyCheack) < Number(fullMoneysInvs) + Number(_money))
                     {
-                        alert(`Сумма превышает на ${Number(fullMoneyCheack) - Number(fullMoneysInvs) + Number(_money)}`);
+                        alert(`Сумма превышает на ${Number(fullMoneysInvs) + Number(_money) - Number(fullMoneyCheack)}`);
                         return;
                     }
                 };
