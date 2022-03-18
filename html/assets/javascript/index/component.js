@@ -813,16 +813,18 @@
                     
 
                     var templateText = $(`
-                        <div class="info_active_block_left_buttons_notFullpay_line">
+                        <div class="info_active_block_left_buttons_notFullpay_line_row">
+                            <div class="info_active_block_left_buttons_notFullpay_line" data="first">
 
-                        </div>
-                        <div class="info_active_block_left_buttons_notFullpay_line">
-                            
+                            </div>
+                            <div class="info_active_block_left_buttons_notFullpay_line" data="second">
+                                
+                            </div>
                         </div>
                     `);
 
-                    templateText.eq(0).append(buttonsType[0]());
-                    templateText.eq(1).append(buttonsType[1]());
+                    templateText.find('[data="first"]').append(buttonsType[0]());
+                    templateText.find('[data="second"]').append(buttonsType[1]());
 
                     settingBlock.find('.show_block').remove();
                     settingBlock.find('.info_active_block_left_buttons').append(templateText);
