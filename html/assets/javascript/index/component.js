@@ -819,12 +819,14 @@
                         function() 
                         {
                             var buttonsTypeBlock = $(`
-                                <i class="fad fa-badge-check"></i>
-                                <span>Чек номер 1</span>
-                                <button type="button">Посмотреть</button>
+                                <div class="buttonsTypeBlock_row_not_full_payData">
+                                    <i class="fad fa-badge-check"></i>
+                                    <span>Чек номер 1</span>
+                                    <button type="button">Посмотреть</button>
+                                </div>
                             `);
 
-                            buttonsTypeBlock.eq(3).click( function() {
+                            buttonsTypeBlock.find('button').click( function() {
                                 window.open(`./projects/${_data.InvDoc.projectId}/${_data.InvDoc._id}_investment.${_data.InvDoc.data.pts}`, '_blank');
                             });
 
@@ -842,14 +844,16 @@
                             }
 
                             var buttonsTypeBlock    = $(`
-                                ${iconButton}
-                                <span>Чек номер 2</span>
-                                ${buttonBlockNeedPush}
+                                <div class="buttonsTypeBlock_row_not_full_payData">
+                                    ${iconButton}
+                                    <span>Чек номер 2</span>
+                                    ${buttonBlockNeedPush}
+                                </div>
                             `);
 
                             if(typeof _data.InvDoc.data.pts_2 != "undefined")
                             {
-                                buttonsTypeBlock.eq(3).click( function() {
+                                buttonsTypeBlock.find('button').click( function() {
                                     window.open(`./projects/${_data.InvDoc.projectId}/${_data.InvDoc._id}_investment.${_data.InvDoc.data.pts}`, '_blank');
                                 });
                             }
