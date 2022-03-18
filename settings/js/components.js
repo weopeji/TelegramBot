@@ -1143,61 +1143,62 @@
                     firstBlockMore.css("padding-bottom", "20px");
 
                     this.global_block.append(firstBlockMore);
-
-
-
-                    var requestInvestingMoney = 0;
-
-                    if(typeof _project.requestInvestingMoney != "undefined")
-                    {
-                        requestInvestingMoney = _project.requestInvestingMoney;
-                    }
-
-                    var firstBlockMore = $(`
-                        <div class="body_point">
-                            <div class="body_point_header" data="type_project">
-                                <span>Сумма пересбора заявок</span>
-                            </div>
-                            <div class="body_point_line_block_more_registration_business">
-                                <st data="requestMoreMoney">Выбрана сумма: ${requestInvestingMoney} р</st>
-                            </div>
-                        </div>
-                    `);
-
-                    firstBlockMore.find('st[data="requestMoreMoney"]').click( function() 
-                    {
-                        SoloAlert.prompt({
-                            title: "Подтверждение",
-                            body: `Вы уверены, что хотите сменить тип проекта на "Инвестиция с предоплатой"? Если да, введите первичный процент инвестиции`,
-                            theme: "dark",
-                            type: "number",
-                        }).then(async (value) => 
-                        {
-                            if(value.length != 0)
-                            {
-                                await callApi({
-                                    methodName: 'setNewTypeProjectNumberMore',
-                                    data: {
-                                        id: _GET('id'),
-                                        data: value,
-                                    },
-                                });
-    
-                                SoloAlert.alert({
-                                    title:"Успешно",
-                                    body:"",
-                                    icon: "success"
-                                });
-    
-                                $('st[data="requestMoreMoney"]').html(`Выбрана сумма: ${value} р`);
-                            }
-                        })
-                    });
-
-                    firstBlockMore.css("padding-bottom", "20px");
-
-                    this.global_block.append(firstBlockMore);
                 }
+            }
+
+            if(typeof _project.notFullpay != "undefined")
+            {
+                var requestInvestingMoney = 0;
+
+                if(typeof _project.requestInvestingMoney != "undefined")
+                {
+                    requestInvestingMoney = _project.requestInvestingMoney;
+                }
+
+                var firstBlockMore = $(`
+                    <div class="body_point">
+                        <div class="body_point_header" data="type_project">
+                            <span>Сумма пересбора заявок</span>
+                        </div>
+                        <div class="body_point_line_block_more_registration_business">
+                            <st data="requestMoreMoney">Выбрана сумма: ${requestInvestingMoney} р</st>
+                        </div>
+                    </div>
+                `);
+
+                firstBlockMore.find('st[data="requestMoreMoney"]').click( function() 
+                {
+                    SoloAlert.prompt({
+                        title: "Подтверждение",
+                        body: `Вы уверены, что хотите сменить тип проекта на "Инвестиция с предоплатой"? Если да, введите первичный процент инвестиции`,
+                        theme: "dark",
+                        type: "number",
+                    }).then(async (value) => 
+                    {
+                        if(value.length != 0)
+                        {
+                            await callApi({
+                                methodName: 'setNewTypeProjectNumberMore',
+                                data: {
+                                    id: _GET('id'),
+                                    data: value,
+                                },
+                            });
+
+                            SoloAlert.alert({
+                                title:"Успешно",
+                                body:"",
+                                icon: "success"
+                            });
+
+                            $('st[data="requestMoreMoney"]').html(`Выбрана сумма: ${value} р`);
+                        }
+                    })
+                });
+
+                firstBlockMore.css("padding-bottom", "20px");
+
+                this.global_block.append(firstBlockMore);
             }
 
             var firstBlockMore = $(`
