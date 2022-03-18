@@ -1161,7 +1161,7 @@
                             <span>Сумма пересбора заявок</span>
                         </div>
                         <div class="body_point_line_block_more_registration_business">
-                            <st data="requestMoreMoney">Выбрана сумма: ${requestInvestingMoney} р</st>
+                            <st data="requestMoreMoney">Выбрана сумма: ${requestInvestingMoney.toString().ReplaceNumber()} р</st>
                         </div>
                     </div>
                 `);
@@ -1191,7 +1191,7 @@
                                 icon: "success"
                             });
 
-                            $('st[data="requestMoreMoney"]').html(`Выбрана сумма: ${value} р`);
+                            $('st[data="requestMoreMoney"]').html(`Выбрана сумма: ${value.toString().ReplaceNumber()} р`);
                         }
                     })
                 });

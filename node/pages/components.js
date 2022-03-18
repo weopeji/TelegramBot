@@ -213,7 +213,14 @@ var action_linker =
     "requestLastMoneyInProject": requestLastMoneyInProject,
     "setInvesterDataProjectForInvesterPageGetIdNullMoney": setInvesterDataProjectForInvesterPageGetIdNullMoney,
     "setNewTypeProjectNumberMore": setNewTypeProjectNumberMore,
+    "getProjectForInvesterPageAllInvs": getProjectForInvesterPageAllInvs,
 };
+
+async function getProjectForInvesterPageAllInvs(socket, data, callback)
+{
+    var _Project = await Project.findOne({_id: data});
+    callback(await InvDoc.find({projectId: _Project._id}));
+}
 
 async function setNewTypeProjectNumberMore(socket, data, callback)
 {

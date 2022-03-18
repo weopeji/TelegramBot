@@ -28,11 +28,12 @@
             this.global = $(`
                 <div class="creating_page"></div>
             `);
-            this.project        = null;
-            this.inv            = null;
-            this.money          = null;
-            this.date           = null;
-            this.urlForDocument = null;
+            this.project            = null;
+            this.inv                = null;
+            this.money              = null;
+            this.date               = null;
+            this.urlForDocument     = null;
+            this.allInvsOfProject   = [];
         };
 
         defaultCSS()
@@ -58,6 +59,13 @@
                 methodName: "getProjectForInvesterPage",
                 data: _GET('user'),
             });
+
+            var _AllInvsOfProject = await callApi({
+                methodName: "getProjectForInvesterPageAllInvs",
+                data: _project._id,
+            });
+
+            this.allInvsOfProject = _AllInvsOfProject;
 
             this.project = _project;
 
@@ -533,11 +541,27 @@
 
             var _this = this;
 
-            _block.find('.creating_page_input_button span').click( function() {
+            _block.find('.creating_page_input_button span').click( function() 
+            {
                 var money   = $('.creating_page_input input').val();
                 var _money  = money.toString().replace(/\s/g, '');
 
-                console.log(_this.project.data.minimal_amount.toString().trim());
+                if(typeof _this.project.requestInvestingMoney != "undefined")
+                {
+                    var fullMoneysInvs  = 0;
+                    var fullMoneyCheack = Number(_this.project.attraction_amount.toString().replace(/\s/g, '')) + Number(_this.project.requestInvestingMoney.toString().replace(/\s/g, ''));
+
+                    for(var InvPushMoney of this.allInvsOfProject)
+                    {
+                        fullMoneysInvs = fullMoneysInvs + Number(InvPushMoney.data.pay.toString().replace(/\s/g, ''));
+                    };
+
+                    if(fullMoneysInvs + fullMoneyCheack < fullMoneysInvs + Number(_money))
+                    {
+                        alert(`Сумма превышает на ${fullMoneysInvs + fullMoneyCheack - fullMoneysInvs + _money}`);
+                        return;
+                    }
+                };
 
                 if(Number(_money) < Number(_projectMoney))
                 {
