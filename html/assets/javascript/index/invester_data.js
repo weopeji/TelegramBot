@@ -549,7 +549,7 @@
                 if(typeof _this.project.requestInvestingMoney != "undefined")
                 {
                     var fullMoneysInvs  = 0;
-                    var fullMoneyCheack = Number(_this.project.attraction_amount.toString().replace(/\s/g, '')) + Number(_this.project.requestInvestingMoney.toString().replace(/\s/g, ''));
+                    var fullMoneyCheack = Number(_this.project.data.attraction_amount.toString().replace(/\s/g, '')) + Number(_this.project.requestInvestingMoney.toString().replace(/\s/g, ''));
 
                     for(var InvPushMoney of this.allInvsOfProject)
                     {
