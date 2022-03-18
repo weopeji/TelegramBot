@@ -2163,6 +2163,27 @@ html, body {
   color: white;
 }
 
+.info_active_block_left_buttons_notFullpay_line_row {
+  width: 100%;
+}
+
+.info_active_block_left_buttons_notFullpay_line {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.info_active_block_left_buttons_notFullpay_line i {
+  color: #14b6ff;
+}
+
 @media (max-width: 1600px) {
   .creating_page {
     width: 50%;

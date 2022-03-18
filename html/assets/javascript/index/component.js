@@ -777,7 +777,7 @@
                                 <button type="button">Посмотреть</button>
                             `);
 
-                            buttonsTypeBlock.find('button').click( function() {
+                            buttonsTypeBlock.eq(2).click( function() {
                                 window.open(`./projects/${_data.InvDoc.projectId}/${_data.InvDoc._id}_investment.${_data.InvDoc.data.pts}`, '_blank');
                             });
 
@@ -802,7 +802,7 @@
 
                             if(typeof _data.InvDoc.data.pts_2 != "undefined")
                             {
-                                buttonsTypeBlock.find('button').click( function() {
+                                buttonsTypeBlock.eq(2).click( function() {
                                     window.open(`./projects/${_data.InvDoc.projectId}/${_data.InvDoc._id}_investment.${_data.InvDoc.data.pts}`, '_blank');
                                 });
                             }
