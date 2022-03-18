@@ -781,7 +781,7 @@
                                 window.open(`./projects/${_data.InvDoc.projectId}/${_data.InvDoc._id}_investment.${_data.InvDoc.data.pts}`, '_blank');
                             });
 
-                            return;
+                            return buttonsTypeBlock;
                         },
                         function() 
                         {
@@ -807,7 +807,7 @@
                                 });
                             }
 
-                            return;
+                            return buttonsTypeBlock;
                         },
                     ]
                     
