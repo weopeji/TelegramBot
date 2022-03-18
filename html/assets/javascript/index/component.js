@@ -593,6 +593,20 @@
                         </div>
                     `);
 
+                    if(typeof _data.project.notFullpay != "undefined")
+                    {
+                        if(typeof _data.project.acceptWaitFullPay == "undefined")
+                        {
+                            _block = $(`
+                                <div class="Attracted_headerInfoBlock_info_data_alert">
+                                    <span>Ожидает полного сбора</span>
+                                </div>
+                            `);
+
+                            $('.headerPaysBlock').remove();
+                        };
+                    };
+
                     
                     if(el.status == "accept")
                     {
