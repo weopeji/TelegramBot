@@ -765,7 +765,66 @@
                         settingBlock.find('.show_block').remove();
                     };
                 }
-            }
+                else
+                {
+                    var buttonsType = 
+                    [
+                        function() 
+                        {
+                            var buttonsTypeBlock = $(`
+                                <i class="fad fa-badge-check"></i>
+                                <span>Чек номер 1</span>
+                                <button type="button">Посмотреть</button>
+                            `);
+
+                            buttonsTypeBlock.find('button').click( function() {
+                                window.open(`./projects/${_data.InvDoc.projectId}/${_data.InvDoc._id}_investment.${_data.InvDoc.data.pts}`, '_blank');
+                            });
+
+                            return;
+                        },
+                        function() 
+                        {
+                            var iconButton          = `<i class="fad fa-badge-check"></i>`;
+                            var buttonBlockNeedPush = `<button type="button">Посмотреть</button>`;
+
+                            if(typeof _data.InvDoc.data.pts_2 == "undefined")
+                            {
+                                iconButton          = `<i class="fad fa-window-close"></i>`;
+                                buttonBlockNeedPush = "";
+                            }
+
+                            var buttonsTypeBlock    = $(`
+                                ${iconButton}
+                                <span>Чек номер 2</span>
+                                ${buttonBlockNeedPush}
+                            `);
+
+                            if(typeof _data.InvDoc.data.pts_2 != "undefined")
+                            {
+                                buttonsTypeBlock.find('button').click( function() {
+                                    window.open(`./projects/${_data.InvDoc.projectId}/${_data.InvDoc._id}_investment.${_data.InvDoc.data.pts}`, '_blank');
+                                });
+                            }
+
+                            return;
+                        },
+                    ]
+                    
+
+                    var templateText = $(`
+                        <div class="info_active_block_left_buttons_notFullpay_line">
+
+                        </div>
+                        <div class="info_active_block_left_buttons_notFullpay_line">
+                            
+                        </div>
+                    `);
+
+                    settingBlock.find('.show_block').remove();
+                    settingBlock.find('.info_active_block_left_buttons').append(templateText);
+                }
+            };
 
             $('.index_page_body_data').append(settingBlock);
 
