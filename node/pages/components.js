@@ -212,7 +212,13 @@ var action_linker =
     "setNewTypeProject": setNewTypeProject,
     "requestLastMoneyInProject": requestLastMoneyInProject,
     "setInvesterDataProjectForInvesterPageGetIdNullMoney": setInvesterDataProjectForInvesterPageGetIdNullMoney,
+    "setNewTypeProjectNumberMore": setNewTypeProjectNumberMore,
 };
+
+async function setNewTypeProjectNumberMore(socket, data, callback)
+{
+    callback(await Project.findOneAndUpdate({_id: data.id}, {requestInvestingMoney: data.data}));
+}
 
 async function setInvesterDataProjectForInvesterPageGetIdNullMoney(socket, data, callback)
 {

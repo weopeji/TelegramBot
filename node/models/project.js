@@ -23,6 +23,7 @@ const ProjectShema = new mongoose.Schema({
     last_redacting: JSON,
     notFullpay: Number,
     closeMoney: Boolean,
+    requestInvestingMoney: String,
 });
 
 autoIncrement.initialize(mongoose.connection);
