@@ -23,7 +23,6 @@ const ProjectShema = new mongoose.Schema({
     last_redacting: JSON,
     notFullpay: Number,
     closeMoney: Boolean,
-    acceptWaitFullPay: Boolean,
 });
 
 autoIncrement.initialize(mongoose.connection);
