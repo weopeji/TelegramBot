@@ -247,7 +247,7 @@ async function requestLastMoneyInProject(socket, data, callback)
 
     for(var InvsofProject of AllInvsofProject)
     {
-        h.full_alert_user(InvsofProject.invester, `Проект ${_Project._id} "${_Project.data.name}" завершил сбор заявок, вам нужно оплатить последнюю сумму в размере ${_Project.notFullpay}% от общей суммы`, "pushMoneyOfInvesting", InvsofProject._id);
+        h.full_alert_user(InvsofProject.invester, `Проект ${_Project._id} "${_Project.data.name}" завершил сбор заявок, вам нужно оплатить последнюю сумму в размере ${100 - Number(_Project.notFullpay)}% от общей суммы`, "pushMoneyOfInvesting", InvsofProject._id);
     };
 
     callback();
@@ -722,7 +722,7 @@ async function pushMsgsForInvesorsByLastInvesting(_Project)
 
         for(var InvsofProject of allInvDosc)
         {
-            h.full_alert_user(InvsofProject.invester, `Проект ${_Project._id} "${_Project.data.name}" завершил сбор заявок, вам нужно оплатить последнюю сумму в размере ${_Project.notFullpay}% от общей суммы`, "pushMoneyOfInvesting", InvsofProject._id);
+            h.full_alert_user(InvsofProject.invester, `Проект ${_Project._id} "${_Project.data.name}" завершил сбор заявок, вам нужно оплатить последнюю сумму в размере ${100 - Number(_Project.notFullpay)}% от общей суммы`, "pushMoneyOfInvesting", InvsofProject._id);
         };
     };
 }
