@@ -703,6 +703,30 @@ async function dataOfVideo(socket, data, callback)
 	};
 };
 
+async function pushMsgsForInvesorsByLastInvesting(_Project);
+{
+    var attraction_amount   = Number(_Project.data.attraction_amount.toString().replace(/\s/g, ''));
+    var allInvDosc          = await InvDoc.find({projectId: _Project._id, status: "accept"});
+    var allMoneyOfProject   = 0;
+
+    for(var InvDocFind of allInvDosc)
+    {
+        allMoneyOfProject = allMoneyOfProject + Number(InvDocFind.data.pay.toString().replace(/\s/g, ''));
+    }
+
+    console.log(attraction_amount <= allMoneyOfProject + " " + attraction_amount + " " + allMoneyOfProject);
+
+    if(attraction_amount <= allMoneyOfProject)
+    {
+        await Project.findOneAndUpdate({_id: _Project._id}, {closeMoney: true});
+
+        for(var InvsofProject of allInvDosc)
+        {
+            h.full_alert_user(InvsofProject.invester, `Проект ${_Project._id} "${_Project.data.name}" завершил сбор заявок, вам нужно оплатить последнюю сумму в размере ${_Project.notFullpay}% от общей суммы`, "pushMoneyOfInvesting", InvsofProject._id);
+        };
+    }
+}
+
 async function endInvestingDataPush(socket, data, callback)
 {
     var _User               = await User.findOne({_id: data.user});
@@ -725,6 +749,7 @@ async function endInvestingDataPush(socket, data, callback)
     if(typeof data.accept != "undefined")
     {
         await InvDoc.findOneAndUpdate({_id: data.invId}, {status: "accept", urlToLastDocument: pathToLastDocument, pays: []});
+        pushMsgsForInvesorsByLastInvesting(_Project);
     }else
     {
         await InvDoc.findOneAndUpdate({_id: data.invId}, {status: "wait", urlToLastDocument: pathToLastDocument});
@@ -2463,29 +2488,6 @@ async function acceptInvestor(socket,data,callback)
     };
 
     h.full_alert_user(_InvDoc.invester, `В проекте под номером ${_Project._id} "${_Project.data.name}" Ваша инвестиция была подтверждена!`, "accept_investing", _InvDoc._id);
-
-
-
-    var attraction_amount   = Number(_Project.data.attraction_amount.toString().replace(/\s/g, ''));
-    var allInvDosc          = await InvDoc.find({projectId: _Project._id, status: "accept"});
-    var allMoneyOfProject   = 0;
-
-    for(var InvDocFind of allInvDosc)
-    {
-        allMoneyOfProject = allMoneyOfProject + Number(InvDocFind.data.pay.toString().replace(/\s/g, ''));
-    }
-
-    console.log(attraction_amount <= allMoneyOfProject + " " + attraction_amount + " " + allMoneyOfProject);
-
-    if(attraction_amount <= allMoneyOfProject)
-    {
-        await Project.findOneAndUpdate({_id: _Project._id}, {closeMoney: true});
-
-        for(var InvsofProject of allInvDosc)
-        {
-            h.full_alert_user(InvsofProject.invester, `Проект ${_Project._id} "${_Project.data.name}" завершил сбор заявок, вам нужно оплатить последнюю сумму в размере ${_Project.notFullpay}% от общей суммы`, "pushMoneyOfInvesting", InvsofProject._id);
-        };
-    }
 
     callback(_InvDocNeed);
 }
