@@ -377,7 +377,20 @@
                             `);
 
                             $('.headerPaysBlock').remove();
-                        };
+                        }
+                        else
+                        {
+                            if(typeof _data.InvDoc.data.pts == "undefined")
+                            {
+                                appendPayBlock = $(`
+                                    <div class="Attracted_headerInfoBlock_info_data_alert">
+                                        <span>Ожидает чека от инвестора</span>
+                                    </div>
+                                `);
+
+                                $('.headerPaysBlock').remove();
+                            }
+                        }
                     };
 
                     $('.index_page_body_data').append(appendPayBlock);
