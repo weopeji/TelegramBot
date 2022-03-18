@@ -551,7 +551,7 @@
                     var fullMoneysInvs  = 0;
                     var fullMoneyCheack = Number(_this.project.data.attraction_amount.toString().replace(/\s/g, '')) + Number(_this.project.requestInvestingMoney.toString().replace(/\s/g, ''));
 
-                    for(var InvPushMoney of this.allInvsOfProject)
+                    for(var InvPushMoney of _this.allInvsOfProject)
                     {
                         fullMoneysInvs = fullMoneysInvs + Number(InvPushMoney.data.pay.toString().replace(/\s/g, ''));
                     };
