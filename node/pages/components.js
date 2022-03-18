@@ -705,6 +705,8 @@ async function dataOfVideo(socket, data, callback)
 
 async function pushMsgsForInvesorsByLastInvesting(_Project)
 {
+    await Project.findOneAndUpdate({_id: _Project._id}, {acceptWaitFullPay: true});
+
     var attraction_amount   = Number(_Project.data.attraction_amount.toString().replace(/\s/g, ''));
     var allInvDosc          = await InvDoc.find({projectId: _Project._id, status: "accept"});
     var allMoneyOfProject   = 0;
@@ -724,7 +726,7 @@ async function pushMsgsForInvesorsByLastInvesting(_Project)
         {
             h.full_alert_user(InvsofProject.invester, `Проект ${_Project._id} "${_Project.data.name}" завершил сбор заявок, вам нужно оплатить последнюю сумму в размере ${_Project.notFullpay}% от общей суммы`, "pushMoneyOfInvesting", InvsofProject._id);
         };
-    }
+    };
 }
 
 async function endInvestingDataPush(socket, data, callback)
