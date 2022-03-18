@@ -593,20 +593,6 @@
                         </div>
                     `);
 
-                    if(typeof _data.project.notFullpay != "undefined")
-                    {
-                        if(typeof _data.project.acceptWaitFullPay == "undefined")
-                        {
-                            _block = $(`
-                                <div class="Attracted_headerInfoBlock_info_data_alert">
-                                    <span>Ожидает полного сбора</span>
-                                </div>
-                            `);
-
-                            $('.headerPaysBlock').remove();
-                        };
-                    };
-
                     
                     if(el.status == "accept")
                     {
@@ -627,6 +613,20 @@
                             window.open(`/projects/${$(this).attr('data-project')}/${$(this).attr('data')}` , '_blank');
                         })
                     }
+
+                    if(typeof _data.project.notFullpay != "undefined")
+                    {
+                        if(typeof _data.project.acceptWaitFullPay == "undefined")
+                        {
+                            _block = $(`
+                                <div class="Attracted_headerInfoBlock_info_data_alert">
+                                    <span>Ожидает полного сбора</span>
+                                </div>
+                            `);
+
+                            $('.headerPaysBlock').remove();
+                        };
+                    };
 
                     headerPaysBlock.find('.headerPaysBlock_body').append(_block);
                 });
