@@ -2184,6 +2184,16 @@ html, body {
   color: #14b6ff;
 }
 
+.buttonsTypeBlock_row_not_full_payData {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 @media (max-width: 1600px) {
   .creating_page {
     width: 50%;
