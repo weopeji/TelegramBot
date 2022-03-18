@@ -703,7 +703,7 @@ async function dataOfVideo(socket, data, callback)
 	};
 };
 
-async function pushMsgsForInvesorsByLastInvesting(_Project);
+async function pushMsgsForInvesorsByLastInvesting(_Project)
 {
     var attraction_amount   = Number(_Project.data.attraction_amount.toString().replace(/\s/g, ''));
     var allInvDosc          = await InvDoc.find({projectId: _Project._id, status: "accept"});
