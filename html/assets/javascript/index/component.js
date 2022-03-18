@@ -632,7 +632,52 @@
                         `);
 
                         $('.headerPaysBlock').remove();
-                    };
+                    }
+                    else
+                    {
+                        if(typeof _data.InvDoc.data.pts == "undefined")
+                        {
+                            appendPayBlock = $(`
+                                <div class="Attracted_headerInfoBlock_info_data_alert">
+                                    <input type="file" id="Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input">
+                                    <div class="Attracted_headerInfoBlock_info_data_alert_buttom_cheack">
+                                        <span>Прикрепить чек</span>
+                                    </div>
+                                </div>
+                            `);
+
+                            appendPayBlock.find('.Attracted_headerInfoBlock_info_data_alert_buttom_cheack').click( function() {
+                                $('#Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input').trigger('click');
+                            });
+
+                            appendPayBlock.find('#Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input').change( async function() 
+                            {
+                                var _form               = new FormData();
+                                var _url                = `${getURL()}/file_Action.io/files`;
+                                var _fullData           = 
+                                {
+                                    Action: "activ_projects_NotFullPayNull",
+                                };
+
+                                _form.append('file',   $(this.files)[0]);
+                                _form.append('data',    JSON.stringify(_fullData));
+
+                                axios.post(_url, _form, {
+                                    headers: {
+                                        'Content-Type': 'multipart/form-data'
+                                    },
+                                }).then(data => 
+                                {
+                                    if(data.data.status == "ok") {
+                                        alert("Чек прикоеплен!");
+                                        location.reload();
+                                    }
+                                });
+                            });
+
+                            $('.headerPaysBlock').remove();
+                        }
+                    }
                 };
                 
                 $('.index_page_body_data').append(headerPaysBlock);
