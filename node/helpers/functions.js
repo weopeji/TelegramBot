@@ -371,7 +371,7 @@ async function full_alert_user(_id, _text, _type, moreId)
             chat: {id: _user.user},
         };
 
-        await DMA(msg, _array);
+        await MA(msg, _array);
     }
 
     mkdirp(`/var/www/users_alerts/${_User.user}`, err => {

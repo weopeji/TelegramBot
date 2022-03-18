@@ -567,8 +567,8 @@
                         <span>
                             Уважаемый Инвестор ${global.allData.User.first_name} Введите сумму инвестирования</a>.<br>
                             Минимальная сумма входа: ${_projectMoney.toString().ReplaceNumber()} руб.
-                            ${multiplicityText}
-                            Сумма не должна превышать ${fullMoneyCheack - fullMoneysInvs} руб.
+                            ${multiplicityText} <br>
+                            Сумма не должна превышать ${Number(fullMoneyCheack - fullMoneysInvs).toString().ReplaceNumber()} руб.
                         </span>
                     </div>
                 </div>
