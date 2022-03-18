@@ -536,8 +536,20 @@
 
         async renderOldBlock()
         {
-            var _this = this;
-            var _projectMoney = _this.project.data.minimal_amount.toString().trim().replace(/\s/g, '');
+            var _this           = this;
+            var _projectMoney   = _this.project.data.minimal_amount.toString().trim().replace(/\s/g, '');
+            var fullMoneysInvs  = 0;
+            var fullMoneyCheack = Number(_this.project.data.attraction_amount.toString().replace(/\s/g, ''));
+
+            if(typeof _this.project.requestInvestingMoney != "undefined")
+            {
+                fullMoneyCheack = fullMoneyCheack + Number(_this.project.requestInvestingMoney.toString().replace(/\s/g, '')); 
+            }
+
+            for(var InvPushMoney of _this.allInvsOfProject)
+            {
+                fullMoneysInvs = fullMoneysInvs + Number(InvPushMoney.data.pay.toString().replace(/\s/g, ''));
+            };
 
             $('.creating_page').empty();
 
@@ -556,6 +568,7 @@
                             Уважаемый Инвестор ${global.allData.User.first_name} Введите сумму инвестирования</a>.<br>
                             Минимальная сумма входа: ${_projectMoney.toString().ReplaceNumber()} руб.
                             ${multiplicityText}
+                            Сумма не должна превышать ${fullMoneyCheack - fullMoneysInvs} руб.
                         </span>
                     </div>
                 </div>
@@ -588,14 +601,6 @@
 
                 if(typeof _this.project.requestInvestingMoney != "undefined")
                 {
-                    var fullMoneysInvs  = 0;
-                    var fullMoneyCheack = Number(_this.project.data.attraction_amount.toString().replace(/\s/g, '')) + Number(_this.project.requestInvestingMoney.toString().replace(/\s/g, ''));
-
-                    for(var InvPushMoney of _this.allInvsOfProject)
-                    {
-                        fullMoneysInvs = fullMoneysInvs + Number(InvPushMoney.data.pay.toString().replace(/\s/g, ''));
-                    };
-
                     if(Number(fullMoneyCheack) < Number(fullMoneysInvs) + Number(_money))
                     {
                         alert(`Сумма превышает на ${Number(Number(fullMoneysInvs) + Number(_money) - Number(fullMoneyCheack)).toString().ReplaceNumber()}`);
