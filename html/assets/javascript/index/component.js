@@ -821,6 +821,9 @@
                         </div>
                     `);
 
+                    templateText.eq(0).append(buttonsType[0]());
+                    templateText.eq(1).append(buttonsType[1]());
+
                     settingBlock.find('.show_block').remove();
                     settingBlock.find('.info_active_block_left_buttons').append(templateText);
                 }
