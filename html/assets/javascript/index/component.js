@@ -756,6 +756,17 @@
                 </div>
             `);
 
+            if(typeof _data.project.notFullpay != "undefined")
+            {
+                if(Number(_data.project.notFullpay) == 0)
+                {
+                    if(typeof _data.InvDoc.data.pts == "undefined")
+                    {
+                        settingBlock.find('.show_block').remove();
+                    };
+                }
+            }
+
             $('.index_page_body_data').append(settingBlock);
 
             if(allData.User.type == "business")
