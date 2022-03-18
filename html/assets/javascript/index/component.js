@@ -375,6 +375,8 @@
                                     <span>Ожидает полного сбора</span>
                                 </div>
                             `);
+
+                            $('.headerPaysBlock').remove();
                         };
                     };
 
