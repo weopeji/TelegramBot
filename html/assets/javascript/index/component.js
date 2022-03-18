@@ -471,15 +471,6 @@
                         <div class="headerPaysBlock_header">
                             <span class="headerPaysBlock_header_span">
                                 Выплаты по проекту
-                                <div class="headerPaysBlock_header_span_button_reqvesits">
-                                    <span>Посмотреть реквезиты</span>
-                                    <div class="settingBlock_body_line_drop_menu">
-                                        <p>Банк получателя: <span>${bank}</span></p>
-                                        <p>БИК: <span>${bik}</span></p>
-                                        <p>Номер расчетного счета: <span>${nomer}</span></p>
-                                        <p>Номер кор счета: <span>${nomer_kor}</span></p>
-                                    </div>
-                                </div>
                                 <div class="headerPaysBlock_header_span_button_msg">
                                     <span>Оповестить бизнес</span>
                                 </div>
