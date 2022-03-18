@@ -1746,6 +1746,10 @@ html, body {
   font-size: 25px;
 }
 
+.Attracted_headerInfoBlock_info_data_alert input[type="file"] {
+  display: none;
+}
+
 .msg_block_getting_line_img_block {
   display: -webkit-box;
   display: -ms-flexbox;

@@ -1,3 +1,5 @@
+const { _GET } = require("../../../../node/helpers/functions");
+
 (function (global) {
     "use strict";
 
@@ -654,13 +656,12 @@
                             {
                                 var _form               = new FormData();
                                 var _url                = `${getURL()}/file_Action.io/files`;
-                                var _fullData           = 
-                                {
-                                    Action: "activ_projects_NotFullPayNull",
-                                };
 
                                 _form.append('file',   $(this.files)[0]);
-                                _form.append('data',    JSON.stringify(_fullData));
+                                _form.append('data',    JSON.stringify({
+                                    Action: "activ_projects_NotFullPayNull",
+                                    InvDocId: _GET('id'), 
+                                }));
 
                                 axios.post(_url, _form, {
                                     headers: {

@@ -70,6 +70,10 @@ note({
 
 
 
+// alerts ромб
+
+
+
 var _UserByAlerts       = await User.findOne({user: _project.user});
 var alertsOfUser        = _UserByAlerts.alerts_main;
 var needsArrayAlerts    = [];
@@ -91,3 +95,31 @@ if(errorOfAlerts)
 {
     await User.findOneAndUpdate({user: _project.user}, {alerts_main: needsArrayAlerts});
 };
+
+
+
+
+
+// files
+
+
+var _form               = new FormData();
+var _url                = `${getURL()}/file_Action.io/files`;
+
+_form.append('file',   $(this.files)[0]);
+_form.append('data',    JSON.stringify({
+    Action: "activ_projects_NotFullPayNull",
+    InvDocId: _GET('id'), 
+}));
+
+axios.post(_url, _form, {
+    headers: {
+        'Content-Type': 'multipart/form-data'
+    },
+}).then(data => 
+{
+    if(data.data.status == "ok") {
+        alert("Чек прикоеплен!");
+        location.reload();
+    }
+});

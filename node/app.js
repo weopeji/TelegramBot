@@ -444,15 +444,51 @@ app.post('/file_Action.io/files', (req, res) => {
         _data[name] = value;
     });
 
-    var cheack_file = (_path) => 
+    var cheack_file = async (_path) => 
     {
         try {
             if (fs.existsSync(_path)) 
             { 
-                var FullData = JSON.parse(_data.data);
+                var FullData    = JSON.parse(_data.data);
+                var FirstPath   = _path;
+                var FilePts     = _path.split('.')[_path.split('.').length - 1];
 
-                console.log(FullData);
-                console.log(_path);
+                var ActionFuns  = 
+                {
+                    "activ_projects_NotFullPayNull": async function()
+                    {
+                        var _InvDoc     = await InvDoc.findOne({_id: FullData.InvDocId});
+                        var PathToFile  = `/var/www/projects/${_InvDoc.projectId}/${_InvDoc._id}_investment.${FilePts}`;
+                        var _InvDocData = _InvDoc.data;
+                        _InvDocData.pts = FilePts;
+
+                        await InvDoc.findOneAndUpdate({_id: _InvDoc._id}, {
+                            data: _InvDocData,
+                        });
+
+                        if(fs.existsSync(PathToFile)) 
+                        {
+                            fs.unlinkSync(PathToFile);
+                        };
+
+                        fs.rename(FirstPath, PathToFile, async function (err) 
+                        {
+                            if (err) throw err;
+
+                            res.json({
+                                status: 'ok',
+                            });
+                        });
+                    },
+                };
+
+                if(typeof FullData.Action != "undefined")
+                {
+                    if(typeof ActionFuns[FullData.Action] != "undefined")
+                    {
+                        await ActionFuns[FullData.Action]();
+                    };
+                };
             } 
             else 
             {
