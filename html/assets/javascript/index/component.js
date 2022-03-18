@@ -637,7 +637,7 @@
                     {
                         if(typeof _data.InvDoc.data.pts == "undefined")
                         {
-                            appendPayBlock = $(`
+                            headerPaysBlock = $(`
                                 <div class="Attracted_headerInfoBlock_info_data_alert">
                                     <input type="file" id="Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input">
                                     <div class="Attracted_headerInfoBlock_info_data_alert_buttom_cheack">
@@ -646,11 +646,11 @@
                                 </div>
                             `);
 
-                            appendPayBlock.find('.Attracted_headerInfoBlock_info_data_alert_buttom_cheack').click( function() {
+                            headerPaysBlock.find('.Attracted_headerInfoBlock_info_data_alert_buttom_cheack').click( function() {
                                 $('#Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input').trigger('click');
                             });
 
-                            appendPayBlock.find('#Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input').change( async function() 
+                            headerPaysBlock.find('#Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input').change( async function() 
                             {
                                 var _form               = new FormData();
                                 var _url                = `${getURL()}/file_Action.io/files`;
