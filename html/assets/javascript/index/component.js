@@ -619,7 +619,7 @@
 
                 if(typeof _data.project.notFullpay != "undefined")
                 {
-                    if(typeof _data.project.acceptWaitFullPay == "undefined")
+                    if(typeof _data.project.closeMoney == "undefined")
                     {
                         headerPaysBlock = $(`
                             <div class="Attracted_headerInfoBlock_info_data_alert">
