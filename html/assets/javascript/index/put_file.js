@@ -108,6 +108,70 @@
                     _this.global.append(msgsBlock);
                     _this.global.append(documentBlock);
                 },
+                "investingNotFull": function()
+                {
+                    var _project = await callApi({
+                        methodName: "getProjectForInvesterPageByIdInvDoc",
+                        data: _GET('InvId'),
+                    });
+
+                    var msgsBlock = $(`
+                        <div class="creating_page_block">
+                            <input type="file" id="Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input">
+                            <div class="creating_page_start" style="margin-bottom: 20px">
+                                <span>
+                                    Уважаемый Инвестор ${global.allData.User.first_name} прикреите чек за инвестицию по реквезитам</a>.<br><br>
+                                    Банк-получатель: ${_project.data.bank} <br>
+                                    Корр. счет: ${_project.data.account_correct} <br>
+                                    БИК: ${_project.data.bik} <br>
+                                    КПП: ${_project.data.kpp} <br>
+                                    Получатель: ${_project.data.recipient} <br>
+                                    Счет получателя: ${_project.data.account_get} <br>
+                                    Назначение платежа: Номер Проекта ${_project._id}, Имя проекта ${_project.data.name} <br>
+                                </span>
+                            </div>
+                        </div>
+                    `);
+
+                    var documentBlock = $(`
+                        <div class="creating_page_input">
+                            <div class="creating_page_input_div">
+                                <span>Прикрепить</span>
+                            </div>
+                        </div>
+                    `);
+
+                    documentBlock.click( function() {
+                        $('#Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input').trigger('click');
+                    });
+                    
+                    msgsBlock.find('#Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input').change( async function() 
+                    {
+                        var _form               = new FormData();
+                        var _url                = `${getURL()}/file_Action.io/files`;
+
+                        _form.append('file',   $(this.files)[0]);
+                        _form.append('data',    JSON.stringify({
+                            Action: "activ_projects_NotFullPayNullPts2",
+                            InvDocId: _GET('InvId'), 
+                        }));
+
+                        axios.post(_url, _form, {
+                            headers: {
+                                'Content-Type': 'multipart/form-data'
+                            },
+                        }).then(data => 
+                        {
+                            if(data.data.status == "ok") {
+                                alert("Чек прикоеплен!");
+                                location.href = `https://invester-relocation.site/?page=activ_projects&id=${_GET('InvId')}`;
+                            }
+                        });
+                    });
+
+                    _this.global.append(msgsBlock);
+                    _this.global.append(documentBlock);
+                },
             };
 
             if(typeof functionsAction[getAction] != "undefined")

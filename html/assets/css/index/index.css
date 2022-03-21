@@ -929,6 +929,10 @@ html, body {
   width: 100%;
 }
 
+.creating_page_block #Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input {
+  display: none;
+}
+
 .creating_page {
   width: 40%;
   margin: 0 auto;

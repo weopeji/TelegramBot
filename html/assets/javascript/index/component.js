@@ -649,31 +649,7 @@
                                 `);
 
                                 headerPaysBlock.find('.Attracted_headerInfoBlock_info_data_alert_buttom_cheack').click( function() {
-                                    $('#Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input').trigger('click');
-                                });
-
-                                headerPaysBlock.find('#Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input').change( async function() 
-                                {
-                                    var _form               = new FormData();
-                                    var _url                = `${getURL()}/file_Action.io/files`;
-
-                                    _form.append('file',   $(this.files)[0]);
-                                    _form.append('data',    JSON.stringify({
-                                        Action: "activ_projects_NotFullPayNullPts2",
-                                        InvDocId: _GET('id'), 
-                                    }));
-
-                                    axios.post(_url, _form, {
-                                        headers: {
-                                            'Content-Type': 'multipart/form-data'
-                                        },
-                                    }).then(data => 
-                                    {
-                                        if(data.data.status == "ok") {
-                                            alert("Чек прикоеплен!");
-                                            location.reload();
-                                        }
-                                    });
+                                    location.href = `https://invester-relocation.site/?page=put_file&action=investingNotFull&InvId=${_data.InvDoc._id}`;
                                 });
 
                                 $('.headerPaysBlock').remove();
@@ -693,32 +669,7 @@
                                 `);
     
                                 headerPaysBlock.find('.Attracted_headerInfoBlock_info_data_alert_buttom_cheack').click( function() {
-                                    // $('#Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input').trigger('click');
                                     location.href = `https://invester-relocation.site/?page=put_file&action=investingNotFullNull&InvId=${_data.InvDoc._id}`;
-                                });
-    
-                                headerPaysBlock.find('#Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input').change( async function() 
-                                {
-                                    var _form               = new FormData();
-                                    var _url                = `${getURL()}/file_Action.io/files`;
-    
-                                    _form.append('file',   $(this.files)[0]);
-                                    _form.append('data',    JSON.stringify({
-                                        Action: "activ_projects_NotFullPayNull",
-                                        InvDocId: _GET('id'), 
-                                    }));
-    
-                                    axios.post(_url, _form, {
-                                        headers: {
-                                            'Content-Type': 'multipart/form-data'
-                                        },
-                                    }).then(data => 
-                                    {
-                                        if(data.data.status == "ok") {
-                                            alert("Чек прикоеплен!");
-                                            location.reload();
-                                        }
-                                    });
                                 });
     
                                 $('.headerPaysBlock').remove();
