@@ -68,6 +68,11 @@
                 },
             };
 
+            if(typeof functionsAction[getAction] != "undefined")
+            {
+                functionsAction[getAction]();
+            };
+
             $('.index_page_body_data').append(this.global);
         };
     };
