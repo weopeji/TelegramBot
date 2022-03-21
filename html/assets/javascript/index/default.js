@@ -65,6 +65,7 @@
         const payments_new              = new global.Components.payments_new();
         const telegram_authorization    = new global.Components.telegram_authorization();
         const not_correct               = new global.Components.not_correct();
+        const put_file                  = new global.Components.put_file();
 
         if(!userID) 
         {
