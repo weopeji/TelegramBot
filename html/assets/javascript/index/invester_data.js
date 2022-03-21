@@ -151,14 +151,12 @@
 
                 inputText.find('.creating_page_input_div').click(async function() {
                     _this.render_next($(this).attr('data'));
-                })
+                });
 
                 this.global.append(msgsBlock);
                 this.global.append(documentBlock);
                 this.global.append(inputText);
             }
-
-            
 
             $('.index_page_body_data').append(this.global);
         }
@@ -804,7 +802,8 @@
                 };
                 var _error = false;
         
-                $('.creating_page_input').children("input").each((i, element) => {
+                $('.creating_page_input').children("input").each((i, element) => 
+                {
                     if($(element).val().length == 0)
                     {
                         _error = true;
@@ -818,12 +817,12 @@
                 if(_error)
                 {
                     alert('Введите все данные!');
-                } else {
+                } 
+                else 
+                {
                     _this.inv = _array;
                     _this.renderOldBlock();
                 }
-
-                
             })
         }
     }

@@ -16,6 +16,11 @@
 
     class put_file
     {
+        constructor()
+        {
+            this.global = $(`<div class="creating_page"></div>`);
+        }
+
         defaultCSS()
         {
             $('.index_page_menu').css({
@@ -34,7 +39,36 @@
         async render()
         {
             this.defaultCSS();
-            var getAction = _GET("action");
+
+            var getAction       = _GET("action");
+            var functionsAction = 
+            {
+                "investingNotFullNull": function()
+                {
+                    var msgsBlock = $(`
+                        <div class="creating_page_block">
+                            <div class="creating_page_start" style="margin-bottom: 20px">
+                                <span>
+                                    Уважаемый Инвестор ${global.allData.User.first_name} превышен лимит инвестирования в данный пул, выберите другое предложение</a>.
+                                </span>
+                            </div>
+                        </div>
+                    `);
+
+                    var documentBlock = $(`
+                        <div class="creating_page_input">
+                            <div class="creating_page_input_div">
+                                <span>Выбрать</span>
+                            </div>
+                        </div>
+                    `);
+
+                    this.global.append(msgsBlock);
+                    this.global.append(documentBlock);
+                },
+            };
+
+            $('.index_page_body_data').append(this.global);
         };
     };
 
