@@ -41,6 +41,7 @@
             this.defaultCSS();
 
             var getAction       = _GET("action");
+            var _this           = this;
             var functionsAction = 
             {
                 "investingNotFullNull": function()
@@ -63,8 +64,8 @@
                         </div>
                     `);
 
-                    this.global.append(msgsBlock);
-                    this.global.append(documentBlock);
+                    _this.global.append(msgsBlock);
+                    _this.global.append(documentBlock);
                 },
             };
 
