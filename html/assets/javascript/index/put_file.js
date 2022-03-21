@@ -44,7 +44,7 @@
             var _this           = this;
             var functionsAction = 
             {
-                "investingNotFullNull": function()
+                "investingNotFullNull": async function()
                 {
                     var _project = await callApi({
                         methodName: "getProjectForInvesterPageByIdInvDoc",
@@ -83,7 +83,7 @@
 
             if(typeof functionsAction[getAction] != "undefined")
             {
-                functionsAction[getAction]();
+                await functionsAction[getAction]();
             };
 
             $('.index_page_body_data').append(this.global);
