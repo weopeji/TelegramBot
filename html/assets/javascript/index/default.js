@@ -25,7 +25,9 @@
                                     global.loadResources(['./html/assets/javascript/index/telegram_authorization.js'], () => {
                                         global.loadResources(['./html/assets/javascript/index/chat.js'], () => {
                                             global.loadResources(['./html/assets/javascript/index/not_correct.js'], () => {
-                                                Main();
+                                                global.loadResources(['./html/assets/javascript/index/put_file.js'], () => {
+                                                    Main();
+                                                });
                                             });
                                         });
                                     });
@@ -174,7 +176,8 @@
                 "obligations": function() {obligations.render(global.allData)},
                 "payments_new": function() {payments_new.render(global.allData)},
                 "telegram_authorization": function() {telegram_authorization.render(global.allData)},
-                "not_correct": function() {not_correct.render(global.allData)}
+                "not_correct": function() {not_correct.render(global.allData)},
+                "put_file": function() {put_file.render(global.allData)},
             }
 
             if(pageID)
