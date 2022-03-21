@@ -53,6 +53,7 @@
 
                     var msgsBlock = $(`
                         <div class="creating_page_block">
+                            <input type="file" id="Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input">
                             <div class="creating_page_start" style="margin-bottom: 20px">
                                 <span>
                                     Уважаемый Инвестор ${global.allData.User.first_name} прикреите чек за инвестицию по реквезитам</a>.<br><br>
@@ -75,6 +76,34 @@
                             </div>
                         </div>
                     `);
+
+                    documentBlock.click( function() {
+                        $('#Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input').trigger('click');
+                    });
+                    
+                    msgsBlock.find('#Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input').change( async function() 
+                    {
+                        var _form               = new FormData();
+                        var _url                = `${getURL()}/file_Action.io/files`;
+
+                        _form.append('file',   $(this.files)[0]);
+                        _form.append('data',    JSON.stringify({
+                            Action: "activ_projects_NotFullPayNull",
+                            InvDocId: _GET('InvId'), 
+                        }));
+
+                        axios.post(_url, _form, {
+                            headers: {
+                                'Content-Type': 'multipart/form-data'
+                            },
+                        }).then(data => 
+                        {
+                            if(data.data.status == "ok") {
+                                alert("Чек прикоеплен!");
+                                location.href = `https://invester-relocation.site/?page=activ_projects&id=${_GET('InvId')}`;
+                            }
+                        });
+                    });
 
                     _this.global.append(msgsBlock);
                     _this.global.append(documentBlock);
