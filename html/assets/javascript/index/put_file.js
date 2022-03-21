@@ -33,7 +33,7 @@
                 "justify-content": "center",
             });
 
-            $('.index_page_body_header_info span').html(`Инвестирование в проект "${this.project.data.name}"`);
+            $('.index_page_body_header_info span').html(`Прикрепить чек`);
         }
 
         async render()
