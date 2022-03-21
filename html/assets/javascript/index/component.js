@@ -649,8 +649,7 @@
                                 `);
 
                                 headerPaysBlock.find('.Attracted_headerInfoBlock_info_data_alert_buttom_cheack').click( function() {
-                                    // $('#Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input').trigger('click');
-                                    location.href = "https://invester-relocation.site/?page=activ_projects&action=investingNotFullNull";
+                                    $('#Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input').trigger('click');
                                 });
 
                                 headerPaysBlock.find('#Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input').change( async function() 
@@ -694,7 +693,8 @@
                                 `);
     
                                 headerPaysBlock.find('.Attracted_headerInfoBlock_info_data_alert_buttom_cheack').click( function() {
-                                    $('#Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input').trigger('click');
+                                    // $('#Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input').trigger('click');
+                                    location.href = "https://invester-relocation.site/?page=activ_projects&action=investingNotFullNull";
                                 });
     
                                 headerPaysBlock.find('#Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input').change( async function() 
