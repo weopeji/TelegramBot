@@ -108,7 +108,7 @@
                     _this.global.append(msgsBlock);
                     _this.global.append(documentBlock);
                 },
-                "investingNotFull": function()
+                "investingNotFull": async function()
                 {
                     var _project = await callApi({
                         methodName: "getProjectForInvesterPageByIdInvDoc",
