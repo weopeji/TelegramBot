@@ -214,7 +214,16 @@ var action_linker =
     "setInvesterDataProjectForInvesterPageGetIdNullMoney": setInvesterDataProjectForInvesterPageGetIdNullMoney,
     "setNewTypeProjectNumberMore": setNewTypeProjectNumberMore,
     "getProjectForInvesterPageAllInvs": getProjectForInvesterPageAllInvs,
+    "getProjectForInvesterPageByIdInvDoc": getProjectForInvesterPageByIdInvDoc,
 };
+
+async function getProjectForInvesterPageByIdInvDoc(socket, data, callback)
+{
+    var _InvDoc     = await InvDoc.findOne({_id: data});
+    var _Project    = await Project.findOne({_id: _InvDoc.projectId});
+
+    callback(_Project);
+}
 
 async function getProjectForInvesterPageAllInvs(socket, data, callback)
 {

@@ -46,11 +46,23 @@
             {
                 "investingNotFullNull": function()
                 {
+                    var _project = await callApi({
+                        methodName: "getProjectForInvesterPageByIdInvDoc",
+                        data: _GET('InvId'),
+                    });
+
                     var msgsBlock = $(`
                         <div class="creating_page_block">
                             <div class="creating_page_start" style="margin-bottom: 20px">
                                 <span>
-                                    Уважаемый Инвестор ${global.allData.User.first_name} превышен лимит инвестирования в данный пул, выберите другое предложение</a>.
+                                    Уважаемый Инвестор ${global.allData.User.first_name} прикреите чек за инвестицию по реквезитам</a>.<br><br>
+                                    Банк-получатель: ${_project.data.bank} <br>
+                                    Корр. счет: ${_project.data.account_correct} <br>
+                                    БИК: ${_project.data.bik} <br>
+                                    КПП: ${_project.data.kpp} <br>
+                                    Получатель: ${_project.data.recipient} <br>
+                                    Счет получателя: ${_project.data.account_get} <br>
+                                    Назначение платежа: Номер Проекта ${_project._id}, Имя проекта ${_project.data.name} <br>
                                 </span>
                             </div>
                         </div>
