@@ -59,7 +59,7 @@
                     var documentBlock = $(`
                         <div class="creating_page_input">
                             <div class="creating_page_input_div">
-                                <span>Выбрать</span>
+                                <span>Прикрепить</span>
                             </div>
                         </div>
                     `);
