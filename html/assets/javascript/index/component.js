@@ -694,7 +694,7 @@
     
                                 headerPaysBlock.find('.Attracted_headerInfoBlock_info_data_alert_buttom_cheack').click( function() {
                                     // $('#Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input').trigger('click');
-                                    location.href = "https://invester-relocation.site/?page=activ_projects&action=investingNotFullNull";
+                                    location.href = `https://invester-relocation.site/?page=put_file&action=investingNotFullNull&InvId=${_data.InvDoc._id}`;
                                 });
     
                                 headerPaysBlock.find('#Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input').change( async function() 
