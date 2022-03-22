@@ -404,7 +404,7 @@
                                                     <p>Подтвердить</p>
                                                 </div>
                                             </div>
-                                            <div class="Attracted_headerInfoBlock_block remove_block_tap_more">
+                                            <div class="Attracted_headerInfoBlock_block remove_block_tap">
                                                 <div class="Attracted_headerInfoBlock_block_i">
                                                     <i class="fad fa-times"></i>
                                                 </div>
@@ -414,6 +414,31 @@
                                             </div>
                                         </div>
                                     `);
+
+                                    appendPayBlock.find('.accept_block_tap_more').click( function() {
+                                        SoloAlert.confirm({
+                                            title: "Подтверждение",
+                                            body: "Вы уверены, что хотите подтвердить оплату?",
+                                            theme: "dark",
+                                            html: "",
+                                            useTransparency: true,
+                                        }).then(async (value) => 
+                                        {
+                                            if(value)
+                                            {
+                                                await callApi({
+                                                    methodName: "accept_confirmationData",
+                                                    data: _GET('id'),
+                                                });
+
+                                                SoloAlert.alert({
+                                                    title:"Успешно",
+                                                    body:"",
+                                                    icon: "success"
+                                                });
+                                            }
+                                        })
+                                    })
 
                                     $('.headerPaysBlock').remove();
                                 }

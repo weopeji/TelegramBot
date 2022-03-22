@@ -215,7 +215,13 @@ var action_linker =
     "setNewTypeProjectNumberMore": setNewTypeProjectNumberMore,
     "getProjectForInvesterPageAllInvs": getProjectForInvesterPageAllInvs,
     "getProjectForInvesterPageByIdInvDoc": getProjectForInvesterPageByIdInvDoc,
+    "accept_confirmationData": accept_confirmationData,
 };
+
+async function accept_confirmationData(socket, data, callback)
+{
+    callback(await InvDoc.findOneAndUpdate({_id: data}, {confirmationData: true}));
+}
 
 async function getProjectForInvesterPageByIdInvDoc(socket, data, callback)
 {
