@@ -92,12 +92,6 @@
                             InvDocId: _GET('InvId'), 
                         }));
 
-                        SoloAlert.alert({
-                            title:"Успешно",
-                            body:"",
-                            icon: "success"
-                        });
-
                         axios.post(_url, _form, {
                             headers: {
                                 'Content-Type': 'multipart/form-data'
@@ -106,20 +100,35 @@
                         {
                             if(data.data.status == "ok") 
                             {
+                                SoloAlert.alert({
+                                    title:"Успешно",
+                                    body:"",
+                                    icon: "success"
+                                });
+        
                                 var templateText = 
                                 $(`
                                     <div class="creating_page_input_div">
                                         <span>Заменить</span>
                                     </div>
-                                    <div class="creating_page_input_div">
+                                    <div class="creating_page_input_div" data="show">
                                         <span>Посмотреть</span>
                                     </div>
-                                    <div class="creating_page_input_div">
+                                    <div class="creating_page_input_div" data="ok">
                                         <span>Подтвердить</span>
                                     </div>
                                 `);
 
+                                $('.creating_page_input').empty();
                                 $('.creating_page_input').append(templateText);
+
+                                $('.creating_page_input_div[data="show"]').click( function() {
+                                    window.open(`${_GET("InvId")}_investment.${data.data.FilePts}`, '_blank');
+                                });
+
+                                $('.creating_page_input_div[data="ok"]').click( function() {
+                                    location.href = `https://invester-relocation.site/?page=activ_projects&id=${_GET("InvId")}`;
+                                });
                             }
                         });
                     });
@@ -175,12 +184,6 @@
                             InvDocId: _GET('InvId'), 
                         }));
 
-                        SoloAlert.alert({
-                            title:"Успешно",
-                            body:"",
-                            icon: "success"
-                        });
-
                         axios.post(_url, _form, {
                             headers: {
                                 'Content-Type': 'multipart/form-data'
@@ -188,20 +191,36 @@
                         }).then(data => 
                         {
                             if(data.data.status == "ok") {
+
+                                SoloAlert.alert({
+                                    title:"Успешно",
+                                    body:"",
+                                    icon: "success"
+                                });
+        
                                 var templateText = 
                                 $(`
                                     <div class="creating_page_input_div">
                                         <span>Заменить</span>
                                     </div>
-                                    <div class="creating_page_input_div">
+                                    <div class="creating_page_input_div" data="show">
                                         <span>Посмотреть</span>
                                     </div>
-                                    <div class="creating_page_input_div">
+                                    <div class="creating_page_input_div" data="ok">
                                         <span>Подтвердить</span>
                                     </div>
                                 `);
 
+                                $('.creating_page_input').empty();
                                 $('.creating_page_input').append(templateText);
+
+                                $('.creating_page_input_div[data="show"]').click( function() {
+                                    window.open(`${_GET("InvId")}_investment.${data.data.FilePts}`, '_blank');
+                                });
+
+                                $('.creating_page_input_div[data="ok"]').click( function() {
+                                    location.href = `https://invester-relocation.site/?page=activ_projects&id=${_GET("InvId")}`;
+                                });
                             }
                         });
                     });

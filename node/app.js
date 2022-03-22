@@ -477,6 +477,7 @@ app.post('/file_Action.io/files', (req, res) => {
 
                             res.json({
                                 status: 'ok',
+                                FilePts: FilePts,
                             });
                         });
                     },
@@ -502,6 +503,7 @@ app.post('/file_Action.io/files', (req, res) => {
 
                             res.json({
                                 status: 'ok',
+                                FilePts: FilePts,
                             });
                         });
                     }
