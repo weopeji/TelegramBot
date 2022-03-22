@@ -15,6 +15,7 @@ const UserShema = new mongoose.Schema({
     not_correct_complaint: Boolean,
     request_remove: Boolean,
     acceptWaitFullPay: Boolean,
+    confirmationData: Boolean,
 });
 
 mongoose.model('InvDoc', UserShema);

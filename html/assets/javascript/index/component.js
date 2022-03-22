@@ -674,6 +674,22 @@
     
                                 $('.headerPaysBlock').remove();
                             }
+                            else
+                            {
+                                if(typeof _data.InvDoc.confirmationData == "undefined")
+                                {
+                                    headerPaysBlock = $(`
+                                        <div class="Attracted_headerInfoBlock_info_data_alert">
+                                            <input type="file" id="Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input">
+                                            <div class="Attracted_headerInfoBlock_info_data_alert_buttom_cheack">
+                                                <span>Оидает подтверждения бизнесом</span>
+                                            </div>
+                                        </div>
+                                    `);
+
+                                    $('.headerPaysBlock').remove();
+                                }
+                            }
                         }
                     }
                 };
