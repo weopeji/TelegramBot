@@ -765,20 +765,36 @@
                         {
                             if(typeof _data.InvDoc.data.pts_2 == "undefined")
                             {
-                                headerPaysBlock = $(`
-                                    <div class="Attracted_headerInfoBlock_info_data_alert">
-                                        <input type="file" id="Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input">
-                                        <div class="Attracted_headerInfoBlock_info_data_alert_buttom_cheack">
-                                            <span>Прикрепить чек</span>
+                                if(typeof _data.InvDoc.confirmationData == "undefined")
+                                {
+                                    headerPaysBlock = $(`
+                                        <div class="Attracted_headerInfoBlock_info_data_alert">
+                                            <input type="file" id="Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input">
+                                            <div class="Attracted_headerInfoBlock_info_data_alert_buttom_cheack">
+                                                <span>Ожидает подтверждения бизнесом</span>
+                                            </div>
                                         </div>
-                                    </div>
-                                `);
+                                    `);
 
-                                headerPaysBlock.find('.Attracted_headerInfoBlock_info_data_alert_buttom_cheack').click( function() {
-                                    location.href = `https://invester-relocation.site/?page=put_file&action=investingNotFull&InvId=${_data.InvDoc._id}`;
-                                });
+                                    $('.headerPaysBlock').remove();
+                                }
+                                else
+                                {
+                                    headerPaysBlock = $(`
+                                        <div class="Attracted_headerInfoBlock_info_data_alert">
+                                            <input type="file" id="Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input">
+                                            <div class="Attracted_headerInfoBlock_info_data_alert_buttom_cheack">
+                                                <span>Прикрепить чек</span>
+                                            </div>
+                                        </div>
+                                    `);
 
-                                $('.headerPaysBlock').remove();
+                                    headerPaysBlock.find('.Attracted_headerInfoBlock_info_data_alert_buttom_cheack').click( function() {
+                                        location.href = `https://invester-relocation.site/?page=put_file&action=investingNotFull&InvId=${_data.InvDoc._id}`;
+                                    });
+
+                                    $('.headerPaysBlock').remove();
+                                }
                             }
                         }
                         else
