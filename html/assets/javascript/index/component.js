@@ -390,6 +390,34 @@
 
                                 $('.headerPaysBlock').remove();
                             }
+                            else
+                            {
+                                if(typeof _data.InvDoc.confirmationData == "undefined")
+                                {
+                                    appendPayBlock = $(`
+                                        <div class="Attracted_headerInfoBlock">
+                                            <div class="Attracted_headerInfoBlock_block accept_block_tap">
+                                                <div class="Attracted_headerInfoBlock_block_i">
+                                                    <i class="fad fa-check"></i>
+                                                </div>
+                                                <div class="Attracted_headerInfoBlock_block_text">
+                                                    <p>Подтвердить</p>
+                                                </div>
+                                            </div>
+                                            <div class="Attracted_headerInfoBlock_block remove_block_tap">
+                                                <div class="Attracted_headerInfoBlock_block_i">
+                                                    <i class="fad fa-times"></i>
+                                                </div>
+                                                <div class="Attracted_headerInfoBlock_block_text Attracted_headerInfoBlock_block_text_moneys">
+                                                    <p>Отказать</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    `);
+
+                                    $('.headerPaysBlock').remove();
+                                }
+                            }
                         }
                     };
 
@@ -682,7 +710,7 @@
                                         <div class="Attracted_headerInfoBlock_info_data_alert">
                                             <input type="file" id="Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input">
                                             <div class="Attracted_headerInfoBlock_info_data_alert_buttom_cheack">
-                                                <span>Оидает подтверждения бизнесом</span>
+                                                <span>Ожидает подтверждения бизнесом</span>
                                             </div>
                                         </div>
                                     `);
