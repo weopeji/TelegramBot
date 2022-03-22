@@ -396,7 +396,7 @@
                                 {
                                     appendPayBlock = $(`
                                         <div class="Attracted_headerInfoBlock">
-                                            <div class="Attracted_headerInfoBlock_block accept_block_tap">
+                                            <div class="Attracted_headerInfoBlock_block accept_block_tap_more">
                                                 <div class="Attracted_headerInfoBlock_block_i">
                                                     <i class="fad fa-check"></i>
                                                 </div>
@@ -404,7 +404,7 @@
                                                     <p>Подтвердить</p>
                                                 </div>
                                             </div>
-                                            <div class="Attracted_headerInfoBlock_block remove_block_tap">
+                                            <div class="Attracted_headerInfoBlock_block remove_block_tap_more">
                                                 <div class="Attracted_headerInfoBlock_block_i">
                                                     <i class="fad fa-times"></i>
                                                 </div>
