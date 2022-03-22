@@ -92,15 +92,34 @@
                             InvDocId: _GET('InvId'), 
                         }));
 
+                        SoloAlert.alert({
+                            title:"Успешно",
+                            body:"",
+                            icon: "success"
+                        });
+
                         axios.post(_url, _form, {
                             headers: {
                                 'Content-Type': 'multipart/form-data'
                             },
                         }).then(data => 
                         {
-                            if(data.data.status == "ok") {
-                                alert("Чек прикоеплен!");
-                                location.href = `https://invester-relocation.site/?page=activ_projects&id=${_GET('InvId')}`;
+                            if(data.data.status == "ok") 
+                            {
+                                var templateText = 
+                                $(`
+                                    <div class="creating_page_input_div">
+                                        <span>Заменить</span>
+                                    </div>
+                                    <div class="creating_page_input_div">
+                                        <span>Посмотреть</span>
+                                    </div>
+                                    <div class="creating_page_input_div">
+                                        <span>Подтвердить</span>
+                                    </div>
+                                `);
+
+                                $('.creating_page_input').append(templateText);
                             }
                         });
                     });
@@ -156,6 +175,12 @@
                             InvDocId: _GET('InvId'), 
                         }));
 
+                        SoloAlert.alert({
+                            title:"Успешно",
+                            body:"",
+                            icon: "success"
+                        });
+
                         axios.post(_url, _form, {
                             headers: {
                                 'Content-Type': 'multipart/form-data'
@@ -163,8 +188,20 @@
                         }).then(data => 
                         {
                             if(data.data.status == "ok") {
-                                alert("Чек прикоеплен!");
-                                location.href = `https://invester-relocation.site/?page=activ_projects&id=${_GET('InvId')}`;
+                                var templateText = 
+                                $(`
+                                    <div class="creating_page_input_div">
+                                        <span>Заменить</span>
+                                    </div>
+                                    <div class="creating_page_input_div">
+                                        <span>Посмотреть</span>
+                                    </div>
+                                    <div class="creating_page_input_div">
+                                        <span>Подтвердить</span>
+                                    </div>
+                                `);
+
+                                $('.creating_page_input').append(templateText);
                             }
                         });
                     });
