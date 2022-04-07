@@ -248,7 +248,7 @@
         for(var key in components)
         {
             global.Components[key] = components[key];
-        }
-    }
+        };
+    };
 
 }(window))
