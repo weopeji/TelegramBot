@@ -119,56 +119,20 @@
 
         async nextRender() 
         {
-            var inn = $('.creating_page_input input').val();
+            var inn         = $('.version2_creating_block_input input').val();
+            var cheackINN   = this.validateInn(inn);
 
-            $('.creating_page_input input').val("");
-
-            var user_block = `
-                <div class="creating_page_start_user">
-                    <div class="creating_page_start_user_block">
-                        <span>
-                            ${inn}
-                        </span>
-                    </div>
-                </div>
-            `;
-
-            $('.creating_page_block').append(user_block);
-
-            var cheackINN = this.validateInn(inn);
-
-            if(!cheackINN.result)
+            if(cheackINN.result) 
             {
-                var msgsBlock = `
-                    <div class="creating_page_start">
-                        <span>
-                            ${cheackINN.error.message}
-                        </span>
-                    </div>
-                `;
-                $('.creating_page_block').append(msgsBlock);
-            } else {
+                $('.version2_creating_block_input input').val("");
+
                 var creatingData = await callApi({
                     methodName: "creatingData",
                     data: inn,
                 });
-
-                var msgsBlock = `
-                    <div class="creating_page_block">
-                        <div class="creating_page_start">
-                            <span>
-                               Подождите...
-                            </span>
-                        </div>
-                    </div>
-                `;
-                $('.creating_page_block').append(msgsBlock);
-
+    
                 this.startRenderCreating(creatingData, inn);
             }
-
-            console.log(creatingData);
-            console.log(cheackINN);
         }
 
         async startDefault()
@@ -203,15 +167,12 @@
 
             this.global.append(ActionBlock);
 
-            // var _this = this;
+            var _this = this;
 
-            // inputText.find('.creating_page_input_button span').click( function (event) {
-            //     _this.nextRender();
-            //     return(false);
-            // });
-
-            // this.global.append(msgsBlock);
-            // this.global.append(inputText);
+            ActionBlock.find('button').click( function (event) {
+                _this.nextRender();
+                return(false);
+            });
         }
 
         async render() 
