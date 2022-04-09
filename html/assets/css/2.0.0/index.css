@@ -21,6 +21,14 @@
           filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
+.index_page_body_header_user_logotype {
+  width: 250px;
+}
+
+.index_page_body_header_user_avatar {
+  width: 250px;
+}
+
 .index_page_body_header_user {
   height: 100%;
   display: -webkit-box;
@@ -191,5 +199,12 @@
 .index_page_body_header_user_avatar_name_row p {
   font-size: 13px;
   color: white;
+}
+
+.index_page_body_header_user_textDecoration {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 35px;
 }
 /*# sourceMappingURL=index.css.map */
