@@ -9,6 +9,9 @@
 
 .version2_creating {
   margin: 0 auto;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .version2_creating_block_info {
