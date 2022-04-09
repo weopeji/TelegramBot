@@ -176,9 +176,11 @@
             var ActionBlock = $(`
                 <div class="version2_creating_block">
                     <div class="version2_creating_block_info">
-                        <div class="version2_default_bkg version2_default_shadow_block"></div>
-                        <h1>Уважаемый пользователь ${global.allData.User.first_name}!</h1>
-                        <p>Вводя данные, вы подтверждаете что ознакомились с условиями “Пользовательского соглашения” и “Политики обработки данных”</p>
+                        <div class="version2_default_bkg version2_default_shadow_block row_default"></div>
+                        <div class="version2_creating_block_info_row">
+                            <h1>Уважаемый пользователь ${global.allData.User.first_name}!</h1>
+                            <p>Вводя данные, вы подтверждаете что ознакомились с условиями “Пользовательского соглашения” и “Политики обработки данных”</p>
+                        </div>
                     </div>
                 </div>
             `);
