@@ -157,4 +157,21 @@
   font-size: 20px;
   line-height: 29px;
 }
+
+.index_page_body_header_user_avatar_name_row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.index_page_body_header_user_avatar_name_row img {
+  width: 17px;
+  height: 17px;
+  margin-right: 10px;
+}
+
+.index_page_body_header_user_avatar_name_row p {
+  font-size: 13px;
+  color: white;
+}
 /*# sourceMappingURL=index.css.map */

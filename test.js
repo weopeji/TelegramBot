@@ -123,3 +123,5 @@ axios.post(_url, _form, {
         location.reload();
     }
 });
+
+$('header').append($('<link rel="stylesheet" href="./html/assets/css/2.0.0/black/index.css">'));
