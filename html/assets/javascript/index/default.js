@@ -15,11 +15,23 @@
 
     if(_getCookie('black_styles'))
     {
-        $('header').append($('<link rel="stylesheet" href="./html/assets/css/2.0.0/black/index.css">'));
+        let $       = document;
+        let head    = $.getElementsByTagName('head')[0];
+        let link    = $.createElement('link');
+        link.rel    = 'stylesheet';
+        link.type   = 'text/css';
+        link.href   = './html/assets/css/2.0.0/black/index.css';
+        head.appendChild(link);
     }
     else
     {
-        $('header').append($('<link rel="stylesheet" href="./html/assets/css/2.0.0/white/index.css">'));
+        let $       = document;
+        let head    = $.getElementsByTagName('head')[0];
+        let link    = $.createElement('link');
+        link.rel    = 'stylesheet';
+        link.type   = 'text/css';
+        link.href   = './html/assets/css/2.0.0/white/index.css';
+        head.appendChild(link);
     };
 
     io_connect( function() 
