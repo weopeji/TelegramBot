@@ -19,7 +19,7 @@
         constructor() 
         {
             this.global = $(`
-                <div class="creating_page"></div>
+                <div class="version2_creating"></div>
             `);
         };
 
