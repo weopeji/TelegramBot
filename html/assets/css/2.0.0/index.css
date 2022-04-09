@@ -41,4 +41,16 @@
   padding-top: 22px;
   font-family: 'Circe';
 }
+
+.version2_creating_block_info p {
+  font-family: 'Circe Light';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  text-align: center;
+  width: 83%;
+  margin: 0 auto;
+  padding-bottom: 20px;
+}
 /*# sourceMappingURL=index.css.map */
