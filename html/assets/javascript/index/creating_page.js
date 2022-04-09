@@ -169,9 +169,8 @@
 
             var _this = this;
 
-            ActionBlock.find('button').click( function (event) {
+            ActionBlock.find('button').click( function () {
                 _this.nextRender();
-                return(false);
             });
         }
 
