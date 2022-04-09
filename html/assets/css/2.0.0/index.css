@@ -62,6 +62,9 @@
 .version2_creating_block_onlyText {
   width: 100%;
   text-align: center;
+}
+
+.version2_creating_block_onlyText h1 {
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
