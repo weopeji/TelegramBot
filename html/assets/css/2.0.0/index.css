@@ -7,6 +7,10 @@
   border-radius: 8px;
 }
 
+.version2_creating {
+  margin: 0 auto;
+}
+
 .version2_creating_block_info {
   width: 630px;
 }
@@ -16,5 +20,7 @@
   font-size: 16px;
   text-align: center;
   font-style: normal;
+  margin-top: 22px;
+  font-family: 'Circe';
 }
 /*# sourceMappingURL=index.css.map */
