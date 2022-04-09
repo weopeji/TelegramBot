@@ -87,14 +87,32 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  margin-top: 50px;
 }
 
 .version2_creating_block_input_row input {
-  width: 263px;
+  padding: 0 15px;
+  width: calc(263px - 30px);
   height: 40px;
   background: #B79BFF;
   border-radius: 8px;
   border: 0;
+  color: white;
+}
+
+.version2_creating_block_input_row input::-webkit-input-placeholder {
+  color: white;
+}
+
+.version2_creating_block_input_row input:-ms-input-placeholder {
+  color: white;
+}
+
+.version2_creating_block_input_row input::-ms-input-placeholder {
+  color: white;
+}
+
+.version2_creating_block_input_row input::placeholder {
   color: white;
 }
 
@@ -119,8 +137,9 @@
   border-radius: 8px;
   border: 0;
   color: white;
-  font-weight: 700;
+  font-weight: 500;
   font-size: 16px;
   line-height: 24px;
+  margin-left: 15px;
 }
 /*# sourceMappingURL=index.css.map */
