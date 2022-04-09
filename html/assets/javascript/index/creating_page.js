@@ -173,45 +173,57 @@
 
         async startDefault()
         {
-            var msgsBlock = $(`
-                <div class="creating_page_block">
-                    <div class="creating_page_start" style="margin-bottom: 20px">
-                        <span>
-                            Уважаемый пользователь ${global.allData.User.first_name} вводя данные вы подтверждаете, что <br> ознакомились и принимаете все условия <a href="/documents/p4.pdf" target="_blank">"Пользовательского соглашения"</a> и <a href="/documents/p5.pdf" target="_blank">Политики обработки персональных данных</a>.
-                        </span>
-                    </div>
-                    <div class="creating_page_start">
-                        <span>
-                            Введите ИНН для создания заявки на финансирование проекта
-                        </span>
+            var ActionBlock = $(`
+                <div class="2_creating_block">
+                    <div class="2_creating_block_info 2_default_bkg">
+                        <h1>Уважаемый пользователь ${global.allData.User.first_name}!</h1>
+                        <p>Вводя данные, вы подтверждаете что ознакомились с условиями “Пользовательского соглашения” и “Политики обработки данных”</p>
                     </div>
                 </div>
             `);
 
-            var inputText = $(`
-                <div class="creating_page_input">
-                    <input type="text">
-                    <div class="creating_page_input_button">
-                        <span>Отправить</span>
-                    </div>
-                </div>
-            `);
+            this.global.append(ActionBlock);
 
-            inputText.find('input').bind("change keyup input click", function() {
-                if (this.value.match(/[^0-9]/g)) {
-                    this.value = this.value.replace(/[^0-9]/g, '');
-                }
-            });
 
-            var _this = this;
+            // var msgsBlock = $(`
+            //     <div class="creating_page_block">
+            //         <div class="creating_page_start" style="margin-bottom: 20px">
+            //             <span>
+            //                 Уважаемый пользователь ${global.allData.User.first_name} вводя данные вы подтверждаете, что <br> ознакомились и принимаете все условия <a href="/documents/p4.pdf" target="_blank">"Пользовательского соглашения"</a> и <a href="/documents/p5.pdf" target="_blank">Политики обработки персональных данных</a>.
+            //             </span>
+            //         </div>
+            //         <div class="creating_page_start">
+            //             <span>
+            //                 Введите ИНН для создания заявки на финансирование проекта
+            //             </span>
+            //         </div>
+            //     </div>
+            // `);
 
-            inputText.find('.creating_page_input_button span').click( function (event) {
-                _this.nextRender();
-                return(false);
-            });
+            // var inputText = $(`
+            //     <div class="creating_page_input">
+            //         <input type="text">
+            //         <div class="creating_page_input_button">
+            //             <span>Отправить</span>
+            //         </div>
+            //     </div>
+            // `);
 
-            this.global.append(msgsBlock);
-            this.global.append(inputText);
+            // inputText.find('input').bind("change keyup input click", function() {
+            //     if (this.value.match(/[^0-9]/g)) {
+            //         this.value = this.value.replace(/[^0-9]/g, '');
+            //     }
+            // });
+
+            // var _this = this;
+
+            // inputText.find('.creating_page_input_button span').click( function (event) {
+            //     _this.nextRender();
+            //     return(false);
+            // });
+
+            // this.global.append(msgsBlock);
+            // this.global.append(inputText);
         }
 
         async render() 
