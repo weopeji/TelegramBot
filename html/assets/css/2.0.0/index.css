@@ -21,6 +21,19 @@
           filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
+.index_page_body_header_user {
+  height: 100%;
+}
+
+.index_page_body_header {
+  height: 90px;
+  margin-top: 20px;
+}
+
+.index_page_body_header_info {
+  display: none;
+}
+
 .version2_creating_block_info_row {
   position: relative;
   z-index: 2;
