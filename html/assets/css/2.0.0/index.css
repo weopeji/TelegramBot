@@ -137,9 +137,17 @@
   border-radius: 8px;
   border: 0;
   color: white;
-  font-weight: 500;
-  font-size: 16px;
   line-height: 24px;
   margin-left: 15px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.index_page_body_header_user_avatar_img {
+  width: 54px;
+  height: 54px;
+  background-image: url("../../images/2.0.0/business.png");
+  background-size: cover;
 }
 /*# sourceMappingURL=index.css.map */
