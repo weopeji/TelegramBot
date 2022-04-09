@@ -13,6 +13,15 @@
         });
     }
 
+    if(_getCookie('black_styles'))
+    {
+        $('header').append($('<link rel="stylesheet" href="./html/assets/css/2.0.0/black/index.css">'));
+    }
+    else
+    {
+        $('header').append($('<link rel="stylesheet" href="./html/assets/css/2.0.0/white/index.css">'));
+    };
+
     io_connect( function() 
     {
         global.loadResources(['./html/assets/javascript/index/component.js'], () => {
