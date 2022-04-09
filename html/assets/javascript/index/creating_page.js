@@ -185,6 +185,13 @@
                     <div class="version2_creating_block_onlyText version2_default_boxShadow_text">
                         <h1>Введите ИНН для создания заявки на финансирование проекта</h1>
                     </div>
+                    <div class="version2_creating_block_input">
+                        <div class="version2_default_bkg row_default"></div>
+                        <div class="version2_creating_block_input_row">
+                            <input type="text">
+                            <button type="button">Отправить</button>
+                        </div>
+                    </div>
                 </div>
             `);
 
