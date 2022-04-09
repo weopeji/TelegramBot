@@ -188,7 +188,7 @@
                     <div class="version2_creating_block_input">
                         <div class="version2_default_bkg row_default"></div>
                         <div class="version2_creating_block_input_row">
-                            <input type="text">
+                            <input type="text" placeholder="Введите Ваш ИНН">
                             <button type="button">Отправить</button>
                         </div>
                     </div>
