@@ -174,8 +174,8 @@
         async startDefault()
         {
             var ActionBlock = $(`
-                <div class="2_creating_block">
-                    <div class="2_creating_block_info 2_default_bkg">
+                <div class="version2_creating_block">
+                    <div class="version2_creating_block_info version2_default_bkg version2_default_shadow_block">
                         <h1>Уважаемый пользователь ${global.allData.User.first_name}!</h1>
                         <p>Вводя данные, вы подтверждаете что ознакомились с условиями “Пользовательского соглашения” и “Политики обработки данных”</p>
                     </div>
