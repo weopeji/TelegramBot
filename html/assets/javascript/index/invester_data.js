@@ -51,8 +51,7 @@
             $('.index_page_body_header_user_textDecoration span').html(`Инвестирование в проект "${this.project.data.name}"`);
         }
 
-        async render() 
-        {
+        async renderFirstData() {
             var ActionBlock = $(`
                 <div class="version2_creating_block">
                     <div class="version2_creating_block_info version2_default_shadow_block">
@@ -67,13 +66,14 @@
 
 
             this.global.append(ActionBlock);
+        }
 
+        async render() 
+        {
+            await this.defaultCSS();
+            await this.renderFirstData();
 
-
-
-
-
-
+            $('.index_page_body_data').append(this.global);
 
 
 
@@ -181,8 +181,6 @@
             //     this.global.append(documentBlock);
             //     this.global.append(inputText);
             // }
-
-            $('.index_page_body_data').append(this.global);
         }
 
         async cheackGetDocuments()
