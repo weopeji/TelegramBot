@@ -48,118 +48,143 @@
                 "justify-content": "center",
             });
 
-            $('.index_page_body_header_info span').html(`Инвестирование в проект "${this.project.data.name}"`);
+            $('.index_page_body_header_user_textDecoration span').html(`Инвестирование в проект "${this.project.data.name}"`);
         }
 
         async render() 
         {
-            var _this = this;
-
-            var _project = await callApi({
-                methodName: "getProjectForInvesterPage",
-                data: _GET('user'),
-            });
-
-            var _AllInvsOfProject = await callApi({
-                methodName: "getProjectForInvesterPageAllInvs",
-                data: _project._id,
-            });
-
-            this.allInvsOfProject   = _AllInvsOfProject;
-            this.project            = _project;
-
-            this.defaultCSS();
-
-            var fullMoneysInvs  = 0;
-            var fullMoneyCheack = Number(_this.project.data.attraction_amount.toString().replace(/\s/g, ''));
-
-            for(var InvPushMoney of _this.allInvsOfProject)
-            {
-                fullMoneysInvs = fullMoneysInvs + Number(InvPushMoney.data.pay.toString().replace(/\s/g, ''));
-            };
-
-            if(fullMoneysInvs >= fullMoneyCheack)
-            {
-                var msgsBlock = $(`
-                    <div class="creating_page_block">
-                        <div class="creating_page_start" style="margin-bottom: 20px">
-                            <span>
-                                Уважаемый Инвестор ${global.allData.User.first_name} превышен лимит инвестирования в данный пул, выберите другое предложение</a>.
-                            </span>
+            var ActionBlock = $(`
+                <div class="version2_creating_block">
+                    <div class="version2_creating_block_info version2_default_shadow_block">
+                        <div class="version2_default_bkg row_default"></div>
+                        <div class="version2_creating_block_info_row">
+                            <h1>Уважаемый пользователь ${global.allData.User.first_name}!</h1>
+                            <p>Вводя данные, вы подтверждаете что ознакомились с условиями “Пользовательского соглашения” и “Политики обработки данных”</p>
                         </div>
                     </div>
-                `);
+                </div>
+            `);
 
-                var documentBlock = $(`
-                    <div class="creating_page_input">
-                        <div class="creating_page_input_div">
-                            <span>Выбрать</span>
-                        </div>
-                    </div>
-                `);
 
-                documentBlock.find('span').click( function() {
-                    var protoUrl    = "tg:\/\/resolve?domain=invester_official";
-                    window.location = protoUrl;
-                });
+            this.global.append(ActionBlock);
 
-                this.global.append(msgsBlock);
-                this.global.append(documentBlock);
-            }
-            else
-            {
-                var msgsBlock = $(`
-                    <div class="creating_page_block">
-                        <div class="creating_page_start" style="margin-bottom: 20px">
-                            <span>
-                                Уважаемый Инвестор ${global.allData.User.first_name} вводя данные вы подтверждаете, что <br> ознакомились и принимаете все условия <a href="https://invester-relocation.site/documents/p5.pdf" target="_blank">"Политики обработки персональных данных"</a>.
-                            </span>
-                        </div>
-                        <div class="creating_page_start">
-                            <span>
-                                Для того, чтобы проинвестировать в данное предложение Вам необходимо внести свои данные, ознакомится с договором и перечислить средства по указанным реквезитам
-                            </span>
-                        </div>
-                    </div>
-                `);
 
-                var documentBlock = $(`
-                    <div class="creating_page_input">
-                        <div class="creating_page_input_div">
-                            <span>Ознакомится с договором</span>
-                        </div>
-                    </div>
-                `);
 
-                documentBlock.find('span').click( function() {
-                    window.open(`/projects/${_project._id}/${_project.signature_document.user_document}` , '_blank');
-                })
 
-                var inputText = $(`
-                    <div class="creating_page_input">
-                        <div class="creating_page_input_div" data="UR" data-type="Юр. Лицо">
-                            <span>Юр. Лицо</span>
-                        </div>
-                        <div class="creating_page_input_div" data="IP" data-type="Ип">
-                            <span>Ип</span>
-                        </div>
-                        <div class="creating_page_input_div" data="FIZ" data-type="Физ. Лицо">
-                            <span>Физ. Лицо</span>
-                        </div>
-                    </div>
-                `);
 
-                inputText.find('.creating_page_input_div').click(async function() {
-                    _this.render_next($(this).attr('data'));
-                });
 
-                this.global.append(msgsBlock);
-                this.global.append(documentBlock);
-                this.global.append(inputText);
-            }
+
+
+
+
+            // var _this = this;
+
+            // var _project = await callApi({
+            //     methodName: "getProjectForInvesterPage",
+            //     data: _GET('user'),
+            // });
+
+            // var _AllInvsOfProject = await callApi({
+            //     methodName: "getProjectForInvesterPageAllInvs",
+            //     data: _project._id,
+            // });
+
+            // this.allInvsOfProject   = _AllInvsOfProject;
+            // this.project            = _project;
+
+            // this.defaultCSS();
+
+            // var fullMoneysInvs  = 0;
+            // var fullMoneyCheack = Number(_this.project.data.attraction_amount.toString().replace(/\s/g, ''));
+
+            // for(var InvPushMoney of _this.allInvsOfProject)
+            // {
+            //     fullMoneysInvs = fullMoneysInvs + Number(InvPushMoney.data.pay.toString().replace(/\s/g, ''));
+            // };
+
+            // if(fullMoneysInvs >= fullMoneyCheack)
+            // {
+            //     var msgsBlock = $(`
+            //         <div class="creating_page_block">
+            //             <div class="creating_page_start" style="margin-bottom: 20px">
+            //                 <span>
+            //                     Уважаемый Инвестор ${global.allData.User.first_name} превышен лимит инвестирования в данный пул, выберите другое предложение</a>.
+            //                 </span>
+            //             </div>
+            //         </div>
+            //     `);
+
+            //     var documentBlock = $(`
+            //         <div class="creating_page_input">
+            //             <div class="creating_page_input_div">
+            //                 <span>Выбрать</span>
+            //             </div>
+            //         </div>
+            //     `);
+
+            //     documentBlock.find('span').click( function() {
+            //         var protoUrl    = "tg:\/\/resolve?domain=invester_official";
+            //         window.location = protoUrl;
+            //     });
+
+            //     this.global.append(msgsBlock);
+            //     this.global.append(documentBlock);
+            // }
+            // else
+            // {
+            //     var msgsBlock = $(`
+            //         <div class="creating_page_block">
+            //             <div class="creating_page_start" style="margin-bottom: 20px">
+            //                 <span>
+            //                     Уважаемый Инвестор ${global.allData.User.first_name} вводя данные вы подтверждаете, что <br> ознакомились и принимаете все условия <a href="https://invester-relocation.site/documents/p5.pdf" target="_blank">"Политики обработки персональных данных"</a>.
+            //                 </span>
+            //             </div>
+            //             <div class="creating_page_start">
+            //                 <span>
+            //                     Для того, чтобы проинвестировать в данное предложение Вам необходимо внести свои данные, ознакомится с договором и перечислить средства по указанным реквезитам
+            //                 </span>
+            //             </div>
+            //         </div>
+            //     `);
+
+            //     var documentBlock = $(`
+            //         <div class="creating_page_input">
+            //             <div class="creating_page_input_div">
+            //                 <span>Ознакомится с договором</span>
+            //             </div>
+            //         </div>
+            //     `);
+
+            //     documentBlock.find('span').click( function() {
+            //         window.open(`/projects/${_project._id}/${_project.signature_document.user_document}` , '_blank');
+            //     })
+
+            //     var inputText = $(`
+            //         <div class="creating_page_input">
+            //             <div class="creating_page_input_div" data="UR" data-type="Юр. Лицо">
+            //                 <span>Юр. Лицо</span>
+            //             </div>
+            //             <div class="creating_page_input_div" data="IP" data-type="Ип">
+            //                 <span>Ип</span>
+            //             </div>
+            //             <div class="creating_page_input_div" data="FIZ" data-type="Физ. Лицо">
+            //                 <span>Физ. Лицо</span>
+            //             </div>
+            //         </div>
+            //     `);
+
+            //     inputText.find('.creating_page_input_div').click(async function() {
+            //         _this.render_next($(this).attr('data'));
+            //     });
+
+            //     this.global.append(msgsBlock);
+            //     this.global.append(documentBlock);
+            //     this.global.append(inputText);
+            // }
 
             $('.index_page_body_data').append(this.global);
         }
+
         async cheackGetDocuments()
         {
             $('.creating_page').empty();
