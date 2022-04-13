@@ -88,7 +88,7 @@
 
             
             // var _AllInvsOfProject = await callApi({
-            //     methodName: "getProjectForInvesterPageAllInvs",
+            //     methodName: "getProjectForInvesterPageAllInvs" ,
             //     data: _project._id,
             // });
 
