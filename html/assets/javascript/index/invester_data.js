@@ -70,6 +70,15 @@
 
         async render() 
         {
+            var _this = this;
+
+            var _project = await callApi({
+                methodName: "getProjectForInvesterPage",
+                data: _GET('user'),
+            });
+
+            _this.project            = _project;
+
             await this.defaultCSS();
             await this.renderFirstData();
 
@@ -77,20 +86,13 @@
 
 
 
-            // var _this = this;
-
-            // var _project = await callApi({
-            //     methodName: "getProjectForInvesterPage",
-            //     data: _GET('user'),
-            // });
-
+            
             // var _AllInvsOfProject = await callApi({
             //     methodName: "getProjectForInvesterPageAllInvs",
             //     data: _project._id,
             // });
 
             // this.allInvsOfProject   = _AllInvsOfProject;
-            // this.project            = _project;
 
             // this.defaultCSS();
 
