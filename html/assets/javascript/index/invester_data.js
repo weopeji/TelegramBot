@@ -49,7 +49,8 @@
             });
         }
 
-        async renderFirstData() {
+        async renderFirstData() 
+        {
             var ActionBlock = $(`
                 <div class="version2_invester_data_h1">
                     <h1>Инвестирование в проект</h1>
@@ -69,6 +70,25 @@
                         <div class="version2_creating_block_info_row">
                             <p class="pt25">Для того чтобы проинвестировать в проект Вам необходимо указать свои данные</p>
                         </div>
+                    </div>
+                </div>
+                <div class="version2_invester_data_typeButtons">
+                    <div class="version2_invester_data_typeButtons_type">
+                        <div class="version2_invester_data_typeButtons_type_button">
+                            <div class="version2_default_bkg row_default"></div>
+                            <span>Юридическое лицо</span>
+                        </div>
+                        <div class="version2_invester_data_typeButtons_type_button">
+                            <div class="version2_default_bkg row_default"></div>
+                            <span>Физическое лицо</span>
+                        </div>
+                        <div class="version2_invester_data_typeButtons_type_button">
+                            <div class="version2_default_bkg row_default"></div>
+                            <span>ИП</span>
+                        </div>
+                    </div>
+                    <div class="version2_invester_data_typeButtons_document">
+                        <span>Ознакомиться с договором</span>
                     </div>
                 </div>
             `);
