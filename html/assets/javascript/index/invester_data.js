@@ -47,12 +47,13 @@
             $('.index_page_body_header_info').css({
                 "justify-content": "center",
             });
-
-            $('.index_page_body_header_user_textDecoration span').html(`Инвестирование в проект "${this.project.data.name}"`);
         }
 
         async renderFirstData() {
             var ActionBlock = $(`
+                <div class="version2_invester_data_h1">
+                    <h1>this.project.data.name</h1>
+                </div>
                 <div class="version2_creating_block">
                     <div class="version2_creating_block_info version2_default_shadow_block">
                         <div class="version2_default_bkg row_default"></div>
