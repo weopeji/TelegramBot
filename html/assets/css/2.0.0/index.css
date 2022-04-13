@@ -1,3 +1,11 @@
+.mt25 {
+  margin-top: 25px;
+}
+
+.pt25 {
+  padding-top: 25px;
+}
+
 .version2_default_bkg_logo {
   -webkit-backdrop-filter: blur(50px);
           backdrop-filter: blur(50px);

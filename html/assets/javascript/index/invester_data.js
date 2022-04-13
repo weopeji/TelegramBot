@@ -63,11 +63,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="version2_creating_block">
+                <div class="version2_creating_block mt25">
                     <div class="version2_creating_block_info version2_default_shadow_block">
                         <div class="version2_default_bkg row_default"></div>
                         <div class="version2_creating_block_info_row">
-                            <p>Для того чтобы проинвестировать в проект Вам необходимо указать свои данные</p>
+                            <p class="pt25">Для того чтобы проинвестировать в проект Вам необходимо указать свои данные</p>
                         </div>
                     </div>
                 </div>
