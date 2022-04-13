@@ -1933,6 +1933,19 @@
                 };
             };
 
+            $('.index_page_body_header_user_avatar_img').click( function() {
+                if(_getCookie("black_styles"))
+                {
+                    delCookie('black_styles');
+                    location.reload();
+                }
+                else
+                {
+                    setCookie("black_styles", "true");
+                    location.reload();
+                }
+            })
+
             return _User;
         }
     }
