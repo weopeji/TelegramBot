@@ -253,4 +253,14 @@
   font-weight: 500;
   font-size: 24px;
 }
+
+.version2_invester_data_typeButtons_type {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.version2_invester_data_typeButtons_type_button {
+  position: relative;
+}
 /*# sourceMappingURL=index.css.map */
