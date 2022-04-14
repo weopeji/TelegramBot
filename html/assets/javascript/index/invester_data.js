@@ -82,7 +82,7 @@
                             <div class="version2_default_bkg row_default"></div>
                             <span>Физическое лицо</span>
                         </div>
-                        <div class="version2_invester_data_typeButtons_type_button">
+                        <div class="version2_invester_data_typeButtons_type_button version2_invester_data_typeButtons_type_button_last">
                             <div class="version2_default_bkg row_default"></div>
                             <span>ИП</span>
                         </div>
