@@ -93,6 +93,8 @@
                 </div>
             `);
 
+            var _this = this;
+
             ActionBlock.find('.version2_invester_data_typeButtons_type_button').click(async function() {
                 _this.render_next($(this).attr('data'));
             });
