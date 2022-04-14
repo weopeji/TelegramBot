@@ -74,15 +74,15 @@
                 </div>
                 <div class="version2_invester_data_typeButtons">
                     <div class="version2_invester_data_typeButtons_type">
-                        <div class="version2_invester_data_typeButtons_type_button">
+                        <div class="version2_invester_data_typeButtons_type_button" data="UR">
                             <div class="version2_default_bkg row_default"></div>
                             <span>Юридическое лицо</span>
                         </div>
-                        <div class="version2_invester_data_typeButtons_type_button">
+                        <div class="version2_invester_data_typeButtons_type_button" data="FIZ">
                             <div class="version2_default_bkg row_default"></div>
                             <span>Физическое лицо</span>
                         </div>
-                        <div class="version2_invester_data_typeButtons_type_button version2_invester_data_typeButtons_type_button_last">
+                        <div class="version2_invester_data_typeButtons_type_button version2_invester_data_typeButtons_type_button_last" data="IP">
                             <div class="version2_default_bkg row_default"></div>
                             <span>ИП</span>
                         </div>
@@ -92,6 +92,10 @@
                     </div>
                 </div>
             `);
+
+            ActionBlock.find('.version2_invester_data_typeButtons_type_button').click(async function() {
+                _this.render_next($(this).attr('data'));
+            });
 
 
             this.global.append(ActionBlock);
@@ -106,6 +110,12 @@
                 data: _GET('user'),
             });
 
+            var _AllInvsOfProject = await callApi({
+                methodName: "getProjectForInvesterPageAllInvs" ,
+                data: _project._id,
+            });
+
+            _this.allInvsOfProject   = _AllInvsOfProject;
             _this.project            = _project;
 
             await this.defaultCSS();
@@ -116,12 +126,7 @@
 
 
             
-            // var _AllInvsOfProject = await callApi({
-            //     methodName: "getProjectForInvesterPageAllInvs" ,
-            //     data: _project._id,
-            // });
-
-            // this.allInvsOfProject   = _AllInvsOfProject;
+           
 
             // this.defaultCSS();
 
@@ -204,9 +209,7 @@
             //         </div>
             //     `);
 
-            //     inputText.find('.creating_page_input_div').click(async function() {
-            //         _this.render_next($(this).attr('data'));
-            //     });
+            //     
 
             //     this.global.append(msgsBlock);
             //     this.global.append(documentBlock);
