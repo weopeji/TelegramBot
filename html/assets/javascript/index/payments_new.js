@@ -99,7 +99,7 @@
                                 <p>Номер кор счета: <span>${nomer_kor}</span></p>
                                 <p>Имя получателя: <span>${fio}</span></p>
                             </div>
-                            Посмотреть
+                            <span><span class="version2ButtonGradient1 settingBlock_wait settingBlock_block settingBlock_accept" data="${element._id}">Посмотреть</span></span>
                         </span>
                     </div>
                 `);
