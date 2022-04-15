@@ -1865,7 +1865,7 @@
                         </div>
                         <div class="index_page_menu_block_line" data="obligations">
                             <i class="fas fa-hands-helping"></i>
-                            <span>Обязательства перед investER</span>
+                            <span>Обязательства</span>
                         </div>
                         <div class="index_page_menu_block_line" data="acceptPays">
                         <i class="fas fa-check-square"></i> 
