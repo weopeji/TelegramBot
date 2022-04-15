@@ -1592,6 +1592,7 @@
 
             var settingBlock = $(`
                 <div class="settingBlock">
+                    <div class="version2_default_bkg row_default"></div>
                     <div class="settingBlock_header">
                         <p>Доступные проекты</p>
                         <div class="settingBlock_header_line">
