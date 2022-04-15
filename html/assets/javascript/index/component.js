@@ -1868,7 +1868,7 @@
                             <span>Обязательства перед investER</span>
                         </div>
                         <div class="index_page_menu_block_line" data="acceptPays">
-                        <i class="fas fa-check-square"></i>
+                        <i class="fas fa-check-square"></i> 
                             <span>Поступления</span>
                         </div>
                         <div class="index_page_menu_block_line" data="chats">
