@@ -330,5 +330,12 @@
   -webkit-box-flex: 0;
       -ms-flex: none;
           flex: none;
+  height: 281px;
+  background-clip: inherit;
+}
+
+.index_page_menu_block {
+  position: relative;
+  height: 100%;
 }
 /*# sourceMappingURL=index.css.map */

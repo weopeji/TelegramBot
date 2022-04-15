@@ -1894,7 +1894,7 @@
                     `,
                 }
     
-                $('.index_page_menu_block').append(buttons[_User.type]);
+                $('.index_page_menu_block_row').append(buttons[_User.type]);
     
                 $(`.index_page_menu_block_line[data="${global.allData.pageID}"]`).addClass('selected');
                 $('.index_page_body_header_info span').html($('.index_page_menu_block_line.selected').text());
