@@ -362,8 +362,9 @@
 .settingBlock {
   position: relative;
   background-color: inherit;
-  width: calc(100% - 42px);
+  width: calc(100% - 2px);
   margin-top: 45px;
+  padding: 0;
 }
 
 .settingBlock_header {
@@ -388,5 +389,10 @@
 .version2_settingBlock_header p {
   color: white;
   font-weight: 400;
+}
+
+.settingBlock_body_line {
+  width: calc(100% - 30px);
+  padding: 10px 15px;
 }
 /*# sourceMappingURL=index.css.map */
