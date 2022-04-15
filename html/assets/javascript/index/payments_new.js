@@ -27,7 +27,7 @@
 
             var settingBlock = $(`
                 <div class="settingBlock">
-                    div class="version2_settingBlock_header">
+                    <div class="version2_settingBlock_header">
                         <p>Выплаты</p>
                     </div>
                     <div class="version2_default_bkg row_default"></div>
