@@ -398,7 +398,7 @@
 }
 
 .settingBlock_header_line {
-  width: calc(100% - 40px);
+  width: calc(100% - 30px);
   margin: 0 auto;
   padding: 10px 20px;
   color: white;
@@ -417,16 +417,21 @@
 }
 
 .version2ButtonGradient1 {
-  width: calc( 100% - 40px) !important;
+  width: -webkit-fit-content !important;
+  width: -moz-fit-content !important;
+  width: fit-content !important;
   border-radius: 8px;
   margin: 0 auto;
-  padding: 20px 30px;
+  padding: 10px 30px;
   background: linear-gradient(81.65deg, #CF2DBF 18.55%, #951CDF 97.44%);
   font-size: 14px;
 }
 
 .settingBlock_body_line {
   color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: calc( 100% - 40px);
 }
 
 .settingBlock_body_line span {
