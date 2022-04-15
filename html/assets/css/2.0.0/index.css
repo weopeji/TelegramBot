@@ -314,4 +314,21 @@
   font-size: 16px;
   font-weight: 500;
 }
+
+.version2_index_page_body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 90%;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1350px;
+}
+
+.index_page_menu {
+  width: 200px;
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
+}
 /*# sourceMappingURL=index.css.map */
