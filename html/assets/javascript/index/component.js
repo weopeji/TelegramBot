@@ -1616,7 +1616,7 @@
                         <span>${i + 1}</span>
                         <span>${element._id}</span>
                         <span>${element.data.name}</span>
-                        <span><span class="settingBlock_wait settingBlock_block settingBlock_accept version2ButtonGradient1" data="${element._id}">Открыть</span></span>
+                        <span><span class="version2ButtonGradient1 settingBlock_wait settingBlock_block settingBlock_accept" data="${element._id}">Открыть</span></span>
                     </div>
                 `;
 

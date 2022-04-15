@@ -432,6 +432,7 @@
 
 .settingBlock_body_line span {
   text-align: center;
+  color: white;
 }
 
 .settingBlock_body_line span:first-child {
