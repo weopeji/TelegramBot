@@ -411,5 +411,33 @@
 
 .settingBlock_header_line span:first-child {
   text-align: left;
+  -webkit-box-flex: 0.3;
+      -ms-flex: 0.3;
+          flex: 0.3;
+}
+
+.version2ButtonGradient1 {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-radius: 8px;
+  margin: 0 auto;
+  padding: 10px 30px;
+  background: linear-gradient(81.65deg, #CF2DBF 18.55%, #951CDF 97.44%);
+}
+
+.settingBlock_body_line {
+  color: white;
+}
+
+.settingBlock_body_line span {
+  text-align: center;
+}
+
+.settingBlock_body_line span:first-child {
+  text-align: left;
+  -webkit-box-flex: 0.3;
+      -ms-flex: 0.3;
+          flex: 0.3;
 }
 /*# sourceMappingURL=index.css.map */

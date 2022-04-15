@@ -1601,7 +1601,7 @@
                             <span>#</span>
                             <span>Номер проекта</span>
                             <span>Название</span>
-                            <span>Кнопка</span>
+                            <span>Смотреть проект</span>
                         </div>
                     </div>
                     <div class="settingBlock_body">
@@ -1616,7 +1616,7 @@
                         <span>${i + 1}</span>
                         <span>${element._id}</span>
                         <span>${element.data.name}</span>
-                        <span><span class="settingBlock_wait settingBlock_block settingBlock_accept" data="${element._id}">Открыть</span></span>
+                        <span><span class="settingBlock_wait settingBlock_block settingBlock_accept version2ButtonGradient1" data="${element._id}">Открыть</span></span>
                     </div>
                 `;
 
