@@ -424,6 +424,7 @@
   margin: 0 auto;
   padding: 10px 30px;
   background: linear-gradient(81.65deg, #CF2DBF 18.55%, #951CDF 97.44%);
+  font-size: 14px;
 }
 
 .settingBlock_body_line {
@@ -436,6 +437,7 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  font-size: 18px;
 }
 
 .settingBlock_body_line span:first-child {
