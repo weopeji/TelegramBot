@@ -99,7 +99,6 @@
                 _this.render_next($(this).attr('data'));
             });
 
-
             this.global.append(ActionBlock);
         }
 
@@ -124,11 +123,6 @@
             await this.renderFirstData();
 
             $('.index_page_body_data').append(this.global);
-
-
-
-            
-           
 
             // this.defaultCSS();
 
