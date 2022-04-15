@@ -433,6 +433,9 @@
 .settingBlock_body_line span {
   text-align: center;
   color: white;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .settingBlock_body_line span:first-child {
@@ -440,5 +443,8 @@
   -webkit-box-flex: 0.3;
       -ms-flex: 0.3;
           flex: 0.3;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 /*# sourceMappingURL=index.css.map */
