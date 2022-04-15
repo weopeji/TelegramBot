@@ -1856,23 +1856,23 @@
                     `,
                     "business": `
                         <div class="index_page_menu_block_line" data="myProjects">
-                            <i class="fal fa-project-diagram"></i>
+                            <i class="fas fa-calendar-star"></i>
                             <span>Мои проекты</span>
                         </div>
                         <div class="index_page_menu_block_line" data="payments_new">
-                            <i class="fal fa-money-check"></i>
+                            <i class="fal fa-credit-card"></i>
                             <span>Выплаты</span>
                         </div>
                         <div class="index_page_menu_block_line" data="obligations">
-                            <i class="fal fa-file-import"></i>
+                            <i class="fas fa-hands-helping"></i>
                             <span>Обязательства перед investER</span>
                         </div>
                         <div class="index_page_menu_block_line" data="acceptPays">
-                            <i class="fal fa-check-square"></i>
+                        <i class="fas fa-check-square"></i>
                             <span>Поступления</span>
                         </div>
                         <div class="index_page_menu_block_line" data="chats">
-                            <i class="fal fa-comments"></i>
+                            <i class="fas fa-comments-alt"></i>
                             <span>Мессенджер</span>
                             <div class="index_page_menu_block_line_alert">
                                 <i class="fad fa-bell"></i>
