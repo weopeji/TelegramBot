@@ -453,4 +453,12 @@
       -ms-flex-pack: start;
           justify-content: flex-start;
 }
+
+.invester_status_projects_status_first {
+  padding: 15px 0;
+}
+
+.invester_status_projects_status_first span {
+  color: white;
+}
 /*# sourceMappingURL=index.css.map */
