@@ -72,39 +72,43 @@
 
                 var elementBlock = $(`
                     <div class="obligations_block_element" data="${element.project._id}">
-                        <h1>Проект № ${element.project._id}</h1>
-                        <h2>${element.project.data.name}</h2>
-                        <h3></h3>
-                        <div class="obligations_block_element_line">
-                            <span>Привлечено</span>
-                            <p>${element.attracted.toString().ReplaceNumber()} руб</p>
-                        </div>
-                        <div class="obligations_block_element_line">
-                            <span>Коммисия investER</span>
-                            <p>${element.project.payersData.commission} %</p>
-                        </div>
-                        <div class="obligations_block_element_line">
-                            <span>Коммисия investER</span>
-                            <p>${element.accrued.toString().ReplaceNumber()} руб</p>
-                        </div>
-                        <div class="obligations_block_element_line">
-                            <span>Выплачено</span>
-                            <p>${element.commissionPay.toString().ReplaceNumber()} руб</p>
-                        </div>
-                        <div class="obligations_block_element_line">
-                            <span>Задолженость</span>
-                            <p>${element.DebtComission.toString().ReplaceNumber()} руб</p>
-                        </div>
-                        <div class="obligations_block_element_line">
-                            <span>Погаисть до</span>
-                            <p class="alert_p_alert">${_data}</p>
-                        </div>
-                        <div class="obligations_block_element_line">
-                            <span>Договор реквезиты</span>
-                            <p>Открыть</p>
-                        </div>
-                        <div class="obligations_block_element_button">
-                            <span>Написать investER</span>
+                        <div class="version2_default_bkg row_default"></div>
+                        <div class="obligations_block_element_row">
+                            <div class="obligations_block_element_header">
+                                <h1>Проект ${element.project._id}</h1>
+                                <h2>${element.project.data.name}</h2>
+                            </div>
+                            <div class="obligations_block_element_line">
+                                <span>Привлечено</span>
+                                <p>${element.attracted.toString().ReplaceNumber()} руб</p>
+                            </div>
+                            <div class="obligations_block_element_line">
+                                <span>Коммисия investER</span>
+                                <p>${element.project.payersData.commission} %</p>
+                            </div>
+                            <div class="obligations_block_element_line">
+                                <span>Коммисия investER</span>
+                                <p>${element.accrued.toString().ReplaceNumber()} руб</p>
+                            </div>
+                            <div class="obligations_block_element_line">
+                                <span>Выплачено</span>
+                                <p>${element.commissionPay.toString().ReplaceNumber()} руб</p>
+                            </div>
+                            <div class="obligations_block_element_line">
+                                <span>Задолженость</span>
+                                <p>${element.DebtComission.toString().ReplaceNumber()} руб</p>
+                            </div>
+                            <div class="obligations_block_element_line">
+                                <span>Погаисть до</span>
+                                <p class="alert_p_alert">${_data}</p>
+                            </div>
+                            <div class="obligations_block_element_line">
+                                <span>Договор реквезиты</span>
+                                <p>Открыть</p>
+                            </div>
+                            <div class="obligations_block_element_button">
+                                <span>Написать investER</span>
+                            </div>
                         </div>
                     </div>
                 `);
