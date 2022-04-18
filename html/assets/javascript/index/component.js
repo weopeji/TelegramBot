@@ -1855,7 +1855,7 @@
                         </div>
                         <div class="index_page_menu_block_line" data="Attracted_by_me">
                             <i class="fal fa-users"></i>
-                            <span>Мной привлечено</span>
+                            <span>Привлечено</span>
                         </div>
                         <div class="index_page_menu_block_line" data="not_correct">
                             <i class="fal fa-times"></i>
