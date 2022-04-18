@@ -1644,30 +1644,30 @@
             });
 
             var _header = $(`
-                <div class="info_block_project">
-                    <span>№ ${Project_data.project._id}</span>
-                    <span>${Project_data.project.data.name}</span>
-                    <span>${Project_data.project.type}</span>
-                </div>
-            `);
-
-            $('.index_page_body_data').append(_header);
-
-            var settingBlock = $(`
-                <div class="settingBlock" style="margin-bottom: 20px">
-                    <div class="settingBlock_header">
-                        <div class="invester_status_projects_status_first">
-                            <div class="invester_status_projects_status_first_line">
-                                <span>Сумма сбора</span>
-                                <a>${Project_data.project.data.attraction_amount.toString().ReplaceNumber()} руб.</a>
-                                <span>Собрано</span>
-                                <a>${Project_data.moreGetData.paysInvesters.toString().ReplaceNumber()} руб</a>
-                            </div>
-                            <div class="invester_status_projects_status_first_line">
-                                <span>Выплачено</span>
-                                <a>${Project_data.moreGetData.paysAcceptInvs.toString().ReplaceNumber()} руб</a>
-                                <span>Долг</span>
-                                <a>${Number(Project_data.moreGetData.commissionForPtoject).toFixed(0).toString().ReplaceNumber()} руб</a>
+                <div class="version2_myProjects_header">
+                    <div class="version2_default_bkg row_default"></div>
+                    <div class="version2_myProjects_header_row">
+                        <div class="info_block_project">
+                            <span>№ ${Project_data.project._id}</span>
+                            <span>${Project_data.project.data.name}</span>
+                            <span>${Project_data.project.type}</span>
+                        </div>
+                        <div class="settingBlock" style="margin-bottom: 20px">
+                            <div class="settingBlock_header">
+                                <div class="invester_status_projects_status_first">
+                                    <div class="invester_status_projects_status_first_line">
+                                        <span>Сумма сбора</span>
+                                        <a>${Project_data.project.data.attraction_amount.toString().ReplaceNumber()} руб.</a>
+                                        <span>Собрано</span>
+                                        <a>${Project_data.moreGetData.paysInvesters.toString().ReplaceNumber()} руб</a>
+                                    </div>
+                                    <div class="invester_status_projects_status_first_line">
+                                        <span>Выплачено</span>
+                                        <a>${Project_data.moreGetData.paysAcceptInvs.toString().ReplaceNumber()} руб</a>
+                                        <span>Долг</span>
+                                        <a>${Number(Project_data.moreGetData.commissionForPtoject).toFixed(0).toString().ReplaceNumber()} руб</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1684,7 +1684,7 @@
                 </div>
             `);
 
-            $('.index_page_body_data').append(settingBlock);
+            $('.index_page_body_data').append(_header);
 
             var settingBlock = $(`
                 <div class="settingBlock">
