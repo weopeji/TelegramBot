@@ -473,4 +473,15 @@
   position: relative;
   z-index: 2;
 }
+
+.version2_myProjects_header {
+  position: relative;
+  width: calc(100% - 2px);
+}
+
+.info_block_project {
+  background-color: transparent;
+  position: relative;
+  z-index: 2;
+}
 /*# sourceMappingURL=index.css.map */

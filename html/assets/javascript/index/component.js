@@ -1648,9 +1648,11 @@
                     <div class="version2_default_bkg row_default"></div>
                     <div class="version2_myProjects_header_row">
                         <div class="info_block_project">
-                            <span>№ ${Project_data.project._id}</span>
-                            <span>${Project_data.project.data.name}</span>
-                            <span>${Project_data.project.type}</span>
+                            <div class="info_block_project_row">
+                                <span>№ ${Project_data.project._id}</span>
+                                <span>${Project_data.project.data.name}</span>
+                                <span>${Project_data.project.type}</span>
+                            </div>
                         </div>
                         <div class="settingBlock" style="margin-bottom: 20px">
                             <div class="settingBlock_header">
