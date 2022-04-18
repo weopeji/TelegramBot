@@ -33,6 +33,7 @@
                     <div class="version2_default_bkg row_default"></div>
                     <div class="settingBlock_header">
                         <div class="settingBlock_header_line">
+                            <span>*</span>
                             <span>Название проекта</span>
                             <span>Причина отказа</span>
                             <span>Коментарий</span>
@@ -133,6 +134,7 @@
 
                 var template_text = $(` 
                     <div class="settingBlock_body_line" data-id="${element.Inv._id}">
+                        <span>${i + 1}</span>
                         <span>${element.Project.data.name}</span>
                         <span>${typePush[element.Inv.not_correct.dataType]}</span>
                         <span>${element.Inv.not_correct.comment}</span>
