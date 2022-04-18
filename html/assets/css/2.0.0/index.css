@@ -490,7 +490,7 @@
   border-bottom: 1px solid;
 }
 
-.obligations_block_element {
+.obligations_block .obligations_block_element {
   position: relative;
   background-color: transparent;
 }
