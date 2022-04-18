@@ -1847,11 +1847,11 @@
                     `
                         <div class="index_page_menu_block_line" data="activ_projects">
                             <i class="fal fa-chart-line"></i>
-                            <span>Активные проекты</span>
+                            <span>Активные</span>
                         </div>
                         <div class="index_page_menu_block_line" data="wait_projects">
                             <i class="fal fa-inventory"></i>
-                            <span>Ожидают подтверждения</span>
+                            <span>Ожидают</span>
                         </div>
                         <div class="index_page_menu_block_line" data="Attracted_by_me">
                             <i class="fal fa-users"></i>
