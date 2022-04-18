@@ -146,8 +146,11 @@
 
             var settingBlock = $(`
                 <div class="settingBlock">
-                    <div class="settingBlock_header">
+                    <div class="version2_settingBlock_header">
                         <p>Проект № ${_data.project._id} ${_data.project.data.name}</p>
+                    </div>
+                    <div class="version2_default_bkg row_default"></div>
+                    <div class="settingBlock_header">
                         <div class="settingBlock_header_line">
                             <span>№</span>
                             <span>Привлечено</span>
