@@ -2387,8 +2387,11 @@
         {      
             var settingBlock = $(`
                 <div class="settingBlock">
-                    <div class="settingBlock_header">
+                    <div class="version2_settingBlock_header">
                         <p>Привлеченные инвестора</p>
+                    </div>
+                    <div class="version2_default_bkg row_default"></div>
+                    <div class="settingBlock_header">
                         <div class="settingBlock_header_line">
                             <span>#</span>
                             <span>username</span>
@@ -2429,8 +2432,11 @@
         {
             var settingBlock = $(`
                 <div class="settingBlock">
-                    <div class="settingBlock_header">
+                    <div class="version2_settingBlock_header">
                         <p>Привлеченные бизнес проекты</p>
+                    </div>
+                    <div class="version2_default_bkg row_default"></div>
+                    <div class="settingBlock_header">   
                         <div class="settingBlock_header_line">
                             <span>Номер проекта</span>
                             <span>Название проекта</span>
@@ -2473,8 +2479,11 @@
 
             var settingBlock = $(`
                 <div class="settingBlock">
-                    <div class="settingBlock_header">
+                    <div class="version2_settingBlock_header">
                         <p>Вознаграждения по проектам</p>
+                    </div>
+                    <div class="version2_default_bkg row_default"></div>
+                    <div class="settingBlock_header">
                         <div class="settingBlock_header_line">
                             <span>ID Предложения</span>
                             <span>Имя предложения</span>
@@ -2523,8 +2532,11 @@
 
             var settingBlock = $(`
                 <div class="settingBlock">
-                    <div class="settingBlock_header">
+                    <div class="version2_settingBlock_header">
                         <p>Статистика ваших выплат</p>
+                    </div>
+                    <div class="version2_default_bkg row_default"></div>
+                    <div class="settingBlock_header">
                         <div class="settingBlock_header_line">
                             <span>№</span>
                             <span>Тип привлечения</span>
@@ -2644,8 +2656,11 @@
         async render() {
             var settingBlock = $(`
                 <div class="settingBlock">
-                    <div class="settingBlock_header">
+                    <div class="version2_settingBlock_header">
                         <p>Доступные вознаграждения</p>
+                    </div>
+                    <div class="version2_default_bkg row_default"></div>
+                    <div class="settingBlock_header">
                         <div class="settingBlock_header_line">
                             <span>#</span>
                             <span>Номер проекта</span>
