@@ -2404,7 +2404,7 @@
                 </div>
             `);
 
-            settingBlock.css("margin-top", "20px");
+            settingBlock.css("margin-top", "70px");
 
             var initNumber = 1;
 
@@ -2449,7 +2449,7 @@
                 </div>
             `);
 
-            settingBlock.css("margin-top", "20px");
+            settingBlock.css("margin-top", "70px");
 
             for(var element of this.allAttracted.business)
             {  
@@ -2496,7 +2496,7 @@
                 </div>
             `);
 
-            settingBlock.css("margin-top", "20px");
+            settingBlock.css("margin-top", "70px");
 
             for(var element of _data)
             {
@@ -2551,7 +2551,7 @@
                 </div>
             `);
 
-            settingBlock.css("margin-top", "20px");
+            settingBlock.css("margin-top", "70px");
 
             var initNumber = 1;
 
