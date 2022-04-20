@@ -85,9 +85,12 @@
                 
                 var headerPaysBlock = $(`
                     <div class="headerPaysBlock">
+                        <div class="version2_settingBlock_header">
+                            <p>Выплаты по проекту</p>
+                        </div>
+                        <div class="version2_default_bkg row_default"></div>
                         <div class="headerPaysBlock_header">
                             <span class="headerPaysBlock_header_span">
-                                Выплаты по проекту
                                 <div class="headerPaysBlock_header_span_button_reqvesits">
                                     <span>Посмотреть реквезиты</span>
                                     <div class="settingBlock_body_line_drop_menu">
@@ -608,7 +611,7 @@
                 var headerPaysBlock = $(`
                     <div class="headerPaysBlock">
                         <div class="version2_settingBlock_header">
-                            <p>Доступные проекты</p>
+                            <p>Выплаты по проекту</p>
                         </div>
                         <div class="version2_default_bkg row_default"></div>
                         <div class="headerPaysBlock_header">
