@@ -573,4 +573,8 @@
   position: relative;
   z-index: 2;
 }
+
+.row_default {
+  width: calc(100% - 15px);
+}
 /*# sourceMappingURL=index.css.map */
