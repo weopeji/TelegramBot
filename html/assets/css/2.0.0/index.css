@@ -649,4 +649,27 @@
   width: 100%;
   max-width: 680px;
 }
+
+.info_active_block_right span,
+.info_active_block_right p {
+  position: relative;
+  z-index: 2;
+  color: white;
+}
+
+.info_active_block_right .info_active_block_photo {
+  position: relative;
+  z-index: 2;
+}
+
+.info_active_block_right .info_active_block_massage_button {
+  position: relative;
+  z-index: 2;
+}
+
+.info_active_block_left p,
+.info_active_block_left div {
+  position: relative;
+  z-index: 2;
+}
 /*# sourceMappingURL=index.css.map */
