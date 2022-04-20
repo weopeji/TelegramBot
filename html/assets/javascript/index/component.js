@@ -2389,6 +2389,7 @@
 
             var moreGetButtons = $(`
                 <div class="moreGetButtons" data="get">
+                    <div class="version2_default_bkg row_default"></div>
                     <span data="get"><i class="fad fa-money-check-edit-alt"></i> Запросить выплату</span>
                 </div>
             `);
