@@ -560,6 +560,10 @@
   width: calc(100% - 2px);
 }
 
+.Attracted_headerInfoBlock_block .version2_default_bkg {
+  width: calc(100% - 20px);
+}
+
 .Attracted_headerInfoBlock_block_row {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -589,5 +593,9 @@
 
 .settingBlock_body_line:hover {
   background: rgba(153, 121, 255, 0.23);
+}
+
+.index_page_menu_block_row {
+  width: 100%;
 }
 /*# sourceMappingURL=index.css.map */
