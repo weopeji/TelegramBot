@@ -127,9 +127,5 @@ axios.post(_url, _form, {
 $('header').append($('<link rel="stylesheet" href="./html/assets/css/2.0.0/black/index.css">'));
 
 
-<div class="version2_settingBlock_header">
-    <p>Доступные проекты</p>
-</div>
 
-<div class="version2_default_bkg row_default"></div>
 

@@ -690,4 +690,9 @@
 .info_active_block_left_info_line span {
   color: white;
 }
+
+.headerPaysBlock {
+  position: relative;
+  background: transparent;
+}
 /*# sourceMappingURL=index.css.map */

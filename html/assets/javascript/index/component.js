@@ -607,9 +607,12 @@
 
                 var headerPaysBlock = $(`
                     <div class="headerPaysBlock">
+                        <div class="version2_settingBlock_header">
+                            <p>Доступные проекты</p>
+                        </div>
+                        <div class="version2_default_bkg row_default"></div>
                         <div class="headerPaysBlock_header">
                             <span class="headerPaysBlock_header_span">
-                                Выплаты по проекту
                                 <div class="headerPaysBlock_header_span_button_msg">
                                     <span>Оповестить бизнес</span>
                                 </div>
