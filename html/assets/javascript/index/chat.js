@@ -424,6 +424,7 @@
 
                 var template_text = $(`
                     <div class="msg_block_getting_line" data="${element.invId}">
+                        <div class="version2_default_bkg row_default"></div>
                         <div class="msg_block_getting_line_img">
                             <div class="msg_block_getting_line_img_block">
                                 <img src="${_PathUrl}" alt="">

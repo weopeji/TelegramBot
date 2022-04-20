@@ -598,4 +598,18 @@
 .index_page_menu_block_row {
   width: 100%;
 }
+
+.msg_block_getting_line {
+  width: 100%;
+  border-radius: 8px;
+  background: transparent;
+}
+
+.msg_block_getting_line .msg_block_getting_line_text span {
+  color: white;
+}
+
+.msg_block_getting_line .msg_block_getting_line_text p {
+  color: white;
+}
 /*# sourceMappingURL=index.css.map */
