@@ -673,4 +673,21 @@
   position: relative;
   z-index: 2;
 }
+
+.info_active_block_left_buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+}
+
+.info_active_block_left .version2_default_bkg {
+  width: calc(100% - 2px);
+}
+
+.info_active_block_left_info_line a,
+.info_active_block_left_info_line span {
+  color: white;
+}
 /*# sourceMappingURL=index.css.map */
