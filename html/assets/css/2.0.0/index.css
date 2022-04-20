@@ -506,7 +506,7 @@
   z-index: 2;
 }
 
-.index_page_menu_block_line .selected {
+.index_page_menu_block_line.selected {
   background: rgba(153, 121, 255, 0.23);
   width: calc(100% - 30px);
   border: 0;
