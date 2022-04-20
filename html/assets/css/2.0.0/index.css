@@ -562,6 +562,11 @@
   color: white;
 }
 
+.moreGetButtons {
+  width: calc(100% - 2px);
+  position: relative;
+}
+
 .moreGetButtons span {
   background: transparent;
   border-radius: 8px;
