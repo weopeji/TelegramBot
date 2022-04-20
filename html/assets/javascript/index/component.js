@@ -2314,7 +2314,7 @@
                         </div>
                         <div class="Attracted_by_me_headerRefUrlsBlock_blocks_line">
                             <div class="version2_default_bkg row_default"></div>
-                            <div class="Attracted_by_me_headerRefUrlsBlock_blocks_line_row"></div>
+                            <div class="Attracted_by_me_headerRefUrlsBlock_blocks_line_row">
                                 <span>Ваша реферальная ссылка для Бизнеса</span>
                                 <span>https://t.me/invester_official_bot?start=adder-b_${_data.User.user}</span>
                                 <div class="Attracted_by_me_headerRefUrlsBlock_blocks_line_copy">
@@ -2326,41 +2326,53 @@
                 </div>
                 <div class="Attracted_headerInfoBlock">
                     <div class="Attracted_headerInfoBlock_block">
-                        <div class="Attracted_headerInfoBlock_block_i">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <div class="Attracted_headerInfoBlock_block_text">
-                            <span>Мной привлечено инвесторов</span>
-                            <p>${this.allAttracted.investors.length}</p>
+                        <div class="version2_default_bkg row_default"></div>
+                        <div class="Attracted_headerInfoBlock_block_row">
+                            <div class="Attracted_headerInfoBlock_block_i">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="Attracted_headerInfoBlock_block_text">
+                                <span>Мной привлечено инвесторов</span>
+                                <p>${this.allAttracted.investors.length}</p>
+                            </div>
                         </div>
                     </div>
                     <div class="Attracted_headerInfoBlock_block">
-                        <div class="Attracted_headerInfoBlock_block_i">
-                            <i class="fal fa-credit-card-blank"></i>
-                        </div>
-                        <div class="Attracted_headerInfoBlock_block_text Attracted_headerInfoBlock_block_text_moneys" data="wait">
-                            <span>Общая сумма бонусов начисленных</span>
-                            <p>0</p>
+                        <div class="version2_default_bkg row_default"></div>
+                        <div class="Attracted_headerInfoBlock_block_row">
+                            <div class="Attracted_headerInfoBlock_block_i">
+                                <i class="fal fa-credit-card-blank"></i>
+                            </div>
+                            <div class="Attracted_headerInfoBlock_block_text Attracted_headerInfoBlock_block_text_moneys" data="wait">
+                                <span>Общая сумма бонусов начисленных</span>
+                                <p>0</p>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="Attracted_headerInfoBlock">
                     <div class="Attracted_headerInfoBlock_block">
-                        <div class="Attracted_headerInfoBlock_block_i">
-                            <i class="fal fa-chair-office"></i>
-                        </div>
-                        <div class="Attracted_headerInfoBlock_block_text">
-                            <span>Мной привлечено бизнесс проектов</span>
-                            <p>${this.allAttracted.business.length}</p>
+                        <div class="version2_default_bkg row_default"></div>
+                        <div class="Attracted_headerInfoBlock_block_row">
+                            <div class="Attracted_headerInfoBlock_block_i">
+                                <i class="fal fa-chair-office"></i>
+                            </div>
+                            <div class="Attracted_headerInfoBlock_block_text">
+                                <span>Мной привлечено бизнесс проектов</span>
+                                <p>${this.allAttracted.business.length}</p>
+                            </div>
                         </div>
                     </div>
                     <div class="Attracted_headerInfoBlock_block">
-                        <div class="Attracted_headerInfoBlock_block_i">
-                            <i class="fal fa-envelope-open-dollar"></i>
-                        </div>
-                        <div class="Attracted_headerInfoBlock_block_text Attracted_headerInfoBlock_block_text_moneys" data="accept">
-                            <span>Общая сумма бонусов выплаченных</span>
-                            <p>0</p>
+                        <div class="version2_default_bkg row_default"></div>
+                        <div class="Attracted_headerInfoBlock_block_row">
+                            <div class="Attracted_headerInfoBlock_block_i">
+                                <i class="fal fa-envelope-open-dollar"></i>
+                            </div>
+                            <div class="Attracted_headerInfoBlock_block_text Attracted_headerInfoBlock_block_text_moneys" data="accept">
+                                <span>Общая сумма бонусов выплаченных</span>
+                                <p>0</p>
+                            </div>
                         </div>
                     </div>
                 </div>
