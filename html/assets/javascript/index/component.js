@@ -2303,17 +2303,23 @@
                 <div class="Attracted_by_me_headerRefUrlsBlock">
                     <div class="Attracted_by_me_headerRefUrlsBlock_blocks">
                         <div class="Attracted_by_me_headerRefUrlsBlock_blocks_line">
-                            <span>Ваша реферальная ссылка для Инвесторов</span>
-                            <span>https://t.me/invester_official_bot?start=adder_${_data.User.user}</span>
-                            <div class="Attracted_by_me_headerRefUrlsBlock_blocks_line_copy">
-                                <i class="fal fa-copy"></i>
+                            <div class="version2_default_bkg row_default"></div>
+                            <div class="Attracted_by_me_headerRefUrlsBlock_blocks_line_row">
+                                <span>Ваша реферальная ссылка для Инвесторов</span>
+                                <span>https://t.me/invester_official_bot?start=adder_${_data.User.user}</span>
+                                <div class="Attracted_by_me_headerRefUrlsBlock_blocks_line_copy">
+                                    <i class="fal fa-copy"></i>
+                                </div>
                             </div>
                         </div>
                         <div class="Attracted_by_me_headerRefUrlsBlock_blocks_line">
-                            <span>Ваша реферальная ссылка для Бизнеса</span>
-                            <span>https://t.me/invester_official_bot?start=adder-b_${_data.User.user}</span>
-                            <div class="Attracted_by_me_headerRefUrlsBlock_blocks_line_copy">
-                                <i class="fal fa-copy"></i>
+                            <div class="version2_default_bkg row_default"></div>
+                            <div class="Attracted_by_me_headerRefUrlsBlock_blocks_line_row"></div>
+                                <span>Ваша реферальная ссылка для Бизнеса</span>
+                                <span>https://t.me/invester_official_bot?start=adder-b_${_data.User.user}</span>
+                                <div class="Attracted_by_me_headerRefUrlsBlock_blocks_line_copy">
+                                    <i class="fal fa-copy"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
