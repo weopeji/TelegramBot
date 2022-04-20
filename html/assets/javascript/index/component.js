@@ -873,9 +873,10 @@
             var settingBlock = $(`
                 <div class="info_active_block">
                     <div class="info_active_block_right">
-                        
+                        <div class="version2_default_bkg row_default"></div>
                     </div>
                     <div class="info_active_block_left">
+                        <div class="version2_default_bkg row_default"></div>
                         <p class="info_active_block_left_header">Информация по платежу</p>
                         <div class="info_active_block_left_info">
                             <div class="info_active_block_left_info_line">

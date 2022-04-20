@@ -623,4 +623,30 @@
   position: relative;
   z-index: 2;
 }
+
+.info_active_block_left,
+.info_active_block_right {
+  width: 100%;
+  background-color: transparent;
+  position: relative;
+}
+
+.info_active_block_photo {
+  margin-top: 20px;
+  width: 100px;
+  height: 100px;
+}
+
+.info_active_block_right {
+  max-width: 310px;
+}
+
+.info_active_block_right span {
+  font-size: 20px;
+}
+
+.info_active_block_left {
+  width: 100%;
+  max-width: 680px;
+}
 /*# sourceMappingURL=index.css.map */
