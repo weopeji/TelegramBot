@@ -756,5 +756,14 @@
     width: 0;
     height: 0;
   }
+  .obligations_block {
+    width: 1300px;
+  }
+  .Attracted_by_me_headerRefUrlsBlock {
+    width: 1300px;
+  }
+  .Attracted_headerInfoBlock {
+    width: 1300px;
+  }
 }
 /*# sourceMappingURL=index.css.map */
