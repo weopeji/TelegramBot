@@ -722,5 +722,21 @@
   .index_page_body_header_user_avatar {
     display: none;
   }
+  .index_page_menu.selected {
+    margin-left: 0;
+    width: 400px;
+    z-index: 4;
+    right: 0;
+    display: block;
+    position: fixed;
+    height: 100%;
+    top: 0;
+  }
+  .index_page_menu.selected .index_page_menu_block_row {
+    margin-top: 130px;
+  }
+  .index_page_menu.selected .row_default {
+    opacity: 1;
+  }
 }
 /*# sourceMappingURL=index.css.map */
