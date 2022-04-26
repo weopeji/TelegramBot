@@ -15,6 +15,7 @@ const formidable                    = require('formidable');
 const mammoth                       = require("mammoth");
 const puppeteer                     = require('puppeteer');
 const phantom                       = require('phantom');
+const bodyParser                    = require('body-parser');
 
 
 const models                        = require('./models');
@@ -80,13 +81,15 @@ if (config.secure)
 mongoose.connect(mongoURl, { useNewUrlParser: true, useUnifiedTopology: true })
     .then( function() { 
         console.log(`Mongo Db Connect to ${config.mongoUri}`);
+
+        // app.use((req, res, next) => {
+        //     res.header("Access-Control-Allow-Origin", "POST, PUT, GET, OPTIONS");
+        //     next();
+        // });
         
-        app.use((req, res, next) => {
-            res.header("Access-Control-Allow-Origin", "POST, PUT, GET, OPTIONS");
-            next();
-        });
-        
-        app.use(express.json());
+        // app.use(express.json());
+
+        app.use(bodyParser);
 
         server.listen(config.appPort,
             () => {
