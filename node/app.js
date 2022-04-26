@@ -89,7 +89,7 @@ mongoose.connect(mongoURl, { useNewUrlParser: true, useUnifiedTopology: true })
         
         // app.use(express.json());
 
-        app.use(express.bodyParser());
+        app.use(bodyParser());
 
         server.listen(config.appPort,
             () => {
