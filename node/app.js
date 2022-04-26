@@ -80,6 +80,14 @@ if (config.secure)
 mongoose.connect(mongoURl, { useNewUrlParser: true, useUnifiedTopology: true })
     .then( function() { 
         console.log(`Mongo Db Connect to ${config.mongoUri}`);
+        
+        app.use((req, res, next) => {
+            res.header("Access-Control-Allow-Origin", "POST, PUT, GET, OPTIONS");
+            next();
+        });
+        
+        app.use(express.json());
+
         server.listen(config.appPort,
             () => {
                 console.log(`Занят на сервере ${config.appPort} порт...`);
@@ -419,14 +427,9 @@ io.on('connection', function(socket) {
     });
 });
 
-app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "POST, PUT, GET, OPTIONS");
-    next();
-});
-
 app.post('/parce.io/parce', (req, res) => {
     console.log(req.body);
-    res.json({status: "ok"});
+    res.json({requestBody: req.body}) 
 
     // let options = 
     // {
