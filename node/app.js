@@ -431,7 +431,7 @@ io.on('connection', function(socket) {
 });
 
 app.post('/parce.io/parce', (req, res) => {
-    console.dir(req.body);
+    console.dir(req);
     res.json({requestBody: req.body}) 
 
     // let options = 
