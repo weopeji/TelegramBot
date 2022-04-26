@@ -426,6 +426,7 @@ app.use((req, res, next) => {
 
 app.post('/parce.io/parce', (req, res) => {
     console.log(req.data);
+    res.json({status: "ok"});
 
     // let options = 
     // {
