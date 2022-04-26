@@ -89,7 +89,7 @@ mongoose.connect(mongoURl, { useNewUrlParser: true, useUnifiedTopology: true })
         
         // app.use(express.json());
 
-        app.use(bodyParser);
+        app.use(express.bodyParser());
 
         server.listen(config.appPort,
             () => {
@@ -431,7 +431,7 @@ io.on('connection', function(socket) {
 });
 
 app.post('/parce.io/parce', (req, res) => {
-    console.log(req.body);
+    console.dir(req.body);
     res.json({requestBody: req.body}) 
 
     // let options = 
