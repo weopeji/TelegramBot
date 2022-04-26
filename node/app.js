@@ -424,7 +424,7 @@ app.use((req, res, next) => {
     next();
 });
 
-app.post('/parce.io/parce', (req, res) => {
+app.post('/parce', (req, res) => {
     console.log(req.data);
 
     // let options = 
