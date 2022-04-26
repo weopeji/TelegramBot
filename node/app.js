@@ -46,6 +46,8 @@ var server                          = null;
 var io                              = null;
 var mongoURl                        = config.mongoUri;
 
+var { PythonShell }                 = require('python-shell');
+
 // platform ================================================================================
 
 if(process.platform == 'win32') {config.secure = false} else {config.secure = true};
@@ -423,7 +425,31 @@ app.use((req, res, next) => {
 });
 
 app.post('/parce.io/parce', (req, res) => {
-    console.log(res.data);
+    console.log(req.data);
+
+    // let options = 
+    // {
+    //     mode: 'text',
+    //     scriptPath: '../python/parcingArbitraj',
+    //     args: inn,
+    // };
+
+    // return new Promise((resolve,reject) => {
+    //     try
+    //     {
+    //         PythonShell.run('main.py', options, function (err, results) {
+    //             if (err) {
+    //                 resolve('error')
+    //             } else 
+    //             {
+    //                 resolve(JSON.parse(results));  
+    //             }
+    //         });
+    //     } catch(e)
+    //     {
+    //         resolve('error');
+    //     }
+    // })
 });
 
 app.post('/file_Action.io/files', (req, res) => {
