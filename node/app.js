@@ -431,32 +431,45 @@ io.on('connection', function(socket) {
 });
 
 app.post('/parce.io/parce', (req, res) => {
-    console.dir(req.query);
-    res.json({requestBody: req.body}) 
+    var errorParce = false;
 
-    // let options = 
-    // {
-    //     mode: 'text',
-    //     scriptPath: '../python/parcingArbitraj',
-    //     args: inn,
-    // };
+    if(!req.query)
+    {
+        errorParce = true;
+    };
 
-    // return new Promise((resolve,reject) => {
-    //     try
-    //     {
-    //         PythonShell.run('main.py', options, function (err, results) {
-    //             if (err) {
-    //                 resolve('error')
-    //             } else 
-    //             {
-    //                 resolve(JSON.parse(results));  
-    //             }
-    //         });
-    //     } catch(e)
-    //     {
-    //         resolve('error');
-    //     }
-    // })
+    if(typeof req.query.inn == "undefined")
+    {
+        errorParce = true;
+    };
+
+    if(errorParce)
+    {
+        res.json({requestBody: "Данные введены не верно"});
+        return;
+    };
+
+    let options = 
+    {
+        mode: 'text',
+        scriptPath: '../python/parcingArbitraj',
+        args: req.query.inn,
+    };
+
+    try
+    {
+        PythonShell.run('main.py', options, function (err, results) {
+            if (err) {
+                res.json({requestBody: "Ошибки на сервере обратитесь к специалисту"});
+            } else 
+            {
+                res.json({requestBody: JSON.parse(results)});
+            }
+        });
+    } catch(e)
+    {
+        res.json({requestBody: "Ошибки на сервере обратитесь к специалисту"});
+    }
 });
 
 app.post('/file_Action.io/files', (req, res) => {
