@@ -422,6 +422,10 @@ app.use((req, res, next) => {
     next();
 });
 
+app.post('/parce.io/parce', (req, res) => {
+    console.log(res.data);
+});
+
 app.post('/file_Action.io/files', (req, res) => {
 
     var form    = new multiparty.Form({
