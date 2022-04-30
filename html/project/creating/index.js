@@ -9,6 +9,27 @@
 
     async function Main()
     {
+        if(_getCookie('black_styles'))
+        {
+            let $       = document;
+            let head    = $.getElementsByTagName('head')[0];
+            let link    = $.createElement('link');
+            link.rel    = 'stylesheet';
+            link.type   = 'text/css';
+            link.href   = '/html/assets/css/2.0.0/black/index.css';
+            head.appendChild(link);
+        }
+        else
+        {
+            let $       = document;
+            let head    = $.getElementsByTagName('head')[0];
+            let link    = $.createElement('link');
+            link.rel    = 'stylesheet';
+            link.type   = 'text/css';
+            link.href   = '/html/assets/css/2.0.0/white/index.css';
+            head.appendChild(link);
+        };
+
         var _id                             = global.location.href.split("#")[1];
         const _components                   = new global.Components.components();
         
