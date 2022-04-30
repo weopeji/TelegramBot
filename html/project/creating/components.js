@@ -313,10 +313,8 @@
             var filename    = $(_this.files)[0].name;
             var aux         = filename.split('.');
             var extension   = aux[aux.length -1].toUpperCase();
-
-            var _form    = new FormData();
-
-            var _ptsNeed = $(_this.files)[0].type;
+            var _form       = new FormData();
+            var _ptsNeed    = $(_this.files)[0].type;
 
             _form.append('files', $(_this.files)[0]);
             _form.append('_id', _id);
@@ -895,7 +893,11 @@
             for (var key in window.structCreator) 
             {
                 var data        = window.structCreator[key];
-                var _body       = $(`<div class="body_point"></div>`);
+                var _body       = $(`
+                    <div class="body_point">
+                        <div class="version2_default_bkg row_default"></div>
+                    </div>
+                `);
                 var _this       = this;
                 var _dataBlock  = data.body;
 
