@@ -1212,4 +1212,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .preloaderBlockBlock {
   background-color: #AE91FA;
 }
+
+.index_page_body_header_type span {
+  background-color: #AE91FA;
+}
 /*# sourceMappingURL=creating.css.map */
