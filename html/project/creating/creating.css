@@ -3,6 +3,7 @@ html, body {
   margin: 0;
   font-family: system-ui;
   background-image: var(--body-background-url);
+  background-attachment: fixed;
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
