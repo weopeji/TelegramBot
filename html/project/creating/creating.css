@@ -1168,4 +1168,28 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .creating_page_input_div_more_inMore_documents {
   display: none;
 }
+
+.body_point {
+  background-color: transparent;
+  border: 0;
+}
+
+.body_point_header {
+  position: relative;
+  z-index: 2;
+}
+
+.body_point_line {
+  position: relative;
+  z-index: 2;
+}
+
+.body_point_line input {
+  background-color: #B79BFF;
+  border: 0;
+}
+
+.body_point_line_header_text p {
+  color: white;
+}
 /*# sourceMappingURL=creating.css.map */
