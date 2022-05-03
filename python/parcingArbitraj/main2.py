@@ -264,8 +264,9 @@ def ActionFullData(dataPathArray):
             print('{"error": "Переданные данные не верны!"}')
 
         driver.close()
-    except:
+    except ValueError:
         print('{"error": "Ошибка парсинга!!"}')
+        print(ValueError)
 
 
 dataPathArray   = json.loads(sys.argv[1])
