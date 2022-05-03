@@ -431,45 +431,60 @@ io.on('connection', function(socket) {
 });
 
 app.post('/parce.io/parce', (req, res) => {
-    var errorParce = false;
 
-    if(!req.query)
-    {
-        errorParce = true;
-    };
+    var form    = new multiparty.Form({
+        maxFilesSize: 2 * 1024 * 1024 * 1024 
+    });
 
-    if(typeof req.query.inn == "undefined")
-    {
-        errorParce = true;
-    };
+    var _data   = {};
 
-    if(errorParce)
-    {
-        res.json({requestBody: "Данные введены не верно"});
-        return;
-    };
+    form.on('error', function(err) {
+        console.log('Error parsing form: ' + err.stack);
+    });
 
-    let options = 
+    form.on('field', (name, value) => 
     {
-        mode: 'text',
-        scriptPath: '../python/parcingArbitraj',
-        args: req.query.inn,
-    };
+        _data[name] = value;
+    });
 
-    try
+    form.on('close', function() 
     {
-        PythonShell.run('main.py', options, function (err, results) {
-            if (err) {
-                res.json({requestBody: "Ошибки на сервере обратитесь к специалисту"});
-            } else 
+        if(typeof _data["data"] != "undefined")
+        {
+            var ActionData = _data["data"].toString();
+
+            let options = 
             {
-                res.json({requestBody: JSON.parse(results)});
+                mode: 'text',
+                scriptPath: '../python/parcingArbitraj',
+                args: ActionData,
+            };
+
+            try
+            {
+                PythonShell.run('main2.py', options, function (err, results) {
+                    if (err) {
+                        console.log(err);
+                        res.json({error: "Ошибки на сервере обратитесь к специалисту"});
+                    } else 
+                    {
+                        console.log('ok');
+                        res.json({results: JSON.parse(results)});
+                    }
+                });
+            } catch(e)
+            {
+                console.log(e);
+                res.json({error: "Ошибки на сервере обратитесь к специалисту"});
             }
-        });
-    } catch(e)
-    {
-        res.json({requestBody: "Ошибки на сервере обратитесь к специалисту"});
-    }
+        }
+        else
+        {
+            res.json({error: "Не правильно переданы данные"});
+        }
+    });
+
+    form.parse(req);
 });
 
 app.post('/file_Action.io/files', (req, res) => {
