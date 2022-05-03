@@ -161,7 +161,7 @@ def ActionFullData(dataPathArray):
 
             _array = {}
 
-            driver.screenshot("screenshot_full.png")
+            driver.screenshot("screenshot_full.png") 
             driver.find_element(By.ID, "b-form-submit").click()
 
             try:
