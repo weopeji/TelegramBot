@@ -22,7 +22,7 @@ def main(argv):
     chrome_options.add_experimental_option('useAutomationExtension', False)
     chrome_options.add_argument('start-maximized')
     chrome_options.add_argument('--no-sandbox')
-    chrome_options.add_argument('--disable-dev-shm-usage')
+    # chrome_options.add_argument('--disable-dev-shm-usage')
 
     driver = webdriver.Chrome(executable_path=ChromeDriverManager().install(), chrome_options=chrome_options)
 
