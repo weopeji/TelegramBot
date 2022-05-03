@@ -431,60 +431,83 @@ io.on('connection', function(socket) {
 });
 
 app.post('/parce.io/parce', (req, res) => {
-
-    var form    = new multiparty.Form({
-        maxFilesSize: 2 * 1024 * 1024 * 1024 
-    });
-
-    var _data   = {};
-
-    form.on('error', function(err) {
-        console.log('Error parsing form: ' + err.stack);
-    });
-
-    form.on('field', (name, value) => 
+    let options = 
     {
-        _data[name] = value;
-    });
+        mode: 'text',
+        scriptPath: '../python/parcingArbitraj',
+        args: "5029069967",
+    };
 
-    form.on('close', function() 
+    try
     {
-        if(typeof _data["data"] != "undefined")
-        {
-            var ActionData = _data["data"].toString();
-
-            let options = 
-            {
-                mode: 'text',
-                scriptPath: '../python/parcingArbitraj',
-                args: ActionData,
-            };
-
-            try
-            {
-                PythonShell.run('main2.py', options, function (err, results) {
-                    if (err) {
-                        console.log(err);
-                        res.json({error: "Ошибки на сервере обратитесь к специалисту"});
-                    } else 
-                    {
-                        console.log('ok');
-                        res.json({results: JSON.parse(results)});
-                    }
-                });
-            } catch(e)
-            {
-                console.log(e);
+        PythonShell.run('main.py', options, function (err, results) {
+            if (err) {
+                console.log(err);
                 res.json({error: "Ошибки на сервере обратитесь к специалисту"});
+            } else 
+            {
+                console.log('ok');
+                res.json({results: JSON.parse(results)});
             }
-        }
-        else
-        {
-            res.json({error: "Не правильно переданы данные"});
-        }
-    });
+        });
+    } catch(e)
+    {
+        console.log(e);
+        res.json({error: "Ошибки на сервере обратитесь к специалисту"});
+    }
+    // var form    = new multiparty.Form({
+    //     maxFilesSize: 2 * 1024 * 1024 * 1024 
+    // });
 
-    form.parse(req);
+    // var _data   = {};
+
+    // form.on('error', function(err) {
+    //     console.log('Error parsing form: ' + err.stack);
+    // });
+
+    // form.on('field', (name, value) => 
+    // {
+    //     _data[name] = value;
+    // });
+
+    // form.on('close', function() 
+    // {
+    //     if(typeof _data["data"] != "undefined")
+    //     {
+    //         var ActionData = _data["data"].toString();
+
+    //         let options = 
+    //         {
+    //             mode: 'text',
+    //             scriptPath: '../python/parcingArbitraj',
+    //             args: ActionData,
+    //         };
+
+    //         try
+    //         {
+    //             PythonShell.run('main2.py', options, function (err, results) {
+    //                 if (err) {
+    //                     console.log(err);
+    //                     res.json({error: "Ошибки на сервере обратитесь к специалисту"});
+    //                 } else 
+    //                 {
+    //                     console.log('ok');
+    //                     res.json({results: JSON.parse(results)});
+    //                 }
+    //             });
+    //         } catch(e)
+    //         {
+    //             console.log(e);
+    //             res.json({error: "Ошибки на сервере обратитесь к специалисту"});
+    //         }
+    //     }
+    //     else
+    //     {
+    //         res.json({error: "Не правильно переданы данные"});
+    //     }
+    // });
+
+    // form.parse(req);
 });
 
 app.post('/file_Action.io/files', (req, res) => {
