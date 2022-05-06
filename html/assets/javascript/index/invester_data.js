@@ -535,7 +535,8 @@
             var msgsBlock = $(`
                 <div class="creating_page_block">
                     <div class="creating_page_start" style="margin-bottom: 20px">
-                        <span>
+                        <div class="version2_default_bkg row_default"></div>
+                        <span style="position: relative; z-index: 2;">
                             Уважаемый Инвестор ${global.allData.User.first_name} Введите сумму инвестирования</a>.<br>
                             Минимальная сумма входа: ${_projectMoney.toString().ReplaceNumber()} руб.
                             ${multiplicityText} <br>

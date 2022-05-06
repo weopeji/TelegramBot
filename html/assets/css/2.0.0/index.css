@@ -720,6 +720,30 @@
   color: white;
 }
 
+.creating_page_input input::-webkit-input-placeholder {
+  color: white;
+}
+
+.creating_page_input input:-ms-input-placeholder {
+  color: white;
+}
+
+.creating_page_input input::-ms-input-placeholder {
+  color: white;
+}
+
+.creating_page_input input::placeholder {
+  color: white;
+}
+
+.creating_page_start {
+  margin: 0 auto;
+  width: 60%;
+  margin-bottom: 50px;
+  background-color: transparent;
+  position: relative;
+}
+
 @media (max-width: 1350px) {
   .index_page_menu {
     display: none;
