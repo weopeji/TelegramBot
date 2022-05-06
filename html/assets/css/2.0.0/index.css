@@ -706,6 +706,18 @@
 
 .creating_page_input {
   background: transparent;
+  position: relative;
+}
+
+.creating_page_input input,
+.creating_page_input .creating_page_input_button {
+  position: relative;
+  z-index: 2;
+}
+
+.creating_page_input input {
+  background-color: #AE91FA;
+  color: white;
 }
 
 @media (max-width: 1350px) {
