@@ -895,6 +895,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
       -ms-flex-align: center;
           align-items: center;
   color: white;
+  z-index: 10000;
+  background: transparent;
 }
 
 .autch_block p {
@@ -906,7 +908,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .autch_block_row {
   width: 450px;
   height: 195px;
-  background-color: #182037;
+  background-color: #AE91FA;
 }
 
 .autch_block_buttons {
@@ -1235,6 +1237,6 @@ textarea:-webkit-autofill:focus,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
-  background-color: inherit;
+  -webkit-box-shadow: 0 0 0 30px #ae91fa inset !important;
 }
 /*# sourceMappingURL=creating.css.map */
