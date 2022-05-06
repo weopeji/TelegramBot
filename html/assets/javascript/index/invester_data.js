@@ -614,19 +614,21 @@
                     var _block = $(`
                         <div class="creating_page_input">
                             <div class="version2_default_bkg row_default"></div>
-                            <input type="text" class="creating_page_input_div" data="fio" placeholder="Название Юр. Лица">
-                            <input type="text" class="creating_page_input_div" data="inn" placeholder="ИНН">
-                            <input type="text" class="creating_page_input_div" data="kpp" placeholder="КПП">
-                            <input type="text" class="creating_page_input_div" data="ogrnip" placeholder="ОГРН">
-                            <input type="text" class="creating_page_input_div" data="cpecial" placeholder="Должность">
-                            <input type="text" class="creating_page_input_div" data="fio_dolg" placeholder="ФИО должностного лица">
-                            <input type="text" class="creating_page_input_div" data="addr" placeholder="Юридический адрес">
-                            <input type="text" class="creating_page_input_div" data="bank" placeholder="Банк получателя">
-                            <input type="text" class="creating_page_input_div" data="bik" placeholder="БИК">
-                            <input type="text" class="creating_page_input_div" data="nomer" placeholder="Номер расчетного счета">
-                            <input type="text" class="creating_page_input_div" data="nomer_kor" placeholder="Номер корреспондентского счета">
-                            <div class="creating_page_input_button">
-                                <span>Отправить</span> 
+                            <div class="version_2_creating_page_input_row">
+                                <input type="text" class="creating_page_input_div" data="fio" placeholder="Название Юр. Лица">
+                                <input type="text" class="creating_page_input_div" data="inn" placeholder="ИНН">
+                                <input type="text" class="creating_page_input_div" data="kpp" placeholder="КПП">
+                                <input type="text" class="creating_page_input_div" data="ogrnip" placeholder="ОГРН">
+                                <input type="text" class="creating_page_input_div" data="cpecial" placeholder="Должность">
+                                <input type="text" class="creating_page_input_div" data="fio_dolg" placeholder="ФИО должностного лица">
+                                <input type="text" class="creating_page_input_div" data="addr" placeholder="Юридический адрес">
+                                <input type="text" class="creating_page_input_div" data="bank" placeholder="Банк получателя">
+                                <input type="text" class="creating_page_input_div" data="bik" placeholder="БИК">
+                                <input type="text" class="creating_page_input_div" data="nomer" placeholder="Номер расчетного счета">
+                                <input type="text" class="creating_page_input_div" data="nomer_kor" placeholder="Номер корреспондентского счета">
+                                <div class="creating_page_input_button">
+                                    <span>Отправить</span> 
+                                </div>
                             </div>
                         </div>
                     `);
@@ -665,17 +667,19 @@
                     var _block = $(`
                         <div class="creating_page_input">
                             <div class="version2_default_bkg row_default"></div>
-                            <input type="text" class="creating_page_input_div" data="fio" placeholder="ФИО">
-                            <input type="text" class="creating_page_input_div" data="inn" placeholder="ИНН">
-                            <input type="text" class="creating_page_input_div" data="ogrnip" placeholder="ОГРНИП">
-                            <input type="text" class="creating_page_input_div" data="addr" placeholder="адрес">
-                            <input type="text" class="creating_page_input_div" data="bank" placeholder="Банк получателя">
-                            <input type="text" class="creating_page_input_div" data="bik" placeholder="БИК">
-                            <input type="text" class="creating_page_input_div" data="nomer" placeholder="Номер расчетного счета">
-                            <input type="text" class="creating_page_input_div" data="nomer_kor" placeholder="Номер корреспондентского счета">
+                            <div class="version_2_creating_page_input_row">
+                                <input type="text" class="creating_page_input_div" data="fio" placeholder="ФИО">
+                                <input type="text" class="creating_page_input_div" data="inn" placeholder="ИНН">
+                                <input type="text" class="creating_page_input_div" data="ogrnip" placeholder="ОГРНИП">
+                                <input type="text" class="creating_page_input_div" data="addr" placeholder="адрес">
+                                <input type="text" class="creating_page_input_div" data="bank" placeholder="Банк получателя">
+                                <input type="text" class="creating_page_input_div" data="bik" placeholder="БИК">
+                                <input type="text" class="creating_page_input_div" data="nomer" placeholder="Номер расчетного счета">
+                                <input type="text" class="creating_page_input_div" data="nomer_kor" placeholder="Номер корреспондентского счета">
 
-                            <div class="creating_page_input_button">
-                                <span>Отправить</span>
+                                <div class="creating_page_input_button">
+                                    <span>Отправить</span>
+                                </div>
                             </div>
                         </div>
                     `);
@@ -715,17 +719,19 @@
                     var _block = $(`
                         <div class="creating_page_input">
                             <div class="version2_default_bkg row_default"></div>
-                            <input type="text" class="creating_page_input_div" data="fio" placeholder="Фио полностью">
-                            <input type="text" class="creating_page_input_div" data="cpecial" placeholder="Номер паспорта и Серия паспорта">
-                            <input type="text" class="creating_page_input_div" data="how_get" placeholder="Кем выдан">
-                            <input type="text" class="creating_page_input_div" data="propiska" placeholder="Прописка">
-                            <input type="text" class="creating_page_input_div" data="bank" placeholder="Банк получателя">
-                            <input type="text" class="creating_page_input_div" data="bik" placeholder="БИК">
-                            <input type="text" class="creating_page_input_div" data="nomer" placeholder="Номер расчетного счета">
-                            <input type="text" class="creating_page_input_div" data="nomer_kor" placeholder="Номер корреспондентского счета">
-
-                            <div class="creating_page_input_button">
-                                <span>Отправить</span>
+                            <div class="version_2_creating_page_input_row">
+                                <input type="text" class="creating_page_input_div" data="fio" placeholder="Фио полностью">
+                                <input type="text" class="creating_page_input_div" data="cpecial" placeholder="Номер паспорта и Серия паспорта">
+                                <input type="text" class="creating_page_input_div" data="how_get" placeholder="Кем выдан">
+                                <input type="text" class="creating_page_input_div" data="propiska" placeholder="Прописка">
+                                <input type="text" class="creating_page_input_div" data="bank" placeholder="Банк получателя">
+                                <input type="text" class="creating_page_input_div" data="bik" placeholder="БИК">
+                                <input type="text" class="creating_page_input_div" data="nomer" placeholder="Номер расчетного счета">
+                                <input type="text" class="creating_page_input_div" data="nomer_kor" placeholder="Номер корреспондентского счета">
+    
+                                <div class="creating_page_input_button">
+                                    <span>Отправить</span>
+                                </div>
                             </div>
                         </div>
                     `);
