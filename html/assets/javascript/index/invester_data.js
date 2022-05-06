@@ -548,6 +548,7 @@
 
             var _block = $(`
                 <div class="creating_page_input">
+                    <div class="version2_default_bkg row_default"></div>
                     <input type="text" class="creating_page_input_div" data="pay" placeholder="Сумма">
                     <div class="creating_page_input_button">
                         <span>Отправить</span>
