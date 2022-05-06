@@ -704,6 +704,10 @@
   z-index: 2;
 }
 
+.creating_page_input {
+  background: transparent;
+}
+
 @media (max-width: 1350px) {
   .index_page_menu {
     display: none;
