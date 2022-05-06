@@ -219,7 +219,7 @@
                 <div class="creating_page_block">
                     <div class="creating_page_start" style="margin-bottom: 20px">
                         <div class="version2_default_bkg row_default"></div>
-                        <span>
+                        <span style="position: relative; z-index: 2;">
                             Уважаемый Инвестор ${findOfArrayOn_id(_this.inv.data, "fio")} переведите ${pushMoney} По реквезитам ниже и Пришлите чек оплаты для окончания инвестирования. <br><br>
 
                             Реквезиты перечисления: <br><br>
