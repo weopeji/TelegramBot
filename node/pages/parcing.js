@@ -188,7 +188,7 @@ async function ParceUsersBlock(_project, MoreUsers)
                 {
                     dePa: await deistvitelenLiPaspport(`${MoreUsers[_key][`BB*sob_serion_${_key.split("+")[1]}`]} ${MoreUsers[_key][`BB*sob_number_${_key.split("+")[1]}`]}`),
                     saMo: await yavlaetcaLiSamozanyatim(MoreUsers[_key][`BB*sob_inn_${_key.split("+")[1]}`]),
-                    arBi: await arbitrajnayaPraktikaFizLica(MoreUsers[_key][`BB*sob_fio_${_key.split("+")[1]}`], MoreUsers[_key][`BB*sob_region_${_key.split("+")[1]}`], MoreUsers[_key][`BB*sob_date_${_key.split("+")[1]}`]),
+                    // arBi: await arbitrajnayaPraktikaFizLica(MoreUsers[_key][`BB*sob_fio_${_key.split("+")[1]}`], MoreUsers[_key][`BB*sob_region_${_key.split("+")[1]}`], MoreUsers[_key][`BB*sob_date_${_key.split("+")[1]}`]),
                 }
         
                 _data.moreUsersData.push(_UserParce);
