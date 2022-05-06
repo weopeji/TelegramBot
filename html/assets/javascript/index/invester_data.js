@@ -249,9 +249,11 @@
                 {
                     msgsBlock.find('.creating_page_start span').html(`
                         <div class="version2_default_bkg row_default"></div>
-                        Уважаемый Инвестор ${findOfArrayOn_id(_this.inv.data, "fio")}
-                        Подтверждая инвестицию, вы подтверждаете, что по окончанию сбора средств вы выплатите зарезервированную вами сумму,
-                        Отказавшись вы получите запрет на использование платформы в будущем, на определенный срок
+                        <div class="version_2_row_creating_page_input" style="position: relative; z-index: 2;">
+                            Уважаемый Инвестор ${findOfArrayOn_id(_this.inv.data, "fio")}
+                            Подтверждая инвестицию, вы подтверждаете, что по окончанию сбора средств вы выплатите зарезервированную вами сумму,
+                            Отказавшись вы получите запрет на использование платформы в будущем, на определенный срок
+                        </div>
                     `.toString().trim());
 
                     _block.find('span').html("Подтвердить");
