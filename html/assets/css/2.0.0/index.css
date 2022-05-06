@@ -744,6 +744,18 @@
   position: relative;
 }
 
+.creating_page_input_document_img {
+  width: 360px;
+}
+
+.creating_page_input_div {
+  background: #9300dc;
+}
+
+.creating_page_input_document_img_hover span {
+  background: #9300dc;
+}
+
 @media (max-width: 1350px) {
   .index_page_menu {
     display: none;

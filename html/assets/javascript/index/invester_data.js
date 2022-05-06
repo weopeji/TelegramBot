@@ -149,7 +149,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="creating_page_input">
+                <div class="creating_page_input" style="width: 360px;">
                     <div class="creating_page_input_div" data="pay">
                         <span style="text-align: center">Оплатить</span> 
                     </div>
