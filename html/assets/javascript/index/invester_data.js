@@ -789,7 +789,7 @@
                 };
                 var _error = false;
         
-                $('.creating_page_input').children("input").each((i, element) => 
+                $('.creating_page_input').find("input").each((i, element) => 
                 {
                     if($(element).val().length == 0)
                     {
