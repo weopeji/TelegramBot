@@ -756,6 +756,15 @@
   background: #9300dc;
 }
 
+.autch_block {
+  z-index: 10000;
+  background: transparent;
+}
+
+.autch_block_row {
+  background-color: #AE91FA;
+}
+
 @media (max-width: 1350px) {
   .index_page_menu {
     display: none;
