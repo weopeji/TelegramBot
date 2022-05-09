@@ -129,6 +129,7 @@
                     var morePay             = "";
                     var maxDate             = new Date(el.date);
                     var maxDateFormatted    = this.pad(maxDate.getDate(), 2, '0') + '.' + this.pad(maxDate.getMonth() + 1, 2, '0') + '.' + maxDate.getFullYear();
+                    var byttonBlock         = `<span class="version2ButtonGradient1 settingBlock_wait settingBlock_block settingBlock_accept">Подтвердить оплату</span>`;
 
                     if(_data.project.data.date != "Бессрочно") {
                         if((i + 1) == _data.InvDoc.pays.length) {
@@ -136,13 +137,17 @@
                         };
                     };
 
+                    if(el.status == "accept") {
+                        byttonBlock = "Подтверждено";
+                    }
+
                     var _block = $(`
                         <div class="settingBlock_body_line">
                             <span>${i + 1}</span>
                             <span>${maxDateFormatted}</span>
                             <span>${_pay.toString().replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')} руб ${morePay.toString().replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')}</span>
                             <span class="headerPaysBlock_button" data-target="${i}">
-                                <span class="version2ButtonGradient1 settingBlock_wait settingBlock_block settingBlock_accept">Подтвердить оплату</span>
+                                ${byttonBlock}
                             </span>
                         </div>
                     `);
