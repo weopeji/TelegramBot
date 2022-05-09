@@ -149,9 +149,8 @@
 
                     _block.find(".settingBlock_accept").click( function()
                     {
-                        var targetNumber = $(this).parent().attr("data-target");
-
-                        console.log(targetNumber);
+                        var targetNumber    = $(this).parent().attr("data-target");
+                        var idProject       = _GET("id");
 
                         SoloAlert.confirm({
                             title: "Подтверждение",
@@ -164,8 +163,8 @@
                             await callApi({
                                 methodName: "version2_activ_projects_business_setPay",
                                 data: {
-                                    id: _GET("id"),
-                                    target: $(_this).parent().attr('data-target'),
+                                    id: idProject,
+                                    target: targetNumber,
                                 },
                             });
 
