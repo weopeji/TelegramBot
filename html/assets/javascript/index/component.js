@@ -155,7 +155,9 @@
                             <span>${i + 1}</span>
                             <span>${maxDateFormatted}</span>
                             <span>${_pay.toString().replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')} руб ${morePay.toString().replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')}</span>
-                            <span class="headerPaysBlock_button" data="${el.status}" data-rec="${el.receipt}" data-project="${_data.InvDoc.projectId}">Подтвердить оплату</span>
+                            <span class="headerPaysBlock_button" data="${el.status}" data-rec="${el.receipt}" data-project="${_data.InvDoc.projectId}">
+                                <span>Подтвердить оплату</span>
+                            </span>
                         </div>
                     `);
 
