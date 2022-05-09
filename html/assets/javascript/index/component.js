@@ -130,7 +130,8 @@
                     var morePay             = "";
                     var maxDate             = new Date(el.date);
                     var maxDateFormatted    = this.pad(maxDate.getDate(), 2, '0') + '.' + this.pad(maxDate.getMonth() + 1, 2, '0') + '.' + maxDate.getFullYear();
-                    var byttonBlock         = `<span class="version2ButtonGradient1 settingBlock_wait settingBlock_block settingBlock_accept">Подтвердить оплату</span>`;
+                    var byttonBlock         = `<span class="version2ButtonGradient1 settingBlock_wait settingBlock_block settingBlock_accept">Подтвердить</span>`;
+                    var inputBlock          = `<input type="checkbox" class="version2_activ_projects_lineCheackBox" data-target="${i}">`;
 
                     if(_data.project.data.date != "Бессрочно") {
                         if((i + 1) == _data.InvDoc.pays.length) {
@@ -140,6 +141,7 @@
 
                     if(el.status == "accept") {
                         byttonBlock = "Подтверждено";
+                        inputBlock  = "*";
                     }
 
                     var _block = $(`
@@ -148,13 +150,26 @@
                             <span>${maxDateFormatted}</span>
                             <span>${_pay.toString().replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')} руб ${morePay.toString().replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')}</span>
                             <span>
-                                <input type="checkbox" data-target="${i}">
+                                ${inputBlock}
                             </span>
                             <span class="headerPaysBlock_button" data-target="${i}">
                                 ${byttonBlock}
                             </span>
                         </div>
                     `);
+
+                    _block.find(`input[type="checkbox"]`).change(function() {
+
+                        var cheackInitNumber = 0;
+
+                        $('.settingBlock_body_line').forEach((elementLine) => {
+                            if($(elementLine).find(`input[type="checkbox"]`).attr("checked") == 'checked') {
+                                cheackInitNumber++;
+                            }
+                        });
+
+                        $('.settingBlock_body_line').find('.settingBlock_accept').html(`Подтвердить ${cheackInitNumber}`);
+                    })
 
                     _block.find(".settingBlock_accept").click( function()
                     {

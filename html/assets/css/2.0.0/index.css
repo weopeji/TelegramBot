@@ -784,6 +784,11 @@
   margin: 0;
 }
 
+.version2_activ_projects_lineCheackBox {
+  width: 30px;
+  height: 30px;
+}
+
 @media (max-width: 1350px) {
   .index_page_menu {
     display: none;
