@@ -237,6 +237,9 @@ async function version2_activ_projects_business_setPay(socket, data, callback)
     var _InvDoc     = await InvDoc.findOne({_id: data.id});
     var _InvDocPays = _InvDoc.pays;
 
+    console.log(data.target);
+    console.log(_InvDocPays[data.target]);
+
     _InvDocPays[data.target].status = "accept";
     await InvDoc.findOneAndUpdate({_id: data.id}, {pays: _InvDocPays});
     
