@@ -147,7 +147,7 @@
                         </div>
                     `);
 
-                    _block.find(".settingBlock_accept").click(() => 
+                    _block.find(".settingBlock_accept").click( function()
                     {
                         var targetNumber = $(this).parent().attr("data-target");
 
