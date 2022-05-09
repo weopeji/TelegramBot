@@ -168,13 +168,32 @@
                             }
                         });
 
-                        $('.settingBlock_body_line').find('.settingBlock_accept').html(`Подтвердить ${cheackInitNumber}`);
+                        if(cheackInitNumber == 0)
+                        {
+                            $('.settingBlock_body_line').find('.settingBlock_accept').html(`Подтвердить`);
+                        }
+                        else
+                        {
+                            $('.settingBlock_body_line').find('.settingBlock_accept').html(`Подтвердить ${cheackInitNumber}`);
+                        }
                     })
 
                     _block.find(".settingBlock_accept").click( function()
                     {
-                        var targetNumber    = $(this).parent().attr("data-target");
-                        var idProject       = _GET("id");
+                        var targetNumber        = $(this).parent().attr("data-target");
+                        var idProject           = _GET("id");
+                        var cheackInitArray     = [];
+
+                        $('.settingBlock_body_line').each((i, elementLine) => {
+                            if($(elementLine).find(`input[type="checkbox"]`).is(":checked")) {
+                                cheackInitArray.push(i);
+                            }
+                        });
+
+                        if(cheackInitArray.length == 0)
+                        {
+                            cheackInitArray.push(targetNumber);
+                        }
 
                         SoloAlert.confirm({
                             title: "Подтверждение",
@@ -188,7 +207,7 @@
                                 methodName: "version2_activ_projects_business_setPay",
                                 data: {
                                     id: idProject,
-                                    target: targetNumber,
+                                    target: cheackInitArray,
                                 },
                             });
 
