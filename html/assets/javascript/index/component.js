@@ -95,6 +95,7 @@
                                 <span>Дата</span>
                                 <span>Сумма</span>
                                 <span>Статус</span>
+                                <span>Выбор</span>
                             </div>
                         </div>
                         <!--<div class="headerPaysBlock_header">
@@ -149,6 +150,7 @@
                             <span class="headerPaysBlock_button" data-target="${i}">
                                 ${byttonBlock}
                             </span>
+                            <input type="checkbox" data-target="${i}">
                         </div>
                     `);
 
