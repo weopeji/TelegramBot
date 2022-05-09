@@ -146,10 +146,10 @@
                         <div class="settingBlock_body_line">
                             <span>${i + 1}</span>
                             <span>${maxDateFormatted}</span>
+                            <span>${_pay.toString().replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')} руб ${morePay.toString().replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')}</span>
                             <span>
                                 <input type="checkbox" data-target="${i}">
                             </span>
-                            <span>${_pay.toString().replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')} руб ${morePay.toString().replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')}</span>
                             <span class="headerPaysBlock_button" data-target="${i}">
                                 ${byttonBlock}
                             </span>
