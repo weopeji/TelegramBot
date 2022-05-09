@@ -89,7 +89,15 @@
                             <p>Выплаты по проекту</p>
                         </div>
                         <div class="version2_default_bkg row_default"></div>
-                        <div class="headerPaysBlock_header">
+                        <div class="settingBlock_header">
+                            <div class="settingBlock_header_line">
+                                <span>#</span>
+                                <span>Дата</span>
+                                <span>Сумма</span>
+                                <span>Статус</span>
+                            </div>
+                        </div>
+                        <!--<div class="headerPaysBlock_header">
                             <span class="headerPaysBlock_header_span">
                                 <div class="headerPaysBlock_header_span_button_reqvesits">
                                     <span>Посмотреть реквезиты</span>
@@ -108,7 +116,7 @@
                                 <span>Сумма</span>
                                 <span>Статус</span>
                             </div>
-                        </div>
+                        </div>-->
                         <div class="headerPaysBlock_body">
 
                         </div>
