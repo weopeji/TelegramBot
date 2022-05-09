@@ -409,6 +409,7 @@
 .version2_settingBlock_header p {
   color: white;
   font-weight: 400;
+  font-size: 20px;
 }
 
 .settingBlock_body_line {
@@ -636,6 +637,7 @@
   width: 100px;
   height: 100px;
   background-image: url("/html/assets/images/2.0.0/business.png");
+  background-size: cover;
 }
 
 .info_active_block_right {
@@ -764,6 +766,14 @@
 
 .autch_block_row {
   background-color: #AE91FA;
+}
+
+.info_active_block_left_header {
+  color: white;
+}
+
+.info_active_block_left_buttons {
+  margin-top: 0;
 }
 
 @media (max-width: 1350px) {
