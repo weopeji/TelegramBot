@@ -117,21 +117,11 @@
                                 <span>Статус</span>
                             </div>
                         </div>-->
-                        <div class="headerPaysBlock_body">
+                        <div class="settingBlock_body">
 
                         </div>
                     </div>
                 `);
-
-                headerPaysBlock.find('.headerPaysBlock_header_span_button_reqvesits').click( function() {
-                    $(this).find('.settingBlock_body_line_drop_menu').fadeToggle();
-                })
-
-                headerPaysBlock.find('.headerPaysBlock_header_span').css({
-                    'display': "flex",
-                    "position": "relative",
-                    "align-items": "center",
-                });
 
                 _data.InvDoc.pays.forEach((el, i) => 
                 {
@@ -206,7 +196,7 @@
 
                     if(_data.project.data.date != "Бессрочно" || typeof _data.project.notFullpay == "undefined")
                     {
-                        headerPaysBlock.find('.headerPaysBlock_body').append(_block);
+                        headerPaysBlock.find('.settingBlock_body').append(_block);
                     }
                     else
                     {
@@ -214,12 +204,12 @@
                         {
                             if(_data.InvDoc.pays[i].status != "wait_data")
                             {
-                                headerPaysBlock.find('.headerPaysBlock_body').append(_block);
+                                headerPaysBlock.find('.settingBlock_body').append(_block);
                             };
                         } 
                         else
                         {
-                            headerPaysBlock.find('.headerPaysBlock_body').append(_block);
+                            headerPaysBlock.find('.settingBlock_body').append(_block);
                         }
                     };
                 });
