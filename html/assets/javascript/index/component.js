@@ -84,10 +84,10 @@
                 })
                 
                 var headerPaysBlock = $(`
-                    <div class="version2_settingBlock_header">
-                        <p>Выплаты по проекту</p>
-                    </div>
                     <div class="headerPaysBlock">
+                        <div class="version2_settingBlock_header">
+                            <p>Выплаты по проекту</p>
+                        </div>
                         <div class="version2_default_bkg row_default"></div>
                         <div class="headerPaysBlock_header">
                             <span class="headerPaysBlock_header_span">
