@@ -180,6 +180,7 @@
 
                     _block.find(".settingBlock_accept").click( function()
                     {
+                        var thisBlock           = $(this);
                         var targetNumber        = $(this).parent().attr("data-target");
                         var idProject           = _GET("id");
                         var cheackInitArray     = [];
@@ -216,6 +217,21 @@
                                 body:"",
                                 icon: "success"
                             });
+
+                            if(cheackInitArray.length == 0)
+                            {
+                                var parentBlock = thisBlock.parent().parent();
+
+                                parentBlock.find(`input[type="checkbox"]`).replaceWith("*");
+                                parentBlock.find(`.settingBlock_accept`).replaceWith("Подтверждено");
+                            }
+                            else
+                            {
+                                $('.settingBlock_body_line').each((i, parentBlock) => {
+                                    parentBlock.find(`input[type="checkbox"]`).replaceWith("*");
+                                    parentBlock.find(`.settingBlock_accept`).replaceWith("Подтверждено");
+                                });
+                            }
                         })
                     });
 
