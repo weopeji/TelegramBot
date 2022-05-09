@@ -133,3 +133,45 @@ $('header').append($('<link rel="stylesheet" href="./html/assets/css/2.0.0/black
 
 <div class="version2_default_bkg row_default"></div>
 
+
+SoloAlert.confirm({
+    title: "Подтверждение",
+    body: "Бизнес отпрасил запрос на закрытие и перезаполнение инвестиции",
+    theme: "dark",
+    html: "",
+    useTransparency: true,
+}).then(async (value) => 
+{
+    if(value)
+    {
+        await callApi({
+            methodName: "not_correct_complaint_again",
+            data: _GET("id"),
+        });
+
+        _this.pushMsgOfUser(`Инвестиция была отменена инвестором`);
+        _this.removeButtonsAll();
+
+        SoloAlert.alert({
+            title:"Успешно",
+            body:"",
+            icon: "success"
+        });
+    }
+    else
+    {
+        await callApi({
+            methodName: "requestInvestingOfRemoveCLOSE",
+            data: _GET("id"),
+        });
+
+        _this.pushMsgOfUser(`Предложение было отклонено инвестором`);
+        _this.removeButtonsAll();
+
+        SoloAlert.alert({
+            title:"Успешно",
+            body:"",
+            icon: "success"
+        });
+    }
+})

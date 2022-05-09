@@ -1,3 +1,5 @@
+const { _GET } = require("../../../../node/helpers/functions");
+
 (function (global) {
     "use strict";
 
@@ -125,124 +127,57 @@
 
                 _data.InvDoc.pays.forEach((el, i) => 
                 {
-                    var _pay = Math.ceil(el.pay);
-                    var morePay = "";
+                    var _pay                = Math.ceil(el.pay);
+                    var morePay             = "";
+                    var maxDate             = new Date(el.date);
+                    var maxDateFormatted    = this.pad(maxDate.getDate(), 2, '0') + '.' + this.pad(maxDate.getMonth() + 1, 2, '0') + '.' + maxDate.getFullYear();
 
-                    if(_data.project.data.date != "Бессрочно")
-                    {
-                        if((i + 1) == _data.InvDoc.pays.length)
-                        {
-                            
-                            morePay = ` + ${_data.InvDoc.data.pay} руб.`
-                        }
-                    }
+                    if(_data.project.data.date != "Бессрочно") {
+                        if((i + 1) == _data.InvDoc.pays.length) {
+                            morePay = ` + ${_data.InvDoc.data.pay} руб.`;
+                        };
+                    };
 
-                    var maxDate = new Date(el.date);
-                    var maxDateFormatted =  this.pad(maxDate.getDate(), 2, '0') + '.' + this.pad(maxDate.getMonth() + 1, 2, '0') + '.' + maxDate.getFullYear();
-                
                     var _block = $(`
                         <div class="settingBlock_body_line">
                             <span>${i + 1}</span>
                             <span>${maxDateFormatted}</span>
                             <span>${_pay.toString().replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')} руб ${morePay.toString().replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')}</span>
-                            <span class="headerPaysBlock_button" data="${el.status}" data-rec="${el.receipt}" data-project="${_data.InvDoc.projectId}">
+                            <span class="headerPaysBlock_button" data-target="${i}">
                                 <span class="version2ButtonGradient1 settingBlock_wait settingBlock_block settingBlock_accept">Подтвердить оплату</span>
                             </span>
                         </div>
                     `);
 
-                    if(el.status != "accept")
-                    {
-                        if(Number(el.date) <= Number(new Date().getTime().toString()))
+                    _block.find(".settingBlock_accept").click(() => {
+                        SoloAlert.confirm({
+                            title: "Подтверждение",
+                            body: "Вы уверены, что хотите подтвердить выплату?",
+                            theme: "dark",
+                            html: "",
+                            useTransparency: true,
+                        }).then(async () => 
                         {
-                            _block.attr('alertForLine', 'true');
-                        };
-                    }
-
-                    if(typeof el.statusAccept != "undefined")
-                    {
-                        if(el.statusAccept == "push")
-                        {
-                            var blockMore = $(`
-                                <div class="mgshjtokj">
-                                    <span>Подтвердить</span>
-                                    <span>Посмотреть</span>
-                                </div>
-                            `);
-
-                            blockMore.find('span').eq(0).click( async function() {
-                                await callApi({
-                                    methodName: "business_cheack_accept_in_cabinet",
-                                    data: {
-                                        id: _GET('id'),
-                                        number: $(this).parent().parent().find('input').attr('id'),
-                                    },
-                                });
-
-                                alert('Успешно!');
-                                location.reload();
+                            await callApi({
+                                methodName: "version2_activ_projects_business_setPay",
+                                data: {
+                                    id: _GET("id"),
+                                    target: $(this).attr('data-target'),
+                                },
                             });
 
-                            blockMore.find('span').eq(1).click( async function() {
-                                window.open(`/projects/${$(this).parent().parent().attr('data-project')}/${$(this).parent().parent().attr('data-rec')}` , '_blank');
-                            })
+                            SoloAlert.alert({
+                                title:"Успешно",
+                                body:"",
+                                icon: "success"
+                            });
+                        })
+                    });
 
-                            blockMore.find('span').css('margin-bottom', '10px');
-                            blockMore.find('span').eq(0).css('margin-top', '10px');
-                            _block.find('label').html('<span>Заменить</span>');
-                            _block.children("span").eq(3).append(blockMore);
-                        }
-                    }
-
-                    if(_data.project.data.date != "Бессрочно" || typeof _data.project.notFullpay == "undefined")
-                    {
-                        headerPaysBlock.find('.settingBlock_body').append(_block);
-                    }
-                    else
-                    {
-                        if(i == _data.InvDoc.pays.length - 1)
-                        {
-                            if(_data.InvDoc.pays[i].status != "wait_data")
-                            {
-                                headerPaysBlock.find('.settingBlock_body').append(_block);
-                            };
-                        } 
-                        else
-                        {
-                            headerPaysBlock.find('.settingBlock_body').append(_block);
-                        }
-                    };
-                });
-
-                headerPaysBlock.find('input[type=file]').change( async function() 
-                {
-                    var _form    = new FormData();
-            
-                    _form.append('file_id', $(this).attr('id'));
-                    _form.append('_Inv', _GET('id'));
-                    _form.append('_pts', $(this.files)[0].type);
-                    _form.append('files', $(this.files)[0]);
-
-                    var _url = `${getURL()}/file_chart.io/files`;
-
-                    axios.post(_url, _form, {
-                        headers: {
-                            'Content-Type': 'multipart/form-data'
-                        },
-                    }).then(data => {
-                        if(data.data.status == "ok") {
-                            alert("Чек прикоеплен!");
-                            location.reload();
-                        }
-                    });    
+                    headerPaysBlock.find('.settingBlock_body').append(_block);
                 });
 
                 $('.index_page_body_data').append(headerPaysBlock);
-
-                setInterval( function() 
-                {
-                    $('.headerPaysBlock_body_line[alertForLine="true"]').toggleClass('alertForLine');
-                }, 1000);
 
                 if(_data.project.data.date == "Бессрочно" || typeof _data.project.notFullpay != "undefined")
                 {

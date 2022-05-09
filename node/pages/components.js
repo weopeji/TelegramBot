@@ -79,6 +79,20 @@ var privat_index_page = function(socket,data,callback) {
 
 var action_linker = 
 {
+    //version2
+
+    "version2_activ_projects_business_setPay": version2_activ_projects_business_setPay,
+
+
+
+
+
+
+
+
+
+
+    
     //test
     "test_fun": test_fun,
 
@@ -217,6 +231,17 @@ var action_linker =
     "getProjectForInvesterPageByIdInvDoc": getProjectForInvesterPageByIdInvDoc,
     "accept_confirmationData": accept_confirmationData,
 };
+
+async function version2_activ_projects_business_setPay(socket, data, callback)
+{
+    var _InvDoc     = await InvDoc.findOne({_id: data.id});
+    var _InvDocPays = _InvDoc.pays;
+
+    _InvDocPays[data.target].status = "accept";
+    await InvDoc.findOneAndUpdate({_id: data.id}, {pays: _InvDocPays});
+    
+    callback();
+}
 
 async function accept_confirmationData(socket, data, callback)
 {
