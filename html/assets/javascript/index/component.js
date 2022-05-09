@@ -84,7 +84,7 @@
                 })
                 
                 var headerPaysBlock = $(`
-                    <div class="settingBlock">
+                    <div class="settingBlock" style="margin-top: 65px;">
                         <div class="version2_settingBlock_header">
                             <p>Выплаты по проекту</p>
                         </div>
@@ -133,12 +133,6 @@
                     "align-items": "center",
                 });
 
-
-                var _status = {
-                    "wait": "Прикрепить чек",
-                    "accept": "Оплачено"
-                }
-
                 _data.InvDoc.pays.forEach((el, i) => 
                 {
                     var _pay = Math.ceil(el.pay);
@@ -157,14 +151,11 @@
                     var maxDateFormatted =  this.pad(maxDate.getDate(), 2, '0') + '.' + this.pad(maxDate.getMonth() + 1, 2, '0') + '.' + maxDate.getFullYear();
                 
                     var _block = $(`
-                        <div class="headerPaysBlock_body_line">
+                        <div class="settingBlock_body_line">
                             <span>${i + 1}</span>
                             <span>${maxDateFormatted}</span>
                             <span>${_pay.toString().replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')} руб ${morePay.toString().replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')}</span>
-                            <span class="headerPaysBlock_button" data="${el.status}" data-rec="${el.receipt}" data-project="${_data.InvDoc.projectId}">
-                                <input type="file" name="" id='${i}'>
-                                <label for="${i}">${_status[el.status]}</label>
-                            </span>
+                            <span class="headerPaysBlock_button" data="${el.status}" data-rec="${el.receipt}" data-project="${_data.InvDoc.projectId}">Подтвердить оплату</span>
                         </div>
                     `);
 
