@@ -160,7 +160,7 @@
                                 methodName: "version2_activ_projects_business_setPay",
                                 data: {
                                     id: _GET("id"),
-                                    target: $(this).attr('data-target'),
+                                    target: $(this).parent().attr('data-target'),
                                 },
                             });
 
