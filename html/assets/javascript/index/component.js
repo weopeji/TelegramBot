@@ -149,7 +149,9 @@
 
                     _block.find(".settingBlock_accept").click(() => 
                     {
-                        var _this = this;
+                        var targetNumber = $(this).parent().attr("data-target");
+
+                        console.log(targetNumber);
 
                         SoloAlert.confirm({
                             title: "Подтверждение",
