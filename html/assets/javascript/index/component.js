@@ -228,8 +228,8 @@
                             else
                             {
                                 $('.settingBlock_body_line').each((i, parentBlock) => {
-                                    parentBlock.find(`input[type="checkbox"]`).replaceWith("*");
-                                    parentBlock.find(`.settingBlock_accept`).replaceWith("Подтверждено");
+                                    $(parentBlock).find(`input[type="checkbox"]`).replaceWith("*");
+                                    $(parentBlock).find(`.settingBlock_accept`).replaceWith("Подтверждено");
                                 });
                             }
                         })
