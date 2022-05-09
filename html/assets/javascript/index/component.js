@@ -162,7 +162,7 @@
 
                         var cheackInitNumber = 0;
 
-                        $('.settingBlock_body_line').forEach((elementLine) => {
+                        $('.settingBlock_body_line').each((i, elementLine) => {
                             if($(elementLine).find(`input[type="checkbox"]`).attr("checked") == 'checked') {
                                 cheackInitNumber++;
                             }
