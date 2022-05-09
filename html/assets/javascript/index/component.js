@@ -147,7 +147,10 @@
                         </div>
                     `);
 
-                    _block.find(".settingBlock_accept").click(() => {
+                    _block.find(".settingBlock_accept").click(() => 
+                    {
+                        var _this = this;
+
                         SoloAlert.confirm({
                             title: "Подтверждение",
                             body: "Вы уверены, что хотите подтвердить выплату?",
@@ -160,7 +163,7 @@
                                 methodName: "version2_activ_projects_business_setPay",
                                 data: {
                                     id: _GET("id"),
-                                    target: $(this).parent().attr('data-target'),
+                                    target: $(_this).parent().attr('data-target'),
                                 },
                             });
 
