@@ -25,12 +25,7 @@
     {
         constructor() 
         {
-            this.global = $(`
-                <div class="creating_page" style="width: auto;"></div>
-            `);
-            this.globalMore = $(`
-                <div class="creating_page" style="width: auto;"></div>
-            `);
+            $('.index_page_body_data').append(`<div class="creating_page" style="width: auto;"></div>`);
             this.project            = null;
             this.inv                = null;
             this.money              = null;
@@ -110,7 +105,7 @@
                 _this.render_next($(this).attr('data'));
             });
 
-            this.global.append(ActionBlock);
+            $(`.creating_page`).append(ActionBlock);
         }
 
         async render() 
@@ -132,8 +127,6 @@
 
             await this.defaultCSS();
             await this.renderFirstData();
-
-            $('.index_page_body_data').append(this.global);
         }
 
         async cheackGetDocuments()
@@ -625,7 +618,6 @@
 
             backBlock.find(".version2_invester_data_backBlock_circule").click( function() {
                 $('.index_page_body_data').empty();
-                _this.global = _this.globalMore;
                 _this.render();
             });
 
