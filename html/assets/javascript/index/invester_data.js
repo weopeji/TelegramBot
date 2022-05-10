@@ -107,7 +107,7 @@
             $(`.creating_page`).append(ActionBlock);
         }
 
-        async render(notPush) 
+        async render(data, notPush) 
         {
             $('.index_page_body_data').append(`<div class="creating_page" style="width: auto;"></div>`);
 
