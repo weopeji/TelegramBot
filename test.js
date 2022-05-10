@@ -175,3 +175,8 @@ SoloAlert.confirm({
         });
     }
 })
+
+backBlock.find(".version2_invester_data_backBlock_circule").click( function() {
+    $('.index_page_body_data').empty();
+    _this.render(null, true);
+});
