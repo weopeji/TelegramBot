@@ -622,7 +622,7 @@
 
             backBlock.find(".version2_invester_data_backBlock_circule").click( function() {
                 $('.index_page_body_data').empty();
-                _this.render(true);
+                _this.render(null, true);
             });
 
             $('.index_page_body_data').prepend(backBlock);
