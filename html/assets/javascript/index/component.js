@@ -1643,9 +1643,8 @@
                     </div>
                 `);
 
-                $('.index_page_body_data').append(settingBlock);
+                $('.index_page_body_data').append(dropMenuBlock);
             }
-
 
             var settingBlock = $(`
                 <div class="settingBlock">
