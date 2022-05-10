@@ -841,7 +841,7 @@ img.preloader_row_img {
   -webkit-animation: 1s linear 0s normal none infinite running rot;
 }
 
-@keyframes preloader_row_img {
+@keyframes rot {
   0% {
     -webkit-transform: rotate(0deg);
             transform: rotate(0deg);
@@ -852,7 +852,7 @@ img.preloader_row_img {
   }
 }
 
-@-webkit-keyframes preloader_row_img {
+@-webkit-keyframes rot {
   0% {
     -webkit-transform: rotate(0deg);
             transform: rotate(0deg);
