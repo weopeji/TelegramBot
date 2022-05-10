@@ -608,7 +608,7 @@
             $('.creating_page').append(_block);
         }
 
-        async render_next(DT) 
+        async render_backBlock()
         {
             var backBlock = $(`
                 <div class="version2_invester_data_backBlock">
@@ -618,7 +618,12 @@
                 </div>
             `);
 
-            $('.creating_page').append(backBlock);
+            $('.index_page_body_data').append(backBlock);
+        }
+
+        async render_next(DT) 
+        {
+            this.render_backBlock();
 
             var render_nextfuns = 
             {
