@@ -611,7 +611,7 @@
         async render_backBlock()
         {
             var _this       = this;
-            
+
             var backBlock   = $(`
                 <div class="version2_invester_data_backBlock">
                     <div class="version2_invester_data_backBlock_circule version2_default_bkg row_default">
@@ -621,6 +621,7 @@
             `);
 
             backBlock.find(".version2_invester_data_backBlock_circule").click( function() {
+                $('.index_page_body_data').empty();
                 _this.renderFirstData();
             });
 
