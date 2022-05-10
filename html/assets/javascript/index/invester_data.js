@@ -299,9 +299,11 @@
                         },
                     });
 
-                    // window.location = "tg:\/\/resolve?domain=invester_official_bot";
-                    window.open("tg:\/\/resolve?domain=invester_official_bot")
-                    window.close();
+                    $(window).blur(function() {
+                        window.close();
+                    });
+
+                    window.location = "tg:\/\/resolve?domain=invester_official_bot";
                 }
                 else
                 {
