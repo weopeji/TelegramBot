@@ -724,5 +724,5 @@ async function alertDeleteOfUserOnbot(html, id)
     });
 
     _array.push(fat.message_id);
-    await h.DMA(msg, _array);
+    await MA(msg, _array);
 }
