@@ -180,7 +180,6 @@
 
                     _block.find(".settingBlock_accept").click( function()
                     {
-                        var thisBlock           = $(this);
                         var targetNumber        = $(this).parent().attr("data-target");
                         var idProject           = _GET("id");
                         var cheackInitArray     = [];

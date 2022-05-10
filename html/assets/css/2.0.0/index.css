@@ -793,6 +793,14 @@
   line-height: 1;
 }
 
+.info_active_block_massage_button {
+  border: 0;
+}
+
+.obligations_block .obligations_block_element .obligations_block_element_line span {
+  color: white;
+}
+
 @media (max-width: 1350px) {
   .index_page_menu {
     display: none;
