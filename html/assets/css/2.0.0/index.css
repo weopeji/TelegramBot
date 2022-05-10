@@ -863,6 +863,15 @@ img.preloader_row_img {
   }
 }
 
+.settingBlock_body {
+  max-height: 404px;
+  overflow-y: scroll;
+}
+
+.settingBlock_body::-webkit-scrollbar {
+  width: 0;
+}
+
 @media (max-width: 1350px) {
   .index_page_menu {
     display: none;
