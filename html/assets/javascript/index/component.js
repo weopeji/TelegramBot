@@ -1643,7 +1643,7 @@
                     </div>
                 `);
 
-                $('.index_page_body_data').append(dropMenuBlock);
+                $('.index_page_body_data').append(dropMenuBlock); 
             }
 
             var settingBlock = $(`
