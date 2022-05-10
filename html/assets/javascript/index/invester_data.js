@@ -267,37 +267,47 @@
                     $('.preloader').fadeIn();
 
                     await callApi({
-                        methodName: "setInvesterDataProjectForInvesterPage",
+                        methodName: "version2_investerData_invdoc_notMoney",
                         data: {
                             user:  _GET('user'),
-                            data: {
-                                inv: _this.inv,
-                                date: _this.date,
-                            },
-                        },
-                    });
-
-                    var InvIdGet = await callApi({
-                        methodName: "setInvesterDataProjectForInvesterPageGetIdNullMoney",
-                        data: {
-                            idUser: _GET('user'),
+                            inv: _this.inv,
                             money: _this.money,
-                            date: _this.date,
+                            url: _this.urlForDocument,
                         },
                     });
 
-                    await callApi({
-                        methodName: "endInvestingDataPush",
-                        data: {
-                            user: _GET('user'),
-                            project: _this.project._id,
-                            money: _this.money.toString().ReplaceNumber(),
-                            date: _this.date,
-                            url: _this.urlForDocument,
-                            invId: InvIdGet,
-                            accept: true,
-                        },
-                    });
+                    // await callApi({
+                    //     methodName: "setInvesterDataProjectForInvesterPage",
+                    //     data: {
+                    //         user:  _GET('user'),
+                    //         data: {
+                    //             inv: _this.inv,
+                    //             date: _this.date,
+                    //         },
+                    //     },
+                    // });
+
+                    // var InvIdGet = await callApi({
+                    //     methodName: "setInvesterDataProjectForInvesterPageGetIdNullMoney",
+                    //     data: {
+                    //         idUser: _GET('user'),
+                    //         money: _this.money,
+                    //         date: _this.date,
+                    //     },
+                    // });
+
+                    // await callApi({
+                    //     methodName: "endInvestingDataPush",
+                    //     data: {
+                    //         user: _GET('user'),
+                    //         project: _this.project._id,
+                    //         money: _this.money.toString().ReplaceNumber(),
+                    //         date: _this.date,
+                    //         url: _this.urlForDocument,
+                    //         invId: InvIdGet,
+                    //         accept: true,
+                    //     },
+                    // });
 
                     // window.location = "tg:\/\/resolve?domain=invester_official_bot";
                     window.open("tg:\/\/resolve?domain=invester_official_bot",'_self').close()

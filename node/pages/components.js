@@ -82,7 +82,7 @@ var action_linker =
     //version2
 
     "version2_activ_projects_business_setPay": version2_activ_projects_business_setPay,
-
+    "version2_investerData_invdoc_notMoney": version2_investerData_invdoc_notMoney,
 
 
 
@@ -231,6 +231,53 @@ var action_linker =
     "getProjectForInvesterPageByIdInvDoc": getProjectForInvesterPageByIdInvDoc,
     "accept_confirmationData": accept_confirmationData,
 };
+
+async function version2_investerData_invdoc_notMoney(socket, data, callback)
+{
+    try {
+        var _User               = await User.findOne({_id: data.user});
+        var _Project            = await Project.findOne({_id: _User.putProject});
+        var _arrayData          = data.inv;
+        _arrayData.pay          = data.money;
+        var html                = "https://invester-relocation.site/" + data.url;
+
+        var invCreate   = await InvDoc.create({
+            projectId: _User.putProject,
+            invester: _User.user,
+            status: "accept",
+            data: _arrayData,
+            receipt: null,
+            pays: [],
+            date: new Date().getTime().toString(),
+            date_append: new Date().getTime().toString(),
+            urlToLastDocument: null,
+        });
+
+        var pathToLastDocument      = `/var/www/projects/${_Project._id}/documentLast_${new Date().getTime()}_${invCreate._id}.pdf`;
+        var projectIdUrlDocument    = `/var/www/projects/${_Project._id}/application_number_2_document_${invCreate._id}.pdf`;
+        var defaultProjectPdfDoc    = `/var/www/projects/${_Project._id}/file_signature_document.pdf`;
+
+        const browser = await puppeteer.launch({
+            args: ['--no-sandbox', '--disable-setuid-sandbox'],
+        });
+        const page = await browser.newPage();
+        await page.goto(html);
+        await page.emulateMedia('screen');
+        await page.pdf({path: projectIdUrlDocument});
+        await browser.close();
+
+        await merger.add(defaultProjectPdfDoc);
+        await merger.add(projectIdUrlDocument); 
+        await merger.save(pathToLastDocument);
+    
+        await InvDoc.findOneAndUpdate({_id: invCreate._id}, {urlToLastDocument: pathToLastDocument});
+
+        h.alertDeleteOfUserOnbot(`${_User.first_name} вы успешно проинвестировали в проект\n ${_Project._id}\n "${_Project.data.name}"\n на сумму ${data.money} руб.\n по договору от ${DateTime.fromMillis(Number(_datePush)).toFormat('dd.MM.yyyy')}\n Ожидайте подтверждения бизнесом получения денег. Так как сумма идет банковским платежом, поступление на расчетный счет бизнеса может занять до 3х банковских дней`, _User.user);
+        h.full_alert_user(_Project.user, `Поступила оплата в проекте номер ${_Project._id} "${_Project.data.name}" на сумму ${data.money} руб. по договору от ${DateTime.fromMillis(Number(_datePush)).toFormat('dd.MM.yyyy')} требуется подтверждение`, "put_investring");
+    } catch(e) {}
+
+    callback();
+}
 
 async function version2_activ_projects_business_setPay(socket, data, callback)
 {
