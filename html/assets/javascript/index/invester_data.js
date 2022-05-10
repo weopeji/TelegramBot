@@ -107,24 +107,27 @@
             $(`.creating_page`).append(ActionBlock);
         }
 
-        async render() 
+        async render(notPush) 
         {
             $('.index_page_body_data').append(`<div class="creating_page" style="width: auto;"></div>`);
-            
-            var _this = this;
 
-            var _project = await callApi({
-                methodName: "getProjectForInvesterPage",
-                data: _GET('user'),
-            });
+            if(!notPush)
+            {
+                var _this = this;
 
-            var _AllInvsOfProject = await callApi({
-                methodName: "getProjectForInvesterPageAllInvs" ,
-                data: _project._id,
-            });
-
-            _this.allInvsOfProject   = _AllInvsOfProject;
-            _this.project            = _project;
+                var _project = await callApi({
+                    methodName: "getProjectForInvesterPage",
+                    data: _GET('user'),
+                });
+    
+                var _AllInvsOfProject = await callApi({
+                    methodName: "getProjectForInvesterPageAllInvs" ,
+                    data: _project._id,
+                });
+    
+                _this.allInvsOfProject   = _AllInvsOfProject;
+                _this.project            = _project;
+            }
 
             await this.defaultCSS();
             await this.renderFirstData();
@@ -619,7 +622,7 @@
 
             backBlock.find(".version2_invester_data_backBlock_circule").click( function() {
                 $('.index_page_body_data').empty();
-                _this.render();
+                _this.render(true);
             });
 
             $('.index_page_body_data').prepend(backBlock);
