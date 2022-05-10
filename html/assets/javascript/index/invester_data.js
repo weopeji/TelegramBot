@@ -300,6 +300,7 @@
                     });
 
                     window.location = "tg:\/\/resolve?domain=invester_official_bot";
+                    window.close();
                 }
                 else
                 {
