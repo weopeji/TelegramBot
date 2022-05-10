@@ -610,13 +610,19 @@
 
         async render_backBlock()
         {
-            var backBlock = $(`
+            var _this       = this;
+            
+            var backBlock   = $(`
                 <div class="version2_invester_data_backBlock">
-                    <div class="version2_invester_data_backBlock_circule">
+                    <div class="version2_invester_data_backBlock_circule version2_default_bkg row_default">
                         <i class="fal fa-angle-left"></i>
                     </div>
                 </div>
             `);
+
+            backBlock.find(".version2_invester_data_backBlock_circule").click( function() {
+                _this.renderFirstData();
+            });
 
             $('.index_page_body_data').prepend(backBlock);
         }
