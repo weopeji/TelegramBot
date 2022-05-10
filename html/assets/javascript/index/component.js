@@ -1632,7 +1632,7 @@
             {
                 var dropMenuBlock = $(`
                     <div class="version2_myProjects_dropMenuInvDocs">
-                        <div class="version2_myProjects_dropMenuInvDocs_button">
+                        <div class="version2_myProjects_dropMenuInvDocs_button selected">
                             <div class="version2_default_bkg row_default"></div>
                             <span>Инвестиции</span>
                         </div>
@@ -1809,7 +1809,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="settingBlock" style="margin-bottom: 140px">
+                <div class="settingBlock" style="margin-bottom: 65px">
                     <div class="version2_default_bkg row_default"></div>
                     <div class="settingBlock_header">
                         <div class="invester_status_projects_status_first">
