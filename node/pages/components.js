@@ -253,7 +253,7 @@ async function version2_investerData_invdoc_notMoney(socket, data, callback)
             urlToLastDocument: null,
         });
 
-        var pathToLastDocument      = `/var/www/projects/${_Project._id}/documentLast_${new Date().getTime()}_${invCreate._id}.pdf`;
+        var pathToLastDocument      = `documentLast_${new Date().getTime()}_${invCreate._id}.pdf`;
         var projectIdUrlDocument    = `/var/www/projects/${_Project._id}/application_number_2_document_${invCreate._id}.pdf`;
         var defaultProjectPdfDoc    = `/var/www/projects/${_Project._id}/file_signature_document.pdf`;
 
@@ -268,13 +268,15 @@ async function version2_investerData_invdoc_notMoney(socket, data, callback)
 
         await merger.add(defaultProjectPdfDoc);
         await merger.add(projectIdUrlDocument); 
-        await merger.save(pathToLastDocument);
+        await merger.save(`/var/www/projects/${_Project._id}/` + pathToLastDocument);
     
         await InvDoc.findOneAndUpdate({_id: invCreate._id}, {urlToLastDocument: pathToLastDocument});
 
-        h.alertDeleteOfUserOnbot(`${_User.first_name} вы успешно проинвестировали в проект\n ${_Project._id}\n "${_Project.data.name}"\n на сумму ${data.money} руб.\n по договору от ${DateTime.fromMillis(Number(_datePush)).toFormat('dd.MM.yyyy')}\n Ожидайте подтверждения бизнесом получения денег. Так как сумма идет банковским платежом, поступление на расчетный счет бизнеса может занять до 3х банковских дней`, _User.user);
-        h.full_alert_user(_Project.user, `Поступила оплата в проекте номер ${_Project._id} "${_Project.data.name}" на сумму ${data.money} руб. по договору от ${DateTime.fromMillis(Number(_datePush)).toFormat('dd.MM.yyyy')} требуется подтверждение`, "put_investring");
-    } catch(e) {}
+        await h.alertDeleteOfUserOnbot(`${_User.first_name} вы успешно проинвестировали в проект\n ${_Project._id}\n "${_Project.data.name}"\n на сумму ${data.money} руб.\n по договору от ${DateTime.fromMillis(Number(_datePush)).toFormat('dd.MM.yyyy')}\n Ожидайте подтверждения бизнесом получения денег. Так как сумма идет банковским платежом, поступление на расчетный счет бизнеса может занять до 3х банковских дней`, _User.user);
+        await h.full_alert_user(_Project.user, `Поступила оплата в проекте номер ${_Project._id} "${_Project.data.name}" на сумму ${data.money} руб. по договору от ${DateTime.fromMillis(Number(_datePush)).toFormat('dd.MM.yyyy')} требуется подтверждение`, "put_investring");
+    } catch(e) {
+        console.log(e);
+    }
 
     callback();
 }
