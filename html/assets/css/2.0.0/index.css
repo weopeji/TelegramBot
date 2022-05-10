@@ -39,9 +39,7 @@
 }
 
 .preloader {
-  background-color: transparent;
-  background-image: var(--body-background-url);
-  background-size: cover;
+  background-color: #B296FB;
 }
 
 .index_page_body_header_user_logotype {
@@ -841,7 +839,6 @@
 img.preloader_row_img {
   animation: 1s linear 0s normal none infinite running rot;
   -webkit-animation: 1s linear 0s normal none infinite running rot;
-  width: 100px;
 }
 
 @keyframes preloader_row_img {
