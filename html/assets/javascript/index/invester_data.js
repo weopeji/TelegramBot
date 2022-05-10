@@ -610,6 +610,16 @@
 
         async render_next(DT) 
         {
+            var backBlock = $(`
+                <div class="version2_invester_data_backBlock">
+                    <div class="version2_invester_data_backBlock_circule">
+                        <i class="fal fa-angle-left"></i>
+                    </div>
+                </div>
+            `);
+
+            $('.creating_page').append(backBlock);
+
             var render_nextfuns = 
             {
                 "UR": function() 
