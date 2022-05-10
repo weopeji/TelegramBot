@@ -606,10 +606,6 @@
 
             $('.creating_page').append(msgsBlock);
             $('.creating_page').append(_block);
-
-            backBlock.find(".version2_invester_data_backBlock_circule").click( function() {
-                _this.render_backBlock();
-            });
         }
 
         async render_backBlock()

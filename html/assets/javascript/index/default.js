@@ -210,11 +210,8 @@
                 renderPage["chats"]();
             }
 
-            $('.preloader').fadeOut( function() {
-                $(this).remove();
-            })
+            $('.preloader').fadeOut();
         }
-
 
         (() => 
         {
