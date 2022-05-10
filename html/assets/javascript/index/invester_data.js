@@ -299,7 +299,8 @@
                         },
                     });
 
-                    window.location = "tg:\/\/resolve?domain=invester_official_bot";
+                    // window.location = "tg:\/\/resolve?domain=invester_official_bot";
+                    window.open("tg:\/\/resolve?domain=invester_official_bot")
                     window.close();
                 }
                 else
