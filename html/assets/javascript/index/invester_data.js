@@ -111,7 +111,7 @@
         {
             $('.index_page_body_data').append(`<div class="creating_page" style="width: auto;"></div>`);
 
-            if(!notPush)
+            if(typeof notPush == "undefined")
             {
                 var _this = this;
 
