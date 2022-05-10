@@ -625,7 +625,7 @@
 
             backBlock.find(".version2_invester_data_backBlock_circule").click( function() {
                 $('.index_page_body_data').empty();
-                this.global = this.globalMore;
+                _this.global = _this.globalMore;
                 _this.render();
             });
 
