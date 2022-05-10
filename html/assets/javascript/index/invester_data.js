@@ -264,6 +264,8 @@
             {
                 if(typeof _this.project.notFullpay != "undefined" && Number(_this.project.notFullpay) == 0)
                 {
+                    $('.preloader').fadeIn();
+
                     await callApi({
                         methodName: "setInvesterDataProjectForInvesterPage",
                         data: {
@@ -297,14 +299,7 @@
                         },
                     });
 
-                    SoloAlert.alert({
-                        title:"Успешно",
-                        body:"",
-                        icon: "success"
-                    }).then(() => {
-                        var protoUrl    = "tg:\/\/resolve?domain=invester_official_bot";
-                        window.location = protoUrl;
-                    });
+                    window.location = "tg:\/\/resolve?domain=invester_official_bot";
                 }
                 else
                 {
