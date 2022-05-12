@@ -1513,7 +1513,7 @@
                     </div>
                 `);
 
-                this.global_block.append(templateText); 
+                this.global_block.append(menuBlock); 
             }
             else
             {
