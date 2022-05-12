@@ -901,7 +901,7 @@ img.preloader_row_img {
 
 .version2_settings_notFullPay_settings_header_buttons {
   position: relative;
-  width: calc( 33% - 20px);
+  width: calc( 33% - 50px);
   padding: 10px 20px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -929,7 +929,7 @@ img.preloader_row_img {
 
 .version2_index_page_settings .index_page_menu {
   width: 300px;
-  height: calc(100% - 50px);
+  height: calc(100% - 30px);
   position: fixed;
   display: -webkit-box;
   display: -ms-flexbox;
