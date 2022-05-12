@@ -908,6 +908,16 @@ img.preloader_row_img {
   margin-top: 40px;
 }
 
+.version2_index_page_settings .index_page_body_data {
+  padding-left: 0;
+}
+
+.version2_index_page_settings .index_page_menu {
+  width: 150px;
+  height: 100%;
+  position: fixed;
+}
+
 @media (max-width: 1350px) {
   .index_page_menu {
     display: none;
