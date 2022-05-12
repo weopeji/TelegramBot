@@ -1497,7 +1497,7 @@
                 var menuBlock = $(`
                     <div class="version2_settings_notFullPay_settings">
                         <div class="version2_settings_notFullPay_settings_header">
-                            <div class="version2_settings_notFullPay_settings_header_buttons">
+                            <div class="version2_settings_notFullPay_settings_header_buttons selected">
                                 <div class="version2_default_bkg row_default"></div>
                                 <span>Инвестиции</span>
                             </div>

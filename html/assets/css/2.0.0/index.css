@@ -914,6 +914,11 @@ img.preloader_row_img {
           align-items: center;
 }
 
+.version2_settings_notFullPay_settings_header_buttons.selected span {
+  position: relative;
+  z-index: 1;
+}
+
 .version2_settings_notFullPay_settings {
   margin-top: 40px;
 }
@@ -924,7 +929,7 @@ img.preloader_row_img {
 
 .version2_index_page_settings .index_page_menu {
   width: 300px;
-  height: calc(100% - 30px);
+  height: calc(100% - 50px);
   position: fixed;
   display: -webkit-box;
   display: -ms-flexbox;
