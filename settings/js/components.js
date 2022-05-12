@@ -1518,6 +1518,8 @@
                 `);
 
                 menuBlock.find('.version2_settings_notFullPay_settings_header_buttons').click( function() {
+                    $('.version2_settings_notFullPay_settings_header_buttons').removeClass('selected');
+                    $(this).addClass('selected');
                     $('.settingBlockDropMenuMore').remove();
                     functionByMenuBLock[$(this).attr('data')]();
                 });
