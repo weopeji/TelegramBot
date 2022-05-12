@@ -890,6 +890,24 @@ img.preloader_row_img {
   z-index: 2;
 }
 
+.version2_settings_notFullPay_settings_header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.version2_settings_notFullPay_settings_header_buttons {
+  position: relative;
+  width: calc( 33% - 20px);
+}
+
+.version2_settings_notFullPay_settings {
+  margin-top: 40px;
+}
+
 @media (max-width: 1350px) {
   .index_page_menu {
     display: none;
