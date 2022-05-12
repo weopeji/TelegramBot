@@ -1624,28 +1624,6 @@
 
         async renderMenuByBlock(Project_data)
         {
-            if(typeof Project_data.project.notFullpay == "undefined")
-            {
-                
-            }
-            else
-            {
-                var dropMenuBlock = $(`
-                    <div class="version2_myProjects_dropMenuInvDocs">
-                        <div class="version2_myProjects_dropMenuInvDocs_button selected">
-                            <div class="version2_default_bkg row_default"></div>
-                            <span>Инвестиции</span>
-                        </div>
-                        <div class="version2_myProjects_dropMenuInvDocs_button">
-                            <div class="version2_default_bkg row_default"></div>
-                            <span>Лист ожидания</span>
-                        </div>
-                    </div>
-                `);
-
-                $('.index_page_body_data').append(dropMenuBlock); 
-            }
-
             var settingBlock = $(`
                 <div class="settingBlock">
                     <div class="version2_settingBlock_header">
