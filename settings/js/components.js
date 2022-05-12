@@ -1491,109 +1491,136 @@
 
             this.global_block.append(_block);   
 
-            var templateText = $(`
-                <div class="settingBlock">
-                    <div class="settingBlock_header">
-                        <p>Подтвержденные инвестиции в проект</p>
-                        <div class="settingBlock_header_line">
-                            <span>Инвестор</span>
-                            <span>Сумма Инвестиции</span>
-                            <span>Чек</span>
-                            <span>Статус оплаты</span>
-                            <span>Подтверждение</span>
-                            <span>Чек</span>
-                        </div>
-                    </div>
-                    <div class="settingBlock_body">
-                       
-                    </div>
-                </div>
-            `);
 
-            templateText.css('margin-top', '20px');
-
-            for(var _Inv of activeData.investers.invs)
+            if(typeof _project.notFullpay != "undefined")
             {
-                var zadoljenost         = "Имеется";
-                var statusOplaty        = "Не оплачено";
-                var podtvergdenie       = "Не подтвержденно";
-                var check               = null;
-                var textCheack          = 'Отсутствует';
-
-                if(_Inv.commission)
-                {
-                    statusOplaty = "Оплачено";
-                    if(_Inv.commission.status == "accept") { podtvergdenie = "Отсутствует"; podtvergdenie = "Подтверждено"};
-                    if(_Inv.commission.recipient) { textCheack = "Открыть"; check = _Inv.commission.recipient };
-                }
-
-                var _block = $(`
-                    <div class="settingBlock_body_line">
-                        <span>${_Inv.inv.invester}</span>
-                        <span>${_Inv.inv.data.pay} руб</span>
-                        <span><a target="_blank" href="https://invester-relocation.site/projects/${_Inv.inv.projectId}/${_Inv.inv.data.document}">Открыть</a></span>
-                        <span>${statusOplaty}</span>
-                        <span>${podtvergdenie}</span>
-                        <span><a target="_blank" href="https://invester-relocation.site/projects/${_Inv.inv.projectId}/${check}">${textCheack}</a></span>
+                var menuBlock = $(`
+                    <div class="version2_settings_notFullPay_settings">
+                        <div class="version2_settings_notFullPay_settings_header">
+                            <div class="version2_settings_notFullPay_settings_header_buttons">
+                                <div class="version2_default_bkg row_default"></div>
+                                <span>Инвестиции</span>
+                            </div>
+                            <div class="version2_settings_notFullPay_settings_header_buttons">
+                                <div class="version2_default_bkg row_default"></div>
+                                <span>Выше 5 млн рублей</span>
+                            </div>
+                            <div class="version2_settings_notFullPay_settings_header_buttons">
+                                <div class="version2_default_bkg row_default"></div>
+                                <span>Подтвержденные</span>
+                            </div>
+                        </div>
                     </div>
                 `);
 
-                templateText.find('.settingBlock_body').append(_block);
+                this.global_block.append(templateText); 
             }
-
-            this.global_block.append(templateText); 
-
-            var templateText = $(`
-                <div class="settingBlock">
-                    <div class="settingBlock_header">
-                        <p>Поступления</p>
-                        <div class="settingBlock_header_line">
-                            <span>Инвестор</span>
-                            <span>Сумма Инвестиции</span>
-                            <span>Чек</span>
-                            <span>Статус оплаты</span>
-                            <span>Подтверждение</span>
-                            <span>Чек</span>
-                        </div>
-                    </div>
-                    <div class="settingBlock_body">
-                       
-                    </div>
-                </div>
-            `);
-
-            templateText.css('margin-top', '20px');
-
-            for(var _Inv of activeData.investers.invsWait)
+            else
             {
-                var zadoljenost         = "Имеется";
-                var statusOplaty        = "Не оплачено";
-                var podtvergdenie       = "Не подтвержденно";
-                var check               = null;
-                var textCheack          = 'Отсутствует';
-
-                if(_Inv.commission)
-                {
-                    statusOplaty = "Оплачено";
-                    if(_Inv.commission.status == "accept") { podtvergdenie = "Отсутствует"; podtvergdenie = "Подтверждено"};
-                    if(_Inv.commission.recipient) { textCheack = "Открыть"; check = _Inv.commission.recipient };
-                }
-
-                var _block = $(`
-                    <div class="settingBlock_body_line">
-                        <span>${_Inv.inv.invester}</span>
-                        <span>${_Inv.inv.data.pay} руб</span>
-                        <span><a target="_blank" href="https://invester-relocation.site/projects/${_Inv.inv.projectId}/${_Inv.inv.data.document}">Открыть</a></span>
-                        <span>${statusOplaty}</span>
-                        <span>${podtvergdenie}</span>
-                        <span><a target="_blank" href="https://invester-relocation.site/projects/${_Inv.inv.projectId}/${check}">${textCheack}</a></span>
+                var templateText = $(`
+                    <div class="settingBlock">
+                        <div class="settingBlock_header">
+                            <p>Подтвержденные инвестиции в проект</p>
+                            <div class="settingBlock_header_line">
+                                <span>Инвестор</span>
+                                <span>Сумма Инвестиции</span>
+                                <span>Чек</span>
+                                <span>Статус оплаты</span>
+                                <span>Подтверждение</span>
+                                <span>Чек</span>
+                            </div>
+                        </div>
+                        <div class="settingBlock_body">
+                        
+                        </div>
                     </div>
                 `);
 
-                templateText.find('.settingBlock_body').append(_block);
-            }
+                templateText.css('margin-top', '20px');
 
-            this.global_block.append(templateText); 
+                for(var _Inv of activeData.investers.invs)
+                {
+                    var zadoljenost         = "Имеется";
+                    var statusOplaty        = "Не оплачено";
+                    var podtvergdenie       = "Не подтвержденно";
+                    var check               = null;
+                    var textCheack          = 'Отсутствует';
+
+                    if(_Inv.commission)
+                    {
+                        statusOplaty = "Оплачено";
+                        if(_Inv.commission.status == "accept") { podtvergdenie = "Отсутствует"; podtvergdenie = "Подтверждено"};
+                        if(_Inv.commission.recipient) { textCheack = "Открыть"; check = _Inv.commission.recipient };
+                    }
+
+                    var _block = $(`
+                        <div class="settingBlock_body_line">
+                            <span>${_Inv.inv.invester}</span>
+                            <span>${_Inv.inv.data.pay} руб</span>
+                            <span><a target="_blank" href="https://invester-relocation.site/projects/${_Inv.inv.projectId}/${_Inv.inv.data.document}">Открыть</a></span>
+                            <span>${statusOplaty}</span>
+                            <span>${podtvergdenie}</span>
+                            <span><a target="_blank" href="https://invester-relocation.site/projects/${_Inv.inv.projectId}/${check}">${textCheack}</a></span>
+                        </div>
+                    `);
+
+                    templateText.find('.settingBlock_body').append(_block);
+                }
+
+                this.global_block.append(templateText); 
+
+                var templateText = $(`
+                    <div class="settingBlock">
+                        <div class="settingBlock_header">
+                            <p>Поступления</p>
+                            <div class="settingBlock_header_line">
+                                <span>Инвестор</span>
+                                <span>Сумма Инвестиции</span>
+                                <span>Чек</span>
+                                <span>Статус оплаты</span>
+                                <span>Подтверждение</span>
+                                <span>Чек</span>
+                            </div>
+                        </div>
+                        <div class="settingBlock_body">
+                        
+                        </div>
+                    </div>
+                `);
+
+                templateText.css('margin-top', '20px');
+
+                for(var _Inv of activeData.investers.invsWait)
+                {
+                    var zadoljenost         = "Имеется";
+                    var statusOplaty        = "Не оплачено";
+                    var podtvergdenie       = "Не подтвержденно";
+                    var check               = null;
+                    var textCheack          = 'Отсутствует';
+
+                    if(_Inv.commission)
+                    {
+                        statusOplaty = "Оплачено";
+                        if(_Inv.commission.status == "accept") { podtvergdenie = "Отсутствует"; podtvergdenie = "Подтверждено"};
+                        if(_Inv.commission.recipient) { textCheack = "Открыть"; check = _Inv.commission.recipient };
+                    }
+
+                    var _block = $(`
+                        <div class="settingBlock_body_line">
+                            <span>${_Inv.inv.invester}</span>
+                            <span>${_Inv.inv.data.pay} руб</span>
+                            <span><a target="_blank" href="https://invester-relocation.site/projects/${_Inv.inv.projectId}/${_Inv.inv.data.document}">Открыть</a></span>
+                            <span>${statusOplaty}</span>
+                            <span>${podtvergdenie}</span>
+                            <span><a target="_blank" href="https://invester-relocation.site/projects/${_Inv.inv.projectId}/${check}">${textCheack}</a></span>
+                        </div>
+                    `);
+
+                    templateText.find('.settingBlock_body').append(_block);
+                }
+
+                this.global_block.append(templateText); 
+            };            
         }
 
         async render()
