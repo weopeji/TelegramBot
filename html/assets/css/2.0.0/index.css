@@ -902,6 +902,16 @@ img.preloader_row_img {
 .version2_settings_notFullPay_settings_header_buttons {
   position: relative;
   width: calc( 33% - 20px);
+  padding: 10px 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .version2_settings_notFullPay_settings {
@@ -914,7 +924,7 @@ img.preloader_row_img {
 
 .version2_index_page_settings .index_page_menu {
   width: 300px;
-  height: 100%;
+  height: calc(100% - 30px);
   position: fixed;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -930,6 +940,9 @@ img.preloader_row_img {
 
 .version2_index_page_settings .index_page_menu_block {
   width: 120px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
 @media (max-width: 1350px) {
