@@ -1497,21 +1497,30 @@
                 var menuBlock = $(`
                     <div class="version2_settings_notFullPay_settings">
                         <div class="version2_settings_notFullPay_settings_header">
-                            <div class="version2_settings_notFullPay_settings_header_buttons selected">
+                            <div class="version2_settings_notFullPay_settings_header_buttons selected" data="default">
                                 <div class="version2_default_bkg row_default"></div>
                                 <span>Инвестиции</span>
                             </div>
-                            <div class="version2_settings_notFullPay_settings_header_buttons">
+                            <div class="version2_settings_notFullPay_settings_header_buttons" data="five">
                                 <div class="version2_default_bkg row_default"></div>
                                 <span>Выше 5 млн рублей</span>
                             </div>
-                            <div class="version2_settings_notFullPay_settings_header_buttons">
+                            <div class="version2_settings_notFullPay_settings_header_buttons" data="wait">
+                                <div class="version2_default_bkg row_default"></div>
+                                <span>Ожидают подтверждения</span>
+                            </div>
+                            <div class="version2_settings_notFullPay_settings_header_buttons" data="accept">
                                 <div class="version2_default_bkg row_default"></div>
                                 <span>Подтвержденные</span>
                             </div>
                         </div>
                     </div>
                 `);
+
+                menuBlock.find('.version2_settings_notFullPay_settings_header_buttons').click( function() {
+                    $('.settingBlockDropMenuMore').remove();
+                    functionByMenuBLock[$(this).attr('data')]();
+                });
 
                 this.global_block.append(menuBlock); 
 
@@ -1555,6 +1564,99 @@
                         {
                             $('.global_block').append(settingBlock);
                         }
+                    },
+                    "five": function() 
+                    {
+                        var settingBlock = $(`
+                            <div class="settingBlockDropMenuMore">
+                                <div class="settingBlockDropMenuMoreBody">
+                                    <div class="settingBlock">
+                                        <div class="version2_settingBlock_header">
+                                            <p>Доступные проекты</p>
+                                        </div>
+                                        <div class="version2_default_bkg row_default"></div>
+                                        <div class="settingBlock_header">
+                                            <div class="settingBlock_header_line">
+                                                <span>#</span>
+                                                <span>Номер проекта</span>
+                                                <span>Название</span>
+                                                <span>Смотреть проект</span>
+                                            </div>
+                                        </div>
+                                        <div class="settingBlock_body">
+        
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="settingBlockDropMenuMoreMenu">
+
+                                </div>
+                            </div>
+                        `);
+
+                        $('.global_block').append(settingBlock);
+                    },
+                    "wait": function() 
+                    {
+                        var settingBlock = $(`
+                            <div class="settingBlockDropMenuMore">
+                                <div class="settingBlockDropMenuMoreBody">
+                                    <div class="settingBlock">
+                                        <div class="version2_settingBlock_header">
+                                            <p>Доступные проекты</p>
+                                        </div>
+                                        <div class="version2_default_bkg row_default"></div>
+                                        <div class="settingBlock_header">
+                                            <div class="settingBlock_header_line">
+                                                <span>#</span>
+                                                <span>Номер проекта</span>
+                                                <span>Название</span>
+                                                <span>Смотреть проект</span>
+                                            </div>
+                                        </div>
+                                        <div class="settingBlock_body">
+        
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="settingBlockDropMenuMoreMenu">
+
+                                </div>
+                            </div>
+                        `);
+
+                        $('.global_block').append(settingBlock);
+                    },
+                    "accept": function() 
+                    {
+                        var settingBlock = $(`
+                            <div class="settingBlockDropMenuMore">
+                                <div class="settingBlockDropMenuMoreBody">
+                                    <div class="settingBlock">
+                                        <div class="version2_settingBlock_header">
+                                            <p>Доступные проекты</p>
+                                        </div>
+                                        <div class="version2_default_bkg row_default"></div>
+                                        <div class="settingBlock_header">
+                                            <div class="settingBlock_header_line">
+                                                <span>#</span>
+                                                <span>Номер проекта</span>
+                                                <span>Название</span>
+                                                <span>Смотреть проект</span>
+                                            </div>
+                                        </div>
+                                        <div class="settingBlock_body">
+        
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="settingBlockDropMenuMoreMenu">
+
+                                </div>
+                            </div>
+                        `);
+
+                        $('.global_block').append(settingBlock);
                     },
                 };
 

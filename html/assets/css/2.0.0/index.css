@@ -901,7 +901,7 @@ img.preloader_row_img {
 
 .version2_settings_notFullPay_settings_header_buttons {
   position: relative;
-  width: calc( 33% - 50px);
+  width: calc( 25% - 50px);
   padding: 10px 20px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -949,6 +949,10 @@ img.preloader_row_img {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
+}
+
+.settingBlockDropMenuMore {
+  margin-top: 68px;
 }
 
 @media (max-width: 1350px) {
