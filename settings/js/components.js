@@ -1516,6 +1516,7 @@
                 this.global_block.append(menuBlock); 
 
                 var cheackStaticPush    = false;
+                var _this               = this;
                 var functionByMenuBLock = 
                 {
                     "default": function() 
@@ -1548,7 +1549,7 @@
                         `);
 
                         if(!cheackStaticPush) {
-                            this.global_block.append(settingBlock); 
+                            _this.global_block.append(settingBlock); 
                             cheackStaticPush = true;
                         } else
                         {
