@@ -1514,6 +1514,51 @@
                 `);
 
                 this.global_block.append(menuBlock); 
+
+                var cheackStaticPush    = false;
+                var functionByMenuBLock = 
+                {
+                    "default": function() 
+                    {
+                        var settingBlock = $(`
+                            <div class="settingBlockDropMenuMore">
+                                <div class="settingBlockDropMenuMoreBody">
+                                    <div class="settingBlock">
+                                        <div class="version2_settingBlock_header">
+                                            <p>Доступные проекты</p>
+                                        </div>
+                                        <div class="version2_default_bkg row_default"></div>
+                                        <div class="settingBlock_header">
+                                            <div class="settingBlock_header_line">
+                                                <span>#</span>
+                                                <span>Номер проекта</span>
+                                                <span>Название</span>
+                                                <span>Смотреть проект</span>
+                                            </div>
+                                        </div>
+                                        <div class="settingBlock_body">
+        
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="settingBlockDropMenuMoreMenu">
+
+                                </div>
+                            </div>
+                        `);
+
+                        if(!cheackStaticPush) {
+                            this.global_block.append(settingBlock); 
+                            cheackStaticPush = true;
+                        } else
+                        {
+                            $('.global_block').append(settingBlock);
+                        }
+                    },
+                };
+
+                $('.settingBlockDropMenuMore').remove();
+                functionByMenuBLock["default"]();
             }
             else
             {
