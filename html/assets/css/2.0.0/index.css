@@ -913,9 +913,23 @@ img.preloader_row_img {
 }
 
 .version2_index_page_settings .index_page_menu {
-  width: 150px;
+  width: 300px;
   height: 100%;
   position: fixed;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.version2_index_page_settings .index_page_menu:hover .index_page_menu_block {
+  width: 300px;
+}
+
+.version2_index_page_settings .index_page_menu_block {
+  width: 120px;
 }
 
 @media (max-width: 1350px) {
