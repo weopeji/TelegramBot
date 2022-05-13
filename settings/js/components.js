@@ -1753,9 +1753,9 @@
 
                             var ActionArray = [];
 
-                            $('.settingBlock_accept_more').forEach((element) => {
-                                if($(this).find('input[type="checkbox"]').is(':checked')) {
-                                    ActionArray.push($(this).attr('data'));
+                            $('.settingBlock_accept_more').each((i, element) => {
+                                if($(element).find('input[type="checkbox"]').is(':checked')) {
+                                    ActionArray.push($(element).attr('data'));
                                 }
                             });
 
