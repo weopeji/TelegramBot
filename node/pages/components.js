@@ -241,9 +241,10 @@ async function version2_wait_projects_WaitNotFullInvs(socket, data, callback)
         var _InvsByWait     = await InvDoc.find({invester: _User.user, applicationRequest: true, status: "accept"});
         var _AllInvsByUser  = await InvDoc.find({invester: _User.user, status: "accept"});
         var ActionData      = [];
+        var i               = 0;
 
-        _InvsByWait.forEach((element) => {
-
+        for(var element of _InvsByWait)
+        {
             var ActionInit  = 0;
             var _Project    = await Project.findOne({_id: element.projectId});
 
@@ -258,7 +259,9 @@ async function version2_wait_projects_WaitNotFullInvs(socket, data, callback)
                 Project: _Project,
                 Inv: element,
             });
-        });
+
+            i++;
+        }
 
         callback(ActionData);
     } 
