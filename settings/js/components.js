@@ -876,6 +876,7 @@
                 {
                     var firstBlockMore = $(`
                         <div class="body_point">
+                            <div class="version2_default_bkg row_default"></div>
                             <div class="body_point_header">
                                 <span>Договор бизнеса с InvestER</span>
                             </div>
@@ -921,6 +922,7 @@
                     {
                         var firstBlockMore = $(`
                             <div class="body_point">
+                                <div class="version2_default_bkg row_default"></div>
                                 <div class="body_point_header">
                                     <span>Договор бизнеса с InvestER</span>
                                 </div>
@@ -970,6 +972,7 @@
                     {
                         var firstBlockMore = $(`
                             <div class="body_point">
+                                <div class="version2_default_bkg row_default"></div>
                                 <div class="body_point_header">
                                     <span>Договор бизнеса с InvestER</span>
                                 </div>
@@ -1049,6 +1052,7 @@
 
                 var firstBlockMore = $(`
                     <div class="body_point">
+                        <div class="version2_default_bkg row_default"></div>
                         <div class="body_point_header" data="type_project">
                             <span>Выберите тип проетка</span>
                         </div>
@@ -1105,6 +1109,7 @@
                 {
                     var firstBlockMore = $(`
                         <div class="body_point">
+                            <div class="version2_default_bkg row_default"></div>
                             <div class="body_point_header" data="type_project">
                                 <span>Действие</span>
                             </div>
