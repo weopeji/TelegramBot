@@ -1716,6 +1716,8 @@
                         var template_text = $(`
                             <div class="settingBlock_body_line">
                                 <span>${initNumber}</span>
+                                <span>${element.invester}</span>
+                                <span>${element.data.pay} ₽</span>
                             </div>
                         `);
 
