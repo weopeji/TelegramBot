@@ -1735,18 +1735,31 @@
 
                     ActionInvs.forEach((element, initNumber) => {
                         var template_text = $(`
-                            <div class="settingBlock_body_line" data="${element._id}">
+                            <div class="settingBlock_accept_more" data="${element._id}">
                                 <span>${initNumber}</span>
                                 <span>${element.invester}</span>
                                 <span>${element.data.pay} ₽</span>
                                 <span><input type="checkbox" class="version2_activ_projects_lineCheackBox"></span>
                                 <span><span class="version2ButtonGradient1 settingBlock_wait settingBlock_block settingBlock_accept">Подтвердить</span></span>
-                                <span><span class="version2ButtonGradient1 settingBlock_wait settingBlock_block settingBlock_accept_moreMenuButtonOpen">Посмотреть</span></span>
+                                <span><span class="version2ButtonGradient1 settingBlock_wait settingBlock_block settingBlock_accept_more">Посмотреть</span></span>
                             </div>
                         `);
 
-                        template_text.find('.settingBlock_accept_moreMenuButtonOpen').click( function() {
-                            window.open(`https://invester-relocation.site/?page=activ_projects&id=${$(this).attr('data')}`, "_blank")
+                        template_text.find('.settingBlock_accept_more').click( function() {
+                            window.open(`https://invester-relocation.site/?page=activ_projects&id=${$(this).parent().parent().attr('data')}`, "_blank")
+                        });
+
+                        template_text.find('.settingBlock_accept').click( function() {
+
+                            var ActionArray = [];
+
+                            $('.settingBlock_accept_more').forEach((element) => {
+                                if($(this).find('input[type="checkbox"]').is(':checked')) {
+                                    ActionArray.push($(this).attr('data'));
+                                }
+                            });
+
+                            console.log(ActionArray);
                         });
 
                         settingBlock.find(".settingBlock_body").append(template_text);
