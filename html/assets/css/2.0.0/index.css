@@ -996,6 +996,10 @@ img.preloader_row_img {
 
 .version2_put_file_creating_page .creating_page_start {
   position: relative;
+}
+
+.version2_put_file_creating_page .creating_page_start span {
+  position: relative;
   z-index: 2;
 }
 

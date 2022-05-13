@@ -59,9 +59,9 @@
 
                     var msgsBlock = $(`
                         <div class="creating_page_block"> 
-                            <div class="version2_default_bkg row_default"></div>
                             <input type="file" id="Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input">
                             <div class="creating_page_start" style="margin-bottom: 20px">
+                                <div class="version2_default_bkg row_default"></div>
                                 <span>
                                     Уважаемый Инвестор ${global.allData.User.first_name} прикреите чек за инвестицию по реквезитам</a>.<br><br>
                                     Банк-получатель: ${_project.data.bank} <br>
@@ -152,9 +152,9 @@
 
                     var msgsBlock = $(`
                         <div class="creating_page_block">
-                            <div class="version2_default_bkg row_default"></div>
                             <input type="file" id="Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input">
                             <div class="creating_page_start" style="margin-bottom: 20px">
+                                <div class="version2_default_bkg row_default"></div>
                                 <span>
                                     Уважаемый Инвестор ${global.allData.User.first_name} прикреите чек за инвестицию по реквезитам</a>.<br><br>
                                     Банк-получатель: ${_project.data.bank} <br>
