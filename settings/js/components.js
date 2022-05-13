@@ -1744,9 +1744,8 @@
                                     <div class="settingBlock_header">
                                         <div class="settingBlock_header_line">
                                             <span>#</span>
-                                            <span>Номер проекта</span>
-                                            <span>Название</span>
-                                            <span>Смотреть проект</span>
+                                            <span>id</span>
+                                            <span>сумма</span>
                                         </div>
                                     </div>
                                     <div class="settingBlock_body">
@@ -1759,6 +1758,26 @@
                             </div>
                         </div>
                     `);
+
+                    var ActionInvs = [];
+
+                    ActionData.invs.forEach((element, initNumber) => {
+                        if(Number(element.data.pay.toString().replace(/\s/g, '')) >= 5000000) {
+                            ActionInvs.push(element);
+                        };
+                    });
+
+                    ActionInvs.forEach((element, initNumber) => {
+                        var template_text = $(`
+                            <div class="settingBlock_body_line">
+                                <span>${initNumber}</span>
+                                <span>${element.invester}</span>
+                                <span>${element.data.pay} ₽</span>
+                            </div>
+                        `);
+
+                        settingBlock.find(".settingBlock_body").append(template_text);
+                    });
 
                     $('.global_block').append(settingBlock);
                 },
