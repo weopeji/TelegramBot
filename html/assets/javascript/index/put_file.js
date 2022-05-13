@@ -33,7 +33,13 @@
                 "justify-content": "center",
             });
 
-            $('.index_page_body_header_info span').html(`Прикрепить чек`);
+            $('.index_page_body_data').css({
+                "padding": 0,
+            });
+
+            $('.index_page_body_header_user_logotype').css({
+                "display": "none",
+            });
         }
 
         async render()
