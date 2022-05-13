@@ -83,7 +83,7 @@ var action_linker =
 
     "version2_activ_projects_business_setPay": version2_activ_projects_business_setPay,
     "version2_investerData_invdoc_notMoney": version2_investerData_invdoc_notMoney,
-
+    "version2_notFullPay_data": version2_notFullPay_data,
 
 
 
@@ -231,6 +231,22 @@ var action_linker =
     "getProjectForInvesterPageByIdInvDoc": getProjectForInvesterPageByIdInvDoc,
     "accept_confirmationData": accept_confirmationData,
 };
+
+async function version2_notFullPay_data(socket, data, callback)
+{
+    try {
+        var _Project    = await Project.findOne({_id: data});
+        var _InvDocs    = await InvDoc.find({projectId: _Project._id});
+
+        callback({
+            project: _Project,
+            invs: _InvDocs,
+        });
+    }
+    catch(e) {
+        callback("error");
+    };
+}
 
 async function version2_investerData_invdoc_notMoney(socket, data, callback)
 {
