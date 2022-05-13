@@ -728,19 +728,19 @@
 
                 if(typeof _data.project.notFullpay != "undefined")
                 {
-                    if(typeof _data.project.closeMoney == "undefined")
+                    if(Number(_data.project.notFullpay) == 0) 
                     {
-                        headerPaysBlock = $(`
-                            <div class="Attracted_headerInfoBlock_info_data_alert">
-                                <span>Ожидает полного сбора</span>
-                            </div>
-                        `);
-
-                        $('.headerPaysBlock').remove();
-                    }
-                    else
-                    {
-                        if(Number(_data.project.notFullpay) != 0)
+                        if(typeof _data.InvDoc.applicationRequest == "undefined")
+                        {
+                            headerPaysBlock = $(`
+                                <div class="Attracted_headerInfoBlock_info_data_alert">
+                                    <span>Ожидает полного сбора</span>
+                                </div>
+                            `);
+    
+                            $('.headerPaysBlock').remove();
+                        }
+                        else
                         {
                             if(typeof _data.InvDoc.data.pts_2 == "undefined")
                             {
@@ -776,39 +776,91 @@
                                 }
                             }
                         }
+                    }
+                    else
+                    {
+                        if(typeof _data.project.closeMoney == "undefined")
+                        {
+                            headerPaysBlock = $(`
+                                <div class="Attracted_headerInfoBlock_info_data_alert">
+                                    <span>Ожидает полного сбора</span>
+                                </div>
+                            `);
+    
+                            $('.headerPaysBlock').remove();
+                        }
                         else
                         {
-                            if(typeof _data.InvDoc.data.pts == "undefined")
+                            if(Number(_data.project.notFullpay) != 0)
                             {
-                                headerPaysBlock = $(`
-                                    <div class="Attracted_headerInfoBlock_info_data_alert">
-                                        <input type="file" id="Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input">
-                                        <div class="Attracted_headerInfoBlock_info_data_alert_buttom_cheack">
-                                            <span>Прикрепить чек</span>
-                                        </div>
-                                    </div>
-                                `);
-    
-                                headerPaysBlock.find('.Attracted_headerInfoBlock_info_data_alert_buttom_cheack').click( function() {
-                                    location.href = `https://invester-relocation.site/?page=put_file&action=investingNotFullNull&InvId=${_data.InvDoc._id}`;
-                                });
-    
-                                $('.headerPaysBlock').remove();
-                            }
-                            else
-                            {
-                                if(typeof _data.InvDoc.confirmationData == "undefined")
+                                if(typeof _data.InvDoc.data.pts_2 == "undefined")
                                 {
                                     headerPaysBlock = $(`
                                         <div class="Attracted_headerInfoBlock_info_data_alert">
                                             <input type="file" id="Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input">
                                             <div class="Attracted_headerInfoBlock_info_data_alert_buttom_cheack">
-                                                <span>Ожидает подтверждения бизнесом</span>
+                                                <span>Прикрепить чек</span>
                                             </div>
                                         </div>
                                     `);
-
+    
+                                    headerPaysBlock.find('.Attracted_headerInfoBlock_info_data_alert_buttom_cheack').click( function() {
+                                        location.href = `https://invester-relocation.site/?page=put_file&action=investingNotFull&InvId=${_data.InvDoc._id}`;
+                                    });
+    
                                     $('.headerPaysBlock').remove();
+                                }
+                                else
+                                {
+                                    if(typeof _data.InvDoc.confirmationData == "undefined")
+                                    {
+                                        headerPaysBlock = $(`
+                                            <div class="Attracted_headerInfoBlock_info_data_alert">
+                                                <input type="file" id="Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input">
+                                                <div class="Attracted_headerInfoBlock_info_data_alert_buttom_cheack">
+                                                    <span>Ожидает подтверждения бизнесом</span>
+                                                </div>
+                                            </div>
+                                        `);
+    
+                                        $('.headerPaysBlock').remove();
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                if(typeof _data.InvDoc.data.pts == "undefined")
+                                {
+                                    headerPaysBlock = $(`
+                                        <div class="Attracted_headerInfoBlock_info_data_alert">
+                                            <input type="file" id="Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input">
+                                            <div class="Attracted_headerInfoBlock_info_data_alert_buttom_cheack">
+                                                <span>Прикрепить чек</span>
+                                            </div>
+                                        </div>
+                                    `);
+        
+                                    headerPaysBlock.find('.Attracted_headerInfoBlock_info_data_alert_buttom_cheack').click( function() {
+                                        location.href = `https://invester-relocation.site/?page=put_file&action=investingNotFullNull&InvId=${_data.InvDoc._id}`;
+                                    });
+        
+                                    $('.headerPaysBlock').remove();
+                                }
+                                else
+                                {
+                                    if(typeof _data.InvDoc.confirmationData == "undefined")
+                                    {
+                                        headerPaysBlock = $(`
+                                            <div class="Attracted_headerInfoBlock_info_data_alert">
+                                                <input type="file" id="Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input">
+                                                <div class="Attracted_headerInfoBlock_info_data_alert_buttom_cheack">
+                                                    <span>Ожидает подтверждения бизнесом</span>
+                                                </div>
+                                            </div>
+                                        `);
+    
+                                        $('.headerPaysBlock').remove();
+                                    }
                                 }
                             }
                         }
