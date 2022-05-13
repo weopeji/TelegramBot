@@ -2732,7 +2732,10 @@
                 data: global.allData.User._id,
             });
 
-            console.log(_data);
+            var ActionWaitInvs = await callApi({
+                methodName: "version2_wait_projects_WaitNotFullInvs",
+                data: global.allData.User._id,
+            });
 
             var settingBlock = $(`
                 <div class="settingBlock">
@@ -2757,6 +2760,28 @@
             `);
 
             var i = 0;
+
+            for(var element of ActionWaitInvs) 
+            {
+                var template_text = $(`
+                    <div class="settingBlock_body_line" data-more="${element.Inv._id}">
+                        <span>${i + 1}</span>
+                        <span>${element.Project._id}</span>
+                        <span>${element.Project.data.name}</span>
+                        <span>${element.Project._id}/${element.ActionInit}</span>
+                        <span>${element.Inv.data.pay} ₽</span>
+                        <span>Ожидает действия</span>
+                    </div>
+                `);
+
+                template_text.click( function () {
+                    location.href = `/?page=activ_projects&id=${$(this).attr('data-more')}`;
+                });
+
+                settingBlock.find('.settingBlock_body').append(template_text);
+
+                i++;
+            }
 
             for(var element of _data.invester_data.waitInvs)
             {

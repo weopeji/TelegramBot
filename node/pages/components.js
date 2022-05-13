@@ -85,6 +85,7 @@ var action_linker =
     "version2_investerData_invdoc_notMoney": version2_investerData_invdoc_notMoney,
     "version2_notFullPay_data": version2_notFullPay_data,
     "version2_notFullPay_relocation_data": version2_notFullPay_relocation_data,
+    "version2_wait_projects_WaitNotFullInvs": version2_wait_projects_WaitNotFullInvs,
 
 
 
@@ -232,6 +233,39 @@ var action_linker =
     "getProjectForInvesterPageByIdInvDoc": getProjectForInvesterPageByIdInvDoc,
     "accept_confirmationData": accept_confirmationData,
 };
+
+async function version2_wait_projects_WaitNotFullInvs(socket, data, callback)
+{
+    try {
+        var _User           = await User.findOne({_id: data});
+        var _InvsByWait     = await InvDoc.find({invester: _User.user, applicationRequest: true, status: "accept"});
+        var _AllInvsByUser  = await InvDoc.find({invester: _User.user, status: "accept"});
+        var ActionData      = [];
+
+        _InvsByWait.forEach((element) => {
+
+            var ActionInit  = 0;
+            var _Project    = await Project.findOne({_id: element.projectId});
+
+            _AllInvsByUser.forEach((element2, i) => {
+                if(element2._id == element._id) {
+                    ActionInit = i + 1;
+                };
+            });
+
+            ActionData.push({
+                ActionInit: ActionInit,
+                Project: _Project,
+                Inv: element,
+            });
+        });
+
+        callback(ActionData);
+    } 
+    catch(e) {
+        callback("error");
+    }
+}
 
 async function version2_notFullPay_relocation_data(socket, data, callback)
 {
