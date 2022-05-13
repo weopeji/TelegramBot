@@ -1735,7 +1735,7 @@
 
                     ActionInvs.forEach((element, initNumber) => {
                         var template_text = $(`
-                            <div class="settingBlock_accept_more" data="${element._id}">
+                            <div class="settingBlock_body_line" data="${element._id}">
                                 <span>${initNumber}</span>
                                 <span>${element.invester}</span>
                                 <span>${element.data.pay} ₽</span>
