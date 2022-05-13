@@ -152,6 +152,7 @@
 
                     var msgsBlock = $(`
                         <div class="creating_page_block">
+                            <div class="version2_default_bkg row_default"></div>
                             <input type="file" id="Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input">
                             <div class="creating_page_start" style="margin-bottom: 20px">
                                 <span>
