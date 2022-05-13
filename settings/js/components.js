@@ -1825,7 +1825,7 @@
                                 <span>${element.data.pay} ₽</span>
                                 <span><input type="checkbox" class="version2_activ_projects_lineCheackBox"></span>
                                 <span><span class="version2ButtonGradient1 settingBlock_wait settingBlock_block settingBlock_accept">Подтвердить</span></span>
-                                <span><span class="version2ButtonGradient1 settingBlock_wait settingBlock_block settingBlock_accept">Посмотреть</span></span>
+                                <span><span class="version2ButtonGradient1 settingBlock_wait settingBlock_block settingBlock_accept_more">Посмотреть</span></span>
                             </div>
                         `);
 
@@ -1900,7 +1900,7 @@
                                 <span>${initNumber}</span>
                                 <span>${element.invester}</span>
                                 <span>${element.data.pay} ₽</span>
-                                <span><span class="version2ButtonGradient1 settingBlock_wait settingBlock_block settingBlock_accept">Посмотреть</span></span>
+                                <span><span class="version2ButtonGradient1 settingBlock_wait settingBlock_block settingBlock_accept_more">Посмотреть</span></span>
                             </div>
                         `);
 
