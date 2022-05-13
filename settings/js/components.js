@@ -1819,7 +1819,7 @@
 
                     ActionInvs.forEach((element, initNumber) => {
                         var template_text = $(`
-                            <div class="settingBlock_body_line">
+                            <div class="settingBlock_body_line" data="${element._id}">
                                 <span>${initNumber}</span>
                                 <span>${element.invester}</span>
                                 <span>${element.data.pay} ₽</span>
@@ -1828,6 +1828,29 @@
                                 <span><span class="version2ButtonGradient1 settingBlock_wait settingBlock_block settingBlock_accept">Посмотреть</span></span>
                             </div>
                         `);
+
+                        template_text.find('.settingBlock_accept_more').click( function() {
+                            window.open(`https://invester-relocation.site/?page=activ_projects&id=${$(this).parent().parent().attr('data')}`, "_blank")
+                        });
+
+                        template_text.find('.settingBlock_accept').click( async function() {
+
+                            var ActionArray = [];
+
+                            $('.settingBlock_body_line').each((i, element) => {
+                                if($(element).find('input[type="checkbox"]').is(':checked')) {
+                                    ActionArray.push($(element).attr('data'));
+                                }
+                            });
+
+                            await callApi({
+                                methodName: "version2_notFullPay_relocation_data",
+                                data: ActionArray,
+                            });
+
+                            alert("Успешно!");
+                            location.reload();
+                        });
 
                         settingBlock.find(".settingBlock_body").append(template_text);
                     });
@@ -1873,13 +1896,17 @@
 
                     ActionInvs.forEach((element, initNumber) => {
                         var template_text = $(`
-                            <div class="settingBlock_body_line">
+                            <div class="settingBlock_body_line" data="${element._id}">
                                 <span>${initNumber}</span>
                                 <span>${element.invester}</span>
                                 <span>${element.data.pay} ₽</span>
                                 <span><span class="version2ButtonGradient1 settingBlock_wait settingBlock_block settingBlock_accept">Посмотреть</span></span>
                             </div>
                         `);
+
+                        template_text.find('.settingBlock_accept_more').click( function() {
+                            window.open(`https://invester-relocation.site/?page=activ_projects&id=${$(this).parent().parent().attr('data')}`, "_blank")
+                        });
 
                         settingBlock.find(".settingBlock_body").append(template_text);
                     });
