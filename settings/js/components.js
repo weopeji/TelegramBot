@@ -1753,7 +1753,7 @@
 
                             var ActionArray = [];
 
-                            $('.settingBlock_accept_more').each((i, element) => {
+                            $('.settingBlock_body_line').each((i, element) => {
                                 if($(element).find('input[type="checkbox"]').is(':checked')) {
                                     ActionArray.push($(element).attr('data'));
                                 }
