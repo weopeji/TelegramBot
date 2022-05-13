@@ -58,7 +58,7 @@
                     });
 
                     var msgsBlock = $(`
-                        <div class="creating_page_block">
+                        <div class="creating_page_block"> 
                             <input type="file" id="Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input">
                             <div class="creating_page_start" style="margin-bottom: 20px">
                                 <span>
