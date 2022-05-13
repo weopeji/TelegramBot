@@ -1585,7 +1585,7 @@
 
             ActionInvs.forEach((element, i) => {
                 var template_text = $(`
-                    <div class="settingBlock_body_line">
+                    <div class="settingBlock_body_line" data_more="${element.inv._id}">
                         <span>${i + 1}</span>
                         <span>${element.inv.projectId}</span>
                         <span>${element.project.data.name}</span>
