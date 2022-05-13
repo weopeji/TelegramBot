@@ -1003,6 +1003,14 @@ img.preloader_row_img {
   z-index: 2;
 }
 
+.version2_put_file_creating_page .creating_page_input_div {
+  cursor: pointer;
+}
+
+.version2_put_file_creating_page .creating_page_input_div span {
+  text-align: center;
+}
+
 @media (max-width: 1350px) {
   .index_page_menu {
     display: none;

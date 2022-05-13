@@ -86,6 +86,7 @@ var action_linker =
     "version2_notFullPay_data": version2_notFullPay_data,
     "version2_notFullPay_relocation_data": version2_notFullPay_relocation_data,
     "version2_wait_projects_WaitNotFullInvs": version2_wait_projects_WaitNotFullInvs,
+    "version2_acceptPays_notFullPay_business": version2_acceptPays_notFullPay_business,
 
 
 
@@ -233,6 +234,39 @@ var action_linker =
     "getProjectForInvesterPageByIdInvDoc": getProjectForInvesterPageByIdInvDoc,
     "accept_confirmationData": accept_confirmationData,
 };
+
+async function version2_acceptPays_notFullPay_business(socket, data, callback)
+{
+    try {
+        var _User       = await User.findOne({_id: data});
+        var _Projects   = await Project.find({user: _User.user});
+        var AllInvs     = [];
+
+        for(var _Project of _Projects) 
+        {
+            var AllProjectInvs          = await InvDoc.find({projectId: _Project._id, applicationRequest: true});
+            var ActionAllProjectInvs    = [];
+
+            AllProjectInvs.forEach((element) => {
+                if(typeof element.data.pts_2 != "undefined") {
+                    ActionAllProjectInvs.push(element);
+                }
+            });
+
+            ActionAllProjectInvs.forEach((element) => {
+                AllInvs.push({
+                    project: _Project,
+                    inv: element,
+                });
+            });
+        }
+
+        callback(AllInvs);
+    }
+    catch(e) {
+        callback("error");
+    }
+}
 
 async function version2_wait_projects_WaitNotFullInvs(socket, data, callback)
 {

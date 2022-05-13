@@ -1555,6 +1555,11 @@
                 data: _id,
             });
 
+            var ActionInvs = await callApi({
+                methodName: "version2_acceptPays_notFullPay_business",
+                data: _id,
+            });
+
             var settingBlock = $(`
                 <div class="settingBlock">
                     <div class="version2_settingBlock_header">
@@ -1577,6 +1582,24 @@
                     </div>
                 </div>
             `);
+
+            ActionInvs.forEach((element, i) => {
+                var template_text = $(`
+                    <div class="settingBlock_body_line">
+                        <span>${i + 1}</span>
+                        <span>${element.inv.projectId}</span>
+                        <span>${element.project.data.name}</span>
+                        <span>${element.inv.data.pay.toString().ReplaceNumber()} руб</span>
+                        <span>${element.inv.invester}</span>
+                        <span>0</span>
+                        <span>
+                            <span class="settingBlock_wait settingBlock_block settingBlock_accept" data="${element.inv.invester}">Открыть</span>
+                        </span>
+                    </div>
+                `);
+
+                settingBlock.find('.settingBlock_body').append(template_text);
+            })
 
             _data.forEach(function(element, i) 
             {
