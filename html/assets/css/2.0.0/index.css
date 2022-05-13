@@ -956,6 +956,36 @@ img.preloader_row_img {
   margin-top: 68px;
 }
 
+.structCreator_new_block {
+  position: relative;
+  background-color: transparent;
+}
+
+.structCreator_new_block .structCreator_new_block_row {
+  position: relative;
+  z-index: 2;
+}
+
+.body_point {
+  background-color: transparent;
+  position: relative;
+}
+
+.body_point .body_point_header {
+  position: relative;
+  z-index: 2;
+}
+
+.body_point .body_point_line_block_more {
+  position: relative;
+  z-index: 2;
+}
+
+.body_point .body_point_line_block_more_registration_business {
+  position: relative;
+  z-index: 2;
+}
+
 @media (max-width: 1350px) {
   .index_page_menu {
     display: none;

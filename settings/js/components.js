@@ -1157,6 +1157,7 @@
 
                 var firstBlockMore = $(`
                     <div class="body_point">
+                        <div class="version2_default_bkg row_default"></div>
                         <div class="body_point_header" data="type_project">
                             <span>Сумма пересбора заявок</span>
                         </div>
@@ -1203,6 +1204,7 @@
 
             var firstBlockMore = $(`
                 <div class="body_point">
+                <div class="version2_default_bkg row_default"></div>
                     <div class="body_point_header">
                         <span>Редактирование выплат</span>
                     </div>
@@ -1372,6 +1374,7 @@
 
             var firstBlockMore = $(`
                 <div class="body_point">
+                    <div class="version2_default_bkg row_default"></div>
                     <div class="body_point_header">
                         <span>Редактирование Кратности</span>
                     </div>
@@ -1451,6 +1454,7 @@
             var _block = 
             $(`
                 <div class="structCreator_new_block"">
+                <div class="version2_default_bkg row_default"></div>
                     <div class="structCreator_new_block_row">
                         <span>Кто создал проект</span>
                         <a>
@@ -1475,6 +1479,7 @@
             var _block = 
             $(`
                 <div class="structCreator_new_block"">
+                    <div class="version2_default_bkg row_default"></div>
                     <div class="structCreator_new_block_row">
                         <span>Кто привлек проект</span>
                         <a>
