@@ -1749,7 +1749,7 @@
                             window.open(`https://invester-relocation.site/?page=activ_projects&id=${$(this).parent().parent().attr('data')}`, "_blank")
                         });
 
-                        template_text.find('.settingBlock_accept').click( function() {
+                        template_text.find('.settingBlock_accept').click( async function() {
 
                             var ActionArray = [];
 
