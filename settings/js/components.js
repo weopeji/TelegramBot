@@ -1728,7 +1728,7 @@
                                 <span>${initNumber}</span>
                                 <span>${element.invester}</span>
                                 <span>${element.data.pay} ₽</span>
-                                <span><input type="checkbox" class="version2_activ_projects_lineCheackBox" data-target="${i}"></span>
+                                <span><input type="checkbox" class="version2_activ_projects_lineCheackBox"></span>
                                 <span><span class="version2ButtonGradient1 settingBlock_wait settingBlock_block settingBlock_accept">Подтвердить</span></span>
                             </div>
                         `);
