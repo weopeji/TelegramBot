@@ -84,6 +84,7 @@ var action_linker =
     "version2_activ_projects_business_setPay": version2_activ_projects_business_setPay,
     "version2_investerData_invdoc_notMoney": version2_investerData_invdoc_notMoney,
     "version2_notFullPay_data": version2_notFullPay_data,
+    "version2_notFullPay_relocation_data": version2_notFullPay_relocation_data,
 
 
 
@@ -231,6 +232,17 @@ var action_linker =
     "getProjectForInvesterPageByIdInvDoc": getProjectForInvesterPageByIdInvDoc,
     "accept_confirmationData": accept_confirmationData,
 };
+
+async function version2_notFullPay_relocation_data(socket, data, callback)
+{
+    try {
+        for(var InvDocId of data) {
+            var _InvDoc = await InvDoc.findOneAndUpdate({_id: InvDocId}, {applicationRequest: true});
+        }
+    } catch(e) {};
+
+    callback();
+}
 
 async function version2_notFullPay_data(socket, data, callback)
 {

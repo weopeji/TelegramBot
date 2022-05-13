@@ -1759,7 +1759,13 @@
                                 }
                             });
 
-                            console.log(ActionArray);
+                            await callApi({
+                                methodName: "version2_notFullPay_relocation_data",
+                                data: ActionArray,
+                            });
+
+                            alert("Успешно!");
+                            location.reload();
                         });
 
                         settingBlock.find(".settingBlock_body").append(template_text);
