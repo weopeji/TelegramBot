@@ -1671,7 +1671,7 @@
                         </div>
                         <div class="version2_settings_notFullPay_settings_header_buttons" data="wait">
                             <div class="version2_default_bkg row_default"></div>
-                            <span>Ожидают подтверждения</span>
+                            <span>В работе</span>
                         </div>
                         <div class="version2_settings_notFullPay_settings_header_buttons" data="accept">
                             <div class="version2_default_bkg row_default"></div>
