@@ -1698,7 +1698,9 @@
                                         <div class="settingBlock_header_line">
                                             <span>#</span>
                                             <span>id</span>
-                                            <span>сумма</span>
+                                            <span>Сумма</span>
+                                            <span>Выбор</span>
+                                            <span>Действие</span>
                                         </div>
                                     </div>
                                     <div class="settingBlock_body">
@@ -1712,12 +1714,22 @@
                         </div>
                     `);
 
+                    var ActionInvs = [];
+
                     ActionData.invs.forEach((element, initNumber) => {
+                        if(typeof element.applicationRequest == "undefined") {
+                            ActionInvs.push(element);
+                        }
+                    });
+
+                    ActionInvs.forEach((element, initNumber) => {
                         var template_text = $(`
                             <div class="settingBlock_body_line">
                                 <span>${initNumber}</span>
                                 <span>${element.invester}</span>
                                 <span>${element.data.pay} ₽</span>
+                                <span><input type="checkbox" class="version2_activ_projects_lineCheackBox" data-target="${i}"></span>
+                                <span><span class="version2ButtonGradient1 settingBlock_wait settingBlock_block settingBlock_accept">Подтвердить</span></span>
                             </div>
                         `);
 
@@ -1762,7 +1774,7 @@
                     var ActionInvs = [];
 
                     ActionData.invs.forEach((element, initNumber) => {
-                        if(Number(element.data.pay.toString().replace(/\s/g, '')) >= 5000000) {
+                        if(Number(element.data.pay.toString().replace(/\s/g, '')) >= 5000000 && typeof element.applicationRequest == "undefined") {
                             ActionInvs.push(element);
                         };
                     });
