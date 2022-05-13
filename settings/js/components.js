@@ -1759,7 +1759,10 @@
                                         <div class="settingBlock_header_line">
                                             <span>#</span>
                                             <span>id</span>
-                                            <span>сумма</span>
+                                            <span>Сумма</span>
+                                            <span>Выбор</span>
+                                            <span>Действие</span>
+                                            <span>Перейти</span>
                                         </div>
                                     </div>
                                     <div class="settingBlock_body">
@@ -1787,6 +1790,9 @@
                                 <span>${initNumber}</span>
                                 <span>${element.invester}</span>
                                 <span>${element.data.pay} ₽</span>
+                                <span><input type="checkbox" class="version2_activ_projects_lineCheackBox"></span>
+                                <span><span class="version2ButtonGradient1 settingBlock_wait settingBlock_block settingBlock_accept">Подтвердить</span></span>
+                                <span><span class="version2ButtonGradient1 settingBlock_wait settingBlock_block settingBlock_accept">Посмотреть</span></span>
                             </div>
                         `);
 
