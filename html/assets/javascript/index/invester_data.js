@@ -574,26 +574,38 @@
                 $(this).val(format);
             });
 
-            var _this = this;
+            var _this               = this;
+            var errorMoneyCheack    = false;
+
+            if(typeof _this.project.notFullpay != "undefined")
+            {
+                if(Number(_this.project.notFullpay) == 0) {
+                    msgsBlock.find(".version2_invester_data_moneyFull").remove();
+                    errorMoneyCheack = true;
+                };
+            };
 
             _block.find('.creating_page_input_button span').click( function() 
             {
                 var money   = $('.creating_page_input input').val();
                 var _money  = money.toString().replace(/\s/g, '');
 
-                if(typeof _this.project.requestInvestingMoney != "undefined")
-                {
-                    if(Number(fullMoneyCheack) < Number(fullMoneysInvs) + Number(_money))
+                if(!errorMoneyCheack) {
+                    if(typeof _this.project.requestInvestingMoney != "undefined")
                     {
-                        alert(`Сумма превышает на ${Number(Number(fullMoneysInvs) + Number(_money) - Number(fullMoneyCheack)).toString().ReplaceNumber()}`);
-                        return;
-                    }
-                };
+                        if(Number(fullMoneyCheack) < Number(fullMoneysInvs) + Number(_money))
+                        {
+                            alert(`Сумма превышает на ${Number(Number(fullMoneysInvs) + Number(_money) - Number(fullMoneyCheack)).toString().ReplaceNumber()}`);
+                            return;
+                        }
+                    };
+                }
 
                 if(Number(_money) < Number(_projectMoney))
                 {
                     alert('Сумма недостаточна!');
-                } else {
+                } 
+                else {
                     if(typeof _this.project.multiplicity != "undefined")
                     {
                         if(Number(_money) % _this.project.multiplicity == 0)
@@ -609,13 +621,6 @@
                     }
                 }
             });
-
-            if(typeof _this.projectnotFullpay != "undefined")
-            {
-                if(Number(_this.projectnotFullpay) == 0) {
-                    msgsBlock.find(".version2_invester_data_moneyFull").remove();
-                };
-            };
 
             $('.creating_page').append(msgsBlock);
             $('.creating_page').append(_block);
