@@ -1889,7 +1889,7 @@
                     var ActionInvs = [];
 
                     ActionData.invs.forEach((element, initNumber) => {
-                        if(typeof element.applicationRequest != "undefined") {
+                        if(typeof element.applicationRequest != "undefined" && element.applicationRequest) {
                             ActionInvs.push(element);
                         };
                     });
@@ -1926,9 +1926,9 @@
                                     <div class="settingBlock_header">
                                         <div class="settingBlock_header_line">
                                             <span>#</span>
-                                            <span>Номер проекта</span>
-                                            <span>Название</span>
-                                            <span>Смотреть проект</span>
+                                            <span>id</span>
+                                            <span>Сумма</span>
+                                            <span>Перейти</span>
                                         </div>
                                     </div>
                                     <div class="settingBlock_body">
@@ -1941,6 +1941,31 @@
                             </div>
                         </div>
                     `);
+
+                    var ActionInvs = [];
+
+                    ActionData.invs.forEach((element, initNumber) => {
+                        if(typeof element.applicationRequest != "undefined" && !element.applicationRequest) {
+                            ActionInvs.push(element);
+                        };
+                    });
+
+                    ActionInvs.forEach((element, initNumber) => {
+                        var template_text = $(`
+                            <div class="settingBlock_body_line" data="${element._id}">
+                                <span>${initNumber}</span>
+                                <span>${element.invester}</span>
+                                <span>${element.data.pay} ₽</span>
+                                <span><span class="version2ButtonGradient1 settingBlock_wait settingBlock_block settingBlock_accept_more">Посмотреть</span></span>
+                            </div>
+                        `);
+
+                        template_text.find('.settingBlock_accept_more').click( function() {
+                            window.open(`https://invester-relocation.site/?page=activ_projects&id=${$(this).parent().parent().attr('data')}`, "_blank")
+                        });
+
+                        settingBlock.find(".settingBlock_body").append(template_text);
+                    });
 
                     $('.global_block').append(settingBlock);
                 },
