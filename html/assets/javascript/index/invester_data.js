@@ -548,7 +548,7 @@
                 if(Number(_this.project.notFullpay) == 0) {
                     msgsBlock.find(".version2_invester_data_moneyFull").remove();
                     errorMoneyCheack = true;
-                    $('.creating_page_start span').append("Ваше место в очереди будет: " + _this.allInvsOfProject.length);
+                    msgsBlock.find('.creating_page_start span').append("Ваше место в очереди будет: " + _this.allInvsOfProject.length);
                 };
             };
 
