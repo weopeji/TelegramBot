@@ -276,40 +276,6 @@
                         },
                     });
 
-                    // await callApi({
-                    //     methodName: "setInvesterDataProjectForInvesterPage",
-                    //     data: {
-                    //         user:  _GET('user'),
-                    //         data: {
-                    //             inv: _this.inv,
-                    //             date: _this.date,
-                    //         },
-                    //     },
-                    // });
-
-                    // var InvIdGet = await callApi({
-                    //     methodName: "setInvesterDataProjectForInvesterPageGetIdNullMoney",
-                    //     data: {
-                    //         idUser: _GET('user'),
-                    //         money: _this.money,
-                    //         date: _this.date,
-                    //     },
-                    // });
-
-                    // await callApi({
-                    //     methodName: "endInvestingDataPush",
-                    //     data: {
-                    //         user: _GET('user'),
-                    //         project: _this.project._id,
-                    //         money: _this.money.toString().ReplaceNumber(),
-                    //         date: _this.date,
-                    //         url: _this.urlForDocument,
-                    //         invId: InvIdGet,
-                    //         accept: true,
-                    //     },
-                    // });
-
-                    // window.location = "tg:\/\/resolve?domain=invester_official_bot";
                     window.open("tg:\/\/resolve?domain=invester_official_bot",'_self').close()
                 }
                 else
@@ -582,6 +548,7 @@
                 if(Number(_this.project.notFullpay) == 0) {
                     msgsBlock.find(".version2_invester_data_moneyFull").remove();
                     errorMoneyCheack = true;
+                    $('.creating_page_start span').append("Ваше место в очереди будет: " + _this.allInvsOfProject.length);
                 };
             };
 
