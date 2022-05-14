@@ -2843,7 +2843,7 @@
                         <span>${i + 1}</span>
                         <span>${element.Project._id}</span>
                         <span>${element.Project.data.name}</span>
-                        <span>${element.Project._id}/${element.ActionInit}</span>
+                        <span>${element.Project._id}/${element.ActionInit} от ${DateFormatted(element.Inv.date.toString())}</span>
                         <span>${element.Inv.data.pay} ₽</span>
                         <span>Ожидает действия</span>
                     </div>
