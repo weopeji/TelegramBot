@@ -1107,104 +1107,104 @@
             {
                 if(typeof _project.notFullpay != "undefined")
                 {
-                    var firstBlockMore = $(`
-                        <div class="body_point">
-                            <div class="version2_default_bkg row_default"></div>
-                            <div class="body_point_header" data="type_project">
-                                <span>Действие</span>
-                            </div>
-                            <div class="body_point_line_block_more_registration_business">
-                                <st data="request">Запросить еще ${100 - Number(_project.notFullpay)}% выплаты досрочно</st>
-                            </div>
-                        </div>
-                    `);
-
-
-                    firstBlockMore.find('st[data="request"]').click( function() 
+                    if(Number(_project.notFullpay) != 0)
                     {
-                        SoloAlert.confirm({
-                            title: "Подтверждение",
-                            body: `Вы уверены, что хотите останосить инвестирования и запросить недостающую сумму?`,
-                            theme: "dark",
-                            useTransparency: true,
-                        }).then(async (value) => 
+                        var firstBlockMore = $(`
+                            <div class="body_point">
+                                <div class="version2_default_bkg row_default"></div>
+                                <div class="body_point_header" data="type_project">
+                                    <span>Действие</span>
+                                </div>
+                                <div class="body_point_line_block_more_registration_business">
+                                    <st data="request">Запросить еще ${100 - Number(_project.notFullpay)}% выплаты досрочно</st>
+                                </div>
+                            </div>
+                        `);
+
+
+                        firstBlockMore.find('st[data="request"]').click( function() 
                         {
-                            if(value.length != 0)
+                            SoloAlert.confirm({
+                                title: "Подтверждение",
+                                body: `Вы уверены, что хотите останосить инвестирования и запросить недостающую сумму?`,
+                                theme: "dark",
+                                useTransparency: true,
+                            }).then(async (value) => 
                             {
-                                await callApi({
-                                    methodName: 'requestLastMoneyInProject',
-                                    data: _GET('id'),
-                                });
-    
-                                SoloAlert.alert({
-                                    title:"Успешно",
-                                    body:"",
-                                    icon: "success"
-                                });
-                            }
-                        })
-                    });
+                                if(value.length != 0)
+                                {
+                                    await callApi({
+                                        methodName: 'requestLastMoneyInProject',
+                                        data: _GET('id'),
+                                    });
+        
+                                    SoloAlert.alert({
+                                        title:"Успешно",
+                                        body:"",
+                                        icon: "success"
+                                    });
+                                }
+                            })
+                        });
 
-                    firstBlockMore.css("padding-bottom", "20px");
+                        firstBlockMore.css("padding-bottom", "20px");
 
-                    this.global_block.append(firstBlockMore);
-                }
-            }
+                        this.global_block.append(firstBlockMore);
 
-            if(typeof _project.notFullpay != "undefined")
-            {
-                var requestInvestingMoney = 0;
+                        var requestInvestingMoney = 0;
 
-                if(typeof _project.requestInvestingMoney != "undefined")
-                {
-                    requestInvestingMoney = _project.requestInvestingMoney;
-                }
-
-                var firstBlockMore = $(`
-                    <div class="body_point">
-                        <div class="version2_default_bkg row_default"></div>
-                        <div class="body_point_header" data="type_project">
-                            <span>Сумма пересбора заявок</span>
-                        </div>
-                        <div class="body_point_line_block_more_registration_business">
-                            <st data="requestMoreMoney">Выбрана сумма: ${requestInvestingMoney.toString().ReplaceNumber()} р</st>
-                        </div>
-                    </div>
-                `);
-
-                firstBlockMore.find('st[data="requestMoreMoney"]').click( function() 
-                {
-                    SoloAlert.prompt({
-                        title: "Подтверждение",
-                        body: `Вы уверены, что хотите сменить тип проекта на "Инвестиция с предоплатой"? Если да, введите первичный процент инвестиции`,
-                        theme: "dark",
-                        type: "number",
-                    }).then(async (value) => 
-                    {
-                        if(value.length != 0)
+                        if(typeof _project.requestInvestingMoney != "undefined")
                         {
-                            await callApi({
-                                methodName: 'setNewTypeProjectNumberMore',
-                                data: {
-                                    id: _GET('id'),
-                                    data: value,
-                                },
-                            });
-
-                            SoloAlert.alert({
-                                title:"Успешно",
-                                body:"",
-                                icon: "success"
-                            });
-
-                            $('st[data="requestMoreMoney"]').html(`Выбрана сумма: ${value.toString().ReplaceNumber()} р`);
+                            requestInvestingMoney = _project.requestInvestingMoney;
                         }
-                    })
-                });
-
-                firstBlockMore.css("padding-bottom", "20px");
-
-                this.global_block.append(firstBlockMore);
+        
+                        var firstBlockMore = $(`
+                            <div class="body_point">
+                                <div class="version2_default_bkg row_default"></div>
+                                <div class="body_point_header" data="type_project">
+                                    <span>Сумма пересбора заявок</span>
+                                </div>
+                                <div class="body_point_line_block_more_registration_business">
+                                    <st data="requestMoreMoney">Выбрана сумма: ${requestInvestingMoney.toString().ReplaceNumber()} р</st>
+                                </div>
+                            </div>
+                        `);
+        
+                        firstBlockMore.find('st[data="requestMoreMoney"]').click( function() 
+                        {
+                            SoloAlert.prompt({
+                                title: "Подтверждение",
+                                body: `Вы уверены, что хотите сменить тип проекта на "Инвестиция с предоплатой"? Если да, введите первичный процент инвестиции`,
+                                theme: "dark",
+                                type: "number",
+                            }).then(async (value) => 
+                            {
+                                if(value.length != 0)
+                                {
+                                    await callApi({
+                                        methodName: 'setNewTypeProjectNumberMore',
+                                        data: {
+                                            id: _GET('id'),
+                                            data: value,
+                                        },
+                                    });
+        
+                                    SoloAlert.alert({
+                                        title:"Успешно",
+                                        body:"",
+                                        icon: "success"
+                                    });
+        
+                                    $('st[data="requestMoreMoney"]').html(`Выбрана сумма: ${value.toString().ReplaceNumber()} р`);
+                                }
+                            })
+                        });
+        
+                        firstBlockMore.css("padding-bottom", "20px");
+        
+                        this.global_block.append(firstBlockMore);
+                    }
+                }
             }
 
             var firstBlockMore = $(`
