@@ -2029,8 +2029,8 @@
             };
 
             $('.settingBlockDropMenuMore').remove();
-            functionByMenuBLock["default"]();
             $('.global_block').append(headerMenuBlock);
+            functionByMenuBLock["default"]();
         };
     };
 
