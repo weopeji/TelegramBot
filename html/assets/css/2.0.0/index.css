@@ -1015,6 +1015,34 @@ img.preloader_row_img {
   overflow: inherit;
 }
 
+.Attracted_headerInfoBlock {
+  position: relative;
+  width: calc(100% - 2px);
+}
+
+.Attracted_headerInfoBlock h1 {
+  font-weight: 400;
+  font-size: 22px;
+  margin-left: 28px;
+  width: calc(100% - 28px);
+  position: relative;
+  z-index: 2;
+}
+
+.Attracted_headerInfoBlock_block {
+  width: 70px;
+}
+
+.Attracted_headerInfoBlock_block_i {
+  margin: 0;
+  width: 50px;
+  height: 50px;
+}
+
+.Attracted_headerInfoBlock_block_i i {
+  font-size: 20px;
+}
+
 @media (max-width: 1350px) {
   .index_page_menu {
     display: none;
