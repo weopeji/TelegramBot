@@ -87,6 +87,7 @@ var action_linker =
     "version2_notFullPay_relocation_data": version2_notFullPay_relocation_data,
     "version2_wait_projects_WaitNotFullInvs": version2_wait_projects_WaitNotFullInvs,
     "version2_acceptPays_notFullPay_business": version2_acceptPays_notFullPay_business,
+    "version2_activ_projects_accept_notFullPayNull_inv": version2_activ_projects_accept_notFullPayNull_inv,
 
 
 
@@ -234,6 +235,16 @@ var action_linker =
     "getProjectForInvesterPageByIdInvDoc": getProjectForInvesterPageByIdInvDoc,
     "accept_confirmationData": accept_confirmationData,
 };
+
+async function version2_activ_projects_accept_notFullPayNull_inv(socket, data, callback)
+{
+    try {
+        await InvDoc.findOneAndUpdate({_id: data}, {applicationRequest: false});
+    } 
+    catch(e) {}
+
+    callback();
+}
 
 async function version2_acceptPays_notFullPay_business(socket, data, callback)
 {

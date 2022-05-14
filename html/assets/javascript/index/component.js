@@ -547,7 +547,7 @@
                                             if(value)
                                             {
                                                 await callApi({
-                                                    methodName: "accept_confirmationData",
+                                                    methodName: "version2_activ_projects_accept_notFullPayNull_inv",
                                                     data: _GET('id'),
                                                 });
 
