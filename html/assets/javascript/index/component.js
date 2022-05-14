@@ -1012,12 +1012,16 @@
                             </div>
                         </div>
                         <div class="info_active_block_left_buttons">
-                            <span class="show_block">Посмотреть чек об оплате</span>
                             <span class="show_document">Посмотреть договор</span>
+                            <span class="show_block">Посмотреть чек об оплате</span>
                         </div>
                     </div>
                 </div>
             `);
+
+            $('.show_block').click( function() {
+                window.open(`./projects/${_data.InvDoc.projectId}/${_data.InvDoc._id}_investment.${_data.InvDoc.data.pts}`, '_blank');
+            });
 
             if(typeof _data.project.notFullpay != "undefined")
             {
@@ -1026,7 +1030,13 @@
                     if(typeof _data.InvDoc.data.pts_2 == "undefined")
                     {
                         settingBlock.find('.show_block').remove();
-                    };
+                    }
+                    else
+                    {
+                        $('.show_block').click( function() {
+                            window.open(`./projects/${_data.InvDoc.projectId}/${_data.InvDoc._id}_investment.${_data.InvDoc.data.pts_2}`, '_blank');
+                        });
+                    }
                 }
                 else
                 {
@@ -1110,10 +1120,6 @@
 
             $('.info_active_block_massage_button').click(function() {
                 window.open(`./?page=chats&id=${_data.InvDoc._id}`, '_blank');
-            });
-
-            $('.show_block').click( function() {
-                window.open(`./projects/${_data.InvDoc.projectId}/${_data.InvDoc._id}_investment.${_data.InvDoc.data.pts}`, '_blank');
             });
 
             $('.show_document').click( async function() {
