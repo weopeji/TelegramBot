@@ -1658,6 +1658,7 @@
                 data: _GET('id'),
             });
 
+            var ActionFullMoney     = 0;
             var ActionMoney         = 0;
             var ActionFiveMoney     = 0;
             var ActionInWorkMoney   = 0;
@@ -1680,6 +1681,8 @@
                 if(typeof element.applicationRequest != "undefined" && !element.applicationRequest) {
                     ActionAcceptmoney = ActionAcceptmoney + Number(element.data.pay.toString().trim().RedactingNumber());
                 };
+
+                ActionFullMoney = ActionFullMoney + Number(element.data.pay.toString().trim().RedactingNumber());
             });
 
             var headerMenuBlock = $(`
@@ -1688,9 +1691,9 @@
                     <div class="version2_myProjects_header_row">
                         <div class="info_block_project">
                             <div class="info_block_project_row">
-                                <span>*</span>
-                                <span>Общая статистика</span>
-                                <span>*</span>
+                                <span>Общая сумма всех инвестиций</span>
+                                <span>-</span>
+                                <span>${ActionFullMoney.toString().ReplaceNumber()} руб.</span>
                             </div>
                         </div>
                         <div class="settingBlock" style="margin-bottom: 20px; margin-top: 0;">
