@@ -1043,6 +1043,25 @@ img.preloader_row_img {
   font-size: 20px;
 }
 
+.renderCloseBlockBusiness {
+  z-index: 999;
+}
+
+.renderCloseBlockBusiness_block {
+  background-color: transparent;
+  position: relative;
+}
+
+.renderCloseBlockBusiness_block h1 {
+  position: relative;
+  z-index: 2;
+}
+
+.renderCloseBlockBusiness_block .renderCloseBlockBusiness_block_text {
+  position: relative;
+  z-index: 2;
+}
+
 @media (max-width: 1350px) {
   .index_page_menu {
     display: none;

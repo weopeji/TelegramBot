@@ -1143,6 +1143,7 @@
                 <div class="renderCloseBlockBusiness">
                     <div class="renderCloseBlockBusiness_row">
                         <div class="renderCloseBlockBusiness_block">
+                            <div class="version2_default_bkg row_default"></div>
                             <h1>Выберите причину отказа</h1>
                             <div class="renderCloseBlockBusiness_block_text">
                                 <div class="renderCloseBlockBusiness_block_text_line" data="spam">
