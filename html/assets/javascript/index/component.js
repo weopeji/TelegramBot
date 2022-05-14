@@ -1584,6 +1584,23 @@
             `);
 
             ActionInvs.forEach((element, i) => {
+
+                var needMiliseconds = getTimeRemaining(element.inv.date_append.toString());
+                var timeText        = "";
+
+                if(needMiliseconds.hours >= 24)
+                {
+                    timeText = `${parseInt(Number(needMiliseconds.hours / 24))} дня и ${Number(needMiliseconds.hours % 24)} ч`;
+                }
+                else if(needMiliseconds.hours < 24 && needMiliseconds.hours >= 0)
+                {
+                    timeText = `${needMiliseconds.hours} ч`;
+                }
+                else
+                {
+                    timeText = `Просрочено`;
+                }
+
                 var template_text = $(`
                     <div class="settingBlock_body_line" data_more="${element.inv._id}">
                         <span>${i + 1}</span>
@@ -1591,7 +1608,7 @@
                         <span>${element.project.data.name}</span>
                         <span>${element.inv.data.pay.toString().ReplaceNumber()} руб</span>
                         <span>${element.inv.invester}</span>
-                        <span>0</span>
+                        <span>${timeText}</span>
                         <span>
                             <span class="settingBlock_wait settingBlock_block settingBlock_accept" data="${element.inv.invester}">Открыть</span>
                         </span>
