@@ -283,16 +283,20 @@ async function version2_wait_projects_WaitNotFullInvs(socket, data, callback)
             var _Project    = await Project.findOne({_id: element.projectId});
 
             _AllInvsByUser.forEach((element2, i) => {
-                if(element2._id == element._id && typeof element2.data.pts_2 == "undefined") {
+                if(element2._id == element._id) {
                     ActionInit = i + 1;
                 };
             });
+            //
 
-            ActionData.push({
-                ActionInit: ActionInit,
-                Project: _Project,
-                Inv: element,
-            });
+            if( typeof element.data.pts_2 == "undefined")
+            {
+                ActionData.push({
+                    ActionInit: ActionInit,
+                    Project: _Project,
+                    Inv: element,
+                });
+            }
 
             i++;
         }
