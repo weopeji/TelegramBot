@@ -557,6 +557,8 @@
   position: relative;
   z-index: 2;
   width: calc(100% - 2px);
+  padding: 0;
+  margin-right: 10px;
 }
 
 .Attracted_headerInfoBlock_block .version2_default_bkg {
