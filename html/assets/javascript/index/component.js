@@ -228,139 +228,129 @@
 
                 if(_data.project.data.date == "Бессрочно" || typeof _data.project.notFullpay != "undefined")
                 {
-                    var appendPayBlock = $(`
-                        <div class="appendPayBlock">
-                            <div class="appendPayBlock_line">
-                                <span>Сумма инвестиции</span>
-                                <input type="text">
-                            </div>
-                            <div class="appendPayBlock_line">
-                                <span>Чек</span>
-                                <input type="file">
-                                <button>Выбрать файл</button>
-                            </div>
-                            <div class="appendPayBlock_line">
-                                <span>Действие</span> 
-                                <button>Принять</button>
-                            </div>
-                        </div>
-                    `);
-
-                    if(_getCookie('payment_money'))
+                    if(Number(_data.project.notFullpay) != 0)
                     {
-                        appendPayBlock.find('input[type="text"]').val(_getCookie('payment_money').toString().ReplaceNumber());
-                    }
-
-                    appendPayBlock.find('input[type="text"]').on('keyup input', function() 
-                    {
-                        setCookie('payment_money', $(this).val().toString().replace(/\s/g, ''));
-                        var _val = $(this).val();
-                        _val = _val.replace(/[^\d;]/g, '')
-                        _val = _val.replace(/\s/g, '');
-                        var format = String(_val).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
-                        $(this).val(format);
-                    });
-
-                    if(_data.InvDoc.pays.length > 0)
-                    {
-                        if(_data.InvDoc.pays[_data.InvDoc.pays.length - 1].status == "wait_data")
-                        {
-                            var moreButtonBlock = $(`
-                                <div class="appendPayBlock_line_button">
-                                    <span>Посмотреть</span>
+                        var appendPayBlock = $(`
+                            <div class="appendPayBlock">
+                                <div class="appendPayBlock_line">
+                                    <span>Сумма инвестиции</span>
+                                    <input type="text">
                                 </div>
-                            `);
+                                <div class="appendPayBlock_line">
+                                    <span>Чек</span>
+                                    <input type="file">
+                                    <button>Выбрать файл</button>
+                                </div>
+                                <div class="appendPayBlock_line">
+                                    <span>Действие</span> 
+                                    <button>Принять</button>
+                                </div>
+                            </div>
+                        `);
 
-                            moreButtonBlock.click( function() {
-                                window.open(`/projects/${_data.InvDoc.projectId}/${_data.InvDoc.pays[_data.InvDoc.pays.length - 1].receipt}`, '_blank');
-                            });
-
-                            appendPayBlock.find('.appendPayBlock_line').eq(1).find('button').html("Заменить");
-                            appendPayBlock.find('.appendPayBlock_line').eq(1).append(moreButtonBlock);
-                        };
-                    };
-
-                    appendPayBlock.find('button').eq(0).css('margin-left', 0);
-                    appendPayBlock.find('button').eq(1).css('margin-left', 0);
-
-                    appendPayBlock.find('button').eq(0).click( function() {
-                        $(this).parent().parent().find('input[type="file"]').trigger('click');
-                    });
-
-                    appendPayBlock.find('button').eq(1).click( async function() 
-                    {
-                        var _payment    = $(this).parent().parent().find('input[type="text"]').val();
-
-                        if(_payment.length > 0)
+                        if(_getCookie('payment_money'))
                         {
-                            var reqData = await callApi({
-                                methodName: "business_addpayment_for_inv",
-                                data: {
-                                    id: _GET('id'),
-                                    data: {
-                                        payment: _payment.toString().replace(/\s/g, ''),
-                                    },
-                                },
-                            });
+                            appendPayBlock.find('input[type="text"]').val(_getCookie('payment_money').toString().ReplaceNumber());
+                        }
 
-                            if(reqData == "ok")
+                        appendPayBlock.find('input[type="text"]').on('keyup input', function() 
+                        {
+                            setCookie('payment_money', $(this).val().toString().replace(/\s/g, ''));
+                            var _val = $(this).val();
+                            _val = _val.replace(/[^\d;]/g, '')
+                            _val = _val.replace(/\s/g, '');
+                            var format = String(_val).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
+                            $(this).val(format);
+                        });
+
+                        if(_data.InvDoc.pays.length > 0)
+                        {
+                            if(_data.InvDoc.pays[_data.InvDoc.pays.length - 1].status == "wait_data")
                             {
-                                alert('Успешно!');
-                                delCookie('payment_money');
-                                location.reload();
-                            }
+                                var moreButtonBlock = $(`
+                                    <div class="appendPayBlock_line_button">
+                                        <span>Посмотреть</span>
+                                    </div>
+                                `);
+
+                                moreButtonBlock.click( function() {
+                                    window.open(`/projects/${_data.InvDoc.projectId}/${_data.InvDoc.pays[_data.InvDoc.pays.length - 1].receipt}`, '_blank');
+                                });
+
+                                appendPayBlock.find('.appendPayBlock_line').eq(1).find('button').html("Заменить");
+                                appendPayBlock.find('.appendPayBlock_line').eq(1).append(moreButtonBlock);
+                            };
+                        };
+
+                        appendPayBlock.find('button').eq(0).css('margin-left', 0);
+                        appendPayBlock.find('button').eq(1).css('margin-left', 0);
+
+                        appendPayBlock.find('button').eq(0).click( function() {
+                            $(this).parent().parent().find('input[type="file"]').trigger('click');
+                        });
+
+                        appendPayBlock.find('button').eq(1).click( async function() 
+                        {
+                            var _payment    = $(this).parent().parent().find('input[type="text"]').val();
+
+                            if(_payment.length > 0)
+                            {
+                                var reqData = await callApi({
+                                    methodName: "business_addpayment_for_inv",
+                                    data: {
+                                        id: _GET('id'),
+                                        data: {
+                                            payment: _payment.toString().replace(/\s/g, ''),
+                                        },
+                                    },
+                                });
+
+                                if(reqData == "ok")
+                                {
+                                    alert('Успешно!');
+                                    delCookie('payment_money');
+                                    location.reload();
+                                }
+                                else
+                                {
+                                    alert('Вы не добавили чек!');
+                                }
+                            } 
                             else
                             {
-                                alert('Вы не добавили чек!');
-                            }
-                        } 
-                        else
-                        {
-                            alert('Введите все данные!');
-                        };
-                    });
-
-                    appendPayBlock.find('input[type="file"]').change( async function() 
-                    {
-                        var _form               = new FormData();
-                        var _url                = `${getURL()}/file_chart.io/files`;
-
-                        _form.append('_Inv',    _GET('id'));
-                        _form.append('_pts',    $(this.files)[0].type);
-                        _form.append('files',   $(this.files)[0]);
-        
-                        axios.post(_url, _form, {
-                            headers: {
-                                'Content-Type': 'multipart/form-data'
-                            },
-                        }).then(data => 
-                        {
-                            if(data.data.status == "ok") {
-                                alert("Чек прикоеплен!");
-                                location.reload();
-                            }
+                                alert('Введите все данные!');
+                            };
                         });
-                    });
 
-                    if(typeof _data.project.notFullpay != "undefined")
-                    {
-                        if(typeof _data.project.closeMoney == "undefined")
+                        appendPayBlock.find('input[type="file"]').change( async function() 
                         {
-                            appendPayBlock = $(`
-                                <div class="Attracted_headerInfoBlock_info_data_alert">
-                                    <span>Ожидает полного сбора</span>
-                                </div>
-                            `);
+                            var _form               = new FormData();
+                            var _url                = `${getURL()}/file_chart.io/files`;
 
-                            $('.headerPaysBlock').remove();
-                        }
-                        else
+                            _form.append('_Inv',    _GET('id'));
+                            _form.append('_pts',    $(this.files)[0].type);
+                            _form.append('files',   $(this.files)[0]);
+            
+                            axios.post(_url, _form, {
+                                headers: {
+                                    'Content-Type': 'multipart/form-data'
+                                },
+                            }).then(data => 
+                            {
+                                if(data.data.status == "ok") {
+                                    alert("Чек прикоеплен!");
+                                    location.reload();
+                                }
+                            });
+                        });
+
+                        if(typeof _data.project.notFullpay != "undefined")
                         {
-                            if(typeof _data.InvDoc.data.pts == "undefined")
+                            if(typeof _data.project.closeMoney == "undefined")
                             {
                                 appendPayBlock = $(`
                                     <div class="Attracted_headerInfoBlock_info_data_alert">
-                                        <span>Ожидает чека от инвестора</span>
+                                        <span>Ожидает полного сбора</span>
                                     </div>
                                 `);
 
@@ -368,74 +358,19 @@
                             }
                             else
                             {
-                                if(_data.project.notFullpay == 0)
+                                if(typeof _data.InvDoc.data.pts == "undefined")
                                 {
-                                    if(typeof _data.InvDoc.confirmationData == "undefined")
-                                    {
-                                        appendPayBlock = $(`
-                                            <div class="Attracted_headerInfoBlock">
-                                                <div class="Attracted_headerInfoBlock_block accept_block_tap_more">
-                                                    <div class="Attracted_headerInfoBlock_block_i">
-                                                        <i class="fad fa-check"></i>
-                                                    </div>
-                                                    <div class="Attracted_headerInfoBlock_block_text">
-                                                        <p>Подтвердить</p>
-                                                    </div>
-                                                </div>
-                                                <div class="Attracted_headerInfoBlock_block remove_block_tap">
-                                                    <div class="Attracted_headerInfoBlock_block_i">
-                                                        <i class="fad fa-times"></i>
-                                                    </div>
-                                                    <div class="Attracted_headerInfoBlock_block_text Attracted_headerInfoBlock_block_text_moneys">
-                                                        <p>Отказать</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        `);
+                                    appendPayBlock = $(`
+                                        <div class="Attracted_headerInfoBlock_info_data_alert">
+                                            <span>Ожидает чека от инвестора</span>
+                                        </div>
+                                    `);
 
-                                        appendPayBlock.find('.accept_block_tap_more').click( function() {
-                                            SoloAlert.confirm({
-                                                title: "Подтверждение",
-                                                body: "Вы уверены, что хотите подтвердить оплату?",
-                                                theme: "dark",
-                                                html: "",
-                                                useTransparency: true,
-                                            }).then(async (value) => 
-                                            {
-                                                if(value)
-                                                {
-                                                    await callApi({
-                                                        methodName: "accept_confirmationData",
-                                                        data: _GET('id'),
-                                                    });
-
-                                                    SoloAlert.alert({
-                                                        title:"Успешно",
-                                                        body:"",
-                                                        icon: "success"
-                                                    }).then(() => {
-                                                        location.reload();
-                                                    });
-                                                }
-                                            })
-                                        })
-
-                                        $('.headerPaysBlock').remove();
-                                    }
+                                    $('.headerPaysBlock').remove();
                                 }
                                 else
                                 {
-                                    if(typeof _data.InvDoc.data.pts_2 == "undefined")
-                                    {
-                                        appendPayBlock = $(`
-                                            <div class="Attracted_headerInfoBlock_info_data_alert">
-                                                <span>Ожидает второго чека от инвестора</span>
-                                            </div>
-                                        `);
-
-                                        $('.headerPaysBlock').remove();
-                                    }
-                                    else
+                                    if(_data.project.notFullpay == 0)
                                     {
                                         if(typeof _data.InvDoc.confirmationData == "undefined")
                                         {
@@ -459,7 +394,7 @@
                                                     </div>
                                                 </div>
                                             `);
-    
+
                                             appendPayBlock.find('.accept_block_tap_more').click( function() {
                                                 SoloAlert.confirm({
                                                     title: "Подтверждение",
@@ -475,7 +410,7 @@
                                                             methodName: "accept_confirmationData",
                                                             data: _GET('id'),
                                                         });
-    
+
                                                         SoloAlert.alert({
                                                             title:"Успешно",
                                                             body:"",
@@ -486,13 +421,154 @@
                                                     }
                                                 })
                                             })
-    
+
                                             $('.headerPaysBlock').remove();
-                                        } 
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if(typeof _data.InvDoc.data.pts_2 == "undefined")
+                                        {
+                                            appendPayBlock = $(`
+                                                <div class="Attracted_headerInfoBlock_info_data_alert">
+                                                    <span>Ожидает второго чека от инвестора</span>
+                                                </div>
+                                            `);
+
+                                            $('.headerPaysBlock').remove();
+                                        }
+                                        else
+                                        {
+                                            if(typeof _data.InvDoc.confirmationData == "undefined")
+                                            {
+                                                appendPayBlock = $(`
+                                                    <div class="Attracted_headerInfoBlock">
+                                                        <div class="Attracted_headerInfoBlock_block accept_block_tap_more">
+                                                            <div class="Attracted_headerInfoBlock_block_i">
+                                                                <i class="fad fa-check"></i>
+                                                            </div>
+                                                            <div class="Attracted_headerInfoBlock_block_text">
+                                                                <p>Подтвердить</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="Attracted_headerInfoBlock_block remove_block_tap">
+                                                            <div class="Attracted_headerInfoBlock_block_i">
+                                                                <i class="fad fa-times"></i>
+                                                            </div>
+                                                            <div class="Attracted_headerInfoBlock_block_text Attracted_headerInfoBlock_block_text_moneys">
+                                                                <p>Отказать</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                `);
+        
+                                                appendPayBlock.find('.accept_block_tap_more').click( function() {
+                                                    SoloAlert.confirm({
+                                                        title: "Подтверждение",
+                                                        body: "Вы уверены, что хотите подтвердить оплату?",
+                                                        theme: "dark",
+                                                        html: "",
+                                                        useTransparency: true,
+                                                    }).then(async (value) => 
+                                                    {
+                                                        if(value)
+                                                        {
+                                                            await callApi({
+                                                                methodName: "accept_confirmationData",
+                                                                data: _GET('id'),
+                                                            });
+        
+                                                            SoloAlert.alert({
+                                                                title:"Успешно",
+                                                                body:"",
+                                                                icon: "success"
+                                                            }).then(() => {
+                                                                location.reload();
+                                                            });
+                                                        }
+                                                    })
+                                                })
+        
+                                                $('.headerPaysBlock').remove();
+                                            } 
+                                        }
                                     }
                                 }
                             }
-                        }
+                        };
+                    }
+                    else
+                    {
+                        // NoT Full Pay Null ===========================================================
+
+                        if(typeof _data.InvDoc.applicationRequest != "undefined")
+                        {
+                            if(_data.InvDoc.applicationRequest)
+                            {
+                                if(typeof _data.InvDoc.data.pts_2 == "undefined")
+                                {
+                                    appendPayBlock = $(`
+                                        <div class="Attracted_headerInfoBlock_info_data_alert">
+                                            <span>Ожидает второго чека от инвестора</span>
+                                        </div>
+                                    `);
+
+                                    $('.headerPaysBlock').remove();
+                                }
+                                else
+                                {
+                                    appendPayBlock = $(`
+                                        <div class="Attracted_headerInfoBlock">
+                                            <div class="Attracted_headerInfoBlock_block accept_block_tap_more">
+                                                <div class="Attracted_headerInfoBlock_block_i">
+                                                    <i class="fad fa-check"></i>
+                                                </div>
+                                                <div class="Attracted_headerInfoBlock_block_text">
+                                                    <p>Подтвердить</p>
+                                                </div>
+                                            </div>
+                                            <div class="Attracted_headerInfoBlock_block remove_block_tap">
+                                                <div class="Attracted_headerInfoBlock_block_i">
+                                                    <i class="fad fa-times"></i>
+                                                </div>
+                                                <div class="Attracted_headerInfoBlock_block_text Attracted_headerInfoBlock_block_text_moneys">
+                                                    <p>Отказать</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    `);
+
+                                    appendPayBlock.find('.accept_block_tap_more').click( function() {
+                                        SoloAlert.confirm({
+                                            title: "Подтверждение",
+                                            body: "Вы уверены, что хотите подтвердить оплату?",
+                                            theme: "dark",
+                                            html: "",
+                                            useTransparency: true,
+                                        }).then(async (value) => 
+                                        {
+                                            if(value)
+                                            {
+                                                await callApi({
+                                                    methodName: "accept_confirmationData",
+                                                    data: _GET('id'),
+                                                });
+
+                                                SoloAlert.alert({
+                                                    title:"Успешно",
+                                                    body:"",
+                                                    icon: "success"
+                                                }).then(() => {
+                                                    location.reload();
+                                                });
+                                            };
+                                        });
+                                    });
+
+                                    $('.headerPaysBlock').remove();
+                                };
+                            };
+                        };
                     };
 
                     $('.index_page_body_data').append(appendPayBlock);
