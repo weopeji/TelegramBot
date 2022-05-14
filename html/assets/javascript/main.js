@@ -288,6 +288,10 @@ function DateFormatted(data)
     return pad(maxDate.getDate(), 2, '0') + '.' + pad(maxDate.getMonth() + 1, 2, '0') + '.' + maxDate.getFullYear();
 }
 
+String.prototype.RedactingNumber = function () {
+    return this.replace(/\s/g, '');
+}
+
 String.prototype.ReplaceNumber = function () {
     return this.replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')
 }

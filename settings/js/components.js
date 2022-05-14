@@ -1658,6 +1658,63 @@
                 data: _GET('id'),
             });
 
+            var ActionMoney         = 0;
+            var ActionFiveMoney     = 0;
+            var ActionInWorkMoney   = 0;
+            var ActionAcceptmoney   = 0;
+
+            ActionData.invs.forEach((element, initNumber) => {
+                if(typeof element.applicationRequest == "undefined") 
+                {
+                    ActionMoney = ActionMoney + Number(element.data.pay.toString().trim().RedactingNumber());
+                };
+
+                if(Number(element.data.pay.toString().replace(/\s/g, '')) >= 5000000 && typeof element.applicationRequest == "undefined") {
+                    ActionFiveMoney = ActionFiveMoney + Number(element.data.pay.toString().trim().RedactingNumber());
+                };
+
+                if(typeof element.applicationRequest != "undefined" && element.applicationRequest) {
+                    ActionInWorkMoney = ActionInWorkMoney + Number(element.data.pay.toString().trim().RedactingNumber());
+                };
+
+                if(typeof element.applicationRequest != "undefined" && !element.applicationRequest) {
+                    ActionAcceptmoney = ActionAcceptmoney + Number(element.data.pay.toString().trim().RedactingNumber());
+                };
+            });
+
+            var headerMenuBlock = $(`
+                <div class="version2_myProjects_header">
+                    <div class="version2_default_bkg row_default"></div>
+                    <div class="version2_myProjects_header_row">
+                        <div class="info_block_project">
+                            <div class="info_block_project_row">
+                                <span>*</span>
+                                <span>Общая статистика</span>
+                                <span>*</span>
+                            </div>
+                        </div>
+                        <div class="settingBlock" style="margin-bottom: 20px; margin-top: 0;">
+                            <div class="settingBlock_header">
+                                <div class="invester_status_projects_status_first">
+                                    <div class="invester_status_projects_status_first_line">
+                                        <span>Инвестиции</span>
+                                        <a>${ActionMoney.toString().RedactingNumber()} руб.</a>
+                                        <span>Выше 5 млн рублей</span>
+                                        <a>${ActionFiveMoney.toString().RedactingNumber()} руб</a>
+                                    </div>
+                                    <div class="invester_status_projects_status_first_line">
+                                        <span>В работе</span>
+                                        <a>${ActionInWorkMoney.toString().RedactingNumber()} руб</a>
+                                        <span>Подтвержденные</span>
+                                        <a>${ActionAcceptmoney.toString().RedactingNumber()} руб</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `);
+
             var menuBlock = $(`
                 <div class="version2_settings_notFullPay_settings">
                     <div class="version2_settings_notFullPay_settings_header">
@@ -1965,8 +2022,9 @@
                         });
 
                         settingBlock.find(".settingBlock_body").append(template_text);
-                    });
+                    }); 
 
+                    $('.global_block').append(headerMenuBlock);
                     $('.global_block').append(settingBlock);
                 },
             };
