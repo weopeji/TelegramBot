@@ -279,10 +279,10 @@ async function version2_wait_projects_WaitNotFullInvs(socket, data, callback)
         {
             var ActionInit      = 0;
             var _Project        = await Project.findOne({_id: element.projectId});
-            var _AllInvsByUser  = await InvDoc.find({projectId: _Project._id, status: "accept"});
+            var _AllInvsByUser  = await InvDoc.find({projectId: _Project._id});
 
             _AllInvsByUser.forEach((element2, i2) => {
-                if(element2._id == element._id) {
+                if(element2._id.toString() == element._id.toString()) {
                     ActionInit = i2 + 1;
                 };
             });
