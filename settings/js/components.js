@@ -1698,15 +1698,15 @@
                                 <div class="invester_status_projects_status_first">
                                     <div class="invester_status_projects_status_first_line">
                                         <span>Инвестиции</span>
-                                        <a>${ActionMoney.toString().RedactingNumber()} руб.</a>
+                                        <a>${ActionMoney.toString().ReplaceNumber()} руб.</a>
                                         <span>Выше 5 млн рублей</span>
-                                        <a>${ActionFiveMoney.toString().RedactingNumber()} руб</a>
+                                        <a>${ActionFiveMoney.toString().ReplaceNumber()} руб</a>
                                     </div>
                                     <div class="invester_status_projects_status_first_line">
                                         <span>В работе</span>
-                                        <a>${ActionInWorkMoney.toString().RedactingNumber()} руб</a>
+                                        <a>${ActionInWorkMoney.toString().ReplaceNumber()} руб</a>
                                         <span>Подтвержденные</span>
-                                        <a>${ActionAcceptmoney.toString().RedactingNumber()} руб</a>
+                                        <a>${ActionAcceptmoney.toString().ReplaceNumber()} руб</a>
                                     </div>
                                 </div>
                             </div>
