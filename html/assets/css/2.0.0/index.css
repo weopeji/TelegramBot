@@ -1011,6 +1011,10 @@ img.preloader_row_img {
   text-align: center;
 }
 
+.structCreator_new_block {
+  overflow: inherit;
+}
+
 @media (max-width: 1350px) {
   .index_page_menu {
     display: none;

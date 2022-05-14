@@ -549,7 +549,7 @@
                             Уважаемый Инвестор ${global.allData.User.first_name} Введите сумму инвестирования</a>.<br>
                             Минимальная сумма входа: ${_projectMoney.toString().ReplaceNumber()} руб.
                             ${multiplicityText} <br>
-                            Сумма не должна превышать ${Number(fullMoneyCheack - fullMoneysInvs).toString().ReplaceNumber()} руб.
+                            <span class="version2_invester_data_moneyFull">Сумма не должна превышать ${Number(fullMoneyCheack - fullMoneysInvs).toString().ReplaceNumber()} руб.</span>
                         </span>
                     </div>
                 </div>
@@ -609,6 +609,13 @@
                     }
                 }
             });
+
+            if(typeof _this.projectnotFullpay != "undefined")
+            {
+                if(Number(_this.projectnotFullpay) == 0) {
+                    msgsBlock.find(".version2_invester_data_moneyFull").remove();
+                };
+            };
 
             $('.creating_page').append(msgsBlock);
             $('.creating_page').append(_block);
