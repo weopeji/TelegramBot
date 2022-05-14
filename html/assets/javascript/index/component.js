@@ -565,7 +565,123 @@
                                     $('.settingBlock').remove();
                                     $('.headerPaysBlock').remove();
                                 };
-                            };
+                            }
+                            else
+                            {
+                                var appendPayBlock = $(`
+                                    <div class="appendPayBlock">
+                                        <div class="appendPayBlock_line">
+                                            <span>Сумма инвестиции</span>
+                                            <input type="text">
+                                        </div>
+                                        <div class="appendPayBlock_line">
+                                            <span>Чек</span>
+                                            <input type="file">
+                                            <button>Выбрать файл</button>
+                                        </div>
+                                        <div class="appendPayBlock_line">
+                                            <span>Действие</span> 
+                                            <button>Принять</button>
+                                        </div>
+                                    </div>
+                                `);
+
+                                if(_getCookie('payment_money'))
+                                {
+                                    appendPayBlock.find('input[type="text"]').val(_getCookie('payment_money').toString().ReplaceNumber());
+                                }
+
+                                appendPayBlock.find('input[type="text"]').on('keyup input', function() 
+                                {
+                                    setCookie('payment_money', $(this).val().toString().replace(/\s/g, ''));
+                                    var _val = $(this).val();
+                                    _val = _val.replace(/[^\d;]/g, '')
+                                    _val = _val.replace(/\s/g, '');
+                                    var format = String(_val).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
+                                    $(this).val(format);
+                                });
+
+                                if(_data.InvDoc.pays.length > 0)
+                                {
+                                    if(_data.InvDoc.pays[_data.InvDoc.pays.length - 1].status == "wait_data")
+                                    {
+                                        var moreButtonBlock = $(`
+                                            <div class="appendPayBlock_line_button">
+                                                <span>Посмотреть</span>
+                                            </div>
+                                        `);
+
+                                        moreButtonBlock.click( function() {
+                                            window.open(`/projects/${_data.InvDoc.projectId}/${_data.InvDoc.pays[_data.InvDoc.pays.length - 1].receipt}`, '_blank');
+                                        });
+
+                                        appendPayBlock.find('.appendPayBlock_line').eq(1).find('button').html("Заменить");
+                                        appendPayBlock.find('.appendPayBlock_line').eq(1).append(moreButtonBlock);
+                                    };
+                                };
+
+                                appendPayBlock.find('button').eq(0).css('margin-left', 0);
+                                appendPayBlock.find('button').eq(1).css('margin-left', 0);
+
+                                appendPayBlock.find('button').eq(0).click( function() {
+                                    $(this).parent().parent().find('input[type="file"]').trigger('click');
+                                });
+
+                                appendPayBlock.find('button').eq(1).click( async function() 
+                                {
+                                    var _payment    = $(this).parent().parent().find('input[type="text"]').val();
+
+                                    if(_payment.length > 0)
+                                    {
+                                        var reqData = await callApi({
+                                            methodName: "business_addpayment_for_inv",
+                                            data: {
+                                                id: _GET('id'),
+                                                data: {
+                                                    payment: _payment.toString().replace(/\s/g, ''),
+                                                },
+                                            },
+                                        });
+
+                                        if(reqData == "ok")
+                                        {
+                                            alert('Успешно!');
+                                            delCookie('payment_money');
+                                            location.reload();
+                                        }
+                                        else
+                                        {
+                                            alert('Вы не добавили чек!');
+                                        }
+                                    } 
+                                    else
+                                    {
+                                        alert('Введите все данные!');
+                                    };
+                                });
+
+                                appendPayBlock.find('input[type="file"]').change( async function() 
+                                {
+                                    var _form               = new FormData();
+                                    var _url                = `${getURL()}/file_chart.io/files`;
+
+                                    _form.append('_Inv',    _GET('id'));
+                                    _form.append('_pts',    $(this.files)[0].type);
+                                    _form.append('files',   $(this.files)[0]);
+                    
+                                    axios.post(_url, _form, {
+                                        headers: {
+                                            'Content-Type': 'multipart/form-data'
+                                        },
+                                    }).then(data => 
+                                    {
+                                        if(data.data.status == "ok") {
+                                            alert("Чек прикоеплен!");
+                                            location.reload();
+                                        }
+                                    });
+                                });
+                            }
                         };
                     };
 
