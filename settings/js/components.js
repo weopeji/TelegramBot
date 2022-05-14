@@ -1683,7 +1683,7 @@
             });
 
             var headerMenuBlock = $(`
-                <div class="version2_myProjects_header">
+                <div class="version2_myProjects_header" style="margin-top: 40px;">
                     <div class="version2_default_bkg row_default"></div>
                     <div class="version2_myProjects_header_row">
                         <div class="info_block_project">
@@ -1745,6 +1745,7 @@
                 functionByMenuBLock[$(this).attr('data')]();
             });
 
+            this.global_block.append(headerMenuBlock); 
             this.global_block.append(menuBlock); 
 
             var cheackStaticPush    = false;
@@ -2029,7 +2030,6 @@
             };
 
             $('.settingBlockDropMenuMore').remove();
-            $('.global_block').append(headerMenuBlock);
             functionByMenuBLock["default"]();
         };
     };
