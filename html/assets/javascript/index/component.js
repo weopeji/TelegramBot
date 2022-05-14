@@ -1019,9 +1019,7 @@
                 </div>
             `);
 
-            settingBlock.find('.show_block').click( function() {
-                window.open(`./projects/${_data.InvDoc.projectId}/${_data.InvDoc._id}_investment.${_data.InvDoc.data.pts}`, '_blank');
-            });
+            var errorButtonShow = false;
 
             if(typeof _data.project.notFullpay != "undefined")
             {
@@ -1036,6 +1034,7 @@
                         settingBlock.find('.show_block').click( function() {
                             window.open(`./projects/${_data.InvDoc.projectId}/${_data.InvDoc._id}_investment_2.${_data.InvDoc.data.pts_2}`, '_blank');
                         });
+                        errorButtonShow = true;
                     }
                 }
                 else
@@ -1110,12 +1109,17 @@
 
             $('.index_page_body_data').append(settingBlock);
 
-            if(allData.User.type == "business")
-            {
+            if(allData.User.type == "business") {
                 await this.business_render(_data);
-            } else 
-            {
+            } else {
                 await this.invester_render(_data);
+            }
+
+            if(!errorButtonShow)
+            {
+                $('.show_block').click( function() {
+                    window.open(`./projects/${_data.InvDoc.projectId}/${_data.InvDoc._id}_investment.${_data.InvDoc.data.pts}`, '_blank');
+                });
             }
 
             $('.info_active_block_massage_button').click(function() {
