@@ -1034,7 +1034,7 @@
                     else
                     {
                         settingBlock.find('.show_block').click( function() {
-                            window.open(`./projects/${_data.InvDoc.projectId}/${_data.InvDoc._id}_investment.${_data.InvDoc.data.pts_2}`, '_blank');
+                            window.open(`./projects/${_data.InvDoc.projectId}/${_data.InvDoc._id}_investment_2.${_data.InvDoc.data.pts_2}`, '_blank');
                         });
                     }
                 }
