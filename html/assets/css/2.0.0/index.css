@@ -1062,6 +1062,15 @@ img.preloader_row_img {
   z-index: 2;
 }
 
+.renderCloseBlockBusiness_block .renderCloseBlockBusiness_block_input {
+  position: relative;
+  z-index: 2;
+}
+
+.renderCloseBlockBusiness_block .renderCloseBlockBusiness_block_input input {
+  background-color: #B498FC;
+}
+
 @media (max-width: 1350px) {
   .index_page_menu {
     display: none;
