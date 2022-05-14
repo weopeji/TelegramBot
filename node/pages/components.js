@@ -275,19 +275,17 @@ async function version2_wait_projects_WaitNotFullInvs(socket, data, callback)
         var _InvsByWait     = await InvDoc.find({invester: _User.user, applicationRequest: true, status: "accept"});
         var _AllInvsByUser  = await InvDoc.find({invester: _User.user, status: "accept"});
         var ActionData      = [];
-        var i               = 0;
 
         for(var element of _InvsByWait)
         {
             var ActionInit  = 0;
             var _Project    = await Project.findOne({_id: element.projectId});
 
-            _AllInvsByUser.forEach((element2, i) => {
+            _AllInvsByUser.forEach((element2, i2) => {
                 if(element2._id == element._id) {
-                    ActionInit = i + 1;
+                    ActionInit = i2 + 1;
                 };
             });
-            //
 
             if( typeof element.data.pts_2 == "undefined")
             {
@@ -297,8 +295,6 @@ async function version2_wait_projects_WaitNotFullInvs(socket, data, callback)
                     Inv: element,
                 });
             }
-
-            i++;
         }
 
         callback(ActionData);
