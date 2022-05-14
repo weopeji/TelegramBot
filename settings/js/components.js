@@ -2024,13 +2024,13 @@
                         settingBlock.find(".settingBlock_body").append(template_text);
                     }); 
 
-                    $('.global_block').append(headerMenuBlock);
                     $('.global_block').append(settingBlock);
                 },
             };
 
             $('.settingBlockDropMenuMore').remove();
             functionByMenuBLock["default"]();
+            $('.global_block').append(headerMenuBlock);
         };
     };
 
