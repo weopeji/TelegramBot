@@ -16,7 +16,7 @@ const { TelegramClient }    = require("telegram");
 const { StringSession }     = require("telegram/sessions"); 
 const { spawn, exec }       = require('child_process');
 const _app                  = require("../app");
-let {PythonShell}           = require('python-shell')
+let {PythonShell}           = require('python-shell');
 const Instagram             = require('instagram-web-api');
 var axios                   = require('axios');
 const ParcingPage           = require('./parcing');
@@ -255,7 +255,7 @@ async function version2_acceptPays_notFullPay_business(socket, data, callback)
 
         for(var _Project of _Projects) 
         {
-            var AllProjectInvs          = await InvDoc.find({projectId: _Project._id, applicationRequest: true});
+            var AllProjectInvs          = await InvDoc.find({projectId: _Project._id, applicationRequest: true, status: "accept"});
             var ActionAllProjectInvs    = [];
 
             AllProjectInvs.forEach((element) => {
