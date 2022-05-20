@@ -156,9 +156,17 @@
                 </div>
             `);
 
-            documentBlock.eq(0).find("span").eq(0).click( function() { 
-                window.open(`/projects/${_this.project._id}/${_this.project.signature_document.user_document}` , '_blank');
-            })
+            documentBlock.eq(0).find("span").eq(0).click( function() 
+            {
+                if(window.screen.width < 1300)
+                {
+                    saveUrlAsFile(`/projects/${_this.project._id}/${_this.project.signature_document.user_document}`, `${_this.project.signature_document.user_document}`);
+                }
+                else
+                {
+                    window.open(`/projects/${_this.project._id}/${_this.project.signature_document.user_document}` , '_blank');
+                };
+            });
 
             var html = `/html/project/application_number_2/?`;
 
