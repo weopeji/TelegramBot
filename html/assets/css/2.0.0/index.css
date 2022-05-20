@@ -1147,5 +1147,15 @@ img.preloader_row_img {
   .version2_invester_data_typeButtons_type_button_last {
     width: calc(100% - 20px);
   }
+  .creating_page_start {
+    margin: 0;
+    width: calc(100% - 81px);
+  }
+  .creating_page_input_document_img {
+    width: calc(100% - 20px);
+  }
+  .creating_page_input {
+    width: calc(100% - 20px);
+  }
 }
 /*# sourceMappingURL=index.css.map */
