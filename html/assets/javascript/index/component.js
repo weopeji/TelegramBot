@@ -1148,7 +1148,14 @@
                     else
                     {
                         settingBlock.find('.show_block').click( function() {
-                            window.open(`./projects/${_data.InvDoc.projectId}/${_data.InvDoc._id}_investment_2.${_data.InvDoc.data.pts_2}`, '_blank');
+                            if(window.screen.width < 1300)
+                            {
+                                saveUrlAsFile(`./projects/${_data.InvDoc.projectId}/${_data.InvDoc._id}_investment_2.${_data.InvDoc.data.pts_2}`, `${_data.InvDoc._id}_investment_2.${_data.InvDoc.data.pts_2}`);
+                            }
+                            else
+                            {
+                                window.open(`./projects/${_data.InvDoc.projectId}/${_data.InvDoc._id}_investment_2.${_data.InvDoc.data.pts_2}`, '_blank');
+                            } 
                         });
                         errorButtonShow = true;
                     }
@@ -1234,7 +1241,14 @@
             if(!errorButtonShow)
             {
                 $('.show_block').click( function() {
-                    window.open(`./projects/${_data.InvDoc.projectId}/${_data.InvDoc._id}_investment.${_data.InvDoc.data.pts}`, '_blank');
+                    if(window.screen.width < 1300)
+                    {
+                        saveUrlAsFile(`./projects/${_data.InvDoc.projectId}/${_data.InvDoc._id}_investment.${_data.InvDoc.data.pts}`, `${_data.InvDoc._id}_investment.${_data.InvDoc.data.pts}`);
+                    }
+                    else
+                    {
+                        window.open(`./projects/${_data.InvDoc.projectId}/${_data.InvDoc._id}_investment.${_data.InvDoc.data.pts}`, '_blank');
+                    } 
                 });
             }
 
@@ -1243,7 +1257,14 @@
             });
 
             $('.show_document').click( async function() {
-                window.open(`https://invester-relocation.site/projects/${_data.InvDoc.projectId}/${_data.InvDoc.urlToLastDocument}`, '_blank');
+                if(window.screen.width < 1300)
+                {
+                    saveUrlAsFile(`https://invester-relocation.site/projects/${_data.InvDoc.projectId}/${_data.InvDoc.urlToLastDocument}`, `${_data.InvDoc.projectId}/${_data.InvDoc.urlToLastDocument}`);
+                }
+                else
+                {
+                    window.open(`https://invester-relocation.site/projects/${_data.InvDoc.projectId}/${_data.InvDoc.urlToLastDocument}`, '_blank');
+                }
             });
 
             $('.accept_block_tap').click( async function () 

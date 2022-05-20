@@ -208,7 +208,7 @@
         
                                 var templateText = 
                                 $(`
-                                    <div class="creating_page_input_div">
+                                    <div class="creating_page_input_div" data="reload">
                                         <span>Заменить</span>
                                     </div>
                                     <div class="creating_page_input_div" data="show">
@@ -235,6 +235,10 @@
 
                                 $('.creating_page_input_div[data="ok"]').click( function() {
                                     location.href = `https://invester-relocation.site/?page=activ_projects&id=${_GET("InvId")}`;
+                                });
+
+                                $('.creating_page_input_div[data="reload"]').click( function() {
+                                    $('#Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input').trigger('click');
                                 });
                             }
                         });

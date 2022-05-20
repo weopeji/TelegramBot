@@ -175,3 +175,13 @@ SoloAlert.confirm({
         });
     }
 })
+
+
+if(window.screen.width < 1300)
+{
+    saveUrlAsFile(`/projects/${_project._id}/${_GET("InvId")}_investment_2.${data.data.FilePts}`, `${_GET("InvId")}_investment_2.${data.data.FilePts}`);
+}
+else
+{
+    window.open(`/projects/${_project._id}/${_GET("InvId")}_investment_2.${data.data.FilePts}`, '_blank');
+}

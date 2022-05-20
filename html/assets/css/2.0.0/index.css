@@ -1157,5 +1157,22 @@ img.preloader_row_img {
   .creating_page_input {
     width: calc(100% - 22px) !important;
   }
+  .info_active_block_right {
+    width: calc(100% - 42px);
+  }
+  .info_active_block_left {
+    width: calc(100% - 41px);
+  }
+  .info_active_block_left_info {
+    display: block;
+  }
+  .info_active_block_left_buttons {
+    display: block;
+    width: calc(100% - 41px);
+  }
+  .info_active_block_left_info_line a {
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
 }
 /*# sourceMappingURL=index.css.map */
