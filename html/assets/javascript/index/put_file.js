@@ -223,7 +223,14 @@
                                 $('.creating_page_input').append(templateText);
 
                                 $('.creating_page_input_div[data="show"]').click( function() {
-                                    window.open(`/projects/${_project._id}/${_GET("InvId")}_investment_2.${data.data.FilePts}`, '_blank');
+                                    if(window.screen.width < 1300)
+                                    {
+                                        saveUrlAsFile(`/projects/${_project._id}/${_GET("InvId")}_investment_2.${data.data.FilePts}`, `${_GET("InvId")}_investment_2.${data.data.FilePts}`);
+                                    }
+                                    else
+                                    {
+                                        window.open(`/projects/${_project._id}/${_GET("InvId")}_investment_2.${data.data.FilePts}`, '_blank');
+                                    }
                                 });
 
                                 $('.creating_page_input_div[data="ok"]').click( function() {
