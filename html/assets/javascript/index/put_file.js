@@ -177,7 +177,7 @@
                         </div>
                     `);
 
-                    documentBlock.click( function() {
+                    documentBlock.find('.creating_page_input_div').click( function() {
                         $('#Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input').trigger('click');
                     });
                     
