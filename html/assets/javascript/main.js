@@ -236,6 +236,12 @@ function loadResources(array,callback)
     }
 }
 
+function saveUrlAsFile(url, fileName) {    
+    var link = document.createElement("a");    
+    link.setAttribute("href", url);
+    link.setAttribute("download", fileName);
+    link.click();
+}
 
 var setValue = function(elem, value, inc, shift, speed){
     var interval = false; 
