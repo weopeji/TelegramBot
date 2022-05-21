@@ -1228,5 +1228,9 @@ img.preloader_row_img {
   .Attracted_headerInfoBlock_block .version2_default_bkg {
     width: calc(100% - 1px);
   }
+  .Attracted_headerInfoBlock_block_row {
+    width: 95%;
+    margin: 0 auto;
+  }
 }
 /*# sourceMappingURL=index.css.map */
