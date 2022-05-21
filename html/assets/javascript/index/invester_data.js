@@ -162,7 +162,8 @@
                 {
                     // saveUrlAsFile(`/projects/${_this.project._id}/${_this.project.signature_document.user_document}`, `${_this.project.signature_document.user_document}`);
                     // new jsFileDownloader({ url: `/projects/${_this.project._id}/${_this.project.signature_document.user_document}` });
-                    browser.downloads.download({url: `/projects/${_this.project._id}/${_this.project.signature_document.user_document}`});
+                    // browser.downloads.download({url: `/projects/${_this.project._id}/${_this.project.signature_document.user_document}`});
+                    DownLoadFileAjax(`/projects/${_this.project._id}/${_this.project.signature_document.user_document}`, `${_this.project.signature_document.user_document}`);
                 }
                 else
                 {

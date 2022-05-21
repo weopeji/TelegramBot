@@ -247,6 +247,23 @@ function saveUrlAsFile(url, fileName) {
     link.click();
 }
 
+function DownLoadFileAjax(urlToSend, NameFile) 
+{
+    var req = new XMLHttpRequest();
+    req.open("GET", urlToSend, true);
+    req.responseType = "blob";
+    req.onload = function (event) {
+        var blob = req.response;
+        var fileName = req.getResponseHeader(NameFile)
+        var link=document.createElement('a');
+        link.href=window.URL.createObjectURL(blob);
+        link.download=fileName;
+        link.click();
+    };
+
+    req.send();
+}
+
 var setValue = function(elem, value, inc, shift, speed){
     var interval = false; 
     if (inc) {
