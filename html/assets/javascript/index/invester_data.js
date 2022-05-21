@@ -160,7 +160,8 @@
             {
                 if(window.screen.width < 1300)
                 {
-                    saveUrlAsFile(`/projects/${_this.project._id}/${_this.project.signature_document.user_document}`, `${_this.project.signature_document.user_document}`);
+                    // saveUrlAsFile(`/projects/${_this.project._id}/${_this.project.signature_document.user_document}`, `${_this.project.signature_document.user_document}`);
+                    new jsFileDownloader({ url: `/projects/${_this.project._id}/${_this.project.signature_document.user_document}` });
                 }
                 else
                 {
@@ -180,7 +181,8 @@
                 html += `ogrn=${findOfArrayOn_id(_this.inv.data, "ogrnip")}&`;
                 html += `do=${findOfArrayOn_id(_this.inv.data, "cpecial")}&`;
                 html += `fio_dolg=${findOfArrayOn_id(_this.inv.data, "fio_dolg")}&`
-            } else if (_this.inv.type == "IP")
+            } 
+            else if (_this.inv.type == "IP")
             {
                 html += `inn=${findOfArrayOn_id(_this.inv.data, "inn")}&`;
                 html += `ogrn=${findOfArrayOn_id(_this.inv.data, "ogrnip")}&`;
