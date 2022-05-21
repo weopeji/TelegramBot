@@ -1185,9 +1185,17 @@ img.preloader_row_img {
   }
   .invester_status_projects_status_first_line span {
     margin-bottom: 5px;
+    font-size: 20px;
   }
   .invester_status_projects_status_first_line a {
     margin-bottom: 10px;
+  }
+  .settingBlock_body_line {
+    display: -ms-grid;
+    display: grid;
+  }
+  .settingBlock_header {
+    display: none;
   }
 }
 /*# sourceMappingURL=index.css.map */
