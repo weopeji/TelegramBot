@@ -1194,7 +1194,7 @@ img.preloader_row_img {
     display: -ms-grid;
     display: grid;
   }
-  .settingBlock_header {
+  .settingBlock_header_line {
     display: none;
   }
 }
