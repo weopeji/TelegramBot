@@ -1375,10 +1375,6 @@ html, body {
   .settingBlock_body_line span {
     white-space: nowrap;
   }
-  .settingBlock_body_line span:nth-child(1),
-  .settingBlock_body_line span:nth-child(2) {
-    display: none;
-  }
   .settingBlock_body_line span:nth-child(4) span {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -1386,6 +1382,10 @@ html, body {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
+  }
+  .settingBlock_header_line span:nth-child(1),
+  .settingBlock_header_line span:nth-child(2) {
+    display: none;
   }
   .settingBlock_block {
     padding: 8px 12px;
