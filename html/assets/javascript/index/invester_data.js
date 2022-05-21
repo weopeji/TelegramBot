@@ -197,7 +197,8 @@
 
             documentBlock.eq(0).find("span").eq(1).click( function() 
             {
-                window.open(html, '_blank');
+                DownLoadFileAjax(html, `document.html`);
+                // window.open(html, '_blank');
             })
 
             documentBlock.find(".creating_page_input_div").click( function() {
