@@ -11,6 +11,10 @@ window.global_data = {
     data_url_localhost_non: 'http://localhost',
 };
 
+if (typeof browser === "undefined") {
+    var browser = chrome;
+}
+
 //========= Cookies ===================================================================
 
 function getURL() 
