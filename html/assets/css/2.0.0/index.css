@@ -1217,5 +1217,9 @@ img.preloader_row_img {
     margin: 0 auto;
     margin-top: 20px;
   }
+  .Attracted_headerInfoBlock {
+    display: block;
+    width: calc(100% - 2px);
+  }
 }
 /*# sourceMappingURL=index.css.map */
