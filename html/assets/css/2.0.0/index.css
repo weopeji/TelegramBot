@@ -1174,5 +1174,20 @@ img.preloader_row_img {
     margin-top: 0;
     margin-bottom: 20px;
   }
+  .settingBlock {
+    width: calc(100% - 2px);
+  }
+  .invester_status_projects_status_first_line {
+    display: -ms-grid;
+    display: grid;
+    width: 90%;
+    margin: 0 auto;
+  }
+  .invester_status_projects_status_first_line span {
+    margin-bottom: 5px;
+  }
+  .invester_status_projects_status_first_line a {
+    margin-bottom: 10px;
+  }
 }
 /*# sourceMappingURL=index.css.map */
