@@ -1221,5 +1221,12 @@ img.preloader_row_img {
     display: block;
     width: calc(100% - 2px);
   }
+  .Attracted_headerInfoBlock_block {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .Attracted_headerInfoBlock_block .version2_default_bkg {
+    width: calc(100% - 1px);
+  }
 }
 /*# sourceMappingURL=index.css.map */
