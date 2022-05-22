@@ -139,87 +139,117 @@
 
             var _this = this;
 
-            var documentBlock = $(`
-                <div class="creating_page_input creating_page_input_document_img">
-                    <img src="./html/assets/images/documentPNG.png" alt="">
-                    <div class="creating_page_input_document_img_hover">
-                        <div class="creating_page_input_document_img_hover_row">
-                            <span>Ознакомится с договором</span>
-                            <span>Ознакомится с приложением №2</span>
+            if(window.screen.width < 1300)
+            {
+                var documentBlock = $(`
+                    <div class="version2_invester_data_mobile_documents">
+                        <div class="version2_invester_data_mobile_documents_row">
+                            <div class="version2_invester_data_mobile_documents_img">
+                                <img src="/html/assets/images/2.0.0/documents/file_signature_document-1.png" alt="">
+                            </div>
+                            <div class="version2_invester_data_mobile_documents_img">
+                                <img src="/html/assets/images/2.0.0/documents/file_signature_document-2.png" alt="">
+                            </div>
+                            <div class="version2_invester_data_mobile_documents_document">
+                                <h1>Приложение номер 2 - Тестирование</h1>
+
+                                <p>Фио инвестора <data type="fio">${findOfArrayOn_id(_this.inv.data, "fio")}</data></p>
+                                <p>Дата <data type="date">${new Date()}</data></p>
+                                <p>Сумма инвестиции <data type="summ">${_this.money}</data></p>
+                                <p>Банк <data type="bank">${_this.project.data.bank}</data></p>
+                                <p>Инн <data type="inn"></data>${findOfArrayOn_id(_this.inv.data, "inn")}</p>
+                                <p>Огрн <data type="ogrn">${findOfArrayOn_id(_this.inv.data, "ogrnip")}</data></p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="creating_page_input" style="width: 360px;">
-                    <div class="creating_page_input_div" data="pay">
-                        <span style="text-align: center">Оплатить</span> 
-                    </div>
-                </div>
-            `);
+                `);
 
-            documentBlock.eq(0).find("span").eq(0).click( function() 
-            {
-                if(window.screen.width < 1300)
-                {
-                    // saveUrlAsFile(`/projects/${_this.project._id}/${_this.project.signature_document.user_document}`, `${_this.project.signature_document.user_document}`);
-                    // new jsFileDownloader({ url: `/projects/${_this.project._id}/${_this.project.signature_document.user_document}` });
-                    // browser.downloads.download({url: `/projects/${_this.project._id}/${_this.project.signature_document.user_document}`});
-                    DownLoadFileAjax(`/projects/${_this.project._id}/${_this.project.signature_document.user_document}`, `${_this.project.signature_document.user_document}`);
-                }
-                else
-                {
-                    window.open(`/projects/${_this.project._id}/${_this.project.signature_document.user_document}` , '_blank');
-                };
-            });
-
-            var html = `/html/project/application_number_2/?`;
-
-            html += `fio=${findOfArrayOn_id(_this.inv.data, "fio")}&`;
-            html += `number=2&`;
-            html += `summ=${_this.money}&`;
-            
-            if(_this.inv.type == "UR")
-            {
-                html += `inn=${findOfArrayOn_id(_this.inv.data, "inn")}&`;
-                html += `ogrn=${findOfArrayOn_id(_this.inv.data, "ogrnip")}&`;
-                html += `do=${findOfArrayOn_id(_this.inv.data, "cpecial")}&`;
-                html += `fio_dolg=${findOfArrayOn_id(_this.inv.data, "fio_dolg")}&`
-            } 
-            else if (_this.inv.type == "IP")
-            {
-                html += `inn=${findOfArrayOn_id(_this.inv.data, "inn")}&`;
-                html += `ogrn=${findOfArrayOn_id(_this.inv.data, "ogrnip")}&`;
+                $('.creating_page').append(documentBlock);
             }
-
-            html += `type=${_this.inv.type}&`;
-            html += `bank=${_this.project.data.bank}`;
-
-            _this.urlForDocument = html;
-
-            documentBlock.eq(0).find("span").eq(1).click( function() 
+            else
             {
-                if(window.screen.width < 1300)
+                var documentBlock = $(`
+                    <div class="creating_page_input creating_page_input_document_img">
+                        <img src="./html/assets/images/documentPNG.png" alt="">
+                        <div class="creating_page_input_document_img_hover">
+                            <div class="creating_page_input_document_img_hover_row">
+                                <span>Ознакомится с договором</span>
+                                <span>Ознакомится с приложением №2</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="creating_page_input" style="width: 360px;">
+                        <div class="creating_page_input_div" data="pay">
+                            <span style="text-align: center">Оплатить</span> 
+                        </div>
+                    </div>
+                `);
+
+                documentBlock.eq(0).find("span").eq(0).click( function() 
                 {
-                    DownLoadFileAjax(html, `document.html`);
+                    if(window.screen.width < 1300)
+                    {
+                        // saveUrlAsFile(`/projects/${_this.project._id}/${_this.project.signature_document.user_document}`, `${_this.project.signature_document.user_document}`);
+                        // new jsFileDownloader({ url: `/projects/${_this.project._id}/${_this.project.signature_document.user_document}` });
+                        // browser.downloads.download({url: `/projects/${_this.project._id}/${_this.project.signature_document.user_document}`});
+                        DownLoadFileAjax(`/projects/${_this.project._id}/${_this.project.signature_document.user_document}`, `${_this.project.signature_document.user_document}`);
+                    }
+                    else
+                    {
+                        window.open(`/projects/${_this.project._id}/${_this.project.signature_document.user_document}` , '_blank');
+                    };
+                });
+
+                var html = `/html/project/application_number_2/?`;
+
+                html += `fio=${findOfArrayOn_id(_this.inv.data, "fio")}&`;
+                html += `number=2&`;
+                html += `summ=${_this.money}&`;
+                
+                if(_this.inv.type == "UR")
+                {
+                    html += `inn=${findOfArrayOn_id(_this.inv.data, "inn")}&`;
+                    html += `ogrn=${findOfArrayOn_id(_this.inv.data, "ogrnip")}&`;
+                    html += `do=${findOfArrayOn_id(_this.inv.data, "cpecial")}&`;
+                    html += `fio_dolg=${findOfArrayOn_id(_this.inv.data, "fio_dolg")}&`
+                } 
+                else if (_this.inv.type == "IP")
+                {
+                    html += `inn=${findOfArrayOn_id(_this.inv.data, "inn")}&`;
+                    html += `ogrn=${findOfArrayOn_id(_this.inv.data, "ogrnip")}&`;
                 }
-                else
+
+                html += `type=${_this.inv.type}&`;
+                html += `bank=${_this.project.data.bank}`;
+
+                _this.urlForDocument = html;
+
+                documentBlock.eq(0).find("span").eq(1).click( function() 
                 {
-                    window.open(html, '_blank');
-                };
-            })
+                    if(window.screen.width < 1300)
+                    {
+                        DownLoadFileAjax(html, `document.html`);
+                    }
+                    else
+                    {
+                        window.open(html, '_blank');
+                    };
+                })
 
-            documentBlock.find(".creating_page_input_div").click( function() {
-                _this.cheackGet();
-            })
+                documentBlock.find(".creating_page_input_div").click( function() {
+                    _this.cheackGet();
+                })
 
-            if(typeof _this.project.notFullpay != "undefined")
-            {
-                if(Number(_this.project.notFullpay) == 0)
+                if(typeof _this.project.notFullpay != "undefined")
                 {
-                    documentBlock.find(".creating_page_input_div").find('span').html('Подтвердить инвестицию');
+                    if(Number(_this.project.notFullpay) == 0)
+                    {
+                        documentBlock.find(".creating_page_input_div").find('span').html('Подтвердить инвестицию');
+                    };
                 };
-            };
 
-            $('.creating_page').append(documentBlock);
+                $('.creating_page').append(documentBlock);
+            }
         }
 
         async cheackGet()
