@@ -162,7 +162,24 @@
                             </div>
                         </div>
                     </div>
+                    <div class="creating_page_input" style="width: 360px;">
+                        <div class="creating_page_input_div" data="pay">
+                            <span style="text-align: center">Оплатить</span> 
+                        </div>
+                    </div>
                 `);
+
+                documentBlock.find(".creating_page_input_div").click( function() {
+                    _this.cheackGet();
+                })
+
+                if(typeof _this.project.notFullpay != "undefined")
+                {
+                    if(Number(_this.project.notFullpay) == 0)
+                    {
+                        documentBlock.find(".creating_page_input_div").find('span').html('Подтвердить инвестицию');
+                    };
+                };
 
                 $('.creating_page').append(documentBlock);
             }
