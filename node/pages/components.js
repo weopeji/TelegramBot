@@ -3061,13 +3061,10 @@ async function acceptProject(socket,data,callback)
             defaultViewport: null,
         });
         const page = await browser.newPage();   
-        await page._client.send('Emulation.clearDeviceMetricsOverride');
+        // await page._client.send('Emulation.clearDeviceMetricsOverride');
         await page.goto(_urlImgProject);
         await page.emulateMedia('screen');
         const element = await page.$('.cover_block');
-        await element.screenshot({
-            path: `../projects/${data}/test.jpg`,
-        });
         await page.waitForSelector('.all_good');
         await element.screenshot({
             path: `../projects/${data}/logo_instagram.jpg`,
@@ -3118,38 +3115,6 @@ async function acceptProject(socket,data,callback)
                 ],
             }
         });
-        
-        const client = new Instagram({ username: "investER_official", password: "e<<@H&_ArB~5ef7" });
-    
-        ;(async () => 
-        {
-            const photo = `https://invester-relocation.site/projects/${data}/logo_instagram.jpg`;
-    
-            var _caption = `
-                *
-                ${_project.data.name}
-                ${_project.data.target}
-                Ставка: ${_project.data.rate}
-                Выплаты: ${_project.data.date_payments}
-                Вход от: ${_project.data.minimal_amount}
-                Сбор до: ${_project.data.date}
-                *
-                Подробнее по ссылке в шапке профиля
-            `;
-        
-            client
-                .login()
-                .then(async () => {
-                    try 
-                    {
-                        const { media } = await client.uploadPhoto({ photo: photo, caption: _caption, post: 'feed' });
-                        console.log(`https://www.instagram.com/p/${media.code}/`);
-                    } catch (e) 
-                    {
-                        console.log("instagram failed");
-                    }
-                })
-        })();
     
         var UserProject     = await User.findOne({user: _project.user});
     
