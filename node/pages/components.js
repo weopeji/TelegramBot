@@ -3174,6 +3174,7 @@ async function acceptProject(socket,data,callback)
     }
     catch(e)
     {
+        console.log(e);
         callback('error_add');
     }    
 }
