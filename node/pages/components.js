@@ -3065,6 +3065,9 @@ async function acceptProject(socket,data,callback)
         await page.goto(_urlImgProject);
         await page.emulateMedia('screen');
         const element = await page.$('.cover_block');
+        await element.screenshot({
+            path: `../projects/${data}/test.jpg`,
+        });
         await page.waitForSelector('.all_good');
         await element.screenshot({
             path: `../projects/${data}/logo_instagram.jpg`,
