@@ -2241,9 +2241,12 @@
                     
                 } else 
                 {
-                    $(".index_page_menu").css({ 
-                        height: "329px",
-                    }); 
+                    if(window.screen.width > 1300)
+                    {
+                        $(".index_page_menu").css({ 
+                            height: "329px",
+                        }); 
+                    }
                 }
     
                 if(_User.alerts)
