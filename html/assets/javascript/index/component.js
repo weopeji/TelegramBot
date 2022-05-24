@@ -888,7 +888,7 @@
                     }
                 
                     var _block = $(`
-                        <div class="headerPaysBlock_body_line">
+                        <div class="settingBlock_body_line">
                             <span>${i + 1}</span>
                             <span>${maxDateFormatted}</span>
                             <span>${Number(el.pay).toString().replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')} руб ${morePay.replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')}</span>
