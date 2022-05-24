@@ -572,7 +572,7 @@
                                     <div class="appendPayBlock">
                                         <div class="version2_default_bkg row_default"></div>
                                         <div class="appendPayBlock_line">
-                                            <span>Сумма инвестиции</span>
+                                            <span>Сумма выплаты</span>
                                             <input type="text">
                                         </div>
                                         <div class="appendPayBlock_line">

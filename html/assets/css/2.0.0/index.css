@@ -1128,11 +1128,16 @@ img.preloader_row_img {
   margin-top: 28px;
   position: relative;
   background-color: transparent;
+  width: calc(100% - 2px);
 }
 
 .appendPayBlock .appendPayBlock_line {
   position: relative;
   z-index: 2;
+}
+
+.appendPayBlock .appendPayBlock_line input[type="text"] {
+  background-color: #AE91FA;
 }
 
 @media (max-width: 1350px) {
