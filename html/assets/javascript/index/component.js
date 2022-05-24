@@ -772,7 +772,7 @@
                 })
 
                 var headerPaysBlock = $(`
-                    <div class="settingBlock">
+                    <div class="settingBlock" style="margin-top: 70px;">
                         <div class="version2_settingBlock_header">
                             <p>Выплаты по проекту</p>
                         </div>
@@ -921,7 +921,7 @@
                         })
                     }
 
-                    headerPaysBlock.find('.headerPaysBlock_body').append(_block);
+                    headerPaysBlock.find('.settingBlock_body').append(_block);
                 });
 
                 if(typeof _data.project.notFullpay != "undefined")
