@@ -1172,8 +1172,11 @@ img.preloader_row_img {
 }
 
 .chat_block_chat .chat_block_chat_header {
-  color: white;
   border-bottom: 1px solid white;
+}
+
+.chat_block_chat .chat_block_chat_header span {
+  color: white;
 }
 
 .chat_block_chat .chat_block_chat_body,
