@@ -1158,6 +1158,29 @@ img.preloader_row_img {
   z-index: 2;
 }
 
+.chat_block_info span {
+  color: white;
+}
+
+.chat_block {
+  width: calc(100% - 2px);
+}
+
+.chat_block_chat {
+  background-color: transparent;
+  position: relative;
+}
+
+.chat_block_chat .chat_block_chat_header {
+  color: white;
+}
+
+.chat_block_chat .chat_block_chat_body,
+.chat_block_chat .chat_block_chat_header {
+  position: relative;
+  z-index: 2;
+}
+
 @media (max-width: 1350px) {
   .index_page_menu {
     display: none;
