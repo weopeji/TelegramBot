@@ -2158,6 +2158,10 @@
                             <i class="fal fa-inventory"></i>
                             <span>Ожидают</span>
                         </div>
+                        <div class="index_page_menu_block_line" data="applications">
+                            <i class="fal fa-browser"></i>
+                            <span>Заявки</span>
+                        </div>
                         <div class="index_page_menu_block_line" data="Attracted_by_me">
                             <i class="fal fa-users"></i>
                             <span>Привлечено</span>
