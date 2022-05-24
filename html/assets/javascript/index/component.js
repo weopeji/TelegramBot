@@ -951,7 +951,7 @@
                             }
                             else
                             {
-                                if(typeof _data.InvDoc.confirmationData == "undefined")
+                                if(_data.InvDoc.applicationRequest)
                                 {
                                     headerPaysBlock = $(`
                                         <div class="Attracted_headerInfoBlock_info_data_alert">
