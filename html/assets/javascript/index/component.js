@@ -1598,13 +1598,13 @@
                     }
                     else
                     {
-                        if(typeof element.project.applicationRequest == "undefined")
+                        if(typeof element.Inv.applicationRequest == "undefined")
                         {
                             continue;
                         }
                         else
                         {
-                            if(element.project.applicationRequest)
+                            if(element.Inv.applicationRequest)
                             {
                                 continue;
                             }
