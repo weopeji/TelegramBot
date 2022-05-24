@@ -1598,7 +1598,19 @@
                     }
                     else
                     {
-                        lastPay = "Ожидайте выплаты";
+                        if(typeof element.project.applicationRequest == "undefined")
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            if(element.project.applicationRequest)
+                            {
+                                continue;
+                            }
+                        };
+
+                        lastPay = "Заявка";
                     }
 
                     var template_text = $(`
