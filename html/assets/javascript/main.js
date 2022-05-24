@@ -122,6 +122,7 @@ function io_connect(callback)
         imSocket = io(url, {transports: ['websocket', 'polling']});
     }
     imSocket.on('connect', function(socket) {
+        console.log(socket);
         if(!connectReload)
         {
             console.log("Сервер подключен к: " + url);
