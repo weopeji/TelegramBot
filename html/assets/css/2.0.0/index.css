@@ -1128,7 +1128,7 @@ img.preloader_row_img {
   margin-top: 28px;
   position: relative;
   background-color: transparent;
-  width: calc(100% - 2px);
+  width: calc(100% - 42px);
 }
 
 .appendPayBlock .appendPayBlock_line {
