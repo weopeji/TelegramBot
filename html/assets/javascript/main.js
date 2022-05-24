@@ -121,13 +121,13 @@ function io_connect(callback)
         url = global_data.data_url_server;
         imSocket = io(url, {transports: ['websocket', 'polling']});
     }
-    imSocket.on('connect', function() {
+    imSocket.on('connect', function(socket) {
         if(!connectReload)
         {
             console.log("Сервер подключен к: " + url);
             connectReload = true;
             if(callback) {
-                callback();
+                callback(socket);
             }
         } else {
             location.reload();
