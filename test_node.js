@@ -13,9 +13,9 @@ app.post('/webhook', function(req, res) {
         let sig     = "sha1=" + crypto.createHmac('sha1', secret).update(chunk.toString()).digest('hex');
         var data    = JSON.parse(chunk);
 
-        console.log(head_commit);
+        console.log(data["head_commit"]);
 
-        if(data["commits"]["message"] == "1")
+        if(["message"] == "1")
         {
             console.log('ok');
         }
