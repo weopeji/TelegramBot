@@ -782,7 +782,7 @@
                                 <div class="headerPaysBlock_header_span_button_msg">
                                     <span>Оповестить бизнес</span>
                                 </div>
-                            </span> -->
+                            </span>
                             <div class="headerPaysBlock_header_line">
                                 <span>#</span>
                                 <span>Дата</span>
