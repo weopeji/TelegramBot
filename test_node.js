@@ -10,8 +10,10 @@ const exec              = require('child_process').exec
 app.post('/webhook', function(req, res) {
     req.on('data', function(chunk) 
     {
-        let sig = "sha1=" + crypto.createHmac('sha1', secret).update(chunk.toString()).digest('hex');
-        var data = JSON.parse(chunk);
+        let sig     = "sha1=" + crypto.createHmac('sha1', secret).update(chunk.toString()).digest('hex');
+        var data    = JSON.parse(chunk);
+
+        console.log(head_commit);
 
         if(data["commits"]["message"] == "1")
         {
