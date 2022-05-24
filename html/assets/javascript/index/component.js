@@ -2232,7 +2232,7 @@
                     
                 } else 
                 {
-                    $(".index_page_menu").css({
+                    $(".index_page_menu").css({ 
                         height: "329px",
                     });
                 }
