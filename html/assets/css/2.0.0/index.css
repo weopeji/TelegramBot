@@ -1144,6 +1144,20 @@ img.preloader_row_img {
   margin-bottom: 0;
 }
 
+.chat_block_info {
+  height: 234px;
+  background-color: transparent;
+  position: relative;
+}
+
+.chat_block_info .info_active_block_photo,
+.chat_block_info span,
+.chat_block_info p,
+.chat_block_info .chat_block_info_more_buttons {
+  position: relative;
+  z-index: 2;
+}
+
 @media (max-width: 1350px) {
   .index_page_menu {
     display: none;

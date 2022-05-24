@@ -90,6 +90,7 @@
                         </div>
                     </div>
                     <div class="chat_block_info">
+                        <div class="version2_default_bkg row_default"></div>
                         <div class="info_active_block_photo">
                             <img src="${getChat.photo}" alt="">
                         </div>
