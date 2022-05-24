@@ -1140,6 +1140,10 @@ img.preloader_row_img {
   background-color: #AE91FA;
 }
 
+.headerPaysBlock_body_line_inv span {
+  margin-bottom: 0;
+}
+
 @media (max-width: 1350px) {
   .index_page_menu {
     display: none;
