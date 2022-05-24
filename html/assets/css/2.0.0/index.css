@@ -1109,6 +1109,21 @@ img.preloader_row_img {
   margin-top: 13px;
 }
 
+.global_block_menu span {
+  background-color: transparent;
+  position: relative;
+}
+
+.global_block_menu span i {
+  position: relative;
+  z-index: 2;
+}
+
+.global_block_menu span p {
+  position: relative;
+  z-index: 2;
+}
+
 @media (max-width: 1350px) {
   .index_page_menu {
     display: none;
