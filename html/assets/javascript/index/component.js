@@ -2229,15 +2229,11 @@
     
                 if(_User.type == "business")
                 {
-                    $('.add_project_button').click( function() {
-                        location.href = `/?page=creating`;
-                    });
+                    
                 } else 
                 {
-                    $('.add_project_button span').html("Инвестировать");
-    
-                    $('.add_project_button').click( function() {
-                        location.href = `https://t.me/invester_official`;
+                    $(".index_page_menu").css({
+                        height: "329px",
                     });
                 }
     
