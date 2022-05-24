@@ -154,22 +154,27 @@
             var header_menu = $(`
                 <div class="global_block_menu">
                     <span data="data">
+                        <div class="version2_default_bkg row_default"></div>
                         <i class="fal fa-file-chart-line"></i>
                         <p>Поданные данные</p>
                     </span>
                     <span data="info">
+                        <div class="version2_default_bkg row_default"></div>
                         <i class="fal fa-database"></i>
                         <p>О компании</p>
                     </span>
                     <span data="redacting">
+                        <div class="version2_default_bkg row_default"></div>
                         <i class="fal fa-sliders-v"></i>
                         <p>Проект</p>
                     </span>
                     <span data="more">
+                        <div class="version2_default_bkg row_default"></div>
                         <i class="fal fa-info-square"></i>
                         <p>Юридические данные</p>
                     </span>
                     <span data="settings">
+                        <div class="version2_default_bkg row_default"></div>
                         <i class="fal fa-video"></i>
                         <p>Видео</p>
                     </span>
