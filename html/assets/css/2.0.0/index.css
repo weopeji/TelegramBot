@@ -1124,6 +1124,17 @@ img.preloader_row_img {
   z-index: 2;
 }
 
+.appendPayBlock {
+  margin-top: 28px;
+  position: relative;
+  background-color: transparent;
+}
+
+.appendPayBlock .appendPayBlock_line {
+  position: relative;
+  z-index: 2;
+}
+
 @media (max-width: 1350px) {
   .index_page_menu {
     display: none;

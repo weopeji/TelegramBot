@@ -570,14 +570,10 @@
                             {
                                 var appendPayBlock = $(`
                                     <div class="appendPayBlock">
+                                        <div class="version2_default_bkg row_default"></div>
                                         <div class="appendPayBlock_line">
                                             <span>Сумма инвестиции</span>
                                             <input type="text">
-                                        </div>
-                                        <div class="appendPayBlock_line">
-                                            <span>Чек</span>
-                                            <input type="file">
-                                            <button>Выбрать файл</button>
                                         </div>
                                         <div class="appendPayBlock_line">
                                             <span>Действие</span> 
