@@ -870,7 +870,7 @@
 
                 var _status = {
                     "wait": "Ожидает оплату",
-                    "accept": "Посмотреть чек",
+                    "accept": "Оплачено",
                 }
 
                 _data.InvDoc.pays.forEach((el, i) => {
@@ -912,14 +912,7 @@
                             _block.addClass('alertForLineBlock');
                             _block.find('.headerPaysBlock_body_line_inv span').html('Просрочено')
                         };
-                    }
-
-                    if(el.status == "accept")
-                    {
-                        _block.find('.headerPaysBlock_body_line_inv').click( function() {
-                            window.open(`/projects/${$(this).attr('data-project')}/${$(this).attr('data')}` , '_blank');
-                        })
-                    }
+                    };
 
                     headerPaysBlock.find('.settingBlock_body').append(_block);
                 });
