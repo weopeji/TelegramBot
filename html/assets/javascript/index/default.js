@@ -34,9 +34,9 @@
         head.appendChild(link);
     };
 
-    io_connect( function(socket) 
+    io_connect( function(imSocket) 
     {
-        console.log(socket);
+        console.log(imSocket.id);
         global.loadResources(['./html/assets/javascript/index/component.js'], () => {
             global.loadResources(['./html/assets/javascript/index/creating_page.js'], () => {
                 global.loadResources(['./html/assets/javascript/index/invester_data.js'], () => {
