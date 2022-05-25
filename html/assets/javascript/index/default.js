@@ -151,14 +151,6 @@
 
         if(_id) 
         {
-            await callApi({
-                methodName: "vesrion2_set_last_socket",
-                data: {
-                    socket: imSocket.id,
-                    userId: _id,
-                },
-            });
-
             var _User = await user_block.render(_id);
 
             global.allData.User = _User;
