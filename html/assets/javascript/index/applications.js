@@ -91,7 +91,7 @@
                     <div class="version2_default_bkg row_default"></div>
                     <div class="settingBlock_header">
                         <div class="invester_status_projects_status_first">
-                            <div class="invester_status_projects_status_first_line">
+                            <div class="invester_status_projects_status_first_line"> 
                                 <span>Сумма заявок</span>
                                 <a>${_this.ActionAllMoney} руб.</a>
                                 <span>3</span>
