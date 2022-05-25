@@ -47,7 +47,9 @@
                                         global.loadResources(['./html/assets/javascript/index/chat.js'], () => {
                                             global.loadResources(['./html/assets/javascript/index/not_correct.js'], () => {
                                                 global.loadResources(['./html/assets/javascript/index/put_file.js'], () => {
-                                                    Main();
+                                                    global.loadResources(['./html/assets/javascript/index/applications.js'], () => {
+                                                        Main();
+                                                    });
                                                 });
                                             });
                                         });
