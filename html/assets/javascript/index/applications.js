@@ -65,7 +65,7 @@
                             <span>№</span>
                             <span>№ Проекта</span>
                             <span>Название</span>
-                            <span>Договор</span>
+                            <!-- <span>Договор</span> -->
                             <span>Сумма входа</span>
                         </div>
                     </div>
@@ -92,7 +92,7 @@
                         <span>${i + 1}</span>
                         <span>${element.project._id}</span>
                         <span>${element.project.data.name}</span>
-                        <span>${element.project._id}/${element.number} от ${maxDateFormatted}</span>
+                        <!-- <span>${element.project._id}/${element.number} от ${maxDateFormatted}</span> -->
                         <span>${element.Inv.data.pay} руб</span>
                     </div>
                 `);
