@@ -29,16 +29,16 @@
                     <div class="settingBlock_header">
                         <div class="invester_status_projects_status_first">
                             <div class="invester_status_projects_status_first_line">
-                                <span>Привлечено</span>
-                                <a>${_data.obligations_data.attracted.toString().ReplaceNumber()} руб</a>
-                                <span>Коммисия investER</span>
-                                <a>${_data.obligations_data.commission.toString().ReplaceNumber()} руб</a>
+                                <span>1</span>
+                                <a>2</a>
+                                <span>3</span>
+                                <a>4</a>
                             </div>
                             <div class="invester_status_projects_status_first_line">
-                                <span>Выплачено</span>
-                                <a>${_data.obligations_data.commissionPay.toString().ReplaceNumber()} руб</a>
-                                <span>Задолженость</span>
-                                <a>${_data.obligations_data.DebtComission.toString().ReplaceNumber()} руб</a>
+                                <span>1</span>
+                                <a>2</a>
+                                <span>3</span>
+                                <a>4</a>
                             </div>
                         </div>
                     </div>
