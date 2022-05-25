@@ -60,6 +60,7 @@
                         <div class="settingBlock_header_line">
                             <span>№</span>
                             <span>№ Проекта</span>
+                            <span>Название</span>
                             <span>Договор</span>
                             <span>Сумма входа</span>
                             <span>Сумма платежа</span>
