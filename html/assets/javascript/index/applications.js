@@ -18,7 +18,7 @@
     {
         constructor() 
         {
-            
+            this.ActionAllMoney = 0;
         };
 
         pad(s, width, character) {
@@ -38,7 +38,6 @@
                     <div class="settingBlock_header">
                         <div class="invester_status_projects_status_first">
                             <div class="invester_status_projects_status_first_line">
-                                <span>1</span>
                                 <a>2</a>
                                 <span>3</span>
                                 <a>4</a>
@@ -65,7 +64,7 @@
                             <span>№</span>
                             <span>№ Проекта</span>
                             <span>Название</span>
-                            <!-- <span>Договор</span> -->
+                            <!-- <span>Место в очереди</span> -->
                             <span>Сумма входа</span>
                         </div>
                     </div>
