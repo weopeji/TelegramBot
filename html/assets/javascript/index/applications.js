@@ -75,7 +75,8 @@
                 </div>
             `);
 
-            var i = 0;
+            var i       = 0;
+            var _this   = this;
 
             for(var element of _data.invester_data.activeInvs)
             {
@@ -104,6 +105,7 @@
                 settingBlock2.find('.settingBlock_body').append(template_text);
 
                 i++;
+                _this.ActionAllMoney = _this.ActionAllMoney + Number(element.Inv.data.pay.toString().RedactingNumber());
             };
 
             $('.index_page_body_data').append(settingBlock1);
