@@ -76,6 +76,8 @@
                 </div>
             `);
 
+            var i = 0;
+
             for(var element of _data.invester_data.activeInvs)
             {
                 var maxDate             = new Date(Number(element.Inv.date));
