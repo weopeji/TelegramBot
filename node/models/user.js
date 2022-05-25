@@ -27,6 +27,7 @@ const UserShema = new mongoose.Schema({
     alert_msgs: String,
     first_parse: JSON,
     business_msgPut: String,
+    socket: String,
 });
 
 mongoose.model('User', UserShema);

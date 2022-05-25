@@ -34,9 +34,8 @@
         head.appendChild(link);
     };
 
-    io_connect( function(imSocket) 
+    io_connect( function() 
     {
-        console.log(imSocket.id);
         global.loadResources(['./html/assets/javascript/index/component.js'], () => {
             global.loadResources(['./html/assets/javascript/index/creating_page.js'], () => {
                 global.loadResources(['./html/assets/javascript/index/invester_data.js'], () => {
@@ -88,6 +87,7 @@
         const telegram_authorization    = new global.Components.telegram_authorization();
         const not_correct               = new global.Components.not_correct();
         const put_file                  = new global.Components.put_file();
+        const applications              = new global.Components.applications();
 
         if(!userID) 
         {
@@ -149,6 +149,14 @@
 
         if(_id) 
         {
+            await callApi({
+                methodName: "vesrion2_set_last_socket",
+                data: {
+                    socket: imSocket.id,
+                    userId: _id,
+                },
+            });
+
             var _User = await user_block.render(_id);
 
             global.allData.User = _User;
@@ -201,6 +209,7 @@
                 "telegram_authorization": function() {telegram_authorization.render(global.allData)},
                 "not_correct": function() {not_correct.render(global.allData)},
                 "put_file": function() {put_file.render(global.allData)},
+                "applications": function() {applications.render(global.allData)},
             }
 
             if(pageID)

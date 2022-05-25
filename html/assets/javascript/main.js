@@ -127,7 +127,7 @@ function io_connect(callback)
             console.log("Сервер подключен к: " + url);
             connectReload = true;
             if(callback) {
-                callback(imSocket);
+                callback();
             }
         } else {
             location.reload();
