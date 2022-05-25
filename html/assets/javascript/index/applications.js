@@ -67,7 +67,6 @@
                             <span>Название</span>
                             <span>Договор</span>
                             <span>Сумма входа</span>
-                            <span>Сумма платежа</span>
                         </div>
                     </div>
                     <div class="settingBlock_body">
@@ -83,15 +82,9 @@
                 var maxDate             = new Date(Number(element.Inv.date));
                 var maxDateFormatted    =  this.pad(maxDate.getDate(), 2, '0') + '.' + this.pad(maxDate.getMonth() + 1, 2, '0') + '.' + maxDate.getFullYear();
 
-                var lastPay = 0;
-
                 if(element.project.data.date != "Бессрочно")
                 {
                     break;
-                }
-                else
-                {
-                    lastPay = "Заявка";
                 }
 
                 var template_text = $(`
@@ -101,7 +94,6 @@
                         <span>${element.project.data.name}</span>
                         <span>${element.project._id}/${element.number} от ${maxDateFormatted}</span>
                         <span>${element.Inv.data.pay} руб</span>
-                        <span>${lastPay}</span>
                     </div>
                 `);
 
