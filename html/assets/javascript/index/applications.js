@@ -38,6 +38,7 @@
                     <div class="settingBlock_header">
                         <div class="invester_status_projects_status_first">
                             <div class="invester_status_projects_status_first_line">
+                                <span>Сумма заявок</span>
                                 <a>2</a>
                                 <span>3</span>
                                 <a>4</a>
