@@ -21,6 +21,10 @@
             
         };
 
+        pad(s, width, character) {
+            return new Array(width - s.toString().length + 1).join(character) + s;
+        }
+
         async render() 
         {
             var _data = await callApi({
