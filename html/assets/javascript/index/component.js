@@ -3113,7 +3113,7 @@
 
 
             var settingBlock = $(`
-                <div class="settingBlock">
+                <div class="settingBlock" style="margin-top: 70px;">
                     <div class="version2_settingBlock_header">
                         <p>Ожидают подтверждания</p>
                     </div>
