@@ -1632,7 +1632,7 @@
                             }
                         };
 
-                        lastPay = "Заявка";
+                        lastPay = "% от прибыли";
                     }
 
                     var template_text = $(`
