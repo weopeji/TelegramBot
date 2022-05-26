@@ -935,7 +935,7 @@
                                     <div class="Attracted_headerInfoBlock_info_data_alert">
                                         <input type="file" id="Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input">
                                         <div class="Attracted_headerInfoBlock_info_data_alert_buttom_cheack">
-                                            <span>Прикрепить чек</span>
+                                            <span>Оплатить инвестицию</span>
                                         </div>
                                     </div>
                                 `);
@@ -986,7 +986,7 @@
                                         <div class="Attracted_headerInfoBlock_info_data_alert">
                                             <input type="file" id="Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input">
                                             <div class="Attracted_headerInfoBlock_info_data_alert_buttom_cheack">
-                                                <span>Прикрепить чек</span>
+                                                <span>Оплатить инвестицию</span>
                                             </div>
                                         </div>
                                     `);
@@ -1022,7 +1022,7 @@
                                         <div class="Attracted_headerInfoBlock_info_data_alert">
                                             <input type="file" id="Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input">
                                             <div class="Attracted_headerInfoBlock_info_data_alert_buttom_cheack">
-                                                <span>Прикрепить чек</span>
+                                                <span>Оплатить инвестицию</span>
                                             </div>
                                         </div>
                                     `);
@@ -1656,8 +1656,6 @@
                 };
 
                 $('.index_page_body_data').append(settingBlock);
-
-                
             } 
         }
     }
