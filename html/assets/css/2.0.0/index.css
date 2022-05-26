@@ -1272,6 +1272,7 @@ img.preloader_row_img {
   position: absolute;
   right: 0px;
   top: -10px;
+  cursor: pointer;
 }
 
 @media (max-width: 1350px) {
