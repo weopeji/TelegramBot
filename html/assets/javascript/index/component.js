@@ -1365,6 +1365,10 @@
                 </div>
             `);
 
+            template_text.find('.renderCloseBlockBusiness_block_button_close').click( function() {
+                $('.renderCloseBlockBusiness').fadeOut();
+            })
+
             template_text.find('.renderCloseBlockBusiness_block_text_line').click( function() {
                 $('.renderCloseBlockBusiness_block_text_line').removeClass('selected');
                 $(this).addClass('selected');

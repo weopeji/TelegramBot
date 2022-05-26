@@ -1254,6 +1254,26 @@ img.preloader_row_img {
   width: fit-content;
 }
 
+.renderCloseBlockBusiness_block h1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  color: white;
+}
+
+.renderCloseBlockBusiness_block_button_close {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  font-size: 37px;
+  position: absolute;
+  right: 0px;
+  top: -10px;
+}
+
 @media (max-width: 1350px) {
   .index_page_menu {
     display: none;
