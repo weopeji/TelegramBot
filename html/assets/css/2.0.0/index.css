@@ -1247,6 +1247,13 @@ img.preloader_row_img {
   font-size: 42px;
 }
 
+.accept_block_tap_more,
+.remove_block_tap {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
 @media (max-width: 1350px) {
   .index_page_menu {
     display: none;
