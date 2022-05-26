@@ -143,11 +143,11 @@
                     </div>
                 `);
 
-                template_text.children('span').eq(4).append(typeButtins[element.Inv.not_correct.dataType]);
+                template_text.children('span').eq(5).append(typeButtins[element.Inv.not_correct.dataType]);
 
                 if(typeof element.Inv.not_correct_complaint != "undefined")
                 {
-                    template_text.children('span').eq(4).children().remove();
+                    template_text.children('span').eq(5).children().remove();
 
                     if(element.Inv.not_correct_complaint)
                     {
