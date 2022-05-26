@@ -3066,7 +3066,7 @@
             var settingBlock = $(`
                 <div class="settingBlock">
                     <div class="version2_settingBlock_header">
-                        <p>Ожидают подтверждания</p>
+                        <p>Ожидают действия</p>
                     </div>
                     <div class="version2_default_bkg row_default"></div>
                     <div class="settingBlock_header">
@@ -3108,6 +3108,33 @@
 
                 i++;
             }
+
+            $('.index_page_body_data').append(settingBlock);
+
+
+            var settingBlock = $(`
+                <div class="settingBlock">
+                    <div class="version2_settingBlock_header">
+                        <p>Ожидают подтверждания</p>
+                    </div>
+                    <div class="version2_default_bkg row_default"></div>
+                    <div class="settingBlock_header">
+                        <div class="settingBlock_header_line">
+                            <span>№</span>
+                            <span>№ Проекта</span>
+                            <span>Название</span>
+                            <span>Договор</span>
+                            <span>Сумма</span>
+                            <span>Статус</span>
+                        </div>
+                    </div>
+                    <div class="settingBlock_body">
+
+                    </div>
+                </div>
+            `);
+
+            var i = 0;
 
             for(var element of _data.invester_data.waitInvs)
             {
