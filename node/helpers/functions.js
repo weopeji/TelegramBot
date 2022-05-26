@@ -359,7 +359,7 @@ async function full_alert_user(_id, _text, _type, moreId)
                             text: "Перейти к оплате",
                             login_url: {
                                 'url': `https://invester-relocation.site/?page=activ_projects&id=${moreId}`,
-                                'request_write_access': true,
+                                'request_write_access': true, 
                             },
                         },
                     ]);
