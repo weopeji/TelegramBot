@@ -32,28 +32,6 @@
                 data: global.allData.User._id,
             });
 
-            var settingBlock1 = $(`
-                <div class="settingBlock" style="margin-bottom: 20px">
-                    <div class="version2_default_bkg row_default"></div>
-                    <div class="settingBlock_header">
-                        <div class="invester_status_projects_status_first">
-                            <div class="invester_status_projects_status_first_line">
-                                <span>Сумма заявок</span>
-                                <a>2</a>
-                                <span>3</span>
-                                <a>4</a>
-                            </div>
-                            <div class="invester_status_projects_status_first_line">
-                                <span>1</span>
-                                <a>2</a>
-                                <span>3</span>
-                                <a>4</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `);
-
             var settingBlock2 = $(`
                 <div class="settingBlock">
                     <div class="version2_settingBlock_header">
@@ -108,7 +86,6 @@
                 _this.ActionAllMoney = _this.ActionAllMoney + Number(element.Inv.data.pay.toString().RedactingNumber());
             };
 
-            $('.index_page_body_data').append(settingBlock1);
             $('.index_page_body_data').append(settingBlock2);
         }
     }
