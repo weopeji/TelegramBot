@@ -1256,7 +1256,26 @@
             $('.show_document').click( async function() {
                 if(window.screen.width < 1300)
                 {
-                    saveUrlAsFile(`https://invester-relocation.site/projects/${_data.InvDoc.projectId}/${_data.InvDoc.urlToLastDocument}`, `${_data.InvDoc.projectId}/${_data.InvDoc.urlToLastDocument}`);
+                    // saveUrlAsFile(`https://invester-relocation.site/projects/${_data.InvDoc.projectId}/${_data.InvDoc.urlToLastDocument}`, `${_data.InvDoc.projectId}/${_data.InvDoc.urlToLastDocument}`);
+                    
+                    var tamplateText = $(`
+                        <div class="version2_preloaderDocumetBLock">
+                            <div class="version2_preloaderDocumetBLock_row">
+                                <div class="version2_preloaderDocumetBLock_header">
+                                    <span><</span>
+                                </div>
+                                <div class="version2_preloaderDocumetBLock_img">
+                                    <img src="/html/assets/images/2.0.0/documents/file_signature_document-1.png" alt="">
+                                </div>
+                                <div class="version2_preloaderDocumetBLock_img">
+                                    <img src="/html/assets/images/2.0.0/documents/file_signature_document-2.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    `);
+
+                    $('body').append(tamplateText);
+                    $('.version2_preloaderDocumetBLock').fadeIn();
                 }
                 else
                 {
@@ -3076,7 +3095,6 @@
                             <span>Название</span>
                             <span>Договор</span>
                             <span>Сумма</span>
-                            <span>Статус</span>
                         </div>
                     </div>
                     <div class="settingBlock_body">
@@ -3096,7 +3114,6 @@
                         <span>${element.Project.data.name}</span>
                         <span>${element.Project._id}/${element.ActionInit} от ${DateFormatted(element.Inv.date.toString())}</span>
                         <span>${element.Inv.data.pay} ₽</span>
-                        <span>Ожидает действия</span>
                     </div>
                 `);
 

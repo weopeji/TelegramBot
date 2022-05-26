@@ -1193,6 +1193,39 @@ img.preloader_row_img {
   background-color: #AA84FE;
 }
 
+.Attracted_headerInfoBlock_info_data_alert_buttom_cheack {
+  background: linear-gradient(81.65deg, #CF2DBF 18.55%, #951CDF 97.44%);
+  border-radius: 5px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 auto;
+  padding: 5px 30px;
+  font-size: 20px;
+}
+
+.version2_preloaderDocumetBLock {
+  display: none;
+  position: relative;
+}
+
+.version2_preloaderDocumetBLock_row {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.version2_preloaderDocumetBLock_img {
+  width: 100%;
+  height: auto;
+}
+
+.version2_preloaderDocumetBLock_img img {
+  width: 100%;
+}
+
 @media (max-width: 1350px) {
   .index_page_menu {
     display: none;
