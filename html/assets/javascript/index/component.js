@@ -1274,6 +1274,12 @@
                         </div>
                     `);
 
+                    tamplateText.find('.version2_preloaderDocumetBLock_header').click( function() {
+                        $('.version2_preloaderDocumetBLock').fadeOut( function() {
+                            $(this).remove();
+                        });
+                    });
+
                     $('body').append(tamplateText);
                     $('.version2_preloaderDocumetBLock').fadeIn();
                 }
