@@ -234,6 +234,10 @@
                                 });
 
                                 $('.creating_page_input_div[data="ok"]').click( function() {
+                                    await callApi({
+                                        methodName: "version2_put_file_alertofOfCloseCheack",
+                                        data: _GET('InvId'),
+                                    });
                                     location.href = `https://invester-relocation.site/?page=activ_projects&id=${_GET("InvId")}`;
                                 });
 

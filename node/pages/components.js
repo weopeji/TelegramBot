@@ -89,6 +89,7 @@ var action_linker =
     "version2_acceptPays_notFullPay_business": version2_acceptPays_notFullPay_business,
     "version2_activ_projects_accept_notFullPayNull_inv": version2_activ_projects_accept_notFullPayNull_inv,
     "vesrion2_set_last_socket": vesrion2_set_last_socket,
+    "version2_put_file_alertofOfCloseCheack": version2_put_file_alertofOfCloseCheack,
 
 
 
@@ -235,6 +236,20 @@ var action_linker =
     "getProjectForInvesterPageByIdInvDoc": getProjectForInvesterPageByIdInvDoc,
     "accept_confirmationData": accept_confirmationData,
 };
+
+async function version2_put_file_alertofOfCloseCheack(socket, data, callback)
+{
+    try {
+        var _InvDoc     = await InvDoc.findOne({_id: data});
+        var _Project    = await Project.findOne({_id: _InvDoc.projectId});
+
+        await h.full_alert_user(_Project.user, `Инвестор прикрепил чек за инвестицию, проверьте и подтвердите оплату у себя в личном кабинете`, "pay_of_invNotFullPay_business");
+    }
+
+    catch (e) {};
+
+    callback();
+}
 
 async function vesrion2_set_last_socket(socket, data, callback)
 {

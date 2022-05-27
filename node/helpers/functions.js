@@ -362,6 +362,18 @@ async function full_alert_user(_id, _text, _type, moreId)
                     },
                 ]);
             },
+            "pay_of_invNotFullPay_business": async function()
+            {
+                keyboardPush.push([
+                    {
+                        text: "Перейти к поступлениям",
+                        login_url: {
+                            'url': `https://invester-relocation.site/?page=acceptPays`,
+                            'request_write_access': true, 
+                        },
+                    },
+                ]);
+            }
         };
 
         if(typeof funsForSecondMSG[_type] != "undefined")
