@@ -1533,7 +1533,7 @@
                             <div class="invester_status_projects_status_first">
                                 <div class="invester_status_projects_status_first_line">
                                     <span>Проинвестировано</span>
-                                    <a>${_data.invester_data.invested.toString().ReplaceNumber()} руб.</a>
+                                    <a>0 руб.</a>
                                     <span>Получено</span>
                                     <a>${_data.invester_data.paid.toString().ReplaceNumber()} руб</a>
                                 </div>
@@ -1542,6 +1542,19 @@
                                     <a>${_data.invester_data.investedWait.toString().ReplaceNumber()} руб</a>
                                     <span>Ближайшие поступления на</span>
                                     <a>${_data.invester_data.receipts.toString().ReplaceNumber()} руб</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="settingBlock" style="margin-bottom: 20px">
+                        <div class="version2_default_bkg row_default"></div>
+                        <div class="settingBlock_header">
+                            <div class="invester_status_projects_status_first">
+                                <div class="invester_status_projects_status_first_line">
+                                    <span>Кол-во заявок</span>
+                                    <a>0</a>
+                                    <span>Сумма</span>
+                                    <a>0 руб</a>
                                 </div>
                             </div>
                         </div>

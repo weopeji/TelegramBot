@@ -240,7 +240,10 @@ async function vesrion2_set_last_socket(socket, data, callback)
 {
     try {
         await User.findOneAndUpdate({_id: data.userId}, {socket: data.socket});
-    } catch (e) {};
+    } 
+    catch (e) {};
+
+    callback();
 }
 
 async function version2_activ_projects_accept_notFullPayNull_inv(socket, data, callback)
