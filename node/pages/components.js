@@ -264,7 +264,8 @@ async function vesrion2_set_last_socket(socket, data, callback)
 async function version2_activ_projects_accept_notFullPayNull_inv(socket, data, callback)
 {
     try {
-        await InvDoc.findOneAndUpdate({_id: data}, {applicationRequest: false});
+        var _InvDoc = await InvDoc.findOneAndUpdate({_id: data}, {applicationRequest: false});
+        await h.full_alert_user(_InvDoc.invester, `Бизнес подтвердил вашу инвестицию`, "pay_of_invNotFullPay_acceptBusiness");
     } 
     catch(e) {}
 
