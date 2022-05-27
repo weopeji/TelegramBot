@@ -571,7 +571,7 @@ app.post('/file_Action.io/files', (req, res) => {
                     },
                     "activ_projects_NotFullPayNullPts2": async function()
                     {
-                        var _InvDoc         = await InvDoc.findOne({_id: FullData.InvDocId});
+                        var _InvDoc         = await InvDoc.findOneAndUpdate({_id: FullData.InvDocId}, {date_append: new Date().getTime().toString()});
                         var PathToFile      = `/var/www/projects/${_InvDoc.projectId}/${_InvDoc._id}_investment_2.${FilePts}`;
                         var _InvDocData     = _InvDoc.data;
                         _InvDocData.pts_2   = FilePts;
