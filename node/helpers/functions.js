@@ -352,18 +352,15 @@ async function full_alert_user(_id, _text, _type, moreId)
             },
             "pay_of_invNotFullPay": async function()
             {
-                if(moreId || moreId == 0)
-                {
-                    keyboardPush.push([
-                        {
-                            text: "Перейти к оплате",
-                            login_url: {
-                                'url': `https://invester-relocation.site/?page=activ_projects&id=${moreId}`,
-                                'request_write_access': true, 
-                            },
+                keyboardPush.push([
+                    {
+                        text: "Перейти к оплате",
+                        login_url: {
+                            'url': `https://invester-relocation.site/?page=wait_projects`,
+                            'request_write_access': true, 
                         },
-                    ]);
-                };
+                    },
+                ]);
             },
         };
 

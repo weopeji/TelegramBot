@@ -3106,7 +3106,7 @@
             var settingBlock = $(`
                 <div class="settingBlock">
                     <div class="version2_settingBlock_header">
-                        <p>Ожидают действия</p>
+                        <p>Ожидайют действия инвестора</p>
                     </div>
                     <div class="version2_default_bkg row_default"></div>
                     <div class="settingBlock_header">
@@ -3153,7 +3153,7 @@
             var settingBlock = $(`
                 <div class="settingBlock" style="margin-top: 70px;">
                     <div class="version2_settingBlock_header">
-                        <p>Ожидают подтверждания</p>
+                        <p>Ожидают подтверждения бизнесом</p>
                     </div>
                     <div class="version2_default_bkg row_default"></div>
                     <div class="settingBlock_header">
