@@ -233,7 +233,7 @@
                                     }
                                 });
 
-                                $('.creating_page_input_div[data="ok"]').click( function() {
+                                $('.creating_page_input_div[data="ok"]').click( async function() {
                                     await callApi({
                                         methodName: "version2_put_file_alertofOfCloseCheack",
                                         data: _GET('InvId'),
