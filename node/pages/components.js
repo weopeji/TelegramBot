@@ -622,7 +622,7 @@ async function business_addpayment_for_inv(socket, data, callback)
     var _invDoc     = await InvDoc.findOneAndUpdate({_id: data.id}, {pays: allPayments});
     var _Project    = await Project.findOne({_id: _invDoc.projectId});
 
-    h.full_alert_user(_invDoc.invester, `Поступила выплата в проекте номер ${_Project._id} "${_Project.data.name}" на сумму ${data.pay.payment} руб.`, "accept_business_investring", _InvDoc._id);
+    h.full_alert_user(_invDoc.invester, `Поступила выплата в проекте номер ${_Project._id} "${_Project.data.name}" на сумму ${data.pay} руб.`, "accept_business_investring", _InvDoc._id);
 
     callback();
 };
