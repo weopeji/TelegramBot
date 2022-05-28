@@ -378,16 +378,15 @@ async function not_active_callback(msg)
             for(var i = 0; i < 3; i++) { 
                 try {
                     await bot.deleteMessage(msg.from.id, msg.message.message_id - i);
-                } catch(err) {
-
-                }
+                } catch(err) {};
             }; 
 
             if(btnData == "first") 
             {
                 needProject = _moderation[0];
                 needNextProject = 1;
-            } else 
+            } 
+            else 
             {
                 if(btnData <= 0) {
                     needProject = _moderation[0];
@@ -416,9 +415,9 @@ async function not_active_callback(msg)
                 ])
             }
 
-            var html = `[Профиль компании](${h.getURL()}html/project/profil/#${needProject._id})\n[Презентация](${h.getURL()}/projects/${needProject._id}/${needProject.data["file+7"]})\n[Видео презентация](${h.getURL()}/projects/${needProject._id}/${needProject.data["file+8"]})`;
-            const stream = fs.createReadStream(`../projects/${needProject._id}/logo.png`);
-            var fat = await bot.sendPhoto(msg.from.id, stream, {
+            var html = `${needProject._id} ${needProject.data.name}\nСтавка: ${needProject.data.rate}\nВход от: ${needProject.data.minimal_amount}\nСумма: ${needProject.data.attraction_amount}\nНа срок: ${needProject.data.date}\n[Профиль компании](${h.getURL()}html/project/profil/#${needProject._id})\n[Презентация](${h.getURL()}/projects/${needProject._id}/${needProject.data["file+7"]})\n[Видео презентация](${h.getURL()}/projects/${needProject._id}/${needProject.data["file+8"]})`;
+
+            var fat = await h.send_html(msg.from.id, html, {
                 "caption": html,
                 "parse_mode": "MarkdownV2",
                 "reply_markup": {
