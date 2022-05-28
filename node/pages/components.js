@@ -410,7 +410,7 @@ async function version2_investerData_invdoc_notMoney(socket, data, callback)
         await InvDoc.findOneAndUpdate({_id: invCreate._id}, {urlToLastDocument: pathToLastDocument});
 
         await h.alertDeleteOfUserOnbot(`${_User.first_name} Вы успешно оставили заявку в проекте\n ${_Project._id}\n "${_Project.data.name}"\n на сумму ${data.money} руб.\n по договору от ${DateTime.fromMillis(Number(new Date().getTime().toString())).toFormat('dd.MM.yyyy')}`, _User.user);
-        await h.full_alert_user(_Project.user, `Поступила заявка в проекте номер ${_Project._id} "${_Project.data.name}" на сумму ${data.money} руб. по договору от ${DateTime.fromMillis(Number(new Date().getTime().toString())).toFormat('dd.MM.yyyy')}`, "put_investring");
+        await h.full_alert_user(_Project.user, `Поступила заявка в проекте номер ${_Project._id} "${_Project.data.name}" на сумму ${data.money} руб. по договору от ${DateTime.fromMillis(Number(new Date().getTime().toString())).toFormat('dd.MM.yyyy')}`, "version2_businessAlertsInvestNotFullPay");
     } catch(e) {};
 
     callback();

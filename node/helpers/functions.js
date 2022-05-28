@@ -385,7 +385,11 @@ async function full_alert_user(_id, _text, _type, moreId)
                         },
                     },
                 ]);
-            }
+            },
+            "version2_businessAlertsInvestNotFullPay": async function()
+            {
+                return;
+            },
         };
 
         if(typeof funsForSecondMSG[_type] != "undefined")
