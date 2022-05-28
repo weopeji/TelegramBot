@@ -420,7 +420,7 @@ async function not_active_callback(msg)
             var fat = await h.send_html(msg.from.id, html, _keyboard);
 
             _array.push(fat.message_id);
-            await h.DMA(msg, _array);
+            await h.DMA(msg, _array); 
             
         },
         "correction": async function()
