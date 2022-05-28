@@ -586,12 +586,31 @@
                                 appendPayBlock.find('button').eq(1).css('margin-left', 0);
 
                                 appendPayBlock.find('button').eq(0).click( async function() {
-                                    await callApi({
-                                        methodName: "business_addpayment_for_inv",
-                                        data: {
-                                            id: _GET('id'),
-                                            pay: $('#money_of_Push').val().trim().toString().replace(/\s/g, ''),
-                                        },
+                                    SoloAlert.confirm({
+                                        title: "Подтверждение",
+                                        body: "Вы уверены, что хотите подтвердить выплату инвестору?",
+                                        html: "",
+                                        useTransparency: true,
+                                    }).then(async (value) => 
+                                    {
+                                        if(value)
+                                        {
+                                            await callApi({
+                                                methodName: "business_addpayment_for_inv",
+                                                data: {
+                                                    id: _GET('id'),
+                                                    pay: $('#money_of_Push').val().trim().toString().replace(/\s/g, ''),
+                                                },
+                                            });
+
+                                            SoloAlert.alert({
+                                                title:"Успешно",
+                                                body:"",
+                                                icon: "success"
+                                            }).then(() => {
+                                                location.reload();
+                                            })
+                                        }
                                     });
                                 });
                             }
