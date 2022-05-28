@@ -417,13 +417,7 @@ async function not_active_callback(msg)
 
             var html = `${needProject._id} ${needProject.data.name}\nСтавка: ${needProject.data.rate}\nВход от: ${needProject.data.minimal_amount}\nСумма: ${needProject.data.attraction_amount}\nНа срок: ${needProject.data.date}\n[Профиль компании](${h.getURL()}html/project/profil/#${needProject._id})\n[Презентация](${h.getURL()}/projects/${needProject._id}/${needProject.data["file+7"]})\n[Видео презентация](${h.getURL()}/projects/${needProject._id}/${needProject.data["file+8"]})`;
 
-            var fat = await h.send_html(msg.from.id, html, {
-                "caption": html,
-                "parse_mode": "MarkdownV2",
-                "reply_markup": {
-                    "inline_keyboard": _keyboard,
-                }
-            });
+            var fat = await h.send_html(msg.from.id, html, _keyboard);
 
             _array.push(fat.message_id);
             await h.DMA(msg, _array);
