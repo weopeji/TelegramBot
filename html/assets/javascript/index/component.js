@@ -1527,13 +1527,94 @@
             } else 
             {
                 var settingBlock = $(`
+                    <div class="settingBlock">
+                        <div class="version2_settingBlock_header">
+                            <p>Активные проекты</p>
+                        </div>
+                        <div class="version2_default_bkg row_default"></div>
+                        <div class="settingBlock_header">
+                            <div class="settingBlock_header_line">
+                                <span>№</span>
+                                <span>№ Проекта</span>
+                                <span>Название</span>
+                                <span>Договор</span>
+                                <span>Сумма входа</span>
+                                <span>Сумма платежа</span>
+                            </div>
+                        </div>
+                        <div class="settingBlock_body">
+
+                        </div>
+                    </div>
+                `);
+
+                var i                   = 0;
+                var allMoneyInvesting   = 0;
+
+                for(var element of _data.invester_data.activeInvs)
+                {
+                    var maxDate             = new Date(Number(element.Inv.date));
+                    var maxDateFormatted    =  this.pad(maxDate.getDate(), 2, '0') + '.' + this.pad(maxDate.getMonth() + 1, 2, '0') + '.' + maxDate.getFullYear();
+
+                    var lastPay = 0;
+
+                    if(element.project.data.date != "Бессрочно")
+                    {
+                        for(var payInv of element.Inv.pays)
+                        {
+                            if(payInv.status == "wait")
+                            {
+                                lastPay = payInv.pay.toString().ReplaceNumber() + " руб";
+                                break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if(typeof element.Inv.applicationRequest == "undefined")
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            if(element.Inv.applicationRequest)
+                            {
+                                continue;
+                            }
+                        };
+
+                        lastPay = "% от прибыли";
+                    }
+
+                    var template_text = $(`
+                        <div class="settingBlock_body_line" data="${element.Inv.invester}" data-more="${element.Inv._id}">
+                            <span>${i + 1}</span>
+                            <span>${element.project._id}</span>
+                            <span>${element.project.data.name}</span>
+                            <span>${element.project._id}/${element.number} от ${maxDateFormatted}</span>
+                            <span>${element.Inv.data.pay} руб</span>
+                            <span>${lastPay}</span>
+                        </div>
+                    `);
+
+                    template_text.click( function () {
+                        location.href = `/?page=activ_projects&id=${$(this).attr('data-more')}`;
+                    })
+
+                    settingBlock.find('.settingBlock_body').append(template_text);
+
+                    allMoneyInvesting = allMoneyInvesting + Number(element.Inv.data.pay.toString().RedactingNumber());
+                    i++;
+                };
+
+                var settingBlock1 = $(`
                     <div class="settingBlock" style="margin-bottom: 20px">
                         <div class="version2_default_bkg row_default"></div>
                         <div class="settingBlock_header">
                             <div class="invester_status_projects_status_first">
                                 <div class="invester_status_projects_status_first_line">
                                     <span>Проинвестировано</span>
-                                    <a>0 руб.</a>
+                                    <a>${allMoneyInvesting.toString().ReplaceNumber()} руб.</a>
                                     <span>Получено</span>
                                     <a>${_data.invester_data.paid.toString().ReplaceNumber()} руб</a>
                                 </div>
@@ -1591,87 +1672,7 @@
                     </div>
                 `);
 
-                $('.index_page_body_data').append(settingBlock);
-
-                var settingBlock = $(`
-                    <div class="settingBlock">
-                        <div class="version2_settingBlock_header">
-                            <p>Активные проекты</p>
-                        </div>
-                        <div class="version2_default_bkg row_default"></div>
-                        <div class="settingBlock_header">
-                            <div class="settingBlock_header_line">
-                                <span>№</span>
-                                <span>№ Проекта</span>
-                                <span>Название</span>
-                                <span>Договор</span>
-                                <span>Сумма входа</span>
-                                <span>Сумма платежа</span>
-                            </div>
-                        </div>
-                        <div class="settingBlock_body">
-
-                        </div>
-                    </div>
-                `);
-
-                var i = 0;
-
-                for(var element of _data.invester_data.activeInvs)
-                {
-                    var maxDate             = new Date(Number(element.Inv.date));
-                    var maxDateFormatted    =  this.pad(maxDate.getDate(), 2, '0') + '.' + this.pad(maxDate.getMonth() + 1, 2, '0') + '.' + maxDate.getFullYear();
-
-                    var lastPay = 0;
-
-                    if(element.project.data.date != "Бессрочно")
-                    {
-                        for(var payInv of element.Inv.pays)
-                        {
-                            if(payInv.status == "wait")
-                            {
-                                lastPay = payInv.pay.toString().ReplaceNumber() + " руб";
-                                break;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        if(typeof element.Inv.applicationRequest == "undefined")
-                        {
-                            continue;
-                        }
-                        else
-                        {
-                            if(element.Inv.applicationRequest)
-                            {
-                                continue;
-                            }
-                        };
-
-                        lastPay = "% от прибыли";
-                    }
-
-                    var template_text = $(`
-                        <div class="settingBlock_body_line" data="${element.Inv.invester}" data-more="${element.Inv._id}">
-                            <span>${i + 1}</span>
-                            <span>${element.project._id}</span>
-                            <span>${element.project.data.name}</span>
-                            <span>${element.project._id}/${element.number} от ${maxDateFormatted}</span>
-                            <span>${element.Inv.data.pay} руб</span>
-                            <span>${lastPay}</span>
-                        </div>
-                    `);
-
-                    template_text.click( function () {
-                        location.href = `/?page=activ_projects&id=${$(this).attr('data-more')}`;
-                    })
-
-                    settingBlock.find('.settingBlock_body').append(template_text);
-
-                    i++;
-                };
-
+                $('.index_page_body_data').append(settingBlock1);
                 $('.index_page_body_data').append(settingBlock);
             } 
         }
