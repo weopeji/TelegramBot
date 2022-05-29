@@ -1487,6 +1487,7 @@
                 var i                   = 0;
                 var allMoneyInvesting   = 0;
                 var ActionAllMoney      = 0;
+                var ActionAllMoneyinit  = 0;
 
                 for(var element of _data.invester_data.activeInvs)
                 {
@@ -1494,6 +1495,7 @@
                     var maxDateFormatted    =  this.pad(maxDate.getDate(), 2, '0') + '.' + this.pad(maxDate.getMonth() + 1, 2, '0') + '.' + maxDate.getFullYear();
                     var lastPay             = 0;
                     ActionAllMoney          = ActionAllMoney + Number(element.Inv.data.pay.toString().RedactingNumber());
+                    ActionAllMoneyinit      = ActionAllMoneyinit + 1;
 
                     if(element.project.data.date != "Бессрочно")
                     {
@@ -1570,9 +1572,9 @@
                             <div class="invester_status_projects_status_first">
                                 <div class="invester_status_projects_status_first_line">
                                     <span>Кол-во заявок</span>
-                                    <a>0</a>
+                                    <a>${ActionAllMoneyinit}</a>
                                     <span>Сумма</span>
-                                    <a>0 руб</a>
+                                    <a>${ActionAllMoney} руб</a>
                                 </div>
                             </div>
                         </div>
