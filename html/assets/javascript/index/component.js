@@ -1574,7 +1574,7 @@
                                     <span>Кол-во заявок</span>
                                     <a>${ActionAllMoneyinit}</a>
                                     <span>Сумма</span>
-                                    <a>${ActionAllMoney} руб</a>
+                                    <a>${ActionAllMoney.toString().ReplaceNumber()} руб</a>
                                 </div>
                             </div>
                         </div>
