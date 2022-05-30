@@ -702,6 +702,7 @@
                                 <input type="text" class="creating_page_input_div" data="bik" placeholder="БИК">
                                 <input type="text" class="creating_page_input_div" data="nomer" placeholder="Номер расчетного счета">
                                 <input type="text" class="creating_page_input_div" data="nomer_kor" placeholder="Номер корреспондентского счета">
+                                <input type="text" class="creating_page_input_div" data="info_more" placeholder="На основе чего вы действуете?">
                                 <div class="creating_page_input_button">
                                     <span>Отправить</span> 
                                 </div>
@@ -752,6 +753,7 @@
                                 <input type="text" class="creating_page_input_div" data="bik" placeholder="БИК">
                                 <input type="text" class="creating_page_input_div" data="nomer" placeholder="Номер расчетного счета">
                                 <input type="text" class="creating_page_input_div" data="nomer_kor" placeholder="Номер корреспондентского счета">
+                                <input type="text" class="creating_page_input_div" data="info_more" placeholder="На основе чего вы действуете?">
 
                                 <div class="creating_page_input_button">
                                     <span>Отправить</span>
@@ -804,6 +806,7 @@
                                 <input type="text" class="creating_page_input_div" data="bik" placeholder="БИК">
                                 <input type="text" class="creating_page_input_div" data="nomer" placeholder="Номер расчетного счета">
                                 <input type="text" class="creating_page_input_div" data="nomer_kor" placeholder="Номер корреспондентского счета">
+                                <input type="text" class="creating_page_input_div" data="info_more" placeholder="На основе чего вы действуете?">
     
                                 <div class="creating_page_input_button">
                                     <span>Отправить</span>
