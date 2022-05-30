@@ -239,7 +239,7 @@
                                         data: _GET('InvId'),
                                     });
 
-                                    window.location = "tg:\/\/resolve?domain=invester_official";
+                                    window.location = "tg:\/\/resolve?domain=invester_official_bot";
                                 });
 
                                 $('.creating_page_input_div[data="reload"]').click( function() {
