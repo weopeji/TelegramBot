@@ -238,7 +238,8 @@
                                         methodName: "version2_put_file_alertofOfCloseCheack",
                                         data: _GET('InvId'),
                                     });
-                                    location.href = `https://invester-relocation.site/?page=activ_projects&id=${_GET("InvId")}`;
+
+                                    window.location = "tg:\/\/resolve?domain=invester_official";
                                 });
 
                                 $('.creating_page_input_div[data="reload"]').click( function() {
