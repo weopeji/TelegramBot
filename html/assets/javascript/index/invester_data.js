@@ -807,6 +807,11 @@
                                 <input type="text" class="creating_page_input_div" data="nomer" placeholder="Номер расчетного счета">
                                 <input type="text" class="creating_page_input_div" data="nomer_kor" placeholder="Номер корреспондентского счета">
                                 <input type="text" class="creating_page_input_div" data="info_more" placeholder="На основе чего вы действуете?">
+
+                                <div class="version2_creating_page_input_inputCheackBoxRezident">
+                                    <input type="checkbox" name="" id="">
+                                    <span>Являетесь ли вы резидентом?</span>
+                                </div>
     
                                 <div class="creating_page_input_button">
                                     <span>Отправить</span>
