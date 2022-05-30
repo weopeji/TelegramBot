@@ -1296,6 +1296,11 @@ img.preloader_row_img {
   height: 40px;
 }
 
+.version2_creating_page_input_inputCheackBoxRezident span {
+  z-index: 2;
+  margin-left: 20px;
+}
+
 @media (max-width: 1350px) {
   .index_page_menu {
     display: none;
