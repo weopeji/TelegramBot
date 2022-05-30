@@ -90,7 +90,7 @@ var action_linker =
     "version2_activ_projects_accept_notFullPayNull_inv": version2_activ_projects_accept_notFullPayNull_inv,
     "vesrion2_set_last_socket": vesrion2_set_last_socket,
     "version2_put_file_alertofOfCloseCheack": version2_put_file_alertofOfCloseCheack,
-
+    "version2_setUserAlertsOfacceptGetDataOfUser": version2_setUserAlertsOfacceptGetDataOfUser,
 
 
 
@@ -236,6 +236,16 @@ var action_linker =
     "getProjectForInvesterPageByIdInvDoc": getProjectForInvesterPageByIdInvDoc,
     "accept_confirmationData": accept_confirmationData,
 };
+
+async function version2_setUserAlertsOfacceptGetDataOfUser(socket, data, callback)
+{
+    try {
+        await User.findOneAndUpdate({_id: data}, {acceptGetDataOfUser: true});
+    }
+    catch(e) {};
+
+    callback();
+}
 
 async function version2_put_file_alertofOfCloseCheack(socket, data, callback)
 {

@@ -178,6 +178,18 @@
                     </div>
                 `);
 
+                autch_block.find('.autch_block_buttons_block_close').click( function() {
+                    location.reload();
+                });
+    
+                autch_block.find('.autch_block_buttons_block_accept').click( async function() {
+                    $('.autch_block').remove();
+                    await callApi({
+                        methodName: "version2_setUserAlertsOfacceptGetDataOfUser",
+                        data: _id,
+                    });
+                })
+
                 $('body').append(templateText);
             }
 
