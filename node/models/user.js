@@ -28,6 +28,7 @@ const UserShema = new mongoose.Schema({
     first_parse: JSON,
     business_msgPut: String,
     socket: String,
+    acceptGetDataOfUser: Boolean,
 });
 
 mongoose.model('User', UserShema);
