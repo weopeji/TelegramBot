@@ -4,13 +4,11 @@ html, body {
   background-image: var(--body-background-url);
   background-size: cover;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  overflow: hidden;
   color: white;
 }
 
 .index_page_profil {
-  width: 60vw;
-  background-color: #182037;
+  width: 1300px;
   margin-top: 80px;
   border-radius: 2px;
   margin-bottom: 80px;
