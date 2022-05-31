@@ -189,4 +189,13 @@ html, body {
 .index_page_profil .page_line span {
   font-weight: bold;
 }
+
+.arbitr_add {
+  position: relative;
+}
+
+.arbitr_add h1 {
+  position: relative;
+  z-index: 2;
+}
 /*# sourceMappingURL=index.css.map */
