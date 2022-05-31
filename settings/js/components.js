@@ -1815,7 +1815,7 @@
                             window.open(`https://invester-relocation.site/?page=activ_projects&id=${$(this).parent().parent().attr('data')}`, "_blank")
                         });
 
-                        templateText.find('input[type="checkbox"]').change( function() {
+                        template_text.find('input[type="checkbox"]').change( function() {
 
                             var ActionNumber = 0;
 
