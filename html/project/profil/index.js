@@ -58,9 +58,6 @@
             data: _id,
         });
 
-        console.log(need_project);
-        console.log(getR_F);
-
         function startArbitr()
         {
             if(typeof need_project.parce.ar === "object")
