@@ -1309,6 +1309,7 @@ img.preloader_row_img {
 
 .version2_settingBlock_header_settings_moreMoney {
   margin-left: 20px;
+  font-size: 20px;
 }
 
 @media (max-width: 1350px) {

@@ -1827,7 +1827,7 @@
 
                             if(ActionNumber != 0)
                             {
-                                $('.version2_settingBlock_header_settings_moreMoney').html("Выбрано: " + ActionNumber.toString().RedactingNumber() + " Р");
+                                $('.version2_settingBlock_header_settings_moreMoney').html("Выбрано: " + ActionNumber.toString().ReplaceNumber() + " Р");
                             }
                             else
                             {
