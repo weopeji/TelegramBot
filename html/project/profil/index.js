@@ -156,10 +156,9 @@
                         if(need_project.parce.ispo[0].result.length > 0)
                         {
                             var appendBlock = $(`
-                                <div class="version2_default_bkg row_default"></div>
-                                <h1 class="h1_sob">ИСПОЛНИТЕЛЬНОЕ ПРОИЗВОДСТВО</h1>
-
                                 <div class="ispo_line_more_data">
+                                    <div class="version2_default_bkg row_default"></div>
+                                    <h1 class="h1_sob">ИСПОЛНИТЕЛЬНОЕ ПРОИЗВОДСТВО</h1>
                                     <div class="ispo_line_more_data_data">
 
                                     </div>
