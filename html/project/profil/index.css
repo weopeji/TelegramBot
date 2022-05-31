@@ -203,4 +203,19 @@ html, body {
   position: relative;
   z-index: 2;
 }
+
+.ispo_line {
+  position: relative;
+}
+
+.ispo_line h1,
+.ispo_line span,
+.ispo_line .arbitr_arbitr_add,
+.ispo_line .page_line,
+.ispo_line .page_line_line,
+.ispo_line .arbitr_add_more_data_button,
+.ispo_line .arbitr_add_more_data {
+  position: relative;
+  z-index: 2;
+}
 /*# sourceMappingURL=index.css.map */
