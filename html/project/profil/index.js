@@ -20,7 +20,7 @@
         let link    = $.createElement('link');
         link.rel    = 'stylesheet';
         link.type   = 'text/css';
-        link.href   = './html/assets/css/2.0.0/black/index.css';
+        link.href   = '/html/assets/css/2.0.0/black/index.css';
         head.appendChild(link);
     }
     else
@@ -30,7 +30,7 @@
         let link    = $.createElement('link');
         link.rel    = 'stylesheet';
         link.type   = 'text/css';
-        link.href   = './html/assets/css/2.0.0/white/index.css';
+        link.href   = '/html/assets/css/2.0.0/white/index.css';
         head.appendChild(link);
     };
 
