@@ -1825,7 +1825,14 @@
                                 };
                             });
 
-                            $('.version2_settingBlock_header_settings_moreMoney').html(ActionNumber);
+                            if(ActionNumber != 0)
+                            {
+                                $('.version2_settingBlock_header_settings_moreMoney').html("Выбрано: " + ActionNumber.toString().RedactingNumber() + " Р");
+                            }
+                            else
+                            {
+                                $('.version2_settingBlock_header_settings_moreMoney').html("");
+                            }
                         });
 
                         template_text.find('.settingBlock_accept').click( async function() {

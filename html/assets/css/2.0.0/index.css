@@ -402,6 +402,12 @@
   top: -45px;
   left: 0;
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .version2_settingBlock_header p {
@@ -1298,6 +1304,10 @@ img.preloader_row_img {
 
 .version2_creating_page_input_inputCheackBoxRezident span {
   z-index: 2;
+  margin-left: 20px;
+}
+
+.version2_settingBlock_header_settings_moreMoney {
   margin-left: 20px;
 }
 
