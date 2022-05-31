@@ -451,7 +451,7 @@ async function alertAdmin(data)
         {
             var html = `<a href="https://invester-relocation.site/html/project/profil/#${_project._id}">Профиль компании</a>\n<a href="https://invester-relocation.site/projects/${_project._id}/${_project.data["file+7"]}">Презентация</a>\n<a href="https://invester-relocation.site/projects/${_project._id}/${_project.data["file+8"]}">Видео презентация</a>\n\n`;
             html += data.text;
-            const stream = fs.createReadStream(`../projects/${data.projectId}/logo.png`);
+            const stream = fs.createReadStream(`/var/www/projects/${data.projectId}/logo.png`);
             await bot.sendPhoto(-1001693050369, stream, {
                 "caption": html,
                 "parse_mode": "html",
@@ -474,7 +474,7 @@ async function alertAdmin(data)
         {
             var html = `<a href="https://invester-relocation.site/html/project/profil/#${_project._id}">Профиль компании</a>\n<a href="https://invester-relocation.site/projects/${_project._id}/${_project.data["file+7"]}">Презентация</a>\n<a href="https://invester-relocation.site/projects/${_project._id}/${_project.data["file+8"]}">Видео презентация</a>\n\n`;
             html += data.text;
-            const stream = fs.createReadStream(`../projects/${data.projectId}/logo.png`);
+            const stream = fs.createReadStream(`/var/www/projects/${data.projectId}/logo.png`);
             bot.sendPhoto(-1001693050369, stream, {
                 "caption": html,
                 "parse_mode": "html",
@@ -497,7 +497,7 @@ async function alertAdmin(data)
         {
             var html = `<a href="https://invester-relocation.site/html/project/profil/#${_project._id}">Профиль компании</a>\n<a href="https://invester-relocation.site/projects/${_project._id}/${_project.data["file+7"]}">Презентация</a>\n<a href="https://invester-relocation.site/projects/${_project._id}/${_project.data["file+8"]}">Видео презентация</a>\n\n`;
             html += data.text;
-            const stream = fs.createReadStream(`../projects/${data.projectId}/logo.png`);
+            const stream = fs.createReadStream(`/var/www/projects/${data.projectId}/logo.png`);
             bot.sendPhoto(-1001693050369, stream, {
                 "caption": html,
                 "parse_mode": "html",
@@ -519,7 +519,7 @@ async function alertAdmin(data)
         "correct_investerDocument_more": function() {
             var html = `<a href="https://invester-relocation.site/html/project/profil/#${_project._id}">Профиль компании</a>\n<a href="https://invester-relocation.site/projects/${_project._id}/${_project.data["file+7"]}">Презентация</a>\n<a href="https://invester-relocation.site/projects/${_project._id}/${_project.data["file+8"]}">Видео презентация</a>\n\n`;
             html += data.text;
-            const stream = fs.createReadStream(`../projects/${data.projectId}/logo.png`);
+            const stream = fs.createReadStream(`/var/www/projects/${data.projectId}/logo.png`);
             bot.sendPhoto(-1001693050369, stream, {
                 "caption": html,
                 "parse_mode": "html",
@@ -542,7 +542,7 @@ async function alertAdmin(data)
         {
             var html = `<a href="https://invester-relocation.site/html/project/profil/#${_project._id}">Профиль компании</a>\n<a href="https://invester-relocation.site/projects/${_project._id}/${_project.data["file+7"]}">Презентация</a>\n<a href="https://invester-relocation.site/projects/${_project._id}/${_project.data["file+8"]}">Видео презентация</a>\n\n`;
             html += data.text;
-            const stream = fs.createReadStream(`../projects/${data.projectId}/logo.png`);
+            const stream = fs.createReadStream(`/var/www/projects/${data.projectId}/logo.png`);
             bot.sendPhoto(-1001693050369, stream, {
                 "caption": html,
                 "parse_mode": "html",
@@ -565,7 +565,7 @@ async function alertAdmin(data)
         {
             var html = `<a href="https://invester-relocation.site/html/project/profil/#${_project._id}">Профиль компании</a>\n<a href="https://invester-relocation.site/projects/${_project._id}/${_project.data["file+7"]}">Презентация</a>\n<a href="https://invester-relocation.site/projects/${_project._id}/${_project.data["file+8"]}">Видео презентация</a>\n\n`;
             html += data.text;
-            const stream = fs.createReadStream(`../projects/${data.projectId}/logo.png`);
+            const stream = fs.createReadStream(`/var/www/projects/${data.projectId}/logo.png`);
             bot.sendPhoto(-1001693050369, stream, {
                 "caption": html,
                 "parse_mode": "html",
@@ -588,7 +588,7 @@ async function alertAdmin(data)
         {
             var html = `<a href="https://invester-relocation.site/html/project/profil/#${_project._id}">Профиль компании</a>\n<a href="https://invester-relocation.site/projects/${_project._id}/${_project.data["file+7"]}">Презентация</a>\n<a href="https://invester-relocation.site/projects/${_project._id}/${_project.data["file+8"]}">Видео презентация</a>\n\n`;
             html += data.text;
-            const stream = fs.createReadStream(`../projects/${data.projectId}/logo.png`);
+            const stream = fs.createReadStream(`/var/www/projects/${data.projectId}/logo.png`);
             bot.sendPhoto(-1001693050369, stream, {
                 "caption": html,
                 "parse_mode": "html",
@@ -611,7 +611,7 @@ async function alertAdmin(data)
         {
             var html = `<a href="https://invester-relocation.site/html/project/profil/#${_project._id}">Профиль компании</a>\n<a href="https://invester-relocation.site/projects/${_project._id}/${_project.data["file+7"]}">Презентация</a>\n<a href="https://invester-relocation.site/projects/${_project._id}/${_project.data["file+8"]}">Видео презентация</a>\n\n`;
             html += data.text;
-            const stream = fs.createReadStream(`../projects/${data.projectId}/logo.png`);
+            const stream = fs.createReadStream(`/var/www/projects/${data.projectId}/logo.png`);
             bot.sendPhoto(-1001693050369, stream, {
                 "caption": html,
                 "parse_mode": "html",
