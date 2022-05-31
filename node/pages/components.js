@@ -427,7 +427,9 @@ async function version2_investerData_invdoc_notMoney(socket, data, callback)
             text: `Поступила заявка на сумму ${data.money} руб.`,
             projectId: _Project._id,
         });
-    } catch(e) {};
+    } catch(e) {
+        console.log(e);
+    };
 
     callback();
 }
