@@ -1767,7 +1767,7 @@
                             <div class="settingBlockDropMenuMoreBody">
                                 <div class="settingBlock">
                                     <div class="version2_settingBlock_header">
-                                        <p>Доступные проекты</p>
+                                        <p>Доступные проекты <div class="version2_settingBlock_header_settings_moreMoney"></div></p>
                                     </div>
                                     <div class="version2_default_bkg row_default"></div>
                                     <div class="settingBlock_header">
@@ -1801,7 +1801,7 @@
 
                     ActionInvs.forEach((element, initNumber) => {
                         var template_text = $(`
-                            <div class="settingBlock_body_line" data="${element._id}">
+                            <div class="settingBlock_body_line" data="${element._id}" data-pay="${element.data.pay}">
                                 <span>${initNumber}</span>
                                 <span>${element.invester}</span>
                                 <span>${element.data.pay} ₽</span>
@@ -1813,6 +1813,19 @@
 
                         template_text.find('.settingBlock_accept_more').click( function() {
                             window.open(`https://invester-relocation.site/?page=activ_projects&id=${$(this).parent().parent().attr('data')}`, "_blank")
+                        });
+
+                        templateText.find('input[type="checkbox"]').change( function() {
+
+                            var ActionNumber = 0;
+
+                            $('.settingBlock_body_line').each((i, element) => {
+                                if($(element).find('input[type="checkbox"]').is(':checked')) {
+                                    ActionNumber = ActionNumber + Number($(element).attr('data-pay').toString().RedactingNumber());
+                                };
+                            });
+
+                            $('.version2_settingBlock_header_settings_moreMoney').html(ActionNumber);
                         });
 
                         template_text.find('.settingBlock_accept').click( async function() {
