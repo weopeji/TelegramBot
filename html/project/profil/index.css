@@ -147,9 +147,17 @@ html, body {
   background-color: #182037;
 }
 
-@media (max-width: 900px) {
-  .index_page_profil {
-    width: 95vw;
-  }
+.version2_index_page_profil_data_rowBlock {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.index_page_profil_data,
+.index_page_profil_credit {
+  width: calc(50% - 10px);
 }
 /*# sourceMappingURL=index.css.map */
