@@ -194,7 +194,12 @@ html, body {
   position: relative;
 }
 
-.arbitr_add h1 {
+.arbitr_add h1,
+.arbitr_add .arbitr_arbitr_add,
+.arbitr_add .page_line,
+.arbitr_add .page_line_line,
+.arbitr_add .arbitr_add_more_data_button,
+.arbitr_add .arbitr_add_more_data {
   position: relative;
   z-index: 2;
 }
