@@ -185,4 +185,8 @@ html, body {
 .index_page_profil .page_line span {
   color: white;
 }
+
+.index_page_profil .page_line span {
+  font-weight: bold;
+}
 /*# sourceMappingURL=index.css.map */
