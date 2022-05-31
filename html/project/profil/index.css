@@ -161,4 +161,18 @@ html, body {
   width: calc(50% - 10px);
   position: relative;
 }
+
+.index_page_profil_data h1,
+.index_page_profil_credit h1 {
+  text-align: left;
+  position: absolute;
+  top: -95px;
+  font-size: 24px;
+}
+
+.index_page_profil_data .page_line,
+.index_page_profil_credit .page_line {
+  position: relative;
+  z-index: 2;
+}
 /*# sourceMappingURL=index.css.map */
