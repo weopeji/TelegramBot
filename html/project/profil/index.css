@@ -175,4 +175,15 @@ html, body {
   position: relative;
   z-index: 2;
 }
+
+.index_page_profil_credit {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.index_page_profil .page_line p,
+.index_page_profil .page_line span {
+  color: white;
+}
 /*# sourceMappingURL=index.css.map */
