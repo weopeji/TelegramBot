@@ -208,6 +208,17 @@ html, body {
   position: relative;
 }
 
+.ispo_line_more_data h1,
+.ispo_line_more_data span,
+.ispo_line_more_data .arbitr_arbitr_add,
+.ispo_line_more_data .page_line,
+.ispo_line_more_data .page_line_line,
+.ispo_line_more_data .arbitr_add_more_data_button,
+.ispo_line_more_data .arbitr_add_more_data {
+  position: relative;
+  z-index: 2;
+}
+
 .ispo_line {
   position: relative;
 }
