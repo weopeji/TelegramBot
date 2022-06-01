@@ -1867,8 +1867,6 @@ async function getR_F(socket,data,callback)
 {
     var _project            = await Project.findOne({_id: data});
     var _projectFizBlock    = _project.parce;
-    var globalUserData      = _projectFizBlock.fiz.globalUserData;
-    var moreUsersData       = _projectFizBlock.fiz.moreUsersData;
 
     if(_project.data.organization == 1)
     {
