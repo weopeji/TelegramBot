@@ -28,9 +28,7 @@
                 data: _id,
             });
     
-            $('.liner_center').css('width', procent + "%");
-    
-            var _data                       = need_project.data.collection_period.split("-");
+            var _data = need_project.data.collection_period.split("-");
     
             $('#name').html(need_project.data.name || "Null");
             $('#target').html(need_project.data.target || "Null");

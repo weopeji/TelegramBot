@@ -19,7 +19,6 @@ module.exports = {
     DMA,
     MA,
     alertBot,
-    alertUser,
     savePuppeter,
     full_alert_user,
     alertAdmin,
@@ -435,14 +434,9 @@ async function savePuppeter(putProject)
     const element = await page.$('.cover_block');
     await page.waitForSelector('.all_good');
     await element.screenshot({
-        path: `../projects/${data}/logo.jpg`,
+        path: `/var/www/projects/${data}/logo.jpg`,
     });
     await browser.close();
-}
-
-async function alertUser(msg, text) 
-{
-   
 }
 
 async function alertAdmin(data) 
