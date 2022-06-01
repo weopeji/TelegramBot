@@ -180,7 +180,9 @@ async function ParceUsersBlock(_project, MoreUsers)
         
             _data.globalUserData.dePa = await deistvitelenLiPaspport(`${_project.sob_serion} ${_project.sob_number}`);
             _data.globalUserData.saMo = await yavlaetcaLiSamozanyatim(_project.sob_inn);
-            _data.globalUserData.arBi = await arbitrajnayaPraktikaFizLica(_project.sob_fio, _project.sob_region, _project.sob_date);
+
+            
+            // _data.globalUserData.arBi = await arbitrajnayaPraktikaFizLica(_project.sob_fio, _project.sob_region, _project.sob_date);
         
             // for(var _key in MoreUsers)
             // {

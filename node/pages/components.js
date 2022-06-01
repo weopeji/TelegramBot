@@ -1889,76 +1889,7 @@ async function getR_F(socket,data,callback)
         }
     }
 
-    if(Array.isArray(globalUserData.arBi))
-    {
-        if(moreUsersData.length > 0)
-        {
-            var moreUsersDataRedacting      = [];
-            var moreUsersDataRedactingError = false;
-
-            for(var moreUsersDataBlock of moreUsersData)
-            {
-                if(Array.isArray(moreUsersDataBlock.arBi))
-                {
-                    moreUsersDataRedacting.push(moreUsersDataBlock);
-                } else 
-                {
-                    var moreUsersDataBlockParce = null;
-
-                    if(moreUsersDataBlock.arBi != "error")
-                    {
-                        moreUsersDataBlockParce = await ParcingPage.cheackArbitrFizUser(moreUsersDataBlock.arBi);
-                    }
-
-                    if(moreUsersDataBlockParce[0].status == 0 && moreUsersDataBlockParce)
-                    {
-                        moreUsersDataBlock.arBi = moreUsersDataBlockParce;
-                    } else
-                    {
-                        moreUsersDataRedactingError = true;
-                    }
-
-                    moreUsersDataRedacting.push(moreUsersDataBlock);
-                }
-            }
-
-            moreUsersData = moreUsersDataRedacting;
-
-            await Project.findOneAndUpdate({_id: data}, {parce: _projectFizBlock});
-
-            if(!moreUsersDataRedactingError)
-            {
-                callback('ok');
-            }
-        } else 
-        {
-            callback('ok');
-        }
-    } else 
-    {
-        var globalUserDataParce = null;
-
-        if(globalUserData.arBi != "error")
-        {
-            globalUserDataParce = await ParcingPage.cheackArbitrFizUser(globalUserData.arBi);
-        }
-
-        if(globalUserDataParce)
-        {
-            if(globalUserDataParce[0].status == 0)
-            {
-                globalUserData.arBi = globalUserDataParce;
-                await Project.findOneAndUpdate({_id: data}, {parce: _projectFizBlock});
-                callback('error');
-            } else {
-                callback('error');
-            }
-        } else
-        {
-            callback('error');
-        }
-        
-    }
+    callback('ok');
 }
 
 async function clearAlertMsg(socket,data,callback)
