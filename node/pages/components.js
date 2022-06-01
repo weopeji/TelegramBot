@@ -3101,7 +3101,7 @@ async function acceptProject(socket,data,callback)
             defaultViewport: null,
         });
         const page = await browser.newPage();   
-        // await page._client.send('Emulation.clearDeviceMetricsOverride');
+        await page._client.send('Emulation.clearDeviceMetricsOverride');
         await page.goto(_urlImgProject);
         await page.emulateMedia('screen');
         const element = await page.$('.cover_block');
@@ -3509,7 +3509,7 @@ async function setProject(socket,data,callback)
         }
     }); 
 
-    await savePuppeter(_Project._id);
+    await h.savePuppeter(_Project._id); 
 
     // ======================================================================================
 

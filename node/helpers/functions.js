@@ -422,17 +422,21 @@ async function full_alert_user(_id, _text, _type, moreId)
 
 async function savePuppeter(putProject)
 {
-    var _urlImgProject = `${h.getURL()}html/project/cover/?id=${putProject}`;
+    var _urlImgProject  = `${h.getURL()}html/project/cover/?id=${putProject}&liner=true`;
     console.log(_urlImgProject);
-    const browser = await puppeteer.launch({
-        defaultViewport: {width: 1920, height: 1080},
-        args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    const browser       = await puppeteer.launch({
+        args: ['--no-sandbox', '--disable-setuid-sandbox', '--window-size=3840,3840'],
+        defaultViewport: null,
     });
-    const page = await browser.newPage();
-    await page.goto(_urlImgProject); 
+    const page = await browser.newPage();   
+    await page._client.send('Emulation.clearDeviceMetricsOverride');
+    await page.goto(_urlImgProject);
     await page.emulateMedia('screen');
-    const element = await page.$('.cover_block');   
-    await element.screenshot({path: `../projects/${putProject}/logo.png`});
+    const element = await page.$('.cover_block');
+    await page.waitForSelector('.all_good');
+    await element.screenshot({
+        path: `../projects/${data}/logo.jpg`,
+    });
     await browser.close();
 }
 
