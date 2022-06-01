@@ -3510,9 +3510,7 @@ async function setProject(socket,data,callback)
         }
     }); 
 
-    console.log("ok1");
     await h.savePuppeter(_Project._id); 
-    console.log("ok5");
 
     // ======================================================================================
 
