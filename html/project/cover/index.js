@@ -28,25 +28,11 @@
                 data: _id,
             });
     
-            var getPays = await callApi({
-                methodName: 'getPaysProject',
-                data: _id,
-            });
-    
-            // getPays  = getPays.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1 ');
-            getPays     = 0; 
-    
-            var _attraction_amount  = need_project.data.attraction_amount;
-            _attraction_amount      = _attraction_amount.replace(/\s/g, '');
-            var procent             = (getPays / _attraction_amount) * 100;
-    
             $('.liner_center').css('width', procent + "%");
     
-            var _data = need_project.data.collection_period.split("-");
+            var _data                       = need_project.data.collection_period.split("-");
+            var cover_block_liner_k_numer   = Number(need_project.data.attraction_amount.toString().replace( /\s/g, "")) - Number(getPays.toString().replace( /\s/g, ""));
     
-            var cover_block_liner_k_numer = Number(need_project.data.attraction_amount.toString().replace( /\s/g, "")) - Number(getPays.toString().replace( /\s/g, ""));
-    
-            $('.cover_block_liner a').html(Number(getPays.toString().trim()).toDivide() + " ₽");
             $('.cover_block_liner k').html(cover_block_liner_k_numer.toDivide() + " ₽");
             $('#name').html(need_project.data.name || "Null");
             $('#target').html(need_project.data.target || "Null");

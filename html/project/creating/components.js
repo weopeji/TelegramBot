@@ -1064,8 +1064,6 @@
             });
 
             $('.index_page_body_points').append(_body);
-            
-            
         }
 
         render_signature_document(_project) 
