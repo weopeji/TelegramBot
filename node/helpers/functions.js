@@ -434,7 +434,7 @@ async function savePuppeter(putProject)
     const element = await page.$('.cover_block');
     await page.waitForSelector('.all_good');
     await element.screenshot({
-        path: `/var/www/projects/${data}/logo.jpg`,
+        path: `/var/www/projects/${putProject}/logo.jpg`,
     });
     await browser.close();
 }
