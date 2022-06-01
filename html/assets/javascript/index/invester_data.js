@@ -145,10 +145,13 @@
                     <div class="version2_invester_data_mobile_documents">
                         <div class="version2_invester_data_mobile_documents_row">
                             <div class="version2_invester_data_mobile_documents_img">
-                                <img src="/html/assets/images/2.0.0/documents/file_signature_document-1.png" alt="">
+                                <img src="/html/assets/images/2.0.0/documents/image-001.png" alt="">
                             </div>
                             <div class="version2_invester_data_mobile_documents_img">
-                                <img src="/html/assets/images/2.0.0/documents/file_signature_document-2.png" alt="">
+                                <img src="/html/assets/images/2.0.0/documents/image-002.png" alt="">
+                            </div>
+                            <div class="version2_invester_data_mobile_documents_img">
+                                <img src="/html/assets/images/2.0.0/documents/image-003.png" alt="">
                             </div>
                             <div class="version2_invester_data_mobile_documents_document">
                                 <h1>Приложение номер 2 - Тестирование</h1>
