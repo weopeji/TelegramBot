@@ -821,7 +821,11 @@
 
                     // BLOCK ========================================
                     var _element    = window.structCreator.filter(function (obj) { return obj.header == "4. Данные собственника" })[0];
-                    var _body       = $(`<div class="body_point"></div>`);
+                    var _body       = $(`
+                        <div class="body_point">
+                            <div class="version2_default_bkg row_default"></div>
+                        </div>
+                    `);
                     var _dataBlock  = _element.body;
                     console.log(_element);
                     if(_element.header.length > 0)
