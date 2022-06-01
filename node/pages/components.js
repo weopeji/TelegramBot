@@ -3467,7 +3467,7 @@ async function setProject(socket,data,callback)
             attraction_commission: 50,
             investors_commission: 70,
             business_commission: 30,
-        }
+        },
     };
 
     for(var _key in _dataProject)
@@ -3497,7 +3497,7 @@ async function setProject(socket,data,callback)
 
     // ======================================================================================
 
-    var _Project = await Project.create(_DataProject);  console.log("create Project");
+    var _Project = await Project.create(_DataProject);
 
     await wrench.copyDirSyncRecursive(user_path, `/var/www/projects/${_Project._id}`);
     await fs.readdir(user_path, (err, files) => {
@@ -3509,7 +3509,7 @@ async function setProject(socket,data,callback)
         }
     }); 
 
-    await savePuppeter(_Project._id);                   console.log("save puppeter");
+    await savePuppeter(_Project._id);
 
     // ======================================================================================
 
