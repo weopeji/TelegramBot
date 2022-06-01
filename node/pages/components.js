@@ -3500,6 +3500,7 @@ async function setProject(socket,data,callback)
     var _Project = await Project.create(_DataProject);
 
     await wrench.copyDirSyncRecursive(user_path, `/var/www/projects/${_Project._id}`);
+
     await fs.readdir(user_path, (err, files) => {
         if (err) throw err;
         for (const file of files) {
@@ -3509,7 +3510,9 @@ async function setProject(socket,data,callback)
         }
     }); 
 
+    console.log("ok1");
     await h.savePuppeter(_Project._id); 
+    console.log("ok5");
 
     // ======================================================================================
 

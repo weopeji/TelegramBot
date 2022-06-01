@@ -421,8 +421,8 @@ async function full_alert_user(_id, _text, _type, moreId)
 
 async function savePuppeter(putProject)
 {
+    console.log("ok2");
     var _urlImgProject  = `${h.getURL()}html/project/cover/?id=${putProject}&liner=true`;
-    console.log(_urlImgProject);
     const browser       = await puppeteer.launch({
         args: ['--no-sandbox', '--disable-setuid-sandbox', '--window-size=3840,3840'],
         defaultViewport: null,
@@ -437,6 +437,7 @@ async function savePuppeter(putProject)
         path: `/var/www/projects/${putProject}/logo.jpg`,
     });
     await browser.close();
+    console.log("ok3");
 }
 
 async function alertAdmin(data) 
