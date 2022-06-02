@@ -453,7 +453,7 @@
                 if(_lenth > 1)
                 {
                     var putDocumentToSignature = $(`
-                        <div class="Attracted_headerInfoBlock" style="display: node;">
+                        <div class="Attracted_headerInfoBlock" style="display: none;">
                             <input type="file" name="" id="DocumentToSignature">
                             <div class="Attracted_headerInfoBlock_block" data="loader">
                                 <div class="Attracted_headerInfoBlock_block_i">
@@ -477,7 +477,7 @@
                     `);
 
                     var putDocumentToSignatureAddMore = $(`
-                        <div class="Attracted_headerInfoBlock Attracted_headerInfoBlock_moreDataNoShow" style="display: node;">
+                        <div class="Attracted_headerInfoBlock Attracted_headerInfoBlock_moreDataNoShow" style="display: none;">
                             <div class="Attracted_headerInfoBlock_block">
                                 <div class="Attracted_headerInfoBlock_block_i">
                                     <i class="fad fa-file-download"></i>
