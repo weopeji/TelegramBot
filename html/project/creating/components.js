@@ -418,7 +418,6 @@
 
                 var _line = $(`
                     <div class="body_point_line" data="string">
-                        <div class="version2_default_bkg row_default"></div>
                         <div class="body_point_line_header">
                             <div class="body_point_line_header_text">
                                 <span>${data.name}</span>
@@ -568,7 +567,6 @@
                 `;
                 var _line = $(`
                     <div class="body_point_line _file" data="file">
-                        <div class="version2_default_bkg row_default"></div>
                         <div class="body_point_line_header">
                             <div class="body_point_line_header_text">
                                 <span>${data.name}</span>
@@ -586,7 +584,6 @@
             "menu": function(data) {
                 var _line = $(`
                     <div class="body_point_line _menu" data="menu">
-                        <div class="version2_default_bkg row_default"></div>
                         <div class="body_point_line_header">
                             <div class="body_point_line_header_text">
                                 <span>${data.name}</span>
@@ -642,7 +639,6 @@
 
                 var _line = $(`
                     <div class="body_point_line" data="date">
-                        <div class="version2_default_bkg row_default"></div>
                         <div class="body_point_line_header">
                             <div class="body_point_line_header_text">
                                 <span>${data.name}</span>
@@ -679,7 +675,6 @@
             "addr": function(data) {
                 var _line = $(`
                     <div class="body_point_line" data="addr">
-                        <div class="version2_default_bkg row_default"></div>
                         <div class="body_point_line_header">
                             <div class="body_point_line_header_text">
                                 <span>${data.name}</span>
@@ -1278,7 +1273,11 @@
             {
                 var data = correct_structure.filter(function (obj) { return obj._id == element._id })[0];
 
-                var _body = $(`<div class="body_point"></div>`);
+                var _body = $(`
+                    <div class="body_point">
+                        <div class="version2_default_bkg row_default"></div>
+                    </div>
+                `);
                
                 if(typeof data != "undefined")
                 {
