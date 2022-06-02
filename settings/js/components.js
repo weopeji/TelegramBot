@@ -445,16 +445,15 @@
             };
 
             var _this           = this;
-            var _errorSignature = true;
 
-            if(_project.signature && !_errorSignature) 
+            if(_project.signature) 
             {
                 var _lenth = Object.keys(_project.signature).length;
 
                 if(_lenth > 1)
                 {
                     var putDocumentToSignature = $(`
-                        <div class="Attracted_headerInfoBlock">
+                        <div class="Attracted_headerInfoBlock" style="display: node;">
                             <input type="file" name="" id="DocumentToSignature">
                             <div class="Attracted_headerInfoBlock_block" data="loader">
                                 <div class="Attracted_headerInfoBlock_block_i">
@@ -478,7 +477,7 @@
                     `);
 
                     var putDocumentToSignatureAddMore = $(`
-                        <div class="Attracted_headerInfoBlock Attracted_headerInfoBlock_moreDataNoShow">
+                        <div class="Attracted_headerInfoBlock Attracted_headerInfoBlock_moreDataNoShow" style="display: node;">
                             <div class="Attracted_headerInfoBlock_block">
                                 <div class="Attracted_headerInfoBlock_block_i">
                                     <i class="fad fa-file-download"></i>
