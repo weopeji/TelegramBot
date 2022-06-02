@@ -209,26 +209,38 @@
 
                     var _file = _form;
 
-                    axios.post(_url, _file, {
-                        headers: {
-                        'Content-Type': 'multipart/form-data'
-                        }
-                    }).then(data => {
-                        if(data.data.status == "ok") {
-                            callApi({
-                                methodName: 'redactingProjectByAdmin',
-                                data: {
-                                    projectid: _GET("id"),
-                                    lineId: attrId,
-                                    data: data.data.file_name
-                                },
-                            }).then((data) => {
-                                alert('Загрузка завершена');
-                                location.reload();
-                            });
-                        }
-                    })
+                    $('.loaderElement').fadeIn('fast', function() {
+                        axios.post(_url, _file, {
+                            headers: {
+                            'Content-Type': 'multipart/form-data'
+                            },
+                            onUploadProgress: (progressEvent) => {
+                                const totalLength = progressEvent.lengthComputable ? progressEvent.total : progressEvent.target.getResponseHeader('content-length') || progressEvent.target.getResponseHeader('x-decompressed-content-length');
+                                if (totalLength !== null) {
+                                    var progressBarData = Math.round( (progressEvent.loaded * 100) / totalLength );
+                                    $('.loaderElement span').css({
+                                        "width" : progressBarData + "%",
+                                    });
+                                }
+                            }
+                        }).then(data => {
+                            if(data.data.status == "ok") {
+                                callApi({
+                                    methodName: 'redactingProjectByAdmin',
+                                    data: {
+                                        projectid: _GET("id"),
+                                        lineId: attrId,
+                                        data: data.data.file_name
+                                    },
+                                }).then((data) => {
+                                    alert('Загрузка завершена');
+                                    location.reload();
+                                });
 
+                                $('.loaderElement').fadeOut("fast");
+                            }
+                        })
+                    });
 
                     $(this).val('');
                 })

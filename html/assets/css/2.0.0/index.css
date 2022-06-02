@@ -1321,6 +1321,20 @@ img.preloader_row_img {
   z-index: 2;
 }
 
+.loaderElement {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 40px;
+  display: none;
+}
+
+.loaderElement span {
+  height: 40px;
+  background-color: #1164e2;
+}
+
 @media (max-width: 1350px) {
   .index_page_menu {
     display: none;
