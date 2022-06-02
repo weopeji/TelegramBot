@@ -41,7 +41,6 @@
 
         global._typePage    = 'creating';
         global._User        = _User;
-
         
         if(_id.length < 7)  
         {
@@ -64,7 +63,6 @@
                     $('.index_page_body_button').click( function() {
                         _components.correct_signature(_project.data.organization, _id);
                     });
-                    
 
                     changeTextArea();
                 }

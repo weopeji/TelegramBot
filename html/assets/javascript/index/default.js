@@ -162,35 +162,35 @@
 
             if(typeof _User.acceptGetDataOfUser == "undefined")
             {
-                var templateText = $(`
-                    <div class="autch_block">
-                        <div class="autch_block_row">
-                            <p>Вы даете согласие на сбор сведений об инвестициях в вашем личном кабинете?.</p>
-                            <div class="autch_block_buttons">
-                                <div class="autch_block_buttons_block autch_block_buttons_block_close">
-                                    <span>Отказать</span>
-                                </div>
-                                <div class="autch_block_buttons_block autch_block_buttons_block_accept">
-                                    <span>Принять</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `);
+                // var templateText = $(`
+                //     <div class="autch_block">
+                //         <div class="autch_block_row">
+                //             <p>Вы даете согласие на сбор сведений об инвестициях в вашем личном кабинете?.</p>
+                //             <div class="autch_block_buttons">
+                //                 <div class="autch_block_buttons_block autch_block_buttons_block_close">
+                //                     <span>Отказать</span>
+                //                 </div>
+                //                 <div class="autch_block_buttons_block autch_block_buttons_block_accept">
+                //                     <span>Принять</span>
+                //                 </div>
+                //             </div>
+                //         </div>
+                //     </div>
+                // `);
 
-                templateText.find('.autch_block_buttons_block_close').click( function() {
-                    location.reload();
-                });
+                // templateText.find('.autch_block_buttons_block_close').click( function() {
+                //     location.reload();
+                // });
     
-                templateText.find('.autch_block_buttons_block_accept').click( async function() {
-                    $('.autch_block').remove();
-                    await callApi({
-                        methodName: "version2_setUserAlertsOfacceptGetDataOfUser",
-                        data: _id,
-                    });
-                })
+                // templateText.find('.autch_block_buttons_block_accept').click( async function() {
+                //     $('.autch_block').remove();
+                //     await callApi({
+                //         methodName: "version2_setUserAlertsOfacceptGetDataOfUser",
+                //         data: _id,
+                //     });
+                // })
 
-                $('body').append(templateText);
+                // $('body').append(templateText);
             }
 
             var renderPage = 
