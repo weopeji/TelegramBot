@@ -1050,7 +1050,11 @@
             
             var data = _dataNEedPutNew["+" + _type];
 
-            var _body = $(`<div class="body_point"></div>`);
+            var _body = $(`
+                <div class="body_point">
+                    <div class="version2_default_bkg row_default"></div>
+                </div>`
+            );
             _body.append(`
                 <div class="body_point_header">
                     <span>${data.header}</span>
