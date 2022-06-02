@@ -219,6 +219,8 @@
                                     $('.loaderElement span').css({
                                         "width" : progressBarData + "%",
                                     });
+
+                                    $('.loaderElement span').html(progressBarData + "%");
                                 }
                             }
                         }).then(data => {
