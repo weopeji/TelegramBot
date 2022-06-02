@@ -444,9 +444,10 @@
                 },
             };
 
-            var _this = this;
+            var _this           = this;
+            var _errorSignature = true;
 
-            if(_project.signature) 
+            if(_project.signature && !_errorSignature) 
             {
                 var _lenth = Object.keys(_project.signature).length;
 

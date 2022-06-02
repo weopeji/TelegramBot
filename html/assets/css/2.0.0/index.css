@@ -1312,6 +1312,15 @@ img.preloader_row_img {
   font-size: 20px;
 }
 
+.body_point_header_info_red {
+  position: relative;
+}
+
+.body_point_header_info_red span {
+  position: relative;
+  z-index: 2;
+}
+
 @media (max-width: 1350px) {
   .index_page_menu {
     display: none;
