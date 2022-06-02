@@ -1333,6 +1333,7 @@ img.preloader_row_img {
 .loaderElement span {
   height: 40px;
   background-color: #1164e2;
+  display: block;
 }
 
 @media (max-width: 1350px) {
