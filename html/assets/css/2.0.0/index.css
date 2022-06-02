@@ -1328,6 +1328,7 @@ img.preloader_row_img {
   width: 100vw;
   height: 40px;
   display: none;
+  z-index: 9999999999999;
 }
 
 .loaderElement span {

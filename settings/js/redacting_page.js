@@ -196,8 +196,6 @@
                     var aux         = filename.split('.');
                     var extension   = aux[aux.length -1].toUpperCase();
 
-                    alert('Загрузка началась!');
-
                     var _form    = new FormData();
 
                     _form.append('files', $(this.files)[0]);
@@ -233,7 +231,6 @@
                                         data: data.data.file_name
                                     },
                                 }).then((data) => {
-                                    alert('Загрузка завершена');
                                     location.reload();
                                 });
 
