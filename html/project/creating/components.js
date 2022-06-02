@@ -1261,6 +1261,7 @@
 
             _body.append(`
                 <div class="body_point_header_info_red">
+                    <div class="version2_default_bkg row_default"></div>
                     <span>${_project.redacting.input}</span>
                 </div>
             `);
