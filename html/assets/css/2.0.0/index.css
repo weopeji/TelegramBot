@@ -286,6 +286,7 @@
   width: 188px;
   margin: 0 10px;
   cursor: pointer;
+  background: linear-gradient(81.65deg, #CF2DBF 18.55%, #951CDF 97.44%);
 }
 
 .version2_invester_data_typeButtons_type_button span {
@@ -310,8 +311,8 @@
 }
 
 .version2_invester_data_typeButtons_document {
-  width: 322px;
-  height: 46px;
+  width: 255px;
+  height: 35px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -321,13 +322,14 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: linear-gradient(81.65deg, #CF2DBF 18.55%, #951CDF 97.44%);
+  background: transparent;
   border-radius: 8px;
   margin: 0 auto;
   margin-top: 35px;
   cursor: pointer;
   font-size: 16px;
   font-weight: 500;
+  position: relative;
 }
 
 .version2_index_page_body {
