@@ -575,7 +575,7 @@
                 var multiplicityData = _this.project.multiplicity;
                 var multiplicityText = "";
     
-                if(typeof multiplicityData != "undefined")
+                if(typeof _this.project.multiplicity != "undefined")
                 {
                     multiplicityText = `<br>Сумма должна быть кратна: ${multiplicityData.toString().ReplaceNumber()} руб.`;
                 };
