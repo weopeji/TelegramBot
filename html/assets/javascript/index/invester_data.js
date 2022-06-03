@@ -575,7 +575,7 @@
                 var multiplicityData = _this.project.multiplicity;
                 var multiplicityText = "";
     
-                alert(_this.project.toString());
+                alert(_this.project.multiplicity.toString());
 
                 if(typeof _this.project.multiplicity != "undefined")
                 {
