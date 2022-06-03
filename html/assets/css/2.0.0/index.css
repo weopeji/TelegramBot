@@ -287,6 +287,7 @@
   margin: 0 10px;
   cursor: pointer;
   background: linear-gradient(81.65deg, #CF2DBF 18.55%, #951CDF 97.44%);
+  border-radius: 8px;
 }
 
 .version2_invester_data_typeButtons_type_button span {
@@ -330,6 +331,11 @@
   font-size: 16px;
   font-weight: 500;
   position: relative;
+}
+
+.version2_invester_data_typeButtons_document span {
+  position: relative;
+  z-index: 2;
 }
 
 .version2_index_page_body {
