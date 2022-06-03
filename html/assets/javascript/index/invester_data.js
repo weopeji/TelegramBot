@@ -282,7 +282,7 @@
 
             if(typeof this.project.notFullpay != "undefined")
             {
-                pushMoney = `${Number(Number(_this.money.toString().trim().replace(/\s/g, '')) / 100 * Number(this.project.notFullpay)).toString().ReplaceNumber()} ₽ (${this.project.notFullpay}%)`;
+                pushMoney = `${Number(Number(_this.money.toString().trim().replace(/\s/g, '')) / 100 * Number(this.project.notFullpay)).toString().replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')} ₽ (${this.project.notFullpay}%)`;
             };
 
             var msgsBlock = $(`
@@ -529,7 +529,7 @@
                                     data: {
                                         user: _GET('user'),
                                         project: _this.project._id,
-                                        money: _this.money.toString().ReplaceNumber(),
+                                        money: _this.money.toString().replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 '),
                                         date: _this.date,
                                         url: _this.urlForDocument,
                                         invId: data.data.inv,
