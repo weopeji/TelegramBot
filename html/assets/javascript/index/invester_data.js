@@ -552,8 +552,6 @@
 
         async renderOldBlock()
         {
-            alert("ok");
-
             try {
                 var _this           = this;
                 var _projectMoney   = _this.project.data.minimal_amount.toString().trim().replace(/\s/g, '');
@@ -574,12 +572,10 @@
     
                 var multiplicityData = _this.project.multiplicity;
                 var multiplicityText = "";
-    
-                alert(window.ReplaceNumber);
 
                 if(typeof _this.project.multiplicity != "undefined")
                 {
-                    multiplicityText = `<br>Сумма должна быть кратна: ${multiplicityData.toString().ReplaceNumber()} руб.`;
+                    multiplicityText = `<br>Сумма должна быть кратна: ${multiplicityData.toString().replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')} руб.`;
                 };
     
                 var msgsBlock = $(`
@@ -588,9 +584,9 @@
                             <div class="version2_default_bkg row_default"></div>
                             <span style="position: relative; z-index: 2;">
                                 Уважаемый Инвестор ${global.allData.User.first_name} Введите сумму инвестирования</a>.<br>
-                                Минимальная сумма входа: ${_projectMoney.toString().ReplaceNumber()} руб.
+                                Минимальная сумма входа: ${_projectMoney.toString().replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')} руб.
                                 ${multiplicityText} <br>
-                                <span class="version2_invester_data_moneyFull">Сумма не должна превышать ${Number(fullMoneyCheack - fullMoneysInvs).toString().ReplaceNumber()} руб.</span>
+                                <span class="version2_invester_data_moneyFull">Сумма не должна превышать ${Number(fullMoneyCheack - fullMoneysInvs).toString().replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')} руб.</span>
                             </span>
                         </div>
                     </div>
@@ -637,7 +633,7 @@
                         {
                             if(Number(fullMoneyCheack) < Number(fullMoneysInvs) + Number(_money))
                             {
-                                alert(`Сумма превышает на ${Number(Number(fullMoneysInvs) + Number(_money) - Number(fullMoneyCheack)).toString().ReplaceNumber()}`);
+                                alert(`Сумма превышает на ${Number(Number(fullMoneysInvs) + Number(_money) - Number(fullMoneyCheack)).toString().replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')}`);
                                 return;
                             }
                         };
