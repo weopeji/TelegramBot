@@ -579,7 +579,7 @@
 
                 if(typeof _this.project.multiplicity != "undefined")
                 {
-                    multiplicityText = `<br>Сумма должна быть кратна: ${multiplicityData.toString().ReplaceNumber()} руб.`;
+                    multiplicityText = `<br>Сумма должна быть кратна: ${multiplicityData.toString()} руб.`;
                 };
     
                 var msgsBlock = $(`
