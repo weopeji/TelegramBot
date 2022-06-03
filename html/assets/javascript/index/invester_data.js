@@ -552,115 +552,122 @@
 
         async renderOldBlock()
         {
-            var _this           = this;
-            var _projectMoney   = _this.project.data.minimal_amount.toString().trim().replace(/\s/g, '');
-            var fullMoneysInvs  = 0;
-            var fullMoneyCheack = Number(_this.project.data.attraction_amount.toString().replace(/\s/g, ''));
+            alert("ok");
 
-            if(typeof _this.project.requestInvestingMoney != "undefined")
-            {
-                fullMoneyCheack = fullMoneyCheack + Number(_this.project.requestInvestingMoney.toString().replace(/\s/g, '')); 
-            }
-
-            for(var InvPushMoney of _this.allInvsOfProject)
-            {
-                fullMoneysInvs = fullMoneysInvs + Number(InvPushMoney.data.pay.toString().replace(/\s/g, ''));
-            };
-
-            $('.creating_page').empty();
-
-            var multiplicityData = _this.project.multiplicity;
-            var multiplicityText = "";
-
-            if(typeof multiplicityData != "undefined")
-            {
-                multiplicityText = `<br>Сумма должна быть кратна: ${multiplicityData.toString().ReplaceNumber()} руб.`;
-            };
-
-            var msgsBlock = $(`
-                <div class="creating_page_block">
-                    <div class="creating_page_start" style="margin-bottom: 20px">
-                        <div class="version2_default_bkg row_default"></div>
-                        <span style="position: relative; z-index: 2;">
-                            Уважаемый Инвестор ${global.allData.User.first_name} Введите сумму инвестирования</a>.<br>
-                            Минимальная сумма входа: ${_projectMoney.toString().ReplaceNumber()} руб.
-                            ${multiplicityText} <br>
-                            <span class="version2_invester_data_moneyFull">Сумма не должна превышать ${Number(fullMoneyCheack - fullMoneysInvs).toString().ReplaceNumber()} руб.</span>
-                        </span>
-                    </div>
-                </div>
-            `);
-
-            var _block = $(`
-                <div class="creating_page_input">
-                    <div class="version2_default_bkg row_default"></div>
-                    <input type="text" class="creating_page_input_div" data="pay" placeholder="Сумма">
-                    <div class="creating_page_input_button">
-                        <span>Отправить</span>
-                    </div>
-                </div>
-            `);
-
-            _block.find(`input`).on('keyup input', function() 
-            {
-                var _val = $(this).val();
-                _val = _val.replace(/[^\d;]/g, '')
-                _val = _val.replace(/\s/g, '');
-                var format = String(_val).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
-                $(this).val(format);
-            });
-
-            var _this               = this;
-            var errorMoneyCheack    = false;
-
-            if(typeof _this.project.notFullpay != "undefined")
-            {
-                if(Number(_this.project.notFullpay) == 0) {
-                    msgsBlock.find(".version2_invester_data_moneyFull").remove();
-                    errorMoneyCheack = true;
-                    msgsBlock.find('.creating_page_start span').append("Ваше место в очереди будет: " + _this.allInvsOfProject.length);
-                };
-            };
-
-            _block.find('.creating_page_input_button span').click( function() 
-            {
-                var money   = $('.creating_page_input input').val();
-                var _money  = money.toString().replace(/\s/g, '');
-
-                if(!errorMoneyCheack) {
-                    if(typeof _this.project.requestInvestingMoney != "undefined")
-                    {
-                        if(Number(fullMoneyCheack) < Number(fullMoneysInvs) + Number(_money))
-                        {
-                            alert(`Сумма превышает на ${Number(Number(fullMoneysInvs) + Number(_money) - Number(fullMoneyCheack)).toString().ReplaceNumber()}`);
-                            return;
-                        }
-                    };
-                }
-
-                if(Number(_money) < Number(_projectMoney))
+            try {
+                var _this           = this;
+                var _projectMoney   = _this.project.data.minimal_amount.toString().trim().replace(/\s/g, '');
+                var fullMoneysInvs  = 0;
+                var fullMoneyCheack = Number(_this.project.data.attraction_amount.toString().replace(/\s/g, ''));
+    
+                if(typeof _this.project.requestInvestingMoney != "undefined")
                 {
-                    alert('Сумма недостаточна!');
-                } 
-                else {
-                    if(typeof _this.project.multiplicity != "undefined")
-                    {
-                        if(Number(_money) % _this.project.multiplicity == 0)
+                    fullMoneyCheack = fullMoneyCheack + Number(_this.project.requestInvestingMoney.toString().replace(/\s/g, '')); 
+                }
+    
+                for(var InvPushMoney of _this.allInvsOfProject)
+                {
+                    fullMoneysInvs = fullMoneysInvs + Number(InvPushMoney.data.pay.toString().replace(/\s/g, ''));
+                };
+    
+                $('.creating_page').empty();
+    
+                var multiplicityData = _this.project.multiplicity;
+                var multiplicityText = "";
+    
+                if(typeof multiplicityData != "undefined")
+                {
+                    multiplicityText = `<br>Сумма должна быть кратна: ${multiplicityData.toString().ReplaceNumber()} руб.`;
+                };
+    
+                var msgsBlock = $(`
+                    <div class="creating_page_block">
+                        <div class="creating_page_start" style="margin-bottom: 20px">
+                            <div class="version2_default_bkg row_default"></div>
+                            <span style="position: relative; z-index: 2;">
+                                Уважаемый Инвестор ${global.allData.User.first_name} Введите сумму инвестирования</a>.<br>
+                                Минимальная сумма входа: ${_projectMoney.toString().ReplaceNumber()} руб.
+                                ${multiplicityText} <br>
+                                <span class="version2_invester_data_moneyFull">Сумма не должна превышать ${Number(fullMoneyCheack - fullMoneysInvs).toString().ReplaceNumber()} руб.</span>
+                            </span>
+                        </div>
+                    </div>
+                `);
+    
+                var _block = $(`
+                    <div class="creating_page_input">
+                        <div class="version2_default_bkg row_default"></div>
+                        <input type="text" class="creating_page_input_div" data="pay" placeholder="Сумма">
+                        <div class="creating_page_input_button">
+                            <span>Отправить</span>
+                        </div>
+                    </div>
+                `);
+    
+                _block.find(`input`).on('keyup input', function() 
+                {
+                    var _val = $(this).val();
+                    _val = _val.replace(/[^\d;]/g, '')
+                    _val = _val.replace(/\s/g, '');
+                    var format = String(_val).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
+                    $(this).val(format);
+                });
+    
+                var _this               = this;
+                var errorMoneyCheack    = false;
+    
+                if(typeof _this.project.notFullpay != "undefined")
+                {
+                    if(Number(_this.project.notFullpay) == 0) {
+                        msgsBlock.find(".version2_invester_data_moneyFull").remove();
+                        errorMoneyCheack = true;
+                        msgsBlock.find('.creating_page_start span').append("Ваше место в очереди будет: " + _this.allInvsOfProject.length);
+                    };
+                };
+    
+                _block.find('.creating_page_input_button span').click( function() 
+                {
+                    var money   = $('.creating_page_input input').val();
+                    var _money  = money.toString().replace(/\s/g, '');
+    
+                    if(!errorMoneyCheack) {
+                        if(typeof _this.project.requestInvestingMoney != "undefined")
                         {
+                            if(Number(fullMoneyCheack) < Number(fullMoneysInvs) + Number(_money))
+                            {
+                                alert(`Сумма превышает на ${Number(Number(fullMoneysInvs) + Number(_money) - Number(fullMoneyCheack)).toString().ReplaceNumber()}`);
+                                return;
+                            }
+                        };
+                    }
+    
+                    if(Number(_money) < Number(_projectMoney))
+                    {
+                        alert('Сумма недостаточна!');
+                    } 
+                    else {
+                        if(typeof _this.project.multiplicity != "undefined")
+                        {
+                            if(Number(_money) % _this.project.multiplicity == 0)
+                            {
+                                _this.money = money;
+                                _this.cheackGetDocuments();
+                            } else {
+                                alert(`Сумма должна быть кратной ${_this.project.multiplicity}`);
+                            }
+                        } else {
                             _this.money = money;
                             _this.cheackGetDocuments();
-                        } else {
-                            alert(`Сумма должна быть кратной ${_this.project.multiplicity}`);
                         }
-                    } else {
-                        _this.money = money;
-                        _this.cheackGetDocuments();
                     }
-                }
-            });
-
-            $('.creating_page').append(msgsBlock);
-            $('.creating_page').append(_block);
+                });
+    
+                $('.creating_page').append(msgsBlock);
+                $('.creating_page').append(_block);
+            }
+            catch(e) {
+                alert(e);
+            }
         }
 
         async render_backBlock()
@@ -869,39 +876,33 @@
 
             $('.creating_page_input_button').click( function() 
             {
-                try {
-                    var _array = {
-                        type: DT,
-                        data: [],
-                    };
-                    var _error = false;
-            
-                    $('.creating_page_input').find("input").each((i, element) => 
-                    {
-                        if($(element).val().length == 0)
-                        {
-                            _error = true;
-                        }
-                        _array.data.push({
-                            _id: $(element).attr('data'),
-                            data: $(element).val(),
-                        });
-                    });
-    
-                    if(_error)
-                    {
-                        alert('Введите все данные!');
-                    } 
-                    else 
-                    {
-                        _this.inv = _array;
-                        _this.renderOldBlock();
-                    }
-                } catch(e)
+                var _array = {
+                    type: DT,
+                    data: [],
+                };
+                var _error = false;
+        
+                $('.creating_page_input').find("input").each((i, element) => 
                 {
-                    alert(e);
+                    if($(element).val().length == 0)
+                    {
+                        _error = true;
+                    }
+                    _array.data.push({
+                        _id: $(element).attr('data'),
+                        data: $(element).val(),
+                    });
+                });
+
+                if(_error)
+                {
+                    alert('Введите все данные!');
+                } 
+                else 
+                {
+                    _this.inv = _array;
+                    _this.renderOldBlock();
                 }
-                
             })
         }
     }
