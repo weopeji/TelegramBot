@@ -869,33 +869,39 @@
 
             $('.creating_page_input_button').click( function() 
             {
-                var _array = {
-                    type: DT,
-                    data: [],
-                };
-                var _error = false;
-        
-                $('.creating_page_input').find("input").each((i, element) => 
-                {
-                    if($(element).val().length == 0)
+                try {
+                    var _array = {
+                        type: DT,
+                        data: [],
+                    };
+                    var _error = false;
+            
+                    $('.creating_page_input').find("input").each((i, element) => 
                     {
-                        _error = true;
-                    }
-                    _array.data.push({
-                        _id: $(element).attr('data'),
-                        data: $(element).val(),
+                        if($(element).val().length == 0)
+                        {
+                            _error = true;
+                        }
+                        _array.data.push({
+                            _id: $(element).attr('data'),
+                            data: $(element).val(),
+                        });
                     });
-                });
-
-                if(_error)
+    
+                    if(_error)
+                    {
+                        alert('Введите все данные!');
+                    } 
+                    else 
+                    {
+                        _this.inv = _array;
+                        _this.renderOldBlock();
+                    }
+                } catch(e)
                 {
-                    alert('Введите все данные!');
-                } 
-                else 
-                {
-                    _this.inv = _array;
-                    _this.renderOldBlock();
+                    alert(e);
                 }
+                
             })
         }
     }
