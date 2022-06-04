@@ -1902,7 +1902,7 @@
                 data: data_rt._id,
             });
 
-            console.log(_data);
+            alert(_data);
 
             var settingBlock = $(`
                 <div class="settingBlock">

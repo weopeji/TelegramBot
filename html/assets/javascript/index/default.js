@@ -69,8 +69,6 @@
         var userID                      = _GET('user');
         var token                       = _getCookie('token');
 
-        alert(token);
-
         const user_block                = new global.Components.user_block();
         const activ_projects            = new global.Components.activ_projects();
         const acceptPays                = new global.Components.acceptPays();
