@@ -1018,11 +1018,30 @@
                 _dateText       = needDate;
             }
 
-            var _status = {
+            var _status = 
+            {
                 "wait": "Ожидает подтверждения",
                 "accept": "Подтверждено",
                 "not_correct": `<span style="color: red">Отказано</span>`
-            }
+            };
+
+            if(typeof blockProject.notFullpay != "undefined")
+            {
+                if(Number(blockProject.notFullpay) == 0)
+                {
+                    if(typeof _data.InvDoc.data.pts_2 == "undefined")
+                    {
+                        _status["accept"] = "Ожидает подтверждения";
+                    }
+                    else
+                    {
+                        if(_data.InvDoc.applicationRequest)
+                        {
+                            _status["accept"] = "Ожидает подтверждения";
+                        };
+                    };
+                };
+            };
 
             var settingBlock = $(`
                 <div class="info_active_block">
