@@ -412,8 +412,8 @@ async function not_active_callback(msg)
                         text: "➡️",
                         callback_data: `place=not_active&type=moderation&data=${needNextProject}`,
                     }
-                ])
-            }
+                ]);
+            };
 
             var html = `<code>${needProject._id} ${needProject.data.name}</code>\n\nСтавка: ${needProject.data.rate}\nВход от: ${needProject.data.minimal_amount}\nСумма: ${needProject.data.attraction_amount}\nНа срок: ${needProject.data.date}\n\n<a href="${h.getURL()}html/project/profil/#${needProject._id}">Профиль компании</a>\n<a href="${h.getURL()}/projects/${needProject._id}/${needProject.data["file+7"]}">Презентация</a>\n<a href="${h.getURL()}/projects/${needProject._id}/${needProject.data["file+8"]}">Видео презентация</a>`;
 

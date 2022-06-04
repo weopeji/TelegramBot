@@ -768,26 +768,27 @@ async function goInvesting(msg)
 
 async function my_investment(msg)
 {
-    var _array  = [];
-    var _User   = await User.findOne({user: msg.from.id});
+    active_projects(msg);
+    // var _array  = [];
+    // var _User   = await User.findOne({user: msg.from.id});
 
-    var activeProjects = "🧮 Активные проекты";
+    // var activeProjects = "🧮 Активные проекты";
 
-    if(_User.alerts)
-    {
-        _User.alerts.forEach(function(el) {
-            if(el.type == "acceptInvestor") activeProjects = "🧮 Активные проекты ♦️";
-        });
-    }
+    // if(_User.alerts)
+    // {
+    //     _User.alerts.forEach(function(el) {
+    //         if(el.type == "acceptInvestor") activeProjects = "🧮 Активные проекты ♦️";
+    //     });
+    // }
 
-    var html = "Вы находитесь в меню:\n<strong>Мои инвестиции</strong>";
-    var fat = await h.send_html(msg.chat.id, html, {
-        "resize_keyboard": true,
-        "keyboard": [[activeProjects, "⌛ Ожидают подтверждения"], ["⬅️ Назад"]],
-        "one_time_keyboard": true,
-    });
+    // var html = "Вы находитесь в меню:\n<strong>Мои инвестиции</strong>";
+    // var fat = await h.send_html(msg.chat.id, html, {
+    //     "resize_keyboard": true,
+    //     "keyboard": [[activeProjects, "⌛ Ожидают подтверждения"], ["⬅️ Назад"]],
+    //     "one_time_keyboard": true,
+    // });
 
-    _array.push(fat.message_id);
+    // _array.push(fat.message_id);
 
-    await h.DMA(msg, _array);
+    // await h.DMA(msg, _array);
 }
