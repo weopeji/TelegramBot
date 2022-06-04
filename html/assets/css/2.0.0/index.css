@@ -660,6 +660,10 @@
   background-size: cover;
 }
 
+.info_active_block_photo img {
+  height: 100%;
+}
+
 .info_active_block_right {
   max-width: 310px;
 }
