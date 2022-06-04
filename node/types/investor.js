@@ -249,9 +249,14 @@ async function active_projects(msg)
         parse_mode: "html",
         reply_markup: {  
             "resize_keyboard": true, 
+            // "keyboard": [
+            //     ["⬅️ Hазад"]
+            // ],    
             "keyboard": [
-                ["⬅️ Hазад"]
-            ],                                                                   
+                [{
+                    text: "⬅️ Назад"
+                }]
+            ],                                                                 
         }
     });
     _array.push(fat.message_id);
@@ -768,7 +773,7 @@ async function goInvesting(msg)
 
 async function my_investment(msg)
 {
-    active_projects(msg);
+    active_projects(msg)
     // var _array  = [];
     // var _User   = await User.findOne({user: msg.from.id});
 
