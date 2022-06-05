@@ -1412,7 +1412,7 @@
 
         async render(allData) 
         {
-
+            alert(allData);
             var _data = await callApi({
                 methodName: "ALL_DATA",
                 data: global.allData.User._id,

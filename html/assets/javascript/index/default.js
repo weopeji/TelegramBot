@@ -204,7 +204,6 @@
                         } else {
                             if(_GET("hash"))
                             {
-                                alert(activ_projects.render);
                                 activ_projects.render(global.allData);
                             }
                             else
