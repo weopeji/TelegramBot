@@ -134,12 +134,41 @@
 
                 var template_text = $(` 
                     <div class="settingBlock_body_line" data-id="${element.Inv._id}">
-                        <span>${i + 1}</span>
-                        <span>${element.Project.data.name}</span>
-                        <span>${typePush[element.Inv.not_correct.dataType]}</span>
-                        <span>${element.Inv.not_correct.comment}</span>
-                        <span>Ожидает действия инвестора</span>
-                        <span></span>
+                        <span>
+                            <div class="version2_settingBlock_mobile_line">
+                                <span>№</span>
+                            </div>
+                            ${i + 1}
+                        </span>
+                        <span>
+                            <div class="version2_settingBlock_mobile_line">
+                                <span>Название проекта</span>
+                            </div>
+                            ${element.Project.data.name}
+                        </span>
+                        <span>
+                            <div class="version2_settingBlock_mobile_line">
+                                <span>Причина отказа</span>
+                            </div>
+                            ${typePush[element.Inv.not_correct.dataType]}
+                        </span>
+                        <span>
+                            <div class="version2_settingBlock_mobile_line">
+                                <span>Коментарий</span>
+                            </div>
+                            ${element.Inv.not_correct.comment}
+                        </span>
+                        <span>
+                            <div class="version2_settingBlock_mobile_line">
+                                <span>Статус</span>
+                            </div>
+                            Ожидает действия инвестора
+                        </span>
+                        <span>
+                            <div class="version2_settingBlock_mobile_line">
+                                <span>*</span>
+                            </div>
+                        </span>
                     </div>
                 `);
 
