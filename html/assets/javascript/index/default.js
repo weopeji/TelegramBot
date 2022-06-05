@@ -197,18 +197,25 @@
             {
                 "profil": function() {profil_page.render(global.allData)},
                 "activ_projects": function() {
-                    alert('ok3');
-                    if(!_GET('id')) {
-                        activ_projects.render(global.allData);
-                    } else {
-                        if(_GET("hash"))
-                        {
+                    alert('ok4');
+                    
+                    try {
+                        if(!_GET('id')) {
                             activ_projects.render(global.allData);
+                        } else {
+                            if(_GET("hash"))
+                            {
+                                activ_projects.render(global.allData);
+                            }
+                            else
+                            {
+                                activ_projects.renderType(global.allData);
+                            }
                         }
-                        else
-                        {
-                            activ_projects.renderType(global.allData);
-                        }
+                    } 
+                    catch(e)
+                    {
+                        alert(e.toString());
                     }
                 },
                 "acceptPays": function() {acceptPays.render(global.allData)},
