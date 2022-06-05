@@ -1365,6 +1365,10 @@ img.preloader_row_img {
   color: white;
 }
 
+.version2_settingBlock_mobile_line {
+  display: none;
+}
+
 @media (max-width: 1350px) {
   .index_page_menu {
     display: none;
@@ -1487,6 +1491,15 @@ img.preloader_row_img {
     display: -ms-grid;
     display: grid;
   }
+  .settingBlock_body_line span {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify !important;
+        -ms-flex-pack: justify !important;
+            justify-content: space-between !important;
+  }
   .settingBlock_header_line {
     display: none;
   }
@@ -1527,6 +1540,9 @@ img.preloader_row_img {
   }
   .creating_page_input_div[data="show"] {
     display: none;
+  }
+  .version2_settingBlock_mobile_line {
+    display: block;
   }
 }
 /*# sourceMappingURL=index.css.map */
