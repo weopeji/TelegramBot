@@ -43,7 +43,6 @@
                             <span>№</span>
                             <span>№ Проекта</span>
                             <span>Название</span>
-                            <!-- <span>Место в очереди</span> -->
                             <span>Сумма входа</span>
                         </div>
                     </div>
@@ -68,11 +67,30 @@
 
                 var template_text = $(`
                     <div class="settingBlock_body_line" data="${element.Inv.invester}" data-more="${element.Inv._id}">
-                        <span>${i + 1}</span>
-                        <span>${element.project._id}</span>
-                        <span>${element.project.data.name}</span>
-                        <!-- <span>${element.project._id}/${element.number} от ${maxDateFormatted}</span> -->
-                        <span>${element.Inv.data.pay} руб</span>
+                        <span>
+                            <div class="version2_settingBlock_mobile_line">
+                                <span>№</span>
+                            </div>
+                            ${i + 1}
+                        </span>
+                        <span>
+                            <div class="version2_settingBlock_mobile_line">
+                                <span>№ Проекта</span>
+                            </div>
+                            ${element.project._id}
+                        </span>
+                        <span>
+                            <div class="version2_settingBlock_mobile_line">
+                                <span>Название</span>
+                            </div>
+                            ${element.project.data.name}
+                        </span>
+                        <span>
+                            <div class="version2_settingBlock_mobile_line">
+                                <span>Сумма входа</span>
+                            </div>
+                            ${element.Inv.data.pay} руб
+                        </span>
                     </div>
                 `);
 

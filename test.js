@@ -133,6 +133,10 @@ $('header').append($('<link rel="stylesheet" href="./html/assets/css/2.0.0/black
 
 <div class="version2_default_bkg row_default"></div>
 
+<div class="version2_settingBlock_mobile_line">
+    <span>Название</span>
+</div>
+
 
 SoloAlert.confirm({
     title: "Подтверждение",
