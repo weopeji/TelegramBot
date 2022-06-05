@@ -1408,12 +1408,15 @@
 
         async render(allData) 
         {
+
+            alert(global.allData.User._id);
+
             var _data = await callApi({
                 methodName: "ALL_DATA",
                 data: global.allData.User._id,
             });
 
-            alert(_data.toString());
+            alert("okkk");
 
             if(allData.User.type == "business")
             {
