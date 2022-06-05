@@ -1413,7 +1413,7 @@
                 data: global.allData.User._id,
             });
 
-            console.log(_data);
+            alert(_data);
 
             if(allData.User.type == "business")
             {
