@@ -1369,6 +1369,10 @@ img.preloader_row_img {
   display: none;
 }
 
+.version2_settingBlock_mobile_line span {
+  font-weight: 400;
+}
+
 @media (max-width: 1350px) {
   .settingBlock_body_line_not_correct_again {
     margin-top: 20px;
