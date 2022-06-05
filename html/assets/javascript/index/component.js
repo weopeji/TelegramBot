@@ -997,6 +997,9 @@
         async renderType(allData)
         {
             try {
+                alert("okkk");
+
+                
                 var _data = await callApi({
                     methodName: "invester_status_project",
                     data: _GET('id'),
