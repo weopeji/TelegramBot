@@ -896,11 +896,11 @@
                 {
                     alert('Введите все данные!');
                     _this.inv = _array;
-                    _this.renderOldBlock();
                 } 
                 else 
                 {
                     _this.inv = _array;
+                    _this.renderOldBlock();
                 }
             })
         }
