@@ -1875,8 +1875,6 @@
                 data: data_rt._id,
             });
 
-            alert(_data);
-
             var settingBlock = $(`
                 <div class="settingBlock">
                     <div class="version2_settingBlock_header">
