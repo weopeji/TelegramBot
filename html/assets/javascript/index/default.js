@@ -197,6 +197,7 @@
             {
                 "profil": function() {profil_page.render(global.allData)},
                 "activ_projects": function() {
+                    alert('ok');
                     if(!_GET('id')) {
                         activ_projects.render(global.allData);
                     } else {
@@ -214,7 +215,8 @@
                 "chats": function() {chat.render(global.allData)},
                 "pay_investors": function() {pay_investors.render(global.allData)},
                 "myProjects": function() {
-                    if(!_GET('id')) {
+                    if(!_GET('id')) 
+                    {
                         myProjects.render(global.allData)
                     } else {
                         if(_GET("hash"))

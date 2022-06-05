@@ -2434,8 +2434,6 @@ async function getPaysProject(socket,data,callback)
 
 async function getAllProjectsBusiness(socket, data, callback)
 {
-    console.log(data);
-
     var _User       = await User.findOne({_id: data});
     var _Projects   = await Project.find({user: _User.user});
 
