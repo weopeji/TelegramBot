@@ -1370,6 +1370,9 @@ img.preloader_row_img {
 }
 
 @media (max-width: 1350px) {
+  .settingBlock_body_line_not_correct_again {
+    margin-top: 20px;
+  }
   .index_page_menu {
     display: none;
   }
