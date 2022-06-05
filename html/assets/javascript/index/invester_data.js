@@ -901,7 +901,6 @@
                 else 
                 {
                     _this.inv = _array;
-                    _this.renderOldBlock();
                 }
             })
         }
