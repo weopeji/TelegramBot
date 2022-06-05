@@ -198,15 +198,19 @@
                 "profil": function() {profil_page.render(global.allData)},
                 "activ_projects": function() {
                     try {
-                        if(!_GET('id')) {
+                        if(!_GET('id')) 
+                        {
+                            alert('ok1');
                             activ_projects.render(global.allData);
                         } else {
                             if(_GET("hash"))
                             {
+                                alert('ok2');
                                 activ_projects.render(global.allData);
                             }
                             else
                             {
+                                alert('ok3');
                                 activ_projects.renderType(global.allData);
                             }
                         }

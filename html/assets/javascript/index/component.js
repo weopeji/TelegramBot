@@ -999,7 +999,7 @@
             try {
                 alert("okkk");
 
-                
+
                 var _data = await callApi({
                     methodName: "invester_status_project",
                     data: _GET('id'),
@@ -1260,7 +1260,7 @@
                 $('.remove_block_tap').click( async function () 
                 {
                     _this.renderCloseBlock(_data);
-                })
+                });
             } 
             catch(e)
             {
