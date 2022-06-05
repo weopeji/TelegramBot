@@ -200,17 +200,15 @@
                     try {
                         if(!_GET('id')) 
                         {
-                            alert('ok1');
                             activ_projects.render(global.allData);
                         } else {
                             if(_GET("hash"))
                             {
-                                alert('ok2');
+                                alert(activ_projects);
                                 activ_projects.render(global.allData);
                             }
                             else
                             {
-                                alert('ok3');
                                 activ_projects.renderType(global.allData);
                             }
                         }
