@@ -709,19 +709,6 @@
                             <p>Выплаты по проекту</p>
                         </div>
                         <div class="version2_default_bkg row_default"></div>
-                        <!-- <div class="headerPaysBlock_header">
-                             <span class="headerPaysBlock_header_span">
-                                <div class="headerPaysBlock_header_span_button_msg">
-                                    <span>Оповестить бизнес</span>
-                                </div>
-                            </span>
-                            <div class="headerPaysBlock_header_line">
-                                <span>#</span>
-                                <span>Дата</span>
-                                <span>Сумма</span>
-                                <span>Статус</span>
-                            </div>
-                        </div> -->
                         <div class="settingBlock_header">
                             <div class="settingBlock_header_line">
                                 <span>#</span>
@@ -735,70 +722,6 @@
                         </div>
                     </div>
                 `);
-
-                // var errorAlert = false;
-
-                // if(typeof _data.InvDoc.date_alert != "undefined")
-                // {
-                //     var erroAlertPayData = true;
-
-                //     for(var _payData of _data.InvDoc.pays)
-                //     {
-                //         if(Number(_payData.date) <= Number(new Date().getTime().toString()) && _payData.status != "accept")
-                //         {
-                //             erroAlertPayData = false;
-                //         }
-                //     }
-
-                //     if(!erroAlertPayData)
-                //     {
-                //         if(Number(new Date().getTime().toString()) > Number(_data.InvDoc.date_alert) + 86400000)
-                //         {
-                //             errorAlert = true;
-                //         }
-                //     };
-                // }
-                // else
-                // {
-                //     var erroAlertPayData = true;
-
-                //     for(var _payData of _data.InvDoc.pays)
-                //     {
-                //         if(Number(_payData.date) < Number(new Date().getTime().toString()))
-                //         {
-                //             erroAlertPayData = false;
-                //         }
-                //     }
-
-                //     if(!erroAlertPayData)
-                //     {
-                //         errorAlert = true;
-                //     };
-                // }
-
-                // if(errorAlert)
-                // {
-                //     headerPaysBlock.find(".headerPaysBlock_header_span_button_msg").css('display', 'flex');
-                //     headerPaysBlock.find(".headerPaysBlock_header_span_button_msg").click( async function() {
-                //         await callApi({
-                //             methodName: "alertForBusinesOfInvester",
-                //             data: _GET('id'),
-                //         });
-
-                //         alert('Успешно! Через 24 часа вы сможете оповестить бизнес еще раз!');
-                //         location.reload();
-                //     });
-                // }
-
-                // headerPaysBlock.find('.headerPaysBlock_header_span_button_reqvesits').click( function() {
-                //     $(this).find('.settingBlock_body_line_drop_menu').fadeToggle();
-                // })
-
-                // headerPaysBlock.find('.headerPaysBlock_header_span').css({
-                //     'display': "flex",
-                //     "position": "relative",
-                //     "align-items": "center",
-                // });
 
                 var _status = {
                     "wait": "Ожидает оплату",
@@ -821,10 +744,28 @@
                 
                     var _block = $(`
                         <div class="settingBlock_body_line">
-                            <span>${i + 1}</span>
-                            <span>${maxDateFormatted}</span>
-                            <span>${Number(el.pay).toString().replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')} руб ${morePay.replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')}</span>
+                            <span>
+                                <div class="version2_settingBlock_mobile_line">
+                                    <span>№</span>
+                                </div>
+                                ${i + 1}
+                            </span>
+                            <span>
+                                <div class="version2_settingBlock_mobile_line">
+                                    <span>Дата</span>
+                                </div>
+                                ${maxDateFormatted}
+                            </span>
+                            <span>
+                                <div class="version2_settingBlock_mobile_line">
+                                    <span>Сумма</span>
+                                </div>
+                                ${Number(el.pay).toString().replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')} руб ${morePay.replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')}
+                            </span>
                             <span class="headerPaysBlock_body_line_inv" data="${el.receipt}" data-project="${_data.InvDoc.projectId}">
+                                <div class="version2_settingBlock_mobile_line">
+                                    <span>Статус</span>
+                                </div>
                                 <span>
                                     ${_status[el.status]}
                                 </span>
