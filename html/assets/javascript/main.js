@@ -12,7 +12,10 @@ window.global_data = {
 };
 
 if (typeof browser === "undefined") {
-    var browser = chrome;
+    if(typeof chrome != "undefined")
+    {
+        var browser = chrome;
+    }
 }
 
 //========= Cookies ===================================================================
