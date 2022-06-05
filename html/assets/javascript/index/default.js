@@ -197,8 +197,6 @@
             {
                 "profil": function() {profil_page.render(global.allData)},
                 "activ_projects": function() {
-                    alert('ok4');
-                    
                     try {
                         if(!_GET('id')) {
                             activ_projects.render(global.allData);

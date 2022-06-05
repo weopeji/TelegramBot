@@ -996,269 +996,273 @@
 
         async renderType(allData)
         {
-            var _data = await callApi({
-                methodName: "invester_status_project",
-                data: _GET('id'),
-            });
-
-            var blockProject = await callApi({
-                methodName: "getProjectById",
-                data: _data.InvDoc.projectId,
-            });
-
-            console.log(_data);
-
-            var _dateText   = "Ожидание";
-            var _this       = this;
-
-            if(_data.InvDoc.date)
-            {
-                var maxDate     = new Date(Number(_data.InvDoc.date));
-                var needDate    = `${this.pad(maxDate.getDate(), 2, '0')}.${this.pad(maxDate.getMonth() + 1, 2, '0')}.${maxDate.getFullYear()}`;
-                _dateText       = needDate;
-            }
-
-            var _status = 
-            {
-                "wait": "Ожидает подтверждения",
-                "accept": "Подтверждено",
-                "not_correct": `<span style="color: red">Отказано</span>`
-            };
-
-            if(typeof blockProject.notFullpay != "undefined")
-            {
-                if(Number(blockProject.notFullpay) == 0)
+            try {
+                var _data = await callApi({
+                    methodName: "invester_status_project",
+                    data: _GET('id'),
+                });
+    
+                var blockProject = await callApi({
+                    methodName: "getProjectById",
+                    data: _data.InvDoc.projectId,
+                });
+    
+                var _dateText   = "Ожидание";
+                var _this       = this;
+    
+                if(_data.InvDoc.date)
                 {
-                    if(typeof _data.InvDoc.data.pts_2 == "undefined")
+                    var maxDate     = new Date(Number(_data.InvDoc.date));
+                    var needDate    = `${this.pad(maxDate.getDate(), 2, '0')}.${this.pad(maxDate.getMonth() + 1, 2, '0')}.${maxDate.getFullYear()}`;
+                    _dateText       = needDate;
+                }
+    
+                var _status = 
+                {
+                    "wait": "Ожидает подтверждения",
+                    "accept": "Подтверждено",
+                    "not_correct": `<span style="color: red">Отказано</span>`
+                };
+    
+                if(typeof blockProject.notFullpay != "undefined")
+                {
+                    if(Number(blockProject.notFullpay) == 0)
                     {
-                        _status["accept"] = "Ожидает подтверждения";
-                    }
-                    else
-                    {
-                        if(_data.InvDoc.applicationRequest)
+                        if(typeof _data.InvDoc.data.pts_2 == "undefined")
                         {
                             _status["accept"] = "Ожидает подтверждения";
+                        }
+                        else
+                        {
+                            if(_data.InvDoc.applicationRequest)
+                            {
+                                _status["accept"] = "Ожидает подтверждения";
+                            };
                         };
                     };
                 };
-            };
-
-            var settingBlock = $(`
-                <div class="info_active_block">
-                    <div class="info_active_block_right">
-                        <div class="version2_default_bkg row_default"></div>
+    
+                var settingBlock = $(`
+                    <div class="info_active_block">
+                        <div class="info_active_block_right">
+                            <div class="version2_default_bkg row_default"></div>
+                        </div>
+                        <div class="info_active_block_left">
+                            <div class="version2_default_bkg row_default"></div>
+                            <p class="info_active_block_left_header">Информация по платежу</p>
+                            <div class="info_active_block_left_info">
+                                <div class="info_active_block_left_info_line">
+                                    <span>Название:</span>
+                                    <a>${blockProject.data.name}</a>
+                                </div>
+                                <div class="info_active_block_left_info_line">
+                                    <span>Номер проекта:</span>
+                                    <a>${_data.InvDoc.projectId}</a>
+                                </div>
+                                <div class="info_active_block_left_info_line">
+                                    <span>Номер инвестора:</span>
+                                    <a>${_data.initNumber}</a>
+                                </div>
+                            </div>
+                            <div class="info_active_block_left_info">
+                                <div class="info_active_block_left_info_line">
+                                    <span>Статус:</span>
+                                    <a>${_status[_data.InvDoc.status]}</a>
+                                </div>
+                                <div class="info_active_block_left_info_line">
+                                    <span>Сумма инвестиции:</span>
+                                    <a>${_data.InvDoc.data.pay.replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')} руб</a>
+                                </div>
+                                <div class="info_active_block_left_info_line">
+                                    <span>Дата:</span>
+                                    <a>${_dateText}</a>
+                                </div>
+                            </div>
+                            <div class="info_active_block_left_buttons">
+                                <span class="show_document">Посмотреть договор</span>
+                                <span class="show_block">Посмотреть чек об оплате</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="info_active_block_left">
-                        <div class="version2_default_bkg row_default"></div>
-                        <p class="info_active_block_left_header">Информация по платежу</p>
-                        <div class="info_active_block_left_info">
-                            <div class="info_active_block_left_info_line">
-                                <span>Название:</span>
-                                <a>${blockProject.data.name}</a>
-                            </div>
-                            <div class="info_active_block_left_info_line">
-                                <span>Номер проекта:</span>
-                                <a>${_data.InvDoc.projectId}</a>
-                            </div>
-                            <div class="info_active_block_left_info_line">
-                                <span>Номер инвестора:</span>
-                                <a>${_data.initNumber}</a>
-                            </div>
-                        </div>
-                        <div class="info_active_block_left_info">
-                            <div class="info_active_block_left_info_line">
-                                <span>Статус:</span>
-                                <a>${_status[_data.InvDoc.status]}</a>
-                            </div>
-                            <div class="info_active_block_left_info_line">
-                                <span>Сумма инвестиции:</span>
-                                <a>${_data.InvDoc.data.pay.replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')} руб</a>
-                            </div>
-                            <div class="info_active_block_left_info_line">
-                                <span>Дата:</span>
-                                <a>${_dateText}</a>
-                            </div>
-                        </div>
-                        <div class="info_active_block_left_buttons">
-                            <span class="show_document">Посмотреть договор</span>
-                            <span class="show_block">Посмотреть чек об оплате</span>
-                        </div>
-                    </div>
-                </div>
-            `);
-
-            var errorButtonShow = false;
-
-            if(typeof _data.project.notFullpay != "undefined")
-            {
-                if(Number(_data.project.notFullpay) == 0)
+                `);
+    
+                var errorButtonShow = false;
+    
+                if(typeof _data.project.notFullpay != "undefined")
                 {
-                    if(typeof _data.InvDoc.data.pts_2 == "undefined")
+                    if(Number(_data.project.notFullpay) == 0)
                     {
-                        settingBlock.find('.show_block').remove();
+                        if(typeof _data.InvDoc.data.pts_2 == "undefined")
+                        {
+                            settingBlock.find('.show_block').remove();
+                        }
+                        else
+                        {
+                            settingBlock.find('.show_block').click( function() {
+                                if(window.screen.width < 1300)
+                                {
+                                    saveUrlAsFile(`./projects/${_data.InvDoc.projectId}/${_data.InvDoc._id}_investment_2.${_data.InvDoc.data.pts_2}`, `${_data.InvDoc._id}_investment_2.${_data.InvDoc.data.pts_2}`);
+                                }
+                                else
+                                {
+                                    window.open(`./projects/${_data.InvDoc.projectId}/${_data.InvDoc._id}_investment_2.${_data.InvDoc.data.pts_2}`, '_blank');
+                                } 
+                            });
+                            errorButtonShow = true;
+                        }
                     }
                     else
                     {
-                        settingBlock.find('.show_block').click( function() {
-                            if(window.screen.width < 1300)
+                        var buttonsType = 
+                        [
+                            function() 
                             {
-                                saveUrlAsFile(`./projects/${_data.InvDoc.projectId}/${_data.InvDoc._id}_investment_2.${_data.InvDoc.data.pts_2}`, `${_data.InvDoc._id}_investment_2.${_data.InvDoc.data.pts_2}`);
-                            }
-                            else
-                            {
-                                window.open(`./projects/${_data.InvDoc.projectId}/${_data.InvDoc._id}_investment_2.${_data.InvDoc.data.pts_2}`, '_blank');
-                            } 
-                        });
-                        errorButtonShow = true;
-                    }
-                }
-                else
-                {
-                    var buttonsType = 
-                    [
-                        function() 
-                        {
-                            var buttonsTypeBlock = $(`
-                                <div class="buttonsTypeBlock_row_not_full_payData">
-                                    <i class="fad fa-badge-check"></i>
-                                    <span>Чек номер 1</span>
-                                    <button type="button">Посмотреть</button>
-                                </div>
-                            `);
-
-                            buttonsTypeBlock.find('button').click( function() {
-                                window.open(`./projects/${_data.InvDoc.projectId}/${_data.InvDoc._id}_investment.${_data.InvDoc.data.pts}`, '_blank');
-                            });
-
-                            return buttonsTypeBlock;
-                        },
-                        function() 
-                        {
-                            var iconButton          = `<i class="fad fa-badge-check"></i>`;
-                            var buttonBlockNeedPush = `<button type="button">Посмотреть</button>`;
-
-                            if(typeof _data.InvDoc.data.pts_2 == "undefined")
-                            {
-                                iconButton          = `<i class="fad fa-window-close"></i>`;
-                                buttonBlockNeedPush = "";
-                            }
-
-                            var buttonsTypeBlock    = $(`
-                                <div class="buttonsTypeBlock_row_not_full_payData">
-                                    ${iconButton}
-                                    <span>Чек номер 2</span>
-                                    ${buttonBlockNeedPush}
-                                </div>
-                            `);
-
-                            if(typeof _data.InvDoc.data.pts_2 != "undefined")
-                            {
+                                var buttonsTypeBlock = $(`
+                                    <div class="buttonsTypeBlock_row_not_full_payData">
+                                        <i class="fad fa-badge-check"></i>
+                                        <span>Чек номер 1</span>
+                                        <button type="button">Посмотреть</button>
+                                    </div>
+                                `);
+    
                                 buttonsTypeBlock.find('button').click( function() {
                                     window.open(`./projects/${_data.InvDoc.projectId}/${_data.InvDoc._id}_investment.${_data.InvDoc.data.pts}`, '_blank');
                                 });
-                            }
-
-                            return buttonsTypeBlock;
-                        },
-                    ]
-                    
-
-                    var templateText = $(`
-                        <div class="info_active_block_left_buttons_notFullpay_line_row">
-                            <div class="info_active_block_left_buttons_notFullpay_line" data="first">
-
+    
+                                return buttonsTypeBlock;
+                            },
+                            function() 
+                            {
+                                var iconButton          = `<i class="fad fa-badge-check"></i>`;
+                                var buttonBlockNeedPush = `<button type="button">Посмотреть</button>`;
+    
+                                if(typeof _data.InvDoc.data.pts_2 == "undefined")
+                                {
+                                    iconButton          = `<i class="fad fa-window-close"></i>`;
+                                    buttonBlockNeedPush = "";
+                                }
+    
+                                var buttonsTypeBlock    = $(`
+                                    <div class="buttonsTypeBlock_row_not_full_payData">
+                                        ${iconButton}
+                                        <span>Чек номер 2</span>
+                                        ${buttonBlockNeedPush}
+                                    </div>
+                                `);
+    
+                                if(typeof _data.InvDoc.data.pts_2 != "undefined")
+                                {
+                                    buttonsTypeBlock.find('button').click( function() {
+                                        window.open(`./projects/${_data.InvDoc.projectId}/${_data.InvDoc._id}_investment.${_data.InvDoc.data.pts}`, '_blank');
+                                    });
+                                }
+    
+                                return buttonsTypeBlock;
+                            },
+                        ]
+                        
+    
+                        var templateText = $(`
+                            <div class="info_active_block_left_buttons_notFullpay_line_row">
+                                <div class="info_active_block_left_buttons_notFullpay_line" data="first">
+    
+                                </div>
+                                <div class="info_active_block_left_buttons_notFullpay_line" data="second">
+                                    
+                                </div>
                             </div>
-                            <div class="info_active_block_left_buttons_notFullpay_line" data="second">
-                                
-                            </div>
-                        </div>
-                    `);
-
-                    templateText.find('[data="first"]').append(buttonsType[0]());
-                    templateText.find('[data="second"]').append(buttonsType[1]());
-
-                    settingBlock.find('.show_block').remove();
-                    settingBlock.find('.info_active_block_left_buttons').append(templateText);
+                        `);
+    
+                        templateText.find('[data="first"]').append(buttonsType[0]());
+                        templateText.find('[data="second"]').append(buttonsType[1]());
+    
+                        settingBlock.find('.show_block').remove();
+                        settingBlock.find('.info_active_block_left_buttons').append(templateText);
+                    }
+                };
+    
+                $('.index_page_body_data').append(settingBlock);
+    
+                if(allData.User.type == "business") {
+                    await this.business_render(_data);
+                } else {
+                    await this.invester_render(_data);
                 }
-            };
-
-            $('.index_page_body_data').append(settingBlock);
-
-            if(allData.User.type == "business") {
-                await this.business_render(_data);
-            } else {
-                await this.invester_render(_data);
-            }
-
-            if(!errorButtonShow)
-            {
-                $('.show_block').click( function() {
+    
+                if(!errorButtonShow)
+                {
+                    $('.show_block').click( function() {
+                        if(window.screen.width < 1300)
+                        {
+                            saveUrlAsFile(`./projects/${_data.InvDoc.projectId}/${_data.InvDoc._id}_investment.${_data.InvDoc.data.pts}`, `${_data.InvDoc._id}_investment.${_data.InvDoc.data.pts}`);
+                        }
+                        else
+                        {
+                            window.open(`./projects/${_data.InvDoc.projectId}/${_data.InvDoc._id}_investment.${_data.InvDoc.data.pts}`, '_blank');
+                        } 
+                    });
+                }
+    
+                $('.info_active_block_massage_button').click(function() {
+                    window.open(`./?page=chats&id=${_data.InvDoc._id}`, '_blank');
+                });
+    
+                $('.show_document').click( async function() {
                     if(window.screen.width < 1300)
                     {
-                        saveUrlAsFile(`./projects/${_data.InvDoc.projectId}/${_data.InvDoc._id}_investment.${_data.InvDoc.data.pts}`, `${_data.InvDoc._id}_investment.${_data.InvDoc.data.pts}`);
+                        // saveUrlAsFile(`https://invester-relocation.site/projects/${_data.InvDoc.projectId}/${_data.InvDoc.urlToLastDocument}`, `${_data.InvDoc.projectId}/${_data.InvDoc.urlToLastDocument}`);
+                        
+                        var tamplateText = $(`
+                            <div class="version2_preloaderDocumetBLock">
+                                <div class="version2_preloaderDocumetBLock_row">
+                                    <div class="version2_preloaderDocumetBLock_header">
+                                        <span><</span>
+                                    </div>
+                                    <div class="version2_preloaderDocumetBLock_img">
+                                        <img src="/html/assets/images/2.0.0/documents/file_signature_document-1.png" alt="">
+                                    </div>
+                                    <div class="version2_preloaderDocumetBLock_img">
+                                        <img src="/html/assets/images/2.0.0/documents/file_signature_document-2.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        `);
+    
+                        tamplateText.find('.version2_preloaderDocumetBLock_header').click( function() {
+                            $('.version2_preloaderDocumetBLock').fadeOut( function() {
+                                $(this).remove();
+                            });
+                        });
+    
+                        $('body').append(tamplateText);
+                        $('.version2_preloaderDocumetBLock').fadeIn();
                     }
                     else
                     {
-                        window.open(`./projects/${_data.InvDoc.projectId}/${_data.InvDoc._id}_investment.${_data.InvDoc.data.pts}`, '_blank');
-                    } 
+                        window.open(`https://invester-relocation.site/projects/${_data.InvDoc.projectId}/${_data.InvDoc.urlToLastDocument}`, '_blank');
+                    }
                 });
-            }
-
-            $('.info_active_block_massage_button').click(function() {
-                window.open(`./?page=chats&id=${_data.InvDoc._id}`, '_blank');
-            });
-
-            $('.show_document').click( async function() {
-                if(window.screen.width < 1300)
+    
+                $('.accept_block_tap').click( async function () 
                 {
-                    // saveUrlAsFile(`https://invester-relocation.site/projects/${_data.InvDoc.projectId}/${_data.InvDoc.urlToLastDocument}`, `${_data.InvDoc.projectId}/${_data.InvDoc.urlToLastDocument}`);
-                    
-                    var tamplateText = $(`
-                        <div class="version2_preloaderDocumetBLock">
-                            <div class="version2_preloaderDocumetBLock_row">
-                                <div class="version2_preloaderDocumetBLock_header">
-                                    <span><</span>
-                                </div>
-                                <div class="version2_preloaderDocumetBLock_img">
-                                    <img src="/html/assets/images/2.0.0/documents/file_signature_document-1.png" alt="">
-                                </div>
-                                <div class="version2_preloaderDocumetBLock_img">
-                                    <img src="/html/assets/images/2.0.0/documents/file_signature_document-2.png" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    `);
-
-                    tamplateText.find('.version2_preloaderDocumetBLock_header').click( function() {
-                        $('.version2_preloaderDocumetBLock').fadeOut( function() {
-                            $(this).remove();
-                        });
+                    await callApi({
+                        methodName: "acceptInvestor",
+                        data: _GET('id'),
                     });
-
-                    $('body').append(tamplateText);
-                    $('.version2_preloaderDocumetBLock').fadeIn();
-                }
-                else
+    
+                    alert('Оплата подтвержденна!');
+                    location.reload();
+                })
+    
+                $('.remove_block_tap').click( async function () 
                 {
-                    window.open(`https://invester-relocation.site/projects/${_data.InvDoc.projectId}/${_data.InvDoc.urlToLastDocument}`, '_blank');
-                }
-            });
-
-            $('.accept_block_tap').click( async function () 
+                    _this.renderCloseBlock(_data);
+                })
+            } 
+            catch(e)
             {
-                await callApi({
-                    methodName: "acceptInvestor",
-                    data: _GET('id'),
-                });
-
-                alert('Оплата подтвержденна!');
-                location.reload();
-            })
-
-            $('.remove_block_tap').click( async function () 
-            {
-                _this.renderCloseBlock(_data);
-            })
+                alert(e.toString());
+            }
         }
 
         async renderCloseBlock(_data)
@@ -1409,14 +1413,10 @@
         async render(allData) 
         {
 
-            alert(global.allData.User._id);
-
             var _data = await callApi({
                 methodName: "ALL_DATA",
                 data: global.allData.User._id,
             });
-
-            alert("okkk");
 
             if(allData.User.type == "business")
             {
