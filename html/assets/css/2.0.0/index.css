@@ -435,7 +435,7 @@
   padding: 10px 15px;
 }
 
-.settingBlock_body_line .version2_settingBlock_mobile_line span {
+.settingBlock_body_line .version2_settingBlock_mobile_line span:first-child {
   margin-bottom: 0;
 }
 
