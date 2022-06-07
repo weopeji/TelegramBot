@@ -1607,9 +1607,7 @@ img.preloader_row_img {
     padding-bottom: 0;
   }
   .version2_info_block_moreDataStatus_bigText .invester_status_projects_status_first_line {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
+    display: block;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
