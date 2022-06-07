@@ -1568,6 +1568,7 @@ img.preloader_row_img {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+    margin: 5px 0;
   }
   .version2_info_block_moreDataStatus .version2_invester_status_projects_status_first_line_more a {
     width: -webkit-fit-content;
