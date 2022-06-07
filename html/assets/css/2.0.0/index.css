@@ -435,6 +435,10 @@
   padding: 10px 15px;
 }
 
+.settingBlock_body_line .version2_settingBlock_mobile_line span {
+  margin-bottom: 0;
+}
+
 .settingBlock_header_line {
   width: calc(100% - 40px);
   margin: 0 auto;
