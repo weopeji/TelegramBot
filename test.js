@@ -137,6 +137,10 @@ $('header').append($('<link rel="stylesheet" href="./html/assets/css/2.0.0/black
     <span>Название</span>
 </div>
 
+<div class="version2_errorPushBlockDefault">
+    <span>У вас нет проектов в ожидании</span>
+</div>
+
 
 SoloAlert.confirm({
     title: "Подтверждение",

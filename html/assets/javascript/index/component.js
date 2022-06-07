@@ -3123,6 +3123,17 @@
                 i++;
             };
 
+            if(errorBlock)
+            {
+                var template_text_error = $(`
+                    <div class="version2_errorPushBlockDefault">
+                        <span>У вас нет проектов в ожидании действия</span>
+                    </div>
+                `);
+
+                settingBlock.find('.settingBlock_body').append(template_text_error)
+            }
+
             $('.index_page_body_data').append(settingBlock);
 
 
