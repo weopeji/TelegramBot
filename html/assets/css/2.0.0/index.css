@@ -1422,7 +1422,7 @@ img.preloader_row_img {
     width: 1300px;
   }
   .index_page_body_data {
-    width: calc(100vw - 65px);
+    width: calc(100vw - 30px);
   }
   .index_page_body_data::-webkit-scrollbar {
     width: 0;
