@@ -1586,5 +1586,8 @@ img.preloader_row_img {
     padding: 0;
     margin: 0;
   }
+  .settingBlock {
+    padding-bottom: 0;
+  }
 }
 /*# sourceMappingURL=index.css.map */
