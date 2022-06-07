@@ -1568,32 +1568,44 @@
                     </div>
                     <div class="settingBlock" style="margin-bottom: 20px">
                         <div class="version2_default_bkg row_default"></div>
-                        <div class="settingBlock_header">
+                        <div class="settingBlock_header version2_info_block_moreDataStatus">
                             <div class="invester_status_projects_status_first">
                                 <div class="invester_status_projects_status_first_line">
-                                    <span>Кол-во заявок</span>
-                                    <a>${ActionAllMoneyinit}</a>
-                                    <span>Сумма</span>
-                                    <a>${ActionAllMoney.toString().ReplaceNumber()} руб</a>
+                                    <div class="version2_invester_status_projects_status_first_line_more">
+                                        <span>Кол-во заявок</span>
+                                        <a>${ActionAllMoneyinit}</a>
+                                    </div>
+                                    <div class="version2_invester_status_projects_status_first_line_more">
+                                        <span>Сумма</span>
+                                        <a>${ActionAllMoney.toString().ReplaceNumber()} руб</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="settingBlock" style="margin-bottom: 20px">
                         <div class="version2_default_bkg row_default"></div>
-                        <div class="settingBlock_header">
+                        <div class="settingBlock_header version2_info_block_moreDataStatus">
                             <div class="invester_status_projects_status_first">
                                 <div class="invester_status_projects_status_first_line">
-                                    <span>Привлечено инвесторов</span>
-                                    <a>${_data.attracted.investers.length}</a>
-                                    <span>Бонус</span>
-                                    <a>0 руб</a>
+                                    <div class="version2_invester_status_projects_status_first_line_more">
+                                        <span>Привлечено инвесторов</span>
+                                        <a>${_data.attracted.investers.length}</a>
+                                    </div>
+                                    <div class="version2_invester_status_projects_status_first_line_more">
+                                        <span>Бонус</span>
+                                        <a>0 руб</a>
+                                    </div>
                                 </div>
                                 <div class="invester_status_projects_status_first_line">
-                                    <span>Привлечено бизнес проектов</span>
-                                    <a>${_data.attracted.business.length}</a>
-                                    <span>Бонус</span>
-                                    <a>0 руб</a>
+                                    <div class="version2_invester_status_projects_status_first_line_more">
+                                        <span>Привлечено бизнес проектов</span>
+                                        <a>${_data.attracted.business.length}</a>
+                                    </div>
+                                    <div class="version2_invester_status_projects_status_first_line_more">
+                                        <span>Бонус</span>
+                                        <a>0 руб</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
