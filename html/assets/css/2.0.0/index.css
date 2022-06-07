@@ -1572,6 +1572,7 @@ img.preloader_row_img {
     padding: 10px 0;
   }
   .version2_info_block_moreDataStatus .invester_status_projects_status_first_line {
+    display: block;
     padding: 0;
   }
   .version2_info_block_moreDataStatus .version2_invester_status_projects_status_first_line_more {
