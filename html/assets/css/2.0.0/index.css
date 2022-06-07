@@ -1640,6 +1640,7 @@ img.preloader_row_img {
   }
   .settingBlock_body_line span {
     font-weight: 400;
+    font-size: 16px;
   }
   .settingBlock_body_line .version2_settingBlock_mobile_line span:first-child {
     margin-bottom: 0;
@@ -1648,6 +1649,7 @@ img.preloader_row_img {
   .settingBlock_body_line span:first-child {
     margin-bottom: 15px;
     font-weight: bold;
+    font-size: 22px;
   }
 }
 /*# sourceMappingURL=index.css.map */
