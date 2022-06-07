@@ -3074,7 +3074,8 @@
                 </div>
             `);
 
-            var i = 0;
+            var i           = 0;
+            var errorBlock  = true;
 
             for(var element of ActionWaitInvs) 
             {
@@ -3118,9 +3119,9 @@
                 });
 
                 settingBlock.find('.settingBlock_body').append(template_text);
-
+                errorBlock = false;
                 i++;
-            }
+            };
 
             $('.index_page_body_data').append(settingBlock);
 
@@ -3147,7 +3148,8 @@
                 </div>
             `);
 
-            var i = 0;
+            var i               = 0;
+            var errorBlock2     = true;
 
             for(var element of _data.invester_data.waitInvs)
             {
@@ -3167,9 +3169,20 @@
                 });
 
                 settingBlock.find('.settingBlock_body').append(template_text);
-
+                errorBlock2 = false;
                 i++;
             };
+
+            if(errorBlock2)
+            {
+                var template_text_error = $(`
+                    <div class="version2_errorPushBlockDefault">
+                        <span>У вас нет проектов в ожидании</span>
+                    </div>
+                `);
+
+                settingBlock.find('.settingBlock_body').append(template_text_error)
+            }
 
             $('.index_page_body_data').append(settingBlock);
         }
