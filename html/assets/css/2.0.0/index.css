@@ -1387,7 +1387,7 @@ img.preloader_row_img {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 40%;
+  width: 47%;
 }
 
 @media (max-width: 1350px) {
