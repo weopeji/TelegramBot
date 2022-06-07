@@ -1373,6 +1373,23 @@ img.preloader_row_img {
   font-weight: 400;
 }
 
+.invester_status_projects_status_first_line {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.invester_status_projects_status_first_line .version2_invester_status_projects_status_first_line_more {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 40%;
+}
+
 @media (max-width: 1350px) {
   .settingBlock_body_line_not_correct_again {
     margin-top: 20px;
