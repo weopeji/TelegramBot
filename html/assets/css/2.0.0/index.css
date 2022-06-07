@@ -1638,6 +1638,9 @@ img.preloader_row_img {
   .version2_settingBlock_notMorePAndM_more {
     margin-bottom: 70px !important;
   }
+  .settingBlock_body_line span {
+    font-weight: 400;
+  }
   .settingBlock_body_line .version2_settingBlock_mobile_line span:first-child {
     margin-bottom: 0;
     font-weight: 400;
