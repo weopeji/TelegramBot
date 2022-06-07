@@ -1541,7 +1541,7 @@
                 var settingBlock1 = $(`
                     <div class="settingBlock" style="margin-bottom: 20px">
                         <div class="version2_default_bkg row_default"></div>
-                        <div class="settingBlock_header">
+                        <div class="settingBlock_header version2_info_block_moreDataStatus">
                             <div class="invester_status_projects_status_first">
                                 <div class="invester_status_projects_status_first_line">
                                     <div class="version2_invester_status_projects_status_first_line_more">
