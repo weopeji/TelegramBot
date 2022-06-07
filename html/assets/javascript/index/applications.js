@@ -52,8 +52,9 @@
                 </div>
             `);
 
-            var i       = 0;
-            var _this   = this;
+            var i           = 0;
+            var _this       = this;
+            var errorBlock  = true;
 
             for(var element of _data.invester_data.activeInvs)
             {
@@ -103,6 +104,17 @@
                 i++;
                 _this.ActionAllMoney = _this.ActionAllMoney + Number(element.Inv.data.pay.toString().RedactingNumber());
             };
+
+            if(errorBlock)
+            {
+                var template_text_error = $(`
+                    <div class="version2_errorPushBlockDefault">
+                        <span>У вас нет заявок</span>
+                    </div>
+                `);
+
+                settingBlock2.find('.settingBlock_body').append(template_text_error)
+            }
 
             $('.index_page_body_data').append(settingBlock2);
         }
