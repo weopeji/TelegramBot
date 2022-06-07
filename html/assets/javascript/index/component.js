@@ -1546,21 +1546,21 @@
                                 <div class="invester_status_projects_status_first_line">
                                     <div class="version2_invester_status_projects_status_first_line_more">
                                         <span>Проинвестировано</span>
-                                        <a>${allMoneyInvesting.toString().ReplaceNumber()} руб.</a>
+                                        <a>${allMoneyInvesting.toString().ReplaceNumber()} ₽</a>
                                     </div>
                                     <div class="version2_invester_status_projects_status_first_line_more">
                                         <span>Получено</span>
-                                        <a>${_data.invester_data.paid.toString().ReplaceNumber()} руб</a>
+                                        <a>${_data.invester_data.paid.toString().ReplaceNumber()} ₽</a>
                                     </div>
                                 </div>
                                 <div class="invester_status_projects_status_first_line">
                                     <div class="version2_invester_status_projects_status_first_line_more">
                                         <span>Ожидают подтверждения</span>
-                                        <a>${_data.invester_data.investedWait.toString().ReplaceNumber()} руб</a>
+                                        <a>${_data.invester_data.investedWait.toString().ReplaceNumber()} ₽</a>
                                     </div>
                                     <div class="version2_invester_status_projects_status_first_line_more">
                                         <span>Ближайшие поступления на</span>
-                                        <a>${_data.invester_data.receipts.toString().ReplaceNumber()} руб</a>
+                                        <a>${_data.invester_data.receipts.toString().ReplaceNumber()} ₽</a>
                                     </div>
                                 </div>
                             </div>
@@ -1577,7 +1577,7 @@
                                     </div>
                                     <div class="version2_invester_status_projects_status_first_line_more">
                                         <span>Сумма</span>
-                                        <a>${ActionAllMoney.toString().ReplaceNumber()} руб</a>
+                                        <a>${ActionAllMoney.toString().ReplaceNumber()} ₽</a>
                                     </div>
                                 </div>
                             </div>
@@ -1594,7 +1594,7 @@
                                     </div>
                                     <div class="version2_invester_status_projects_status_first_line_more">
                                         <span>Бонус</span>
-                                        <a>0 руб</a>
+                                        <a>0 ₽</a>
                                     </div>
                                 </div>
                                 <div class="invester_status_projects_status_first_line">
@@ -1604,7 +1604,7 @@
                                     </div>
                                     <div class="version2_invester_status_projects_status_first_line_more">
                                         <span>Бонус</span>
-                                        <a>0 руб</a>
+                                        <a>0 ₽</a>
                                     </div>
                                 </div>
                             </div>
