@@ -1577,6 +1577,7 @@ img.preloader_row_img {
   }
   .version2_info_block_moreDataStatus .version2_invester_status_projects_status_first_line_more span {
     font-size: 15px;
+    white-space: nowrap;
   }
 }
 /*# sourceMappingURL=index.css.map */
