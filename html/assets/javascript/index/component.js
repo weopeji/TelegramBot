@@ -1544,16 +1544,24 @@
                         <div class="settingBlock_header">
                             <div class="invester_status_projects_status_first">
                                 <div class="invester_status_projects_status_first_line">
-                                    <span>Проинвестировано</span>
-                                    <a>${allMoneyInvesting.toString().ReplaceNumber()} руб.</a>
-                                    <span>Получено</span>
-                                    <a>${_data.invester_data.paid.toString().ReplaceNumber()} руб</a>
+                                    <div class="version2_invester_status_projects_status_first_line_more">
+                                        <span>Проинвестировано</span>
+                                        <a>${allMoneyInvesting.toString().ReplaceNumber()} руб.</a>
+                                    </div>
+                                    <div class="version2_invester_status_projects_status_first_line_more">
+                                        <span>Получено</span>
+                                        <a>${_data.invester_data.paid.toString().ReplaceNumber()} руб</a>
+                                    </div>
                                 </div>
                                 <div class="invester_status_projects_status_first_line">
-                                    <span>Ожидают подтверждения</span>
-                                    <a>${_data.invester_data.investedWait.toString().ReplaceNumber()} руб</a>
-                                    <span>Ближайшие поступления на</span>
-                                    <a>${_data.invester_data.receipts.toString().ReplaceNumber()} руб</a>
+                                    <div class="version2_invester_status_projects_status_first_line_more">
+                                        <span>Ожидают подтверждения</span>
+                                        <a>${_data.invester_data.investedWait.toString().ReplaceNumber()} руб</a>
+                                    </div>
+                                    <div class="version2_invester_status_projects_status_first_line_more">
+                                        <span>Ближайшие поступления на</span>
+                                        <a>${_data.invester_data.receipts.toString().ReplaceNumber()} руб</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
