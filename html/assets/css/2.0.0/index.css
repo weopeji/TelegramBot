@@ -1589,5 +1589,27 @@ img.preloader_row_img {
   .settingBlock {
     padding-bottom: 0;
   }
+  .version2_info_block_moreDataStatus_bigText .invester_status_projects_status_first_line {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    line-height: 1;
+  }
+  .version2_info_block_moreDataStatus_bigText .invester_status_projects_status_first_line span {
+    white-space: nowrap;
+    margin: 0;
+    padding: 0;
+  }
+  .version2_info_block_moreDataStatus_bigText .invester_status_projects_status_first_line a {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+  }
 }
 /*# sourceMappingURL=index.css.map */
