@@ -1566,7 +1566,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="settingBlock" style="margin-bottom: 20px">
+                    <div class="settingBlock version2_settingBlock_notMorePAndM" style="margin-bottom: 20px">
                         <div class="version2_default_bkg row_default"></div>
                         <div class="settingBlock_header version2_info_block_moreDataStatus">
                             <div class="invester_status_projects_status_first">
@@ -1583,7 +1583,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="settingBlock" style="margin-bottom: 20px">
+                    <div class="settingBlock version2_settingBlock_notMorePAndM" style="margin-bottom: 20px">
                         <div class="version2_default_bkg row_default"></div>
                         <div class="settingBlock_header version2_info_block_moreDataStatus">
                             <div class="invester_status_projects_status_first">
@@ -1610,7 +1610,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="settingBlock" style="margin-bottom: 70px">
+                    <div class="settingBlock version2_settingBlock_notMorePAndM" style="margin-bottom: 70px">
                         <div class="version2_default_bkg row_default"></div>
                         <div class="settingBlock_header version2_info_block_moreDataStatus_bigText">
                             <div class="invester_status_projects_status_first">
