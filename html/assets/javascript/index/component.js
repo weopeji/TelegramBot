@@ -763,10 +763,7 @@
                                 ${Number(el.pay).toString().replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')} руб ${morePay.replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')}
                             </span>
                             <span class="headerPaysBlock_body_line_inv" data="${el.receipt}" data-project="${_data.InvDoc.projectId}">
-                                <div class="version2_settingBlock_mobile_line">
-                                    <span>Статус</span>
-                                </div>
-                                <span>
+                                <span class="version2_invDocPage_acceptButton_info">
                                     ${_status[el.status]}
                                 </span>
                             </span>

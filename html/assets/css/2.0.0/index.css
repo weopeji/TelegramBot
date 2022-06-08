@@ -1683,5 +1683,8 @@ img.preloader_row_img {
     width: fit-content;
     margin-bottom: 0;
   }
+  .version2_invDocPage_acceptButton_info {
+    margin-top: 10px;
+  }
 }
 /*# sourceMappingURL=index.css.map */
