@@ -35,6 +35,7 @@ const R_F                           = mongoose.model('R_F');
 const project_key                   = mongoose.model('project_key');
 const commission                    = mongoose.model('commission');
 const authToken                     = mongoose.model('authToken');
+const itemOfSite                    = mongoose.model('itemOfSite');
 
 var bot                             = null;
 var helper_functions                = null;
@@ -428,86 +429,6 @@ io.on('connection', function(socket) {
     socket.on('components', function(data, callback) {
         components_page(this, data, callback);
     });
-});
-
-app.post('/parce.io/parce', (req, res) => {
-    let options = 
-    {
-        mode: 'text',
-        scriptPath: '../python/parcingArbitraj',
-        args: "5029069967",
-    };
-
-    try
-    {
-        PythonShell.run('main.py', options, function (err, results) {
-            if (err) {
-                console.log(err);
-                res.json({error: "Ошибки на сервере обратитесь к специалисту"});
-            } else 
-            {
-                console.log('ok');
-                res.json({results: JSON.parse(results)});
-            }
-        });
-    } catch(e)
-    {
-        console.log(e);
-        res.json({error: "Ошибки на сервере обратитесь к специалисту"});
-    }
-    // var form    = new multiparty.Form({
-    //     maxFilesSize: 2 * 1024 * 1024 * 1024 
-    // });
-
-    // var _data   = {};
-
-    // form.on('error', function(err) {
-    //     console.log('Error parsing form: ' + err.stack);
-    // });
-
-    // form.on('field', (name, value) => 
-    // {
-    //     _data[name] = value;
-    // });
-
-    // form.on('close', function() 
-    // {
-    //     if(typeof _data["data"] != "undefined")
-    //     {
-    //         var ActionData = _data["data"].toString();
-
-    //         let options = 
-    //         {
-    //             mode: 'text',
-    //             scriptPath: '../python/parcingArbitraj',
-    //             args: ActionData,
-    //         };
-
-    //         try
-    //         {
-    //             PythonShell.run('main2.py', options, function (err, results) {
-    //                 if (err) {
-    //                     console.log(err);
-    //                     res.json({error: "Ошибки на сервере обратитесь к специалисту"});
-    //                 } else 
-    //                 {
-    //                     console.log('ok');
-    //                     res.json({results: JSON.parse(results)});
-    //                 }
-    //             });
-    //         } catch(e)
-    //         {
-    //             console.log(e);
-    //             res.json({error: "Ошибки на сервере обратитесь к специалисту"});
-    //         }
-    //     }
-    //     else
-    //     {
-    //         res.json({error: "Не правильно переданы данные"});
-    //     }
-    // });
-
-    // form.parse(req);
 });
 
 app.post('/file_Action.io/files', (req, res) => {
@@ -1442,6 +1363,47 @@ app.post('/file_commission.io/files', (req, res) => {
     {
         console.log('Upload completed!');
         cheack_file(_data.path);
+    });
+
+    form.parse(req);
+});
+
+app.post('/file_Action.io/files', (req, res) => {
+
+    var form    = new multiparty.Form({
+        maxFilesSize: 2 * 1024 * 1024 * 1024 
+    });
+
+    var _data   = {};
+
+    form.on('error', function(err) {
+        console.log('Error parsing form: ' + err.stack);
+    });
+
+    form.on('file', (name, file) => 
+    {
+        _data.path = file.path;
+    });
+
+    form.on('field', (name, value) => 
+    {
+        _data[name] = value;
+    });
+
+    var cheack_file = async (_path) => 
+    {
+        try {
+            await itemOfSite.create({
+                data: _data["data"],
+            });
+        } catch(err) {
+            console.error(err);
+        }
+    }
+
+    form.on('close', function() 
+    {
+        cheack_file();
     });
 
     form.parse(req);
