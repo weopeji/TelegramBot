@@ -100,7 +100,7 @@
                 })
 
                 settingBlock2.find('.settingBlock_body').append(template_text);
-
+                errorBlock = false;
                 i++;
                 _this.ActionAllMoney = _this.ActionAllMoney + Number(element.Inv.data.pay.toString().RedactingNumber());
             };

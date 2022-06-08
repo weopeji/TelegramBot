@@ -1446,8 +1446,8 @@ img.preloader_row_img {
     opacity: 1;
   }
   .index_page_body_header_user_logotype_block {
-    width: 71px;
-    height: 36px;
+    width: 100px;
+    height: 55px;
   }
   .settingBlock {
     width: 1300px;
@@ -1494,6 +1494,7 @@ img.preloader_row_img {
   }
   .info_active_block_right {
     width: calc(100% - 42px);
+    max-width: initial;
   }
   .info_active_block_left {
     width: calc(100% - 41px);
