@@ -73,7 +73,7 @@
 
                 if(typeof element.Inv.applicationRequest != "undefined")
                 {
-                    if(element.Inv.applicationRequest)
+                    if(!element.Inv.applicationRequest)
                     {
                         break;
                     }
