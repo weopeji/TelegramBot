@@ -1368,10 +1368,12 @@ app.post('/file_commission.io/files', (req, res) => {
     form.parse(req);
 });
 
+app.use(express.static('public'));
+
 app.post('/itemOfSite.io/files', (req, res) => {
 
     res.header("Access-Control-Allow-Origin", "*");
-    
+
     var form    = new multiparty.Form({
         maxFilesSize: 2 * 1024 * 1024 * 1024 
     });
