@@ -16,6 +16,7 @@ const mammoth                       = require("mammoth");
 const puppeteer                     = require('puppeteer');
 const phantom                       = require('phantom');
 const bodyParser                    = require('body-parser');
+const cors                          = require('cors');
 
 
 const models                        = require('./models');
