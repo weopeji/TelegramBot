@@ -66,6 +66,19 @@
                     break;
                 }
 
+                if(typeof element.Inv.pts_2 != "undefined")
+                {
+                    break;
+                }
+
+                if(typeof element.Inv.applicationRequest != "undefined")
+                {
+                    if(element.Inv.applicationRequest)
+                    {
+                        break;
+                    }
+                }
+
                 var template_text = $(`
                     <div class="settingBlock_body_line" data="${element.Inv.invester}" data-more="${element.Inv._id}">
                         <span>
