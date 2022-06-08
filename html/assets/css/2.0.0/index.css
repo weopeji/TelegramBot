@@ -1724,5 +1724,8 @@ img.preloader_row_img {
     margin: 0;
     font-weight: 600;
   }
+  .info_active_block_left_buttons {
+    margin-top: 40px;
+  }
 }
 /*# sourceMappingURL=index.css.map */
