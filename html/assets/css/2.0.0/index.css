@@ -1684,8 +1684,17 @@ img.preloader_row_img {
     margin-bottom: 0;
   }
   .version2_invDocPage_acceptButton_info {
-    margin-top: 10px;
-    margin-bottom: 0;
+    margin-top: 25px !important;
+    margin-bottom: 0 !important;
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -webkit-box-pack: center !important;
+        -ms-flex-pack: center !important;
+            justify-content: center !important;
+    -webkit-box-align: center !important;
+        -ms-flex-align: center !important;
+            align-items: center !important;
   }
 }
 /*# sourceMappingURL=index.css.map */
