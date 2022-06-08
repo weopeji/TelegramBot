@@ -800,6 +800,10 @@
   margin-top: 0;
 }
 
+.info_active_block_left_buttons span {
+  border-radius: 8px;
+}
+
 .headerPaysBlock_header_span {
   display: none;
 }
