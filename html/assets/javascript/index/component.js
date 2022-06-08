@@ -1450,6 +1450,7 @@
                 var allMoneyInvesting   = 0;
                 var ActionAllMoney      = 0;
                 var ActionAllMoneyinit  = 0;
+                var ActionHowPays       = 0;
 
                 for(var element of _data.invester_data.activeInvs)
                 {
@@ -1533,7 +1534,7 @@
                     })
 
                     settingBlock.find('.settingBlock_body').append(template_text);
-
+                    ActionHowPays = ActionHowPays + 1;
                     allMoneyInvesting = allMoneyInvesting + Number(element.Inv.data.pay.toString().RedactingNumber());
                     i++;
                 };
@@ -1616,7 +1617,7 @@
                             <div class="invester_status_projects_status_first">
                                 <div class="invester_status_projects_status_first_line">
                                     <span>Проивестировано в проекты</span>
-                                    <a>${_data.invester_data.acceptInvs.length}</a>
+                                    <a>${ActionHowPays}</a>
                                 </div>
                             </div>
                         </div> 
