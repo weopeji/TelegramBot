@@ -171,7 +171,7 @@
 
                     var documentBlock = $(`
                         <div class="creating_page_input">
-                            <div class="creating_page_input_div">
+                            <div class="creating_page_input_div version2_creating_page_input_div_NewButton" data="newOpen">
                                 <span>Прикрепить</span>
                             </div>
                         </div>
@@ -208,13 +208,13 @@
         
                                 var templateText = 
                                 $(`
-                                    <div class="creating_page_input_div" data="reload">
+                                    <div class="creating_page_input_div version2_creating_page_input_div_NewButton" data="reload">
                                         <span>Заменить</span>
                                     </div>
-                                    <div class="creating_page_input_div" data="show">
+                                    <div class="creating_page_input_div version2_creating_page_input_div_NewButton" data="show">
                                         <span>Посмотреть</span>
                                     </div>
-                                    <div class="creating_page_input_div" data="ok">
+                                    <div class="creating_page_input_div version2_creating_page_input_div_NewButton" data="ok">
                                         <span>Подтвердить</span>
                                     </div>
                                 `);
