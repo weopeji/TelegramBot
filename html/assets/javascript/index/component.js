@@ -781,7 +781,7 @@
                     
                     if(el.status == "accept")
                     {
-                        _block.find(".headerPaysBlock_body_line_inv").children().css("background", "rgb(80, 200, 120)");
+                        _block.find(".headerPaysBlock_body_line_inv").children().css("background-color", "#965FFD");
                     } 
                     else
                     {
