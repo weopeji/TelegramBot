@@ -781,7 +781,7 @@
                     
                     if(el.status == "accept")
                     {
-                        _block.find(".headerPaysBlock_body_line_inv").children().css("background-color", "#965FFD");
+                        _block.find(".headerPaysBlock_body_line_inv").children().css("background", "#965FFD");
                     } 
                     else
                     {
@@ -1006,8 +1006,8 @@
                                     <a>${_data.InvDoc.projectId}</a>
                                 </div>
                                 <div class="info_active_block_left_info_line">
-                                    <span>Номер инвестора:</span>
-                                    <a>${_data.initNumber}</a>
+                                    <span>Номер договора:</span>
+                                    <a>${_data.InvDoc.projectId}/${_data.initNumber}</a>
                                 </div>
                             </div>
                             <div class="info_active_block_left_info">
