@@ -1173,6 +1173,15 @@
                                     <div class="version2_preloaderDocumetBLock_img">
                                         <img src="/html/assets/images/2.0.0/documents/image-003.png" alt="">
                                     </div>
+                                    <div class="version2_invester_data_mobile_documents_document">
+                                        <h1>Приложение номер 2 - Тестирование</h1>
+                                        <p>Фио инвестора <data type="fio">${findOfArrayOn_id(_data.InvDoc.data.data, "fio")}</data></p>
+                                        <p>Дата <data type="date">${new Date()}</data></p>
+                                        <p>Сумма инвестиции <data type="summ">${_data.InvDoc.data.pay}</data></p>
+                                        <p>Банк <data type="bank">${_data.project.data.bank}</data></p>
+                                        <p>Инн <data type="inn"></data>${findOfArrayOn_id(_data.InvDoc.data.data, "inn")}</p>
+                                        <p>Огрн <data type="ogrn">${findOfArrayOn_id(_data.InvDoc.data.data, "ogrnip")}</data></p>
+                                    </div>
                                     <div class="version2_preloaderDocumetBLock_header">
                                         <span><</span>
                                     </div>
