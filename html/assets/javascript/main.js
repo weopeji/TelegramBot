@@ -375,3 +375,9 @@ Date.prototype.toDateInputValue = (function() {
     local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
     return local.toJSON().slice(0,10);
 });
+
+function findOfArrayOn_id(arr, value) {
+    for (var i = 0; i < arr.length; i++)
+        if (arr[i]["_id"] == value)
+            return arr[i].data;
+}
