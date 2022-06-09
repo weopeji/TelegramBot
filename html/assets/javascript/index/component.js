@@ -2172,7 +2172,7 @@
                     `
                         <div class="index_page_menu_block_line" data="activ_projects">
                             <i class="fal fa-chart-line"></i>
-                            <span>Активные</span>
+                            <span>Главная</span>
                         </div>
                         <div class="index_page_menu_block_line" data="wait_projects">
                             <i class="fal fa-inventory"></i>
