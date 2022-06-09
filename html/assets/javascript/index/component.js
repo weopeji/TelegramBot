@@ -585,6 +585,10 @@
                                 appendPayBlock.find('button').eq(0).css('margin-left', 0);
                                 appendPayBlock.find('button').eq(1).css('margin-left', 0);
 
+                                appendPayBlock.find('#money_of_Push').change( function() {
+                                    $(this).val($(this).val().toString().ReplaceNumber());
+                                });
+
                                 appendPayBlock.find('button').eq(0).click( async function() {
                                     SoloAlert.confirm({
                                         title: "Подтверждение",
