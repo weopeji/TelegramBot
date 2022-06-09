@@ -3201,7 +3201,7 @@
                         </span>
                         <span>
                             <div class="version2_settingBlock_mobile_line">
-                                <span>№ Проекта</span>
+                                <span>Название</span>
                             </div>
                             ${element.project.data.name}
                         </span>
@@ -3243,12 +3243,42 @@
                     {
                         var template_text = $(`
                             <div class="settingBlock_body_line" data="${element.Inv.invester}" data-more="${element.Inv._id}">
-                                <span>${i + 1}</span>
-                                <span>${element.project._id}</span>
-                                <span>${element.project.data.name}</span>
-                                <span>${element.project._id}/${element.number}</span>
-                                <span>${element.Inv.data.pay} ₽</span>
-                                <span>Ожидает подтверждения</span>
+                                <span>
+                                    <div class="version2_settingBlock_mobile_line">
+                                        <span>№</span>
+                                    </div>
+                                    ${i + 1}
+                                </span>
+                                <span>
+                                    <div class="version2_settingBlock_mobile_line">
+                                        <span>№ Проекта</span>
+                                    </div>
+                                    ${element.project._id}
+                                </span>
+                                <span>
+                                    <div class="version2_settingBlock_mobile_line">
+                                        <span>Название</span>
+                                    </div>
+                                    ${element.project.data.name}
+                                </span>
+                                <span>
+                                    <div class="version2_settingBlock_mobile_line">
+                                        <span>Договор</span>
+                                    </div>
+                                    ${element.project._id}/${element.number}
+                                </span>
+                                <span>
+                                    <div class="version2_settingBlock_mobile_line">
+                                        <span>Сумма</span>
+                                    </div>
+                                    ${element.Inv.data.pay} ₽
+                                </span>
+                                <span>
+                                    <div class="version2_settingBlock_mobile_line">
+                                        <span>Статус</span>
+                                    </div>
+                                    Ожидает подтверждения
+                                </span>
                             </div>
                         `);
 
