@@ -3205,6 +3205,34 @@
                 i++;
             };
 
+            for(var element of _data.invester_data.acceptInvs)
+            {
+                if(typeof element.data.pts_2 != "undefined")
+                {
+                    if(element.data.applicationRequest)
+                    {
+                        var template_text = $(`
+                            <div class="settingBlock_body_line" data="${element.Inv.invester}" data-more="${element.Inv._id}">
+                                <span>${i + 1}</span>
+                                <span>${element.project._id}</span>
+                                <span>${element.project.data.name}</span>
+                                <span>${element.project._id}/${element.number}</span>
+                                <span>${element.Inv.data.pay} ₽</span>
+                                <span>Ожидает подтверждения</span>
+                            </div>
+                        `);
+
+                        template_text.click( function () {
+                            location.href = `/?page=activ_projects&id=${$(this).attr('data-more')}`;
+                        });
+
+                        settingBlock.find('.settingBlock_body').append(template_text);
+                        errorBlock2 = false;
+                        i++;
+                    }
+                }
+            };
+
             if(errorBlock2)
             {
                 var template_text_error = $(`
