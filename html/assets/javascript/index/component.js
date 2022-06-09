@@ -3207,9 +3207,9 @@
 
             for(var element of _data.invester_data.activeInvs)
             {
-                if(typeof element.data.pts_2 != "undefined")
+                if(typeof element.Inv.data.pts_2 != "undefined")
                 {
-                    if(element.applicationRequest)
+                    if(element.Inv.applicationRequest)
                     {
                         var template_text = $(`
                             <div class="settingBlock_body_line" data="${element.Inv.invester}" data-more="${element.Inv._id}">
