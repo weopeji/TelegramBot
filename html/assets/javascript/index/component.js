@@ -1026,7 +1026,7 @@
                             </div>
                             <div class="info_active_block_left_buttons">
                                 <span class="show_document">Посмотреть договор</span>
-                                <span class="show_block">Посмотреть чек об оплате</span>
+                                <span class="show_block">Скачать чек об оплате</span>
                             </div>
                         </div>
                     </div>
@@ -1169,6 +1169,9 @@
                                     </div>
                                     <div class="version2_preloaderDocumetBLock_img">
                                         <img src="/html/assets/images/2.0.0/documents/file_signature_document-2.png" alt="">
+                                    </div>
+                                    <div class="version2_preloaderDocumetBLock_header">
+                                        <span><</span>
                                     </div>
                                 </div>
                             </div>
