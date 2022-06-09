@@ -1165,10 +1165,13 @@
                                         <span><</span>
                                     </div>
                                     <div class="version2_preloaderDocumetBLock_img">
-                                        <img src="/html/assets/images/2.0.0/documents/file_signature_document-1.png" alt="">
+                                        <img src="/html/assets/images/2.0.0/documents/image-001.png" alt="">
                                     </div>
                                     <div class="version2_preloaderDocumetBLock_img">
-                                        <img src="/html/assets/images/2.0.0/documents/file_signature_document-2.png" alt="">
+                                        <img src="/html/assets/images/2.0.0/documents/image-002.png" alt="">
+                                    </div>
+                                    <div class="version2_preloaderDocumetBLock_img">
+                                        <img src="/html/assets/images/2.0.0/documents/image-003.png" alt="">
                                     </div>
                                     <div class="version2_preloaderDocumetBLock_header">
                                         <span><</span>
