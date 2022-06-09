@@ -3205,9 +3205,7 @@
                 i++;
             };
 
-            console.log(_data.invester_data.acceptInvs);
-
-            for(var element of _data.invester_data.acceptInvs)
+            for(var element of _data.invester_data.activeInvs)
             {
                 if(typeof element.data.pts_2 != "undefined")
                 {
