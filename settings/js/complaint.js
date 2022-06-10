@@ -27,11 +27,11 @@
 
             var templateText = $(`
                 <div class="settingBlock">
+                     <div class="version2_settingBlock_mobile_line">
+                        <span>Название</span>
+                    </div>
+                    <div class="version2_default_bkg row_default"></div>
                     <div class="settingBlock_header">
-                        <div class="version2_default_bkg row_default"></div>
-                        <div class="version2_settingBlock_mobile_line">
-                            <span>Название</span>
-                        </div>
                         <div class="settingBlock_header_line">
                             <span>Название проекта</span>
                             <span>Инвестор</span>
