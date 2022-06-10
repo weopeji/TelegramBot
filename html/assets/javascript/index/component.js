@@ -1291,7 +1291,7 @@ const { _GET } = require("../../../../node/helpers/functions");
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> 
             `);
 
             template_text.find('.renderCloseBlockBusiness_block_button_close').click( function() {
