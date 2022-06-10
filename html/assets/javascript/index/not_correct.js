@@ -182,11 +182,11 @@
 
                     if(element.Inv.not_correct_complaint)
                     {
-                        template_text.children('span').eq(3).html('<span style="color: green; width: fit-content;">Ожидает модерации</span>');
+                        template_text.children('span').eq(4).html('<span style="color: green; width: fit-content;">Ожидает модерации</span>');
                     }
                     else
                     {
-                        template_text.children('span').eq(3).html('<span style="color: red; width: fit-content;">Отказано администрацией</span>');
+                        template_text.children('span').eq(4).html('<span style="color: red; width: fit-content;">Отказано администрацией</span>');
                     };
                 };
 
