@@ -557,10 +557,11 @@ async function acceptInvOfComplaintAdministrator(socket, data, callback)
 
 async function removeInvOfComplaintAdministrator(socket, data, callback)
 {
-    var _InvDoc = await InvDoc.findOneAndUpdate({_id: data}, {not_correct_complaint: false});
-
-    h.full_alert_user(_InvDoc.invester, `Вы получили отказ по жалобе за инвестицию, проинвестируйте еще раз`, "removeInvOfComplaintAdministrator");
-
+    var _InvDoc     = await InvDoc.findOneAndUpdate({_id: data}, {not_correct_complaint: false, status: "remove"});
+    var _Project    = await Project.findOne({_id: _InvDoc.projectId});
+ 
+    h.full_alert_user(_Project.user, `Администрация по жалобе за инвестицию приняла решение в вашу пользу`, "acceptInvOfComplaintAdministrator", _InvDoc._id);
+    h.full_alert_user(_InvDoc.invester, `Вы получили отказ по жалобе за инвестицию, проинвестируйте еще раз`, "acceptInvOfComplaintAdministrator", _InvDoc._id);
     callback();
 };
 
