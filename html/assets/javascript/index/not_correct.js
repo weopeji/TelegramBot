@@ -33,12 +33,12 @@
                     <div class="version2_default_bkg row_default"></div>
                     <div class="settingBlock_header">
                         <div class="settingBlock_header_line">
-                            <span>*</span>
+                            <span>№</span>
                             <span>Название проекта</span>
                             <span>Причина отказа</span>
                             <span>Коментарий</span>
                             <span>Статус</span>
-                            <span>*</span>
+                            <span>Действие</span>
                         </div>
                     </div>
                     <div class="settingBlock_body">
@@ -168,7 +168,7 @@
                         </span>
                         <span>
                             <div class="version2_settingBlock_mobile_line">
-                                <span>*</span>
+                                <span>Действие</span>
                             </div>
                         </span>
                     </div>

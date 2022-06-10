@@ -1750,5 +1750,8 @@ img.preloader_row_img {
   .info_active_block_left_buttons {
     margin-top: 40px;
   }
+  .settingBlock_body_line_not_correct_complaint span {
+    margin-bottom: 0;
+  }
 }
 /*# sourceMappingURL=index.css.map */
