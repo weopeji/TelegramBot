@@ -33,6 +33,7 @@
                     <div class="version2_default_bkg row_default"></div>
                     <div class="settingBlock_header">
                         <div class="settingBlock_header_line">
+                            <span>№</span>
                             <span>Название проекта</span>
                             <span>Инвестор</span>
                             <span>Сумма Инвестиции</span>
