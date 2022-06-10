@@ -1471,6 +1471,7 @@
                 var ActionAllMoney      = 0;
                 var ActionAllMoneyinit  = 0;
                 var ActionHowPays       = 0;
+                var errorBlock          = true;
 
                 for(var element of _data.invester_data.activeInvs)
                 {
@@ -1556,8 +1557,20 @@
                     settingBlock.find('.settingBlock_body').append(template_text);
                     ActionHowPays = ActionHowPays + 1;
                     allMoneyInvesting = allMoneyInvesting + Number(element.Inv.data.pay.toString().RedactingNumber());
+                    errorBlock = false;
                     i++;
                 };
+
+                if(errorBlock)
+                {
+                    var template_text_error = $(`
+                        <div class="version2_errorPushBlockDefault">
+                            <span>У вас нет Активных проектов</span>
+                        </div>
+                    `);
+
+                    settingBlock.find('.settingBlock_body').append(template_text_error)
+                }
 
                 var settingBlock1 = $(`
                     <div class="settingBlock version2_settingBlock_notMorePAndM" style="margin-bottom: 20px">
