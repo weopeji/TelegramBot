@@ -528,15 +528,29 @@ async function requestInvestingOfRemove(socket, data, callback)
 
 async function acceptInvOfComplaintAdministrator(socket, data, callback)
 {
-    var _InvDoc     = await InvDoc.findOneAndUpdate({_id: data}, {$unset: {not_correct_complaint: 1, not_correct_complaint: 1}});
+    var _InvDoc     = await InvDoc.findOne({_id: data});
     var _Project    = await Project.findOne({_id: _InvDoc.projectId});
 
-    await acceptInvestor(socket, _InvDoc._id, function() {
-
-        h.full_alert_user(_Project.user, `Администрация по жалобе за инвестицию приняла решение в пользу инвестора`, "acceptInvOfComplaintAdministrator");
-
-        callback();
-    });
+    if(typeof _Project.notFullpay != "undefined")
+    {
+        if(Number(_Project.notFullpay) == 0)
+        {
+            await InvDoc.findOneAndUpdate({_id: data}, {applicationRequest: false});
+            h.full_alert_user(_Project.user, `Администрация по жалобе за инвестицию приняла решение в пользу инвестора`, "acceptInvOfComplaintAdministrator");
+            h.full_alert_user(_InvDoc.invester, `Администрация по жалобе за инвестицию приняла решение в вашу пользу`, "acceptInvOfComplaintAdministrator");
+        };
+    } 
+    else
+    {
+        var _InvDoc     = await InvDoc.findOneAndUpdate({_id: data}, {$unset: {not_correct_complaint: 1, not_correct_complaint: 1}});
+    
+        await acceptInvestor(socket, _InvDoc._id, function() {
+    
+            h.full_alert_user(_Project.user, `Администрация по жалобе за инвестицию приняла решение в пользу инвестора`, "acceptInvOfComplaintAdministrator");
+    
+            callback();
+        });
+    }
 }
 
 async function removeInvOfComplaintAdministrator(socket, data, callback)
