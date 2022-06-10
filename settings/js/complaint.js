@@ -48,7 +48,7 @@
                 </div>
             `);
 
-            getComplaint.forEach(element => 
+            getComplaint.forEach((element, i) => 
             {
                 var fio         = null;
 
@@ -61,6 +61,7 @@
 
                 var _block = $(`
                     <div class="settingBlock_body_line" data-id="${element.Inv._id}">
+                        <span>${i + 1}</span>
                         <span>${element.Project.data.name}</span>
                         <span>${fio}</span>
                         <span>${element.Inv.data.pay} ₽</span>
