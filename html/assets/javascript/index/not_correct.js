@@ -215,7 +215,7 @@
             {
                 var template_text_error = $(`
                     <div class="version2_errorPushBlockDefault">
-                        <span>У вас нет заявок</span>
+                        <span>У вас нет отказанных инвестиций</span>
                     </div>
                 `);
 
