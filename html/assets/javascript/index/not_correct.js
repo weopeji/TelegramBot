@@ -184,11 +184,11 @@
 
                     if(element.Inv.not_correct_complaint)
                     {
-                        template_text.find('.container_for_infoMOREs').html('<span style="color: green; width: fit-content;">Ожидает модерации</span>');
+                        template_text.find('.container_for_infoMOREs').html('<span style="color: green; width: fit-content; margin-bottom: 0;">Ожидает модерации</span>');
                     }
                     else
                     {
-                        template_text.find('.container_for_infoMOREs').html('<span style="color: red; width: fit-content;">Отказано администрацией</span>');
+                        template_text.find('.container_for_infoMOREs').html('<span style="color: red; width: fit-content; margin-bottom: 0;">Отказано администрацией</span>');
                     };
                 };
 
