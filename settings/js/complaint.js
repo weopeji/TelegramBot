@@ -38,7 +38,7 @@
                             <span>Инвестор</span>
                             <span>Сумма Инвестиции</span>
                             <span>*</span>
-                            <span>Чат Биз-c/Инв-р</span>
+                            <span>Чат</span>
                             <span>*</span>
                         </div>
                     </div>
@@ -72,9 +72,6 @@
                         </span>
                         <span>
                             <div class="settingBlock_body_line_ComplaintSettings" data="chat_invester">
-                                <i class="fal fa-comment-alt-check"></i>
-                            </div>
-                            <div class="settingBlock_body_line_ComplaintSettings" data="chat_busines">
                                 <i class="fal fa-comment-alt-check"></i>
                             </div>
                         </span>
