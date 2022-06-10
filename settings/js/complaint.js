@@ -141,19 +141,7 @@
                 });
 
                 _block.find('.settingBlock_body_line_ComplaintSettings[data="chat_invester"]').click( function() {
-                    note({
-                        content: "Ошибка",
-                        type: "error",
-                        time: 5,
-                    });
-                });
-
-                _block.find('.settingBlock_body_line_ComplaintSettings[data="chat_busines"]').css('margin-left', '10px').click( function() {
-                    note({
-                        content: "Ошибка",
-                        type: "error",
-                        time: 5,
-                    });
+                    window.open(`https://invester-relocation.site/?page=chats&id=${$(this).parent().parent().attr('data-id')}`, "_blank");
                 });
 
                 templateText.find('.settingBlock_body').append(_block);
