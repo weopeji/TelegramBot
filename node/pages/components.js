@@ -535,10 +535,12 @@ async function acceptInvOfComplaintAdministrator(socket, data, callback)
     {
         if(Number(_Project.notFullpay) == 0)
         {
-            await InvDoc.findOneAndUpdate({_id: data}, {applicationRequest: false});
-            h.full_alert_user(_Project.user, `Администрация по жалобе за инвестицию приняла решение в пользу инвестора`, "acceptInvOfComplaintAdministrator");
-            h.full_alert_user(_InvDoc.invester, `Администрация по жалобе за инвестицию приняла решение в вашу пользу`, "acceptInvOfComplaintAdministrator");
+            await InvDoc.findOneAndUpdate({_id: data}, {applicationRequest: false, status: "accept"});
+            h.full_alert_user(_Project.user, `Администрация по жалобе за инвестицию приняла решение в пользу инвестора`, "acceptInvOfComplaintAdministrator", _InvDoc._id);
+            h.full_alert_user(_InvDoc.invester, `Администрация по жалобе за инвестицию приняла решение в вашу пользу`, "acceptInvOfComplaintAdministrator", _InvDoc._id);
         };
+
+        callback();
     } 
     else
     {
