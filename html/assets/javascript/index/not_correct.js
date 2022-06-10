@@ -164,7 +164,9 @@
                             <div class="version2_settingBlock_mobile_line">
                                 <span>Статус</span>
                             </div>
-                            Ожидает действия инвестора
+                            <div class="container_for_infoMOREs">
+                                Ожидает действие инвестора
+                            </div>
                         </span>
                         <span>
                             <div class="version2_settingBlock_mobile_line">
@@ -182,11 +184,11 @@
 
                     if(element.Inv.not_correct_complaint)
                     {
-                        template_text.children('span').eq(4).find('span').html('<span style="color: green; width: fit-content;">Ожидает модерации</span>');
+                        template_text.find('.container_for_infoMOREs').html('<span style="color: green; width: fit-content;">Ожидает модерации</span>');
                     }
                     else
                     {
-                        template_text.children('span').eq(4).find('span').html('<span style="color: red; width: fit-content;">Отказано администрацией</span>');
+                        template_text.find('.container_for_infoMOREs').html('<span style="color: red; width: fit-content;">Отказано администрацией</span>');
                     };
                 };
 
