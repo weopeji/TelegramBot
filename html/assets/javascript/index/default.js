@@ -1,5 +1,3 @@
-const { _GET } = require("../../../../node/helpers/functions");
-
 (function (global) 
 {
     const callApi = ({ methodName, data }) => {    
