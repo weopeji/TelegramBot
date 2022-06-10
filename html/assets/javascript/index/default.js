@@ -1,3 +1,5 @@
+const { _GET } = require("../../../../node/helpers/functions");
+
 (function (global) 
 {
     const callApi = ({ methodName, data }) => {    
@@ -204,7 +206,14 @@
                         } else {
                             if(_GET("hash"))
                             {
-                                activ_projects.render(global.allData);
+                                if(_GET("idInv"))
+                                {
+                                    activ_projects.renderType(global.allData);
+                                }
+                                else
+                                {
+                                    activ_projects.render(global.allData);
+                                }
                             }
                             else
                             {
