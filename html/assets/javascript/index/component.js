@@ -1,3 +1,5 @@
+const { _GET } = require("../../../../node/helpers/functions");
+
 (function (global) {
     "use strict";
 
@@ -942,10 +944,17 @@
 
         async renderType(allData)
         {
+            var InvId = _GET('id');
+
+            if(_GET('hash'))
+            {
+                InvId = _GET("idInv");
+            };
+
             try {
                 var _data = await callApi({
                     methodName: "invester_status_project",
-                    data: _GET('id'),
+                    data: InvId,
                 });
     
                 var blockProject = await callApi({
