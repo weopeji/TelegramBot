@@ -1469,6 +1469,11 @@ img.preloader_row_img {
   border-radius: 8px !important;
 }
 
+.settingBlock_body_line_not_correct_msg {
+  background: linear-gradient(100.38deg, #D52FBB 4.48%, #8918E5 101.68%) !important;
+  border-radius: 8px !important;
+}
+
 @media (max-width: 1350px) {
   .settingBlock_body_line_not_correct_again {
     margin-top: 20px;
@@ -1774,6 +1779,14 @@ img.preloader_row_img {
     border-radius: 8px !important;
   }
   .settingBlock_body_line_not_correct_again span {
+    margin-bottom: 0 !important;
+  }
+  .settingBlock_body_line_not_correct_msg {
+    margin-top: 25px;
+    background: linear-gradient(100.38deg, #D52FBB 4.48%, #8918E5 101.68%) !important;
+    border-radius: 8px !important;
+  }
+  .settingBlock_body_line_not_correct_msg span {
     margin-bottom: 0 !important;
   }
 }
