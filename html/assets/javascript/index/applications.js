@@ -56,7 +56,7 @@
             var _this       = this;
             var errorBlock  = true;
 
-            console.log(data.invester_data.activeInvs);
+            console.log(_data.invester_data.activeInvs);
 
             for(var element of _data.invester_data.activeInvs)
             {
