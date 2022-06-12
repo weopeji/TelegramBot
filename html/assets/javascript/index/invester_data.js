@@ -555,6 +555,7 @@
         {
             var _this           = this;
 
+            $('.version2_invester_data_backBlock_circule').off('click');
             $('.version2_invester_data_backBlock_circule').click( function(e) {
                 e.preventDefault();
                 _this.render_next(_this.DT);
