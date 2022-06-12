@@ -116,6 +116,12 @@
   padding-bottom: 20px;
 }
 
+.msg_block_errorPush {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
 .version2_creating_block_onlyText {
   width: 100%;
   text-align: center;

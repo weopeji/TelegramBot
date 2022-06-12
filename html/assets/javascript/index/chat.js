@@ -451,7 +451,7 @@
 
             if(errorpush)
             {
-                block.append("<span>У вас пока нет чатов</span>");
+                block.append(`<span class="msg_block_errorPush">У вас пока нет чатов</span>`);
             }
 
             $('.index_page_body_data').append(block);
