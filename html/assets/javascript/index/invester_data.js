@@ -282,6 +282,10 @@
         {
             $('.creating_page').empty();
 
+            $('.version2_invester_data_backBlock_circule').off('click').click( function(e) {
+                _this.cheackGetDocuments();
+            });
+
             var _this       = this;
             var pushMoney   = _this.money + " ₽";
 
