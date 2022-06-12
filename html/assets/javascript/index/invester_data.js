@@ -139,6 +139,10 @@
         {
             $('.creating_page').empty();
 
+            $('.version2_invester_data_backBlock_circule').off('click').click( function(e) {
+                _this.renderOldBlock();
+            });
+
             var _this = this;
 
             if(window.screen.width < 1300)
