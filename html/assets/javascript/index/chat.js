@@ -409,6 +409,8 @@
                 data:  global.allData._id,
             });
 
+            var errorpush = true;
+
             var block = $(`
                 <div class="msg_block_getting">
 
@@ -443,8 +445,14 @@
                     location.href = `./?page=chats&id=${$(this).attr('data')}`;
                 });
                 
+                errorpush = false;
                 block.append(template_text);
-            })
+            });
+
+            if(errorpush)
+            {
+                block.append("<span>У вас пока нет чатов</span>");
+            }
 
             $('.index_page_body_data').append(block);
         }
