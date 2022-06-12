@@ -1440,8 +1440,8 @@ img.preloader_row_img {
 }
 
 .version2_creating_page_input_div_NewButton[data="newOpen"] {
-  background: linear-gradient(100.38deg, #F30083 4.48%, #FF2EDE 101.68%);
-  border-radius: 8px;
+  background: linear-gradient(100.38deg, #D52FBB 4.48%, #8918E5 101.68%) !important;
+  border-radius: 8px !important;
 }
 
 .version2_creating_page_input_div_NewButton[data="ok"] {
