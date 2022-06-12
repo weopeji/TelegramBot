@@ -981,17 +981,24 @@
                 {
                     if(Number(blockProject.notFullpay) == 0)
                     {
-                        if(typeof _data.InvDoc.data.pts_2 == "undefined")
+                        if(typeof _data.InvDoc.applicationRequest == "undefined")
                         {
-                            _status["accept"] = "Ожидает подтверждения";
+                            _status["accept"] = "Ожидает полного сбора";
                         }
                         else
                         {
-                            if(_data.InvDoc.applicationRequest)
+                            if(typeof _data.InvDoc.data.pts_2 == "undefined")
                             {
                                 _status["accept"] = "Ожидает подтверждения";
+                            }
+                            else
+                            {
+                                if(_data.InvDoc.applicationRequest)
+                                {
+                                    _status["accept"] = "Ожидает подтверждения";
+                                };
                             };
-                        };
+                        }
                     };
                 };
     
