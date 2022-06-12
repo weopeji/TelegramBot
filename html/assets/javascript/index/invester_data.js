@@ -555,9 +555,8 @@
         {
             var _this           = this;
 
-            $('.version2_invester_data_backBlock_circule').off('click');
-            $('.version2_invester_data_backBlock_circule').click( function(e) {
-                e.preventDefault();
+            $('.version2_invester_data_backBlock_circule').off('click').click( function(e) {
+                $('.version2_invester_data_backBlock_circule').remove();
                 _this.render_next(_this.DT);
             });
 
