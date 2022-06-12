@@ -65,19 +65,19 @@
 
                 if(element.project.data.date != "Бессрочно")
                 {
-                    break;
+                    continue;
                 }
 
                 if(typeof element.Inv.data.pts_2 != "undefined")
                 {
-                    break;
+                    continue;
                 }
 
                 if(typeof element.Inv.applicationRequest != "undefined")
                 {
                     if(!element.Inv.applicationRequest)
                     {
-                        break;
+                        continue;
                     }
                 }
 
