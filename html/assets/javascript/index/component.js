@@ -834,10 +834,7 @@
                                 {
                                     headerPaysBlock = $(`
                                         <div class="Attracted_headerInfoBlock_info_data_alert">
-                                            <input type="file" id="Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input">
-                                            <div class="Attracted_headerInfoBlock_info_data_alert_buttom_cheack">
-                                                <span>Ожидает подтверждения бизнесом</span>
-                                            </div>
+                                            <span>Ожидает подтверждения бизнесом</span>
                                         </div>
                                     `);
 
@@ -885,10 +882,7 @@
                                     {
                                         headerPaysBlock = $(`
                                             <div class="Attracted_headerInfoBlock_info_data_alert">
-                                                <input type="file" id="Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input">
-                                                <div class="Attracted_headerInfoBlock_info_data_alert_buttom_cheack">
-                                                    <span>Ожидает подтверждения бизнесом</span>
-                                                </div>
+                                                <span>Ожидает подтверждения бизнесом</span>
                                             </div>
                                         `);
     
@@ -921,10 +915,7 @@
                                     {
                                         headerPaysBlock = $(`
                                             <div class="Attracted_headerInfoBlock_info_data_alert">
-                                                <input type="file" id="Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input">
-                                                <div class="Attracted_headerInfoBlock_info_data_alert_buttom_cheack">
-                                                    <span>Ожидает подтверждения бизнесом</span>
-                                                </div>
+                                                <span>Ожидает подтверждения бизнесом</span>
                                             </div>
                                         `);
     
@@ -991,7 +982,7 @@
                             {
                                 if(typeof _data.InvDoc.data.pts_2 == "undefined")
                                 {
-                                    _status["accept"] = "Запрос на оплату";
+                                    _status["accept"] = "Ожидает оплаты";
                                 }
                                 else
                                 {
