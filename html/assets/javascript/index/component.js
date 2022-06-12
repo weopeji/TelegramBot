@@ -983,21 +983,21 @@
                     {
                         if(typeof _data.InvDoc.applicationRequest == "undefined")
                         {
-                            _status["accept"] = "Ожидает полного сбора";
+                            _status["accept"] = "Заявка подана";
                         }
                         else
                         {
-                            if(typeof _data.InvDoc.data.pts_2 == "undefined")
+                            if(_data.InvDoc.applicationRequest)
                             {
-                                _status["accept"] = "Ожидает подтверждения";
-                            }
-                            else
-                            {
-                                if(_data.InvDoc.applicationRequest)
+                                if(typeof _data.InvDoc.data.pts_2 == "undefined")
                                 {
-                                    _status["accept"] = "Ожидает подтверждения";
+                                    _status["accept"] = "Запрос на оплату";
+                                }
+                                else
+                                {
+                                    _status["accept"] = "Ожидает подтверждения бизнеса";
                                 };
-                            };
+                            }
                         }
                     };
                 };
