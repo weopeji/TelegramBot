@@ -31,6 +31,7 @@
             this.date               = null;
             this.urlForDocument     = null;
             this.allInvsOfProject   = [];
+            this.DT                 = null;
         };
 
         defaultCSS()
@@ -552,8 +553,13 @@
 
         async renderOldBlock()
         {
+            var _this           = this;
+
+            $('.version2_invester_data_backBlock_circule').click( function() {
+                _this.render_next(_this.DT);
+            });
+
             try {
-                var _this           = this;
                 var _projectMoney   = _this.project.data.minimal_amount.toString().trim().replace(/\s/g, '');
                 var fullMoneysInvs  = 0;
                 var fullMoneyCheack = Number(_this.project.data.attraction_amount.toString().replace(/\s/g, ''));
@@ -690,6 +696,8 @@
 
         async render_next(DT) 
         {
+            this.DT = DT;
+
             this.render_backBlock();
 
             var render_nextfuns = 
