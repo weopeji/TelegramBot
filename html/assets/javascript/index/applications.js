@@ -66,7 +66,7 @@
                     break;
                 }
 
-                if(typeof element.Inv.pts_2 != "undefined")
+                if(typeof element.Inv.data.pts_2 != "undefined")
                 {
                     break;
                 }
