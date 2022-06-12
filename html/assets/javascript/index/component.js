@@ -674,10 +674,19 @@
                 </div>
                 <span>${_data.project.data.name}</span>
                 <p>business</p>
-                <div class="info_active_block_massage_button">
-                    <span>Перейти к диалогу</span>
-                </div>
             `);
+
+            if(typeof _data.InvDoc.applicationRequest != "undefined")
+            {
+                if(!_data.InvDoc.applicationRequest)
+                {
+                    settingBlock.find('.info_active_block_right').append(`
+                        <div class="info_active_block_massage_button">
+                            <span>Перейти к диалогу</span>
+                        </div>
+                    `);
+                };
+            };
 
             $('.index_page_body_data').append(settingBlock);
 
