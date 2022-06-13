@@ -1712,7 +1712,7 @@ async function ALL_DATA(socket, data, callback)
                     if(element._id.toString() == _acceptInv._id.toString())
                     {
                         _acceptInvBlock.number = i + 1;
-                    }
+                    } 
                 });
 
                 _blockData.activeInvs.push(_acceptInvBlock);
