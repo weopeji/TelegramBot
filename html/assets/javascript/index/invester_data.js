@@ -52,7 +52,11 @@
 
             $('.index_page_body_header_user_logotype').css({
                 "display": "none",
-            })
+            });
+
+            $('.buttons_menu').css({
+                "display": "none",
+            });
         }
 
         async renderFirstData() 
