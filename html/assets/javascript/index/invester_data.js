@@ -144,7 +144,7 @@
             $('.creating_page').empty();
 
             $('.version2_invester_data_backBlock_circule').off('click').click( function(e) {
-                _this.renderOldBlock();
+                _this.renderOldBlock(true);
             });
 
             var _this = this;
@@ -563,7 +563,7 @@
             $('.creating_page').append(_block);
         }
 
-        async renderOldBlock()
+        async renderOldBlock(moneyPush)
         {
             var _this           = this;
 
@@ -620,6 +620,11 @@
                         </div>
                     </div>
                 `);
+
+                if(moneyPush)
+                {
+                    _block.find(`input[type="text"]`).val(this.money);
+                }
     
                 _block.find(`input`).on('keyup input', function() 
                 {
@@ -638,7 +643,7 @@
                     if(Number(_this.project.notFullpay) == 0) {
                         msgsBlock.find(".version2_invester_data_moneyFull").remove();
                         errorMoneyCheack = true;
-                        msgsBlock.find('.creating_page_start span').append("Ваше место в очереди будет: " + Number(_this.allInvsOfProject.length) + 1);
+                        msgsBlock.find('.creating_page_start span').append("Ваше место в очереди будет: " + Number(_this.allInvsOfProject.length) + Number(1));
                     };
                 };
     
@@ -925,16 +930,19 @@
                 }
             });
 
-            $('.creating_page_input_div').each( function(i, element) 
+            if(InvPush)
             {
-                if(typeof $(element).attr("data") != "undefined")
+                $('.creating_page_input_div').each( function(i, element) 
                 {
-                    if(typeof findOfArrayOn_id(_this.inv.data, $(element).attr("data")) != "undefined")
+                    if(typeof $(element).attr("data") != "undefined")
                     {
-                        $(element).val(findOfArrayOn_id(_this.inv.data, $(element).attr("data")));
+                        if(typeof findOfArrayOn_id(_this.inv.data, $(element).attr("data")) != "undefined")
+                        {
+                            $(element).val(findOfArrayOn_id(_this.inv.data, $(element).attr("data")));
+                        };
                     };
-                };
-            });
+                });
+            }
         }
     }
 
