@@ -569,7 +569,7 @@
 
             $('.version2_invester_data_backBlock_circule').off('click').click( function(e) {
                 $('.version2_invester_data_backBlock_circule').remove();
-                _this.render_next(_this.DT);
+                _this.render_next(_this.DT, _this.inv);
             });
 
             try {
@@ -707,7 +707,7 @@
             $('.index_page_body_data').prepend(backBlock);
         }
 
-        async render_next(DT) 
+        async render_next(DT, InvPush) 
         {
             this.DT = DT;
 
@@ -923,7 +923,18 @@
                     _this.inv = _array;
                     _this.renderOldBlock();
                 }
-            })
+            });
+
+            $('.creating_page_input_div').each( function(i, element) 
+            {
+                if(typeof $(element).attr("data") != "undefined")
+                {
+                    if(typeof findOfArrayOn_id(_this.inv.data, $(element).attr("data")) != "undefined")
+                    {
+                        $(element).val(findOfArrayOn_id(_this.inv.data, $(element).attr("data")));
+                    };
+                };
+            });
         }
     }
 
