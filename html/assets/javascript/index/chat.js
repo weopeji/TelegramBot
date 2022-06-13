@@ -75,6 +75,9 @@
                         <div class="version2_default_bkg row_default"></div>
                         <div class="chat_block_chat_header">
                             <span>Чат</span>
+                            <bb>
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </bb>
                         </div>
                         <div class="chat_block_chat_body">
                             <div class="chat_block_chat_body_row">
