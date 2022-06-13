@@ -623,10 +623,7 @@ async function alertAdmin(data)
                         [
                             {
                                 text: "Посмотреть",
-                                login_url: {
-                                    'url': `https://invester-relocation.site/settings/?page=block&id=4&more=redacting`,
-                                    'request_write_access': true,
-                                },
+                                url: `https://invester-relocation.site/settings/?page=block&id=4&more=redacting`,
                             }
                         ]
                     ],
