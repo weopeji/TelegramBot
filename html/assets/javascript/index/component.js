@@ -628,7 +628,7 @@
                     $('.index_page_body_data').append(appendPayBlock);
                 };
             } else {
-                if(_data.InvDoc.status != "not_correct")
+                if(_data.InvDoc.status != "not_correct" && _data.InvDoc.status != "remove")
                 {
                     var textButtonPush = "Нажимая кнопку подтвердить, вы подтверждаете, что сумма и дата платежа верна";
 
