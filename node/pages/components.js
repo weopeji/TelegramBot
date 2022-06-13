@@ -1709,7 +1709,7 @@ async function ALL_DATA(socket, data, callback)
                 var allAceptInvInBlock = await InvDoc.find({status: "accept", projectId: _acceptInv.projectId});
 
                 allAceptInvInBlock.forEach((element, i) => {
-                    if(element._id == _acceptInv._id)
+                    if(element._id.toString() == _acceptInv._id.toString())
                     {
                         _acceptInvBlock.number = i + 1;
                     }
