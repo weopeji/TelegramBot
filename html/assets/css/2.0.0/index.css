@@ -1586,6 +1586,7 @@ img.preloader_row_img {
   .info_active_block_left_info_line a {
     margin-top: 0;
     margin-bottom: 20px;
+    text-align: right;
   }
   .settingBlock {
     width: calc(100% - 2px);

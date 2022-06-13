@@ -350,7 +350,7 @@
                             {
                                 appendPayBlock = $(`
                                     <div class="Attracted_headerInfoBlock_info_data_alert">
-                                        <span>Ожидает полного сбора</span>
+                                        <span>Проект ожидает полного сбора</span>
                                     </div>
                                 `);
 
@@ -812,7 +812,7 @@
                         {
                             headerPaysBlock = $(`
                                 <div class="Attracted_headerInfoBlock_info_data_alert">
-                                    <span>Ожидает полного сбора</span>
+                                    <span>Проект ожидает полного сбора</span>
                                 </div>
                             `);
     
@@ -858,7 +858,7 @@
                         {
                             headerPaysBlock = $(`
                                 <div class="Attracted_headerInfoBlock_info_data_alert">
-                                    <span>Ожидает полного сбора</span>
+                                    <span>Проект ожидает полного сбора</span>
                                 </div>
                             `);
     
@@ -974,7 +974,8 @@
                 {
                     "wait": "Ожидает подтверждения",
                     "accept": "Подтверждено",
-                    "not_correct": `<span style="color: red">Отказано</span>`
+                    "not_correct": `<span style="color: red">Отказано</span>`,
+                    "remove": `<span style="color: red">Закрыто</span>`,
                 };
     
                 if(typeof blockProject.notFullpay != "undefined")
