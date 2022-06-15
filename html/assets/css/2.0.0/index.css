@@ -1509,7 +1509,7 @@ img.preloader_row_img {
   display: block;
 }
 
-.selected .chat_block_chat {
+.selected .chat_block_chat .chat_block_chat_body {
   display: none;
 }
 
