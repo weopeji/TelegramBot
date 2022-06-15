@@ -174,7 +174,7 @@
                                 {
                                     if(value)
                                     {
-                                        await callApi({
+                                        var InvDocId = await callApi({
                                             methodName: "not_correct_complaint_again",
                                             data: _GET("id"),
                                         });
@@ -186,7 +186,9 @@
                                             title:"Успешно",
                                             body:"",
                                             icon: "success"
-                                        });
+                                        }).then( function() {
+                                            location.href = `https://invester-relocation.site/?user=${global.allData._id}&page=invester_data&InvRedacting=${InvDocId}`;
+                                        })
                                     };
                                 })
                             })
