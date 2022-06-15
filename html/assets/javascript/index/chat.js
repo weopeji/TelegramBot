@@ -253,7 +253,7 @@
                                     if(value)
                                     {
                                         await callApi({
-                                            methodName: "acceptInvOfComplaintAdministrator",
+                                            methodName: "version2_acceptInvOfComplaintBusinnes",
                                             data: _GET("id"),
                                         });
 

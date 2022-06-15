@@ -93,7 +93,7 @@ var action_linker =
     "version2_setUserAlertsOfacceptGetDataOfUser": version2_setUserAlertsOfacceptGetDataOfUser,
     "version2_getInvDocByRedactingId": version2_getInvDocByRedactingId,
     "version2_investerData_invdoc_notMoney_redacting": version2_investerData_invdoc_notMoney_redacting,
-
+    "version2_acceptInvOfComplaintBusinnes": version2_acceptInvOfComplaintBusinnes,
 
 
 
@@ -236,6 +236,18 @@ var action_linker =
     "getProjectForInvesterPageByIdInvDoc": getProjectForInvesterPageByIdInvDoc,
     "accept_confirmationData": accept_confirmationData,
 };
+
+async function version2_acceptInvOfComplaintBusinnes(socket, data, callback)
+{
+    try {
+        await InvDoc.findOneAndUpdate({_id: data}, {
+            status: "accept",
+            applicationRequest: false,
+        });
+    } catch (e) {}
+
+    callback();
+}
 
 async function version2_getInvDocByRedactingId(socket, data, callback)
 {
