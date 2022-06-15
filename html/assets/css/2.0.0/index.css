@@ -1505,10 +1505,15 @@ img.preloader_row_img {
   margin-right: 10px;
 }
 
+.selected .chat_block_info {
+  display: block;
+}
+
+.selected .chat_block_chat {
+  display: none;
+}
+
 @media (max-width: 1350px) {
-  .chat_block_info.selected {
-    display: block;
-  }
   .chat_block_chat_header bb {
     display: block;
   }
