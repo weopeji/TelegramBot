@@ -1481,30 +1481,6 @@ img.preloader_row_img {
   border-radius: 8px !important;
 }
 
-.chat_block_chat_header {
-  width: 100%;
-}
-
-.chat_block_chat_header span {
-  width: 100%;
-}
-
-.chat_block_chat_header bb {
-  display: none;
-  position: absolute;
-  right: 0;
-}
-
-.chat_block_chat_header bb bb_circule {
-  margin: 3px 0;
-  display: block;
-  width: 5px;
-  height: 5px;
-  background-color: white;
-  border-radius: 50%;
-  margin-right: 10px;
-}
-
 .selected .chat_block_info {
   display: block;
 }
@@ -1518,6 +1494,26 @@ img.preloader_row_img {
 }
 
 @media (max-width: 1350px) {
+  .chat_block_chat_header {
+    width: 100%;
+  }
+  .chat_block_chat_header span {
+    width: 100%;
+  }
+  .chat_block_chat_header bb {
+    display: none;
+    position: absolute;
+    right: 0;
+  }
+  .chat_block_chat_header bb bb_circule {
+    margin: 3px 0;
+    display: block;
+    width: 5px;
+    height: 5px;
+    background-color: white;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
   .chat_block_chat_header bb {
     display: block;
   }
