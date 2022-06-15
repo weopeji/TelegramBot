@@ -76,7 +76,9 @@
                         <div class="chat_block_chat_header">
                             <span>Чат</span>
                             <bb>
-                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                                <bb_circule></bb_circule>
+                                <bb_circule></bb_circule>
+                                <bb_circule></bb_circule>
                             </bb>
                         </div>
                         <div class="chat_block_chat_body">

@@ -1481,6 +1481,14 @@ img.preloader_row_img {
   border-radius: 8px !important;
 }
 
+.chat_block_chat_header bb bb_circule {
+  display: block;
+  width: 3px;
+  height: 3px;
+  background-color: white;
+  border-radius: 50%;
+}
+
 @media (max-width: 1350px) {
   .settingBlock_body_line_not_correct_again {
     margin-top: 20px;
