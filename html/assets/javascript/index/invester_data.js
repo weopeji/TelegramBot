@@ -33,7 +33,6 @@
             this.allInvsOfProject   = [];
             this.DT                 = null;
             this.redactingInvDoc    = null;
-            this.redactingFirstData = true;
         };
 
         defaultCSS()
@@ -356,15 +355,31 @@
                 {
                     $('.preloader').fadeIn();
 
-                    await callApi({
-                        methodName: "version2_investerData_invdoc_notMoney",
-                        data: {
-                            user:  _GET('user'),
-                            inv: _this.inv,
-                            money: _this.money,
-                            url: _this.urlForDocument,
-                        },
-                    });
+                    if(_GET("InvRedacting"))
+                    {
+                        await callApi({
+                            methodName: "version2_investerData_invdoc_notMoney_redacting",
+                            data: {
+                                user:  _GET('user'),
+                                inv: _this.inv,
+                                money: _this.money,
+                                url: _this.urlForDocument,
+                                invId: _GET("InvRedacting"),
+                            },
+                        });
+                    }
+                    else
+                    {
+                        await callApi({
+                            methodName: "version2_investerData_invdoc_notMoney",
+                            data: {
+                                user:  _GET('user'),
+                                inv: _this.inv,
+                                money: _this.money,
+                                url: _this.urlForDocument,
+                            },
+                        });
+                    }
 
                     window.open("tg:\/\/resolve?domain=invester_official_bot",'_self').close()
                 }

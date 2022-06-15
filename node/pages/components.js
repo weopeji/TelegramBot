@@ -92,7 +92,7 @@ var action_linker =
     "version2_put_file_alertofOfCloseCheack": version2_put_file_alertofOfCloseCheack,
     "version2_setUserAlertsOfacceptGetDataOfUser": version2_setUserAlertsOfacceptGetDataOfUser,
     "version2_getInvDocByRedactingId": version2_getInvDocByRedactingId,
-
+    "version2_investerData_invdoc_notMoney_redacting": version2_investerData_invdoc_notMoney_redacting,
 
 
 
@@ -435,6 +435,52 @@ async function version2_investerData_invdoc_notMoney(socket, data, callback)
         await h.alertAdmin({
             type: "notFullPayMoneyPush",
             text: `Поступила заявка на сумму ${data.money} руб.`,
+            projectId: _Project._id,
+        });
+    } catch(e) {
+        console.log(e);
+    };
+
+    callback();
+}
+
+async function version2_investerData_invdoc_notMoney_redacting(socket, data, callback) {
+    try {
+        var _User                   = await User.findOne({_id: data.user});
+        var _InvDoc                 = await InvDoc.findOne({_id: data.invId});
+        var _Project                = await Project.findOne({_id: _User.putProject});
+        var _arrayData              = data.inv;
+
+        _arrayData.pay              = data.money;
+        _arrayData.pts_2            = _InvDoc.data.pts_2;
+        
+        var html                    = "https://invester-relocation.site/" + data.url;
+        var invCreate               = await InvDoc.findOneAndUpdate({_id: data.invId}, {
+            data: _arrayData,
+            status: "accept",
+            applicationRequest: true,
+        });
+        var pathToLastDocument      = `documentLast_${new Date().getTime()}_${invCreate._id}.pdf`;
+        var projectIdUrlDocument    = `/var/www/projects/${_Project._id}/application_number_2_document_${invCreate._id}.pdf`;
+        var defaultProjectPdfDoc    = `/var/www/projects/${_Project._id}/file_signature_document.pdf`;
+
+        const browser = await puppeteer.launch({
+            args: ['--no-sandbox', '--disable-setuid-sandbox'],
+        });
+        const page = await browser.newPage();
+        await page.goto(html);
+        await page.emulateMedia('screen');
+        await page.pdf({path: projectIdUrlDocument});
+        await browser.close();
+
+        await merger.add(defaultProjectPdfDoc);
+        await merger.add(projectIdUrlDocument); 
+        await merger.save(`/var/www/projects/${_Project._id}/` + pathToLastDocument);
+        await InvDoc.findOneAndUpdate({_id: invCreate._id}, {urlToLastDocument: pathToLastDocument});
+        await h.alertDeleteOfUserOnbot(`${_User.first_name} Вы успешно отредактировали заявку в проекте\n ${_Project._id}\n "${_Project.data.name}"\n на сумму ${data.money} руб`, _User.user);
+        await h.alertAdmin({
+            type: "notFullPayMoneyPush",
+            text: `Поступила заявка на сумму ${data.money} руб. После редактирования данных`,
             projectId: _Project._id,
         });
     } catch(e) {
