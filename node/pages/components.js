@@ -91,7 +91,7 @@ var action_linker =
     "vesrion2_set_last_socket": vesrion2_set_last_socket,
     "version2_put_file_alertofOfCloseCheack": version2_put_file_alertofOfCloseCheack,
     "version2_setUserAlertsOfacceptGetDataOfUser": version2_setUserAlertsOfacceptGetDataOfUser,
-
+    "version2_getInvDocByRedactingId": version2_getInvDocByRedactingId,
 
 
 
@@ -236,6 +236,16 @@ var action_linker =
     "getProjectForInvesterPageByIdInvDoc": getProjectForInvesterPageByIdInvDoc,
     "accept_confirmationData": accept_confirmationData,
 };
+
+async function version2_getInvDocByRedactingId(socket, data, callback)
+{
+    try {
+        var _InvDoc = await InvDoc.findOne({_id: data});
+        callback(_InvDoc);
+    } catch (e) {
+        callback("error");
+    };
+}
 
 async function version2_setUserAlertsOfacceptGetDataOfUser(socket, data, callback)
 {

@@ -1,3 +1,5 @@
+const { _GET } = require("../../../../node/helpers/functions");
+
 (function (global) {
     "use strict";
 
@@ -32,6 +34,8 @@
             this.urlForDocument     = null;
             this.allInvsOfProject   = [];
             this.DT                 = null;
+            this.redactingInvDoc    = null;
+            this.redactingFirstData = true;
         };
 
         defaultCSS()
@@ -117,10 +121,18 @@
         {
             $('.index_page_body_data').append(`<div class="creating_page" style="width: auto;"></div>`);
 
+            var _this = this;
+
+            if(_GET("InvRedacting"))
+            {
+                _this.redactingInvDoc = await callApi({
+                    methodName: "version2_getInvDocByRedactingId",
+                    data: _GET("InvRedacting"),
+                });
+            };
+
             if(typeof notPush == "undefined")
             {
-                var _this = this;
-
                 var _project = await callApi({
                     methodName: "getProjectForInvesterPage",
                     data: _GET('user'),
@@ -133,7 +145,7 @@
     
                 _this.allInvsOfProject   = _AllInvsOfProject;
                 _this.project            = _project;
-            }
+            };
 
             await this.defaultCSS();
             await this.renderFirstData();
@@ -219,9 +231,6 @@
                 {
                     if(window.screen.width < 1300)
                     {
-                        // saveUrlAsFile(`/projects/${_this.project._id}/${_this.project.signature_document.user_document}`, `${_this.project.signature_document.user_document}`);
-                        // new jsFileDownloader({ url: `/projects/${_this.project._id}/${_this.project.signature_document.user_document}` });
-                        // browser.downloads.download({url: `/projects/${_this.project._id}/${_this.project.signature_document.user_document}`});
                         DownLoadFileAjax(`/projects/${_this.project._id}/${_this.project.signature_document.user_document}`, `${_this.project.signature_document.user_document}`);
                     }
                     else
@@ -942,6 +951,22 @@
                         };
                     };
                 });
+            }
+
+            if(_this.redactingFirstData)
+            {
+                $('.creating_page_input_div').each( function(i, element) 
+                {
+                    if(typeof $(element).attr("data") != "undefined")
+                    {
+                        if(typeof findOfArrayOn_id(_this.redactingInvDoc.data.data, $(element).attr("data")) != "undefined")
+                        {
+                            $(element).val(findOfArrayOn_id(_this.redactingInvDoc.data.data, $(element).attr("data")));
+                        };
+                    };
+                });
+
+                _this.redactingFirstData == false;
             }
         }
     }
