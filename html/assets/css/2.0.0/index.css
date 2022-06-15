@@ -1481,6 +1481,15 @@ img.preloader_row_img {
   border-radius: 8px !important;
 }
 
+.chat_block_chat_header span {
+  width: 100%;
+}
+
+.chat_block_chat_header bb {
+  position: absolute;
+  right: 0;
+}
+
 .chat_block_chat_header bb bb_circule {
   display: block;
   width: 3px;
