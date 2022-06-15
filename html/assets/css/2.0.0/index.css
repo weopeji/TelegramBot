@@ -1490,6 +1490,7 @@ img.preloader_row_img {
 }
 
 .chat_block_chat_header bb {
+  display: none;
   position: absolute;
   right: 0;
 }
@@ -1505,6 +1506,12 @@ img.preloader_row_img {
 }
 
 @media (max-width: 1350px) {
+  .chat_block_info.selected {
+    display: block;
+  }
+  .chat_block_chat_header bb {
+    display: block;
+  }
   .settingBlock_body_line_not_correct_again {
     margin-top: 20px;
   }

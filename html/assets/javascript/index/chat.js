@@ -110,6 +110,10 @@
                 </div>
             `);
 
+            templateText.find('.chat_block_chat_header bb').click( function() {
+                $('.chat_block_info').toggleClass('selected')
+            })
+
             if(getChat.Inv.status == "not_correct")
             {
                 if(getChat.Inv.not_correct.dataType == "money")
