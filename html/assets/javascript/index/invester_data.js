@@ -1,3 +1,5 @@
+const { _GET } = require("../../../../node/helpers/functions");
+
 (function (global) {
     "use strict";
 
@@ -628,6 +630,11 @@
                     </div>
                 `);
 
+                if(_GET("InvRedacting"))
+                {
+                    _block.find(`input[type="text"]`).val(_this.redactingInvDoc.data.pay);
+                }
+
                 if(moneyPush)
                 {
                     _block.find(`input[type="text"]`).val(this.money);
@@ -937,6 +944,20 @@
                 }
             });
 
+            if(_GET("InvRedacting"))
+            {
+                $('.creating_page_input_div').each( function(i, element) 
+                {
+                    if(typeof $(element).attr("data") != "undefined")
+                    {
+                        if(typeof findOfArrayOn_id(_this.redactingInvDoc.data.data, $(element).attr("data")) != "undefined")
+                        {
+                            $(element).val(findOfArrayOn_id(_this.redactingInvDoc.data.data, $(element).attr("data")));
+                        };
+                    };
+                });
+            };
+
             if(InvPush)
             {
                 $('.creating_page_input_div').each( function(i, element) 
@@ -950,24 +971,8 @@
                     };
                 });
             }
-
-            if(_this.redactingFirstData)
-            {
-                $('.creating_page_input_div').each( function(i, element) 
-                {
-                    if(typeof $(element).attr("data") != "undefined")
-                    {
-                        if(typeof findOfArrayOn_id(_this.redactingInvDoc.data.data, $(element).attr("data")) != "undefined")
-                        {
-                            $(element).val(findOfArrayOn_id(_this.redactingInvDoc.data.data, $(element).attr("data")));
-                        };
-                    };
-                });
-
-                _this.redactingFirstData == false;
-            }
-        }
-    }
+        };
+    };
 
     var components = {
         invester_data,
