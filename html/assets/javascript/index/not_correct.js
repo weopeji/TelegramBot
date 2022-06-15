@@ -110,12 +110,12 @@
                             $(this).parent().parent().children('span').eq(3).html('<span style="color: green; width: fit-content;">На перезаполнении</span>');
                             $(this).remove();
         
-                            await callApi({
+                            var InvDocId = await callApi({
                                 methodName: "not_correct_complaint_again",
                                 data: IdInv,
                             });
 
-                            location.href = `https://invester-relocation.site/?user=${global.allData._id}&page=invester_data`;
+                            location.href = `https://invester-relocation.site/?user=${global.allData._id}&page=invester_data&InvRedacting=${InvDocId}`;
                         });
 
                         return actionBlock;
