@@ -53,7 +53,7 @@ async function startFunMore(msg)
         parse_mode: "HTML",
         reply_markup: {
             "resize_keyboard": true,
-            "keyboard": [["🔗 Моя реферальная ссылка", "🙋‍♂️ Мною привлечено"], [buttonPush]],
+            "keyboard": [["🔗 Моя реферальная ссылка", "🙋‍♂️ Личный кабинет"], [buttonPush]],
         }
     });
     _array.push(fat.message_id);
@@ -77,7 +77,7 @@ async function startFun(msg)
         parse_mode: "HTML",
         reply_markup: {
             "resize_keyboard": true,
-            "keyboard": [["🔗 Моя реферальная ссылка", "🙋‍♂️ Мною привлечено"], [buttonPush]],
+            "keyboard": [["🔗 Моя реферальная ссылка", "🙋‍♂️ Личный кабинет"], [buttonPush]],
         }
     });
     _array.push(fat.message_id);

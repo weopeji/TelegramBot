@@ -335,7 +335,7 @@ bot.on('message', async (msg) =>
         "👨‍💼 Рекомендовать": investor_page.recomendations,
         "⌛ Ожидают подтверждения": investor_page.statusProjects,
         "Вознаграждение по проектам": investor_page.payerBonus,
-        "🙋‍♂️ Мной привлечено": investor_page.myPeoples,
+        "🙋‍♂️ Личный кабинет": investor_page.myPeoples,
         "💼 Статистика": investor_page.active_statistik,
         "Проекты": investor_page.active_projects_stat,
         "Оплатил": investor_page.payerInBissness,
@@ -358,7 +358,7 @@ bot.on('message', async (msg) =>
 
         // ПРИВЛЕЧЕНИЕ ========================================
         "🔗 Моя реферальная ссылка": attraction_page.url,
-        "🙋‍♂️ Мною привлечено": investor_page.myPeoples,
+        "🙋‍♂️ Личный кабинет": investor_page.myPeoples,
         "💳 Реквезиты": attraction_page.requisites,
         "📊 Привлечь инвесторов": attraction_page.startFun,
         "👔 Привлечь бизнес": attraction_page.startFunMore,
