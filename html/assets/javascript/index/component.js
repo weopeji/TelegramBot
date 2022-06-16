@@ -1517,8 +1517,12 @@
                         {
                             if(element.Inv.applicationRequest)
                             {
-                                ActionAllMoneyinit      = ActionAllMoneyinit + 1;
-                                ActionAllMoney          = ActionAllMoney + Number(element.Inv.data.pay.toString().RedactingNumber());
+                                if(typeof element.Inv.data.pts_2 != "undefined")
+                                {
+                                    ActionAllMoneyinit      = ActionAllMoneyinit + 1;
+                                    ActionAllMoney          = ActionAllMoney + Number(element.Inv.data.pay.toString().RedactingNumber());
+                                }
+                                
                                 continue;
                             }
                         };
