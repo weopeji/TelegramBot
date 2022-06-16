@@ -1493,6 +1493,30 @@ img.preloader_row_img {
   display: none;
 }
 
+.Attracted_by_me_headerRefUrlsBlock_blocks_line span {
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
+  text-align: left;
+}
+
+.Attracted_by_me_headerRefUrlsBlock_blocks_line_row_first_span {
+  margin-left: 20px;
+  font-weight: 600;
+  font-size: 17px;
+  width: 380px;
+}
+
+.Attracted_by_me_headerRefUrlsBlock_blocks_line_copy {
+  position: absolute;
+  right: 20px;
+  margin: 0;
+  width: 37px;
+  height: 37px;
+  background: linear-gradient(81.65deg, #CF2DBF 18.55%, #951CDF 97.44%);
+  border-radius: 8px;
+}
+
 @media (max-width: 1350px) {
   .chat_block_chat_header {
     width: 100%;
