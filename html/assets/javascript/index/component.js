@@ -1517,6 +1517,8 @@
                         {
                             if(element.Inv.applicationRequest)
                             {
+                                ActionAllMoneyinit      = ActionAllMoneyinit + 1;
+                                ActionAllMoney          = ActionAllMoney + Number(element.Inv.data.pay.toString().RedactingNumber());
                                 continue;
                             }
                         };
