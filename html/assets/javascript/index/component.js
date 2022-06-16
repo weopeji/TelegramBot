@@ -2698,7 +2698,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="Attracted_headerInfoBlock_block">
+                    <div class="Attracted_headerInfoBlock_block Attracted_headerInfoBlock_block_right">
                         <div class="version2_default_bkg row_default"></div>
                         <div class="Attracted_headerInfoBlock_block_row">
                             <div class="Attracted_headerInfoBlock_block_i">
@@ -2724,7 +2724,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="Attracted_headerInfoBlock_block">
+                    <div class="Attracted_headerInfoBlock_block Attracted_headerInfoBlock_block_right">
                         <div class="version2_default_bkg row_default"></div>
                         <div class="Attracted_headerInfoBlock_block_row">
                             <div class="Attracted_headerInfoBlock_block_i">
@@ -2982,8 +2982,8 @@
                 }
             }
 
-            $('.Attracted_headerInfoBlock_block_text_moneys[data="wait"] p').html(_WaitMoneys.toString().ReplaceNumber() + " руб");
-            $('.Attracted_headerInfoBlock_block_text_moneys[data="accept"] p').html(_AcceptMoneys.toString().ReplaceNumber() + " руб");
+            $('.Attracted_headerInfoBlock_block_text_moneys[data="wait"] p').html(_WaitMoneys.toString().ReplaceNumber() + " ₽");
+            $('.Attracted_headerInfoBlock_block_text_moneys[data="accept"] p').html(_AcceptMoneys.toString().ReplaceNumber() + " ₽");
 
             $('.index_page_body_data').append(settingBlock);
         }
