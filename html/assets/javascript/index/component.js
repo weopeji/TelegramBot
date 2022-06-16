@@ -1517,7 +1517,7 @@
                         {
                             if(element.Inv.applicationRequest)
                             {
-                                if(typeof element.Inv.data.pts_2 != "undefined")
+                                if(typeof element.Inv.data.pts_2 == "undefined")
                                 {
                                     ActionAllMoneyinit      = ActionAllMoneyinit + 1;
                                     ActionAllMoney          = ActionAllMoney + Number(element.Inv.data.pay.toString().RedactingNumber());
