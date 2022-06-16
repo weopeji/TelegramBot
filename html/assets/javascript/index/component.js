@@ -2667,7 +2667,7 @@
                             <div class="version2_default_bkg row_default"></div>
                             <div class="Attracted_by_me_headerRefUrlsBlock_blocks_line_row">
                                 <span class="Attracted_by_me_headerRefUrlsBlock_blocks_line_row_first_span">Ваша реферальная ссылка для Инвесторов</span>
-                                <span>https://t.me/invester_official_bot?start=adder_${_data.User.user}</span>
+                                <span class="Attracted_by_me_headerRefUrlsBlock_blocks_line_row_first_span_two">https://t.me/invester_official_bot?start=adder_${_data.User.user}</span>
                                 <div class="Attracted_by_me_headerRefUrlsBlock_blocks_line_copy">
                                     <i class="fas fa-copy"></i>
                                 </div>
@@ -2677,7 +2677,7 @@
                             <div class="version2_default_bkg row_default"></div>
                             <div class="Attracted_by_me_headerRefUrlsBlock_blocks_line_row">
                                 <span class="Attracted_by_me_headerRefUrlsBlock_blocks_line_row_first_span">Ваша реферальная ссылка для Бизнеса</span>
-                                <span>https://t.me/invester_official_bot?start=adder-b_${_data.User.user}</span>
+                                <span class="Attracted_by_me_headerRefUrlsBlock_blocks_line_row_first_span_two">https://t.me/invester_official_bot?start=adder-b_${_data.User.user}</span>
                                 <div class="Attracted_by_me_headerRefUrlsBlock_blocks_line_copy">
                                     <i class="fas fa-copy"></i>
                                 </div>
@@ -2797,9 +2797,24 @@
             {
                 var template_text = `
                     <div class="settingBlock_body_line">
-                        <span>${initNumber}</span>
-                        <span>${element.username}</span>
-                        <span>${element.first_name}</span>
+                        <span>
+                            <div class="version2_settingBlock_mobile_line">
+                                <span>№</span>
+                            </div>
+                            ${initNumber}
+                        </span>
+                        <span>
+                            <div class="version2_settingBlock_mobile_line">
+                                <span>username</span>
+                            </div>
+                            ${element.username}
+                        </span>
+                        <span>
+                            <div class="version2_settingBlock_mobile_line">
+                                <span>Имя</span>
+                            </div>
+                            ${element.first_name}
+                        </span>
                     </div>
                 `;
 
@@ -2823,6 +2838,7 @@
                     <div class="version2_default_bkg row_default"></div>
                     <div class="settingBlock_header">   
                         <div class="settingBlock_header_line">
+                            <span>№</span>
                             <span>Номер проекта</span>
                             <span>Название проекта</span>
                             <span>Сумма выплаты</span>
@@ -2836,16 +2852,40 @@
 
             settingBlock.css("margin-top", "70px");
 
+            var initNumber = 1;
+
             for(var element of this.allAttracted.business)
             {  
                 var template_text = `
                     <div class="settingBlock_body_line">
-                        <span>${element._id}</span>
-                        <span>${element.data.name}</span>
-                        <span>${((element.payersData.commission) * (element.payersData.attraction_commission / 100) * (element.payersData.business_commission / 100)).toFixed(3)} %</span>
+                        <span>
+                            <div class="version2_settingBlock_mobile_line">
+                                <span>№</span>
+                            </div>
+                            ${initNumber}
+                        </span>
+                        <span>
+                            <div class="version2_settingBlock_mobile_line">
+                                <span>Номер проекта</span>
+                            </div>
+                            ${element._id}
+                        </span>
+                        <span>
+                            <div class="version2_settingBlock_mobile_line">
+                                <span>Название проекта</span>
+                            </div>
+                            ${element.data.name}
+                        </span>
+                        <span>
+                            <div class="version2_settingBlock_mobile_line">
+                                <span>Сумма выплаты</span>
+                            </div>
+                            ${((element.payersData.commission) * (element.payersData.attraction_commission / 100) * (element.payersData.business_commission / 100)).toFixed(3)} %
+                        </span>
                     </div>
                 `;
 
+                initNumber = initNumber + 1;
                 settingBlock.find('.settingBlock_body').append(template_text);
             }
 
@@ -2893,10 +2933,30 @@
 
                 var template_text = $(`
                     <div class="settingBlock_body_line" data="${element.channel_id}">
-                        <span>${initNumber}</span>
-                        <span>${element._id}</span>
-                        <span>${element.data.name}</span>
-                        <span>${Math.floor(Number(procentInvester))} %</span>
+                        <span>
+                            <div class="version2_settingBlock_mobile_line">
+                                <span>№</span>
+                            </div>
+                            ${initNumber}
+                        </span>
+                        <span>
+                            <div class="version2_settingBlock_mobile_line">
+                                <span>ID Предложения</span>
+                            </div>
+                            ${element._id}
+                        </span>
+                        <span>
+                            <div class="version2_settingBlock_mobile_line">
+                                <span>Имя предложения</span>
+                            </div>
+                            ${element.data.name}
+                        </span>
+                        <span>
+                            <div class="version2_settingBlock_mobile_line">
+                                <span>Сумма выплаты за инвестора</span>
+                            </div>
+                            ${Math.floor(Number(procentInvester))} %
+                        </span>
                     </div>
                 `);
 
@@ -2969,11 +3029,36 @@
 
                 var template_text = $(`
                     <div class="settingBlock_body_line">
-                        <span>${initNumber}</span>
-                        <span>${AttractionType}</span>
-                        <span>${AttractionId}</span>
-                        <span>${commissionAttractionNeedPay.toString().ReplaceNumber()} руб</span>
-                        <span>${DateFormatted(element.date)}</span>
+                        <span>
+                            <div class="version2_settingBlock_mobile_line">
+                                <span>№</span>
+                            </div>
+                            ${initNumber}
+                        </span>
+                        <span>
+                            <div class="version2_settingBlock_mobile_line">
+                                <span>Тип привлечения</span>
+                            </div>
+                            ${AttractionType}
+                        </span>
+                        <span>
+                            <div class="version2_settingBlock_mobile_line">
+                                <span>Номер Проекта/Инвестора</span>
+                            </div>
+                            ${AttractionId}
+                        </span>
+                        <span>
+                            <div class="version2_settingBlock_mobile_line">
+                                <span>Сумма выплаты</span>
+                            </div>
+                            ${commissionAttractionNeedPay.toString().ReplaceNumber()} руб
+                        </span>
+                        <span>
+                            <div class="version2_settingBlock_mobile_line">
+                                <span>Дата</span>
+                            </div>
+                            ${DateFormatted(element.date)}
+                        </span>
                     </div>
                 `);
 
