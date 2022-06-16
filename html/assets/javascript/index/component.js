@@ -2778,7 +2778,7 @@
                     <div class="version2_default_bkg row_default"></div>
                     <div class="settingBlock_header">
                         <div class="settingBlock_header_line">
-                            <span>#</span>
+                            <span>№</span>
                             <span>username</span>
                             <span>Имя</span>
                         </div>
@@ -2870,6 +2870,7 @@
                     <div class="version2_default_bkg row_default"></div>
                     <div class="settingBlock_header">
                         <div class="settingBlock_header_line">
+                            <span>№</span>
                             <span>ID Предложения</span>
                             <span>Имя предложения</span>
                             <span>Сумма выплаты за инвестора</span>
@@ -2883,6 +2884,8 @@
 
             settingBlock.css("margin-top", "70px");
 
+            var initNumber = 1;
+
             for(var element of _data)
             {
                 var procentAttraction   = Number(element.payersData.commission / 100 * element.payersData.attraction_commission);
@@ -2890,6 +2893,7 @@
 
                 var template_text = $(`
                     <div class="settingBlock_body_line" data="${element.channel_id}">
+                        <span>${initNumber}</span>
                         <span>${element._id}</span>
                         <span>${element.data.name}</span>
                         <span>${procentInvester}%</span>
@@ -2900,6 +2904,7 @@
                     window.location = `tg://resolve?domain=invester_official&post=${$(this).attr('data')}`;
                 });
 
+                initNumber = initNumber + 1;
                 settingBlock.find('.settingBlock_body').append(template_text);
             }
 

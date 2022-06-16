@@ -11,7 +11,7 @@
           backdrop-filter: blur(50px);
   background-color: rgba(255, 255, 255, 0.15);
   border: .5px solid #fff;
-  opacity: 0.8;
+  opacity: 1;
   border-radius: 40px;
 }
 
@@ -1591,7 +1591,7 @@ img.preloader_row_img {
 .moreGetButtons_buttonOpen {
   color: white;
   width: 32px;
-  height: 30px;
+  height: 32px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1603,6 +1603,7 @@ img.preloader_row_img {
           align-items: center;
   background: linear-gradient(100.38deg, #F40288 4.48%, #FE29D4 101.68%);
   border-radius: 8px;
+  margin-left: 25px;
 }
 
 @media (max-width: 1350px) {
