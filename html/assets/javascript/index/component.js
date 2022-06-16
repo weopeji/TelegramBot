@@ -1616,7 +1616,7 @@
                                 <div class="invester_status_projects_status_first_line">
                                     <div class="version2_invester_status_projects_status_first_line_more">
                                         <span>Ожидают подтверждения</span>
-                                        <a>${.toString().ReplaceNumber()} ₽</a>
+                                        <a>${fullWaitInvs.toString().ReplaceNumber()} ₽</a>
                                     </div>
                                     <div class="version2_invester_status_projects_status_first_line_more">
                                         <span>Ближайшие поступления на</span>
