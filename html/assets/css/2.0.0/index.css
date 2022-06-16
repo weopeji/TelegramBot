@@ -1545,6 +1545,24 @@ img.preloader_row_img {
   width: calc( 100% - 2px);
 }
 
+.Attracted_headerInfoBlock_block_i {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: transparent;
+  background: none;
+}
+
+.Attracted_headerInfoBlock_block_i img {
+  width: 100%;
+}
+
 @media (max-width: 1350px) {
   .chat_block_chat_header {
     width: 100%;
