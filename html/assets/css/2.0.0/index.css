@@ -1572,9 +1572,29 @@ img.preloader_row_img {
   margin-right: 0;
 }
 
-.moreGetButtons .get {
+.moreGetButtons .get,
+.moreGetButtons span {
   position: relative;
   z-index: 2;
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.moreGetButtons_buttonOpen {
+  color: white;
+  width: 32px;
+  height: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: linear-gradient(100.38deg, #F40288 4.48%, #FE29D4 101.68%);
+  border-radius: 8px;
 }
 
 @media (max-width: 1350px) {
