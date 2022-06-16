@@ -1524,6 +1524,14 @@ img.preloader_row_img {
   width: calc(100% - 70px);
 }
 
+.Attracted_headerInfoBlock_block_text p {
+  font-size: 23px;
+}
+
+.Attracted_headerInfoBlock_block_text span {
+  width: 60%;
+}
+
 .Attracted_headerInfoBlock_block_row {
   width: calc(100% - 40px);
   margin: 0 auto;
