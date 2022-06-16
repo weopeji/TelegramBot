@@ -1517,6 +1517,22 @@ img.preloader_row_img {
   border-radius: 8px;
 }
 
+.Attracted_headerInfoBlock_block_text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: calc(100% - 70px);
+}
+
+.Attracted_headerInfoBlock_block_row {
+  width: calc(100% - 40px);
+  margin: 0 auto;
+}
+
+.Attracted_headerInfoBlock_block .version2_default_bkg {
+  width: calc( 100% - 2px);
+}
+
 @media (max-width: 1350px) {
   .chat_block_chat_header {
     width: 100%;
@@ -1706,9 +1722,6 @@ img.preloader_row_img {
   .Attracted_headerInfoBlock_block {
     width: 100%;
     margin-bottom: 20px;
-  }
-  .Attracted_headerInfoBlock_block .version2_default_bkg {
-    width: calc(100% - 1px);
   }
   .Attracted_headerInfoBlock_block_row {
     width: 95%;
