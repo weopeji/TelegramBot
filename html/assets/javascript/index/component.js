@@ -1487,6 +1487,7 @@
                 var ActionAllMoneyinit  = 0;
                 var ActionHowPays       = 0;
                 var errorBlock          = true;
+                var fullWaitInvs        = _data.invester_data.investedWait;
 
                 for(var element of _data.invester_data.activeInvs)
                 {
@@ -1521,6 +1522,10 @@
                                 {
                                     ActionAllMoneyinit      = ActionAllMoneyinit + 1;
                                     ActionAllMoney          = ActionAllMoney + Number(element.Inv.data.pay.toString().RedactingNumber());
+                                }
+                                else
+                                {
+                                    fullWaitInvs = fullWaitInvs + Number(element.Inv.data.pay.toString().RedactingNumber());
                                 }
                                 
                                 continue;
@@ -1611,7 +1616,7 @@
                                 <div class="invester_status_projects_status_first_line">
                                     <div class="version2_invester_status_projects_status_first_line_more">
                                         <span>Ожидают подтверждения</span>
-                                        <a>${_data.invester_data.investedWait.toString().ReplaceNumber()} ₽</a>
+                                        <a>${.toString().ReplaceNumber()} ₽</a>
                                     </div>
                                     <div class="version2_invester_status_projects_status_first_line_more">
                                         <span>Ближайшие поступления на</span>
