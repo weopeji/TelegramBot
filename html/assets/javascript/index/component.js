@@ -2751,10 +2751,12 @@
             var moreGetButtons = $(`
                 <div class="moreGetButtons" data="get">
                     <div class="version2_default_bkg row_default"></div>
-                    <span data="get">Запросить выплату</span>
-                    <div class="moreGetButtons_buttonOpen">
-                        <i class="fal fa-plus"></i>
-                    </div>
+                    <span data="get">
+                        Запросить выплату
+                        <div class="moreGetButtons_buttonOpen">
+                            <i class="fal fa-plus"></i>
+                        </div>
+                    </span>
                 </div>
             `);
 
