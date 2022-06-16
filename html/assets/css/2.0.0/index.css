@@ -1530,10 +1530,15 @@ img.preloader_row_img {
 .Attracted_headerInfoBlock_block_text p {
   font-size: 23px;
   margin-left: 20px;
+  font-weight: 600;
+  font-size: 17px;
 }
 
 .Attracted_headerInfoBlock_block_text span {
   width: 60%;
+  line-height: 1.2;
+  font-weight: 600;
+  font-size: 18px;
 }
 
 .Attracted_headerInfoBlock_block_row {
