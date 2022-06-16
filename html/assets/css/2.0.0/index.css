@@ -1522,10 +1522,14 @@ img.preloader_row_img {
   display: -ms-flexbox;
   display: flex;
   width: calc(100% - 70px);
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .Attracted_headerInfoBlock_block_text p {
   font-size: 23px;
+  margin-left: 20px;
 }
 
 .Attracted_headerInfoBlock_block_text span {

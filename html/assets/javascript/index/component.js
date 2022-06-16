@@ -2690,7 +2690,7 @@
                         <div class="version2_default_bkg row_default"></div>
                         <div class="Attracted_headerInfoBlock_block_row">
                             <div class="Attracted_headerInfoBlock_block_i">
-                                <i class="fas fa-users"></i>
+                                <img src="/html/assets/images/2.0.0/Rectangle 6.png" alt="">
                             </div>
                             <div class="Attracted_headerInfoBlock_block_text">
                                 <span>Мной привлечено инвесторов</span>
@@ -2702,7 +2702,7 @@
                         <div class="version2_default_bkg row_default"></div>
                         <div class="Attracted_headerInfoBlock_block_row">
                             <div class="Attracted_headerInfoBlock_block_i">
-                                <i class="fal fa-credit-card-blank"></i>
+                                <img src="/html/assets/images/2.0.0/Ellipse 18.png" alt="">
                             </div>
                             <div class="Attracted_headerInfoBlock_block_text Attracted_headerInfoBlock_block_text_moneys" data="wait">
                                 <span>Общая сумма бонусов начисленных</span>
@@ -2716,7 +2716,7 @@
                         <div class="version2_default_bkg row_default"></div>
                         <div class="Attracted_headerInfoBlock_block_row">
                             <div class="Attracted_headerInfoBlock_block_i">
-                                <i class="fal fa-chair-office"></i>
+                                <img src="/html/assets/images/2.0.0/business.png" alt="">
                             </div>
                             <div class="Attracted_headerInfoBlock_block_text">
                                 <span>Мной привлечено бизнесс проектов</span>
@@ -2728,7 +2728,7 @@
                         <div class="version2_default_bkg row_default"></div>
                         <div class="Attracted_headerInfoBlock_block_row">
                             <div class="Attracted_headerInfoBlock_block_i">
-                                <i class="fal fa-envelope-open-dollar"></i>
+                                <img src="/html/assets/images/2.0.0/Ellipse 18.png" alt="">
                             </div>
                             <div class="Attracted_headerInfoBlock_block_text Attracted_headerInfoBlock_block_text_moneys" data="accept">
                                 <span>Общая сумма бонусов выплаченных</span>
