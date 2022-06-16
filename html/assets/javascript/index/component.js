@@ -2896,7 +2896,7 @@
                         <span>${initNumber}</span>
                         <span>${element._id}</span>
                         <span>${element.data.name}</span>
-                        <span>${procentInvester}%</span>
+                        <span>${Math.floor(Number(procentInvester))} %</span>
                     </div>
                 `);
 
