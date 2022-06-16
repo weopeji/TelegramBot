@@ -2666,20 +2666,20 @@
                         <div class="Attracted_by_me_headerRefUrlsBlock_blocks_line">
                             <div class="version2_default_bkg row_default"></div>
                             <div class="Attracted_by_me_headerRefUrlsBlock_blocks_line_row">
-                                <span>Ваша реферальная ссылка для Инвесторов</span>
+                                <span class="Attracted_by_me_headerRefUrlsBlock_blocks_line_row_first_span">Ваша реферальная ссылка для Инвесторов</span>
                                 <span>https://t.me/invester_official_bot?start=adder_${_data.User.user}</span>
                                 <div class="Attracted_by_me_headerRefUrlsBlock_blocks_line_copy">
-                                    <i class="fal fa-copy"></i>
+                                    <i class="fas fa-copy"></i>
                                 </div>
                             </div>
                         </div>
                         <div class="Attracted_by_me_headerRefUrlsBlock_blocks_line">
                             <div class="version2_default_bkg row_default"></div>
                             <div class="Attracted_by_me_headerRefUrlsBlock_blocks_line_row">
-                                <span>Ваша реферальная ссылка для Бизнеса</span>
+                                <span class="Attracted_by_me_headerRefUrlsBlock_blocks_line_row_first_span">Ваша реферальная ссылка для Бизнеса</span>
                                 <span>https://t.me/invester_official_bot?start=adder-b_${_data.User.user}</span>
                                 <div class="Attracted_by_me_headerRefUrlsBlock_blocks_line_copy">
-                                    <i class="fal fa-copy"></i>
+                                    <i class="fas fa-copy"></i>
                                 </div>
                             </div>
                         </div>
