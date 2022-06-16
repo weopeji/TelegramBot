@@ -1493,8 +1493,6 @@
                     var maxDate             = new Date(Number(element.Inv.date));
                     var maxDateFormatted    = this.pad(maxDate.getDate(), 2, '0') + '.' + this.pad(maxDate.getMonth() + 1, 2, '0') + '.' + maxDate.getFullYear();
                     var lastPay             = 0;
-                    ActionAllMoney          = ActionAllMoney + Number(element.Inv.data.pay.toString().RedactingNumber());
-                    ActionAllMoneyinit      = ActionAllMoneyinit + 1;
 
                     if(element.project.data.date != "Бессрочно")
                     {
@@ -1511,6 +1509,8 @@
                     {
                         if(typeof element.Inv.applicationRequest == "undefined")
                         {
+                            ActionAllMoneyinit      = ActionAllMoneyinit + 1;
+                            ActionAllMoney          = ActionAllMoney + Number(element.Inv.data.pay.toString().RedactingNumber());
                             continue;
                         }
                         else
