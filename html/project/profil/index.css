@@ -235,4 +235,21 @@ html, body {
   position: relative;
   z-index: 2;
 }
+
+@media (max-width: 1350px) {
+  .index_page_profil {
+    width: 95%;
+  }
+  .version2_index_page_profil_data_rowBlock {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .index_page_profil_data,
+  .index_page_profil_credit {
+    width: 100%;
+  }
+  .index_page_profil_credit {
+    margin-top: 90px;
+  }
+}
 /*# sourceMappingURL=index.css.map */
