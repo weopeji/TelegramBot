@@ -48,10 +48,10 @@
             _id = window.location.href.split('#')[1].split('/')[0];
         }
 
-        var getR_F = await callApi({
-            methodName: 'getR_F',
-            data: _id,
-        });
+        // var getR_F = await callApi({
+        //     methodName: 'getR_F',
+        //     data: _id,
+        // });
 
         var need_project = await callApi({
             methodName: 'getProject',
@@ -60,6 +60,8 @@
 
         function startArbitr()
         {
+            return;
+
             if(typeof need_project.parce.ar === "object")
             {
                 if(need_project.parce.ar.response.length > 0 && need_project.parce.ar.response != "Null")
@@ -147,6 +149,8 @@
 
         function startArbitrIspo()
         {
+            return;
+
             if(getR_F == "ok")
             {
                 if(Array.isArray(need_project.parce.ispo))
@@ -295,126 +299,126 @@
         _config.data[need_project.data.organization]();
         _config.credit_story._push();
 
-        if(_GET("administator"))
-        {
-            if(getR_F == "ok")
-            {
-                var _allArbitrFizData   = [];
+        // if(_GET("administator"))
+        // {
+        //     if(getR_F == "ok")
+        //     {
+        //         var _allArbitrFizData   = [];
     
-                _allArbitrFizData.push(need_project.parce.fiz.globalUserData);
+        //         _allArbitrFizData.push(need_project.parce.fiz.globalUserData);
     
-                need_project.parce.fiz.moreUsersData.forEach(elementFiz => {
-                    _allArbitrFizData.push(elementFiz);
-                });
+        //         need_project.parce.fiz.moreUsersData.forEach(elementFiz => {
+        //             _allArbitrFizData.push(elementFiz);
+        //         });
     
-                _allArbitrFizData.forEach((el, i) => 
-                {
-                    var userDataFio = null;
-                    var initNumber  = i + 1;
+        //         _allArbitrFizData.forEach((el, i) => 
+        //         {
+        //             var userDataFio = null;
+        //             var initNumber  = i + 1;
 
-                    if(initNumber == 1)
-                    {
-                        userDataFio = `${need_project.data.sob_fio}`;
-                    } else
-                    {
-                        userDataFio = need_project.data.moreUsersNotParce[`+${initNumber}`][`BB*sob_fio_${initNumber}`];
-                    }
+        //             if(initNumber == 1)
+        //             {
+        //                 userDataFio = `${need_project.data.sob_fio}`;
+        //             } else
+        //             {
+        //                 userDataFio = need_project.data.moreUsersNotParce[`+${initNumber}`][`BB*sob_fio_${initNumber}`];
+        //             }
 
-                    var _HEADER = $(`<h1>Cобстевенник ${initNumber} ФИО: ${userDataFio}</h1>`);
+        //             var _HEADER = $(`<h1>Cобстевенник ${initNumber} ФИО: ${userDataFio}</h1>`);
     
-                    $('.ispo_line').append(_HEADER);
+        //             $('.ispo_line').append(_HEADER);
     
-                    var deistvitelnost  = "Не действителен или не правельно введен";
-                    var jsonObj         = $.parseJSON(el.dePa);
+        //             var deistvitelnost  = "Не действителен или не правельно введен";
+        //             var jsonObj         = $.parseJSON(el.dePa);
     
-                    if(jsonObj[0].qc == 0)
-                    {
-                        deistvitelnost = "Паспорт действителен";
-                    }
+        //             if(jsonObj[0].qc == 0)
+        //             {
+        //                 deistvitelnost = "Паспорт действителен";
+        //             }
     
-                    $('.ispo_line').append($(`
-                        <div class='page_line'>
-                            <span>Действительность паспорта</span>
-                            <p>${deistvitelnost}</p>
-                        </div>
-                    `));
+        //             $('.ispo_line').append($(`
+        //                 <div class='page_line'>
+        //                     <span>Действительность паспорта</span>
+        //                     <p>${deistvitelnost}</p>
+        //                 </div>
+        //             `));
     
-                    var smozanyatiy = "Не является налого плательшиком или не правильно введены данные (Требуется ручная перепроверка)";
+        //             var smozanyatiy = "Не является налого плательшиком или не правильно введены данные (Требуется ручная перепроверка)";
     
-                    if(el.saMo.ok)
-                    {
-                        smozanyatiy = "Является налого плательшиком";
-                    }
+        //             if(el.saMo.ok)
+        //             {
+        //                 smozanyatiy = "Является налого плательшиком";
+        //             }
     
-                    $('.ispo_line').append($(`
-                        <div class='page_line'>
-                            <span>Статус налогоплательщика</span>
-                            <p>${smozanyatiy}</p>
-                        </div>
-                    `));
+        //             $('.ispo_line').append($(`
+        //                 <div class='page_line'>
+        //                     <span>Статус налогоплательщика</span>
+        //                     <p>${smozanyatiy}</p>
+        //                 </div>
+        //             `));
     
-                    $('.ispo_line').append($(`
-                        <div class='page_line'>
-                            <span>Статус розыска</span>
-                            <p>Не находится в розыске</p>
-                        </div>
-                    `));
+        //             $('.ispo_line').append($(`
+        //                 <div class='page_line'>
+        //                     <span>Статус розыска</span>
+        //                     <p>Не находится в розыске</p>
+        //                 </div>
+        //             `));
     
-                    $('.ispo_line').append($(`
-                        <div class='page_line'>
-                            <span>Банкротство</span>
-                            <p>Не имеет Банкротства</p>
-                        </div>
-                    `));
+        //             $('.ispo_line').append($(`
+        //                 <div class='page_line'>
+        //                     <span>Банкротство</span>
+        //                     <p>Не имеет Банкротства</p>
+        //                 </div>
+        //             `));
     
-                    var _HEADER         = $(`<h1>Исполнительное производство Cобстевенника ${i + 1}</h1>`);
+        //             var _HEADER         = $(`<h1>Исполнительное производство Cобстевенника ${i + 1}</h1>`);
 
-                    $('.ispo_line').append(_HEADER);
+        //             $('.ispo_line').append(_HEADER);
 
 
-                    var ispoErrorBlock  = true;
+        //             var ispoErrorBlock  = true;
                     
-                    if(el.arBi != "error")
-                    {
-                        el.arBi[0].result.forEach(elementArBi => 
-                        {
-                            ispoErrorBlock  = false;
+        //             if(el.arBi != "error")
+        //             {
+        //                 el.arBi[0].result.forEach(elementArBi => 
+        //                 {
+        //                     ispoErrorBlock  = false;
         
-                            var _block = $(`
-                                <div class="page_line">
-                                    <span>${elementArBi.exe_production}</span>
-                                    <p>${elementArBi.subject}</p>
-                                </div>
-                            `);
+        //                     var _block = $(`
+        //                         <div class="page_line">
+        //                             <span>${elementArBi.exe_production}</span>
+        //                             <p>${elementArBi.subject}</p>
+        //                         </div>
+        //                     `);
         
-                            $('.ispo_line').append(_block);
-                        })
+        //                     $('.ispo_line').append(_block);
+        //                 })
 
-                    }
+        //             }
     
-                    if(ispoErrorBlock)
-                    {
-                        var _block = $(`
-                            <div class="page_line">
-                                <span>Подробная информация</span>
-                                <p>Отсутствует</p>
-                            </div>
-                        `);
+        //             if(ispoErrorBlock)
+        //             {
+        //                 var _block = $(`
+        //                     <div class="page_line">
+        //                         <span>Подробная информация</span>
+        //                         <p>Отсутствует</p>
+        //                     </div>
+        //                 `);
     
-                        $('.ispo_line').append(_block);
-                    }
-                })
-            } else {
-                var _preloader = $(`
-                    <div class="loader_input">
-                        <img src="../../assets/images/ispo_preloader.png" alt="">
-                    </div>
-                `);
+        //                 $('.ispo_line').append(_block);
+        //             }
+        //         })
+        //     } else {
+        //         var _preloader = $(`
+        //             <div class="loader_input">
+        //                 <img src="../../assets/images/ispo_preloader.png" alt="">
+        //             </div>
+        //         `);
     
-                $('.ispo_line').append(_preloader);
-            };
-        } else
-        {
+        //         $('.ispo_line').append(_preloader);
+        //     };
+        // } else
+        // {
             if(need_project.data.organization != 1)
             {
                 if(getR_F == "ok")
@@ -536,7 +540,7 @@
                 $('.h1_sob').remove();
             }
             
-        }
+        // }
 
         $('body').append('<div class="iframe_ready"></div>')
         $('.index_page_hover_preloader_dor_document').remove();
