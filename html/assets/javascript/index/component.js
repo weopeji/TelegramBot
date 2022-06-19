@@ -1889,7 +1889,7 @@
                         <span>${i + 1}</span>
                         <span>${element.inv.projectId}</span>
                         <span>${element.project.data.name}</span>
-                        <span>${element.inv.data.pay.toString().ReplaceNumber()} руб</span>
+                        <span>${element.inv.data.pay.toString().ReplaceNumber()} ₽</span>
                         <span>${element.inv.invester}</span>
                         <span>${timeText}</span>
                         <span>

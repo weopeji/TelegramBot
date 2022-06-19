@@ -297,7 +297,52 @@ async function vesrion2_set_last_socket(socket, data, callback)
 async function version2_activ_projects_accept_notFullPayNull_inv(socket, data, callback)
 {
     try {
-        var _InvDoc = await InvDoc.findOneAndUpdate({_id: data}, {applicationRequest: false});
+        var _InvDoc         = await InvDoc.findOneAndUpdate({_id: data}, {applicationRequest: false});
+        var _Project        = await Project.findOne({_id: _InvDoc.projectId});
+        var _UserInv        = await User.findOne({user: _InvDoc.invester});
+        var _UserProject    = await User.findOne({user: _Project.user});
+
+        if(_UserInv.member)
+        {
+            await Payments.create({
+                user: _UserInv.member,
+                type: "investing",
+                pay: _InvDoc.data.pay,
+                status: "wait",
+                data: {
+                    _id: _InvDoc._id,
+                    _InvInvester: _InvDoc.invester,
+                    ProjectData: _Project.payersData,
+                },
+                date: new Date().getTime().toString(),
+            });
+    
+            h.full_alert_user(_UserInv.member, `Вам поступил бонус за инвестора в размере ${Number(_InvDoc.data.pay) * Number(Number(_Project.payersData.commission) / 100) * Number(Number(_Project.payersData.investors_commission) / 100)}`, "payment_member");
+        };
+    
+        if(_UserProject.member_b)
+        {
+            if(typeof _UserProject.member_b_project != "undefined")
+            {
+                if(_UserProject.member_b_project == _Project._id)
+                {
+                    await Payments.create({
+                        user: _UserProject.member_b,
+                        type: "business",
+                        pay: _InvDoc.data.pay,
+                        status: "wait",
+                        data: {
+                            _id: _Project._id,
+                            ProjectData: _Project.payersData,
+                        },
+                        date: new Date().getTime().toString(),
+                    });
+    
+                    h.full_alert_user(_UserProject.member_b, `Вам поступил бонус за бизнес в размере ${Number(_InvDoc.data.pay) * Number(Number(_Project.payersData.commission) / 100) * Number(Number(_Project.payersData.business_commission) / 100)}`, "payment_member");
+                };
+            };
+        };
+        
         await h.full_alert_user(_InvDoc.invester, `Бизнес подтвердил вашу инвестицию`, "pay_of_invNotFullPay_acceptBusiness");
     } 
     catch(e) {}
