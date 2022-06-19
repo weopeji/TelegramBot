@@ -51,6 +51,7 @@
 
             console.log(_data);
 
+            $('.index_page_body_data').append(settingBlock);
             return;
 
             _data.payments_new.showBlocks.forEach(function(element, i) 
