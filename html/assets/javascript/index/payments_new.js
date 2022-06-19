@@ -42,12 +42,16 @@
                         </div>
                     </div>
                     <div class="settingBlock_body">
-
+                        <div class="version2_errorPushBlockDefault">
+                            <span>У вас нет заявок</span>
+                        </div>
                     </div>
                 </div>
             `); 
 
             console.log(_data);
+
+            return;
 
             _data.payments_new.showBlocks.forEach(function(element, i) 
             {
