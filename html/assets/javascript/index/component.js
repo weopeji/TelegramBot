@@ -2160,16 +2160,33 @@
                         </div>
                     </div>
                 </div>
-                <div class="settingBlock" style="margin-bottom: 65px">
-                    <div class="version2_default_bkg row_default"></div>
-                    <div class="settingBlock_header">
-                        <div class="invester_status_projects_status_first">
-                            <div class="invester_status_projects_status_first_line">
-                                <span>Количество инвесторов</span>
-                                <a>${Project_data.moreGetData.invsPush.length}</a>
+                <div class="version2_infoBlock_twoBlockCheack">
+                    <div class="settingBlock" style="margin-bottom: 65px">
+                        <div class="version2_default_bkg row_default"></div>
+                        <div class="settingBlock_header">
+                            <div class="invester_status_projects_status_first">
+                                <div class="invester_status_projects_status_first_line">
+                                    <span>Количество инвесторов</span>
+                                    <a>${Project_data.moreGetData.invsPush.length}</a>
+                                </div>
                             </div>
-                        </div>
-                    </div> 
+                        </div> 
+                    </div>
+                    <div class="settingBlock" style="margin-bottom: 65px">
+                        <div class="version2_default_bkg row_default"></div>
+                        <div class="settingBlock_header">
+                            <div class="invester_status_projects_status_first">
+                                <div class="invester_status_projects_status_first_line">
+                                    <span>Количество заявок</span>
+                                    <a>${Project_data.moreGetData.notTakeHow}</a>
+                                </div>
+                                <div class="invester_status_projects_status_first_line">
+                                    <span>На сумму</span>
+                                    <a>${Project_data.moreGetData.notTakeHowMoney.toString().ReplaceNumber()} ₽</a>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
                 </div>
             `);
 

@@ -340,9 +340,25 @@ async function version2_activ_projects_accept_notFullPayNull_inv(socket, data, c
     
                     h.full_alert_user(_UserProject.member_b, `Вам поступил бонус за бизнес в размере ${Number(_InvDoc.data.pay) * Number(Number(_Project.payersData.commission) / 100) * Number(Number(_Project.payersData.business_commission) / 100)}`, "payment_member");
                 };
-            };
+            } 
+            else
+            {
+                await Payments.create({
+                    user: _UserProject.member_b,
+                    type: "business",
+                    pay: _InvDoc.data.pay,
+                    status: "wait",
+                    data: {
+                        _id: _Project._id,
+                        ProjectData: _Project.payersData,
+                    },
+                    date: new Date().getTime().toString(),
+                });
+
+                h.full_alert_user(_UserProject.member_b, `Вам поступил бонус за бизнес в размере ${Number(_InvDoc.data.pay) * Number(Number(_Project.payersData.commission) / 100) * Number(Number(_Project.payersData.business_commission) / 100)}`, "payment_member");
+            }
         };
-        
+
         await h.full_alert_user(_InvDoc.invester, `Бизнес подтвердил вашу инвестицию`, "pay_of_invNotFullPay_acceptBusiness");
     } 
     catch(e) {}
@@ -3819,6 +3835,8 @@ async function getProjectNew(socket, data, callback)
             paysInvesters: 0,
             commissionForPtoject: 0,
             invsPush: [],
+            notTakeHow: 0,
+            notTakeHowMoney: 0,
         },
     };
 
@@ -3838,6 +3856,11 @@ async function getProjectNew(socket, data, callback)
             {
                 all_data.moreGetData.paysInvesters = all_data.moreGetData.paysInvesters + Number(acceptInv.data.pay.toString().replace(/\s/g, ''));
             }
+        }
+        else
+        {
+            all_data.moreGetData.notTakeHow         = all_data.moreGetData.notTakeHow + 1;
+            all_data.moreGetData.notTakeHowMoney    = all_data.moreGetData.notTakeHowMoney + Number(acceptInv.data.pay.toString().replace(/\s/g, ''));
         }
     });
 
