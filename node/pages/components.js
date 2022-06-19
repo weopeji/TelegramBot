@@ -3798,27 +3798,33 @@ async function getProjectNew(socket, data, callback)
 
     for(var aceptInv of acceptInvsPush)
     {
-        var _dataBlock = 
+        if(typeof acceptInv.applicationRequest != "undefined")
         {
-            invester: await User.findOne({user: aceptInv.invester}),
-            inv: aceptInv,
-        };
-
-        var summOfPush = 0;
-
-        aceptInv.pays.forEach((pushSumm, init) => {
-            if(pushSumm.status == "wait")
+            if(!acceptInv.applicationRequest)
             {
-                all_data.moreGetData.commissionForPtoject = all_data.moreGetData.commissionForPtoject + Number(pushSumm.pay);
-
-                if(init == aceptInv.pays.length - 1)
+                var _dataBlock = 
                 {
-                    all_data.moreGetData.commissionForPtoject = all_data.moreGetData.commissionForPtoject + Number(aceptInv.data.pay.toString().replace(/\s/g, ''));
-                }
-            };
-        });
+                    invester: await User.findOne({user: aceptInv.invester}),
+                    inv: aceptInv,
+                };
 
-        all_data.moreGetData.invsPush.push(_dataBlock);
+                var summOfPush = 0;
+
+                aceptInv.pays.forEach((pushSumm, init) => {
+                    if(pushSumm.status == "wait")
+                    {
+                        all_data.moreGetData.commissionForPtoject = all_data.moreGetData.commissionForPtoject + Number(pushSumm.pay);
+
+                        if(init == aceptInv.pays.length - 1)
+                        {
+                            all_data.moreGetData.commissionForPtoject = all_data.moreGetData.commissionForPtoject + Number(aceptInv.data.pay.toString().replace(/\s/g, ''));
+                        }
+                    };
+                });
+
+                all_data.moreGetData.invsPush.push(_dataBlock);
+            }
+        }
     };
 
     callback(all_data);
