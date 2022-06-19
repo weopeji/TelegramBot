@@ -2145,15 +2145,15 @@
                                 <div class="invester_status_projects_status_first">
                                     <div class="invester_status_projects_status_first_line">
                                         <span>Сумма сбора</span>
-                                        <a>${Project_data.project.data.attraction_amount.toString().ReplaceNumber()} руб.</a>
+                                        <a>${Project_data.project.data.attraction_amount.toString().ReplaceNumber()} ₽.</a>
                                         <span>Собрано</span>
-                                        <a>${Project_data.moreGetData.paysInvesters.toString().ReplaceNumber()} руб</a>
+                                        <a>${Project_data.moreGetData.paysInvesters.toString().ReplaceNumber()} ₽</a>
                                     </div>
                                     <div class="invester_status_projects_status_first_line">
                                         <span>Выплачено</span>
-                                        <a>${Project_data.moreGetData.paysAcceptInvs.toString().ReplaceNumber()} руб</a>
+                                        <a>${Project_data.moreGetData.paysAcceptInvs.toString().ReplaceNumber()} ₽</a>
                                         <span>Долг</span>
-                                        <a>${Number(Project_data.moreGetData.commissionForPtoject).toFixed(0).toString().ReplaceNumber()} руб</a>
+                                        <a>${Number(Project_data.moreGetData.commissionForPtoject).toFixed(0).toString().ReplaceNumber()} ₽</a>
                                     </div>
                                 </div>
                             </div>
