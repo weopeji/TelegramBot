@@ -43,7 +43,7 @@
                     </div>
                     <div class="settingBlock_body">
                         <div class="version2_errorPushBlockDefault">
-                            <span>У вас нет заявок</span>
+                            <span>У вас нет выплат</span>
                         </div>
                     </div>
                 </div>
