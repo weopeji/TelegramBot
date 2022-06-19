@@ -1606,6 +1606,23 @@ img.preloader_row_img {
   margin-left: 25px;
 }
 
+.version2_infoBlock_twoBlockCheack {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: calc(100% - 2px);
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.version2_infoBlock_twoBlockCheack .settingBlock {
+  width: calc(50% - 7px);
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
 @media (max-width: 1350px) {
   .chat_block_chat_header {
     width: 100%;
