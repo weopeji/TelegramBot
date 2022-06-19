@@ -2063,7 +2063,7 @@
                         <span>${element.inv.projectId}/${i + 1}</span>
                         <span>${UserNameInvester}</span>
                         <span>${DateFormatted(element.inv.date)}</span>
-                        <span>${element.inv.data.pay} руб</span>
+                        <span>${element.inv.data.pay} ₽</span>
                         <span><i class="fal fa-cloud-download"></i></span>
                         <span>
                             <div class="settingBlock_body_line_drop_menu">
@@ -2145,7 +2145,7 @@
                                 <div class="invester_status_projects_status_first">
                                     <div class="invester_status_projects_status_first_line">
                                         <span>Сумма сбора</span>
-                                        <a>${Project_data.project.data.attraction_amount.toString().ReplaceNumber()} ₽.</a>
+                                        <a>${Project_data.project.data.attraction_amount.toString().ReplaceNumber()} ₽</a>
                                         <span>Собрано</span>
                                         <a>${Project_data.moreGetData.paysInvesters.toString().ReplaceNumber()} ₽</a>
                                     </div>
@@ -2166,7 +2166,7 @@
                         <div class="invester_status_projects_status_first">
                             <div class="invester_status_projects_status_first_line">
                                 <span>Количество инвесторов</span>
-                                <a>${Project_data.moreGetData.acceptInvs.length}</a>
+                                <a>${Project_data.moreGetData.invsPush.length}</a>
                             </div>
                         </div>
                     </div> 
