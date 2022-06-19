@@ -3033,7 +3033,8 @@
 
             settingBlock.css("margin-top", "70px");
 
-            var initNumber = 1;
+            var initNumber  = 1;
+            var errorBlock  = true;
 
             for(var element of allPayments)
             {
@@ -3105,6 +3106,19 @@
                 {
                     _AcceptMoneys   = _AcceptMoneys + commissionAttractionNeedPay;
                 }
+
+                errorBlock = false;
+            }
+
+            if(errorBlock)
+            {
+                var template_text_error = $(`
+                    <div class="version2_errorPushBlockDefault">
+                        <span>У вас нет выплат</span>
+                    </div>
+                `);
+
+                settingBlock.find('.settingBlock_body').append(template_text_error)
             }
 
             $('.Attracted_headerInfoBlock_block_text_moneys[data="wait"] p').html(_WaitMoneys.toString().ReplaceNumber() + " ₽");
