@@ -2808,7 +2808,8 @@
 
             settingBlock.css("margin-top", "70px");
 
-            var initNumber = 1;
+            var initNumber  = 1;
+            var errorBlock  = true;
 
             for(var element of this.allAttracted.investors)
             {
@@ -2836,8 +2837,19 @@
                 `;
 
                 initNumber++;
-
+                errorBlock = false;
                 settingBlock.find('.settingBlock_body').append(template_text);
+            }
+
+            if(errorBlock)
+            {
+                var template_text_error = $(`
+                    <div class="version2_errorPushBlockDefault">
+                        <span>У вас нет привлеченных инвесторов</span>
+                    </div>
+                `);
+
+                settingBlock.find('.settingBlock_body').append(template_text_error)
             }
 
             $('.index_page_body_data').append(settingBlock);
