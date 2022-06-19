@@ -3798,17 +3798,15 @@ async function getProjectNew(socket, data, callback)
 
     for(var aceptInv of acceptInvsPush)
     {
-        if(typeof acceptInv.applicationRequest != "undefined")
+        if(typeof aceptInv.applicationRequest != "undefined")
         {
-            if(!acceptInv.applicationRequest)
+            if(!aceptInv.applicationRequest)
             {
                 var _dataBlock = 
                 {
                     invester: await User.findOne({user: aceptInv.invester}),
                     inv: aceptInv,
                 };
-
-                var summOfPush = 0;
 
                 aceptInv.pays.forEach((pushSumm, init) => {
                     if(pushSumm.status == "wait")
