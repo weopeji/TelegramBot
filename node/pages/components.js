@@ -240,10 +240,15 @@ var action_linker =
 async function version2_acceptInvOfComplaintBusinnes(socket, data, callback)
 {
     try {
-        await InvDoc.findOneAndUpdate({_id: data}, {
+        var _InvDoc = await InvDoc.findOneAndUpdate({_id: data}, {
             status: "accept",
             applicationRequest: false,
         });
+
+        var _Project = await Project.findOne({_id: _InvDoc.projectId});
+
+        h.full_alert_user(_InvDoc.invester, `Заявка была принята`, "pushMoneyOfInvesting", _InvDoc._id);
+        h.full_alert_user(_Project.user, `Заявка была принята`, "pushMoneyOfInvesting", _InvDoc._id);
     } catch (e) {}
 
     callback();
