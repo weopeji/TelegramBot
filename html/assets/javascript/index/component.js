@@ -94,7 +94,7 @@
                                 <span>#</span>
                                 <span>Дата</span>
                                 <span>Сумма</span>
-                                <span>Выбор</span>
+                                <!-- <span>Выбор</span> -->
                                 <span>Статус</span>
                             </div>
                         </div>
@@ -149,9 +149,9 @@
                             <span>${i + 1}</span>
                             <span>${maxDateFormatted}</span>
                             <span>${_pay.toString().replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')} руб ${morePay.toString().replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')}</span>
-                            <span>
+                            <!--<span>
                                 ${inputBlock}
-                            </span>
+                            </span> -->
                             <span class="headerPaysBlock_button" data-target="${i}">
                                 ${byttonBlock}
                             </span>
