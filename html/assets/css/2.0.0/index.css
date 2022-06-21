@@ -1629,6 +1629,16 @@ img.preloader_row_img {
   display: flex;
 }
 
+.settingBlock_header_rowFlex .invester_status_projects_status_first {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.version2_infoBlock_twoBlockCheack {
+  width: 35%;
+}
+
 @media (max-width: 1350px) {
   .chat_block_chat_header {
     width: 100%;

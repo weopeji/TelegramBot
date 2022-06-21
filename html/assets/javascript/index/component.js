@@ -2168,7 +2168,7 @@
                     </div>
                 </div>
                 <div class="version2_infoBlock_twoBlockCheack">
-                    <div class="settingBlock" style="margin-bottom: 65px">
+                    <div class="settingBlock version2_infoBlock_twoBlockCheack_first" style="margin-bottom: 65px">
                         <div class="version2_default_bkg row_default"></div>
                         <div class="settingBlock_header">
                             <div class="invester_status_projects_status_first">
