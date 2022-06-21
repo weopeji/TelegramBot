@@ -172,7 +172,6 @@
 
                 var template_text = $(`
                     <div class="settingBlock_body_line settingBlock_body_line_obligations" data="${element._id}" dataInv="${element.Inv._id}">
-                        <input type="file" name="" id="${element.Inv._id}" data-project="${_data.project._id}">
                         <span>${i + 1}</span>
                         <span>${element.Inv.data.pay} руб</span>
                         <span>${_data.project._id}/${i + 1} от ${DateFormatted(element.Inv.date)}</span>
@@ -182,6 +181,7 @@
                             <label for="${element.Inv._id}">Прикрепить</label>
                         </span>
                         <span>Не оплачено</span>
+                        <input type="file" name="" id="${element.Inv._id}" data-project="${_data.project._id}">
                     </div>
                 `);
 
