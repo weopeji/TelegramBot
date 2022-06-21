@@ -38,6 +38,7 @@
                             <span>Процент</span>
                             <span>Выплачено</span>
                             <span>№ Договора</span>
+                            <span>Имя инвестора</span>
                             <span>Реквезиты</span>
                         </div>
                     </div>
