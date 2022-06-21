@@ -51,9 +51,6 @@
 
             console.log(_data);
 
-            $('.index_page_body_data').append(settingBlock);
-            return;
-
             _data.payments_new.showBlocks.forEach(function(element, i) 
             {
                 var fio         = null;
@@ -109,11 +106,6 @@
                     </div>
                 `);
 
-                if(Number(element.date) <= Number(new Date().getTime().toString()))
-                {
-                    template_text.attr('alertForLine', 'true');
-                }
-
                 template_text.children("span").eq(0).click( function() {
                     location.href = `./?page=activ_projects&id=${$(this).parent().attr('data-project')}`;
                 });
@@ -151,11 +143,6 @@
             })
 
             $('.index_page_body_data').append(settingBlock);
-
-            setInterval( function() 
-            {
-                $('.settingBlock_body_line[alertForLine="true"]').toggleClass('alertForLine');
-            }, 1000);
         };
     };
 
