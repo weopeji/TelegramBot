@@ -52,6 +52,8 @@
 
             console.log(_data);
 
+            var errorBlock  = true;
+
             _data.payments_new.showBlocks.forEach(function(element, i) 
             {
                 var fio         = null;
@@ -99,7 +101,7 @@
                         <span>${i + 1}</span>
                         <span>${element.inv.data.pay} ₽</span>
                         <span>${element.project.data.rate}/год</span>
-                        <span>${fullPayInProject} ₽</span>
+                        <span>${fullPayInProject.toString().ReplaceNumber()} ₽</span>
                         <span>${element.inv.projectId}/${element.initNumberProject} от ${DateFormatted(element.inv.date)}</span>
                         <span>${fio}</span>
                         <span>
@@ -148,8 +150,20 @@
                     }
                 });
 
+                errorBlock = false;
                 settingBlock.find('.settingBlock_body').append(template_text);
             })
+
+            if(errorBlock)
+            {
+                var template_text_error = $(`
+                    <div class="version2_errorPushBlockDefault">
+                        <span>У вас нет выплат</span>
+                    </div>
+                `);
+
+                settingBlock.find('.settingBlock_body').append(template_text_error)
+            }
 
             $('.index_page_body_data').append(settingBlock);
         };
