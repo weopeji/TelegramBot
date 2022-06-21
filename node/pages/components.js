@@ -3876,14 +3876,16 @@ async function getProjectNew(socket, data, callback)
                     inv: aceptInv,
                 };
 
+                all_data.moreGetData.commissionForPtoject = all_data.moreGetData.commissionForPtoject + Number(aceptInv.data.pay.toString().replace(/\s/g, ''));
+
                 aceptInv.pays.forEach((pushSumm, init) => {
-                    if(pushSumm.status == "wait")
+                    if(pushSumm.status == "accept")
                     {
-                        all_data.moreGetData.commissionForPtoject = all_data.moreGetData.commissionForPtoject + Number(pushSumm.pay);
+                        all_data.moreGetData.commissionForPtoject = all_data.moreGetData.commissionForPtoject - Number(pushSumm.pay);
 
                         if(init == aceptInv.pays.length - 1)
                         {
-                            all_data.moreGetData.commissionForPtoject = all_data.moreGetData.commissionForPtoject + Number(aceptInv.data.pay.toString().replace(/\s/g, ''));
+                            all_data.moreGetData.commissionForPtoject = all_data.moreGetData.commissionForPtoject - Number(aceptInv.data.pay.toString().replace(/\s/g, ''));
                         }
                     };
                 });
