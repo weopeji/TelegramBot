@@ -1645,28 +1645,31 @@ async function payments_new_get(socket, data, callback)
 
             for(var project of allUserProjects)
             {
-                var InvsOfProject       = await InvDoc.find({projectId: project._id});
-                var initNumberProject   = 1;
+                var InvsOfProject       = await InvDoc.find({projectId: project._id, status: "accept", applicationRequest: false});
 
                 for(var invPush of InvsOfProject)
                 {
-                    var InvesterOfInvs = await User.findOne({user: invPush.invester});
+                    var InvesterOfInvs              = await User.findOne({user: invPush.invester});
+                    var initNumberProject           = 1;
+                    var initNumberProjectMose       = 1;
+                    var allInvsByCheackInvDocInit   = await InvDoc.find({projectId: project._id});
 
-                    if(invPush.pays)
+                    for(var allInvByCheackInvDocInit of allInvsByCheackInvDocInit)
                     {
-                        for(var invPushPay of invPush.pays)
+                        if(allInvByCheackInvDocInit._id.toString() == invPush._id.toString())
                         {
-                            _blockData.showBlocks.push({
-                                date: Number(invPushPay.date),
-                                inv: invPush,
-                                invPay: invPushPay,
-                                initNumberProject: initNumberProject,
-                                InvesterOfInvs: InvesterOfInvs,
-                            });
+                            initNumberProject = initNumberProjectMose;
                         }
+
+                        initNumberProjectMose++;
                     }
 
-                    initNumberProject++;
+                    _blockData.showBlocks.push({
+                        inv: invPush,
+                        initNumberProject: initNumberProject,
+                        InvesterOfInvs: InvesterOfInvs,
+                        project: project,
+                    });
                 }
             }
 

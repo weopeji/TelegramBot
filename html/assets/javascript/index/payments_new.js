@@ -34,17 +34,17 @@
                     <div class="settingBlock_header">
                         <div class="settingBlock_header_line">
                             <span>№</span>
-                            <span>Дата выплаты</span>
                             <span>Сумма</span>
+                            <span>Процент</span>
+                            <span>Выплачено</span>
                             <span>№ Договора</span>
-                            <span>Инвестор</span>
                             <span>Реквезиты</span>
                         </div>
                     </div>
                     <div class="settingBlock_body">
-                        <div class="version2_errorPushBlockDefault">
+                        <!--<div class="version2_errorPushBlockDefault">
                             <span>У вас нет выплат</span>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
             `); 
@@ -86,11 +86,19 @@
                     };
                 });
 
+                var fullPayInProject = 0;
+
+                for(var _payPush of element.inv.pays)
+                {
+                    fullPayInProject = fullPayInProject + Number(_payPush.pay.toString().replace(/\s/g, ''));
+                }
+
                 var template_text = $(`
                     <div class="settingBlock_body_line" data="${element.inv.invester}" data-project="${element.inv._id}">
                         <span>${i + 1}</span>
-                        <span>${DateFormatted(element.date)}</span>
-                        <span>${Math.ceil(element.invPay.pay).toString().ReplaceNumber()} руб</span>
+                        <span>${element.inv.data.pay} ₽</span>
+                        <span>${element.project.data.rate}/год</span>
+                        <span>${fullPayInProject} ₽</span>
                         <span>${element.inv.projectId}/${element.initNumberProject} от ${DateFormatted(element.inv.date)}</span>
                         <span>${fio}</span>
                         <span>
