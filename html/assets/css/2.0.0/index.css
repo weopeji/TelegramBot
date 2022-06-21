@@ -1621,6 +1621,7 @@ img.preloader_row_img {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
+  margin-top: 0;
 }
 
 .settingBlock_header_rowFlex {
