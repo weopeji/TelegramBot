@@ -3878,17 +3878,17 @@ async function getProjectNew(socket, data, callback)
 
                 all_data.moreGetData.commissionForPtoject = all_data.moreGetData.commissionForPtoject + Number(aceptInv.data.pay.toString().replace(/\s/g, ''));
 
-                aceptInv.pays.forEach((pushSumm, init) => {
-                    if(pushSumm.status == "accept")
-                    {
-                        all_data.moreGetData.commissionForPtoject = all_data.moreGetData.commissionForPtoject - Number(pushSumm.pay);
+                // aceptInv.pays.forEach((pushSumm, init) => {
+                //     if(pushSumm.status == "accept")
+                //     {
+                //         all_data.moreGetData.commissionForPtoject = all_data.moreGetData.commissionForPtoject - Number(pushSumm.pay);
 
-                        if(init == aceptInv.pays.length - 1)
-                        {
-                            all_data.moreGetData.commissionForPtoject = all_data.moreGetData.commissionForPtoject - Number(aceptInv.data.pay.toString().replace(/\s/g, ''));
-                        }
-                    };
-                });
+                //         if(init == aceptInv.pays.length - 1)
+                //         {
+                //             all_data.moreGetData.commissionForPtoject = all_data.moreGetData.commissionForPtoject - Number(aceptInv.data.pay.toString().replace(/\s/g, ''));
+                //         }
+                //     };
+                // });
 
                 all_data.moreGetData.invsPush.push(_dataBlock);
             }
