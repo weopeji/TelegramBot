@@ -39,7 +39,7 @@
                             <span>Выплачено</span>
                             <span>№ Договора</span>
                             <span>Имя инвестора</span>
-                            <span>Реквезиты</span>
+                            <!--<span>Реквезиты</span>-->
                         </div>
                     </div>
                     <div class="settingBlock_body">
@@ -104,7 +104,7 @@
                         <span>${fullPayInProject.toString().ReplaceNumber()} ₽</span>
                         <span>${element.inv.projectId}/${element.initNumberProject} от ${DateFormatted(element.inv.date)}</span>
                         <span>${fio}</span>
-                        <span>
+                        <!--<span>
                             <div class="settingBlock_body_line_drop_menu">
                                 <p>Банк получателя: <span>${bank}</span></p>
                                 <p>БИК: <span>${bik}</span></p>
@@ -113,7 +113,7 @@
                                 <p>Имя получателя: <span>${fio}</span></p>
                             </div>
                             <span><span class="version2ButtonGradient1 settingBlock_wait settingBlock_block settingBlock_accept" data="${element._id}">Посмотреть</span></span>
-                        </span>
+                        </span> -->
                     </div>
                 `);
 
