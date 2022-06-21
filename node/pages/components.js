@@ -1756,7 +1756,7 @@ async function ALL_DATA(socket, data, callback)
 
             for(var project of allUserProjects)
             {
-                var InvsOfProject   = await InvDoc.find({projectId: project._id});
+                var InvsOfProject   = await InvDoc.find({projectId: project._id, status: "accept", applicationRequest: false});
                 var commissionData  = project.payersData.commission;
                 var attractedData   = 0;
                 var accruedData     = 0;
