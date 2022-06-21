@@ -3876,19 +3876,23 @@ async function getProjectNew(socket, data, callback)
                     inv: aceptInv,
                 }; 
 
-                all_data.moreGetData.commissionForPtoject = all_data.moreGetData.commissionForPtoject + Number(aceptInv.data.pay.toString().replace(/\s/g, ''));
+                var openSummInvDoc      = Number(aceptInv.data.pay.toString().replace(/\s/g, ''));
+                var openCloseSumminvDoc = 0;
+                var pushOpenSummInvDoc  = 0;
 
-                // aceptInv.pays.forEach((pushSumm, init) => {
-                //     if(pushSumm.status == "accept")
-                //     {
-                //         all_data.moreGetData.commissionForPtoject = all_data.moreGetData.commissionForPtoject - Number(pushSumm.pay);
+                aceptInv.pays.forEach((pushSumm, init) => {
+                    if(pushSumm.status == "accept")
+                    {
+                        openCloseSumminvDoc = openCloseSumminvDoc + Number(pushSumm.pay.toString().replace(/\s/g, ''));
+                    };
+                });
 
-                //         if(init == aceptInv.pays.length - 1)
-                //         {
-                //             all_data.moreGetData.commissionForPtoject = all_data.moreGetData.commissionForPtoject - Number(aceptInv.data.pay.toString().replace(/\s/g, ''));
-                //         }
-                //     };
-                // });
+                if(openCloseSumminvDoc <= openSummInvDoc)
+                {
+                    pushOpenSummInvDoc = Number(Number(openSummInvDoc) - Number(openCloseSumminvDoc));
+                };
+
+                all_data.moreGetData.commissionForPtoject = all_data.moreGetData.commissionForPtoject + pushOpenSummInvDoc;
 
                 all_data.moreGetData.invsPush.push(_dataBlock);
             }
