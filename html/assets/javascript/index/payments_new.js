@@ -138,8 +138,8 @@
                     "top": "0px",
                     "height": "fit-content",
                 });
-                template_text.children("span").eq(5).css("position", "relative");
-                template_text.children("span").eq(5).click( function() {
+
+                template_text.children("span").eq(6).css("position", "relative").click( function() {
                     $(".settingBlock_body_line_drop_menu").fadeOut();
                     if($(this).find('.settingBlock_body_line_drop_menu').css('display') == "block")
                     {
