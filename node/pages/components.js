@@ -3874,7 +3874,7 @@ async function getProjectNew(socket, data, callback)
                 {
                     invester: await User.findOne({user: aceptInv.invester}),
                     inv: aceptInv,
-                };
+                }; 
 
                 all_data.moreGetData.commissionForPtoject = all_data.moreGetData.commissionForPtoject + Number(aceptInv.data.pay.toString().replace(/\s/g, ''));
 
