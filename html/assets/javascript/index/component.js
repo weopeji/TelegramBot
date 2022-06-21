@@ -1955,44 +1955,51 @@
                 data: data_rt._id,
             });
 
-            var settingBlock = $(`
-                <div class="settingBlock">
-                    <div class="version2_settingBlock_header">
-                        <p>Доступные проекты</p>
-                    </div>
-                    <div class="version2_default_bkg row_default"></div>
-                    <div class="settingBlock_header">
-                        <div class="settingBlock_header_line">
-                            <span>#</span>
-                            <span>Номер проекта</span>
-                            <span>Название</span>
-                            <span>Смотреть проект</span>
+            if(_data.length == 1)
+            {
+                location.href = `/?page=myProjects&id=${_data[0]._id}`;
+            }
+            else
+            {
+                var settingBlock = $(`
+                    <div class="settingBlock">
+                        <div class="version2_settingBlock_header">
+                            <p>Доступные проекты</p>
+                        </div>
+                        <div class="version2_default_bkg row_default"></div>
+                        <div class="settingBlock_header">
+                            <div class="settingBlock_header_line">
+                                <span>#</span>
+                                <span>Номер проекта</span>
+                                <span>Название</span>
+                                <span>Смотреть проект</span>
+                            </div>
+                        </div>
+                        <div class="settingBlock_body">
+
                         </div>
                     </div>
-                    <div class="settingBlock_body">
+                `);
 
-                    </div>
-                </div>
-            `);
+                _data.forEach(function(element, i) {
+                    var template_text = `
+                        <div class="settingBlock_body_line" data="${element._id}">
+                            <span>${i + 1}</span>
+                            <span>${element._id}</span>
+                            <span>${element.data.name}</span>
+                            <span><span class="version2ButtonGradient1 settingBlock_wait settingBlock_block settingBlock_accept" data="${element._id}">Посмотреть</span></span>
+                        </div>
+                    `;
 
-            _data.forEach(function(element, i) {
-                var template_text = `
-                    <div class="settingBlock_body_line" data="${element._id}">
-                        <span>${i + 1}</span>
-                        <span>${element._id}</span>
-                        <span>${element.data.name}</span>
-                        <span><span class="version2ButtonGradient1 settingBlock_wait settingBlock_block settingBlock_accept" data="${element._id}">Посмотреть</span></span>
-                    </div>
-                `;
+                    settingBlock.find('.settingBlock_body').append(template_text);
+                })
 
-                settingBlock.find('.settingBlock_body').append(template_text);
-            })
+                $('.index_page_body_data').append(settingBlock);
 
-            $('.index_page_body_data').append(settingBlock);
-
-            $('.settingBlock_body_line').click( function() {
-                location.href = `/?page=myProjects&id=${$(this).attr('data')}`;
-            })
+                $('.settingBlock_body_line').click( function() {
+                    location.href = `/?page=myProjects&id=${$(this).attr('data')}`;
+                })
+            }
         }
 
         async renderMenuByBlock(Project_data)
