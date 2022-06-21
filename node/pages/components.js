@@ -247,8 +247,8 @@ async function version2_acceptInvOfComplaintBusinnes(socket, data, callback)
 
         var _Project = await Project.findOne({_id: _InvDoc.projectId});
 
-        h.full_alert_user(_InvDoc.invester, `Заявка была принята`, "pushMoneyOfInvesting", _InvDoc._id);
-        h.full_alert_user(_Project.user, `Заявка была принята`, "pushMoneyOfInvesting", _InvDoc._id);
+        h.full_alert_user(_InvDoc.invester, `Бизнес принял инвестицию`, "pushMoneyOfInvesting", _InvDoc._id);
+        h.full_alert_user(_Project.user, `Вы приняли инвестицию`, "pushMoneyOfInvesting", _InvDoc._id);
     } catch (e) {}
 
     callback();
