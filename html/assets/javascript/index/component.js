@@ -2181,7 +2181,7 @@
                     </div>
                     <div class="settingBlock" style="margin-bottom: 65px">
                         <div class="version2_default_bkg row_default"></div>
-                        <div class="settingBlock_header">
+                        <div class="settingBlock_header settingBlock_header_rowFlex">
                             <div class="invester_status_projects_status_first">
                                 <div class="invester_status_projects_status_first_line">
                                     <span>Количество заявок</span>
