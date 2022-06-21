@@ -1595,7 +1595,9 @@ async function commissions_settings(socket, data, callback)
 
 async function obligationsProjectData(socket, data, callback)
 {
-    var AllInvs = await InvDoc.find({projectId: data});
+    var AllInvs         = await InvDoc.find({projectId: data, status: "accept", applicationRequest: false});
+    var allInvByCheack  = await InvDoc.find({projectId: data});
+    
     var _data   = {
         project: await Project.findOne({_id: data}),
         Invs: [],
@@ -1603,8 +1605,22 @@ async function obligationsProjectData(socket, data, callback)
 
     for(var Inv of AllInvs)
     {
+        var initNuberProject        = 0;
+        var initNumberProjectCheack = 1;
+
+        for(allInvByCheackStat of allInvByCheack)
+        {
+            if(allInvByCheackStat._id.toString() == Inv._id.toString())
+            {
+                initNuberProject = initNumberProjectCheack;
+            }
+
+            initNumberProjectCheack++;
+        }
+
         var _dataBLock = 
         {
+            initNuberProject: initNuberProject,
             Inv: Inv,
             commission: await commission.findOne({invId: Inv._id}),
         }
