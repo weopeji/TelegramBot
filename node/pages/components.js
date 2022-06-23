@@ -99,6 +99,8 @@ var action_linker =
 
     // teletube
     "teletube_add": teletube_add,
+    "teletube_get": teletube_get,
+
 
     
     //test
@@ -3952,4 +3954,9 @@ async function teletube_add(socket, data, callback)
     });
 
     callback();
-}
+};
+
+async function teletube_get(socket, data, callback)
+{
+    callback(await teletube_video.find({}));
+};
