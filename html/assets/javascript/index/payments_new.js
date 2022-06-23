@@ -34,7 +34,7 @@
                     <div class="settingBlock_header">
                         <div class="settingBlock_header_line">
                             <span>№</span>
-                            <span>Сумма</span>
+                            <span>Тело инвестиции</span>
                             <span>Процент</span>
                             <span>Выплачено</span>
                             <span>№ Договора</span>
