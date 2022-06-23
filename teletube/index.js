@@ -31,6 +31,11 @@
                             <source src="${videDataBlock.file}">
                         </video>
                     </div>
+                    <div class="index_page_block_info">
+                        <div class="index_page_block_info_header">
+                            <span>${videDataBlock.caption}</span>
+                        </div>
+                    </div>
                 </div>
             `);
 
