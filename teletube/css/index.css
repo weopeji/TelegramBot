@@ -3,4 +3,34 @@ html, body {
   margin: 0;
   background-color: #191D30;
 }
+
+.index_page {
+  width: 100%;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.index_page_block {
+  width: 100%;
+}
+
+.index_page_block_video {
+  width: 100%;
+}
+
+.index_page_block_video video {
+  width: 100%;
+}
+
+.index_page_block_info {
+  margin-top: 20px;
+  color: white;
+}
 /*# sourceMappingURL=index.css.map */
