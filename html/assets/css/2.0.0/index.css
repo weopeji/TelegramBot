@@ -1614,6 +1614,7 @@ img.preloader_row_img {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  height: 110px;
 }
 
 .version2_infoBlock_twoBlockCheack .settingBlock {
