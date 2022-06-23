@@ -44,24 +44,25 @@ module.exports = {
 
 function privateInit(initPlagins) 
 {
-    Project     = initPlagins.Project;
-    User        = initPlagins.User;
-    fs          = initPlagins.fs;
-    wrench      = initPlagins.wrench;
-    path        = initPlagins.path;
-    bot         = initPlagins.bot;
-    h           = initPlagins.helper_functions;
-    InvDoc      = initPlagins.InvDoc;
-    MsgDB       = initPlagins.MsgDB;
-    config      = initPlagins.config;
-    PaysAttract = initPlagins.PaysAttract;
-    bPays       = initPlagins.bPays;
-    Payments    = initPlagins.Payments;
-    bPaysAccept = initPlagins.bPaysAccept;
-    R_F         = initPlagins.R_F;
-    project_key = initPlagins.project_key;
-    commission  = initPlagins.commission;
-    authToken   = initPlagins.authToken;
+    Project         = initPlagins.Project;
+    User            = initPlagins.User;
+    fs              = initPlagins.fs;
+    wrench          = initPlagins.wrench;
+    path            = initPlagins.path;
+    bot             = initPlagins.bot;
+    h               = initPlagins.helper_functions;
+    InvDoc          = initPlagins.InvDoc;
+    MsgDB           = initPlagins.MsgDB;
+    config          = initPlagins.config;
+    PaysAttract     = initPlagins.PaysAttract;
+    bPays           = initPlagins.bPays;
+    Payments        = initPlagins.Payments;
+    bPaysAccept     = initPlagins.bPaysAccept;
+    R_F             = initPlagins.R_F;
+    project_key     = initPlagins.project_key;
+    commission      = initPlagins.commission;
+    authToken       = initPlagins.authToken;
+    teletube_video  = initPlagins.teletube_video;
 }
 
 var privat_index_page = function(socket,data,callback) {
@@ -2852,6 +2853,7 @@ async function acceptInvestor(socket,data,callback)
 async function getUserForId(socket,data,callback) 
 {
     var _User       = await User.findOne({_id: data});
+
     if(_User)
     {
         var needUser    = {
@@ -3945,6 +3947,9 @@ async function getСorrection(socket,data,callback) {
 
 async function teletube_add(socket, data, callback)
 {
-    console.log("ok");
+    await teletube_video.create({
+        data: data,
+    });
+
     callback();
 }

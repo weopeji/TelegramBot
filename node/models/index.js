@@ -11,3 +11,4 @@ require('./project_key');
 require('./commission');
 require('./authToken');
 require('./itemOfSite');
+require('./teletube_video');

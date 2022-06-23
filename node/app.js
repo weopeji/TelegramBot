@@ -37,6 +37,7 @@ const project_key                   = mongoose.model('project_key');
 const commission                    = mongoose.model('commission');
 const authToken                     = mongoose.model('authToken');
 const itemOfSite                    = mongoose.model('itemOfSite');
+const teletube_video                = mongoose.model('teletube_video');
 
 var bot                             = null;
 var helper_functions                = null;
@@ -186,6 +187,7 @@ var load_helpers = () =>
             project_key: project_key,
             commission: commission,
             authToken: authToken,
+            teletube_video: teletube_video,
         });
     };
 }
