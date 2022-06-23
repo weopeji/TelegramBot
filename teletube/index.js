@@ -32,6 +32,12 @@
                         </video>
                     </div>
                     <div class="index_page_block_info">
+                        <div class="index_page_block_info_userBlock">
+                            <div class="index_page_block_info_userBlock_Img">
+                                <img src="${videDataBlock.photoProfile}" alt="">
+                            </div>
+                            <span>${videDataBlock.userName}</span>
+                        </div>
                         <div class="index_page_block_info_header">
                             <span>${videDataBlock.caption}</span>
                         </div>

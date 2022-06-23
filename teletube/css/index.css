@@ -2,6 +2,7 @@ html, body {
   padding: 0;
   margin: 0;
   background-color: #191D30;
+  font-family: sans-serif;
 }
 
 .index_page {
@@ -30,7 +31,44 @@ html, body {
 }
 
 .index_page_block_info {
-  margin-top: 20px;
   color: white;
+  width: 95%;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.index_page_block_info_userBlock {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.index_page_block_info_userBlock_Img {
+  width: 50px;
+  height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 10px;
+}
+
+.index_page_block_info_userBlock_Img img {
+  width: 110%;
+}
+
+.index_page_block_info_header {
+  margin-top: 10px;
 }
 /*# sourceMappingURL=index.css.map */
