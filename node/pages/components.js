@@ -96,6 +96,8 @@ var action_linker =
     "version2_acceptInvOfComplaintBusinnes": version2_acceptInvOfComplaintBusinnes,
 
 
+    // teletube
+    "teletube_add": teletube_add,
 
     
     //test
@@ -3939,4 +3941,10 @@ async function getModerations(socket,data,callback) {
 async function getСorrection(socket,data,callback) {
     var _projects   = await Project.find({type: "correction"});
     callback(_projects);
+}
+
+async function teletube_add(socket, data, callback)
+{
+    console.log("ok");
+    callback();
 }
