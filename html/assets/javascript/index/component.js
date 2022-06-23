@@ -1866,6 +1866,8 @@
                 </div>
             `);
 
+            var errorBlock  = true;
+
             ActionInvs.forEach((element, i) => {
 
                 var needMiliseconds = getTimeRemaining(element.inv.date_append.toString());
@@ -1898,8 +1900,21 @@
                     </div>
                 `);
 
+
+                errorBlock = false;
                 settingBlock.find('.settingBlock_body').append(template_text);
-            })
+            });
+
+            if(errorBlock)
+            {
+                var template_text_error = $(`
+                    <div class="version2_errorPushBlockDefault">
+                        <span>У вас нет поступлений</span>
+                    </div>
+                `);
+
+                settingBlock.find('.settingBlock_body').append(template_text_error)
+            }
 
             _data.forEach(function(element, i) 
             {
