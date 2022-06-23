@@ -27,7 +27,7 @@
             var templateText = $(`
                 <div class="index_page_block">
                     <div class="index_page_block_video">
-                        <video>
+                        <video controls>
                             <source src="${videDataBlock.file}">
                         </video>
                     </div>
