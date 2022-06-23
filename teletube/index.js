@@ -36,10 +36,10 @@
                             <div class="index_page_block_info_userBlock_Img">
                                 <img src="${videDataBlock.photoProfile}" alt="">
                             </div>
-                            <span>${videDataBlock.userName}</span>
-                        </div>
-                        <div class="index_page_block_info_header">
-                            <span>${videDataBlock.caption}</span>
+                            <div class="index_page_block_info_userBlock_text">
+                                <span>${videDataBlock.userName}</span>
+                                <span>${videDataBlock.caption}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
