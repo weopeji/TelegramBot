@@ -22,11 +22,13 @@
 
         for(var videData of _data)
         {
+            var videDataBlock = videData.data;
+
             var templateText = $(`
                 <div class="index_page_block">
                     <div class="index_page_block_video">
                         <video>
-                            <source src="${videData.file}">
+                            <source src="${videDataBlock.file}">
                         </video>
                     </div>
                 </div>
