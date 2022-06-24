@@ -2338,19 +2338,23 @@
                     }
                 }
     
-                if(_User.alerts)
+                if(_User.alerts_main)
                 {
-                    _User.alerts.forEach(function(alert) {
-                        if(alert.type == "Attracted_by_me")
-                        {
-                            $('.index_page_menu_block_line[data="Attracted_by_me"]').addClass('alerts');
-                        }
-                    })
-                };
-    
-                if(_User.alert_msgs)
-                {
-                    $('.index_page_menu_block_line[data="chats"] .index_page_menu_block_line_alert i').css('display', 'flex');
+                    var Action_wait_projects = 0;
+
+                    _User.alerts_main.forEach(function(alert) 
+                    {
+                        if(alert.type == "pay_of_invNotFullPay") Action_wait_projects = Action_wait_projects + 1;
+                    });
+
+                    if(Action_wait_projects != 0)
+                    {
+                        $('.index_page_menu_block_line[data="wait_projects"]').append(`
+                            <div class="index_page_menu_block_line_alertMini">
+                                <span>${Action_wait_projects}</span>
+                            </div>
+                        `);
+                    }
                 };
             };
 
