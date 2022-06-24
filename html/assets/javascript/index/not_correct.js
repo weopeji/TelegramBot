@@ -156,7 +156,7 @@
                             </div>
                             ${typePush[element.Inv.not_correct.dataType]}
                         </span>
-                        <span style="color: red;>
+                        <span style="color: red;">
                             <div class="version2_settingBlock_mobile_line" style="color: white;>
                                 <span>Коментарий</span>
                             </div>
