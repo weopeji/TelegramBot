@@ -2232,6 +2232,7 @@
             if(_User != "error")
             {
                 var _ImgPath    = _User.Path_im;
+                var _Alerts     = _User.alerts;
                 _User           = _User._User;
     
                 console.log(_User);
@@ -2340,21 +2341,33 @@
     
                 if(_User.alerts_main)
                 {
-                    var Action_wait_projects = 0;
+                    // var Action_wait_projects = 0;
 
-                    _User.alerts_main.forEach(function(alert) 
-                    {
-                        if(alert.type == "pay_of_invNotFullPay") Action_wait_projects = Action_wait_projects + 1;
-                    });
+                    // _User.alerts_main.forEach(function(alert) 
+                    // {
+                    //     if(alert.type == "pay_of_invNotFullPay") Action_wait_projects = Action_wait_projects + 1;
+                    // });
 
-                    if(Action_wait_projects != 0)
+                    // if(Action_wait_projects != 0)
+                    // {
+                    //     $('.index_page_menu_block_line[data="wait_projects"]').append(`
+                    //         <div class="index_page_menu_block_line_alertMini">
+                    //             <span>${Action_wait_projects}</span>
+                    //         </div>
+                    //     `);
+                    // }
+                };
+
+                if(typeof _Alerts != "undefined")
+                {
+                    if(typeof _Alerts.wait_projects != "undefined" && _Alerts.wait_projects > 0)
                     {
                         $('.index_page_menu_block_line[data="wait_projects"]').append(`
                             <div class="index_page_menu_block_line_alertMini">
                                 <span>${Action_wait_projects}</span>
                             </div>
                         `);
-                    }
+                    };
                 };
             };
 

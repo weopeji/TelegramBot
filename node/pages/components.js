@@ -2854,12 +2854,17 @@ async function acceptInvestor(socket,data,callback)
 
 async function getUserForId(socket,data,callback) 
 {
-    var _User       = await User.findOne({_id: data});
+    var _User           = await User.findOne({_id: data});
+    var _InvsByWait     = await InvDoc.find({invester: _User.user, applicationRequest: true, status: "accept"});
 
     if(_User)
     {
-        var needUser    = {
+        var needUser    = 
+        {
             _User: _User,
+            alerts: {
+                wait_projects: _InvsByWait.length,
+            }
         };
         var _idPhoto    = await bot.getUserProfilePhotos(_User.user);
         if(_idPhoto.total_count > 0)
