@@ -1668,6 +1668,8 @@ img.preloader_row_img {
 
 .index_page_menu_block_line_alertMini span {
   margin: 0;
+  position: relative;
+  right: .5px;
 }
 
 .version2_settingBlock_header_allertMini {

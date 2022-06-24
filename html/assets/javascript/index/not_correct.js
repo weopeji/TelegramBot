@@ -47,6 +47,15 @@
                 </div>
             `);
 
+            if(_data.length > 0)
+            {
+                settingBlock.find(".version2_settingBlock_header").append(`
+                    <div class="version2_settingBlock_header_allertMini">
+                        
+                    </div>
+                `);
+            }
+
             var errorBlock  = true;
 
             _data.forEach(function(element, i) 
