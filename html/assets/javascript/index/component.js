@@ -2391,6 +2391,15 @@
                             </div>
                         `);
                     };
+
+                    if(typeof _Alerts.activ_projects != "undefined" && _Alerts.activ_projects > 0)
+                    {
+                        $('.index_page_menu_block_line[data="activ_projects"]').append(`
+                            <div class="index_page_menu_block_line_alertMini">
+                                <span>${_Alerts.activ_projects}</span>
+                            </div>
+                        `);
+                    };
                 };
             };
 
