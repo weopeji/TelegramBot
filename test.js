@@ -193,3 +193,11 @@ else
 {
     window.open(`/projects/${_project._id}/${_GET("InvId")}_investment_2.${data.data.FilePts}`, '_blank');
 }
+
+
+
+settingBlock.find(".version2_settingBlock_header").append(`
+    <div class="version2_settingBlock_header_allertMini">
+        
+    </div>
+`);
