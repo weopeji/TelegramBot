@@ -3324,6 +3324,15 @@
                 </div>
             `);
 
+            if(typeof ActionWaitInvs != "undefined" && ActionWaitInvs.length > 0)
+            {
+                settingBlock.find(".version2_settingBlock_header").append(`
+                    <div class="version2_settingBlock_header_allertMini">
+                        
+                    </div>
+                `);
+            }
+
             var i           = 0;
             var errorBlock  = true;
 
