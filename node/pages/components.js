@@ -2854,8 +2854,17 @@ async function acceptInvestor(socket,data,callback)
 
 async function getUserForId(socket,data,callback) 
 {
-    var _User           = await User.findOne({_id: data});
-    var _InvsByWait     = await InvDoc.find({invester: _User.user, applicationRequest: true, status: "accept"});
+    var _User               = await User.findOne({_id: data});
+    var _InvsByWait         = await InvDoc.find({invester: _User.user, applicationRequest: true, status: "accept"});
+    var _AlertinvsByWait    = [];
+
+    for(var _Inv of _InvsByWait)
+    {
+        if(typeof _Inv.data.pts_2 == "undefined")
+        {
+            _AlertinvsByWait.push(_Inv);
+        }
+    }
 
     if(_User)
     {
@@ -2863,7 +2872,7 @@ async function getUserForId(socket,data,callback)
         {
             _User: _User,
             alerts: {
-                wait_projects: _InvsByWait.length,
+                wait_projects: _AlertinvsByWait.length,
             }
         };
         var _idPhoto    = await bot.getUserProfilePhotos(_User.user);
