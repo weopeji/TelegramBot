@@ -223,14 +223,7 @@ async function _MainMenu(msg, close)
     
                     if(mainAlertButton != 0)
                     {
-                        if(mainAlertButton == 1)
-                        {
-                            myInvestingText = "💰 Мои инвестиции ♦️";
-                        }
-                        else
-                        {
-                            myInvestingText = `💰 Мои инвестиции ♦️ ${mainAlertButton}`;
-                        };
+                        myInvestingText = `💰 Мои инвестиции ♦️ ${mainAlertButton}`;
                     };
                 }
             };
