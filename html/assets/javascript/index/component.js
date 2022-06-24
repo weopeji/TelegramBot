@@ -1393,6 +1393,11 @@
                 data: global.allData.User._id,
             });
 
+            await callApi({
+                methodName: "version2_activ_projects_pageRender",
+                data: global.allData.User._id,
+            });
+
             if(allData.User.type == "business")
             {
                 var _data = await callApi({

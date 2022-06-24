@@ -95,6 +95,7 @@ var action_linker =
     "version2_getInvDocByRedactingId": version2_getInvDocByRedactingId,
     "version2_investerData_invdoc_notMoney_redacting": version2_investerData_invdoc_notMoney_redacting,
     "version2_acceptInvOfComplaintBusinnes": version2_acceptInvOfComplaintBusinnes,
+    "version2_activ_projects_pageRender": version2_activ_projects_pageRender,
 
 
     // teletube
@@ -241,6 +242,19 @@ var action_linker =
     "getProjectForInvesterPageByIdInvDoc": getProjectForInvesterPageByIdInvDoc,
     "accept_confirmationData": accept_confirmationData,
 };
+
+async function version2_activ_projects_pageRender(socket, data, callback)
+{
+    try {
+        var _User               = await User.findOne({_id: data});
+        var _AlertsByUser       = _User.alerts_main;
+        var newAlertsArray      = _AlertsByUser.filter(function(f) { return f.type !== 'pay_of_invNotFullPay_acceptBusiness' });
+
+        await User.findOneAndUpdate({_id: _User._id}, {alerts_main: newAlertsArray});
+    } catch (e) {}
+
+    callback();
+}
 
 async function version2_acceptInvOfComplaintBusinnes(socket, data, callback)
 {
