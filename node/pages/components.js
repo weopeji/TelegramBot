@@ -369,7 +369,7 @@ async function version2_activ_projects_accept_notFullPayNull_inv(socket, data, c
             }
         };
 
-        await h.full_alert_user(_InvDoc.invester, `Бизнес подтвердил вашу инвестицию`, "pay_of_invNotFullPay_acceptBusiness");
+        await h.full_alert_user(_InvDoc.invester, `Бизнес подтвердил вашу инвестицию`, "pay_of_invNotFullPay_acceptBusiness", _InvDoc._id);
     } 
     catch(e) {}
 
