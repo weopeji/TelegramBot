@@ -248,7 +248,8 @@ async function version2_activ_projects_pageRender(socket, data, callback)
     try {
         var _User               = await User.findOne({_id: data});
         var _AlertsByUser       = _User.alerts_main;
-        var newAlertsArray      = _AlertsByUser.filter(function(f) { return f.type !== 'pay_of_invNotFullPay_acceptBusiness' });
+        var newAlertsArray1     = _AlertsByUser.filter(function(f) { return f.type !== 'pay_of_invNotFullPay_acceptBusiness' });
+        var newAlertsArray      = newAlertsArray1.filter(function(f) { return f.type !== 'accept_business_investring' });
 
         await User.findOneAndUpdate({_id: _User._id}, {alerts_main: newAlertsArray});
     } catch (e) {}
