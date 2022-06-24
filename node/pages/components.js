@@ -2870,6 +2870,7 @@ async function getUserForId(socket,data,callback)
 {
     var _User               = await User.findOne({_id: data});
     var _InvsByWait         = await InvDoc.find({invester: _User.user, applicationRequest: true, status: "accept"});
+    var _InvsByNotCorrect   = await InvDoc.find({invester: _User.user, status: "not_correct"});
     var _AlertinvsByWait    = [];
 
     for(var _Inv of _InvsByWait)
@@ -2887,6 +2888,7 @@ async function getUserForId(socket,data,callback)
             _User: _User,
             alerts: {
                 wait_projects: _AlertinvsByWait.length,
+                not_correct: _InvsByNotCorrect.length,
             }
         };
         var _idPhoto    = await bot.getUserProfilePhotos(_User.user);

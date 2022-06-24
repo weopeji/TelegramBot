@@ -2373,6 +2373,15 @@
                             </div>
                         `);
                     };
+
+                    if(typeof _Alerts.not_correct != "undefined" && _Alerts.not_correct > 0)
+                    {
+                        $('.index_page_menu_block_line[data="not_correct"]').append(`
+                            <div class="index_page_menu_block_line_alertMini">
+                                <span>${_Alerts.not_correct}</span>
+                            </div>
+                        `);
+                    };
                 };
             };
 
