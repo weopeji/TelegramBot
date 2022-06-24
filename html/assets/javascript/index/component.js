@@ -1486,6 +1486,28 @@
                     </div>
                 `);
 
+                var AlertPush = false;
+
+                if(typeof window.allData.User.alerts_main != 'undefined')
+                {
+                    for(var alertBlock of window.allData.User.alerts_main)
+                    {
+                        if(alertBlock.type == "accept_business_investring")
+                        {
+                            AlertPush = true;
+                        }
+                    }
+                }
+                
+                if(AlertPush)
+                {
+                    settingBlock.find(".version2_settingBlock_header").append(`
+                        <div class="version2_settingBlock_header_allertMini">
+                            
+                        </div>
+                    `);
+                }
+
                 var i                   = 0;
                 var allMoneyInvesting   = 0;
                 var ActionAllMoney      = 0;
