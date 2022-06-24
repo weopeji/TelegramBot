@@ -495,10 +495,24 @@ app.post('/file_Action.io/files', (req, res) => {
                     },
                     "activ_projects_NotFullPayNullPts2": async function()
                     {
-                        var _InvDoc         = await InvDoc.findOneAndUpdate({_id: FullData.InvDocId}, {date_append: new Date().getTime().toString()});
-                        var PathToFile      = `/var/www/projects/${_InvDoc.projectId}/${_InvDoc._id}_investment_2.${FilePts}`;
-                        var _InvDocData     = _InvDoc.data;
-                        _InvDocData.pts_2   = FilePts;
+                        var _InvDoc             = await InvDoc.findOneAndUpdate({_id: FullData.InvDocId}, {date_append: new Date().getTime().toString()});
+                        var _UserByInvDoc       = await User.findOne({user: _InvDoc.invester});
+                        var _AlertsByUser       = _UserByInvDoc.alerts_main;
+                        var initNumberByAlert   = 0;
+                        var PathToFile          = `/var/www/projects/${_InvDoc.projectId}/${_InvDoc._id}_investment_2.${FilePts}`;
+                        var _InvDocData         = _InvDoc.data;
+                        _InvDocData.pts_2       = FilePts;
+
+                        for(var _key in _AlertsByUser)
+                        {
+                            if(_AlertsByUser[_key].type == "pay_of_invNotFullPay")
+                            {
+                                _AlertsByUser.slice(initNumberByAlert, 1);
+                                initNumberByAlert--;
+                            };
+
+                            initNumberByAlert++;
+                        }
 
                         await InvDoc.findOneAndUpdate({_id: _InvDoc._id}, {
                             data: _InvDocData,

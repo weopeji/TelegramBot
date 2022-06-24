@@ -1651,7 +1651,7 @@ img.preloader_row_img {
   border-radius: 50%;
   position: absolute;
   right: 11px;
-  top: calc(50% - 12px);
+  top: calc(50% - 11px);
   background: radial-gradient(160% 160% at 0% 0%, #FF0099 0%, #FE40D4 100%);
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1663,7 +1663,7 @@ img.preloader_row_img {
       -ms-flex-align: center;
           align-items: center;
   font-size: 14px;
-  line-height: 0.6;
+  line-height: 0.4;
 }
 
 .index_page_menu_block_line_alertMini span {
