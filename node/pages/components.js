@@ -759,6 +759,8 @@ async function not_correct(socket, data, callback)
     var _User               = await User.findOne({_id: data});
     var allNotCorrectInvs   = await InvDoc.find({status: "not_correct", invester: _User.user});
     var allData             = [];
+    var _AlertsByUser       = _User.alerts_main;
+    var newAlertsArray      = _AlertsByUser.filter(function(f) { return f.type !== 'removePayInvestor' });
 
     for(var allNotCorrectInv of allNotCorrectInvs)
     {
@@ -767,6 +769,8 @@ async function not_correct(socket, data, callback)
             Inv: allNotCorrectInv,
         });
     };
+
+    await User.findOneAndUpdate({_id: _User._id}, {alerts_main: newAlertsArray});
 
     callback(allData);
 }
