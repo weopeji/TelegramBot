@@ -209,80 +209,55 @@ async function _MainMenu(msg, close)
             var rekvexitionText     = "💳 Реквезиты";
             var rekomendationText   = "👨‍💼 Рекомендовать";
 
-            if(_User.alerts) {
+            if(_User.alerts) 
+            {
+                var mainAlertButton = 0;
+
                 _User.alerts.forEach(function(el) {
                     if(el.type == "Attracted_by_me") rekomendationText = "👨‍💼 Рекомендовать ♦️";
-                    if(el.type == "acceptInvestor") myInvestingText = "💰 Мои инвестиции ♦️";
+                    if(el.type == "acceptInvestor") mainAlertButton = mainAlertButton + 1;
+                    if(el.typr == "pay_of_invNotFullPay") mainAlertButton = mainAlertButton + 1;
                 });
-            }
 
-            if(_User.putProject) 
-            {
-                var needProject = await Project.findOne({_id: _User.putProject});
-                var needInv = await InvDoc.findOne({projectId: _User.putProject, invester: msg.from.id});
-
-                var _idProject = needProject._id;
-
-                var html = `Выбран проект: ${_User.putProject}\n[Профиль компании](${h.getURL()}html/project/profil/#${needProject._id})\n[Презентация](${h.getURL()}/projects/${needProject._id}/${needProject.data["file+7"]})\n[Видео презентация](${h.getURL()}/projects/${needProject._id}/${needProject.data["file+8"]})\n\n`;
-                const stream    = fs.createReadStream(`../projects/${_User.putProject}/logo.png`);
-            
-                var fat = await bot.sendPhoto(msg.from.id, stream, {
-                    "caption": html,
-                    "parse_mode": "MarkdownV2",
-                    "reply_markup": {
-                        "resize_keyboard": true,
-                        "keyboard": [['Инвестеционные предложения'], [myInvestingText, rekomendationText], ["💁🏻 Написать в Поддержку","🔁 Сменить роль"]],
+                if(mainAlertButton != 0)
+                {
+                    if(mainAlertButton == 1)
+                    {
+                        myInvestingText = "💰 Мои инвестиции ♦️";
                     }
-                });
-                _array.push(fat.message_id);
+                    else
+                    {
+                        myInvestingText = `💰 Мои инвестиции ♦️ ${mainAlertButton}`;
+                    };
+                };
+            };
 
-                if(needInv) {
-                    var html = `<strong>Вы инвестировали в проект!</strong>\n\nВы можете написать бизнесу по ссылке ниже`;
-                    var fat = await bot.sendMessage(msg.chat.id, html, {
-                        parse_mode: "HTML",
-                        reply_markup: {
-                            "inline_keyboard": [
-                                [
-                                    {
-                                        text: 'Написать бизнесу',
-                                        url: `${h.getURL()}?user=${_User.id}&page=chats&id=${_User.putProject}`,
-                                    },
-                                ]
-                            ],
-                        }
-                    });
-                    _array.push(fat.message_id);
+            var html = `Вы <strong>Инвестор</strong>`;
+            var fat = await bot.sendMessage(msg.chat.id, html, {
+                parse_mode: "HTML",
+                reply_markup: {
+                    "resize_keyboard": true, 
+                    "keyboard": [[myInvestingText, "👨‍💼 Рекомендовать"], ["💁🏻 Написать в Поддержку","🔁 Сменить роль"]],
+                    "one_time_keyboard": true,
                 }
-        
-            } else {
-                var html = `Вы <strong>Инвестор</strong>`;
-                var fat = await bot.sendMessage(msg.chat.id, html, {
-                    parse_mode: "HTML",
-                    reply_markup: {
-                        "resize_keyboard": true, 
-                        "keyboard": [["💰 Мои инвестиции", "👨‍💼 Рекомендовать"], ["💁🏻 Написать в Поддержку","🔁 Сменить роль"]],
-                        "one_time_keyboard": true,
-                    }
-                });
-                _array.push(fat.message_id);
-    
-                var html = `<strong>${_User.first_name}</strong>\nВы можете ознакомится с предложениями на данной платформе.`;
-                var fat = await bot.sendMessage(msg.chat.id, html, {
-                    parse_mode: "HTML",
-                    reply_markup: {
-                        "inline_keyboard": [
-                            [
-                                {
-                                    text: "ОЗНАКОМИТСЯ С ПРЕДЛОЖЕНИЯМИ",
-                                    url: "https://t.me/invester_official",
-                                }
-                            ]
-                        ],
-                    }
-                });
-                _array.push(fat.message_id);
-            }
+            });
+            _array.push(fat.message_id);
 
+            var html = `<strong>${_User.first_name}</strong>\nВы можете ознакомится с предложениями на данной платформе.`;
+            var fat = await bot.sendMessage(msg.chat.id, html, {
+                parse_mode: "HTML",
+                reply_markup: {
+                    "inline_keyboard": [
+                        [
+                            {
+                                text: "ОЗНАКОМИТСЯ С ПРЕДЛОЖЕНИЯМИ",
+                                url: "https://t.me/invester_official",
+                            }
+                        ]
+                    ],
+                }
+            });
+            _array.push(fat.message_id);
             await h.DMA(msg, _array);
         },
         business: async function(msg) 
