@@ -220,6 +220,7 @@ async function _MainMenu(msg, close)
                         if(el.type == "pay_of_invNotFullPay_acceptBusiness") mainAlertButton = mainAlertButton + 1;
                         if(el.type == "removePayInvestor") mainAlertButton = mainAlertButton + 1;
                         if(el.type == "new_msg") mainAlertButton = mainAlertButton + 1;
+                        if(el.type == "accept_business_investring") mainAlertButton = mainAlertButton + 1;
                     });
     
                     if(mainAlertButton != 0)
