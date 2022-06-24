@@ -2382,6 +2382,15 @@
                             </div>
                         `);
                     };
+
+                    if(typeof _Alerts.chats != "undefined" && _Alerts.chats > 0)
+                    {
+                        $('.index_page_menu_block_line[data="chats"]').append(`
+                            <div class="index_page_menu_block_line_alertMini">
+                                <span>${_Alerts.chats}</span>
+                            </div>
+                        `);
+                    };
                 };
             };
 
