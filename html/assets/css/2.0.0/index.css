@@ -1645,6 +1645,27 @@ img.preloader_row_img {
   width: calc(65% - 20px) !important;
 }
 
+.index_page_menu_block_line_alertMini {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  position: absolute;
+  right: 11px;
+  top: calc(50% - 12px);
+  background: radial-gradient(160% 160% at 0% 0%, #FF0099 0%, #FE40D4 100%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 14px;
+  line-height: 0.6;
+}
+
 @media (max-width: 1350px) {
   .chat_block_chat_header {
     width: 100%;
