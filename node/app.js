@@ -514,6 +514,8 @@ app.post('/file_Action.io/files', (req, res) => {
                             initNumberByAlert++;
                         }
 
+                        await User.findOneAndUpdate({user: _InvDoc.invester}, {alerts_main: _AlertsByUser});
+
                         await InvDoc.findOneAndUpdate({_id: _InvDoc._id}, {
                             data: _InvDocData,
                         });
