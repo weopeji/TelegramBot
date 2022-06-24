@@ -2364,7 +2364,7 @@
                     {
                         $('.index_page_menu_block_line[data="wait_projects"]').append(`
                             <div class="index_page_menu_block_line_alertMini">
-                                <span>${Action_wait_projects}</span>
+                                <span>${_Alerts.wait_projects}</span>
                             </div>
                         `);
                     };
