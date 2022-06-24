@@ -957,8 +957,12 @@ async function getUserByProjectOfId(socket, data, callback)
 
 async function getChatsOfId(socket, data, callback)
 {
-    var _User       = await User.findOne({_id: data.user});
-    var _FindBlock  = await InvDoc.findOne({_id: data.id});
+    var _User               = await User.findOne({_id: data.user});
+    var _FindBlock          = await InvDoc.findOne({_id: data.id});
+    var _AlertsByUser       = _UserByInvDoc.alerts_main;
+    var newAlertsArray      = _AlertsByUser.filter(function(f) { return f.type !== 'new_msg' });
+
+    await User.findOneAndUpdate({_id: data.user}, {alerts_main: newAlertsArray});
 
     if(!_FindBlock)
     {
