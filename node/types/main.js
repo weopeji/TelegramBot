@@ -209,25 +209,28 @@ async function _MainMenu(msg, close)
             var rekvexitionText     = "💳 Реквезиты";
             var rekomendationText   = "👨‍💼 Рекомендовать";
 
-            if(_User.alerts_main) 
+            if(typeof _User.alerts_main != "undefined") 
             {
-                var mainAlertButton = 0;
-
-                _User.alerts_main.forEach(function(el) {
-                    if(el.typr == "pay_of_invNotFullPay") mainAlertButton = mainAlertButton + 1;
-                });
-
-                if(mainAlertButton != 0)
+                if(_User.alerts_main.length > 0)
                 {
-                    if(mainAlertButton == 1)
+                    var mainAlertButton = 0;
+
+                    _User.alerts_main.forEach(function(el) {
+                        if(el.type == "pay_of_invNotFullPay") mainAlertButton = mainAlertButton + 1;
+                    });
+    
+                    if(mainAlertButton != 0)
                     {
-                        myInvestingText = "💰 Мои инвестиции ♦️";
-                    }
-                    else
-                    {
-                        myInvestingText = `💰 Мои инвестиции ♦️ ${mainAlertButton}`;
+                        if(mainAlertButton == 1)
+                        {
+                            myInvestingText = "💰 Мои инвестиции ♦️";
+                        }
+                        else
+                        {
+                            myInvestingText = `💰 Мои инвестиции ♦️ ${mainAlertButton}`;
+                        };
                     };
-                };
+                }
             };
 
             var html = `Вы <strong>Инвестор</strong>`;
