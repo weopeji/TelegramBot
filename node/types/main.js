@@ -241,7 +241,7 @@ async function _MainMenu(msg, close)
                     "one_time_keyboard": true,
                 }
             });
-            _array.push(fat.message_id);
+            _array.push(fat.message_id); 
 
             var html = `<strong>${_User.first_name}</strong>\nВы можете ознакомится с предложениями на данной платформе.`;
             var fat = await bot.sendMessage(msg.chat.id, html, {
