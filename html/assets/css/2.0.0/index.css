@@ -1666,6 +1666,10 @@ img.preloader_row_img {
   line-height: 0.6;
 }
 
+.index_page_menu_block_line_alertMini span {
+  margin: 0;
+}
+
 @media (max-width: 1350px) {
   .chat_block_chat_header {
     width: 100%;
