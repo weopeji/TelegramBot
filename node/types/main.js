@@ -217,6 +217,7 @@ async function _MainMenu(msg, close)
 
                     _User.alerts_main.forEach(function(el) {
                         if(el.type == "pay_of_invNotFullPay") mainAlertButton = mainAlertButton + 1;
+                        if(el.type == "pay_of_invNotFullPay_acceptBusiness") mainAlertButton = mainAlertButton + 1;
                     });
     
                     if(mainAlertButton != 0)
