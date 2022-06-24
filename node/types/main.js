@@ -209,13 +209,11 @@ async function _MainMenu(msg, close)
             var rekvexitionText     = "💳 Реквезиты";
             var rekomendationText   = "👨‍💼 Рекомендовать";
 
-            if(_User.alerts) 
+            if(_User.alerts_main) 
             {
                 var mainAlertButton = 0;
 
-                _User.alerts.forEach(function(el) {
-                    if(el.type == "Attracted_by_me") rekomendationText = "👨‍💼 Рекомендовать ♦️";
-                    if(el.type == "acceptInvestor") mainAlertButton = mainAlertButton + 1;
+                _User.alerts_main.forEach(function(el) {
                     if(el.typr == "pay_of_invNotFullPay") mainAlertButton = mainAlertButton + 1;
                 });
 
