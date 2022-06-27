@@ -98,6 +98,8 @@
                             {
                                 if($(this).attr('push'))
                                 {
+                                    $(this).attr('push', false);
+
                                     $('.arbitr_info_block_body .page_line').each( async function(i, element) {
                                         if(i > 0)
                                         {
