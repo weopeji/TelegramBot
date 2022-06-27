@@ -185,12 +185,6 @@ html, body {
   height: fit-content;
 }
 
-.index_page_profil {
-  height: 100vh;
-  overflow: hidden;
-  overflow-y: scroll;
-}
-
 .index_page_profil .page_line p,
 .index_page_profil .page_line span {
   color: white;
