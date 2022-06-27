@@ -94,7 +94,16 @@
 
                         if(i == 1)
                         {
-                            $('.arbitr_info_blockbutton').fadeIn().click( function() 
+                            var allBlacksFadeIn = [];
+
+                            $('.arbitr_info_block_body .page_line').each( async function(i, element) {
+                                if(i > 0)
+                                {
+                                    allBlacksFadeIn.push($(element));
+                                };
+                            });
+
+                            $('.arbitr_info_blockbutton').fadeIn().click( async function() 
                             {
                                 if($(this).attr('push'))
                                 {
@@ -102,12 +111,18 @@
                                     {
                                         $(this).attr('push', true);
 
-                                        $('.arbitr_info_block_body .page_line').each( async function(i, element) {
-                                            if(i > 0)
-                                            {
-                                                $(element).fadeIn();
-                                            };
-                                        });
+                                        // $('.arbitr_info_block_body .page_line').each( async function(i, element) {
+                                        //     if(i > 0)
+                                        //     {
+                                        //         $(element).fadeIn();
+                                        //     };
+                                        // });
+
+                                        for(var block of allBlacksFadeIn)
+                                        {
+                                            block.fadeIn();
+                                            await sleep(500);
+                                        }
                                     }
                                     else
                                     {
