@@ -70,20 +70,22 @@
                     {
                         var _text = $(`
                             <div class="page_line">
-                                <div class="page_line_block">
-                                    <span>${el.data}</span><br>
-                                    <span>${el.id}</span><br>
-                                </div>
-                                <div class="page_line_block">
-                                    <span>${el.judge}</span><br>
-                                    <span>${el.sity}</span><br>
-                                </div>
-                                <div class="page_line_block">
-                                    <span>${el.plaintiff}</span><br>
-                                    <span>${el.respondent}</span><br>
-                                </div>
-                                <div class="page_line_block">
-                                    <span><a href="${el.id_url}" target="_blank">Перейти</a></span>
+                                <div class="page_line_row">
+                                    <div class="page_line_block">
+                                        <span>${el.data}</span><br>
+                                        <span>${el.id}</span><br>
+                                    </div>
+                                    <div class="page_line_block">
+                                        <span>${el.judge}</span><br>
+                                        <span>${el.sity}</span><br>
+                                    </div>
+                                    <div class="page_line_block">
+                                        <span>${el.plaintiff}</span><br>
+                                        <span>${el.respondent}</span><br>
+                                    </div>
+                                    <div class="page_line_block">
+                                        <span><a href="${el.id_url}" target="_blank">Перейти</a></span>
+                                    </div>
                                 </div>
                             </div>
                         `);
