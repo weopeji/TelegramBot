@@ -277,6 +277,11 @@ html, body {
           justify-content: space-between;
 }
 
+.arbitr_info_block_header_row span {
+  font-weight: 600;
+  font-size: 20px;
+}
+
 @media (max-width: 1350px) {
   .index_page_profil {
     width: 95%;
