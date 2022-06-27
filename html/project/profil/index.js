@@ -108,6 +108,18 @@
                                         };
                                     });
                                 }
+                                else if ($(this).attr('push') == "false")
+                                {
+                                    $(this).attr('push', true);
+
+                                    $('.arbitr_info_block_body .page_line').each( async function(i, element) {
+                                        if(i > 0)
+                                        {
+                                            $(element).fadeIn();
+                                            await sleep(500)
+                                        };
+                                    });
+                                }
                                 else
                                 {
                                     $(this).attr('push', true);
