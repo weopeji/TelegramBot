@@ -381,3 +381,7 @@ function findOfArrayOn_id(arr, value) {
         if (arr[i]["_id"] == value)
             return arr[i].data;
 }
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
