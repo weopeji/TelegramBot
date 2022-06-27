@@ -94,7 +94,7 @@
 
                         if(i == 1)
                         {
-                            $('.arbitr_info_blockbutton').css('display', 'flex');
+                            $('.arbitr_info_blockbutton').fadeIn();
                         }
 
                         $('.arbitr_info_block_body').append(_text);
