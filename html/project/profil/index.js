@@ -119,41 +119,32 @@
                                 {
                                     $(this).attr('push', true);
 
-                                    // $('.arbitr_info_block_body .page_line').each( async function(i, element) {
-                                    //     if(i > 0)
-                                    //     {
-                                    //         $(element).fadeIn();
-                                    //     };
-                                    // });
-
                                     for(var block of allBlacksFadeIn)
                                     {
                                         block.fadeIn();
-                                        await sleep(500);
+                                        await sleep(200);
                                     }
                                 }
                                 else
                                 {
                                     $(this).attr('push', false);
 
-                                    $('.arbitr_info_block_body .page_line').each( async function(i, element) {
-                                        if(i > 0)
-                                        {
-                                            $(element).fadeOut();
-                                        };
-                                    });
+                                    for(var block of allBlacksFadeIn)
+                                    {
+                                        block.fadeOut();
+                                        await sleep(200);
+                                    }
                                 }
                             }
                             else
                             {
                                 $(this).attr('push', true);
 
-                                $('.arbitr_info_block_body .page_line').each( async function(i, element) {
-                                    if(i > 0)
-                                    {
-                                        $(element).fadeIn();
-                                    };
-                                });
+                                for(var block of allBlacksFadeIn)
+                                {
+                                    block.fadeIn();
+                                    await sleep(200);
+                                }
                             }
                         });
                     }
