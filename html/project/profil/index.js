@@ -122,7 +122,7 @@
                                     for(var block of allBlacksFadeIn)
                                     {
                                         block.fadeIn();
-                                        await sleep(200);
+                                        await sleep(50);
                                     }
                                 }
                                 else
@@ -132,7 +132,7 @@
                                     for(var block of allBlacksFadeIn)
                                     {
                                         block.fadeOut();
-                                        await sleep(200);
+                                        await sleep(50);
                                     }
                                 }
                             }
@@ -143,7 +143,7 @@
                                 for(var block of allBlacksFadeIn)
                                 {
                                     block.fadeIn();
-                                    await sleep(200);
+                                    await sleep(50);
                                 }
                             }
                         });
