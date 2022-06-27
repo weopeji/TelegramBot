@@ -86,7 +86,6 @@
                                     <span><a href="${el.id_url}" target="_blank">Перейти</a></span>
                                 </div>
                             </div>
-                            <div class="page_line_line"></div>
                         `);
 
                         $('.arbitr_info_block_body').append(_text);
