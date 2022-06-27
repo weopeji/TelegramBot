@@ -284,6 +284,11 @@ html, body {
 
 .arbitr_info_block_body .page_line {
   padding: 40px 0;
+  display: none;
+}
+
+.arbitr_info_block_body .page_line:first-child {
+  display: block;
 }
 
 @media (max-width: 1350px) {
