@@ -98,25 +98,28 @@
                             {
                                 if($(this).attr('push'))
                                 {
-                                    $(this).attr('push', false);
+                                    if ($(this).attr('push') == "false")
+                                    {
+                                        $(this).attr('push', true);
 
-                                    $('.arbitr_info_block_body .page_line').each( async function(i, element) {
-                                        if(i > 0)
-                                        {
-                                            $(element).fadeOut();
-                                        };
-                                    });
-                                }
-                                else if ($(this).attr('push') == "false")
-                                {
-                                    $(this).attr('push', true);
+                                        $('.arbitr_info_block_body .page_line').each( async function(i, element) {
+                                            if(i > 0)
+                                            {
+                                                $(element).fadeIn();
+                                            };
+                                        });
+                                    }
+                                    else
+                                    {
+                                        $(this).attr('push', false);
 
-                                    $('.arbitr_info_block_body .page_line').each( async function(i, element) {
-                                        if(i > 0)
-                                        {
-                                            $(element).fadeIn();
-                                        };
-                                    });
+                                        $('.arbitr_info_block_body .page_line').each( async function(i, element) {
+                                            if(i > 0)
+                                            {
+                                                $(element).fadeOut();
+                                            };
+                                        });
+                                    }
                                 }
                                 else
                                 {
