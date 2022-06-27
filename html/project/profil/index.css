@@ -282,6 +282,10 @@ html, body {
   font-size: 20px;
 }
 
+.arbitr_info_block_body .page_line {
+  padding: 40px 0;
+}
+
 @media (max-width: 1350px) {
   .index_page_profil {
     width: 95%;
