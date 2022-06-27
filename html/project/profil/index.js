@@ -101,7 +101,7 @@
                                     $('.arbitr_info_block_body .page_line').each( async function(i, element) {
                                         if(i > 0)
                                         {
-                                            $(element).fadeIn();
+                                            $(element).fadeOut();
                                             await sleep(500)
                                         };
                                     });
@@ -113,7 +113,7 @@
                                     $('.arbitr_info_block_body .page_line').each( async function(i, element) {
                                         if(i > 0)
                                         {
-                                            $(element).fadeOut();
+                                            $(element).fadeIn();
                                             await sleep(500)
                                         };
                                     });
