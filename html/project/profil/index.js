@@ -64,7 +64,7 @@
             {
                 if(typeof need_project.parce.ar.response != "undefined" && need_project.parce.ar.response.length > 0 && need_project.parce.ar.response != "Null")
                 {
-                    $('.arbitr_info_block_header a').empty().append(`<span class="arbitr_arbitr_add">${need_project.parce.ar.many}</span>`);
+                    $('.arbitr_info_block_header a').empty().append(`${need_project.parce.ar.many}`);
 
                     need_project.parce.ar.response.forEach(el => 
                     {
