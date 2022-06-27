@@ -94,64 +94,69 @@
 
                         if(i == 1)
                         {
-                            var allBlacksFadeIn = [];
+                            pushButton = true;
+                        }
 
-                            $('.arbitr_info_block_body .page_line').each( async function(i, element) {
-                                if(i > 0)
-                                {
-                                    allBlacksFadeIn.push($(element));
-                                };
-                            });
+                        $('.arbitr_info_block_body').append(_text);
+                    });
 
-                            $('.arbitr_info_blockbutton').fadeIn().click( async function() 
+                    if(pushButton)
+                    {
+                        var allBlacksFadeIn = [];
+
+                        $('.arbitr_info_block_body .page_line').each( async function(i, element) {
+                            if(i > 0)
                             {
-                                if($(this).attr('push'))
+                                allBlacksFadeIn.push($(element));
+                            };
+                        });
+
+                        $('.arbitr_info_blockbutton').fadeIn().click( async function() 
+                        {
+                            if($(this).attr('push'))
+                            {
+                                if ($(this).attr('push') == "false")
                                 {
-                                    if ($(this).attr('push') == "false")
+                                    $(this).attr('push', true);
+
+                                    // $('.arbitr_info_block_body .page_line').each( async function(i, element) {
+                                    //     if(i > 0)
+                                    //     {
+                                    //         $(element).fadeIn();
+                                    //     };
+                                    // });
+
+                                    for(var block of allBlacksFadeIn)
                                     {
-                                        $(this).attr('push', true);
-
-                                        // $('.arbitr_info_block_body .page_line').each( async function(i, element) {
-                                        //     if(i > 0)
-                                        //     {
-                                        //         $(element).fadeIn();
-                                        //     };
-                                        // });
-
-                                        for(var block of allBlacksFadeIn)
-                                        {
-                                            block.fadeIn();
-                                            await sleep(500);
-                                        }
-                                    }
-                                    else
-                                    {
-                                        $(this).attr('push', false);
-
-                                        $('.arbitr_info_block_body .page_line').each( async function(i, element) {
-                                            if(i > 0)
-                                            {
-                                                $(element).fadeOut();
-                                            };
-                                        });
+                                        block.fadeIn();
+                                        await sleep(500);
                                     }
                                 }
                                 else
                                 {
-                                    $(this).attr('push', true);
+                                    $(this).attr('push', false);
 
                                     $('.arbitr_info_block_body .page_line').each( async function(i, element) {
                                         if(i > 0)
                                         {
-                                            $(element).fadeIn();
+                                            $(element).fadeOut();
                                         };
                                     });
                                 }
-                            });
-                        }
+                            }
+                            else
+                            {
+                                $(this).attr('push', true);
 
-                        $('.arbitr_info_block_body').append(_text);
-                    })
+                                $('.arbitr_info_block_body .page_line').each( async function(i, element) {
+                                    if(i > 0)
+                                    {
+                                        $(element).fadeIn();
+                                    };
+                                });
+                            }
+                        });
+                    }
                 } else {
                     var _default = $(`
                         <div class="page_line">
