@@ -104,7 +104,6 @@
                                         if(i > 0)
                                         {
                                             $(element).fadeOut();
-                                            await sleep(500)
                                         };
                                     });
                                 }
@@ -116,7 +115,6 @@
                                         if(i > 0)
                                         {
                                             $(element).fadeIn();
-                                            await sleep(500)
                                         };
                                     });
                                 }
@@ -128,7 +126,6 @@
                                         if(i > 0)
                                         {
                                             $(element).fadeIn();
-                                            await sleep(500)
                                         };
                                     });
                                 }
