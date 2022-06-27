@@ -66,7 +66,9 @@
                 {
                     $('.arbitr_info_block_header a').empty().append(`${need_project.parce.ar.many}`);
 
-                    need_project.parce.ar.response.forEach(el => 
+                    var pushButton = false;
+
+                    need_project.parce.ar.response.forEach((el, i) => 
                     {
                         var _text = $(`
                             <div class="page_line">
@@ -89,6 +91,11 @@
                                 </div>
                             </div>
                         `);
+
+                        if(i == 1)
+                        {
+                            $('.arbitr_info_blockbutton').css('display', 'flex');
+                        }
 
                         $('.arbitr_info_block_body').append(_text);
                     })
