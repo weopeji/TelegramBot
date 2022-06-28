@@ -1,3 +1,4 @@
+from warnings import catch_warnings
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
@@ -41,7 +42,12 @@ def main(argv):
 
     driver.get("https://kad.arbitr.ru/")
     wait = WebDriverWait(driver, 10)
-    driver.find_element(By.CLASS_NAME, "b-promo_notification-popup-close").click()
+
+    try:
+        driver.find_element(By.CLASS_NAME, "b-promo_notification-popup-close").click()
+    except:
+        errorNotHaveButton = True
+
     driver.find_element(By.CSS_SELECTOR, 'textarea[class="g-ph"]').send_keys(argv)
     driver.find_element(By.ID, "b-form-submit").click()
 
