@@ -10,6 +10,7 @@ from selenium_stealth import stealth
 import json
 from pyvirtualdisplay import Display
 import sys
+import time
 
 def main(argv):
 
@@ -42,7 +43,9 @@ def main(argv):
 
     driver.get("https://kad.arbitr.ru/")
     wait = WebDriverWait(driver, 10)
- 
+    
+    time.sleep(7)
+
     try:
         driver.find_element(By.CLASS_NAME, "b-promo_notification-popup-close").click()
     except:
