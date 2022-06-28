@@ -46,7 +46,7 @@
         if(!_id)
         {
             _id = window.location.href.split('#')[1].split('/')[0];
-        }
+        };
 
         // var getR_F = await callApi({
         //     methodName: 'getR_F',
@@ -60,6 +60,20 @@
 
         function startArbitr()
         {
+            if(typeof need_project.parce.ar != "undefined")
+            {
+                if(need_project.parce.ar == "error")
+                {
+                    $('.arbitr_info_block_header a').empty().append(`Ошибка парсинга`);
+                    return;
+                }
+            }
+            else
+            {
+                $('.arbitr_info_block_header a').empty().append(`Ошибка парсинга`);
+                return;
+            }
+
             if(typeof need_project.parce.ar === "object")
             {
                 if(typeof need_project.parce.ar.response != "undefined" && need_project.parce.ar.response.length > 0 && need_project.parce.ar.response != "Null")
@@ -173,52 +187,53 @@
         function startArbitrIspo()
         {
             return;
+            var errorPush = null;
 
-            if(getR_F == "ok")
+            
+
+
+            if(Array.isArray(need_project.parce.ispo))
             {
-                if(Array.isArray(need_project.parce.ispo))
+                if(need_project.parce.ispo.length > 0)
                 {
-                    if(need_project.parce.ispo.length > 0)
+                    if(need_project.parce.ispo[0].result.length > 0)
                     {
-                        if(need_project.parce.ispo[0].result.length > 0)
-                        {
-                            var appendBlock = $(`
-                                <div class="ispo_line_more_data">
-                                    <div class="version2_default_bkg row_default"></div>
-                                    <h1 class="h1_sob">ИСПОЛНИТЕЛЬНОЕ ПРОИЗВОДСТВО</h1>
-                                    <div class="ispo_line_more_data_data">
+                        var appendBlock = $(`
+                            <div class="ispo_line_more_data">
+                                <div class="version2_default_bkg row_default"></div>
+                                <h1 class="h1_sob">ИСПОЛНИТЕЛЬНОЕ ПРОИЗВОДСТВО</h1>
+                                <div class="ispo_line_more_data_data">
 
+                                </div>
+                            </div>
+                        `);
+
+                        need_project.parce.ispo[0].result.forEach(el => {
+                            var _text = $(`
+                                <div class="page_line">
+                                    <div class="page_line_block">
+                                        <span>${el.name}</span><br>
+                                        <span>${el.exe_production}</span><br>
+                                    </div>
+                                    <div class="page_line_block">
+                                        <span>${el.details}</span><br>
+                                        <span>${el.subject}</span><br>
+                                    </div>
+                                    <div class="page_line_block">
+                                        <span>${el.department}</span><br>
+                                        <span>${el.bailiff}</span><br>
                                     </div>
                                 </div>
+                                <div class="page_line_line"></div>
                             `);
 
-                            need_project.parce.ispo[0].result.forEach(el => {
-                                var _text = $(`
-                                    <div class="page_line">
-                                        <div class="page_line_block">
-                                            <span>${el.name}</span><br>
-                                            <span>${el.exe_production}</span><br>
-                                        </div>
-                                        <div class="page_line_block">
-                                            <span>${el.details}</span><br>
-                                            <span>${el.subject}</span><br>
-                                        </div>
-                                        <div class="page_line_block">
-                                            <span>${el.department}</span><br>
-                                            <span>${el.bailiff}</span><br>
-                                        </div>
-                                    </div>
-                                    <div class="page_line_line"></div>
-                                `);
+                            _text.css('margin-top','20px');
+                            _text.css('margin-bottom','20px');
 
-                                _text.css('margin-top','20px');
-                                _text.css('margin-bottom','20px');
+                            $(appendBlock).find('.ispo_line_more_data_data').append(_text);
+                        });
 
-                                $(appendBlock).find('.ispo_line_more_data_data').append(_text);
-                            });
-
-                            $('.index_page_profil').append(appendBlock);
-                        }
+                        $('.index_page_profil').append(appendBlock);
                     }
                 }
             }
