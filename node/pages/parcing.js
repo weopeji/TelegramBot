@@ -265,7 +265,7 @@ async function ParcingArbitrage(inn)
         try
         {
             PythonShell.run('main.py', options, function (err, results) {
-                if (err) {
+                if (e) {
                     resolve('error')
                     console.log(e);
                 } else 
