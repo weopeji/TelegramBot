@@ -42,7 +42,7 @@ def main(argv):
 
     driver.get("https://kad.arbitr.ru/")
     wait = WebDriverWait(driver, 10)
-
+ 
     try:
         driver.find_element(By.CLASS_NAME, "b-promo_notification-popup-close").click()
     except:
