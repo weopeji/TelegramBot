@@ -3825,7 +3825,7 @@ async function redactingParcingProject(socket, data, callback)
             _ProjectMoreUsers = _Project.data.moreUsersData;
         }
     
-        var ParceUsersBlock = await ParcingPage.ParceUsersBlock(_Project.data, _ProjectMoreUsers);
+        // var ParceUsersBlock = await ParcingPage.ParceUsersBlock(_Project.data, _ProjectMoreUsers);
     
         if(_Project.data.organization != 3)
         {
@@ -3834,7 +3834,7 @@ async function redactingParcingProject(socket, data, callback)
                 "pr": await ParcingPage.ParceProject(_Project.data.inn),
                 "ar": await ParcingPage.ParcingArbitrage(_Project.data.inn),
                 "ispo": null,
-                "fiz": ParceUsersBlock,
+                // "fiz": ParceUsersBlock,
             };
     
             if(_Project.data.organization == 1)
@@ -3844,7 +3844,7 @@ async function redactingParcingProject(socket, data, callback)
         } else {
             _ProjectParce =
             {
-                "fiz": ParceUsersBlock,
+                // "fiz": ParceUsersBlock,
             };
         };
     
