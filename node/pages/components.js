@@ -2880,7 +2880,12 @@ async function getUserForId(socket,data,callback)
     var _User               = await User.findOne({_id: data});
     var _InvsByWait         = await InvDoc.find({invester: _User.user, applicationRequest: true, status: "accept"});
     var _InvsByNotCorrect   = await InvDoc.find({invester: _User.user, status: "not_correct"});
-    var _InvsByChats        = _User.alerts_main.filter(el => el.type == "new_msg");
+    var _InvsByChats        = [];
+    
+    try {
+        _InvsByChats = _User.alerts_main.filter(el => el.type == "new_msg");
+    } catch (e) {}
+
     var _AlertinvsByWait    = [];
     var Ale_activ_projects  = _User.alerts_main.filter(el => el.type == "accept_business_investring");
 

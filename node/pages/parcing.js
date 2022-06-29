@@ -4,6 +4,7 @@ var { PythonShell }         = require('python-shell');
 const mongoose              = require('mongoose');
 const Project               = mongoose.model('Project');
 const R_F                   = mongoose.model('R_F');
+var config                  = require('../config.json');
 
 
 module.exports = {
@@ -254,29 +255,23 @@ async function ParceProject(inn)
 
 async function ParcingArbitrage(inn)
 {
-    let options = 
-    {
-        mode: 'text',
-        scriptPath: '../python/parcingArbitraj',
-        args: inn,
-    };
-
     return new Promise((resolve,reject) => {
         try
         {
-            PythonShell.run('main.py', options, function (err, results) {
-                if (err) {
-                    resolve('error')
-                    console.log(err);
-                } else 
-                {
-                    resolve(JSON.parse(results));  
-                }
+            axios({
+                method: 'get',
+                url: `https://api.damia.ru/arb/dela?q=${inn.toString().trim()}&key=${config.arbitr_key}`,
+                headers: { }
+            })
+            .then(function (response) {
+                resolve(JSON.stringify(response.data));
+            })
+            .catch(function (error) {
+                resolve('error');
             });
         } catch(e)
         {
             resolve('error');
-            console.log(e);
         }
     })
 }

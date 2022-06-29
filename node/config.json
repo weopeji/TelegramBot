@@ -7,5 +7,7 @@
     "secure": false,
     "appPort": 3000,
     "_idChannel": -1001563744679,
-    "dadata_token": "cd3a829357362fec55fc201c3f761002def9906f"
+    "dadata_token": "cd3a829357362fec55fc201c3f761002def9906f",
+    "arbitr_key": "959769edd4893b322b2670ba2d79bb31596d3935",
+    "fssp_key": "09c95c72d891a237a18e237ab0517504128465f0"
 }
