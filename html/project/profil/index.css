@@ -506,11 +506,11 @@ html, body {
     margin-top: 90px;
   }
   .page_line_row {
-    display: block;
+    display: block !important;
   }
   .page_line_row .page_line_block {
-    width: 50%;
-    float: left;
+    width: 50% !important;
+    float: left !important;
   }
 }
 /*# sourceMappingURL=index.css.map */
