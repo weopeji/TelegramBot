@@ -167,6 +167,63 @@
 
         function startArbitrIspo()
         {
+
+            if(typeof need_project.parce.ispo != "undefined")
+            {
+                if(need_project.parce.ispo == "error")
+                {
+                    $('.arbitr_info_block_header a').empty().append(`Ошибка парсинга`);
+                    return;
+                }
+            }
+            else
+            {
+                $('.arbitr_info_block_header a').empty().append(`Ошибка парсинга`);
+                return;
+            }
+
+            if(typeof need_project.parce.ispo[need_project.data.inn.toString()] != "undefined")
+            {
+                var initNumber = 0;
+
+                for(var _key in need_project.parce.ispo[need_project.data.inn.toString()])
+                {
+                    var dataBlock       = need_project.parce.ispo[need_project.data.inn.toString()][_key];
+
+                    var templateText    = $(`
+                        <div class="page_line">
+                            <div class="page_line_row">
+                                <div class="page_line_block">
+                                    <span>${dataBlock["Дата"]}</span><br>
+                                    <span>${_key}</span><br>
+                                </div>
+                                <div class="page_line_block">
+                                    <span>${dataBlock["РегНомерСД"]}</span><br>
+                                    <span>${dataBlock["НомерИсп"]}</span><br>
+                                </div>
+                                <div class="page_line_block">
+                                    <span>${dataBlock["Сумма"]}</span><br>
+                                    <span>${dataBlock["Статус"]}</span><br>
+                                </div>
+                            </div>
+                        </div>
+                    `);
+
+                    initNumber++;
+                    $('.arbitr_info_block_body').append(templateText);
+                };
+            };
+
+
+
+
+
+
+
+
+
+
+
             return;
             var errorPush = null;
 
