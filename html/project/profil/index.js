@@ -48,11 +48,6 @@
             _id = window.location.href.split('#')[1].split('/')[0];
         };
 
-        // var getR_F = await callApi({
-        //     methodName: 'getR_F',
-        //     data: _id,
-        // });
-
         var need_project = await callApi({
             methodName: 'getProject',
             data: _id,
@@ -74,47 +69,46 @@
                 return;
             }
 
-            if(typeof need_project.parce.ar === "object")
+            if(typeof need_project.parce.ar.result != 'undefined')
             {
-                if(typeof need_project.parce.ar.response != "undefined" && need_project.parce.ar.response.length > 0 && need_project.parce.ar.response != "Null")
+                if(typeof need_project.parce.ar.result["Ответчик"] != 'undefined')
                 {
-                    $('.arbitr_info_block_header a').empty().append(`${need_project.parce.ar.many}`);
+                    var initNumber = 0;
 
-                    var pushButton = false;
-
-                    need_project.parce.ar.response.forEach((el, i) => 
+                    for(var _key in need_project.parce.ar.result["Ответчик"])
                     {
-                        var _text = $(`
+                        var dataBlock       = need_project.parce.ar.result["Ответчик"][_key];
+
+                        var templateText    = $(`
                             <div class="page_line">
                                 <div class="page_line_row">
                                     <div class="page_line_block">
-                                        <span>${el.data}</span><br>
-                                        <span>${el.id}</span><br>
+                                        <span>${dataBlock["Дата"]}</span><br>
+                                        <span>${_key}</span><br>
                                     </div>
                                     <div class="page_line_block">
-                                        <span>${el.judge}</span><br>
-                                        <span>${el.sity}</span><br>
+                                        <span>${dataBlock["Суд"]}</span><br>
+                                        <span>${dataBlock["Судья"]}</span><br>
                                     </div>
                                     <div class="page_line_block">
-                                        <span>${el.plaintiff}</span><br>
-                                        <span>${el.respondent}</span><br>
+                                        <span>${dataBlock["Сумма"]}</span><br>
+                                        <span>${dataBlock["Статус"]}</span><br>
                                     </div>
                                     <div class="page_line_block">
-                                        <span><a href="${el.id_url}" target="_blank">Перейти</a></span>
+                                        <span><a href="${dataBlock["Url"]}" target="_blank">Перейти</a></span>
                                     </div>
                                 </div>
                             </div>
                         `);
 
-                        if(i == 1)
-                        {
-                            pushButton = true;
-                        }
+                        initNumber++;
+                        $('.arbitr_info_block_body').append(templateText);
+                    };
 
-                        $('.arbitr_info_block_body').append(_text);
-                    });
+                    $('.arbitr_info_block_header a').empty().append(`Найдено ${initNumber} дел`);
 
-                    if(pushButton)
+
+                    if(initNumber > 1)
                     {
                         var allBlacksFadeIn = [];
 
@@ -162,25 +156,12 @@
                             }
                         });
                     }
+                    
                 } else {
-                    var _default = $(`
-                        <div class="page_line">
-                            <span>Подробная информация</span>
-                            <p>Отсутствует</p>
-                        </div>
-                    `);
-    
-                    $('.arbitr_add').append(_default);
+                    $('.arbitr_info_block_header a').empty().append(`Найдено 0 дел`);
                 }
             } else {
-                var _default = $(`
-                    <div class="page_line">
-                        <span>Подробная информация</span>
-                        <p>Проблемы парсера</p>
-                    </div>
-                `);
-
-                $('.arbitr_add').append(_default);
+                $('.arbitr_info_block_header a').empty().append(`Найдено 0 дел`);
             }
         }
 
