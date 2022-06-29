@@ -264,7 +264,7 @@ async function ParcingArbitrage(inn)
                 headers: { }
             })
             .then(function (response) {
-                resolve(JSON.stringify(response.data));
+                resolve(response.data);
             })
             .catch(function (error) {
                 resolve('error');
