@@ -505,5 +505,12 @@ html, body {
   .index_page_profil_credit {
     margin-top: 90px;
   }
+  .page_line_row {
+    display: block;
+  }
+  .page_line_row .page_line_block {
+    width: 50%;
+    float: left;
+  }
 }
 /*# sourceMappingURL=index.css.map */
