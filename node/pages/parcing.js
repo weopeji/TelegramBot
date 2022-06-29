@@ -22,7 +22,7 @@ async function ParceProjectIspo(inn)
         {
             axios({
                 method: 'get',
-                url: `https://api.damia.ru/fssp/isps?inn=${inn.toString().trim()}&key=${config.arbitr_key}`,
+                url: `https://api.damia.ru/fssp/isps?inn=${inn.toString().trim()}&key=${config.fssp_key}`,
                 headers: { }
             })
             .then(function (response) {
