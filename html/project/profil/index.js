@@ -172,13 +172,13 @@
             {
                 if(need_project.parce.ispo == "error")
                 {
-                    $('.arbitr_info_block_header a').empty().append(`Ошибка парсинга`);
+                    $('.fssp_info_block_header a').empty().append(`Ошибка парсинга`);
                     return;
                 }
             }
             else
             {
-                $('.arbitr_info_block_header a').empty().append(`Ошибка парсинга`);
+                $('.fssp_info_block_header a').empty().append(`Ошибка парсинга`);
                 return;
             }
 
@@ -210,70 +210,64 @@
                     `);
 
                     initNumber++;
-                    $('.arbitr_info_block_body').append(templateText);
+                    $('.fssp_info_block_body').append(templateText);
                 };
-            };
+
+                $('.fssp_info_block_header a').empty().append(`Найдено ${initNumber} дел`);
 
 
-
-
-
-
-
-
-
-
-
-            return;
-            var errorPush = null;
-
-            
-
-
-            if(Array.isArray(need_project.parce.ispo))
-            {
-                if(need_project.parce.ispo.length > 0)
+                if(initNumber > 1)
                 {
-                    if(need_project.parce.ispo[0].result.length > 0)
+                    var allBlacksFadeIn = [];
+
+                    $('.fssp_info_block_body .page_line').each( async function(i, element) {
+                        if(i > 0)
+                        {
+                            allBlacksFadeIn.push($(element));
+                        };
+                    });
+
+                    $('.fssp_info_blockbutton').fadeIn().click( async function() 
                     {
-                        var appendBlock = $(`
-                            <div class="ispo_line_more_data">
-                                <div class="version2_default_bkg row_default"></div>
-                                <h1 class="h1_sob">ИСПОЛНИТЕЛЬНОЕ ПРОИЗВОДСТВО</h1>
-                                <div class="ispo_line_more_data_data">
+                        if($(this).attr('push'))
+                        {
+                            if ($(this).attr('push') == "false")
+                            {
+                                $(this).attr('push', true);
 
-                                </div>
-                            </div>
-                        `);
+                                for(var block of allBlacksFadeIn)
+                                {
+                                    block.fadeIn();
+                                    await sleep(50);
+                                }
+                            }
+                            else
+                            {
+                                $(this).attr('push', false);
 
-                        need_project.parce.ispo[0].result.forEach(el => {
-                            var _text = $(`
-                                <div class="page_line">
-                                    <div class="page_line_block">
-                                        <span>${el.name}</span><br>
-                                        <span>${el.exe_production}</span><br>
-                                    </div>
-                                    <div class="page_line_block">
-                                        <span>${el.details}</span><br>
-                                        <span>${el.subject}</span><br>
-                                    </div>
-                                    <div class="page_line_block">
-                                        <span>${el.department}</span><br>
-                                        <span>${el.bailiff}</span><br>
-                                    </div>
-                                </div>
-                                <div class="page_line_line"></div>
-                            `);
+                                for(var block of allBlacksFadeIn)
+                                {
+                                    block.fadeOut();
+                                    await sleep(50);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            $(this).attr('push', true);
 
-                            _text.css('margin-top','20px');
-                            _text.css('margin-bottom','20px');
-
-                            $(appendBlock).find('.ispo_line_more_data_data').append(_text);
-                        });
-
-                        $('.index_page_profil').append(appendBlock);
-                    }
+                            for(var block of allBlacksFadeIn)
+                            {
+                                block.fadeIn();
+                                await sleep(50);
+                            }
+                        }
+                    });
                 }
+            }
+            else
+            {
+                $('.fssp_info_block_header a').empty().append(`Найдено 0 дел`);
             }
         }
 
