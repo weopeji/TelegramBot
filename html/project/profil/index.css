@@ -506,11 +506,14 @@ html, body {
     margin-top: 90px;
   }
   .page_line_row {
-    display: block !important;
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
   }
   .page_line_row .page_line_block {
     width: 50% !important;
-    float: left !important;
   }
 }
 /*# sourceMappingURL=index.css.map */
