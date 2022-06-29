@@ -12,6 +12,30 @@ module.exports = {
     ParceProject,
     ParcingArbitrage,
     cheackArbitrFizUser,
+    ParceProjectIspo,
+}
+
+async function ParceProjectIspo(inn)
+{
+    return new Promise((resolve,reject) => {
+        try
+        {
+            axios({
+                method: 'get',
+                url: `https://api.damia.ru/fssp/isps?inn=${inn.toString().trim()}&key=${config.arbitr_key}`,
+                headers: { }
+            })
+            .then(function (response) {
+                resolve(response.data);
+            })
+            .catch(function (error) {
+                resolve('error');
+            });
+        } catch(e)
+        {
+            resolve('error');
+        }
+    })
 }
 
 async function deistvitelenLiPaspport(_query)

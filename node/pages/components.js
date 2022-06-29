@@ -3504,7 +3504,6 @@ var _AllParce =
                 });
             } catch(e)
             {
-                console.log(e);
                 resolve("error");
             }
         });
@@ -3840,7 +3839,7 @@ async function redactingParcingProject(socket, data, callback)
     
             if(_Project.data.organization == 1)
             {
-                _ProjectParce.ispo = await _AllParce._ParceProjectIspo(_Project.data);
+                _ProjectParce.ispo = await ParcingPage.ParceProjectIspo(_Project.data.inn.toString().trim());
             };
         } else {
             _ProjectParce =
