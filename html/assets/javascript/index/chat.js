@@ -345,6 +345,9 @@
                             <div class="chat_block_chat_body_msgs_line">
                                 <div class="chat_block_chat_body_msgs_line_header">
                                     <span>Вы</span>
+                                    <div class="chat_block_chat_body_msgs_line_header_time">
+                                        <bb>23:35</bb>
+                                    </div>
                                 </div>
                                 <div class="chat_block_chat_body_msgs_line_my">
                                     <span>${msgBlock.text}</span>
@@ -358,6 +361,9 @@
                             <div class="chat_block_chat_body_msgs_line chat_block_chat_body_msgs_line_left">
                                 <div class="chat_block_chat_body_msgs_line_header">
                                     <span>Вам</span>
+                                    <div class="chat_block_chat_body_msgs_line_header_time">
+                                        <bb>23:35</bb>
+                                    </div>
                                 </div>
                                 <div class="chat_block_chat_body_msgs_line_my">
                                     <span>${msgBlock.text}</span>

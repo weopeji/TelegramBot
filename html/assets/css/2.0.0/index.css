@@ -1735,6 +1735,7 @@ img.preloader_row_img {
 
 .chat_block_chat_body_msgs_line .chat_block_chat_body_msgs_line_my {
   background-color: transparent;
+  padding-left: 0;
 }
 
 @media (max-width: 1350px) {
