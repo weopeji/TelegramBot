@@ -276,7 +276,6 @@ html, body {
       -ms-flex: 3;
           flex: 3;
   margin-right: 20px;
-  height: calc(100vh - 200px);
   background-color: #182037;
   position: relative;
 }
@@ -303,7 +302,6 @@ html, body {
 
 .chat_block_chat_body {
   width: 100%;
-  height: calc(100% - 100px);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
