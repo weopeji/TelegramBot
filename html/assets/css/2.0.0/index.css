@@ -1729,6 +1729,14 @@ img.preloader_row_img {
   left: 10px;
 }
 
+.chat_block_chat_body_msgs_line {
+  display: block;
+}
+
+.chat_block_chat_body_msgs_line .chat_block_chat_body_msgs_line_my {
+  background-color: transparent;
+}
+
 @media (max-width: 1350px) {
   .chat_block_chat_header {
     width: 100%;
