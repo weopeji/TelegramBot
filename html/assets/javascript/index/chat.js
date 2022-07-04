@@ -91,7 +91,7 @@
                                 <div class="chat_block_chat_body_row_input">
                                     <input type="text" placeholder="Напишите сообщение">
                                     <span>
-                                        <i class="fa-solid fa-paper-plane-top"></i>
+                                        <i class="fas fa-paper-plane"></i>
                                     </span>
                                 </div>
                             </div>
