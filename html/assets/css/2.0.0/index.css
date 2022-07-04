@@ -1246,8 +1246,27 @@ img.preloader_row_img {
   border-radius: 8px;
 }
 
+.chat_block_chat_body_row_input input::-webkit-input-placeholder {
+  color: white;
+}
+
+.chat_block_chat_body_row_input input:-ms-input-placeholder {
+  color: white;
+}
+
+.chat_block_chat_body_row_input input::-ms-input-placeholder {
+  color: white;
+}
+
+.chat_block_chat_body_row_input input::placeholder {
+  color: white;
+}
+
 .chat_block_chat_body_row_input span {
   background: transparent;
+  position: absolute;
+  right: 0;
+  color: #5f5fff;
 }
 
 .Attracted_headerInfoBlock_info_data_alert_buttom_cheack {
