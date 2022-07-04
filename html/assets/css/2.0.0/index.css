@@ -1203,16 +1203,29 @@ img.preloader_row_img {
 }
 
 .chat_block_chat {
+  margin-top: 45px;
+  height: calc(100% - 245px);
   background-color: transparent;
   position: relative;
 }
 
 .chat_block_chat .chat_block_chat_header {
-  border-bottom: 1px solid white;
+  position: absolute;
+  top: -73px;
+  z-index: 2;
+  border: 0;
+  padding: 0;
+  width: 100%;
 }
 
 .chat_block_chat .chat_block_chat_header span {
   color: white;
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.chat_block_chat .chat_block_chat_body {
+  height: 100%;
 }
 
 .chat_block_chat .chat_block_chat_body,
