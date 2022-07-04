@@ -339,22 +339,31 @@
             {
                 for(var msgBlock of getChat.msgs)
                 {
-                    var myBlock = $(`
-                        <div class="chat_block_chat_body_msgs_line">
-                            <div class="chat_block_chat_body_msgs_line_my">
-                                <span>${msgBlock.text}</span>
-                            </div>
-                        </div>
-                    `);
-
                     if(msgBlock.type == global.allData.User.type)
                     {
-                        templateText.find('.chat_block_chat_body_msgs').append(myBlock);
+                        templateText.find('.chat_block_chat_body_msgs').append(`
+                            <div class="chat_block_chat_body_msgs_line">
+                                <div class="chat_block_chat_body_msgs_line_header">
+                                    <span>Вы</span>
+                                </div>
+                                <div class="chat_block_chat_body_msgs_line_my">
+                                    <span>${msgBlock.text}</span>
+                                </div>
+                            </div>
+                        `);
                     }
                     else
                     {
-                        myBlock.addClass("chat_block_chat_body_msgs_line_left");
-                        templateText.find('.chat_block_chat_body_msgs').append(myBlock);
+                        templateText.find('.chat_block_chat_body_msgs').append(`
+                            <div class="chat_block_chat_body_msgs_line chat_block_chat_body_msgs_line_left">
+                                <div class="chat_block_chat_body_msgs_line_header">
+                                    <span>Вам</span>
+                                </div>
+                                <div class="chat_block_chat_body_msgs_line_my">
+                                    <span>${msgBlock.text}</span>
+                                </div>
+                            </div>
+                        `);
                     };
                 };
             };
