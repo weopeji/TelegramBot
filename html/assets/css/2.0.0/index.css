@@ -1226,11 +1226,12 @@ img.preloader_row_img {
 
 .chat_block_chat .chat_block_chat_body {
   height: 100%;
+  position: relative;
+  z-index: 2;
 }
 
 .chat_block_chat .chat_block_chat_body,
 .chat_block_chat .chat_block_chat_header {
-  position: relative;
   z-index: 2;
 }
 
