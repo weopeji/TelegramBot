@@ -533,10 +533,10 @@
             {
                 if(typeof getChats.defaultChats.business != "undefined")
                 {
-                    for(var _key in getChats.defaultChats.other)
+                    for(var _key in getChats.defaultChats.business)
                     {
                         var _PathUrl    = null;
-                        var element     = getChats.defaultChats.other[_key][0];
+                        var element     = getChats.defaultChats.business[_key][0];
     
                         if(element.img)
                         {
@@ -558,15 +558,15 @@
                             </div>
                         `);
 
-                        if(getChats.defaultChats.other[_key].length > 0) 
+                        if(getChats.defaultChats.business[_key].length > 0) 
                         {
                             template_text.append(`
                                 <div class="msg_block_getting_line_moreInfo">
-                                    <span>+ ${getChats.defaultChats.other[_key].length - 1}</span>
+                                    <span>+ ${getChats.defaultChats.business[_key].length - 1}</span>
                                 </div>
                             `).addClass("msg_block_getting_line_Many").click( function() 
                             {
-                                _this.renderChatMoreBlock(getChats.defaultChats.other[$(this).attr('data-id')]);
+                                _this.renderChatMoreBlock(getChats.defaultChats.business[$(this).attr('data-id')]);
                             });
                         }
                         else
