@@ -452,7 +452,7 @@
             }
             else
             {
-                if(typeof getChats.defaultChats.other != "undefined" && getChats.defaultChats.other.length > 0)
+                if(typeof getChats.defaultChats.other != "undefined")
                 {
                     for(var _key in getChats.defaultChats.other)
                     {
