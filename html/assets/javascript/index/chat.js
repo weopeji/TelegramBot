@@ -346,6 +346,10 @@
                 {
                     var time = "";
 
+                    function padTo2Digits(num) {
+                        return num.toString().padStart(2, '0');
+                    }
+
                     function convertMsToTime(milliseconds) 
                     {
                         let seconds = Math.floor(milliseconds / 1000);
