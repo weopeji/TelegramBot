@@ -460,6 +460,10 @@
                     })
                 };
             };
+
+            imSocket.on("request_mail", function(data) {
+                alert(data);
+            })
         };
 
         async renderChatMoreBlock(showBlock)

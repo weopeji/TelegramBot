@@ -63,6 +63,7 @@ function privateInit(initPlagins)
     commission      = initPlagins.commission;
     authToken       = initPlagins.authToken;
     teletube_video  = initPlagins.teletube_video;
+    io              = initPlagins.io;
 }
 
 var privat_index_page = function(socket,data,callback) {
@@ -2625,11 +2626,13 @@ async function msgUP(socket,data,callback)
         _array = _MsgDB.msgs;
     }
 
-    _array.push({
+    var dataMail = {
         text: data.msg,
         type: _User.type,
         time: new Date().getTime().toString(),
-    });
+    }
+
+    _array.push(dataMail);
 
     var neeuserAlertId = _InvDoc.invester;
 
@@ -2639,7 +2642,18 @@ async function msgUP(socket,data,callback)
         neeuserAlertId      = _ProjectOfAlert.user;
     };
 
-    h.full_alert_user(neeuserAlertId, `У вас новое сообщение в месенджере!`, "new_msg");
+    var UserAlertOfMsg = await User.findOne({user: neeuserAlertId});
+
+    if(typeof UserAlertOfMsg.socket != "undefined")
+    {
+        io.to(UserAlertOfMsg.socket).emit('request_mail', {
+            dataMail,
+        });
+    }
+    else
+    {
+        h.full_alert_user(neeuserAlertId, `У вас новое сообщение в месенджере!`, "new_msg");
+    };
 
     callback(await MsgDB.findOneAndUpdate({_id: _MsgDB._id,},{msgs: _array}));
 }

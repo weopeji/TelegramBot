@@ -188,6 +188,7 @@ var load_helpers = () =>
             commission: commission,
             authToken: authToken,
             teletube_video: teletube_video,
+            io: io,
         });
     };
 }
