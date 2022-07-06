@@ -247,8 +247,6 @@ var action_linker =
 async function version2_userSetDefault(socket, data, callback)
 {
     try {
-        console.log(data.page);
-        
         if(data.page == "chats")
         {
             await User.findOneAndUpdate({_id: data.id}, {socket: socket});
@@ -257,7 +255,9 @@ async function version2_userSetDefault(socket, data, callback)
         {
             await User.findOneAndUpdate({_id: data.id}, {$unset: { socket: "" }});
         }
-    } catch (e) {};
+    } catch (e) {
+        console.log(e);
+    };
 }
 
 async function version2_activ_projects_pageRender(socket, data, callback)
