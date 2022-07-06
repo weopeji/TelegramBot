@@ -2256,6 +2256,14 @@
                 data: _id,
             });
 
+            callApi({
+                methodName: "version2_userSetDefault",
+                data: {
+                    id: _id,
+                    page: _GET("page"),
+                },
+            });
+
             if(_User != "error")
             {
                 var _ImgPath    = _User.Path_im;

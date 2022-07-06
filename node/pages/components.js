@@ -96,6 +96,7 @@ var action_linker =
     "version2_investerData_invdoc_notMoney_redacting": version2_investerData_invdoc_notMoney_redacting,
     "version2_acceptInvOfComplaintBusinnes": version2_acceptInvOfComplaintBusinnes,
     "version2_activ_projects_pageRender": version2_activ_projects_pageRender,
+    "version2_userSetDefault": version2_userSetDefault,
 
 
     // teletube
@@ -242,6 +243,20 @@ var action_linker =
     "getProjectForInvesterPageByIdInvDoc": getProjectForInvesterPageByIdInvDoc,
     "accept_confirmationData": accept_confirmationData,
 };
+
+async function version2_userSetDefault(socket, data, callback)
+{
+    try {
+        if(data.page == "chats")
+        {
+            await User.findOneAndUpdate({_id: data.id}, {socket: socket});
+        }
+        else
+        {
+            await User.findOneAndUpdate({_id: data.id}, {$unset: { socket: "" }});
+        }
+    }
+}
 
 async function version2_activ_projects_pageRender(socket, data, callback)
 {
