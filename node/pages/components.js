@@ -247,6 +247,8 @@ var action_linker =
 async function version2_userSetDefault(socket, data, callback)
 {
     try {
+        console.log(data.page);
+        
         if(data.page == "chats")
         {
             await User.findOneAndUpdate({_id: data.id}, {socket: socket});
