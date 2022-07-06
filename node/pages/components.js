@@ -2627,6 +2627,7 @@ async function msgUP(socket,data,callback)
     }
 
     var dataMail = {
+        id: _InvDoc._id,
         text: data.msg,
         type: _User.type,
         time: new Date().getTime().toString(),

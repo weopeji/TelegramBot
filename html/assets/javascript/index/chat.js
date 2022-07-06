@@ -462,7 +462,46 @@
             };
 
             imSocket.on("request_mail", function(data) {
-                alert(data);
+                if(_GET("id"))
+                {
+                    if(_GET("id") == data.id.toString())
+                    {
+                        var msgBlock = data;
+                        
+                        if(msgBlock.type == global.allData.User.type)
+                        {
+                            templateText.find('.chat_block_chat_body_msgs').append(`
+                                <div class="chat_block_chat_body_msgs_line chat_block_chat_body_msgs_line_left">
+                                    <div class="chat_block_chat_body_msgs_line_header">
+                                        <span>Вы</span>
+                                        <div class="chat_block_chat_body_msgs_line_header_time">
+                                            <bb>${time}</bb>
+                                        </div>
+                                    </div>
+                                    <div class="chat_block_chat_body_msgs_line_my">
+                                        <span>${msgBlock.text}</span>
+                                    </div>
+                                </div>
+                            `);
+                        }
+                        else
+                        {
+                            templateText.find('.chat_block_chat_body_msgs').append(`
+                                <div class="chat_block_chat_body_msgs_line">
+                                    <div class="chat_block_chat_body_msgs_line_header">
+                                        <span>Вам</span>
+                                        <div class="chat_block_chat_body_msgs_line_header_time">
+                                            <bb>${time}</bb>
+                                        </div>
+                                    </div>
+                                    <div class="chat_block_chat_body_msgs_line_my">
+                                        <span>${msgBlock.text}</span>
+                                    </div>
+                                </div>
+                            `);
+                        };
+                    };
+                }
             });
         };
 
