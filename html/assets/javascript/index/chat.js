@@ -562,12 +562,12 @@
                             `);
                         };
 
-                        this.scrollBlock();
+                        _this.scrollBlock();
                     };
                 }
             });
 
-            this.scrollBlock();
+            _this.scrollBlock();
         };
 
         async renderChatMoreBlock(showBlock)
