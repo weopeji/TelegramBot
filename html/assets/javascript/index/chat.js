@@ -448,50 +448,54 @@
 
             if(_TypeUser == "business")
             {
-                for(_chat of getChats)
-                {
-                    
-                }
+                
             }
             else
             {
-                for(_chat of getChats)
+                if(typeof getChats.defaultChats.other != "undefined" && getChats.defaultChats.other.length > 0)
                 {
-                    
-                }
-            }
-
-            getChats.forEach(element => {
-
-                var _PathUrl = null;
-
-                if(element.img)
-                {
-                    _PathUrl = `https://api.telegram.org/file/bot2062839693:AAE0hzj8SVXyexq29s5x7aRLC5x8O77c-pQ/` + element.img.file_path;
-                }
-
-                var template_text = $(`
-                    <div class="msg_block_getting_line" data="${element.invId}">
-                        <div class="version2_default_bkg row_default"></div>
-                        <div class="msg_block_getting_line_img">
-                            <div class="msg_block_getting_line_img_block">
-                                <img src="${_PathUrl}" alt="">
+                    for(var _key in getChats.defaultChats.other)
+                    {
+                        var _PathUrl    = null;
+                        var element     = getChats.defaultChats.other[_key][0];
+    
+                        if(element.img)
+                        {
+                            _PathUrl = `https://api.telegram.org/file/bot2062839693:AAE0hzj8SVXyexq29s5x7aRLC5x8O77c-pQ/` + element.img.file_path;
+                        };
+        
+                        var template_text = $(`
+                            <div class="msg_block_getting_line" data="${element.invId}">
+                                <div class="version2_default_bkg row_default"></div>
+                                <div class="msg_block_getting_line_img">
+                                    <div class="msg_block_getting_line_img_block">
+                                        <img src="${_PathUrl}" alt="">
+                                    </div>
+                                </div>
+                                <div class="msg_block_getting_line_text">
+                                    <span>${element.name}</span>
+                                    <p>${element.msgBlock.msgs[element.msgBlock.msgs.length - 1].text}</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="msg_block_getting_line_text">
-                            <span>${element.name}</span>
-                            <p>${element.msgBlock.msgs[element.msgBlock.msgs.length - 1].text}</p>
-                        </div>
-                    </div>
-                `);
+                        `);
 
-                template_text.click( function() {
-                    location.href = `./?page=chats&id=${$(this).attr('data')}`;
-                });
-                
-                errorpush = false;
-                _this.globalType.append(template_text);
-            });
+                        if(getChats.defaultChats.other[_key].length > 0) {
+                            template_text.append(`
+                                <div class="msg_block_getting_line_moreInfo">
+                                    <span>+ ${getChats.defaultChats.other[_key].length - 1}</span>
+                                </div>
+                            `).addClass("msg_block_getting_line_Many");
+                        };
+        
+                        template_text.click( function() {
+                            location.href = `./?page=chats&id=${$(this).attr('data')}`;
+                        });
+                        
+                        errorpush = false;
+                        _this.globalType.append(template_text);
+                    };
+                };
+            };
 
             if(errorpush)
             {

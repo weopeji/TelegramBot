@@ -1328,13 +1328,13 @@ async function getChats(socket, data, callback)
                     Project: _Project,
                 };
     
-                if(typeof ActionData.defaultChats[_Project._id] != "undefined")
+                if(typeof ActionData.defaultChats["business"][_Project._id] != "undefined")
                 {
-                    ActionData.defaultChats["business"][_Project._id].push(_dataBlock);
+                    ActionData.defaultChats["business"]["id_" + _Project._id].push(_dataBlock);
                 }
                 else
                 {
-                    ActionData.defaultChats["business"][_Project._id] = [_dataBlock];
+                    ActionData.defaultChats["business"]["id_" + _Project._id] = [_dataBlock];
                 };
             };
         };
