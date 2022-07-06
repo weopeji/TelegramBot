@@ -448,6 +448,7 @@
                     $('.msg_block_getting').fadeOut('fast', function () {
                         $('.msg_block_getting').empty();
                         _this.renderType();
+                        $('.msg_block_getting').fadeIn('fast');
                     });
                 }));
 
