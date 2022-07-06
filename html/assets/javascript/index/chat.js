@@ -22,8 +22,7 @@
         }
 
         async scrollBlock() {
-            var div = $(".chat_block_chat_body_msgs");
-            div.scrollTop(div.prop('scrollHeight'));
+            $('.chat_block_chat_body_msgs').animate({scrollTop: $('.chat_block_chat_body_msgs').height()}, 'fast');
         }
 
         async pushMsgOfUser(msgText)
@@ -65,7 +64,6 @@
             `);
 
             $('.chat_block_chat_body_msgs').append(myBlock);
-            $('.chat_block_chat_body_msgs').animate({scrollTop: $('.chat_block_chat_body_msgs').height()}, 'fast');
 
             await callApi({
                 methodName: "msgUP",
@@ -350,8 +348,36 @@
 
             templateText.find('.chat_block_chat_body_row_input span').click( async function() {
         
+                function padTo2Digits(num) {
+                    return num.toString().padStart(2, '0');
+                }
+    
+                function convertMsToTime(milliseconds) 
+                {
+                    let seconds = Math.floor(milliseconds / 1000);
+                    let minutes = Math.floor(seconds / 60);
+                    let hours = Math.floor(minutes / 60);
+                    
+                    seconds = seconds % 60;
+                    minutes = minutes % 60;
+                    
+                    hours = hours % 24;
+                    
+                    return `${padTo2Digits(hours)}:${padTo2Digits(minutes)}:${padTo2Digits(
+                        seconds,
+                    )}`;
+                }
+    
+                var time = convertMsToTime(Number(new Date().getTime().toString()));
+                
                 var myBlock = $(`
-                    <div class="chat_block_chat_body_msgs_line">
+                    <div class="chat_block_chat_body_msgs_line chat_block_chat_body_msgs_line_left">
+                        <div class="chat_block_chat_body_msgs_line_header">
+                            <span>Вы</span>
+                            <div class="chat_block_chat_body_msgs_line_header_time">
+                                <bb>${time}</bb>
+                            </div>
+                        </div>
                         <div class="chat_block_chat_body_msgs_line_my">
                             <span>${$('.chat_block_chat_body_row_input input').val()}</span>
                         </div>
@@ -359,7 +385,6 @@
                 `);
 
                 $('.chat_block_chat_body_msgs').append(myBlock);
-                $('.chat_block_chat_body_msgs').animate({scrollTop: $('.chat_block_chat_body_msgs').height()}, 'fast');
 
                 await callApi({
                     methodName: "msgUP",
@@ -370,6 +395,8 @@
                         msg: $('.chat_block_chat_body_row_input input').val(),
                     },
                 });
+
+                _this.scrollBlock();
 
                 $('.chat_block_chat_body_row_input input').val('');
             });
