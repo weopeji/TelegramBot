@@ -22,10 +22,6 @@
         }
 
         async scrollBlock() {
-            // $('.chat_block_chat_body_msgs').animate({scrollTop: $('.chat_block_chat_body_msgs').height()}, 'fast');
-            // var div = $(".chat_block_chat_body_msgs");
-            // div.scrollTop(div.prop('scrollHeight'));
-
             $('.chat_block_chat_body_msgs').animate({scrollTop: $('.chat_block_chat_body_msgs').prop('scrollHeight')}, 'fast');
         }
 
@@ -568,6 +564,8 @@
                     };
                 }
             });
+
+            this.scrollBlock();
         };
 
         async renderChatMoreBlock(showBlock)
