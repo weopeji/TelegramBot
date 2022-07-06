@@ -561,6 +561,8 @@
                                 </div>
                             `);
                         };
+
+                        this.scrollBlock();
                     };
                 }
             });
