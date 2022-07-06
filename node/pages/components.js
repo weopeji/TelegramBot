@@ -1282,75 +1282,45 @@ async function getChats(socket, data, callback)
     var _ProjectsUser       = await Project.find({user: _User.user});
     var _InvsDocs           = await InvDoc.find({invester: _User.user});
     var ActionData          = {
-        defaultChats: {},
+        defaultChats: {
+            "business": {},
+            "other": {},
+        },
     }
 
-    if(_User.type == "business")
+    
+    for(var _Project of _ProjectsUser)
     {
-        for(var _Project of _ProjectsUser)
-        {
-            var InvsOfProject   = await InvDoc.find({projectId: _Project._id});
-    
-            for(var InvDocOfInv of InvsOfProject)
-            {
-                var FindMsgs = await MsgDB.find({invDoc: InvDocOfInv._id});
-    
-                for(var _msgBlock of FindMsgs)
-                {
-                    var needUserPhoto   = null;
-                    var nameBlock       = _Project.data.name;
-    
-                    var _UserDataBlock      = await User.findOne({user: InvDocOfInv.invester});
-                    var _idPhoto            = await bot.getUserProfilePhotos(_UserDataBlock.user);
-        
-                    if(_idPhoto.total_count > 0)
-                    {
-                        var file_id         = _idPhoto.photos[0][0].file_id;
-                        needUserPhoto       = await bot.getFile(file_id);
-                    };
+        var InvsOfProject   = await InvDoc.find({projectId: _Project._id});
 
-                    for(var searchFio of InvDocOfInv.data.data)
-                    {
-                        if(searchFio._id == "fio")
-                        {
-                            nameBlock = searchFio.data;
-                        };
-                    };
-                    
-                    var _dataBlock = 
-                    {
-                        invId: InvDocOfInv._id,
-                        msgBlock: _msgBlock,
-                        name: nameBlock,
-                        img: needUserPhoto,
-                        Project: _Project,
-                    };
-        
-                    if(typeof ActionData.defaultChats[_Project._id] != "undefined")
-                    {
-                        ActionData.defaultChats[_Project._id].push(_dataBlock);
-                    }
-                    else
-                    {
-                        ActionData.defaultChats[_Project._id] = [_dataBlock];
-                    };
-                };
-            };
-        };
-    }
-    else
-    {
-        for(var InvDocOfInv of _InvsDocs)
+        for(var InvDocOfInv of InvsOfProject)
         {
             var FindMsgs = await MsgDB.find({invDoc: InvDocOfInv._id});
-            var _Project = await Project.findOne({_id: InvDocOfInv.projectId});
-    
+
             for(var _msgBlock of FindMsgs)
             {
                 var needUserPhoto   = null;
                 var nameBlock       = _Project.data.name;
+
+                var _UserDataBlock      = await User.findOne({user: InvDocOfInv.invester});
+                var _idPhoto            = await bot.getUserProfilePhotos(_UserDataBlock.user);
+    
+                if(_idPhoto.total_count > 0)
+                {
+                    var file_id         = _idPhoto.photos[0][0].file_id;
+                    needUserPhoto       = await bot.getFile(file_id);
+                };
+
+                for(var searchFio of InvDocOfInv.data.data)
+                {
+                    if(searchFio._id == "fio")
+                    {
+                        nameBlock = searchFio.data;
+                    };
+                };
                 
-                var _dataBlock = {
+                var _dataBlock = 
+                {
                     invId: InvDocOfInv._id,
                     msgBlock: _msgBlock,
                     name: nameBlock,
@@ -1360,15 +1330,44 @@ async function getChats(socket, data, callback)
     
                 if(typeof ActionData.defaultChats[_Project._id] != "undefined")
                 {
-                    ActionData.defaultChats[_Project._id].push(_dataBlock);
+                    ActionData.defaultChats["business"][_Project._id].push(_dataBlock);
                 }
                 else
                 {
-                    ActionData.defaultChats[_Project._id] = [_dataBlock];
+                    ActionData.defaultChats["business"][_Project._id] = [_dataBlock];
                 };
             };
         };
-    }
+    };
+    
+    for(var InvDocOfInv of _InvsDocs)
+    {
+        var FindMsgs = await MsgDB.find({invDoc: InvDocOfInv._id});
+        var _Project = await Project.findOne({_id: InvDocOfInv.projectId});
+
+        for(var _msgBlock of FindMsgs)
+        {
+            var needUserPhoto   = null;
+            var nameBlock       = _Project.data.name;
+            
+            var _dataBlock = {
+                invId: InvDocOfInv._id,
+                msgBlock: _msgBlock,
+                name: nameBlock,
+                img: needUserPhoto,
+                Project: _Project,
+            };
+
+            if(typeof ActionData.defaultChats[_Project._id] != "undefined")
+            {
+                ActionData.defaultChats["other"][_Project._id].push(_dataBlock);
+            }
+            else
+            {
+                ActionData.defaultChats["other"][_Project._id] = [_dataBlock];
+            };
+        };
+    };
 
     callback(AllMsgs);
 }
