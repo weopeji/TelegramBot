@@ -1358,14 +1358,7 @@ async function getChats(socket, data, callback)
                 Project: _Project,
             };
 
-            if(typeof ActionData.defaultChats[_Project._id] != "undefined")
-            {
-                ActionData.defaultChats["other"][_Project._id].push(_dataBlock);
-            }
-            else
-            {
-                ActionData.defaultChats["other"][_Project._id] = [_dataBlock];
-            };
+            ActionData.defaultChats["other"][_Project._id.toString()].push(_dataBlock);
         };
     };
 
