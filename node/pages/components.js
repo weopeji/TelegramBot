@@ -2647,9 +2647,7 @@ async function msgUP(socket,data,callback)
 
     if(typeof UserAlertOfMsg.socket != "undefined")
     {
-        io.to(UserAlertOfMsg.socket).emit('request_mail', {
-            dataMail,
-        });
+        io.to(UserAlertOfMsg.socket).emit('request_mail', dataMail);
     }
     else
     {
