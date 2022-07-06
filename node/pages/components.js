@@ -249,7 +249,7 @@ async function version2_userSetDefault(socket, data, callback)
     try {
         if(data.page == "chats")
         {
-            await User.findOneAndUpdate({_id: data.id}, {socket: socket});
+            await User.findOneAndUpdate({_id: data.id}, {socket: socket.id});
         }
         else
         {
