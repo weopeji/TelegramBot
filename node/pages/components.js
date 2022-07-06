@@ -1369,7 +1369,7 @@ async function getChats(socket, data, callback)
         };
     };
 
-    callback(AllMsgs);
+    callback(ActionData);
 }
 
 async function getPhotoByUser(socket, data, callback)
