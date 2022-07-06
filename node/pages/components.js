@@ -255,7 +255,7 @@ async function version2_userSetDefault(socket, data, callback)
         {
             await User.findOneAndUpdate({_id: data.id}, {$unset: { socket: "" }});
         }
-    }
+    } catch (e) {};
 }
 
 async function version2_activ_projects_pageRender(socket, data, callback)
