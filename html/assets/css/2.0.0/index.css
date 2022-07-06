@@ -1827,6 +1827,12 @@ img.preloader_row_img {
   padding-right: 0;
 }
 
+.msg_block_getting_line_img_block {
+  background-color: transparent;
+  background-size: cover;
+  background-image: url("../images/2.0.0/business.png");
+}
+
 @media (max-width: 1350px) {
   .chat_block_chat_header {
     width: 100%;
