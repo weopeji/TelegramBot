@@ -437,8 +437,43 @@
 
         async renderChatMoreBlock(showBlock)
         {
-            console.log(showBlock);
-        }
+            $('.msg_block_getting').fadeOut('fast', function () {
+                $(this).empty();
+
+                for(var element of showBlock)
+                {
+                    var _PathUrl    = null;
+
+                    if(element.img)
+                    {
+                        _PathUrl = `https://api.telegram.org/file/bot2062839693:AAE0hzj8SVXyexq29s5x7aRLC5x8O77c-pQ/` + element.img.file_path;
+                    };
+    
+                    var template_text = $(`
+                        <div class="msg_block_getting_line" data="${element.invId}" data-id="${_key}">
+                            <div class="version2_default_bkg row_default"></div>
+                            <div class="msg_block_getting_line_img">
+                                <div class="msg_block_getting_line_img_block">
+                                    <img src="${_PathUrl}" alt="">
+                                </div>
+                            </div>
+                            <div class="msg_block_getting_line_text">
+                                <span>${element.name}</span>
+                                <p>${element.msgBlock.msgs[element.msgBlock.msgs.length - 1].text}</p>
+                            </div>
+                        </div>
+                    `);
+
+                    template_text.click( function() {
+                        location.href = `./?page=chats&id=${$(this).attr('data')}`;
+                    });
+                    
+                    $(this).append(template_text);
+                };
+
+                $(this).fadeIn('fast');
+            });
+        };
 
         async renderType()
         {
