@@ -22,7 +22,11 @@
         }
 
         async scrollBlock() {
-            $('.chat_block_chat_body_msgs').animate({scrollTop: $('.chat_block_chat_body_msgs').height()}, 'fast');
+            // $('.chat_block_chat_body_msgs').animate({scrollTop: $('.chat_block_chat_body_msgs').height()}, 'fast');
+            // var div = $(".chat_block_chat_body_msgs");
+            // div.scrollTop(div.prop('scrollHeight'));
+
+            $('.chat_block_chat_body_msgs').animate({scrollTop: $('.chat_block_chat_body_msgs').prop('scrollHeight')}, 'fast');
         }
 
         async pushMsgOfUser(msgText)
@@ -369,7 +373,7 @@
                 }
     
                 var time = convertMsToTime(Number(new Date().getTime().toString()));
-                
+
                 var myBlock = $(`
                     <div class="chat_block_chat_body_msgs_line chat_block_chat_body_msgs_line_left">
                         <div class="chat_block_chat_body_msgs_line_header">
