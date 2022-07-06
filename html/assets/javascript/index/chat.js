@@ -437,12 +437,19 @@
 
         async renderChatMoreBlock(showBlock)
         {
+            var _this = this;
+            
             $('.msg_block_getting').fadeOut('fast', function () {
                 $(this).empty().append($(`
                     <div class="chatPageBehinedByMoreBlocks">
                         <i class="fal fa-angle-left"></i>
                     </div>
-                `));
+                `).click(function() {
+                    $('.msg_block_getting').fadeOut('fast', function () {
+                        $('.msg_block_getting').empty();
+                        _this.renderType();
+                    });
+                }));
 
                 for(var element of showBlock)
                 {
