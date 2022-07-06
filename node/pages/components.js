@@ -1281,13 +1281,15 @@ async function getChats(socket, data, callback)
     var _User               = await User.findOne({_id: data});
     var _ProjectsUser       = await Project.find({user: _User.user});
     var _InvsDocs           = await InvDoc.find({invester: _User.user});
-    var AllMsgs             = [];
+    var ActionData          = {
+        defaultChats: {},
+    }
 
     if(_User.type == "business")
     {
         for(var _Project of _ProjectsUser)
         {
-            var InvsOfProject = await InvDoc.find({projectId: _Project._id});
+            var InvsOfProject   = await InvDoc.find({projectId: _Project._id});
     
             for(var InvDocOfInv of InvsOfProject)
             {
@@ -1315,14 +1317,23 @@ async function getChats(socket, data, callback)
                         };
                     };
                     
-                    var _dataBlock = {
+                    var _dataBlock = 
+                    {
                         invId: InvDocOfInv._id,
                         msgBlock: _msgBlock,
                         name: nameBlock,
                         img: needUserPhoto,
+                        Project: _Project,
                     };
         
-                    AllMsgs.push(_dataBlock);
+                    if(typeof ActionData.defaultChats[_Project._id] != "undefined")
+                    {
+                        ActionData.defaultChats[_Project._id].push(_dataBlock);
+                    }
+                    else
+                    {
+                        ActionData.defaultChats[_Project._id] = [_dataBlock];
+                    };
                 };
             };
         };
@@ -1344,9 +1355,17 @@ async function getChats(socket, data, callback)
                     msgBlock: _msgBlock,
                     name: nameBlock,
                     img: needUserPhoto,
+                    Project: _Project,
                 };
     
-                AllMsgs.push(_dataBlock);
+                if(typeof ActionData.defaultChats[_Project._id] != "undefined")
+                {
+                    ActionData.defaultChats[_Project._id].push(_dataBlock);
+                }
+                else
+                {
+                    ActionData.defaultChats[_Project._id] = [_dataBlock];
+                };
             };
         };
     }

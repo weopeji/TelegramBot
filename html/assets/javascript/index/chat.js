@@ -16,6 +16,11 @@
 
     class chat
     {
+        constructor() 
+        {
+            this.globalType = $(`<div class="msg_block_getting"></div>`);
+        }
+
         async pushMsgOfUser(msgText)
         {
             var myBlock = $(`
@@ -432,18 +437,29 @@
 
         async renderType()
         {
-            var getChats     = await callApi({
+            var errorpush       = true;
+            var _TypeUser       = window.allData.User.type;
+            var _this           = this;
+            var allPushChats    = [];
+            var getChats        = await callApi({
                 methodName: "getChats",
                 data:  global.allData._id,
             });
 
-            var errorpush = true;
-
-            var block = $(`
-                <div class="msg_block_getting">
-
-                </div>
-            `);
+            if(_TypeUser == "business")
+            {
+                for(_chat of getChats)
+                {
+                    
+                }
+            }
+            else
+            {
+                for(_chat of getChats)
+                {
+                    
+                }
+            }
 
             getChats.forEach(element => {
 
@@ -474,15 +490,15 @@
                 });
                 
                 errorpush = false;
-                block.append(template_text);
+                _this.globalType.append(template_text);
             });
 
             if(errorpush)
             {
-                block.append(`<span class="msg_block_errorPush">У вас пока нет чатов</span>`);
+                _this.globalType.append(`<span class="msg_block_errorPush">У вас пока нет чатов</span>`);
             }
 
-            $('.index_page_body_data').append(block);
+            $('.index_page_body_data').append(_this.globalType);
         }
 
         async render()
