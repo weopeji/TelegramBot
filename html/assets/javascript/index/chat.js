@@ -435,6 +435,11 @@
             };
         };
 
+        async renderChatMoreBlock(showBlock)
+        {
+            console.log(showBlock);
+        }
+
         async renderType()
         {
             var errorpush       = true;
@@ -465,7 +470,7 @@
                         };
         
                         var template_text = $(`
-                            <div class="msg_block_getting_line" data="${element.invId}">
+                            <div class="msg_block_getting_line" data="${element.invId}" data-id="${_key}">
                                 <div class="version2_default_bkg row_default"></div>
                                 <div class="msg_block_getting_line_img">
                                     <div class="msg_block_getting_line_img_block">
@@ -479,17 +484,23 @@
                             </div>
                         `);
 
-                        if(getChats.defaultChats.other[_key].length > 0) {
+                        if(getChats.defaultChats.other[_key].length > 0) 
+                        {
                             template_text.append(`
                                 <div class="msg_block_getting_line_moreInfo">
                                     <span>+ ${getChats.defaultChats.other[_key].length - 1}</span>
                                 </div>
-                            `).addClass("msg_block_getting_line_Many");
-                        };
-        
-                        template_text.click( function() {
-                            location.href = `./?page=chats&id=${$(this).attr('data')}`;
-                        });
+                            `).addClass("msg_block_getting_line_Many").click( function() 
+                            {
+                                _this.renderChatMoreBlock(getChats.defaultChats.other[$(this).attr('data-id')]);
+                            });
+                        }
+                        else
+                        {
+                            template_text.click( function() {
+                                location.href = `./?page=chats&id=${$(this).attr('data')}`;
+                            });
+                        }
                         
                         errorpush = false;
                         _this.globalType.append(template_text);
