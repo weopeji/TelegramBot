@@ -1358,6 +1358,11 @@ async function getChats(socket, data, callback)
                 Project: _Project,
             };
 
+            if(typeof ActionData.defaultChats[_Project._id.toString()] == "undefined")
+            {
+                ActionData.defaultChats["other"][_Project._id.toString()] = [];
+            };
+
             ActionData.defaultChats["other"][_Project._id.toString()].push(_dataBlock);
         };
     };
