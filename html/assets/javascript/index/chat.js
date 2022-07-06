@@ -344,6 +344,29 @@
             {
                 for(var msgBlock of getChat.msgs)
                 {
+                    var time = "";
+
+                    function convertMsToTime(milliseconds) 
+                    {
+                        let seconds = Math.floor(milliseconds / 1000);
+                        let minutes = Math.floor(seconds / 60);
+                        let hours = Math.floor(minutes / 60);
+                      
+                        seconds = seconds % 60;
+                        minutes = minutes % 60;
+                      
+                        hours = hours % 24;
+                      
+                        return `${padTo2Digits(hours)}:${padTo2Digits(minutes)}:${padTo2Digits(
+                          seconds,
+                        )}`;
+                    }
+
+                    if(typeof msgBlock.time != "undefined")
+                    {
+                        time = convertMsToTime(Number(msgBlock.time.toString()))
+                    };
+
                     if(msgBlock.type == global.allData.User.type)
                     {
                         templateText.find('.chat_block_chat_body_msgs').append(`
@@ -351,7 +374,7 @@
                                 <div class="chat_block_chat_body_msgs_line_header">
                                     <span>Вы</span>
                                     <div class="chat_block_chat_body_msgs_line_header_time">
-                                        <bb>23:35</bb>
+                                        <bb>${time}</bb>
                                     </div>
                                 </div>
                                 <div class="chat_block_chat_body_msgs_line_my">
@@ -367,7 +390,7 @@
                                 <div class="chat_block_chat_body_msgs_line_header">
                                     <span>Вам</span>
                                     <div class="chat_block_chat_body_msgs_line_header_time">
-                                        <bb>23:35</bb>
+                                        <bb>${time}</bb>
                                     </div>
                                 </div>
                                 <div class="chat_block_chat_body_msgs_line_my">

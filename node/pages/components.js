@@ -2611,6 +2611,7 @@ async function msgUP(socket,data,callback)
     _array.push({
         text: data.msg,
         type: _User.type,
+        time: new Date().getTime().toString(),
     });
 
     var neeuserAlertId = _InvDoc.invester;
