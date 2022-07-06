@@ -347,7 +347,7 @@
                     if(msgBlock.type == global.allData.User.type)
                     {
                         templateText.find('.chat_block_chat_body_msgs').append(`
-                            <div class="chat_block_chat_body_msgs_line">
+                            <div class="chat_block_chat_body_msgs_line chat_block_chat_body_msgs_line_left">
                                 <div class="chat_block_chat_body_msgs_line_header">
                                     <span>Вы</span>
                                     <div class="chat_block_chat_body_msgs_line_header_time">
@@ -363,7 +363,7 @@
                     else
                     {
                         templateText.find('.chat_block_chat_body_msgs').append(`
-                            <div class="chat_block_chat_body_msgs_line chat_block_chat_body_msgs_line_left">
+                            <div class="chat_block_chat_body_msgs_line">
                                 <div class="chat_block_chat_body_msgs_line_header">
                                     <span>Вам</span>
                                     <div class="chat_block_chat_body_msgs_line_header_time">
