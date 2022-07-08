@@ -1317,8 +1317,10 @@ async function getChats(socket, data, callback)
 
             for(var _msgBlock of FindMsgs)
             {
-                var needUserPhoto   = null;
-                var nameBlock       = _Project.data.name;
+                var needUserPhoto       = null;
+                var nameBlock           = _Project.data.name;
+                var numberInvDoc        = 0;
+                var needNumberInvDoc    = 0;
 
                 var _UserDataBlock      = await User.findOne({user: InvDocOfInv.invester});
                 var _idPhoto            = await bot.getUserProfilePhotos(_UserDataBlock.user);
@@ -1336,6 +1338,16 @@ async function getChats(socket, data, callback)
                         nameBlock = searchFio.data;
                     };
                 };
+
+                for(var cheackInitNumberInvDoc of InvsOfProject)
+                {
+                    numberInvDoc++;
+
+                    if(cheackInitNumberInvDoc._id.toString() == InvDocOfInv._id.toString())
+                    {
+                        needNumberInvDoc = numberInvDoc;
+                    };
+                }
                 
                 var _dataBlock = 
                 {
@@ -1344,6 +1356,10 @@ async function getChats(socket, data, callback)
                     name: nameBlock,
                     img: needUserPhoto,
                     Project: _Project,
+                    invDoc: {
+                        data: InvDocOfInv,
+                        number: needNumberInvDoc,
+                    },
                 };
     
                 if(typeof ActionData.defaultChats["business"]["id_" + InvDocOfInv.invester] != "undefined")
@@ -1360,13 +1376,17 @@ async function getChats(socket, data, callback)
     
     for(var InvDocOfInv of _InvsDocs)
     {
-        var FindMsgs = await MsgDB.find({invDoc: InvDocOfInv._id});
-        var _Project = await Project.findOne({_id: InvDocOfInv.projectId});
+        var FindMsgs        = await MsgDB.find({invDoc: InvDocOfInv._id});
+        var _Project        = await Project.findOne({_id: InvDocOfInv.projectId});
+        var InvsOfProject   = await InvDoc.find({projectId: _Project._id});
 
         for(var _msgBlock of FindMsgs)
         {
-            var needUserPhoto   = null;
-            var nameBlock       = _Project.data.name;
+            var needUserPhoto       = null;
+            var nameBlock           = _Project.data.name;
+            var numberInvDoc        = 0;
+            var needNumberInvDoc    = 0;
+            var InvDocOfInv         = await InvDoc.findOne({_id: _msgBlock.invDoc});
             
             var _dataBlock = {
                 invId: InvDocOfInv._id,
@@ -1374,6 +1394,10 @@ async function getChats(socket, data, callback)
                 name: nameBlock,
                 img: needUserPhoto,
                 Project: _Project,
+                invDoc: {
+                    data: InvDocOfInv,
+                    number: needNumberInvDoc,
+                },
             };
 
             if(typeof ActionData.defaultChats["other"]["id_" + _Project._id.toString()] == "undefined")
