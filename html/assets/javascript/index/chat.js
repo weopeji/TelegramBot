@@ -665,7 +665,7 @@
                 data:  global.allData._id,
             });
 
-            this.UserData = getChat.User;
+            this.UserData = getChats.User;
 
             if(_TypeUser == "business")
             {
