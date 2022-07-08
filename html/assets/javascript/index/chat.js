@@ -160,7 +160,10 @@
                 "left": "10px",
                 "top": "10px",
             }).click(function() {
-                _this.renderType();
+                $('.chat_block').fadeOut('fast', function () {
+                    _this.renderType();
+                    $(this).remove();
+                });
             }));
 
             templateText.find('.chat_block_chat_header bb').click( function() {
