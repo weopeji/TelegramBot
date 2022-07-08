@@ -605,7 +605,7 @@
                                 </div>
                             </div>
                             <div class="msg_block_getting_line_text">
-                                <span>${element.name} ${element.Project._id}/${element.invDoc.number}</span>
+                                <span>${element.name} ${element.Project._id}/${element.invDoc.number} от ${DateFormatted(element.invDoc.data.date.toString())}</span>
                                 <p>${element.msgBlock.msgs[element.msgBlock.msgs.length - 1].text}</p>
                             </div>
                         </div>
