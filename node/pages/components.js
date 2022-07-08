@@ -1400,6 +1400,8 @@ async function getChats(socket, data, callback)
                 },
             };
 
+            console.log(InvsOfProject.length);
+
             for(var cheackInitNumberInvDoc of InvsOfProject)
             {
                 numberInvDoc++;
