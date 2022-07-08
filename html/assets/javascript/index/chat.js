@@ -676,6 +676,7 @@
                         var _PathUrl    = null;
                         var element     = getChats.defaultChats.business[_key][0];
                         var AlertBlock  = false;
+                        var AlerstUser  = [];
 
                         if(typeof getChats.User.alerts_main != 'undefined')
                         {
