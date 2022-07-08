@@ -156,15 +156,11 @@
                 </div>
             `).css({
                 "position": "absolute",
-                "z-index": "2",
+                "z-index": "6",
                 "left": "10px",
                 "top": "10px",
             }).click(function() {
-                $('.msg_block_getting').fadeOut('fast', function () {
-                    $('.msg_block_getting').empty();
-                    _this.renderType();
-                    $('.msg_block_getting').fadeIn('fast');
-                });
+                _this.renderType();
             }));
 
             templateText.find('.chat_block_chat_header bb').click( function() {
