@@ -1387,7 +1387,17 @@ async function getChats(socket, data, callback)
             var numberInvDoc        = 0;
             var needNumberInvDoc    = 0;
             var InvDocOfInv         = await InvDoc.findOne({_id: _msgBlock.invDoc});
-            
+
+            for(var cheackInitNumberInvDoc of InvsOfProject)
+            {
+                numberInvDoc++;
+
+                if(cheackInitNumberInvDoc._id.toString() == InvDocOfInv._id.toString())
+                {
+                    needNumberInvDoc = numberInvDoc;
+                };
+            }
+
             var _dataBlock = {
                 invId: InvDocOfInv._id,
                 msgBlock: _msgBlock,
@@ -1399,18 +1409,6 @@ async function getChats(socket, data, callback)
                     number: needNumberInvDoc,
                 },
             };
-
-            console.log(InvsOfProject.length);
-
-            for(var cheackInitNumberInvDoc of InvsOfProject)
-            {
-                numberInvDoc++;
-
-                if(cheackInitNumberInvDoc._id.toString() == InvDocOfInv._id.toString())
-                {
-                    needNumberInvDoc = numberInvDoc;
-                };
-            }
 
             if(typeof ActionData.defaultChats["other"]["id_" + _Project._id.toString()] == "undefined")
             {
