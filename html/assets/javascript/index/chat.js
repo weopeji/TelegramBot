@@ -107,8 +107,6 @@
                 },
             });
 
-            this.UserData = getChat.User;
-
             var templateText = $(`
                 <div class="chat_block">
                     <div class="chat_block_chat">
@@ -601,7 +599,7 @@
                         _PathUrl = `https://api.telegram.org/file/bot2062839693:AAE0hzj8SVXyexq29s5x7aRLC5x8O77c-pQ/` + element.img.file_path;
                     };
 
-                    if(typeof _this.UserData.alerts_main == 'undefined')
+                    if(typeof _this.UserData.alerts_main != 'undefined')
                     {
                         for(var alertBlockOfUser of _this.UserData.alerts_main)
                         {
@@ -666,6 +664,8 @@
                 methodName: "getChats",
                 data:  global.allData._id,
             });
+
+            this.UserData = getChat.User;
 
             if(_TypeUser == "business")
             {
