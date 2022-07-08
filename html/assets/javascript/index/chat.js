@@ -672,6 +672,8 @@
                             {
                                 _this.renderChatMoreBlock(getChats.defaultChats.business[$(this).attr('data-id')]);
                             });
+
+                            template_text.find('.msg_block_getting_line_text p').remove();
                         }
                         else
                         {
