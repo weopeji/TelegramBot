@@ -702,13 +702,16 @@
                         var AlertBlock  = false;
                         var AlerstUser  = [];
 
-                        for(var alertUser of getChats.User.alerts_main)
+                        if(typeof getChats.User.alerts_main != 'undefined')
                         {
-                            if(alertUser.type == "new_msg")
+                            for(var alertUser of getChats.User.alerts_main)
                             {
-                                AlerstUser.push(alertUser.idChat);
+                                if(alertUser.type == "new_msg")
+                                {
+                                    AlerstUser.push(alertUser.idChat);
+                                };
                             };
-                        };
+                        }
 
                         if(AlerstUser.length > 0)
                         {
