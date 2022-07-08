@@ -19,6 +19,7 @@
         constructor() 
         {
             this.globalType = $(`<div class="msg_block_getting"></div>`);
+            this.UserData   = null;
         }
 
         async scrollBlock() {
@@ -105,6 +106,8 @@
                     id: _GET("id")
                 },
             });
+
+            this.UserData = getChat.User;
 
             var templateText = $(`
                 <div class="chat_block">
@@ -590,11 +593,35 @@
                 for(var element of showBlock)
                 {
                     var _PathUrl    = null;
+                    var AlertBlock  = false;
+                    var AlertsUser  = [];
 
                     if(element.img)
                     {
                         _PathUrl = `https://api.telegram.org/file/bot2062839693:AAE0hzj8SVXyexq29s5x7aRLC5x8O77c-pQ/` + element.img.file_path;
                     };
+
+                    if(typeof _this.UserData.alerts_main == 'undefined')
+                    {
+                        for(var alertBlockOfUser of _this.UserData.alerts_main)
+                        {
+                            if(alertBlockOfUser.type == "new_msg")
+                            {
+                                AlertsUser.push(alertBlockOfUser.idChat);
+                            }
+                        };
+                    }
+
+                    if(AlertsUser.length > 0)
+                    {
+                        for(var AlertUserOne of AlertsUser)
+                        {
+                            if(AlertUserOne.toString() == element.invId.toString())
+                            {
+                                AlertBlock = true;
+                            }
+                        }
+                    }
     
                     var template_text = $(`
                         <div class="msg_block_getting_line" data="${element.invId}">
@@ -610,6 +637,13 @@
                             </div>
                         </div>
                     `);
+
+                    if(AlertBlock)
+                    {
+                        template_text.append($(`
+                            <div class="msg_block_getting_line_alertBlock"></div>
+                        `));
+                    }
 
                     template_text.click( function() {
                         location.href = `./?page=chats&id=${$(this).attr('data')}`;
