@@ -1,5 +1,3 @@
-const { isAbsolute } = require("path");
-
 (function (global) {
     "use strict";
 
