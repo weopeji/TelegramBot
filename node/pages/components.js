@@ -1378,7 +1378,7 @@ async function getChats(socket, data, callback)
     {
         var FindMsgs        = await MsgDB.find({invDoc: InvDocOfInv._id});
         var _Project        = await Project.findOne({_id: InvDocOfInv.projectId});
-        var InvsOfProject   = await InvDoc.findOne({projectId: _Project._id});
+        var InvsOfProject   = await InvDoc.find({projectId: _Project._id});
 
         for(var _msgBlock of FindMsgs)
         {
@@ -1399,6 +1399,16 @@ async function getChats(socket, data, callback)
                     number: needNumberInvDoc,
                 },
             };
+
+            for(var cheackInitNumberInvDoc of InvsOfProject)
+            {
+                numberInvDoc++;
+
+                if(cheackInitNumberInvDoc._id.toString() == InvDocOfInv._id.toString())
+                {
+                    needNumberInvDoc = numberInvDoc;
+                };
+            }
 
             if(typeof ActionData.defaultChats["other"]["id_" + _Project._id.toString()] == "undefined")
             {
