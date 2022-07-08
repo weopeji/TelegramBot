@@ -979,7 +979,7 @@ async function getChatsOfId(socket, data, callback)
     var _User               = await User.findOne({_id: data.user});
     var _FindBlock          = await InvDoc.findOne({_id: data.id});
     var _AlertsByUser       = _User.alerts_main;
-    var newAlertsArray      = _AlertsByUser.filter(function(f) { return f.type !== 'new_msg' && f.idChat == _FindBlock._id.toString()});
+    var newAlertsArray      = _AlertsByUser.filter(function(f) { return f.idChat == _FindBlock._id.toString()});
 
     await User.findOneAndUpdate({_id: data.user}, {alerts_main: newAlertsArray});
 
