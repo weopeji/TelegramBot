@@ -675,6 +675,32 @@
                     {
                         var _PathUrl    = null;
                         var element     = getChats.defaultChats.business[_key][0];
+                        var AlertBlock  = false;
+
+                        if(typeof getChats.User.alerts_main != 'undefined')
+                        {
+                            for(var alertUser of getChats.User.alerts_main)
+                            {
+                                if(alertUser.type == "new_msg")
+                                {
+                                    AlerstUser.push(alertUser.idChat);
+                                };
+                            };
+                        };
+
+                        if(AlerstUser.length > 0)
+                        {
+                            for(var cheackAlertBlock of getChats.defaultChats.business[_key])
+                            {
+                                for(var AlerstUserOne of AlerstUser)
+                                {
+                                    if(AlerstUserOne.toString() == cheackAlertBlock.invId.toString())
+                                    {
+                                        AlertBlock = true;
+                                    };
+                                };   
+                            };
+                        };
     
                         if(element.img)
                         {
