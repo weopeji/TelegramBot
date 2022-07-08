@@ -150,7 +150,7 @@
                 </div>
             `);
 
-            templateText.find('.chat_block_chat').append($(`
+            templateText.find('.chat_block_chat').prepend($(`
                 <div class="chatPageBehinedByMoreBlocks">
                     <i class="fal fa-angle-left"></i>
                 </div>
