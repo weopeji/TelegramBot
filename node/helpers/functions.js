@@ -59,14 +59,30 @@ async function full_alert_user(_id, _text, _type, moreId)
     var _User           = await User.findOne({user: _id});
     var _textDecoded    = _text;
     var _Alerts         = _User.alerts_main;
-
-    if(!_Alerts)        { _Alerts = []; };
-
-    _Alerts.push({
+    var AlertDataNew    = {
         type: _type,
         text: _text,
         date: new Date().getTime().toString(),
-    });
+    };
+
+    var defaultmore =
+    {
+        "new_msg": function() {
+            if(moreId || moreId == 0)
+            {
+                AlertDataNew.idChat = moreId;
+            };
+        },
+    };
+
+    if(typeof defaultmore[_type] != "undefined")
+    {
+        await defaultmore[_type]();
+    };
+
+    if(!_Alerts)        { _Alerts = []; };
+
+    _Alerts.push(AlertDataNew);
 
     if(_Alerts.length > 3)
     {

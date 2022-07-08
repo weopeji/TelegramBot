@@ -2685,7 +2685,7 @@ async function msgUP(socket,data,callback)
     }
     else
     {
-        h.full_alert_user(neeuserAlertId, `У вас новое сообщение в месенджере!`, "new_msg");
+        h.full_alert_user(neeuserAlertId, `У вас новое сообщение в месенджере!`, "new_msg", _InvDoc._id.toString());
     };
 
     callback(await MsgDB.findOneAndUpdate({_id: _MsgDB._id,},{msgs: _array}));
