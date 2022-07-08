@@ -711,7 +711,7 @@
                                     AlerstUser.push(alertUser.idChat);
                                 };
                             };
-                        }
+                        } 
 
                         if(AlerstUser.length > 0)
                         {
