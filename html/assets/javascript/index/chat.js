@@ -699,6 +699,31 @@
                     {
                         var _PathUrl    = null;
                         var element     = getChats.defaultChats.other[_key][0];
+                        var AlertBlock  = false;
+                        var AlerstUser  = [];
+
+                        for(var alertUser of getChats.User.alerts_main)
+                        {
+                            if(alertUser.type == "new_msg")
+                            {
+                                AlerstUser.push(alertUser.idChat);
+                            };
+                        };
+
+                        if(AlerstUser.length > 0)
+                        {
+                            for(var cheackAlertBlock of getChats.defaultChats.other[_key])
+                            {
+                                for(var AlerstUserOne of AlerstUser)
+                                {
+                                    if(AlerstUserOne.toString() == cheackAlertBlock.invId.toString())
+                                    {
+                                        AlertBlock = true;
+                                    };
+                                };   
+                            };
+                        };
+                        
     
                         if(element.img)
                         {
@@ -719,6 +744,13 @@
                                 </div>
                             </div>
                         `);
+
+                        if(AlertBlock)
+                        {
+                            template_text.append($(`
+                                <div class="msg_block_getting_line_alertBlock"></div>
+                            `));
+                        }
 
                         if(getChats.defaultChats.other[_key].length > 0) 
                         {

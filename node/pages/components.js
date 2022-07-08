@@ -1304,8 +1304,8 @@ async function getChats(socket, data, callback)
             "business": {},
             "other": {},
         },
-    }
-
+        User: _User,
+    };
     
     for(var _Project of _ProjectsUser)
     {
