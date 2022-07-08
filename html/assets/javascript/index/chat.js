@@ -674,6 +674,10 @@
                             });
 
                             template_text.find('.msg_block_getting_line_text p').remove();
+                            template_text.find(".msg_block_getting_line_text").css({
+                                "display": "flex",
+                                "align-items": "center",
+                            });
                         }
                         else
                         {
@@ -728,6 +732,10 @@
                             });
 
                             template_text.find('.msg_block_getting_line_text p').remove();
+                            template_text.find(".msg_block_getting_line_text").css({
+                                "display": "flex",
+                                "align-items": "center",
+                            });
                         }
                         else
                         {
