@@ -155,7 +155,7 @@
                     <i class="fal fa-angle-left"></i>
                 </div>
             `).css({
-                "position": "isAbsolute",
+                "position": "absolute",
                 "z-index": "2",
                 "left": "10px",
                 "top": "10px",
