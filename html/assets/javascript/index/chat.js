@@ -1,3 +1,5 @@
+const { isAbsolute } = require("path");
+
 (function (global) {
     "use strict";
 
@@ -154,7 +156,12 @@
                 <div class="chatPageBehinedByMoreBlocks">
                     <i class="fal fa-angle-left"></i>
                 </div>
-            `).click(function() {
+            `).css({
+                "position": "isAbsolute",
+                "z-index": "2",
+                "left": "10px",
+                "top": "10px",
+            }).click(function() {
                 $('.msg_block_getting').fadeOut('fast', function () {
                     $('.msg_block_getting').empty();
                     _this.renderType();
