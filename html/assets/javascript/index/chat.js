@@ -150,6 +150,18 @@
                 </div>
             `);
 
+            templateText.find('.chat_block_chat').append($(`
+                <div class="chatPageBehinedByMoreBlocks">
+                    <i class="fal fa-angle-left"></i>
+                </div>
+            `).click(function() {
+                $('.msg_block_getting').fadeOut('fast', function () {
+                    $('.msg_block_getting').empty();
+                    _this.renderType();
+                    $('.msg_block_getting').fadeIn('fast');
+                });
+            }));
+
             templateText.find('.chat_block_chat_header bb').click( function() {
                 $('.chat_block').toggleClass('selected')
             })
