@@ -1866,6 +1866,10 @@ img.preloader_row_img {
   font-family: 'Circe';
 }
 
+.msg_block_getting_line_Many {
+  font-family: 'Circe';
+}
+
 @media (max-width: 1350px) {
   .msg_block_getting_line_alertBlock {
     right: -3px;
