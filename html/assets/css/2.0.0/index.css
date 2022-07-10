@@ -1735,6 +1735,9 @@ img.preloader_row_img {
 .chat_block_chat_body_msgs_line .chat_block_chat_body_msgs_line_my {
   background-color: transparent;
   padding-left: 0;
+  padding-top: 4px;
+  font-weight: 400;
+  font-size: 14px;
 }
 
 .chat_block_chat_body_msgs_line_header {
@@ -1751,6 +1754,9 @@ img.preloader_row_img {
   margin-right: 20px;
   display: block;
   height: 30px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.7;
 }
 
 .chat_block_chat_body_msgs_line_header .chat_block_chat_body_msgs_line_header_time {
@@ -1764,6 +1770,8 @@ img.preloader_row_img {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  font-weight: 400;
+  font-size: 12px;
 }
 
 .msg_block_getting_line_moreInfo {
@@ -1850,6 +1858,10 @@ img.preloader_row_img {
 
 .chatPageBehinedByMoreBlocks bb {
   display: none;
+}
+
+.chat_block_chat_body {
+  font-family: 'Circe';
 }
 
 @media (max-width: 1350px) {
