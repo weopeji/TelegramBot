@@ -1844,6 +1844,11 @@ img.preloader_row_img {
   border-radius: 50%;
 }
 
+.chat_block_chat_body_msgs {
+  height: calc(100% - 110px);
+  margin-top: 30px;
+}
+
 @media (max-width: 1350px) {
   .msg_block_getting_line_alertBlock {
     right: -3px;
