@@ -660,7 +660,7 @@
 }
 
 .info_active_block_photo {
-  margin-top: 20px;
+  margin-top: 38px;
   width: 160px;
   height: 160px;
   background-image: url("/html/assets/images/2.0.0/business.png");
@@ -1187,6 +1187,7 @@ img.preloader_row_img {
   background-color: transparent;
   position: relative;
   margin-top: 44px;
+  font-family: 'Circe';
 }
 
 .chat_block_info .info_active_block_photo,
@@ -1200,7 +1201,7 @@ img.preloader_row_img {
 .chat_block_info span {
   color: white;
   font-size: 20px;
-  margin-top: 10px;
+  margin-top: 28px;
 }
 
 .chat_block_info p {
