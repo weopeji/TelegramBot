@@ -476,7 +476,7 @@
                         templateText.find('.chat_block_chat_body_msgs').append(`
                             <div class="chat_block_chat_body_msgs_line">
                                 <div class="chat_block_chat_body_msgs_line_header">
-                                    <span>Вам</span>
+                                    <span>${getChat.name}</span>
                                     <div class="chat_block_chat_body_msgs_line_header_time">
                                         <bb>${time}</bb>
                                     </div>
