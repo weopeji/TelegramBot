@@ -159,7 +159,9 @@
                 "z-index": "6",
                 "left": "10px",
                 "top": "10px",
-            }).find('i').click(function() {
+            });
+            
+            templateText.find('.chatPageBehinedByMoreBlocks i').click(function() {
                 $('.chat_block').fadeOut('fast', function () {
                     _this.renderType();
                     $(this).remove();
