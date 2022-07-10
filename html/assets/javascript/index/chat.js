@@ -113,11 +113,6 @@
                         <div class="version2_default_bkg row_default"></div>
                         <div class="chat_block_chat_header">
                             <span>Чат</span>
-                            <bb>
-                                <bb_circule></bb_circule>
-                                <bb_circule></bb_circule>
-                                <bb_circule></bb_circule>
-                            </bb>
                         </div>
                         <div class="chat_block_chat_body">
                             <div class="chat_block_chat_body_row">
