@@ -1883,8 +1883,8 @@ img.preloader_row_img {
   .chatPageBehinedByMoreBlocks bb {
     display: block;
     position: absolute;
-    right: 15px;
-    top: 100px;
+    right: 28px;
+    top: 20px;
     z-index: 99;
   }
   .chatPageBehinedByMoreBlocks bb bb_circule {
