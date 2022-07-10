@@ -159,15 +159,19 @@
                 "z-index": "6",
                 "left": "10px",
                 "top": "10px",
-            }).click(function() {
+            }).find('i').click(function() {
                 $('.chat_block').fadeOut('fast', function () {
                     _this.renderType();
                     $(this).remove();
                 });
             }));
 
+            templateText.find('.chatPageBehinedByMoreBlocks bb').click( function() {
+                $('.chat_block').toggleClass('selected');
+            });
+
             templateText.find('.chat_block_chat_header bb').click( function() {
-                $('.chat_block').toggleClass('selected')
+                $('.chat_block').toggleClass('selected');
             })
 
             if(getChat.Inv.status == "not_correct")
