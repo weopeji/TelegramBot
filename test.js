@@ -201,3 +201,9 @@ settingBlock.find(".version2_settingBlock_header").append(`
         
     </div>
 `);
+
+<bb>
+    <bb_circule></bb_circule>
+    <bb_circule></bb_circule>
+    <bb_circule></bb_circule>
+</bb>

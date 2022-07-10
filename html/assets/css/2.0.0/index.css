@@ -1849,6 +1849,10 @@ img.preloader_row_img {
   margin-top: 30px;
 }
 
+.chatPageBehinedByMoreBlocks bb {
+  display: none;
+}
+
 @media (max-width: 1350px) {
   .msg_block_getting_line_alertBlock {
     right: -3px;
@@ -1868,6 +1872,22 @@ img.preloader_row_img {
     z-index: 99;
   }
   .chat_block_chat_header bb bb_circule {
+    margin: 3px 0;
+    display: block;
+    width: 5px;
+    height: 5px;
+    background-color: white;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  .chatPageBehinedByMoreBlocks bb {
+    display: block;
+    position: absolute;
+    right: 15px;
+    top: 100px;
+    z-index: 99;
+  }
+  .chatPageBehinedByMoreBlocks bb bb_circule {
     margin: 3px 0;
     display: block;
     width: 5px;

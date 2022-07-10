@@ -153,6 +153,11 @@
             templateText.find('.chat_block_chat').prepend($(`
                 <div class="chatPageBehinedByMoreBlocks">
                     <i class="fal fa-angle-left"></i>
+                    <bb>
+                        <bb_circule></bb_circule>
+                        <bb_circule></bb_circule>
+                        <bb_circule></bb_circule>
+                    </bb>
                 </div>
             `).css({
                 "position": "absolute",
