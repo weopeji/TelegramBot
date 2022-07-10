@@ -159,14 +159,14 @@
                 "z-index": "6",
                 "left": "10px",
                 "top": "10px",
-            });
+            }));
             
             templateText.find('.chatPageBehinedByMoreBlocks i').click(function() {
                 $('.chat_block').fadeOut('fast', function () {
                     _this.renderType();
                     $(this).remove();
                 });
-            }));
+            });
 
             templateText.find('.chatPageBehinedByMoreBlocks bb').click( function() {
                 $('.chat_block').toggleClass('selected');
