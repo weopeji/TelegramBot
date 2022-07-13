@@ -29,6 +29,7 @@ const UserShema = new mongoose.Schema({
     business_msgPut: String,
     socket: String,
     acceptGetDataOfUser: Boolean,
+    block: Boolean,
 });
 
 mongoose.model('User', UserShema);

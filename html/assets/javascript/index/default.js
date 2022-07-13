@@ -154,11 +154,22 @@
             var _User           = await user_block.render(_id);
             global.allData.User = _User;
 
-
             if(!_User)
             {
                 return;
             };
+
+            if(typeof _User.block !== 'undefined')
+            {
+                var templateText = $(`
+                    <div class="blocked_block">
+                        <span>Ваш Аккаунт заблокирован до 14.07.2022</span>
+                    </div>
+                `);
+
+                $('body').append(templateText);
+                return;
+            }
 
             if(typeof _User.acceptGetDataOfUser == "undefined")
             {
