@@ -28,6 +28,15 @@
 
 .cover_block_centr_inter {
   position: relative;
-  top: -22px;
+  top: -18px;
+  width: 38%;
+}
+
+.cover_block_centr_inter span {
+  font-size: 25px;
+}
+
+.cover_block_centr_inter p {
+  font-size: 52px;
 }
 /*# sourceMappingURL=index.css.map */
