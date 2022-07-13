@@ -20,14 +20,12 @@
 
     async function Main()
     {
-        var _id = _GET('id');
+        var need_project = await callApi({
+            methodName: 'getProject',
+            data: _GET('id'),
+        });
 
         try {
-            var need_project = await callApi({
-                methodName: 'getProject',
-                data: _id,
-            });
-    
             var _data = need_project.data.collection_period.split("-");
     
             $('#name').html(need_project.data.name || "Null");
