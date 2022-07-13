@@ -14,7 +14,7 @@
 
 .cover_block_centr_inter_first,
 .cover_block_centr_inter_second {
-  background-color: transparent;
+  background: none;
 }
 
 .cover_block_centr {
