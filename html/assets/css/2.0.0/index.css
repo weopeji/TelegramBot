@@ -1903,6 +1903,8 @@ img.preloader_row_img {
     right: 28px;
     top: 20px;
     z-index: 99;
+    -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
   }
   .chatPageBehinedByMoreBlocks bb bb_circule {
     margin: 3px 0;

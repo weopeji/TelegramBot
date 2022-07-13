@@ -2395,6 +2395,8 @@
 
                 if(typeof _Alerts != "undefined")
                 {
+                    var allIninAlertsNumber = 0;
+
                     if(typeof _Alerts.wait_projects != "undefined" && _Alerts.wait_projects > 0)
                     {
                         $('.index_page_menu_block_line[data="wait_projects"]').append(`
@@ -2402,6 +2404,8 @@
                                 <span>${_Alerts.wait_projects}</span>
                             </div>
                         `);
+
+                        allIninAlertsNumber = allIninAlertsNumber + Number(_Alerts.wait_projects.toString().trim());
                     };
 
                     if(typeof _Alerts.not_correct != "undefined" && _Alerts.not_correct > 0)
@@ -2411,6 +2415,8 @@
                                 <span>${_Alerts.not_correct}</span>
                             </div>
                         `);
+
+                        allIninAlertsNumber = allIninAlertsNumber + Number(_Alerts.not_correct.toString().trim());
                     };
 
                     if(typeof _Alerts.chats != "undefined" && _Alerts.chats > 0)
@@ -2420,6 +2426,8 @@
                                 <span>${_Alerts.chats}</span>
                             </div>
                         `);
+
+                        allIninAlertsNumber = allIninAlertsNumber + Number(_Alerts.chats.toString().trim());
                     };
 
                     if(typeof _Alerts.activ_projects != "undefined" && _Alerts.activ_projects > 0)
@@ -2429,7 +2437,11 @@
                                 <span>${_Alerts.activ_projects}</span>
                             </div>
                         `);
+
+                        allIninAlertsNumber = allIninAlertsNumber + Number(_Alerts.activ_projects.toString().trim());
                     };
+
+                    console.log(allIninAlertsNumber);
                 };
             };
 
