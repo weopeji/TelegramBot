@@ -45,6 +45,7 @@
 .cover_block_body {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  width: 78%;
 }
 
 .cover_block_body_line {
