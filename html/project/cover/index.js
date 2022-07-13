@@ -38,12 +38,6 @@
             $('.rate').html(need_project.data.rate + "%" || "Null");
             $('.date_payments').html(need_project.data.date_payments || "Null");
             $('.date').html(need_project.data.date + "мес" || "Null");
-    
-            if(_GET('liner'))
-            {
-                $('.index_page').addClass('selected');
-                $('.cover_block_liner').remove();
-            }
         } catch(e) {};
 
         $('body').append('<div class="all_good"></div>')
