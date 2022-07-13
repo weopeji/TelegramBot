@@ -41,4 +41,22 @@
 .cover_block_centr_inter p {
   font-size: 52px;
 }
+
+.cover_block_body {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.cover_block_body_line {
+  width: 50%;
+  height: 144px;
+}
+
+.cover_block_body_line span {
+  font-size: 30px;
+}
+
+.cover_block_body_line a {
+  font-size: 40px;
+}
 /*# sourceMappingURL=index.css.map */
