@@ -59,4 +59,14 @@
 .cover_block_body_line a {
   font-size: 40px;
 }
+
+.cover_block_body_line_left span,
+.cover_block_body_line_left a {
+  text-align: left;
+}
+
+.cover_block_body_line_right span,
+.cover_block_body_line_right a {
+  text-align: right;
+}
 /*# sourceMappingURL=index.css.map */
