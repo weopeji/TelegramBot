@@ -167,7 +167,7 @@
                     </div>
                 `);
 
-                $('body').append(templateText);
+                $('body').append(templateText); 
                 return;
             }
 
