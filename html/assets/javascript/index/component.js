@@ -2443,9 +2443,12 @@
 
                     if(allIninAlertsNumber > 0)
                     {
-                        $('.index_page_body_header_alertNewBlock').css({
-                            "display": "flex",
-                        }).find('span').html(allIninAlertsNumber);
+                        if(window.screen.width < 1300)
+                        {
+                            $('.index_page_body_header_alertNewBlock').css({
+                                "display": "flex",
+                            }).find('span').html(allIninAlertsNumber);
+                        }
                     }
                 };
             };
