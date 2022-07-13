@@ -2441,7 +2441,12 @@
                         allIninAlertsNumber = allIninAlertsNumber + Number(_Alerts.activ_projects.toString().trim());
                     };
 
-                    console.log(allIninAlertsNumber);
+                    if(allIninAlertsNumber > 0)
+                    {
+                        $('.index_page_body_header_alertNewBlock').css({
+                            "display": "flex",
+                        }).find('span').html(allIninAlertsNumber);
+                    }
                 };
             };
 
