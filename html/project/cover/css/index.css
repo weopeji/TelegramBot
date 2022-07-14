@@ -45,7 +45,9 @@
 .cover_block_body {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  width: 78%;
+  width: 84%;
+  position: relative;
+  top: -20px;
 }
 
 .cover_block_body_line {
@@ -70,5 +72,25 @@
 .cover_block_body_line_right span,
 .cover_block_body_line_right a {
   text-align: right;
+}
+
+.cover_block_body_Lineover {
+  position: absolute;
+  height: 100%;
+  width: 10px;
+  border-radius: 15px;
+  background: #3cdef5;
+  background: -webkit-gradient(linear, left top, left bottom, from(#3cdef5), color-stop(50%, #aca3ff), to(#fa8cff));
+  background: linear-gradient(180deg, #3cdef5 0%, #aca3ff 50%, #fa8cff 100%);
+}
+
+.cover_block_body_Lineover_left {
+  top: -12px;
+  left: -28px;
+}
+
+.cover_block_body_Lineover_right {
+  top: -12px;
+  right: -28px;
 }
 /*# sourceMappingURL=index.css.map */
