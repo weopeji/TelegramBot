@@ -40,7 +40,7 @@
             $('.money').html(need_project.data.attraction_amount + " ₽" || "Null");
             $('.collection_period').html(`${_data[2]}.${_data[1]}.${_data[0]}` || "Null");
             $('.minimal_amount').html(need_project.data.minimal_amount + " ₽" || "Null");
-            $('.rate').html(need_project.data.rate + "%" || "Null");
+            $('.rate').html(need_project.data.rate + " %" || "Null");
             $('.date_payments').html(need_project.data.date_payments || "Null");
             $('.date').html(need_project.data.date + dateText || "Null");
         } catch(e) {};
