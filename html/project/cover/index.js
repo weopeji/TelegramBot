@@ -25,6 +25,13 @@
             data: _GET('id'),
         });
 
+        var dateText = "мес";
+
+        if(need_project.data.date.toString().trim() == "Бессрочно")
+        {
+            dateText = "";
+        }
+
         try {
             var _data = need_project.data.collection_period.split("-");
     
@@ -35,7 +42,7 @@
             $('.minimal_amount').html(need_project.data.minimal_amount + " ₽" || "Null");
             $('.rate').html(need_project.data.rate + "%" || "Null");
             $('.date_payments').html(need_project.data.date_payments || "Null");
-            $('.date').html(need_project.data.date + "мес" || "Null");
+            $('.date').html(need_project.data.date + dateText || "Null");
         } catch(e) {};
 
         $('body').append('<div class="all_good"></div>')
