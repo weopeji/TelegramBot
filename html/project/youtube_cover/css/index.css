@@ -50,8 +50,6 @@
 }
 
 .cover_block_body {
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
   width: 80%;
   position: relative;
   top: -62px;
