@@ -102,6 +102,9 @@
 .cover_block_body_Lineover_right {
   top: -12px;
   right: -50px;
+  background: #3cdef5;
+  background: -webkit-gradient(linear, left bottom, left top, from(#3cdef5), color-stop(50%, #aca3ff), to(#fa8cff));
+  background: linear-gradient(0deg, #3cdef5 0%, #aca3ff 50%, #fa8cff 100%);
 }
 
 .cover_block_logo {
