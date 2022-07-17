@@ -1,4 +1,4 @@
-(async (global) => {
+(function (global) {
 
     const callApi = ({ methodName, data }) => {    
         return new Promise((resolve, reject) => 
@@ -20,33 +20,32 @@
 
     async function Main()
     {
-        function getRandomInt(max) {
-            return Math.floor(Math.random() * max);
-        }
-    
-        $('img').attr('src', `./images/${getRandomInt(8)}.jpg`);
-    
-        var _id = _GET('id');
-    
         var need_project = await callApi({
             methodName: 'getProject',
-            data: _id,
+            data: _GET('id'),
         });
 
-        var _data = need_project.data.collection_period.split("-");
+        var dateText = "мес";
+
+        if(need_project.data.date.toString().trim() == "Бессрочно")
+        {
+            dateText = "";
+        }
+
+        try {
+            var _data = need_project.data.collection_period.split("-");
     
-        $('.index_page_block_body h1').html(need_project.data.name);
-        $('.index_page_block_target span').html(need_project.data.target);
+            $('#name').html(need_project.data.name || "Null");
+            $('#target').html(need_project.data.target || "Null");
+            $('.money').html(need_project.data.attraction_amount + " ₽" || "Null");
+            $('.collection_period').html(`${_data[2]}.${_data[1]}.${_data[0]}` || "Null");
+            $('.minimal_amount').html(need_project.data.minimal_amount + " ₽" || "Null");
+            $('.rate').html(need_project.data.rate + " %" || "Null");
+            $('.date_payments').html(need_project.data.date_payments || "Null");
+            $('.date').html(need_project.data.date + dateText || "Null");
+        } catch(e) {};
 
-        $('.index_page_blockMoneys_line_second').find('span').eq(0).html(need_project.data.rate + "%");
-        $('.index_page_blockMoneys_line_second').find('span').eq(1).html(need_project.data.minimal_amount + " ₽");
-
-       $('.index_page_block_data_line_second').find('span').eq(0).html(need_project.data.attraction_amount + " ₽");
-       $('.index_page_block_data_line_second').find('span').eq(1).html(need_project.data.date_payments);
-       $('.index_page_block_data_line_second').find('span').eq(2).html(need_project.data.date + " мес");
-       $('.index_page_block_data_line_second').find('span').eq(3).html(`${_data[2]}.${_data[1]}.${_data[0]}`);
-
-       $('body').append('<div class="all_good"></div>');
+        $('body').append('<div class="all_good"></div>')
     }
 
-})(window)
+}(window))

@@ -5,43 +5,48 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Cover YouTube</title>
+    <title>Cover</title>
 
     <link rel="stylesheet" href="./circe.css">
-    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="./cover.css">
+
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/index.css.map">
 </head>
 <body>
     <div class="index_page">
-        <div class="index_page_block">
-            <img src="" alt="">
-            <div class="index_page_block_body">
-                <h1>*</h1>
+        <div class="cover_block">
+            <div class="cover_block_logo">
+                <img src="./img/header_logo.png" alt="">
             </div>
-            <div class="index_page_block_target">
-                <span>*</span>
-            </div>
-            <div class="index_page_blockMoneys">
-                <div class="index_page_blockMoneys_line_first">
+            <h1 id="name">ОН-ЛАЙН ИГРЫ</h1>
+            <p id="target">На развитие</p>
+            <div class="cover_block_centr">
+                <div class="cover_block_centr_inter cover_block_centr_inter_first">
                     <span>Ставка</span>
-                    <span>Вход от</span>
+                    <p class="rate">30 000 ₽</p>
                 </div>
-                <div class="index_page_blockMoneys_line_second">
-                    <span>13.80%</span>
-                    <span>100 000 руб</span>
+                <div class="cover_block_centr_inter cover_block_centr_inter_second">
+                    <span>Вход от</span>
+                    <p class="minimal_amount">22.12.2021</p>
                 </div>
             </div>
-            <div class="index_page_block_data">
-                <div class="index_page_block_data_line_first">
-                    <span>Сумма</span>
-                    <span>Выплаты</span>
-                    <span>На срок</span>
-                    <span>Период сбора до</span>
+            <div class="cover_block_body">
+                <div class="cover_block_body_Lineover cover_block_body_Lineover_left"></div>
+                <div class="cover_block_body_Lineover cover_block_body_Lineover_right"></div>
+
+
+                <div class="cover_block_body_line cover_block_body_line_left">
+                    <span>Период сбора до</span><a class="collection_period">100</a>
                 </div>
-                <div class="index_page_block_data_line_second">
-                    <span>Сумма</span>
-                    <span>Выплаты</span>
-                    <span>На срок</span>
-                    <span>Период сбора до</span>
+                <div class="cover_block_body_line cover_block_body_line_right">
+                    <span>На срок</span><a class="date">22.12.2021</a>
+                </div>  
+                <div class="cover_block_body_line cover_block_body_line_left">
+                    <span>Сумма</span><a class="money">1000</a>
+                </div>
+                <div class="cover_block_body_line cover_block_body_line_right">
+                    <span>Выплаты</span><a class="date_payments">Ежемесячно</a>
                 </div>
             </div>
         </div>
@@ -49,12 +54,9 @@
 
 
     <script src="../../assets/mods/jquery/jquery-3.4.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.1/socket.io.js"></script>
+    <script src="../../assets/mods/socketIo.js"></script>
     <script src="../../assets/mods/async.min.js"></script>
-
     <script src="../../assets/javascript/main.js"></script>
-
-
     <script src="index.js"></script>
 </body>
 </html>
