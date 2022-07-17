@@ -1,6 +1,6 @@
 .cover_block {
   width: 1080px;
-  height: 1190px;
+  height: 1080px;
 }
 
 #name {
@@ -21,7 +21,7 @@
 .cover_block_centr {
   background-image: url("../img/body_gradient.png");
   background-size: cover;
-  height: 200px;
+  height: 215px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -95,5 +95,19 @@
 .cover_block_body_Lineover_right {
   top: -12px;
   right: -50px;
+}
+
+.cover_block_logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  overflow: hidden;
+  height: 440px;
 }
 /*# sourceMappingURL=index.css.map */
