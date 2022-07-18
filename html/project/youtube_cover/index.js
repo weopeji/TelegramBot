@@ -25,14 +25,14 @@
             data: _GET('id'),
         });
 
-        var dateText = "мес";
-
-        if(need_project.data.date.toString().trim() == "Бессрочно")
-        {
-            dateText = "";
-        }
-
         try {
+            var dateText = "мес";
+
+            if(need_project.data.date.toString().trim() == "Бессрочно")
+            {
+                dateText = "";
+            }
+
             var _data = need_project.data.collection_period.split("-");
     
             $('#name').html(need_project.data.name || "Null");
