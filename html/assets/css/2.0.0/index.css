@@ -1921,6 +1921,9 @@ img.preloader_row_img {
 }
 
 @media (max-width: 1350px) {
+  .index_page_body_header_user_textDecoration span {
+    margin-left: 0;
+  }
   .msg_block_getting_line_alertBlock {
     right: 10px;
     top: 15px;
