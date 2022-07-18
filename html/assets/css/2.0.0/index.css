@@ -1912,6 +1912,14 @@ img.preloader_row_img {
   font-family: Circe;
 }
 
+.index_page_body_header_user_textDecoration {
+  width: 100%;
+}
+
+.index_page_body_header_user_textDecoration span {
+  margin-left: 60px;
+}
+
 @media (max-width: 1350px) {
   .msg_block_getting_line_alertBlock {
     right: 10px;

@@ -30,14 +30,6 @@
   width: calc(100% - 30px);
 }
 
-.index_page_body_header_user_textDecoration {
-  width: 100%;
-}
-
-.index_page_body_header_user_textDecoration span {
-  margin-left: 60px;
-}
-
 .cover_block_centr_inter {
   position: relative;
   top: -18px;
