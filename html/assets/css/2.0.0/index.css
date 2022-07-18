@@ -1552,7 +1552,7 @@ img.preloader_row_img {
   margin-left: 20px;
   font-weight: 600;
   font-size: 17px;
-  width: 380px;
+  width: calc(100% - 20px);
 }
 
 .Attracted_by_me_headerRefUrlsBlock_blocks_line_copy {
