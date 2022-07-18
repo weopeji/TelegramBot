@@ -206,8 +206,19 @@
 
             var renderPage = 
             {
-                "profil": function() {profil_page.render(global.allData)},
-                "activ_projects": function() {
+                "profil": function() {
+                    try {
+                        $('.index_page_body_header_user_textDecoration span').html("Профиль");
+                    } catch(e) {};
+                    
+                    profil_page.render(global.allData)
+                },
+                "activ_projects": function() 
+                {
+                    try {
+                        $('.index_page_body_header_user_textDecoration span').html("Главная");
+                    } catch(e) {};
+
                     try {
                         if(!_GET('id')) 
                         {
@@ -235,10 +246,32 @@
                         alert(e.toString());
                     }
                 },
-                "acceptPays": function() {acceptPays.render(global.allData)},
-                "chats": function() {chat.render(global.allData)},
-                "pay_investors": function() {pay_investors.render(global.allData)},
+                "acceptPays": function() {
+                    try {
+                        $('.index_page_body_header_user_textDecoration span').html("Поступления");
+                    } catch(e) {};
+
+                    acceptPays.render(global.allData)
+                },
+                "chats": function() {
+                    try {
+                        $('.index_page_body_header_user_textDecoration span').html("Чаты");
+                    } catch(e) {};
+
+                    chat.render(global.allData)
+                },
+                "pay_investors": function() {
+                    try {
+                        $('.index_page_body_header_user_textDecoration span').html("");
+                    } catch(e) {};
+
+                    pay_investors.render(global.allData)
+                },
                 "myProjects": function() {
+                    try {
+                        $('.index_page_body_header_user_textDecoration span').html("Мои проекты");
+                    } catch(e) {};
+
                     if(!_GET('id')) 
                     {
                         myProjects.render(global.allData)
@@ -253,21 +286,47 @@
                         }
                     }
                 },
-                "signature": function() {signature.render(global.allData)},
-                "Attracted_by_me": function() {Attracted_by_me.render(global.allData)},
+                "signature": function() {
+                    signature.render(global.allData)
+                },
+                "Attracted_by_me": function() {
+                    try {
+                        $('.index_page_body_header_user_textDecoration span').html("Привлечено");
+                    } catch(e) {};
+
+                    Attracted_by_me.render(global.allData)
+                },
                 "reward": function() {reward.render(global.allData)},
                 "creating": function() {creating_page.render(global.allData)},
                 "ref_url": function() {ref_url.render(global.allData)},
                 "invester_data": function() {invester_data.render(global.allData)},
                 "show_all_projects": function() {show_all_projects.render(global.allData)},
                 "get_money_abstraction": function() {get_money_abstraction.render(global.allData)},
-                "wait_projects": function() {wait_projects.render(global.allData)},
+                "wait_projects": function() {
+                    try {
+                        $('.index_page_body_header_user_textDecoration span').html("Ожидайют");
+                    } catch(e) {};
+
+                    wait_projects.render(global.allData)
+                },
                 "obligations": function() {obligations.render(global.allData)},
                 "payments_new": function() {payments_new.render(global.allData)},
                 "telegram_authorization": function() {telegram_authorization.render(global.allData)},
-                "not_correct": function() {not_correct.render(global.allData)},
+                "not_correct": function() {
+                    try {
+                        $('.index_page_body_header_user_textDecoration span').html("Отказано");
+                    } catch(e) {};
+
+                    not_correct.render(global.allData)
+                },
                 "put_file": function() {put_file.render(global.allData)},
-                "applications": function() {applications.render(global.allData)},
+                "applications": function() {
+                    try {
+                        $('.index_page_body_header_user_textDecoration span').html("Заявки");
+                    } catch(e) {};
+
+                    applications.render(global.allData)
+                },
             }
 
             if(pageID)
