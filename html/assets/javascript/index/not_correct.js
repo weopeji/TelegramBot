@@ -27,9 +27,6 @@
 
             var settingBlock = $(`
                 <div class="settingBlock">
-                    <div class="version2_settingBlock_header">
-                        <p>Отказанные инвестиции</p>
-                    </div>
                     <div class="version2_default_bkg row_default"></div>
                     <div class="settingBlock_header">
                         <div class="settingBlock_header_line">
@@ -46,6 +43,8 @@
                     </div>
                 </div>
             `);
+
+            settingBlock.css("margin-top", "0");
 
             if(_data.length > 0)
             {
