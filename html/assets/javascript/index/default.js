@@ -310,7 +310,13 @@
                     wait_projects.render(global.allData)
                 },
                 "obligations": function() {obligations.render(global.allData)},
-                "payments_new": function() {payments_new.render(global.allData)},
+                "payments_new": function() {
+                    try {
+                        $('.index_page_body_header_user_textDecoration span').html("Выплаты");
+                    } catch(e) {};
+
+                    payments_new.render(global.allData)
+                },
                 "telegram_authorization": function() {telegram_authorization.render(global.allData)},
                 "not_correct": function() {
                     try {
