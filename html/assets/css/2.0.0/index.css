@@ -1546,9 +1546,7 @@ img.preloader_row_img {
       -ms-flex: none;
           flex: none;
   text-align: left;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
+  width: 350px;
   margin-right: 20px;
 }
 
