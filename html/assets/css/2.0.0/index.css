@@ -1546,6 +1546,10 @@ img.preloader_row_img {
       -ms-flex: none;
           flex: none;
   text-align: left;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-right: 20px;
 }
 
 .Attracted_by_me_headerRefUrlsBlock_blocks_line_row_first_span {
