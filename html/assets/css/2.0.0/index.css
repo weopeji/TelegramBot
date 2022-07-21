@@ -1546,7 +1546,7 @@ img.preloader_row_img {
       -ms-flex: none;
           flex: none;
   text-align: left;
-  width: 350px;
+  width: 430px;
   margin-right: 20px;
 }
 
@@ -2339,6 +2339,11 @@ img.preloader_row_img {
   }
   .msg_block_getting_line_text {
     width: calc(100% - 85px);
+  }
+  .Attracted_by_me_headerRefUrlsBlock_blocks_line span {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
   }
 }
 /*# sourceMappingURL=index.css.map */
