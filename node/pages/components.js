@@ -2968,7 +2968,12 @@ async function getUserForId(socket,data,callback)
     } catch (e) {}
 
     var _AlertinvsByWait    = [];
-    var Ale_activ_projects  = _User.alerts_main.filter(el => el.type == "accept_business_investring");
+    var Ale_activ_projects  = [];
+
+    if(typeof _User.alerts_main != "undefined")
+    {
+        Ale_activ_projects = _User.alerts_main.filter(el => el.type == "accept_business_investring")
+    }
 
     for(var _Inv of _InvsByWait)
     {
