@@ -1922,6 +1922,16 @@ img.preloader_row_img {
   margin-left: 60px;
 }
 
+.get_money_abstraction_page_header {
+  position: relative;
+  width: 100%;
+}
+
+.get_money_abstraction_page_header {
+  position: relative;
+  z-index: 2;
+}
+
 @media (max-width: 1350px) {
   .index_page_body_header_user_textDecoration span {
     margin-left: 0;
