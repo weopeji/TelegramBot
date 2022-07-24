@@ -1976,6 +1976,7 @@ img.preloader_row_img {
           align-items: center;
   cursor: pointer;
   overflow: hidden;
+  border-radius: 30px;
 }
 
 .get_money_abstraction_page_buttons_button:after {
