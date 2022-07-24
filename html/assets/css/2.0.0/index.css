@@ -1948,6 +1948,10 @@ img.preloader_row_img {
   font-size: 18px;
 }
 
+.get_money_abstraction_page_header_row a {
+  font-family: 'Circe Bold';
+}
+
 .get_money_abstraction_page_buttons {
   width: 100%;
   display: -webkit-box;
