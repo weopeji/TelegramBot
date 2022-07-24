@@ -27,73 +27,93 @@
 
             console.log(allPayments);
 
-            var _button = $(`
-                <div class="get_money_abstraction_button">
-                    <span>Запросить</span>
+            var templateText = $(`
+                <div class="get_money_abstraction_page">
+                    <div class="get_money_abstraction_page_header">
+                        <span>Вы выводите сумму:</span>
+                        <a>0 ₽</a>
+                    </div>
+                    <div class="get_money_abstraction_page_buttons">
+                        <div class="get_money_abstraction_page_buttons_button">
+                            <div class="get_money_abstraction_page_buttons_button_icon">
+                                <i class="fal fa-users"></i>
+                            </div>
+                            <div class="get_money_abstraction_page_buttons_button_text">
+                                <span>Физ. лицо, Самозанятый</span>
+                            </div>
+                        </div>
+                        <div class="get_money_abstraction_page_buttons_button">
+                            <div class="get_money_abstraction_page_buttons_button_icon">
+                                <i class="fal fa-city"></i>
+                            </div>
+                            <div class="get_money_abstraction_page_buttons_button_text">
+                                <span>ИП, Юр. лицо</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             `);
 
             $('.index_page_body_data').append(_button);
 
-            var settingBlock = $(`
-                <div class="settingBlock">
-                    <div class="settingBlock_header">
-                        <p>Статистика ваших выплат</p>
-                        <div class="settingBlock_header_line">
-                            <span>№</span>
-                            <span>Тип привлечения</span>
-                            <span>Номер Проекта/Инвестора</span>
-                            <span>Сумма выплаты</span>
-                        </div>
-                    </div>
-                    <div class="settingBlock_body">
+            // var settingBlock = $(`
+            //     <div class="settingBlock">
+            //         <div class="settingBlock_header">
+            //             <div class="settingBlock_header_line">
+            //                 <span>№</span>
+            //                 <span>Тип привлечения</span>
+            //                 <span>Номер Проекта/Инвестора</span>
+            //                 <span>Сумма выплаты</span>
+            //             </div>
+            //         </div>
+            //         <div class="settingBlock_body">
 
-                    </div> 
-                </div>
-            `);
+            //         </div> 
+            //     </div>
+            // `);
 
-            settingBlock.css("margin-top", "20px");
+            // settingBlock.css("margin-top", "20px");
 
-            var initNumber = 1;
+            // var initNumber = 1;
 
-            for(var element of allPayments)
-            {
-                var investerPay                     = Number(element.pay.toString().replace(/\s/g, ''));
-                var commissionMoneys                = Number(investerPay / 100 * element.data.ProjectData.commission);
-                var commissionCompany               = Number(commissionMoneys / 100 * element.data.ProjectData.company_commission);
-                var commissionAttraction            = Number(commissionMoneys - commissionCompany);
-                var commissionAttractionInvester    = Number(commissionAttraction / 100 * element.data.ProjectData.investors_commission);
-                var commissionAttractionBusiness    = Number(commissionAttraction / 100 * element.data.ProjectData.business_commission);
-                var commissionAttractionNeedPay     = 0;
-                var AttractionType                  = "Инвестор";
-                var AttractionId                    = null;
+            // for(var element of allPayments)
+            // {
+            //     var investerPay                     = Number(element.pay.toString().replace(/\s/g, ''));
+            //     var commissionMoneys                = Number(investerPay / 100 * element.data.ProjectData.commission);
+            //     var commissionCompany               = Number(commissionMoneys / 100 * element.data.ProjectData.company_commission);
+            //     var commissionAttraction            = Number(commissionMoneys - commissionCompany);
+            //     var commissionAttractionInvester    = Number(commissionAttraction / 100 * element.data.ProjectData.investors_commission);
+            //     var commissionAttractionBusiness    = Number(commissionAttraction / 100 * element.data.ProjectData.business_commission);
+            //     var commissionAttractionNeedPay     = 0;
+            //     var AttractionType                  = "Инвестор";
+            //     var AttractionId                    = null;
 
-                if(element.type == "investing")
-                {
-                    commissionAttractionNeedPay = commissionAttractionInvester;
-                    AttractionId                = element.data._InvInvester;
-                } else 
-                {
-                    commissionAttractionNeedPay = commissionAttractionBusiness;
-                    AttractionType              = "Бизнес";
-                    AttractionId                = element.data._id;
-                }
+            //     if(element.type == "investing")
+            //     {
+            //         commissionAttractionNeedPay = commissionAttractionInvester;
+            //         AttractionId                = element.data._InvInvester;
+            //     } else 
+            //     {
+            //         commissionAttractionNeedPay = commissionAttractionBusiness;
+            //         AttractionType              = "Бизнес";
+            //         AttractionId                = element.data._id;
+            //     }
 
-                var template_text = $(`
-                    <div class="settingBlock_body_line">
-                        <span>${initNumber}</span>
-                        <span>${AttractionType}</span>
-                        <span>${AttractionId}</span>
-                        <span>${commissionAttractionNeedPay.toString().ReplaceNumber()} руб</span>
-                    </div>
-                `);
+            //     var template_text = $(`
+            //         <div class="settingBlock_body_line">
+            //             <span>${initNumber}</span>
+            //             <span>${AttractionType}</span>
+            //             <span>${AttractionId}</span>
+            //             <span>${commissionAttractionNeedPay.toString().ReplaceNumber()} руб</span>
+            //         </div>
+            //     `);
 
-                settingBlock.find('.settingBlock_body').append(template_text);
+            //     settingBlock.find('.settingBlock_body').append(template_text);
 
-                initNumber++;
-            }
+            //     initNumber++;
+            // }
 
-            $('.index_page_body_data').append(settingBlock);
+            // $('.index_page_body_data').append(settingBlock);
         }
     }
 
