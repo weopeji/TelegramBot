@@ -1975,6 +1975,7 @@ img.preloader_row_img {
       -ms-flex-align: center;
           align-items: center;
   cursor: pointer;
+  overflow: hidden;
 }
 
 .get_money_abstraction_page_buttons_button:after {
@@ -2010,6 +2011,8 @@ img.preloader_row_img {
 
 .get_money_abstraction_page_buttons_button .version2_default_bkg {
   border-radius: 30px;
+  width: calc(100% - 2px);
+  height: calc(100% - 2px);
 }
 
 .get_money_abstraction_page_buttons_button_row {
