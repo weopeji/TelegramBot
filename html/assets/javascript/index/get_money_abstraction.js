@@ -76,6 +76,20 @@
                 var commissionAttractionInvester    = Number(commissionAttraction / 100 * element.data.ProjectData.investors_commission);
                 var commissionAttractionBusiness    = Number(commissionAttraction / 100 * element.data.ProjectData.business_commission);
                 var commissionAttractionNeedPay     = 0;
+                var AttractionType                  = "Инвестор";
+                var AttractionId                    = null;
+
+                if(element.type == "investing")
+                {
+                    commissionAttractionNeedPay = commissionAttractionInvester;
+                    AttractionId                = element.data._InvInvester;
+                } else 
+                {
+                    commissionAttractionNeedPay = commissionAttractionBusiness;
+                    AttractionType              = "Бизнес";
+                    AttractionId                = element.data._id;
+                };
+                
                 this.allMoney                       = this.allMoney + Number(commissionAttractionNeedPay.toString());
             };
 
