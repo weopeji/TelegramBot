@@ -2000,6 +2000,11 @@ img.preloader_row_img {
   margin-bottom: 10px;
 }
 
+.get_money_abstraction_page_buttons_button_text span {
+  position: relative;
+  top: 25px;
+}
+
 @media (max-width: 1350px) {
   .index_page_body_header_user_textDecoration span {
     margin-left: 0;
