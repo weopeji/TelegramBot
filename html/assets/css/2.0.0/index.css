@@ -1924,10 +1924,10 @@ img.preloader_row_img {
 
 .get_money_abstraction_page_header {
   position: relative;
-  width: 100%;
+  width: calc(100% - 2px);
 }
 
-.get_money_abstraction_page_header {
+.get_money_abstraction_page_header_row {
   position: relative;
   z-index: 2;
 }
