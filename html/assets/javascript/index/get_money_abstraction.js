@@ -54,7 +54,7 @@
                 </div>
             `);
 
-            $('.index_page_body_data').append(_button);
+            $('.index_page_body_data').append(templateText);
 
             // var settingBlock = $(`
             //     <div class="settingBlock">
