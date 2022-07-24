@@ -16,7 +16,9 @@
 
     class get_money_abstraction
     {
-        constructor() {};
+        constructor() {
+            this.allMoney = 0;
+        };
 
         async render()
         {
@@ -28,8 +30,6 @@
                 methodName: "allPayments",
                 data:  global.allData._id,
             });
-
-            console.log(allPayments);
 
             var templateText = $(`
                 <div class="get_money_abstraction_page">
@@ -66,6 +66,20 @@
                     </div>
                 </div>
             `);
+
+            for(var element of allPayments)
+            {
+                var investerPay                     = Number(element.pay.toString().replace(/\s/g, ''));
+                var commissionMoneys                = Number(investerPay / 100 * element.data.ProjectData.commission);
+                var commissionCompany               = Number(commissionMoneys / 100 * element.data.ProjectData.company_commission);
+                var commissionAttraction            = Number(commissionMoneys - commissionCompany);
+                var commissionAttractionInvester    = Number(commissionAttraction / 100 * element.data.ProjectData.investors_commission);
+                var commissionAttractionBusiness    = Number(commissionAttraction / 100 * element.data.ProjectData.business_commission);
+                var commissionAttractionNeedPay     = 0;
+                this.allMoney                       = this.allMoney + Number(commissionAttractionNeedPay.toString());
+            };
+
+            templateText.find('.get_money_abstraction_page_header a').html(`${this.allMoney.toString().ReplaceNumber()} ₽`);
 
             $('.index_page_body_data').append(templateText);
 
