@@ -38,19 +38,25 @@
                     </div>
                     <div class="get_money_abstraction_page_buttons">
                         <div class="get_money_abstraction_page_buttons_button">
-                            <div class="get_money_abstraction_page_buttons_button_icon">
-                                <i class="fal fa-users"></i>
-                            </div>
-                            <div class="get_money_abstraction_page_buttons_button_text">
-                                <span>Физ. лицо, Самозанятый</span>
+                            <div class="version2_default_bkg row_default"></div>
+                            <div class="get_money_abstraction_page_buttons_button_row">
+                                <div class="get_money_abstraction_page_buttons_button_icon">
+                                    <i class="fal fa-users"></i>
+                                </div>
+                                <div class="get_money_abstraction_page_buttons_button_text">
+                                    <span>Физ. лицо, Самозанятый</span>
+                                </div>
                             </div>
                         </div>
                         <div class="get_money_abstraction_page_buttons_button">
-                            <div class="get_money_abstraction_page_buttons_button_icon">
-                                <i class="fal fa-city"></i>
-                            </div>
-                            <div class="get_money_abstraction_page_buttons_button_text">
-                                <span>ИП, Юр. лицо</span>
+                            <div class="version2_default_bkg row_default"></div>
+                            <div class="get_money_abstraction_page_buttons_button_row">
+                                <div class="get_money_abstraction_page_buttons_button_icon">
+                                    <i class="fal fa-city"></i>
+                                </div>
+                                <div class="get_money_abstraction_page_buttons_button_text">
+                                    <span>ИП, Юр. лицо</span>
+                                </div>
                             </div>
                         </div>
                     </div>
