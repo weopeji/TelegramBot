@@ -1977,7 +1977,7 @@ img.preloader_row_img {
   cursor: pointer;
 }
 
-.get_money_abstraction_page_buttons_button::after {
+.get_money_abstraction_page_buttons_button:after {
   content: "";
   height: 200%;
   left: -230%;
@@ -1992,7 +1992,7 @@ img.preloader_row_img {
   background: linear-gradient(to right, rgba(255, 255, 255, 0.13) 0%, rgba(255, 255, 255, 0.13) 77%, rgba(255, 255, 255, 0.5) 92%, rgba(255, 255, 255, 0) 100%);
 }
 
-.get_money_abstraction_page_buttons_button::hover:after {
+.get_money_abstraction_page_buttons_button:hover:after {
   left: -50%;
   opacity: 1;
   top: -50%;
@@ -2004,7 +2004,7 @@ img.preloader_row_img {
           transition-timing-function: ease;
 }
 
-.get_money_abstraction_page_buttons_button::active:after {
+.get_money_abstraction_page_buttons_button:active:after {
   opacity: 0;
 }
 

@@ -1470,7 +1470,7 @@ img.preloader_row_img
     align-items: center
     cursor: pointer
 
-    &::after
+    &:after
         content: ""
         height: 200%
         left: -230%
@@ -1482,7 +1482,7 @@ img.preloader_row_img
         background: rgba(255, 255, 255, 0.13)
         background: linear-gradient(to right, rgba(255, 255, 255, 0.13) 0%, rgba(255, 255, 255, 0.13) 77%, rgba(255, 255, 255, 0.5) 92%, rgba(255, 255, 255, 0.0) 100%)
 
-    &::hover:after
+    &:hover:after
         left: -50%
         opacity: 1
         top: -50%
@@ -1490,7 +1490,7 @@ img.preloader_row_img
         transition-property: left, top, opacity
         transition-timing-function: ease
 
-    &::active:after 
+    &:active:after 
         opacity: 0
 
     .version2_default_bkg
