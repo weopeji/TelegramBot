@@ -1958,16 +1958,31 @@ img.preloader_row_img {
           align-items: center;
   -ms-flex-pack: distribute;
       justify-content: space-around;
+  margin-top: 40px;
 }
 
 .get_money_abstraction_page_buttons_button {
   position: relative;
   width: 250px;
   height: 250px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .get_money_abstraction_page_buttons_button .version2_default_bkg {
   border-radius: 30px;
+}
+
+.get_money_abstraction_page_buttons_button {
+  position: relative;
+  z-index: 2;
 }
 
 @media (max-width: 1350px) {
