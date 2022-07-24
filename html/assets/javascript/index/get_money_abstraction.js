@@ -30,8 +30,11 @@
             var templateText = $(`
                 <div class="get_money_abstraction_page">
                     <div class="get_money_abstraction_page_header">
-                        <span>Вы выводите сумму:</span>
-                        <a>0 ₽</a>
+                        <div class="version2_default_bkg row_default"></div>
+                        <div class="get_money_abstraction_page_header_row">
+                            <span>Вы выводите сумму:</span>
+                            <a>0 ₽</a>
+                        </div>
                     </div>
                     <div class="get_money_abstraction_page_buttons">
                         <div class="get_money_abstraction_page_buttons_button">
