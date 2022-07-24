@@ -20,6 +20,10 @@
 
         async render()
         {
+            try {
+                $('.index_page_body_header_user_textDecoration span').html("Запрос выплаты");
+            } catch(e) {};
+
             var allPayments     = await callApi({
                 methodName: "allPayments",
                 data:  global.allData._id,
