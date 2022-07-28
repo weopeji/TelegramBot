@@ -44,6 +44,9 @@
                         <div class="version2_default_bkg row_default"></div>
                         <div class="get_money_abstraction_page_header_row">
                             <input type="text" placeholder="Введите ваш email, для подписание документа">
+                            <div class="get_money_abstraction_page_header_inputSave">
+                                <i class="fal fa-save"></i>
+                            </div>
                         </div>
                     </div>
                     <div class="get_money_abstraction_page_buttons">
