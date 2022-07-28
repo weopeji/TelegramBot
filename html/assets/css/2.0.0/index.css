@@ -1952,6 +1952,18 @@ img.preloader_row_img {
   font-family: 'Circe Bold';
 }
 
+.get_money_abstraction_page_header_row input {
+  background: transparent;
+  border: 0;
+  font-size: 17px;
+  width: 100%;
+  color: white;
+}
+
+.get_money_abstraction_page_header_row input:placeholder {
+  color: white;
+}
+
 .get_money_abstraction_page_buttons {
   width: 100%;
   display: -webkit-box;
