@@ -1958,6 +1958,7 @@ img.preloader_row_img {
   font-size: 17px;
   width: 100%;
   color: white;
+  outline: none;
 }
 
 .get_money_abstraction_page_header_row input::-webkit-input-placeholder {
@@ -1974,10 +1975,6 @@ img.preloader_row_img {
 
 .get_money_abstraction_page_header_row input::placeholder {
   color: white;
-}
-
-.get_money_abstraction_page_header_row input:focus {
-  border: 0;
 }
 
 .get_money_abstraction_page_buttons {
