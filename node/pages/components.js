@@ -313,13 +313,11 @@ async function version2_Attracted_pay(socket, data, callback)
             }
         });
 
-        console.log(CreateDocument);
-
         var form        = new FormData();
         form.append('99f420682b23308e081d7d1df9a5f0c1.jpg', fs.createReadStream('./assets/videos/99f420682b23308e081d7d1df9a5f0c1.jpg'));
         form.append('99f420682b23308e081d7d1df9a5f0c1.jpg', fs.createReadStream('./assets/videos/99f420682b23308e081d7d1df9a5f0c1.jpg'));
 
-        var uploadFile  = await axios.post(`https://www.api.demo.lightdoc.io/v1/documents/${CreateDocument.data.id}/files`, form, {
+        var uploadFile  = await axios.post(`https://www.api.demo.lightdoc.io/v1/documents/${CreateDocument.data.documentID}/files`, form, {
             headers: {
                 'accept': '*/*',
                 'Content-Type': 'multipart/form-data',
