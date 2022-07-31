@@ -315,20 +315,23 @@ async function version2_Attracted_pay(socket, data, callback)
 
         var data = new FormData();
         data.append('files', fs.createReadStream('/var/www/node/assets/videos/123.txt'));
-        data.append('files', fs.createReadStream('/var/www/node/assets/videos/123.txt'));
 
-        var uploadFile  = await axios({
+        axios({
             method: 'post',
             url: `https://www.api.demo.lightdoc.io/v1/documents/${CreateDocument.data.documentID}/files`,
             headers: {
                 'accept': '*/*',
                 'Content-Type': 'multipart/form-data',
                 'Authorization': 'Bearer ' + config.edo_token,
+                ...data.getHeaders()
             },
             data: data
+        }).then(function (response) {
+            console.log(JSON.stringify(response.data));
+        })
+        .catch(function (error) {
+            console.log(error);
         });
-        
-        console.log(uploadFile);
     };
 };
 
