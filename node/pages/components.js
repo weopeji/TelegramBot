@@ -250,6 +250,8 @@ var action_linker =
 
 async function version2_acceptEmail(socket, data, callback)
 {
+    console.log(data);
+    
     var transporter             = nodemailer.createTransport({
         host: 'smtp.gmail.com',
         port: 465,
@@ -276,7 +278,7 @@ async function version2_acceptEmail(socket, data, callback)
 async function version2_Attracted_pay(socket, data, callback)
 {
     console.log(data);
-    
+
     if(data.type == "ur")
     {      
         var CreateDocument = await axios({
