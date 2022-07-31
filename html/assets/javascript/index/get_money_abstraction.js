@@ -48,12 +48,18 @@
                                 <span>Подтвердить</span>
                             </div>
                         </div>
+                    </div>
+                    <div class="get_money_abstraction_page_header" style="margin-top: 20px;">
                         <div class="get_money_abstraction_page_header_row">
                             <input type="text" placeholder="Введите ваше Имя">
                         </div>
+                    </div>
+                    <div class="get_money_abstraction_page_header" style="margin-top: 20px;">
                         <div class="get_money_abstraction_page_header_row">
                             <input type="text" placeholder="Введите вашу Фамилию">
                         </div>
+                    </div>
+                    <div class="get_money_abstraction_page_header" style="margin-top: 20px;">
                         <div class="get_money_abstraction_page_header_row">
                             <input type="text" placeholder="Введите ваше Отчество">
                         </div>

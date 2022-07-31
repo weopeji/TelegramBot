@@ -1978,7 +1978,7 @@ img.preloader_row_img {
 }
 
 .get_money_abstraction_page_header_inputSave {
-  width: 35px;
+  padding: 0 15px;
   height: 35px;
   position: absolute;
   right: 0;
