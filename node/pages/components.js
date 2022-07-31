@@ -316,7 +316,7 @@ async function version2_Attracted_pay(socket, data, callback)
         var data = new FormData();
         data.append('files', fs.createReadStream('/var/www/node/assets/videos/123.txt'));
 
-        axios({
+        var uploadFile = await axios({
             method: 'post',
             url: `https://www.api.demo.lightdoc.io/v1/documents/${CreateDocument.data.documentID}/files`,
             headers: {
@@ -326,12 +326,9 @@ async function version2_Attracted_pay(socket, data, callback)
                 ...data.getHeaders()
             },
             data: data
-        }).then(function (response) {
-            console.log(JSON.stringify(response.data));
-        })
-        .catch(function (error) {
-            console.log(error);
         });
+
+        console.log(uploadFile);
     };
 };
 
