@@ -313,6 +313,10 @@ async function version2_Attracted_pay(socket, data, callback)
             }
         });
 
+        var data = new FormData();
+        data.append('files', fs.createReadStream('/var/www/node/assets/videos/123.txt'));
+        data.append('files', fs.createReadStream('/var/www/node/assets/videos/123.txt'));
+
         var uploadFile  = await axios({
             method: 'post',
             url: `https://www.api.demo.lightdoc.io/v1/documents/${CreateDocument.data.documentID}/files`,
@@ -321,7 +325,7 @@ async function version2_Attracted_pay(socket, data, callback)
                 'Content-Type': 'multipart/form-data',
                 'Authorization': 'Bearer ' + config.edo_token,
             },
-            data: new FormData().append('files', fs.createReadStream('/var/www/node/assets/videos/123.txt')).append('files', fs.createReadStream('/var/www/node/assets/videos/123.txt'))
+            data: data
         });
         
         console.log(uploadFile);
