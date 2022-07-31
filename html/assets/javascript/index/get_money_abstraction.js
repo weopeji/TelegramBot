@@ -43,7 +43,7 @@
                     <div class="get_money_abstraction_page_header" style="margin-top: 20px;">
                         <div class="version2_default_bkg row_default"></div>
                         <div class="get_money_abstraction_page_header_row">
-                            <input type="text" placeholder="Введите ваш email, для подписание документа">
+                            <input type="text" placeholder="Введите ваш email, для подписание документа" data="email">
                             <div class="get_money_abstraction_page_header_inputSave">
                                 <span>Подтвердить</span>
                             </div>
@@ -94,6 +94,16 @@
                 </div>
             `);
 
+            templateText.find('.get_money_abstraction_page_header_inputSave').click( async function() {
+                await callApi({
+                    methodName: "version2_acceptEmail",
+                    data:  {
+                        user: global.allData._id,
+                        email: $('input[data="email"]').val().toString().trim(),
+                    },
+                });
+            });
+
             templateText.find('.get_money_abstraction_page_buttons_button').click(async () => {
 
                 var typeOpen = $(this).attr('data');
@@ -103,6 +113,12 @@
                     data:  {
                         type: typeOpen,
                     },
+                });
+
+                SoloAlert.alert({
+                    title:"Успешно! Подтвердите ваш email, перейдя по ссылке в сообщении",
+                    body:"",
+                    icon: "success"
                 });
             });
 

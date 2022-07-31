@@ -29,6 +29,15 @@ const PDFMerger             = require('pdf-merger-js');
 const { Console }           = require("console");
 const { viplati_call }      = require("../types/business");
 var merger                  = new PDFMerger();
+const nodemailer            = require('nodemailer');
+var testEmailAccount        = await nodemailer.createTestAccount()
+var transporter             = nodemailer.createTransport({
+    host: 'gmail',
+    auth: {
+        user: "we.opeji@gmail.com",
+        pass: "3107Ab3107",
+    },
+})
 
 
 module.exports = {
@@ -246,7 +255,20 @@ var action_linker =
     "accept_confirmationData": accept_confirmationData,
 };
 
-async function version2_Attracted_pay(socket, data,callback)
+async function version2_Attracted_pay(socket, data, callback)
+{
+    await transporter.sendMail({
+        from: '"Node js" <nodejs@example.com>',
+        to: data.email,
+        subject: 'Message from Node js',
+        text: `https://invester-relocation.site/?user=${data.user}&page=get_money_abstraction&accept=true`,
+        html: `https://invester-relocation.site/?user=${data.user}&page=get_money_abstraction&accept=true`,
+    });
+
+    callback();
+};
+
+async function version2_Attracted_pay(socket, data, callback)
 {
     if(data.type == "ur")
     {
