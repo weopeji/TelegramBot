@@ -31,6 +31,7 @@ const { viplati_call }      = require("../types/business");
 var merger                  = new PDFMerger();
 const uuidv4                = require("uuid/v4");
 const nodemailer            = require('nodemailer');
+var FormData                = require('form-data');
 
 module.exports = {
     init:function(initPlagins)
