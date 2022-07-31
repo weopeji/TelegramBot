@@ -111,14 +111,17 @@
             });
 
             templateText.find('.get_money_abstraction_page_buttons_button').click(async () => {
-
-                var typeOpen = $(this).attr('data');
-
                 await callApi({
                     methodName: "version2_Attracted_pay",
                     data:  {
-                        type: typeOpen,
+                        type: $(this).attr('data'),
                     },
+                });
+
+                SoloAlert.alert({
+                    title:"Успешно!",
+                    body:"",
+                    icon: "success"
                 });
             });
 
