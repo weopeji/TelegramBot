@@ -98,6 +98,7 @@ var action_linker =
     "version2_acceptInvOfComplaintBusinnes": version2_acceptInvOfComplaintBusinnes,
     "version2_activ_projects_pageRender": version2_activ_projects_pageRender,
     "version2_userSetDefault": version2_userSetDefault,
+    "version2_Attracted_pay": version2_Attracted_pay,
 
 
     // teletube
@@ -243,6 +244,14 @@ var action_linker =
     "getProjectForInvesterPageAllInvs": getProjectForInvesterPageAllInvs,
     "getProjectForInvesterPageByIdInvDoc": getProjectForInvesterPageByIdInvDoc,
     "accept_confirmationData": accept_confirmationData,
+};
+
+async function version2_Attracted_pay(socket, data,callback)
+{
+    if(data.type == "ur")
+    {
+        
+    };
 };
 
 async function version2_userSetDefault(socket, data, callback)

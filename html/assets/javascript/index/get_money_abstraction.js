@@ -45,12 +45,21 @@
                         <div class="get_money_abstraction_page_header_row">
                             <input type="text" placeholder="Введите ваш email, для подписание документа">
                             <div class="get_money_abstraction_page_header_inputSave">
-                                <i class="fal fa-save"></i>
+                                <span>Подтвердить</span>
                             </div>
+                        </div>
+                        <div class="get_money_abstraction_page_header_row">
+                            <input type="text" placeholder="Введите ваше Имя">
+                        </div>
+                        <div class="get_money_abstraction_page_header_row">
+                            <input type="text" placeholder="Введите вашу Фамилию">
+                        </div>
+                        <div class="get_money_abstraction_page_header_row">
+                            <input type="text" placeholder="Введите ваше Отчество">
                         </div>
                     </div>
                     <div class="get_money_abstraction_page_buttons">
-                        <div class="get_money_abstraction_page_buttons_button">
+                        <div class="get_money_abstraction_page_buttons_button" data="fiz">
                             <div class="version2_default_bkg row_default"></div>
                             <div class="get_money_abstraction_page_buttons_button_row">
                                 <div class="get_money_abstraction_page_buttons_button_icon">
@@ -61,7 +70,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="get_money_abstraction_page_buttons_button">
+                        <div class="get_money_abstraction_page_buttons_button" data="ur">
                             <div class="version2_default_bkg row_default"></div>
                             <div class="get_money_abstraction_page_buttons_button_row">
                                 <div class="get_money_abstraction_page_buttons_button_icon">
@@ -75,6 +84,18 @@
                     </div>
                 </div>
             `);
+
+            templateText.find('.get_money_abstraction_page_buttons_button').click(async () => {
+
+                var typeOpen = $(this).attr('data');
+
+                await callApi({
+                    methodName: "version2_Attracted_pay",
+                    data:  {
+                        type: typeOpen,
+                    },
+                });
+            });
 
             for(var element of allPayments)
             {
