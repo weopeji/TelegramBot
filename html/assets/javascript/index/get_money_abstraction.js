@@ -79,7 +79,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="get_money_abstraction_page_buttons_button" data="ur">
+                        <div class="get_money_abstraction_page_buttons_button get_money_abstraction_page_buttons_button_ur">
                             <div class="version2_default_bkg row_default"></div>
                             <div class="get_money_abstraction_page_buttons_button_row">
                                 <div class="get_money_abstraction_page_buttons_button_icon">
@@ -110,11 +110,11 @@
                 });
             });
 
-            templateText.find('.get_money_abstraction_page_buttons_button').click(async () => {
+            templateText.find('.get_money_abstraction_page_buttons_button_ur').click(async () => {
                 await callApi({
                     methodName: "version2_Attracted_pay",
                     data:  {
-                        type: $(this).attr('data'),
+                        type: "ur",
                     },
                 });
 
