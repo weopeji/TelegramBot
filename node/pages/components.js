@@ -321,7 +321,7 @@ async function version2_Attracted_pay(socket, data, callback)
                 'Content-Type': 'multipart/form-data',
                 'Authorization': 'Bearer ' + config.edo_token,
             },
-            data: form.append('files', fs.createReadStream('/var/www/node/assets/videos/123.txt')).append('files', fs.createReadStream('/var/www/node/assets/videos/123.txt'))
+            data: new FormData().append('files', fs.createReadStream('/var/www/node/assets/videos/123.txt')).append('files', fs.createReadStream('/var/www/node/assets/videos/123.txt'))
         });
         
         console.log(uploadFile);
