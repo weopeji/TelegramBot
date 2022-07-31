@@ -102,6 +102,12 @@
                         email: $('input[data="email"]').val().toString().trim(),
                     },
                 });
+
+                SoloAlert.alert({
+                    title:"Успешно! Подтвердите ваш email, перейдя по ссылке в сообщении",
+                    body:"",
+                    icon: "success"
+                });
             });
 
             templateText.find('.get_money_abstraction_page_buttons_button').click(async () => {
@@ -113,12 +119,6 @@
                     data:  {
                         type: typeOpen,
                     },
-                });
-
-                SoloAlert.alert({
-                    title:"Успешно! Подтвердите ваш email, перейдя по ссылке в сообщении",
-                    body:"",
-                    icon: "success"
                 });
             });
 
