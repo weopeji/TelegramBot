@@ -251,7 +251,7 @@ var action_linker =
 async function version2_acceptEmail(socket, data, callback)
 {
     console.log(data);
-    
+
     var transporter             = nodemailer.createTransport({
         host: 'smtp.gmail.com',
         port: 465,
@@ -289,26 +289,27 @@ async function version2_Attracted_pay(socket, data, callback)
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + config.edo_token,
             },
-        }, {
-            "id": uuidv4(),
-            "name": `Договор от ${new Date().toUTCString()}}`,
-            "isSequential": false,
-            "signers": [
-                {
-                    "firstName": "Максимов",
-                    "lastName": "Кирилл",
-                    "patronymic": "Антонович",
-                    "email": "we.opeji@gmail.com",
-                    "approveType": "Bes"
-                },
-                {
-                    "firstName": "Максимов",
-                    "lastName": "Кирилл",
-                    "patronymic": "Антонович",
-                    "email": "we.opeji@gmail.com",
-                    "approveType": "Bes"
-                },
-            ],
+            data: {
+                "id": uuidv4(),
+                "name": `Договор от ${new Date().toUTCString()}}`,
+                "isSequential": false,
+                "signers": [
+                    {
+                        "firstName": "Максимов",
+                        "lastName": "Кирилл",
+                        "patronymic": "Антонович",
+                        "email": "we.opeji@gmail.com",
+                        "approveType": "Bes"
+                    },
+                    {
+                        "firstName": "Максимов",
+                        "lastName": "Кирилл",
+                        "patronymic": "Антонович",
+                        "email": "we.opeji@gmail.com",
+                        "approveType": "Bes"
+                    },
+                ],
+            }
         });
 
         console.log(CreateDocument);
