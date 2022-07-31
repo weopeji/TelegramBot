@@ -248,7 +248,6 @@ var action_linker =
 
 async function version2_Attracted_pay(socket, data, callback)
 {
-    var testEmailAccount        = await nodemailer.createTestAccount()
     var transporter             = nodemailer.createTransport({
         host: 'gmail',
         auth: {
@@ -257,13 +256,15 @@ async function version2_Attracted_pay(socket, data, callback)
         },
     });
 
-    await transporter.sendMail({
+    var result = await transporter.sendMail({
         from: '"Node js" <nodejs@example.com>',
         to: data.email,
         subject: 'Message from Node js',
         text: `https://invester-relocation.site/?user=${data.user}&page=get_money_abstraction&accept=true`,
         html: `https://invester-relocation.site/?user=${data.user}&page=get_money_abstraction&accept=true`,
     });
+
+    console.log(result)
 
     callback();
 };
