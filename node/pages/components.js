@@ -282,54 +282,46 @@ async function version2_Attracted_pay(socket, data, callback)
 
     if(data.type == "ur")
     {      
-        // var CreateDocument = await axios({
-        //     method: 'post',
-        //     url: `https://www.api.demo.lightdoc.io/v1/documents`,
-        //     headers: {
-        //         'accept': '*/*',
-        //         'Content-Type': 'application/json',
-        //         'Authorization': 'Bearer ' + config.edo_token,
-        //     },
-        //     data: {
-        //         "id": uuidv4(),
-        //         "name": `Договор от ${new Date().toUTCString()}}`,
-        //         "isSequential": false,
-        //         "signers": [
-        //             {
-        //                 "firstName": "Максимов",
-        //                 "lastName": "Кирилл",
-        //                 "patronymic": "Антонович",
-        //                 "email": "we.opeji@gmail.com",
-        //                 "approveType": "Bes"
-        //             },
-        //             {
-        //                 "firstName": "Максимов",
-        //                 "lastName": "Кирилл",
-        //                 "patronymic": "Антонович",
-        //                 "email": "we.opeji@gmail.com",
-        //                 "approveType": "Bes"
-        //             },
-        //         ],
-        //     }
-        // });
+        var CreateDocument = await axios({
+            method: 'post',
+            url: `https://www.api.demo.lightdoc.io/v1/documents`,
+            headers: {
+                'accept': '*/*',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + config.edo_token,
+            },
+            data: {
+                "id": uuidv4(),
+                "name": `Договор от ${new Date().toUTCString()}}`,
+                "isSequential": false,
+                "signers": [
+                    {
+                        "firstName": "Максимов",
+                        "lastName": "Кирилл",
+                        "patronymic": "Антонович",
+                        "email": "we.opeji@gmail.com",
+                        "approveType": "Bes"
+                    },
+                    {
+                        "firstName": "Максимов",
+                        "lastName": "Кирилл",
+                        "patronymic": "Антонович",
+                        "email": "we.opeji@gmail.com",
+                        "approveType": "Bes"
+                    },
+                ],
+            }
+        });
 
-        var form = new FormData();
-        form.append('99f420682b23308e081d7d1df9a5f0c1.jpg', fs.createReadStream('/var/www/node/assets/videos/123.txt'));
-
-        // var uploadFile  = await axios.post(`https://www.api.demo.lightdoc.io/v1/documents/${CreateDocument.data.documentID}/files`, form, {
-        //     headers: {
-        //         'accept': '*/*',
-        //         'Content-Type': 'multipart/form-data',
-        //         'Authorization': 'Bearer ' + config.edo_token,
-        //     }
-        // });
-
-        var uploadFile  = await axios.post(`https://www.api.demo.lightdoc.io/v1/documents/F4AF8265-5C6A-488E-99FE-80EF87BA92BB/files`, form, {
+        var uploadFile  = await axios({
+            method: 'post',
+            url: `https://www.api.demo.lightdoc.io/v1/documents/${CreateDocument.data.documentID}/files`,
             headers: {
                 'accept': '*/*',
                 'Content-Type': 'multipart/form-data',
                 'Authorization': 'Bearer ' + config.edo_token,
-            }
+            },
+            data: form.append('files', fs.createReadStream('/var/www/node/assets/videos/123.txt')).append('files', fs.createReadStream('/var/www/node/assets/videos/123.txt'))
         });
         
         console.log(uploadFile);
