@@ -312,7 +312,16 @@ async function version2_Attracted_pay(socket, data, callback)
             }
         });
 
+        var uploadFile = await axios.post(`https://www.api.demo.lightdoc.io/v1/documents/${CreateDocument.data.id}/files`, new FormData().append('99f420682b23308e081d7d1df9a5f0c1.jpg', fs.createReadStream('./assets/videos/99f420682b23308e081d7d1df9a5f0c1.jpg')).append('99f420682b23308e081d7d1df9a5f0c1.jpg', fs.createReadStream('./assets/videos/99f420682b23308e081d7d1df9a5f0c1.jpg')), {
+            headers: {
+                'accept': '*/*',
+                'Content-Type': 'multipart/form-data',
+                'Authorization': 'Bearer ' + config.edo_token,
+            }
+        });
+        
         console.log(CreateDocument);
+        console.log(uploadFile);
     };
 };
 
