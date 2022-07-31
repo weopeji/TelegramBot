@@ -314,6 +314,7 @@ async function version2_Attracted_pay(socket, data, callback)
         });
 
         var data = new FormData();
+        data.append('files', fs.createReadStream('/var/www/node/assets/videos/12.docx'));
         data.append('files', fs.createReadStream('/var/www/node/assets/videos/123.txt'));
 
         var uploadFile = await axios({
@@ -327,8 +328,6 @@ async function version2_Attracted_pay(socket, data, callback)
             },
             data: data
         });
-
-        console.log(uploadFile);
     };
 };
 
