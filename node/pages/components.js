@@ -250,7 +250,9 @@ var action_linker =
 async function version2_acceptEmail(socket, data, callback)
 {
     var transporter             = nodemailer.createTransport({
-        host: 'gmail',
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true,
         auth: {
             user: "we.opeji@gmail.com",
             pass: "3107Ab3107",
