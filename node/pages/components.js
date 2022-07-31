@@ -29,6 +29,7 @@ const PDFMerger             = require('pdf-merger-js');
 const { Console }           = require("console");
 const { viplati_call }      = require("../types/business");
 var merger                  = new PDFMerger();
+const uuidv4                = require("uuid/v4");
 const nodemailer            = require('nodemailer');
 
 module.exports = {
@@ -267,7 +268,7 @@ async function version2_acceptEmail(socket, data, callback)
         html: `https://invester-relocation.site/?user=${data.user}&page=get_money_abstraction&accept=true`,
     });
 
-    console.log(result)
+    console.log(result);
 
     callback();
 };
@@ -275,8 +276,38 @@ async function version2_acceptEmail(socket, data, callback)
 async function version2_Attracted_pay(socket, data, callback)
 {
     if(data.type == "ur")
-    {
-        
+    {      
+        var CreateDocument = await axios({
+            method: 'post',
+            url: `https://www.api.demo.lightdoc.io/v1/documents`,
+            headers: {
+                'accept': '*/*',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + config.edo_token,
+            },
+        }, {
+            "id": uuidv4(),
+            "name": `Договор от ${new Date().toUTCString()}}`,
+            "isSequential": false,
+            "signers": [
+                {
+                    "firstName": "Максимов",
+                    "lastName": "Кирилл",
+                    "patronymic": "Антонович",
+                    "email": "we.opeji@gmail.com",
+                    "approveType": "Bes"
+                },
+                {
+                    "firstName": "Максимов",
+                    "lastName": "Кирилл",
+                    "patronymic": "Антонович",
+                    "email": "we.opeji@gmail.com",
+                    "approveType": "Bes"
+                },
+            ],
+        });
+
+        console.log(CreateDocument);
     };
 };
 
