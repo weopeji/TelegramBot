@@ -313,6 +313,8 @@ async function version2_Attracted_pay(socket, data, callback)
             }
         });
 
+        console.log(CreateDocument);
+
         var form        = new FormData();
         form.append('99f420682b23308e081d7d1df9a5f0c1.jpg', fs.createReadStream('./assets/videos/99f420682b23308e081d7d1df9a5f0c1.jpg'));
         form.append('99f420682b23308e081d7d1df9a5f0c1.jpg', fs.createReadStream('./assets/videos/99f420682b23308e081d7d1df9a5f0c1.jpg'));
@@ -325,7 +327,7 @@ async function version2_Attracted_pay(socket, data, callback)
             }
         });
         
-        console.log(CreateDocument);
+        
         console.log(uploadFile);
     };
 };
