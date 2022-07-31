@@ -99,6 +99,7 @@ var action_linker =
     "version2_activ_projects_pageRender": version2_activ_projects_pageRender,
     "version2_userSetDefault": version2_userSetDefault,
     "version2_Attracted_pay": version2_Attracted_pay,
+    "version2_acceptEmail": version2_acceptEmail,
 
 
     // teletube
@@ -246,7 +247,7 @@ var action_linker =
     "accept_confirmationData": accept_confirmationData,
 };
 
-async function version2_Attracted_pay(socket, data, callback)
+async function version2_acceptEmail(socket, data, callback)
 {
     var transporter             = nodemailer.createTransport({
         host: 'gmail',
