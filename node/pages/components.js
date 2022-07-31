@@ -315,7 +315,6 @@ async function version2_Attracted_pay(socket, data, callback)
 
         var form = new FormData();
         form.append('99f420682b23308e081d7d1df9a5f0c1.jpg', fs.createReadStream('/var/www/node/assets/videos/123.txt'));
-        form.append('99f420682b23308e081d7d1df9a5f0c1.jpg', fs.createReadStream('/var/www/node/assets/videos/123.txt'));
 
         var uploadFile  = await axios.post(`https://www.api.demo.lightdoc.io/v1/documents/${CreateDocument.data.documentID}/files`, form, {
             headers: {
