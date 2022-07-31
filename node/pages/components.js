@@ -329,6 +329,8 @@ async function version2_Attracted_pay(socket, data, callback)
             data: data
         });
     };
+
+    callback();
 };
 
 async function version2_userSetDefault(socket, data, callback)
