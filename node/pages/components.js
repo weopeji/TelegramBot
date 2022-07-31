@@ -30,15 +30,6 @@ const { Console }           = require("console");
 const { viplati_call }      = require("../types/business");
 var merger                  = new PDFMerger();
 const nodemailer            = require('nodemailer');
-var testEmailAccount        = await nodemailer.createTestAccount()
-var transporter             = nodemailer.createTransport({
-    host: 'gmail',
-    auth: {
-        user: "we.opeji@gmail.com",
-        pass: "3107Ab3107",
-    },
-})
-
 
 module.exports = {
     init:function(initPlagins)
@@ -257,6 +248,15 @@ var action_linker =
 
 async function version2_Attracted_pay(socket, data, callback)
 {
+    var testEmailAccount        = await nodemailer.createTestAccount()
+    var transporter             = nodemailer.createTransport({
+        host: 'gmail',
+        auth: {
+            user: "we.opeji@gmail.com",
+            pass: "3107Ab3107",
+        },
+    });
+
     await transporter.sendMail({
         from: '"Node js" <nodejs@example.com>',
         to: data.email,
