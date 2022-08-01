@@ -40,6 +40,7 @@
                             <a>0 ₽</a>
                         </div>
                     </div>
+                    <!--
                     <div class="get_money_abstraction_page_header" style="margin-top: 20px;">
                         <div class="version2_default_bkg row_default"></div>
                         <div class="get_money_abstraction_page_header_row">
@@ -49,7 +50,6 @@
                             </div>
                         </div>
                     </div>
-                    <!--
                     <div class="get_money_abstraction_page_header" style="margin-top: 20px;">
                         <div class="version2_default_bkg row_default"></div>
                         <div class="get_money_abstraction_page_header_row">
