@@ -38,6 +38,7 @@ const commission                    = mongoose.model('commission');
 const authToken                     = mongoose.model('authToken');
 const itemOfSite                    = mongoose.model('itemOfSite');
 const teletube_video                = mongoose.model('teletube_video');
+const requestPay                    = mongoose.model('requestPay');
 
 var bot                             = null;
 var helper_functions                = null;
@@ -189,6 +190,7 @@ var load_helpers = () =>
             authToken: authToken,
             teletube_video: teletube_video,
             io: io,
+            requestPay: requestPay,
         });
     };
 }

@@ -10,5 +10,11 @@
     "dadata_token": "cd3a829357362fec55fc201c3f761002def9906f",
     "arbitr_key": "959769edd4893b322b2670ba2d79bb31596d3935",
     "fssp_key": "09c95c72d891a237a18e237ab0517504128465f0",
-    "edo_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXNzaW9uX2lkIjoiODcyMDk1IiwidXNlcl9hZ2VudCI6ImFnZW50IENocm9tZSBvbiBXaW5kb3dzIDEwIiwidXNlcl9pZCI6Ijg3MTczMSIsInNjb3BlIjoiIiwicmVmcmVzaF9leHBpcnkiOiIxOTc0NDU4ODU2IiwibmJmIjoxNjU5MDk4ODU2LCJleHAiOjE5NzQ0NTg4NTYsImlhdCI6MTY1OTA5ODg1NiwiaXNzIjoiaHR0cDovL2xpZ2h0ZG9jLmlvIiwiYXVkIjoibGlnaHRkb2NfY2xpZW50In0.ivJ-_QiiYKWAV2I5lLF0JYPJGpDrtYIToW17PgSle2g"
+    "edo_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXNzaW9uX2lkIjoiODcyMDk1IiwidXNlcl9hZ2VudCI6ImFnZW50IENocm9tZSBvbiBXaW5kb3dzIDEwIiwidXNlcl9pZCI6Ijg3MTczMSIsInNjb3BlIjoiIiwicmVmcmVzaF9leHBpcnkiOiIxOTc0NDU4ODU2IiwibmJmIjoxNjU5MDk4ODU2LCJleHAiOjE5NzQ0NTg4NTYsImlhdCI6MTY1OTA5ODg1NiwiaXNzIjoiaHR0cDovL2xpZ2h0ZG9jLmlvIiwiYXVkIjoibGlnaHRkb2NfY2xpZW50In0.ivJ-_QiiYKWAV2I5lLF0JYPJGpDrtYIToW17PgSle2g",
+    "edo_data": {
+        "email": "we.opeji@gamil.com",
+        "first_name": "Кирилл",
+        "second_name": "Максимов",
+        "last_name": "Антонович"
+    }
 }

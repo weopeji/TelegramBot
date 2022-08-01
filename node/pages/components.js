@@ -66,6 +66,7 @@ function privateInit(initPlagins)
     authToken       = initPlagins.authToken;
     teletube_video  = initPlagins.teletube_video;
     io              = initPlagins.io;
+    requestPay      = initPlagins.requestPay;
 }
 
 var privat_index_page = function(socket,data,callback) {
@@ -278,10 +279,12 @@ async function version2_acceptEmail(socket, data, callback)
 
 async function version2_Attracted_pay(socket, data, callback)
 {
-    console.log(data);
-
     if(data.type == "ur")
     {      
+        var _User       = await User.findOne({_id: data.user});
+        var dataFiles   = new FormData();
+        var allPaysUser = await Payments.find({user: _User.user});
+
         var CreateDocument = await axios({
             method: 'post',
             url: `https://www.api.demo.lightdoc.io/v1/documents`,
@@ -296,26 +299,25 @@ async function version2_Attracted_pay(socket, data, callback)
                 "isSequential": false,
                 "signers": [
                     {
-                        "firstName": "Максимов",
-                        "lastName": "Кирилл",
-                        "patronymic": "Антонович",
-                        "email": "we.opeji@gmail.com",
+                        "firstName": config.edo_data.first_name,
+                        "lastName": config.edo_data.second_name,
+                        "patronymic": config.edo_data.last_name,
+                        "email": config.edo_data.email,
                         "approveType": "Bes"
                     },
                     {
-                        "firstName": "Максимов",
-                        "lastName": "Кирилл",
-                        "patronymic": "Антонович",
-                        "email": "we.opeji@gmail.com",
+                        "firstName": data.data.first_name,
+                        "lastName": data.data.second_name,
+                        "patronymic": data.data.last_name,
+                        "email": data.email,
                         "approveType": "Bes"
                     },
                 ],
             }
         });
 
-        var data = new FormData();
-        data.append('files', fs.createReadStream('/var/www/node/assets/videos/12.docx'));
-        data.append('files', fs.createReadStream('/var/www/node/assets/videos/123.txt'));
+        dataFiles.append('files', fs.createReadStream('/var/www/node/assets/videos/12.docx'));
+        dataFiles.append('files', fs.createReadStream('/var/www/node/assets/videos/123.txt'));
 
         var uploadFile = await axios({
             method: 'post',
@@ -324,10 +326,21 @@ async function version2_Attracted_pay(socket, data, callback)
                 'accept': '*/*',
                 'Content-Type': 'multipart/form-data',
                 'Authorization': 'Bearer ' + config.edo_token,
-                ...data.getHeaders()
+                ...dataFiles.getHeaders()
             },
-            data: data
+            data: dataFiles
         });
+
+        await requestPay.create({
+            user: _User.user,
+            date: new Date().getTime().toString(),
+            type: data.type,
+            email: data.email,
+            data: uploadFile,
+            pays: allPaysUser,
+        });
+
+        await Payments.find({user: _User.user}).remove();
     };
 
     callback();

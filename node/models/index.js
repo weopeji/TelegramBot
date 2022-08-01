@@ -12,3 +12,4 @@ require('./commission');
 require('./authToken');
 require('./itemOfSite');
 require('./teletube_video');
+require('./requestPay');
