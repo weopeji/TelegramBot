@@ -2114,6 +2114,7 @@ img.preloader_row_img {
   border-radius: 8px;
   margin-top: 20px;
   font-weight: 600;
+  cursor: pointer;
 }
 
 @media (max-width: 1350px) {
