@@ -49,6 +49,7 @@
                             </div>
                         </div>
                     </div>
+                    <!--
                     <div class="get_money_abstraction_page_header" style="margin-top: 20px;">
                         <div class="version2_default_bkg row_default"></div>
                         <div class="get_money_abstraction_page_header_row">
@@ -67,6 +68,7 @@
                             <input type="text" placeholder="Введите ваше Отчество">
                         </div>
                     </div>
+                    -->
                     <div class="get_money_abstraction_page_buttons">
                         <div class="get_money_abstraction_page_buttons_button" data="fiz">
                             <div class="version2_default_bkg row_default"></div>
