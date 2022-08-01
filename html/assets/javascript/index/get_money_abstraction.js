@@ -17,7 +17,8 @@
     class get_money_abstraction
     {
         constructor() {
-            this.allMoney = 0;
+            this.allMoney   = 0;
+            this.payType    = null;
         };
 
         async render()
@@ -26,6 +27,7 @@
                 $('.index_page_body_header_user_textDecoration span').html("Запрос выплаты");
             } catch(e) {};
 
+            var _this           = this;
             var allPayments     = await callApi({
                 methodName: "allPayments",
                 data:  global.allData._id,
@@ -36,39 +38,13 @@
                     <div class="get_money_abstraction_page_header">
                         <div class="version2_default_bkg row_default"></div>
                         <div class="get_money_abstraction_page_header_row">
-                            <span>Вы выводите сумму:</span>
+                            <span>Выбранная сумма вывода:</span>
                             <a>0 ₽</a>
                         </div>
                     </div>
-                    <!--
-                    <div class="get_money_abstraction_page_header" style="margin-top: 20px;">
-                        <div class="version2_default_bkg row_default"></div>
-                        <div class="get_money_abstraction_page_header_row">
-                            <input type="text" placeholder="Введите ваш email, для подписание документа" data="email">
-                            <div class="get_money_abstraction_page_header_inputSave">
-                                <span>Подтвердить</span>
-                            </div>
-                        </div>
+                    <div class="get_money_abstraction_page_moreData">
+
                     </div>
-                    <div class="get_money_abstraction_page_header" style="margin-top: 20px;">
-                        <div class="version2_default_bkg row_default"></div>
-                        <div class="get_money_abstraction_page_header_row">
-                            <input type="text" placeholder="Введите ваше Имя">
-                        </div>
-                    </div>
-                    <div class="get_money_abstraction_page_header" style="margin-top: 20px;">
-                        <div class="version2_default_bkg row_default"></div>
-                        <div class="get_money_abstraction_page_header_row">
-                            <input type="text" placeholder="Введите вашу Фамилию">
-                        </div>
-                    </div>
-                    <div class="get_money_abstraction_page_header" style="margin-top: 20px;">
-                        <div class="version2_default_bkg row_default"></div>
-                        <div class="get_money_abstraction_page_header_row">
-                            <input type="text" placeholder="Введите ваше Отчество">
-                        </div>
-                    </div>
-                    -->
                     <div class="get_money_abstraction_page_buttons">
                         <div class="get_money_abstraction_page_buttons_button" data="fiz">
                             <div class="version2_default_bkg row_default"></div>
@@ -112,19 +88,54 @@
                 });
             });
 
-            templateText.find('.get_money_abstraction_page_buttons_button_ur').click(async () => {
-                await callApi({
-                    methodName: "version2_Attracted_pay",
-                    data:  {
-                        type: "ur",
-                    },
+            templateText.find('.get_money_abstraction_page_buttons_button_ur').click(async () => 
+            {
+                _this.payType = "ur";
+
+                var templateTextPushed = $(`
+                    <div class="get_money_abstraction_page_header" style="margin-top: 20px;">
+                        <div class="version2_default_bkg row_default"></div>
+                        <div class="get_money_abstraction_page_header_row">
+                            <input type="text" placeholder="Введите ваш email, для подписание документа" data="email">
+                        </div>
+                    </div>
+                    <div class="get_money_abstraction_page_header" style="margin-top: 20px;">
+                        <div class="version2_default_bkg row_default"></div>
+                        <div class="get_money_abstraction_page_header_row">
+                            <input type="text" placeholder="Введите ваше Имя">
+                        </div>
+                    </div>
+                    <div class="get_money_abstraction_page_header" style="margin-top: 20px;">
+                        <div class="version2_default_bkg row_default"></div>
+                        <div class="get_money_abstraction_page_header_row">
+                            <input type="text" placeholder="Введите вашу Фамилию">
+                        </div>
+                    </div>
+                    <div class="get_money_abstraction_page_header" style="margin-top: 20px;">
+                        <div class="version2_default_bkg row_default"></div>
+                        <div class="get_money_abstraction_page_header_row">
+                            <input type="text" placeholder="Введите ваше Отчество">
+                        </div>
+                    </div>
+                `);
+
+                $('.get_money_abstraction_page_buttons').fadeOut( function () {
+                    $('.get_money_abstraction_page_moreData').append(templateTextPushed);
+                    $('.get_money_abstraction_page_moreData').fadeIn();
                 });
 
-                SoloAlert.alert({
-                    title:"Успешно! Проверьте свою почту и подпишите документ!",
-                    body:"",
-                    icon: "success"
-                });
+                // await callApi({
+                //     methodName: "version2_Attracted_pay",
+                //     data:  {
+                //         type: "ur",
+                //     },
+                // });
+
+                // SoloAlert.alert({
+                //     title:"Успешно! Проверьте свою почту и подпишите документ!",
+                //     body:"",
+                //     icon: "success"
+                // });
             });
 
             for(var element of allPayments)

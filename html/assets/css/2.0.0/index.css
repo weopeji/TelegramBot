@@ -2090,6 +2090,11 @@ img.preloader_row_img {
   top: 25px;
 }
 
+.get_money_abstraction_page_moreData {
+  display: none;
+  width: 100%;
+}
+
 @media (max-width: 1350px) {
   .index_page_body_header_user_textDecoration span {
     margin-left: 0;
