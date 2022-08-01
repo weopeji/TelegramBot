@@ -117,6 +117,9 @@
                             <input type="text" placeholder="Введите ваше Отчество">
                         </div>
                     </div>
+                    <div class="get_money_abstraction_page_buttonPushed">
+                        <span>Подтвердить</span>
+                    </div>
                 `);
 
                 $('.get_money_abstraction_page_buttons').fadeOut( function () {
