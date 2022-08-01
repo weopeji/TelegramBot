@@ -2095,6 +2095,27 @@ img.preloader_row_img {
   width: 100%;
 }
 
+.get_money_abstraction_page_buttonPushed {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.get_money_abstraction_page_buttonPushed span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: radial-gradient(160% 160% at 0% 0%, #FF0099 0%, #FE40D4 100%);
+  padding: 14px 40px;
+  border-radius: 8px;
+  margin-top: 20px;
+  font-weight: 600;
+}
+
 @media (max-width: 1350px) {
   .index_page_body_header_user_textDecoration span {
     margin-left: 0;
