@@ -121,12 +121,7 @@
                     </div>
                 `);
 
-                $('.get_money_abstraction_page_buttons').fadeOut( function () {
-                    $('.get_money_abstraction_page_moreData').append(templateTextPushed);
-                    $('.get_money_abstraction_page_moreData').fadeIn();
-                });
-
-                templateTextPushed.find('.get_money_abstraction_page_buttonPushed span').click( async function() {
+                templateTextPushed.find('.get_money_abstraction_page_buttonPushed').click( async function() {
                     await callApi({
                         methodName: "version2_Attracted_pay",
                         data:  {
@@ -146,6 +141,11 @@
                         body:"",
                         icon: "success"
                     });
+                });
+
+                $('.get_money_abstraction_page_buttons').fadeOut( function () {
+                    $('.get_money_abstraction_page_moreData').append(templateTextPushed);
+                    $('.get_money_abstraction_page_moreData').fadeIn();
                 });
             });
 
