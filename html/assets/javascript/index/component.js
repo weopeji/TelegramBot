@@ -3147,7 +3147,7 @@
             var settingBlock = $(`
                 <div class="settingBlock">
                     <div class="version2_settingBlock_header">
-                        <p>Статистика ваших выплат</p>
+                        <p>Статистика ваших поступлений</p>
                     </div>
                     <div class="version2_default_bkg row_default"></div>
                     <div class="settingBlock_header">
@@ -3261,6 +3261,90 @@
             $('.index_page_body_data').append(settingBlock);
         }
 
+        async renderAllPaymentsRequest() 
+        {
+            var _data = await callApi({
+                methodName: "version2_renderAllPaymentsRequest",
+                data: global.allData.User._id,
+            });
+
+            var settingBlock = $(`
+                <div class="settingBlock">
+                    <div class="version2_settingBlock_header">
+                        <p>Статистика ваших выплат</p>
+                    </div>
+                    <div class="version2_default_bkg row_default"></div>
+                    <div class="settingBlock_header">
+                        <div class="settingBlock_header_line">
+                            <span>№</span>
+                            <span>Тип</span>
+                            <span>Email</span>
+                            <span>Статус</span>
+                        </div>
+                    </div>
+                    <div class="settingBlock_body">
+
+                    </div> 
+                </div>
+            `);
+
+            settingBlock.css("margin-top", "70px");
+
+            var initNumber  = 1;
+            var errorBlock  = true;
+
+            for(var element of _data)
+            {
+                var type = "Юр.лицо";
+
+                var template_text = $(`
+                    <div class="settingBlock_body_line">
+                        <span>
+                            <div class="version2_settingBlock_mobile_line">
+                                <span>№</span>
+                            </div>
+                            ${initNumber}
+                        </span>
+                        <span>
+                            <div class="version2_settingBlock_mobile_line">
+                                <span>Тип</span>
+                            </div>
+                            ${type}
+                        </span>
+                        <span>
+                            <div class="version2_settingBlock_mobile_line">
+                                <span>Email</span>
+                            </div>
+                            ${element.email}
+                        </span>
+                        <span>
+                            <div class="version2_settingBlock_mobile_line">
+                                <span>Статус</span>
+                            </div>
+                            Ожидает подписи
+                        </span>
+                    </div>
+                `);
+
+                settingBlock.find('.settingBlock_body').append(template_text);
+                initNumber++;
+                errorBlock++;
+            };
+
+            if(errorBlock)
+            {
+                var template_text_error = $(`
+                    <div class="version2_errorPushBlockDefault">
+                        <span>У вас нет выплат</span>
+                    </div>
+                `);
+
+                settingBlock.find('.settingBlock_body').append(template_text_error)
+            }
+
+            $('.index_page_body_data').append(settingBlock);
+        }
+
         async render(data) 
         {
             var _data = await callApi({
@@ -3299,6 +3383,7 @@
             await this.renderInvesters();
             await this.renderBussnes();
             await this.renderAllPayments();
+            await this.renderAllPaymentsRequest();
         }
     }
 

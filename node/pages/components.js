@@ -103,6 +103,7 @@ var action_linker =
     "version2_userSetDefault": version2_userSetDefault,
     "version2_Attracted_pay": version2_Attracted_pay,
     "version2_acceptEmail": version2_acceptEmail,
+    "version2_renderAllPaymentsRequest": version2_renderAllPaymentsRequest,
 
 
     // teletube
@@ -249,6 +250,13 @@ var action_linker =
     "getProjectForInvesterPageByIdInvDoc": getProjectForInvesterPageByIdInvDoc,
     "accept_confirmationData": accept_confirmationData,
 };
+
+async function version2_renderAllPaymentsRequest(socket, data, callback)
+{
+    var _User       = await user.findOne({_id: data});
+    var requestPays = await requestPay.find({user: _User.user});
+    callback(requestPays);
+}
 
 async function version2_acceptEmail(socket, data, callback)
 {
