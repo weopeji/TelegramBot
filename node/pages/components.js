@@ -279,8 +279,6 @@ async function version2_acceptEmail(socket, data, callback)
 
 async function version2_Attracted_pay(socket, data, callback)
 {
-    cosnole.log(data.type);
-
     if(data.type == "ur")
     {      
         var _User       = await User.findOne({_id: data.user});
