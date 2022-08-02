@@ -282,8 +282,9 @@ async function version2_Attracted_pay(socket, data, callback)
     if(data.type == "ur")
     {      
         var _User       = await User.findOne({_id: data.user});
-        var dataFiles   = new FormData();
         var allPaysUser = await Payments.find({user: _User.user});
+        var dataFiles   = new FormData();
+        var getsData    = data.data;
 
         var CreateDocument = await axios({
             method: 'post',
@@ -306,9 +307,9 @@ async function version2_Attracted_pay(socket, data, callback)
                         "approveType": "Bes"
                     },
                     {
-                        "firstName": data.data.first_name,
-                        "lastName": data.data.second_name,
-                        "patronymic": data.data.last_name,
+                        "firstName": getsData.first_name,
+                        "lastName": getsData.second_name,
+                        "patronymic": getsData.last_name,
                         "email": data.email,
                         "approveType": "Bes"
                     },
@@ -318,6 +319,7 @@ async function version2_Attracted_pay(socket, data, callback)
 
         dataFiles.append('files', fs.createReadStream('/var/www/node/assets/videos/12.docx'));
         dataFiles.append('files', fs.createReadStream('/var/www/node/assets/videos/123.txt'));
+        getsData.documentID = reateDocument.data.documentID;
 
         var uploadFile = await axios({
             method: 'post',
@@ -336,7 +338,7 @@ async function version2_Attracted_pay(socket, data, callback)
             date: new Date().getTime().toString(),
             type: data.type,
             email: data.email,
-            data: uploadFile,
+            data: getsData,
             pays: allPaysUser,
         });
 
