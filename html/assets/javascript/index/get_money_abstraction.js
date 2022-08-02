@@ -127,11 +127,11 @@
                         data:  {
                             type: "ur",
                             user: global.allData._id,
-                            email: $(this).parent().find('input[data="email"]').val().toString().trim(),
+                            email: $(this).parent().parent().find('input[data="email"]').val().toString().trim(),
                             data: {
-                                first_name: $(this).parent().find('input[data="first_name"]').val().toString().trim(),
-                                second_name: $(this).parent().find('input[data="second_name"]').val().toString().trim(),
-                                last_name: $(this).parent().find('input[data="last_name"]').val().toString().trim(),
+                                first_name: $(this).parent().parent().find('input[data="first_name"]').val().toString().trim(),
+                                second_name: $(this).parent().parent().find('input[data="second_name"]').val().toString().trim(),
+                                last_name: $(this).parent().parent().find('input[data="last_name"]').val().toString().trim(),
                             },
                         },
                     });
