@@ -3328,7 +3328,7 @@
 
                 settingBlock.find('.settingBlock_body').append(template_text);
                 initNumber++;
-                errorBlock++;
+                errorBlock = false;
             };
 
             if(errorBlock)
