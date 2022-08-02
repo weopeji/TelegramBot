@@ -341,6 +341,7 @@ async function version2_Attracted_pay(socket, data, callback)
                 'Content-Type': 'multipart/form-data',
                 'Authorization': 'Bearer ' + config.edo_token,
             },
+            data: '',
         });
 
         await requestPay.create({
