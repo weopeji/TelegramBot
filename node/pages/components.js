@@ -319,7 +319,7 @@ async function version2_Attracted_pay(socket, data, callback)
 
         dataFiles.append('files', fs.createReadStream('/var/www/node/assets/videos/12.docx'));
         dataFiles.append('files', fs.createReadStream('/var/www/node/assets/videos/123.txt'));
-        getsData.documentID = reateDocument.data.documentID;
+        getsData.documentID = СreateDocument.data.documentID;
 
         var uploadFile = await axios({
             method: 'post',
