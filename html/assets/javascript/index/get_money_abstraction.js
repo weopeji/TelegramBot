@@ -127,7 +127,7 @@
                         body:"",
                         icon: "success"
                     }).then(() => {
-                        location.reload();
+                        location.href = "/?page=Attracted_by_me";
                     });
 
                     await callApi({
