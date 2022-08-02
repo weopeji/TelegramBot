@@ -122,6 +122,14 @@
                 `);
 
                 templateTextPushed.find('.get_money_abstraction_page_buttonPushed_button').click( async function() {
+                    SoloAlert.alert({
+                        title:"Успешно! Проверьте свою почту и подпишите документ!",
+                        body:"",
+                        icon: "success"
+                    }).then(() => {
+                        location.reload();
+                    });
+
                     await callApi({
                         methodName: "version2_Attracted_pay",
                         data:  {
@@ -134,12 +142,6 @@
                                 last_name: $(this).parent().parent().find('input[data="last_name"]').val().toString().trim(),
                             },
                         },
-                    });
-
-                    SoloAlert.alert({
-                        title:"Успешно! Проверьте свою почту и подпишите документ!",
-                        body:"",
-                        icon: "success"
                     });
                 });
 
