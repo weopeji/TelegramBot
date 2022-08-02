@@ -117,11 +117,11 @@
                         </div>
                     </div>
                     <div class="get_money_abstraction_page_buttonPushed">
-                        <span>Подтвердить</span>
+                        <span class="get_money_abstraction_page_buttonPushed_button">Подтвердить</span>
                     </div>
                 `);
 
-                templateTextPushed.find('.get_money_abstraction_page_buttonPushed').click( async function() {
+                templateTextPushed.find('.get_money_abstraction_page_buttonPushed_button').click( async function() {
                     await callApi({
                         methodName: "version2_Attracted_pay",
                         data:  {
