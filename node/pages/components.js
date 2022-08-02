@@ -253,7 +253,7 @@ var action_linker =
 
 async function version2_renderAllPaymentsRequest(socket, data, callback)
 {
-    var _User       = await user.findOne({_id: data});
+    var _User       = await User.findOne({_id: data});
     var requestPays = await requestPay.find({user: _User.user});
     callback(requestPays);
 }
