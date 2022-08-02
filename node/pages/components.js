@@ -333,6 +333,21 @@ async function version2_Attracted_pay(socket, data, callback)
             data: dataFiles
         });
 
+        var signedDocument = await axios({
+            method: 'post',
+            url: `https://www.api.demo.lightdoc.io/v1/documents/${CreateDocument.data.documentID}/action`,
+            headers: {
+                'accept': '*/*',
+                'Content-Type': 'multipart/form-data',
+                'Authorization': 'Bearer ' + config.edo_token,
+            },
+            data: {
+                action: "Send",
+            }
+        });
+
+        console.log(signedDocument);
+
         await requestPay.create({
             user: _User.user,
             date: new Date().getTime().toString(),
