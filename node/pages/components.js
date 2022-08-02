@@ -333,16 +333,23 @@ async function version2_Attracted_pay(socket, data, callback)
             data: dataFiles
         });
 
-        var signedDocument = await axios({
-            method: 'post',
-            url: `https://www.api.demo.lightdoc.io/v1/documents/${CreateDocument.data.documentID}/action?action=Send`,
-            headers: {
-                'accept': '*/*',
-                'Content-Type': 'multipart/form-data',
-                'Authorization': 'Bearer ' + config.edo_token,
-            },
-            data: '',
-        });
+        while(true)
+        {
+            try {
+                var signedDocument = await axios({
+                    method: 'post',
+                    url: `https://www.api.demo.lightdoc.io/v1/documents/${CreateDocument.data.documentID}/action?action=Send`,
+                    headers: {
+                        'accept': '*/*',
+                        'Content-Type': 'multipart/form-data',
+                        'Authorization': 'Bearer ' + config.edo_token,
+                    },
+                    data: '',
+                });
+
+                break;
+            } catch(e) {};
+        }
 
         await requestPay.create({
             user: _User.user,
