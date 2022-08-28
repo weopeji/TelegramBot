@@ -126,7 +126,7 @@
                 {
                     if(pageID != "telegram_authorization")
                     {
-                        location.href = "https://invester-relocation.site/?page=telegram_authorization";
+                        location.href = "https://investir.one/?page=telegram_authorization";
                         return;
                     } else {
                         telegram_authorization.render();

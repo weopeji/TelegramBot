@@ -680,7 +680,7 @@ async function goInvesting(msg)
                     });
                     _array.push(fat.message_id);
                     
-                    var needUrl = "https://invester-relocation.site/";
+                    var needUrl = "https://investir.one/";
 
                     if(typeof _project.urlLocation != "undefined")
                     {
@@ -737,7 +737,7 @@ async function goInvesting(msg)
             });
             _array.push(fat.message_id);
             
-            var needUrl = "https://invester-relocation.site/";
+            var needUrl = "https://investir.one/";
         
             if(typeof _project.urlLocation != "undefined")
             {

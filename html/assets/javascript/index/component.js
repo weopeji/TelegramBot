@@ -832,7 +832,7 @@
                                 `);
 
                                 headerPaysBlock.find('.Attracted_headerInfoBlock_info_data_alert_buttom_cheack').click( function() {
-                                    location.href = `https://invester-relocation.site/?page=put_file&action=investingNotFull&InvId=${_data.InvDoc._id}`;
+                                    location.href = `https://investir.one/?page=put_file&action=investingNotFull&InvId=${_data.InvDoc._id}`;
                                 });
 
                                 $('.headerPaysBlock').remove();
@@ -880,7 +880,7 @@
                                     `);
     
                                     headerPaysBlock.find('.Attracted_headerInfoBlock_info_data_alert_buttom_cheack').click( function() {
-                                        location.href = `https://invester-relocation.site/?page=put_file&action=investingNotFull&InvId=${_data.InvDoc._id}`;
+                                        location.href = `https://investir.one/?page=put_file&action=investingNotFull&InvId=${_data.InvDoc._id}`;
                                     });
     
                                     $('.headerPaysBlock').remove();
@@ -913,7 +913,7 @@
                                     `);
         
                                     headerPaysBlock.find('.Attracted_headerInfoBlock_info_data_alert_buttom_cheack').click( function() {
-                                        location.href = `https://invester-relocation.site/?page=put_file&action=investingNotFullNull&InvId=${_data.InvDoc._id}`;
+                                        location.href = `https://investir.one/?page=put_file&action=investingNotFullNull&InvId=${_data.InvDoc._id}`;
                                     });
         
                                     $('.headerPaysBlock').remove();
@@ -1171,7 +1171,7 @@
                 $('.show_document').click( async function() {
                     if(window.screen.width < 1300)
                     {
-                        // saveUrlAsFile(`https://invester-relocation.site/projects/${_data.InvDoc.projectId}/${_data.InvDoc.urlToLastDocument}`, `${_data.InvDoc.projectId}/${_data.InvDoc.urlToLastDocument}`);
+                        // saveUrlAsFile(`https://investir.one/projects/${_data.InvDoc.projectId}/${_data.InvDoc.urlToLastDocument}`, `${_data.InvDoc.projectId}/${_data.InvDoc.urlToLastDocument}`);
                         
                         var tamplateText = $(`
                             <div class="version2_preloaderDocumetBLock">
@@ -1215,7 +1215,7 @@
                     }
                     else
                     {
-                        window.open(`https://invester-relocation.site/projects/${_data.InvDoc.projectId}/${_data.InvDoc.urlToLastDocument}`, '_blank');
+                        window.open(`https://investir.one/projects/${_data.InvDoc.projectId}/${_data.InvDoc.urlToLastDocument}`, '_blank');
                     }
                 });
     
@@ -2163,7 +2163,7 @@
 
 
                 template_text.children('span').eq(7).click( function() {
-                    location.href = `https://invester-relocation.site/?page=chats&id=${$(this).parent().attr('data-project')}`;
+                    location.href = `https://investir.one/?page=chats&id=${$(this).parent().attr('data-project')}`;
                 });
 
                 settingBlock.find('.settingBlock_body').append(template_text);
@@ -2722,7 +2722,7 @@
                     $('.index_page_body_data').append(block);
     
                     $('.msg_block_getting_line').click( function() {
-                        location.href = `https://invester-relocation.site/?user=${$(this).attr('data-more')}&page=chats&id=${$(this).attr('data')}`;
+                        location.href = `https://investir.one/?user=${$(this).attr('data-more')}&page=chats&id=${$(this).attr('data')}`;
                     })
     
                 }
@@ -2764,7 +2764,7 @@
             });
 
             $('.put').click( function() {
-                window.open(`https://invester-relocation.site/html/project/document/#${_GET('id')}#/?id=${global.allData.User._id}`, '_blank');
+                window.open(`https://investir.one/html/project/document/#${_GET('id')}#/?id=${global.allData.User._id}`, '_blank');
             });
 
             $('.accept_signature').click( async function() 

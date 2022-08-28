@@ -168,7 +168,7 @@
                 {
                     return new Promise(async (resolve,reject) =>
                     {
-                        var protoUrl    = `https://invester-relocation.site/?user=${_token}&page=creating`;
+                        var protoUrl    = `https://investir.one/?user=${_token}&page=creating`;
 
                         setTimeout( async function() {
                             callApi({

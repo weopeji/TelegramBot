@@ -249,7 +249,7 @@
                                             body:"",
                                             icon: "success"
                                         }).then( function() {
-                                            location.href = `https://invester-relocation.site/?user=${global.allData._id}&page=invester_data&InvRedacting=${InvDocId}`;
+                                            location.href = `https://investir.one/?user=${global.allData._id}&page=invester_data&InvRedacting=${InvDocId}`;
                                         })
                                     };
                                 })

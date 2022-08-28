@@ -276,8 +276,8 @@ async function version2_acceptEmail(socket, data, callback)
         from: '"Node js" <nodejs@example.com>',
         to: data.email,
         subject: 'Message from Node js',
-        text: `https://invester-relocation.site/?user=${data.user}&page=get_money_abstraction&accept=true`,
-        html: `https://invester-relocation.site/?user=${data.user}&page=get_money_abstraction&accept=true`,
+        text: `https://investir.one/?user=${data.user}&page=get_money_abstraction&accept=true`,
+        html: `https://investir.one/?user=${data.user}&page=get_money_abstraction&accept=true`,
     });
 
     console.log(result);
@@ -642,7 +642,7 @@ async function version2_investerData_invdoc_notMoney(socket, data, callback)
         var _Project            = await Project.findOne({_id: _User.putProject});
         var _arrayData          = data.inv;
         _arrayData.pay          = data.money;
-        var html                = "https://invester-relocation.site/" + data.url;
+        var html                = "https://investir.one/" + data.url;
 
         var invCreate   = await InvDoc.create({
             projectId: _User.putProject,
@@ -699,7 +699,7 @@ async function version2_investerData_invdoc_notMoney_redacting(socket, data, cal
         _arrayData.pay              = data.money;
         _arrayData.pts_2            = _InvDoc.data.pts_2;
         
-        var html                    = "https://invester-relocation.site/" + data.url;
+        var html                    = "https://investir.one/" + data.url;
         var invCreate               = await InvDoc.findOneAndUpdate({_id: data.invId}, {
             data: _arrayData,
             status: "accept",
@@ -1311,7 +1311,7 @@ async function endInvestingDataPush(socket, data, callback)
     var _User               = await User.findOne({_id: data.user});
     var _Project            = await Project.findOne({_id: data.project});
     var pathToLastDocument  = `documentLast_${new Date().getTime()}_${data.user}.pdf`;
-    var html                = "https://invester-relocation.site/" + data.url;
+    var html                = "https://investir.one/" + data.url;
     const browser = await puppeteer.launch({
         args: ['--no-sandbox', '--disable-setuid-sandbox'],
     });
@@ -2464,7 +2464,7 @@ async function test_fun(socket,data,callback)
                 { // ""
                     text: "Инвестровать",
                     login_url: {
-                        'url': 'https://invester-relocation.site/',
+                        'url': 'https://investir.one/',
                         'request_write_access': true,
                     },
                 }
@@ -2586,7 +2586,7 @@ async function setCreatingData(socket,data,callback)
     var creatingData = data;
     await User.findOneAndUpdate({_id:data.user}, {creatingData: creatingData});
 
-    callback(`https://invester-relocation.site/html/project/creating/#${_User._id}`);
+    callback(`https://investir.one/html/project/creating/#${_User._id}`);
 }
 
 async function creatingData(socket,data,callback)
@@ -3500,14 +3500,14 @@ async function acceptProject(socket,data,callback)
                         {
                             text: "Рекомендовать",
                             login_url: {
-                                'url': `https://invester-relocation.site/?page=telegram_authorization&type=recomendation&userId=${data}`,
+                                'url': `https://investir.one/?page=telegram_authorization&type=recomendation&userId=${data}`,
                                 'request_write_access': true,
                             },
                         },
                         {
                             text: "Личный кабинет",
                             login_url: {
-                                'url': `https://invester-relocation.site/?page=telegram_authorization&type=cabinet`,
+                                'url': `https://investir.one/?page=telegram_authorization&type=cabinet`,
                                 'request_write_access': true,
                             },
                         }
@@ -3516,7 +3516,7 @@ async function acceptProject(socket,data,callback)
                         {
                             text: "Подробнее",
                             login_url: {
-                                'url': `https://invester-relocation.site/?page=telegram_authorization&type=more&userId=${data}`,
+                                'url': `https://investir.one/?page=telegram_authorization&type=more&userId=${data}`,
                                 'request_write_access': true,
                             },
                         }

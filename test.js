@@ -14,7 +14,7 @@ var keyboard = [
     {
         text: "Рекомендовать",
         login_url: {
-            'url': `https://invester-relocation.site/?page=telegram_authorization&type=recomendation&userId=${data}`,
+            'url': `https://investir.one/?page=telegram_authorization&type=recomendation&userId=${data}`,
             'request_write_access': true,
         },
     }

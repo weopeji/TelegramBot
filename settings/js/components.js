@@ -554,14 +554,14 @@
                             this.global_block.find('.Attracted_headerInfoBlock_block[data="loader"]').find('span').html('Документ подписан бизнесом');
                             this.global_block.find('.Attracted_headerInfoBlock_block[data="loader"]').find('p').html(`Посмотреть`);
                             this.global_block.find('.Attracted_headerInfoBlock_block[data="loader"]').click( function() {
-                                window.open(`https://invester-relocation.site/projects/${_project._id}/${_project.signature_document.user_document}`, '_blank');
+                                window.open(`https://investir.one/projects/${_project._id}/${_project.signature_document.user_document}`, '_blank');
                             })
                         } else 
                         {
                             this.global_block.find('.Attracted_headerInfoBlock_block[data="loader"]').find('span').html('Документ отправлен бизнесу');
                             this.global_block.find('.Attracted_headerInfoBlock_block[data="loader"]').find('p').html(`Посмотреть`);
                             this.global_block.find('.Attracted_headerInfoBlock_block[data="loader"]').click( function() {
-                                window.open(`https://invester-relocation.site/projects/${_project._id}/signature_document.pdf`, '_blank');
+                                window.open(`https://investir.one/projects/${_project._id}/signature_document.pdf`, '_blank');
                             })
                             this.global_block.find('.Attracted_headerInfoBlock_block[data="dell"]').find('p').html(`Удалить`);
                             this.global_block.find('.Attracted_headerInfoBlock_block[data="dell"]').click( function() {
@@ -944,7 +944,7 @@
                         firstBlockMore.css("padding-bottom", "20px");
 
                         firstBlockMore.find('st[data="show"]').click( function() {
-                            window.open(`https://invester-relocation.site/projects/${_project._id}/${_project.registrationDocument.user_document}`, "_blank")
+                            window.open(`https://investir.one/projects/${_project._id}/${_project.registrationDocument.user_document}`, "_blank")
                         });
 
                         firstBlockMore.find('st[data="clear"]').click( async function() 
@@ -1000,7 +1000,7 @@
                         firstBlockMore.css("padding-bottom", "20px");
 
                         firstBlockMore.find('st').eq(0).click( function() {
-                            window.open(`https://invester-relocation.site/projects/${_project._id}/${_project.registrationDocument.document}`, "_blank")
+                            window.open(`https://investir.one/projects/${_project._id}/${_project.registrationDocument.document}`, "_blank")
                         });
 
                         firstBlockMore.find('st').eq(1).click( async function() 
@@ -1552,10 +1552,10 @@
                         <div class="settingBlock_body_line">
                             <span>${_Inv.inv.invester}</span>
                             <span>${_Inv.inv.data.pay} руб</span>
-                            <span><a target="_blank" href="https://invester-relocation.site/projects/${_Inv.inv.projectId}/${_Inv.inv.data.document}">Открыть</a></span>
+                            <span><a target="_blank" href="https://investir.one/projects/${_Inv.inv.projectId}/${_Inv.inv.data.document}">Открыть</a></span>
                             <span>${statusOplaty}</span>
                             <span>${podtvergdenie}</span>
-                            <span><a target="_blank" href="https://invester-relocation.site/projects/${_Inv.inv.projectId}/${check}">${textCheack}</a></span>
+                            <span><a target="_blank" href="https://investir.one/projects/${_Inv.inv.projectId}/${check}">${textCheack}</a></span>
                         </div>
                     `);
 
@@ -1604,10 +1604,10 @@
                         <div class="settingBlock_body_line">
                             <span>${_Inv.inv.invester}</span>
                             <span>${_Inv.inv.data.pay} руб</span>
-                            <span><a target="_blank" href="https://invester-relocation.site/projects/${_Inv.inv.projectId}/${_Inv.inv.data.document}">Открыть</a></span>
+                            <span><a target="_blank" href="https://investir.one/projects/${_Inv.inv.projectId}/${_Inv.inv.data.document}">Открыть</a></span>
                             <span>${statusOplaty}</span>
                             <span>${podtvergdenie}</span>
-                            <span><a target="_blank" href="https://invester-relocation.site/projects/${_Inv.inv.projectId}/${check}">${textCheack}</a></span>
+                            <span><a target="_blank" href="https://investir.one/projects/${_Inv.inv.projectId}/${check}">${textCheack}</a></span>
                         </div>
                     `);
 
@@ -1812,7 +1812,7 @@
                         `);
 
                         template_text.find('.settingBlock_accept_more').click( function() {
-                            window.open(`https://invester-relocation.site/?page=activ_projects&id=${$(this).parent().parent().attr('data')}`, "_blank")
+                            window.open(`https://investir.one/?page=activ_projects&id=${$(this).parent().parent().attr('data')}`, "_blank")
                         });
 
                         template_text.find('input[type="checkbox"]').change( function() {
@@ -1916,7 +1916,7 @@
                         `);
 
                         template_text.find('.settingBlock_accept_more').click( function() {
-                            window.open(`https://invester-relocation.site/?page=activ_projects&id=${$(this).parent().parent().attr('data')}`, "_blank")
+                            window.open(`https://investir.one/?page=activ_projects&id=${$(this).parent().parent().attr('data')}`, "_blank")
                         });
 
                         template_text.find('.settingBlock_accept').click( async function() {
@@ -1991,7 +1991,7 @@
                         `);
 
                         template_text.find('.settingBlock_accept_more').click( function() {
-                            window.open(`https://invester-relocation.site/?page=activ_projects&id=${$(this).parent().parent().attr('data')}`, "_blank")
+                            window.open(`https://investir.one/?page=activ_projects&id=${$(this).parent().parent().attr('data')}`, "_blank")
                         });
 
                         settingBlock.find(".settingBlock_body").append(template_text);
@@ -2047,7 +2047,7 @@
                         `);
 
                         template_text.find('.settingBlock_accept_more').click( function() {
-                            window.open(`https://invester-relocation.site/?page=activ_projects&id=${$(this).parent().parent().attr('data')}`, "_blank")
+                            window.open(`https://investir.one/?page=activ_projects&id=${$(this).parent().parent().attr('data')}`, "_blank")
                         });
 
                         settingBlock.find(".settingBlock_body").append(template_text);

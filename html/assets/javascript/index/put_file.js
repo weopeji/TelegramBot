@@ -134,7 +134,7 @@
                                 });
 
                                 $('.creating_page_input_div[data="ok"]').click( function() {
-                                    location.href = `https://invester-relocation.site/?page=activ_projects&id=${_GET("InvId")}`;
+                                    location.href = `https://investir.one/?page=activ_projects&id=${_GET("InvId")}`;
                                 });
                             }
                         });

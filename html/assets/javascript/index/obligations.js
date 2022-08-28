@@ -189,14 +189,14 @@
                 {
                     if(element.commission.status == "accept")
                     {
-                        var buttonPut = $(`<a href="https://invester-relocation.site/projects/${_data.project._id}/${element.commission.recipient}" target="_blank">Посмотреть</a>`);
+                        var buttonPut = $(`<a href="https://investir.one/projects/${_data.project._id}/${element.commission.recipient}" target="_blank">Посмотреть</a>`);
                         template_text.find('.settingBlock_body_line_obligations_put').empty().append(buttonPut);
                         template_text.children('span').eq(6).html("Подтверждено");
                     }
 
                     if(element.commission.status == "wait")
                     {
-                        var buttonPut = $(`<a href="https://invester-relocation.site/projects/${_data.project._id}/${element.commission.recipient}" target="_blank">Посмотреть</a>`);
+                        var buttonPut = $(`<a href="https://investir.one/projects/${_data.project._id}/${element.commission.recipient}" target="_blank">Посмотреть</a>`);
                         template_text.find('.settingBlock_body_line_obligations_put').empty().append(buttonPut);
                         template_text.children('span').eq(6).html("Ожидает подтверждения от investER");
                     }
@@ -216,7 +216,7 @@
                         `);
 
                         buttonPut.eq(2).click( function() {
-                            window.open(`https://invester-relocation.site/projects/${_data.project._id}/${element.commission.recipient}`, '_blank')
+                            window.open(`https://investir.one/projects/${_data.project._id}/${element.commission.recipient}`, '_blank')
                         });
 
                         buttonPut.eq(4).click( async function() {

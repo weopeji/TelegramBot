@@ -554,7 +554,7 @@
                             `);
             
                             moreBlock.find(`[data="show"]`).click( function() {
-                                window.open(`https://invester-relocation.site/projects/${_this.project._id}/${data.data.inv}_investment.${extension}`, '_blank');
+                                window.open(`https://investir.one/projects/${_this.project._id}/${data.data.inv}_investment.${extension}`, '_blank');
                             });
             
                             moreBlock.find(`[data="accept"]`).click( async function() 
