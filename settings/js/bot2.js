@@ -24,14 +24,18 @@
                         <div class="col-md-6">
                             <div class="container">
                                 <div class="row position-relative version2_default_bkg row_default">
-                                    <h1>Бот от 5 млн</h1>
+                                    <h1 class="display-6">
+                                        Бот от
+                                        <small class="text-muted">5 млн</small>
+                                    </h2>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="container">
                                 <div class="row position-relative version2_default_bkg row_default">
-                                    <h1>Бот до 5 млн</h1>
+                                    Бот до
+                                    <small class="text-muted">5 млн</small>
                                 </div>
                             </div>
                         </div>
