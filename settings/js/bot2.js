@@ -23,15 +23,15 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="container">
-                                <div class="row">
-                                    1
+                                <div class="row version2_default_bkg row_default">
+                                    
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="container">
-                                <div class="row">
-                                    
+                                <div class="row version2_default_bkg row_default">
+
                                 </div>
                             </div>
                         </div>
