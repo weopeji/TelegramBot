@@ -114,9 +114,9 @@
                                     </div>                                                                            
                                 </div>
                                 <div class="row position-relative version2_default_bkg row_default mt-3">
-                                    <label for="basic-url" class="form-label fs-3 text">Оплата</label>
+                                    <label for="basic-url" class="form-label fs-3 text">После оплаты</label>
                                     <div class="input-group mb-3">
-                                        <span class="input-group-text">После оплаты</span>
+                                        <span class="input-group-text">Ссылка на фотографию</span>
                                         <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
                                     </div>
                                     <div class="input-group mb-3">
@@ -125,9 +125,9 @@
                                     </div>                                                                          
                                 </div>
                                 <div class="row position-relative version2_default_bkg row_default mt-3">
-                                    <label for="basic-url" class="form-label fs-3 text">Оплата</label>
+                                    <label for="basic-url" class="form-label fs-3 text">Если не оплатил</label>
                                     <div class="input-group mb-3">
-                                        <span class="input-group-text">Еслине оплатил</span>
+                                        <span class="input-group-text">Ссылка на фотографию</span>
                                         <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
                                     </div>
                                     <div class="input-group mb-3">
