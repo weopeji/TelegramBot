@@ -29,6 +29,17 @@
                                         <small class="text-success">5 млн</small>
                                     </h2>
                                 </div>
+                                <div class="row position-relative version2_default_bkg row_default">
+                                    <label for="basic-url" class="form-label">Запрос телефона</label>
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text" id="basic-addon1">Ссылка на фотографию</span>
+                                        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text" id="basic-addon1">Текс</span>
+                                        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                                    </div>                                                                            
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-6">
