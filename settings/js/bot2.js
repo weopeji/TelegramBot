@@ -49,6 +49,43 @@
                                     <div class="input-group mb-3">
                                         <span class="input-group-text">Текс</span>
                                         <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">Сумма</span>
+                                        <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                                    </div>                                                                                                                                                        
+                                </div>
+                                <div class="row position-relative version2_default_bkg row_default mt-3">
+                                    <label for="basic-url" class="form-label fs-3 text">После оплаты</label>
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">Ссылка на фотографию</span>
+                                        <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">Текс</span>
+                                        <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                                    </div>                                                                            
+                                </div>
+                                <div class="row position-relative version2_default_bkg row_default mt-3">
+                                    <label for="basic-url" class="form-label fs-3 text">Если не оплатил</label>
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">Ссылка на фотографию</span>
+                                        <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">Текс</span>
+                                        <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                                    </div>                                                                            
+                                </div>
+                                <div class="row position-relative version2_default_bkg row_default mt-3">
+                                    <label for="basic-url" class="form-label fs-3 text">Если оплатил после</label>
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">Ссылка на фотографию</span>
+                                        <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">Текс</span>
+                                        <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
                                     </div>                                                                            
                                 </div>
                             </div>
@@ -60,6 +97,43 @@
                                         Бот до
                                         <small class="text-success">5 млн</small>
                                     </h1>
+                                </div>
+                                <div class="row position-relative version2_default_bkg row_default mt-3">
+                                    <label for="basic-url" class="form-label fs-3 text">Оплата</label>
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">Ссылка на фотографию</span>
+                                        <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">Текс</span>
+                                        <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                                    </div>  
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">Сумма</span>
+                                        <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                                    </div>                                                                            
+                                </div>
+                                <div class="row position-relative version2_default_bkg row_default mt-3">
+                                    <label for="basic-url" class="form-label fs-3 text">Оплата</label>
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">После оплаты</span>
+                                        <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">Текс</span>
+                                        <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                                    </div>                                                                          
+                                </div>
+                                <div class="row position-relative version2_default_bkg row_default mt-3">
+                                    <label for="basic-url" class="form-label fs-3 text">Оплата</label>
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">Еслине оплатил</span>
+                                        <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">Текс</span>
+                                        <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                                    </div>                                                                          
                                 </div>
                             </div>
                         </div>
