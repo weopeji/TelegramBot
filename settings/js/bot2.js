@@ -17,11 +17,31 @@
     class bot2
     {
         constructor() {
-            this.body = $('.index_page_body_data');
+            this.body       = $('.index_page_body_data');
+            this.body_block = `
+                <div class="container bot2_block">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="container">
+                                <div class="row">
+                                    1
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="container">
+                                <div class="row">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
         };
         
         async render() {
-            
+            this.body.append(this.body_block);
         };
     };
 
