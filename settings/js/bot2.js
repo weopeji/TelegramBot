@@ -27,6 +27,7 @@
                                     <h1 class="display-6">
                                         Бот от
                                         <small class="text-success">5 млн</small>
+                                        <button type="button" class="btn btn-primary">Сохранить</button>
                                     </h2>
                                 </div>
                                 <div class="row position-relative version2_default_bkg row_default mt-3">
@@ -96,6 +97,7 @@
                                     <h1 class="display-6">
                                         Бот до
                                         <small class="text-success">5 млн</small>
+                                        <button type="button" class="btn btn-primary">Сохранить</button>
                                     </h1>
                                 </div>
                                 <div class="row position-relative version2_default_bkg row_default mt-3">
