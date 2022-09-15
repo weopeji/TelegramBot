@@ -67,7 +67,10 @@ async function startSecondBot()
         var Bot2User    = await secondBotUser.findOne({user: msg.from.id});
         var text        = msg.text;
 
-        if(text.indexOf('/start') != -1)
+        if(
+            typeof text !== 'undefined' &&
+            text.indexOf('/start') != -1
+        )
         {
             if(!Bot2User) {
                 await bot.sendMessage(msg.from.id, "Вы перешли не по рефераьной ссылке! Используйте ее еще раз...");
