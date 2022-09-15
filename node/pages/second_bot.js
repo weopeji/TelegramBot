@@ -95,6 +95,9 @@ async function startSecondBot()
         };
 
         if(typeof Bot2User.payment == 'undefined') {
+            console.log(crypto.randomBytes(48).toString('hex'));
+            console.log(config.payment_key_yookassa);
+
             await bot.sendInvoice(
                 msg.from.id,
                 "Доступ к закрытому клубу",
