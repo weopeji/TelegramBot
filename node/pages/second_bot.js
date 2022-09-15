@@ -65,48 +65,50 @@ async function startSecondBot()
     bot.on('message', async (msg) => 
     {
         console.log(msg);
-        
+
         var Bot2User    = await secondBotUser.findOne({user: msg.from.id});
         var text        = msg.text;
 
         if(
             typeof text != 'undefined' &&
-            text.indexOf('/start') == -1
+            text.indexOf('/start') != -1
         )
         {
-            if(!Bot2User) {
-                await bot.sendMessage(msg.from.id, "Вы перешли не по рефераьной ссылке! Используйте ее еще раз...");
-                return;
-            };
-
-            if(
-                typeof msg.contact != 'undefined'
-                && typeof msg.contact.phone_number != 'undefined'
-            ) {
-                await secondBotUser.findOneAndupdate({user: msg.from.id}, {phone: msg.contact.phone_number});
-            };
-
-            if(typeof Bot2User.phone == 'undefined') {
-                await sendPhone(msg);
-                return;
-            };
-
-            if(typeof Bot2User.payment == 'undefined') {
-                await bot.sendInvoice(
-                    msg.from.id,
-                    "Доступ к закрытому клубу",
-                    "Благодарим вас за проявленный интерес. Чтобы получить доступ к закрытому клубу по инвестициям в недвижимость, вам нужно нажать на кнопку для оплаты разового членского взноса в размере",
-                    crypto.randomBytes(48).toString('hex'),
-                    config.payment_key_yookassa,
-                    "pay",
-                    "RUB",
-                    [{
-                        label: "Получить доступ",
-                        amount: 1000000
-                    }],
-                );
-            }
+            return;
         };
+
+        if(!Bot2User) {
+            await bot.sendMessage(msg.from.id, "Вы перешли не по рефераьной ссылке! Используйте ее еще раз...");
+            return;
+        };
+
+        if(
+            typeof msg.contact != 'undefined'
+            && typeof msg.contact.phone_number != 'undefined'
+        ) {
+            await secondBotUser.findOneAndupdate({user: msg.from.id}, {phone: msg.contact.phone_number});
+        };
+
+        if(typeof Bot2User.phone == 'undefined') {
+            await sendPhone(msg);
+            return;
+        };
+
+        if(typeof Bot2User.payment == 'undefined') {
+            await bot.sendInvoice(
+                msg.from.id,
+                "Доступ к закрытому клубу",
+                "Благодарим вас за проявленный интерес. Чтобы получить доступ к закрытому клубу по инвестициям в недвижимость, вам нужно нажать на кнопку для оплаты разового членского взноса в размере",
+                crypto.randomBytes(48).toString('hex'),
+                config.payment_key_yookassa,
+                "pay",
+                "RUB",
+                [{
+                    label: "Получить доступ",
+                    amount: 1000000
+                }],
+            );
+        }
     });
 
     bot.on('pre_checkout_query', async (msg) => {
