@@ -43,7 +43,6 @@ module.exports = {
     },
 }
 
-
 function privateInit(initPlagins) 
 {
     Project         = initPlagins.Project;

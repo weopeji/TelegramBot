@@ -49,9 +49,8 @@ var attraction_page                 = null;
 var components_html                 = null;
 var server                          = null;
 var io                              = null;
+var second_bot_html                 = null;
 var mongoURl                        = config.mongoUri;
-
-var { PythonShell }                 = require('python-shell');
 
 // platform ================================================================================
 
@@ -193,7 +192,14 @@ var load_helpers = () =>
             requestPay: requestPay,
         });
     };
-}
+    if(second_bot_html == null) {
+        second_bot_html = require('./pages/second_bot');
+        second_bot_html.init({
+            TelegramBot: TelegramBot,
+            config: config,
+        });
+    };
+};
 
 
 bot.on("polling_error", console.log);
