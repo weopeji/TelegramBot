@@ -33,7 +33,7 @@ async function startSecondBot()
         var Bot2User = await secondBotUser.findOne({user: msg.from.id});
 
         if(!Bot2User) {
-            await bot.sendMessage(msg.from.id, "Вы перешли не по рефераьной ссылке! Используйте ее еще раз...");\
+            await bot.sendMessage(msg.from.id, "Вы перешли не по рефераьной ссылке! Используйте ее еще раз...");
             return;
         };
     });
