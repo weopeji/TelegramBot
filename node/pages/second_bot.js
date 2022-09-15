@@ -46,7 +46,7 @@ async function sendInvoiceBot(msg)
                 [
                     {
                         text: "Оплатить!",
-                        callbackQuery: "Payment",
+                        callback_data: "Payment",
                     }
                 ]
             ],
