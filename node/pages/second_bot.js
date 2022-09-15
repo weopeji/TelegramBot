@@ -12,16 +12,22 @@ function privateInit(initPlagins)
 {
     TelegramBot     = initPlagins.TelegramBot;
     config          = initPlagins.config;
-
+    secondBotUser   = initPlagins.secondBotUser;
+    bot             = new TelegramBot(config.second_bot_token, { polling: true });
+    
+    
     startSecondBot();
 }
 
 async function startSecondBot() 
 {
-    var bot = new TelegramBot(config.second_bot_token, { polling: true });
-    
-    bot.on('message', async (msg) => 
+    bot.on('message', async (msg, match) => 
     {
-        await bot.sendMessage(msg.from.id, "Новое оповещение");
+        var Bot2User = await secondBotUser.findOne({user: msg.from.id});
+
+        if(!bot2User) {
+            var resp     = match[1];
+            await bot.sendMessage(msg.from.id, resp);
+        }
     });
-}
+};
