@@ -14,27 +14,99 @@ function privateInit(initPlagins)
     config          = initPlagins.config;
     secondBotUser   = initPlagins.secondBotUser;
     bot             = new TelegramBot(config.second_bot_token, { polling: true });
-    
+    crypto          = require('crypto');
     
     startSecondBot();
 }
+
+async function sendPhone(msg)
+{
+    await bot.sendMessage(msg.from.id, "Подтвердите свой номер телефона по кнопке ниже!", {
+        parse_mode: "HTML",
+        reply_markup: {
+            "resize_keyboard": true,
+            "keyboard": [
+                [
+                    {
+                        text: "Подтвердить!",
+                        request_contact: true,
+                    }
+                ]
+            ],
+        }
+    });
+};
 
 async function startSecondBot() 
 {
     bot.onText(/\/start (.+)/, async (msg, match) => 
     {
-        var resp        = match[1];
-        var typeUrl     = resp.split('_')[1];
-        await bot.sendMessage(msg.from.id, typeUrl);
+        try {
+            var resp        = match[1];
+
+            if(
+                resp == "from" ||
+                resp == "to"
+            ) {
+                await secondBotUser.create({
+                    user: msg.from.id,
+                    type: resp,
+                });
+                await sendPhone(msg);
+            } else {
+                throw new Error("Invalid response");
+            };
+        } catch (e) {
+            await bot.sendMessage(msg.from.id, "Вы перешли не по рефераьной ссылке! Используйте ее еще раз...");
+            return;
+        };
     });
 
     bot.on('message', async (msg) => 
     {
-        var Bot2User = await secondBotUser.findOne({user: msg.from.id});
+        var Bot2User    = await secondBotUser.findOne({user: msg.from.id});
+        var text        = msg.text;
 
-        if(!Bot2User) {
-            await bot.sendMessage(msg.from.id, "Вы перешли не по рефераьной ссылке! Используйте ее еще раз...");
-            return;
+        if(text.indexOf('/start') != -1)
+        {
+            if(!Bot2User) {
+                await bot.sendMessage(msg.from.id, "Вы перешли не по рефераьной ссылке! Используйте ее еще раз...");
+                return;
+            };
+
+            if(
+                typeof msg.contact != 'undefined'
+                && typeof msg.contact.phone_number != 'undefined'
+            ) {
+                await secondBotUser.findOneAndupdate({user: msg.from.id}, {phone: msg.contact.phone_number});
+            };
+
+            if(typeof Bot2User.phone == 'undefined') {
+                await sendPhone(msg);
+                return;
+            };
+
+            if(typeof Bot2User.payment == 'undefined') {
+                await bot.sendInvoice(
+                    msg.from.id,
+                    "Доступ к закрытому клубу",
+                    "Благодарим вас за проявленный интерес. Чтобы получить доступ к закрытому клубу по инвестициям в недвижимость, вам нужно нажать на кнопку для оплаты разового членского взноса в размере",
+                    crypto.randomBytes(48).toString('hex'),
+                    config.payment_key_yookassa,
+                    "pay",
+                    "RUB",
+                    [{
+                        label: "Получить доступ",
+                        amount: 1000000
+                    }],
+                );
+            }
         };
+    });
+
+    bot.on('pre_checkout_query', async (msg) => {
+        console.log(`[bot] successful payment`)
+        console.log('Successful Payment', msg)
+        await bot.sendMessage(msg.from.id, 'Thank you for your purchase!');
     });
 };
