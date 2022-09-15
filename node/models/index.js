@@ -13,4 +13,4 @@ require('./authToken');
 require('./itemOfSite');
 require('./teletube_video');
 require('./requestPay');
-required('./secondBotUser');
+require('./secondBotUser');
