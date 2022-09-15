@@ -68,8 +68,8 @@ async function startSecondBot()
         var text        = msg.text;
 
         if(
-            typeof text !== 'undefined' &&
-            text.indexOf('/start') != -1
+            typeof text != 'undefined' &&
+            text.indexOf('/start') == -1
         )
         {
             if(!Bot2User) {
