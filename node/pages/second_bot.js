@@ -21,20 +21,20 @@ function privateInit(initPlagins)
 
 async function startSecondBot() 
 {
+    bot.onText(/\/start (.+)/, async (msg, match) => 
+    {
+        var resp        = match[1];
+        var typeUrl     = resp.split('_')[1];
+        await bot.sendMessage(msg.from.id, typeUrl);
+    });
+
     bot.on('message', async (msg) => 
     {
         var Bot2User = await secondBotUser.findOne({user: msg.from.id});
 
-        console.log(msg);
-
         if(!Bot2User) {
-            try {
-                var resp        = match[1];
-                var typeUrl     = resp.split('_')[1];
-                await bot.sendMessage(msg.from.id, typeUrl);
-            } catch (e) {
-                await bot.sendMessage(msg.from.id, "Вы перешли не по рефераьной ссылке! Используйте ее еще раз...");
-            };
-        }
+            await bot.sendMessage(msg.from.id, "Вы перешли не по рефераьной ссылке! Используйте ее еще раз...");\
+            return;
+        };
     });
 };
