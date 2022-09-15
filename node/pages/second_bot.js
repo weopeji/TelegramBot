@@ -49,7 +49,7 @@ async function sendInvoiceBot(msg)
         "RUB",
         [{
             label: "Получить доступ",
-            amount: 100
+            amount: 1000000
         }],
     );
 };
