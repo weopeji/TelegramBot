@@ -120,6 +120,6 @@ async function startSecondBot()
     bot.on('pre_checkout_query', async (msg) => {
         console.log(`[bot] successful payment`)
         console.log('Successful Payment', msg)
-        await bot.sendMessage(msg.from.id, 'Thank you for your purchase!');
+        await bot.answerPreCheckoutQuery(msg.id, true);
     });
 };
