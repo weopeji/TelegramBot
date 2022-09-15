@@ -25,7 +25,7 @@ async function startSecondBot()
     {
         var Bot2User = await secondBotUser.findOne({user: msg.from.id});
 
-        if(!bot2User) {
+        if(!Bot2User) {
             var resp     = match[1];
             await bot.sendMessage(msg.from.id, resp);
         }
