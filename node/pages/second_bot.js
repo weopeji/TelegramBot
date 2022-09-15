@@ -26,8 +26,14 @@ async function startSecondBot()
         var Bot2User = await secondBotUser.findOne({user: msg.from.id});
 
         if(!Bot2User) {
-            var resp     = match[1];
-            await bot.sendMessage(msg.from.id, resp);
+            try {
+                var resp        = match[1];
+                var typeUrl     = resp.split('_')[1];
+    
+                await bot.sendMessage(msg.from.id, typeUrl);
+            } catch (e) {
+                await bot.sendMessage(msg.from.id, "Вы перешли не по рефераьной ссылке! Используйте ее еще раз...");
+            };
         }
     });
 };
