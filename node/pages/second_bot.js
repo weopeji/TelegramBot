@@ -37,6 +37,23 @@ async function sendPhone(msg)
     });
 };
 
+async function sendInvoiceBot(msg)
+{
+    await bot.sendMessage(msg.from.id, "Благодарим вас за проявленный интерес. Чтобы получить доступ к закрытому клубу по инвестициям в недвижимость, вам нужно нажать на кнопку для оплаты разового членского взноса в размере", {
+        parse_mode: "HTML",
+        reply_markup: {
+            "inline_keyboard": [
+                [
+                    {
+                        text: "Оплатить!",
+                        callbackQuery: "Payment",
+                    }
+                ]
+            ],
+        }
+    });
+};
+
 async function startSecondBot() 
 {
     bot.onText(/\/start (.+)/, async (msg, match) => 
@@ -95,22 +112,21 @@ async function startSecondBot()
         };
 
         if(typeof Bot2User.payment == 'undefined') {
-            console.log(crypto.randomBytes(48).toString('hex'));
-            console.log(config.payment_key_yookassa);
-
-            await bot.sendInvoice(
-                msg.from.id,
-                "Доступ к закрытому клубу",
-                "Благодарим вас за проявленный интерес. Чтобы получить доступ к закрытому клубу по инвестициям в недвижимость, вам нужно нажать на кнопку для оплаты разового членского взноса в размере",
-                crypto.randomBytes(48).toString('hex'),
-                config.payment_key_yookassa,
-                "pay",
-                "RUB",
-                [{
-                    label: "Получить доступ",
-                    amount: 1000000
-                }],
-            );
+            await sendInvoiceBot(msg);
+            return;
+            // await bot.sendInvoice(
+            //     msg.from.id,
+            //     "Доступ к закрытому клубу",
+            //     "Благодарим вас за проявленный интерес. Чтобы получить доступ к закрытому клубу по инвестициям в недвижимость, вам нужно нажать на кнопку для оплаты разового членского взноса в размере",
+            //     crypto.randomBytes(48).toString('hex'),
+            //     config.payment_key_yookassa,
+            //     "pay",
+            //     "RUB",
+            //     [{
+            //         label: "Получить доступ",
+            //         amount: 1000000
+            //     }],
+            // );
         }
     });
 
@@ -118,5 +134,30 @@ async function startSecondBot()
         console.log(`[bot] successful payment`)
         console.log('Successful Payment', msg)
         await bot.sendMessage(msg.from.id, 'Thank you for your purchase!');
+    });
+
+    bot.on("callback_query", function(callbackQuery) 
+    {
+        var actionFunctions = {
+            "Payment": async function() {
+                await bot.sendInvoice(
+                    callbackQuery.from.id,
+                    "Доступ к закрытому клубу",
+                    "Доступ к закрытому клубу по инвестициям в недвижимость",
+                    crypto.randomBytes(48).toString('hex'),
+                    config.payment_key_yookassa,
+                    "pay",
+                    "RUB",
+                    [{
+                        label: "Получить доступ",
+                        amount: 1000000
+                    }],
+                );
+            },
+        };
+
+        if(typeof actionFunctions[callbackQuery.data] != 'undefined') {
+            actionFunctions[callbackQuery.data]();
+        };
     });
 };
