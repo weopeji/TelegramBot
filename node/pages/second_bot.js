@@ -49,7 +49,7 @@ async function sendInvoiceBot(msg)
         "RUB",
         [{
             label: "Получить доступ",
-            amount: 1000000
+            amount: "2.00"
         }],
     );
 };
@@ -118,8 +118,6 @@ async function startSecondBot()
     });
 
     bot.on('pre_checkout_query', async (msg) => {
-        console.log(`[bot] successful payment`)
-        console.log('Successful Payment', msg)
         await bot.answerPreCheckoutQuery(msg.id, true);
     });
 };
