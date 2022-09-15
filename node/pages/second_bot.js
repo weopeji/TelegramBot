@@ -54,6 +54,30 @@ async function sendInvoiceBot(msg)
     );
 };
 
+async function sendEnd(msg)
+{
+    await bot.sendMessage(msg.from.id, "Благодарим за оплату!\nВот вам первое инвестиционное предложение.\nСумма инвестиций более 5 мл руб\nС Уважением\nКоманда investir", {
+        parse_mode: "HTML",
+        reply_markup: {
+            "inline_keyboard": [
+                [
+                    {
+                        text: "Подтвердить!",
+                        url: "https://t.me/investir_official",
+                    }
+                ]
+            ],
+        }
+    });
+};
+
+async function sendTypeTo(msg)
+{
+    await bot.sendMessage(msg.from.id, "Благодарим вас за проявленный интерес.\nНа данный момент для вас нет подходящего предложения для инвестирования суммы\nдо 5мл руб.\nВ ближайшее время мы вам сообщим о появлении подходящего для вас предложения.\nС Уважением\nКоманда investir", {
+        parse_mode: "HTML",
+    });
+}
+
 async function startSecondBot() 
 {
     bot.onText(/\/start (.+)/, async (msg, match) => 
@@ -81,16 +105,13 @@ async function startSecondBot()
 
     bot.on('message', async (msg) => 
     {
-        console.log(msg);
-
         var Bot2User    = await secondBotUser.findOne({user: msg.from.id});
         var text        = msg.text;
 
         if(
             typeof text != 'undefined' &&
             text.indexOf('/start') != -1
-        )
-        {
+        ) {
             return;
         };
 
@@ -99,21 +120,33 @@ async function startSecondBot()
             return;
         };
 
-        if(
-            typeof msg.contact != 'undefined'
-            && typeof msg.contact.phone_number != 'undefined'
-        ) {
-            await secondBotUser.findOneAndUpdate({user: msg.from.id}, {phone: msg.contact.phone_number});
+        if(Bot2User.type == "from") {
+            if(
+                typeof msg.contact != 'undefined'
+                && typeof msg.contact.phone_number != 'undefined'
+            ) {
+                await secondBotUser.findOneAndUpdate({user: msg.from.id}, {phone: msg.contact.phone_number});
+            };
+    
+            if(typeof msg.successful_payment != 'undefined') {
+                await secondBotUser.findOneAndUpdate({user: msg.from.id}, {payment: msg.successful_payment});
+            }
+    
+            if(typeof Bot2User.phone == 'undefined') {
+                await sendPhone(msg);
+                return;
+            };
+    
+            if(typeof Bot2User.payment == 'undefined') {
+                await sendInvoiceBot(msg);
+                return;
+            } else {
+                await sendEnd(msg);
+            };
         };
-
-        if(typeof Bot2User.phone == 'undefined') {
-            await sendPhone(msg);
-            return;
-        };
-
-        if(typeof Bot2User.payment == 'undefined') {
-            await sendInvoiceBot(msg);
-            return;
+        
+        if(Bot2User.type == "to") {
+            await sendTypeTo(msg);
         };
     });
 
