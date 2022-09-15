@@ -64,6 +64,8 @@ async function startSecondBot()
 
     bot.on('message', async (msg) => 
     {
+        console.log(msg);
+        
         var Bot2User    = await secondBotUser.findOne({user: msg.from.id});
         var text        = msg.text;
 
