@@ -122,7 +122,7 @@
         async render() 
         {
             var _this       = this;
-            var bodyBlock   = _this.body_block;
+            var bodyBlock   = $(_this.body_block);
 
             bodyBlock.find('button[data="data="from""]').click( function() 
             {
