@@ -124,7 +124,7 @@
             var _this       = this;
             var bodyBlock   = $(_this.body_block);
 
-            bodyBlock.find('button[data="data="from""]').click( function() 
+            bodyBlock.find('button[data="from"]').click( function() 
             {
                 var headerBlock = $(this).parent().parent();
                 var ActionData  = {
