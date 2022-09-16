@@ -82,6 +82,10 @@
   z-index: 2;
 }
 
+.version2_creating_block_info_row a {
+  color: white;
+}
+
 .version2_creating {
   margin: 0 auto;
   width: -webkit-fit-content;
