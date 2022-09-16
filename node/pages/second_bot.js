@@ -126,10 +126,14 @@ async function startSecondBot()
                 && typeof msg.contact.phone_number != 'undefined'
             ) {
                 Bot2User = await secondBotUser.findOneAndUpdate({user: msg.from.id}, {phone: msg.contact.phone_number});
+                await sendInvoiceBot(msg);
+                return;
             };
     
             if(typeof msg.successful_payment != 'undefined') {
                 Bot2User = await secondBotUser.findOneAndUpdate({user: msg.from.id}, {payment: msg.successful_payment});
+                await sendEnd(msg);
+                return;
             }
     
             if(typeof Bot2User.phone == 'undefined') {
