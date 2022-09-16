@@ -111,7 +111,7 @@
                     </div>
                     <div class="version2_invester_data_typeButtons_document">
                         <div class="version2_default_bkg row_default"></div>
-                        <span><i class="far fa-file-alt"></i>Ознакомиться с договором</span>
+                        <span><i class="far fa-file-alt"></i>Ознакомиться с договором проекта</span>
                     </div>
                 </div>
             `);
@@ -871,19 +871,28 @@
                         <div class="creating_page_input">
                             <div class="version2_default_bkg row_default"></div>
                             <div class="version_2_creating_page_input_row">
-                                <input type="text" class="creating_page_input_div" data="fio" placeholder="Фио полностью">
-                                <input type="text" class="creating_page_input_div" data="cpecial" placeholder="Номер паспорта и Серия паспорта">
-                                <input type="text" class="creating_page_input_div" data="how_get" placeholder="Кем выдан">
-                                <input type="text" class="creating_page_input_div" data="propiska" placeholder="Прописка">
-                                <input type="text" class="creating_page_input_div" data="bank" placeholder="Банк получателя">
-                                <input type="text" class="creating_page_input_div" data="bik" placeholder="БИК">
-                                <input type="text" class="creating_page_input_div" data="nomer" placeholder="Номер расчетного счета">
-                                <input type="text" class="creating_page_input_div" data="nomer_kor" placeholder="Номер корреспондентского счета">
-                                <input type="text" class="creating_page_input_div" data="info_more" placeholder="На основе чего вы действуете?">
+                                <input type="text" class="creating_page_input_div" data="fio" placeholder="* ФИО полностью">
+                                <input type="text" class="creating_page_input_div" data="cpecial" placeholder="* Номер паспорта и серия">
+                                <input type="text" class="creating_page_input_div" data="how_get" placeholder="* Кем выдан">
+                                <input type="text" class="creating_page_input_div" data="propiska" placeholder="* Адрес регистрации (прописка)">
+                                <input type="text" class="creating_page_input_div" data="bank" placeholder="* Банк получателя">
+                                <input type="text" class="creating_page_input_div" data="bik" placeholder="* БИК">
+                                <input type="text" class="creating_page_input_div" data="nomer" placeholder="* Номер расчетного счета">
+                                <input type="text" class="creating_page_input_div" data="nomer_kor" placeholder="* Номер корреспондентского счета">
+                                <input type="text" class="creating_page_input_div" data="info_more" placeholder="* На основе чего вы действуете?">
 
                                 <div class="version2_creating_page_input_inputCheackBoxRezident">
-                                    <input type="checkbox" name="" id="">
-                                    <span>Являетесь ли вы резидентом?</span>
+                                    <span>* Являетесь ли вы резидентом?</span>
+                                    <div class="version2_creating_page_input_inputCheackBoxRezident_buttons">
+                                        <div class="version2_creating_page_input_inputCheackBoxRezident_buttons_button">
+                                            <div class="version2_default_bkg row_default"></div>
+                                            <span>Да</span>
+                                        </div>
+                                        <div class="version2_creating_page_input_inputCheackBoxRezident_buttons_button">
+                                            <div class="version2_default_bkg row_default"></div>
+                                            <span>Нет</span>
+                                        </div>
+                                    </div>
                                 </div>
     
                                 <div class="creating_page_input_button">
@@ -894,7 +903,6 @@
                     `);
 
                     _block.find('input[data="cpecial"]').mask('9999 999999');
-
 
                     _block.find('input[data="nomer"]').bind("change keyup input click", function() {
                         if (this.value.match(/[^0-9]/g)) {

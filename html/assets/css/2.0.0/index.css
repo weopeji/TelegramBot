@@ -1372,20 +1372,7 @@ img.preloader_row_img {
 }
 
 .version2_creating_page_input_inputCheackBoxRezident {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   color: white;
-}
-
-.version2_creating_page_input_inputCheackBoxRezident input {
-  padding: 0;
-  margin: 0;
-  width: 40px;
-  height: 40px;
 }
 
 .version2_creating_page_input_inputCheackBoxRezident span {
@@ -2123,6 +2110,24 @@ img.preloader_row_img {
   margin-top: 20px;
   font-weight: 600;
   cursor: pointer;
+}
+
+.version2_creating_page_input_inputCheackBoxRezident_buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.version2_creating_page_input_inputCheackBoxRezident_buttons_button {
+  position: relative;
+  padding: 10px 20px;
+  margin-right: 20px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.version2_creating_page_input_inputCheackBoxRezident_buttons_button span {
+  z-index: 10000;
 }
 
 @media (max-width: 1350px) {
