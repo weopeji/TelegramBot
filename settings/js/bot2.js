@@ -158,8 +158,7 @@
                 console.log(ActionData);
             });
 
-
-            this.body.append();
+            this.body.append(bodyBlock);
         };
     };
 
