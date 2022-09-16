@@ -350,6 +350,10 @@
   position: relative;
 }
 
+.version2_invester_data_typeButtons_document i {
+  margin-right: 10px;
+}
+
 .version2_invester_data_typeButtons_document span {
   position: relative;
   z-index: 2;

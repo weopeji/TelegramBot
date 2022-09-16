@@ -111,7 +111,7 @@
                     </div>
                     <div class="version2_invester_data_typeButtons_document">
                         <div class="version2_default_bkg row_default"></div>
-                        <span><i class="fal fa-file-alt"></i>Ознакомиться с договором</span>
+                        <span><i class="far fa-file-alt"></i>Ознакомиться с договором</span>
                     </div>
                 </div>
             `);
