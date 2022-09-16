@@ -687,8 +687,8 @@ async function goInvesting(msg)
                         if(_project.urlLocation)
                         {
                             needUrl = `https://${_project.urlLocation}/`;
-                        }
-                    }
+                        };
+                    };
                 
                     var html = `Нажмите на кнопку "Перейти", чтобы проинвестировать`;
                     var fat = await bot.sendMessage(msg.chat.id, toEscapeMSg(html), {

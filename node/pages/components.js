@@ -1,37 +1,25 @@
+var request                 = require("request");
+var puppeteer               = require('puppeteer');
+var fetch                   = require("node-fetch");
+var { spawn, exec }         = require('child_process');
+var _app                    = require("../app");
+var {PythonShell}           = require('python-shell');
+var axios                   = require('axios');
+var ParcingPage             = require('./parcing');
+var { DateTime, Interval }  = require("luxon");
+var ffmpeg                  = require('ffmpeg');
+var PDFMerger               = require('pdf-merger-js');
+var uuidv4                  = require("uuid/v4");
+var nodemailer              = require('nodemailer');
+var FormData                = require('form-data');
+var merger                  = new PDFMerger();
+
 var Project                 = null;
 var User                    = null;
 var fs                      = null;
 var wrench                  = null;
 var path                    = null;
 var bot                     = null;
-var request                 = require("request");
-var cheerio                 = require("cheerio");
-var needle                  = require('needle');
-var puppeteer               = require('puppeteer');
-var fetch                   = require("node-fetch");
-var readline                = require('readline');
-var multer                  = require("multer");
-var Jimp                    = require("jimp");
-const { TelegramClient }    = require("telegram");
-const { StringSession }     = require("telegram/sessions"); 
-const { spawn, exec }       = require('child_process');
-const _app                  = require("../app");
-let {PythonShell}           = require('python-shell');
-const Instagram             = require('instagram-web-api');
-var axios                   = require('axios');
-const ParcingPage           = require('./parcing');
-var { DateTime, Interval }  = require("luxon");
-const { hkdf }              = require("crypto");
-const e                     = require("express");
-var ffmpeg                  = require('ffmpeg');
-const { resolve }           = require("path");
-const PDFMerger             = require('pdf-merger-js');
-const { Console }           = require("console");
-const { viplati_call }      = require("../types/business");
-var merger                  = new PDFMerger();
-const uuidv4                = require("uuid/v4");
-const nodemailer            = require('nodemailer');
-var FormData                = require('form-data');
 
 module.exports = {
     init:function(initPlagins)
@@ -41,9 +29,9 @@ module.exports = {
     components_page: function(socket,data,callback) {
         privat_index_page(socket,data,callback);
     },
-}
+};
 
-function privateInit(initPlagins) 
+function privateInit(initPlagins)
 {
     Project         = initPlagins.Project;
     User            = initPlagins.User;
@@ -66,7 +54,7 @@ function privateInit(initPlagins)
     teletube_video  = initPlagins.teletube_video;
     io              = initPlagins.io;
     requestPay      = initPlagins.requestPay;
-}
+};
 
 var privat_index_page = function(socket,data,callback) {
     var action = data.action;
@@ -79,12 +67,11 @@ var privat_index_page = function(socket,data,callback) {
             }
         });
     }
-}
+};
 
 var action_linker = 
 {
     //version2
-
     "version2_activ_projects_business_setPay": version2_activ_projects_business_setPay,
     "version2_investerData_invdoc_notMoney": version2_investerData_invdoc_notMoney,
     "version2_notFullPay_data": version2_notFullPay_data,
@@ -104,16 +91,12 @@ var action_linker =
     "version2_acceptEmail": version2_acceptEmail,
     "version2_renderAllPaymentsRequest": version2_renderAllPaymentsRequest,
 
-
     // teletube
     "teletube_add": teletube_add,
     "teletube_get": teletube_get,
-
-
     
     //test
     "test_fun": test_fun,
-
 
     //  main
     "tg_alert": tg_alert,

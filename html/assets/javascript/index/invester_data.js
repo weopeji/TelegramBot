@@ -58,20 +58,27 @@
             $('.buttons_menu').css({
                 "display": "none",
             });
+
+            $('.index_page_body_header_user').css('display', 'none');
         }
 
         async renderFirstData() 
         {
+            var _this       = this;
             var ActionBlock = $(`
                 <div class="version2_invester_data_h1">
-                    <h1>Инвестирование в проект</h1>
+                    <h1>Инвестирование в проект «${_this.project.data.name}»</h1>
                 </div>
                 <div class="version2_creating_block">
                     <div class="version2_creating_block_info version2_default_shadow_block">
                         <div class="version2_default_bkg row_default"></div>
                         <div class="version2_creating_block_info_row">
                             <h1>Уважаемый пользователь ${global.allData.User.first_name}!</h1>
-                            <p>Вводя данные, вы подтверждаете что ознакомились с условиями “Пользовательского соглашения” и “Политики обработки данных”</p>
+                            <p>
+                                Вы находитесь на сайте инвестиционного проекта партнера ${_this.project.data.name}
+                                <br>
+                                Для того, чтобы проинвестировать в проект, Вам необходимо указатьсвои данные
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -79,7 +86,11 @@
                     <div class="version2_creating_block_info version2_default_shadow_block">
                         <div class="version2_default_bkg row_default"></div>
                         <div class="version2_creating_block_info_row">
-                            <p class="pt25">Для того чтобы проинвестировать в проект Вам необходимо указать свои данные</p>
+                            <p class="pt25">
+                                <a href="https://google.com">"Пользовательское соглашение на обработку перснальных данных"</a>
+                                <br>
+                                <a href="https://google.com">"Договор оферты"</a>и<a href="https://google.com">"Политика конфиденциальности"</a>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -100,7 +111,7 @@
                     </div>
                     <div class="version2_invester_data_typeButtons_document">
                         <div class="version2_default_bkg row_default"></div>
-                        <span>Ознакомиться с договором</span>
+                        <span><i class="fal fa-file-alt"></i>Ознакомиться с договором</span>
                     </div>
                 </div>
             `);

@@ -47,7 +47,7 @@
                             <i class="fab fa-telegram-plane"></i>
                         </a>
                         <div class="telegram_authorization_text">
-                            <h1>investER запрашивает доступ через Telegram</h1>
+                            <h1>investIR запрашивает доступ через Telegram</h1>
                         </div>
                         <div class="telegram_authorization_buttons">
 
