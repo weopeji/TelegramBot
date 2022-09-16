@@ -125,11 +125,11 @@ async function startSecondBot()
                 typeof msg.contact != 'undefined'
                 && typeof msg.contact.phone_number != 'undefined'
             ) {
-                await secondBotUser.findOneAndUpdate({user: msg.from.id}, {phone: msg.contact.phone_number});
+                Bot2User = await secondBotUser.findOneAndUpdate({user: msg.from.id}, {phone: msg.contact.phone_number});
             };
     
             if(typeof msg.successful_payment != 'undefined') {
-                await secondBotUser.findOneAndUpdate({user: msg.from.id}, {payment: msg.successful_payment});
+                Bot2User = await secondBotUser.findOneAndUpdate({user: msg.from.id}, {payment: msg.successful_payment});
             }
     
             if(typeof Bot2User.phone == 'undefined') {

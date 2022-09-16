@@ -20,7 +20,7 @@
             this.body       = $('.index_page_body_data');
             this.body_block = `
                 <div class="container bot2_block">
-                    <div class="row d-flex justify-content-end">
+                    <div class="row d-flex justify-content-end mb-3">
                         <button type="button" class="btn btn-primary" data="from">Сохранить</button>
                     </div>
                     <div class="row">
@@ -126,7 +126,8 @@
 
             bodyBlock.find('button[data="from"]').click( function() 
             {
-                var headerBlock = $(this).parent().parent();
+                var headerBlock = $(this).parent().parent();v
+                var errorPush   = false;
                 var ActionData  = {
                     "phone": {
                         img: headerBlock.find('input[data="phone_img"]').val(),
@@ -154,6 +155,19 @@
                         text: headerBlock.find('input[data="toText_text"]').val(),
                     },
                 };
+
+                for(var ActionDataBlock of ActionData) {
+                    for(var ActionDataBlockMore of ActionDataBlock) {
+                        if(ActionDataBlockMore.length == 0) {
+                            errorPush = true;
+                        };
+                    };
+                };
+
+                if(errorPush) {
+                    alert('Введите все данные!');
+                    return;
+                }
 
                 console.log(ActionData);
             });
