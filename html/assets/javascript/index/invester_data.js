@@ -61,12 +61,12 @@
 
             $('.index_page_body_header_user').css('display', 'none');
 
-            $('body').css("background-image", "url(./html/assets/images/2.0.0/pp/image 2.png) !important");
-            
-            // if(this.project)
-            // {
-            //     $('body').css("background-image", "url(./html/assets/images/2.0.0/pp/image 2.png) !important");
-            // };
+            // $('body').css("background-image", "url(./html/assets/images/2.0.0/pp/image 2.png) !important");
+
+            if(this.project)
+            {
+                $('body').addClass('pp_project');
+            };
         };
 
         async renderFirstData() 
