@@ -895,11 +895,11 @@
                                     <div class="version2_creating_page_input_inputCheackBoxRezident_buttons">
                                         <div class="version2_creating_page_input_inputCheackBoxRezident_buttons_button">
                                             <div class="version2_default_bkg row_default"></div>
-                                            <span>Да</span>
+                                            <a>Да</a>
                                         </div>
                                         <div class="version2_creating_page_input_inputCheackBoxRezident_buttons_button">
                                             <div class="version2_default_bkg row_default"></div>
-                                            <span>Нет</span>
+                                            <a>Нет</a>
                                         </div>
                                     </div>
                                 </div>
