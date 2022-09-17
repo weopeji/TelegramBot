@@ -911,6 +911,11 @@
                         </div>
                     `);
 
+                    _block.find('.version2_creating_page_input_inputCheackBoxRezident_buttons_button').click( function() {
+                        $('.version2_creating_page_input_inputCheackBoxRezident_buttons_button').removeClass('selected');
+                        $(this).addClass('selected');
+                    })
+
                     _block.find('input[data="cpecial"]').mask('9999 999999');
 
                     _block.find('input[data="nomer"]').bind("change keyup input click", function() {

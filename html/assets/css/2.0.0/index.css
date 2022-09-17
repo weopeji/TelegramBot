@@ -1385,6 +1385,11 @@ img.preloader_row_img {
   display: block;
 }
 
+.version2_creating_page_input_inputCheackBoxRezident a {
+  z-index: 2;
+  position: relative;
+}
+
 .version2_settingBlock_header_settings_moreMoney {
   margin-left: 20px;
   font-size: 20px;
@@ -2133,6 +2138,14 @@ img.preloader_row_img {
 
 .version2_creating_page_input_inputCheackBoxRezident_buttons_button span {
   z-index: 10000;
+}
+
+.version2_creating_page_input_inputCheackBoxRezident_buttons_button.selected {
+  background-color: white;
+}
+
+.version2_creating_page_input_inputCheackBoxRezident_buttons_button.selected a {
+  color: black;
 }
 
 .pp_project {

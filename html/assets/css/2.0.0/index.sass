@@ -1049,6 +1049,10 @@ img.preloader_row_img
         position: relative
         display: block
 
+    a
+        z-index: 2
+        position: relative
+
 .version2_settingBlock_header_settings_moreMoney
     margin-left: 20px
     font-size: 20px
@@ -1576,6 +1580,12 @@ img.preloader_row_img
 
     span
         z-index: 10000
+
+    &.selected
+        background-color: white
+        
+        a
+            color: black
 
 .pp_project
     background-image: url('/html/assets/images/2.0.0/pp/image 2.png') !important
