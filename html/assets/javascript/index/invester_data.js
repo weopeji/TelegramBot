@@ -63,9 +63,7 @@
 
             if(this.project)
             {
-                $('body').css({
-                    "background-image": "url(./html/assets/images/2.0.0/pp/image 2.png)"
-                })
+                $('body').css("background-image", "url(./html/assets/images/2.0.0/pp/image 2.png) !important");
             };
         };
 
