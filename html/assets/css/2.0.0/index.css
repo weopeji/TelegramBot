@@ -2140,7 +2140,7 @@ img.preloader_row_img {
   z-index: 10000;
 }
 
-.version2_creating_page_input_inputCheackBoxRezident_buttons_button.selected {
+.version2_creating_page_input_inputCheackBoxRezident_buttons_button.selected .version2_default_bkg.row_default {
   background-color: white;
 }
 
