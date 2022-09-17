@@ -60,7 +60,14 @@
             });
 
             $('.index_page_body_header_user').css('display', 'none');
-        }
+
+            if(this.project)
+            {
+                $('body').css({
+                    "background-image": "./html/assets/images/2.0.0/pp/image 2.png"
+                })
+            };
+        };
 
         async renderFirstData() 
         {
