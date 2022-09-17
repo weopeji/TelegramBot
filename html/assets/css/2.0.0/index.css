@@ -1375,11 +1375,13 @@ img.preloader_row_img {
 
 .version2_creating_page_input_inputCheackBoxRezident {
   color: white;
+  margin-bottom: 20px;
+  margin-top: 10px;
 }
 
 .version2_creating_page_input_inputCheackBoxRezident span {
   z-index: 2;
-  margin-left: 20px;
+  position: relative;
 }
 
 .version2_settingBlock_header_settings_moreMoney {
@@ -2167,6 +2169,10 @@ img.preloader_row_img {
 }
 
 .pp_project .creating_page_input input::placeholder {
+  color: black;
+}
+
+.pp_project .version2_creating_page_input_inputCheackBoxRezident {
   color: black;
 }
 
