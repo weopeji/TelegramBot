@@ -63,9 +63,11 @@
 
             // $('body').css("background-image", "url(./html/assets/images/2.0.0/pp/image 2.png) !important");
 
-            if(this.project)
+            if(typeof this.project.design_type != 'undefined')
             {
-                $('body').addClass('pp_project');
+                if(this.project.design_type == 'pp') {
+                    $('body').addClass('pp_project');
+                };
             };
         };
 

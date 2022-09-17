@@ -2149,6 +2149,11 @@ img.preloader_row_img {
   color: white;
 }
 
+.pp_project .creating_page_input input {
+  color: black;
+  background-color: white;
+}
+
 @media (max-width: 1350px) {
   .index_page_body_header_user_textDecoration span {
     margin-left: 0;
