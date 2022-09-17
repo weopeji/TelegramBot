@@ -2154,6 +2154,22 @@ img.preloader_row_img {
   background-color: white;
 }
 
+.pp_project .creating_page_input input::-webkit-input-placeholder {
+  color: black;
+}
+
+.pp_project .creating_page_input input:-ms-input-placeholder {
+  color: black;
+}
+
+.pp_project .creating_page_input input::-ms-input-placeholder {
+  color: black;
+}
+
+.pp_project .creating_page_input input::placeholder {
+  color: black;
+}
+
 @media (max-width: 1350px) {
   .index_page_body_header_user_textDecoration span {
     margin-left: 0;
