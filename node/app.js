@@ -382,10 +382,12 @@ bot.on('message', async (msg) =>
 
     var msgText = msg.text;
 
-    if(msgText.toString().search('♦️'))
-    {
-        msgText = msgText.split(' ♦️')[0];
-    };
+    if(typeof msg.text != "undefined") {
+        if(msgText.toString().search('♦️'))
+        {
+            msgText = msgText.split(' ♦️')[0];
+        };
+    }
 
     if(typeof action_linker[msgText] != "undefined") 
     {
