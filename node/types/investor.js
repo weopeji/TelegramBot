@@ -637,7 +637,9 @@ async function startInvestingMsg(msg, project)
                 ["⬅️ Назад"]
             ],
         });
-        _array.push(fat.message_id);
+        _array.push(fat.message_id)
+        await h.DMA(msg, _array);
+        return;
     };
 };
 
