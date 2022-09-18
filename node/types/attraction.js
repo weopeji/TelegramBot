@@ -34,14 +34,28 @@ module.exports = {
 
 async function videoInfo(msg) 
 {
+    var _User           = await User.findOne({user: msg.from.id});
     var _array          = [];
     var stream          = fs.createReadStream(`./assets/videos/GIF.mp4`);
+    var buttonPush      = "⬅️ Назад";
+
+    if(_User.type == "investor")
+    {
+        buttonPush = "⬅️ Haзaд";
+    };
+
+    var fat = await bot.sendMessage(msg.chat.id, 'ᅠ', {
+        parse_mode: "HTML",
+        reply_markup: {
+            "resize_keyboard": true,
+            "keyboard": [[buttonPush]],
+        }
+    });
+    _array.push(fat.message_id);
+
     var fat             = await await bot.sendAnimation(msg.from.id, stream, {
         width: 900,
         height: 1920,
-    }, {
-        "resize_keyboard": true,
-        "keyboard": [["⬅️ Назад"]],
     });
 
     _array.push(fat.message_id);
