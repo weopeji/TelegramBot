@@ -132,7 +132,9 @@
             var _this = this;
 
             ActionBlock.find('.version2_invester_data_typeButtons_type_button').click(async function() {
-                _this.render_next($(this).attr('data'));
+                if($('.version2_creating_block_info_row_cheackbox input').is(':checked')) {
+                    _this.render_next($(this).attr('data'));
+                };
             });
 
             $(`.creating_page`).append(ActionBlock);
@@ -174,7 +176,11 @@
 
         async cheackGetDocuments()
         {
-            $('.creating_page').empty();
+            $('.creating_page').empty().append(`
+                <div class="logo_business">
+                    <img src="/html/assets/images/2.0.0/pp/logo_pp.png" alt="">
+                </div>
+            `);
 
             $('.version2_invester_data_backBlock_circule').off('click').click( function(e) {
                 _this.renderOldBlock(true);
