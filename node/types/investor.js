@@ -614,36 +614,47 @@ async function startInvestingMsgOld(msg, button, first)
     await User.findOneAndUpdate({user: msg.from.id}, {where: _where})
 }
 
-async function startInvestingMsg(msg, num, array, more, project)
+async function startInvestingMsg(msg, project)
 {
-    await User.findOneAndUpdate({user: msg.from.id}, {where: {
-        type: "investor",
-        page: {
-            global: 1,
-        },
-        project: project,
-    }})
+    var _User       = await User.findOneAndUpdate({user: msg.from.id}, {where: {type: "investor", project: project}});
+    var first_parse = {};
+    var _array      = [];
 
-    startInvestingMsgOld(msg, 1, true);
-}
+    if(typeof _User.first_parse != "undefined") {
+        first_parse = _User.first_parse;
+    };
+
+    if(_User.first_parse.phone == "undefined") {
+        var fat = await h.send_html(msg.from.id, `<strong>Перед использованием сервиса, оставьте контактные данные Телеграм</strong>\n\n<i>Нажимая кнопку подтвердить, вы соглашаетесь с офертой, политикой конфиденциальности и согласитесь на обработку персональных данных.</i>\n\n<i><a href="https://googl.com">Договор оферты</a>\n<a href="https://googl.com">Политика конфиденциальности</a>\n<a href="https://googl.com">Согласие на обработку персональных данных</a>\n</i>`, {
+            "resize_keyboard": true,
+            "keyboard": [
+                [
+                    {
+                        text: "Подтвердить",
+                        request_contact: true,
+                    },
+                ],
+                ["⬅️ Назад"]
+            ],
+        });
+        _array.push(fat.message_id);
+    };
+};
 
 async function goInvesting(msg)
 {
     var _array      = [];
     var _User       = await User.findOne({user: msg.from.id});
-    var _project    = await Project.findOne({_id: _User.putProject});
 
     var defaultMsg = async () => 
     {
-        var html = `*`;
-        var fat = await h.send_html(msg.from.id, html, {
+        var fat = await h.send_html(msg.from.id, `*`, {
             "resize_keyboard": true,
             "keyboard": [["⬅️ Назад"]],
         });
         _array.push(fat.message_id);
     
-        var html = `<strong>${_User.first_name}</strong>\nВыберите инвестиционное предложение в которое хотели бы проинвестировать`;
-        var fat = await h.send_html(msg.from.id, html, {
+        var fat = await h.send_html(msg.from.id, `<strong>${_User.first_name}</strong>\nВыберите инвестиционное предложение в которое хотели бы проинвестировать`, {
             "inline_keyboard": [
                 [
                     {
@@ -658,117 +669,15 @@ async function goInvesting(msg)
         await h.DMA(msg, _array);
     }
 
-    if(!_User.putProject)
-    {
-        if(typeof _User.lastProject != "undefined")
-        {
-            if(_User.lastProject)
-            {
-                var _project    = await Project.findOne({_id: _User.lastProject});
-
-                if(typeof _User.first_parse != 'undefined')
-                {
-                    var html = `Инвестор ${_User.first_name}\nВы находитесь в меню "Инвестиции в проект"\n Вы уже инвестировали в этот проект, вы можете проинвестировать еще раз`;
-                    var fat = await bot.sendMessage(msg.chat.id, toEscapeMSg(html), {
-                        parse_mode: "html",
-                        reply_markup: {  
-                            "resize_keyboard": true, 
-                            "keyboard": [
-                                ["⬅️ Назад"]
-                            ],                                                                   
-                        }
-                    });
-                    _array.push(fat.message_id);
-                    
-                    var needUrl = "https://investir.one/";
-
-                    if(typeof _project.urlLocation != "undefined")
-                    {
-                        if(_project.urlLocation)
-                        {
-                            needUrl = `https://${_project.urlLocation}/`;
-                        };
-                    };
-                
-                    var html = `Нажмите на кнопку "Перейти", чтобы проинвестировать`;
-                    var fat = await bot.sendMessage(msg.chat.id, toEscapeMSg(html), {
-                        parse_mode: "html",
-                        reply_markup: {                                                                     
-                            "inline_keyboard": [
-                                [
-                                    {
-                                        text: 'Перейти',
-                                        url: `${needUrl}?user=${_User.id}&page=invester_data`,
-                                    },
-                                ]
-                            ],
-                        }
-                    });
-                    _array.push(fat.message_id);
-                
-                    await h.DMA(msg, _array);
-
-                    await User.findOneAndUpdate({user: _User.user}, {lastProject: null})
-                } else {
-                    startInvestingMsg(msg, 1, _array, "1", _User.putProject);
-                }
-            } else 
-            {
-                defaultMsg();
-            }
-        } else
-        {
-            defaultMsg();
-        }
-        
-    } else 
-    {
-        if(typeof _User.first_parse != 'undefined')
-        {
-            var html = `Инвестор ${_User.first_name}\nВы находитесь в меню "Инвестиции в проект"`;
-            var fat = await bot.sendMessage(msg.chat.id, toEscapeMSg(html), {
-                parse_mode: "html",
-                reply_markup: {  
-                    "resize_keyboard": true, 
-                    "keyboard": [
-                        ["⬅️ Назад"]
-                    ],                                                                   
-                }
-            });
-            _array.push(fat.message_id);
-            
-            var needUrl = "https://investir.one/";
-        
-            if(typeof _project.urlLocation != "undefined")
-            {
-                if(_project.urlLocation)
-                {
-                    needUrl = `https://${_project.urlLocation}/`;
-                }
-            }
-            
-        
-            var html = `Нажмите на кнопку "Перейти", чтобы проинвестировать`;
-            var fat = await bot.sendMessage(msg.chat.id, toEscapeMSg(html), {
-                parse_mode: "html",
-                reply_markup: {                                                                     
-                    "inline_keyboard": [
-                        [
-                            {
-                                text: 'Перейти',
-                                url: `${needUrl}?user=${_User.id}&page=invester_data`,
-                            },
-                        ]
-                    ],
-                }
-            });
-            _array.push(fat.message_id);
-        
-            await h.DMA(msg, _array);
+    if(typeof _User.first_parse == 'undefined') {
+        if(typeof _User.putProject != 'undefined') {
+            startInvestingMsg(msg, _User.putProject);
         } else {
-            startInvestingMsg(msg, 1, _array, "1", _User.putProject);
-        }
-    }
+            defaultMsg();
+        };
+    } else {
+        defaultMsg();
+    };
 }
 
 async function my_investment(msg)
