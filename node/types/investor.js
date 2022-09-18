@@ -22,7 +22,6 @@ module.exports = {
     startInvestingMsg,
     recomendations,
     actionWhere,
-    startInvestingMsgOld,
     statusProjects,
     payerBonus,
     myPeoples,
