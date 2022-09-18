@@ -75,6 +75,9 @@
         {
             var _this       = this;
             var ActionBlock = $(`
+                <div class="logo_business">
+                    <img src="/html/assets/images/2.0.0/pp/logo_pp.png" alt="">
+                </div>
                 <div class="version2_invester_data_h1">
                     <h1>Инвестирование в проект «${_this.project.data.name}»</h1>
                 </div>

@@ -2190,6 +2190,27 @@ img.preloader_row_img {
   color: black;
 }
 
+.pp_project .logo_business {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.logo_business {
+  width: 100%;
+  display: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.logo_business img {
+  width: 70px;
+}
+
 @media (max-width: 1350px) {
   .index_page_body_header_user_textDecoration span {
     margin-left: 0;
