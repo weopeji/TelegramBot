@@ -1024,11 +1024,16 @@
                 });
             };
 
-            $('.index_page_body_data').prepend(`
-                <div class="logo_business">
-                    <img src="/html/assets/images/2.0.0/pp/logo_pp.png" alt="">
-                </div>
-            `);
+            if(typeof _this.project.design_type != 'undefined')
+            {
+                if(_this.project.design_type == 'pp') {
+                    $('.index_page_body_data').prepend(`
+                        <div class="logo_business">
+                            <img src="/html/assets/images/2.0.0/pp/logo_pp.png" alt="">
+                        </div>
+                    `);
+                };
+            };
         };
     };
 
