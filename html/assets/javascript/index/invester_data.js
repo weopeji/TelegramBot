@@ -103,7 +103,7 @@
                             </p>
                         </div>
                         <div class="version2_creating_block_info_row_cheackbox">
-                            <input type="checkbox" />
+                            <input type="checkbox" checked/>
                         </div>
                     </div>
                 </div>
