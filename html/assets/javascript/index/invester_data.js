@@ -61,8 +61,6 @@
 
             $('.index_page_body_header_user').css('display', 'none');
 
-            // $('body').css("background-image", "url(./html/assets/images/2.0.0/pp/image 2.png) !important");
-
             if(typeof this.project.design_type != 'undefined')
             {
                 if(this.project.design_type == 'pp') {
@@ -880,6 +878,9 @@
                 "FIZ": function()
                 {
                     var _block = $(`
+                        <div class="logo_business">
+                            <img src="/html/assets/images/2.0.0/pp/logo_pp.png" alt="">
+                        </div>
                         <div class="creating_page_input">
                             <div class="version2_default_bkg row_default"></div>
                             <div class="version_2_creating_page_input_row">
