@@ -29,6 +29,23 @@ module.exports = {
     startReqezitsDataMore,
     acceptReqezitsData,
     startReqezitsData_need,
+    videoInfo,
+}
+
+async function videoInfo(msg) 
+{
+    var _array          = [];
+    var stream          = fs.createReadStream(`./assets/videos/GIF.mp4`);
+    var fat             = await await bot.sendAnimation(msg.from.id, stream, {
+        width: 900,
+        height: 1920,
+    }, {
+        "resize_keyboard": true,
+        "keyboard": [["⬅️ Назад"]],
+    });
+
+    _array.push(fat.message_id);
+    await h.DMA(msg, _array);
 }
 
 async function startFunMore(msg)
@@ -114,12 +131,15 @@ async function url(msg)
         var fat = await h.send_html(msg.chat.id, html, 
         {
             "resize_keyboard": true,
-            "keyboard": [[buttonPush]],
+            "keyboard": [
+                ["Видео инструкция"]
+                [buttonPush]
+            ],
         });
         _array.push(fat.message_id);
 
         // 2 ===
-        var stream = fs.createReadStream(`../html/assets/images/logo_print.jpeg`);
+        var stream = fs.createReadStream(`../html/assets/images/2.0.0/logo_print.jpg`);
         var fat = await await bot.sendPhoto(msg.from.id, stream, {
             "parse_mode": "html",
             "reply_markup": {
@@ -139,19 +159,14 @@ async function url(msg)
         _array.push(fat.message_id);
 
         // 3 ===
-        var html = "Либо нажмите на ссылку чтобы скопировать и отпрватье ее друзьям\n\n`https://t.me/invester_official_bot?start=adder_" + msg.from.id.toString() + "`";
+        var html = "Или отправьте ссылку в любой месенджер друзьям для регистрации в реферальной программе\n\n`https://t.me/invester_official_bot?start=adder_" + msg.from.id.toString() + "`";
         var fat = await bot.sendMessage(msg.from.id, html, 
         {
             parse_mode: "Markdown",
         });
         _array.push(fat.message_id);
 
-        var stream = fs.createReadStream(`./assets/videos/GIF.mp4`);
-        var fat = await await bot.sendAnimation(msg.from.id, stream, {
-            width: 900,
-            height: 1920,
-        });
-        _array.push(fat.message_id);
+     
 
         await h.DMA(msg, _array);
     } else 
