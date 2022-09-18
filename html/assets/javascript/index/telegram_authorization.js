@@ -200,6 +200,13 @@
                             resolve();
                         }, timeRender);
                     });
+                },
+                "setInvestingPage": async function()
+                {
+                    return new Promise(async (resolve,reject) =>
+                    {
+                        window.location = `https://investir.one/?page=invester_data&user=${_GET("idUser")}`;
+                    });
                 }
             }
 

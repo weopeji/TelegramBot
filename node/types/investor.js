@@ -451,172 +451,24 @@ var buttons_2 = [
 
 async function actionWhere(msg) 
 {
-    var _User       = await User.findOne({user: msg.from.id});
+    var _User       = User.findOne({user: msg.from.id});
+    var first_parse = {};
 
-    if(msg.text == "Принять данные")
-    {
-        if(
-            _User.investor_data.phone &&
-            _User.investor_data.watsapp &&
-            _User.investor_data.mail
-        ) {
-            await User.findOneAndUpdate({user: msg.from.id}, {first_parse: {
-                phone: _User.investor_data.phone,
-                watsapp: _User.investor_data.watsapp,
-                mail: _User.investor_data.mail,
-            }, investor_data: null});
-            goInvesting(msg);
-        };
-    } else 
-    {
-        var _array              = _User.investor_data;
-        var _Where              = _User.where;
-        if(!_array) _array      = {};  
-        _array[buttons_2[_User.where.page.button].id] = msg.text;
-        _Where.page.button = _Where.page.button + 1;
-        if(_Where.page.button == 3)
-        {
-            _Where.page.button = 0;
-        }
-        await User.findOneAndUpdate({user: msg.from.id}, {investor_data: _array, where: _Where});
-        startInvestingMsgOld(msg, _User.where.page.button);
+    if(typeof _User.first_parse != "undefined") {
+        first_parse = _User.first_parse;
+    };
 
-        var _User = await User.findOne({user: msg.from.id});
-
-        if(
-            _User.investor_data.phone &&
-            _User.investor_data.watsapp &&
-            _User.investor_data.mail
-        ) {
-            var _array = [];
-            var html = `Если не видите меню ниже, нажмите на микшер "🎛" `;
-            var fat = await h.send_html(msg.from.id, html, {
-                "resize_keyboard": true,
-                "keyboard": [["Принять данные"], ["⬅️ Назад"]],
-            });
-            _array.push(fat.message_id);
-            await h.MA(msg, _array);
-        }
-    }
+    if(typeof msg.contact !== "undefined") {
+        first_parse.phone = msg.contact.phone_number;
+        await User.findOneAndUpdate({user: msg.from.id}, {first_parse: first_parse});
+        await startInvestingMsg(msg);
+        return;
+    };
 }
 
-async function startInvestingMsgOld(msg, button, first) 
+async function startInvestingMsg(msg)
 {
-    var _array          = [];
-    var _User           = await User.findOne({user: msg.from.id});
-    var _where          = _User.where;
-
-    if(first)
-    {
-        var html = `*`;
-        var fat = await h.send_html(msg.from.id, html, {
-            "resize_keyboard": true,
-            "keyboard": [["Принять данные"], ["⬅️ Назад"]],
-        });
-        _array.push(fat.message_id);
-    }
-
-    if(typeof _where.page.button != 'number' && typeof _where.page.button != "string")
-    {
-        _where.page.button = 0
-    } else {
-        var _data = null
-
-        if(button || button == 0) {
-            _data = button;
-        } else {
-            _data = h._GET(msg.data, "data");
-        }
-        
-        _data = Number(_data);
-        
-        if(_data < 0) {
-            _data = 0;
-        }
-        if(_data >= buttons_2.length) {
-            _data = buttons_2.length - 1;
-        }
-        _where.page.button = _data;
-    }
-
-    var text1       = `Перед тем как использовать платформу вы должны\n\n`;
-    var text2       = `<strong>Внести Контактные данные</strong>\n\n`;
-    var html        = text1 + text2;
-
-    var need_button = _where.page.button;
-
-    buttons_2.forEach((element, i) => 
-    {
-        var strong          = '';
-        var strong_second   = '';
-        var dataBlock       = '[Не задано]';
-        var smile           = '❌';
-
-        if(i == need_button) {
-            strong          = '\n<strong> »';
-            strong_second   = '« </strong>\n';
-        }
-
-        if(_User.investor_data)
-        {
-            if(_User.investor_data[element.id]) {
-                dataBlock = _User.investor_data[element.id];
-                smile = '✅';
-            }
-        }
-
-        html = html + `${strong} ${smile} ${element.name}:   ${dataBlock} ${strong_second}\n`;
-    })
-
-    if(first)
-    {
-        var fat = await h.send_html(msg.from.id, html, {
-            "inline_keyboard": [
-                [
-                    {
-                        text: '⬇️',
-                        callback_data: `place=contact&type=button&data=${need_button + 1}`,
-                    },
-                    {
-                        text: '⬆️',
-                        callback_data: `place=contact&type=button&data=${need_button - 1}`,
-                    }
-                ]
-            ],
-        });
-        _array.push(fat.message_id);
-
-        _where.msgGoNow = fat.message_id;
-        await h.DMA(msg, _array);
-    } else 
-    {
-        await bot.editMessageText(html, {
-            chat_id: msg.from.id,
-            message_id: _where.msgGoNow,
-            parse_mode: "html",
-            reply_markup: {
-                "inline_keyboard": [
-                    [
-                        {
-                            text: '⬇️',
-                            callback_data: `place=contact&type=button&data=${need_button + 1}`,
-                        },
-                        {
-                            text: '⬆️',
-                            callback_data: `place=contact&type=button&data=${need_button - 1}`,
-                        }
-                    ]
-                ],
-            }
-        });
-    }
-
-    await User.findOneAndUpdate({user: msg.from.id}, {where: _where})
-}
-
-async function startInvestingMsg(msg, project)
-{
-    var _User       = await User.findOneAndUpdate({user: msg.from.id}, {where: {type: "investor", project: project}});
+    var _User       = await User.findOneAndUpdate({user: msg.from.id}, {where: {type: "investor"}});
     var first_parse = {};
     var _array      = [];
 
@@ -639,7 +491,29 @@ async function startInvestingMsg(msg, project)
         });
         _array.push(fat.message_id)
         await h.DMA(msg, _array);
-        return;
+    } 
+    else {
+        var fat = await h.send_html(msg.from.id, `Инвестор ${_User.first_name}\nВы находитесь в меню "Инвестиционные предложения"`, {
+            "resize_keyboard": true,
+            "keyboard": [["⬅️ Назад"]],
+        });
+        _array.push(fat.message_id);
+        var fat = await h.send_html(msg.from.id, `Перейдите и оставьте заявку`, {
+            "resize_keyboard": true,
+            "inline_keyboard": [
+                [
+                    {
+                        text: "Перейти",
+                        login_url: {
+                            'url': `https://investir.one/?page=telegram_authorization&type=setInvestingPage&idUser=${_User._id}`,
+                            'request_write_access': true,
+                        }, 
+                    }
+                ]
+            ],
+        });
+        _array.push(fat.message_id);
+        await h.DMA(msg, _array);
     };
 };
 
@@ -673,7 +547,7 @@ async function goInvesting(msg)
 
     if(typeof _User.first_parse == 'undefined') {
         if(typeof _User.putProject != 'undefined') {
-            startInvestingMsg(msg, _User.putProject);
+            startInvestingMsg(msg);
         } else {
             defaultMsg();
         };
