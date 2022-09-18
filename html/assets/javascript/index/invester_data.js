@@ -102,7 +102,9 @@
                                 <a href="https://google.com">"Договор оферты"</a>и<a href="https://google.com">"Политика конфиденциальности"</a>
                             </p>
                         </div>
-                        <input type="checkbox" />
+                        <div class="version2_creating_block_info_row_cheackbox">
+                            <input type="checkbox" />
+                        </div>
                     </div>
                 </div>
                 <div class="version2_invester_data_typeButtons">
