@@ -944,11 +944,12 @@
                 }
             }
 
-            $('.creating_page').empty().append(`
+            $('.index_page_data').append(`
                 <div class="logo_business">
                     <img src="/html/assets/images/2.0.0/pp/logo_pp.png" alt="">
                 </div>
-            `);;
+            `);
+            $('.creating_page').empty();
 
             render_nextfuns[DT]();
 
