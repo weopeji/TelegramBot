@@ -176,11 +176,7 @@
 
         async cheackGetDocuments()
         {
-            $('.creating_page').empty().append(`
-                <div class="logo_business">
-                    <img src="/html/assets/images/2.0.0/pp/logo_pp.png" alt="">
-                </div>
-            `);
+            $('.creating_page').empty();
 
             $('.version2_invester_data_backBlock_circule').off('click').click( function(e) {
                 _this.renderOldBlock(true);
@@ -948,7 +944,11 @@
                 }
             }
 
-            $('.creating_page').empty();
+            $('.creating_page').empty().append(`
+                <div class="logo_business">
+                    <img src="/html/assets/images/2.0.0/pp/logo_pp.png" alt="">
+                </div>
+            `);;
 
             render_nextfuns[DT]();
 
