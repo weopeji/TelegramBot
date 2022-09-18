@@ -102,6 +102,7 @@
                                 <a href="https://google.com">"Договор оферты"</a>и<a href="https://google.com">"Политика конфиденциальности"</a>
                             </p>
                         </div>
+                        <input type="checkbox" />
                     </div>
                 </div>
                 <div class="version2_invester_data_typeButtons">
@@ -878,9 +879,6 @@
                 "FIZ": function()
                 {
                     var _block = $(`
-                        <div class="logo_business">
-                            <img src="/html/assets/images/2.0.0/pp/logo_pp.png" alt="">
-                        </div>
                         <div class="creating_page_input">
                             <div class="version2_default_bkg row_default"></div>
                             <div class="version_2_creating_page_input_row">

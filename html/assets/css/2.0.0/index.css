@@ -2205,6 +2205,7 @@ img.preloader_row_img {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  margin-bottom: 40px;
 }
 
 .logo_business img {
