@@ -650,7 +650,7 @@
                         <div class="creating_page_start" style="margin-bottom: 20px">
                             <div class="version2_default_bkg row_default"></div>
                             <span style="position: relative; z-index: 2;">
-                                Уважаемый Инвестор ${global.allData.User.first_name} Введите сумму инвестирования</a>.<br>
+                                Уважаемый Инвестор ${global.allData.User.first_name} введите сумму инвестирования</a>.<br>
                                 Минимальная сумма входа: ${_projectMoney.toString().replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')} руб.
                                 ${multiplicityText} <br>
                                 <span class="version2_invester_data_moneyFull">Сумма не должна превышать ${Number(fullMoneyCheack - fullMoneysInvs).toString().replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')} руб.</span>
@@ -696,7 +696,8 @@
                     if(Number(_this.project.notFullpay) == 0) {
                         msgsBlock.find(".version2_invester_data_moneyFull").remove();
                         errorMoneyCheack = true;
-                        msgsBlock.find('.creating_page_start span').append("Ваше место в очереди будет: " + Number(Number(_this.allInvsOfProject.length) + Number(1)));
+                        msgsBlock.find('.creating_page_start span').append("Ваше место в очереди подтверждения заявок: " + Number(Number(_this.allInvsOfProject.length) + Number(1)) + "<br>");
+                        msgsBlock.find('.creating_page_start span').append("Вы находитесь в очереди проверки заявок инвестирования в проект, после которой мы отправим оповещение для оплаты в течении 3 дней");
                     };
                 };
     
@@ -910,7 +911,10 @@
                                     </div>
                                 </div>
 
-                                <p>* обязательные поля</p>
+                                <p style="
+                                    position: relative;
+                                    z-index: 2;
+                                ">* обязательные поля</p>
     
                                 <div class="creating_page_input_button">
                                     <span>Отправить</span>
