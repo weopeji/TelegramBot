@@ -767,8 +767,7 @@
 
         async render_next(DT, InvPush) 
         {
-            this.DT = DT;
-
+            this.DT = this.typeRender;
             this.render_backBlock();
 
             var render_nextfuns = 
@@ -951,7 +950,7 @@
 
             $('.creating_page').empty();
 
-            render_nextfuns[DT]();
+            render_nextfuns[this.typeRender]();
 
             $('input.creating_page_input_div').keydown(function(e) {
                 if(e.keyCode === 13) {
