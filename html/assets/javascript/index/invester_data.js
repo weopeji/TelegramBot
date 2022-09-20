@@ -613,6 +613,7 @@
         async renderOldBlock(moneyPush)
         {
             var _this           = this;
+            this.render_backBlock();
 
             $('.version2_invester_data_backBlock_circule').off('click').click( function(e) {
                 $('.version2_invester_data_backBlock_circule').remove();
@@ -767,9 +768,7 @@
 
         async render_next(DT, InvPush) 
         {
-            $('.creating_page').empty();
             this.DT = this.typeRender;
-            this.render_backBlock();
 
             var render_nextfuns = 
             {
@@ -948,6 +947,8 @@
                     $('.creating_page').append(_block);
                 }
             }
+
+            $('.creating_page').empty();
 
             render_nextfuns[this.typeRender]();
 
