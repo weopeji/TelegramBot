@@ -616,6 +616,7 @@
             this.render_backBlock();
 
             $('.version2_invester_data_backBlock_circule').off('click').click( function(e) {
+                e.preventDefault();
                 $('.version2_invester_data_backBlock_circule').remove();
                 _this.render();
             });
@@ -772,6 +773,7 @@
             this.render_backBlock();
 
             $('.version2_invester_data_backBlock_circule').off('click').click( function(e) {
+                e.preventDefault();
                 $('.version2_invester_data_backBlock_circule').remove();
                 _this.renderOldBlock();
             });
