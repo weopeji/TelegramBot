@@ -617,7 +617,7 @@
 
             $('.version2_invester_data_backBlock_circule').off('click').click( function(e) {
                 $('.version2_invester_data_backBlock_circule').remove();
-                _this.render_next(_this.DT, _this.inv);
+                _this.render();
             });
 
             try {
@@ -769,6 +769,12 @@
         async render_next(DT, InvPush) 
         {
             this.DT = this.typeRender;
+            this.render_backBlock();
+
+            $('.version2_invester_data_backBlock_circule').off('click').click( function(e) {
+                $('.version2_invester_data_backBlock_circule').remove();
+                _this.renderOldBlock();
+            });
 
             var render_nextfuns = 
             {
