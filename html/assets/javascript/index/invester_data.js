@@ -33,6 +33,7 @@
             this.allInvsOfProject   = [];
             this.DT                 = null;
             this.redactingInvDoc    = null;
+            this.typeRender         = null;  
         };
 
         defaultCSS()
@@ -110,15 +111,12 @@
                 <div class="version2_invester_data_typeButtons">
                     <div class="version2_invester_data_typeButtons_type">
                         <div class="version2_invester_data_typeButtons_type_button" data="UR">
-                            <!-- <div class="version2_default_bkg row_default"></div> -->
                             <span>Юридическое лицо</span>
                         </div>
                         <div class="version2_invester_data_typeButtons_type_button" data="FIZ">
-                            <!-- <div class="version2_default_bkg row_default"></div> -->
                             <span>Физическое лицо</span>
                         </div>
                         <div class="version2_invester_data_typeButtons_type_button version2_invester_data_typeButtons_type_button_last" data="IP">
-                            <!-- <div class="version2_default_bkg row_default"></div> -->
                             <span>ИП</span>
                         </div>
                     </div>
@@ -133,7 +131,8 @@
 
             ActionBlock.find('.version2_invester_data_typeButtons_type_button').click(async function() {
                 if($('.version2_creating_block_info_row_cheackbox input').is(':checked')) {
-                    _this.render_next($(this).attr('data'));
+                    _this.typeRender = $(this).attr('data');
+                    _this.renderOldBlock();
                 };
             });
 
