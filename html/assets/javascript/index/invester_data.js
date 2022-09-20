@@ -353,7 +353,7 @@
                 <div class="creating_page_input">
                     <div class="creating_page_input_div" data="pay">
                         <input type="file" id="triggerClick">
-                        <span data="first" style="text-align: center">Загрузить</span>
+                        <span data="first" style="text-align: center; cursor: pointer;">Загрузить</span>
                     </div>
                 </div>
             `);
@@ -365,8 +365,7 @@
                     msgsBlock.find('.creating_page_start span').html(` 
                         <div class="version_2_row_creating_page_input" style="position: relative; z-index: 2;">
                             Уважаемый Инвестор ${findOfArrayOn_id(_this.inv.data, "fio")}
-                            Подтверждая инвестицию, вы подтверждаете, что по окончанию сбора средств вы выплатите зарезервированную вами сумму,
-                            Отказавшись вы получите запрет на использование платформы в будущем, на определенный срок
+                            Подтверждая инвестицию, вы подтверждаете, что по окончанию сбора средств в проект вы выплатитите зарезервированную вами сумму. Отказавшись вы получите запрет на использование сервиса в будущем на определенный срок
                         </div>
                     `.toString().trim());
 
@@ -1041,17 +1040,6 @@
                     };
                 });
             };
-
-            // if(typeof _this.project.design_type != 'undefined')
-            // {
-            //     if(_this.project.design_type == 'pp') {
-            //         $('.index_page_body_data').prepend(`
-            //             <div class="logo_business">
-            //                 <img src="/html/assets/images/2.0.0/pp/logo_pp.png" alt="">
-            //             </div>
-            //         `);
-            //     };
-            // };
         };
     };
 
