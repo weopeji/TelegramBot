@@ -616,9 +616,8 @@
             this.render_backBlock();
 
             $('.version2_invester_data_backBlock_circule').off('click').click( function(e) {
-                e.preventDefault();
-                $('.version2_invester_data_backBlock_circule').remove();
-                _this.render();
+                $('.index_page_body_data').empty();
+                _this.render(null, true);
             });
 
             try {
@@ -759,11 +758,7 @@
                 </div>
             `);
 
-            backBlock.find(".version2_invester_data_backBlock_circule").click( function() {
-                $('.index_page_body_data').empty();
-                _this.render(null, true);
-            });
-
+            $('.version2_invester_data_backBlock').remove();
             $('.index_page_body_data').prepend(backBlock);
         }
 
@@ -773,7 +768,6 @@
             this.render_backBlock();
 
             $('.version2_invester_data_backBlock_circule').off('click').click( function(e) {
-                e.preventDefault();
                 $('.version2_invester_data_backBlock_circule').remove();
                 _this.renderOldBlock();
             });
