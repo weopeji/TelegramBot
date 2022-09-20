@@ -726,13 +726,13 @@
                             if(Number(_money) % _this.project.multiplicity == 0)
                             {
                                 _this.money = money;
-                                _this.cheackGetDocuments();
+                                _this.render_next();
                             } else {
                                 alert(`Сумма должна быть кратной ${_this.project.multiplicity}`);
                             }
                         } else {
                             _this.money = money;
-                            _this.cheackGetDocuments();
+                            _this.render_next();
                         }
                     }
                 });
@@ -997,7 +997,7 @@
                 else 
                 {
                     _this.inv = _array;
-                    _this.renderOldBlock();
+                    _this.cheackGetDocuments();
                 }
             });
 
