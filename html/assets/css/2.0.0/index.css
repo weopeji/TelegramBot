@@ -2234,6 +2234,12 @@ img.preloader_row_img {
   z-index: 10;
 }
 
+.creating_page_input_button span {
+  color: white;
+  background: linear-gradient(81.65deg, #CF2DBF 18.55%, #951CDF 97.44%);
+  border-radius: 8px;
+}
+
 @media (max-width: 1350px) {
   .index_page_body_header_user_textDecoration span {
     margin-left: 0;
