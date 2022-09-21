@@ -1694,10 +1694,9 @@ img.preloader_row_img
             border-right: 80px solid #C7B361
         
     .version2_creating_block_info_row_cheackbox
-        #highload0
-            opacity: 0
-        
         #highload0 
+            opacity: 0
+
             ~ label::before 
                 content: '\2713'
                 text-align: center
@@ -1710,8 +1709,7 @@ img.preloader_row_img
                 margin: 0.25em
                 display: inline-block
             
-        #highload0:checked 
-            ~ label::before 
+            &:checked ~ label::before 
                 color: red
                 border: 2px inset red
         
