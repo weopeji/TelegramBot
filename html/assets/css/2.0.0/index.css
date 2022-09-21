@@ -2240,6 +2240,18 @@ img.preloader_row_img {
   border-radius: 8px;
 }
 
+.creating_page_block_qrCode {
+  position: relative;
+  width: 60%;
+  margin: 0 auto;
+  padding: 20px 50px 20px 30px;
+}
+
+.creating_page_block_qrCode #qrCodeOutput {
+  position: relative;
+  z-index: 2;
+}
+
 @media (max-width: 1350px) {
   .index_page_body_header_user_textDecoration span {
     margin-left: 0;

@@ -725,6 +725,27 @@ var QRCode = {
 		e.innerHTML = html.join('') + '</table>';
 		return e;
 	},
+	'generateHTML_ME': function(data, options) {
+		options = options || {};
+		var matrix = QRCode['generate'](data, options);
+		var modsize = Math.max(options.modulesize || 5, 0.5);
+		var margin = Math.max(options.margin || 4, 0.0);
+
+		var e = document.createElement('div');
+		var n = matrix.length;
+		var html = ['<table border="0" cellspacing="0" cellpadding="0" style="background: transparent">'];
+		for (var i = 0; i < n; ++i) {
+			html.push('<tr>');
+			for (var j = 0; j < n; ++j) {
+				html.push('<td style="width:' + modsize + 'px;height:' + modsize + 'px' +
+					(matrix[i][j] ? ';background: #C029C6' : '') + '"></td>');
+			}
+			html.push('</tr>');
+		}
+		e.className = 'qrcode';
+		e.innerHTML = html.join('') + '</table>';
+		return e;
+	},
 
 	'generatePNG': function(data, options) {
 		options = options || {};

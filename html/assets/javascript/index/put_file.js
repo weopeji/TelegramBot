@@ -190,7 +190,7 @@
                             <div class="creating_page_block_qrCode">
                                 <div class="version2_default_bkg row_default"></div>
                                 <div id="qrCodeOutput" class="text-center">
-                                    Пожалуйста подождите                                    
+
                                 </div>
                             </div>
                         </div>
@@ -210,7 +210,7 @@
                         `MiddleName=Иванович|` + 
                         `PersAcc=ПИИ-20-0001`;
 
-                    msgsBlock.find('#qrCodeOutput').append(QRCode.generateHTML(qrCodePushedText, {}))
+                    msgsBlock.find('#qrCodeOutput').append(QRCode.generateHTML_ME(qrCodePushedText, {}))
 
                     var documentBlock = $(`
                         <div class="creating_page_input">
