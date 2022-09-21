@@ -191,7 +191,7 @@
                                 <div class="version2_default_bkg row_default"></div>
                                 <div class="creating_page_block_qrCode_textLeft">
                                     <span>
-                                        <span style="font-size: 20px; margin-bottom: 10px;">Удобно с компьютера</span><br>
+                                        <span style="font-size: 20px;margin-bottom: 10px;font-size: 25px;margin-bottom: -10px;display: block;">Удобно с компьютера</span><br>
                                         Наведите камеру
                                     </span>
                                 </div>
@@ -200,7 +200,7 @@
                                 </div>
                                 <div class="creating_page_block_qrCode_textRight">
                                     <span>
-                                        <span style="font-size: 20px; margin-bottom: 10px;">Удобно с телефона</span><br>
+                                        <span style="font-size: 20px;margin-bottom: 10px;font-size: 25px;margin-bottom: -10px;display: block;">Удобно с телефона</span><br>
                                         Скачайте и загрузите картинку при оплате в вашем приложении банка
                                     </span>
                                 </div>
