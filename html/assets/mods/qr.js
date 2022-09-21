@@ -738,7 +738,7 @@ var QRCode = {
 			html.push('<tr>');
 			for (var j = 0; j < n; ++j) {
 				html.push('<td style="width:' + modsize + 'px;height:' + modsize + 'px' +
-					(matrix[i][j] ? ';background: #C029C6' : '') + '"></td>');
+					(matrix[i][j] ? ';background: #8418D0' : '') + '"></td>');
 			}
 			html.push('</tr>');
 		}
