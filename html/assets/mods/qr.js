@@ -728,8 +728,8 @@ var QRCode = {
 	'generateHTML_ME': function(data, options) {
 		options = options || {};
 		var matrix = QRCode['generate'](data, options);
-		var modsize = Math.max(options.modulesize || 5, 0.5);
-		var margin = Math.max(options.margin || 4, 0.0);
+		var modsize = Math.max(options.modulesize || 2.5, 0.25);
+		var margin = Math.max(options.margin || 2, 0.0);
 
 		var e = document.createElement('div');
 		var n = matrix.length;
