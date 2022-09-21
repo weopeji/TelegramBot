@@ -2281,7 +2281,7 @@ img.preloader_row_img {
   opacity: 0;
 }
 
-.pp_project .version2_creating_block_info_row_cheackbox input + label {
+.pp_project .version2_creating_block_info_row_cheackbox label {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
@@ -2294,7 +2294,7 @@ img.preloader_row_img {
           user-select: none;
 }
 
-.pp_project .version2_creating_block_info_row_cheackbox input + label::before {
+.pp_project .version2_creating_block_info_row_cheackbox label::before {
   content: '';
   display: inline-block;
   width: 1em;
