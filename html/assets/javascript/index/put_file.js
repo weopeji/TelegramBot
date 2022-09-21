@@ -18,7 +18,8 @@
     {
         constructor()
         {
-            this.global = $(`<div class="creating_page version2_put_file_creating_page"></div>`);
+            this.global     = $(`<div class="creating_page version2_put_file_creating_page"></div>`);
+            this.project    = null;
         }
 
         defaultCSS()
@@ -40,23 +41,30 @@
             $('.index_page_body_header_user_logotype').css({
                 "display": "none",
             });
+
+            $('.buttons_menu').css({
+                "display": "none",
+            });
+
+            $('.index_page_body_header_user').css('display', 'none');
+
+            if(typeof this.project.design_type != 'undefined')
+            {
+                if(this.project.design_type == 'pp') {
+                    $('body').addClass('pp_project');
+                };
+            };
         }
 
         async render()
         {
-            this.defaultCSS();
-
             var getAction       = _GET("action");
+            var _project        = await callApi({methodName: "getProjectForInvesterPageByIdInvDoc", data: _GET('InvId')});
             var _this           = this;
             var functionsAction = 
             {
                 "investingNotFullNull": async function()
                 {
-                    var _project = await callApi({
-                        methodName: "getProjectForInvesterPageByIdInvDoc",
-                        data: _GET('InvId'),
-                    });
-
                     var msgsBlock = $(`
                         <div class="creating_page_block"> 
                             <input type="file" id="Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input">
@@ -166,11 +174,6 @@
                 },
                 "investingNotFull": async function()
                 {
-                    var _project = await callApi({
-                        methodName: "getProjectForInvesterPageByIdInvDoc",
-                        data: _GET('InvId'),
-                    });
-
                     var msgsBlock = $(`
                         <div class="creating_page_block">
                             <input type="file" id="Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input">
@@ -330,6 +333,9 @@
                     _this.global.append(documentBlock);
                 },
             };
+
+            this.project = _project;
+            this.defaultCSS();
 
             if(typeof functionsAction[getAction] != "undefined")
             {
