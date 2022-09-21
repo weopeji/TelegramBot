@@ -2275,7 +2275,7 @@ img.preloader_row_img {
   border-right: 80px solid #C7B361;
 }
 
-.pp_project .version2_creating_block_info_row_cheackbox .checkbox-custom {
+.pp_project .version2_creating_block_info_row_cheackbox .checkbox-custom-label {
   display: block;
   position: relative;
   padding-left: 35px;
@@ -2288,7 +2288,7 @@ img.preloader_row_img {
   user-select: none;
 }
 
-.pp_project .version2_creating_block_info_row_cheackbox .checkbox-custom input {
+.pp_project .version2_creating_block_info_row_cheackbox .checkbox-custom-label input {
   position: absolute;
   opacity: 0;
   cursor: pointer;
@@ -2296,19 +2296,19 @@ img.preloader_row_img {
   width: 0;
 }
 
-.pp_project .version2_creating_block_info_row_cheackbox .checkbox-custom input:checked ~ .checkmark {
+.pp_project .version2_creating_block_info_row_cheackbox .checkbox-custom-label input:checked ~ .checkmark {
   background-color: #2196F3;
 }
 
-.pp_project .version2_creating_block_info_row_cheackbox .checkbox-custom input:checked ~ .checkmark:after {
+.pp_project .version2_creating_block_info_row_cheackbox .checkbox-custom-label input:checked ~ .checkmark:after {
   display: block;
 }
 
-.pp_project .version2_creating_block_info_row_cheackbox .checkbox-custom:hover input ~ .checkmark {
+.pp_project .version2_creating_block_info_row_cheackbox .checkbox-custom-label:hover input ~ .checkmark {
   background-color: #ccc;
 }
 
-.pp_project .version2_creating_block_info_row_cheackbox .checkbox-custom .checkmark:after {
+.pp_project .version2_creating_block_info_row_cheackbox .checkbox-custom-label .checkmark:after {
   left: 9px;
   top: 5px;
   width: 5px;
