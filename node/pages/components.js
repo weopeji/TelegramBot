@@ -430,7 +430,7 @@ async function version2_put_file_alertofOfCloseCheack(socket, data, callback)
         var _Project    = await Project.findOne({_id: _InvDoc.projectId});
 
         await h.full_alert_user(_Project.user, `Инвестор прикрепил чек за инвестицию, проверьте и подтвердите оплату у себя в личном кабинете`, "pay_of_invNotFullPay_business");
-        await h.alertDeleteOfUserOnbot("Вы успешно прекрипили чек за инвестицию, ожидайте подтверждения от бизнеса!", _InvDoc.invester);
+        // await h.alertDeleteOfUserOnbot("Вы успешно прекрипили чек за инвестицию, ожидайте подтверждения от бизнеса!", _InvDoc.invester);
     }
 
     catch (e) {};

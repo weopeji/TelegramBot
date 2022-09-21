@@ -288,7 +288,29 @@
                                         data: _GET('InvId'),
                                     });
 
-                                    window.location = "tg:\/\/resolve?domain=invester_official_bot";
+                                    var endBlock = $(`
+                                        <div class="creating_page_block">
+                                            <input type="file" id="Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input">
+                                            <div class="creating_page_start" style="margin-bottom: 20px">
+                                                <div class="version2_default_bkg row_default"></div>
+                                                <span>
+                                                    Вы успешно проивестировали в проект, ваши данные в обработке<br>
+                                                    Ожидайте подтверждения оплаты в оповещениях Телеграм бота или в личном кабинете.
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="creating_page_input">
+                                            <div class="creating_page_input_div version2_creating_page_input_div_NewButton" data="newOpen">
+                                                <span>Прикрепить</span>
+                                            </div>
+                                        </div>
+                                    `);
+
+                                    endBlock.find('.version2_creating_page_input_div_NewButton').click( function() {
+                                        window.location = "tg:\/\/resolve?domain=invester_official_bot";
+                                    });
+
+                                    $(`.creating_page version2_put_file_creating_page`).empty().append(endBlock);
                                 });
 
                                 $('.creating_page_input_div[data="reload"]').click( function() {
