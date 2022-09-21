@@ -73,8 +73,29 @@
                                     Назначение платежа: Номер Проекта ${_project._id}, Имя проекта ${_project.data.name} <br>
                                 </span>
                             </div>
+                            <div class="creating_page_block_qrCode">
+                                <div id="qrCodeOutput" class="text-center">
+                                    Пожалуйста подождите                                    
+                                </div>
+                            </div>
                         </div>
                     `);
+
+                    var qrCodePushedText = 
+                        `ST00012|` + 
+                        `Name=ИП Петров Иван Иванович|` + 
+                        `PersonalAcc=40802810112100000591|` + 
+                        `BankName=УРАЛЬСКИЙ БАНК ПАО СБЕРБАНК|` + 
+                        `BIC=046577674|CorrespAcc=30101810500000000674|` + 
+                        `Sum=10000000|` + 
+                        `Purpose=Оплата по договору: ПИИ-20-0001 от 04.07.2020. Без НДС.|` + 
+                        `PayeeINN=611203541218|` + 
+                        `LastName=Иванов|` + 
+                        `FirstName=Иван|` + 
+                        `MiddleName=Иванович|` + 
+                        `PersAcc=ПИИ-20-0001`;
+
+                    msgsBlock.find('#qrCodeOutput').append(QRCode.generateHTML(qrCodePushedText, {}))
 
                     var documentBlock = $(`
                         <div class="creating_page_input">
