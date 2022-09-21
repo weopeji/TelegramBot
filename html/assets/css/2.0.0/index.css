@@ -2275,48 +2275,30 @@ img.preloader_row_img {
   border-right: 80px solid #C7B361;
 }
 
-.pp_project .version2_creating_block_info_row_cheackbox .custom-checkbox {
-  position: absolute;
-  z-index: -1;
+.pp_project .version2_creating_block_info_row_cheackbox #highload0 {
   opacity: 0;
 }
 
-label::before .pp_project .version2_creating_block_info_row_cheackbox .custom-checkbox:checked {
-  border-color: #0b76ef;
-  background-color: #0b76ef;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
+.pp_project .version2_creating_block_info_row_cheackbox #highload0 {
+  opacity: 0;
 }
 
-.pp_project .version2_creating_block_info_row_cheackbox label {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  z-index: 1000;
-}
-
-.pp_project .version2_creating_block_info_row_cheackbox label::before {
-  content: '';
-  display: inline-block;
+.pp_project .version2_creating_block_info_row_cheackbox #highload0 ~ label::before {
+  content: '\2713';
+  text-align: center;
+  color: white;
+  line-height: 1em;
   width: 1em;
   height: 1em;
-  -ms-flex-negative: 0;
-      flex-shrink: 0;
-  -webkit-box-flex: 0;
-      -ms-flex-positive: 0;
-          flex-grow: 0;
-  border: 1px solid #adb5bd;
+  border: 2px inset #000;
   border-radius: 0.25em;
-  margin-right: 0.5em;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: 50% 50%;
+  margin: 0.25em;
+  display: inline-block;
+}
+
+.pp_project .version2_creating_block_info_row_cheackbox #highload0:checked ~ label::before {
+  color: red;
+  border: 2px inset red;
 }
 
 .logo_business {
