@@ -1697,25 +1697,23 @@ img.preloader_row_img
         #highload0
             opacity: 0
         
-        #highload0 ~ label::before 
         #highload0 
-            opacity: 0
-        
-        #highload0 ~ label::before 
-            content: '\2713'
-            text-align: center
-            color: white
-            line-height: 1em
-            width: 1em
-            height: 1em
-            border: 2px inset #000
-            border-radius: 0.25em
-            margin: 0.25em
-            display: inline-block
+            ~ label::before 
+                content: '\2713'
+                text-align: center
+                color: white
+                line-height: 1em
+                width: 1em
+                height: 1em
+                border: 2px inset #000
+                border-radius: 0.25em
+                margin: 0.25em
+                display: inline-block
             
-        #highload0:checked ~ label::before 
-            color: red
-            border: 2px inset red
+        #highload0:checked 
+            ~ label::before 
+                color: red
+                border: 2px inset red
         
                 
                 
