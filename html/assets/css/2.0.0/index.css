@@ -2246,6 +2246,8 @@ img.preloader_row_img {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+  position: relative;
+  z-index: 2;
 }
 
 .creating_page_block_qrCode {
