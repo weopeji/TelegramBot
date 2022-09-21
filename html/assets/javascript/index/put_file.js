@@ -289,7 +289,7 @@
                                 });
 
                                 $('.creating_page_input_div[data="ok"]').click( async function() {
-                                    await callApi({
+                                    callApi({
                                         methodName: "version2_put_file_alertofOfCloseCheack",
                                         data: _GET('InvId'),
                                     });
@@ -316,7 +316,7 @@
                                         window.location = "tg:\/\/resolve?domain=invester_official_bot";
                                     });
 
-                                    $(`.creating_page version2_put_file_creating_page`).empty().append(endBlock);
+                                    $(`.creating_page`).empty().append(endBlock);
                                 });
 
                                 $('.creating_page_input_div[data="reload"]').click( function() {
