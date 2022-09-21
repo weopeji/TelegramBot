@@ -1694,24 +1694,57 @@ img.preloader_row_img
             border-right: 80px solid #C7B361
         
     .version2_creating_block_info_row_cheackbox
-        #highload0 
-            opacity: 0
+        .checkbox-custom 
+            display: block 
+            position: relative 
+            padding-left: 35px 
+            margin-bottom: 12px 
+            cursor: pointer 
+            font-size: 22px 
+            -webkit-user-select: none 
+            -moz-user-select: none 
+            -ms-user-select: none 
+            user-select: none 
+            input 
+                position: absolute 
+                opacity: 0 
+                cursor: pointer 
+                height: 0 
+                width: 0 
+                &:checked 
+                    & ~ .checkmark 
+                        background-color: #2196F3 
+                        &:after 
+                            display: block 
+            &:hover 
+                input 
+                    & ~ .checkmark 
+                        background-color: #ccc 
+            .checkmark 
+                &:after 
+                    left: 9px 
+                    top: 5px 
+                    width: 5px 
+                    height: 10px 
+                    border: solid white 
+                    border-width: 0 3px 3px 0 
+                    -webkit-transform: rotate(45deg) 
+                    -ms-transform: rotate(45deg) 
+                    transform: rotate(45deg) 
+        .checkmark 
+            position: absolute 
+            top: 0 
+            left: 0 
+            height: 25px 
+            width: 25px 
+            background-color: #eee 
+            &:after 
+                content: "" 
+                position: absolute 
+                display: none 
 
-            ~ label::before 
-                content: '\2713'
-                text-align: center
-                color: white
-                line-height: 1em
-                width: 1em
-                height: 1em
-                border: 2px inset #000
-                border-radius: 0.25em
-                margin: 0.25em
-                display: inline-block
-            
-            &:checked ~ label::before 
-                color: red
-                border: 2px inset red
+        
+        
         
                 
                 

@@ -112,8 +112,10 @@
                             </p>
                         </div>
                         <div class="version2_creating_block_info_row_cheackbox">
-                            <label class="checkbox-custom-label" for="highload0"></label>
-                            <input class="checkbox-custom" type="checkbox" name="highload0" id="highload0" checked/>
+                            <label class="checkbox-custom-label" for="highload0">
+                                <input class="checkbox-custom" type="checkbox" name="highload0" id="highload0" checked/>
+                                <span class="checkmark"></span>
+                            </label>
                         </div>
                     </div>
                 </div>
