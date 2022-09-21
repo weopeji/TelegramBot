@@ -189,8 +189,14 @@
                             </div>
                             <div class="creating_page_block_qrCode">
                                 <div class="version2_default_bkg row_default"></div>
+                                <div class="creating_page_block_qrCode_textLeft">
+                                    <span>ok</span>
+                                </div>
                                 <div id="qrCodeOutput" class="text-center">
 
+                                </div>
+                                <div class="creating_page_block_qrCode_textRight">
+                                    <span>ok</span>
                                 </div>
                             </div>
                         </div>

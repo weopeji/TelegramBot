@@ -2240,16 +2240,36 @@ img.preloader_row_img {
   border-radius: 8px;
 }
 
+.creating_page_block_qrCode_textLeft,
+.creating_page_block_qrCode_textRight,
+#qrCodeOutput {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
 .creating_page_block_qrCode {
   position: relative;
   width: 60%;
   margin: 0 auto;
   padding: 20px 50px 20px 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .creating_page_block_qrCode #qrCodeOutput {
   position: relative;
   z-index: 2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 @media (max-width: 1350px) {
