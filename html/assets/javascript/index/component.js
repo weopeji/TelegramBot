@@ -521,7 +521,7 @@
                                     appendPayBlock = $(`
                                         <div class="Attracted_headerInfoBlock">
                                             <div class="version2_default_bkg row_default"></div>
-                                            <h1>Нажимая кнопку, вы подтверждаете что сумма и дата платежа верна</h1>
+                                            <h1>Подтвердите, что сумма платежа верна или нет</h1>
                                             <div class="Attracted_headerInfoBlock_block accept_block_tap_more">
                                                 <div class="Attracted_headerInfoBlock_block_i">
                                                     <i class="fad fa-check"></i>
