@@ -2194,6 +2194,8 @@ img.preloader_row_img {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  position: absolute;
+  top: 0;
 }
 
 .pp_project .logo_business .page-header__logo {
@@ -2239,6 +2241,34 @@ img.preloader_row_img {
   left: calc((160px - 96px) / 2);
   -webkit-filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.25));
   filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.25));
+}
+
+.pp_project .logo_business .page-header__logo .trapezoid.right:after {
+  content: "";
+  position: absolute;
+  content: "";
+  position: absolute;
+  top: 72px;
+  left: 0;
+  width: 0;
+  height: 0;
+  border: 0 solid transparent;
+  border-top-width: 0px;
+  border-bottom-width: 17px;
+  border-left: 80px solid #BAAA67;
+}
+
+.pp_project .logo_business .page-header__logo .trapezoid.left:after {
+  content: "";
+  position: absolute;
+  top: 72px;
+  left: 0;
+  width: 0;
+  height: 0;
+  border: 0 solid transparent;
+  border-top-width: 0px;
+  border-bottom-width: 17px;
+  border-right: 80px solid #C7B361;
 }
 
 .logo_business {

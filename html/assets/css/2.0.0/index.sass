@@ -1616,6 +1616,8 @@ img.preloader_row_img
 
     .logo_business
         display: flex
+        position: absolute
+        top: 0
 
         .page-header__logo 
             display: -webkit-box
@@ -1662,6 +1664,31 @@ img.preloader_row_img
             -webkit-filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.25))
             filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.25))
         
+        .page-header__logo .trapezoid.right:after
+            content: ""
+            position: absolute
+            content: ""
+            position: absolute
+            top: 72px
+            left: 0
+            width: 0
+            height: 0
+            border: 0 solid transparent
+            border-top-width: 0px
+            border-bottom-width: 17px
+            border-left: 80px solid #BAAA67
+
+        .page-header__logo .trapezoid.left:after
+            content: ""
+            position: absolute
+            top: 72px
+            left: 0
+            width: 0
+            height: 0
+            border: 0 solid transparent
+            border-top-width: 0px
+            border-bottom-width: 17px
+            border-right: 80px solid #C7B361
         
         
 
