@@ -301,7 +301,7 @@
                                         </div>
                                         <div class="creating_page_input">
                                             <div class="creating_page_input_div version2_creating_page_input_div_NewButton" data="newOpen">
-                                                <span>Прикрепить</span>
+                                                <span>Перейти в Телеграм бот (оповещения)</span>
                                             </div>
                                         </div>
                                     `);
