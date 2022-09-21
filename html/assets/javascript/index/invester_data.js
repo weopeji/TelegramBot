@@ -112,7 +112,8 @@
                             </p>
                         </div>
                         <div class="version2_creating_block_info_row_cheackbox">
-                            <input type="checkbox" checked/>
+                            <label for="happy">Happy</label>
+                            <input type="checkbox" id="happy" checked/>
                         </div>
                     </div>
                 </div>

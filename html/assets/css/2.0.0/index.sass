@@ -1693,7 +1693,32 @@ img.preloader_row_img
             border-bottom-width: 17px
             border-right: 80px solid #C7B361
         
-        
+    .version2_creating_block_info_row_cheackbox
+        input
+            position: absolute
+            z-index: -1
+            opacity: 0
+
+            &+label 
+                display: inline-flex
+                align-items: center
+                user-select: none
+
+            &+label::before 
+                content: ''
+                display: inline-block
+                width: 1em
+                height: 1em
+                flex-shrink: 0
+                flex-grow: 0
+                border: 1px solid #adb5bd
+                border-radius: 0.25em
+                margin-right: 0.5em
+                background-repeat: no-repeat
+                background-position: center center
+                background-size: 50% 50%
+                
+                
 
 
 .logo_business

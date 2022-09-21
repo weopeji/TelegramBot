@@ -2275,6 +2275,43 @@ img.preloader_row_img {
   border-right: 80px solid #C7B361;
 }
 
+.pp_project .version2_creating_block_info_row_cheackbox input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+.pp_project .version2_creating_block_info_row_cheackbox input + label {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.pp_project .version2_creating_block_info_row_cheackbox input + label::before {
+  content: '';
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+  border: 1px solid #adb5bd;
+  border-radius: 0.25em;
+  margin-right: 0.5em;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 50% 50%;
+}
+
 .logo_business {
   width: 100%;
   display: none;
