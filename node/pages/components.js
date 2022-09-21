@@ -594,7 +594,7 @@ async function version2_notFullPay_relocation_data(socket, data, callback)
     try {
         for(var InvDocId of data) {
             var _InvDoc = await InvDoc.findOneAndUpdate({_id: InvDocId}, {applicationRequest: true});
-            await h.full_alert_user(_InvDoc.invester, `Бизнес запросил оплату по вашей заявке, ее нужно произвести в течении 3х рабочих дней, в противном случае ваша завка будет анулирована и аккаунт будет заблокирован`, "pay_of_invNotFullPay", _InvDoc._id);
+            await h.full_alert_user(_InvDoc.invester, `Бизнес проект запросил оплату по вашей заявке, ее нужно произвести в течении 3х рабочих дней, в противном случае ваша завка будет анулирована и аккаунт будет заблокирован`, "pay_of_invNotFullPay", _InvDoc._id);
         };
     } catch(e) {};
 

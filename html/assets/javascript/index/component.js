@@ -826,7 +826,7 @@
                                     <div class="Attracted_headerInfoBlock_info_data_alert">
                                         <input type="file" id="Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input">
                                         <div class="Attracted_headerInfoBlock_info_data_alert_buttom_cheack">
-                                            <span>Оплатить инвестицию</span>
+                                            <span>Оплатить инвестицию на сайте бизнес - проекта</span>
                                         </div>
                                     </div>
                                 `);
@@ -874,7 +874,7 @@
                                         <div class="Attracted_headerInfoBlock_info_data_alert">
                                             <input type="file" id="Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input">
                                             <div class="Attracted_headerInfoBlock_info_data_alert_buttom_cheack">
-                                                <span>Оплатить инвестицию</span>
+                                                <span>Оплатить инвестицию на сайте бизнес - проекта</span>
                                             </div>
                                         </div>
                                     `);
@@ -907,7 +907,7 @@
                                         <div class="Attracted_headerInfoBlock_info_data_alert">
                                             <input type="file" id="Attracted_headerInfoBlock_info_data_alert_buttom_cheack_input">
                                             <div class="Attracted_headerInfoBlock_info_data_alert_buttom_cheack">
-                                                <span>Оплатить инвестицию</span>
+                                                <span>Оплатить инвестицию на сайте бизнес - проекта</span>
                                             </div>
                                         </div>
                                     `);
@@ -1040,7 +1040,7 @@
                                 </div>
                             </div>
                             <div class="info_active_block_left_buttons">
-                                <span class="show_document">Посмотреть договор</span>
+                                <span class="show_document">Посмотреть договор на сайте бизнес - проекта</span>
                                 <span class="show_block">Скачать чек об оплате</span>
                             </div>
                         </div>
