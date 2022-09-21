@@ -186,10 +186,11 @@
                                     Счет получателя: ${_project.data.account_get} <br>
                                     Назначение платежа: Номер Проекта ${_project._id}, Имя проекта ${_project.data.name} <br>
                                 </span>
-                                <div class="creating_page_block_qrCode">
-                                    <div id="qrCodeOutput" class="text-center">
-                                        Пожалуйста подождите                                    
-                                    </div>
+                            </div>
+                            <div class="creating_page_block_qrCode">
+                                <div class="version2_default_bkg row_default"></div>
+                                <div id="qrCodeOutput" class="text-center">
+                                    Пожалуйста подождите                                    
                                 </div>
                             </div>
                         </div>
