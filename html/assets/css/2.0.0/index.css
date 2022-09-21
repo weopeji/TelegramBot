@@ -2305,7 +2305,7 @@ img.preloader_row_img {
 
 .pp_project .version2_creating_block_info_row_cheackbox .checkbox-custom-label input:checked ~ .checkmark:after {
   display: block;
-  color: black;
+  background-color: black;
 }
 
 .pp_project .version2_creating_block_info_row_cheackbox .checkbox-custom-label:hover input ~ .checkmark {
