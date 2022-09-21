@@ -190,13 +190,19 @@
                             <div class="creating_page_block_qrCode">
                                 <div class="version2_default_bkg row_default"></div>
                                 <div class="creating_page_block_qrCode_textLeft">
-                                    <span>ok</span>
+                                    <span>
+                                        Удобно с компьютера<br>
+                                        Наведите камеру
+                                    </span>
                                 </div>
                                 <div id="qrCodeOutput" class="text-center">
 
                                 </div>
                                 <div class="creating_page_block_qrCode_textRight">
-                                    <span>ok</span>
+                                    <span>
+                                        Удобно с телефона<br>
+                                        Скачайте и загрузите картинку при оплате в вашем приложении банка
+                                    </span>
                                 </div>
                             </div>
                         </div>
