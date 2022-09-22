@@ -504,7 +504,7 @@ async function startInvestingMsg(msg)
                     {
                         text: "Перейти",
                         login_url: {
-                            'url': `https://investir.one/?page=telegram_authorization&type=more&userId=${_User._id}`,
+                            'url': `https://investir.one/?page=telegram_authorization&type=more&userId=${_User.putProject}`,
                             'request_write_access': true,
                         }, 
                     }
