@@ -47,7 +47,7 @@
                             <i class="fab fa-telegram-plane"></i>
                         </a>
                         <div class="telegram_authorization_text">
-                            <h1>investIR запрашивает доступ через Telegram</h1>
+                            <h1>investiR запрашивает доступ через Telegram</h1>
                         </div>
                         <div class="telegram_authorization_buttons">
 
@@ -141,7 +141,12 @@
                         }
                         else
                         {
-                            location.href = `/?user=${moreData}&page=invester_data`;
+                            if(type == "location") {
+                                location.href = `https://${moreData.data.url}/?user=${moreData.data.userId}&page=invester_data`;
+                            }
+                            else {
+                                location.href = `/?user=${moreData.data.userId}&page=invester_data`;
+                            }
                         };
                     })
                 },

@@ -1665,13 +1665,27 @@ async function telegram_auth_more(socket, data, callback)
 {
     var _idProject      = data.projectId;
     var _User           = await User.findOneAndUpdate({_id: data.userId}, {type: "investor", putProject: _idProject});
-    
-    console.log(_User.investor_data);
+    var _Project        = await Project.findOne({_id: _idProject});
 
     if(typeof _User.first_parse != "undefined")
     {
-        callback(_User._id);
-    } 
+        if(typeof _Project.businessSite != "undefined") {
+            callback({
+                type: "location",
+                data: {
+                    userId: _User._id,
+                    url: _Project.businessSite,
+                },
+            });
+        } else {
+            callback({
+                type: "global",
+                data: {
+                    userId: _User._id,
+                },
+            });
+        }
+    }
     else
     {
         _app.defaultShowProject({

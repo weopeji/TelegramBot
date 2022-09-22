@@ -25,6 +25,7 @@ const ProjectShema = new mongoose.Schema({
     closeMoney: Boolean,
     requestInvestingMoney: String,
     design_type: String,
+    businessSite: String,
 });
 
 autoIncrement.initialize(mongoose.connection);
