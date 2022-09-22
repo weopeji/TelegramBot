@@ -1170,9 +1170,7 @@
     
                 $('.show_document').click( async function() {
                     if(window.screen.width < 1300)
-                    {
-                        // saveUrlAsFile(`https://investir.one/projects/${_data.InvDoc.projectId}/${_data.InvDoc.urlToLastDocument}`, `${_data.InvDoc.projectId}/${_data.InvDoc.urlToLastDocument}`);
-                        
+                    {                        
                         var tamplateText = $(`
                             <div class="version2_preloaderDocumetBLock">
                                 <div class="version2_preloaderDocumetBLock_row">
@@ -1215,7 +1213,11 @@
                     }
                     else
                     {
-                        window.open(`https://investir.one/projects/${_data.InvDoc.projectId}/${_data.InvDoc.urlToLastDocument}`, '_blank');
+                        if(typeof _data.project.businessSite != 'undefined') {
+                            window.open(`https://${_data.project.businessSite}/projects/${_data.InvDoc.projectId}/${_data.InvDoc.urlToLastDocument}`, '_blank');
+                        } else {
+                            window.open(`https://investir.one/projects/${_data.InvDoc.projectId}/${_data.InvDoc.urlToLastDocument}`, '_blank');
+                        }
                     }
                 });
     
