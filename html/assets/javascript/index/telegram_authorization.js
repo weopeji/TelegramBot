@@ -146,7 +146,7 @@
                             }
                             else {
                                 location.href = `/?user=${moreData.data.userId}&page=invester_data`;
-                            }
+                            };
                         };
                     })
                 },
