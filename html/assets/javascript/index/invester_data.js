@@ -220,6 +220,12 @@
                             </div>
                         </div>
                     </div>
+                    <div class="version2_creating_block_info_row_cheackbox">
+                        <label class="checkbox-custom-label" for="highload0">
+                            <input class="checkbox-custom" type="checkbox" name="highload0" id="highload0" checked/>
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
                     <div class="creating_page_input" style="width: 360px;">
                         <div class="creating_page_input_div" data="pay">
                             <span style="text-align: center">Оплатить</span> 
