@@ -141,7 +141,7 @@
                         }
                         else
                         {
-                            if(type == "location") {
+                            if(moreData.type == "location") {
                                 location.href = `https://${moreData.data.url}/?user=${moreData.data.userId}&page=invester_data`;
                             }
                             else {
