@@ -476,7 +476,7 @@ async function startInvestingMsg(msg)
     };
 
     if(typeof first_parse.phone == "undefined") {
-        var fat = await h.send_html(msg.from.id, `<strong>Перед использованием сервиса, оставьте контактные данные Телеграм</strong>\n\n<i>Нажимая кнопку подтвердить, вы соглашаетесь с офертой, политикой конфиденциальности и согласитесь на обработку персональных данных.</i>\n\n<i><a href="https://googl.com">Договор оферты</a>\n<a href="https://googl.com">Политика конфиденциальности</a>\n<a href="https://googl.com">Согласие на обработку персональных данных</a>\n</i>`, {
+        var fat = await h.send_html(msg.from.id, `<strong>Перед использованием сервиса investiR оставьте контактные данные Телеграм</strong>\n\n<i>Нажимая кнопку подтвердить, вы соглашаетесь с офертой, политикой конфиденциальности и согласитесь на обработку персональных данных.</i>\n\n<i><a href="https://googl.com">Договор оферты</a>\n<a href="https://googl.com">Политика конфиденциальности</a>\n<a href="https://googl.com">Согласие на обработку персональных данных</a>\n</i>`, {
             "resize_keyboard": true,
             "keyboard": [
                 [
