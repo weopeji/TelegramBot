@@ -770,18 +770,6 @@
 
             $('.version2_invester_data_backBlock').remove();
             $('.index_page_body_data').prepend(backBlock);
-
-            if(typeof _this.project.design_type != 'undefined')
-            {
-                if(_this.project.design_type == 'pp') {
-                    $('.logo_business').remove();
-                    $('.index_page_body_data').prepend(`
-                        <div class="logo_business">
-                            <img src="/html/assets/images/2.0.0/pp/logo_pp.png" alt="">
-                        </div>
-                    `);
-                };
-            };
         }
 
         async render_next(DT, InvPush) 
