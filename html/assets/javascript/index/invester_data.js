@@ -121,15 +121,15 @@
                 </div>
                 <div class="version2_invester_data_typeButtons">
                     <div class="version2_invester_data_typeButtons_type">
-                        <div class="version2_invester_data_typeButtons_type_button" data="UR">
+                        <!-- <div class="version2_invester_data_typeButtons_type_button" data="UR">
                             <span>Юридическое лицо</span>
-                        </div>
+                        </div> -->
                         <div class="version2_invester_data_typeButtons_type_button" data="FIZ">
                             <span>Физическое лицо</span>
                         </div>
-                        <div class="version2_invester_data_typeButtons_type_button version2_invester_data_typeButtons_type_button_last" data="IP">
+                        <!-- <div class="version2_invester_data_typeButtons_type_button version2_invester_data_typeButtons_type_button_last" data="IP">
                             <span>ИП</span>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="version2_invester_data_typeButtons_document">
                         <div class="version2_default_bkg row_default"></div>
