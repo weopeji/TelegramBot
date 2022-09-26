@@ -526,11 +526,13 @@
                                                 <div class="Attracted_headerInfoBlock_block_i">
                                                     <i class="fad fa-check"></i>
                                                 </div>
+                                                <span>Да</span>
                                             </div>
                                             <div class="Attracted_headerInfoBlock_block remove_block_tap">
                                                 <div class="Attracted_headerInfoBlock_block_i">
                                                     <i class="fad fa-times"></i>
                                                 </div>
+                                                <span>Нет</span>
                                             </div>
                                         </div>
                                     `);
