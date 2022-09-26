@@ -125,7 +125,7 @@
                             <span>Юридическое лицо</span>
                         </div> -->
                         <div class="version2_invester_data_typeButtons_type_button" data="FIZ">
-                            <span>Физическое лицо</span>
+                            <span>Продолжить как Физическое лицо</span>
                         </div>
                         <!-- <div class="version2_invester_data_typeButtons_type_button version2_invester_data_typeButtons_type_button_last" data="IP">
                             <span>ИП</span>
