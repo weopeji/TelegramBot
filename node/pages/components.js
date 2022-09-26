@@ -3510,7 +3510,7 @@ async function acceptProject(socket,data,callback)
                     ],
                     [
                         {
-                            text: "Подробнее",
+                            text: "🚀 Оплатить 🚀",
                             login_url: {
                                 'url': `https://investir.one/?page=telegram_authorization&type=more&userId=${data}`,
                                 'request_write_access': true,
