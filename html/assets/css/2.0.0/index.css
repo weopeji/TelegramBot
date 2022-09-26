@@ -2437,6 +2437,18 @@ img.preloader_row_img {
           align-items: center;
 }
 
+.creating_page_input_document_img_version2_creating_block_info_row_cheackbox {
+  margin-top: 15px;
+  top: 12px;
+}
+
+.creating_page_input_document_img_version2_creating_block_info_row_cheackbox a {
+  position: relative;
+  left: 20px;
+  top: -6px;
+  font-size: 22px;
+}
+
 @media (max-width: 1350px) {
   .index_page_body_header_user_textDecoration span {
     margin-left: 0;

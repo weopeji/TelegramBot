@@ -259,11 +259,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="version2_creating_block_info_row_cheackbox">
+                    <div class="version2_creating_block_info_row_cheackbox creating_page_input_document_img_version2_creating_block_info_row_cheackbox">
                         <label class="checkbox-custom-label" for="highload0">
                             <input class="checkbox-custom" type="checkbox" name="highload0" id="highload0" checked/>
                             <span class="checkmark"></span>
                         </label>
+                        <a>Принимаю условия договора</a>
                     </div>
                     <div class="creating_page_input" style="width: 360px;">
                         <div class="creating_page_input_div" data="pay">
