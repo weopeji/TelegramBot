@@ -41,7 +41,7 @@ async function videoInfo(msg)
 
     if(_User.type == "investor")
     {
-        buttonPush = "⬅️ Haзaд";
+        buttonPush = "⬅️ Назадᅠ";
     };
 
     var fat = await bot.sendMessage(msg.chat.id, 'ᅠ', {
