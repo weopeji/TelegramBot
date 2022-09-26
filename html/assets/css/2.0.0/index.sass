@@ -1697,7 +1697,7 @@ img.preloader_row_img
         height: 28px
 
         .checkbox-custom-label
-            display: block 
+            display: flex 
             position: relative 
             margin-bottom: 38px 
             cursor: pointer 
@@ -1706,6 +1706,9 @@ img.preloader_row_img
             -moz-user-select: none 
             -ms-user-select: none 
             user-select: none 
+            justify-content: center
+            align-items: center
+
             input 
                 position: absolute 
                 opacity: 0 
@@ -1737,7 +1740,6 @@ img.preloader_row_img
         .checkmark 
             position: absolute 
             top: 0 
-            left: 0 
             height: 25px 
             width: 25px 
             background-color: #eee 

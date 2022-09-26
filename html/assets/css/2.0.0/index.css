@@ -2280,7 +2280,9 @@ img.preloader_row_img {
 }
 
 .pp_project .version2_creating_block_info_row_cheackbox .checkbox-custom-label {
-  display: block;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   position: relative;
   margin-bottom: 38px;
   cursor: pointer;
@@ -2289,6 +2291,12 @@ img.preloader_row_img {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .pp_project .version2_creating_block_info_row_cheackbox .checkbox-custom-label input {
@@ -2329,7 +2337,6 @@ img.preloader_row_img {
 .pp_project .version2_creating_block_info_row_cheackbox .checkmark {
   position: absolute;
   top: 0;
-  left: 0;
   height: 25px;
   width: 25px;
   background-color: #eee;
