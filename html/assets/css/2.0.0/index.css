@@ -596,6 +596,7 @@
   width: calc(100% - 2px);
   padding: 10px 0;
   margin-right: 10px;
+  cursor: pointer;
 }
 
 .Attracted_headerInfoBlock_block .version2_default_bkg {
