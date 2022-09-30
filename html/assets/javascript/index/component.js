@@ -2901,6 +2901,10 @@
                 </div>
             `);
 
+            headerInfoBlock.find('.Attracted_headerInfoBlock_block_row_infoBlockHover_buttons').click(function() {
+                $('.Attracted_headerInfoBlock_block_row_infoBlockHover_row').toggleClass('show');
+            })
+
             headerInfoBlock.find(".Attracted_by_me_headerRefUrlsBlock_blocks_line_copy").click( function() {
                 var $tmp = $("<textarea>");
                 $("body").append($tmp);
