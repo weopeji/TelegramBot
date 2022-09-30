@@ -2934,7 +2934,8 @@
             `);
 
             moreGetButtons.find('span[data="get"]').click( function () {
-                location.href = "./?page=get_money_abstraction"
+                // location.href = "./?page=get_money_abstraction";
+                alert('Выплата возможна, при положительном балансе на выплату');
             });
 
             $('.index_page_body_data').append(headerInfoBlock);
