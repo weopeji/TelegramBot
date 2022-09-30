@@ -1297,6 +1297,7 @@ img.preloader_row_img {
   margin: 0 auto;
   padding: 5px 30px;
   font-size: 20px;
+  cursor: pointer;
 }
 
 .version2_preloaderDocumetBLock {
