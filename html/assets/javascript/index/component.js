@@ -2810,6 +2810,12 @@
 
         async renderHeader(_data) 
         {
+            var nuberOfInvestorsPush = "до " + Number(Number(Number(this.allAttracted.investors.length) / 10).toFixed(0)) + 1 * 10;
+
+            if(this.allAttracted.investors.length == 0) {
+                nuberOfInvestorsPush = "0";
+            }
+
             var headerInfoBlock = 
             $(`
                 <div class="Attracted_by_me_headerRefUrlsBlock">
@@ -2845,7 +2851,7 @@
                             </div>
                             <div class="Attracted_headerInfoBlock_block_text">
                                 <span>Мной привлечено инвесторов</span>
-                                <p>до ${Number(Number(Number(this.allAttracted.investors.length) / 10).toFixed(0)) + 1 * 10}</p>
+                                <p>${nuberOfInvestorsPush}</p>
                             </div>
                             <div class="Attracted_headerInfoBlock_block_row_infoBlockHover">
                                 <div class="Attracted_headerInfoBlock_block_row_infoBlockHover_buttons">
