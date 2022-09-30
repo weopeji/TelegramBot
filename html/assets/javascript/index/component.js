@@ -2845,7 +2845,7 @@
                             </div>
                             <div class="Attracted_headerInfoBlock_block_text">
                                 <span>Мной привлечено инвесторов</span>
-                                <p>${this.allAttracted.investors.length}</p>
+                                <p>до ${Number(Number(this.allAttracted.investors.length) / 10).toFixed(0) * 10}</p>
                             </div>
                             <div class="Attracted_headerInfoBlock_block_row_infoBlockHover">
                                 <div class="Attracted_headerInfoBlock_block_row_infoBlockHover_buttons">
