@@ -2847,6 +2847,17 @@
                                 <span>Мной привлечено инвесторов</span>
                                 <p>${this.allAttracted.investors.length}</p>
                             </div>
+                            <div class="Attracted_headerInfoBlock_block_row_infoBlockHover">
+                                <div class="Attracted_headerInfoBlock_block_row_infoBlockHover_buttons">
+                                    <i class="fal fa-info-circle"></i>
+                                </div>
+                                <div class="Attracted_headerInfoBlock_block_row_infoBlockHover_row">
+                                    <div class="Attracted_headerInfoBlock_block_row_infoBlockHover_row_row">
+                                        <div class="version2_default_bkg row_default"></div>
+                                        <span>Указывается промежуто привлеченных инвесторов для безопасности личных данных</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="Attracted_headerInfoBlock_block Attracted_headerInfoBlock_block_right">
