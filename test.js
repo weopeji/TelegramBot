@@ -207,3 +207,6 @@ settingBlock.find(".version2_settingBlock_header").append(`
     <bb_circule></bb_circule>
     <bb_circule></bb_circule>
 </bb>
+
+href="http://d91738w5.beget.tech/wp-content/themes/pro-remont-kvartir.ru/img/22969520.svg#icon"
+href="https://bash-remont.ru/wp-content/themes/pro-remont-kvartir.ru/img/22969520.svg#icon"
