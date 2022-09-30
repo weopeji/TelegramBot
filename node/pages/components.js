@@ -1973,7 +1973,7 @@ async function ALL_DATA(socket, data, callback)
         {
             var _blockData      =
             {
-                investers: await Payments.find({type: "investing", user: _User.user}),
+                investers: await User.find({member: _User.user}),
                 business: await Payments.find({type: "business", user: _User.user}),
             };
 
