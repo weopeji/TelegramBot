@@ -882,7 +882,11 @@
                                     `);
     
                                     headerPaysBlock.find('.Attracted_headerInfoBlock_info_data_alert_buttom_cheack').click( function() {
-                                        location.href = `https://investir.one/?page=put_file&action=investingNotFull&InvId=${_data.InvDoc._id}`;
+                                        if(typeof _data.project.businessSite != 'undefined') {
+                                            window.open(`https://${_data.project.businessSite}?page=put_file&action=investingNotFull&InvId=${_data.InvDoc._id}`);
+                                        } else {
+                                            window.open(`https://investir.one/?page=put_file&action=investingNotFull&InvId=${_data.InvDoc._id}`);
+                                        }
                                     });
     
                                     $('.headerPaysBlock').remove();
