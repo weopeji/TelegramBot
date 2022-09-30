@@ -2913,6 +2913,7 @@
 
         async renderInvesters(_pays) 
         {      
+            return;
             var settingBlock = $(`
                 <div class="settingBlock">
                     <div class="version2_settingBlock_header">
@@ -2985,6 +2986,7 @@
 
         async renderBussnes(_dataMore)
         {
+            return;
             var settingBlock = $(`
                 <div class="settingBlock">
                     <div class="version2_settingBlock_header">
@@ -3141,6 +3143,7 @@
 
         async renderAllPayments()
         {
+            return;
             var _WaitMoneys     = 0;
             var _AcceptMoneys   = 0;
             var allPayments     = await callApi({
@@ -3267,6 +3270,7 @@
 
         async renderAllPaymentsRequest() 
         {
+            return;
             var _data = await callApi({
                 methodName: "version2_renderAllPaymentsRequest",
                 data: global.allData.User._id,
