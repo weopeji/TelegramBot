@@ -617,7 +617,7 @@
                     $('.chat_block_chat_body_msgs').append(myBlock);
     
                     await callApi({
-                        methodName: "msgUP",
+                        methodName: "version2_owner_msgUP",
                         data: {
                             user: global.allData._id,
                             id: _GET("id"),
