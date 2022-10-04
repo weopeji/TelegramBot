@@ -127,6 +127,7 @@
                 });
 
                 namePushed  = "Администрация";
+                typePushed  = "";
             };
 
             var templateText = $(`
@@ -391,184 +392,188 @@
                         templateText.find('.chat_block_info_more_buttons').css('display', 'block');
                     };
                 };
-            }
 
-            templateText.find('.chat_block_chat_body_row_input span').click( async function() {
+                templateText.find('.chat_block_chat_body_row_input span').click( async function() {
         
-                function padTo2Digits(num) {
-                    return num.toString().padStart(2, '0');
-                }
-    
-                function convertMsToTime(milliseconds) 
-                {
-                    let seconds = Math.floor(milliseconds / 1000);
-                    let minutes = Math.floor(seconds / 60);
-                    let hours = Math.floor(minutes / 60);
-                    
-                    seconds = seconds % 60;
-                    minutes = minutes % 60;
-                    
-                    hours = hours % 24;
-                    
-                    return `${padTo2Digits(hours)}:${padTo2Digits(minutes)}:${padTo2Digits(
-                        seconds,
-                    )}`;
-                }
-    
-                var time = convertMsToTime(Number(new Date().getTime().toString()));
-
-                var myBlock = $(`
-                    <div class="chat_block_chat_body_msgs_line chat_block_chat_body_msgs_line_left">
-                        <div class="chat_block_chat_body_msgs_line_header">
-                            <span>Вы</span>
-                            <div class="chat_block_chat_body_msgs_line_header_time">
-                                <bb>${time}</bb>
-                            </div>
-                        </div>
-                        <div class="chat_block_chat_body_msgs_line_my">
-                            <span>${$('.chat_block_chat_body_row_input input').val()}</span>
-                        </div>
-                    </div>
-                `);
-
-                $('.chat_block_chat_body_msgs').append(myBlock);
-
-                await callApi({
-                    methodName: "msgUP",
-                    data: {
-                        user: global.allData._id,
-                        type: global.allData.User.type,
-                        id: _GET("id"),
-                        msg: $('.chat_block_chat_body_row_input input').val(),
-                    },
-                });
-
-                _this.scrollBlock();
-
-                $('.chat_block_chat_body_row_input input').val('');
-            });
-
-            if(getChat.msgs)
-            {
-                for(var msgBlock of getChat.msgs)
-                {
-                    var time = "";
-
                     function padTo2Digits(num) {
                         return num.toString().padStart(2, '0');
                     }
-
+        
                     function convertMsToTime(milliseconds) 
                     {
                         let seconds = Math.floor(milliseconds / 1000);
                         let minutes = Math.floor(seconds / 60);
                         let hours = Math.floor(minutes / 60);
-                      
+                        
                         seconds = seconds % 60;
                         minutes = minutes % 60;
-                      
+                        
                         hours = hours % 24;
-                      
+                        
                         return `${padTo2Digits(hours)}:${padTo2Digits(minutes)}:${padTo2Digits(
-                          seconds,
+                            seconds,
                         )}`;
                     }
-
-                    if(typeof msgBlock.time != "undefined")
-                    {
-                        time = convertMsToTime(Number(msgBlock.time.toString()))
-                    };
-
-                    if(msgBlock.type == global.allData.User.type)
-                    {
-                        templateText.find('.chat_block_chat_body_msgs').append(`
-                            <div class="chat_block_chat_body_msgs_line chat_block_chat_body_msgs_line_left">
-                                <div class="chat_block_chat_body_msgs_line_header">
-                                    <span>Вы</span>
-                                    <div class="chat_block_chat_body_msgs_line_header_time">
-                                        <bb>${time}</bb>
-                                    </div>
-                                </div>
-                                <div class="chat_block_chat_body_msgs_line_my">
-                                    <span>${msgBlock.text}</span>
+        
+                    var time = convertMsToTime(Number(new Date().getTime().toString()));
+    
+                    var myBlock = $(`
+                        <div class="chat_block_chat_body_msgs_line chat_block_chat_body_msgs_line_left">
+                            <div class="chat_block_chat_body_msgs_line_header">
+                                <span>Вы</span>
+                                <div class="chat_block_chat_body_msgs_line_header_time">
+                                    <bb>${time}</bb>
                                 </div>
                             </div>
-                        `);
-                    }
-                    else
-                    {
-                        templateText.find('.chat_block_chat_body_msgs').append(`
-                            <div class="chat_block_chat_body_msgs_line">
-                                <div class="chat_block_chat_body_msgs_line_header">
-                                    <span>${getChat.name}</span>
-                                    <div class="chat_block_chat_body_msgs_line_header_time">
-                                        <bb>${time}</bb>
-                                    </div>
-                                </div>
-                                <div class="chat_block_chat_body_msgs_line_my">
-                                    <span>${msgBlock.text}</span>
-                                </div>
+                            <div class="chat_block_chat_body_msgs_line_my">
+                                <span>${$('.chat_block_chat_body_row_input input').val()}</span>
                             </div>
-                        `);
-                    };
-                };
-            };
-
-            $('.index_page_body_data').append(templateText);
-
-            if(typeof getChat.Inv.not_correct_complaint != "undefined")
-            {
-                _this.removeButtons();
-            };
-
-            if(global.allData.User.type == "investor")
-            {
-                if(typeof getChat.Inv.request_remove != "undefined")
+                        </div>
+                    `);
+    
+                    $('.chat_block_chat_body_msgs').append(myBlock);
+    
+                    await callApi({
+                        methodName: "msgUP",
+                        data: {
+                            user: global.allData._id,
+                            type: global.allData.User.type,
+                            id: _GET("id"),
+                            msg: $('.chat_block_chat_body_row_input input').val(),
+                        },
+                    });
+    
+                    _this.scrollBlock();
+    
+                    $('.chat_block_chat_body_row_input input').val('');
+                });
+    
+                if(getChat.msgs)
                 {
-                    SoloAlert.confirm({
-                        title: "Подтверждение",
-                        body: "Бизнес отпрасил запрос на закрытие и перезаполнение инвестиции",
-                        theme: "dark",
-                        html: "",
-                        useTransparency: true,
-                    }).then(async (value) => 
+                    for(var msgBlock of getChat.msgs)
                     {
-                        if(value)
+                        var time = "";
+    
+                        function padTo2Digits(num) {
+                            return num.toString().padStart(2, '0');
+                        }
+    
+                        function convertMsToTime(milliseconds) 
                         {
-                            await callApi({
-                                methodName: "not_correct_complaint_again",
-                                data: _GET("id"),
-                            });
-
-                            _this.pushMsgOfUser(`Инвестиция была отменена инвестором`);
-                            _this.removeButtonsAll();
-
-                            SoloAlert.alert({
-                                title:"Успешно",
-                                body:"",
-                                icon: "success"
-                            });
+                            let seconds = Math.floor(milliseconds / 1000);
+                            let minutes = Math.floor(seconds / 60);
+                            let hours = Math.floor(minutes / 60);
+                          
+                            seconds = seconds % 60;
+                            minutes = minutes % 60;
+                          
+                            hours = hours % 24;
+                          
+                            return `${padTo2Digits(hours)}:${padTo2Digits(minutes)}:${padTo2Digits(
+                              seconds,
+                            )}`;
+                        }
+    
+                        if(typeof msgBlock.time != "undefined")
+                        {
+                            time = convertMsToTime(Number(msgBlock.time.toString()))
+                        };
+    
+                        if(msgBlock.type == global.allData.User.type)
+                        {
+                            templateText.find('.chat_block_chat_body_msgs').append(`
+                                <div class="chat_block_chat_body_msgs_line chat_block_chat_body_msgs_line_left">
+                                    <div class="chat_block_chat_body_msgs_line_header">
+                                        <span>Вы</span>
+                                        <div class="chat_block_chat_body_msgs_line_header_time">
+                                            <bb>${time}</bb>
+                                        </div>
+                                    </div>
+                                    <div class="chat_block_chat_body_msgs_line_my">
+                                        <span>${msgBlock.text}</span>
+                                    </div>
+                                </div>
+                            `);
                         }
                         else
                         {
-                            await callApi({
-                                methodName: "requestInvestingOfRemoveCLOSE",
-                                data: _GET("id"),
-                            });
-
-                            _this.pushMsgOfUser(`Предложение было отклонено инвестором`);
-                            _this.removeButtonsAll();
-
-                            SoloAlert.alert({
-                                title:"Успешно",
-                                body:"",
-                                icon: "success"
-                            });
-                        }
-                    })
+                            templateText.find('.chat_block_chat_body_msgs').append(`
+                                <div class="chat_block_chat_body_msgs_line">
+                                    <div class="chat_block_chat_body_msgs_line_header">
+                                        <span>${getChat.name}</span>
+                                        <div class="chat_block_chat_body_msgs_line_header_time">
+                                            <bb>${time}</bb>
+                                        </div>
+                                    </div>
+                                    <div class="chat_block_chat_body_msgs_line_my">
+                                        <span>${msgBlock.text}</span>
+                                    </div>
+                                </div>
+                            `);
+                        };
+                    };
                 };
-            };
+    
+                $('.index_page_body_data').append(templateText);
+    
+                if(typeof getChat.Inv.not_correct_complaint != "undefined")
+                {
+                    _this.removeButtons();
+                };
+    
+                if(global.allData.User.type == "investor")
+                {
+                    if(typeof getChat.Inv.request_remove != "undefined")
+                    {
+                        SoloAlert.confirm({
+                            title: "Подтверждение",
+                            body: "Бизнес отпрасил запрос на закрытие и перезаполнение инвестиции",
+                            theme: "dark",
+                            html: "",
+                            useTransparency: true,
+                        }).then(async (value) => 
+                        {
+                            if(value)
+                            {
+                                await callApi({
+                                    methodName: "not_correct_complaint_again",
+                                    data: _GET("id"),
+                                });
+    
+                                _this.pushMsgOfUser(`Инвестиция была отменена инвестором`);
+                                _this.removeButtonsAll();
+    
+                                SoloAlert.alert({
+                                    title:"Успешно",
+                                    body:"",
+                                    icon: "success"
+                                });
+                            }
+                            else
+                            {
+                                await callApi({
+                                    methodName: "requestInvestingOfRemoveCLOSE",
+                                    data: _GET("id"),
+                                });
+    
+                                _this.pushMsgOfUser(`Предложение было отклонено инвестором`);
+                                _this.removeButtonsAll();
+    
+                                SoloAlert.alert({
+                                    title:"Успешно",
+                                    body:"",
+                                    icon: "success"
+                                });
+                            }
+                        })
+                    };
+                };    
+            }
+            else
+            {
 
+            };
+            
             imSocket.on("request_mail", function(data) {
                 if(_GET("id"))
                 {
