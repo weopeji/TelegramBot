@@ -891,7 +891,11 @@
                 } 
                 else
                 {
-                    this.renderChat();
+                    if(ownerBlock) {
+                        this.renderType();
+                    }else {
+                        this.renderChat();
+                    }
                 };
             }
             else
