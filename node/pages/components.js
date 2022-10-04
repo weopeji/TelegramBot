@@ -3862,19 +3862,6 @@ async function setProject(socket,data,callback)
 
     var _Project = await Project.create(_DataProject);
 
-    await wrench.copyDirSyncRecursive(user_path, `/var/www/projects/${_Project._id}`);
-
-    await fs.readdir(user_path, (err, files) => {
-        if (err) throw err;
-        for (const file of files) {
-            fs.unlink(path.join(user_path, file), err => {
-                if (err) throw err;
-            });
-        }
-    }); 
-
-    await h.savePuppeter(_Project._id); 
-
     // ======================================================================================
 
     async function alertErrorOfParcing(data)
@@ -3887,6 +3874,26 @@ async function setProject(socket,data,callback)
 
         return;
     }
+
+    await wrench.copyDirSyncRecursive(user_path, `/var/www/projects/${_Project._id}`);
+
+    try {
+        await fs.readdir(user_path, async (err, files) => {
+            if (err) {
+                await alertErrorOfParcing("Папка не создалась");
+                return;
+            }
+            for (const file of files) {
+                fs.unlink(path.join(user_path, file), err => {
+                    if (err) throw err;
+                });
+            }
+        }); 
+    } catch(e) {
+        await alertErrorOfParcing("Папка не создалась");
+    };
+    
+    await h.savePuppeter(_Project._id); 
 
     try
     {

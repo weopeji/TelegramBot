@@ -40,6 +40,7 @@ const itemOfSite                    = mongoose.model('itemOfSite');
 const teletube_video                = mongoose.model('teletube_video');
 const requestPay                    = mongoose.model('requestPay');
 const secondBotUser                 = mongoose.model('secondBotUser');
+const MsgHelp                       = mongoose.model('MsgHelp');
 
 var bot                             = null;
 var helper_functions                = null;

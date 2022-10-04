@@ -875,12 +875,19 @@
         {
             var _idBlock    = _GET("id");
             var _authData   = _GET("auth_date");
+            var ownerBlock  = _GET("owner");
 
             if(_idBlock)
             {
                 if(_authData)
                 {
-                    this.renderType();
+                    if(ownerBlock) {
+                        location.href = "./?owner=true";
+                    }
+                    else
+                    {
+                        this.renderType();
+                    }
                 } 
                 else
                 {

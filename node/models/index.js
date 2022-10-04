@@ -14,3 +14,4 @@ require('./itemOfSite');
 require('./teletube_video');
 require('./requestPay');
 require('./secondBotUser');
+require('./msg_help');
