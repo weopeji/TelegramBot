@@ -54,6 +54,7 @@ function privateInit(initPlagins)
     teletube_video  = initPlagins.teletube_video;
     io              = initPlagins.io;
     requestPay      = initPlagins.requestPay;
+    MsgHelp         = initPlagins.MsgHelp;
 };
 
 var privat_index_page = function(socket,data,callback) {
@@ -90,6 +91,7 @@ var action_linker =
     "version2_Attracted_pay": version2_Attracted_pay,
     "version2_acceptEmail": version2_acceptEmail,
     "version2_renderAllPaymentsRequest": version2_renderAllPaymentsRequest,
+    "version2_owner_getChatsOfId": version2_owner_getChatsOfId,
 
     // teletube
     "teletube_add": teletube_add,
@@ -231,6 +233,26 @@ var action_linker =
     "getProjectForInvesterPageAllInvs": getProjectForInvesterPageAllInvs,
     "getProjectForInvesterPageByIdInvDoc": getProjectForInvesterPageByIdInvDoc,
     "accept_confirmationData": accept_confirmationData,
+};
+
+async function version2_owner_getChatsOfId(socket, data, callback)
+{
+    var _User       = await User.findOne({_id: data.user});
+    var _MsgHelp    = await MsgHelp.findOne({user: _User.user});
+    var returnBlock = 
+    {
+        name: null,
+        type: null,
+        photo: null,
+        msgs: null,
+    };
+
+    if(_MsgHelp)
+    {
+        returnBlock.msgs = _MsgHelp.msgs;
+    };
+
+    callback(returnBlock);
 };
 
 async function version2_renderAllPaymentsRequest(socket, data, callback)

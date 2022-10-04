@@ -116,6 +116,17 @@
                 photoPushed = getChat.photo;
                 namePushed  = getChat.name;
                 typePushed  = getChat.type;
+            }
+            else
+            {
+                getChat = await callApi({
+                    methodName: "version2_owner_getChatsOfId",
+                    data: {
+                        user: global.allData._id,
+                    },
+                });
+
+                namePushed  = "Администрация";
             };
 
             var templateText = $(`
