@@ -263,7 +263,7 @@ async function version2_owner_msgUP(socket,data,callback)
 
     _array.push(dataMail);
 
-    callback(await MsgDB.findOneAndUpdate({_id: _MsgDB._id,},{msgs: _array}));
+    callback(await MsgHelp.findOneAndUpdate({_id: _MsgHelp._id,},{msgs: _array}));
 };
 
 async function version2_owner_getChatsOfId(socket, data, callback)
