@@ -891,16 +891,17 @@
                 } 
                 else
                 {
-                    if(ownerBlock) {
-                        this.renderType();
-                    }else {
-                        this.renderChat();
-                    }
+                    this.renderChat();
                 };
             }
             else
             {
-                this.renderType();
+                if(ownerBlock) {
+                    this.renderChat();
+                }
+                else {
+                    this.renderType();
+                }
             };
         };
     };
