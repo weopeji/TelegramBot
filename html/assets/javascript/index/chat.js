@@ -187,198 +187,200 @@
                 $('.chat_block').toggleClass('selected');
             })
 
-            if(getChat.Inv.status == "not_correct")
-            {
-                if(getChat.Inv.not_correct.dataType == "money")
+            if(!_GET("owner")) {
+                if(getChat.Inv.status == "not_correct")
                 {
-                    var buttonsOfNot_correct = 
+                    if(getChat.Inv.not_correct.dataType == "money")
                     {
-                        "investor": function() 
+                        var buttonsOfNot_correct = 
                         {
-                            var actionBlock = $(`
-                                <div class="chat_block_info_more_buttons_line_row">
-                                    <div class="chat_block_info_more_buttons_line" data="complaint">
-                                        <span>Подать жалобу</span>
-                                    </div>
-                                    <div class="chat_block_info_more_buttons_line" data="cancel">
-                                        <span>Отменить и заполнить заного</span>
-                                    </div>
-                                </div>
-                            `);
-
-                            actionBlock.find('.chat_block_info_more_buttons_line[data="complaint"]').click( function() 
+                            "investor": function() 
                             {
-                                SoloAlert.confirm({
-                                    title: "Подтверждение",
-                                    body: "Вы уверены, что хотите отправить жалобу?",
-                                    theme: "dark",
-                                    html: "",
-                                    useTransparency: true,
-                                }).then(async (value) => 
-                                {
-                                    if(value)
-                                    {
-                                        await callApi({
-                                            methodName: "not_correct_complaint",
-                                            data: _GET("id"),
-                                        });
-
-                                        _this.pushMsgOfUser(`Инвестор подал жалобу по этому проекту, ожидайте решения модерации`);
-                                        _this.removeButtons();
-
-                                        SoloAlert.alert({
-                                            title:"Успешно",
-                                            body:"",
-                                            icon: "success"
-                                        });
-                                    };
-                                })
-                            });
-
-                            actionBlock.find('.chat_block_info_more_buttons_line[data="cancel"]').click( function() 
-                            {
-                                SoloAlert.confirm({
-                                    title: "Подтверждение",
-                                    body: "Вы уверены, что хотите отменить инвестицию?",
-                                    theme: "dark",
-                                    html: "",
-                                    useTransparency: true,
-                                }).then(async (value) => 
-                                {
-                                    if(value)
-                                    {
-                                        var InvDocId = await callApi({
-                                            methodName: "not_correct_complaint_again",
-                                            data: _GET("id"),
-                                        });
-
-                                        _this.pushMsgOfUser(`Инвестиция была отменена инвестором`);
-                                        _this.removeButtonsAll();
-
-                                        SoloAlert.alert({
-                                            title:"Успешно",
-                                            body:"",
-                                            icon: "success"
-                                        }).then( function() {
-                                            location.href = `https://investir.one/?user=${global.allData._id}&page=invester_data&InvRedacting=${InvDocId}`;
-                                        })
-                                    };
-                                })
-                            })
-
-                            return actionBlock;
-                        },
-                        "business": function() 
-                        {
-                            var actionBlock = $(`
-                                <div class="chat_block_info_more_buttons_line_row">
-                                    <div class="chat_block_info_more_buttons_line" data="accept_investing">
-                                        <span>Принять инвестицию</span>
+                                var actionBlock = $(`
+                                    <div class="chat_block_info_more_buttons_line_row">
+                                        <div class="chat_block_info_more_buttons_line" data="complaint">
+                                            <span>Подать жалобу</span>
+                                        </div>
+                                        <div class="chat_block_info_more_buttons_line" data="cancel">
+                                            <span>Отменить и заполнить заного</span>
+                                        </div>
                                     </div>
-                                    <div class="chat_block_info_more_buttons_line" data="request_again">
-                                        <span>Оформить инвестицию повторно</span>
-                                    </div>
-                                    <div class="chat_block_info_more_buttons_line" data="complaint">
-                                        <span>Подать жалобу</span>
-                                    </div>
-                                </div>
-                            `);
-
-                            actionBlock.find('.chat_block_info_more_buttons_line[data="complaint"]').click( function() 
-                            {
-                                SoloAlert.confirm({
-                                    title: "Подтверждение",
-                                    body: "Вы уверены, что хотите отправить жалобу?",
-                                    theme: "dark",
-                                    html: "",
-                                    useTransparency: true,
-                                }).then(async (value) => 
+                                `);
+    
+                                actionBlock.find('.chat_block_info_more_buttons_line[data="complaint"]').click( function() 
                                 {
-                                    if(value)
+                                    SoloAlert.confirm({
+                                        title: "Подтверждение",
+                                        body: "Вы уверены, что хотите отправить жалобу?",
+                                        theme: "dark",
+                                        html: "",
+                                        useTransparency: true,
+                                    }).then(async (value) => 
                                     {
-                                        await callApi({
-                                            methodName: "not_correct_complaint",
-                                            data: _GET("id"),
-                                        });
-
-                                        _this.pushMsgOfUser(`Бизнес подал жалобу по этому проекту, ожидайте решения модерации`);
-                                        _this.removeButtons();
-
-                                        SoloAlert.alert({
-                                            title:"Успешно",
-                                            body:"",
-                                            icon: "success"
-                                        });
-                                    };
-                                })
-                            });
-
-                            actionBlock.find('.chat_block_info_more_buttons_line[data="accept_investing"]').click( function() 
-                            {
-                                SoloAlert.confirm({
-                                    title: "Подтверждение",
-                                    body: "Вы уверены, что хотите принять инвестицию?",
-                                    theme: "dark",
-                                    html: "",
-                                    useTransparency: true,
-                                }).then(async (value) => 
-                                {
-                                    if(value)
-                                    {
-                                        await callApi({
-                                            methodName: "version2_acceptInvOfComplaintBusinnes",
-                                            data: _GET("id"),
-                                        });
-
-                                        _this.pushMsgOfUser(`Бизнес принял инвестицию`);
-                                        _this.removeButtonsAll();
-
-                                        SoloAlert.alert({
-                                            title:"Успешно",
-                                            body:"",
-                                            icon: "success"
-                                        });
-                                    };
+                                        if(value)
+                                        {
+                                            await callApi({
+                                                methodName: "not_correct_complaint",
+                                                data: _GET("id"),
+                                            });
+    
+                                            _this.pushMsgOfUser(`Инвестор подал жалобу по этому проекту, ожидайте решения модерации`);
+                                            _this.removeButtons();
+    
+                                            SoloAlert.alert({
+                                                title:"Успешно",
+                                                body:"",
+                                                icon: "success"
+                                            });
+                                        };
+                                    })
                                 });
-                            });
-
-                            actionBlock.find('.chat_block_info_more_buttons_line[data="request_again"]').click( function() 
-                            {
-                                SoloAlert.confirm({
-                                    title: "Подтверждение",
-                                    body: "Вы уверены, что хотите отправить запрос на оформление инвестиции повторно?",
-                                    theme: "dark",
-                                    html: "",
-                                    useTransparency: true,
-                                }).then(async (value) => 
+    
+                                actionBlock.find('.chat_block_info_more_buttons_line[data="cancel"]').click( function() 
                                 {
-                                    if(value)
+                                    SoloAlert.confirm({
+                                        title: "Подтверждение",
+                                        body: "Вы уверены, что хотите отменить инвестицию?",
+                                        theme: "dark",
+                                        html: "",
+                                        useTransparency: true,
+                                    }).then(async (value) => 
                                     {
-                                        await callApi({
-                                            methodName: "requestInvestingOfRemove",
-                                            data: _GET("id"),
-                                        });
-
-                                        _this.pushMsgOfUser(`Бизнес отправил запрос на перезаполнение инвестиции`);
-                                        _this.removeButtonsAll();
-
-                                        SoloAlert.alert({
-                                            title:"Успешно",
-                                            body:"",
-                                            icon: "success"
-                                        });
-                                    };
+                                        if(value)
+                                        {
+                                            var InvDocId = await callApi({
+                                                methodName: "not_correct_complaint_again",
+                                                data: _GET("id"),
+                                            });
+    
+                                            _this.pushMsgOfUser(`Инвестиция была отменена инвестором`);
+                                            _this.removeButtonsAll();
+    
+                                            SoloAlert.alert({
+                                                title:"Успешно",
+                                                body:"",
+                                                icon: "success"
+                                            }).then( function() {
+                                                location.href = `https://investir.one/?user=${global.allData._id}&page=invester_data&InvRedacting=${InvDocId}`;
+                                            })
+                                        };
+                                    })
                                 })
-                            })
-
-                            return actionBlock;
-                        },
+    
+                                return actionBlock;
+                            },
+                            "business": function() 
+                            {
+                                var actionBlock = $(`
+                                    <div class="chat_block_info_more_buttons_line_row">
+                                        <div class="chat_block_info_more_buttons_line" data="accept_investing">
+                                            <span>Принять инвестицию</span>
+                                        </div>
+                                        <div class="chat_block_info_more_buttons_line" data="request_again">
+                                            <span>Оформить инвестицию повторно</span>
+                                        </div>
+                                        <div class="chat_block_info_more_buttons_line" data="complaint">
+                                            <span>Подать жалобу</span>
+                                        </div>
+                                    </div>
+                                `);
+    
+                                actionBlock.find('.chat_block_info_more_buttons_line[data="complaint"]').click( function() 
+                                {
+                                    SoloAlert.confirm({
+                                        title: "Подтверждение",
+                                        body: "Вы уверены, что хотите отправить жалобу?",
+                                        theme: "dark",
+                                        html: "",
+                                        useTransparency: true,
+                                    }).then(async (value) => 
+                                    {
+                                        if(value)
+                                        {
+                                            await callApi({
+                                                methodName: "not_correct_complaint",
+                                                data: _GET("id"),
+                                            });
+    
+                                            _this.pushMsgOfUser(`Бизнес подал жалобу по этому проекту, ожидайте решения модерации`);
+                                            _this.removeButtons();
+    
+                                            SoloAlert.alert({
+                                                title:"Успешно",
+                                                body:"",
+                                                icon: "success"
+                                            });
+                                        };
+                                    })
+                                });
+    
+                                actionBlock.find('.chat_block_info_more_buttons_line[data="accept_investing"]').click( function() 
+                                {
+                                    SoloAlert.confirm({
+                                        title: "Подтверждение",
+                                        body: "Вы уверены, что хотите принять инвестицию?",
+                                        theme: "dark",
+                                        html: "",
+                                        useTransparency: true,
+                                    }).then(async (value) => 
+                                    {
+                                        if(value)
+                                        {
+                                            await callApi({
+                                                methodName: "version2_acceptInvOfComplaintBusinnes",
+                                                data: _GET("id"),
+                                            });
+    
+                                            _this.pushMsgOfUser(`Бизнес принял инвестицию`);
+                                            _this.removeButtonsAll();
+    
+                                            SoloAlert.alert({
+                                                title:"Успешно",
+                                                body:"",
+                                                icon: "success"
+                                            });
+                                        };
+                                    });
+                                });
+    
+                                actionBlock.find('.chat_block_info_more_buttons_line[data="request_again"]').click( function() 
+                                {
+                                    SoloAlert.confirm({
+                                        title: "Подтверждение",
+                                        body: "Вы уверены, что хотите отправить запрос на оформление инвестиции повторно?",
+                                        theme: "dark",
+                                        html: "",
+                                        useTransparency: true,
+                                    }).then(async (value) => 
+                                    {
+                                        if(value)
+                                        {
+                                            await callApi({
+                                                methodName: "requestInvestingOfRemove",
+                                                data: _GET("id"),
+                                            });
+    
+                                            _this.pushMsgOfUser(`Бизнес отправил запрос на перезаполнение инвестиции`);
+                                            _this.removeButtonsAll();
+    
+                                            SoloAlert.alert({
+                                                title:"Успешно",
+                                                body:"",
+                                                icon: "success"
+                                            });
+                                        };
+                                    })
+                                })
+    
+                                return actionBlock;
+                            },
+                        };
+    
+                        templateText.find('.chat_block_info_more_buttons').append(buttonsOfNot_correct[global.allData.User.type]());
+                        templateText.find('.chat_block_info_more_buttons').css('display', 'block');
                     };
-
-                    templateText.find('.chat_block_info_more_buttons').append(buttonsOfNot_correct[global.allData.User.type]());
-                    templateText.find('.chat_block_info_more_buttons').css('display', 'block');
                 };
-            };
+            }
 
             templateText.find('.chat_block_chat_body_row_input span').click( async function() {
         
