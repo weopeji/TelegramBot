@@ -99,13 +99,17 @@
         async renderChat()
         {
             var _this   = this;
-            var getChat = await callApi({
-                methodName: "getChatsOfId",
-                data: {
-                    user: global.allData._id,
-                    id: _GET("id")
-                },
-            });
+            var getChat = null;
+
+            if(!_GET("owner")) {
+                await callApi({
+                    methodName: "getChatsOfId",
+                    data: {
+                        user: global.allData._id,
+                        id: _GET("id")
+                    },
+                });
+            }
 
             var templateText = $(`
                 <div class="chat_block">
