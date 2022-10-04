@@ -571,7 +571,7 @@
             }
             else
             {
-
+                $('.index_page_body_data').append(templateText);
             };
             
             imSocket.on("request_mail", function(data) {
