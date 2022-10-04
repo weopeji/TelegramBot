@@ -126,7 +126,7 @@
                     },
                 });
 
-                namePushed  = "Администрация";
+                namePushed  = "Техническая поддержка";
                 typePushed  = "";
             };
 
@@ -197,7 +197,27 @@
 
             templateText.find('.chat_block_chat_header bb').click( function() {
                 $('.chat_block').toggleClass('selected');
-            })
+            });
+
+            function padTo2Digits(num) {
+                return num.toString().padStart(2, '0');
+            }
+
+            function convertMsToTime(milliseconds) 
+            {
+                let seconds = Math.floor(milliseconds / 1000);
+                let minutes = Math.floor(seconds / 60);
+                let hours = Math.floor(minutes / 60);
+                
+                seconds = seconds % 60;
+                minutes = minutes % 60;
+                
+                hours = hours % 24;
+                
+                return `${padTo2Digits(hours)}:${padTo2Digits(minutes)}:${padTo2Digits(
+                    seconds,
+                )}`;
+            }
 
             if(!_GET("owner")) {
                 if(getChat.Inv.status == "not_correct")
@@ -394,27 +414,6 @@
                 };
 
                 templateText.find('.chat_block_chat_body_row_input span').click( async function() {
-        
-                    function padTo2Digits(num) {
-                        return num.toString().padStart(2, '0');
-                    }
-        
-                    function convertMsToTime(milliseconds) 
-                    {
-                        let seconds = Math.floor(milliseconds / 1000);
-                        let minutes = Math.floor(seconds / 60);
-                        let hours = Math.floor(minutes / 60);
-                        
-                        seconds = seconds % 60;
-                        minutes = minutes % 60;
-                        
-                        hours = hours % 24;
-                        
-                        return `${padTo2Digits(hours)}:${padTo2Digits(minutes)}:${padTo2Digits(
-                            seconds,
-                        )}`;
-                    }
-        
                     var time = convertMsToTime(Number(new Date().getTime().toString()));
     
                     var myBlock = $(`
@@ -453,26 +452,6 @@
                     for(var msgBlock of getChat.msgs)
                     {
                         var time = "";
-    
-                        function padTo2Digits(num) {
-                            return num.toString().padStart(2, '0');
-                        }
-    
-                        function convertMsToTime(milliseconds) 
-                        {
-                            let seconds = Math.floor(milliseconds / 1000);
-                            let minutes = Math.floor(seconds / 60);
-                            let hours = Math.floor(minutes / 60);
-                          
-                            seconds = seconds % 60;
-                            minutes = minutes % 60;
-                          
-                            hours = hours % 24;
-                          
-                            return `${padTo2Digits(hours)}:${padTo2Digits(minutes)}:${padTo2Digits(
-                              seconds,
-                            )}`;
-                        }
     
                         if(typeof msgBlock.time != "undefined")
                         {
@@ -571,6 +550,41 @@
             }
             else
             {
+                templateText.find('.chat_block_chat_body_row_input span').click( async function() 
+                {
+                    var time = convertMsToTime(Number(new Date().getTime().toString()));
+    
+                    var myBlock = $(`
+                        <div class="chat_block_chat_body_msgs_line chat_block_chat_body_msgs_line_left">
+                            <div class="chat_block_chat_body_msgs_line_header">
+                                <span>Вы</span>
+                                <div class="chat_block_chat_body_msgs_line_header_time">
+                                    <bb>${time}</bb>
+                                </div>
+                            </div>
+                            <div class="chat_block_chat_body_msgs_line_my">
+                                <span>${$('.chat_block_chat_body_row_input input').val()}</span>
+                            </div>
+                        </div>
+                    `);
+    
+                    $('.chat_block_chat_body_msgs').append(myBlock);
+    
+                    // await callApi({
+                    //     methodName: "msgUP",
+                    //     data: {
+                    //         user: global.allData._id,
+                    //         type: global.allData.User.type,
+                    //         id: _GET("id"),
+                    //         msg: $('.chat_block_chat_body_row_input input').val(),
+                    //     },
+                    // });
+    
+                    _this.scrollBlock();
+    
+                    $('.chat_block_chat_body_row_input input').val('');
+                });
+
                 $('.index_page_body_data').append(templateText);
             };
             
