@@ -253,7 +253,7 @@ async function version2_owner_msgUP(socket,data,callback)
     else
     {
         _array = _MsgHelp.msgs;
-    }
+    };
 
     var dataMail = {
         text: data.msg,

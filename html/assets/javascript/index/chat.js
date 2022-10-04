@@ -550,6 +550,52 @@
             }
             else
             {
+                if(getChat.msgs)
+                {
+                    for(var msgBlock of getChat.msgs)
+                    {
+                        var time = "";
+    
+                        if(typeof msgBlock.time != "undefined")
+                        {
+                            time = convertMsToTime(Number(msgBlock.time.toString()))
+                        };
+    
+                        if(msgBlock.type == "user")
+                        {
+                            templateText.find('.chat_block_chat_body_msgs').append(`
+                                <div class="chat_block_chat_body_msgs_line chat_block_chat_body_msgs_line_left">
+                                    <div class="chat_block_chat_body_msgs_line_header">
+                                        <span>Вы</span>
+                                        <div class="chat_block_chat_body_msgs_line_header_time">
+                                            <bb>${time}</bb>
+                                        </div>
+                                    </div>
+                                    <div class="chat_block_chat_body_msgs_line_my">
+                                        <span>${msgBlock.text}</span>
+                                    </div>
+                                </div>
+                            `);
+                        }
+                        else
+                        {
+                            templateText.find('.chat_block_chat_body_msgs').append(`
+                                <div class="chat_block_chat_body_msgs_line">
+                                    <div class="chat_block_chat_body_msgs_line_header">
+                                        <span>Администрация</span>
+                                        <div class="chat_block_chat_body_msgs_line_header_time">
+                                            <bb>${time}</bb>
+                                        </div>
+                                    </div>
+                                    <div class="chat_block_chat_body_msgs_line_my">
+                                        <span>${msgBlock.text}</span>
+                                    </div>
+                                </div>
+                            `);
+                        };
+                    };
+                };
+
                 templateText.find('.chat_block_chat_body_row_input span').click( async function() 
                 {
                     var time = convertMsToTime(Number(new Date().getTime().toString()));
