@@ -92,6 +92,7 @@ var action_linker =
     "version2_acceptEmail": version2_acceptEmail,
     "version2_renderAllPaymentsRequest": version2_renderAllPaymentsRequest,
     "version2_owner_getChatsOfId": version2_owner_getChatsOfId,
+    "version2_owner_msgUP": version2_owner_msgUP,
 
     // teletube
     "teletube_add": teletube_add,
@@ -233,6 +234,36 @@ var action_linker =
     "getProjectForInvesterPageAllInvs": getProjectForInvesterPageAllInvs,
     "getProjectForInvesterPageByIdInvDoc": getProjectForInvesterPageByIdInvDoc,
     "accept_confirmationData": accept_confirmationData,
+};
+
+async function version2_owner_msgUP(socket,data,callback)
+{
+    var _User       = await User.findOne({_id: data.user});
+    var _MsgHelp    = await MsgHelp.findOne({user: _User.user});
+    var _array      = [];
+
+    if(!_MsgHelp)
+    {
+        _MsgHelp = await MsgHelp.create(
+        {
+            user: _User.user,
+            msgs: [],
+        });
+    } 
+    else
+    {
+        _array = _MsgHelp.msgs;
+    }
+
+    var dataMail = {
+        text: data.msg,
+        type: "user",
+        time: new Date().getTime().toString(),
+    }
+
+    _array.push(dataMail);
+
+    callback(await MsgDB.findOneAndUpdate({_id: _MsgDB._id,},{msgs: _array}));
 };
 
 async function version2_owner_getChatsOfId(socket, data, callback)

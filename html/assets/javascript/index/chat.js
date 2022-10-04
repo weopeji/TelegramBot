@@ -570,15 +570,14 @@
     
                     $('.chat_block_chat_body_msgs').append(myBlock);
     
-                    // await callApi({
-                    //     methodName: "msgUP",
-                    //     data: {
-                    //         user: global.allData._id,
-                    //         type: global.allData.User.type,
-                    //         id: _GET("id"),
-                    //         msg: $('.chat_block_chat_body_row_input input').val(),
-                    //     },
-                    // });
+                    await callApi({
+                        methodName: "msgUP",
+                        data: {
+                            user: global.allData._id,
+                            id: _GET("id"),
+                            msg: $('.chat_block_chat_body_row_input input').val(),
+                        },
+                    });
     
                     _this.scrollBlock();
     
