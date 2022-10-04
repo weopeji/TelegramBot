@@ -100,16 +100,23 @@
         {
             var _this   = this;
             var getChat = null;
+            var photoPushed = null;
+            var namePushed  = null;
+            var typePushed  = null;
 
             if(!_GET("owner")) {
-                await callApi({
+                getChat = await callApi({
                     methodName: "getChatsOfId",
                     data: {
                         user: global.allData._id,
                         id: _GET("id")
                     },
                 });
-            }
+
+                photoPushed = getChat.photo;
+                namePushed  = getChat.name;
+                typePushed  = getChat.type;
+            };
 
             var templateText = $(`
                 <div class="chat_block">
@@ -137,10 +144,10 @@
                     <div class="chat_block_info">
                         <div class="version2_default_bkg row_default"></div>
                         <div class="info_active_block_photo">
-                            <img src="${getChat.photo}" alt="">
+                            <img src="${photoPushed}" alt="">
                         </div>
-                        <span>${getChat.name}</span>
-                        <p>${getChat.type}</p>
+                        <span>${namePushed}</span>
+                        <p>${typePushed}</p>
 
                         <div class="chat_block_info_more_buttons">
                             
