@@ -33,7 +33,7 @@
                     <div class="version2_default_bkg row_default"></div>
                     <div class="settingBlock_header">
                         <div class="settingBlock_header_line">
-                            <span>Номер проекта</span>
+                            <span>№ проекта</span>
                             <span>Название проекта</span>
                             <span>Инвестор</span>
                             <span>Сумма Инвестиции</span>
@@ -99,7 +99,7 @@
                     <div class="version2_default_bkg row_default"></div>
                     <div class="settingBlock_header">
                         <div class="settingBlock_header_line">
-                            <span>Номер проекта</span>
+                            <span>№ проекта</span>
                             <span>Название проекта</span>
                             <span>Инвестор</span>
                             <span>Сумма Инвестиции</span>
@@ -116,7 +116,7 @@
             `);
 
             templateText.css({
-                "margin-top": "40px",
+                "margin-top": "65px",
             });
 
             commissionsData.accept.forEach( function (commissionsElement, i) 
