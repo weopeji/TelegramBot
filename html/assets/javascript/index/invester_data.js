@@ -60,6 +60,10 @@
                 "display": "none",
             });
 
+            $('.index_page_body_header_alertNewBlock').css({
+                "display": "none",
+            });
+
             $('.index_page_body_header_user').css('display', 'none');
 
             if(typeof this.project.design_type != 'undefined')
@@ -138,7 +142,32 @@
                 </div>
             `);
 
-            var _this = this;
+            ActionBlock.find('.version2_invester_data_typeButtons_document').click( function () {
+                if(window.screen.width < 1300)
+                {
+                    var documnetTemplate = $(`
+                        <div class="version2_invester_data_mobile_documents">
+                            <div class="version2_invester_data_mobile_documents_row">
+                                <div class="version2_invester_data_mobile_documents_img">
+                                    <img src="/documnets/service/index-1.jpg" alt="">
+                                </div>
+                                <div class="version2_invester_data_mobile_documents_img">
+                                    <img src="/documnets/service/index-2.jpg" alt="">
+                                </div>
+                                <div class="version2_invester_data_mobile_documents_img">
+                                    <img src="/documnets/service/index-3.jpg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    `);
+
+                    $('body').append(documnetTemplate);
+                }
+                else
+                {
+                    window.open(`/documnets/service/index.pdf` , '_blank');
+                };
+            });
 
             ActionBlock.find('.version2_invester_data_typeButtons_type_button').click(async function() {
                 if($('.version2_creating_block_info_row_cheackbox input').is(':checked')) {
