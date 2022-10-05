@@ -201,7 +201,7 @@
                                     Получатель: ${_project.data.recipient} <br>
                                     Счет получателя: ${_project.data.account_get} <br>
                                     Назначение платежа: Номер Проекта ${_project._id}, Имя проекта ${_project.data.name} <br>
-                                    Сумма: ${invDoc.data.pay.split(/\s+/).join('')}
+                                    Сумма: ${invDoc.data.pay} рублей.
                                 </span>
                             </div>
                             <div class="creating_page_block_qrCode">
