@@ -1083,7 +1083,7 @@
                 });
             };
 
-            if(InvPush)
+            if(_this.inv)
             {
                 $('.creating_page_input_div').each( function(i, element) 
                 {
