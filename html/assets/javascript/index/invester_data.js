@@ -149,13 +149,13 @@
                         <div class="version2_invester_data_mobile_documents">
                             <div class="version2_invester_data_mobile_documents_row">
                                 <div class="version2_invester_data_mobile_documents_img">
-                                    <img src="/documets/service/index-1.jpg" alt="">
+                                    <img src="/documents/service/index-1.jpg" alt="">
                                 </div>
                                 <div class="version2_invester_data_mobile_documents_img">
-                                    <img src="/documets/service/index-2.jpg" alt="">
+                                    <img src="/documents/service/index-2.jpg" alt="">
                                 </div>
                                 <div class="version2_invester_data_mobile_documents_img">
-                                    <img src="/documets/service/index-3.jpg" alt="">
+                                    <img src="/documents/service/index-3.jpg" alt="">
                                 </div>
                             </div>
                         </div>
@@ -165,7 +165,7 @@
                 }
                 else
                 {
-                    window.open(`/documets/service/index.pdf` , '_blank');
+                    window.open(`/documents/service/index.pdf` , '_blank');
                 };
             });
 
