@@ -236,7 +236,7 @@
 
             $('.version2_invester_data_backBlock_circule').click( function(e) {
                 e.preventDefault();
-                _this.render_backBlock();
+                _this.render_next();
             });
 
             if(window.screen.width < 1300)
@@ -684,8 +684,9 @@
             var _this           = this;
             this.render_backBlock();
 
-            $('.version2_invester_data_backBlock_circule').off('click').click( function(e) {
+            $('.version2_invester_data_backBlock_circule').click( function(e) {
                 $('.index_page_body_data').empty();
+                e.preventDefault();
                 _this.render(null, true);
             });
 
@@ -837,7 +838,7 @@
             this.render_backBlock();
 
             $('.version2_invester_data_backBlock_circule').off('click').click( function(e) {
-                $('.version2_invester_data_backBlock_circule').remove();
+                e.preventDefault();
                 _this.renderOldBlock();
             });
 
