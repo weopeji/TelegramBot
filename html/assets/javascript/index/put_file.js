@@ -71,6 +71,7 @@
         {
             var getAction       = _GET("action");
             var _project        = await callApi({methodName: "getProjectForInvesterPageByIdInvDoc", data: _GET('InvId')});
+            var invDoc          = await callApi({methodName: "version2_getInvDocByRedactingId", data: _GET('InvId')});
             var _this           = this;
             var functionsAction = 
             {
@@ -105,7 +106,8 @@
                         `Name=ИП Петров Иван Иванович|` + 
                         `PersonalAcc=40802810112100000591|` + 
                         `BankName=УРАЛЬСКИЙ БАНК ПАО СБЕРБАНК|` + 
-                        `BIC=046577674|CorrespAcc=30101810500000000674|` + 
+                        `BIC=046577674|` +
+                        `CorrespAcc=30101810500000000674|` + 
                         `Sum=10000000|` + 
                         `Purpose=Оплата по договору: ПИИ-20-0001 от 04.07.2020. Без НДС.|` + 
                         `PayeeINN=611203541218|` + 
@@ -199,6 +201,7 @@
                                     Получатель: ${_project.data.recipient} <br>
                                     Счет получателя: ${_project.data.account_get} <br>
                                     Назначение платежа: Номер Проекта ${_project._id}, Имя проекта ${_project.data.name} <br>
+                                    Сумма: ${invDoc.data.pay.split(/\s+/).join('')}
                                 </span>
                             </div>
                             <div class="creating_page_block_qrCode">
@@ -227,13 +230,10 @@
                         `Name=${_project.data.recipient}|` + 
                         `PersonalAcc=${_project.data.account_get}|` + 
                         `BankName=${_project.data.bank}|` + 
-                        `BIC=${_project.data.bik}|CorrespAcc=${_project.data.kpp}|` + 
-                        `Sum=10000000|` + 
+                        `BIC=${_project.data.bik}|` +
+                        `CorrespAcc=${_project.data.kpp}|` + 
+                        `Sum=${invDoc.data.pay.split(/\s+/).join('')}|` + 
                         `Purpose=Номер Проекта ${_project._id}, Имя проекта ${_project.data.name}|` + 
-                        // `PayeeINN=611203541218|` + 
-                        // `LastName=Иванов|` + 
-                        // `FirstName=Иван|` + 
-                        // `MiddleName=Иванович|` + 
                         `PersAcc=ПИИ-20-0001`;
 
                     msgsBlock.find('#qrCodeOutput').append(QRCode.generateHTML_ME(qrCodePushedText, {}))
