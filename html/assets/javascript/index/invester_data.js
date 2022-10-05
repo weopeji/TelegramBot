@@ -230,13 +230,13 @@
 
         async cheackGetDocuments()
         {
+            var _this = this;
+
             $('.creating_page').empty();
 
             $('.version2_invester_data_backBlock_circule').off('click').click( function(e) {
                 _this.render_backBlock();
             });
-
-            var _this = this;
 
             if(window.screen.width < 1300)
             {
@@ -378,7 +378,7 @@
                 };
 
                 $('.creating_page').append(documentBlock);
-            }
+            };
         }
 
         async cheackGet()
