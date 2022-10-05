@@ -233,7 +233,7 @@
             $('.creating_page').empty();
 
             $('.version2_invester_data_backBlock_circule').off('click').click( function(e) {
-                _this.renderOldBlock(true);
+                _this.renderOldBlock();
             });
 
             var _this = this;
@@ -677,7 +677,7 @@
             $('.creating_page').append(_block);
         }
 
-        async renderOldBlock(moneyPush)
+        async renderOldBlock()
         {
             var _this           = this;
             this.render_backBlock();
@@ -741,9 +741,9 @@
                     _block.find(`input[type="text"]`).val(_this.redactingInvDoc.data.pay);
                 }
 
-                if(moneyPush)
+                if(_this.money)
                 {
-                    _block.find(`input[type="text"]`).val(this.money);
+                    _block.find(`input[type="text"]`).val(_this.money);
                 }
     
                 _block.find(`input`).on('keyup input', function() 
