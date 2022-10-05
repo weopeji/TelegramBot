@@ -49,9 +49,6 @@
                 </div>
             `);
 
-            templateText.css('width', 'calc(92% - 40px');
-            templateText.css('margin', '0 auto');
-
             commissionsData.wait.forEach( function (commissionsElement, i) 
             {
                 var fioBlock = null;
@@ -117,10 +114,6 @@
                     </div>
                 </div>
             `);
-
-            templateText.css('width', 'calc(92% - 40px');
-            templateText.css('margin', '0 auto');
-            templateText.css('margin-top', '20px');
 
             commissionsData.accept.forEach( function (commissionsElement, i) 
             {
