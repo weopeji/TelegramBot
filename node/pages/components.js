@@ -3537,12 +3537,12 @@ async function acceptProject(socket,data,callback)
             videoPresentationPath = `https://www.youtube.com/watch?v=${yt_data.id}`;
         };
     
-        var html        = `[[Профиль компании]](${h.getURL()}html/project/profil/#${_project._id}/)\n[[Презентация]](${h.getURL()}/projects/${_project._id}/${_project.data["file+7"]})\n[[Видео презентация]](${videoPresentationPath})`;
+        var html        = `<a href="${h.getURL()}html/project/profil/#${_project._id}/">[Профиль компании]</a>\n<a href="${h.getURL()}/projects/${_project._id}/${_project.data["file+7"]}">[Презентация]</a>\n<a href="${videoPresentationPath}">[Видео презентация]</a>`;
         var stream      = fs.createReadStream(`../projects/${data}/logo_instagram.jpg`);
     
         var dataPhotoPush = await bot.sendPhoto(-1001205415519, stream, {
             "caption": html,
-            "parse_mode": "MarkdownV2",
+            "parse_mode": "html",
             "reply_markup": {
                 "inline_keyboard": [
                     [
