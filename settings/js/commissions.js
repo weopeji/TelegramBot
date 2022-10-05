@@ -115,6 +115,10 @@
                 </div>
             `);
 
+            templateText.css({
+                "margin-top": "40px",
+            });
+
             commissionsData.accept.forEach( function (commissionsElement, i) 
             {
                 var fioBlock = null;
