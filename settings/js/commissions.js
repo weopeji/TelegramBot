@@ -33,6 +33,7 @@
                     <div class="version2_default_bkg row_default"></div>
                     <div class="settingBlock_header">
                         <div class="settingBlock_header_line">
+                            <span>№</span>
                             <span>№ проекта</span>
                             <span>Инвестор</span>
                             <span>Сумма</span>
@@ -61,6 +62,7 @@
 
                 var _block = $(`
                     <div class="settingBlock_body_line" data="${commissionsElement.commission._id}" data-project="${commissionsElement.project._id}">
+                        <span>${i + 1}</span>
                         <span>${commissionsElement.project._id}</span>
                         <span>${fioBlock}</span>
                         <span>${commissionsElement.invDoc.data.pay.toString().ReplaceNumber()} руб</span>
@@ -97,6 +99,7 @@
                     <div class="version2_default_bkg row_default"></div>
                     <div class="settingBlock_header">
                         <div class="settingBlock_header_line">
+                            <span>№</span>
                             <span>№ проекта</span>
                             <span>Инвестор</span>
                             <span>Сумма Инвестиции</span>
@@ -129,6 +132,7 @@
 
                 var _block = $(`
                     <div class="settingBlock_body_line" data="${commissionsElement.commission._id}" data-project="${commissionsElement.project._id}">
+                        <span>${i + 1}</span>
                         <span>${commissionsElement.project._id}</span>
                         <span>${fioBlock}</span>
                         <span>${commissionsElement.invDoc.data.pay.toString().ReplaceNumber()} руб</span>
