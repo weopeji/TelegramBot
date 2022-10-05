@@ -34,9 +34,8 @@
                     <div class="settingBlock_header">
                         <div class="settingBlock_header_line">
                             <span>№ проекта</span>
-                            <span>Название проекта</span>
                             <span>Инвестор</span>
-                            <span>Сумма Инвестиции</span>
+                            <span>Сумма</span>
                             <span>Комиссия InvestER</span>
                             <span>Чек</span>
                             <span>Действие</span>
@@ -63,7 +62,6 @@
                 var _block = $(`
                     <div class="settingBlock_body_line" data="${commissionsElement.commission._id}" data-project="${commissionsElement.project._id}">
                         <span>${commissionsElement.project._id}</span>
-                        <span>${commissionsElement.project.data.name}</span>
                         <span>${fioBlock}</span>
                         <span>${commissionsElement.invDoc.data.pay.toString().ReplaceNumber()} руб</span>
                         <span>${commissionsElement.commissionInvestER.toString().ReplaceNumber()} руб</span>
@@ -100,7 +98,6 @@
                     <div class="settingBlock_header">
                         <div class="settingBlock_header_line">
                             <span>№ проекта</span>
-                            <span>Название проекта</span>
                             <span>Инвестор</span>
                             <span>Сумма Инвестиции</span>
                             <span>Комиссия InvestER</span>
@@ -133,7 +130,6 @@
                 var _block = $(`
                     <div class="settingBlock_body_line" data="${commissionsElement.commission._id}" data-project="${commissionsElement.project._id}">
                         <span>${commissionsElement.project._id}</span>
-                        <span>${commissionsElement.project.data.name}</span>
                         <span>${fioBlock}</span>
                         <span>${commissionsElement.invDoc.data.pay.toString().ReplaceNumber()} руб</span>
                         <span>${commissionsElement.commissionInvestER.toString().ReplaceNumber()} руб</span>
