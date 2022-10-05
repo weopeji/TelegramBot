@@ -80,6 +80,8 @@
 }
 
 .index_page_body_hrefs {
+  position: relative;
+  z-index: 100;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
