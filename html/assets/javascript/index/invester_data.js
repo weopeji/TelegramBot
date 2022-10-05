@@ -1096,6 +1096,13 @@
                     };
                 });
             };
+
+            if(window.screen.width < 1300)
+            {
+                $('.creating_page').css({
+                    "padding-bottom": "100px",
+                });
+            };
         };
     };
 
