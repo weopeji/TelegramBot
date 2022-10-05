@@ -41,6 +41,8 @@
   -ms-flex-pack: distribute;
       justify-content: space-around;
   margin-bottom: 25px;
+  position: relative;
+  z-index: 100;
 }
 
 .index_page_body_moderation_block_info_line span,
@@ -61,6 +63,8 @@
 }
 
 .index_page_body_info_line {
+  position: relative;
+  z-index: 100;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
