@@ -234,7 +234,8 @@
 
             $('.creating_page').empty();
 
-            $('.version2_invester_data_backBlock_circule').off('click').click( function(e) {
+            $('.version2_invester_data_backBlock_circule').click( function(e) {
+                e.preventDefault();
                 _this.render_backBlock();
             });
 
