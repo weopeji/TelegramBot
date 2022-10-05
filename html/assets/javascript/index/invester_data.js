@@ -170,6 +170,12 @@
                         "height": "100vh"
                     });
 
+                    documnetTemplate.click( function () {
+                        $(this).fadeOut('fast', function () {
+                            $(this).remove();
+                        });
+                    })
+
                     $('body').append(documnetTemplate);
                 }
                 else
