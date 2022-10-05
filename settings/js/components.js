@@ -42,13 +42,13 @@
 
         getBlocks(_array, name) 
         {
-        
             _array.forEach(element => {
 
                 var _date = element.data.collection_period.split('-');
                 
                 var item_block = $(`
                     <div class="index_page_body_moderation_block" data="${element._id}">
+                        <div class="version2_default_bkg row_default"></div>
                         <h1>${element.data.name}</h1>
                         <p>${element.data.target}</p>
                         <div class="index_page_body_moderation_block_info_line">
