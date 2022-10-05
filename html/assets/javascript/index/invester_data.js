@@ -161,6 +161,15 @@
                         </div>
                     `);
 
+                    documnetTemplate.css({
+                        "position": "fixed",
+                        "top": "0",
+                        "left": "0",
+                        "z-index": "1000",
+                        "overflow-y": "scroll",
+                        "height": "100vh"
+                    });
+
                     $('body').append(documnetTemplate);
                 }
                 else
