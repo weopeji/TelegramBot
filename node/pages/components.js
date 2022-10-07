@@ -3535,7 +3535,7 @@ async function acceptProject(socket,data,callback)
             hgetUrlByBusinnes = `https://${_project.businessSite}/`;
         };
 
-        var videoPresentationPath   = `${hgetUrlByBusinnes}/projects/${_project._id}/${_project.data["file+8"]}`;
+        var videoPresentationPath   = `${hgetUrlByBusinnes}projects/${_project._id}/${_project.data["file+8"]}`;
         
         if(_project.YT_VIDEO)
         {
@@ -3543,7 +3543,7 @@ async function acceptProject(socket,data,callback)
             videoPresentationPath = `https://www.youtube.com/watch?v=${yt_data.id}`;
         };
     
-        var html        = `<a href="${hgetUrlByBusinnes}html/project/profil/#${_project._id}/">[<u>Профиль компании</u>]</a>\n<a href="${hgetUrlByBusinnes}/projects/${_project._id}/${_project.data["file+7"]}">[<u>Презентация</u>]</a>\n<a href="${videoPresentationPath}">[<u>Видео презентация</u>]</a>`;
+        var html        = `<a href="${hgetUrlByBusinnes}html/project/profil/#${_project._id}/">[<u>Профиль компании</u>]</a>\n<a href="${hgetUrlByBusinnes}projects/${_project._id}/${_project.data["file+7"]}">[<u>Презентация</u>]</a>\n<a href="${videoPresentationPath}">[<u>Видео презентация</u>]</a>`;
         var stream      = fs.createReadStream(`../projects/${data}/logo_instagram.jpg`);
     
         var dataPhotoPush = await bot.sendPhoto(-1001205415519, stream, {
