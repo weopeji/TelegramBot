@@ -2499,6 +2499,15 @@ img.preloader_row_img {
   background-color: #1FA1F6;
 }
 
+.index_page_menu_block_line_location {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 @media (max-width: 1350px) {
   .index_page_body_header_user_textDecoration span {
     margin-left: 0;

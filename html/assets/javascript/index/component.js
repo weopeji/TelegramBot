@@ -2328,7 +2328,7 @@
                             <div class="index_page_menu_block_line_telegram">
                                 <i class="fab fa-telegram-plane"></i>
                             </div>
-                            <span>Мессенджер</span>
+                            <span>Телеграм</span>
                         </div>
                     `,
                     "business": `
@@ -2388,7 +2388,7 @@
                     if(window.screen.width > 1300)
                     {
                         $(".index_page_menu").css({ 
-                            height: "329px",
+                            height: "382px",
                         }); 
                     }
                 }
