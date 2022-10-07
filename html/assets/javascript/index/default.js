@@ -300,7 +300,10 @@
 
                     applications.render(global.allData)
                 },
-            }
+                "telegram": function() {
+                    window.location = "tg:\/\/resolve?domain=investir_official";
+                },
+            };
 
             if(pageID)
             {
