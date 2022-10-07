@@ -2355,6 +2355,12 @@
                                 <i class="fad fa-bell"></i>
                             </div>
                         </div>
+                        <div class="index_page_menu_block_line index_page_menu_block_line_location" data="telegram">
+                            <div class="index_page_menu_block_line_telegram">
+                                <i class="fab fa-telegram-plane"></i>
+                            </div>
+                            <span>Телеграм</span>
+                        </div>
                     `,
                     "attraction": `
                         <div class="index_page_menu_block_line" data="Attracted_by_me">
@@ -2367,6 +2373,12 @@
                             <div class="index_page_menu_block_line_alert">
                                 <i class="fad fa-bell"></i>
                             </div>
+                        </div>
+                        <div class="index_page_menu_block_line index_page_menu_block_line_location" data="telegram">
+                            <div class="index_page_menu_block_line_telegram">
+                                <i class="fab fa-telegram-plane"></i>
+                            </div>
+                            <span>Телеграм</span>
                         </div>
                     `,
                 }
