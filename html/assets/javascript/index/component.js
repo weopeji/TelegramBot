@@ -2394,7 +2394,12 @@
     
                 if(_User.type == "business")
                 {
-                    
+                    if(window.screen.width > 1300)
+                    {
+                        $(".index_page_menu").css({ 
+                            height: "330px",
+                        });  
+                    }
                 } else 
                 {
                     if(window.screen.width > 1300)
