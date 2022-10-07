@@ -241,7 +241,7 @@ async function _MainMenu(msg, close)
             });
             _array.push(fat.message_id); 
 
-            var html = `<strong>${_User.first_name}</strong>\nВы можете ознакомится с предложениями на данной платформе.`;
+            var html = `<strong>${_User.first_name}</strong>\nВы можете выбрать бизнес-проект для ивестирования здесь.`;
             var fat = await bot.sendMessage(msg.chat.id, html, {
                 parse_mode: "HTML",
                 reply_markup: {
@@ -249,7 +249,7 @@ async function _MainMenu(msg, close)
                         [
                             {
                                 text: "ОЗНАКОМИТСЯ С ПРЕДЛОЖЕНИЯМИ",
-                                url: "https://t.me/invester_official",
+                                url: "https://t.me/investir_official",
                             }
                         ]
                     ],
