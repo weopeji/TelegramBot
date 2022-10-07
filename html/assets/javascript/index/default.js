@@ -271,7 +271,7 @@
                 "get_money_abstraction": function() {get_money_abstraction.render(global.allData)},
                 "wait_projects": function() {
                     try {
-                        $('.index_page_body_header_user_textDecoration span').html("Ожидайют");
+                        $('.index_page_body_header_user_textDecoration span').html("Ожидают");
                     } catch(e) {};
 
                     wait_projects.render(global.allData)
