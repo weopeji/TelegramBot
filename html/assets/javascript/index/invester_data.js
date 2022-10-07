@@ -142,6 +142,10 @@
                 </div>
             `);
 
+            ActionBlock.find("юcreating_page").css({
+                "padding-bottom": "200px",
+            })
+
             ActionBlock.find('.version2_invester_data_typeButtons_document').click( function () {
                 if(window.screen.width < 1300)
                 {
