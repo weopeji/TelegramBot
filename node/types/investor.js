@@ -497,7 +497,7 @@ async function startInvestingMsg(msg)
         await h.DMA(msg, _array);
     } 
     else {
-        var fat = await h.send_html(msg.from.id, `Инвестор ${_User.first_name}\nВы находитесь в меню "Инвестиционные предложения"`, {
+        var fat = await h.send_html(msg.from.id, `Инвестор ${_User.first_name}`, {
             "resize_keyboard": true,
             "keyboard": [["⬅️ Назад"]],
         });

@@ -96,7 +96,7 @@
                     <div class="version2_creating_block_info version2_default_shadow_block">
                         <div class="version2_default_bkg row_default"></div>
                         <div class="version2_creating_block_info_row">
-                            <h1>Уважаемый пользователь ${global.allData.User.first_name}!</h1>
+                            <h1>Уважаемый Инвестор ${global.allData.User.first_name}!</h1>
                             <p>
                                 Вы находитесь на сайте инвестиционного проекта партнера ${_this.project.data.name}
                                 <br>
