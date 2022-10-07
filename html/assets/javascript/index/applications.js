@@ -96,7 +96,7 @@
                             </div>
                             ${element.project._id}
                         </span>
-                        <span>
+                        <span class="settingBlock_body_line_hoverTextDecoration">
                             <div class="version2_settingBlock_mobile_line">
                                 <span>Название</span>
                             </div>
@@ -110,6 +110,14 @@
                         </span>
                     </div>
                 `);
+
+                template_text.css({
+                    "cursor": "pointer",
+                });
+
+                template_text.find('.settingBlock_body_line_hoverTextDecoration').css({
+                    "text-decoration": "underline",
+                });
 
                 template_text.click( function () {
                     location.href = `/?page=activ_projects&id=${$(this).attr('data-more')}`;
