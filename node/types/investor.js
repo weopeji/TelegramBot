@@ -240,10 +240,15 @@ async function active_statistik(msg)
 
 async function active_projects(msg)
 {
-    var _array  = [];
-    var _User   = await User.findOne({user: msg.from.id});
+    var _array      = [];
+    var _User       = await User.findOne({user: msg.from.id});
+    var userName    = _User.first_name;
 
-    var html = `Инвестор ${_User.first_name}\nВы находитесь в меню "Активные проекты"`;
+    if(typeof _User.first_name == "undefined" || !_User.first_name) {
+        userName = _User.last_name;
+    };
+
+    var html = `Инвестор ${userName}`;
     var fat = await bot.sendMessage(msg.chat.id, toEscapeMSg(html), {
         parse_mode: "html",
         reply_markup: {  
