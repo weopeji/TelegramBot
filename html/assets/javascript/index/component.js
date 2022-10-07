@@ -2861,7 +2861,7 @@
                                 <div class="Attracted_headerInfoBlock_block_row_infoBlockHover_row">
                                     <div class="Attracted_headerInfoBlock_block_row_infoBlockHover_row_row">
                                         <div class="version2_default_bkg row_default"></div>
-                                        <span>Указывается промежуто привлеченных инвесторов для безопасности личных данных</span>
+                                        <span>Указывается промежуток привлеченных инвесторов для безопасности личных данных</span>
                                     </div>
                                 </div>
                             </div>
