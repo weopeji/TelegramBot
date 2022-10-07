@@ -2328,7 +2328,6 @@
                             <div class="index_page_menu_block_line_telegram">
                                 <i class="fab fa-telegram-plane"></i>
                             </div>
-                            <i class="fal fa-comments"></i>
                             <span>Мессенджер</span>
                         </div>
                     `,
