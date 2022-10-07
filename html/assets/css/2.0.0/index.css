@@ -2482,6 +2482,23 @@ img.preloader_row_img {
   z-index: 2;
 }
 
+.index_page_menu_block_line_telegram {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #fff;
+  background-color: #1FA1F6;
+}
+
 @media (max-width: 1350px) {
   .index_page_body_header_user_textDecoration span {
     margin-left: 0;

@@ -2324,6 +2324,13 @@
                                 <i class="fad fa-bell"></i>
                             </div>
                         </div>
+                        <div class="index_page_menu_block_line" data="telegram">
+                            <div class="index_page_menu_block_line_telegram">
+                                <i class="fab fa-telegram-plane"></i>
+                            </div>
+                            <i class="fal fa-comments"></i>
+                            <span>Мессенджер</span>
+                        </div>
                     `,
                     "business": `
                         <div class="index_page_menu_block_line" data="myProjects">
@@ -2824,7 +2831,7 @@
                         <div class="Attracted_by_me_headerRefUrlsBlock_blocks_line">
                             <div class="version2_default_bkg row_default"></div>
                             <div class="Attracted_by_me_headerRefUrlsBlock_blocks_line_row">
-                                <span class="Attracted_by_me_headerRefUrlsBlock_blocks_line_row_first_span">Ваша реферальная ссылка для Инвесторов</span>
+                                <span class="Attracted_by_me_headerRefUrlsBlock_blocks_line_row_first_span">Ваша реферальная ссылка для Инвесторов бизнес-проекта</span>
                                 <span class="Attracted_by_me_headerRefUrlsBlock_blocks_line_row_first_span_two">https://t.me/invester_official_bot?start=adder_${_data.User.user}</span>
                                 <div class="Attracted_by_me_headerRefUrlsBlock_blocks_line_copy">
                                     <i class="fas fa-copy"></i>
