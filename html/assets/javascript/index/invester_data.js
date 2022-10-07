@@ -318,6 +318,10 @@
                     </div>
                 `);
 
+                documentBlock.find('.creating_page_input_div').css({
+                    "background": "linear-gradient(81.65deg, #CF2DBF 18.55%, #951CDF 97.44%)",
+                });
+
                 documentBlock.eq(0).find("span").eq(0).click( function() 
                 {
                     if(window.screen.width < 1300)
@@ -427,6 +431,10 @@
                     </div>
                 </div>
             `);
+
+            _block.find('.creating_page_input_div').css({
+                "background": "linear-gradient(81.65deg, #CF2DBF 18.55%, #951CDF 97.44%)",
+            });
 
             if(typeof _this.project.notFullpay != "undefined")
             {
