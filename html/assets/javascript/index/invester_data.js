@@ -772,7 +772,7 @@
                     _val = _val.replace(/\s/g, '');
                     var format = String(_val).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
                     $(this).val(format);
-                    setCookie('pay_invester_data', format);
+                    setCookie('pay_invester_data', Number(format.replace(/\s/g,'')));
                 });
     
                 var _this               = this;
