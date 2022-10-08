@@ -1079,7 +1079,7 @@
                 });
 
                 $('.version2_creating_page_input_inputCheackBoxRezident_buttons_button').each((i, element) => {
-                    if(element.hasClass('selected')) {
+                    if($(element).hasClass('selected')) {
                         _errorMore = false;
                     }
                 })
