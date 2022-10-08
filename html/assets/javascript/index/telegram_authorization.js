@@ -202,6 +202,7 @@
                                 },
                             });
                             window.location = protoUrl;
+                            window.close();
                             resolve();
                         }, timeRender);
                     });
@@ -218,8 +219,7 @@
             if(_PageType)
             {
                 await funsType[_PageType]();
-                alert('ok');
-                window.close();
+                
             };
         }
     }
