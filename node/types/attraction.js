@@ -135,11 +135,11 @@ function howmany(msg) {
 async function url(msg) 
 {
     var _User       = await User.findOne({user: msg.from.id});
-    var first_name  = msg.from.first_name;
+    var first_name  = _User.first_name;
 
     if(typeof first_name == "undefined")
     {
-        first_name = msg.from.last_name;
+        first_name = _User.last_name;
     };
 
     if(_User.attractType == 1)
@@ -147,7 +147,7 @@ async function url(msg)
         var _array  = [];
 
         // 1 ===
-        var html = `<strong>${first_name}</strong> Чтобы рекомендовать закрепить за собой инвестора\nВам нужно поделится личной ссылкой\nИли переслать сообщение ниже`;
+        var html = `<strong>${first_name}</strong> Чтобы закрепить за собой инвестора\nВам нужно поделится личной ссылкой\nИли переслать сообщение ниже`;
 
         var buttonPush = "⬅️ Назад";
 
@@ -200,12 +200,6 @@ async function url(msg)
     } else 
     {
         var _array  = [];
-        var first_name  = msg.from.first_name;
-
-        if(typeof first_name == "undefined")
-        {
-            first_name = msg.from.last_name;
-        };
 
         // 1 ===
         var html = `<strong>${first_name}</strong> Чтобы закрепить за собой проект Вам нужно поделится личной сссылкой или переслать сообщеноие ниже`;
