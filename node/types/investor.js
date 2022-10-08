@@ -502,7 +502,7 @@ async function startInvestingMsg(msg)
             "keyboard": [["⬅️ Назад"]],
         });
         _array.push(fat.message_id);
-        var fat = await h.send_html(msg.from.id, `Перейдите и оставьте заявку`, {
+        var fat = await h.send_html(msg.from.id, `Перейдите и оставьте заявку на сайте бизнес-проекта`, {
             "resize_keyboard": true,
             "inline_keyboard": [
                 [
