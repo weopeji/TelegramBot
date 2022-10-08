@@ -202,9 +202,6 @@
                                 },
                             });
                             window.location = protoUrl;
-                            setTimeout(function() {
-                                window.close();
-                            }, 2000);
                             resolve();
                         }, timeRender);
                     });
@@ -221,7 +218,12 @@
             if(_PageType)
             {
                 await funsType[_PageType]();
-                
+                setInterval(() => {
+                    focused = document.hasFocus();
+                    if(!focused) {
+                        window.close();
+                    };
+                }, 1000);
             };
         }
     }
