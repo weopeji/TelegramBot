@@ -1081,10 +1081,15 @@
                 $('.version2_creating_page_input_inputCheackBoxRezident_buttons_button').each((i, element) => {
                     if($(element).hasClass('selected')) {
                         _errorMore = false;
-                    }
+                    };
                 })
 
-                if(_error || _errorMore)
+                if(_errorMore)  {
+                    alert('Ответьте на вопрос являетесь ли вы резидентом');
+                    return;
+                };
+
+                if(_error)
                 {
                     alert('Введите все данные!');
                     _this.inv = _array;
