@@ -142,7 +142,7 @@
                 </div>
             `);
 
-            ActionBlock.find(".creating_page").css({
+            $(".creating_page").css({
                 "padding-bottom": "200px",
             });
 
