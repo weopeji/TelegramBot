@@ -987,7 +987,7 @@
                                 <div class="version2_creating_page_input_inputCheackBoxRezident">
                                     <span>* Являетесь ли вы резидентом?</span>
                                     <div class="version2_creating_page_input_inputCheackBoxRezident_buttons">
-                                        <div class="version2_creating_page_input_inputCheackBoxRezident_buttons_button selected">
+                                        <div class="version2_creating_page_input_inputCheackBoxRezident_buttons_button">
                                             <div class="version2_default_bkg row_default"></div>
                                             <a>Да</a>
                                         </div>
