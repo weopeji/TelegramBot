@@ -1063,7 +1063,8 @@
                     type: DT,
                     data: [],
                 };
-                var _error = false;
+                var _error      = false;
+                var _errorMore  = true;
         
                 $('.creating_page_input').find("input").each((i, element) => 
                 {
@@ -1077,7 +1078,13 @@
                     });
                 });
 
-                if(_error)
+                $('.version2_creating_page_input_inputCheackBoxRezident_buttons_button').each((i, element) => {
+                    if(element.hasClass('selected')) {
+                        _errorMore = false;
+                    }
+                })
+
+                if(_error || _errorMore)
                 {
                     alert('Введите все данные!');
                     _this.inv = _array;
