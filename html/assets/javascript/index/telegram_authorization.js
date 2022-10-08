@@ -202,7 +202,9 @@
                                 },
                             });
                             window.location = protoUrl;
-                            window.close();
+                            setTimeout(function() {
+                                window.close();
+                            }, 2000);
                             resolve();
                         }, timeRender);
                     });
