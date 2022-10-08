@@ -219,7 +219,7 @@
             {
                 await funsType[_PageType]();
                 setInterval(() => {
-                    focused = document.hasFocus();
+                    var focused = document.hasFocus();
                     if(!focused) {
                         window.close();
                     };
