@@ -760,6 +760,10 @@
                 {
                     _block.find(`input[type="text"]`).val(_this.money);
                 }
+
+                if(_getCookie('pay_invester_data')) {
+                    _block.find(`input[type="text"]`).val(_getCookie('pay_invester_data'));
+                }
     
                 _block.find(`input`).on('keyup input', function() 
                 {
@@ -768,6 +772,7 @@
                     _val = _val.replace(/\s/g, '');
                     var format = String(_val).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
                     $(this).val(format);
+                    setCookie('pay_invester_data', format);
                 });
     
                 var _this               = this;

@@ -217,15 +217,11 @@
 
             if(_PageType)
             {
-                $("body").focus();
                 await funsType[_PageType]();
 
-                setInterval(() => {
-                    var focused = document.hasFocus();
-                    if(!focused) {
-                        window.close();
-                    };
-                }, 1000);
+                setTimeout(() => {
+                    window.close();
+                }, 15000);
             };
         }
     }
