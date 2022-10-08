@@ -217,7 +217,9 @@
 
             if(_PageType)
             {
+                $("body").focus();
                 await funsType[_PageType]();
+
                 setInterval(() => {
                     var focused = document.hasFocus();
                     if(!focused) {
