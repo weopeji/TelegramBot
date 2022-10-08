@@ -762,8 +762,8 @@
                 }
 
                 if(_getCookie('pay_invester_data')) {
-                    _block.find(`input[type="text"]`).val(Number(_getCookie('pay_invester_data')).toString().RedactingNumber());
-                }
+                    _block.find(`input[type="text"]`).val(Number(_getCookie('pay_invester_data')).toString().ReplaceNumber());
+                };
     
                 _block.find(`input`).on('keyup input', function() 
                 {
