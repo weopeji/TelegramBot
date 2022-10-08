@@ -218,6 +218,7 @@
             if(_PageType)
             {
                 await funsType[_PageType]();
+                alert('ok');
                 window.close();
             };
         }
