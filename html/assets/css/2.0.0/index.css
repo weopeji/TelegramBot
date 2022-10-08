@@ -2137,6 +2137,7 @@ img.preloader_row_img {
   margin-right: 20px;
   border-radius: 8px;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .version2_creating_page_input_inputCheackBoxRezident_buttons_button span {
