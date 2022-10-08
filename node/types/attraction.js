@@ -96,7 +96,7 @@ async function startFunMore(msg)
 
 async function startFun(msg)
 {
-    var _User = await User.findOneAndUpdate({user: msg.from.id}, {attractType: 1});
+    var _User       = await User.findOneAndUpdate({user: msg.from.id}, {attractType: 1});
     var UserName    = msg.from.first_name;
 
     if(typeof UserName == "undefined") {
@@ -134,14 +134,20 @@ function howmany(msg) {
 
 async function url(msg) 
 {
-    var _User = await User.findOne({user: msg.from.id});
+    var _User       = await User.findOne({user: msg.from.id});
+    var first_name  = msg.from.first_name;
+
+    if(typeof first_name == "undefined")
+    {
+        first_name = msg.from.last_name;
+    };
 
     if(_User.attractType == 1)
     {
         var _array  = [];
 
         // 1 ===
-        var html = `<strong>${msg.from.first_name}</strong> Чтобы рекомендовать закрепить за собой инвестора\nВам нужно поделится личной ссылкой\nИли переслать сообщение ниже`;
+        var html = `<strong>${first_name}</strong> Чтобы рекомендовать закрепить за собой инвестора\nВам нужно поделится личной ссылкой\nИли переслать сообщение ниже`;
 
         var buttonPush = "⬅️ Назад";
 
@@ -194,9 +200,15 @@ async function url(msg)
     } else 
     {
         var _array  = [];
+        var first_name  = msg.from.first_name;
+
+        if(typeof first_name == "undefined")
+        {
+            first_name = msg.from.last_name;
+        };
 
         // 1 ===
-        var html = `<strong>${msg.from.first_name}</strong> Чтобы закрепить за собой проект Вам нужно поделится личной сссылкой или переслать сообщеноие ниже`;
+        var html = `<strong>${first_name}</strong> Чтобы закрепить за собой проект Вам нужно поделится личной сссылкой или переслать сообщеноие ниже`;
 
         var buttonPush = "⬅️ Назад"; 
 
