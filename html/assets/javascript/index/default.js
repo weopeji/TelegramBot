@@ -266,7 +266,9 @@
                 "reward": function() {reward.render(global.allData)},
                 "creating": function() {creating_page.render(global.allData)},
                 "ref_url": function() {ref_url.render(global.allData)},
-                "invester_data": function() {invester_data.render(global.allData)},
+                "invester_data": async function() {
+                    await invester_data.render(global.allData)
+                },
                 "show_all_projects": function() {show_all_projects.render(global.allData)},
                 "get_money_abstraction": function() {get_money_abstraction.render(global.allData)},
                 "wait_projects": function() {
@@ -307,10 +309,10 @@
 
             if(pageID)
             {
-                renderPage[pageID]();
+                await renderPage[pageID]();
             } else 
             {
-                renderPage["chats"]();
+                await renderPage["chats"]();
             }
 
             $('.preloader').fadeOut();

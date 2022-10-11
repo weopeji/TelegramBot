@@ -201,7 +201,6 @@
         async render(data, notPush) 
         {
             $('.index_page_body_data').append(`<div class="creating_page" style="width: auto;"></div>`);
-            $('.preloader').css("display", "block");
 
             var _this = this;
 
@@ -231,10 +230,6 @@
 
             await this.defaultCSS();
             await this.renderFirstData();
-            
-            setTimeout(() => {
-                $('.preloader').css("display", "none");
-            }, 1000);
         }
 
         async cheackGetDocuments()
