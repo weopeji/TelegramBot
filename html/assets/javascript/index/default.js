@@ -315,7 +315,14 @@
                 await renderPage["chats"]();
             }
 
-            $('.preloader').fadeOut();
+            if(pageID == "invester_data") {
+                setTimeout(() => {
+                    $('.preloader').fadeOut();
+                }, 1000);
+            } else 
+            {
+                $('.preloader').fadeOut();
+            };
         }
 
         (() => 
