@@ -231,7 +231,10 @@
 
             await this.defaultCSS();
             await this.renderFirstData();
-            $('.preloader').css("display", "none");
+            
+            setTimeout(() => {
+                $('.preloader').css("display", "none");
+            }, 1000);
         }
 
         async cheackGetDocuments()
