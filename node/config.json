@@ -2,7 +2,7 @@
     "mongoUri": "mongodb://127.0.0.1:27017/bot",
     "host_url": "http://localhost.ru/tbot/",
     "host_url_server": "https://investir.one/",
-    "token":"2062839693:AAE0hzj8SVXyexq29s5x7aRLC5x8O77c-pQ", 
+    "token":"5777626572:AAE2dfXzkgu7EMJNV9aKh7iPTYWGwzK3aho", 
     "token_host": "2062839693:AAE0hzj8SVXyexq29s5x7aRLC5x8O77c-pQ",
     "secure": false,
     "appPort": 3000,
