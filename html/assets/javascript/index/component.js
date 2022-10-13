@@ -2267,6 +2267,7 @@
             return new Promise((resolve, reject) => 
             {
                 var historyPages = $.cookie('history_pages');
+                console.log(historyPages);
 
                 if(historyPages) 
                 {
@@ -2279,7 +2280,7 @@
 
                 historyPages.push(location.href);
 
-                if(historyPages.length > 0) {
+                if(historyPages.length >= 2) {
                     historyPages.slice(0, 1);
                 };
 
