@@ -2262,6 +2262,32 @@
     {
         constructor() {};
 
+        async history_pages()
+        {
+            return new Promise((resolve, reject) => 
+            {
+                var historyPages = $.cookie('history_pages');
+
+                if(historyPages) 
+                {
+                    historyPages = JSON.parse(historyPages);
+                } 
+                else 
+                {
+                    historyPages = [];
+                };
+
+                historyPages.push(location.href);
+
+                if(historyPages.length > 0) {
+                    historyPages.slice(0, 1);
+                };
+
+                $.cookie('history_pages', JSON.stringify(historyPages));
+                resolve(historyPages);
+            });
+        };
+
         async render(_id) 
         {
             var _User = await callApi({

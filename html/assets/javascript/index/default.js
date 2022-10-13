@@ -68,6 +68,7 @@
         var pageID                      = _GET('page');
         var userID                      = _GET('user');
         var token                       = _getCookie('token');
+        var _id                         = _getCookie('token');
 
         const user_block                = new global.Components.user_block();
         const activ_projects            = new global.Components.activ_projects();
@@ -139,15 +140,14 @@
             }
         } else {
             setCookie('token', userID);
-        }
-
-        var _id = _getCookie('token');
+        };
 
         global.allData = 
         {
             _id: _id,
             pageID: pageID,
-        }
+            history_pages: user_block.history_pages(),
+        };
 
         if(_id) 
         {
@@ -163,7 +163,7 @@
             {
                 var templateText = $(`
                     <div class="blocked_block">
-                        <span>Ваш Аккаунт заблокирован до 14.07.2022</span>
+                        <span>Ваш Аккаунт заблокирован</span>
                     </div>
                 `);
 
@@ -307,11 +307,9 @@
                 },
             };
 
-            if(pageID)
-            {
+            if(pageID) {
                 await renderPage[pageID]();
-            } else 
-            {
+            } else {
                 await renderPage["chats"]();
             }
 
@@ -319,8 +317,7 @@
                 setTimeout(() => {
                     $('.preloader').fadeOut();
                 }, 1000);
-            } else 
-            {
+            } else {
                 $('.preloader').fadeOut();
             };
         }
@@ -336,12 +333,12 @@
                 $('.menu_reload_type_menu').fadeToggle();
             });
 
-            $('.menu_reload_type_menu_line').click( async function() {
-                var _type = $(this).attr('data');
-                var _data = await callApi({
+            $('.menu_reload_type_menu_line').click( async function() 
+            {
+                await callApi({
                     methodName: "reload_type",
                     data: {
-                        type: _type,
+                        type: $(this).attr('data'),
                         _id: global.allData._id,
                     },
                 });
