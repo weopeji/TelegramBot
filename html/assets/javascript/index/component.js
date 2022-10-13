@@ -2280,7 +2280,7 @@
 
                 historyPages.push(location.href);
 
-                if(historyPages.length >= 2) {
+                if(historyPages.length >= 22) {
                     historyPages = historyPages.slice(0, 1);
                 };
 
