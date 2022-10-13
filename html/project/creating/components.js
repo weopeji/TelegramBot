@@ -1125,7 +1125,7 @@
                         methodName: 'setInvestERDocumentLoadOfInvester',
                         data: _project._id,
                     });
-                    var protoUrl    = "tg:\/\/resolve?domain=invester_official_bot";
+                    var protoUrl    = "tg:\/\/resolve?domain=investir_official_bot";
                     window.location = protoUrl;
                 });
             })
@@ -1189,7 +1189,7 @@
                         methodName: 'setInvestERDocumentLoad',
                         data: _project._id,
                     });
-                    var protoUrl    = "tg:\/\/resolve?domain=invester_official_bot";
+                    var protoUrl    = "tg:\/\/resolve?domain=investir_official_bot";
                     window.location = protoUrl;
                 });
             })
@@ -1349,7 +1349,7 @@
                 _id: _id,
             }).then(() => {
                 $('.preloader').fadeOut( function() {
-                    var protoUrl    = "tg:\/\/resolve?domain=invester_official_bot";
+                    var protoUrl    = "tg:\/\/resolve?domain=investir_official_bot";
                     window.location = protoUrl;
                 });
             });
@@ -1453,7 +1453,7 @@
                 },
             });
 
-            var protoUrl    = "tg:\/\/resolve?domain=invester_official_bot";
+            var protoUrl    = "tg:\/\/resolve?domain=investir_official_bot";
             window.location = protoUrl;
         }
 
@@ -1504,7 +1504,7 @@
 
             $('.index_page').empty();
             $('.preloader').fadeIn( function() {
-                var protoUrl    = "tg:\/\/resolve?domain=invester_official_bot";
+                var protoUrl    = "tg:\/\/resolve?domain=investir_official_bot";
                 window.location = protoUrl;
             });
 

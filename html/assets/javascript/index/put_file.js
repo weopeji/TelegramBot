@@ -327,7 +327,7 @@
                                     `);
 
                                     endBlock.find('.version2_creating_page_input_div_NewButton').click( function() {
-                                        window.location = "tg:\/\/resolve?domain=invester_official_bot";
+                                        window.location = "tg:\/\/resolve?domain=investir_official_bot";
                                     });
 
                                     $(`.creating_page`).empty().append(endBlock);

@@ -43,7 +43,7 @@
             $(`
                 <div class="telegram_authorization">
                     <div class="telegram_authorization_row">
-                        <a href="tg://resolve?domain=invester_official_bot" class="telegram_authorization_image">
+                        <a href="tg://resolve?domain=investir_official_bot" class="telegram_authorization_image">
                             <i class="fab fa-telegram-plane"></i>
                         </a>
                         <div class="telegram_authorization_text">
@@ -102,7 +102,7 @@
                 {
                     return new Promise(async (resolve,reject) =>
                     {
-                        var protoUrl    = "tg:\/\/resolve?domain=invester_official_bot";
+                        var protoUrl    = "tg:\/\/resolve?domain=investir_official_bot";
 
                         setTimeout( async function() {
                             callApi({
@@ -122,7 +122,7 @@
                 {
                     return new Promise(async (resolve,reject) =>
                     {
-                        var protoUrl    = "tg:\/\/resolve?domain=invester_official_bot";
+                        var protoUrl    = "tg:\/\/resolve?domain=investir_official_bot";
 
                         var moreData = await callApi({
                             methodName: "telegram_auth_more",
@@ -192,7 +192,7 @@
                 {
                     return new Promise(async (resolve,reject) =>
                     {
-                        var protoUrl    = "tg:\/\/resolve?domain=invester_official_bot";
+                        var protoUrl    = "tg:\/\/resolve?domain=investir_official_bot";
 
                         setTimeout( async function() {
                             callApi({

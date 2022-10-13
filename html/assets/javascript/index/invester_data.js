@@ -487,7 +487,7 @@
                         });
                     }
 
-                    window.open("tg:\/\/resolve?domain=invester_official_bot",'_self').close()
+                    window.open("tg:\/\/resolve?domain=investir_official_bot",'_self').close()
                 }
                 else
                 {
@@ -677,7 +677,7 @@
                                     },
                                 });
 
-                                var protoUrl    = "tg:\/\/resolve?domain=invester_official_bot";
+                                var protoUrl    = "tg:\/\/resolve?domain=investir_official_bot";
                                 window.location = protoUrl;
                             });
             
