@@ -2281,7 +2281,7 @@
                 historyPages.push(location.href);
 
                 if(historyPages.length >= 2) {
-                    historyPages.slice(0, 1);
+                    historyPages = historyPages.slice(0, 1);
                 };
 
                 $.cookie('history_pages', JSON.stringify(historyPages));
