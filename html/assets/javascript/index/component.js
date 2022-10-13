@@ -2817,7 +2817,7 @@
                     },
                 });
 
-                location.href = "https://t.me/invester_official_bot?start=setSignaturePro_1";
+                location.href = "https://t.me/investir_official_bot?start=setSignaturePro_1";
             })
         }
     }
@@ -2848,7 +2848,7 @@
                             <div class="version2_default_bkg row_default"></div>
                             <div class="Attracted_by_me_headerRefUrlsBlock_blocks_line_row">
                                 <span class="Attracted_by_me_headerRefUrlsBlock_blocks_line_row_first_span">Ваша реферальная ссылка для Инвесторов бизнес-проекта</span>
-                                <span class="Attracted_by_me_headerRefUrlsBlock_blocks_line_row_first_span_two">https://t.me/invester_official_bot?start=adder_${_data.User.user}</span>
+                                <span class="Attracted_by_me_headerRefUrlsBlock_blocks_line_row_first_span_two">https://t.me/investir_official_bot?start=adder_${_data.User.user}</span>
                                 <div class="Attracted_by_me_headerRefUrlsBlock_blocks_line_copy">
                                     <i class="fas fa-copy"></i>
                                 </div>
@@ -2858,7 +2858,7 @@
                             <div class="version2_default_bkg row_default"></div>
                             <div class="Attracted_by_me_headerRefUrlsBlock_blocks_line_row">
                                 <span class="Attracted_by_me_headerRefUrlsBlock_blocks_line_row_first_span">Ваша реферальная ссылка для Бизнеса</span>
-                                <span class="Attracted_by_me_headerRefUrlsBlock_blocks_line_row_first_span_two">https://t.me/invester_official_bot?start=adder-b_${_data.User.user}</span>
+                                <span class="Attracted_by_me_headerRefUrlsBlock_blocks_line_row_first_span_two">https://t.me/investir_official_bot?start=adder-b_${_data.User.user}</span>
                                 <div class="Attracted_by_me_headerRefUrlsBlock_blocks_line_copy">
                                     <i class="fas fa-copy"></i>
                                 </div>
@@ -3502,7 +3502,7 @@
                 <div class="creating_page_block">
                     <div class="creating_page_start">
                         <span>
-                            https://t.me/invester_official_bot?start=adder-b_${global.allData.User.user}
+                            https://t.me/investir_official_bot?start=adder-b_${global.allData.User.user}
                         </span>
                     </div>
                 </div>
