@@ -13,6 +13,28 @@
         });
     }
 
+    async function set_back_button()
+    {
+        $('.index_page_body_header_user_textDecoration').preappend($(`
+            <div class="index_page_body_header_user_textDecoration_backButton">
+                <i class="fal fa-chevron-left"></i>
+            </div>
+        `).click( function() {
+            var historyPages = $.cookie('history_pages');
+            if(
+                historyPages &&
+                JSON.parse(historyPages).length >= 2
+            ) 
+            {
+                location.href = JSON.parse(historyPages)[JSON.parse(historyPages).length - 2];
+            };
+        }));
+
+        $('.index_page_body_header_user_textDecoration span').css({
+            "margin-left": "10px",
+        });
+    };
+
     if(_getCookie('black_styles'))
     {
         let $       = document;
@@ -196,6 +218,7 @@
                                 if(_GET("idInv"))
                                 {
                                     activ_projects.renderType(global.allData);
+                                    set_back_button();
                                 }
                                 else
                                 {
@@ -205,6 +228,7 @@
                             else
                             {
                                 activ_projects.renderType(global.allData);
+                                set_back_button();
                             }
                         }
                     } 

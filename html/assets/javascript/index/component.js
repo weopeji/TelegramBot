@@ -1250,7 +1250,7 @@
             catch(e)
             {
                 alert(e.toString());
-            }
+            };
         }
 
         async renderCloseBlock(_data)
@@ -2267,7 +2267,6 @@
             return new Promise((resolve, reject) => 
             {
                 var historyPages = $.cookie('history_pages');
-                console.log(historyPages);
 
                 if(historyPages) 
                 {
