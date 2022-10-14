@@ -563,7 +563,7 @@
 }
 
 .structCreator_new_block span {
-  color: #8394C8;
+  color: white;
   -webkit-box-flex: 2;
       -ms-flex: 2;
           flex: 2;
@@ -575,6 +575,7 @@
           align-items: center;
   position: relative;
   z-index: 2;
+  font-size: 20px;
 }
 
 .structCreator_new_block a {
