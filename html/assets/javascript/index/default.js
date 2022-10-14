@@ -15,7 +15,7 @@
 
     async function set_back_button()
     {
-        $('.index_page_body_header_user_textDecoration').preappend($(`
+        $('.index_page_body_header_user_textDecoration').prepend($(`
             <div class="index_page_body_header_user_textDecoration_backButton">
                 <i class="fal fa-chevron-left"></i>
             </div>
