@@ -26,7 +26,19 @@
                 JSON.parse(historyPages).length >= 2
             ) 
             {
-                location.href = JSON.parse(historyPages)[JSON.parse(historyPages).length - 2];
+                var needLink    = null;
+                var history     = JSON.parse(historyPages);
+
+                for(var i = history.length - 1; i >= 0; i--) {
+                    if(location.href != history[i]) {
+                        needLink = history[i];
+                        break;
+                    };
+                };
+
+                if(needLink) {
+                    location.href = needLink;
+                }
             };
         }));
 
