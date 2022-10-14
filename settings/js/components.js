@@ -87,15 +87,15 @@
 
                 item_block.find('.index_page_body_hrefs a').eq(0).css({
                     "background-color": "#32B3F9",
-                    'color': "#32B3F9"
+                    'color': "white"
                 });
                 item_block.find('.index_page_body_hrefs a').eq(1).css({
-                    "background-color": "#32B3F9",
-                    'color': "#10C760"
+                    "background-color": "#10C760",
+                    'color': "white"
                 });
                 item_block.find('.index_page_body_hrefs a').eq(2).css({
-                    "background-color": "#32B3F9",
-                    'color': "#6F62E5"
+                    "background-color": "#6F62E5",
+                    'color': "white"
                 });
 
                 this.global_block.append(item_block);
