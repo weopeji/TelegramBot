@@ -177,7 +177,7 @@
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  color: #8394C8;
+  color: #c0c0c0;
   margin-top: 20px;
   padding: 10px 0;
   border-radius: 8px;
@@ -225,7 +225,7 @@
 }
 
 .global_block_menu .selected {
-  color: #1294FC;
+  color: white;
 }
 
 .global_block_header_status span {
