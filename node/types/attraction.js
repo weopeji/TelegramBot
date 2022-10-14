@@ -160,7 +160,7 @@ async function url(msg)
         {
             "resize_keyboard": true,
             "keyboard": [
-                ["Видео инструкция"],
+                ["📼 Видео инструкция"],
                 [buttonPush]
             ],
         });
@@ -215,7 +215,7 @@ async function url(msg)
         {
             "resize_keyboard": true,
             "keyboard": [
-                ["Видео инструкция"],
+                ["📼 Видео инструкция"],
                 [buttonPush]
             ],
         });
