@@ -316,7 +316,9 @@
                 },
                 "obligations": function() {
                     obligations.render(global.allData);
-                    set_back_button();
+                    if(_GET('ProjectId')) {
+                        set_back_button();
+                    };
                 },
                 "payments_new": function() {
                     try {
