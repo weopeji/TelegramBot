@@ -141,14 +141,14 @@
 .global_block_header_info h1 {
   font-size: 40px;
   font-weight: 400;
-  color: #32B8FF;
+  color: white;
   margin-bottom: 10px;
 }
 
 .global_block_header_info p {
   padding: 0;
   margin: 0;
-  color: #3F496A;
+  color: #f4dfdf;
   margin-bottom: 25px;
 }
 
@@ -177,7 +177,7 @@
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  color: #c0c0c0;
+  color: #f4dfdf;
   margin-top: 20px;
   padding: 10px 0;
   border-radius: 8px;
