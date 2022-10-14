@@ -41,7 +41,7 @@
                     <img src="https://api.telegram.org/file/bot2062839693:AAE0hzj8SVXyexq29s5x7aRLC5x8O77c-pQ/${photoPathPut}" alt="">
                 </div>
                 <span>${_data.invester.first_name}</span>
-                <p>Invester</p>
+                <p>investiR</p>
                 <div class="info_active_block_massage_button">
                     <span>Перейти к диалогу</span>
                 </div>
@@ -2615,7 +2615,7 @@
                                 
                                 </div>
                                 <span>Кирилл Максимов</span>
-                                <p>Invester</p>
+                                <p>Инвестор</p>
                             </div>
                         </div>
                     `;
@@ -3210,7 +3210,7 @@
                 `);
 
                 template_text.click( function() {
-                    window.location = `tg://resolve?domain=invester_official&post=${$(this).attr('data')}`;
+                    window.location = `tg://resolve?domain=investir_official&post=${$(this).attr('data')}`;
                 });
 
                 initNumber = initNumber + 1;

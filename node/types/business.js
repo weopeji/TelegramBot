@@ -202,11 +202,11 @@ async function getMoney(msg)
     if(lastPay != 0)
     {
         timeFormat  = DateTime.fromMillis(Number(lastPay)).plus({day: 10}).toFormat('dd.MM.yyyy');
-        html        += `Обязательста перед investER: ${deptComiisssion} ₽ оплатить до ${timeFormat}\n`;
+        html        += `Обязательста перед investiR: ${deptComiisssion} ₽ оплатить до ${timeFormat}\n`;
     } 
     else
     {
-        html        += `Обязательста перед investER: Задолжености нет\n`;
+        html        += `Обязательста перед investiR: Задолжености нет\n`;
     }
 
     var keyboard    = 
@@ -232,7 +232,7 @@ async function getMoney(msg)
 
     keyboard.push([
         {
-            text: "Обязательства перед investER",
+            text: "Обязательства перед investiR",
             login_url: {
                 'url': `${h.getURL()}?user=${_User._id}&page=obligations`,
             },

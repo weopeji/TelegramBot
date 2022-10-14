@@ -177,7 +177,7 @@ async function full_alert_user(_id, _text, _type, moreId)
                     keyboardPush.push([
                         {
                             text: "Посмотреть проект",
-                            url: `https://t.me/invester_official/${moreId}`
+                            url: `https://t.me/investir_official/${moreId}`
                         },
                     ]);
                 }

@@ -33,7 +33,7 @@
                             <div class="invester_status_projects_status_first_line">
                                 <span>Привлечено</span>
                                 <a>${_data.obligations_data.attracted.toString().ReplaceNumber()} руб</a>
-                                <span>Коммисия investER</span>
+                                <span>Коммисия investiR</span>
                                 <a>${_data.obligations_data.commission.toString().ReplaceNumber()} руб</a>
                             </div>
                             <div class="invester_status_projects_status_first_line">
@@ -83,11 +83,11 @@
                                 <p>${element.attracted.toString().ReplaceNumber()} руб</p>
                             </div>
                             <div class="obligations_block_element_line">
-                                <span>Коммисия investER</span>
+                                <span>Коммисия investiR</span>
                                 <p>${element.project.payersData.commission} %</p>
                             </div>
                             <div class="obligations_block_element_line">
-                                <span>Коммисия investER</span>
+                                <span>Коммисия investiR</span>
                                 <p>${element.accrued.toString().ReplaceNumber()} руб</p>
                             </div>
                             <div class="obligations_block_element_line">
@@ -107,7 +107,7 @@
                                 <p>Открыть</p>
                             </div>
                             <div class="obligations_block_element_button">
-                                <span>Написать investER</span>
+                                <span>Написать investiR</span>
                             </div>
                         </div>
                     </div>
@@ -198,7 +198,7 @@
                     {
                         var buttonPut = $(`<a href="https://investir.one/projects/${_data.project._id}/${element.commission.recipient}" target="_blank">Посмотреть</a>`);
                         template_text.find('.settingBlock_body_line_obligations_put').empty().append(buttonPut);
-                        template_text.children('span').eq(6).html("Ожидает подтверждения от investER");
+                        template_text.children('span').eq(6).html("Ожидает подтверждения от investiR");
                     }
 
                     if(element.commission.status == "wait_accept")

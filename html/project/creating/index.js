@@ -93,7 +93,7 @@
                 {
                     global._typePage = 'registrationDocument';
 
-                    $('.index_page_body h1').html('Подписание договора с investER');
+                    $('.index_page_body h1').html('Подписание договора с investiR');
                     $('.index_page_body h2').html('Скачайте документ, подпишите его и загрузите');
                     $('.index_page_body_button span').html('Отправить');
 

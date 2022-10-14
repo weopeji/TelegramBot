@@ -1407,11 +1407,11 @@ async function setInvestERDocumentLoad(socket, data, callback)
 
     h.alertAdmin({
         type: "correct_investerDocument_more",
-        text: "Был подписан документ c investER в проекте!",
+        text: "Был подписан документ c investiR в проекте!",
         projectId: data,
     });
 
-    h.alertDeleteOfUserOnbot("Вы подписали договор с investER, ожидайте дальнейшей модерации проекта, о ее результатах сообщим здесь", _Project.user);
+    h.alertDeleteOfUserOnbot("Вы подписали договор с investiR, ожидайте дальнейшей модерации проекта, о ее результатах сообщим здесь", _Project.user);
 
     callback();
 }
@@ -1831,7 +1831,7 @@ async function commissions_settings_accept(socket, data, callback)
     var _InvDoc     = await InvDoc.findOne({_id: _Commission.invId});
     var _Project    = await Project.findOne({_id: _InvDoc.projectId});
 
-    h.full_alert_user(_Project.user, `Оплата комисси investER подтверждена в проекте ${_Project._id} "${_Project.data.name}"`, "accept_commission_investring", _Project._id);
+    h.full_alert_user(_Project.user, `Оплата комисси investiR подтверждена в проекте ${_Project._id} "${_Project.data.name}"`, "accept_commission_investring", _Project._id);
 
     callback()
 }
@@ -3595,7 +3595,7 @@ async function acceptProject(socket,data,callback)
         });
     
     
-        h.full_alert_user(_project.user, `Ваш проект номер ${_project._id} "${_project.data.name}" был опубликован в investER!`, "acceptProject", dataPhotoPush.message_id);
+        h.full_alert_user(_project.user, `Ваш проект номер ${_project._id} "${_project.data.name}" был опубликован в investiR!`, "acceptProject", dataPhotoPush.message_id);
     
         h.alertAdmin({
             type: "creating_project",
