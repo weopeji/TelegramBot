@@ -2510,6 +2510,24 @@ img.preloader_row_img {
           align-items: center;
 }
 
+.index_page_body_header_user_textDecoration {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.index_page_body_header_user_textDecoration_backButton {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-left: 60px;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
 @media (max-width: 1350px) {
   .index_page_body_header_user_textDecoration span {
     margin-left: 0;
