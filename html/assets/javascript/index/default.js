@@ -314,7 +314,10 @@
 
                     wait_projects.render(global.allData)
                 },
-                "obligations": function() {obligations.render(global.allData)},
+                "obligations": function() {
+                    obligations.render(global.allData);
+                    set_back_button();
+                },
                 "payments_new": function() {
                     try {
                         $('.index_page_body_header_user_textDecoration span').html("Выплаты");
