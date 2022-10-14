@@ -96,7 +96,6 @@
             }
 
             global_block.append($(`<h1>Первичная информация</h1>`).css({
-                "background-color": "#182037",
                 "padding": "20px 30px",
                 "border-radius": "8px",
                 "font-weight": "600",
@@ -135,6 +134,7 @@
                 var _block = 
                 $(`
                     <div class="structCreator_new_block" data="${DataBlock._id}" type="${DataBlock.type}">
+                        <div class="version2_default_bkg row_default"></div>
                         <input type="file">
                         <div class="structCreator_new_block_row">
                             <span>${nameBLock}</span>
