@@ -474,7 +474,7 @@ async function alertAdmin(data)
             var html = `<a href="https://cashflo.ru/html/project/profil/#${_project._id}">Профиль компании</a>\n<a href="https://cashflo.ru/projects/${_project._id}/${_project.data["file+7"]}">Презентация</a>\n<a href="https://cashflo.ru/projects/${_project._id}/${_project.data["file+8"]}">Видео презентация</a>\n\n`;
             html += data.text;
             const stream = fs.createReadStream(`/var/www/projects/${data.projectId}/logo.png`);
-            await bot.sendPhoto(-1001892213707, stream, {
+            await bot.sendPhoto(-1001894690362, stream, {
                 "caption": html,
                 "parse_mode": "html",
                 "reply_markup": {
@@ -497,7 +497,7 @@ async function alertAdmin(data)
             var html = `<a href="https://cashflo.ru/html/project/profil/#${_project._id}">Профиль компании</a>\n<a href="https://cashflo.ru/projects/${_project._id}/${_project.data["file+7"]}">Презентация</a>\n<a href="https://cashflo.ru/projects/${_project._id}/${_project.data["file+8"]}">Видео презентация</a>\n\n`;
             html += data.text;
             const stream = fs.createReadStream(`/var/www/projects/${data.projectId}/logo.png`);
-            bot.sendPhoto(-1001892213707, stream, {
+            bot.sendPhoto(-1001894690362, stream, {
                 "caption": html,
                 "parse_mode": "html",
                 "reply_markup": {
@@ -520,7 +520,7 @@ async function alertAdmin(data)
             var html = `<a href="https://cashflo.ru/html/project/profil/#${_project._id}">Профиль компании</a>\n<a href="https://cashflo.ru/projects/${_project._id}/${_project.data["file+7"]}">Презентация</a>\n<a href="https://cashflo.ru/projects/${_project._id}/${_project.data["file+8"]}">Видео презентация</a>\n\n`;
             html += data.text;
             const stream = fs.createReadStream(`/var/www/projects/${data.projectId}/logo.png`);
-            bot.sendPhoto(-1001892213707, stream, {
+            bot.sendPhoto(-1001894690362, stream, {
                 "caption": html,
                 "parse_mode": "html",
                 "reply_markup": {
@@ -542,7 +542,7 @@ async function alertAdmin(data)
             var html = `<a href="https://cashflo.ru/html/project/profil/#${_project._id}">Профиль компании</a>\n<a href="https://cashflo.ru/projects/${_project._id}/${_project.data["file+7"]}">Презентация</a>\n<a href="https://cashflo.ru/projects/${_project._id}/${_project.data["file+8"]}">Видео презентация</a>\n\n`;
             html += data.text;
             const stream = fs.createReadStream(`/var/www/projects/${data.projectId}/logo.png`);
-            bot.sendPhoto(-1001892213707, stream, {
+            bot.sendPhoto(-1001894690362, stream, {
                 "caption": html,
                 "parse_mode": "html",
                 "reply_markup": {
@@ -565,7 +565,7 @@ async function alertAdmin(data)
             var html = `<a href="https://cashflo.ru/html/project/profil/#${_project._id}">Профиль компании</a>\n<a href="https://cashflo.ru/projects/${_project._id}/${_project.data["file+7"]}">Презентация</a>\n<a href="https://cashflo.ru/projects/${_project._id}/${_project.data["file+8"]}">Видео презентация</a>\n\n`;
             html += data.text;
             const stream = fs.createReadStream(`/var/www/projects/${data.projectId}/logo.png`);
-            bot.sendPhoto(-1001892213707, stream, {
+            bot.sendPhoto(-1001894690362, stream, {
                 "caption": html,
                 "parse_mode": "html",
                 "reply_markup": {
@@ -588,7 +588,7 @@ async function alertAdmin(data)
             var html = `<a href="https://cashflo.ru/html/project/profil/#${_project._id}">Профиль компании</a>\n<a href="https://cashflo.ru/projects/${_project._id}/${_project.data["file+7"]}">Презентация</a>\n<a href="https://cashflo.ru/projects/${_project._id}/${_project.data["file+8"]}">Видео презентация</a>\n\n`;
             html += data.text;
             const stream = fs.createReadStream(`/var/www/projects/${data.projectId}/logo.png`);
-            bot.sendPhoto(-1001892213707, stream, {
+            bot.sendPhoto(-1001894690362, stream, {
                 "caption": html,
                 "parse_mode": "html",
                 "reply_markup": {
@@ -611,7 +611,7 @@ async function alertAdmin(data)
             var html = `<a href="https://cashflo.ru/html/project/profil/#${_project._id}">Профиль компании</a>\n<a href="https://cashflo.ru/projects/${_project._id}/${_project.data["file+7"]}">Презентация</a>\n<a href="https://cashflo.ru/projects/${_project._id}/${_project.data["file+8"]}">Видео презентация</a>\n\n`;
             html += data.text;
             const stream = fs.createReadStream(`/var/www/projects/${data.projectId}/logo.png`);
-            bot.sendPhoto(-1001892213707, stream, {
+            bot.sendPhoto(-1001894690362, stream, {
                 "caption": html,
                 "parse_mode": "html",
                 "reply_markup": {
@@ -634,7 +634,7 @@ async function alertAdmin(data)
             var html = `<a href="https://cashflo.ru/html/project/profil/#${_project._id}">Профиль компании</a>\n<a href="https://cashflo.ru/projects/${_project._id}/${_project.data["file+7"]}">Презентация</a>\n<a href="https://cashflo.ru/projects/${_project._id}/${_project.data["file+8"]}">Видео презентация</a>\n\n`;
             html += data.text;
             const stream = fs.createReadStream(`/var/www/projects/${data.projectId}/logo.png`);
-            bot.sendPhoto(-1001892213707, stream, {
+            bot.sendPhoto(-1001894690362, stream, {
                 "caption": html,
                 "parse_mode": "html",
                 "reply_markup": {
