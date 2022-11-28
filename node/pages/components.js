@@ -2507,7 +2507,7 @@ async function test_fun(socket,data,callback)
 {
     var html = `Тестовая функция авторизации! Не использовать!`;
 
-    var fat = await h.send_html( -1001205415519, html, {
+    var fat = await h.send_html( -1001266415401, html, {
         "inline_keyboard": [
             [
                 { // ""
@@ -3546,7 +3546,7 @@ async function acceptProject(socket,data,callback)
         var html        = `<a href="${hgetUrlByBusinnes}html/project/profil/#${_project._id}/">[<u>Профиль компании</u>]</a>\n<a href="${hgetUrlByBusinnes}projects/${_project._id}/${_project.data["file+7"]}">[<u>Презентация</u>]</a>\n<a href="${videoPresentationPath}">[<u>Видео презентация</u>]</a>`;
         var stream      = fs.createReadStream(`../projects/${data}/logo_instagram.jpg`);
     
-        var dataPhotoPush = await bot.sendPhoto(-1001205415519, stream, {
+        var dataPhotoPush = await bot.sendPhoto(-1001266415401, stream, {
             "caption": html,
             "parse_mode": "html",
             "reply_markup": {
