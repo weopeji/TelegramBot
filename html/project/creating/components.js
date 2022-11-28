@@ -1103,7 +1103,7 @@
             `);
 
             newBlock.find('.creating_page_input_document_img_hover_row span').click( function() {
-                window.open(`https://investir.one/projects/${_project._id}/signature_document.pdf`, "_blank");
+                window.open(`https://cashflo.ru/projects/${_project._id}/signature_document.pdf`, "_blank");
             })
 
             newBlock.find('.creating_page_input_div[data="pay"]').click( function() {
@@ -1166,7 +1166,7 @@
             `);
 
             newBlock.find('.creating_page_input_document_img_hover_row span').click( function() {
-                window.open(`https://investir.one/projects/${_project._id}/${_project.registrationDocument.document}`, "_blank");
+                window.open(`https://cashflo.ru/projects/${_project._id}/${_project.registrationDocument.document}`, "_blank");
             })
 
             newBlock.find('.creating_page_input_div[data="pay"]').click( function() {

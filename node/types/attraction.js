@@ -176,7 +176,7 @@ async function url(msg)
                         {
                             text: "🏦 Инвестиционные предложения",
                             login_url: {
-                                'url': `https://investir.one/?page=telegram_authorization&type=recomendation_push&userId=${msg.from.id}`,
+                                'url': `https://cashflo.ru/?page=telegram_authorization&type=recomendation_push&userId=${msg.from.id}`,
                                 'request_write_access': true,
                             },
                         }
@@ -231,7 +231,7 @@ async function url(msg)
                         {
                             text: "Получить финансирование",
                             login_url: {
-                                'url': `https://investir.one/?page=telegram_authorization&type=recomendation_push_b&userId=${msg.from.id}`,
+                                'url': `https://cashflo.ru/?page=telegram_authorization&type=recomendation_push_b&userId=${msg.from.id}`,
                                 'request_write_access': true,
                             },
                         }

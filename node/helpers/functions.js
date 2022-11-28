@@ -118,7 +118,7 @@ async function full_alert_user(_id, _text, _type, moreId)
                         {
                             text: "Перейти к редактированию",
                             login_url: {
-                                'url': `https://investir.one/html/project/creating/#${moreId}`,
+                                'url': `https://cashflo.ru/html/project/creating/#${moreId}`,
                                 'request_write_access': true,
                             },
                         },
@@ -133,7 +133,7 @@ async function full_alert_user(_id, _text, _type, moreId)
                         {
                             text: "Перейти к подписанию",
                             login_url: {
-                                'url': `https://investir.one/html/project/creating/#${moreId}`,
+                                'url': `https://cashflo.ru/html/project/creating/#${moreId}`,
                                 'request_write_access': true,
                             },
                         },
@@ -148,7 +148,7 @@ async function full_alert_user(_id, _text, _type, moreId)
                         {
                             text: "Добавить документы",
                             login_url: {
-                                'url': `https://investir.one/html/project/creating/#${moreId}`,
+                                'url': `https://cashflo.ru/html/project/creating/#${moreId}`,
                                 'request_write_access': true,
                             },
                         },
@@ -163,7 +163,7 @@ async function full_alert_user(_id, _text, _type, moreId)
                         {
                             text: "Перейти к подписанию",
                             login_url: {
-                                'url': `https://investir.one/html/project/creating/#${moreId}`,
+                                'url': `https://cashflo.ru/html/project/creating/#${moreId}`,
                                 'request_write_access': true,
                             },
                         },
@@ -188,7 +188,7 @@ async function full_alert_user(_id, _text, _type, moreId)
                     {
                         text: "Посмотреть инвестиции",
                         login_url: {
-                            'url': `https://investir.one/?page=wait_projects`,
+                            'url': `https://cashflo.ru/?page=wait_projects`,
                             'request_write_access': true,
                         },
                     },
@@ -202,7 +202,7 @@ async function full_alert_user(_id, _text, _type, moreId)
                         {
                             text: "Перейти к инвестиции",
                             login_url: {
-                                'url': `https://investir.one/?page=activ_projects&idInv=${moreId}`,
+                                'url': `https://cashflo.ru/?page=activ_projects&idInv=${moreId}`,
                                 'request_write_access': true,
                             },
                         },
@@ -217,7 +217,7 @@ async function full_alert_user(_id, _text, _type, moreId)
                         {
                             text: "Перейти к инвестиции",
                             login_url: {
-                                'url': `https://investir.one/?page=activ_projects&idInv=${moreId}`,
+                                'url': `https://cashflo.ru/?page=activ_projects&idInv=${moreId}`,
                                 'request_write_access': true,
                             },
                         },
@@ -232,7 +232,7 @@ async function full_alert_user(_id, _text, _type, moreId)
                         {
                             text: "Посмотреть результаты",
                             login_url: {
-                                'url': `https://investir.one/?page=obligations&id=${moreId}`,
+                                'url': `https://cashflo.ru/?page=obligations&id=${moreId}`,
                                 'request_write_access': true,
                             },
                         },
@@ -245,7 +245,7 @@ async function full_alert_user(_id, _text, _type, moreId)
                     {
                         text: "Перейти",
                         login_url: {
-                            'url': `https://investir.one/?page=chats`,
+                            'url': `https://cashflo.ru/?page=chats`,
                             'request_write_access': true,
                         },
                     },
@@ -257,7 +257,7 @@ async function full_alert_user(_id, _text, _type, moreId)
                     {
                         text: "Перейти",
                         login_url: {
-                            'url': `https://investir.one/?page=Attracted_by_me`,
+                            'url': `https://cashflo.ru/?page=Attracted_by_me`,
                             'request_write_access': true,
                         },
                     },
@@ -271,7 +271,7 @@ async function full_alert_user(_id, _text, _type, moreId)
                         {
                             text: "Оплатить долг",
                             login_url: {
-                                'url': `https://investir.one/?page=activ_projects&idInv=${moreId}`,
+                                'url': `https://cashflo.ru/?page=activ_projects&idInv=${moreId}`,
                                 'request_write_access': true,
                             },
                         },
@@ -284,7 +284,7 @@ async function full_alert_user(_id, _text, _type, moreId)
                     {
                         text: "Поступления",
                         login_url: {
-                            'url': `https://investir.one/?page=acceptPays`,
+                            'url': `https://cashflo.ru/?page=acceptPays`,
                             'request_write_access': true,
                         },
                     },
@@ -296,7 +296,7 @@ async function full_alert_user(_id, _text, _type, moreId)
                     {
                         text: "Перейти",
                         login_url: {
-                            'url': `https://investir.one/?page=obligations`,
+                            'url': `https://cashflo.ru/?page=obligations`,
                             'request_write_access': true,
                         },
                     },
@@ -308,7 +308,7 @@ async function full_alert_user(_id, _text, _type, moreId)
                     {
                         text: "Перейти",
                         login_url: {
-                            'url': `https://investir.one/?page=myProjects`,
+                            'url': `https://cashflo.ru/?page=myProjects`,
                             'request_write_access': true,
                         },
                     },
@@ -320,7 +320,7 @@ async function full_alert_user(_id, _text, _type, moreId)
                     {
                         text: "Перейти",
                         login_url: {
-                            'url': `https://investir.one/?page=not_correct`,
+                            'url': `https://cashflo.ru/?page=not_correct`,
                             'request_write_access': true,
                         },
                     },
@@ -332,7 +332,7 @@ async function full_alert_user(_id, _text, _type, moreId)
                     {
                         text: "Перейти",
                         login_url: {
-                            'url': `https://investir.one/?page=not_correct`,
+                            'url': `https://cashflo.ru/?page=not_correct`,
                             'request_write_access': true,
                         },
                     },
@@ -346,7 +346,7 @@ async function full_alert_user(_id, _text, _type, moreId)
                         {
                             text: "Перейти",
                             login_url: {
-                                'url': `https://investir.one/?page=activ_projects&idInv=${moreId}`,
+                                'url': `https://cashflo.ru/?page=activ_projects&idInv=${moreId}`,
                                 'request_write_access': true,
                             },
                         },
@@ -361,7 +361,7 @@ async function full_alert_user(_id, _text, _type, moreId)
                         {
                             text: "Оплатить",
                             login_url: {
-                                'url': `https://investir.one/?page=activ_projects&idInv=${moreId}`,
+                                'url': `https://cashflo.ru/?page=activ_projects&idInv=${moreId}`,
                                 'request_write_access': true,
                             },
                         },
@@ -376,7 +376,7 @@ async function full_alert_user(_id, _text, _type, moreId)
                         {
                             text: "Перейти к оплате",
                             login_url: {
-                                'url': `https://investir.one/?page=put_file&action=investingNotFull&InvId=${moreId}`,
+                                'url': `https://cashflo.ru/?page=put_file&action=investingNotFull&InvId=${moreId}`,
                                 'request_write_access': true, 
                             },
                         },
@@ -389,7 +389,7 @@ async function full_alert_user(_id, _text, _type, moreId)
                     {
                         text: "Перейти к поступлениям",
                         login_url: {
-                            'url': `https://investir.one/?page=acceptPays`,
+                            'url': `https://cashflo.ru/?page=acceptPays`,
                             'request_write_access': true, 
                         },
                     },
@@ -403,7 +403,7 @@ async function full_alert_user(_id, _text, _type, moreId)
                         {
                             text: "Перейти к инвестиции",
                             login_url: {
-                                'url': `https://investir.one/?page=activ_projects&idInv=${moreId}`,
+                                'url': `https://cashflo.ru/?page=activ_projects&idInv=${moreId}`,
                                 'request_write_access': true, 
                             },
                         },
@@ -471,7 +471,7 @@ async function alertAdmin(data)
     {
         "creating_project": async function()
         {
-            var html = `<a href="https://investir.one/html/project/profil/#${_project._id}">Профиль компании</a>\n<a href="https://investir.one/projects/${_project._id}/${_project.data["file+7"]}">Презентация</a>\n<a href="https://investir.one/projects/${_project._id}/${_project.data["file+8"]}">Видео презентация</a>\n\n`;
+            var html = `<a href="https://cashflo.ru/html/project/profil/#${_project._id}">Профиль компании</a>\n<a href="https://cashflo.ru/projects/${_project._id}/${_project.data["file+7"]}">Презентация</a>\n<a href="https://cashflo.ru/projects/${_project._id}/${_project.data["file+8"]}">Видео презентация</a>\n\n`;
             html += data.text;
             const stream = fs.createReadStream(`/var/www/projects/${data.projectId}/logo.png`);
             await bot.sendPhoto(-1001892213707, stream, {
@@ -483,7 +483,7 @@ async function alertAdmin(data)
                             {
                                 text: "Перейти к модерации",
                                 login_url: {
-                                    'url': `https://investir.one/settings/?page=block&id=${_project._id}&more=data`,
+                                    'url': `https://cashflo.ru/settings/?page=block&id=${_project._id}&more=data`,
                                     'request_write_access': true,
                                 },
                             }
@@ -494,7 +494,7 @@ async function alertAdmin(data)
         },
         "correct_signature": function()
         {
-            var html = `<a href="https://investir.one/html/project/profil/#${_project._id}">Профиль компании</a>\n<a href="https://investir.one/projects/${_project._id}/${_project.data["file+7"]}">Презентация</a>\n<a href="https://investir.one/projects/${_project._id}/${_project.data["file+8"]}">Видео презентация</a>\n\n`;
+            var html = `<a href="https://cashflo.ru/html/project/profil/#${_project._id}">Профиль компании</a>\n<a href="https://cashflo.ru/projects/${_project._id}/${_project.data["file+7"]}">Презентация</a>\n<a href="https://cashflo.ru/projects/${_project._id}/${_project.data["file+8"]}">Видео презентация</a>\n\n`;
             html += data.text;
             const stream = fs.createReadStream(`/var/www/projects/${data.projectId}/logo.png`);
             bot.sendPhoto(-1001892213707, stream, {
@@ -506,7 +506,7 @@ async function alertAdmin(data)
                             {
                                 text: "Перейти к модерации",
                                 login_url: {
-                                    'url': `https://investir.one/settings/?page=block&id=${_project._id}&more=more`,
+                                    'url': `https://cashflo.ru/settings/?page=block&id=${_project._id}&more=more`,
                                     'request_write_access': true,
                                 },
                             }
@@ -517,7 +517,7 @@ async function alertAdmin(data)
         },
         "correct_investerDocument": function()
         {
-            var html = `<a href="https://investir.one/html/project/profil/#${_project._id}">Профиль компании</a>\n<a href="https://investir.one/projects/${_project._id}/${_project.data["file+7"]}">Презентация</a>\n<a href="https://investir.one/projects/${_project._id}/${_project.data["file+8"]}">Видео презентация</a>\n\n`;
+            var html = `<a href="https://cashflo.ru/html/project/profil/#${_project._id}">Профиль компании</a>\n<a href="https://cashflo.ru/projects/${_project._id}/${_project.data["file+7"]}">Презентация</a>\n<a href="https://cashflo.ru/projects/${_project._id}/${_project.data["file+8"]}">Видео презентация</a>\n\n`;
             html += data.text;
             const stream = fs.createReadStream(`/var/www/projects/${data.projectId}/logo.png`);
             bot.sendPhoto(-1001892213707, stream, {
@@ -529,7 +529,7 @@ async function alertAdmin(data)
                             {
                                 text: "Перейти к модерации",
                                 login_url: {
-                                    'url': `https://investir.one/settings/?page=block&id=${_project._id}&more=more`,
+                                    'url': `https://cashflo.ru/settings/?page=block&id=${_project._id}&more=more`,
                                     'request_write_access': true,
                                 },
                             }
@@ -539,7 +539,7 @@ async function alertAdmin(data)
             });
         },
         "correct_investerDocument_more": function() {
-            var html = `<a href="https://investir.one/html/project/profil/#${_project._id}">Профиль компании</a>\n<a href="https://investir.one/projects/${_project._id}/${_project.data["file+7"]}">Презентация</a>\n<a href="https://investir.one/projects/${_project._id}/${_project.data["file+8"]}">Видео презентация</a>\n\n`;
+            var html = `<a href="https://cashflo.ru/html/project/profil/#${_project._id}">Профиль компании</a>\n<a href="https://cashflo.ru/projects/${_project._id}/${_project.data["file+7"]}">Презентация</a>\n<a href="https://cashflo.ru/projects/${_project._id}/${_project.data["file+8"]}">Видео презентация</a>\n\n`;
             html += data.text;
             const stream = fs.createReadStream(`/var/www/projects/${data.projectId}/logo.png`);
             bot.sendPhoto(-1001892213707, stream, {
@@ -551,7 +551,7 @@ async function alertAdmin(data)
                             {
                                 text: "Перейти к модерации",
                                 login_url: {
-                                    'url': `https://investir.one/settings/?page=block&id=${_project._id}&more=redacting`,
+                                    'url': `https://cashflo.ru/settings/?page=block&id=${_project._id}&more=redacting`,
                                     'request_write_access': true,
                                 },
                             }
@@ -562,7 +562,7 @@ async function alertAdmin(data)
         },
         "video": function()
         {
-            var html = `<a href="https://investir.one/html/project/profil/#${_project._id}">Профиль компании</a>\n<a href="https://investir.one/projects/${_project._id}/${_project.data["file+7"]}">Презентация</a>\n<a href="https://investir.one/projects/${_project._id}/${_project.data["file+8"]}">Видео презентация</a>\n\n`;
+            var html = `<a href="https://cashflo.ru/html/project/profil/#${_project._id}">Профиль компании</a>\n<a href="https://cashflo.ru/projects/${_project._id}/${_project.data["file+7"]}">Презентация</a>\n<a href="https://cashflo.ru/projects/${_project._id}/${_project.data["file+8"]}">Видео презентация</a>\n\n`;
             html += data.text;
             const stream = fs.createReadStream(`/var/www/projects/${data.projectId}/logo.png`);
             bot.sendPhoto(-1001892213707, stream, {
@@ -574,7 +574,7 @@ async function alertAdmin(data)
                             {
                                 text: "Посмотреть результаты",
                                 login_url: {
-                                    'url': `https://investir.one/settings/?page=block&id=${_project._id}&more=settings`,
+                                    'url': `https://cashflo.ru/settings/?page=block&id=${_project._id}&more=settings`,
                                     'request_write_access': true,
                                 },
                             }
@@ -585,7 +585,7 @@ async function alertAdmin(data)
         },
         "accpetCommissionByBusiness": function()
         {
-            var html = `<a href="https://investir.one/html/project/profil/#${_project._id}">Профиль компании</a>\n<a href="https://investir.one/projects/${_project._id}/${_project.data["file+7"]}">Презентация</a>\n<a href="https://investir.one/projects/${_project._id}/${_project.data["file+8"]}">Видео презентация</a>\n\n`;
+            var html = `<a href="https://cashflo.ru/html/project/profil/#${_project._id}">Профиль компании</a>\n<a href="https://cashflo.ru/projects/${_project._id}/${_project.data["file+7"]}">Презентация</a>\n<a href="https://cashflo.ru/projects/${_project._id}/${_project.data["file+8"]}">Видео презентация</a>\n\n`;
             html += data.text;
             const stream = fs.createReadStream(`/var/www/projects/${data.projectId}/logo.png`);
             bot.sendPhoto(-1001892213707, stream, {
@@ -597,7 +597,7 @@ async function alertAdmin(data)
                             {
                                 text: "Посмотреть",
                                 login_url: {
-                                    'url': `https://investir.one/settings/?page=commissions`,
+                                    'url': `https://cashflo.ru/settings/?page=commissions`,
                                     'request_write_access': true,
                                 },
                             }
@@ -608,7 +608,7 @@ async function alertAdmin(data)
         },
         "not_correct_complaint": function()
         {
-            var html = `<a href="https://investir.one/html/project/profil/#${_project._id}">Профиль компании</a>\n<a href="https://investir.one/projects/${_project._id}/${_project.data["file+7"]}">Презентация</a>\n<a href="https://investir.one/projects/${_project._id}/${_project.data["file+8"]}">Видео презентация</a>\n\n`;
+            var html = `<a href="https://cashflo.ru/html/project/profil/#${_project._id}">Профиль компании</a>\n<a href="https://cashflo.ru/projects/${_project._id}/${_project.data["file+7"]}">Презентация</a>\n<a href="https://cashflo.ru/projects/${_project._id}/${_project.data["file+8"]}">Видео презентация</a>\n\n`;
             html += data.text;
             const stream = fs.createReadStream(`/var/www/projects/${data.projectId}/logo.png`);
             bot.sendPhoto(-1001892213707, stream, {
@@ -620,7 +620,7 @@ async function alertAdmin(data)
                             {
                                 text: "Посмотреть",
                                 login_url: {
-                                    'url': `https://investir.one/settings/?page=complaint`,
+                                    'url': `https://cashflo.ru/settings/?page=complaint`,
                                     'request_write_access': true,
                                 },
                             }
@@ -631,7 +631,7 @@ async function alertAdmin(data)
         },
         "notFullPayMoneyPush": function()
         {
-            var html = `<a href="https://investir.one/html/project/profil/#${_project._id}">Профиль компании</a>\n<a href="https://investir.one/projects/${_project._id}/${_project.data["file+7"]}">Презентация</a>\n<a href="https://investir.one/projects/${_project._id}/${_project.data["file+8"]}">Видео презентация</a>\n\n`;
+            var html = `<a href="https://cashflo.ru/html/project/profil/#${_project._id}">Профиль компании</a>\n<a href="https://cashflo.ru/projects/${_project._id}/${_project.data["file+7"]}">Презентация</a>\n<a href="https://cashflo.ru/projects/${_project._id}/${_project.data["file+8"]}">Видео презентация</a>\n\n`;
             html += data.text;
             const stream = fs.createReadStream(`/var/www/projects/${data.projectId}/logo.png`);
             bot.sendPhoto(-1001892213707, stream, {
@@ -642,7 +642,7 @@ async function alertAdmin(data)
                         [
                             {
                                 text: "Посмотреть",
-                                url: `https://investir.one/settings/?page=block&id=${_project._id}&more=redacting`,
+                                url: `https://cashflo.ru/settings/?page=block&id=${_project._id}&more=redacting`,
                             }
                         ]
                     ],

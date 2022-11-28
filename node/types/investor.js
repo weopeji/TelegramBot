@@ -509,7 +509,7 @@ async function startInvestingMsg(msg)
                     {
                         text: "Перейти",
                         login_url: {
-                            'url': `https://investir.one/?page=telegram_authorization&type=more&userId=${_User.putProject}`,
+                            'url': `https://cashflo.ru/?page=telegram_authorization&type=more&userId=${_User.putProject}`,
                             'request_write_access': true,
                         }, 
                     }

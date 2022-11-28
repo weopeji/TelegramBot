@@ -123,7 +123,7 @@
                                 data: IdInv,
                             });
 
-                            location.href = `https://investir.one/?user=${global.allData._id}&page=invester_data&InvRedacting=${InvDocId}`;
+                            location.href = `https://cashflo.ru/?user=${global.allData._id}&page=invester_data&InvRedacting=${InvDocId}`;
                         });
 
                         return actionBlock;
@@ -203,16 +203,16 @@
                 };
 
                 template_text.children('span').eq(0).click( function() {
-                    location.href = `https://investir.one/?page=activ_projects&id=${$(this).parent().attr('data-id')}`;
+                    location.href = `https://cashflo.ru/?page=activ_projects&id=${$(this).parent().attr('data-id')}`;
                 });
                 template_text.children('span').eq(1).click( function() {
-                    location.href = `https://investir.one/?page=activ_projects&id=${$(this).parent().attr('data-id')}`;
+                    location.href = `https://cashflo.ru/?page=activ_projects&id=${$(this).parent().attr('data-id')}`;
                 });
                 template_text.children('span').eq(2).click( function() {
-                    location.href = `https://investir.one/?page=activ_projects&id=${$(this).parent().attr('data-id')}`;
+                    location.href = `https://cashflo.ru/?page=activ_projects&id=${$(this).parent().attr('data-id')}`;
                 });
                 template_text.children('span').eq(3).click( function() {
-                    location.href = `https://investir.one/?page=activ_projects&id=${$(this).parent().attr('data-id')}`;
+                    location.href = `https://cashflo.ru/?page=activ_projects&id=${$(this).parent().attr('data-id')}`;
                 });
 
                 errorBlock = false;

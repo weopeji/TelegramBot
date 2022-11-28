@@ -293,7 +293,7 @@
                                                 body:"",
                                                 icon: "success"
                                             }).then( function() {
-                                                location.href = `https://investir.one/?user=${global.allData._id}&page=invester_data&InvRedacting=${InvDocId}`;
+                                                location.href = `https://cashflo.ru/?user=${global.allData._id}&page=invester_data&InvRedacting=${InvDocId}`;
                                             })
                                         };
                                     })

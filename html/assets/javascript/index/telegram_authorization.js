@@ -173,7 +173,7 @@
                 {
                     return new Promise(async (resolve,reject) =>
                     {
-                        var protoUrl    = `https://investir.one/?user=${_token}&page=creating`;
+                        var protoUrl    = `https://cashflo.ru/?user=${_token}&page=creating`;
 
                         setTimeout( async function() {
                             callApi({
@@ -210,7 +210,7 @@
                 {
                     return new Promise(async (resolve,reject) =>
                     {
-                        window.location = `https://investir.one/?page=invester_data&user=${_GET("idUser")}`;
+                        window.location = `https://cashflo.ru/?page=invester_data&user=${_GET("idUser")}`;
                     });
                 }
             }

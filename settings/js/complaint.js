@@ -141,7 +141,7 @@
                 });
 
                 _block.find('.settingBlock_body_line_ComplaintSettings[data="chat_invester"]').click( function() {
-                    window.open(`https://investir.one/?page=chats&id=${$(this).parent().parent().attr('data-id')}`, "_blank");
+                    window.open(`https://cashflo.ru/?page=chats&id=${$(this).parent().parent().attr('data-id')}`, "_blank");
                 });
 
                 templateText.find('.settingBlock_body').append(_block);

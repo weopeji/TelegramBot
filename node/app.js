@@ -612,7 +612,7 @@ app.post('/file_urist.io/files', (req, res) => {
                                 args: ['--no-sandbox', '--disable-setuid-sandbox'],
                             });
                             const page = await browser.newPage();
-                            await page.goto(`https://investir.one/html/project/document/#${_project._id}`);
+                            await page.goto(`https://cashflo.ru/html/project/document/#${_project._id}`);
                             await page.emulateMedia('screen');
                             await page.waitForSelector('.all_good')
                             await page.pdf({path: `/var/www/projects/${_data._id}/signature_document.pdf`});

@@ -203,7 +203,7 @@
                     _form.append('_id', _GET('id'));
                     _form.append('_pts', `extension/${extension.toLowerCase()}`);
 
-                    var _url = `https://investir.one/file_redacting.io/files`;
+                    var _url = `https://cashflo.ru/file_redacting.io/files`;
 
                     var _file = _form;
 

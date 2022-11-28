@@ -176,7 +176,7 @@
                                 });
 
                                 $('.creating_page_input_div[data="ok"]').click( function() {
-                                    location.href = `https://investir.one/?page=activ_projects&id=${_GET("InvId")}`;
+                                    location.href = `https://cashflo.ru/?page=activ_projects&id=${_GET("InvId")}`;
                                 });
                             }
                         });

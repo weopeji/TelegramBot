@@ -837,7 +837,7 @@
                                     if(typeof _data.project.businessSite != 'undefined') {
                                         window.open(`https://${_data.project.businessSite}?page=put_file&action=investingNotFull&InvId=${_data.InvDoc._id}`);
                                     } else {
-                                        window.open(`https://investir.one/?page=put_file&action=investingNotFull&InvId=${_data.InvDoc._id}`);
+                                        window.open(`https://cashflo.ru/?page=put_file&action=investingNotFull&InvId=${_data.InvDoc._id}`);
                                     }
                                 });
 
@@ -889,7 +889,7 @@
                                         if(typeof _data.project.businessSite != 'undefined') {
                                             window.open(`https://${_data.project.businessSite}?page=put_file&action=investingNotFull&InvId=${_data.InvDoc._id}`);
                                         } else {
-                                            window.open(`https://investir.one/?page=put_file&action=investingNotFull&InvId=${_data.InvDoc._id}`);
+                                            window.open(`https://cashflo.ru/?page=put_file&action=investingNotFull&InvId=${_data.InvDoc._id}`);
                                         }
                                     });
     
@@ -923,7 +923,7 @@
                                     `);
         
                                     headerPaysBlock.find('.Attracted_headerInfoBlock_info_data_alert_buttom_cheack').click( function() {
-                                        location.href = `https://investir.one/?page=put_file&action=investingNotFullNull&InvId=${_data.InvDoc._id}`;
+                                        location.href = `https://cashflo.ru/?page=put_file&action=investingNotFullNull&InvId=${_data.InvDoc._id}`;
                                     });
         
                                     $('.headerPaysBlock').remove();
@@ -1226,7 +1226,7 @@
                         if(typeof _data.project.businessSite != 'undefined') {
                             window.open(`https://${_data.project.businessSite}/projects/${_data.InvDoc.projectId}/${_data.InvDoc.urlToLastDocument}`, '_blank');
                         } else {
-                            window.open(`https://investir.one/projects/${_data.InvDoc.projectId}/${_data.InvDoc.urlToLastDocument}`, '_blank');
+                            window.open(`https://cashflo.ru/projects/${_data.InvDoc.projectId}/${_data.InvDoc.urlToLastDocument}`, '_blank');
                         }
                     }
                 });
@@ -2175,7 +2175,7 @@
 
 
                 template_text.children('span').eq(7).click( function() {
-                    location.href = `https://investir.one/?page=chats&id=${$(this).parent().attr('data-project')}`;
+                    location.href = `https://cashflo.ru/?page=chats&id=${$(this).parent().attr('data-project')}`;
                 });
 
                 settingBlock.find('.settingBlock_body').append(template_text);
@@ -2783,7 +2783,7 @@
                     $('.index_page_body_data').append(block);
     
                     $('.msg_block_getting_line').click( function() {
-                        location.href = `https://investir.one/?user=${$(this).attr('data-more')}&page=chats&id=${$(this).attr('data')}`;
+                        location.href = `https://cashflo.ru/?user=${$(this).attr('data-more')}&page=chats&id=${$(this).attr('data')}`;
                     })
     
                 }
@@ -2825,7 +2825,7 @@
             });
 
             $('.put').click( function() {
-                window.open(`https://investir.one/html/project/document/#${_GET('id')}#/?id=${global.allData.User._id}`, '_blank');
+                window.open(`https://cashflo.ru/html/project/document/#${_GET('id')}#/?id=${global.allData.User._id}`, '_blank');
             });
 
             $('.accept_signature').click( async function() 

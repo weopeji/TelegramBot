@@ -67,7 +67,7 @@
                         <span>${fioBlock}</span>
                         <span>${commissionsElement.invDoc.data.pay.toString().ReplaceNumber()} руб</span>
                         <span>${commissionsElement.commissionInvestER.toString().ReplaceNumber()} руб</span>
-                        <span class="settingBlock_body_line_shower"><a target="_blank" href="https://investir.one/projects/${commissionsElement.invDoc.projectId}/${commissionsElement.commission.recipient}">Посмотреть</a></span>
+                        <span class="settingBlock_body_line_shower"><a target="_blank" href="https://cashflo.ru/projects/${commissionsElement.invDoc.projectId}/${commissionsElement.commission.recipient}">Посмотреть</a></span>
                         <span class="settingBlock_body_line_button">Подтвердить</span>
                         <span><a href="google.com">Написать</a></span>
                     </div>
@@ -137,7 +137,7 @@
                         <span>${fioBlock}</span>
                         <span>${commissionsElement.invDoc.data.pay.toString().ReplaceNumber()} руб</span>
                         <span>${commissionsElement.commissionInvestER.toString().ReplaceNumber()} руб</span>
-                        <span class="settingBlock_body_line_shower"><a target="_blank" href="https://investir.one/projects/${commissionsElement.invDoc.projectId}/${commissionsElement.commission.recipient}">Посмотреть</a></span>
+                        <span class="settingBlock_body_line_shower"><a target="_blank" href="https://cashflo.ru/projects/${commissionsElement.invDoc.projectId}/${commissionsElement.commission.recipient}">Посмотреть</a></span>
                         <span class="settingBlock_body_line_button">Отказать</span>
                         <span><a href="google.com">Написать</a></span>
                     </div>

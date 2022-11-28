@@ -14,7 +14,7 @@ var keyboard = [
     {
         text: "Рекомендовать",
         login_url: {
-            'url': `https://investir.one/?page=telegram_authorization&type=recomendation&userId=${data}`,
+            'url': `https://cashflo.ru/?page=telegram_authorization&type=recomendation&userId=${data}`,
             'request_write_access': true,
         },
     }

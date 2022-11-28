@@ -40,7 +40,7 @@
                     <p>Наличие звука: <data class="upload_video_block_info_volue"></data></p>
                 </div>
                 <div class="upload_video_block">
-                    <video controls="controls" src="https://investir.one/projects/${this.project._id}/${this.project.data['file+8']}"></video>
+                    <video controls="controls" src="https://cashflo.ru/projects/${this.project._id}/${this.project.data['file+8']}"></video>
                 </div>
                 <div class="upload_video_block_button_row">
                     <div class="upload_video_block_button">
@@ -127,7 +127,7 @@
                 var tamplateText = $(`
                     <div class="upload_video_block">
                         <h1>Загрузка видео на YouTube</h1>
-                        <video controls="controls" src="https://investir.one/projects/${_project._id}/default_video_project.mp4"></video>
+                        <video controls="controls" src="https://cashflo.ru/projects/${_project._id}/default_video_project.mp4"></video>
                         <div class="upload_video_block_unputs">
                             <div class="upload_video_block_unputs_text" id="upload_video_name" contenteditable="true" style="white-space: pre-line">${_project.data.name} № ${_project._id}</div>
                             <textarea class="upload_video_block_unputs_text" id="upload_video_description">${_description}</textarea>
