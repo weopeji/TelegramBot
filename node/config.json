@@ -2,7 +2,7 @@
     "mongoUri": "mongodb://127.0.0.1:27017/bot",
     "host_url": "http://localhost.ru/tbot/",
     "host_url_server": "https://cashflo.ru/",
-    "token":"5933962860:AAHa41YdEHweUrHTPqhEf0D5nz51RGRrJZg", 
+    "token":"5385395710:AAFiqjWFW5tm_ywTxZMJL7BjNXuEobTytic", 
     "token_host": "5777626572:AAE2dfXzkgu7EMJNV9aKh7iPTYWGwzK3aho",
     "secure": false,
     "appPort": 3000,
